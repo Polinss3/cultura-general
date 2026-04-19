@@ -3,10 +3,12 @@ export type GameMode = 'daily' | 'speed' | 'learn';
 export type AnswerState = null | 'selected' | 'correct' | 'wrong';
 
 export interface Question {
+  id?: number;
   q: string;
   opts: string[];
   ans: number;
-  ctx: string;
+  ctx?: string;
+  category?: Category;
 }
 
 export interface RankingEntry {

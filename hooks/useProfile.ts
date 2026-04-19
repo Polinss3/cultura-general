@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from './useAuth';
 
@@ -18,19 +18,18 @@ export function useProfile() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const load = useCallback(async () => {
     if (!user) { setProfile(null); setLoading(false); return; }
-
-    supabase
+    const { data } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', user.id)
-      .single()
-      .then(({ data }) => {
-        setProfile(data);
-        setLoading(false);
-      });
+      .single();
+    setProfile(data ?? null);
+    setLoading(false);
   }, [user?.id]);
 
-  return { profile, loading };
+  useEffect(() => { load(); }, [load]);
+
+  return { profile, loading, refresh: load };
 }

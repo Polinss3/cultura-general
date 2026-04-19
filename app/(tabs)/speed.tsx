@@ -1,31 +1,49 @@
-import { useState, useEffect } from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { useState, useEffect, useRef } from 'react';
+import { View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
+import { useAuth } from '@/hooks/useAuth';
+import { useProfile } from '@/hooks/useProfile';
+import { fetchQuestions, saveSpeedGame } from '@/lib/db';
 import { QUESTIONS } from '@/constants/questions';
 import { shuffle } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
 
-type Phase = 'intro' | 'playing' | 'done';
+type Phase = 'loading' | 'intro' | 'playing' | 'done';
 
 const DURATION = 30;
+const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
-function buildShuffled(): Question[] {
+function buildLocal(): Question[] {
   const arr: Question[] = [];
   Object.values(QUESTIONS).forEach(qs => arr.push(...qs));
   return shuffle(arr);
 }
 
 export default function SpeedScreen() {
-  const [phase, setPhase] = useState<Phase>('intro');
+  const { user } = useAuth();
+  const { profile, refresh: refreshProfile } = useProfile();
+
+  const [phase, setPhase] = useState<Phase>('loading');
+  const [allQ, setAllQ] = useState<Question[]>([]);
   const [timeLeft, setTimeLeft] = useState(DURATION);
   const [qIdx, setQIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
-  const [allQ, setAllQ] = useState<Question[]>(buildShuffled);
+  const [newRecord, setNewRecord] = useState(false);
+  const savedRef = useRef(false);
 
+  // Load questions from Supabase on mount, fall back to local
+  useEffect(() => {
+    fetchQuestions().then(remote => {
+      setAllQ(shuffle(remote.length > 0 ? remote : buildLocal()));
+      setPhase('intro');
+    });
+  }, []);
+
+  // Timer
   useEffect(() => {
     if (phase !== 'playing') return;
     if (timeLeft <= 0) { setPhase('done'); return; }
@@ -33,9 +51,22 @@ export default function SpeedScreen() {
     return () => clearTimeout(t);
   }, [phase, timeLeft]);
 
-  const reset = () => {
-    setAllQ(buildShuffled());
-    setPhase('intro');
+  // Save game when done
+  useEffect(() => {
+    if (phase !== 'done' || !user || savedRef.current) return;
+    savedRef.current = true;
+    const record = profile?.speed_record ?? 0;
+    saveSpeedGame(user.id, score, qIdx, record).then(({ isNewRecord }) => {
+      setNewRecord(isNewRecord);
+      refreshProfile();
+    });
+  }, [phase]);
+
+  const reset = (startPlaying = false) => {
+    savedRef.current = false;
+    setNewRecord(false);
+    setAllQ(shuffle(allQ.length > 0 ? allQ : buildLocal()));
+    setPhase(startPlaying ? 'playing' : 'intro');
     setTimeLeft(DURATION);
     setQIdx(0);
     setScore(0);
@@ -44,7 +75,7 @@ export default function SpeedScreen() {
   };
 
   const handle = (i: number) => {
-    if (answered) return;
+    if (answered || allQ.length === 0) return;
     setSelected(i);
     setAnswered(true);
     if (i === allQ[qIdx % allQ.length].ans) setScore(s => s + 1);
@@ -55,7 +86,20 @@ export default function SpeedScreen() {
     }, 500);
   };
 
+  // ─ Loading
+  if (phase === 'loading') {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator color="#a030e8" size="large" />
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  // ─ Intro
   if (phase === 'intro') {
+    const record = profile?.speed_record ?? 0;
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
         <View style={{ flex: 1, padding: 20 }}>
@@ -75,7 +119,7 @@ export default function SpeedScreen() {
                 Tu récord actual
               </Text>
               <Text style={{ color: '#a030e8', fontSize: 32, fontFamily: 'Outfit_800ExtraBold' }}>
-                8 preguntas
+                {record} {record === 1 ? 'pregunta' : 'preguntas'}
               </Text>
             </View>
 
@@ -94,16 +138,18 @@ export default function SpeedScreen() {
     );
   }
 
+  // ─ Done
   if (phase === 'done') {
-    const total = qIdx || 1;
+    const total = Math.max(qIdx, 1);
     const accuracy = Math.round((score / total) * 100);
-    const newRecord = score >= 8;
+    const record = profile?.speed_record ?? 0;
+    const diff = record - score;
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
         <View style={{ flex: 1, padding: 20, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 56, marginBottom: 12 }}>
-            {score >= 8 ? '🏆' : score >= 5 ? '⭐' : '💪'}
+            {score >= record && record > 0 ? '🏆' : score >= 5 ? '⭐' : '💪'}
           </Text>
           <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
             {score} correctas
@@ -117,7 +163,11 @@ export default function SpeedScreen() {
             </Text>
           ) : (
             <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
-              Récord: 8 · Te faltan {8 - score} para superarlo
+              {record > 0
+                ? diff > 0
+                  ? `Récord: ${record} · Te faltan ${diff} para superarlo`
+                  : `Récord igualado: ${record}`
+                : 'Primera partida registrada'}
             </Text>
           )}
 
@@ -135,12 +185,12 @@ export default function SpeedScreen() {
 
           <View style={{ flexDirection: 'row', gap: 10, width: '100%' }}>
             <Pressable
-              onPress={reset}
+              onPress={() => reset(false)}
               style={{ flex: 1, backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}
             >
-              <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Reiniciar</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Inicio</Text>
             </Pressable>
-            <Pressable onPress={() => { reset(); setTimeout(() => setPhase('playing'), 50); }} style={{ flex: 2 }}>
+            <Pressable onPress={() => reset(true)} style={{ flex: 2 }}>
               <LinearGradient
                 colors={['#a030e8', '#7020b8']}
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -155,7 +205,8 @@ export default function SpeedScreen() {
     );
   }
 
-  // Playing phase
+  // ─ Playing
+  if (allQ.length === 0) return null;
   const q = allQ[qIdx % allQ.length];
   const pct = timeLeft / DURATION;
   const timerColor = timeLeft > 10 ? '#a030e8' : '#e83060';
@@ -170,16 +221,12 @@ export default function SpeedScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
-        {/* Timer row */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
           <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 20 }}>#{qIdx + 1}</Text>
-          <Text style={{ color: timerColor, fontSize: 32, fontFamily: 'Outfit_800ExtraBold' }}>
-            {timeLeft}s
-          </Text>
+          <Text style={{ color: timerColor, fontSize: 32, fontFamily: 'Outfit_800ExtraBold' }}>{timeLeft}s</Text>
           <Text style={{ color: '#a030e8', fontFamily: 'Outfit_700Bold', fontSize: 20 }}>{score} ✓</Text>
         </View>
 
-        {/* Progress bar */}
         <View style={{ height: 4, backgroundColor: '#1a1a1a', borderRadius: 99, marginBottom: 24, overflow: 'hidden' }}>
           <View style={{ height: '100%', width: `${pct * 100}%`, backgroundColor: timerColor, borderRadius: 99 }} />
         </View>
@@ -190,13 +237,7 @@ export default function SpeedScreen() {
 
         <View style={{ gap: 9 }}>
           {q.opts.map((opt, i) => (
-            <OptionBtn
-              key={i}
-              text={opt}
-              letter={(['A', 'B', 'C', 'D'] as const)[i]}
-              state={getState(i)}
-              onPress={() => handle(i)}
-            />
+            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
           ))}
         </View>
       </View>
