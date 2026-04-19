@@ -1,6 +1,6 @@
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { Stack, useRouter, useSegments } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import {
   useFonts,
@@ -11,6 +11,7 @@ import {
   Outfit_700Bold,
   Outfit_800ExtraBold,
 } from '@expo-google-fonts/outfit';
+import { useAuth } from '@/hooks/useAuth';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,11 +25,23 @@ export default function RootLayout() {
     Outfit_800ExtraBold,
   });
 
-  useEffect(() => {
-    if (fontsLoaded) SplashScreen.hideAsync();
-  }, [fontsLoaded]);
+  const { session, loading } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
 
-  if (!fontsLoaded) return null;
+  useEffect(() => {
+    if (!fontsLoaded || loading) return;
+    SplashScreen.hideAsync();
+
+    const inAuth = segments[0] === '(auth)';
+    if (!session && !inAuth) {
+      router.replace('/(auth)/login');
+    } else if (session && inAuth) {
+      router.replace('/(tabs)');
+    }
+  }, [session, loading, fontsLoaded]);
+
+  if (!fontsLoaded || loading) return null;
 
   return (
     <>

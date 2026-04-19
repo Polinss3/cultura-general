@@ -2,12 +2,18 @@ import { ScrollView, View, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useProfile } from '@/hooks/useProfile';
+import { supabase } from '@/lib/supabase';
 
 export default function HomeScreen() {
   const router = useRouter();
+  const { profile } = useProfile();
   const today = new Date().toLocaleDateString('es-ES', {
     weekday: 'long', day: 'numeric', month: 'long',
   });
+
+  const initial = (profile?.username?.[0] ?? '?').toUpperCase();
+  const displayName = profile?.username ?? '...';
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -21,16 +27,18 @@ export default function HomeScreen() {
                 {today}
               </Text>
               <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_700Bold', marginTop: 2 }}>
-                Hola, Alex 👋
+                Hola, {displayName} 👋
               </Text>
             </View>
-            <LinearGradient
-              colors={['#e8a030', '#e83060']}
-              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' }}
-            >
-              <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>A</Text>
-            </LinearGradient>
+            <Pressable onPress={() => supabase.auth.signOut()}>
+              <LinearGradient
+                colors={['#e8a030', '#e83060']}
+                start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+                style={{ width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' }}
+              >
+                <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{initial}</Text>
+              </LinearGradient>
+            </Pressable>
           </View>
 
           {/* Streak */}
@@ -40,12 +48,16 @@ export default function HomeScreen() {
           }}>
             <Text style={{ fontSize: 26 }}>🔥</Text>
             <View style={{ flex: 1 }}>
-              <Text style={{ color: '#fff', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>7 días seguidos</Text>
+              <Text style={{ color: '#fff', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>
+                {profile?.streak ?? 0} días seguidos
+              </Text>
               <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 1 }}>
-                ¡Sigue así! Mañana llegas a 8
+                {(profile?.streak ?? 0) > 0 ? '¡Sigue así!' : 'Responde hoy para empezar tu racha'}
               </Text>
             </View>
-            <Text style={{ color: '#e8a030', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>7</Text>
+            <Text style={{ color: '#e8a030', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>
+              {profile?.streak ?? 0}
+            </Text>
           </View>
         </View>
 
@@ -109,14 +121,16 @@ export default function HomeScreen() {
               </Text>
               <View style={{ marginTop: 14 }}>
                 <View style={{ backgroundColor: '#a030e8', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>
-                  <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>Tu récord: 8 →</Text>
+                  <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>
+                    Récord: {profile?.speed_record ?? 0} →
+                  </Text>
                 </View>
               </View>
             </LinearGradient>
           </Pressable>
 
           {/* Learn */}
-          <Pressable onPress={() => router.push('/(tabs)/learn')}>
+          <Pressable onPress={() => router.push('/(tabs)/learn')} style={{ marginBottom: 12 }}>
             <LinearGradient
               colors={['#001a0a', '#0a0a0a']}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -141,6 +155,33 @@ export default function HomeScreen() {
               </View>
             </LinearGradient>
           </Pressable>
+
+          {/* Friends */}
+          <Pressable onPress={() => router.push('/(tabs)/friends')}>
+            <LinearGradient
+              colors={['#001220', '#0a0a0a']}
+              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+              style={{ borderRadius: 20, padding: 18, borderWidth: 1, borderColor: 'rgba(48,168,232,0.3)' }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                <View style={{ width: 38, height: 38, borderRadius: 12, backgroundColor: 'rgba(48,168,232,0.15)', alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 18 }}>👥</Text>
+                </View>
+                <View>
+                  <Text style={{ color: '#30a8e8', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>MULTIJUGADOR</Text>
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>Jugar con Amigos</Text>
+                </View>
+              </View>
+              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
+                Pasa el móvil, duelos, superviviente... ¿Quién sabe más?
+              </Text>
+              <View style={{ marginTop: 14 }}>
+                <View style={{ backgroundColor: '#30a8e8', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>
+                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>Competir →</Text>
+                </View>
+              </View>
+            </LinearGradient>
+          </Pressable>
         </View>
 
         {/* Stats */}
@@ -153,12 +194,12 @@ export default function HomeScreen() {
           </Text>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             {[
-              { label: 'Preguntas', value: '342' },
-              { label: 'Aciertos', value: '74%' },
-              { label: 'Ranking', value: '#2' },
+              { label: 'Respondidas', value: String(profile?.total_answered ?? 0) },
+              { label: 'Aciertos', value: profile?.total_answered ? `${Math.round((profile.total_correct / profile.total_answered) * 100)}%` : '—' },
+              { label: 'Racha', value: `${profile?.streak ?? 0}🔥` },
             ].map(s => (
               <View key={s.label} style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 12, alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>{s.value}</Text>
+                <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold' }}>{s.value}</Text>
                 <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>{s.label}</Text>
               </View>
             ))}

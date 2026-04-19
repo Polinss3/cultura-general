@@ -1,14 +1,21 @@
-import { useState, useEffect, useMemo } from 'react';
-import { View, Text, Pressable, ScrollView } from 'react-native';
+import { useState, useEffect } from 'react';
+import { View, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { QUESTIONS } from '@/constants/questions';
+import { shuffle } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
 
 type Phase = 'intro' | 'playing' | 'done';
 
 const DURATION = 30;
+
+function buildShuffled(): Question[] {
+  const arr: Question[] = [];
+  Object.values(QUESTIONS).forEach(qs => arr.push(...qs));
+  return shuffle(arr);
+}
 
 export default function SpeedScreen() {
   const [phase, setPhase] = useState<Phase>('intro');
@@ -17,12 +24,7 @@ export default function SpeedScreen() {
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
-
-  const allQ: Question[] = useMemo(() => {
-    const arr: Question[] = [];
-    Object.values(QUESTIONS).forEach(qs => arr.push(...qs));
-    return arr.sort(() => Math.random() - 0.5);
-  }, []);
+  const [allQ, setAllQ] = useState<Question[]>(buildShuffled);
 
   useEffect(() => {
     if (phase !== 'playing') return;
@@ -32,6 +34,7 @@ export default function SpeedScreen() {
   }, [phase, timeLeft]);
 
   const reset = () => {
+    setAllQ(buildShuffled());
     setPhase('intro');
     setTimeLeft(DURATION);
     setQIdx(0);

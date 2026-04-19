@@ -70,6 +70,14 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="friends"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <TabIcon label="Amigos" icon="👥" focused={focused} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
