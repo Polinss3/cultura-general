@@ -1,0 +1,15 @@
+export const Colors = {
+  bg: '#0a0a0a',
+  surface: '#151515',
+  surface2: '#1a1a1a',
+  border: 'rgba(255,255,255,0.08)',
+  borderSubtle: 'rgba(255,255,255,0.06)',
+  text: '#ffffff',
+  textMuted: 'rgba(255,255,255,0.4)',
+  textDim: 'rgba(255,255,255,0.25)',
+  correct: '#2ec87a',
+  wrong: '#e83060',
+  daily: '#e8a030',
+  speed: '#a030e8',
+  learn: '#2ec87a',
+} as const;
