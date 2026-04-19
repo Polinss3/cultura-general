@@ -11,8 +11,8 @@ function TabIcon({ label, icon, focused }: TabIconProps) {
   return (
     <View style={{ alignItems: 'center', gap: 2, paddingTop: 6 }}>
       <Text style={{ fontSize: 20 }}>{icon}</Text>
-      <Text style={{
-        fontSize: 10,
+      <Text numberOfLines={1} style={{
+        fontSize: 9,
         fontFamily: focused ? 'Outfit_600SemiBold' : 'Outfit_400Regular',
         color: focused ? '#fff' : 'rgba(255,255,255,0.28)',
       }}>
