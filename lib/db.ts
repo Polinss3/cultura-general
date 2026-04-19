@@ -6,7 +6,7 @@ import { Question, Category } from '@/types';
 function mapQuestion(row: any): Question {
   return {
     id: row.id,
-    q: row.question_text,
+    q: row.question,
     opts: row.options,
     ans: row.answer_index,
     ctx: row.context ?? undefined,
@@ -80,7 +80,7 @@ export async function checkDailyAnswered(
 
 export async function saveDailyAnswer(
   userId: string,
-  questionId: number,
+  questionId: string,
   selectedIdx: number,
   isCorrect: boolean,
 ): Promise<void> {

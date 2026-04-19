@@ -3,7 +3,7 @@ export type GameMode = 'daily' | 'speed' | 'learn';
 export type AnswerState = null | 'selected' | 'correct' | 'wrong';
 
 export interface Question {
-  id?: number;
+  id?: string;
   q: string;
   opts: string[];
   ans: number;
