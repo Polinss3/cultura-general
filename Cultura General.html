@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cultura General</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #111;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+  }
+  ::-webkit-scrollbar { display: none; }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+  }
+  @keyframes popIn {
+    0% { transform: scale(0.85); opacity: 0; }
+    70% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes timerPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+
+// ─── iOS FRAME COMPONENTS ─────────────────────────────────────
+
+function IOSStatusBar({ dark = false, time = '9:41' }) {
+  const c = dark ? '#fff' : '#000';
+  return (
+    <div style={{
+      display: 'flex', gap: 154, alignItems: 'center', justifyContent: 'center',
+      padding: '21px 24px 19px', boxSizing: 'border-box',
+      position: 'relative', zIndex: 20, width: '100%',
+    }}>
+      <div style={{ flex: 1, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 1.5 }}>
+        <span style={{
+          fontFamily: '-apple-system, "SF Pro", system-ui', fontWeight: 590,
+          fontSize: 17, lineHeight: '22px', color: c,
+        }}>{time}</span>
+      </div>
+      <div style={{ flex: 1, height: 22, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, paddingTop: 1, paddingRight: 1 }}>
+        <svg width="19" height="12" viewBox="0 0 19 12">
+          <rect x="0" y="7.5" width="3.2" height="4.5" rx="0.7" fill={c}/>
+          <rect x="4.8" y="5" width="3.2" height="7" rx="0.7" fill={c}/>
+          <rect x="9.6" y="2.5" width="3.2" height="9.5" rx="0.7" fill={c}/>
+          <rect x="14.4" y="0" width="3.2" height="12" rx="0.7" fill={c}/>
+        </svg>
+        <svg width="17" height="12" viewBox="0 0 17 12">
+          <path d="M8.5 3.2C10.8 3.2 12.9 4.1 14.4 5.6L15.5 4.5C13.7 2.7 11.2 1.5 8.5 1.5C5.8 1.5 3.3 2.7 1.5 4.5L2.6 5.6C4.1 4.1 6.2 3.2 8.5 3.2Z" fill={c}/>
+          <path d="M8.5 6.8C9.9 6.8 11.1 7.3 12 8.2L13.1 7.1C11.8 5.9 10.2 5.1 8.5 5.1C6.8 5.1 5.2 5.9 3.9 7.1L5 8.2C5.9 7.3 7.1 6.8 8.5 6.8Z" fill={c}/>
+          <circle cx="8.5" cy="10.5" r="1.5" fill={c}/>
+        </svg>
+        <svg width="27" height="13" viewBox="0 0 27 13">
+          <rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke={c} strokeOpacity="0.35" fill="none"/>
+          <rect x="2" y="2" width="20" height="9" rx="2" fill={c}/>
+          <path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill={c} fillOpacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function IOSDevice({ children, width = 402, height = 874, dark = false, title, keyboard = false }) {
+  return (
+    <div style={{
+      width, height, borderRadius: 48, overflow: 'hidden',
+      position: 'relative', background: dark ? '#000' : '#F2F2F7',
+      boxShadow: '0 40px 80px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.12)',
+      fontFamily: '-apple-system, system-ui, sans-serif',
+      WebkitFontSmoothing: 'antialiased',
+    }}>
+      <div style={{
+        position: 'absolute', top: 11, left: '50%', transform: 'translateX(-50%)',
+        width: 126, height: 37, borderRadius: 24, background: '#000', zIndex: 50,
+      }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10 }}>
+        <IOSStatusBar dark={dark} />
+      </div>
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ flex: 1, overflow: 'auto' }}>{children}</div>
+      </div>
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 60,
+        height: 34, display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
+        paddingBottom: 8, pointerEvents: 'none',
+      }}>
+        <div style={{
+          width: 139, height: 5, borderRadius: 100,
+          background: dark ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.25)',
+        }} />
+      </div>
+    </div>
+  );
+}
+
+// ─── QUESTIONS DATABASE ────────────────────────────────────────────────
+const QUESTIONS = {
+  historia: [
+    {
+      q: "¿En qué año terminó la Primera Guerra Mundial?",
+      opts: ["1916", "1917", "1918", "1919"],
+      ans: 2,
+      ctx: "La Primera Guerra Mundial terminó el 11 de noviembre de 1918, cuando se firmó el Armisticio de Compiègne. El conflicto había durado cuatro años devastadores, causando más de 20 millones de muertos."
+    },
+    {
+      q: "¿Quién fue el primer emperador de Roma?",
+      opts: ["Julio César", "Augusto", "Nerón", "Tiberio"],
+      ans: 1,
+      ctx: "Augusto (Octavio) fue el primer emperador romano, gobernando del 27 a.C. al 14 d.C. Aunque Julio César ejerció gran poder, nunca fue oficialmente 'emperador', título que recayó en su sobrino-nieto."
+    },
+    {
+      q: "¿En qué año cayó el Muro de Berlín?",
+      opts: ["1987", "1988", "1989", "1991"],
+      ans: 2,
+      ctx: "El Muro de Berlín cayó el 9 de noviembre de 1989, tras 28 años separando la ciudad. Fue uno de los momentos más simbólicos del fin de la Guerra Fría y la reunificación alemana."
+    },
+    {
+      q: "¿Qué civilización construyó Machu Picchu?",
+      opts: ["Azteca", "Maya", "Inca", "Olmeca"],
+      ans: 2,
+      ctx: "Machu Picchu fue construida por el Imperio Inca alrededor del siglo XV, probablemente como residencia real del emperador Pachacútec. Está ubicada en los Andes peruanos a 2.430 metros de altitud."
+    },
+    {
+      q: "¿En qué año llegó Cristóbal Colón a América?",
+      opts: ["1490", "1492", "1498", "1502"],
+      ans: 1,
+      ctx: "El 12 de octubre de 1492, Cristóbal Colón llegó a la isla de Guanahaní (Bahamas), creyendo haber llegado a Asia. Este viaje patrocinado por los Reyes Católicos marcó el inicio de la era colonial."
+    }
+  ],
+  geografia: [
+    {
+      q: "¿Cuál es el río más largo del mundo?",
+      opts: ["Amazonas", "Nilo", "Yangtsé", "Misisipi"],
+      ans: 1,
+      ctx: "El Nilo, con aproximadamente 6.650 km de longitud, es considerado el río más largo del mundo, aunque hay debate científico con el Amazonas. Atraviesa 11 países africanos hasta desembocar en el Mediterráneo."
+    },
+    {
+      q: "¿En qué país se encuentra la Torre Eiffel?",
+      opts: ["Bélgica", "Suiza", "Francia", "Italia"],
+      ans: 2,
+      ctx: "La Torre Eiffel está en París, Francia. Fue construida por Gustave Eiffel para la Exposición Universal de 1889 y mide 330 metros de altura. Inicialmente criticada, hoy es el monumento más visitado del mundo."
+    },
+    {
+      q: "¿Cuál es el país más grande del mundo por superficie?",
+      opts: ["China", "Canadá", "Estados Unidos", "Rusia"],
+      ans: 3,
+      ctx: "Rusia es el país más grande del mundo, con 17,1 millones de km². Abarca 11 husos horarios, desde el este de Europa hasta el Pacífico, y representa el 11% de la superficie terrestre total."
+    },
+    {
+      q: "¿Qué capital española da nombre a su provincia?",
+      opts: ["Todas las capitales", "Solo algunas", "Ninguna", "La mayoría"],
+      ans: 0,
+      ctx: "En España, todas las capitales de provincia comparten nombre con su provincia. Hay 50 provincias, cada una con una capital homónima, aunque en la práctica algunas ciudades tienen mayor peso histórico que otras."
+    },
+    {
+      q: "¿Dónde se encuentra la Gran Muralla China?",
+      opts: ["Solo en Beijing", "Norte de China", "Costa este de China", "Por todo el país"],
+      ans: 1,
+      ctx: "La Gran Muralla China recorre el norte del país durante más de 21.000 km, aunque la longitud total varía según la medición. Fue construida para proteger el Imperio chino de las invasiones del norte."
+    }
+  ],
+  ciencia: [
+    {
+      q: "¿Cuántos elementos tiene la tabla periódica actualmente?",
+      opts: ["108", "112", "118", "124"],
+      ans: 2,
+      ctx: "La tabla periódica actual tiene 118 elementos confirmados, siendo el último el Oganesón (Og), añadido en 2016. El último grupo de cuatro elementos (113-116-117-118) fue confirmado por la IUPAC en ese año."
+    },
+    {
+      q: "¿A qué velocidad viaja la luz en el vacío?",
+      opts: ["200.000 km/s", "300.000 km/s", "400.000 km/s", "150.000 km/s"],
+      ans: 1,
+      ctx: "La luz viaja a 299.792.458 m/s (≈300.000 km/s) en el vacío. Esta constante, llamada 'c', es fundamental en física y es el límite de velocidad del universo según la teoría de la relatividad de Einstein."
+    },
+    {
+      q: "¿Quién propuso la teoría de la evolución por selección natural?",
+      opts: ["Gregor Mendel", "Charles Darwin", "Louis Pasteur", "Alfred Wallace"],
+      ans: 1,
+      ctx: "Charles Darwin publicó 'El origen de las especies' en 1859, proponiendo la evolución por selección natural. Curiosamente, Alfred Wallace desarrolló ideas similares en paralelo, lo que aceleró la publicación de Darwin."
+    },
+    {
+      q: "¿De qué está hecho el diamante?",
+      opts: ["Silicio", "Carbono", "Cuarzo", "Cristal de roca"],
+      ans: 1,
+      ctx: "El diamante está hecho de carbono puro cristalizado en una estructura cúbica a alta presión y temperatura. Es el material natural más duro conocido (10 en la escala de Mohs) y tiene el mismo elemento que el grafito."
+    },
+    {
+      q: "¿Cuántos huesos tiene el cuerpo humano adulto?",
+      opts: ["186", "206", "226", "246"],
+      ans: 1,
+      ctx: "El cuerpo humano adulto tiene 206 huesos. Al nacer tenemos unos 270-300 huesos, que se van fusionando durante el crecimiento. El más pequeño es el estribo (en el oído) y el más grande el fémur."
+    }
+  ],
+  arte: [
+    {
+      q: "¿Quién pintó La Gioconda (Mona Lisa)?",
+      opts: ["Miguel Ángel", "Rafael", "Leonardo da Vinci", "Botticelli"],
+      ans: 2,
+      ctx: "Leonardo da Vinci pintó La Gioconda entre 1503 y 1519. Es la obra de arte más famosa del mundo, conservada en el Louvre de París. La identidad de la modelo sigue siendo debatida, aunque se cree que es Lisa Gherardini."
+    },
+    {
+      q: "¿En qué movimiento artístico se enmarca 'La noche estrellada' de Van Gogh?",
+      opts: ["Impresionismo", "Expresionismo", "Surrealismo", "Posimpresionismo"],
+      ans: 3,
+      ctx: "Van Gogh pertenece al Posimpresionismo, movimiento que partió del Impresionismo pero buscó mayor expresividad. 'La noche estrellada' (1889) fue pintada mientras estaba internado en el manicomio de Saint-Paul-de-Mausole."
+    },
+    {
+      q: "¿Quién esculpió 'El David'?",
+      opts: ["Leonardo da Vinci", "Donatello", "Miguel Ángel", "Rafael"],
+      ans: 2,
+      ctx: "Miguel Ángel esculpió El David entre 1501 y 1504, con solo 26 años. Tallada en un único bloque de mármol de Carrara, mide 5,17 metros. Representa al bíblico David antes de enfrentarse a Goliat."
+    },
+    {
+      q: "¿De qué país es originaria la arquitectura del Taj Mahal?",
+      opts: ["Pakistán", "India", "Turquía", "Persia"],
+      ans: 1,
+      ctx: "El Taj Mahal está en Agra, India. Fue construido por el emperador mogol Shah Jahan entre 1632 y 1653 en memoria de su esposa Mumtaz Mahal. Es considerado la obra maestra de la arquitectura mogola."
+    }
+  ],
+  filosofia: [
+    {
+      q: "¿Quién dijo 'Solo sé que no sé nada'?",
+      opts: ["Platón", "Aristóteles", "Sócrates", "Epicuro"],
+      ans: 2,
+      ctx: "Sócrates (469-399 a.C.) es famoso por esta afirmación de humildad intelectual. Paradójicamente, conocemos su pensamiento a través de los escritos de su discípulo Platón, ya que Sócrates no dejó ningún texto."
+    },
+    {
+      q: "¿Qué filósofo escribió 'El mundo como voluntad y representación'?",
+      opts: ["Kant", "Hegel", "Schopenhauer", "Nietzsche"],
+      ans: 2,
+      ctx: "Arthur Schopenhauer publicó esta obra en 1818. En ella argumenta que la 'voluntad' es la fuerza ciega que impulsa toda la existencia, y que el sufrimiento es inherente a la vida. Influyó profundamente en Nietzsche y Wagner."
+    },
+    {
+      q: "¿Qué corriente filosófica propuso 'el mayor bien para el mayor número'?",
+      opts: ["Kantianismo", "Utilitarismo", "Estoicismo", "Existencialismo"],
+      ans: 1,
+      ctx: "El Utilitarismo, fundado por Jeremy Bentham y desarrollado por John Stuart Mill, propone que la acción correcta es la que maximiza la felicidad total. Es una de las teorías éticas más influyentes en política y economía."
+    },
+    {
+      q: "¿Quién escribió 'Así habló Zaratustra'?",
+      opts: ["Schopenhauer", "Marx", "Heidegger", "Nietzsche"],
+      ans: 3,
+      ctx: "Friedrich Nietzsche publicó 'Así habló Zaratustra' entre 1883 y 1885. En ella introduce conceptos como el 'superhombre' (Übermensch) y la 'voluntad de poder'. Nietzsche la consideró su obra más importante."
+    }
+  ]
+};
+
+const DAILY_QUESTION = {
+  q: "¿Cuántos países forman la Unión Europea en 2024?",
+  opts: ["25", "27", "30", "33"],
+  ans: 1,
+  ctx: "La Unión Europea tiene 27 países miembros desde 2020, cuando el Reino Unido salió tras el Brexit. La UE fue fundada por 6 países en 1957 con el Tratado de Roma y ha ido ampliándose progresivamente."
+};
+
+const RANKING = [
+  { name: "Ana García", score: 2840, avatar: "AG", streak: 14 },
+  { name: "Tú", score: 2310, avatar: "TÚ", streak: 7, isMe: true },
+  { name: "Carlos M.", score: 1990, avatar: "CM", streak: 5 },
+  { name: "Lucía P.", score: 1750, avatar: "LP", streak: 3 },
+  { name: "Marcos R.", score: 1200, avatar: "MR", streak: 1 },
+];
+
+const CAT_COLORS = {
+  historia:  { bg: "#2d1f0a", accent: "#e8a030", text: "#f5c060" },
+  geografia: { bg: "#0a1f2d", accent: "#30a8e8", text: "#60c5f5" },
+  ciencia:   { bg: "#0d2214", accent: "#2ec87a", text: "#60e09a" },
+  arte:      { bg: "#1f0a2d", accent: "#a030e8", text: "#c560f5" },
+  filosofia: { bg: "#2d0a18", accent: "#e83060", text: "#f56080" },
+};
+
+const CAT_ICONS = {
+  historia:  "📜",
+  geografia: "🌍",
+  ciencia:   "⚗️",
+  arte:      "🎨",
+  filosofia: "🧠",
+};
+
+const CAT_NAMES = {
+  historia: "Historia", geografia: "Geografía",
+  ciencia: "Ciencia", arte: "Arte", filosofia: "Filosofía"
+};
+
+// ─── COMPONENTS ────────────────────────────────────────────────
+
+function OptionBtn({ text, state, onClick, letter }) {
+  const base = {
+    width: "100%", padding: "14px 16px",
+    borderRadius: 14, border: "1.5px solid",
+    display: "flex", alignItems: "center", gap: 12,
+    cursor: "pointer", transition: "all 0.2s",
+    fontFamily: "Outfit", fontSize: 15, fontWeight: 500,
+    textAlign: "left", background: "transparent",
+    animation: state === 'wrong' ? 'shake 0.4s ease' : undefined,
+  };
+  const styles = {
+    null: { ...base, borderColor: "rgba(255,255,255,0.12)", color: "#fff" },
+    selected: { ...base, borderColor: "#fff", color: "#fff", background: "rgba(255,255,255,0.08)" },
+    correct: { ...base, borderColor: "#2ec87a", color: "#2ec87a", background: "rgba(46,200,122,0.1)" },
+    wrong: { ...base, borderColor: "#e83060", color: "#e83060", background: "rgba(232,48,96,0.1)" },
+  };
+  return (
+    <button style={styles[state || 'null']} onClick={onClick}>
+      <span style={{
+        width: 26, height: 26, borderRadius: 8, flexShrink: 0,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: 12, fontWeight: 700,
+        background: state === 'correct' ? "rgba(46,200,122,0.2)" :
+                    state === 'wrong'   ? "rgba(232,48,96,0.2)" :
+                    state === 'selected'? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.08)",
+        color: state === 'correct' ? "#2ec87a" : state === 'wrong' ? "#e83060" : "rgba(255,255,255,0.6)"
+      }}>{letter}</span>
+      {text}
+    </button>
+  );
+}
+
+function CategoryBadge({ cat, small }) {
+  const c = CAT_COLORS[cat];
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", gap: 5,
+      background: c.bg, color: c.text,
+      padding: small ? "3px 8px" : "4px 10px",
+      borderRadius: 99, fontSize: small ? 11 : 12, fontWeight: 600,
+      border: `1px solid ${c.accent}30`,
+    }}>
+      {CAT_ICONS[cat]} {CAT_NAMES[cat]}
+    </span>
+  );
+}
+
+// ─── SCREEN: HOME ────────────────────────────────────────────────
+function HomeScreen({ onNav }) {
+  const today = new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+
+  return (
+    <div style={{ background: "#0a0a0a", minHeight: "100%", paddingBottom: 40 }}>
+      <div style={{ padding: "16px 20px 0" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div>
+            <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, fontWeight: 500, textTransform: "capitalize" }}>{today}</div>
+            <div style={{ color: "#fff", fontSize: 22, fontWeight: 700, marginTop: 2 }}>Hola, Alex 👋</div>
+          </div>
+          <div style={{
+            width: 44, height: 44, borderRadius: 14,
+            background: "linear-gradient(135deg, #e8a030, #e83060)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 17, fontWeight: 700, color: "#fff"
+          }}>A</div>
+        </div>
+
+        <div style={{
+          marginTop: 16, background: "#151515", borderRadius: 16,
+          padding: "12px 16px", display: "flex", alignItems: "center", gap: 12
+        }}>
+          <div style={{ fontSize: 26 }}>🔥</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ color: "#fff", fontSize: 14, fontWeight: 600 }}>7 días seguidos</div>
+            <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, marginTop: 1 }}>¡Sigue así! Mañana llegas a 8</div>
+          </div>
+          <div style={{ color: "#e8a030", fontSize: 20, fontWeight: 800 }}>7</div>
+        </div>
+      </div>
+
+      <div style={{ padding: "22px 20px 0" }}>
+        <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Modos de juego</div>
+
+        <div
+          onClick={() => onNav('daily')}
+          style={{
+            background: "linear-gradient(135deg, #1a1000 0%, #0a0a0a 60%)",
+            border: "1px solid rgba(232,160,48,0.3)",
+            borderRadius: 20, padding: "18px 18px",
+            marginBottom: 12, cursor: "pointer",
+            animation: "slideUp 0.4s ease both",
+            position: "relative", overflow: "hidden"
+          }}>
+          <div style={{
+            position: "absolute", right: -10, top: -10,
+            fontSize: 80, opacity: 0.07, filter: "blur(1px)"
+          }}>🏆</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <div style={{
+              width: 38, height: 38, borderRadius: 12,
+              background: "rgba(232,160,48,0.15)",
+              display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18
+            }}>🏆</div>
+            <div>
+              <div style={{ color: "#e8a030", fontSize: 12, fontWeight: 600 }}>DIARIO</div>
+              <div style={{ color: "#fff", fontSize: 17, fontWeight: 700 }}>Pregunta del Día</div>
+            </div>
+          </div>
+          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, lineHeight: 1.5 }}>
+            La misma pregunta para todos. Compara tu resultado con tus amigos.
+          </div>
+          <div style={{ marginTop: 14, display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{
+              background: "#e8a030", color: "#000",
+              padding: "7px 16px", borderRadius: 99, fontSize: 13, fontWeight: 700
+            }}>Jugar hoy →</div>
+            <div style={{ color: "rgba(255,255,255,0.25)", fontSize: 12 }}>127 jugadores hoy</div>
+          </div>
+        </div>
+
+        <div
+          onClick={() => onNav('speed')}
+          style={{
+            background: "linear-gradient(135deg, #0a001a 0%, #0a0a0a 60%)",
+            border: "1px solid rgba(160,48,232,0.3)",
+            borderRadius: 20, padding: "18px 18px",
+            marginBottom: 12, cursor: "pointer",
+            animation: "slideUp 0.4s 0.1s ease both",
+            position: "relative", overflow: "hidden"
+          }}>
+          <div style={{
+            position: "absolute", right: -10, top: -10,
+            fontSize: 80, opacity: 0.07, filter: "blur(1px)"
+          }}>⚡</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <div style={{
+              width: 38, height: 38, borderRadius: 12,
+              background: "rgba(160,48,232,0.15)",
+              display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18
+            }}>⚡</div>
+            <div>
+              <div style={{ color: "#a030e8", fontSize: 12, fontWeight: 600 }}>CONTRARRELOJ</div>
+              <div style={{ color: "#fff", fontSize: 17, fontWeight: 700 }}>30 Segundos</div>
+            </div>
+          </div>
+          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, lineHeight: 1.5 }}>
+            ¿Cuántas preguntas puedes responder en 30 segundos?
+          </div>
+          <div style={{ marginTop: 14 }}>
+            <div style={{
+              display: "inline-block",
+              background: "#a030e8", color: "#fff",
+              padding: "7px 16px", borderRadius: 99, fontSize: 13, fontWeight: 700
+            }}>Tu récord: 8 →</div>
+          </div>
+        </div>
+
+        <div
+          onClick={() => onNav('learn')}
+          style={{
+            background: "linear-gradient(135deg, #001a0a 0%, #0a0a0a 60%)",
+            border: "1px solid rgba(46,200,122,0.3)",
+            borderRadius: 20, padding: "18px 18px",
+            cursor: "pointer",
+            animation: "slideUp 0.4s 0.2s ease both",
+            position: "relative", overflow: "hidden"
+          }}>
+          <div style={{
+            position: "absolute", right: -10, top: -10,
+            fontSize: 80, opacity: 0.07, filter: "blur(1px)"
+          }}>📚</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <div style={{
+              width: 38, height: 38, borderRadius: 12,
+              background: "rgba(46,200,122,0.15)",
+              display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18
+            }}>📚</div>
+            <div>
+              <div style={{ color: "#2ec87a", fontSize: 12, fontWeight: 600 }}>APRENDIZAJE</div>
+              <div style={{ color: "#fff", fontSize: 17, fontWeight: 700 }}>Elige tu tema</div>
+            </div>
+          </div>
+          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, lineHeight: 1.5 }}>
+            Geografía, historia, ciencia, arte o filosofía. Si fallas, te explicamos el contexto.
+          </div>
+          <div style={{ marginTop: 14 }}>
+            <div style={{
+              display: "inline-block",
+              background: "#2ec87a", color: "#000",
+              padding: "7px 16px", borderRadius: 99, fontSize: 13, fontWeight: 700
+            }}>Explorar →</div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ padding: "22px 20px 0" }}>
+        <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Tus estadísticas</div>
+        <div style={{ display: "flex", gap: 10 }}>
+          {[
+            { label: "Preguntas", value: "342" },
+            { label: "Aciertos", value: "74%" },
+            { label: "Ranking", value: "#2" },
+          ].map(s => (
+            <div key={s.label} style={{
+              flex: 1, background: "#151515", borderRadius: 14,
+              padding: "12px 10px", textAlign: "center"
+            }}>
+              <div style={{ color: "#fff", fontSize: 20, fontWeight: 700 }}>{s.value}</div>
+              <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 11, marginTop: 2 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── SCREEN: DAILY QUESTION ────────────────────────────────────────────────
+function DailyScreen({ onBack }) {
+  const [selected, setSelected] = React.useState(null);
+  const [answered, setAnswered] = React.useState(false);
+  const [showRanking, setShowRanking] = React.useState(false);
+  const q = DAILY_QUESTION;
+
+  const handle = (i) => {
+    if (answered) return;
+    setSelected(i);
+    setAnswered(true);
+    setTimeout(() => setShowRanking(true), 1200);
+  };
+
+  const getState = (i) => {
+    if (!answered) return selected === i ? 'selected' : null;
+    if (i === q.ans) return 'correct';
+    if (i === selected && selected !== q.ans) return 'wrong';
+    return null;
+  };
+
+  if (showRanking) return <RankingScreen onBack={onBack} correct={selected === q.ans} />;
+
+  return (
+    <div style={{ background: "#0a0a0a", minHeight: "100%", padding: "16px 20px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20, cursor: "pointer" }} onClick={onBack}>
+        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 20 }}>←</span>
+        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>Inicio</span>
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+        <div style={{
+          background: "rgba(232,160,48,0.1)", border: "1px solid rgba(232,160,48,0.3)",
+          color: "#e8a030", padding: "3px 10px", borderRadius: 99,
+          fontSize: 12, fontWeight: 600
+        }}>🏆 PREGUNTA DEL DÍA</div>
+      </div>
+
+      <div style={{ color: "rgba(255,255,255,0.3)", fontSize: 12, marginBottom: 20 }}>
+        127 personas ya han respondido hoy
+      </div>
+
+      <div style={{
+        color: "#fff", fontSize: 20, fontWeight: 700,
+        lineHeight: 1.35, marginBottom: 28
+      }}>{q.q}</div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {q.opts.map((opt, i) => (
+          <OptionBtn
+            key={i}
+            text={opt}
+            letter={["A","B","C","D"][i]}
+            state={getState(i)}
+            onClick={() => handle(i)}
+          />
+        ))}
+      </div>
+
+      {answered && (
+        <div style={{
+          marginTop: 20, padding: "14px 16px", borderRadius: 14,
+          background: selected === q.ans ? "rgba(46,200,122,0.08)" : "rgba(232,48,96,0.08)",
+          border: `1px solid ${selected === q.ans ? "rgba(46,200,122,0.2)" : "rgba(232,48,96,0.2)"}`,
+          animation: "slideUp 0.3s ease"
+        }}>
+          <div style={{ color: selected === q.ans ? "#2ec87a" : "#e83060", fontWeight: 700, marginBottom: 4 }}>
+            {selected === q.ans ? "✓ ¡Correcto!" : "✗ Incorrecto"}
+          </div>
+          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, lineHeight: 1.5 }}>{q.ctx}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── SCREEN: RANKING ────────────────────────────────────────────────
+function RankingScreen({ onBack, correct }) {
+  return (
+    <div style={{ background: "#0a0a0a", minHeight: "100%", padding: "16px 20px", paddingBottom: 40 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 24, cursor: "pointer" }} onClick={onBack}>
+        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 20 }}>←</span>
+        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>Inicio</span>
+      </div>
+
+      <div style={{ textAlign: "center", marginBottom: 28 }}>
+        <div style={{ fontSize: 44, marginBottom: 8 }}>{correct ? "🏆" : "💪"}</div>
+        <div style={{ color: "#fff", fontSize: 20, fontWeight: 700 }}>
+          {correct ? "+100 puntos ganados" : "Sin puntos hoy"}
+        </div>
+        <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, marginTop: 4 }}>
+          Ranking de hoy entre amigos
+        </div>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {RANKING.map((p, i) => (
+          <div key={p.name} style={{
+            display: "flex", alignItems: "center", gap: 12,
+            background: p.isMe ? "rgba(232,160,48,0.08)" : "#151515",
+            border: p.isMe ? "1px solid rgba(232,160,48,0.3)" : "1px solid transparent",
+            borderRadius: 14, padding: "12px 14px",
+            animation: `slideUp ${0.2 + i * 0.07}s ease both`
+          }}>
+            <div style={{ color: i < 3 ? ["#e8a030","#aaa","#cd7f32"][i] : "rgba(255,255,255,0.2)", fontWeight: 800, fontSize: 16, width: 22 }}>
+              {i < 3 ? ["🥇","🥈","🥉"][i] : `${i+1}`}
+            </div>
+            <div style={{
+              width: 36, height: 36, borderRadius: 10,
+              background: p.isMe ? "linear-gradient(135deg,#e8a030,#e83060)" : "#222",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 11, fontWeight: 700, color: p.isMe ? "#fff" : "rgba(255,255,255,0.5)"
+            }}>{p.avatar}</div>
+            <div style={{ flex: 1 }}>
+              <div style={{ color: p.isMe ? "#e8a030" : "#fff", fontWeight: p.isMe ? 700 : 500, fontSize: 14 }}>{p.name}</div>
+              <div style={{ color: "rgba(255,255,255,0.3)", fontSize: 11 }}>🔥 {p.streak} días</div>
+            </div>
+            <div style={{ color: "#fff", fontWeight: 700, fontSize: 15 }}>{p.score.toLocaleString()}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{
+        marginTop: 20, textAlign: "center", color: "rgba(255,255,255,0.25)",
+        fontSize: 12
+      }}>Próxima pregunta en 23h 41m</div>
+    </div>
+  );
+}
+
+// ─── SCREEN: SPEED MODE ────────────────────────────────────────────────
+function SpeedScreen({ onBack }) {
+  const [phase, setPhase] = React.useState('intro');
+  const [timeLeft, setTimeLeft] = React.useState(30);
+  const [qIdx, setQIdx] = React.useState(0);
+  const [score, setScore] = React.useState(0);
+  const [selected, setSelected] = React.useState(null);
+  const [answered, setAnswered] = React.useState(false);
+  const allQ = React.useMemo(() => {
+    const arr = [];
+    Object.values(QUESTIONS).forEach(qs => arr.push(...qs));
+    return arr.sort(() => Math.random() - 0.5);
+  }, []);
+
+  React.useEffect(() => {
+    if (phase !== 'playing') return;
+    if (timeLeft <= 0) { setPhase('done'); return; }
+    const t = setTimeout(() => setTimeLeft(t => t - 1), 1000);
+    return () => clearTimeout(t);
+  }, [phase, timeLeft]);
+
+  const handle = (i) => {
+    if (answered) return;
+    setSelected(i);
+    setAnswered(true);
+    if (i === allQ[qIdx % allQ.length].ans) setScore(s => s + 1);
+    setTimeout(() => {
+      setAnswered(false);
+      setSelected(null);
+      setQIdx(q => q + 1);
+    }, 500);
+  };
+
+  if (phase === 'intro') return (
+    <div style={{ background: "#0a0a0a", minHeight: "100%", padding: "16px 20px", display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40, cursor: "pointer" }} onClick={onBack}>
+        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 20 }}>←</span>
+        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>Inicio</span>
+      </div>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+        <div style={{ fontSize: 64, marginBottom: 16, animation: "pulse 2s infinite" }}>⚡</div>
+        <div style={{ color: "#fff", fontSize: 26, fontWeight: 800, marginBottom: 8 }}>Contrarreloj</div>
+        <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 15, lineHeight: 1.6, maxWidth: 260, marginBottom: 40 }}>
+          Responde el máximo de preguntas posible en <strong style={{ color: "#a030e8" }}>30 segundos</strong>. Cada acierto suma 1 punto.
+        </div>
+        <div style={{
+          background: "#151515", borderRadius: 16, padding: "14px 20px",
+          marginBottom: 40, width: "100%"
+        }}>
+          <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, marginBottom: 4 }}>Tu récord actual</div>
+          <div style={{ color: "#a030e8", fontSize: 32, fontWeight: 800 }}>8 preguntas</div>
+        </div>
+        <button
+          onClick={() => setPhase('playing')}
+          style={{
+            width: "100%", padding: "16px", borderRadius: 14,
+            background: "linear-gradient(135deg, #a030e8, #7020b8)",
+            border: "none", color: "#fff", fontSize: 17, fontWeight: 700,
+            cursor: "pointer", letterSpacing: "0.02em"
+          }}>¡Empezar!</button>
+      </div>
+    </div>
+  );
+
+  if (phase === 'done') return (
+    <div style={{ background: "#0a0a0a", minHeight: "100%", padding: "16px 20px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+      <div style={{ fontSize: 56, marginBottom: 12, animation: "popIn 0.5s ease" }}>
+        {score >= 8 ? "🏆" : score >= 5 ? "⭐" : "💪"}
+      </div>
+      <div style={{ color: "#fff", fontSize: 28, fontWeight: 800, marginBottom: 4 }}>{score} correctas</div>
+      <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, marginBottom: 6 }}>en 30 segundos</div>
+      {score >= 8 && <div style={{ color: "#e8a030", fontSize: 13, fontWeight: 600, marginBottom: 24 }}>🎉 ¡Nuevo récord personal!</div>}
+      {score < 8 && <div style={{ color: "rgba(255,255,255,0.3)", fontSize: 13, marginBottom: 24 }}>Récord: 8 • Te faltan {8 - score} para superarlo</div>}
+      <div style={{
+        display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10,
+        width: "100%", marginBottom: 30
+      }}>
+        {[
+          { label: "Respondidas", value: qIdx % allQ.length || qIdx },
+          { label: "Tasa de acierto", value: qIdx > 0 ? Math.round(score / qIdx * 100) + "%" : "—" },
+        ].map(s => (
+          <div key={s.label} style={{ background: "#151515", borderRadius: 14, padding: "14px 10px" }}>
+            <div style={{ color: "#fff", fontSize: 22, fontWeight: 700 }}>{s.value}</div>
+            <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 11, marginTop: 2 }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 10, width: "100%" }}>
+        <button onClick={onBack} style={{
+          flex: 1, padding: "14px", borderRadius: 14, background: "#1a1a1a",
+          border: "none", color: "rgba(255,255,255,0.6)", fontSize: 15, fontWeight: 600, cursor: "pointer"
+        }}>Inicio</button>
+        <button onClick={() => { setPhase('intro'); setScore(0); setQIdx(0); setTimeLeft(30); }} style={{
+          flex: 2, padding: "14px", borderRadius: 14,
+          background: "linear-gradient(135deg, #a030e8, #7020b8)",
+          border: "none", color: "#fff", fontSize: 15, fontWeight: 700, cursor: "pointer"
+        }}>Otra vez</button>
+      </div>
+    </div>
+  );
+
+  const q = allQ[qIdx % allQ.length];
+  const pct = timeLeft / 30;
+  const timerColor = timeLeft > 10 ? "#a030e8" : "#e83060";
+
+  return (
+    <div style={{ background: "#0a0a0a", minHeight: "100%", padding: "16px 20px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+        <div style={{ color: "#fff", fontWeight: 700, fontSize: 20 }}>#{qIdx + 1}</div>
+        <div style={{ textAlign: "center" }}>
+          <div style={{
+            color: timerColor, fontSize: 32, fontWeight: 800,
+            animation: timeLeft <= 5 ? "timerPulse 0.5s infinite" : undefined
+          }}>{timeLeft}s</div>
+        </div>
+        <div style={{ color: "#a030e8", fontWeight: 700, fontSize: 20 }}>{score} ✓</div>
+      </div>
+
+      <div style={{ height: 4, background: "#1a1a1a", borderRadius: 99, marginBottom: 24, overflow: "hidden" }}>
+        <div style={{
+          height: "100%", width: `${pct * 100}%`,
+          background: `linear-gradient(90deg, ${timerColor}, ${timerColor}88)`,
+          transition: "width 1s linear, background 0.3s"
+        }} />
+      </div>
+
+      <div style={{ color: "#fff", fontSize: 18, fontWeight: 700, lineHeight: 1.35, marginBottom: 22 }}>
+        {q.q}
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+        {q.opts.map((opt, i) => {
+          let state = null;
+          if (answered) {
+            if (i === q.ans) state = 'correct';
+            else if (i === selected) state = 'wrong';
+          }
+          return (
+            <OptionBtn key={i} text={opt} letter={["A","B","C","D"][i]} state={state} onClick={() => handle(i)} />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── SCREEN: LEARN ────────────────────────────────────────────────
+function LearnScreen({ onBack }) {
+  const [cat, setCat] = React.useState(null);
+  const [qIdx, setQIdx] = React.useState(0);
+  const [selected, setSelected] = React.useState(null);
+  const [answered, setAnswered] = React.useState(false);
+  const [showCtx, setShowCtx] = React.useState(false);
+
+  const qs = cat ? QUESTIONS[cat] : [];
+  const q = qs[qIdx % qs.length];
+
+  const handle = (i) => {
+    if (answered) return;
+    setSelected(i);
+    setAnswered(true);
+    if (i !== q.ans) setShowCtx(true);
+  };
+
+  const next = () => {
+    setQIdx(x => x + 1);
+    setSelected(null);
+    setAnswered(false);
+    setShowCtx(false);
+  };
+
+  if (!cat) return (
+    <div style={{ background: "#0a0a0a", minHeight: "100%", padding: "16px 20px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 24, cursor: "pointer" }} onClick={onBack}>
+        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 20 }}>←</span>
+        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>Inicio</span>
+      </div>
+      <div style={{ color: "#fff", fontSize: 22, fontWeight: 800, marginBottom: 4 }}>¿Qué quieres aprender?</div>
+      <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, marginBottom: 24 }}>Elige un tema y empieza a practicar</div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {Object.keys(CAT_COLORS).map((c, i) => {
+          const col = CAT_COLORS[c];
+          return (
+            <div
+              key={c}
+              onClick={() => setCat(c)}
+              style={{
+                background: col.bg, border: `1px solid ${col.accent}30`,
+                borderRadius: 18, padding: "16px 18px",
+                display: "flex", alignItems: "center", gap: 14,
+                cursor: "pointer",
+                animation: `slideUp ${0.1 + i * 0.07}s ease both`
+              }}>
+              <div style={{ fontSize: 28 }}>{CAT_ICONS[c]}</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ color: col.text, fontSize: 16, fontWeight: 700 }}>{CAT_NAMES[c]}</div>
+                <div style={{ color: "rgba(255,255,255,0.3)", fontSize: 12, marginTop: 2 }}>{QUESTIONS[c].length} preguntas</div>
+              </div>
+              <div style={{ color: "rgba(255,255,255,0.2)", fontSize: 18 }}>›</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+
+  const col = CAT_COLORS[cat];
+  const getState = (i) => {
+    if (!answered) return selected === i ? 'selected' : null;
+    if (i === q.ans) return 'correct';
+    if (i === selected && selected !== q.ans) return 'wrong';
+    return null;
+  };
+
+  return (
+    <div style={{ background: "#0a0a0a", minHeight: "100%", display: "flex", flexDirection: "column" }}>
+      <div style={{ padding: "16px 20px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }} onClick={() => { setCat(null); next(); }}>
+            <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 20 }}>←</span>
+            <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 14 }}>Temas</span>
+          </div>
+          <CategoryBadge cat={cat} small />
+        </div>
+
+        <div style={{ display: "flex", gap: 3, marginBottom: 20 }}>
+          {qs.map((_, i) => (
+            <div key={i} style={{
+              flex: 1, height: 3, borderRadius: 99,
+              background: i <= qIdx % qs.length ? col.accent : "#1a1a1a",
+              transition: "background 0.3s"
+            }} />
+          ))}
+        </div>
+
+        <div style={{ color: "#fff", fontSize: 19, fontWeight: 700, lineHeight: 1.35, marginBottom: 24 }}>
+          {q.q}
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+          {q.opts.map((opt, i) => (
+            <OptionBtn key={i} text={opt} letter={["A","B","C","D"][i]} state={getState(i)} onClick={() => handle(i)} />
+          ))}
+        </div>
+      </div>
+
+      {showCtx && (
+        <div style={{
+          margin: "0 20px 20px", padding: "16px",
+          background: "rgba(232,48,96,0.06)", borderRadius: 16,
+          border: "1px solid rgba(232,48,96,0.2)",
+          animation: "slideUp 0.35s ease"
+        }}>
+          <div style={{ color: "#e83060", fontWeight: 700, marginBottom: 6, fontSize: 13 }}>
+            💡 Contexto histórico
+          </div>
+          <div style={{ color: "rgba(255,255,255,0.65)", fontSize: 13, lineHeight: 1.6 }}>{q.ctx}</div>
+        </div>
+      )}
+
+      {answered && (
+        <div style={{ padding: "0 20px 20px" }}>
+          <button onClick={next} style={{
+            width: "100%", padding: "15px",
+            borderRadius: 14, border: "none",
+            background: selected === q.ans
+              ? "linear-gradient(135deg, #2ec87a, #1a9a5c)"
+              : `linear-gradient(135deg, ${col.accent}, ${col.accent}99)`,
+            color: "#fff", fontSize: 15, fontWeight: 700, cursor: "pointer"
+          }}>
+            {qIdx % qs.length === qs.length - 1 ? "🎉 ¡Tema completado!" : "Siguiente →"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── TAB BAR ────────────────────────────────────────────────
+function TabBar({ tab, onTab }) {
+  const tabs = [
+    { id: 'home', label: 'Inicio', icon: '⌂' },
+    { id: 'daily', label: 'Diario', icon: '🏆' },
+    { id: 'speed', label: 'Rápido', icon: '⚡' },
+    { id: 'learn', label: 'Aprender', icon: '📚' },
+  ];
+  return (
+    <div style={{
+      display: "flex", background: "#111",
+      borderTop: "1px solid rgba(255,255,255,0.06)",
+      paddingBottom: 0
+    }}>
+      {tabs.map(t => (
+        <button key={t.id} onClick={() => onTab(t.id)} style={{
+          flex: 1, padding: "10px 0",
+          display: "flex", flexDirection: "column", alignItems: "center", gap: 3,
+          background: "none", border: "none", cursor: "pointer",
+          color: tab === t.id ? "#fff" : "rgba(255,255,255,0.28)",
+          transition: "color 0.2s"
+        }}>
+          <span style={{ fontSize: 18 }}>{t.icon}</span>
+          <span style={{ fontSize: 10, fontFamily: "Outfit", fontWeight: tab === t.id ? 600 : 400 }}>{t.label}</span>
+          {tab === t.id && <div style={{ width: 4, height: 4, borderRadius: 99, background: "#fff", marginTop: -2 }} />}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// ─── ROOT APP ────────────────────────────────────────────────
+function App() {
+  const [screen, setScreen] = React.useState(() => {
+    try { return localStorage.getItem('cg_screen') || 'home'; } catch { return 'home'; }
+  });
+
+  const nav = (s) => {
+    setScreen(s);
+    try { localStorage.setItem('cg_screen', s); } catch {}
+  };
+
+  const screens = {
+    home:  <HomeScreen onNav={nav} />,
+    daily: <DailyScreen onBack={() => nav('home')} />,
+    speed: <SpeedScreen onBack={() => nav('home')} />,
+    learn: <LearnScreen onBack={() => nav('home')} />,
+  };
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "100vh", background: "#111" }}>
+      <IOSDevice dark width={393} height={852}>
+        <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+          <div style={{ flex: 1, overflowY: "auto" }}>
+            {screens[screen] || screens.home}
+          </div>
+          <TabBar tab={screen} onTab={nav} />
+        </div>
+      </IOSDevice>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
