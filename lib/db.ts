@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from './supabase';
 import { Question, Category } from '@/types';
 
@@ -14,13 +15,48 @@ function mapQuestion(row: any): Question {
   };
 }
 
-// ─── Questions ────────────────────────────────────────────────
+// ─── Questions (with offline cache) ───────────────────────────
+
+const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
+
+function cacheKey(category?: Category) {
+  return `questions_cache_${category ?? 'all'}_v1`;
+}
+
+async function getCached(category?: Category): Promise<Question[] | null> {
+  try {
+    const raw = await AsyncStorage.getItem(cacheKey(category));
+    if (!raw) return null;
+    const { data, ts } = JSON.parse(raw);
+    if (Date.now() - ts > CACHE_TTL_MS) return null;
+    return data as Question[];
+  } catch {
+    return null;
+  }
+}
+
+async function setCache(questions: Question[], category?: Category): Promise<void> {
+  try {
+    await AsyncStorage.setItem(
+      cacheKey(category),
+      JSON.stringify({ data: questions, ts: Date.now() }),
+    );
+  } catch {
+    // ignore storage errors
+  }
+}
 
 export async function fetchQuestions(category?: Category): Promise<Question[]> {
+  const cached = await getCached(category);
+  if (cached) return cached;
+
   let query = supabase.from('questions').select('*').eq('active', true);
   if (category) query = query.eq('category', category);
   const { data } = await query.order('id');
-  return data ? data.map(mapQuestion) : [];
+  const questions = data ? data.map(mapQuestion) : [];
+
+  if (questions.length > 0) await setCache(questions, category);
+  return questions;
 }
 
 // ─── Daily question ───────────────────────────────────────────
@@ -32,7 +68,6 @@ function todayStr() {
 export async function fetchOrAssignDailyQuestion(): Promise<Question | null> {
   const date = todayStr();
 
-  // Try to find existing daily question
   const { data: existing } = await supabase
     .from('daily_questions')
     .select('questions(*)')
@@ -41,7 +76,6 @@ export async function fetchOrAssignDailyQuestion(): Promise<Question | null> {
 
   if (existing?.questions) return mapQuestion(existing.questions);
 
-  // None assigned — pick one deterministically by day index
   const { data: ids } = await supabase
     .from('questions')
     .select('id')
@@ -123,6 +157,59 @@ export async function fetchDailyRanking(): Promise<
   }));
 }
 
+// ─── All-time ranking ─────────────────────────────────────────
+
+export async function fetchAllTimeRanking(): Promise<
+  Array<{ userId: string; username: string; totalCorrect: number; streak: number; speedRecord: number }>
+> {
+  const { data } = await supabase
+    .from('profiles')
+    .select('id, username, total_correct, streak, speed_record')
+    .order('total_correct', { ascending: false })
+    .limit(50);
+
+  return (data ?? []).map(r => ({
+    userId: r.id,
+    username: r.username ?? 'Anónimo',
+    totalCorrect: r.total_correct ?? 0,
+    streak: r.streak ?? 0,
+    speedRecord: r.speed_record ?? 0,
+  }));
+}
+
+// ─── Answer history ───────────────────────────────────────────
+
+export interface AnswerHistoryItem {
+  id: string;
+  questionText: string;
+  selectedIndex: number;
+  correctIndex: number;
+  isCorrect: boolean;
+  mode: string;
+  category: string;
+  answeredAt: string;
+}
+
+export async function fetchAnswerHistory(userId: string, limit = 20): Promise<AnswerHistoryItem[]> {
+  const { data } = await supabase
+    .from('user_answers')
+    .select('id, selected_index, is_correct, mode, answered_at, questions(question, answer_index, category)')
+    .eq('user_id', userId)
+    .order('answered_at', { ascending: false })
+    .limit(limit);
+
+  return (data ?? []).map((r: any) => ({
+    id: r.id,
+    questionText: r.questions?.question ?? '—',
+    selectedIndex: r.selected_index,
+    correctIndex: r.questions?.answer_index ?? 0,
+    isCorrect: r.is_correct,
+    mode: r.mode,
+    category: r.questions?.category ?? '—',
+    answeredAt: r.answered_at,
+  }));
+}
+
 // ─── Speed game ───────────────────────────────────────────────
 
 export async function saveSpeedGame(
@@ -165,4 +252,14 @@ export async function incrementProfileStats(
   if (newSpeedRecord !== undefined) updates.speed_record = newSpeedRecord;
 
   await supabase.from('profiles').update(updates).eq('id', userId);
+}
+
+export async function updateUsername(userId: string, username: string): Promise<{ error?: string }> {
+  const { error } = await supabase
+    .from('profiles')
+    .update({ username: username.trim() })
+    .eq('id', userId);
+
+  if (error) return { error: error.message };
+  return {};
 }

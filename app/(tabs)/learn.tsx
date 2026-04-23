@@ -9,11 +9,27 @@ import { fetchQuestions, incrementProfileStats } from '@/lib/db';
 import { QUESTIONS, CAT_COLORS, CAT_ICONS, CAT_NAMES, ALL_CATEGORIES } from '@/constants/questions';
 import { AnswerState, Category, Question } from '@/types';
 
+type Difficulty = 'all' | 'easy' | 'medium' | 'hard';
+
+const DIFF_LABELS: Record<Difficulty, string> = {
+  all: 'Todas',
+  easy: 'Fácil',
+  medium: 'Media',
+  hard: 'Difícil',
+};
+
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
+
+function filterByDifficulty(questions: Question[], diff: Difficulty): Question[] {
+  if (diff === 'all') return questions;
+  return questions.filter((q: any) => q.difficulty === diff);
+}
 
 export default function LearnScreen() {
   const { user } = useAuth();
   const [cat, setCat] = useState<Category | null>(null);
+  const [difficulty, setDifficulty] = useState<Difficulty>('all');
+  const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loadingQ, setLoadingQ] = useState(false);
   const [qIdx, setQIdx] = useState(0);
@@ -21,21 +37,35 @@ export default function LearnScreen() {
   const [answered, setAnswered] = useState(false);
   const [showCtx, setShowCtx] = useState(false);
 
-  // Fetch questions from Supabase when category is selected
   useEffect(() => {
     if (!cat) return;
     setLoadingQ(true);
+    setAllQuestions([]);
     setQuestions([]);
     setQIdx(0);
     setSelected(null);
     setAnswered(false);
     setShowCtx(false);
+    setDifficulty('all');
 
     fetchQuestions(cat).then(remote => {
-      setQuestions(remote.length > 0 ? remote : QUESTIONS[cat]);
+      const qs = remote.length > 0 ? remote : QUESTIONS[cat];
+      setAllQuestions(qs);
+      setQuestions(qs);
       setLoadingQ(false);
     });
   }, [cat]);
+
+  // Refilter when difficulty changes
+  useEffect(() => {
+    if (allQuestions.length === 0) return;
+    const filtered = filterByDifficulty(allQuestions, difficulty);
+    setQuestions(filtered.length > 0 ? filtered : allQuestions);
+    setQIdx(0);
+    setSelected(null);
+    setAnswered(false);
+    setShowCtx(false);
+  }, [difficulty]);
 
   const q = questions[qIdx % Math.max(questions.length, 1)];
 
@@ -46,7 +76,6 @@ export default function LearnScreen() {
     const correct = i === q.ans;
     if (!correct) setShowCtx(true);
 
-    // Save stats (fire-and-forget)
     if (user) {
       incrementProfileStats(user.id, 1, correct ? 1 : 0);
     }
@@ -61,11 +90,13 @@ export default function LearnScreen() {
 
   const goBack = () => {
     setCat(null);
+    setAllQuestions([]);
     setQuestions([]);
     setQIdx(0);
     setSelected(null);
     setAnswered(false);
     setShowCtx(false);
+    setDifficulty('all');
   };
 
   // ─ Category picker
@@ -83,7 +114,6 @@ export default function LearnScreen() {
           <View style={{ gap: 10 }}>
             {ALL_CATEGORIES.map(c => {
               const col = CAT_COLORS[c];
-              // Show local count as placeholder (DB count loads on entry)
               const count = QUESTIONS[c].length;
               return (
                 <Pressable key={c} onPress={() => setCat(c)}>
@@ -108,7 +138,7 @@ export default function LearnScreen() {
     );
   }
 
-  // ─ Loading questions
+  // ─ Loading
   if (loadingQ) {
     const col = CAT_COLORS[cat];
     return (
@@ -138,7 +168,7 @@ export default function LearnScreen() {
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={{ padding: 20 }}>
           {/* Nav */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
             <Pressable onPress={goBack} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 20 }}>←</Text>
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>Temas</Text>
@@ -146,8 +176,37 @@ export default function LearnScreen() {
             <CategoryBadge cat={cat} small />
           </View>
 
+          {/* Difficulty filter */}
+          <View style={{ flexDirection: 'row', gap: 6, marginBottom: 18 }}>
+            {(Object.keys(DIFF_LABELS) as Difficulty[]).map(d => {
+              const active = difficulty === d;
+              return (
+                <Pressable
+                  key={d}
+                  onPress={() => setDifficulty(d)}
+                  style={{
+                    paddingVertical: 5,
+                    paddingHorizontal: 12,
+                    borderRadius: 99,
+                    backgroundColor: active ? col.accent : '#1a1a1a',
+                    borderWidth: 1,
+                    borderColor: active ? col.accent : 'transparent',
+                  }}
+                >
+                  <Text style={{
+                    color: active ? '#fff' : 'rgba(255,255,255,0.4)',
+                    fontFamily: active ? 'Outfit_600SemiBold' : 'Outfit_400Regular',
+                    fontSize: 12,
+                  }}>
+                    {DIFF_LABELS[d]}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+
           {/* Progress dots */}
-          <View style={{ flexDirection: 'row', gap: 3, marginBottom: 20 }}>
+          <View style={{ flexDirection: 'row', gap: 3, marginBottom: 16 }}>
             {questions.map((_, i) => (
               <View key={i} style={{ flex: 1, height: 3, borderRadius: 99, backgroundColor: i <= qIdx % questions.length ? col.accent : '#1a1a1a' }} />
             ))}
@@ -171,7 +230,7 @@ export default function LearnScreen() {
           </View>
         </View>
 
-        {/* Context (shown when wrong) */}
+        {/* Context */}
         {showCtx && q.ctx && (
           <View style={{ marginHorizontal: 20, marginBottom: 16, padding: 16, backgroundColor: 'rgba(232,48,96,0.06)', borderRadius: 16, borderWidth: 1, borderColor: 'rgba(232,48,96,0.2)' }}>
             <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold', marginBottom: 6, fontSize: 13 }}>

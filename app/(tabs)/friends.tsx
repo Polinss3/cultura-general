@@ -1077,7 +1077,7 @@ function TriviaResults({ teamNames, scores, onReplay, onBack }: {
         <View style={{ alignItems: 'center', marginBottom: 32 }}>
           <Text style={{ fontSize: 64, marginBottom: 12 }}>{tied ? '🤝' : '🏆'}</Text>
           <Text style={{ color: '#fff', fontSize: 26, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4, textAlign: 'center' }}>
-            {tied ? '¡Empate!' : `¡Gana ${teamNames[winner]}!`}
+            {tied ? '¡Empate!' : `¡Gana ${winner >= 0 ? teamNames[winner as 0 | 1] : ''}!`}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>
             {TRIVIA_TOTAL} preguntas en total

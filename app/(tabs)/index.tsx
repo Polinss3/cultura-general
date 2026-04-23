@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useProfile } from '@/hooks/useProfile';
-import { supabase } from '@/lib/supabase';
+import { computeAchievements, unlockedCount } from '@/lib/achievements';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -14,6 +14,7 @@ export default function HomeScreen() {
 
   const initial = (profile?.username?.[0] ?? '?').toUpperCase();
   const displayName = profile?.username ?? '...';
+  const achievementCount = unlockedCount(profile);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -30,7 +31,7 @@ export default function HomeScreen() {
                 Hola, {displayName} 👋
               </Text>
             </View>
-            <Pressable onPress={() => supabase.auth.signOut()}>
+            <Pressable onPress={() => router.push('/profile')}>
               <LinearGradient
                 colors={['#e8a030', '#e83060']}
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -192,10 +193,10 @@ export default function HomeScreen() {
           }}>
             Tus estadísticas
           </Text>
-          <View style={{ flexDirection: 'row', gap: 10 }}>
+          <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
             {[
               { label: 'Respondidas', value: String(profile?.total_answered ?? 0) },
-              { label: 'Aciertos', value: profile?.total_answered ? `${Math.round((profile.total_correct / profile.total_answered) * 100)}%` : '—' },
+              { label: 'Precisión', value: profile?.total_answered ? `${Math.round((profile.total_correct / profile.total_answered) * 100)}%` : '—' },
               { label: 'Racha', value: `${profile?.streak ?? 0}🔥` },
             ].map(s => (
               <View key={s.label} style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 12, alignItems: 'center' }}>
@@ -204,6 +205,19 @@ export default function HomeScreen() {
               </View>
             ))}
           </View>
+          <Pressable onPress={() => router.push('/profile')}>
+            <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <Text style={{ fontSize: 20 }}>🏅</Text>
+                <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
+                  Logros desbloqueados
+                </Text>
+              </View>
+              <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>
+                {achievementCount}/12 →
+              </Text>
+            </View>
+          </Pressable>
         </View>
 
       </ScrollView>
