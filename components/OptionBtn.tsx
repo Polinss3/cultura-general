@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import * as Haptics from 'expo-haptics';
 import { AnswerState } from '@/types';
 
 interface Props {
@@ -9,6 +11,20 @@ interface Props {
 }
 
 export function OptionBtn({ text, letter, state, onPress }: Props) {
+  // Haptic feedback when answer is revealed
+  useEffect(() => {
+    if (state === 'correct') {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } else if (state === 'wrong') {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+    }
+  }, [state]);
+
+  const handlePress = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    onPress();
+  };
+
   const borderColor =
     state === 'correct' ? '#2ec87a' :
     state === 'wrong'   ? '#e83060' :
@@ -34,7 +50,7 @@ export function OptionBtn({ text, letter, state, onPress }: Props) {
 
   return (
     <Pressable
-      onPress={onPress}
+      onPress={handlePress}
       style={{
         borderWidth: 1.5,
         borderColor,

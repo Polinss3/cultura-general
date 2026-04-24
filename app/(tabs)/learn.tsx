@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
+import { useState, useEffect, useRef } from 'react';
+import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { useAuth } from '@/hooks/useAuth';
-import { fetchQuestions, incrementProfileStats } from '@/lib/db';
+import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
 import { QUESTIONS, CAT_COLORS, CAT_ICONS, CAT_NAMES, ALL_CATEGORIES } from '@/constants/questions';
 import { AnswerState, Category, Question } from '@/types';
 
@@ -28,6 +28,7 @@ function filterByDifficulty(questions: Question[], diff: Difficulty): Question[]
 export default function LearnScreen() {
   const { user } = useAuth();
   const [cat, setCat] = useState<Category | null>(null);
+  const reportedRef = useRef(new Set<string>());
   const [difficulty, setDifficulty] = useState<Difficulty>('all');
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -156,6 +157,16 @@ export default function LearnScreen() {
   const correct = selected === q.ans;
   const isLast = qIdx % questions.length === questions.length - 1;
 
+  const handleReport = () => {
+    if (!user || !q.id || reportedRef.current.has(q.id)) return;
+    Alert.alert('¿Qué problema tiene esta pregunta?', undefined, [
+      { text: 'Respuesta incorrecta', onPress: () => { if (q.id) { reportedRef.current.add(q.id); reportQuestion(user.id, q.id, 'incorrect'); Alert.alert('Gracias', 'Reporte enviado.'); } } },
+      { text: 'Es confusa', onPress: () => { if (q.id) { reportedRef.current.add(q.id); reportQuestion(user.id, q.id, 'confusing'); Alert.alert('Gracias', 'Reporte enviado.'); } } },
+      { text: 'Otro', onPress: () => { if (q.id) { reportedRef.current.add(q.id); reportQuestion(user.id, q.id, 'other'); Alert.alert('Gracias', 'Reporte enviado.'); } } },
+      { text: 'Cancelar', style: 'cancel' },
+    ]);
+  };
+
   const getState = (i: number): AnswerState => {
     if (!answered) return selected === i ? 'selected' : null;
     if (i === q.ans) return 'correct';
@@ -173,7 +184,12 @@ export default function LearnScreen() {
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 20 }}>←</Text>
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>Temas</Text>
             </Pressable>
-            <CategoryBadge cat={cat} small />
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <Pressable onPress={handleReport} style={{ padding: 4 }}>
+                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 18 }}>⚑</Text>
+              </Pressable>
+              <CategoryBadge cat={cat} small />
+            </View>
           </View>
 
           {/* Difficulty filter */}

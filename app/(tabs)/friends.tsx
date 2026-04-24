@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { View, Text, ScrollView, Pressable, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import { OptionBtn } from '@/components/OptionBtn';
 import { QUESTIONS } from '@/constants/questions';
 import { shuffle } from '@/lib/utils';
@@ -47,6 +48,7 @@ function PrimaryBtn({ label, onPress, colors = ['#30a8e8', '#1a78b8'] }: {
 // ─── Modes screen ─────────────────────────────────────────────
 
 function ModesScreen({ onSelect }: { onSelect: (s: Screen) => void }) {
+  const router = useRouter();
   const modes = [
     {
       id: 'pasa' as Screen,
@@ -81,9 +83,18 @@ function ModesScreen({ onSelect }: { onSelect: (s: Screen) => void }) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
-        <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
-          Jugar con amigos
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+          <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold' }}>
+            Jugar con amigos
+          </Text>
+          <Pressable
+            onPress={() => router.push('/friends-list')}
+            style={{ backgroundColor: 'rgba(48,168,232,0.12)', borderRadius: 12, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 6, borderWidth: 1, borderColor: 'rgba(48,168,232,0.25)' }}
+          >
+            <Text style={{ fontSize: 14 }}>👥</Text>
+            <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>Amigos</Text>
+          </Pressable>
+        </View>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 24 }}>
           Pasad el móvil o competid en el mismo sitio
         </Text>

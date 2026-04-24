@@ -9,7 +9,7 @@ import { useRouter } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { supabase } from '@/lib/supabase';
-import { fetchAnswerHistory, updateUsername, AnswerHistoryItem } from '@/lib/db';
+import { fetchAnswerHistory, updateUsername, fetchCategoryStats, AnswerHistoryItem, CategoryStat } from '@/lib/db';
 import { computeAchievements } from '@/lib/achievements';
 import {
   requestNotificationPermission,
@@ -33,6 +33,7 @@ export default function ProfileScreen() {
 
   const [history, setHistory] = useState<AnswerHistoryItem[]>([]);
   const [loadingHistory, setLoadingHistory] = useState(true);
+  const [catStats, setCatStats] = useState<CategoryStat[]>([]);
 
   const [notificationsOn, setNotificationsOn] = useState(false);
   const [notifLoading, setNotifLoading] = useState(true);
@@ -46,8 +47,12 @@ export default function ProfileScreen() {
 
   useEffect(() => {
     if (!user) return;
-    fetchAnswerHistory(user.id, 15).then(h => {
+    Promise.all([
+      fetchAnswerHistory(user.id, 15),
+      fetchCategoryStats(user.id),
+    ]).then(([h, cs]) => {
       setHistory(h);
+      setCatStats(cs);
       setLoadingHistory(false);
     });
   }, [user?.id]);
@@ -167,6 +172,34 @@ export default function ProfileScreen() {
             <StatCard label="Récord rápido" value={`${profile?.speed_record ?? 0}⚡`} />
           </View>
         </View>
+
+        {/* Category stats */}
+        {catStats.length > 0 && (
+          <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
+            <SectionTitle>Por categoría</SectionTitle>
+            <View style={{ gap: 10 }}>
+              {catStats.map(cs => {
+                const pct = cs.total > 0 ? cs.correct / cs.total : 0;
+                const cat = cs.category as Category;
+                return (
+                  <View key={cs.category} style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14 }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                      <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
+                        {CAT_ICONS[cat] ?? '❓'} {CAT_NAMES[cat] ?? cs.category}
+                      </Text>
+                      <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
+                        {cs.correct}/{cs.total} · {Math.round(pct * 100)}%
+                      </Text>
+                    </View>
+                    <View style={{ height: 5, backgroundColor: '#2a2a2a', borderRadius: 99, overflow: 'hidden' }}>
+                      <View style={{ height: '100%', width: `${pct * 100}%`, backgroundColor: pct >= 0.7 ? '#2ec87a' : pct >= 0.4 ? '#e8a030' : '#e83060', borderRadius: 99 }} />
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+        )}
 
         {/* Achievements */}
         <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
