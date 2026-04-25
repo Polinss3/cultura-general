@@ -17,7 +17,9 @@
       "Bash(python3 -c \"from PIL import Image; print\\('PIL available'\\)\")",
       "Bash(python3 -c \"import PIL; print\\('PIL ok'\\)\")",
       "Bash(npx --yes sharp-cli --version)",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(cat babel.config.js)",
+      "Bash(cat babel.config.ts)"
     ]
   }
 }

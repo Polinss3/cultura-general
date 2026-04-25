@@ -29,25 +29,38 @@ export async function requestNotificationPermission(): Promise<boolean> {
 }
 
 export async function scheduleDailyReminder(): Promise<void> {
-  await Notifications.cancelAllScheduledNotificationsAsync();
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: '🧠 ¡Tu pregunta del día te espera!',
-      body: 'Responde hoy para mantener tu racha.',
-    },
-    trigger: {
-      type: Notifications.SchedulableTriggerInputTypes.DAILY,
-      hour: 9,
-      minute: 0,
-    },
-  });
+  try {
+    await Notifications.cancelAllScheduledNotificationsAsync();
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: '🧠 ¡Tu pregunta del día te espera!',
+        body: 'Responde hoy para mantener tu racha.',
+      },
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.DAILY,
+        hour: 9,
+        minute: 0,
+      },
+    });
+  } catch {
+    // Expo Go on iOS doesn't support local notification scheduling
+    console.log('[Notifications] scheduling not available in this environment');
+  }
 }
 
 export async function cancelDailyReminder(): Promise<void> {
-  await Notifications.cancelAllScheduledNotificationsAsync();
+  try {
+    await Notifications.cancelAllScheduledNotificationsAsync();
+  } catch {
+    // ignore in Expo Go
+  }
 }
 
 export async function getNotificationsEnabled(): Promise<boolean> {
-  const { status } = await Notifications.getPermissionsAsync();
-  return status === 'granted';
+  try {
+    const { status } = await Notifications.getPermissionsAsync();
+    return status === 'granted';
+  } catch {
+    return false;
+  }
 }
