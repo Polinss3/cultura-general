@@ -13,6 +13,8 @@ import {
 } from '@expo-google-fonts/outfit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from '@/hooks/useAuth';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { ToastProvider } from '@/context/ToastContext';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,7 +45,6 @@ export default function RootLayout() {
 
     const inAuth = segments[0] === '(auth)';
     const inOnboarding = segments[0] === 'onboarding';
-    const inTabs = segments[0] === '(tabs)';
 
     if (!session && !inAuth) {
       router.replace('/(auth)/login');
@@ -63,15 +64,17 @@ export default function RootLayout() {
   if (!fontsLoaded || loading || onboarded === null) return null;
 
   return (
-    <>
-      <StatusBar style="light" />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          animation: 'slide_from_right',
-          animationDuration: 250,
-        }}
-      />
-    </>
+    <ErrorBoundary>
+      <ToastProvider>
+        <StatusBar style="light" />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            animation: 'slide_from_right',
+            animationDuration: 250,
+          }}
+        />
+      </ToastProvider>
+    </ErrorBoundary>
   );
 }

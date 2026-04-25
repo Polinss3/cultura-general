@@ -5,7 +5,19 @@
       "Bash(npm --version)",
       "Bash(npm install *)",
       "Bash(npx expo *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(supabase --version)",
+      "Bash(curl -s 'https://xjzsrbcmldbgwwabnmug.supabase.co/rest/v1/question_reports?limit=1' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhqenNyYmNtbGRiZ3d3YWJubXVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjU5MjY4OCwiZXhwIjoyMDkyMTY4Njg4fQ.8r9_d9IJESpkoVpOQ_i3XVgzPsOcL4bZyU7dQgP2z7Y' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhqenNyYmNtbGRiZ3d3YWJubXVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjU5MjY4OCwiZXhwIjoyMDkyMTY4Njg4fQ.8r9_d9IJESpkoVpOQ_i3XVgzPsOcL4bZyU7dQgP2z7Y')",
+      "Bash(curl -s -X POST https://xjzsrbcmldbgwwabnmug.supabase.co/rest/v1/rpc/get_weekly_ranking -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhqenNyYmNtbGRiZ3d3YWJubXVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjU5MjY4OCwiZXhwIjoyMDkyMTY4Njg4fQ.8r9_d9IJESpkoVpOQ_i3XVgzPsOcL4bZyU7dQgP2z7Y' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhqenNyYmNtbGRiZ3d3YWJubXVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjU5MjY4OCwiZXhwIjoyMDkyMTY4Njg4fQ.8r9_d9IJESpkoVpOQ_i3XVgzPsOcL4bZyU7dQgP2z7Y' -H 'Content-Type: application/json' -d '{}')",
+      "Bash(curl -s 'https://xjzsrbcmldbgwwabnmug.supabase.co/rest/v1/questions?select=category&active=eq.true' -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhqenNyYmNtbGRiZ3d3YWJubXVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjU5MjY4OCwiZXhwIjoyMDkyMTY4Njg4fQ.8r9_d9IJESpkoVpOQ_i3XVgzPsOcL4bZyU7dQgP2z7Y' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhqenNyYmNtbGRiZ3d3YWJubXVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjU5MjY4OCwiZXhwIjoyMDkyMTY4Njg4fQ.8r9_d9IJESpkoVpOQ_i3XVgzPsOcL4bZyU7dQgP2z7Y')",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('expo:', d.get\\('dependencies',{}\\).get\\('expo',''\\)\\); print\\('version:', d.get\\('version',''\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('expo:', d.get\\('dependencies',{}\\).get\\('expo',''\\)\\); print\\('version:', d.get\\('version','none'\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); deps=d.get\\('dependencies',{}\\); print\\('expo:', deps.get\\('expo',''\\)\\); [print\\(k,v\\) for k,v in deps.items\\(\\) if 'eas' in k or 'sharing' in k or 'toast' in k]\")",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL available'\\)\")",
+      "Bash(python3 -c \"import PIL; print\\('PIL ok'\\)\")",
+      "Bash(npx --yes sharp-cli --version)",
+      "Bash(python3)"
     ]
   }
 }

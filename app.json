@@ -7,6 +7,8 @@
     "icon": "./assets/icon.png",
     "scheme": "culturalgeneral",
     "userInterfaceStyle": "dark",
+    "backgroundColor": "#0a0a0a",
+    "primaryColor": "#e8a030",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -14,14 +16,25 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.polinss3.culturalgeneral"
+      "bundleIdentifier": "com.polinss3.culturalgeneral",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "La app no usa la cámara.",
+        "NSUserNotificationsUsageDescription": "Recibe un recordatorio diario para responder la pregunta del día y mantener tu racha."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0a0a0a"
       },
-      "package": "com.polinss3.culturalgeneral"
+      "package": "com.polinss3.culturalgeneral",
+      "versionCode": 1,
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "POST_NOTIFICATIONS"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -37,7 +50,16 @@
           "configureAndroidBackup": true
         }
       ],
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/adaptive-icon.png",
+          "color": "#e8a030",
+          "sounds": [],
+          "mode": "production"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

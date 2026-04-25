@@ -2,6 +2,28 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from './supabase';
 import { Question, Category } from '@/types';
 
+// ─── Error handling ───────────────────────────────────────────
+
+export class NetworkError extends Error {
+  constructor(message = 'Sin conexión. Comprueba tu red e inténtalo de nuevo.') {
+    super(message);
+    this.name = 'NetworkError';
+  }
+}
+
+async function withRetry<T>(fn: () => Promise<T>, retries = 2): Promise<T> {
+  let lastError: unknown;
+  for (let i = 0; i <= retries; i++) {
+    try {
+      return await fn();
+    } catch (err: any) {
+      lastError = err;
+      if (i < retries) await new Promise(r => setTimeout(r, 600 * (i + 1)));
+    }
+  }
+  throw lastError;
+}
+
 // ─── Mapping ──────────────────────────────────────────────────
 
 function mapQuestion(row: any): Question {
@@ -50,13 +72,15 @@ export async function fetchQuestions(category?: Category): Promise<Question[]> {
   const cached = await getCached(category);
   if (cached) return cached;
 
-  let query = supabase.from('questions').select('*').eq('active', true);
-  if (category) query = query.eq('category', category);
-  const { data } = await query.order('id');
-  const questions = data ? data.map(mapQuestion) : [];
-
-  if (questions.length > 0) await setCache(questions, category);
-  return questions;
+  return withRetry(async () => {
+    let query = supabase.from('questions').select('*').eq('active', true);
+    if (category) query = query.eq('category', category);
+    const { data, error } = await query.order('id');
+    if (error) throw new NetworkError();
+    const questions = data ? data.map(mapQuestion) : [];
+    if (questions.length > 0) await setCache(questions, category);
+    return questions;
+  });
 }
 
 // ─── Daily question ───────────────────────────────────────────

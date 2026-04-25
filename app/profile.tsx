@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
+import { useRouter, Link } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { supabase } from '@/lib/supabase';
@@ -305,12 +305,27 @@ export default function ProfileScreen() {
         <View style={{ paddingHorizontal: 20 }}>
           <Pressable
             onPress={handleSignOut}
-            style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(232,48,96,0.2)' }}
+            style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(232,48,96,0.2)', marginBottom: 16 }}
           >
             <Text style={{ color: '#e83060', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
               Cerrar sesión
             </Text>
           </Pressable>
+
+          {/* Legal links */}
+          <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 20 }}>
+            <Link href="/privacy" asChild>
+              <Pressable>
+                <Text style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
+                  Política de privacidad
+                </Text>
+              </Pressable>
+            </Link>
+            <Text style={{ color: 'rgba(255,255,255,0.1)', fontSize: 12 }}>·</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
+              v1.0.0
+            </Text>
+          </View>
         </View>
 
       </ScrollView>

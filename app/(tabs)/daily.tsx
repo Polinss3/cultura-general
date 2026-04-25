@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert } from 'react-native';
+import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { OptionBtn } from '@/components/OptionBtn';
 import { Confetti } from '@/components/Confetti';
@@ -149,6 +149,19 @@ export default function DailyScreen() {
     }, 1400);
   };
 
+  const handleShare = async () => {
+    const streakLine = dailyRanking.find(r => r.userId === user?.id);
+    const streak = streakLine?.streak ?? 0;
+    const msg = isCorrect
+      ? `¡He acertado la pregunta diaria de Cultura General! 🧠🏆\n🔥 Racha: ${streak} días\n\n¿Puedes superarme? Descarga la app gratis.`
+      : `He respondido la pregunta diaria de Cultura General 🧠\n¿Sabes tú la respuesta? Descarga la app gratis.`;
+    try {
+      await Share.share({ message: msg, title: 'Cultura General' });
+    } catch {
+      // user cancelled, ignore
+    }
+  };
+
   const handleReport = () => {
     if (!user || !question?.id || reported.current) return;
     Alert.alert(
@@ -205,11 +218,18 @@ export default function DailyScreen() {
             <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>
               {isCorrect ? '+100 puntos' : 'Sin puntos hoy'}
             </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 4 }}>
+            <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 4, marginBottom: 16 }}>
               {dailyRanking.length > 0
                 ? `${dailyRanking.length} ${dailyRanking.length === 1 ? 'jugador ha' : 'jugadores han'} respondido hoy`
                 : 'Sé el primero en responder'}
             </Text>
+            <Pressable
+              onPress={handleShare}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#1a1a1a', borderRadius: 99, paddingVertical: 10, paddingHorizontal: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}
+            >
+              <Text style={{ fontSize: 16 }}>🔗</Text>
+              <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>Compartir resultado</Text>
+            </Pressable>
           </View>
 
           {/* Tab switcher */}
