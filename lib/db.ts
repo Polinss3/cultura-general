@@ -108,28 +108,18 @@ export async function fetchOrAssignDailyQuestion(): Promise<Question | null> {
 
   if (existing?.questions) return mapQuestion(existing.questions);
 
-  const { data: ids } = await supabase
+  // No admin-assigned question for today — pick deterministically by date.
+  // (Clients can't INSERT into daily_questions due to RLS, so we skip the upsert.)
+  const { data: allQuestions } = await supabase
     .from('questions')
-    .select('id')
+    .select('*')
     .eq('active', true)
     .order('id');
 
-  if (!ids || ids.length === 0) return null;
+  if (!allQuestions || allQuestions.length === 0) return null;
 
   const dayIdx = Math.floor(Date.now() / 86400000);
-  const picked = ids[dayIdx % ids.length];
-
-  await supabase
-    .from('daily_questions')
-    .upsert({ question_id: picked.id, date }, { onConflict: 'date' });
-
-  const { data: assigned } = await supabase
-    .from('daily_questions')
-    .select('questions(*)')
-    .eq('date', date)
-    .single();
-
-  return assigned?.questions ? mapQuestion(assigned.questions) : null;
+  return mapQuestion(allQuestions[dayIdx % allQuestions.length]);
 }
 
 export async function checkDailyAnswered(
