@@ -20,7 +20,8 @@
       "buildNumber": "1",
       "infoPlist": {
         "NSCameraUsageDescription": "La app no usa la cámara.",
-        "NSUserNotificationsUsageDescription": "Recibe un recordatorio diario para responder la pregunta del día y mantener tu racha."
+        "NSUserNotificationsUsageDescription": "Recibe un recordatorio diario para responder la pregunta del día y mantener tu racha.",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -59,6 +60,19 @@
           "sounds": [],
           "mode": "production"
         }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3235517249572183~6818966509",
+          "iosAppId": "ca-app-pub-3235517249572183~4284527843",
+          "skAdNetworkItems": [
+            "cstr6suwn9.skadnetwork",
+            "4fzdc2evr5.skadnetwork",
+            "2fnua5tdw4.skadnetwork",
+            "ydx93a7ass.skadnetwork"
+          ]
+        }
       ]
     ],
     "experiments": {
@@ -69,8 +83,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "your-eas-project-id"
+        "projectId": "c320cb92-68f2-4474-9414-750921c2ac79"
       }
-    }
+    },
+    "owner": "pablobrasero"
   }
 }
