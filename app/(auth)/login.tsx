@@ -54,7 +54,9 @@ export default function LoginScreen() {
   const handleReset = async () => {
     if (!email) { Alert.alert('Error', 'Introduce tu email para recuperar la contraseña'); return; }
     setLoading(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(email);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'culturalgeneral://update-password',
+    });
     if (error) {
       Alert.alert('Error', error.message);
     } else {
