@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { supabase } from '@/lib/supabase';
 
-type Mode = 'login' | 'register';
+type Mode = 'login' | 'register' | 'reset';
 
 const INPUT = {
   backgroundColor: '#151515',
@@ -51,6 +51,41 @@ export default function LoginScreen() {
     setLoading(false);
   };
 
+  const handleReset = async () => {
+    if (!email) { Alert.alert('Error', 'Introduce tu email para recuperar la contraseña'); return; }
+    setLoading(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email);
+    if (error) {
+      Alert.alert('Error', error.message);
+    } else {
+      Alert.alert(
+        'Email enviado',
+        'Revisa tu bandeja de entrada y sigue el enlace para restablecer tu contraseña.',
+        [{ text: 'Volver al login', onPress: () => setMode('login') }]
+      );
+    }
+    setLoading(false);
+  };
+
+  const getSubtitle = () => {
+    if (mode === 'reset') return 'Recuperar contraseña';
+    if (mode === 'register') return 'Crea tu cuenta gratis';
+    return 'Inicia sesión para continuar';
+  };
+
+  const getButtonLabel = () => {
+    if (loading) return 'Cargando...';
+    if (mode === 'reset') return 'Enviar enlace';
+    if (mode === 'register') return 'Crear cuenta';
+    return 'Iniciar sesión';
+  };
+
+  const handleMainAction = () => {
+    if (mode === 'login') return handleLogin();
+    if (mode === 'register') return handleRegister();
+    return handleReset();
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
       <KeyboardAvoidingView
@@ -63,7 +98,7 @@ export default function LoginScreen() {
             Cultura General
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 40 }}>
-            {mode === 'login' ? 'Inicia sesión para continuar' : 'Crea tu cuenta gratis'}
+            {getSubtitle()}
           </Text>
 
           {mode === 'register' && (
@@ -87,38 +122,67 @@ export default function LoginScreen() {
             style={INPUT}
           />
 
-          <TextInput
-            value={password}
-            onChangeText={setPassword}
-            placeholder="Contraseña"
-            placeholderTextColor="rgba(255,255,255,0.3)"
-            secureTextEntry
-            style={{ ...INPUT, marginBottom: 24 }}
-          />
+          {mode !== 'reset' && (
+            <TextInput
+              value={password}
+              onChangeText={setPassword}
+              placeholder="Contraseña"
+              placeholderTextColor="rgba(255,255,255,0.3)"
+              secureTextEntry
+              style={{ ...INPUT, marginBottom: mode === 'login' ? 8 : 24 }}
+            />
+          )}
 
-          <Pressable onPress={mode === 'login' ? handleLogin : handleRegister} disabled={loading}>
+          {mode === 'login' && (
+            <Pressable
+              onPress={() => setMode('reset')}
+              style={{ alignSelf: 'flex-end', marginBottom: 24 }}
+            >
+              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 13 }}>
+                ¿Olvidaste tu contraseña?
+              </Text>
+            </Pressable>
+          )}
+
+          {mode === 'reset' && <View style={{ marginBottom: 24 }} />}
+
+          <Pressable onPress={handleMainAction} disabled={loading}>
             <LinearGradient
               colors={['#e8a030', '#e83060']}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
               style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
             >
               <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
-                {loading ? 'Cargando...' : mode === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
+                {getButtonLabel()}
               </Text>
             </LinearGradient>
           </Pressable>
 
-          <Pressable
-            onPress={() => setMode(mode === 'login' ? 'register' : 'login')}
-            style={{ marginTop: 24, alignItems: 'center' }}
-          >
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular' }}>
-              {mode === 'login' ? '¿No tienes cuenta? ' : '¿Ya tienes cuenta? '}
-              <Text style={{ color: '#e8a030', fontFamily: 'Outfit_600SemiBold' }}>
-                {mode === 'login' ? 'Regístrate' : 'Inicia sesión'}
+          {mode !== 'reset' ? (
+            <Pressable
+              onPress={() => setMode(mode === 'login' ? 'register' : 'login')}
+              style={{ marginTop: 24, alignItems: 'center' }}
+            >
+              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular' }}>
+                {mode === 'login' ? '¿No tienes cuenta? ' : '¿Ya tienes cuenta? '}
+                <Text style={{ color: '#e8a030', fontFamily: 'Outfit_600SemiBold' }}>
+                  {mode === 'login' ? 'Regístrate' : 'Inicia sesión'}
+                </Text>
               </Text>
-            </Text>
-          </Pressable>
+            </Pressable>
+          ) : (
+            <Pressable
+              onPress={() => setMode('login')}
+              style={{ marginTop: 24, alignItems: 'center' }}
+            >
+              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular' }}>
+                {'Volver a '}
+                <Text style={{ color: '#e8a030', fontFamily: 'Outfit_600SemiBold' }}>
+                  iniciar sesión
+                </Text>
+              </Text>
+            </Pressable>
+          )}
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
