@@ -38,8 +38,8 @@
     "production": {
       "ios": {
         "appleId": "pablobrasero@gmail.com",
-        "ascAppId": "tu-app-store-connect-id",
-        "appleTeamId": "TU_TEAM_ID"
+        "ascAppId": "6766927114",
+        "appleTeamId": "6U4MD8PQ2L"
       },
       "android": {
         "serviceAccountKeyPath": "./google-play-key.json",
