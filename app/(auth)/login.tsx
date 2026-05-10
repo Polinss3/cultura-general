@@ -44,7 +44,10 @@ export default function LoginScreen() {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { username: username.trim() } },
+      options: {
+        data: { username: username.trim() },
+        emailRedirectTo: 'culturalgeneral://login',
+      },
     });
     if (error) Alert.alert('Error', error.message);
     else Alert.alert('¡Cuenta creada!', 'Ya puedes iniciar sesión.');
