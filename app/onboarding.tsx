@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
 import {
   requestNotificationPermission,
   scheduleDailyReminder,
 } from '@/lib/notifications';
+import { setOnboardingCompleted } from '@/lib/onboarding';
 
 const STEPS = [
   {
@@ -40,7 +40,7 @@ export default function OnboardingScreen() {
   const isLast = step === STEPS.length - 1;
 
   const finish = async () => {
-    await AsyncStorage.setItem('onboarded_v1', 'true');
+    await setOnboardingCompleted(true);
     router.replace('/(tabs)');
   };
 

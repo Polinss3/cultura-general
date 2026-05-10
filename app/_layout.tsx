@@ -12,10 +12,10 @@ import {
   Outfit_700Bold,
   Outfit_800ExtraBold,
 } from '@expo-google-fonts/outfit';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from '@/hooks/useAuth';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
+import { getOnboardingCompleted } from '@/lib/onboarding';
 import { supabase } from '@/lib/supabase';
 
 SplashScreen.preventAutoHideAsync();
@@ -36,9 +36,7 @@ export default function RootLayout() {
   const [onboarded, setOnboarded] = useState<boolean | null>(null);
 
   useEffect(() => {
-    AsyncStorage.getItem('onboarded_v1').then(val => {
-      setOnboarded(val === 'true');
-    });
+    getOnboardingCompleted().then(setOnboarded);
   }, []);
 
   // Handle password recovery deep links (culturalgeneral://update-password#access_token=...)
@@ -65,23 +63,41 @@ export default function RootLayout() {
     if (!fontsLoaded || loading || onboarded === null) return;
     SplashScreen.hideAsync();
 
-    const inAuth = segments[0] === '(auth)';
-    const inOnboarding = segments[0] === 'onboarding';
-    const isUpdatePassword = segments[1] === 'update-password';
+    let cancelled = false;
 
-    if (!session && !inAuth) {
-      router.replace('/(auth)/login');
-    } else if (session && inAuth && !isUpdatePassword) {
-      if (!onboarded) {
+    const syncOnboardingAndRoute = async () => {
+      const hasCompletedOnboarding = await getOnboardingCompleted();
+      if (cancelled) return;
+
+      if (hasCompletedOnboarding !== onboarded) {
+        setOnboarded(hasCompletedOnboarding);
+        return;
+      }
+
+      const inAuth = segments[0] === '(auth)';
+      const inOnboarding = segments[0] === 'onboarding';
+      const isUpdatePassword = segments[1] === 'update-password';
+
+      if (!session && !inAuth) {
+        router.replace('/(auth)/login');
+      } else if (session && inAuth && !isUpdatePassword) {
+        if (!hasCompletedOnboarding) {
+          router.replace('/onboarding');
+        } else {
+          router.replace('/(tabs)');
+        }
+      } else if (session && !hasCompletedOnboarding && !inOnboarding && !isUpdatePassword) {
         router.replace('/onboarding');
-      } else {
+      } else if (session && hasCompletedOnboarding && inOnboarding) {
         router.replace('/(tabs)');
       }
-    } else if (session && !onboarded && !inOnboarding && !isUpdatePassword) {
-      router.replace('/onboarding');
-    } else if (session && onboarded && inOnboarding) {
-      router.replace('/(tabs)');
-    }
+    };
+
+    syncOnboardingAndRoute();
+
+    return () => {
+      cancelled = true;
+    };
   }, [session, loading, fontsLoaded, onboarded, segments]);
 
   if (!fontsLoaded || loading || onboarded === null) return null;
