@@ -20,7 +20,7 @@ create table if not exists public.profiles (
 
 create table if not exists public.questions (
   id           uuid default uuid_generate_v4() primary key,
-  category     text not null check (category in ('historia','geografia','ciencia','arte','filosofia')),
+  category     text not null check (category in ('historia','geografia','ciencia','arte','filosofia','deportes','biologia','cine','musica','literatura','tecnologia','mitologia','astronomia')),
   question     text not null,
   options      jsonb not null,
   answer_index int  not null check (answer_index between 0 and 3),

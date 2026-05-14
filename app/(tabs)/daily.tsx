@@ -17,6 +17,7 @@ import {
   WeeklyRow,
   GlobalRow,
 } from '@/lib/db';
+import { shuffleQuestionSeeded, ShuffledQuestion } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
 
 type Phase = 'loading' | 'question' | 'ranking';
@@ -77,7 +78,7 @@ function RankRowView({
 export default function DailyScreen() {
   const { user } = useAuth();
   const [phase, setPhase] = useState<Phase>('loading');
-  const [question, setQuestion] = useState<Question | null>(null);
+  const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [isCorrect, setIsCorrect] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
@@ -116,7 +117,13 @@ export default function DailyScreen() {
       fetchOrAssignDailyQuestion(),
       user ? checkDailyAnswered(user.id) : Promise.resolve({ answered: false, score: 0 }),
     ]);
-    setQuestion(q);
+    if (q) {
+      // Seed per-user-per-day so the order is stable on refresh but changes daily.
+      const today = new Date().toISOString().slice(0, 10);
+      setQuestion(shuffleQuestionSeeded(q, `${user?.id ?? 'anon'}-${today}`));
+    } else {
+      setQuestion(null);
+    }
 
     if (already.answered) {
       setIsCorrect(already.score > 0);
@@ -139,7 +146,9 @@ export default function DailyScreen() {
     setTimeout(async () => {
       setPhase('loading');
       if (question.id) {
-        await saveDailyAnswer(user.id, question.id, i, correct);
+        // Translate display-index back to original (DB) index for consistency
+        const originalIdx = question.originalIndexMap[i] ?? i;
+        await saveDailyAnswer(user.id, question.id, originalIdx, correct);
       }
       const r = await fetchDailyRanking();
       setDailyRanking(r);

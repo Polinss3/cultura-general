@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -7,7 +7,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { fetchQuestions, saveSpeedGame } from '@/lib/db';
 import { QUESTIONS } from '@/constants/questions';
-import { shuffle } from '@/lib/utils';
+import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
+import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Question } from '@/types';
 
 type Phase = 'loading' | 'intro' | 'playing' | 'done';
@@ -18,7 +19,7 @@ const LETTERS = ['A', 'B', 'C', 'D'] as const;
 function buildLocal(): Question[] {
   const arr: Question[] = [];
   Object.values(QUESTIONS).forEach(qs => arr.push(...qs));
-  return shuffle(arr);
+  return arr;
 }
 
 export default function SpeedScreen() {
@@ -35,12 +36,18 @@ export default function SpeedScreen() {
   const [newRecord, setNewRecord] = useState(false);
   const savedRef = useRef(false);
 
+  const baseQ = allQ.length > 0 ? allQ[qIdx % allQ.length] : undefined;
+  const displayQ = useMemo(() => (baseQ ? shuffleQuestion(baseQ) : undefined), [baseQ, qIdx]);
+
   // Load questions from Supabase on mount, fall back to local
   useEffect(() => {
-    fetchQuestions().then(remote => {
-      setAllQ(shuffle(remote.length > 0 ? remote : buildLocal()));
+    (async () => {
+      const remote = await fetchQuestions();
+      const source = remote.length > 0 ? remote : buildLocal();
+      const recent = await getRecentIds('speed');
+      setAllQ(pickRandomFresh(source, recent, q => q.id, source.length));
       setPhase('intro');
-    });
+    })();
   }, []);
 
   // Timer
@@ -65,20 +72,26 @@ export default function SpeedScreen() {
   const reset = (startPlaying = false) => {
     savedRef.current = false;
     setNewRecord(false);
-    setAllQ(shuffle(allQ.length > 0 ? allQ : buildLocal()));
-    setPhase(startPlaying ? 'playing' : 'intro');
-    setTimeLeft(DURATION);
-    setQIdx(0);
-    setScore(0);
-    setSelected(null);
-    setAnswered(false);
+    (async () => {
+      const source = allQ.length > 0 ? allQ : buildLocal();
+      const recent = await getRecentIds('speed');
+      setAllQ(pickRandomFresh(source, recent, q => q.id, source.length));
+      setPhase(startPlaying ? 'playing' : 'intro');
+      setTimeLeft(DURATION);
+      setQIdx(0);
+      setScore(0);
+      setSelected(null);
+      setAnswered(false);
+    })();
   };
 
   const handle = (i: number) => {
     if (answered || allQ.length === 0) return;
     setSelected(i);
     setAnswered(true);
-    if (i === allQ[qIdx % allQ.length].ans) setScore(s => s + 1);
+    const current = displayQ;
+    if (current && i === current.ans) setScore(s => s + 1);
+    if (current?.id) pushSeen('speed', undefined, [current.id]);
     setTimeout(() => {
       setAnswered(false);
       setSelected(null);
@@ -206,8 +219,8 @@ export default function SpeedScreen() {
   }
 
   // ─ Playing
-  if (allQ.length === 0) return null;
-  const q = allQ[qIdx % allQ.length];
+  if (allQ.length === 0 || !displayQ) return null;
+  const q = displayQ;
   const pct = timeLeft / DURATION;
   const timerColor = timeLeft > 10 ? '#a030e8' : '#e83060';
 

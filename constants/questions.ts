@@ -161,6 +161,166 @@ export const QUESTIONS: Record<Category, Question[]> = {
       ctx: "Platón escribió 'La República' alrededor del 380 a.C. En ella expone su teoría del Estado ideal gobernado por filósofos-reyes y su famosa alegoría de la caverna, que ilustra la diferencia entre apariencia y realidad.",
     },
   ],
+  deportes: [
+    {
+      q: '¿Cada cuántos años se celebran los Juegos Olímpicos de verano?',
+      opts: ['Cada 2 años', 'Cada 3 años', 'Cada 4 años', 'Cada 5 años'],
+      ans: 2,
+      ctx: 'Los Juegos Olímpicos de verano se celebran cada 4 años desde 1896, salvo cancelaciones por guerras mundiales. Los de invierno también son cada 4, alternándose cada 2 con los de verano.',
+    },
+    {
+      q: '¿Qué país ha ganado más Mundiales de fútbol masculino?',
+      opts: ['Alemania', 'Italia', 'Argentina', 'Brasil'],
+      ans: 3,
+      ctx: 'Brasil ha ganado 5 Copas del Mundo (1958, 1962, 1970, 1994 y 2002). Es el único país que ha participado en todas las ediciones del Mundial.',
+    },
+    {
+      q: '¿Cuántos jugadores tiene un equipo de baloncesto en la cancha?',
+      opts: ['4', '5', '6', '7'],
+      ans: 1,
+      ctx: 'Cada equipo tiene 5 jugadores en cancha: base, escolta, alero, ala-pívot y pívot. El baloncesto fue inventado por James Naismith en 1891.',
+    },
+  ],
+  biologia: [
+    {
+      q: '¿Cuál es el órgano más grande del cuerpo humano?',
+      opts: ['Hígado', 'Pulmón', 'Piel', 'Intestino'],
+      ans: 2,
+      ctx: 'La piel es el órgano más grande del cuerpo, con una superficie de unos 2 m² y un peso de hasta 5 kg en adultos. Es la primera barrera de defensa frente al exterior.',
+    },
+    {
+      q: '¿Quién propuso la teoría celular junto con Theodor Schwann?',
+      opts: ['Robert Hooke', 'Matthias Schleiden', 'Louis Pasteur', 'Gregor Mendel'],
+      ans: 1,
+      ctx: 'Matthias Schleiden (botánico) y Theodor Schwann (zoólogo) formularon la teoría celular hacia 1839: todos los seres vivos están compuestos por células.',
+    },
+    {
+      q: '¿Cuántos cromosomas tiene una célula humana normal?',
+      opts: ['23', '44', '46', '48'],
+      ans: 2,
+      ctx: 'Las células somáticas humanas tienen 46 cromosomas (23 pares). Los gametos (óvulos y espermatozoides) tienen 23 cromosomas no apareados.',
+    },
+  ],
+  cine: [
+    {
+      q: "¿Quién dirigió 'El Padrino' (1972)?",
+      opts: ['Martin Scorsese', 'Francis Ford Coppola', 'Stanley Kubrick', 'Steven Spielberg'],
+      ans: 1,
+      ctx: "Francis Ford Coppola dirigió 'El Padrino' (1972), basada en la novela de Mario Puzo. Ganó el Óscar a mejor película y es considerada una de las mejores películas de la historia.",
+    },
+    {
+      q: '¿Qué película ganó el primer Óscar a la Mejor Película?',
+      opts: ['Alas', 'Cantando bajo la lluvia', 'Ben-Hur', 'Lo que el viento se llevó'],
+      ans: 0,
+      ctx: "'Alas' (1927), de William A. Wellman, ganó el primer Óscar a la Mejor Película en 1929. Es la única película muda en obtener este premio.",
+    },
+    {
+      q: "¿Quién protagonizó 'Forrest Gump'?",
+      opts: ['Tom Hanks', 'Tom Cruise', 'Brad Pitt', 'Kevin Costner'],
+      ans: 0,
+      ctx: "Tom Hanks protagonizó 'Forrest Gump' (1994), dirigida por Robert Zemeckis. Ganó 6 Óscars, incluyendo Mejor Actor para Hanks (su segundo Óscar consecutivo).",
+    },
+  ],
+  musica: [
+    {
+      q: '¿Cuántas cuerdas tiene una guitarra clásica estándar?',
+      opts: ['4', '5', '6', '7'],
+      ans: 2,
+      ctx: 'La guitarra clásica española tiene 6 cuerdas afinadas E-A-D-G-B-E. Otras variantes incluyen guitarras de 7 o 12 cuerdas.',
+    },
+    {
+      q: '¿Quién compuso la Novena Sinfonía con el "Himno de la Alegría"?',
+      opts: ['Mozart', 'Bach', 'Beethoven', 'Schubert'],
+      ans: 2,
+      ctx: 'Ludwig van Beethoven compuso su Novena Sinfonía (1824), que incluye en su último movimiento el "Himno de la Alegría" sobre el poema de Schiller. La compuso ya completamente sordo.',
+    },
+    {
+      q: '¿De qué país son originarios Los Beatles?',
+      opts: ['Estados Unidos', 'Reino Unido', 'Irlanda', 'Australia'],
+      ans: 1,
+      ctx: 'Los Beatles se formaron en Liverpool (Inglaterra) en 1960. Sus miembros fueron John Lennon, Paul McCartney, George Harrison y Ringo Starr.',
+    },
+  ],
+  literatura: [
+    {
+      q: "¿Quién escribió 'Don Quijote de la Mancha'?",
+      opts: ['Lope de Vega', 'Miguel de Cervantes', 'Francisco de Quevedo', 'Calderón de la Barca'],
+      ans: 1,
+      ctx: "Miguel de Cervantes publicó la primera parte de 'Don Quijote' en 1605 y la segunda en 1615. Es considerada la primera novela moderna y la obra cumbre de la literatura en español.",
+    },
+    {
+      q: "¿En qué siglo vivió William Shakespeare?",
+      opts: ['XV-XVI', 'XVI-XVII', 'XVII-XVIII', 'XVIII-XIX'],
+      ans: 1,
+      ctx: 'Shakespeare vivió entre 1564 y 1616 (siglos XVI-XVII). Escribió 39 obras de teatro y 154 sonetos, incluyendo "Hamlet", "Macbeth" y "Romeo y Julieta".',
+    },
+    {
+      q: "¿Quién escribió 'Cien años de soledad'?",
+      opts: ['Mario Vargas Llosa', 'Jorge Luis Borges', 'Gabriel García Márquez', 'Julio Cortázar'],
+      ans: 2,
+      ctx: "Gabriel García Márquez publicó 'Cien años de soledad' en 1967. Es la obra emblemática del realismo mágico. Recibió el Premio Nobel de Literatura en 1982.",
+    },
+  ],
+  tecnologia: [
+    {
+      q: '¿Quién fundó Microsoft junto con Paul Allen?',
+      opts: ['Steve Jobs', 'Bill Gates', 'Larry Page', 'Mark Zuckerberg'],
+      ans: 1,
+      ctx: 'Bill Gates y Paul Allen fundaron Microsoft en 1975 en Albuquerque, Nuevo México. La empresa se trasladó a Redmond, Washington, en 1979.',
+    },
+    {
+      q: '¿Qué significa "HTTP"?',
+      opts: ['HyperText Transfer Protocol', 'High Transfer Text Protocol', 'HyperText Transport Process', 'Home Tool Transfer Protocol'],
+      ans: 0,
+      ctx: 'HTTP (HyperText Transfer Protocol) es el protocolo de la web, creado por Tim Berners-Lee en 1989. HTTPS añade cifrado TLS sobre HTTP.',
+    },
+    {
+      q: '¿En qué año se lanzó el primer iPhone?',
+      opts: ['2005', '2007', '2009', '2010'],
+      ans: 1,
+      ctx: 'El primer iPhone fue presentado por Steve Jobs el 9 de enero de 2007 y se lanzó al mercado el 29 de junio de ese año. Revolucionó el mercado de los smartphones.',
+    },
+  ],
+  mitologia: [
+    {
+      q: '¿Quién es el rey de los dioses en la mitología griega?',
+      opts: ['Apolo', 'Poseidón', 'Zeus', 'Hades'],
+      ans: 2,
+      ctx: 'Zeus es el rey del Olimpo, dios del cielo y del rayo. Su equivalente romano es Júpiter. Sus hermanos Poseidón y Hades gobiernan el mar y el inframundo respectivamente.',
+    },
+    {
+      q: '¿Cuál es el equivalente romano de la diosa griega Afrodita?',
+      opts: ['Diana', 'Venus', 'Juno', 'Minerva'],
+      ans: 1,
+      ctx: 'Venus es la diosa romana del amor y la belleza, equivalente a Afrodita en la mitología griega. El planeta Venus toma su nombre de ella.',
+    },
+    {
+      q: '¿Quién es el dios del trueno en la mitología nórdica?',
+      opts: ['Odín', 'Thor', 'Loki', 'Freyr'],
+      ans: 1,
+      ctx: 'Thor es el dios del trueno, hijo de Odín. Su martillo, Mjölnir, es uno de los símbolos más reconocibles de la mitología nórdica.',
+    },
+  ],
+  astronomia: [
+    {
+      q: '¿Cuál es el planeta más grande del sistema solar?',
+      opts: ['Saturno', 'Júpiter', 'Neptuno', 'Urano'],
+      ans: 1,
+      ctx: 'Júpiter es el mayor planeta del sistema solar, con una masa 318 veces la de la Tierra. Tiene al menos 95 lunas conocidas, siendo Ganímedes la mayor del sistema solar.',
+    },
+    {
+      q: '¿Qué galaxia contiene a nuestro sistema solar?',
+      opts: ['Andrómeda', 'Vía Láctea', 'Triángulo', 'Sombrero'],
+      ans: 1,
+      ctx: 'La Vía Láctea es una galaxia espiral barrada con unos 100.000 años luz de diámetro. Contiene entre 100.000 y 400.000 millones de estrellas.',
+    },
+    {
+      q: '¿Quién fue el primer ser humano en pisar la Luna?',
+      opts: ['Buzz Aldrin', 'Neil Armstrong', 'Yuri Gagarin', 'Michael Collins'],
+      ans: 1,
+      ctx: 'Neil Armstrong pisó la Luna el 20 de julio de 1969 durante la misión Apolo 11, pronunciando la frase «Es un pequeño paso para el hombre, un gran salto para la humanidad».',
+    },
+  ],
 };
 
 export const DAILY_QUESTION: Question = {
@@ -179,27 +339,51 @@ export const RANKING: RankingEntry[] = [
 ];
 
 export const CAT_COLORS: Record<Category, CategoryMeta> = {
-  historia:  { bg: '#2d1f0a', accent: '#e8a030', text: '#f5c060' },
-  geografia: { bg: '#0a1f2d', accent: '#30a8e8', text: '#60c5f5' },
-  ciencia:   { bg: '#0d2214', accent: '#2ec87a', text: '#60e09a' },
-  arte:      { bg: '#1f0a2d', accent: '#a030e8', text: '#c560f5' },
-  filosofia: { bg: '#2d0a18', accent: '#e83060', text: '#f56080' },
+  historia:   { bg: '#2d1f0a', accent: '#e8a030', text: '#f5c060' },
+  geografia:  { bg: '#0a1f2d', accent: '#30a8e8', text: '#60c5f5' },
+  ciencia:    { bg: '#0d2214', accent: '#2ec87a', text: '#60e09a' },
+  arte:       { bg: '#1f0a2d', accent: '#a030e8', text: '#c560f5' },
+  filosofia:  { bg: '#2d0a18', accent: '#e83060', text: '#f56080' },
+  deportes:   { bg: '#0a2d1a', accent: '#30e89a', text: '#60f5b5' },
+  biologia:   { bg: '#1a2d0a', accent: '#5ec830', text: '#90e060' },
+  cine:       { bg: '#2d2410', accent: '#e8c030', text: '#f5d860' },
+  musica:     { bg: '#2d0a22', accent: '#e83098', text: '#f560b0' },
+  literatura: { bg: '#2d1f10', accent: '#a87030', text: '#d8a060' },
+  tecnologia: { bg: '#0a1a2d', accent: '#3098e8', text: '#60b8f5' },
+  mitologia:  { bg: '#1f0a2d', accent: '#9830e8', text: '#b860f5' },
+  astronomia: { bg: '#0a2530', accent: '#30c8e8', text: '#60e0f5' },
 };
 
 export const CAT_ICONS: Record<Category, string> = {
-  historia:  '📜',
-  geografia: '🌍',
-  ciencia:   '⚗️',
-  arte:      '🎨',
-  filosofia: '🧠',
+  historia:   '📜',
+  geografia:  '🌍',
+  ciencia:    '⚗️',
+  arte:       '🎨',
+  filosofia:  '🧠',
+  deportes:   '⚽',
+  biologia:   '🧬',
+  cine:       '🎬',
+  musica:     '🎵',
+  literatura: '📚',
+  tecnologia: '💻',
+  mitologia:  '🏛️',
+  astronomia: '🪐',
 };
 
 export const CAT_NAMES: Record<Category, string> = {
-  historia:  'Historia',
-  geografia: 'Geografía',
-  ciencia:   'Ciencia',
-  arte:      'Arte',
-  filosofia: 'Filosofía',
+  historia:   'Historia',
+  geografia:  'Geografía',
+  ciencia:    'Ciencia',
+  arte:       'Arte',
+  filosofia:  'Filosofía',
+  deportes:   'Deportes',
+  biologia:   'Biología',
+  cine:       'Cine y series',
+  musica:     'Música',
+  literatura: 'Literatura',
+  tecnologia: 'Tecnología',
+  mitologia:  'Mitología',
+  astronomia: 'Astronomía',
 };
 
 export const ALL_CATEGORIES = Object.keys(QUESTIONS) as Category[];

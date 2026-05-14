@@ -1,4 +1,17 @@
-export type Category = 'historia' | 'geografia' | 'ciencia' | 'arte' | 'filosofia';
+export type Category =
+  | 'historia'
+  | 'geografia'
+  | 'ciencia'
+  | 'arte'
+  | 'filosofia'
+  | 'deportes'
+  | 'biologia'
+  | 'cine'
+  | 'musica'
+  | 'literatura'
+  | 'tecnologia'
+  | 'mitologia'
+  | 'astronomia';
 export type GameMode = 'daily' | 'speed' | 'learn';
 export type AnswerState = null | 'selected' | 'correct' | 'wrong';
 

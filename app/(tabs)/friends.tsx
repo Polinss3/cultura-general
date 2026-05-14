@@ -1,11 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { View, Text, ScrollView, Pressable, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { OptionBtn } from '@/components/OptionBtn';
 import { QUESTIONS } from '@/constants/questions';
-import { shuffle } from '@/lib/utils';
+import { fetchQuestions } from '@/lib/db';
+import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
+import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Question } from '@/types';
 
 // ─── Types ────────────────────────────────────────────────────
@@ -14,10 +16,19 @@ type Screen = 'modes' | 'pasa' | 'duelo' | 'survivor' | 'trivia';
 
 // ─── Helpers ──────────────────────────────────────────────────
 
-function buildPool(): Question[] {
+function buildLocal(): Question[] {
   const arr: Question[] = [];
   Object.values(QUESTIONS).forEach(qs => arr.push(...qs));
-  return shuffle(arr);
+  return arr;
+}
+
+async function buildFreshPool(): Promise<Question[]> {
+  const [remote, recent] = await Promise.all([
+    fetchQuestions(),
+    getRecentIds('friends'),
+  ]);
+  const source = remote.length > 0 ? remote : buildLocal();
+  return pickRandomFresh(source, recent, q => q.id, source.length);
 }
 
 const DURATION = 30;
@@ -151,7 +162,7 @@ function PasaGame({ onBack }: { onBack: () => void }) {
     setScores(new Array(names.length).fill(0));
     setAnsweredCounts(new Array(names.length).fill(0));
     setCurrentIdx(0);
-    setSharedQ(buildPool());
+    buildFreshPool().then(setSharedQ);
     setScreen('countdown');
   };
 
@@ -171,7 +182,7 @@ function PasaGame({ onBack }: { onBack: () => void }) {
     setScores(new Array(players.length).fill(0));
     setAnsweredCounts(new Array(players.length).fill(0));
     setCurrentIdx(0);
-    setSharedQ(buildPool());
+    buildFreshPool().then(setSharedQ);
     setScreen('countdown');
   };
 
@@ -275,16 +286,19 @@ function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone }:
     return () => clearTimeout(t);
   }, [timeLeft]);
 
+  const baseQ = questions.length > 0 ? questions[qIdx % questions.length] : undefined;
+  const q = useMemo(() => (baseQ ? shuffleQuestion(baseQ) : undefined), [baseQ, qIdx]);
+
   const handle = (i: number) => {
-    if (answered) return;
+    if (answered || !q) return;
     setSelected(i); setAnswered(true);
-    const q = questions[qIdx % questions.length];
     if (i === q.ans) setScore(s => s + 1);
     setTotal(t => t + 1);
+    if (q.id) pushSeen('friends', undefined, [q.id]);
     setTimeout(() => { setAnswered(false); setSelected(null); setQIdx(x => x + 1); }, 400);
   };
 
-  const q = questions[qIdx % questions.length];
+  if (!q) return null;
   const pct = timeLeft / DURATION;
   const timerColor = timeLeft > 10 ? '#30a8e8' : '#e83060';
   const getState = (i: number): AnswerState => {
@@ -396,7 +410,7 @@ function DueloGame({ onBack }: { onBack: () => void }) {
     setPlayers(names);
     setScores([0, 0]);
     setRound(0);
-    setQuestions(buildPool());
+    buildFreshPool().then(setQuestions);
     setScreen('playing');
   };
 
@@ -412,7 +426,7 @@ function DueloGame({ onBack }: { onBack: () => void }) {
   const replay = () => {
     setScores([0, 0]);
     setRound(0);
-    setQuestions(buildPool());
+    buildFreshPool().then(setQuestions);
     setScreen('playing');
   };
 
@@ -458,13 +472,18 @@ function DueloSetup({ onStart, onBack }: { onStart: (names: [string, string]) =>
   );
 }
 
-function DueloPlaying({ players, scores, round, question, onRoundEnd }: {
+function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEnd }: {
   players: [string, string]; scores: [number, number]; round: number;
   question: Question | undefined; onRoundEnd: (winner: 0 | 1) => void;
 }) {
   const [buzzed, setBuzzed] = useState<0 | 1 | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [done, setDone] = useState(false);
+
+  const question = useMemo(
+    () => (rawQuestion ? shuffleQuestion(rawQuestion) : undefined),
+    [rawQuestion],
+  );
 
   if (!question) return null;
 
@@ -479,6 +498,7 @@ function DueloPlaying({ players, scores, round, question, onRoundEnd }: {
     setDone(true);
     const correct = optIdx === question.ans;
     const winner: 0 | 1 = correct ? buzzed : (buzzed === 0 ? 1 : 0);
+    if (question.id) pushSeen('friends', undefined, [question.id]);
     setTimeout(() => onRoundEnd(winner), 1200);
   };
 
@@ -613,7 +633,8 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
   const [pendingAlive, setPendingAlive] = useState<boolean[]>([]);
 
   const currentPlayerIdx = aliveOrder[answeringPos];
-  const currentQ = questions[roundIdx % Math.max(questions.length, 1)];
+  const baseQ = questions[roundIdx % Math.max(questions.length, 1)];
+  const currentQ = useMemo(() => (baseQ ? shuffleQuestion(baseQ) : undefined), [baseQ, roundIdx]);
 
   const startGame = (names: string[]) => {
     const initial = new Array(names.length).fill(true);
@@ -621,7 +642,7 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
     setPlayers(names);
     setAlive(initial);
     setRoundIdx(0);
-    setQuestions(buildPool());
+    buildFreshPool().then(setQuestions);
     setAliveOrder(order);
     setAnsweringPos(0);
     setRoundAnswers({});
@@ -664,6 +685,7 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
   };
 
   const handleRevealNext = () => {
+    if (currentQ?.id) pushSeen('friends', undefined, [currentQ.id]);
     const newAlive = pendingAlive;
     setAlive(newAlive);
     const stillAlive = newAlive.filter(Boolean).length;
@@ -685,7 +707,7 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
     const order = players.map((_, i) => i);
     setAlive(initial);
     setRoundIdx(0);
-    setQuestions(buildPool());
+    buildFreshPool().then(setQuestions);
     setAliveOrder(order);
     setAnsweringPos(0);
     setRoundAnswers({});
@@ -941,7 +963,7 @@ function TriviaGame({ onBack }: { onBack: () => void }) {
     setScores([0, 0]);
     setCurrentTeam(0);
     setQuestionIdx(0);
-    setQuestions(buildPool());
+    buildFreshPool().then(setQuestions);
     setScreen('playing');
   };
 
@@ -966,7 +988,7 @@ function TriviaGame({ onBack }: { onBack: () => void }) {
     setScores([0, 0]);
     setCurrentTeam(0);
     setQuestionIdx(0);
-    setQuestions(buildPool());
+    buildFreshPool().then(setQuestions);
     setScreen('playing');
   };
 
@@ -1014,7 +1036,7 @@ function TriviaSetup({ onStart, onBack }: { onStart: (names: [string, string]) =
   );
 }
 
-function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question, onAnswer }: {
+function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: rawQuestion, onAnswer }: {
   teamNames: [string, string]; scores: [number, number]; currentTeam: 0 | 1;
   questionIdx: number; question: Question | undefined; onAnswer: (correct: boolean) => void;
 }) {
@@ -1023,12 +1045,18 @@ function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question, 
   const teamColors: [string, string] = ['#e83060', '#2ec87a'];
   const teamColor = teamColors[currentTeam];
 
+  const question = useMemo(
+    () => (rawQuestion ? shuffleQuestion(rawQuestion) : undefined),
+    [rawQuestion],
+  );
+
   if (!question) return null;
 
   const handle = (i: number) => {
     if (answered) return;
     setSelected(i);
     setAnswered(true);
+    if (question.id) pushSeen('friends', undefined, [question.id]);
     setTimeout(() => onAnswer(i === question.ans), 1000);
   };
 

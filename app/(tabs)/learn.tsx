@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -7,6 +7,8 @@ import { CategoryBadge } from '@/components/CategoryBadge';
 import { useAuth } from '@/hooks/useAuth';
 import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
 import { QUESTIONS, CAT_COLORS, CAT_ICONS, CAT_NAMES, ALL_CATEGORIES } from '@/constants/questions';
+import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
+import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Category, Question } from '@/types';
 
 type Difficulty = 'all' | 'easy' | 'medium' | 'hard';
@@ -49,12 +51,15 @@ export default function LearnScreen() {
     setShowCtx(false);
     setDifficulty('all');
 
-    fetchQuestions(cat).then(remote => {
-      const qs = remote.length > 0 ? remote : QUESTIONS[cat];
-      setAllQuestions(qs);
-      setQuestions(qs);
+    (async () => {
+      const remote = await fetchQuestions(cat);
+      const source = remote.length > 0 ? remote : QUESTIONS[cat];
+      const recent = await getRecentIds('learn', cat);
+      const ordered = pickRandomFresh(source, recent, q => q.id, source.length);
+      setAllQuestions(ordered);
+      setQuestions(ordered);
       setLoadingQ(false);
-    });
+    })();
   }, [cat]);
 
   // Refilter when difficulty changes
@@ -68,7 +73,9 @@ export default function LearnScreen() {
     setShowCtx(false);
   }, [difficulty]);
 
-  const q = questions[qIdx % Math.max(questions.length, 1)];
+  const baseQ = questions[qIdx % Math.max(questions.length, 1)];
+  // Shuffle options once per question (stable across re-renders of the same qIdx)
+  const q = useMemo(() => (baseQ ? shuffleQuestion(baseQ) : undefined), [baseQ, qIdx]);
 
   const handle = (i: number) => {
     if (answered || !q) return;
@@ -79,6 +86,9 @@ export default function LearnScreen() {
 
     if (user) {
       incrementProfileStats(user.id, 1, correct ? 1 : 0);
+    }
+    if (cat && q.id) {
+      pushSeen('learn', cat, [q.id]);
     }
   };
 
