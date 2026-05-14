@@ -42,14 +42,14 @@ export default function RootLayout() {
   // Handle password recovery deep links (culturalgeneral://update-password#access_token=...)
   useEffect(() => {
     const handleDeepLink = async (url: string) => {
-      if (!url.includes('update-password')) return;
       const fragment = url.split('#')[1];
       if (!fragment) return;
       const params = new URLSearchParams(fragment);
       const access_token = params.get('access_token');
       const refresh_token = params.get('refresh_token');
-      if (access_token && refresh_token) {
-        await supabase.auth.setSession({ access_token, refresh_token });
+      if (!access_token || !refresh_token) return;
+      await supabase.auth.setSession({ access_token, refresh_token });
+      if (url.includes('update-password')) {
         router.push('/(auth)/update-password');
       }
     };
