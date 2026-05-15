@@ -826,26 +826,77 @@ function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
   );
 }
 
+const SURVIVOR_TURN_SECONDS = 15;
+
 function SurvivorQuestion({ playerName, question, onAnswer }: {
   playerName: string; question: Question | undefined; onAnswer: (i: number) => void;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
+  const [secondsLeft, setSecondsLeft] = useState(SURVIVOR_TURN_SECONDS);
+  const answeredRef = useRef(false);
+
+  useEffect(() => {
+    answeredRef.current = false;
+    setSelected(null);
+    setSecondsLeft(SURVIVOR_TURN_SECONDS);
+
+    const interval = setInterval(() => {
+      setSecondsLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          if (!answeredRef.current) {
+            answeredRef.current = true;
+            // Timeout: report -1 as "no answer" so the player is eliminated.
+            setTimeout(() => onAnswer(-1), 0);
+          }
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [question?.id]);
+
   if (!question) return null;
 
   const handle = (i: number) => {
-    if (selected !== null) return;
+    if (selected !== null || answeredRef.current) return;
+    answeredRef.current = true;
     setSelected(i);
     setTimeout(() => onAnswer(i), 300);
   };
 
+  const danger = secondsLeft <= 5;
+  const timerColor = danger ? '#e83060' : '#e8a030';
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 24 }}>
-          <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(232,160,48,0.15)', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 18 }}>💀</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: 24 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 }}>
+            <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(232,160,48,0.15)', alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 18 }}>💀</Text>
+            </View>
+            <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }} numberOfLines={1}>{playerName}</Text>
           </View>
-          <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>{playerName}</Text>
+          <View style={{
+            flexDirection: 'row', alignItems: 'center', gap: 6,
+            backgroundColor: timerColor + '20', borderWidth: 1, borderColor: timerColor,
+            borderRadius: 99, paddingVertical: 4, paddingHorizontal: 12,
+          }}>
+            <Text style={{ fontSize: 14 }}>⏱</Text>
+            <Text style={{ color: timerColor, fontSize: 15, fontFamily: 'Outfit_800ExtraBold', minWidth: 22, textAlign: 'right' }}>
+              {secondsLeft}s
+            </Text>
+          </View>
+        </View>
+        <View style={{ height: 4, backgroundColor: '#1a1a1a', borderRadius: 2, marginBottom: 20, overflow: 'hidden' }}>
+          <View style={{
+            height: '100%',
+            width: `${(secondsLeft / SURVIVOR_TURN_SECONDS) * 100}%`,
+            backgroundColor: timerColor,
+          }} />
         </View>
         <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold', lineHeight: 26, marginBottom: 24 }}>{question.q}</Text>
         <View style={{ gap: 9 }}>
