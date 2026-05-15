@@ -147,7 +147,7 @@ export default function HomeScreen() {
                 </View>
               </View>
               <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
-                Geografía, historia, ciencia, arte o filosofía. Si fallas, te explicamos el contexto.
+                Historia, ciencia, arte, cine, música y mucho más. Si fallas, te explicamos el contexto.
               </Text>
               <View style={{ marginTop: 14 }}>
                 <View style={{ backgroundColor: '#2ec87a', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>

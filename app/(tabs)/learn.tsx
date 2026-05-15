@@ -12,6 +12,7 @@ import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Category, Question } from '@/types';
 
 type Difficulty = 'all' | 'easy' | 'medium' | 'hard';
+type LearnCat = Category | 'random';
 
 const DIFF_LABELS: Record<Difficulty, string> = {
   all: 'Todas',
@@ -22,6 +23,12 @@ const DIFF_LABELS: Record<Difficulty, string> = {
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
+const RANDOM_META = { bg: '#161616', accent: '#cfcfcf', text: '#f0f0f0' };
+const RANDOM_ICON = '🎲';
+const RANDOM_NAME = 'Aleatorio';
+
+const getMeta = (c: LearnCat) => (c === 'random' ? RANDOM_META : CAT_COLORS[c]);
+
 function filterByDifficulty(questions: Question[], diff: Difficulty): Question[] {
   if (diff === 'all') return questions;
   return questions.filter((q: any) => q.difficulty === diff);
@@ -29,7 +36,7 @@ function filterByDifficulty(questions: Question[], diff: Difficulty): Question[]
 
 export default function LearnScreen() {
   const { user } = useAuth();
-  const [cat, setCat] = useState<Category | null>(null);
+  const [cat, setCat] = useState<LearnCat | null>(null);
   const reportedRef = useRef(new Set<string>());
   const [difficulty, setDifficulty] = useState<Difficulty>('all');
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
@@ -52,8 +59,11 @@ export default function LearnScreen() {
     setDifficulty('all');
 
     (async () => {
-      const remote = await fetchQuestions(cat);
-      const source = remote.length > 0 ? remote : QUESTIONS[cat];
+      const remote = cat === 'random' ? await fetchQuestions() : await fetchQuestions(cat);
+      const fallback = cat === 'random'
+        ? ALL_CATEGORIES.flatMap(c => QUESTIONS[c])
+        : QUESTIONS[cat];
+      const source = remote.length > 0 ? remote : fallback;
       const recent = await getRecentIds('learn', cat);
       const ordered = pickRandomFresh(source, recent, q => q.id, source.length);
       setAllQuestions(ordered);
@@ -123,6 +133,20 @@ export default function LearnScreen() {
           </Text>
 
           <View style={{ gap: 10 }}>
+            <Pressable onPress={() => setCat('random')}>
+              <View style={{ backgroundColor: RANDOM_META.bg, borderWidth: 1, borderColor: RANDOM_META.accent + '30', borderRadius: 18, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                <Text style={{ fontSize: 28 }}>{RANDOM_ICON}</Text>
+                <View style={{ flex: 1 }}>
+                  <Text style={{ color: RANDOM_META.text, fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
+                    {RANDOM_NAME}
+                  </Text>
+                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>
+                    Preguntas de todas las temáticas
+                  </Text>
+                </View>
+                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 20 }}>›</Text>
+              </View>
+            </Pressable>
             {ALL_CATEGORIES.map(c => {
               const col = CAT_COLORS[c];
               const count = QUESTIONS[c].length;
@@ -151,7 +175,7 @@ export default function LearnScreen() {
 
   // ─ Loading
   if (loadingQ) {
-    const col = CAT_COLORS[cat];
+    const col = getMeta(cat);
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -163,7 +187,7 @@ export default function LearnScreen() {
 
   if (!q) return null;
 
-  const col = CAT_COLORS[cat];
+  const col = getMeta(cat);
   const correct = selected === q.ans;
   const isLast = qIdx % questions.length === questions.length - 1;
 
@@ -198,7 +222,16 @@ export default function LearnScreen() {
               <Pressable onPress={handleReport} style={{ padding: 4 }}>
                 <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 18 }}>⚑</Text>
               </Pressable>
-              <CategoryBadge cat={cat} small />
+              {cat === 'random' && q.category ? (
+                <CategoryBadge cat={q.category} small />
+              ) : cat === 'random' ? (
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: RANDOM_META.bg, paddingVertical: 3, paddingHorizontal: 8, borderRadius: 99, borderWidth: 1, borderColor: RANDOM_META.accent + '30' }}>
+                  <Text style={{ fontSize: 11 }}>{RANDOM_ICON}</Text>
+                  <Text style={{ color: RANDOM_META.text, fontSize: 11, fontFamily: 'Outfit_600SemiBold' }}>{RANDOM_NAME}</Text>
+                </View>
+              ) : (
+                <CategoryBadge cat={cat} small />
+              )}
             </View>
           </View>
 

@@ -3,12 +3,16 @@ import { CAT_COLORS, CAT_ICONS, CAT_NAMES } from '@/constants/questions';
 import { Category } from '@/types';
 
 interface Props {
-  cat: Category;
+  cat: Category | string;
   small?: boolean;
 }
 
+const FALLBACK_META = { bg: '#1a1a1a', accent: '#888888', text: '#cccccc' };
+
 export function CategoryBadge({ cat, small }: Props) {
-  const c = CAT_COLORS[cat];
+  const c = CAT_COLORS[cat as Category] ?? FALLBACK_META;
+  const icon = CAT_ICONS[cat as Category] ?? '❓';
+  const name = CAT_NAMES[cat as Category] ?? String(cat);
   return (
     <View style={{
       flexDirection: 'row',
@@ -22,9 +26,9 @@ export function CategoryBadge({ cat, small }: Props) {
       borderColor: c.accent + '30',
       alignSelf: 'flex-start',
     }}>
-      <Text style={{ fontSize: small ? 11 : 12 }}>{CAT_ICONS[cat]}</Text>
+      <Text style={{ fontSize: small ? 11 : 12 }}>{icon}</Text>
       <Text style={{ color: c.text, fontSize: small ? 11 : 12, fontFamily: 'Outfit_600SemiBold' }}>
-        {CAT_NAMES[cat]}
+        {name}
       </Text>
     </View>
   );
