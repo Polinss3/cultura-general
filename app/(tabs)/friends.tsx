@@ -12,7 +12,7 @@ import { AnswerState, Question } from '@/types';
 
 // ─── Types ────────────────────────────────────────────────────
 
-type Screen = 'modes' | 'pasa' | 'duelo' | 'survivor' | 'trivia';
+type Screen = 'modes' | 'pasa' | 'duelo' | 'survivor' | 'trivia' | 'marcador';
 
 // ─── Helpers ──────────────────────────────────────────────────
 
@@ -67,6 +67,13 @@ function ModesScreen({ onSelect }: { onSelect: (s: Screen) => void }) {
       tag: 'CLÁSICO', title: 'Pasa el Móvil',
       desc: 'Cada jugador hace 30 segundos con las mismas preguntas. ¿Quién responde más?',
       players: '2-8 jugadores', btn: 'Jugar →',
+    },
+    {
+      id: 'marcador' as Screen,
+      icon: '🎯', color: '#a060e8', bg: '#1a0d2d', border: 'rgba(160,96,232,0.3)',
+      tag: 'ACUMULA', title: 'Marcador',
+      desc: 'Preguntas random por turnos. Sin tiempo, sin rondas, sin eliminaciones. ¿Quién acierta más?',
+      players: '2-3 jugadores', btn: 'Jugar →',
     },
     {
       id: 'duelo' as Screen,
@@ -1207,6 +1214,356 @@ function TriviaResults({ teamNames, scores, onReplay, onBack }: {
 }
 
 // ══════════════════════════════════════════════════════════════
+// MARCADOR — preguntas random por turnos, sin tiempo ni rondas
+// ══════════════════════════════════════════════════════════════
+
+const MARCADOR_COLOR = '#a060e8';
+const MARCADOR_GRAD: [string, string] = ['#a060e8', '#6020b0'];
+
+function MarcadorGame({ onBack }: { onBack: () => void }) {
+  type MS = 'setup' | 'ready' | 'question' | 'feedback' | 'results';
+  const [screen, setScreen] = useState<MS>('setup');
+  const [players, setPlayers] = useState<string[]>([]);
+  const [scores, setScores] = useState<number[]>([]);
+  const [turns, setTurns] = useState<number[]>([]);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [qIdx, setQIdx] = useState(0);
+  const [lastCorrect, setLastCorrect] = useState<boolean>(false);
+  const [lastSelected, setLastSelected] = useState<number>(-1);
+
+  const baseQ = questions.length > 0 ? questions[qIdx % questions.length] : undefined;
+  const currentQ = useMemo(() => (baseQ ? shuffleQuestion(baseQ) : undefined), [baseQ, qIdx]);
+
+  const startGame = (names: string[]) => {
+    setPlayers(names);
+    setScores(new Array(names.length).fill(0));
+    setTurns(new Array(names.length).fill(0));
+    setCurrentIdx(0);
+    setQIdx(0);
+    buildFreshPool().then(setQuestions);
+    setScreen('ready');
+  };
+
+  const handleAnswer = (i: number) => {
+    if (!currentQ) return;
+    const correct = i === currentQ.ans;
+    setLastCorrect(correct);
+    setLastSelected(i);
+    setScores(s => { const n = [...s]; if (correct) n[currentIdx] = n[currentIdx] + 1; return n; });
+    setTurns(t => { const n = [...t]; n[currentIdx] = n[currentIdx] + 1; return n; });
+    if (currentQ.id) pushSeen('friends', undefined, [currentQ.id]);
+    setScreen('feedback');
+  };
+
+  const handleNextPlayer = () => {
+    setCurrentIdx(i => (i + 1) % players.length);
+    setQIdx(i => i + 1);
+    setLastSelected(-1);
+    setScreen('ready');
+  };
+
+  const handleFinish = () => setScreen('results');
+
+  const replay = () => {
+    setScores(new Array(players.length).fill(0));
+    setTurns(new Array(players.length).fill(0));
+    setCurrentIdx(0);
+    setQIdx(0);
+    buildFreshPool().then(setQuestions);
+    setScreen('ready');
+  };
+
+  if (screen === 'setup') return <MarcadorSetup onStart={startGame} onBack={onBack} />;
+  if (screen === 'ready') return (
+    <MarcadorReady playerName={players[currentIdx]} players={players} scores={scores}
+      currentIdx={currentIdx} onReady={() => setScreen('question')} onFinish={handleFinish} />
+  );
+  if (screen === 'question') return (
+    <MarcadorQuestion playerName={players[currentIdx]} question={currentQ} onAnswer={handleAnswer} onFinish={handleFinish} />
+  );
+  if (screen === 'feedback') return (
+    <MarcadorFeedback playerName={players[currentIdx]} question={currentQ} selected={lastSelected}
+      correct={lastCorrect} players={players} scores={scores} onNext={handleNextPlayer} onFinish={handleFinish} />
+  );
+  if (screen === 'results') return (
+    <MarcadorResults players={players} scores={scores} turns={turns} onReplay={replay} onBack={onBack} />
+  );
+  return null;
+}
+
+function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void; onBack: () => void }) {
+  const [players, setPlayers] = useState(['', '']);
+  const addPlayer = () => { if (players.length < 3) setPlayers(p => [...p, '']); };
+  const removePlayer = (i: number) => { if (players.length > 2) setPlayers(p => p.filter((_, idx) => idx !== i)); };
+  const updatePlayer = (i: number, name: string) => { setPlayers(p => { const n = [...p]; n[i] = name; return n; }); };
+  const handleStart = () => onStart(players.map((p, i) => p.trim() || `Jugador ${i + 1}`));
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
+        <BackBtn onPress={onBack} />
+        <Text style={{ fontSize: 36, marginBottom: 8 }}>🎯</Text>
+        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>Marcador</Text>
+        <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
+          Por turnos, sin tiempo, sin eliminaciones. Solo a sumar puntos.
+        </Text>
+        <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+          Jugadores ({players.length}/3)
+        </Text>
+        <View style={{ gap: 10, marginBottom: 16 }}>
+          {players.map((p, i) => (
+            <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+              <View style={{ width: 32, height: 32, borderRadius: 10, backgroundColor: 'rgba(160,96,232,0.15)', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ color: MARCADOR_COLOR, fontSize: 14, fontFamily: 'Outfit_700Bold' }}>{i + 1}</Text>
+              </View>
+              <TextInput value={p} onChangeText={t => updatePlayer(i, t)} placeholder={`Jugador ${i + 1}`}
+                placeholderTextColor="rgba(255,255,255,0.25)"
+                style={{ flex: 1, backgroundColor: '#151515', color: '#fff', borderRadius: 12, padding: 14, fontFamily: 'Outfit_400Regular', fontSize: 15, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }} />
+              {players.length > 2 && (
+                <Pressable onPress={() => removePlayer(i)} style={{ padding: 8 }}>
+                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 20 }}>×</Text>
+                </Pressable>
+              )}
+            </View>
+          ))}
+        </View>
+        {players.length < 3 && (
+          <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', borderRadius: 12, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_500Medium' }}>+ Añadir jugador</Text>
+          </Pressable>
+        )}
+        <PrimaryBtn label="¡Empezar! →" onPress={handleStart} colors={MARCADOR_GRAD} />
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+function MarcadorScoreboard({ players, scores, currentIdx }: {
+  players: string[]; scores: number[]; currentIdx: number;
+}) {
+  return (
+    <View style={{ flexDirection: 'row', gap: 8 }}>
+      {players.map((name, i) => {
+        const active = i === currentIdx;
+        return (
+          <View key={i} style={{
+            flex: 1, alignItems: 'center', paddingVertical: 10, paddingHorizontal: 6,
+            backgroundColor: active ? 'rgba(160,96,232,0.12)' : '#151515',
+            borderWidth: 1, borderColor: active ? MARCADOR_COLOR : 'transparent',
+            borderRadius: 12,
+          }}>
+            <Text numberOfLines={1} style={{
+              color: active ? MARCADOR_COLOR : 'rgba(255,255,255,0.5)',
+              fontSize: 12, fontFamily: 'Outfit_600SemiBold', marginBottom: 2,
+            }}>{name}</Text>
+            <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold' }}>{scores[i]}</Text>
+          </View>
+        );
+      })}
+    </View>
+  );
+}
+
+function MarcadorReady({ playerName, players, scores, currentIdx, onReady, onFinish }: {
+  playerName: string; players: string[]; scores: number[]; currentIdx: number;
+  onReady: () => void; onFinish: () => void;
+}) {
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, fontFamily: 'Outfit_600SemiBold' }}>MARCADOR 🎯</Text>
+          <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Terminar 🏁</Text>
+          </Pressable>
+        </View>
+
+        <MarcadorScoreboard players={players} scores={scores} currentIdx={currentIdx} />
+
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 24 }}>
+          <Text style={{ fontSize: 56, marginBottom: 16 }}>🎯</Text>
+          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>
+            Le toca a
+          </Text>
+          <Text style={{ color: '#fff', fontSize: 32, fontFamily: 'Outfit_800ExtraBold', textAlign: 'center', marginBottom: 8 }}>
+            {playerName}
+          </Text>
+          <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', textAlign: 'center', marginBottom: 32 }}>
+            Pasa el móvil a {playerName}
+          </Text>
+        </View>
+
+        <PrimaryBtn label="¡Estoy listo! →" onPress={onReady} colors={MARCADOR_GRAD} />
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function MarcadorQuestion({ playerName, question, onAnswer, onFinish }: {
+  playerName: string; question: Question | undefined; onAnswer: (i: number) => void; onFinish: () => void;
+}) {
+  const [selected, setSelected] = useState<number | null>(null);
+
+  useEffect(() => { setSelected(null); }, [question?.id]);
+
+  if (!question) return null;
+
+  const handle = (i: number) => {
+    if (selected !== null) return;
+    setSelected(i);
+    setTimeout(() => onAnswer(i), 250);
+  };
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 }}>
+            <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(160,96,232,0.15)', alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 18 }}>🎯</Text>
+            </View>
+            <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }} numberOfLines={1}>{playerName}</Text>
+          </View>
+          <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Terminar 🏁</Text>
+          </Pressable>
+        </View>
+        <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold', lineHeight: 26, marginBottom: 24 }}>{question.q}</Text>
+        <View style={{ gap: 9 }}>
+          {question.opts.map((opt, i) => (
+            <OptionBtn key={i} text={opt} letter={LETTERS[i]}
+              state={selected === null ? null : i === selected ? 'selected' : null}
+              onPress={() => handle(i)} />
+          ))}
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function MarcadorFeedback({ playerName, question, selected, correct, players, scores, onNext, onFinish }: {
+  playerName: string; question: Question | undefined; selected: number; correct: boolean;
+  players: string[]; scores: number[]; onNext: () => void; onFinish: () => void;
+}) {
+  if (!question) return null;
+  const getState = (i: number): AnswerState => {
+    if (i === question.ans) return 'correct';
+    if (i === selected) return 'wrong';
+    return null;
+  };
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+          <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }} numberOfLines={1}>{playerName}</Text>
+          <View style={{
+            paddingVertical: 4, paddingHorizontal: 12, borderRadius: 99,
+            backgroundColor: correct ? 'rgba(46,200,122,0.12)' : 'rgba(232,48,96,0.12)',
+            borderWidth: 1, borderColor: correct ? '#2ec87a' : '#e83060',
+          }}>
+            <Text style={{ color: correct ? '#2ec87a' : '#e83060', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>
+              {correct ? '✓ Correcto · +1' : '✗ Incorrecto'}
+            </Text>
+          </View>
+        </View>
+
+        <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold', lineHeight: 24, marginBottom: 16 }}>{question.q}</Text>
+        <View style={{ gap: 9, marginBottom: 16 }}>
+          {question.opts.map((opt, i) => (
+            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => {}} />
+          ))}
+        </View>
+
+        {question.ctx && (
+          <View style={{
+            padding: 14, borderRadius: 14, marginBottom: 16,
+            backgroundColor: 'rgba(160,96,232,0.08)',
+            borderWidth: 1, borderColor: 'rgba(160,96,232,0.2)',
+          }}>
+            <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
+              {question.ctx}
+            </Text>
+          </View>
+        )}
+
+        <View style={{ marginBottom: 16 }}>
+          <MarcadorScoreboard players={players} scores={scores} currentIdx={-1} />
+        </View>
+
+        <View style={{ gap: 10 }}>
+          <PrimaryBtn label="Siguiente jugador →" onPress={onNext} colors={MARCADOR_GRAD} />
+          <Pressable onPress={onFinish} style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>Terminar partida 🏁</Text>
+          </Pressable>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
+  players: string[]; scores: number[]; turns: number[]; onReplay: () => void; onBack: () => void;
+}) {
+  const totalTurns = turns.reduce((a, b) => a + b, 0);
+  const ranked = players
+    .map((name, i) => ({ name, score: scores[i], turns: turns[i] }))
+    .sort((a, b) => b.score - a.score);
+  const tied = ranked.length > 1 && ranked[0].score === ranked[1].score;
+  const medals = ['🥇', '🥈', '🥉'];
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
+        <View style={{ alignItems: 'center', marginBottom: 32 }}>
+          <Text style={{ fontSize: 56, marginBottom: 8 }}>{tied ? '🤝' : '🏆'}</Text>
+          <Text style={{ color: '#fff', fontSize: 26, fontFamily: 'Outfit_800ExtraBold', textAlign: 'center' }}>
+            {tied ? '¡Empate!' : `¡Gana ${ranked[0].name}!`}
+          </Text>
+          <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 4 }}>
+            {totalTurns} preguntas jugadas
+          </Text>
+        </View>
+
+        <View style={{ gap: 8, marginBottom: 28 }}>
+          {ranked.map((p, i) => {
+            const top = i === 0 && !tied;
+            const accuracy = p.turns > 0 ? Math.round((p.score / p.turns) * 100) : 0;
+            return (
+              <View key={p.name} style={{
+                flexDirection: 'row', alignItems: 'center', gap: 12,
+                backgroundColor: top ? 'rgba(160,96,232,0.08)' : '#151515',
+                borderWidth: 1, borderColor: top ? MARCADOR_COLOR : 'transparent',
+                borderRadius: 14, padding: 14,
+              }}>
+                <Text style={{ fontSize: 22, width: 28 }}>{i < 3 ? medals[i] : `${i + 1}`}</Text>
+                <View style={{ width: 38, height: 38, borderRadius: 10, backgroundColor: top ? MARCADOR_COLOR : '#222', alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{p.name[0]?.toUpperCase() ?? '?'}</Text>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={{ color: top ? MARCADOR_COLOR : '#fff', fontSize: 16, fontFamily: top ? 'Outfit_700Bold' : 'Outfit_500Medium' }}>{p.name}</Text>
+                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>
+                    {p.turns} respondidas · {accuracy}% acierto
+                  </Text>
+                </View>
+                <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold' }}>{p.score}</Text>
+              </View>
+            );
+          })}
+        </View>
+
+        <View style={{ gap: 10 }}>
+          <PrimaryBtn label="Revancha 🔄" onPress={onReplay} colors={MARCADOR_GRAD} />
+          <Pressable onPress={onBack} style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Volver a modos</Text>
+          </Pressable>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+// ══════════════════════════════════════════════════════════════
 // MAIN
 // ══════════════════════════════════════════════════════════════
 
@@ -1218,5 +1575,6 @@ export default function FriendsScreen() {
   if (screen === 'duelo') return <DueloGame onBack={() => setScreen('modes')} />;
   if (screen === 'survivor') return <SurvivorGame onBack={() => setScreen('modes')} />;
   if (screen === 'trivia') return <TriviaGame onBack={() => setScreen('modes')} />;
+  if (screen === 'marcador') return <MarcadorGame onBack={() => setScreen('modes')} />;
   return null;
 }
