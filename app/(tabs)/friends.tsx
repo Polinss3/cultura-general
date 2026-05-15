@@ -513,46 +513,49 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
   const bgs = ['#2d0a18', '#0a1f2d'];
 
   if (buzzed === null) {
-    return (
-      <View style={{ flex: 1, backgroundColor: '#111' }}>
-        {/* Player 1 — top, rotated */}
-        <Pressable onPress={() => handleBuzz(0)} style={{ flex: 1, backgroundColor: bgs[0], alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          <View style={{ transform: [{ rotate: '180deg' }], alignItems: 'center' }}>
-            <View style={{ backgroundColor: colors[0] + '20', borderRadius: 99, paddingVertical: 16, paddingHorizontal: 32, borderWidth: 2, borderColor: colors[0] }}>
-              <Text style={{ color: colors[0], fontSize: 22, fontFamily: 'Outfit_800ExtraBold' }}>⚡ BUZZEAR</Text>
-            </View>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold', marginTop: 12 }}>
-              {players[0]} · {scores[0]} pts
-            </Text>
-          </View>
-        </Pressable>
-
-        {/* Center strip: round info + question */}
-        <View style={{ paddingHorizontal: 20, paddingVertical: 14, backgroundColor: '#0a0a0a', borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#222' }}>
-          <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, fontFamily: 'Outfit_600SemiBold', textAlign: 'center', letterSpacing: 1, marginBottom: 6 }}>
+    const Side = ({ player, rotated }: { player: 0 | 1; rotated: boolean }) => (
+      <Pressable
+        onPress={() => handleBuzz(player)}
+        style={{ flex: 1, backgroundColor: bgs[player] }}
+      >
+        <View style={{
+          flex: 1, alignItems: 'center', justifyContent: 'center',
+          padding: 24, gap: 18,
+          transform: [{ rotate: rotated ? '180deg' : '0deg' }],
+        }}>
+          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1 }}>
             RONDA {round + 1}/{DUELO_ROUNDS}
           </Text>
-          <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_700Bold', textAlign: 'center', lineHeight: 22 }}>
+          <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold', textAlign: 'center', lineHeight: 24 }}>
             {question.q}
           </Text>
-        </View>
-
-        {/* Player 2 — bottom, normal */}
-        <Pressable onPress={() => handleBuzz(1)} style={{ flex: 1, backgroundColor: bgs[1], alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          <View style={{ backgroundColor: colors[1] + '20', borderRadius: 99, paddingVertical: 16, paddingHorizontal: 32, borderWidth: 2, borderColor: colors[1] }}>
-            <Text style={{ color: colors[1], fontSize: 22, fontFamily: 'Outfit_800ExtraBold' }}>⚡ BUZZEAR</Text>
+          <View style={{ backgroundColor: colors[player] + '20', borderRadius: 99, paddingVertical: 16, paddingHorizontal: 32, borderWidth: 2, borderColor: colors[player] }}>
+            <Text style={{ color: colors[player], fontSize: 22, fontFamily: 'Outfit_800ExtraBold' }}>⚡ BUZZEAR</Text>
           </View>
-          <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold', marginTop: 12 }}>
-            {players[1]} · {scores[1]} pts
+          <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>
+            {players[player]} · {scores[player]} pts
           </Text>
-        </Pressable>
+        </View>
+      </Pressable>
+    );
+
+    return (
+      <View style={{ flex: 1, backgroundColor: '#111' }}>
+        <Side player={0} rotated />
+        <View style={{ height: 1, backgroundColor: '#222' }} />
+        <Side player={1} rotated={false} />
       </View>
     );
   }
 
+  // After buzz: question hidden, options oriented toward whoever buzzed.
+  const rotated = buzzed === 0;
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
-      <View style={{ flex: 1, padding: 20 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top', 'bottom']}>
+      <View style={{
+        flex: 1, padding: 20,
+        transform: [{ rotate: rotated ? '180deg' : '0deg' }],
+      }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
             Ronda {round + 1}/{DUELO_ROUNDS}
@@ -564,7 +567,9 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
             {scores[0]} – {scores[1]}
           </Text>
         </View>
-        <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold', lineHeight: 26, marginBottom: 20 }}>{question.q}</Text>
+        <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 13, fontFamily: 'Outfit_600SemiBold', textAlign: 'center', marginBottom: 20, letterSpacing: 0.5 }}>
+          Elige la respuesta correcta
+        </Text>
         <View style={{ gap: 9 }}>
           {question.opts.map((opt, i) => (
             <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handleAnswer(i)} />

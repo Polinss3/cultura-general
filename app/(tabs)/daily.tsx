@@ -42,8 +42,15 @@ function timeUntilMidnight(): string {
 }
 
 function RankRowView({
-  position, name, sub, value, isMe,
-}: { position: number; name: string; sub: string; value: string; isMe: boolean }) {
+  position, name, sub, value, isMe, badge,
+}: {
+  position: number;
+  name: string;
+  sub: string;
+  value: string;
+  isMe: boolean;
+  badge?: { text: string; color: string; bg: string };
+}) {
   return (
     <View style={{
       flexDirection: 'row', alignItems: 'center', gap: 12,
@@ -70,9 +77,29 @@ function RankRowView({
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>{sub}</Text>
       </View>
+      {badge && (
+        <View style={{
+          paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8,
+          backgroundColor: badge.bg, marginRight: 6,
+        }}>
+          <Text style={{ color: badge.color, fontSize: 12, fontFamily: 'Outfit_700Bold' }}>
+            {badge.text}
+          </Text>
+        </View>
+      )}
       <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{value}</Text>
     </View>
   );
+}
+
+function formatTime(ms: number | null): string {
+  if (ms === null || ms < 0) return '—';
+  if (ms < 1000) return `${ms}ms`;
+  const s = ms / 1000;
+  if (s < 60) return `${s.toFixed(s < 10 ? 1 : 0)}s`;
+  const m = Math.floor(s / 60);
+  const rs = Math.round(s - m * 60);
+  return `${m}m ${rs}s`;
 }
 
 export default function DailyScreen() {
@@ -90,6 +117,7 @@ export default function DailyScreen() {
   const [globalRanking, setGlobalRanking] = useState<GlobalRow[]>([]);
   const [friendRanking, setFriendRanking] = useState<RankRow[]>([]);
   const loadedTabs = useRef(new Set<RankingTab>());
+  const questionStartAt = useRef<number>(0);
 
   useEffect(() => {
     if (!user) return;
@@ -132,12 +160,14 @@ export default function DailyScreen() {
       loadedTabs.current.add('daily');
       setPhase('ranking');
     } else {
+      questionStartAt.current = Date.now();
       setPhase('question');
     }
   };
 
   const handle = async (i: number) => {
     if (selected !== null || !question || !user) return;
+    const elapsedMs = Math.max(0, Date.now() - questionStartAt.current);
     setSelected(i);
     const correct = i === question.ans;
     setIsCorrect(correct);
@@ -148,7 +178,7 @@ export default function DailyScreen() {
       if (question.id) {
         // Translate display-index back to original (DB) index for consistency
         const originalIdx = question.originalIndexMap[i] ?? i;
-        await saveDailyAnswer(user.id, question.id, originalIdx, correct);
+        await saveDailyAnswer(user.id, question.id, originalIdx, correct, elapsedMs);
       }
       const r = await fetchDailyRanking();
       setDailyRanking(r);
@@ -269,8 +299,14 @@ export default function DailyScreen() {
           {rankingTab === 'daily' && (
             <RankingList
               items={dailyRanking.map((p, i) => ({
-                position: i, name: p.username, sub: `🔥 ${p.streak} días`,
-                value: String(p.score), isMe: p.userId === user?.id,
+                position: i,
+                name: p.username,
+                sub: `🔥 ${p.streak} días`,
+                value: formatTime(p.timeMs),
+                isMe: p.userId === user?.id,
+                badge: p.isCorrect
+                  ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
+                  : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
               }))}
               emptyText="¡Eres el primero en responder hoy!"
             />
@@ -313,8 +349,14 @@ export default function DailyScreen() {
               </View> :
               <RankingList
                 items={friendRanking.map((p, i) => ({
-                  position: i, name: p.username, sub: `🔥 ${p.streak} días`,
-                  value: String(p.score), isMe: p.userId === user?.id,
+                  position: i,
+                  name: p.username,
+                  sub: `🔥 ${p.streak} días`,
+                  value: formatTime(p.timeMs),
+                  isMe: p.userId === user?.id,
+                  badge: p.isCorrect
+                    ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
+                    : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
                 }))}
                 emptyText="Ningún amigo ha respondido hoy."
               />
@@ -393,8 +435,17 @@ export default function DailyScreen() {
   );
 }
 
+type RankItem = {
+  position: number;
+  name: string;
+  sub: string;
+  value: string;
+  isMe: boolean;
+  badge?: { text: string; color: string; bg: string };
+};
+
 function RankingList({ items, emptyText }: {
-  items: { position: number; name: string; sub: string; value: string; isMe: boolean }[];
+  items: RankItem[];
   emptyText: string;
 }) {
   if (items.length === 0) {
@@ -407,7 +458,7 @@ function RankingList({ items, emptyText }: {
   return (
     <View style={{ gap: 8 }}>
       {items.map(item => (
-        <RankRowView key={item.position} {...item} />
+        <RankRowView key={`${item.position}-${item.name}`} {...item} />
       ))}
     </View>
   );
