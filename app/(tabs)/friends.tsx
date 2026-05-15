@@ -73,7 +73,7 @@ function ModesScreen({ onSelect }: { onSelect: (s: Screen) => void }) {
       icon: '🎯', color: '#a060e8', bg: '#1a0d2d', border: 'rgba(160,96,232,0.3)',
       tag: 'ACUMULA', title: 'Marcador',
       desc: 'Preguntas random por turnos. Sin tiempo, sin rondas, sin eliminaciones. ¿Quién acierta más?',
-      players: '2-3 jugadores', btn: 'Jugar →',
+      players: '2-8 jugadores', btn: 'Jugar →',
     },
     {
       id: 'duelo' as Screen,
@@ -1294,7 +1294,7 @@ function MarcadorGame({ onBack }: { onBack: () => void }) {
 
 function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void; onBack: () => void }) {
   const [players, setPlayers] = useState(['', '']);
-  const addPlayer = () => { if (players.length < 3) setPlayers(p => [...p, '']); };
+  const addPlayer = () => { if (players.length < 8) setPlayers(p => [...p, '']); };
   const removePlayer = (i: number) => { if (players.length > 2) setPlayers(p => p.filter((_, idx) => idx !== i)); };
   const updatePlayer = (i: number, name: string) => { setPlayers(p => { const n = [...p]; n[i] = name; return n; }); };
   const handleStart = () => onStart(players.map((p, i) => p.trim() || `Jugador ${i + 1}`));
@@ -1309,7 +1309,7 @@ function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
           Por turnos, sin tiempo, sin eliminaciones. Solo a sumar puntos.
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
-          Jugadores ({players.length}/3)
+          Jugadores ({players.length}/8)
         </Text>
         <View style={{ gap: 10, marginBottom: 16 }}>
           {players.map((p, i) => (
@@ -1328,7 +1328,7 @@ function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
             </View>
           ))}
         </View>
-        {players.length < 3 && (
+        {players.length < 8 && (
           <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', borderRadius: 12, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_500Medium' }}>+ Añadir jugador</Text>
           </Pressable>
