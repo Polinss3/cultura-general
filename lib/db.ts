@@ -139,6 +139,7 @@ export async function saveDailyAnswer(
   questionId: string,
   selectedIdx: number,
   isCorrect: boolean,
+  timeMs: number,
 ): Promise<void> {
   const score = isCorrect ? 100 : 0;
   const date = todayStr();
@@ -152,7 +153,14 @@ export async function saveDailyAnswer(
       mode: 'daily',
     }),
     supabase.from('daily_rankings').upsert(
-      { user_id: userId, date, score },
+      {
+        user_id: userId,
+        date,
+        score,
+        is_correct: isCorrect,
+        time_ms: timeMs,
+        answered_at: new Date().toISOString(),
+      },
       { onConflict: 'user_id,date' },
     ),
   ]);
@@ -163,22 +171,53 @@ export async function saveDailyAnswer(
 
 // ─── Rankings ─────────────────────────────────────────────────
 
-export type RankRow = { userId: string; username: string; score: number; streak: number };
+export type RankRow = {
+  userId: string;
+  username: string;
+  score: number;
+  streak: number;
+  isCorrect: boolean;
+  timeMs: number | null;
+};
 
 export async function fetchDailyRanking(): Promise<RankRow[]> {
-  const { data } = await supabase
+  const { data: rows } = await supabase
     .from('daily_rankings')
-    .select('user_id, score, profiles(username, streak)')
+    .select('user_id, score, is_correct, time_ms, answered_at')
     .eq('date', todayStr())
-    .order('score', { ascending: false })
     .limit(50);
 
-  return (data ?? []).map(r => ({
-    userId: r.user_id,
-    username: (r.profiles as any)?.username ?? 'Anónimo',
-    score: r.score,
-    streak: (r.profiles as any)?.streak ?? 0,
-  }));
+  if (!rows || rows.length === 0) return [];
+
+  const userIds = rows.map(r => r.user_id);
+  const { data: profiles } = await supabase
+    .from('profiles')
+    .select('id, username, streak')
+    .in('id', userIds);
+
+  const profileMap = new Map(
+    (profiles ?? []).map(p => [p.id, p]),
+  );
+
+  return rows
+    .map(r => {
+      const p = profileMap.get(r.user_id) as any;
+      return {
+        userId: r.user_id,
+        username: p?.username ?? 'Anónimo',
+        score: r.score ?? 0,
+        streak: p?.streak ?? 0,
+        isCorrect: r.is_correct ?? r.score > 0,
+        timeMs: r.time_ms ?? null,
+      };
+    })
+    .sort((a, b) => {
+      // Correct first; within each group, fastest time first.
+      if (a.isCorrect !== b.isCorrect) return a.isCorrect ? -1 : 1;
+      const at = a.timeMs ?? Number.MAX_SAFE_INTEGER;
+      const bt = b.timeMs ?? Number.MAX_SAFE_INTEGER;
+      return at - bt;
+    });
 }
 
 export type WeeklyRow = { userId: string; username: string; streak: number; weekScore: number };
@@ -229,19 +268,41 @@ export async function fetchFriendDailyRanking(userId: string): Promise<RankRow[]
   const friendIds = await getFriendIds(userId);
   const allIds = [...friendIds, userId];
 
-  const { data } = await supabase
+  const { data: rows } = await supabase
     .from('daily_rankings')
-    .select('user_id, score, profiles(username, streak)')
+    .select('user_id, score, is_correct, time_ms, answered_at')
     .eq('date', todayStr())
-    .in('user_id', allIds)
-    .order('score', { ascending: false });
+    .in('user_id', allIds);
 
-  return (data ?? []).map(r => ({
-    userId: r.user_id,
-    username: (r.profiles as any)?.username ?? 'Anónimo',
-    score: r.score,
-    streak: (r.profiles as any)?.streak ?? 0,
-  }));
+  if (!rows || rows.length === 0) return [];
+
+  const { data: profiles } = await supabase
+    .from('profiles')
+    .select('id, username, streak')
+    .in('id', allIds);
+
+  const profileMap = new Map(
+    (profiles ?? []).map(p => [p.id, p]),
+  );
+
+  return rows
+    .map(r => {
+      const p = profileMap.get(r.user_id) as any;
+      return {
+        userId: r.user_id,
+        username: p?.username ?? 'Anónimo',
+        score: r.score ?? 0,
+        streak: p?.streak ?? 0,
+        isCorrect: r.is_correct ?? r.score > 0,
+        timeMs: r.time_ms ?? null,
+      };
+    })
+    .sort((a, b) => {
+      if (a.isCorrect !== b.isCorrect) return a.isCorrect ? -1 : 1;
+      const at = a.timeMs ?? Number.MAX_SAFE_INTEGER;
+      const bt = b.timeMs ?? Number.MAX_SAFE_INTEGER;
+      return at - bt;
+    });
 }
 
 // ─── Friend management ────────────────────────────────────────
