@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { View, Text, ScrollView, Pressable, TextInput } from 'react-native';
+import { View, Text, ScrollView, Pressable, TextInput, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -39,6 +39,33 @@ function BackBtn({ onPress }: { onPress: () => void }) {
     <Pressable onPress={onPress} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 24 }}>
       <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 20 }}>←</Text>
       <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>Modos</Text>
+    </Pressable>
+  );
+}
+
+function ExitBtn({ onExit }: { onExit: () => void }) {
+  const handlePress = () => {
+    Alert.alert(
+      '¿Salir de la partida?',
+      'Se perderá el progreso actual.',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        { text: 'Salir', style: 'destructive', onPress: onExit },
+      ],
+    );
+  };
+  return (
+    <Pressable
+      onPress={handlePress}
+      style={{
+        flexDirection: 'row', alignItems: 'center', gap: 4,
+        paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99,
+        backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
+      }}
+      hitSlop={8}
+    >
+      <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 16, fontFamily: 'Outfit_600SemiBold', lineHeight: 16 }}>×</Text>
+      <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Salir</Text>
     </Pressable>
   );
 }
@@ -194,13 +221,13 @@ function PasaGame({ onBack }: { onBack: () => void }) {
   };
 
   if (screen === 'setup') return <PasaSetup onStart={startGame} onBack={onBack} />;
-  if (screen === 'countdown') return <PasaCountdown playerName={players[currentIdx]} onDone={() => setScreen('playing')} />;
+  if (screen === 'countdown') return <PasaCountdown playerName={players[currentIdx]} onDone={() => setScreen('playing')} onExit={onBack} />;
   if (screen === 'playing') return (
-    <PasaPlaying playerName={players[currentIdx]} playerIdx={currentIdx} totalPlayers={players.length} questions={sharedQ} onDone={handlePlayerDone} />
+    <PasaPlaying playerName={players[currentIdx]} playerIdx={currentIdx} totalPlayers={players.length} questions={sharedQ} onDone={handlePlayerDone} onExit={onBack} />
   );
   if (screen === 'between') return (
     <PasaBetween playerName={players[currentIdx]} score={scores[currentIdx]} answered={answeredCounts[currentIdx]}
-      isLast={currentIdx === players.length - 1} onNext={handleNext} />
+      isLast={currentIdx === players.length - 1} onNext={handleNext} onExit={onBack} />
   );
   if (screen === 'results') return <PasaResults players={players} scores={scores} onReplay={replay} onBack={onBack} />;
   return null;
@@ -253,7 +280,7 @@ function PasaSetup({ onStart, onBack }: { onStart: (players: string[]) => void; 
   );
 }
 
-function PasaCountdown({ playerName, onDone }: { playerName: string; onDone: () => void }) {
+function PasaCountdown({ playerName, onDone, onExit }: { playerName: string; onDone: () => void; onExit: () => void }) {
   const [count, setCount] = useState(3);
   useEffect(() => {
     if (count <= 0) { onDone(); return; }
@@ -262,6 +289,9 @@ function PasaCountdown({ playerName, onDone }: { playerName: string; onDone: () 
   }, [count]);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <View style={{ padding: 20, flexDirection: 'row', justifyContent: 'flex-end' }}>
+        <ExitBtn onExit={onExit} />
+      </View>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 16, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>Le toca a</Text>
         <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 48 }}>{playerName}</Text>
@@ -272,9 +302,9 @@ function PasaCountdown({ playerName, onDone }: { playerName: string; onDone: () 
   );
 }
 
-function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone }: {
+function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone, onExit }: {
   playerName: string; playerIdx: number; totalPlayers: number; questions: Question[];
-  onDone: (score: number, answered: number) => void;
+  onDone: (score: number, answered: number) => void; onExit: () => void;
 }) {
   const [timeLeft, setTimeLeft] = useState(DURATION);
   const [qIdx, setQIdx] = useState(0);
@@ -318,6 +348,9 @@ function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone }:
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 8 }}>
+          <ExitBtn onExit={onExit} />
+        </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
           <View>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>Jugador {playerIdx + 1}/{totalPlayers}</Text>
@@ -340,12 +373,15 @@ function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone }:
   );
 }
 
-function PasaBetween({ playerName, score, answered, isLast, onNext }: {
-  playerName: string; score: number; answered: number; isLast: boolean; onNext: () => void;
+function PasaBetween({ playerName, score, answered, isLast, onNext, onExit }: {
+  playerName: string; score: number; answered: number; isLast: boolean; onNext: () => void; onExit: () => void;
 }) {
   const accuracy = answered > 0 ? Math.round((score / answered) * 100) : 0;
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <View style={{ padding: 20, flexDirection: 'row', justifyContent: 'flex-end' }}>
+        <ExitBtn onExit={onExit} />
+      </View>
       <View style={{ flex: 1, padding: 24, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={{ fontSize: 56, marginBottom: 12 }}>{score >= 8 ? '🏆' : score >= 5 ? '⭐' : '💪'}</Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 4 }}>{playerName} ha hecho</Text>
@@ -440,7 +476,7 @@ function DueloGame({ onBack }: { onBack: () => void }) {
   if (screen === 'setup') return <DueloSetup onStart={startGame} onBack={onBack} />;
   if (screen === 'playing') return (
     <DueloPlaying key={round} players={players} scores={scores} round={round}
-      question={questions[round % Math.max(questions.length, 1)]} onRoundEnd={handleRoundEnd} />
+      question={questions[round % Math.max(questions.length, 1)]} onRoundEnd={handleRoundEnd} onExit={onBack} />
   );
   if (screen === 'results') return <DueloResults players={players} scores={scores} onReplay={replay} onBack={onBack} />;
   return null;
@@ -479,9 +515,9 @@ function DueloSetup({ onStart, onBack }: { onStart: (names: [string, string]) =>
   );
 }
 
-function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEnd }: {
+function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEnd, onExit }: {
   players: [string, string]; scores: [number, number]; round: number;
-  question: Question | undefined; onRoundEnd: (winner: 0 | 1) => void;
+  question: Question | undefined; onRoundEnd: (winner: 0 | 1) => void; onExit: () => void;
 }) {
   const [buzzed, setBuzzed] = useState<0 | 1 | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
@@ -549,7 +585,13 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
     return (
       <View style={{ flex: 1, backgroundColor: '#111' }}>
         <Side player={0} rotated />
-        <View style={{ height: 1, backgroundColor: '#222' }} />
+        <View style={{
+          paddingVertical: 8, paddingHorizontal: 12, backgroundColor: '#0a0a0a',
+          borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#222',
+          alignItems: 'center',
+        }}>
+          <ExitBtn onExit={onExit} />
+        </View>
         <Side player={1} rotated={false} />
       </View>
     );
@@ -563,6 +605,9 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
         flex: 1, padding: 20,
         transform: [{ rotate: rotated ? '180deg' : '0deg' }],
       }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 8 }}>
+          <ExitBtn onExit={onExit} />
+        </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
             Ronda {round + 1}/{DUELO_ROUNDS}
@@ -734,6 +779,9 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
 
   if (screen === 'ready') return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <View style={{ padding: 20, flexDirection: 'row', justifyContent: 'flex-end' }}>
+        <ExitBtn onExit={onBack} />
+      </View>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <Text style={{ fontSize: 56, marginBottom: 16 }}>💀</Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>
@@ -753,11 +801,14 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
   );
 
   if (screen === 'question') return (
-    <SurvivorQuestion playerName={players[currentPlayerIdx]} question={currentQ} onAnswer={handleAnswer} />
+    <SurvivorQuestion playerName={players[currentPlayerIdx]} question={currentQ} onAnswer={handleAnswer} onExit={onBack} />
   );
 
   if (screen === 'answered') return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <View style={{ padding: 20, flexDirection: 'row', justifyContent: 'flex-end' }}>
+        <ExitBtn onExit={onBack} />
+      </View>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <Text style={{ fontSize: 64, marginBottom: 16 }}>✅</Text>
         <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8 }}>Respondido</Text>
@@ -775,7 +826,7 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
   if (screen === 'reveal') return (
     <SurvivorReveal players={players} aliveOrder={aliveOrder} question={currentQ}
       roundAnswers={{ ...roundAnswers, [currentPlayerIdx]: roundAnswers[currentPlayerIdx] ?? -1 }}
-      newAlive={pendingAlive} onNext={handleRevealNext} />
+      newAlive={pendingAlive} onNext={handleRevealNext} onExit={onBack} />
   );
 
   if (screen === 'results') return (
@@ -835,8 +886,8 @@ function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
 
 const SURVIVOR_TURN_SECONDS = 15;
 
-function SurvivorQuestion({ playerName, question, onAnswer }: {
-  playerName: string; question: Question | undefined; onAnswer: (i: number) => void;
+function SurvivorQuestion({ playerName, question, onAnswer, onExit }: {
+  playerName: string; question: Question | undefined; onAnswer: (i: number) => void; onExit: () => void;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
   const [secondsLeft, setSecondsLeft] = useState(SURVIVOR_TURN_SECONDS);
@@ -880,6 +931,9 @@ function SurvivorQuestion({ playerName, question, onAnswer }: {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 12 }}>
+          <ExitBtn onExit={onExit} />
+        </View>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 }}>
             <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(232,160,48,0.15)', alignItems: 'center', justifyContent: 'center' }}>
@@ -918,9 +972,9 @@ function SurvivorQuestion({ playerName, question, onAnswer }: {
   );
 }
 
-function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive, onNext }: {
+function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive, onNext, onExit }: {
   players: string[]; aliveOrder: number[]; question: Question | undefined;
-  roundAnswers: Record<number, number>; newAlive: boolean[]; onNext: () => void;
+  roundAnswers: Record<number, number>; newAlive: boolean[]; onNext: () => void; onExit: () => void;
 }) {
   if (!question) return null;
   const eliminated = aliveOrder.filter(pidx => newAlive[pidx] === false);
@@ -929,6 +983,9 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 12 }}>
+          <ExitBtn onExit={onExit} />
+        </View>
         <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>Resultados de la ronda</Text>
         <View style={{ backgroundColor: 'rgba(46,200,122,0.08)', borderRadius: 12, padding: 12, marginBottom: 16 }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', marginBottom: 4 }}>RESPUESTA CORRECTA</Text>
@@ -1059,7 +1116,7 @@ function TriviaGame({ onBack }: { onBack: () => void }) {
   if (screen === 'playing') return (
     <TriviaPlaying key={questionIdx} teamNames={teamNames} scores={scores} currentTeam={currentTeam}
       questionIdx={questionIdx} question={questions[questionIdx % Math.max(questions.length, 1)]}
-      onAnswer={handleAnswer} />
+      onAnswer={handleAnswer} onExit={onBack} />
   );
   if (screen === 'results') return <TriviaResults teamNames={teamNames} scores={scores} onReplay={replay} onBack={onBack} />;
   return null;
@@ -1099,9 +1156,9 @@ function TriviaSetup({ onStart, onBack }: { onStart: (names: [string, string]) =
   );
 }
 
-function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: rawQuestion, onAnswer }: {
+function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: rawQuestion, onAnswer, onExit }: {
   teamNames: [string, string]; scores: [number, number]; currentTeam: 0 | 1;
-  questionIdx: number; question: Question | undefined; onAnswer: (correct: boolean) => void;
+  questionIdx: number; question: Question | undefined; onAnswer: (correct: boolean) => void; onExit: () => void;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
@@ -1133,6 +1190,9 @@ function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 12 }}>
+          <ExitBtn onExit={onExit} />
+        </View>
         {/* Header */}
         <View style={{ backgroundColor: teamColor + '15', borderRadius: 16, padding: 14, marginBottom: 20, borderWidth: 1, borderColor: teamColor + '40' }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -1277,14 +1337,14 @@ function MarcadorGame({ onBack }: { onBack: () => void }) {
   if (screen === 'setup') return <MarcadorSetup onStart={startGame} onBack={onBack} />;
   if (screen === 'ready') return (
     <MarcadorReady playerName={players[currentIdx]} players={players} scores={scores}
-      currentIdx={currentIdx} onReady={() => setScreen('question')} onFinish={handleFinish} />
+      currentIdx={currentIdx} onReady={() => setScreen('question')} onFinish={handleFinish} onExit={onBack} />
   );
   if (screen === 'question') return (
-    <MarcadorQuestion playerName={players[currentIdx]} question={currentQ} onAnswer={handleAnswer} onFinish={handleFinish} />
+    <MarcadorQuestion playerName={players[currentIdx]} question={currentQ} onAnswer={handleAnswer} onFinish={handleFinish} onExit={onBack} />
   );
   if (screen === 'feedback') return (
     <MarcadorFeedback playerName={players[currentIdx]} question={currentQ} selected={lastSelected}
-      correct={lastCorrect} players={players} scores={scores} onNext={handleNextPlayer} onFinish={handleFinish} />
+      correct={lastCorrect} players={players} scores={scores} onNext={handleNextPlayer} onFinish={handleFinish} onExit={onBack} />
   );
   if (screen === 'results') return (
     <MarcadorResults players={players} scores={scores} turns={turns} onReplay={replay} onBack={onBack} />
@@ -1365,18 +1425,21 @@ function MarcadorScoreboard({ players, scores, currentIdx }: {
   );
 }
 
-function MarcadorReady({ playerName, players, scores, currentIdx, onReady, onFinish }: {
+function MarcadorReady({ playerName, players, scores, currentIdx, onReady, onFinish, onExit }: {
   playerName: string; players: string[]; scores: number[]; currentIdx: number;
-  onReady: () => void; onFinish: () => void;
+  onReady: () => void; onFinish: () => void; onExit: () => void;
 }) {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, gap: 8 }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, fontFamily: 'Outfit_600SemiBold' }}>MARCADOR 🎯</Text>
-          <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Terminar 🏁</Text>
-          </Pressable>
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
+              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Terminar 🏁</Text>
+            </Pressable>
+            <ExitBtn onExit={onExit} />
+          </View>
         </View>
 
         <MarcadorScoreboard players={players} scores={scores} currentIdx={currentIdx} />
@@ -1400,8 +1463,8 @@ function MarcadorReady({ playerName, players, scores, currentIdx, onReady, onFin
   );
 }
 
-function MarcadorQuestion({ playerName, question, onAnswer, onFinish }: {
-  playerName: string; question: Question | undefined; onAnswer: (i: number) => void; onFinish: () => void;
+function MarcadorQuestion({ playerName, question, onAnswer, onFinish, onExit }: {
+  playerName: string; question: Question | undefined; onAnswer: (i: number) => void; onFinish: () => void; onExit: () => void;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
 
@@ -1418,16 +1481,19 @@ function MarcadorQuestion({ playerName, question, onAnswer, onFinish }: {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, gap: 8 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1 }}>
             <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: 'rgba(160,96,232,0.15)', alignItems: 'center', justifyContent: 'center' }}>
               <Text style={{ fontSize: 18 }}>🎯</Text>
             </View>
             <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }} numberOfLines={1}>{playerName}</Text>
           </View>
-          <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Terminar 🏁</Text>
-          </Pressable>
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
+              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Terminar 🏁</Text>
+            </Pressable>
+            <ExitBtn onExit={onExit} />
+          </View>
         </View>
         <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold', lineHeight: 26, marginBottom: 24 }}>{question.q}</Text>
         <View style={{ gap: 9 }}>
@@ -1442,9 +1508,9 @@ function MarcadorQuestion({ playerName, question, onAnswer, onFinish }: {
   );
 }
 
-function MarcadorFeedback({ playerName, question, selected, correct, players, scores, onNext, onFinish }: {
+function MarcadorFeedback({ playerName, question, selected, correct, players, scores, onNext, onFinish, onExit }: {
   playerName: string; question: Question | undefined; selected: number; correct: boolean;
-  players: string[]; scores: number[]; onNext: () => void; onFinish: () => void;
+  players: string[]; scores: number[]; onNext: () => void; onFinish: () => void; onExit: () => void;
 }) {
   if (!question) return null;
   const getState = (i: number): AnswerState => {
@@ -1455,6 +1521,9 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 12 }}>
+          <ExitBtn onExit={onExit} />
+        </View>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
           <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }} numberOfLines={1}>{playerName}</Text>
           <View style={{
