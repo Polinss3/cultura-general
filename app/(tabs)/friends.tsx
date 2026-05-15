@@ -58,14 +58,12 @@ function ExitBtn({ onExit }: { onExit: () => void }) {
     <Pressable
       onPress={handlePress}
       style={{
-        flexDirection: 'row', alignItems: 'center', gap: 4,
         paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99,
         backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
       }}
       hitSlop={8}
     >
-      <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 16, fontFamily: 'Outfit_600SemiBold', lineHeight: 16 }}>×</Text>
-      <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Salir</Text>
+      <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_600SemiBold' }}>✕ Salir</Text>
     </Pressable>
   );
 }
