@@ -520,7 +520,7 @@ export async function incrementProfileStats(
   });
 }
 
-const USERNAME_PATTERN = /^[A-Za-z0-9_.-]+$/;
+const USERNAME_PATTERN = /^[\p{L}\p{N}_.-]+$/u;
 
 export function validateUsername(username: string): string | null {
   const trimmed = username.trim();
