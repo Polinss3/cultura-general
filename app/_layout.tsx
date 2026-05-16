@@ -17,10 +17,14 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { supabase } from '@/lib/supabase';
+import { initSentry, setSentryUser, Sentry } from '@/lib/sentry';
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+// Initialize crash reporting before the React tree mounts.
+initSentry();
+
+function RootLayout() {
   const [fontsLoaded] = useFonts({
     Outfit_300Light,
     Outfit_400Regular,
@@ -38,6 +42,11 @@ export default function RootLayout() {
   useEffect(() => {
     getOnboardingCompleted().then(setOnboarded);
   }, []);
+
+  // Keep Sentry user in sync with auth state for better crash attribution.
+  useEffect(() => {
+    setSentryUser(session?.user?.id ?? null);
+  }, [session?.user?.id]);
 
   // Handle password recovery deep links (culturalgeneral://update-password#access_token=...)
   useEffect(() => {
@@ -123,3 +132,5 @@ export default function RootLayout() {
     </ErrorBoundary>
   );
 }
+
+export default Sentry.wrap(RootLayout);

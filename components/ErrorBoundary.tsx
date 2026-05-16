@@ -1,6 +1,7 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { captureSentryException } from '@/lib/sentry';
 
 interface Props {
   children: ReactNode;
@@ -22,8 +23,10 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    // In production you'd send this to a service like Sentry
-    console.error('[ErrorBoundary]', error, info.componentStack);
+    if (__DEV__) {
+      console.error('[ErrorBoundary]', error, info.componentStack);
+    }
+    captureSentryException(error, { componentStack: info.componentStack });
   }
 
   handleRetry = () => {

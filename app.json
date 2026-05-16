@@ -52,6 +52,7 @@
         }
       ],
       "expo-asset",
+      "@sentry/react-native/expo",
       [
         "expo-notifications",
         {
