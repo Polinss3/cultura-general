@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de privacidad — Cultura General</title>
+  <meta name="description" content="Política de privacidad de la app Cultura General.">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #151515;
+      --text: #e7e7e7;
+      --text-soft: rgba(231, 231, 231, 0.7);
+      --text-muted: rgba(231, 231, 231, 0.45);
+      --accent: #e8a030;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 20px 80px;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .meta {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .intro {
+      color: var(--text-soft);
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+    section {
+      margin-bottom: 36px;
+    }
+    h2 {
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    p {
+      color: var(--text-soft);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    ul {
+      color: var(--text-soft);
+      font-size: 15px;
+      padding-left: 22px;
+      margin-bottom: 12px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    code {
+      background: var(--bg-card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Política de privacidad</h1>
+      <p class="meta">Cultura General · Última actualización: mayo 2026</p>
+    </header>
+
+    <p class="intro">
+      En Cultura General nos tomamos tu privacidad en serio. Esta política explica qué datos recopilamos, cómo los usamos, dónde se almacenan y qué derechos tienes sobre ellos. Si tienes cualquier duda, escríbenos a <a href="mailto:pablobrasero@gmail.com">pablobrasero@gmail.com</a>.
+    </p>
+
+    <section>
+      <h2>1. Información que recopilamos</h2>
+      <p>Cuando usas Cultura General recopilamos únicamente los siguientes datos:</p>
+      <ul>
+        <li>Dirección de correo electrónico (para crear y recuperar tu cuenta).</li>
+        <li>Nombre de usuario que tú eliges.</li>
+        <li>Respuestas a las preguntas (para calcular tus estadísticas y rankings).</li>
+        <li>Racha de días consecutivos, puntuaciones y récords personales.</li>
+        <li>Identificador único de cuenta (UUID anónimo generado al registrarte).</li>
+      </ul>
+      <p>No recopilamos información de geolocalización, contactos, fotos, micrófono, calendario ni ningún otro dato sensible.</p>
+    </section>
+
+    <section>
+      <h2>2. Cómo usamos tu información</h2>
+      <p>Usamos tus datos exclusivamente para que la app funcione:</p>
+      <ul>
+        <li>Mostrar tu perfil, estadísticas y logros dentro de la app.</li>
+        <li>Calcular y mostrar los rankings diarios, semanales y de todos los tiempos.</li>
+        <li>Mantener tu racha de días consecutivos respondiendo.</li>
+        <li>Encontrar amigos por nombre de usuario y compartir resultados con ellos.</li>
+        <li>Enviarte una notificación local diaria (solo si la activas) para recordarte la pregunta del día.</li>
+      </ul>
+      <p>No vendemos, alquilamos ni compartimos tus datos con terceros con fines comerciales o publicitarios.</p>
+    </section>
+
+    <section>
+      <h2>3. Datos visibles para otros usuarios</h2>
+      <p>Para que el componente social y los rankings funcionen, los siguientes datos de tu perfil <strong>son visibles para cualquier persona autenticada en la app</strong>:</p>
+      <ul>
+        <li>Tu nombre de usuario.</li>
+        <li>Tu racha actual.</li>
+        <li>Tu número total de respuestas correctas.</li>
+        <li>Tu récord en contrarreloj.</li>
+      </ul>
+      <p>Tu email, tus respuestas individuales y los detalles de tus partidas privadas <strong>nunca</strong> son visibles para otros usuarios.</p>
+    </section>
+
+    <section>
+      <h2>4. Almacenamiento y seguridad</h2>
+      <p>Tus datos se almacenan en <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>, una plataforma de base de datos PostgreSQL alojada en servidores europeos. Todas las comunicaciones entre la app y el servidor van cifradas con TLS/HTTPS.</p>
+      <p>Las contraseñas se almacenan únicamente como hash mediante el sistema de autenticación de Supabase; en ningún momento las vemos en texto plano.</p>
+      <p>Implementamos Row Level Security (RLS) en la base de datos para garantizar que ningún usuario pueda acceder a datos privados de otro usuario.</p>
+      <p>Las preguntas y respuestas pueden cachearse temporalmente en tu dispositivo para permitir un uso fluido en condiciones de red intermitente.</p>
+    </section>
+
+    <section>
+      <h2>5. Reportes de errores (Sentry)</h2>
+      <p>Para detectar y arreglar errores en la app utilizamos <a href="https://sentry.io" target="_blank" rel="noopener">Sentry</a>. Cuando ocurre un crash inesperado, Sentry recibe únicamente:</p>
+      <ul>
+        <li>La pila de error técnica (stack trace).</li>
+        <li>La versión de la app y del sistema operativo.</li>
+        <li>Tu identificador único de cuenta (UUID), para poder agrupar errores que te afecten a ti.</li>
+      </ul>
+      <p>No enviamos a Sentry tu dirección IP, tu correo, tu nombre de usuario, ni el contenido de las preguntas o respuestas.</p>
+    </section>
+
+    <section>
+      <h2>6. Publicidad</h2>
+      <p>Actualmente Cultura General <strong>no muestra anuncios</strong>. Si en futuras versiones empezamos a mostrar publicidad mediante Google AdMob, te lo notificaremos en la app y actualizaremos esta política. En ese caso:</p>
+      <ul>
+        <li>Te pediremos permiso mediante el sistema oficial de iOS (App Tracking Transparency).</li>
+        <li>Si lo rechazas, los anuncios se mostrarán de forma no personalizada y sin tracking.</li>
+        <li>Si lo aceptas, AdMob podrá usar tu identificador publicitario (IDFA) para mostrar anuncios relevantes.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Notificaciones</h2>
+      <p>Si das permiso, la app programa una notificación local diaria a las 9:00 para recordarte la pregunta del día. Estas notificaciones se generan y muestran <strong>únicamente en tu dispositivo</strong>; no pasan por servidores externos. Puedes desactivarlas en cualquier momento desde la pantalla de perfil o desde los ajustes del sistema operativo.</p>
+    </section>
+
+    <section>
+      <h2>8. Tus derechos</h2>
+      <p>Tienes derecho a:</p>
+      <ul>
+        <li><strong>Acceder</strong> a tus datos personales en cualquier momento desde la pantalla de perfil.</li>
+        <li><strong>Modificar</strong> tu nombre de usuario directamente en la app.</li>
+        <li><strong>Eliminar</strong> tu cuenta y todos tus datos asociados (escríbenos a <a href="mailto:pablobrasero@gmail.com">pablobrasero@gmail.com</a> y la eliminamos en menos de 7 días).</li>
+        <li><strong>Exportar</strong> tus datos bajo petición.</li>
+        <li><strong>Retirar tu consentimiento</strong> para el tracking publicitario en los ajustes del sistema (Ajustes &gt; Privacidad &gt; Seguimiento).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Menores de edad</h2>
+      <p>Cultura General está dirigida a personas mayores de 13 años. No recopilamos conscientemente datos personales de menores de 13 años. Si crees que un menor ha creado una cuenta sin tu consentimiento, contáctanos y la eliminaremos de inmediato.</p>
+    </section>
+
+    <section>
+      <h2>10. Cambios en esta política</h2>
+      <p>Podemos actualizar esta política ocasionalmente para reflejar cambios en la app o en la legislación aplicable. Cuando haya cambios significativos te lo notificaremos a través de la propia app. El uso continuado de Cultura General tras una actualización implica la aceptación de la política revisada.</p>
+    </section>
+
+    <section>
+      <h2>11. Contacto</h2>
+      <p>Si tienes cualquier pregunta sobre esta política, sobre el tratamiento de tus datos o quieres ejercer cualquiera de tus derechos, escríbenos a:</p>
+      <p><a href="mailto:pablobrasero@gmail.com">pablobrasero@gmail.com</a></p>
+    </section>
+
+    <footer>
+      Cultura General · © 2026 Pablo Brasero
+    </footer>
+  </main>
+</body>
+</html>
