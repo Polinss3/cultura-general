@@ -10,6 +10,9 @@ ios/
 android/
 google-play-key.json
 
+# Claude Code worktrees (each is a nested git checkout, not source code)
+.claude/worktrees/
+
 # Build artefacts — never commit these
 *.ipa
 *.apk
