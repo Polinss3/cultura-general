@@ -17,10 +17,11 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "17",
+      "buildNumber": "18",
       "infoPlist": {
         "NSCameraUsageDescription": "La app no usa la cámara.",
         "NSUserNotificationsUsageDescription": "Recibe un recordatorio diario para responder la pregunta del día y mantener tu racha.",
+        "NSUserTrackingUsageDescription": "Tu permiso nos permite mostrarte anuncios más relevantes y mantener la app gratis. Puedes cambiarlo en cualquier momento desde Ajustes.",
         "ITSAppUsesNonExemptEncryption": false
       }
     },
@@ -52,6 +53,12 @@
         }
       ],
       "expo-asset",
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "Tu permiso nos permite mostrarte anuncios más relevantes y mantener la app gratis. Puedes cambiarlo en cualquier momento desde Ajustes."
+        }
+      ],
       [
         "expo-notifications",
         {

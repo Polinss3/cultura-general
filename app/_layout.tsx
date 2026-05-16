@@ -19,6 +19,7 @@ import { ToastProvider } from '@/context/ToastContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { supabase } from '@/lib/supabase';
 import { setSentryUser } from '@/lib/sentry';
+import { ensureTrackingPermission } from '@/lib/tracking';
 
 Sentry.init({
   dsn: 'https://b47aaa6f083737c40dd659db4a776b87@o4511400341995520.ingest.de.sentry.io/4511400352546896',
@@ -88,6 +89,10 @@ function RootLayout() {
   useEffect(() => {
     if (!fontsLoaded || loading || onboarded === null) return;
     SplashScreen.hideAsync();
+    // Fire-and-forget: pedir ATT en iOS la primera vez tras el splash.
+    // Si el usuario rechaza, los anuncios mostrarán contenido no
+    // personalizado, pero la app sigue funcionando con normalidad.
+    ensureTrackingPermission();
 
     let cancelled = false;
 
