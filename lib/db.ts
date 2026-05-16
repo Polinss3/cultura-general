@@ -317,12 +317,16 @@ export interface FriendProfile {
 }
 
 export async function searchUsers(query: string, currentUserId: string): Promise<FriendProfile[]> {
-  if (query.trim().length < 2) return [];
+  const trimmed = query.trim();
+  if (trimmed.length < 2) return [];
+
+  // Escape ILIKE wildcards so the user's literal % and _ aren't interpreted.
+  const escaped = trimmed.replace(/[\\%_]/g, m => `\\${m}`);
 
   const { data } = await supabase
     .from('profiles')
     .select('id, username, streak, total_correct')
-    .ilike('username', `%${query.trim()}%`)
+    .ilike('username', `%${escaped}%`)
     .neq('id', currentUserId)
     .limit(10);
 
@@ -503,35 +507,45 @@ export async function saveSpeedGame(
 // ─── Profile stats ────────────────────────────────────────────
 
 export async function incrementProfileStats(
-  userId: string,
+  _userId: string,
   answered: number,
   correct: number,
   newSpeedRecord?: number,
 ): Promise<void> {
-  const { data } = await supabase
-    .from('profiles')
-    .select('total_answered, total_correct')
-    .eq('id', userId)
-    .single();
+  // Server-side atomic increment (avoids races between concurrent games).
+  await supabase.rpc('increment_profile_stats', {
+    p_answered: answered,
+    p_correct: correct,
+    p_speed_record: newSpeedRecord ?? null,
+  });
+}
 
-  if (!data) return;
+const USERNAME_PATTERN = /^[A-Za-z0-9_.-]+$/;
 
-  const updates: Record<string, number> = {
-    total_answered: data.total_answered + answered,
-    total_correct: data.total_correct + correct,
-  };
-
-  if (newSpeedRecord !== undefined) updates.speed_record = newSpeedRecord;
-
-  await supabase.from('profiles').update(updates).eq('id', userId);
+export function validateUsername(username: string): string | null {
+  const trimmed = username.trim();
+  if (trimmed.length < 3) return 'El nombre debe tener al menos 3 caracteres.';
+  if (trimmed.length > 20) return 'El nombre no puede tener más de 20 caracteres.';
+  if (!USERNAME_PATTERN.test(trimmed)) {
+    return 'Usa solo letras, números, puntos, guiones o guiones bajos.';
+  }
+  return null;
 }
 
 export async function updateUsername(userId: string, username: string): Promise<{ error?: string }> {
+  const trimmed = username.trim();
+  const validationError = validateUsername(trimmed);
+  if (validationError) return { error: validationError };
+
   const { error } = await supabase
     .from('profiles')
-    .update({ username: username.trim() })
+    .update({ username: trimmed })
     .eq('id', userId);
 
-  if (error) return { error: error.message };
+  if (error) {
+    // Username unique violation surfaces here.
+    if (error.code === '23505') return { error: 'Ese nombre ya está en uso.' };
+    return { error: error.message };
+  }
   return {};
 }

@@ -42,22 +42,27 @@ export default function RootLayout() {
   // Handle password recovery deep links (culturalgeneral://update-password#access_token=...)
   useEffect(() => {
     const handleDeepLink = async (url: string) => {
+      // Only honor recovery deep links — never authenticate via arbitrary links.
+      if (!url.includes('update-password')) return;
+
       const fragment = url.split('#')[1];
       if (!fragment) return;
       const params = new URLSearchParams(fragment);
       const access_token = params.get('access_token');
       const refresh_token = params.get('refresh_token');
+      const type = params.get('type');
       if (!access_token || !refresh_token) return;
-      await supabase.auth.setSession({ access_token, refresh_token });
-      if (url.includes('update-password')) {
-        router.push('/(auth)/update-password');
-      }
+      if (type && type !== 'recovery') return;
+
+      const { error } = await supabase.auth.setSession({ access_token, refresh_token });
+      if (error) return;
+      router.push('/(auth)/update-password');
     };
 
     Linking.getInitialURL().then(url => { if (url) handleDeepLink(url); });
     const sub = Linking.addEventListener('url', ({ url }) => handleDeepLink(url));
     return () => sub.remove();
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     if (!fontsLoaded || loading || onboarded === null) return;
@@ -74,9 +79,10 @@ export default function RootLayout() {
         return;
       }
 
-      const inAuth = segments[0] === '(auth)';
-      const inOnboarding = segments[0] === 'onboarding';
-      const isUpdatePassword = segments[1] === 'update-password';
+      const segs = segments as readonly string[];
+      const inAuth = segs[0] === '(auth)';
+      const inOnboarding = segs[0] === 'onboarding';
+      const isUpdatePassword = segs[1] === 'update-password';
 
       if (!session && !inAuth) {
         router.replace('/(auth)/login');

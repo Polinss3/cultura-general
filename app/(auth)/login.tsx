@@ -6,6 +6,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { supabase } from '@/lib/supabase';
+import { validateUsername } from '@/lib/db';
 
 type Mode = 'login' | 'register' | 'reset';
 
@@ -37,7 +38,10 @@ export default function LoginScreen() {
   };
 
   const handleRegister = async () => {
-    if (!username.trim()) { Alert.alert('Error', 'Necesitas un nombre de usuario'); return; }
+    const trimmedUsername = username.trim();
+    if (!trimmedUsername) { Alert.alert('Error', 'Necesitas un nombre de usuario'); return; }
+    const usernameError = validateUsername(trimmedUsername);
+    if (usernameError) { Alert.alert('Error', usernameError); return; }
     if (!email || !password) { Alert.alert('Error', 'Rellena todos los campos'); return; }
     if (password.length < 6) { Alert.alert('Error', 'La contraseña debe tener al menos 6 caracteres'); return; }
     setLoading(true);
@@ -45,7 +49,7 @@ export default function LoginScreen() {
       email,
       password,
       options: {
-        data: { username: username.trim() },
+        data: { username: trimmedUsername },
         emailRedirectTo: 'culturalgeneral://login',
       },
     });
