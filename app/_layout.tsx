@@ -30,11 +30,6 @@ Sentry.init({
   sendDefaultPii: false,
   // Sin tracing/performance — solo crashes (mantiene el plan gratuito).
   tracesSampleRate: 0,
-  // Session Replay desactivado para no quemar la cuota mensual.
-  replaysSessionSampleRate: 0,
-  replaysOnErrorSampleRate: 0,
-  // Logs como breadcrumbs (útil para diagnosticar bugs).
-  enableLogs: true,
   attachStacktrace: true,
   maxBreadcrumbs: 50,
 });
