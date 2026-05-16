@@ -12,17 +12,34 @@ import {
   Outfit_700Bold,
   Outfit_800ExtraBold,
 } from '@expo-google-fonts/outfit';
+import * as Sentry from '@sentry/react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { supabase } from '@/lib/supabase';
-import { initSentry, setSentryUser, Sentry } from '@/lib/sentry';
+import { setSentryUser } from '@/lib/sentry';
+
+Sentry.init({
+  dsn: 'https://b47aaa6f083737c40dd659db4a776b87@o4511400341995520.ingest.de.sentry.io/4511400352546896',
+  // No reportamos en local para no contaminar el dashboard.
+  enabled: !__DEV__,
+  environment: __DEV__ ? 'development' : 'production',
+  // Privacidad: NO enviar IP/cookies/etc por defecto. Solo adjuntamos
+  // el user.id de Supabase explícitamente vía setSentryUser().
+  sendDefaultPii: false,
+  // Sin tracing/performance — solo crashes (mantiene el plan gratuito).
+  tracesSampleRate: 0,
+  // Session Replay desactivado para no quemar la cuota mensual.
+  replaysSessionSampleRate: 0,
+  replaysOnErrorSampleRate: 0,
+  // Logs como breadcrumbs (útil para diagnosticar bugs).
+  enableLogs: true,
+  attachStacktrace: true,
+  maxBreadcrumbs: 50,
+});
 
 SplashScreen.preventAutoHideAsync();
-
-// Initialize crash reporting before the React tree mounts.
-initSentry();
 
 function RootLayout() {
   const [fontsLoaded] = useFonts({
