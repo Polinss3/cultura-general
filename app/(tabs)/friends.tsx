@@ -412,7 +412,7 @@ function PasaResults({ players, scores, onReplay, onBack }: {
         </View>
         <View style={{ gap: 8, marginBottom: 32 }}>
           {ranked.map((p, i) => (
-            <View key={p.name} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: i === 0 ? 'rgba(48,168,232,0.08)' : '#151515', borderWidth: 1, borderColor: i === 0 ? 'rgba(48,168,232,0.3)' : 'transparent', borderRadius: 14, padding: 14 }}>
+            <View key={`${i}-${p.name}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: i === 0 ? 'rgba(48,168,232,0.08)' : '#151515', borderWidth: 1, borderColor: i === 0 ? 'rgba(48,168,232,0.3)' : 'transparent', borderRadius: 14, padding: 14 }}>
               <Text style={{ fontSize: 22, width: 28 }}>{i < 3 ? medals[i] : `${i + 1}`}</Text>
               <View style={{ width: 38, height: 38, borderRadius: 10, backgroundColor: i === 0 ? '#30a8e8' : '#222', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{p.name[0].toUpperCase()}</Text>
@@ -1597,7 +1597,7 @@ function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
             const top = i === 0 && !tied;
             const accuracy = p.turns > 0 ? Math.round((p.score / p.turns) * 100) : 0;
             return (
-              <View key={p.name} style={{
+              <View key={`${i}-${p.name}`} style={{
                 flexDirection: 'row', alignItems: 'center', gap: 12,
                 backgroundColor: top ? 'rgba(160,96,232,0.08)' : '#151515',
                 borderWidth: 1, borderColor: top ? MARCADOR_COLOR : 'transparent',
