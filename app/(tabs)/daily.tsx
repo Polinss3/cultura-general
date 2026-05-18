@@ -3,7 +3,9 @@ import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share } fr
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { OptionBtn } from '@/components/OptionBtn';
 import { Confetti } from '@/components/Confetti';
+import { GuestGate } from '@/components/GuestGate';
 import { useAuth } from '@/hooks/useAuth';
+import { useGuest } from '@/hooks/useGuest';
 import {
   fetchOrAssignDailyQuestion,
   checkDailyAnswered,
@@ -104,6 +106,22 @@ function formatTime(ms: number | null): string {
 
 export default function DailyScreen() {
   const { user } = useAuth();
+  const { guest } = useGuest();
+
+  if (guest) {
+    return (
+      <GuestGate
+        icon="🏆"
+        title="Pregunta del día y rankings"
+        description="Crea una cuenta gratis para responder la pregunta diaria, mantener tu racha y competir en los rankings."
+      />
+    );
+  }
+
+  return <DailyContent user={user} />;
+}
+
+function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const [phase, setPhase] = useState<Phase>('loading');
   const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
   const [selected, setSelected] = useState<number | null>(null);

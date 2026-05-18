@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { OptionBtn } from '@/components/OptionBtn';
+import { useGuest } from '@/hooks/useGuest';
 import { QUESTIONS } from '@/constants/questions';
 import { fetchQuestions } from '@/lib/db';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
@@ -85,6 +86,7 @@ function PrimaryBtn({ label, onPress, colors = ['#30a8e8', '#1a78b8'] }: {
 
 function ModesScreen({ onSelect }: { onSelect: (s: Screen) => void }) {
   const router = useRouter();
+  const { guest } = useGuest();
   const modes = [
     {
       id: 'pasa' as Screen,
@@ -130,13 +132,15 @@ function ModesScreen({ onSelect }: { onSelect: (s: Screen) => void }) {
           <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold' }}>
             Jugar con amigos
           </Text>
-          <Pressable
-            onPress={() => router.push('/friends-list')}
-            style={{ backgroundColor: 'rgba(48,168,232,0.12)', borderRadius: 12, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 6, borderWidth: 1, borderColor: 'rgba(48,168,232,0.25)' }}
-          >
-            <Text style={{ fontSize: 14 }}>👥</Text>
-            <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>Amigos</Text>
-          </Pressable>
+          {!guest && (
+            <Pressable
+              onPress={() => router.push('/friends-list')}
+              style={{ backgroundColor: 'rgba(48,168,232,0.12)', borderRadius: 12, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 6, borderWidth: 1, borderColor: 'rgba(48,168,232,0.25)' }}
+            >
+              <Text style={{ fontSize: 14 }}>👥</Text>
+              <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>Amigos</Text>
+            </Pressable>
+          )}
         </View>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 24 }}>
           Pasad el móvil o competid en el mismo sitio

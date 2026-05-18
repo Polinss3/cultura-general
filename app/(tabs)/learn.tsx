@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { useAuth } from '@/hooks/useAuth';
+import { useGuest } from '@/hooks/useGuest';
 import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
 import { QUESTIONS, CAT_COLORS, CAT_ICONS, CAT_NAMES, ALL_CATEGORIES } from '@/constants/questions';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
@@ -36,6 +37,7 @@ function filterByDifficulty(questions: Question[], diff: Difficulty): Question[]
 
 export default function LearnScreen() {
   const { user } = useAuth();
+  const { guest } = useGuest();
   const [cat, setCat] = useState<LearnCat | null>(null);
   const reportedRef = useRef(new Set<string>());
   const [difficulty, setDifficulty] = useState<Difficulty>('all');
@@ -94,7 +96,7 @@ export default function LearnScreen() {
     const correct = i === q.ans;
     if (!correct) setShowCtx(true);
 
-    if (user) {
+    if (user && !guest) {
       incrementProfileStats(user.id, 1, correct ? 1 : 0);
     }
     if (cat && q.id) {

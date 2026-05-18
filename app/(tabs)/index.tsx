@@ -3,18 +3,34 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useProfile } from '@/hooks/useProfile';
-import { computeAchievements, unlockedCount } from '@/lib/achievements';
+import { useGuest } from '@/hooks/useGuest';
+import { unlockedCount } from '@/lib/achievements';
+import { setGuestMode, getGuestSpeedRecord } from '@/lib/guest';
+import { useEffect, useState } from 'react';
 
 export default function HomeScreen() {
   const router = useRouter();
   const { profile } = useProfile();
+  const { guest } = useGuest();
+  const [guestSpeedRecord, setGuestSpeedRecordState] = useState(0);
+
+  useEffect(() => {
+    if (guest) getGuestSpeedRecord().then(setGuestSpeedRecordState);
+  }, [guest]);
+
   const today = new Date().toLocaleDateString('es-ES', {
     weekday: 'long', day: 'numeric', month: 'long',
   });
 
-  const initial = (profile?.username?.[0] ?? '?').toUpperCase();
-  const displayName = profile?.username ?? '...';
+  const goToAuth = async () => {
+    await setGuestMode(false);
+    router.replace('/(auth)/login');
+  };
+
+  const initial = guest ? '?' : (profile?.username?.[0] ?? '?').toUpperCase();
+  const displayName = guest ? 'Invitado' : (profile?.username ?? '...');
   const achievementCount = unlockedCount(profile);
+  const speedRecord = guest ? guestSpeedRecord : (profile?.speed_record ?? 0);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -31,35 +47,65 @@ export default function HomeScreen() {
                 Hola, {displayName} 👋
               </Text>
             </View>
-            <Pressable onPress={() => router.push('/profile')}>
-              <LinearGradient
-                colors={['#e8a030', '#e83060']}
-                start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                style={{ width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' }}
-              >
-                <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{initial}</Text>
-              </LinearGradient>
+            <Pressable onPress={() => guest ? goToAuth() : router.push('/profile')}>
+              {guest ? (
+                <View style={{
+                  width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center',
+                  backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
+                }}>
+                  <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>?</Text>
+                </View>
+              ) : (
+                <LinearGradient
+                  colors={['#e8a030', '#e83060']}
+                  start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+                  style={{ width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' }}
+                >
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{initial}</Text>
+                </LinearGradient>
+              )}
             </Pressable>
           </View>
 
-          {/* Streak */}
-          <View style={{
-            marginTop: 16, backgroundColor: '#151515', borderRadius: 16,
-            padding: 12, flexDirection: 'row', alignItems: 'center', gap: 12,
-          }}>
-            <Text style={{ fontSize: 26 }}>🔥</Text>
-            <View style={{ flex: 1 }}>
-              <Text style={{ color: '#fff', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>
-                {profile?.streak ?? 0} días seguidos
-              </Text>
-              <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 1 }}>
-                {(profile?.streak ?? 0) > 0 ? '¡Sigue así!' : 'Responde hoy para empezar tu racha'}
+          {/* Streak / Guest CTA */}
+          {guest ? (
+            <Pressable onPress={goToAuth}>
+              <View style={{
+                marginTop: 16, backgroundColor: '#151515', borderRadius: 16,
+                padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12,
+                borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)',
+              }}>
+                <Text style={{ fontSize: 26 }}>✨</Text>
+                <View style={{ flex: 1 }}>
+                  <Text style={{ color: '#fff', fontSize: 14, fontFamily: 'Outfit_700Bold' }}>
+                    Crea cuenta gratis
+                  </Text>
+                  <Text style={{ color: 'rgba(255,255,255,0.45)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>
+                    Guarda tu progreso, juega la pregunta diaria y compite en los rankings.
+                  </Text>
+                </View>
+                <Text style={{ color: '#e8a030', fontSize: 18 }}>→</Text>
+              </View>
+            </Pressable>
+          ) : (
+            <View style={{
+              marginTop: 16, backgroundColor: '#151515', borderRadius: 16,
+              padding: 12, flexDirection: 'row', alignItems: 'center', gap: 12,
+            }}>
+              <Text style={{ fontSize: 26 }}>🔥</Text>
+              <View style={{ flex: 1 }}>
+                <Text style={{ color: '#fff', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>
+                  {profile?.streak ?? 0} días seguidos
+                </Text>
+                <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 1 }}>
+                  {(profile?.streak ?? 0) > 0 ? '¡Sigue así!' : 'Responde hoy para empezar tu racha'}
+                </Text>
+              </View>
+              <Text style={{ color: '#e8a030', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>
+                {profile?.streak ?? 0}
               </Text>
             </View>
-            <Text style={{ color: '#e8a030', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>
-              {profile?.streak ?? 0}
-            </Text>
-          </View>
+          )}
         </View>
 
         {/* Game modes */}
@@ -123,7 +169,7 @@ export default function HomeScreen() {
               <View style={{ marginTop: 14 }}>
                 <View style={{ backgroundColor: '#a030e8', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>
                   <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>
-                    Récord: {profile?.speed_record ?? 0} →
+                    Récord: {speedRecord} →
                   </Text>
                 </View>
               </View>
@@ -185,40 +231,42 @@ export default function HomeScreen() {
           </Pressable>
         </View>
 
-        {/* Stats */}
-        <View style={{ paddingHorizontal: 20, marginTop: 22 }}>
-          <Text style={{
-            color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold',
-            letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12,
-          }}>
-            Tus estadísticas
-          </Text>
-          <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
-            {[
-              { label: 'Respondidas', value: String(profile?.total_answered ?? 0) },
-              { label: 'Precisión', value: profile?.total_answered ? `${Math.round((profile.total_correct / profile.total_answered) * 100)}%` : '—' },
-              { label: 'Racha', value: `${profile?.streak ?? 0}🔥` },
-            ].map(s => (
-              <View key={s.label} style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 12, alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold' }}>{s.value}</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>{s.label}</Text>
-              </View>
-            ))}
-          </View>
-          <Pressable onPress={() => router.push('/profile')}>
-            <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                <Text style={{ fontSize: 20 }}>🏅</Text>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
-                  Logros desbloqueados
+        {/* Stats — solo para usuarios logueados */}
+        {!guest && (
+          <View style={{ paddingHorizontal: 20, marginTop: 22 }}>
+            <Text style={{
+              color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold',
+              letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12,
+            }}>
+              Tus estadísticas
+            </Text>
+            <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
+              {[
+                { label: 'Respondidas', value: String(profile?.total_answered ?? 0) },
+                { label: 'Precisión', value: profile?.total_answered ? `${Math.round((profile.total_correct / profile.total_answered) * 100)}%` : '—' },
+                { label: 'Racha', value: `${profile?.streak ?? 0}🔥` },
+              ].map(s => (
+                <View key={s.label} style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 12, alignItems: 'center' }}>
+                  <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold' }}>{s.value}</Text>
+                  <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>{s.label}</Text>
+                </View>
+              ))}
+            </View>
+            <Pressable onPress={() => router.push('/profile')}>
+              <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <Text style={{ fontSize: 20 }}>🏅</Text>
+                  <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
+                    Logros desbloqueados
+                  </Text>
+                </View>
+                <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>
+                  {achievementCount}/12 →
                 </Text>
               </View>
-              <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>
-                {achievementCount}/12 →
-              </Text>
-            </View>
-          </Pressable>
-        </View>
+            </Pressable>
+          </View>
+        )}
 
       </ScrollView>
     </SafeAreaView>

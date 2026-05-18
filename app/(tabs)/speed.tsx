@@ -5,7 +5,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
+import { useGuest } from '@/hooks/useGuest';
 import { fetchQuestions, saveSpeedGame } from '@/lib/db';
+import { getGuestSpeedRecord, setGuestSpeedRecord } from '@/lib/guest';
 import { QUESTIONS } from '@/constants/questions';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
@@ -25,6 +27,7 @@ function buildLocal(): Question[] {
 export default function SpeedScreen() {
   const { user } = useAuth();
   const { profile, refresh: refreshProfile } = useProfile();
+  const { guest } = useGuest();
 
   const [phase, setPhase] = useState<Phase>('loading');
   const [allQ, setAllQ] = useState<Question[]>([]);
@@ -34,7 +37,15 @@ export default function SpeedScreen() {
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
   const [newRecord, setNewRecord] = useState(false);
+  const [guestRecord, setGuestRecord] = useState(0);
   const savedRef = useRef(false);
+
+  // Cargar récord de invitado de AsyncStorage
+  useEffect(() => {
+    if (guest) getGuestSpeedRecord().then(setGuestRecord);
+  }, [guest]);
+
+  const currentRecord = guest ? guestRecord : (profile?.speed_record ?? 0);
 
   const baseQ = allQ.length > 0 ? allQ[qIdx % allQ.length] : undefined;
   const displayQ = useMemo(() => (baseQ ? shuffleQuestion(baseQ) : undefined), [baseQ, qIdx]);
@@ -60,8 +71,17 @@ export default function SpeedScreen() {
 
   // Save game when done
   useEffect(() => {
-    if (phase !== 'done' || !user || savedRef.current) return;
+    if (phase !== 'done' || savedRef.current) return;
     savedRef.current = true;
+    if (guest) {
+      const isNew = score > guestRecord;
+      if (isNew) {
+        setGuestSpeedRecord(score).then(() => setGuestRecord(score));
+      }
+      setNewRecord(isNew);
+      return;
+    }
+    if (!user) return;
     const record = profile?.speed_record ?? 0;
     saveSpeedGame(user.id, score, qIdx, record).then(({ isNewRecord }) => {
       setNewRecord(isNewRecord);
@@ -112,7 +132,7 @@ export default function SpeedScreen() {
 
   // ─ Intro
   if (phase === 'intro') {
-    const record = profile?.speed_record ?? 0;
+    const record = currentRecord;
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
         <View style={{ flex: 1, padding: 20 }}>
@@ -155,7 +175,7 @@ export default function SpeedScreen() {
   if (phase === 'done') {
     const total = Math.max(qIdx, 1);
     const accuracy = Math.round((score / total) * 100);
-    const record = profile?.speed_record ?? 0;
+    const record = currentRecord;
     const diff = record - score;
 
     return (

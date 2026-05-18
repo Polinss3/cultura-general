@@ -532,6 +532,31 @@ export function validateUsername(username: string): string | null {
   return null;
 }
 
+// ─── Account management ──────────────────────────────────────
+
+export async function pauseAccount(): Promise<{ error: string | null }> {
+  const { error } = await supabase.rpc('pause_account');
+  if (error) return { error: error.message };
+  await supabase.auth.signOut();
+  return { error: null };
+}
+
+export async function reactivateAccount(): Promise<{ error: string | null }> {
+  const { error } = await supabase.rpc('reactivate_account');
+  return { error: error?.message ?? null };
+}
+
+export async function deleteAccount(): Promise<{ error: string | null }> {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) return { error: 'No hay sesión activa' };
+  const { error } = await supabase.functions.invoke('delete-account', {
+    headers: { Authorization: `Bearer ${session.access_token}` },
+  });
+  if (error) return { error: error.message ?? 'No se pudo eliminar la cuenta' };
+  await supabase.auth.signOut();
+  return { error: null };
+}
+
 export async function updateUsername(userId: string, username: string): Promise<{ error?: string }> {
   const trimmed = username.trim();
   const validationError = validateUsername(trimmed);

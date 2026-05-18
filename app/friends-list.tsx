@@ -7,6 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import { useAuth } from '@/hooks/useAuth';
+import { useGuest } from '@/hooks/useGuest';
+import { GuestGate } from '@/components/GuestGate';
 import {
   searchUsers,
   fetchFriends,
@@ -26,6 +28,17 @@ type SearchResult = FriendProfile & {
 export default function FriendsListScreen() {
   const router = useRouter();
   const { user } = useAuth();
+  const { guest } = useGuest();
+
+  if (guest) {
+    return (
+      <GuestGate
+        icon="👥"
+        title="Amigos y rankings"
+        description="Crea una cuenta gratis para añadir amigos y comparar tus puntuaciones."
+      />
+    );
+  }
 
   const [friends, setFriends] = useState<FriendProfile[]>([]);
   const [pending, setPending] = useState<FriendProfile[]>([]);

@@ -6,7 +6,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { supabase } from '@/lib/supabase';
-import { validateUsername } from '@/lib/db';
+import { validateUsername, reactivateAccount } from '@/lib/db';
+import { setGuestMode } from '@/lib/guest';
 
 type Mode = 'login' | 'register' | 'reset';
 
@@ -32,8 +33,44 @@ export default function LoginScreen() {
   const handleLogin = async () => {
     if (!email || !password) { Alert.alert('Error', 'Rellena email y contraseña'); return; }
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) Alert.alert('Error', error.message);
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      Alert.alert('Error', error.message);
+      setLoading(false);
+      return;
+    }
+
+    if (data.user) {
+      const { data: prof } = await supabase
+        .from('profiles')
+        .select('is_paused')
+        .eq('id', data.user.id)
+        .single();
+
+      if (prof?.is_paused) {
+        Alert.alert(
+          'Cuenta pausada',
+          'Tu cuenta está pausada. ¿Quieres reactivarla?',
+          [
+            {
+              text: 'Cancelar',
+              style: 'cancel',
+              onPress: async () => { await supabase.auth.signOut(); },
+            },
+            {
+              text: 'Reactivar',
+              onPress: async () => {
+                const { error: reErr } = await reactivateAccount();
+                if (reErr) {
+                  Alert.alert('Error', reErr);
+                  await supabase.auth.signOut();
+                }
+              },
+            },
+          ],
+        );
+      }
+    }
     setLoading(false);
   };
 
@@ -74,6 +111,10 @@ export default function LoginScreen() {
       );
     }
     setLoading(false);
+  };
+
+  const handleGuest = async () => {
+    await setGuestMode(true);
   };
 
   const getSubtitle = () => {
@@ -191,6 +232,30 @@ export default function LoginScreen() {
                 </Text>
               </Text>
             </Pressable>
+          )}
+
+          {mode === 'login' && (
+            <View style={{ marginTop: 32 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
+                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>o</Text>
+                <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
+              </View>
+              <Pressable onPress={handleGuest}>
+                <View style={{
+                  borderRadius: 14, padding: 16, alignItems: 'center',
+                  backgroundColor: '#1a1a1a',
+                  borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
+                }}>
+                  <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>
+                    Continuar como invitado
+                  </Text>
+                </View>
+              </Pressable>
+              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 10, textAlign: 'center', paddingHorizontal: 12 }}>
+                Sin cuenta no podrás participar en la pregunta del día ni en los rankings.
+              </Text>
+            </View>
           )}
         </ScrollView>
       </KeyboardAvoidingView>

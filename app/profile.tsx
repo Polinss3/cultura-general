@@ -9,7 +9,11 @@ import { useRouter, Link } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { supabase } from '@/lib/supabase';
-import { fetchAnswerHistory, updateUsername, fetchCategoryStats, AnswerHistoryItem, CategoryStat } from '@/lib/db';
+import {
+  fetchAnswerHistory, updateUsername, fetchCategoryStats,
+  pauseAccount, deleteAccount,
+  AnswerHistoryItem, CategoryStat,
+} from '@/lib/db';
 import { computeAchievements } from '@/lib/achievements';
 import {
   requestNotificationPermission,
@@ -90,6 +94,55 @@ export default function ProfileScreen() {
       { text: 'Cancelar', style: 'cancel' },
       { text: 'Salir', style: 'destructive', onPress: () => supabase.auth.signOut() },
     ]);
+  };
+
+  const handlePause = () => {
+    Alert.alert(
+      'Pausar cuenta',
+      'Tu progreso se conservará. Podrás reactivar la cuenta cuando vuelvas a iniciar sesión.',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Pausar',
+          style: 'destructive',
+          onPress: async () => {
+            const { error } = await pauseAccount();
+            if (error) Alert.alert('Error', error);
+          },
+        },
+      ],
+    );
+  };
+
+  const handleDelete = () => {
+    Alert.alert(
+      '¿Eliminar tu cuenta?',
+      'Esta acción NO se puede deshacer. Tus estadísticas, racha, historial y amistades se borrarán para siempre.',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Eliminar definitivamente',
+          style: 'destructive',
+          onPress: () => {
+            Alert.alert(
+              'Confirma una vez más',
+              'Tu cuenta y todos los datos asociados se borrarán de forma permanente.',
+              [
+                { text: 'Cancelar', style: 'cancel' },
+                {
+                  text: 'Sí, eliminar',
+                  style: 'destructive',
+                  onPress: async () => {
+                    const { error } = await deleteAccount();
+                    if (error) Alert.alert('Error', error);
+                  },
+                },
+              ],
+            );
+          },
+        },
+      ],
+    );
   };
 
   const achievements = computeAchievements(profile);
@@ -299,6 +352,39 @@ export default function ProfileScreen() {
               />
             )}
           </View>
+        </View>
+
+        {/* Zona peligrosa */}
+        <View style={{ paddingHorizontal: 20, marginBottom: 24 }}>
+          <SectionTitle>Zona peligrosa</SectionTitle>
+          <Pressable
+            onPress={handlePause}
+            style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, marginBottom: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+              <Text style={{ fontSize: 16 }}>⏸</Text>
+              <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
+                Pausar cuenta
+              </Text>
+            </View>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 17 }}>
+              Tu progreso se conserva. Podrás reactivarla cuando vuelvas a iniciar sesión.
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={handleDelete}
+            style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, borderWidth: 1, borderColor: 'rgba(232,48,96,0.25)' }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+              <Text style={{ fontSize: 16 }}>🗑</Text>
+              <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
+                Eliminar cuenta
+              </Text>
+            </View>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 17 }}>
+              Tus datos, estadísticas y progreso se borrarán para siempre.
+            </Text>
+          </Pressable>
         </View>
 
         {/* Sign out */}

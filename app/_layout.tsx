@@ -14,12 +14,14 @@ import {
 } from '@expo-google-fonts/outfit';
 import * as Sentry from '@sentry/react-native';
 import { useAuth } from '@/hooks/useAuth';
+import { useGuest } from '@/hooks/useGuest';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { supabase } from '@/lib/supabase';
 import { setSentryUser } from '@/lib/sentry';
 import { ensureTrackingPermission } from '@/lib/tracking';
+import { clearGuestData } from '@/lib/guest';
 
 Sentry.init({
   dsn: 'https://b47aaa6f083737c40dd659db4a776b87@o4511400341995520.ingest.de.sentry.io/4511400352546896',
@@ -48,6 +50,7 @@ function RootLayout() {
   });
 
   const { session, loading } = useAuth();
+  const { guest, loading: guestLoading } = useGuest();
   const segments = useSegments();
   const router = useRouter();
   const [onboarded, setOnboarded] = useState<boolean | null>(null);
@@ -87,7 +90,7 @@ function RootLayout() {
   }, [router]);
 
   useEffect(() => {
-    if (!fontsLoaded || loading || onboarded === null) return;
+    if (!fontsLoaded || loading || guestLoading || onboarded === null) return;
     SplashScreen.hideAsync();
     // Fire-and-forget: pedir ATT en iOS la primera vez tras el splash.
     // Si el usuario rechaza, los anuncios mostrarán contenido no
@@ -110,18 +113,38 @@ function RootLayout() {
       const inOnboarding = segs[0] === 'onboarding';
       const isUpdatePassword = segs[1] === 'update-password';
 
-      if (!session && !inAuth) {
-        router.replace('/(auth)/login');
-      } else if (session && inAuth && !isUpdatePassword) {
-        if (!hasCompletedOnboarding) {
+      // Si llega sesión real estando en modo invitado, limpiamos rastros del invitado.
+      if (session && guest) {
+        await clearGuestData();
+      }
+
+      if (session) {
+        if (inAuth && !isUpdatePassword) {
+          if (!hasCompletedOnboarding) {
+            router.replace('/onboarding');
+          } else {
+            router.replace('/(tabs)');
+          }
+        } else if (!hasCompletedOnboarding && !inOnboarding && !isUpdatePassword) {
           router.replace('/onboarding');
-        } else {
+        } else if (hasCompletedOnboarding && inOnboarding) {
           router.replace('/(tabs)');
         }
-      } else if (session && !hasCompletedOnboarding && !inOnboarding && !isUpdatePassword) {
-        router.replace('/onboarding');
-      } else if (session && hasCompletedOnboarding && inOnboarding) {
-        router.replace('/(tabs)');
+      } else if (guest) {
+        // Invitado: tratamos igual que sesión a efectos de routing, pero sin Supabase.
+        if (inAuth && !isUpdatePassword) {
+          if (!hasCompletedOnboarding) {
+            router.replace('/onboarding');
+          } else {
+            router.replace('/(tabs)');
+          }
+        } else if (!hasCompletedOnboarding && !inOnboarding && !isUpdatePassword) {
+          router.replace('/onboarding');
+        } else if (hasCompletedOnboarding && inOnboarding) {
+          router.replace('/(tabs)');
+        }
+      } else if (!inAuth) {
+        router.replace('/(auth)/login');
       }
     };
 
@@ -130,9 +153,9 @@ function RootLayout() {
     return () => {
       cancelled = true;
     };
-  }, [session, loading, fontsLoaded, onboarded, segments]);
+  }, [session, loading, guest, guestLoading, fontsLoaded, onboarded, segments]);
 
-  if (!fontsLoaded || loading || onboarded === null) return null;
+  if (!fontsLoaded || loading || guestLoading || onboarded === null) return null;
 
   return (
     <ErrorBoundary>
