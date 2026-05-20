@@ -9,15 +9,10 @@
     "userInterfaceStyle": "dark",
     "backgroundColor": "#0a0a0a",
     "primaryColor": "#e8a030",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#0a0a0a"
-    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "24",
+      "buildNumber": "25",
       "infoPlist": {
         "NSCameraUsageDescription": "La app no usa la cámara.",
         "NSUserNotificationsUsageDescription": "Recibe un recordatorio diario para responder la pregunta del día y mantener tu racha.",
@@ -46,6 +41,15 @@
     "plugins": [
       "expo-router",
       "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#0a0a0a",
+          "imageWidth": 200
+        }
+      ],
       [
         "expo-secure-store",
         {
