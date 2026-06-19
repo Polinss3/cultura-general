@@ -6,8 +6,9 @@ import { OptionBtn } from '@/components/OptionBtn';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
+import { useOffline } from '@/hooks/useOffline';
 import { fetchQuestions, saveSpeedGame } from '@/lib/db';
-import { getGuestSpeedRecord, setGuestSpeedRecord } from '@/lib/guest';
+import { getGuestSpeedRecord, setGuestSpeedRecord, getLocalSpeedRecord, setLocalSpeedRecord } from '@/lib/guest';
 import { QUESTIONS } from '@/constants/questions';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
@@ -28,6 +29,7 @@ export default function SpeedScreen() {
   const { user } = useAuth();
   const { profile, refresh: refreshProfile } = useProfile();
   const { guest } = useGuest();
+  const offline = useOffline();
 
   const [phase, setPhase] = useState<Phase>('loading');
   const [allQ, setAllQ] = useState<Question[]>([]);
@@ -38,6 +40,7 @@ export default function SpeedScreen() {
   const [answered, setAnswered] = useState(false);
   const [newRecord, setNewRecord] = useState(false);
   const [guestRecord, setGuestRecord] = useState(0);
+  const [localRecord, setLocalRecord] = useState(0); // récord guardado en el dispositivo (offline con cuenta)
   const savedRef = useRef(false);
 
   // Cargar récord de invitado de AsyncStorage
@@ -45,7 +48,16 @@ export default function SpeedScreen() {
     if (guest) getGuestSpeedRecord().then(setGuestRecord);
   }, [guest]);
 
-  const currentRecord = guest ? guestRecord : (profile?.speed_record ?? 0);
+  // Cargar récord local (usuario con cuenta jugando sin conexión)
+  useEffect(() => {
+    if (offline && !guest) getLocalSpeedRecord().then(setLocalRecord);
+  }, [offline, guest]);
+
+  const currentRecord = guest
+    ? guestRecord
+    : offline
+      ? Math.max(localRecord, profile?.speed_record ?? 0)
+      : (profile?.speed_record ?? 0);
 
   const baseQ = allQ.length > 0 ? allQ[qIdx % allQ.length] : undefined;
   const displayQ = useMemo(() => (baseQ ? shuffleQuestion(baseQ) : undefined), [baseQ, qIdx]);
@@ -53,7 +65,12 @@ export default function SpeedScreen() {
   // Load questions from Supabase on mount, fall back to local
   useEffect(() => {
     (async () => {
-      const remote = await fetchQuestions();
+      let remote: Question[] = [];
+      try {
+        remote = await fetchQuestions();
+      } catch {
+        // Sin red / sin caché: usamos el banco local empaquetado.
+      }
       const source = remote.length > 0 ? remote : buildLocal();
       const recent = await getRecentIds('speed');
       setAllQ(pickRandomFresh(source, recent, q => q.id, source.length));
@@ -77,6 +94,15 @@ export default function SpeedScreen() {
       const isNew = score > guestRecord;
       if (isNew) {
         setGuestSpeedRecord(score).then(() => setGuestRecord(score));
+      }
+      setNewRecord(isNew);
+      return;
+    }
+    if (offline) {
+      // Sin conexión: guardamos el récord solo en el dispositivo (no se sincroniza).
+      const isNew = score > localRecord;
+      if (isNew) {
+        setLocalSpeedRecord(score).then(() => setLocalRecord(score));
       }
       setNewRecord(isNew);
       return;

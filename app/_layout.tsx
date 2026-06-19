@@ -3,6 +3,7 @@ import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Linking from 'expo-linking';
+import { Alert } from 'react-native';
 import {
   useFonts,
   Outfit_300Light,
@@ -15,12 +16,17 @@ import {
 import * as Sentry from '@sentry/react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
+import { useOffline } from '@/hooks/useOffline';
+import { setOffline, probeConnection } from '@/lib/offline';
+import { BootScreen } from '@/components/BootScreen';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { supabase } from '@/lib/supabase';
 import { setSentryUser } from '@/lib/sentry';
 import { clearGuestData } from '@/lib/guest';
+import { handleIncomingAuthUrl } from '@/lib/auth';
+import { requiresProfileCompletion } from '@/lib/authValidation';
 
 Sentry.init({
   dsn: 'https://b47aaa6f083737c40dd659db4a776b87@o4511400341995520.ingest.de.sentry.io/4511400352546896',
@@ -50,12 +56,38 @@ function RootLayout() {
 
   const { session, loading } = useAuth();
   const { guest, loading: guestLoading } = useGuest();
+  const offline = useOffline();
   const segments = useSegments();
   const router = useRouter();
   const [onboarded, setOnboarded] = useState<boolean | null>(null);
+  const [authLinkReady, setAuthLinkReady] = useState(false);
+  const [profileReady, setProfileReady] = useState(false);
+  const [profileNeedsCompletion, setProfileNeedsCompletion] = useState(false);
+  // Arranque sin conexión.
+  const [probeDone, setProbeDone] = useState(false);   // sonda de red resuelta
+  const [manualEnter, setManualEnter] = useState(false); // usuario pulsó "Continuar sin conexión"
+  const [bootTimedOut, setBootTimedOut] = useState(false); // han pasado ~10s cargando
 
   useEffect(() => {
     getOnboardingCompleted().then(setOnboarded);
+  }, []);
+
+  // Sonda de conectividad al arrancar + temporizador para ofrecer el modo
+  // sin conexión si la carga se alarga.
+  useEffect(() => {
+    let cancelled = false;
+    probeConnection().then(ok => {
+      if (cancelled) return;
+      if (!ok) setOffline(true);
+      setProbeDone(true);
+    });
+    const timer = setTimeout(() => {
+      if (!cancelled) setBootTimedOut(true);
+    }, 10000);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, []);
 
   // Keep Sentry user in sync with auth state for better crash attribution.
@@ -63,34 +95,98 @@ function RootLayout() {
     setSentryUser(session?.user?.id ?? null);
   }, [session?.user?.id]);
 
-  // Handle password recovery deep links (culturalgeneral://update-password#access_token=...)
+  // Handle auth deep links (OAuth callback, email confirmation and password recovery).
   useEffect(() => {
+    let cancelled = false;
+
     const handleDeepLink = async (url: string) => {
-      // Only honor recovery deep links — never authenticate via arbitrary links.
-      if (!url.includes('update-password')) return;
-
-      const fragment = url.split('#')[1];
-      if (!fragment) return;
-      const params = new URLSearchParams(fragment);
-      const access_token = params.get('access_token');
-      const refresh_token = params.get('refresh_token');
-      const type = params.get('type');
-      if (!access_token || !refresh_token) return;
-      if (type && type !== 'recovery') return;
-
-      const { error } = await supabase.auth.setSession({ access_token, refresh_token });
-      if (error) return;
-      router.push('/(auth)/update-password');
+      const result = await handleIncomingAuthUrl(url);
+      if (!result.handled || cancelled) return;
+      if (result.error) {
+        Alert.alert('Error', result.error);
+        return;
+      }
+      if (result.route === 'update-password') {
+        router.replace('/(auth)/update-password');
+      }
     };
 
-    Linking.getInitialURL().then(url => { if (url) handleDeepLink(url); });
+    const bootstrap = async () => {
+      const initialUrl = await Linking.getInitialURL();
+      if (initialUrl) await handleDeepLink(initialUrl);
+      if (!cancelled) setAuthLinkReady(true);
+    };
+
+    bootstrap();
     const sub = Linking.addEventListener('url', ({ url }) => handleDeepLink(url));
-    return () => sub.remove();
+    return () => {
+      cancelled = true;
+      sub.remove();
+    };
   }, [router]);
 
   useEffect(() => {
-    if (!fontsLoaded || loading || guestLoading || onboarded === null) return;
-    SplashScreen.hideAsync();
+    let cancelled = false;
+
+    const loadProfileStatus = async () => {
+      if (!session?.user) {
+        setProfileNeedsCompletion(false);
+        setProfileReady(true);
+        return;
+      }
+
+      setProfileReady(false);
+
+      // La consulta no debe poder bloquear la splash indefinidamente (p. ej.
+      // sin red): si tarda demasiado, desbloqueamos sin forzar complete-profile.
+      let settled = false;
+      const timer = setTimeout(() => {
+        if (settled || cancelled) return;
+        settled = true;
+        setProfileNeedsCompletion(false);
+        setProfileReady(true);
+      }, 6000);
+
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('username')
+        .eq('id', session.user.id)
+        .maybeSingle();
+
+      if (settled || cancelled) return;
+      settled = true;
+      clearTimeout(timer);
+
+      setProfileNeedsCompletion(
+        error ? false : requiresProfileCompletion(data?.username, session.user.user_metadata),
+      );
+      setProfileReady(true);
+    };
+
+    loadProfileStatus();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [session?.user?.id, session?.user?.updated_at]);
+
+  // ─ Estado de arranque ─
+  const authResolved =
+    fontsLoaded && !loading && !guestLoading && onboarded !== null && authLinkReady && profileReady;
+  const hasIdentity = !!session || guest;
+  // Usuario sin sesión + sin red confirmada: requiere pulsar "Continuar sin conexión".
+  const needsManualEntry = offline && !hasIdentity;
+  const ready = authResolved && (hasIdentity || manualEnter || (probeDone && !offline));
+
+  // Ocultar la splash nativa cuando ya podemos mostrar UI propia (app o BootScreen).
+  useEffect(() => {
+    if (ready || bootTimedOut || needsManualEntry) {
+      SplashScreen.hideAsync().catch(() => {});
+    }
+  }, [ready, bootTimedOut, needsManualEntry]);
+
+  useEffect(() => {
+    if (!ready) return;
 
     let cancelled = false;
 
@@ -107,14 +203,36 @@ function RootLayout() {
       const inAuth = segs[0] === '(auth)';
       const inOnboarding = segs[0] === 'onboarding';
       const isUpdatePassword = segs[1] === 'update-password';
+      const isAuthCallback = segs[0] === 'auth' && segs[1] === 'callback';
+      const isCompleteProfile = segs[1] === 'complete-profile';
 
       // Si llega sesión real estando en modo invitado, limpiamos rastros del invitado.
       if (session && guest) {
         await clearGuestData();
       }
 
+      // Modo sin conexión: sin acceso a perfil/complete-profile; entrada directa
+      // a los tabs (Rápido y Aprender). Diario/Amigos muestran aviso dentro.
+      if (offline) {
+        if (isUpdatePassword) return;
+        if (!hasCompletedOnboarding) {
+          if (!inOnboarding) router.replace('/onboarding');
+          return;
+        }
+        if (segs[0] !== '(tabs)') router.replace('/(tabs)');
+        return;
+      }
+
       if (session) {
-        if (inAuth && !isUpdatePassword) {
+        if (profileNeedsCompletion && !isCompleteProfile && !isUpdatePassword) {
+          router.replace('/complete-profile' as any);
+        } else if (isCompleteProfile && !profileNeedsCompletion) {
+          if (!hasCompletedOnboarding) {
+            router.replace('/onboarding');
+          } else {
+            router.replace('/(tabs)');
+          }
+        } else if ((inAuth || isAuthCallback) && !isUpdatePassword && !isCompleteProfile) {
           if (!hasCompletedOnboarding) {
             router.replace('/onboarding');
           } else {
@@ -127,7 +245,7 @@ function RootLayout() {
         }
       } else if (guest) {
         // Invitado: tratamos igual que sesión a efectos de routing, pero sin Supabase.
-        if (inAuth && !isUpdatePassword) {
+        if ((inAuth || isAuthCallback) && !isUpdatePassword) {
           if (!hasCompletedOnboarding) {
             router.replace('/onboarding');
           } else {
@@ -148,9 +266,30 @@ function RootLayout() {
     return () => {
       cancelled = true;
     };
-  }, [session, loading, guest, guestLoading, fontsLoaded, onboarded, segments]);
+  }, [
+    ready,
+    session,
+    loading,
+    guest,
+    guestLoading,
+    fontsLoaded,
+    onboarded,
+    segments,
+    authLinkReady,
+    profileReady,
+    profileNeedsCompletion,
+    offline,
+    manualEnter,
+  ]);
 
-  if (!fontsLoaded || loading || guestLoading || onboarded === null) return null;
+  if (!ready) {
+    return (
+      <BootScreen
+        showOfflineButton={bootTimedOut || needsManualEntry}
+        onContinueOffline={() => { setOffline(true); setManualEnter(true); }}
+      />
+    );
+  }
 
   return (
     <ErrorBoundary>

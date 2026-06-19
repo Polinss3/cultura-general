@@ -5,6 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { OptionBtn } from '@/components/OptionBtn';
 import { useGuest } from '@/hooks/useGuest';
+import { useOffline } from '@/hooks/useOffline';
+import { OfflineNotice } from '@/components/OfflineNotice';
 import { QUESTIONS } from '@/constants/questions';
 import { fetchQuestions } from '@/lib/db';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
@@ -24,10 +26,13 @@ function buildLocal(): Question[] {
 }
 
 async function buildFreshPool(): Promise<Question[]> {
-  const [remote, recent] = await Promise.all([
-    fetchQuestions(),
-    getRecentIds('friends'),
-  ]);
+  let remote: Question[] = [];
+  try {
+    remote = await fetchQuestions();
+  } catch {
+    // Sin red / sin caché: usamos el banco local empaquetado.
+  }
+  const recent = await getRecentIds('friends');
   const source = remote.length > 0 ? remote : buildLocal();
   return pickRandomFresh(source, recent, q => q.id, source.length);
 }
@@ -1639,7 +1644,17 @@ function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
 // ══════════════════════════════════════════════════════════════
 
 export default function FriendsScreen() {
+  const offline = useOffline();
   const [screen, setScreen] = useState<Screen>('modes');
+
+  if (offline) {
+    return (
+      <OfflineNotice
+        title="Jugar con amigos sin conexión"
+        description="El modo multijugador necesita conexión. Mientras tanto puedes jugar a Contrarreloj y Aprender."
+      />
+    );
+  }
 
   if (screen === 'modes') return <ModesScreen onSelect={setScreen} />;
   if (screen === 'pasa') return <PasaGame onBack={() => setScreen('modes')} />;

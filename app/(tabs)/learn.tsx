@@ -6,6 +6,7 @@ import { OptionBtn } from '@/components/OptionBtn';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
+import { useOffline } from '@/hooks/useOffline';
 import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
 import { QUESTIONS, CAT_COLORS, CAT_ICONS, CAT_NAMES, ALL_CATEGORIES } from '@/constants/questions';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
@@ -38,6 +39,7 @@ function filterByDifficulty(questions: Question[], diff: Difficulty): Question[]
 export default function LearnScreen() {
   const { user } = useAuth();
   const { guest } = useGuest();
+  const offline = useOffline();
   const [cat, setCat] = useState<LearnCat | null>(null);
   const reportedRef = useRef(new Set<string>());
   const [difficulty, setDifficulty] = useState<Difficulty>('all');
@@ -61,7 +63,12 @@ export default function LearnScreen() {
     setDifficulty('all');
 
     (async () => {
-      const remote = cat === 'random' ? await fetchQuestions() : await fetchQuestions(cat);
+      let remote: Question[] = [];
+      try {
+        remote = cat === 'random' ? await fetchQuestions() : await fetchQuestions(cat);
+      } catch {
+        // Sin red / sin caché: usamos el banco local empaquetado.
+      }
       const fallback = cat === 'random'
         ? ALL_CATEGORIES.flatMap(c => QUESTIONS[c])
         : QUESTIONS[cat];
@@ -96,7 +103,7 @@ export default function LearnScreen() {
     const correct = i === q.ans;
     if (!correct) setShowCtx(true);
 
-    if (user && !guest) {
+    if (user && !guest && !offline) {
       incrementProfileStats(user.id, 1, correct ? 1 : 0);
     }
     if (cat && q.id) {

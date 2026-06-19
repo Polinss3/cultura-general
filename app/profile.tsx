@@ -14,6 +14,7 @@ import {
   pauseAccount, deleteAccount,
   AnswerHistoryItem, CategoryStat,
 } from '@/lib/db';
+import { normalizeUsername } from '@/lib/authValidation';
 import { computeAchievements } from '@/lib/achievements';
 import {
   requestNotificationPermission,
@@ -178,11 +179,11 @@ export default function ProfileScreen() {
             <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
               <TextInput
                 value={newUsername}
-                onChangeText={setNewUsername}
+                onChangeText={value => setNewUsername(normalizeUsername(value))}
                 placeholder={profile?.username ?? ''}
                 placeholderTextColor="rgba(255,255,255,0.3)"
                 autoFocus
-                autoCapitalize="none"
+                autoCapitalize="words"
                 style={{
                   color: '#fff', fontFamily: 'Outfit_400Regular', fontSize: 16,
                   backgroundColor: '#1a1a1a', borderRadius: 10, paddingHorizontal: 12,

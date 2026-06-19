@@ -4,8 +4,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { OptionBtn } from '@/components/OptionBtn';
 import { Confetti } from '@/components/Confetti';
 import { GuestGate } from '@/components/GuestGate';
+import { OfflineNotice } from '@/components/OfflineNotice';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
+import { useOffline } from '@/hooks/useOffline';
 import {
   fetchOrAssignDailyQuestion,
   checkDailyAnswered,
@@ -107,6 +109,16 @@ function formatTime(ms: number | null): string {
 export default function DailyScreen() {
   const { user } = useAuth();
   const { guest } = useGuest();
+  const offline = useOffline();
+
+  if (offline) {
+    return (
+      <OfflineNotice
+        title="Pregunta del día sin conexión"
+        description="La pregunta diaria y los rankings necesitan conexión. Mientras tanto puedes jugar a Contrarreloj y Aprender."
+      />
+    );
+  }
 
   if (guest) {
     return (

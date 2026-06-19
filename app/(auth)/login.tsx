@@ -6,8 +6,22 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { supabase } from '@/lib/supabase';
-import { validateUsername, reactivateAccount } from '@/lib/db';
+import { SocialButton } from '@/components/SocialButton';
+import { reactivateAccount } from '@/lib/db';
 import { setGuestMode } from '@/lib/guest';
+import {
+  getAuthCallbackUrl,
+  getUpdatePasswordUrl,
+  signInWithApple,
+  signInWithGoogle,
+} from '@/lib/auth';
+import {
+  normalizeEmail,
+  normalizeUsername,
+  validateEmail,
+  validatePassword,
+  validateUsername,
+} from '@/lib/authValidation';
 
 type Mode = 'login' | 'register' | 'reset';
 
@@ -31,9 +45,17 @@ export default function LoginScreen() {
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
-    if (!email || !password) { Alert.alert('Error', 'Rellena email y contraseña'); return; }
+    const normalizedEmail = normalizeEmail(email);
+    const emailError = validateEmail(email);
+
+    if (emailError) { Alert.alert('Error', emailError); return; }
+    if (!password) { Alert.alert('Error', 'Rellena email y contraseña'); return; }
+
     setLoading(true);
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: normalizedEmail,
+      password,
+    });
     if (error) {
       Alert.alert('Error', error.message);
       setLoading(false);
@@ -75,31 +97,60 @@ export default function LoginScreen() {
   };
 
   const handleRegister = async () => {
-    const trimmedUsername = username.trim();
-    if (!trimmedUsername) { Alert.alert('Error', 'Necesitas un nombre de usuario'); return; }
-    const usernameError = validateUsername(trimmedUsername);
+    const normalizedUsername = normalizeUsername(username);
+    const normalizedEmail = normalizeEmail(email);
+    const usernameError = validateUsername(normalizedUsername);
+    const emailError = validateEmail(email);
+    const passwordError = validatePassword(password);
+
     if (usernameError) { Alert.alert('Error', usernameError); return; }
-    if (!email || !password) { Alert.alert('Error', 'Rellena todos los campos'); return; }
-    if (password.length < 6) { Alert.alert('Error', 'La contraseña debe tener al menos 6 caracteres'); return; }
+    if (emailError) { Alert.alert('Error', emailError); return; }
+    if (passwordError) { Alert.alert('Error', passwordError); return; }
+
+    const { data: existingProfile } = await supabase
+      .from('profiles')
+      .select('id')
+      .eq('username', normalizedUsername)
+      .maybeSingle();
+
+    if (existingProfile) {
+      Alert.alert('Error', 'Ese nombre ya está en uso.');
+      return;
+    }
+
     setLoading(true);
     const { error } = await supabase.auth.signUp({
-      email,
+      email: normalizedEmail,
       password,
       options: {
-        data: { username: trimmedUsername },
-        emailRedirectTo: 'culturalgeneral://login',
+        data: {
+          username: normalizedUsername,
+          manual_username: true,
+          needs_profile_completion: false,
+        },
+        emailRedirectTo: getAuthCallbackUrl(),
       },
     });
-    if (error) Alert.alert('Error', error.message);
-    else Alert.alert('¡Cuenta creada!', 'Ya puedes iniciar sesión.');
+    if (error) {
+      Alert.alert('Error', error.message);
+    } else {
+      Alert.alert(
+        'Revisa tu correo',
+        'Te hemos enviado el enlace para confirmar la cuenta y completar el acceso.',
+      );
+    }
     setLoading(false);
   };
 
   const handleReset = async () => {
-    if (!email) { Alert.alert('Error', 'Introduce tu email para recuperar la contraseña'); return; }
+    const normalizedEmail = normalizeEmail(email);
+    const emailError = validateEmail(email);
+
+    if (emailError) { Alert.alert('Error', emailError); return; }
+
     setLoading(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: 'culturalgeneral://update-password',
+    const { error } = await supabase.auth.resetPasswordForEmail(normalizedEmail, {
+      redirectTo: getUpdatePasswordUrl(),
     });
     if (error) {
       Alert.alert('Error', error.message);
@@ -115,6 +166,42 @@ export default function LoginScreen() {
 
   const handleGuest = async () => {
     await setGuestMode(true);
+  };
+
+  const handleGoogle = async () => {
+    try {
+      setLoading(true);
+      const result = await signInWithGoogle();
+      if (result.cancelled) return;
+    } catch (error: any) {
+      Alert.alert('Error', error?.message ?? 'No se pudo iniciar sesión con Google.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleApple = async () => {
+    Alert.alert(
+      'Apple',
+      'Para entrar en la misma cuenta existente, usa el mismo correo visible y no elijas "Ocultar mi correo".',
+      [
+        { text: 'Cancelar', style: 'cancel' },
+        {
+          text: 'Continuar',
+          onPress: async () => {
+            try {
+              setLoading(true);
+              await signInWithApple();
+            } catch (error: any) {
+              if (error?.code === 'ERR_REQUEST_CANCELED') return;
+              Alert.alert('Error', error?.message ?? 'No se pudo iniciar sesión con Apple.');
+            } finally {
+              setLoading(false);
+            }
+          },
+        },
+      ],
+    );
   };
 
   const getSubtitle = () => {
@@ -155,9 +242,10 @@ export default function LoginScreen() {
             <TextInput
               value={username}
               onChangeText={setUsername}
-              placeholder="Nombre de usuario"
+              placeholder="Nombre público"
               placeholderTextColor="rgba(255,255,255,0.3)"
-              autoCapitalize="none"
+              autoCapitalize="words"
+              autoCorrect={false}
               style={INPUT}
             />
           )}
@@ -169,6 +257,7 @@ export default function LoginScreen() {
             placeholderTextColor="rgba(255,255,255,0.3)"
             keyboardType="email-address"
             autoCapitalize="none"
+            autoCorrect={false}
             style={INPUT}
           />
 
@@ -207,6 +296,34 @@ export default function LoginScreen() {
               </Text>
             </LinearGradient>
           </Pressable>
+
+          {mode !== 'reset' && (
+            <View style={{ marginTop: 18 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
+                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>o sigue con</Text>
+                <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
+              </View>
+
+              <View style={{ gap: 10 }}>
+                <SocialButton
+                  provider="google"
+                  label="Continuar con Google"
+                  onPress={handleGoogle}
+                  disabled={loading}
+                />
+
+                {Platform.OS === 'ios' && (
+                  <SocialButton
+                    provider="apple"
+                    label="Continuar con Apple"
+                    onPress={handleApple}
+                    disabled={loading}
+                  />
+                )}
+              </View>
+            </View>
+          )}
 
           {mode !== 'reset' ? (
             <Pressable

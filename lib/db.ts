@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from './supabase';
 import { Question, Category } from '@/types';
+import { normalizeUsername, validateUsername } from './authValidation';
 
 // ─── Error handling ───────────────────────────────────────────
 
@@ -520,18 +521,6 @@ export async function incrementProfileStats(
   });
 }
 
-const USERNAME_PATTERN = /^[\p{L}\p{N}_.-]+$/u;
-
-export function validateUsername(username: string): string | null {
-  const trimmed = username.trim();
-  if (trimmed.length < 3) return 'El nombre debe tener al menos 3 caracteres.';
-  if (trimmed.length > 20) return 'El nombre no puede tener más de 20 caracteres.';
-  if (!USERNAME_PATTERN.test(trimmed)) {
-    return 'Usa solo letras, números, puntos, guiones o guiones bajos.';
-  }
-  return null;
-}
-
 // ─── Account management ──────────────────────────────────────
 
 export async function pauseAccount(): Promise<{ error: string | null }> {
@@ -558,14 +547,13 @@ export async function deleteAccount(): Promise<{ error: string | null }> {
 }
 
 export async function updateUsername(userId: string, username: string): Promise<{ error?: string }> {
-  const trimmed = username.trim();
-  const validationError = validateUsername(trimmed);
+  const normalized = normalizeUsername(username);
+  const validationError = validateUsername(normalized);
   if (validationError) return { error: validationError };
 
   const { error } = await supabase
     .from('profiles')
-    .update({ username: trimmed })
-    .eq('id', userId);
+    .upsert({ id: userId, username: normalized });
 
   if (error) {
     // Username unique violation surfaces here.

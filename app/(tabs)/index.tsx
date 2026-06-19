@@ -4,6 +4,8 @@ import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
+import { useOffline } from '@/hooks/useOffline';
+import { useToast } from '@/context/ToastContext';
 import { unlockedCount } from '@/lib/achievements';
 import { setGuestMode, getGuestSpeedRecord } from '@/lib/guest';
 import { useEffect, useState } from 'react';
@@ -12,7 +14,13 @@ export default function HomeScreen() {
   const router = useRouter();
   const { profile } = useProfile();
   const { guest } = useGuest();
+  const offline = useOffline();
+  const { showToast } = useToast();
   const [guestSpeedRecord, setGuestSpeedRecordState] = useState(0);
+
+  // En modo sin conexión, Diario/Amigos/Perfil no están disponibles.
+  const lockedTap = () =>
+    showToast({ type: 'info', message: 'Sin conexión — disponible cuando recuperes los datos' });
 
   useEffect(() => {
     if (guest) getGuestSpeedRecord().then(setGuestSpeedRecordState);
@@ -47,7 +55,7 @@ export default function HomeScreen() {
                 Hola, {displayName} 👋
               </Text>
             </View>
-            <Pressable onPress={() => guest ? goToAuth() : router.push('/profile')}>
+            <Pressable onPress={() => guest ? goToAuth() : offline ? lockedTap() : router.push('/profile')}>
               {guest ? (
                 <View style={{
                   width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center',
@@ -118,7 +126,7 @@ export default function HomeScreen() {
           </Text>
 
           {/* Daily */}
-          <Pressable onPress={() => router.push('/(tabs)/daily')} style={{ marginBottom: 12 }}>
+          <Pressable onPress={() => offline ? lockedTap() : router.push('/(tabs)/daily')} style={{ marginBottom: 12, opacity: offline ? 0.45 : 1 }}>
             <LinearGradient
               colors={['#1a1000', '#0a0a0a']}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -141,7 +149,7 @@ export default function HomeScreen() {
                   <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>Jugar hoy →</Text>
                 </View>
                 <Text style={{ color: 'rgba(255,255,255,0.25)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
-                  127 jugadores hoy
+                  {offline ? 'Sin conexión' : '127 jugadores hoy'}
                 </Text>
               </View>
             </LinearGradient>
@@ -204,7 +212,7 @@ export default function HomeScreen() {
           </Pressable>
 
           {/* Friends */}
-          <Pressable onPress={() => router.push('/(tabs)/friends')}>
+          <Pressable onPress={() => offline ? lockedTap() : router.push('/(tabs)/friends')} style={{ opacity: offline ? 0.45 : 1 }}>
             <LinearGradient
               colors={['#001220', '#0a0a0a']}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -252,7 +260,7 @@ export default function HomeScreen() {
                 </View>
               ))}
             </View>
-            <Pressable onPress={() => router.push('/profile')}>
+            <Pressable onPress={() => offline ? lockedTap() : router.push('/profile')}>
               <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                   <Text style={{ fontSize: 20 }}>🏅</Text>

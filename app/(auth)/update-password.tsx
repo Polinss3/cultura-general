@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { supabase } from '@/lib/supabase';
+import { validatePassword } from '@/lib/authValidation';
 
 const INPUT = {
   backgroundColor: '#151515',
@@ -29,7 +30,8 @@ export default function UpdatePasswordScreen() {
   const handleUpdate = async () => {
     if (!password || !confirm) { Alert.alert('Error', 'Rellena ambos campos'); return; }
     if (password !== confirm) { Alert.alert('Error', 'Las contraseñas no coinciden'); return; }
-    if (password.length < 6) { Alert.alert('Error', 'La contraseña debe tener al menos 6 caracteres'); return; }
+    const passwordError = validatePassword(password);
+    if (passwordError) { Alert.alert('Error', passwordError); return; }
 
     setLoading(true);
     const { error } = await supabase.auth.updateUser({ password });

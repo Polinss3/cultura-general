@@ -2,6 +2,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const GUEST_STORAGE_KEY = 'guest_mode_v1';
 export const GUEST_SPEED_RECORD_KEY = 'guest_speed_record_v1';
+// Récord de Contrarreloj guardado en el dispositivo para partidas jugadas sin
+// conexión (usuarios con cuenta que juegan offline). No se sincroniza.
+export const LOCAL_SPEED_RECORD_KEY = 'local_speed_record_v1';
 
 type Listener = (isGuest: boolean) => void;
 const listeners = new Set<Listener>();
@@ -33,6 +36,18 @@ export async function getGuestSpeedRecord(): Promise<number> {
 
 export async function setGuestSpeedRecord(score: number): Promise<void> {
   await AsyncStorage.setItem(GUEST_SPEED_RECORD_KEY, String(score));
+}
+
+// ─── Récord local (modo sin conexión, usuario con cuenta) ─────
+
+export async function getLocalSpeedRecord(): Promise<number> {
+  const raw = await AsyncStorage.getItem(LOCAL_SPEED_RECORD_KEY);
+  const n = raw ? parseInt(raw, 10) : 0;
+  return Number.isFinite(n) ? n : 0;
+}
+
+export async function setLocalSpeedRecord(score: number): Promise<void> {
+  await AsyncStorage.setItem(LOCAL_SPEED_RECORD_KEY, String(score));
 }
 
 export async function clearGuestData(): Promise<void> {
