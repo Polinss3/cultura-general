@@ -8,6 +8,7 @@ import { OfflineNotice } from '@/components/OfflineNotice';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
+import { showInterstitialAd } from '@/lib/admob';
 import {
   fetchOrAssignDailyQuestion,
   checkDailyAnswered,
@@ -215,6 +216,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
       loadedTabs.current = new Set(['daily']);
       setRankingTab('daily');
       setPhase('ranking');
+      showInterstitialAd('daily_answered');
     }, 1400);
   };
 

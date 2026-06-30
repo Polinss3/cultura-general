@@ -12,7 +12,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "32",
+      "buildNumber": "34",
       "usesAppleSignIn": true,
       "infoPlist": {
         "NSCameraUsageDescription": "La app no usa la cámara.",
@@ -79,6 +79,7 @@
         {
           "androidAppId": "ca-app-pub-3235517249572183~6818966509",
           "iosAppId": "ca-app-pub-3235517249572183~4284527843",
+          "delayAppMeasurementInit": true,
           "skAdNetworkItems": [
             "cstr6suwn9.skadnetwork",
             "4fzdc2evr5.skadnetwork",
@@ -96,7 +97,19 @@
         }
       ],
       "expo-apple-authentication",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "996686176323860",
+          "clientToken": "a75d1a12972b7429f36cbeca78ee4aab",
+          "displayName": "Cultura General",
+          "scheme": "fb996686176323860",
+          "advertiserIDCollectionEnabled": true,
+          "autoLogAppEventsEnabled": true,
+          "isAutoInitEnabled": true
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

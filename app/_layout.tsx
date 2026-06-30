@@ -18,6 +18,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setOffline, probeConnection } from '@/lib/offline';
+import { initMetaSdk, syncMetaAdvertiserTracking } from '@/lib/metaSdk';
+import { initializeAdMob } from '@/lib/admob';
 import { BootScreen } from '@/components/BootScreen';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
@@ -70,6 +72,13 @@ function RootLayout() {
 
   useEffect(() => {
     getOnboardingCompleted().then(setOnboarded);
+  }, []);
+
+  // Meta SDK: inicializar y sincronizar el tracking publicitario con el ATT
+  // ya concedido (usuarios que respondieron en sesiones anteriores).
+  useEffect(() => {
+    initMetaSdk();
+    syncMetaAdvertiserTracking();
   }, []);
 
   // Sonda de conectividad al arrancar + temporizador para ofrecer el modo
@@ -177,6 +186,11 @@ function RootLayout() {
   // Usuario sin sesión + sin red confirmada: requiere pulsar "Continuar sin conexión".
   const needsManualEntry = offline && !hasIdentity;
   const ready = authResolved && (hasIdentity || manualEnter || (probeDone && !offline));
+
+  useEffect(() => {
+    if (!ready || !onboarded) return;
+    initializeAdMob();
+  }, [ready, onboarded]);
 
   // Ocultar la splash nativa cuando ya podemos mostrar UI propia (app o BootScreen).
   useEffect(() => {

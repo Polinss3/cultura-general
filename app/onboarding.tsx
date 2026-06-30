@@ -9,6 +9,7 @@ import {
 } from '@/lib/notifications';
 import { setOnboardingCompleted } from '@/lib/onboarding';
 import { ensureTrackingPermission } from '@/lib/tracking';
+import { syncMetaAdvertiserTracking } from '@/lib/metaSdk';
 
 const STEPS = [
   {
@@ -52,7 +53,8 @@ export default function OnboardingScreen() {
       // Pedimos ATT aquí (no en el splash) para que iOS encuentre la app
       // en estado Active tras un gesto explícito del usuario, antes de
       // entrar a pantallas con AdMob.
-      await ensureTrackingPermission();
+      const decision = await ensureTrackingPermission();
+      await syncMetaAdvertiserTracking(decision === 'granted');
       await finish();
     } else {
       setStep(s => s + 1);
@@ -60,7 +62,8 @@ export default function OnboardingScreen() {
   };
 
   const handleSkip = async () => {
-    await ensureTrackingPermission();
+    const decision = await ensureTrackingPermission();
+    await syncMetaAdvertiserTracking(decision === 'granted');
     await finish();
   };
 

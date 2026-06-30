@@ -7,6 +7,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
+import { showInterstitialAd } from '@/lib/admob';
 import { fetchQuestions, saveSpeedGame } from '@/lib/db';
 import { getGuestSpeedRecord, setGuestSpeedRecord, getLocalSpeedRecord, setLocalSpeedRecord } from '@/lib/guest';
 import { QUESTIONS } from '@/constants/questions';
@@ -42,6 +43,7 @@ export default function SpeedScreen() {
   const [guestRecord, setGuestRecord] = useState(0);
   const [localRecord, setLocalRecord] = useState(0); // récord guardado en el dispositivo (offline con cuenta)
   const savedRef = useRef(false);
+  const adShownRef = useRef(false);
 
   // Cargar récord de invitado de AsyncStorage
   useEffect(() => {
@@ -115,8 +117,15 @@ export default function SpeedScreen() {
     });
   }, [phase]);
 
+  useEffect(() => {
+    if (phase !== 'done' || adShownRef.current) return;
+    adShownRef.current = true;
+    showInterstitialAd('speed_complete');
+  }, [phase]);
+
   const reset = (startPlaying = false) => {
     savedRef.current = false;
+    adShownRef.current = false;
     setNewRecord(false);
     (async () => {
       const source = allQ.length > 0 ? allQ : buildLocal();

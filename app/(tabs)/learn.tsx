@@ -7,6 +7,7 @@ import { CategoryBadge } from '@/components/CategoryBadge';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
+import { showInterstitialAd } from '@/lib/admob';
 import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
 import { QUESTIONS, CAT_COLORS, CAT_ICONS, CAT_NAMES, ALL_CATEGORIES } from '@/constants/questions';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
@@ -24,6 +25,7 @@ const DIFF_LABELS: Record<Difficulty, string> = {
 };
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
+const LEARN_INTERSTITIAL_INTERVAL = 9;
 
 const RANDOM_META = { bg: '#161616', accent: '#cfcfcf', text: '#f0f0f0' };
 const RANDOM_ICON = '🎲';
@@ -50,6 +52,7 @@ export default function LearnScreen() {
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
   const [showCtx, setShowCtx] = useState(false);
+  const completedQuestionsRef = useRef(0);
 
   useEffect(() => {
     if (!cat) return;
@@ -60,6 +63,7 @@ export default function LearnScreen() {
     setSelected(null);
     setAnswered(false);
     setShowCtx(false);
+    completedQuestionsRef.current = 0;
     setDifficulty('all');
 
     (async () => {
@@ -112,10 +116,22 @@ export default function LearnScreen() {
   };
 
   const next = () => {
+    completedQuestionsRef.current += 1;
+    if (completedQuestionsRef.current % LEARN_INTERSTITIAL_INTERVAL === 0) {
+      showInterstitialAd('learn_checkpoint');
+    }
     setQIdx(x => x + 1);
     setSelected(null);
     setAnswered(false);
     setShowCtx(false);
+  };
+
+  const finishTopic = () => {
+    completedQuestionsRef.current += 1;
+    if (completedQuestionsRef.current % LEARN_INTERSTITIAL_INTERVAL === 0) {
+      showInterstitialAd('learn_checkpoint');
+    }
+    goBack();
   };
 
   const goBack = () => {
@@ -127,6 +143,7 @@ export default function LearnScreen() {
     setAnswered(false);
     setShowCtx(false);
     setDifficulty('all');
+    completedQuestionsRef.current = 0;
   };
 
   // ─ Category picker
@@ -313,7 +330,7 @@ export default function LearnScreen() {
         {/* Next button */}
         {answered && (
           <View style={{ paddingHorizontal: 20 }}>
-            <Pressable onPress={isLast ? goBack : next}>
+            <Pressable onPress={isLast ? finishTopic : next}>
               <LinearGradient
                 colors={correct ? ['#2ec87a', '#1a9a5c'] : [col.accent, col.accent + '99']}
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}

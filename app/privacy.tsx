@@ -22,8 +22,9 @@ No recopilamos información de geolocalización, contactos ni otros datos sensib
 • Calcular rankings diarios, semanales y globales
 • Mantener tu racha de respuestas consecutivas
 • Enviarte notificaciones locales si las activas (solo en tu dispositivo)
+• Mantener la app gratis mostrando publicidad limitada mediante Google AdMob
 
-No vendemos ni compartimos tus datos con terceros con fines comerciales.`,
+No vendemos ni alquilamos tus datos personales.`,
   },
   {
     title: '3. Almacenamiento de datos',
@@ -32,30 +33,37 @@ No vendemos ni compartimos tus datos con terceros con fines comerciales.`,
 Las preguntas y respuestas se pueden cachear localmente en tu dispositivo para permitir el uso sin conexión.`,
   },
   {
-    title: '4. Notificaciones push',
+    title: '4. Publicidad',
+    body: `Cultura General puede mostrar anuncios intersticiales mediante Google AdMob tras completar momentos naturales de juego, como la pregunta diaria, una partida de contrarreloj o bloques de preguntas en aprendizaje.
+
+En iOS te pediremos permiso mediante App Tracking Transparency. Si lo rechazas, los anuncios se mostrarán de forma no personalizada y sin tracking. Si lo aceptas, AdMob podrá usar tu identificador publicitario para mostrar anuncios más relevantes.`,
+  },
+  {
+    title: '5. Notificaciones push',
     body: `Si activas las notificaciones, Cultura General enviará un recordatorio diario a las 9:00 para que no pierdas tu racha. Las notificaciones son completamente locales y puedes desactivarlas en cualquier momento desde el perfil o los ajustes de tu sistema.`,
   },
   {
-    title: '5. Tus derechos',
+    title: '6. Tus derechos',
     body: `Tienes derecho a:
 
 • Acceder a tus datos en cualquier momento (desde la pantalla de perfil)
 • Modificar tu nombre de usuario
 • Eliminar tu cuenta (contáctanos en el correo indicado)
-• Exportar tus datos bajo petición`,
+• Exportar tus datos bajo petición
+• Retirar el consentimiento de tracking publicitario desde los ajustes del sistema`,
   },
   {
-    title: '6. Menores de edad',
+    title: '7. Menores de edad',
     body: `Cultura General está dirigido a mayores de 13 años. No recopilamos conscientemente datos de menores de 13 años. Si crees que tu hijo ha creado una cuenta, contáctanos para eliminarla.`,
   },
   {
-    title: '7. Contacto',
+    title: '8. Contacto',
     body: `Para cualquier pregunta sobre esta política de privacidad o para solicitar la eliminación de tus datos, contacta con nosotros en:
 
 pablobrasero@gmail.com`,
   },
   {
-    title: '8. Cambios en esta política',
+    title: '9. Cambios en esta política',
     body: `Podemos actualizar esta política ocasionalmente. Te notificaremos de cambios significativos a través de la app. El uso continuado de la app implica la aceptación de la política actualizada.`,
   },
 ];
@@ -74,7 +82,7 @@ export default function PrivacyScreen() {
 
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 60 }}>
         <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
-          Última actualización: abril 2026
+          Última actualización: junio 2026
         </Text>
 
         <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, fontFamily: 'Outfit_400Regular', lineHeight: 22, marginBottom: 32 }}>
