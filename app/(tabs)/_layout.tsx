@@ -55,10 +55,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="speed"
+        name="arena"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon label="Rápido" icon="⚡" focused={focused} />
+            <TabIcon label="Arena" icon="🎮" focused={focused} />
           ),
         }}
       />

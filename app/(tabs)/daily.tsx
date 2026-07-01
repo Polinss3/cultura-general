@@ -8,6 +8,7 @@ import { OfflineNotice } from '@/components/OfflineNotice';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
+import { useProgress } from '@/context/ProgressContext';
 import { showInterstitialAd } from '@/lib/admob';
 import {
   fetchOrAssignDailyQuestion,
@@ -135,6 +136,7 @@ export default function DailyScreen() {
 }
 
 function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
+  const { celebrate } = useProgress();
   const [phase, setPhase] = useState<Phase>('loading');
   const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
@@ -209,7 +211,8 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
       if (question.id) {
         // Translate display-index back to original (DB) index for consistency
         const originalIdx = question.originalIndexMap[i] ?? i;
-        await saveDailyAnswer(user.id, question.id, originalIdx, correct, elapsedMs);
+        const award = await saveDailyAnswer(user.id, question.id, originalIdx, correct, elapsedMs);
+        celebrate(award);
       }
       const r = await fetchDailyRanking();
       setDailyRanking(r);

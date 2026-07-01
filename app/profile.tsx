@@ -16,6 +16,12 @@ import {
 } from '@/lib/db';
 import { normalizeUsername } from '@/lib/authValidation';
 import { computeAchievements } from '@/lib/achievements';
+import { claimAchievement, fetchClaimedAchievements, bumpMissions } from '@/lib/gamification';
+import { useProgress } from '@/context/ProgressContext';
+import { LevelBadge } from '@/components/LevelBadge';
+import { XpBar } from '@/components/XpBar';
+import { CoinPill } from '@/components/CoinPill';
+import { rankForLevel } from '@/lib/leveling';
 import {
   requestNotificationPermission,
   scheduleDailyReminder,
@@ -31,6 +37,10 @@ export default function ProfileScreen() {
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh } = useProfile();
+  const { celebrate } = useProgress();
+
+  const [claimed, setClaimed] = useState<Set<string>>(new Set());
+  const [claiming, setClaiming] = useState<string | null>(null);
 
   const [editingUsername, setEditingUsername] = useState(false);
   const [newUsername, setNewUsername] = useState('');
@@ -55,12 +65,27 @@ export default function ProfileScreen() {
     Promise.all([
       fetchAnswerHistory(user.id, 15),
       fetchCategoryStats(user.id),
-    ]).then(([h, cs]) => {
+      fetchClaimedAchievements(user.id),
+    ]).then(([h, cs, claimedSet]) => {
       setHistory(h);
       setCatStats(cs);
+      setClaimed(claimedSet);
       setLoadingHistory(false);
     });
   }, [user?.id]);
+
+  const handleClaimAchievement = useCallback(async (id: string) => {
+    if (claiming) return;
+    setClaiming(id);
+    const award = await claimAchievement(id);
+    setClaiming(null);
+    if (award) {
+      celebrate(award);
+      setClaimed(prev => new Set(prev).add(id));
+      if (award.gainedCoins) bumpMissions('coins_earned', award.gainedCoins);
+      refresh();
+    }
+  }, [claiming, celebrate, refresh]);
 
   const handleNotifToggle = useCallback(async (value: boolean) => {
     if (value) {
@@ -146,12 +171,13 @@ export default function ProfileScreen() {
     );
   };
 
-  const achievements = computeAchievements(profile);
+  const achievements = computeAchievements(profile, claimed);
   const unlocked = achievements.filter(a => a.unlocked).length;
   const answered = profile?.total_answered ?? 0;
   const correct = profile?.total_correct ?? 0;
   const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
   const initial = (profile?.username?.[0] ?? '?').toUpperCase();
+  const level = profile?.level ?? 1;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -212,6 +238,23 @@ export default function ProfileScreen() {
           )}
         </View>
 
+        {/* Progreso (nivel / XP / monedas) */}
+        <View style={{ paddingHorizontal: 20, marginBottom: 24 }}>
+          <View style={{ backgroundColor: '#151515', borderRadius: 18, padding: 16 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+              <LevelBadge level={level} size={48} />
+              <View style={{ flex: 1 }}>
+                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>Nivel {level}</Text>
+                <Text style={{ color: rankForLevel(level).color, fontFamily: 'Outfit_600SemiBold', fontSize: 12 }}>
+                  {rankForLevel(level).name}
+                </Text>
+              </View>
+              <CoinPill coins={profile?.coins ?? 0} onPress={() => router.push('/shop')} showPlus />
+            </View>
+            <XpBar xp={profile?.xp ?? 0} />
+          </View>
+        </View>
+
         {/* Stats */}
         <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
           <SectionTitle>Estadísticas</SectionTitle>
@@ -220,10 +263,13 @@ export default function ProfileScreen() {
             <StatCard label="Correctas" value={String(correct)} />
             <StatCard label="Precisión" value={answered > 0 ? `${accuracy}%` : '—'} />
           </View>
-          <View style={{ flexDirection: 'row', gap: 10 }}>
+          <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
             <StatCard label="Racha actual" value={`${profile?.streak ?? 0}🔥`} />
             <StatCard label="Mejor racha" value={`${profile?.best_streak ?? 0}🏆`} />
             <StatCard label="Récord rápido" value={`${profile?.speed_record ?? 0}⚡`} />
+          </View>
+          <View style={{ flexDirection: 'row', gap: 10 }}>
+            <StatCard label="Récord Ascenso" value={`Piso ${profile?.ladder_best ?? 0}`} />
           </View>
         </View>
 
@@ -259,28 +305,44 @@ export default function ProfileScreen() {
         <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
           <SectionTitle>{unlocked}/{achievements.length} Logros</SectionTitle>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-            {achievements.map(a => (
-              <View
-                key={a.id}
-                style={{
-                  width: '47%',
-                  backgroundColor: a.unlocked ? '#151515' : '#0f0f0f',
-                  borderRadius: 14,
-                  padding: 12,
-                  borderWidth: 1,
-                  borderColor: a.unlocked ? a.color + '40' : 'rgba(255,255,255,0.05)',
-                  opacity: a.unlocked ? 1 : 0.45,
-                }}
-              >
-                <Text style={{ fontSize: 22, marginBottom: 4 }}>{a.icon}</Text>
-                <Text style={{ color: a.unlocked ? '#fff' : 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
-                  {a.title}
-                </Text>
-                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 2 }}>
-                  {a.desc}
-                </Text>
-              </View>
-            ))}
+            {achievements.map(a => {
+              const claimable = a.unlocked && !a.claimed;
+              return (
+                <View
+                  key={a.id}
+                  style={{
+                    width: '47%',
+                    backgroundColor: a.unlocked ? '#151515' : '#0f0f0f',
+                    borderRadius: 14,
+                    padding: 12,
+                    borderWidth: 1,
+                    borderColor: claimable ? a.color : a.unlocked ? a.color + '40' : 'rgba(255,255,255,0.05)',
+                    opacity: a.unlocked ? 1 : 0.45,
+                  }}
+                >
+                  <Text style={{ fontSize: 22, marginBottom: 4 }}>{a.icon}</Text>
+                  <Text style={{ color: a.unlocked ? '#fff' : 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+                    {a.title}
+                  </Text>
+                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 2 }}>
+                    {a.desc}
+                  </Text>
+                  {claimable ? (
+                    <Pressable onPress={() => handleClaimAchievement(a.id)} disabled={claiming === a.id} style={{ marginTop: 8 }}>
+                      <View style={{ backgroundColor: a.color, borderRadius: 99, paddingVertical: 5, alignItems: 'center' }}>
+                        <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 11 }}>
+                          {claiming === a.id ? '...' : `Reclamar +${a.reward} 🪙`}
+                        </Text>
+                      </View>
+                    </Pressable>
+                  ) : a.claimed ? (
+                    <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_600SemiBold', fontSize: 11, marginTop: 8 }}>
+                      ✓ Reclamado
+                    </Text>
+                  ) : null}
+                </View>
+              );
+            })}
           </View>
         </View>
 

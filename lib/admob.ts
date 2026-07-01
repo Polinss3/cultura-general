@@ -6,11 +6,14 @@ import mobileAds, {
   AdsConsentStatus,
   AdEventType,
   InterstitialAd,
+  RewardedAd,
+  RewardedAdEventType,
   MaxAdContentRating,
   TestIds,
 } from 'react-native-google-mobile-ads';
 
-export type AdPlacement = 'daily_answered' | 'speed_complete' | 'learn_checkpoint';
+export type AdPlacement = 'daily_answered' | 'speed_complete' | 'learn_checkpoint' | 'ladder_complete';
+export type RewardedPlacement = 'shop_coins' | 'ladder_revive' | 'speed_time';
 
 const INTERSTITIAL_COOLDOWN_MS = 45_000;
 
@@ -200,4 +203,71 @@ export async function showInterstitialAd(_placement: AdPlacement) {
     preloadInterstitialAd();
     return false;
   }
+}
+
+// ─── Rewarded ads (monedas / vida extra / +tiempo) ───────────
+let showingRewarded = false;
+
+function getProductionRewardedUnitId() {
+  if (Platform.OS === 'ios') return process.env.EXPO_PUBLIC_ADMOB_IOS_REWARDED_ID;
+  if (Platform.OS === 'android') return process.env.EXPO_PUBLIC_ADMOB_ANDROID_REWARDED_ID;
+  return undefined;
+}
+
+function getRewardedUnitId() {
+  if (!isNativePlatform()) return null;
+  if (__DEV__) return TestIds.REWARDED;
+  return getProductionRewardedUnitId() || null;
+}
+
+export function isRewardedReady() {
+  return isNativePlatform() && (__DEV__ || Boolean(getProductionRewardedUnitId()));
+}
+
+// Muestra un anuncio recompensado. Resuelve true SOLO si el usuario
+// completó el anuncio y se ganó la recompensa.
+export async function showRewardedAd(_placement: RewardedPlacement): Promise<boolean> {
+  const unitId = getRewardedUnitId();
+  if (!unitId || showingRewarded) return false;
+
+  await initializeAdMob();
+  if (!canRequestAds) return false;
+
+  return new Promise<boolean>(resolve => {
+    let settled = false;
+    let earned = false;
+    const finish = (value: boolean) => {
+      if (settled) return;
+      settled = true;
+      showingRewarded = false;
+      try { ad.removeAllListeners(); } catch {}
+      resolve(value);
+    };
+
+    const ad = RewardedAd.createForAdRequest(unitId, {
+      keywords: ['education', 'quiz', 'trivia', 'culture'],
+      requestNonPersonalizedAdsOnly,
+    });
+
+    ad.addAdEventListener(RewardedAdEventType.LOADED, () => {
+      try {
+        showingRewarded = true;
+        ad.show();
+      } catch {
+        finish(false);
+      }
+    });
+    ad.addAdEventListener(RewardedAdEventType.EARNED_REWARD, () => { earned = true; });
+    ad.addAdEventListener(AdEventType.CLOSED, () => finish(earned));
+    ad.addAdEventListener(AdEventType.ERROR, () => finish(false));
+
+    // Salvaguarda: si no carga/abre en 12 s, abortamos.
+    setTimeout(() => finish(earned), 12_000);
+
+    try {
+      ad.load();
+    } catch {
+      finish(false);
+    }
+  });
 }

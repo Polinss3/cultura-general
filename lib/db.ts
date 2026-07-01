@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from './supabase';
 import { Question, Category } from '@/types';
 import { normalizeUsername, validateUsername } from './authValidation';
+import { awardProgress, bumpMissions, AwardResult } from './gamification';
+import { REWARDS } from './economy';
 
 // ─── Error handling ───────────────────────────────────────────
 
@@ -141,7 +143,7 @@ export async function saveDailyAnswer(
   selectedIdx: number,
   isCorrect: boolean,
   timeMs: number,
-): Promise<void> {
+): Promise<AwardResult | null> {
   const score = isCorrect ? 100 : 0;
   const date = todayStr();
 
@@ -166,8 +168,16 @@ export async function saveDailyAnswer(
     ),
   ]);
 
+  // La racha debe actualizarse antes del award para que el multiplicador
+  // refleje la racha del día.
   await supabase.rpc('update_streak', { p_user_id: userId });
   await incrementProfileStats(userId, 1, isCorrect ? 1 : 0);
+
+  const r = isCorrect ? REWARDS.dailyCorrect : REWARDS.dailyWrong;
+  const award = await awardProgress(r.xp, r.coins, true, 'daily');
+  await bumpMissions('daily_play', 1);
+  if (award?.gainedCoins) await bumpMissions('coins_earned', award.gainedCoins);
+  return award;
 }
 
 // ─── Rankings ─────────────────────────────────────────────────
@@ -494,7 +504,7 @@ export async function saveSpeedGame(
   score: number,
   totalAnswered: number,
   currentRecord: number,
-): Promise<{ isNewRecord: boolean }> {
+): Promise<{ isNewRecord: boolean; award: AwardResult | null }> {
   const isNewRecord = score > currentRecord;
   await incrementProfileStats(
     userId,
@@ -502,7 +512,16 @@ export async function saveSpeedGame(
     score,
     isNewRecord ? score : undefined,
   );
-  return { isNewRecord };
+
+  // Monedas y XP proporcionales a los aciertos de los 30 segundos.
+  const award = score > 0
+    ? await awardProgress(score * REWARDS.speedPerCorrect.xp, score * REWARDS.speedPerCorrect.coins, true, 'speed')
+    : null;
+  await bumpMissions('speed_play', 1);
+  if (score > 0) await bumpMissions('speed_correct', score);
+  if (award?.gainedCoins) await bumpMissions('coins_earned', award.gainedCoins);
+
+  return { isNewRecord, award };
 }
 
 // ─── Profile stats ────────────────────────────────────────────

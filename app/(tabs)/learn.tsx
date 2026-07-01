@@ -7,8 +7,11 @@ import { CategoryBadge } from '@/components/CategoryBadge';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
+import { useProgress } from '@/context/ProgressContext';
 import { showInterstitialAd } from '@/lib/admob';
 import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
+import { awardProgress, bumpMissions } from '@/lib/gamification';
+import { REWARDS } from '@/lib/economy';
 import { QUESTIONS, CAT_COLORS, CAT_ICONS, CAT_NAMES, ALL_CATEGORIES } from '@/constants/questions';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
@@ -42,6 +45,7 @@ export default function LearnScreen() {
   const { user } = useAuth();
   const { guest } = useGuest();
   const offline = useOffline();
+  const { celebrate } = useProgress();
   const [cat, setCat] = useState<LearnCat | null>(null);
   const reportedRef = useRef(new Set<string>());
   const [difficulty, setDifficulty] = useState<Difficulty>('all');
@@ -109,6 +113,14 @@ export default function LearnScreen() {
 
     if (user && !guest && !offline) {
       incrementProfileStats(user.id, 1, correct ? 1 : 0);
+      bumpMissions('learn_answer', 1);
+      if (correct) {
+        bumpMissions('learn_correct', 1);
+        awardProgress(REWARDS.learnCorrect.xp, REWARDS.learnCorrect.coins, true, 'learn').then(a => {
+          celebrate(a);
+          if (a?.gainedCoins) bumpMissions('coins_earned', a.gainedCoins);
+        });
+      }
     }
     if (cat && q.id) {
       pushSeen('learn', cat, [q.id]);

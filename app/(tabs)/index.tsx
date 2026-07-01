@@ -8,6 +8,10 @@ import { useOffline } from '@/hooks/useOffline';
 import { useToast } from '@/context/ToastContext';
 import { unlockedCount } from '@/lib/achievements';
 import { setGuestMode, getGuestSpeedRecord } from '@/lib/guest';
+import { LevelBadge } from '@/components/LevelBadge';
+import { XpBar } from '@/components/XpBar';
+import { CoinPill } from '@/components/CoinPill';
+import { rankForLevel } from '@/lib/leveling';
 import { useEffect, useState } from 'react';
 
 export default function HomeScreen() {
@@ -114,6 +118,31 @@ export default function HomeScreen() {
               </Text>
             </View>
           )}
+
+          {/* Progreso (nivel + XP + monedas) → Arena */}
+          {!guest && (
+            <Pressable onPress={() => offline ? lockedTap() : router.push('/(tabs)/arena')} style={{ marginTop: 10 }}>
+              <View style={{ borderRadius: 16, overflow: 'hidden', borderWidth: 1, borderColor: rankForLevel(profile?.level ?? 1).color + '4d' }}>
+                <LinearGradient
+                  colors={[rankForLevel(profile?.level ?? 1).color + '2e', rankForLevel(profile?.level ?? 1).color2 + '12', '#141416']}
+                  locations={[0, 0.55, 1]}
+                  start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+                  style={{ padding: 12, flexDirection: 'row', alignItems: 'center', gap: 12 }}
+                >
+                  <LevelBadge level={profile?.level ?? 1} size={44} />
+                  <View style={{ flex: 1 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+                      <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 15 }}>
+                        Nivel {profile?.level ?? 1}
+                      </Text>
+                      <CoinPill coins={profile?.coins ?? 0} small />
+                    </View>
+                    <XpBar xp={profile?.xp ?? 0} showLabel={false} height={7} />
+                  </View>
+                </LinearGradient>
+              </View>
+            </Pressable>
+          )}
         </View>
 
         {/* Game modes */}
@@ -156,7 +185,7 @@ export default function HomeScreen() {
           </Pressable>
 
           {/* Speed */}
-          <Pressable onPress={() => router.push('/(tabs)/speed')} style={{ marginBottom: 12 }}>
+          <Pressable onPress={() => router.push('/speed')} style={{ marginBottom: 12 }}>
             <LinearGradient
               colors={['#0a001a', '#0a0a0a']}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -180,6 +209,38 @@ export default function HomeScreen() {
                     Récord: {speedRecord} →
                   </Text>
                 </View>
+              </View>
+            </LinearGradient>
+          </Pressable>
+
+          {/* Ascenso */}
+          <Pressable onPress={() => router.push('/ladder')} style={{ marginBottom: 12 }}>
+            <LinearGradient
+              colors={['#1a1000', '#0a0a0a']}
+              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+              style={{ borderRadius: 20, padding: 18, borderWidth: 1, borderColor: 'rgba(232,160,48,0.3)' }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                <View style={{ width: 38, height: 38, borderRadius: 12, backgroundColor: 'rgba(232,160,48,0.15)', alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 18 }}>🪜</Text>
+                </View>
+                <View>
+                  <Text style={{ color: '#e8a030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>ASCENSO</Text>
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>Sube de piso</Text>
+                </View>
+              </View>
+              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
+                Dificultad creciente, vidas y un bote que arriesgas o aseguras. ¿Hasta qué piso llegas?
+              </Text>
+              <View style={{ marginTop: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <View style={{ backgroundColor: '#e8a030', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99 }}>
+                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>Escalar →</Text>
+                </View>
+                {!guest && (
+                  <Text style={{ color: 'rgba(255,255,255,0.25)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
+                    Récord: piso {profile?.ladder_best ?? 0}
+                  </Text>
+                )}
               </View>
             </LinearGradient>
           </Pressable>

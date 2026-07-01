@@ -23,6 +23,7 @@ import { initializeAdMob } from '@/lib/admob';
 import { BootScreen } from '@/components/BootScreen';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
+import { ProgressProvider } from '@/context/ProgressContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { supabase } from '@/lib/supabase';
 import { setSentryUser } from '@/lib/sentry';
@@ -308,14 +309,16 @@ function RootLayout() {
   return (
     <ErrorBoundary>
       <ToastProvider>
-        <StatusBar style="light" />
-        <Stack
-          screenOptions={{
-            headerShown: false,
-            animation: 'slide_from_right',
-            animationDuration: 250,
-          }}
-        />
+        <ProgressProvider>
+          <StatusBar style="light" />
+          <Stack
+            screenOptions={{
+              headerShown: false,
+              animation: 'slide_from_right',
+              animationDuration: 250,
+            }}
+          />
+        </ProgressProvider>
       </ToastProvider>
     </ErrorBoundary>
   );

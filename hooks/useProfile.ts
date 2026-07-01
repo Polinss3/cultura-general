@@ -11,6 +11,11 @@ export interface Profile {
   total_correct: number;
   total_answered: number;
   speed_record: number;
+  xp: number;
+  level: number;
+  coins: number;
+  ladder_best: number;
+  last_chest_at: string | null;
 }
 
 export function useProfile() {

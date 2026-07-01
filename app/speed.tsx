@@ -1,14 +1,19 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
+import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
+import { useProgress } from '@/context/ProgressContext';
 import { showInterstitialAd } from '@/lib/admob';
 import { fetchQuestions, saveSpeedGame } from '@/lib/db';
+import { fetchInventoryMap, consumeItem } from '@/lib/shop';
+import { AwardResult } from '@/lib/gamification';
 import { getGuestSpeedRecord, setGuestSpeedRecord, getLocalSpeedRecord, setLocalSpeedRecord } from '@/lib/guest';
 import { QUESTIONS } from '@/constants/questions';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
@@ -27,10 +32,12 @@ function buildLocal(): Question[] {
 }
 
 export default function SpeedScreen() {
+  const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh: refreshProfile } = useProfile();
   const { guest } = useGuest();
   const offline = useOffline();
+  const { celebrate } = useProgress();
 
   const [phase, setPhase] = useState<Phase>('loading');
   const [allQ, setAllQ] = useState<Question[]>([]);
@@ -41,19 +48,26 @@ export default function SpeedScreen() {
   const [answered, setAnswered] = useState(false);
   const [newRecord, setNewRecord] = useState(false);
   const [guestRecord, setGuestRecord] = useState(0);
-  const [localRecord, setLocalRecord] = useState(0); // récord guardado en el dispositivo (offline con cuenta)
+  const [localRecord, setLocalRecord] = useState(0);
+  const [award, setAward] = useState<AwardResult | null>(null);
+  const [inventory, setInventory] = useState<Record<string, number>>({});
+  const [fiftyHidden, setFiftyHidden] = useState<number[]>([]);
   const savedRef = useRef(false);
   const adShownRef = useRef(false);
 
-  // Cargar récord de invitado de AsyncStorage
+  const canUsePowerups = !!user && !guest && !offline;
+
   useEffect(() => {
     if (guest) getGuestSpeedRecord().then(setGuestRecord);
   }, [guest]);
 
-  // Cargar récord local (usuario con cuenta jugando sin conexión)
   useEffect(() => {
     if (offline && !guest) getLocalSpeedRecord().then(setLocalRecord);
   }, [offline, guest]);
+
+  useEffect(() => {
+    if (canUsePowerups && user) fetchInventoryMap(user.id).then(setInventory);
+  }, [canUsePowerups, user?.id]);
 
   const currentRecord = guest
     ? guestRecord
@@ -64,14 +78,16 @@ export default function SpeedScreen() {
   const baseQ = allQ.length > 0 ? allQ[qIdx % allQ.length] : undefined;
   const displayQ = useMemo(() => (baseQ ? shuffleQuestion(baseQ) : undefined), [baseQ, qIdx]);
 
-  // Load questions from Supabase on mount, fall back to local
+  // Reiniciar el 50/50 al cambiar de pregunta.
+  useEffect(() => { setFiftyHidden([]); }, [qIdx]);
+
   useEffect(() => {
     (async () => {
       let remote: Question[] = [];
       try {
         remote = await fetchQuestions();
       } catch {
-        // Sin red / sin caché: usamos el banco local empaquetado.
+        // Sin red / sin caché: banco local.
       }
       const source = remote.length > 0 ? remote : buildLocal();
       const recent = await getRecentIds('speed');
@@ -88,31 +104,28 @@ export default function SpeedScreen() {
     return () => clearTimeout(t);
   }, [phase, timeLeft]);
 
-  // Save game when done
+  // Guardar partida al terminar
   useEffect(() => {
     if (phase !== 'done' || savedRef.current) return;
     savedRef.current = true;
     if (guest) {
       const isNew = score > guestRecord;
-      if (isNew) {
-        setGuestSpeedRecord(score).then(() => setGuestRecord(score));
-      }
+      if (isNew) setGuestSpeedRecord(score).then(() => setGuestRecord(score));
       setNewRecord(isNew);
       return;
     }
     if (offline) {
-      // Sin conexión: guardamos el récord solo en el dispositivo (no se sincroniza).
       const isNew = score > localRecord;
-      if (isNew) {
-        setLocalSpeedRecord(score).then(() => setLocalRecord(score));
-      }
+      if (isNew) setLocalSpeedRecord(score).then(() => setLocalRecord(score));
       setNewRecord(isNew);
       return;
     }
     if (!user) return;
     const record = profile?.speed_record ?? 0;
-    saveSpeedGame(user.id, score, qIdx, record).then(({ isNewRecord }) => {
+    saveSpeedGame(user.id, score, qIdx, record).then(({ isNewRecord, award: a }) => {
       setNewRecord(isNewRecord);
+      setAward(a);
+      celebrate(a);
       refreshProfile();
     });
   }, [phase]);
@@ -127,6 +140,7 @@ export default function SpeedScreen() {
     savedRef.current = false;
     adShownRef.current = false;
     setNewRecord(false);
+    setAward(null);
     (async () => {
       const source = allQ.length > 0 ? allQ : buildLocal();
       const recent = await getRecentIds('speed');
@@ -137,11 +151,13 @@ export default function SpeedScreen() {
       setScore(0);
       setSelected(null);
       setAnswered(false);
+      setFiftyHidden([]);
+      if (canUsePowerups && user) fetchInventoryMap(user.id).then(setInventory);
     })();
   };
 
   const handle = (i: number) => {
-    if (answered || allQ.length === 0) return;
+    if (answered || allQ.length === 0 || fiftyHidden.includes(i)) return;
     setSelected(i);
     setAnswered(true);
     const current = displayQ;
@@ -153,6 +169,25 @@ export default function SpeedScreen() {
       setQIdx(q => q + 1);
     }, 500);
   };
+
+  const usePowerUp = async (id: string) => {
+    if (!canUsePowerups || (inventory[id] ?? 0) <= 0) return;
+    if (id === 'pw_time') {
+      setTimeLeft(t => t + 5);
+    } else if (id === 'pw_5050') {
+      if (answered || !displayQ) return;
+      const wrong = displayQ.opts.map((_, idx) => idx).filter(idx => idx !== displayQ.ans);
+      const hide = pickRandomFresh(wrong, [], () => undefined, 2);
+      setFiftyHidden(hide);
+    }
+    setInventory(inv => ({ ...inv, [id]: (inv[id] ?? 0) - 1 }));
+    await consumeItem(id);
+  };
+
+  const powerUps: PowerUpButton[] = [
+    { id: 'pw_time', icon: '⏱️', label: '+5s', count: inventory['pw_time'] ?? 0 },
+    { id: 'pw_5050', icon: '✂️', label: '50/50', count: inventory['pw_5050'] ?? 0 },
+  ];
 
   // ─ Loading
   if (phase === 'loading') {
@@ -170,19 +205,23 @@ export default function SpeedScreen() {
     const record = currentRecord;
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingTop: 12 }}>
+          <Pressable onPress={() => router.back()} style={{ padding: 4 }}>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
+          </Pressable>
+        </View>
         <View style={{ flex: 1, padding: 20 }}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 64, marginBottom: 16 }}>⚡</Text>
             <Text style={{ color: '#fff', fontSize: 26, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8 }}>
               Contrarreloj
             </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', lineHeight: 24, textAlign: 'center', maxWidth: 260, marginBottom: 40 }}>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', lineHeight: 24, textAlign: 'center', maxWidth: 260, marginBottom: 12 }}>
               Responde el máximo de preguntas posible en{' '}
               <Text style={{ color: '#a030e8', fontFamily: 'Outfit_700Bold' }}>30 segundos</Text>.
-              Cada acierto suma 1 punto.
+              Cada acierto suma 1 punto y monedas.
             </Text>
-
-            <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 20, marginBottom: 40, width: '100%', alignItems: 'center' }}>
+            <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center' }}>
               <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginBottom: 4 }}>
                 Tu récord actual
               </Text>
@@ -190,7 +229,6 @@ export default function SpeedScreen() {
                 {record} {record === 1 ? 'pregunta' : 'preguntas'}
               </Text>
             </View>
-
             <Pressable onPress={() => setPhase('playing')} style={{ width: '100%' }}>
               <LinearGradient
                 colors={['#a030e8', '#7020b8']}
@@ -226,17 +264,28 @@ export default function SpeedScreen() {
             en {DURATION} segundos
           </Text>
           {newRecord ? (
-            <Text style={{ color: '#e8a030', fontSize: 13, fontFamily: 'Outfit_600SemiBold', marginBottom: 28 }}>
+            <Text style={{ color: '#e8a030', fontSize: 13, fontFamily: 'Outfit_600SemiBold', marginBottom: 10 }}>
               🎉 ¡Nuevo récord personal!
             </Text>
           ) : (
-            <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
+            <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', marginBottom: 10 }}>
               {record > 0
                 ? diff > 0
                   ? `Récord: ${record} · Te faltan ${diff} para superarlo`
                   : `Récord igualado: ${record}`
                 : 'Primera partida registrada'}
             </Text>
+          )}
+
+          {award && (award.gainedXp > 0 || award.gainedCoins > 0) && (
+            <View style={{ flexDirection: 'row', gap: 8, marginBottom: 22 }}>
+              <View style={{ backgroundColor: 'rgba(48,168,232,0.15)', borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
+                <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>+{award.gainedXp} XP</Text>
+              </View>
+              <View style={{ backgroundColor: 'rgba(232,160,48,0.15)', borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
+                <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>+{award.gainedCoins} 🪙</Text>
+              </View>
+            </View>
           )}
 
           <View style={{ flexDirection: 'row', gap: 10, width: '100%', marginBottom: 30 }}>
@@ -253,10 +302,10 @@ export default function SpeedScreen() {
 
           <View style={{ flexDirection: 'row', gap: 10, width: '100%' }}>
             <Pressable
-              onPress={() => reset(false)}
+              onPress={() => router.back()}
               style={{ flex: 1, backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}
             >
-              <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Inicio</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Salir</Text>
             </Pressable>
             <Pressable onPress={() => reset(true)} style={{ flex: 2 }}>
               <LinearGradient
@@ -295,19 +344,31 @@ export default function SpeedScreen() {
           <Text style={{ color: '#a030e8', fontFamily: 'Outfit_700Bold', fontSize: 20 }}>{score} ✓</Text>
         </View>
 
-        <View style={{ height: 4, backgroundColor: '#1a1a1a', borderRadius: 99, marginBottom: 24, overflow: 'hidden' }}>
+        <View style={{ height: 4, backgroundColor: '#1a1a1a', borderRadius: 99, marginBottom: 20, overflow: 'hidden' }}>
           <View style={{ height: '100%', width: `${pct * 100}%`, backgroundColor: timerColor, borderRadius: 99 }} />
         </View>
 
-        <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold', lineHeight: 26, marginBottom: 22 }}>
+        <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold', lineHeight: 26, marginBottom: 18 }}>
           {q.q}
         </Text>
 
         <View style={{ gap: 9 }}>
-          {q.opts.map((opt, i) => (
-            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
-          ))}
+          {q.opts.map((opt, i) =>
+            fiftyHidden.includes(i) ? (
+              <View key={i} style={{ borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.04)', borderRadius: 14, paddingVertical: 14, paddingHorizontal: 16, opacity: 0.3 }}>
+                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 15, fontFamily: 'Outfit_500Medium' }}>—</Text>
+              </View>
+            ) : (
+              <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+            ),
+          )}
         </View>
+
+        {canUsePowerups && (powerUps.some(p => p.count > 0)) && (
+          <View style={{ marginTop: 18 }}>
+            <PowerUpBar items={powerUps} onUse={usePowerUp} disabled={answered} />
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );
