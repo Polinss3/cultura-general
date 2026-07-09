@@ -2,6 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { captureSentryException } from '@/lib/sentry';
+import i18n from '@/lib/i18n';
 
 interface Props {
   children: ReactNode;
@@ -38,9 +39,9 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <View style={styles.container}>
           <Text style={styles.emoji}>😵</Text>
-          <Text style={styles.title}>Algo fue mal</Text>
+          <Text style={styles.title}>{i18n.t('components.errorBoundary.title')}</Text>
           <Text style={styles.body}>
-            Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.
+            {i18n.t('components.errorBoundary.body')}
           </Text>
           {__DEV__ && this.state.error && (
             <Text style={styles.dev} numberOfLines={4}>
@@ -53,7 +54,7 @@ export class ErrorBoundary extends Component<Props, State> {
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
               style={styles.btn}
             >
-              <Text style={styles.btnText}>Reintentar</Text>
+              <Text style={styles.btnText}>{i18n.t('common.retry')}</Text>
             </LinearGradient>
           </Pressable>
         </View>

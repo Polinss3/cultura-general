@@ -1,0 +1,393 @@
+{
+  "common": {
+    "appName": "Cultura General",
+    "back": "Atrás",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "close": "Cerrar",
+    "continue": "Continuar",
+    "next": "Siguiente",
+    "play": "Jugar",
+    "retry": "Reintentar",
+    "loading": "Cargando…",
+    "ok": "OK",
+    "yes": "Sí",
+    "no": "No",
+    "delete": "Eliminar",
+    "error": "Error",
+    "success": "Listo",
+    "guest": "Invitado",
+    "anonymous": "Anónimo",
+    "points": "puntos",
+    "coins": "monedas",
+    "days_one": "{{count}} día",
+    "days_other": "{{count}} días"
+  },
+  "tabs": {
+    "home": "Inicio",
+    "daily": "Diario",
+    "arena": "Arena",
+    "learn": "Aprender",
+    "friends": "Amigos"
+  },
+  "categories": {
+    "historia": "Historia",
+    "geografia": "Geografía",
+    "ciencia": "Ciencia",
+    "arte": "Arte",
+    "filosofia": "Filosofía",
+    "deportes": "Deportes",
+    "biologia": "Biología",
+    "cine": "Cine y series",
+    "musica": "Música",
+    "literatura": "Literatura",
+    "tecnologia": "Tecnología",
+    "mitologia": "Mitología",
+    "astronomia": "Astronomía"
+  },
+  "ranks": {
+    "novato": "Novato",
+    "aprendiz": "Aprendiz",
+    "conocedor": "Conocedor",
+    "erudito": "Erudito",
+    "maestro": "Maestro",
+    "sabio": "Sabio",
+    "leyenda": "Leyenda"
+  },
+  "missions": {
+    "m_learn_10": "Responde 10 en Aprender",
+    "m_learn_correct8": "Acierta 8 en Aprender",
+    "m_speed_6": "Acierta 6 en Contrarreloj",
+    "m_speed_play2": "Juega 2 Contrarrelojs",
+    "m_daily": "Juega la pregunta diaria",
+    "m_ladder_5": "Llega al piso 5 en Ascenso",
+    "m_ladder_play": "Juega una partida de Ascenso",
+    "m_coins_100": "Gana 100 monedas"
+  },
+  "achievements": {
+    "first_answer": { "title": "Primera respuesta", "desc": "Responde tu primera pregunta" },
+    "ten_answers": { "title": "Estudiante", "desc": "10 preguntas respondidas" },
+    "hundred_answers": { "title": "Erudito", "desc": "100 preguntas respondidas" },
+    "five_hundred_answers": { "title": "Genio", "desc": "500 preguntas respondidas" },
+    "streak_3": { "title": "En racha", "desc": "Racha máxima de 3 días" },
+    "streak_7": { "title": "Imparable", "desc": "Racha máxima de 7 días" },
+    "streak_30": { "title": "Leyenda", "desc": "Racha máxima de 30 días" },
+    "accuracy_80": { "title": "Precisión", "desc": "80% de aciertos (mín. 20)" },
+    "accuracy_95": { "title": "Perfeccionista", "desc": "95% de aciertos (mín. 50)" },
+    "speed_5": { "title": "Velocista", "desc": "5 aciertos en Contrarreloj" },
+    "speed_10": { "title": "Cohete", "desc": "10 aciertos en Contrarreloj" },
+    "speed_20": { "title": "Campeón", "desc": "20 aciertos en Contrarreloj" },
+    "level_10": { "title": "Conocedor", "desc": "Alcanza el nivel 10" },
+    "level_25": { "title": "Veterano", "desc": "Alcanza el nivel 25" },
+    "level_50": { "title": "Eminencia", "desc": "Alcanza el nivel 50" },
+    "coins_500": { "title": "Ahorrador", "desc": "Acumula 500 monedas" },
+    "coins_2000": { "title": "Ricachón", "desc": "Acumula 2000 monedas" },
+    "ladder_5": { "title": "Escalador", "desc": "Llega al piso 5 en Ascenso" },
+    "ladder_10": { "title": "Alpinista", "desc": "Llega al piso 10 en Ascenso" },
+    "ladder_20": { "title": "Cumbre", "desc": "Llega al piso 20 en Ascenso" },
+    "mult_max": { "title": "A tope", "desc": "Multiplicador máximo (racha ≥10)" }
+  },
+  "notifications": {
+    "channelName": "Cultura General",
+    "dailyTitle": "🧠 ¡Tu pregunta del día te espera!",
+    "dailyBody": "Responde hoy para mantener tu racha."
+  },
+  "errors": {
+    "network": "Sin conexión. Comprueba tu red e inténtalo de nuevo.",
+    "usernameTaken": "Ese nombre ya está en uso.",
+    "noSession": "No hay sesión activa",
+    "deleteAccountFailed": "No se pudo eliminar la cuenta",
+    "chestAlreadyClaimed": "Ya has abierto el cofre de hoy.",
+    "chestFailed": "No se pudo abrir el cofre.",
+    "authFailed": "No se pudo completar la autenticación.",
+    "googleLoginFailed": "No se pudo iniciar el login con Google.",
+    "appleTokenInvalid": "Apple no devolvió un token válido.",
+    "appleLoginFailed": "No se pudo completar el login con Apple.",
+    "insufficientCoins": "No tienes monedas suficientes.",
+    "alreadyOwned": "Ya tienes este objeto.",
+    "purchaseFailed": "No se pudo completar la compra."
+  },
+  "validation": {
+    "usernameRequired": "Necesitas un nombre de usuario.",
+    "usernameMin": "El nombre debe tener al menos 3 caracteres.",
+    "usernameMax": "El nombre no puede tener más de 20 caracteres.",
+    "usernamePattern": "Usa solo letras, números, espacios, puntos, guiones o guiones bajos.",
+    "emailRequired": "Introduce tu email.",
+    "emailNoSpaces": "El email no puede contener espacios.",
+    "passwordRequired": "Introduce una contraseña.",
+    "passwordNoSpaces": "La contraseña no puede contener espacios.",
+    "passwordMin": "La contraseña debe tener al menos 6 caracteres."
+  },
+  "profile": {
+    "header": "Mi perfil",
+    "categoryTitle": "Por categoría",
+    "achievementsTitle": "{{unlocked}}/{{total}} Logros",
+    "claim": "Reclamar +{{coins}} 🪙",
+    "claimed": "✓ Reclamado",
+    "historyTitle": "Historial reciente",
+    "historyEmpty": "Aún no has respondido ninguna pregunta.",
+    "signOut": "Cerrar sesión",
+    "privacyLink": "Política de privacidad",
+    "stats": {
+      "title": "Estadísticas",
+      "answered": "Respondidas",
+      "correct": "Correctas",
+      "accuracy": "Precisión",
+      "currentStreak": "Racha actual",
+      "bestStreak": "Mejor racha",
+      "speedRecord": "Récord rápido",
+      "ladderRecord": "Récord Ascenso",
+      "floor": "Piso {{n}}"
+    },
+    "modeLabels": {
+      "daily": "Diario",
+      "speed": "Rápido",
+      "learn": "Aprendizaje"
+    },
+    "dangerZone": {
+      "title": "Zona peligrosa",
+      "pauseTitle": "Pausar cuenta",
+      "pauseSub": "Tu progreso se conserva. Podrás reactivarla cuando vuelvas a iniciar sesión.",
+      "deleteTitle": "Eliminar cuenta",
+      "deleteSub": "Tus datos, estadísticas y progreso se borrarán para siempre."
+    },
+    "dialogs": {
+      "notifPermTitle": "Sin permisos",
+      "notifPermBody": "Activa las notificaciones en Ajustes del sistema.",
+      "signOutTitle": "Cerrar sesión",
+      "signOutBody": "¿Seguro que quieres salir?",
+      "signOutConfirm": "Salir",
+      "pauseTitle": "Pausar cuenta",
+      "pauseBody": "Tu progreso se conservará. Podrás reactivar la cuenta cuando vuelvas a iniciar sesión.",
+      "pauseConfirm": "Pausar",
+      "deleteTitle": "¿Eliminar tu cuenta?",
+      "deleteBody": "Esta acción NO se puede deshacer. Tus estadísticas, racha, historial y amistades se borrarán para siempre.",
+      "deleteConfirm": "Eliminar definitivamente",
+      "deleteConfirm2Title": "Confirma una vez más",
+      "deleteConfirm2Body": "Tu cuenta y todos los datos asociados se borrarán de forma permanente.",
+      "deleteConfirm2": "Sí, eliminar"
+    },
+    "settings": {
+      "title": "Ajustes",
+      "reminderTitle": "Recordatorio diario",
+      "reminderSub": "Notificación a las 9:00",
+      "language": "Idioma",
+      "languageSub": "Elige el idioma de la app",
+      "languageAuto": "Auto",
+      "languageEs": "Español",
+      "languageEn": "English"
+    }
+  },
+  "home": {
+    "greeting": "Hola, {{name}} 👋",
+    "lockedToast": "Sin conexión — disponible cuando recuperes los datos",
+    "guestCtaTitle": "Crea cuenta gratis",
+    "guestCtaSub": "Guarda tu progreso, juega la pregunta diaria y compite en los rankings.",
+    "streakDays_one": "{{count}} día seguido",
+    "streakDays_other": "{{count}} días seguidos",
+    "streakKeep": "¡Sigue así!",
+    "streakStart": "Responde hoy para empezar tu racha",
+    "gameModes": "Modos de juego",
+    "offline": "Sin conexión",
+    "playersToday": "{{count}} jugadores hoy",
+    "dailyTag": "DIARIO",
+    "dailyTitle": "Pregunta del Día",
+    "dailyDesc": "La misma pregunta para todos. Compara tu resultado con tus amigos.",
+    "dailyCta": "Jugar hoy →",
+    "speedTag": "CONTRARRELOJ",
+    "speedTitle": "30 Segundos",
+    "speedDesc": "¿Cuántas preguntas puedes responder en 30 segundos?",
+    "speedRecord": "Récord: {{record}} →",
+    "ladderTag": "ASCENSO",
+    "ladderTitle": "Sube de piso",
+    "ladderDesc": "Dificultad creciente, vidas y un bote que arriesgas o aseguras. ¿Hasta qué piso llegas?",
+    "ladderCta": "Escalar →",
+    "ladderRecord": "Récord: piso {{n}}",
+    "learnTag": "APRENDIZAJE",
+    "learnTitle": "Elige tu tema",
+    "learnDesc": "Historia, ciencia, arte, cine, música y mucho más. Si fallas, te explicamos el contexto.",
+    "learnCta": "Explorar →",
+    "friendsTag": "MULTIJUGADOR",
+    "friendsTitle": "Jugar con Amigos",
+    "friendsDesc": "Pasa el móvil, duelos, superviviente... ¿Quién sabe más?",
+    "friendsCta": "Competir →",
+    "statsTitle": "Tus estadísticas",
+    "statAnswered": "Respondidas",
+    "statAccuracy": "Precisión",
+    "statStreak": "Racha",
+    "achievementsUnlocked": "Logros desbloqueados"
+  },
+  "friendsList": {
+    "gateTitle": "Amigos y rankings",
+    "gateDesc": "Crea una cuenta gratis para añadir amigos y comparar tus puntuaciones.",
+    "header": "Amigos",
+    "searchPlaceholder": "Buscar por nombre de usuario…",
+    "searchResults": "Resultados de búsqueda",
+    "noResults": "Sin resultados para «{{query}}»",
+    "friendTag": "Amigo ✓",
+    "pendingTag": "Pendiente",
+    "accept": "Aceptar",
+    "add": "Añadir",
+    "requestsReceived": "Solicitudes recibidas ({{count}})",
+    "friendsTitle": "Amigos",
+    "friendsCount_one": "{{count}} amigo",
+    "friendsCount_other": "{{count}} amigos",
+    "noFriendsTitle": "Aún no tienes amigos",
+    "noFriendsDesc": "Busca a alguien por su nombre de usuario y añádelo.",
+    "removeTitle": "Eliminar amigo",
+    "removeBody": "¿Eliminar a {{username}} de tu lista?"
+  },
+  "arena": {
+    "title": "Arena",
+    "guestOffline": "Progreso sin conexión",
+    "guestOfflineSub": "Niveles, monedas y misiones vuelven al recuperar la conexión.",
+    "guestCreate": "Crea cuenta gratis",
+    "guestCreateSub": "Sube de nivel, gana monedas y completa misiones.",
+    "soloModes": "Modos en solitario",
+    "speedTag": "CONTRARRELOJ",
+    "speedTitle": "30 Segundos",
+    "speedDesc": "Responde a contrarreloj. Cada acierto suma puntos y monedas.",
+    "playCta": "Jugar →",
+    "ladderTag": "ASCENSO",
+    "ladderTitle": "Modo Ascenso",
+    "ladderDesc": "Sube pisos de dificultad creciente. Arriesga el bote o retírate a tiempo.",
+    "climbCta": "Escalar →",
+    "ladderRecord": "Récord: piso {{n}}",
+    "todayMissions": "Misiones de hoy",
+    "claim": "Reclamar",
+    "done": "✓ Hecho",
+    "shop": "Tienda",
+    "achievements": "Logros"
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "updatedAt": "Última actualización: junio 2026",
+    "intro": "En {{appName}} nos tomamos tu privacidad en serio. Esta política explica qué datos recopilamos, cómo los usamos y cómo los protegemos.",
+    "sections": {
+      "s1": {
+        "title": "1. Información que recopilamos",
+        "body": "Recopilamos la siguiente información cuando usas {{appName}}:\n\n• Dirección de correo electrónico (para crear tu cuenta)\n• Nombre de usuario que eliges\n• Respuestas a preguntas (para calcular tus estadísticas)\n• Racha de días, puntuaciones y récords personales\n\nNo recopilamos información de geolocalización, contactos ni otros datos sensibles."
+      },
+      "s2": {
+        "title": "2. Cómo usamos tu información",
+        "body": "Usamos tus datos únicamente para:\n\n• Mostrar tu perfil y estadísticas dentro de la app\n• Calcular rankings diarios, semanales y globales\n• Mantener tu racha de respuestas consecutivas\n• Enviarte notificaciones locales si las activas (solo en tu dispositivo)\n• Mantener la app gratis mostrando publicidad limitada mediante Google AdMob\n\nNo vendemos ni alquilamos tus datos personales."
+      },
+      "s3": {
+        "title": "3. Almacenamiento de datos",
+        "body": "Tus datos se almacenan de forma segura en Supabase (PostgreSQL), con cifrado en tránsito (HTTPS/TLS). Las contraseñas nunca se almacenan en texto plano.\n\nLas preguntas y respuestas se pueden cachear localmente en tu dispositivo para permitir el uso sin conexión."
+      },
+      "s4": {
+        "title": "4. Publicidad",
+        "body": "{{appName}} puede mostrar anuncios intersticiales mediante Google AdMob tras completar momentos naturales de juego, como la pregunta diaria, una partida de contrarreloj o bloques de preguntas en aprendizaje.\n\nEn iOS te pediremos permiso mediante App Tracking Transparency. Si lo rechazas, los anuncios se mostrarán de forma no personalizada y sin tracking. Si lo aceptas, AdMob podrá usar tu identificador publicitario para mostrar anuncios más relevantes."
+      },
+      "s5": {
+        "title": "5. Notificaciones push",
+        "body": "Si activas las notificaciones, {{appName}} enviará un recordatorio diario a las 9:00 para que no pierdas tu racha. Las notificaciones son completamente locales y puedes desactivarlas en cualquier momento desde el perfil o los ajustes de tu sistema."
+      },
+      "s6": {
+        "title": "6. Tus derechos",
+        "body": "Tienes derecho a:\n\n• Acceder a tus datos en cualquier momento (desde la pantalla de perfil)\n• Modificar tu nombre de usuario\n• Eliminar tu cuenta (contáctanos en el correo indicado)\n• Exportar tus datos bajo petición\n• Retirar el consentimiento de tracking publicitario desde los ajustes del sistema"
+      },
+      "s7": {
+        "title": "7. Menores de edad",
+        "body": "{{appName}} está dirigido a mayores de 13 años. No recopilamos conscientemente datos de menores de 13 años. Si crees que tu hijo ha creado una cuenta, contáctanos para eliminarla."
+      },
+      "s8": {
+        "title": "8. Contacto",
+        "body": "Para cualquier pregunta sobre esta política de privacidad o para solicitar la eliminación de tus datos, contacta con nosotros en:\n\npablobrasero@gmail.com"
+      },
+      "s9": {
+        "title": "9. Cambios en esta política",
+        "body": "Podemos actualizar esta política ocasionalmente. Te notificaremos de cambios significativos a través de la app. El uso continuado de la app implica la aceptación de la política actualizada."
+      }
+    }
+  },
+  "shop": {
+    "title": "Tienda",
+    "offlineMsg": "La tienda necesita conexión.",
+    "guestMsg": "Crea una cuenta para acceder a la tienda y gastar tus monedas.",
+    "watchAd": "Ver anuncio",
+    "watchAdSub": "Consigue +{{coins}} monedas gratis",
+    "adReward": "+{{coins}} 🪙 por ver el anuncio",
+    "adUnavailable": "Anuncio no disponible ahora mismo.",
+    "bought": "¡{{name}} comprado!",
+    "powerups": "Power-ups",
+    "cosmetics": "Cosméticos",
+    "equip": "Equipar",
+    "equipped": "Equipado"
+  },
+  "auth": {
+    "updatePassword": {
+      "title": "Nueva contraseña",
+      "subtitle": "Elige una contraseña segura para tu cuenta",
+      "newPlaceholder": "Nueva contraseña",
+      "confirmPlaceholder": "Confirmar contraseña",
+      "save": "Guardar contraseña",
+      "saving": "Guardando…",
+      "fillBoth": "Rellena ambos campos",
+      "noMatch": "Las contraseñas no coinciden",
+      "successTitle": "¡Contraseña actualizada!",
+      "successBody": "Tu contraseña se ha cambiado correctamente."
+    },
+    "completeProfile": {
+      "title": "Completa tu perfil",
+      "subtitle": "Elige el nombre público que verán otros usuarios en rankings, amigos y perfil.",
+      "placeholder": "Nombre público",
+      "hint": "Puede incluir espacios, pero seguirá siendo único dentro de la app.",
+      "save": "Guardar nombre",
+      "saving": "Guardando…"
+    }
+  },
+  "onboarding": {
+    "skip": "Ahora no",
+    "step0": {
+      "title": "¡Bienvenido a\n{{appName}}!",
+      "body": "Responde preguntas de historia, ciencia, arte, geografía y filosofía. Aprende algo nuevo cada día.",
+      "cta": "Siguiente"
+    },
+    "step1": {
+      "title": "Pregunta diaria",
+      "body": "Cada día una nueva pregunta para todos. Compara tu resultado en el ranking global y mantén tu racha.",
+      "cta": "Siguiente"
+    },
+    "step2": {
+      "title": "Recuerda jugar cada día",
+      "body": "¿Quieres que te avisemos cuando llegue la pregunta del día?",
+      "cta": "Activar notificaciones"
+    }
+  },
+  "components": {
+    "bootScreen": {
+      "slow": "Esto está tardando más de lo normal. ¿Sin conexión?",
+      "continueOffline": "Continuar sin conexión"
+    },
+    "guestGate": {
+      "createAccount": "Crear cuenta gratis",
+      "haveAccount": "Ya tengo cuenta · ",
+      "signIn": "Iniciar sesión"
+    },
+    "offlineNotice": {
+      "title": "Sin conexión",
+      "description": "Este modo necesita conexión a internet. Mientras tanto puedes jugar a Contrarreloj y Aprender."
+    },
+    "errorBoundary": {
+      "title": "Algo fue mal",
+      "body": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo."
+    },
+    "levelUp": {
+      "title": "¡Subiste de nivel!",
+      "level": "Nivel {{level}}",
+      "reward": "+{{coins}} 🪙 de recompensa",
+      "cta": "¡Genial!"
+    },
+    "xpBar": {
+      "toNext": "{{xp}} XP para nivel {{level}}"
+    },
+    "dailyChest": {
+      "title": "Cofre diario",
+      "claimedSub": "Vuelve mañana por más monedas",
+      "availableSub": "¡Recompensa lista! Mejora con tu racha",
+      "open": "Abrir"
+    }
+  }
+}

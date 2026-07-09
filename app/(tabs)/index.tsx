@@ -1,4 +1,5 @@
 import { ScrollView, View, Text, Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -12,9 +13,11 @@ import { LevelBadge } from '@/components/LevelBadge';
 import { XpBar } from '@/components/XpBar';
 import { CoinPill } from '@/components/CoinPill';
 import { rankForLevel } from '@/lib/leveling';
+import { getLocaleTag } from '@/lib/i18n';
 import { useEffect, useState } from 'react';
 
 export default function HomeScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { profile } = useProfile();
   const { guest } = useGuest();
@@ -24,13 +27,13 @@ export default function HomeScreen() {
 
   // En modo sin conexión, Diario/Amigos/Perfil no están disponibles.
   const lockedTap = () =>
-    showToast({ type: 'info', message: 'Sin conexión — disponible cuando recuperes los datos' });
+    showToast({ type: 'info', message: t('home.lockedToast') });
 
   useEffect(() => {
     if (guest) getGuestSpeedRecord().then(setGuestSpeedRecordState);
   }, [guest]);
 
-  const today = new Date().toLocaleDateString('es-ES', {
+  const today = new Date().toLocaleDateString(getLocaleTag(), {
     weekday: 'long', day: 'numeric', month: 'long',
   });
 
@@ -40,7 +43,7 @@ export default function HomeScreen() {
   };
 
   const initial = guest ? '?' : (profile?.username?.[0] ?? '?').toUpperCase();
-  const displayName = guest ? 'Invitado' : (profile?.username ?? '...');
+  const displayName = guest ? t('common.guest') : (profile?.username ?? '…');
   const achievementCount = unlockedCount(profile);
   const speedRecord = guest ? guestSpeedRecord : (profile?.speed_record ?? 0);
 
@@ -56,7 +59,7 @@ export default function HomeScreen() {
                 {today}
               </Text>
               <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_700Bold', marginTop: 2 }}>
-                Hola, {displayName} 👋
+                {t('home.greeting', { name: displayName })}
               </Text>
             </View>
             <Pressable onPress={() => guest ? goToAuth() : offline ? lockedTap() : router.push('/profile')}>
@@ -90,10 +93,10 @@ export default function HomeScreen() {
                 <Text style={{ fontSize: 26 }}>✨</Text>
                 <View style={{ flex: 1 }}>
                   <Text style={{ color: '#fff', fontSize: 14, fontFamily: 'Outfit_700Bold' }}>
-                    Crea cuenta gratis
+                    {t('home.guestCtaTitle')}
                   </Text>
                   <Text style={{ color: 'rgba(255,255,255,0.45)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>
-                    Guarda tu progreso, juega la pregunta diaria y compite en los rankings.
+                    {t('home.guestCtaSub')}
                   </Text>
                 </View>
                 <Text style={{ color: '#e8a030', fontSize: 18 }}>→</Text>
@@ -107,10 +110,10 @@ export default function HomeScreen() {
               <Text style={{ fontSize: 26 }}>🔥</Text>
               <View style={{ flex: 1 }}>
                 <Text style={{ color: '#fff', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>
-                  {profile?.streak ?? 0} días seguidos
+                  {t('home.streakDays', { count: profile?.streak ?? 0 })}
                 </Text>
                 <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 1 }}>
-                  {(profile?.streak ?? 0) > 0 ? '¡Sigue así!' : 'Responde hoy para empezar tu racha'}
+                  {(profile?.streak ?? 0) > 0 ? t('home.streakKeep') : t('home.streakStart')}
                 </Text>
               </View>
               <Text style={{ color: '#e8a030', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>
@@ -133,7 +136,7 @@ export default function HomeScreen() {
                   <View style={{ flex: 1 }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
                       <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 15 }}>
-                        Nivel {profile?.level ?? 1}
+                        {t('components.levelUp.level', { level: profile?.level ?? 1 })}
                       </Text>
                       <CoinPill coins={profile?.coins ?? 0} small />
                     </View>
@@ -151,7 +154,7 @@ export default function HomeScreen() {
             color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold',
             letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12,
           }}>
-            Modos de juego
+            {t('home.gameModes')}
           </Text>
 
           {/* Daily */}
@@ -166,19 +169,19 @@ export default function HomeScreen() {
                   <Text style={{ fontSize: 18 }}>🏆</Text>
                 </View>
                 <View>
-                  <Text style={{ color: '#e8a030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>DIARIO</Text>
-                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>Pregunta del Día</Text>
+                  <Text style={{ color: '#e8a030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('home.dailyTag')}</Text>
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('home.dailyTitle')}</Text>
                 </View>
               </View>
               <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
-                La misma pregunta para todos. Compara tu resultado con tus amigos.
+                {t('home.dailyDesc')}
               </Text>
               <View style={{ marginTop: 14, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <View style={{ backgroundColor: '#e8a030', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99 }}>
-                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>Jugar hoy →</Text>
+                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{t('home.dailyCta')}</Text>
                 </View>
                 <Text style={{ color: 'rgba(255,255,255,0.25)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
-                  {offline ? 'Sin conexión' : '127 jugadores hoy'}
+                  {offline ? t('home.offline') : t('home.playersToday', { count: 127 })}
                 </Text>
               </View>
             </LinearGradient>
@@ -196,17 +199,17 @@ export default function HomeScreen() {
                   <Text style={{ fontSize: 18 }}>⚡</Text>
                 </View>
                 <View>
-                  <Text style={{ color: '#a030e8', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>CONTRARRELOJ</Text>
-                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>30 Segundos</Text>
+                  <Text style={{ color: '#a030e8', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('home.speedTag')}</Text>
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('home.speedTitle')}</Text>
                 </View>
               </View>
               <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
-                ¿Cuántas preguntas puedes responder en 30 segundos?
+                {t('home.speedDesc')}
               </Text>
               <View style={{ marginTop: 14 }}>
                 <View style={{ backgroundColor: '#a030e8', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>
                   <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>
-                    Récord: {speedRecord} →
+                    {t('home.speedRecord', { record: speedRecord })}
                   </Text>
                 </View>
               </View>
@@ -225,20 +228,20 @@ export default function HomeScreen() {
                   <Text style={{ fontSize: 18 }}>🪜</Text>
                 </View>
                 <View>
-                  <Text style={{ color: '#e8a030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>ASCENSO</Text>
-                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>Sube de piso</Text>
+                  <Text style={{ color: '#e8a030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('home.ladderTag')}</Text>
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('home.ladderTitle')}</Text>
                 </View>
               </View>
               <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
-                Dificultad creciente, vidas y un bote que arriesgas o aseguras. ¿Hasta qué piso llegas?
+                {t('home.ladderDesc')}
               </Text>
               <View style={{ marginTop: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <View style={{ backgroundColor: '#e8a030', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99 }}>
-                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>Escalar →</Text>
+                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{t('home.ladderCta')}</Text>
                 </View>
                 {!guest && (
                   <Text style={{ color: 'rgba(255,255,255,0.25)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
-                    Récord: piso {profile?.ladder_best ?? 0}
+                    {t('home.ladderRecord', { n: profile?.ladder_best ?? 0 })}
                   </Text>
                 )}
               </View>
@@ -257,16 +260,16 @@ export default function HomeScreen() {
                   <Text style={{ fontSize: 18 }}>📚</Text>
                 </View>
                 <View>
-                  <Text style={{ color: '#2ec87a', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>APRENDIZAJE</Text>
-                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>Elige tu tema</Text>
+                  <Text style={{ color: '#2ec87a', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('home.learnTag')}</Text>
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('home.learnTitle')}</Text>
                 </View>
               </View>
               <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
-                Historia, ciencia, arte, cine, música y mucho más. Si fallas, te explicamos el contexto.
+                {t('home.learnDesc')}
               </Text>
               <View style={{ marginTop: 14 }}>
                 <View style={{ backgroundColor: '#2ec87a', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>
-                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>Explorar →</Text>
+                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{t('home.learnCta')}</Text>
                 </View>
               </View>
             </LinearGradient>
@@ -284,16 +287,16 @@ export default function HomeScreen() {
                   <Text style={{ fontSize: 18 }}>👥</Text>
                 </View>
                 <View>
-                  <Text style={{ color: '#30a8e8', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>MULTIJUGADOR</Text>
-                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>Jugar con Amigos</Text>
+                  <Text style={{ color: '#30a8e8', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('home.friendsTag')}</Text>
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('home.friendsTitle')}</Text>
                 </View>
               </View>
               <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
-                Pasa el móvil, duelos, superviviente... ¿Quién sabe más?
+                {t('home.friendsDesc')}
               </Text>
               <View style={{ marginTop: 14 }}>
                 <View style={{ backgroundColor: '#30a8e8', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>
-                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>Competir →</Text>
+                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{t('home.friendsCta')}</Text>
                 </View>
               </View>
             </LinearGradient>
@@ -307,13 +310,13 @@ export default function HomeScreen() {
               color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold',
               letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12,
             }}>
-              Tus estadísticas
+              {t('home.statsTitle')}
             </Text>
             <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
               {[
-                { label: 'Respondidas', value: String(profile?.total_answered ?? 0) },
-                { label: 'Precisión', value: profile?.total_answered ? `${Math.round((profile.total_correct / profile.total_answered) * 100)}%` : '—' },
-                { label: 'Racha', value: `${profile?.streak ?? 0}🔥` },
+                { label: t('home.statAnswered'), value: String(profile?.total_answered ?? 0) },
+                { label: t('home.statAccuracy'), value: profile?.total_answered ? `${Math.round((profile.total_correct / profile.total_answered) * 100)}%` : '—' },
+                { label: t('home.statStreak'), value: `${profile?.streak ?? 0}🔥` },
               ].map(s => (
                 <View key={s.label} style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 12, alignItems: 'center' }}>
                   <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold' }}>{s.value}</Text>
@@ -326,7 +329,7 @@ export default function HomeScreen() {
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                   <Text style={{ fontSize: 20 }}>🏅</Text>
                   <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
-                    Logros desbloqueados
+                    {t('home.achievementsUnlocked')}
                   </Text>
                 </View>
                 <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>

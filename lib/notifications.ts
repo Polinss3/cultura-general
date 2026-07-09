@@ -1,5 +1,6 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
+import i18n from './i18n';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -20,7 +21,7 @@ export async function requestNotificationPermission(): Promise<boolean> {
 
   if (Platform.OS === 'android') {
     await Notifications.setNotificationChannelAsync('default', {
-      name: 'Cultura General',
+      name: i18n.t('notifications.channelName'),
       importance: Notifications.AndroidImportance.DEFAULT,
     });
   }
@@ -33,8 +34,8 @@ export async function scheduleDailyReminder(): Promise<void> {
     await Notifications.cancelAllScheduledNotificationsAsync();
     await Notifications.scheduleNotificationAsync({
       content: {
-        title: '🧠 ¡Tu pregunta del día te espera!',
-        body: 'Responde hoy para mantener tu racha.',
+        title: i18n.t('notifications.dailyTitle'),
+        body: i18n.t('notifications.dailyBody'),
       },
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DAILY,
@@ -45,6 +46,18 @@ export async function scheduleDailyReminder(): Promise<void> {
   } catch {
     // Expo Go on iOS doesn't support local notification scheduling
     console.log('[Notifications] scheduling not available in this environment');
+  }
+}
+
+// Si hay un recordatorio programado, lo vuelve a crear en el idioma actual.
+// Se llama al cambiar de idioma y al arrancar (por si el usuario cambió el
+// idioma del sistema con la app cerrada, dejando textos en el idioma anterior).
+export async function rescheduleDailyReminderIfActive(): Promise<void> {
+  try {
+    const scheduled = await Notifications.getAllScheduledNotificationsAsync();
+    if (scheduled.length > 0) await scheduleDailyReminder();
+  } catch {
+    // ignore in Expo Go
   }
 }
 

@@ -1,4 +1,5 @@
 import { View, Text, Pressable, ActivityIndicator } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 // Mantiene la estética de la splash y, si el arranque se alarga, ofrece la
 // entrada al modo sin conexión.
 export function BootScreen({ showOfflineButton, onContinueOffline }: Props) {
+  const { t } = useTranslation();
   return (
     <View style={{ flex: 1, backgroundColor: '#0a0a0a', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
       <ActivityIndicator color="#e8a030" size="large" />
@@ -18,7 +20,7 @@ export function BootScreen({ showOfflineButton, onContinueOffline }: Props) {
       {showOfflineButton && (
         <View style={{ position: 'absolute', bottom: 60, left: 24, right: 24, alignItems: 'center' }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, fontFamily: 'Outfit_400Regular', textAlign: 'center', marginBottom: 14 }}>
-            Esto está tardando más de lo normal. ¿Sin conexión?
+            {t('components.bootScreen.slow')}
           </Text>
           <Pressable onPress={onContinueOffline} style={{ width: '100%', maxWidth: 320 }}>
             <LinearGradient
@@ -27,7 +29,7 @@ export function BootScreen({ showOfflineButton, onContinueOffline }: Props) {
               style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
             >
               <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
-                Continuar sin conexión
+                {t('components.bootScreen.continueOffline')}
               </Text>
             </LinearGradient>
           </Pressable>

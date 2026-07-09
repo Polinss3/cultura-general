@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   View, Text, ScrollView, Pressable, TextInput,
   ActivityIndicator, Alert,
@@ -26,6 +27,7 @@ type SearchResult = FriendProfile & {
 };
 
 export default function FriendsListScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { user } = useAuth();
   const { guest } = useGuest();
@@ -34,8 +36,8 @@ export default function FriendsListScreen() {
     return (
       <GuestGate
         icon="👥"
-        title="Amigos y rankings"
-        description="Crea una cuenta gratis para añadir amigos y comparar tus puntuaciones."
+        title={t('friendsList.gateTitle')}
+        description={t('friendsList.gateDesc')}
       />
     );
   }
@@ -89,7 +91,7 @@ export default function FriendsListScreen() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     const { error } = await sendFriendRequest(user.id, profile.id);
     if (error) {
-      Alert.alert('Error', error);
+      Alert.alert(t('common.error'), error);
     } else {
       setSearchResults(prev =>
         prev.map(r => r.id === profile.id ? { ...r, relationStatus: 'pending_sent' } : r),
@@ -106,12 +108,12 @@ export default function FriendsListScreen() {
 
   const handleRemove = (p: FriendProfile) => {
     Alert.alert(
-      'Eliminar amigo',
-      `¿Eliminar a ${p.username} de tu lista?`,
+      t('friendsList.removeTitle'),
+      t('friendsList.removeBody', { username: p.username }),
       [
-        { text: 'Cancelar', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Eliminar',
+          text: t('common.delete'),
           style: 'destructive',
           onPress: async () => {
             if (!p.friendshipId) return;
@@ -132,7 +134,7 @@ export default function FriendsListScreen() {
         <Pressable onPress={() => router.back()} style={{ marginRight: 16 }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
         </Pressable>
-        <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>Amigos</Text>
+        <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>{t('friendsList.header')}</Text>
       </View>
 
       {/* Search bar */}
@@ -146,7 +148,7 @@ export default function FriendsListScreen() {
           <TextInput
             value={query}
             onChangeText={setQuery}
-            placeholder="Buscar por nombre de usuario…"
+            placeholder={t('friendsList.searchPlaceholder')}
             placeholderTextColor="rgba(255,255,255,0.3)"
             autoCapitalize="none"
             style={{ flex: 1, color: '#fff', fontFamily: 'Outfit_400Regular', fontSize: 15 }}
@@ -164,12 +166,12 @@ export default function FriendsListScreen() {
         {/* Search results */}
         {isSearching && (
           <View style={{ marginBottom: 28 }}>
-            <SectionTitle>Resultados de búsqueda</SectionTitle>
+            <SectionTitle>{t('friendsList.searchResults')}</SectionTitle>
             {searching ? (
               <ActivityIndicator color="#30a8e8" />
             ) : searchResults.length === 0 ? (
               <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 14 }}>
-                Sin resultados para «{query}»
+                {t('friendsList.noResults', { query })}
               </Text>
             ) : (
               <View style={{ gap: 8 }}>
@@ -179,13 +181,13 @@ export default function FriendsListScreen() {
                     profile={r}
                     right={
                       r.relationStatus === 'accepted' ? (
-                        <Tag label="Amigo ✓" color="#2ec87a" />
+                        <Tag label={t('friendsList.friendTag')} color="#2ec87a" />
                       ) : r.relationStatus === 'pending_sent' ? (
-                        <Tag label="Pendiente" color="#e8a030" />
+                        <Tag label={t('friendsList.pendingTag')} color="#e8a030" />
                       ) : r.relationStatus === 'pending_received' ? (
-                        <ActionBtn label="Aceptar" color="#2ec87a" onPress={() => handleAccept(r as any)} />
+                        <ActionBtn label={t('friendsList.accept')} color="#2ec87a" onPress={() => handleAccept(r as any)} />
                       ) : (
-                        <ActionBtn label="Añadir" color="#30a8e8" onPress={() => handleAddFriend(r)} />
+                        <ActionBtn label={t('friendsList.add')} color="#30a8e8" onPress={() => handleAddFriend(r)} />
                       )
                     }
                   />
@@ -200,7 +202,7 @@ export default function FriendsListScreen() {
             {/* Pending requests */}
             {pending.length > 0 && (
               <View style={{ marginBottom: 28 }}>
-                <SectionTitle>Solicitudes recibidas ({pending.length})</SectionTitle>
+                <SectionTitle>{t('friendsList.requestsReceived', { count: pending.length })}</SectionTitle>
                 <View style={{ gap: 8 }}>
                   {pending.map(p => (
                     <UserRow
@@ -208,7 +210,7 @@ export default function FriendsListScreen() {
                       profile={p}
                       right={
                         <View style={{ flexDirection: 'row', gap: 8 }}>
-                          <ActionBtn label="Aceptar" color="#2ec87a" onPress={() => handleAccept(p)} />
+                          <ActionBtn label={t('friendsList.accept')} color="#2ec87a" onPress={() => handleAccept(p)} />
                           <ActionBtn label="✕" color="#e83060" onPress={() => p.friendshipId && removeFriend(p.friendshipId).then(load)} />
                         </View>
                       }
@@ -221,7 +223,7 @@ export default function FriendsListScreen() {
             {/* Friends list */}
             <View>
               <SectionTitle>
-                {friends.length > 0 ? `${friends.length} amigos` : 'Amigos'}
+                {friends.length > 0 ? t('friendsList.friendsCount', { count: friends.length }) : t('friendsList.friendsTitle')}
               </SectionTitle>
               {loadingFriends ? (
                 <ActivityIndicator color="#30a8e8" />
@@ -229,10 +231,10 @@ export default function FriendsListScreen() {
                 <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 24, alignItems: 'center' }}>
                   <Text style={{ fontSize: 36, marginBottom: 12 }}>👥</Text>
                   <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 16, marginBottom: 6 }}>
-                    Aún no tienes amigos
+                    {t('friendsList.noFriendsTitle')}
                   </Text>
                   <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 13, textAlign: 'center', lineHeight: 20 }}>
-                    Busca a alguien por su nombre de usuario y añádelo.
+                    {t('friendsList.noFriendsDesc')}
                   </Text>
                 </View>
               ) : (

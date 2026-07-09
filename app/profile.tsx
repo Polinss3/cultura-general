@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   View, Text, ScrollView, Pressable, TextInput,
   ActivityIndicator, Alert, Switch,
@@ -28,12 +29,13 @@ import {
   cancelDailyReminder,
   getNotificationsEnabled,
 } from '@/lib/notifications';
-import { CAT_NAMES, CAT_ICONS } from '@/constants/questions';
+import { setAppLanguage, getLanguagePreference, LangPreference } from '@/lib/i18n';
+import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
+import { CAT_ICONS } from '@/constants/questions';
 import { Category } from '@/types';
 
-const MODE_LABELS: Record<string, string> = { daily: 'Diario', speed: 'Rápido', learn: 'Aprendizaje' };
-
 export default function ProfileScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh } = useProfile();
@@ -53,11 +55,21 @@ export default function ProfileScreen() {
   const [notificationsOn, setNotificationsOn] = useState(false);
   const [notifLoading, setNotifLoading] = useState(true);
 
+  const [langPref, setLangPref] = useState<LangPreference>('auto');
+
   useEffect(() => {
     getNotificationsEnabled().then(enabled => {
       setNotificationsOn(enabled);
       setNotifLoading(false);
     });
+    getLanguagePreference().then(setLangPref);
+  }, []);
+
+  const handleLanguageChange = useCallback(async (pref: LangPreference) => {
+    setLangPref(pref);
+    await setAppLanguage(pref);
+    // Reprograma el recordatorio (si está activo) en el nuevo idioma.
+    await rescheduleDailyReminderIfActive();
   }, []);
 
   useEffect(() => {
@@ -91,7 +103,7 @@ export default function ProfileScreen() {
     if (value) {
       const granted = await requestNotificationPermission();
       if (!granted) {
-        Alert.alert('Sin permisos', 'Activa las notificaciones en Ajustes del sistema.');
+        Alert.alert(t('profile.dialogs.notifPermTitle'), t('profile.dialogs.notifPermBody'));
         return;
       }
       await scheduleDailyReminder();
@@ -108,32 +120,32 @@ export default function ProfileScreen() {
     const { error } = await updateUsername(user.id, newUsername);
     setSaving(false);
     if (error) {
-      Alert.alert('Error', error);
+      Alert.alert(t('common.error'), error);
     } else {
       setEditingUsername(false);
       refresh();
     }
-  }, [user, newUsername, refresh]);
+  }, [user, newUsername, refresh, t]);
 
   const handleSignOut = () => {
-    Alert.alert('Cerrar sesión', '¿Seguro que quieres salir?', [
-      { text: 'Cancelar', style: 'cancel' },
-      { text: 'Salir', style: 'destructive', onPress: () => supabase.auth.signOut() },
+    Alert.alert(t('profile.dialogs.signOutTitle'), t('profile.dialogs.signOutBody'), [
+      { text: t('common.cancel'), style: 'cancel' },
+      { text: t('profile.dialogs.signOutConfirm'), style: 'destructive', onPress: () => supabase.auth.signOut() },
     ]);
   };
 
   const handlePause = () => {
     Alert.alert(
-      'Pausar cuenta',
-      'Tu progreso se conservará. Podrás reactivar la cuenta cuando vuelvas a iniciar sesión.',
+      t('profile.dialogs.pauseTitle'),
+      t('profile.dialogs.pauseBody'),
       [
-        { text: 'Cancelar', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Pausar',
+          text: t('profile.dialogs.pauseConfirm'),
           style: 'destructive',
           onPress: async () => {
             const { error } = await pauseAccount();
-            if (error) Alert.alert('Error', error);
+            if (error) Alert.alert(t('common.error'), error);
           },
         },
       ],
@@ -142,25 +154,25 @@ export default function ProfileScreen() {
 
   const handleDelete = () => {
     Alert.alert(
-      '¿Eliminar tu cuenta?',
-      'Esta acción NO se puede deshacer. Tus estadísticas, racha, historial y amistades se borrarán para siempre.',
+      t('profile.dialogs.deleteTitle'),
+      t('profile.dialogs.deleteBody'),
       [
-        { text: 'Cancelar', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Eliminar definitivamente',
+          text: t('profile.dialogs.deleteConfirm'),
           style: 'destructive',
           onPress: () => {
             Alert.alert(
-              'Confirma una vez más',
-              'Tu cuenta y todos los datos asociados se borrarán de forma permanente.',
+              t('profile.dialogs.deleteConfirm2Title'),
+              t('profile.dialogs.deleteConfirm2Body'),
               [
-                { text: 'Cancelar', style: 'cancel' },
+                { text: t('common.cancel'), style: 'cancel' },
                 {
-                  text: 'Sí, eliminar',
+                  text: t('profile.dialogs.deleteConfirm2'),
                   style: 'destructive',
                   onPress: async () => {
                     const { error } = await deleteAccount();
-                    if (error) Alert.alert('Error', error);
+                    if (error) Alert.alert(t('common.error'), error);
                   },
                 },
               ],
@@ -188,7 +200,7 @@ export default function ProfileScreen() {
           <Pressable onPress={() => router.back()} style={{ marginRight: 16 }}>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
           </Pressable>
-          <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>Mi perfil</Text>
+          <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>{t('profile.header')}</Text>
         </View>
 
         {/* Avatar + username */}
@@ -218,7 +230,7 @@ export default function ProfileScreen() {
               />
               <Pressable onPress={handleSaveUsername} disabled={saving}>
                 <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
-                  {saving ? '...' : 'Guardar'}
+                  {saving ? '…' : t('common.save')}
                 </Text>
               </Pressable>
               <Pressable onPress={() => setEditingUsername(false)}>
@@ -231,7 +243,7 @@ export default function ProfileScreen() {
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
             >
               <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>
-                {profile?.username ?? '...'}
+                {profile?.username ?? '…'}
               </Text>
               <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14 }}>✏️</Text>
             </Pressable>
@@ -244,9 +256,9 @@ export default function ProfileScreen() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <LevelBadge level={level} size={48} />
               <View style={{ flex: 1 }}>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>Nivel {level}</Text>
+                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>{t('components.levelUp.level', { level })}</Text>
                 <Text style={{ color: rankForLevel(level).color, fontFamily: 'Outfit_600SemiBold', fontSize: 12 }}>
-                  {rankForLevel(level).name}
+                  {t(`ranks.${rankForLevel(level).id}`)}
                 </Text>
               </View>
               <CoinPill coins={profile?.coins ?? 0} onPress={() => router.push('/shop')} showPlus />
@@ -257,26 +269,26 @@ export default function ProfileScreen() {
 
         {/* Stats */}
         <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
-          <SectionTitle>Estadísticas</SectionTitle>
+          <SectionTitle>{t('profile.stats.title')}</SectionTitle>
           <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
-            <StatCard label="Respondidas" value={String(answered)} />
-            <StatCard label="Correctas" value={String(correct)} />
-            <StatCard label="Precisión" value={answered > 0 ? `${accuracy}%` : '—'} />
+            <StatCard label={t('profile.stats.answered')} value={String(answered)} />
+            <StatCard label={t('profile.stats.correct')} value={String(correct)} />
+            <StatCard label={t('profile.stats.accuracy')} value={answered > 0 ? `${accuracy}%` : '—'} />
           </View>
           <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
-            <StatCard label="Racha actual" value={`${profile?.streak ?? 0}🔥`} />
-            <StatCard label="Mejor racha" value={`${profile?.best_streak ?? 0}🏆`} />
-            <StatCard label="Récord rápido" value={`${profile?.speed_record ?? 0}⚡`} />
+            <StatCard label={t('profile.stats.currentStreak')} value={`${profile?.streak ?? 0}🔥`} />
+            <StatCard label={t('profile.stats.bestStreak')} value={`${profile?.best_streak ?? 0}🏆`} />
+            <StatCard label={t('profile.stats.speedRecord')} value={`${profile?.speed_record ?? 0}⚡`} />
           </View>
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            <StatCard label="Récord Ascenso" value={`Piso ${profile?.ladder_best ?? 0}`} />
+            <StatCard label={t('profile.stats.ladderRecord')} value={t('profile.stats.floor', { n: profile?.ladder_best ?? 0 })} />
           </View>
         </View>
 
         {/* Category stats */}
         {catStats.length > 0 && (
           <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
-            <SectionTitle>Por categoría</SectionTitle>
+            <SectionTitle>{t('profile.categoryTitle')}</SectionTitle>
             <View style={{ gap: 10 }}>
               {catStats.map(cs => {
                 const pct = cs.total > 0 ? cs.correct / cs.total : 0;
@@ -285,7 +297,7 @@ export default function ProfileScreen() {
                   <View key={cs.category} style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
                       <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
-                        {CAT_ICONS[cat] ?? '❓'} {CAT_NAMES[cat] ?? cs.category}
+                        {CAT_ICONS[cat] ?? '❓'} {t(`categories.${cs.category}`, { defaultValue: cs.category })}
                       </Text>
                       <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
                         {cs.correct}/{cs.total} · {Math.round(pct * 100)}%
@@ -303,7 +315,7 @@ export default function ProfileScreen() {
 
         {/* Achievements */}
         <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
-          <SectionTitle>{unlocked}/{achievements.length} Logros</SectionTitle>
+          <SectionTitle>{t('profile.achievementsTitle', { unlocked, total: achievements.length })}</SectionTitle>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {achievements.map(a => {
               const claimable = a.unlocked && !a.claimed;
@@ -331,13 +343,13 @@ export default function ProfileScreen() {
                     <Pressable onPress={() => handleClaimAchievement(a.id)} disabled={claiming === a.id} style={{ marginTop: 8 }}>
                       <View style={{ backgroundColor: a.color, borderRadius: 99, paddingVertical: 5, alignItems: 'center' }}>
                         <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 11 }}>
-                          {claiming === a.id ? '...' : `Reclamar +${a.reward} 🪙`}
+                          {claiming === a.id ? '…' : t('profile.claim', { coins: a.reward })}
                         </Text>
                       </View>
                     </Pressable>
                   ) : a.claimed ? (
                     <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_600SemiBold', fontSize: 11, marginTop: 8 }}>
-                      ✓ Reclamado
+                      {t('profile.claimed')}
                     </Text>
                   ) : null}
                 </View>
@@ -348,12 +360,12 @@ export default function ProfileScreen() {
 
         {/* Answer history */}
         <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
-          <SectionTitle>Historial reciente</SectionTitle>
+          <SectionTitle>{t('profile.historyTitle')}</SectionTitle>
           {loadingHistory ? (
             <ActivityIndicator color="#e8a030" />
           ) : history.length === 0 ? (
             <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 14 }}>
-              Aún no has respondido ninguna pregunta.
+              {t('profile.historyEmpty')}
             </Text>
           ) : (
             <View style={{ gap: 8 }}>
@@ -379,7 +391,7 @@ export default function ProfileScreen() {
                         {h.questionText}
                       </Text>
                       <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 4 }}>
-                        {CAT_ICONS[cat] ?? ''} {CAT_NAMES[cat] ?? h.category} · {MODE_LABELS[h.mode] ?? h.mode}
+                        {CAT_ICONS[cat] ?? ''} {t(`categories.${h.category}`, { defaultValue: h.category })} · {t(`profile.modeLabels.${h.mode}`, { defaultValue: h.mode })}
                       </Text>
                     </View>
                   </View>
@@ -391,17 +403,18 @@ export default function ProfileScreen() {
 
         {/* Settings */}
         <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
-          <SectionTitle>Ajustes</SectionTitle>
+          <SectionTitle>{t('profile.settings.title')}</SectionTitle>
           <View style={{
             backgroundColor: '#151515', borderRadius: 14, padding: 16,
             flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+            marginBottom: 10,
           }}>
             <View>
               <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
-                Recordatorio diario
+                {t('profile.settings.reminderTitle')}
               </Text>
               <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
-                Notificación a las 9:00
+                {t('profile.settings.reminderSub')}
               </Text>
             </View>
             {notifLoading ? (
@@ -415,11 +428,53 @@ export default function ProfileScreen() {
               />
             )}
           </View>
+
+          {/* Idioma */}
+          <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 16 }}>
+            <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
+              {t('profile.settings.language')}
+            </Text>
+            <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2, marginBottom: 12 }}>
+              {t('profile.settings.languageSub')}
+            </Text>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+              {(['auto', 'es', 'en'] as LangPreference[]).map(opt => {
+                const active = langPref === opt;
+                const label =
+                  opt === 'auto' ? t('profile.settings.languageAuto')
+                  : opt === 'es' ? t('profile.settings.languageEs')
+                  : t('profile.settings.languageEn');
+                return (
+                  <Pressable
+                    key={opt}
+                    onPress={() => handleLanguageChange(opt)}
+                    style={{
+                      flex: 1,
+                      paddingVertical: 10,
+                      borderRadius: 10,
+                      alignItems: 'center',
+                      backgroundColor: active ? '#e8a030' : '#1f1f1f',
+                      borderWidth: 1,
+                      borderColor: active ? '#e8a030' : 'rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    <Text style={{
+                      color: active ? '#000' : 'rgba(255,255,255,0.6)',
+                      fontFamily: active ? 'Outfit_700Bold' : 'Outfit_500Medium',
+                      fontSize: 14,
+                    }}>
+                      {label}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
         </View>
 
         {/* Zona peligrosa */}
         <View style={{ paddingHorizontal: 20, marginBottom: 24 }}>
-          <SectionTitle>Zona peligrosa</SectionTitle>
+          <SectionTitle>{t('profile.dangerZone.title')}</SectionTitle>
           <Pressable
             onPress={handlePause}
             style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, marginBottom: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}
@@ -427,11 +482,11 @@ export default function ProfileScreen() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 4 }}>
               <Text style={{ fontSize: 16 }}>⏸</Text>
               <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
-                Pausar cuenta
+                {t('profile.dangerZone.pauseTitle')}
               </Text>
             </View>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 17 }}>
-              Tu progreso se conserva. Podrás reactivarla cuando vuelvas a iniciar sesión.
+              {t('profile.dangerZone.pauseSub')}
             </Text>
           </Pressable>
           <Pressable
@@ -441,11 +496,11 @@ export default function ProfileScreen() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 4 }}>
               <Text style={{ fontSize: 16 }}>🗑</Text>
               <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
-                Eliminar cuenta
+                {t('profile.dangerZone.deleteTitle')}
               </Text>
             </View>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 17 }}>
-              Tus datos, estadísticas y progreso se borrarán para siempre.
+              {t('profile.dangerZone.deleteSub')}
             </Text>
           </Pressable>
         </View>
@@ -457,7 +512,7 @@ export default function ProfileScreen() {
             style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(232,48,96,0.2)', marginBottom: 16 }}
           >
             <Text style={{ color: '#e83060', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
-              Cerrar sesión
+              {t('profile.signOut')}
             </Text>
           </Pressable>
 
@@ -466,7 +521,7 @@ export default function ProfileScreen() {
             <Link href="/privacy" asChild>
               <Pressable>
                 <Text style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
-                  Política de privacidad
+                  {t('profile.privacyLink')}
                 </Text>
               </Pressable>
             </Link>

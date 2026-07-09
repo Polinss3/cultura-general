@@ -4,11 +4,12 @@ import { Question, Category } from '@/types';
 import { normalizeUsername, validateUsername } from './authValidation';
 import { awardProgress, bumpMissions, AwardResult } from './gamification';
 import { REWARDS } from './economy';
+import i18n, { getCurrentLang, AppLang } from './i18n';
 
 // ─── Error handling ───────────────────────────────────────────
 
 export class NetworkError extends Error {
-  constructor(message = 'Sin conexión. Comprueba tu red e inténtalo de nuevo.') {
+  constructor(message = i18n.t('errors.network')) {
     super(message);
     this.name = 'NetworkError';
   }
@@ -29,60 +30,101 @@ async function withRetry<T>(fn: () => Promise<T>, retries = 2): Promise<T> {
 
 // ─── Mapping ──────────────────────────────────────────────────
 
-function mapQuestion(row: any): Question {
+// Fila cruda de `questions` con ambos idiomas (lo que cacheamos).
+interface QuestionRow {
+  id: string;
+  category: Category;
+  question: string;
+  options: string[];
+  answer_index: number;
+  context: string | null;
+  question_en: string | null;
+  options_en: string[] | null;
+  context_en: string | null;
+}
+
+// La traducción EN se usa como bloque atómico: solo si hay pregunta EN y 4
+// opciones EN no vacías. Así nunca mostramos una pregunta medio traducida.
+function hasCompleteEn(row: QuestionRow): boolean {
+  return (
+    typeof row.question_en === 'string' && row.question_en.trim().length > 0 &&
+    Array.isArray(row.options_en) && row.options_en.length === 4 &&
+    row.options_en.every(o => typeof o === 'string' && o.trim().length > 0)
+  );
+}
+
+function mapQuestion(row: QuestionRow, lang: AppLang = getCurrentLang()): Question {
+  const en = lang === 'en' && hasCompleteEn(row);
   return {
     id: row.id,
-    q: row.question,
-    opts: row.options,
-    ans: row.answer_index,
-    ctx: row.context ?? undefined,
+    q: en ? row.question_en! : row.question,
+    opts: en ? row.options_en! : row.options,
+    ans: row.answer_index, // el índice es el mismo: el pipeline preserva el orden de opciones
+    ctx: en ? (row.context_en ?? row.context ?? undefined) : (row.context ?? undefined),
     category: row.category,
   };
 }
 
 // ─── Questions (with offline cache) ───────────────────────────
 
+const ALL_DB_CATEGORIES: Category[] = [
+  'historia', 'geografia', 'ciencia', 'arte', 'filosofia', 'deportes',
+  'biologia', 'cine', 'musica', 'literatura', 'tecnologia', 'mitologia', 'astronomia',
+];
+
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
+// v2: cacheamos las filas crudas (ambos idiomas). Cambiar de idioma mapea la
+// caché existente sin necesidad de refetch (funciona offline).
 function cacheKey(category?: Category) {
-  return `questions_cache_${category ?? 'all'}_v1`;
+  return `questions_cache_${category ?? 'all'}_v2`;
 }
 
-async function getCached(category?: Category): Promise<Question[] | null> {
+async function getCachedRows(category?: Category): Promise<QuestionRow[] | null> {
   try {
     const raw = await AsyncStorage.getItem(cacheKey(category));
     if (!raw) return null;
     const { data, ts } = JSON.parse(raw);
     if (Date.now() - ts > CACHE_TTL_MS) return null;
-    return data as Question[];
+    return data as QuestionRow[];
   } catch {
     return null;
   }
 }
 
-async function setCache(questions: Question[], category?: Category): Promise<void> {
+async function setCache(rows: QuestionRow[], category?: Category): Promise<void> {
   try {
     await AsyncStorage.setItem(
       cacheKey(category),
-      JSON.stringify({ data: questions, ts: Date.now() }),
+      JSON.stringify({ data: rows, ts: Date.now() }),
     );
   } catch {
     // ignore storage errors
   }
 }
 
+// Limpia la caché v1 (mapeada, monolingüe) que quedó de versiones anteriores.
+export async function purgeLegacyQuestionCache(): Promise<void> {
+  try {
+    const cats: (Category | undefined)[] = [undefined, ...ALL_DB_CATEGORIES];
+    await AsyncStorage.multiRemove(cats.map(c => `questions_cache_${c ?? 'all'}_v1`));
+  } catch {
+    // ignore
+  }
+}
+
 export async function fetchQuestions(category?: Category): Promise<Question[]> {
-  const cached = await getCached(category);
-  if (cached) return cached;
+  const cached = await getCachedRows(category);
+  if (cached) return cached.map(r => mapQuestion(r));
 
   return withRetry(async () => {
     let query = supabase.from('questions').select('*').eq('active', true);
     if (category) query = query.eq('category', category);
     const { data, error } = await query.order('id');
     if (error) throw new NetworkError();
-    const questions = data ? data.map(mapQuestion) : [];
-    if (questions.length > 0) await setCache(questions, category);
-    return questions;
+    const rows = (data ?? []) as QuestionRow[];
+    if (rows.length > 0) await setCache(rows, category);
+    return rows.map(r => mapQuestion(r));
   });
 }
 
@@ -109,7 +151,7 @@ export async function fetchOrAssignDailyQuestion(): Promise<Question | null> {
     .eq('date', date)
     .single();
 
-  if (existing?.questions) return mapQuestion(existing.questions);
+  if (existing?.questions) return mapQuestion(existing.questions as unknown as QuestionRow);
 
   // No admin-assigned question for today — pick deterministically by date.
   // (Clients can't INSERT into daily_questions due to RLS, so we skip the upsert.)
@@ -122,7 +164,7 @@ export async function fetchOrAssignDailyQuestion(): Promise<Question | null> {
   if (!allQuestions || allQuestions.length === 0) return null;
 
   const dayIdx = Math.floor(Date.now() / 86400000);
-  return mapQuestion(allQuestions[dayIdx % allQuestions.length]);
+  return mapQuestion(allQuestions[dayIdx % allQuestions.length] as QuestionRow);
 }
 
 export async function checkDailyAnswered(
@@ -215,7 +257,7 @@ export async function fetchDailyRanking(): Promise<RankRow[]> {
       const p = profileMap.get(r.user_id) as any;
       return {
         userId: r.user_id,
-        username: p?.username ?? 'Anónimo',
+        username: p?.username ?? i18n.t('common.anonymous'),
         score: r.score ?? 0,
         streak: p?.streak ?? 0,
         isCorrect: r.is_correct ?? r.score > 0,
@@ -237,7 +279,7 @@ export async function fetchWeeklyRanking(): Promise<WeeklyRow[]> {
   const { data } = await supabase.rpc('get_weekly_ranking');
   return (data ?? []).map((r: any) => ({
     userId: r.user_id,
-    username: r.username ?? 'Anónimo',
+    username: r.username ?? i18n.t('common.anonymous'),
     streak: r.streak ?? 0,
     weekScore: Number(r.week_score ?? 0),
   }));
@@ -254,7 +296,7 @@ export async function fetchAllTimeRanking(): Promise<GlobalRow[]> {
 
   return (data ?? []).map(r => ({
     userId: r.id,
-    username: r.username ?? 'Anónimo',
+    username: r.username ?? i18n.t('common.anonymous'),
     totalCorrect: r.total_correct ?? 0,
     streak: r.streak ?? 0,
     speedRecord: r.speed_record ?? 0,
@@ -301,7 +343,7 @@ export async function fetchFriendDailyRanking(userId: string): Promise<RankRow[]
       const p = profileMap.get(r.user_id) as any;
       return {
         userId: r.user_id,
-        username: p?.username ?? 'Anónimo',
+        username: p?.username ?? i18n.t('common.anonymous'),
         score: r.score ?? 0,
         streak: p?.streak ?? 0,
         isCorrect: r.is_correct ?? r.score > 0,
@@ -361,7 +403,7 @@ export async function fetchFriends(userId: string): Promise<FriendProfile[]> {
     const other = isRequester ? r.profiles : r.sender;
     return {
       id: other?.id,
-      username: other?.username ?? 'Anónimo',
+      username: other?.username ?? i18n.t('common.anonymous'),
       streak: other?.streak ?? 0,
       totalCorrect: other?.total_correct ?? 0,
       friendshipId: r.id,
@@ -380,7 +422,7 @@ export async function fetchPendingRequests(userId: string): Promise<FriendProfil
 
   return (data ?? []).map((r: any) => ({
     id: r.sender?.id,
-    username: r.sender?.username ?? 'Anónimo',
+    username: r.sender?.username ?? i18n.t('common.anonymous'),
     streak: r.sender?.streak ?? 0,
     totalCorrect: r.sender?.total_correct ?? 0,
     friendshipId: r.id,
@@ -440,14 +482,15 @@ export interface AnswerHistoryItem {
 export async function fetchAnswerHistory(userId: string, limit = 20): Promise<AnswerHistoryItem[]> {
   const { data } = await supabase
     .from('user_answers')
-    .select('id, selected_index, is_correct, mode, answered_at, questions(question, answer_index, category)')
+    .select('id, selected_index, is_correct, mode, answered_at, questions(question, question_en, answer_index, category)')
     .eq('user_id', userId)
     .order('answered_at', { ascending: false })
     .limit(limit);
 
+  const en = getCurrentLang() === 'en';
   return (data ?? []).map((r: any) => ({
     id: r.id,
-    questionText: r.questions?.question ?? '—',
+    questionText: (en && r.questions?.question_en ? r.questions.question_en : r.questions?.question) ?? '—',
     selectedIndex: r.selected_index,
     correctIndex: r.questions?.answer_index ?? 0,
     isCorrect: r.is_correct,
@@ -556,11 +599,11 @@ export async function reactivateAccount(): Promise<{ error: string | null }> {
 
 export async function deleteAccount(): Promise<{ error: string | null }> {
   const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return { error: 'No hay sesión activa' };
+  if (!session) return { error: i18n.t('errors.noSession') };
   const { error } = await supabase.functions.invoke('delete-account', {
     headers: { Authorization: `Bearer ${session.access_token}` },
   });
-  if (error) return { error: error.message ?? 'No se pudo eliminar la cuenta' };
+  if (error) return { error: error.message ?? i18n.t('errors.deleteAccountFailed') };
   await supabase.auth.signOut();
   return { error: null };
 }
@@ -576,7 +619,7 @@ export async function updateUsername(userId: string, username: string): Promise<
 
   if (error) {
     // Username unique violation surfaces here.
-    if (error.code === '23505') return { error: 'Ese nombre ya está en uso.' };
+    if (error.code === '23505') return { error: i18n.t('errors.usernameTaken') };
     return { error: error.message };
   }
   return {};

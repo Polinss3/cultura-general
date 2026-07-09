@@ -35,6 +35,20 @@
     }
   },
   "submit": {
+    "internal": {
+      "android": {
+        "serviceAccountKeyPath": "./google-play-key.json",
+        "track": "internal",
+        "releaseStatus": "completed"
+      }
+    },
+    "closed": {
+      "android": {
+        "serviceAccountKeyPath": "./google-play-key.json",
+        "track": "alpha",
+        "releaseStatus": "completed"
+      }
+    },
     "production": {
       "ios": {
         "appleId": "pablobrasero@gmail.com",

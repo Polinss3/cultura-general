@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -10,36 +11,32 @@ import {
 import { setOnboardingCompleted } from '@/lib/onboarding';
 import { ensureTrackingPermission } from '@/lib/tracking';
 import { syncMetaAdvertiserTracking } from '@/lib/metaSdk';
+import type { TFunction } from 'i18next';
 
-const STEPS = [
-  {
-    icon: '🧠',
-    title: '¡Bienvenido a\nCultura General!',
-    body: 'Responde preguntas de historia, ciencia, arte, geografía y filosofía. Aprende algo nuevo cada día.',
-    cta: 'Siguiente',
-    skip: false,
-  },
-  {
-    icon: '🏆',
-    title: 'Pregunta diaria',
-    body: 'Cada día una nueva pregunta para todos. Compara tu resultado en el ranking global y mantén tu racha.',
-    cta: 'Siguiente',
-    skip: false,
-  },
-  {
-    icon: '🔔',
-    title: 'Recuerda jugar cada día',
-    body: '¿Quieres que te avisemos cuando llegue la pregunta del día?',
-    cta: 'Activar notificaciones',
-    skip: true,
-  },
-];
+// Iconos y flag skip por paso; el texto vive en i18n (`onboarding.stepN`).
+const STEP_META = [
+  { icon: '🧠', key: 'step0', skip: false },
+  { icon: '🏆', key: 'step1', skip: false },
+  { icon: '🔔', key: 'step2', skip: true },
+] as const;
+
+function getSteps(t: TFunction) {
+  return STEP_META.map(m => ({
+    icon: m.icon,
+    skip: m.skip,
+    title: t(`onboarding.${m.key}.title`, { appName: t('common.appName') }),
+    body: t(`onboarding.${m.key}.body`),
+    cta: t(`onboarding.${m.key}.cta`),
+  }));
+}
 
 export default function OnboardingScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
   const [step, setStep] = useState(0);
-  const current = STEPS[step];
-  const isLast = step === STEPS.length - 1;
+  const steps = getSteps(t);
+  const current = steps[step];
+  const isLast = step === steps.length - 1;
 
   const finish = async () => {
     await setOnboardingCompleted(true);
@@ -73,7 +70,7 @@ export default function OnboardingScreen() {
 
         {/* Progress dots */}
         <View style={{ flexDirection: 'row', gap: 6, justifyContent: 'center', paddingTop: 8 }}>
-          {STEPS.map((_, i) => (
+          {steps.map((_, i) => (
             <View
               key={i}
               style={{
@@ -128,7 +125,7 @@ export default function OnboardingScreen() {
           {current.skip && (
             <Pressable onPress={handleSkip} style={{ alignItems: 'center', padding: 12 }}>
               <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 15 }}>
-                Ahora no
+                {t('onboarding.skip')}
               </Text>
             </Pressable>
           )}

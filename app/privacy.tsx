@@ -1,75 +1,15 @@
 import { ScrollView, View, Text, Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 
-const SECTIONS = [
-  {
-    title: '1. Información que recopilamos',
-    body: `Recopilamos la siguiente información cuando usas Cultura General:
-
-• Dirección de correo electrónico (para crear tu cuenta)
-• Nombre de usuario que eliges
-• Respuestas a preguntas (para calcular tus estadísticas)
-• Racha de días, puntuaciones y récords personales
-
-No recopilamos información de geolocalización, contactos ni otros datos sensibles.`,
-  },
-  {
-    title: '2. Cómo usamos tu información',
-    body: `Usamos tus datos únicamente para:
-
-• Mostrar tu perfil y estadísticas dentro de la app
-• Calcular rankings diarios, semanales y globales
-• Mantener tu racha de respuestas consecutivas
-• Enviarte notificaciones locales si las activas (solo en tu dispositivo)
-• Mantener la app gratis mostrando publicidad limitada mediante Google AdMob
-
-No vendemos ni alquilamos tus datos personales.`,
-  },
-  {
-    title: '3. Almacenamiento de datos',
-    body: `Tus datos se almacenan de forma segura en Supabase (PostgreSQL), con cifrado en tránsito (HTTPS/TLS). Las contraseñas nunca se almacenan en texto plano.
-
-Las preguntas y respuestas se pueden cachear localmente en tu dispositivo para permitir el uso sin conexión.`,
-  },
-  {
-    title: '4. Publicidad',
-    body: `Cultura General puede mostrar anuncios intersticiales mediante Google AdMob tras completar momentos naturales de juego, como la pregunta diaria, una partida de contrarreloj o bloques de preguntas en aprendizaje.
-
-En iOS te pediremos permiso mediante App Tracking Transparency. Si lo rechazas, los anuncios se mostrarán de forma no personalizada y sin tracking. Si lo aceptas, AdMob podrá usar tu identificador publicitario para mostrar anuncios más relevantes.`,
-  },
-  {
-    title: '5. Notificaciones push',
-    body: `Si activas las notificaciones, Cultura General enviará un recordatorio diario a las 9:00 para que no pierdas tu racha. Las notificaciones son completamente locales y puedes desactivarlas en cualquier momento desde el perfil o los ajustes de tu sistema.`,
-  },
-  {
-    title: '6. Tus derechos',
-    body: `Tienes derecho a:
-
-• Acceder a tus datos en cualquier momento (desde la pantalla de perfil)
-• Modificar tu nombre de usuario
-• Eliminar tu cuenta (contáctanos en el correo indicado)
-• Exportar tus datos bajo petición
-• Retirar el consentimiento de tracking publicitario desde los ajustes del sistema`,
-  },
-  {
-    title: '7. Menores de edad',
-    body: `Cultura General está dirigido a mayores de 13 años. No recopilamos conscientemente datos de menores de 13 años. Si crees que tu hijo ha creado una cuenta, contáctanos para eliminarla.`,
-  },
-  {
-    title: '8. Contacto',
-    body: `Para cualquier pregunta sobre esta política de privacidad o para solicitar la eliminación de tus datos, contacta con nosotros en:
-
-pablobrasero@gmail.com`,
-  },
-  {
-    title: '9. Cambios en esta política',
-    body: `Podemos actualizar esta política ocasionalmente. Te notificaremos de cambios significativos a través de la app. El uso continuado de la app implica la aceptación de la política actualizada.`,
-  },
-];
+// Las 9 secciones legales viven en i18n bajo `privacy.sections.sN`.
+const SECTION_KEYS = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'] as const;
 
 export default function PrivacyScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
+  const appName = t('common.appName');
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -77,25 +17,25 @@ export default function PrivacyScreen() {
         <Pressable onPress={() => router.back()} style={{ marginRight: 16 }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
         </Pressable>
-        <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>Política de privacidad</Text>
+        <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>{t('privacy.title')}</Text>
       </View>
 
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 60 }}>
         <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
-          Última actualización: junio 2026
+          {t('privacy.updatedAt')}
         </Text>
 
         <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, fontFamily: 'Outfit_400Regular', lineHeight: 22, marginBottom: 32 }}>
-          En Cultura General nos tomamos tu privacidad en serio. Esta política explica qué datos recopilamos, cómo los usamos y cómo los protegemos.
+          {t('privacy.intro', { appName })}
         </Text>
 
-        {SECTIONS.map((s, i) => (
-          <View key={i} style={{ marginBottom: 28 }}>
+        {SECTION_KEYS.map(k => (
+          <View key={k} style={{ marginBottom: 28 }}>
             <Text style={{ color: '#e8a030', fontSize: 15, fontFamily: 'Outfit_700Bold', marginBottom: 10 }}>
-              {s.title}
+              {t(`privacy.sections.${k}.title`)}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.65)', fontSize: 14, fontFamily: 'Outfit_400Regular', lineHeight: 22 }}>
-              {s.body}
+              {t(`privacy.sections.${k}.body`, { appName })}
             </Text>
           </View>
         ))}

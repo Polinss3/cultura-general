@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
 import { Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 interface TabIconProps {
   label: string;
@@ -26,6 +27,7 @@ function TabIcon({ label, icon, focused }: TabIconProps) {
 }
 
 export default function TabLayout() {
+  const { t } = useTranslation();
   return (
     <Tabs
       screenOptions={{
@@ -42,7 +44,7 @@ export default function TabLayout() {
         name="index"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon label="Inicio" icon="🏠" focused={focused} />
+            <TabIcon label={t('tabs.home')} icon="🏠" focused={focused} />
           ),
         }}
       />
@@ -50,7 +52,7 @@ export default function TabLayout() {
         name="daily"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon label="Diario" icon="🏆" focused={focused} />
+            <TabIcon label={t('tabs.daily')} icon="🏆" focused={focused} />
           ),
         }}
       />
@@ -58,7 +60,7 @@ export default function TabLayout() {
         name="arena"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon label="Arena" icon="🎮" focused={focused} />
+            <TabIcon label={t('tabs.arena')} icon="🎮" focused={focused} />
           ),
         }}
       />
@@ -66,7 +68,7 @@ export default function TabLayout() {
         name="learn"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon label="Aprender" icon="📚" focused={focused} />
+            <TabIcon label={t('tabs.learn')} icon="📚" focused={focused} />
           ),
         }}
       />
@@ -74,7 +76,7 @@ export default function TabLayout() {
         name="friends"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon label="Amigos" icon="👥" focused={focused} />
+            <TabIcon label={t('tabs.friends')} icon="👥" focused={focused} />
           ),
         }}
       />

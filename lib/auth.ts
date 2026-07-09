@@ -4,6 +4,7 @@ import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
 import { User } from '@supabase/supabase-js';
 import { supabase } from './supabase';
+import i18n from './i18n';
 import {
   normalizeUsername,
   requiresProfileCompletion,
@@ -150,7 +151,7 @@ export async function handleIncomingAuthUrl(url: string): Promise<{
     return { handled: true, route };
   }
 
-  return { handled: true, route, error: 'No se pudo completar la autenticación.' };
+  return { handled: true, route, error: i18n.t('errors.authFailed') };
 }
 
 export async function signInWithGoogle() {
@@ -164,7 +165,7 @@ export async function signInWithGoogle() {
   });
 
   if (error) throw error;
-  if (!data?.url) throw new Error('No se pudo iniciar el login con Google.');
+  if (!data?.url) throw new Error(i18n.t('errors.googleLoginFailed'));
 
   const result = await WebBrowser.openAuthSessionAsync(data.url, redirectTo);
   if (result.type !== 'success') return { cancelled: true };
@@ -189,7 +190,7 @@ export async function signInWithApple() {
   });
 
   if (!credential.identityToken || !credential.authorizationCode) {
-    throw new Error('Apple no devolvió un token válido.');
+    throw new Error(i18n.t('errors.appleTokenInvalid'));
   }
 
   const { data, error } = await supabase.auth.signInWithIdToken({
@@ -200,7 +201,7 @@ export async function signInWithApple() {
   });
 
   if (error) throw error;
-  if (!data.user) throw new Error('No se pudo completar el login con Apple.');
+  if (!data.user) throw new Error(i18n.t('errors.appleLoginFailed'));
 
   const suggestedName = formatAppleFullName(credential.fullName);
   await tryApplySuggestedAppleName(data.user, suggestedName);

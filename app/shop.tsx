@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
@@ -20,6 +21,7 @@ import { showRewardedAd, isRewardedReady } from '@/lib/admob';
 const COSMETICS_ENABLED = false;
 
 export default function ShopScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh } = useProfile();
@@ -56,12 +58,12 @@ export default function ShopScreen() {
 
   const handleBuy = async (item: ShopItem) => {
     if (busy) return;
-    if (coins < item.price) { showToast({ type: 'info', message: 'No tienes monedas suficientes.' }); return; }
+    if (coins < item.price) { showToast({ type: 'info', message: t('errors.insufficientCoins') }); return; }
     setBusy(item.itemId);
     const { error } = await buyItem(item.itemId);
     setBusy(null);
     if (error) { showToast({ type: 'info', message: error }); return; }
-    showToast({ type: 'success', message: `¡${item.name} comprado!` });
+    showToast({ type: 'success', message: t('shop.bought', { name: item.name }) });
     refresh();
     load();
   };
@@ -82,11 +84,11 @@ export default function ShopScreen() {
     const ok = await showRewardedAd('shop_coins');
     if (ok) {
       await awardProgress(0, REWARDS.rewardedAdCoins, false, 'rewarded_ad');
-      showToast({ type: 'success', message: `+${REWARDS.rewardedAdCoins} 🪙 por ver el anuncio` });
+      showToast({ type: 'success', message: t('shop.adReward', { coins: REWARDS.rewardedAdCoins }) });
       bumpMissions('coins_earned', REWARDS.rewardedAdCoins);
       refresh();
     } else {
-      showToast({ type: 'info', message: 'Anuncio no disponible ahora mismo.' });
+      showToast({ type: 'info', message: t('shop.adUnavailable') });
     }
     setBusy(null);
   };
@@ -102,7 +104,7 @@ export default function ShopScreen() {
           <Pressable onPress={() => router.back()}>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
           </Pressable>
-          <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>Tienda</Text>
+          <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>{t('shop.title')}</Text>
         </View>
         <CoinPill coins={coins} />
       </View>
@@ -111,7 +113,7 @@ export default function ShopScreen() {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 28 }}>
           <Text style={{ fontSize: 40, marginBottom: 12 }}>🛒</Text>
           <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, textAlign: 'center', fontFamily: 'Outfit_400Regular', lineHeight: 22 }}>
-            {offline ? 'La tienda necesita conexión.' : 'Crea una cuenta para acceder a la tienda y gastar tus monedas.'}
+            {offline ? t('shop.offlineMsg') : t('shop.guestMsg')}
           </Text>
         </View>
       ) : loading ? (
@@ -127,14 +129,14 @@ export default function ShopScreen() {
               <View style={{ backgroundColor: 'rgba(46,200,122,0.1)', borderWidth: 1, borderColor: 'rgba(46,200,122,0.35)', borderRadius: 16, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                 <Text style={{ fontSize: 24 }}>🎬</Text>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>Ver anuncio</Text>
+                  <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>{t('shop.watchAd')}</Text>
                   <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
-                    Consigue +{REWARDS.rewardedAdCoins} monedas gratis
+                    {t('shop.watchAdSub', { coins: REWARDS.rewardedAdCoins })}
                   </Text>
                 </View>
                 <View style={{ backgroundColor: '#2ec87a', borderRadius: 99, paddingVertical: 6, paddingHorizontal: 14 }}>
                   <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
-                    {busy === 'ad' ? '...' : '+30 🪙'}
+                    {busy === 'ad' ? '…' : `+${REWARDS.rewardedAdCoins} 🪙`}
                   </Text>
                 </View>
               </View>
@@ -142,7 +144,7 @@ export default function ShopScreen() {
           )}
 
           {/* Power-ups */}
-          <SectionTitle>Power-ups</SectionTitle>
+          <SectionTitle>{t('shop.powerups')}</SectionTitle>
           <View style={{ gap: 10, marginBottom: 22 }}>
             {powerups.map(item => (
               <ShopRow
@@ -159,7 +161,7 @@ export default function ShopScreen() {
           {/* Cosméticos (ocultos hasta que tengan efecto visual) */}
           {cosmetics.length > 0 && (
             <>
-              <SectionTitle>Cosméticos</SectionTitle>
+              <SectionTitle>{t('shop.cosmetics')}</SectionTitle>
               <View style={{ gap: 10 }}>
                 {cosmetics.map(item => (
                   <ShopRow
@@ -195,6 +197,7 @@ function ShopRow({
   onBuy: () => void;
   onEquip?: () => void;
 }) {
+  const { t } = useTranslation();
   const isOwnedCosmetic = cosmetic && owned > 0;
   const affordable = coins >= item.price;
   return (
@@ -222,7 +225,7 @@ function ShopRow({
             borderWidth: 1, borderColor: equipped ? '#2ec87a' : 'rgba(255,255,255,0.12)',
           }}>
             <Text style={{ color: equipped ? '#000' : '#fff', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
-              {equipped ? 'Equipado' : 'Equipar'}
+              {equipped ? t('shop.equipped') : t('shop.equip')}
             </Text>
           </View>
         </Pressable>
@@ -234,7 +237,7 @@ function ShopRow({
             opacity: affordable ? 1 : 0.6,
           }}>
             <Text style={{ color: affordable ? '#000' : 'rgba(255,255,255,0.5)', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
-              {busy ? '...' : `${item.price} 🪙`}
+              {busy ? '…' : `${item.price} 🪙`}
             </Text>
           </View>
         </Pressable>

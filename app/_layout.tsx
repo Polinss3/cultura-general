@@ -1,4 +1,6 @@
+import '@/lib/i18n'; // debe ir primero: init i18n antes de que renderice cualquier componente
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
@@ -25,6 +27,9 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { ProgressProvider } from '@/context/ProgressContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
+import { applyPersistedLanguage } from '@/lib/i18n';
+import { purgeLegacyQuestionCache } from '@/lib/db';
+import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
 import { supabase } from '@/lib/supabase';
 import { setSentryUser } from '@/lib/sentry';
 import { clearGuestData } from '@/lib/guest';
@@ -62,7 +67,9 @@ function RootLayout() {
   const offline = useOffline();
   const segments = useSegments();
   const router = useRouter();
+  const { t } = useTranslation();
   const [onboarded, setOnboarded] = useState<boolean | null>(null);
+  const [langReady, setLangReady] = useState(false);
   const [authLinkReady, setAuthLinkReady] = useState(false);
   const [profileReady, setProfileReady] = useState(false);
   const [profileNeedsCompletion, setProfileNeedsCompletion] = useState(false);
@@ -73,6 +80,17 @@ function RootLayout() {
 
   useEffect(() => {
     getOnboardingCompleted().then(setOnboarded);
+  }, []);
+
+  // Idioma: aplicar override guardado bajo el BootScreen (sin flash), y de
+  // paso limpiar la caché de preguntas v1 y reprogramar el recordatorio en el
+  // idioma activo (cubre a quien cambió el idioma del sistema con la app cerrada).
+  useEffect(() => {
+    applyPersistedLanguage().finally(() => {
+      setLangReady(true);
+      purgeLegacyQuestionCache();
+      rescheduleDailyReminderIfActive();
+    });
   }, []);
 
   // Meta SDK: inicializar y sincronizar el tracking publicitario con el ATT
@@ -113,7 +131,7 @@ function RootLayout() {
       const result = await handleIncomingAuthUrl(url);
       if (!result.handled || cancelled) return;
       if (result.error) {
-        Alert.alert('Error', result.error);
+        Alert.alert(t('common.error'), result.error);
         return;
       }
       if (result.route === 'update-password') {
@@ -182,7 +200,7 @@ function RootLayout() {
 
   // ─ Estado de arranque ─
   const authResolved =
-    fontsLoaded && !loading && !guestLoading && onboarded !== null && authLinkReady && profileReady;
+    fontsLoaded && !loading && !guestLoading && onboarded !== null && authLinkReady && profileReady && langReady;
   const hasIdentity = !!session || guest;
   // Usuario sin sesión + sin red confirmada: requiere pulsar "Continuar sin conexión".
   const needsManualEntry = offline && !hasIdentity;

@@ -9,6 +9,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -31,6 +32,7 @@ const INPUT = {
 };
 
 export default function CompleteProfileScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { user } = useAuth();
   const [username, setUsername] = useState('');
@@ -56,7 +58,7 @@ export default function CompleteProfileScreen() {
 
     const validationError = validateUsername(username);
     if (validationError) {
-      Alert.alert('Error', validationError);
+      Alert.alert(t('common.error'), validationError);
       return;
     }
 
@@ -65,7 +67,7 @@ export default function CompleteProfileScreen() {
 
     if (error) {
       setLoading(false);
-      Alert.alert('Error', error);
+      Alert.alert(t('common.error'), error);
       return;
     }
 
@@ -79,7 +81,7 @@ export default function CompleteProfileScreen() {
     setLoading(false);
 
     if (userError) {
-      Alert.alert('Error', userError.message);
+      Alert.alert(t('common.error'), userError.message);
       return;
     }
 
@@ -96,16 +98,16 @@ export default function CompleteProfileScreen() {
         <ScrollView contentContainerStyle={{ flexGrow: 1, padding: 24, justifyContent: 'center' }}>
           <Text style={{ fontSize: 40, marginBottom: 8 }}>✨</Text>
           <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
-            Completa tu perfil
+            {t('auth.completeProfile.title')}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 32 }}>
-            Elige el nombre público que verán otros usuarios en rankings, amigos y perfil.
+            {t('auth.completeProfile.subtitle')}
           </Text>
 
           <TextInput
             value={username}
             onChangeText={value => setUsername(normalizeUsername(value))}
-            placeholder="Nombre público"
+            placeholder={t('auth.completeProfile.placeholder')}
             placeholderTextColor="rgba(255,255,255,0.3)"
             autoCapitalize="words"
             autoCorrect={false}
@@ -113,7 +115,7 @@ export default function CompleteProfileScreen() {
           />
 
           <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginBottom: 24 }}>
-            Puede incluir espacios, pero seguirá siendo único dentro de la app.
+            {t('auth.completeProfile.hint')}
           </Text>
 
           <Pressable onPress={handleSave} disabled={loading}>
@@ -123,7 +125,7 @@ export default function CompleteProfileScreen() {
               style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
             >
               <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
-                {loading ? 'Guardando...' : 'Guardar nombre'}
+                {loading ? t('auth.completeProfile.saving') : t('auth.completeProfile.save')}
               </Text>
             </LinearGradient>
           </Pressable>
@@ -131,7 +133,7 @@ export default function CompleteProfileScreen() {
           <View style={{ marginTop: 20, alignItems: 'center' }}>
             <Pressable onPress={() => supabase.auth.signOut()} disabled={loading}>
               <Text style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Outfit_400Regular' }}>
-                Cerrar sesión
+                {t('profile.signOut')}
               </Text>
             </Pressable>
           </View>

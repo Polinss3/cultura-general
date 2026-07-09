@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, View, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
@@ -25,6 +26,7 @@ function todayStr() {
 }
 
 export default function ArenaScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh } = useProfile();
@@ -85,7 +87,7 @@ export default function ArenaScreen() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 20, paddingBottom: 28 }}>
 
         <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold', marginBottom: 16 }}>
-          Arena
+          {t('arena.title')}
         </Text>
 
         {/* Progreso */}
@@ -100,10 +102,10 @@ export default function ArenaScreen() {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                 <LevelBadge level={level} size={52} />
                 <View style={{ flex: 1 }}>
-                  <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 18 }}>Nivel {level}</Text>
+                  <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 18 }}>{t('components.levelUp.level', { level })}</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 2 }}>
                     <Text style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Outfit_500Medium', fontSize: 12 }}>
-                      🔥 {streak} días
+                      🔥 {t('common.days', { count: streak })}
                     </Text>
                     {mult && (
                       <View style={{ backgroundColor: 'rgba(232,160,48,0.2)', borderRadius: 99, paddingHorizontal: 8, paddingVertical: 1 }}>
@@ -123,12 +125,10 @@ export default function ArenaScreen() {
               <Text style={{ fontSize: 26 }}>✨</Text>
               <View style={{ flex: 1 }}>
                 <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
-                  {offline ? 'Progreso sin conexión' : 'Crea cuenta gratis'}
+                  {offline ? t('arena.guestOffline') : t('arena.guestCreate')}
                 </Text>
                 <Text style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
-                  {offline
-                    ? 'Niveles, monedas y misiones vuelven al recuperar la conexión.'
-                    : 'Sube de nivel, gana monedas y completa misiones.'}
+                  {offline ? t('arena.guestOfflineSub') : t('arena.guestCreateSub')}
                 </Text>
               </View>
               {!offline && <Text style={{ color: '#e8a030', fontSize: 18 }}>→</Text>}
@@ -143,7 +143,7 @@ export default function ArenaScreen() {
 
         {/* Modos en solitario */}
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12, marginTop: 4 }}>
-          Modos en solitario
+          {t('arena.soloModes')}
         </Text>
 
         <ModeCard
@@ -151,10 +151,10 @@ export default function ArenaScreen() {
           border="rgba(160,48,232,0.3)"
           accent="#a030e8"
           icon="⚡"
-          tag="CONTRARRELOJ"
-          title="30 Segundos"
-          desc="Responde a contrarreloj. Cada acierto suma puntos y monedas."
-          cta="Jugar →"
+          tag={t('arena.speedTag')}
+          title={t('arena.speedTitle')}
+          desc={t('arena.speedDesc')}
+          cta={t('arena.playCta')}
           onPress={() => router.push('/speed')}
         />
 
@@ -163,11 +163,11 @@ export default function ArenaScreen() {
           border="rgba(232,160,48,0.3)"
           accent="#e8a030"
           icon="🪜"
-          tag="ASCENSO"
-          title="Modo Ascenso"
-          desc="Sube pisos de dificultad creciente. Arriesga el bote o retírate a tiempo."
-          cta="Escalar →"
-          extra={economyOn ? `Récord: piso ${profile?.ladder_best ?? 0}` : undefined}
+          tag={t('arena.ladderTag')}
+          title={t('arena.ladderTitle')}
+          desc={t('arena.ladderDesc')}
+          cta={t('arena.climbCta')}
+          extra={economyOn ? t('arena.ladderRecord', { n: profile?.ladder_best ?? 0 }) : undefined}
           onPress={() => router.push('/ladder')}
         />
 
@@ -175,7 +175,7 @@ export default function ArenaScreen() {
         {economyOn && missions.length > 0 && (
           <>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12, marginTop: 10 }}>
-              Misiones de hoy
+              {t('arena.todayMissions')}
             </Text>
             <View style={{ gap: 10, marginBottom: 6 }}>
               {missions.map(m => {
@@ -185,17 +185,17 @@ export default function ArenaScreen() {
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                       <Text style={{ fontSize: 20 }}>{m.icon}</Text>
                       <View style={{ flex: 1 }}>
-                        <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{m.title}</Text>
+                        <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{t(`missions.${m.id}`)}</Text>
                         <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 1 }}>
                           {Math.min(m.progress, m.goal)}/{m.goal}
                         </Text>
                       </View>
                       {m.claimed ? (
-                        <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>✓ Hecho</Text>
+                        <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>{t('arena.done')}</Text>
                       ) : done ? (
                         <Pressable onPress={() => handleClaimMission(m)} disabled={busy === m.id}>
                           <View style={{ backgroundColor: '#2ec87a', borderRadius: 99, paddingVertical: 6, paddingHorizontal: 14 }}>
-                            <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>Reclamar</Text>
+                            <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>{t('arena.claim')}</Text>
                           </View>
                         </Pressable>
                       ) : (
@@ -220,13 +220,13 @@ export default function ArenaScreen() {
             <Pressable onPress={() => router.push('/shop')} style={{ flex: 1 }}>
               <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 16, alignItems: 'center', gap: 4 }}>
                 <Text style={{ fontSize: 22 }}>🛒</Text>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>Tienda</Text>
+                <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{t('arena.shop')}</Text>
               </View>
             </Pressable>
             <Pressable onPress={() => router.push('/profile')} style={{ flex: 1 }}>
               <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 16, alignItems: 'center', gap: 4 }}>
                 <Text style={{ fontSize: 22 }}>🏅</Text>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>Logros</Text>
+                <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{t('arena.achievements')}</Text>
               </View>
             </Pressable>
           </View>
