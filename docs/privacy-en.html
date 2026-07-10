@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — CG Trivia</title>
+  <meta name="description" content="Privacy policy for the CG Trivia app.">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #151515;
+      --text: #e7e7e7;
+      --text-soft: rgba(231, 231, 231, 0.7);
+      --text-muted: rgba(231, 231, 231, 0.45);
+      --accent: #e8a030;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 20px 80px;
+    }
+    main { max-width: 720px; margin: 0 auto; }
+    header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .meta { color: var(--text-muted); font-size: 14px; }
+    .intro { color: var(--text-soft); font-size: 16px; margin-bottom: 40px; }
+    section { margin-bottom: 36px; }
+    h2 { color: var(--accent); font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    p { color: var(--text-soft); font-size: 15px; margin-bottom: 12px; }
+    ul { color: var(--text-soft); font-size: 15px; padding-left: 22px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; text-align: center; }
+    code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--text); }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Privacy Policy</h1>
+      <p class="meta">CG Trivia · Last updated: June 2026</p>
+    </header>
+
+    <p class="intro">
+      At CG Trivia we take your privacy seriously. This policy explains what data we collect, how we use it, where it is stored and what rights you have over it. If you have any questions, write to us at <a href="mailto:pablobrasero@gmail.com">pablobrasero@gmail.com</a>.
+    </p>
+
+    <section>
+      <h2>1. Information we collect</h2>
+      <p>When you use CG Trivia we collect only the following data:</p>
+      <ul>
+        <li>Email address (to create and recover your account).</li>
+        <li>The username you choose.</li>
+        <li>Answers to questions (to compute your stats and rankings).</li>
+        <li>Day streak, scores and personal records.</li>
+        <li>A unique account identifier (an anonymous UUID generated at sign-up).</li>
+      </ul>
+      <p>We do not collect location, contacts, photos, microphone, calendar or any other sensitive data.</p>
+    </section>
+
+    <section>
+      <h2>2. How we use your information</h2>
+      <p>We use your data only to make the app work:</p>
+      <ul>
+        <li>Show your profile, stats and achievements within the app.</li>
+        <li>Compute and display the daily, weekly and all-time rankings.</li>
+        <li>Keep your streak of consecutive answering days.</li>
+        <li>Find friends by username and share results with them.</li>
+        <li>Send you a daily local notification (only if you enable it) to remind you of the daily question.</li>
+      </ul>
+      <p>We do not sell or rent your personal data. To keep the app free we may show ads through Google AdMob, with the limitations described in the advertising section.</p>
+    </section>
+
+    <section>
+      <h2>3. Data visible to other users</h2>
+      <p>For the social features and rankings to work, the following profile data <strong>is visible to any authenticated user in the app</strong>:</p>
+      <ul>
+        <li>Your username.</li>
+        <li>Your current streak.</li>
+        <li>Your total number of correct answers.</li>
+        <li>Your Time Attack record.</li>
+      </ul>
+      <p>Your email, your individual answers and the details of your private games are <strong>never</strong> visible to other users.</p>
+    </section>
+
+    <section>
+      <h2>4. Storage and security</h2>
+      <p>Your data is stored on <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>, a PostgreSQL database platform hosted on European servers. All communication between the app and the server is encrypted with TLS/HTTPS.</p>
+      <p>Passwords are stored only as a hash via Supabase's authentication system; we never see them in plain text.</p>
+      <p>We use Row Level Security (RLS) in the database to ensure no user can access another user's private data.</p>
+      <p>Questions and answers may be cached temporarily on your device to allow smooth use under intermittent network conditions.</p>
+    </section>
+
+    <section>
+      <h2>5. Error reporting (Sentry)</h2>
+      <p>To detect and fix bugs we use <a href="https://sentry.io" target="_blank" rel="noopener">Sentry</a>. When an unexpected crash occurs, Sentry receives only:</p>
+      <ul>
+        <li>The technical error stack trace.</li>
+        <li>The app and operating-system version.</li>
+        <li>Your unique account identifier (UUID), to group errors that affect you.</li>
+      </ul>
+      <p>We do not send Sentry your IP address, email, username, or the content of questions or answers.</p>
+    </section>
+
+    <section>
+      <h2>6. Advertising</h2>
+      <p>CG Trivia may show interstitial ads through <a href="https://admob.google.com" target="_blank" rel="noopener">Google AdMob</a> after natural moments of play, such as the daily question, a Time Attack round or blocks of learning questions.</p>
+      <ul>
+        <li>We will ask for permission through the official iOS system (App Tracking Transparency).</li>
+        <li>If you decline, ads will be shown in a non-personalized way without tracking.</li>
+        <li>If you accept, AdMob may use your advertising identifier (IDFA) to show relevant ads.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Notifications</h2>
+      <p>If you grant permission, the app schedules a daily local notification at 9:00 to remind you of the daily question. These notifications are generated and shown <strong>only on your device</strong>; they do not pass through external servers. You can disable them at any time from the profile screen or from your operating-system settings.</p>
+    </section>
+
+    <section>
+      <h2>8. Your rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li><strong>Access</strong> your personal data at any time from the profile screen.</li>
+        <li><strong>Change</strong> your username directly in the app.</li>
+        <li><strong>Delete</strong> your account and all associated data (write to us at <a href="mailto:pablobrasero@gmail.com">pablobrasero@gmail.com</a> and we delete it within 7 days).</li>
+        <li><strong>Export</strong> your data on request.</li>
+        <li><strong>Withdraw your consent</strong> for advertising tracking in the system settings (Settings &gt; Privacy &gt; Tracking).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Minors</h2>
+      <p>CG Trivia is intended for people over 13. We do not knowingly collect personal data from children under 13. If you believe a minor has created an account without your consent, contact us and we will delete it immediately.</p>
+    </section>
+
+    <section>
+      <h2>10. Changes to this policy</h2>
+      <p>We may update this policy occasionally to reflect changes in the app or applicable law. When there are significant changes we will notify you through the app itself. Continued use of CG Trivia after an update implies acceptance of the revised policy.</p>
+    </section>
+
+    <section>
+      <h2>11. Contact</h2>
+      <p>If you have any questions about this policy, about how we handle your data, or want to exercise any of your rights, write to us at:</p>
+      <p><a href="mailto:pablobrasero@gmail.com">pablobrasero@gmail.com</a></p>
+    </section>
+
+    <footer>
+      CG Trivia · © 2026 Pablo Brasero
+    </footer>
+  </main>
+</body>
+</html>
