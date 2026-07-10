@@ -1,0 +1,10 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Cultura General",
+    "NSUserTrackingUsageDescription": "Tu permiso nos permite mostrarte anuncios más relevantes y mantener la app gratis. Puedes cambiarlo en cualquier momento desde Ajustes.",
+    "NSUserNotificationsUsageDescription": "Recibe un recordatorio diario para responder la pregunta del día y mantener tu racha."
+  },
+  "android": {
+    "app_name": "Cultura General"
+  }
+}
