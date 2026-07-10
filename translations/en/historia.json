@@ -64,5 +64,827 @@
     "question_en": "Which empire was known as 'the empire on which the sun never sets'?",
     "options_en": ["Roman Empire", "Mongol Empire", "British Empire", "Spanish Empire"],
     "context_en": "The British Empire at its peak (19th century) covered 24% of the Earth's land. The phrase was earlier attributed to the Spanish Empire."
+  },
+  {
+    "i": 11,
+    "question_en": "Who was Cleopatra?",
+    "options_en": ["Queen of Egypt", "Roman empress", "Greek princess", "Pharaoh of Nubia"],
+    "context_en": "Cleopatra VII was the last active queen of Ancient Egypt (69-30 BC). She had romances with Julius Caesar and Mark Antony. She spoke 9 languages."
+  },
+  {
+    "i": 12,
+    "question_en": "In what year was the Magna Carta signed in England?",
+    "options_en": ["1150", "1215", "1265", "1320"],
+    "context_en": "The Magna Carta was signed in 1215 by King John of England, limiting royal power and laying the foundations of modern constitutionalism."
+  },
+  {
+    "i": 13,
+    "question_en": "Which civilization built the Pyramids of Giza?",
+    "options_en": ["Sumer", "Phoenicia", "Ancient Egypt", "Nubia"],
+    "context_en": "The Pyramids of Giza were built by Ancient Egypt, roughly between 2560 and 2490 BC. The Great Pyramid is that of Khufu."
+  },
+  {
+    "i": 14,
+    "question_en": "Which was the first city in history?",
+    "options_en": ["Babylon", "Uruk", "Memphis", "Jericho"],
+    "context_en": "Uruk (in present-day Iraq) is considered the first city in history, with ~50,000 inhabitants around 3200 BC. Birthplace of cuneiform writing."
+  },
+  {
+    "i": 15,
+    "question_en": "Which war pitted Athens against Sparta?",
+    "options_en": ["The Peloponnesian War", "The Greco-Persian Wars", "The Trojan War", "The Corinthian War"],
+    "context_en": "The Peloponnesian War (431-404 BC) pitted the Delian League (Athens) against the Peloponnesian League (Sparta). Sparta won."
+  },
+  {
+    "i": 16,
+    "question_en": "In what year did the Western Roman Empire fall?",
+    "options_en": ["376", "410", "455", "476"],
+    "context_en": "The Western Roman Empire fell in AD 476 when Odoacer deposed the last emperor, Romulus Augustulus."
+  },
+  {
+    "i": 17,
+    "question_en": "Who was the conqueror of the Aztec Empire?",
+    "options_en": ["Francisco Pizarro", "Hernán Cortés", "Vasco da Gama", "Amerigo Vespucci"],
+    "context_en": "Hernán Cortés conquered the Aztec Empire between 1519-1521, aided by alliances with rival peoples and the smallpox that decimated the population."
+  },
+  {
+    "i": 18,
+    "question_en": "Which event triggered World War I?",
+    "options_en": ["The invasion of Poland", "The assassination of Archduke Franz Ferdinand", "A European general strike", "The sinking of the Lusitania"],
+    "context_en": "The assassination of Austro-Hungarian archduke Franz Ferdinand in Sarajevo (28 June 1914) triggered the chain of alliances that led to war."
+  },
+  {
+    "i": 19,
+    "question_en": "What was the Spanish Inquisition?",
+    "options_en": ["A religious war", "An ecclesiastical tribunal", "A political party", "An artistic movement"],
+    "context_en": "The Spanish Inquisition (1478-1834) was an ecclesiastical tribunal created by the Catholic Monarchs to maintain Catholic orthodoxy."
+  },
+  {
+    "i": 20,
+    "question_en": "In what year did the Russian Revolution take place?",
+    "options_en": ["1905", "1914", "1917", "1921"],
+    "context_en": "The 1917 Russian Revolution had two phases: the February Revolution (fall of the tsar) and October (the Bolshevik seizure of power)."
+  },
+  {
+    "i": 21,
+    "question_en": "Who was Adolf Hitler?",
+    "options_en": ["President of Germany", "Chancellor and Führer of Germany", "A German army general", "King of Prussia"],
+    "context_en": "Hitler was chancellor from 1933 and proclaimed himself Führer in 1934. He led Nazism, causing the Holocaust and World War II."
+  },
+  {
+    "i": 22,
+    "question_en": "What was Apartheid?",
+    "options_en": ["A revolution in South Africa", "A system of racial segregation in South Africa", "A civil war in Angola", "An African political party"],
+    "context_en": "Apartheid was a regime of racial segregation in South Africa (1948-1991). Nelson Mandela fought against it and was imprisoned for 27 years."
+  },
+  {
+    "i": 23,
+    "question_en": "In what year did man reach the Moon?",
+    "options_en": ["1965", "1967", "1969", "1971"],
+    "context_en": "On 20 July 1969, Neil Armstrong and Buzz Aldrin (Apollo 11) walked on the Moon. Armstrong was the first, saying 'one small step for man'."
+  },
+  {
+    "i": 24,
+    "question_en": "Which civil war took place in Spain between 1936 and 1939?",
+    "options_en": ["The Cuban War", "The Morocco War", "The Spanish Civil War", "The War of Succession"],
+    "context_en": "The Spanish Civil War (1936-1939) pitted the Republican side against the Nationalist side (Franco). It ended with Franco's dictatorship, which lasted until 1975."
+  },
+  {
+    "i": 25,
+    "question_en": "Who was Marco Polo?",
+    "options_en": ["A Portuguese navigator", "An Italian explorer who traveled to China", "A Spanish conquistador", "A Dutch cartographer"],
+    "context_en": "Marco Polo (1254-1324) was a Venetian merchant and explorer who traveled to the court of the Great Khan in China and described his journeys in 'The Travels'."
+  },
+  {
+    "i": 26,
+    "question_en": "What was the Spanish Reconquista?",
+    "options_en": ["The conquest of America", "The recovery of Iberian territories occupied by Muslims", "The war against Portugal", "The union of Castile and Aragon"],
+    "context_en": "The Reconquista (711-1492) was the process by which the Christian kingdoms recovered the Iberian Peninsula from the Muslims. It ended with the taking of Granada."
+  },
+  {
+    "i": 27,
+    "question_en": "Which was the first country to grant women the vote?",
+    "options_en": ["United Kingdom", "United States", "New Zealand", "France"],
+    "context_en": "New Zealand was the first country in the world to grant women's suffrage in 1893. British women got it in 1918 and French women in 1944."
+  },
+  {
+    "i": 28,
+    "question_en": "What was the Holocaust?",
+    "options_en": ["A WWII battle", "The systematic genocide of Jews and other groups by the Nazis", "An epidemic in Europe", "The destruction of Dresden"],
+    "context_en": "The Holocaust was the systematic genocide of 6 million Jews and millions of others by the Nazi regime between 1941 and 1945."
+  },
+  {
+    "i": 29,
+    "question_en": "Who was Genghis Khan?",
+    "options_en": ["A Chinese king", "The founder of the Mongol Empire", "A Persian sultan", "A Viking chieftain"],
+    "context_en": "Genghis Khan (1162-1227) founded the Mongol Empire, the largest contiguous empire in history. He conquered from China to Eastern Europe."
+  },
+  {
+    "i": 30,
+    "question_en": "Which was the largest empire in history?",
+    "options_en": ["Roman Empire", "Mongol Empire", "British Empire", "Spanish Empire"],
+    "context_en": "The Mongol Empire (13th century) reached 24 million km², the largest contiguous empire in history. The British Empire was the largest by total area, at 35.5 million km²."
+  },
+  {
+    "i": 31,
+    "question_en": "Who was Julius Caesar?",
+    "options_en": ["The first Roman emperor", "A Roman general and dictator murdered in the Senate", "The founder of Rome", "A Roman philosopher"],
+    "context_en": "Julius Caesar was a Roman dictator murdered on 15 March 44 BC (the 'Ides of March'). His great-nephew Augustus became the first emperor."
+  },
+  {
+    "i": 32,
+    "question_en": "What was the Black Death?",
+    "options_en": ["A medieval war", "A bubonic plague epidemic that killed a third of Europe", "A volcanic eruption", "A widespread famine"],
+    "context_en": "The Black Death (1347-1353) killed between 30 and 60% of Europe's population, some 25 million people. It was caused by the bacterium Yersinia pestis."
+  },
+  {
+    "i": 33,
+    "question_en": "What was the Hundred Years' War?",
+    "options_en": ["A war between Rome and Carthage", "A conflict between England and France (1337-1453)", "The Thirty Years' War", "A crusade"],
+    "context_en": "The Hundred Years' War (1337-1453) pitted England against France over the French throne. Joan of Arc was the French heroine who turned the tide of the war."
+  },
+  {
+    "i": 34,
+    "question_en": "Who was Joan of Arc?",
+    "options_en": ["A queen of France", "A French peasant who led armies and was burned as a heretic", "An English spy", "A saint canonized while alive"],
+    "context_en": "Joan of Arc (1412-1431) led the French army guided by religious visions. She was captured, tried for heresy and burned alive. Canonized in 1920."
+  },
+  {
+    "i": 35,
+    "question_en": "What was the Renaissance?",
+    "options_en": ["A political revolution", "A cultural and artistic movement that revived classical Greco-Roman culture", "A religious reform", "An industrial revolution"],
+    "context_en": "The Renaissance (14th-17th centuries) began in Italy and spread across Europe. It revalued humanism, art and science. Leonardo, Michelangelo and Erasmus are its figures."
+  },
+  {
+    "i": 36,
+    "question_en": "What was the Protestant Reformation?",
+    "options_en": ["A constitutional reform in Europe", "The religious movement started by Luther that split Christianity", "The reform of the Catholic Church at the Council of Trent", "A peasant revolt"],
+    "context_en": "Martin Luther began the Reformation in 1517 by publishing his 95 theses. It created Protestantism, dividing European Christianity into Catholics and Protestants."
+  },
+  {
+    "i": 37,
+    "question_en": "Who was Martin Luther?",
+    "options_en": ["A German king", "A monk and theologian who started the Protestant Reformation", "A reformist pope", "A humanist philosopher"],
+    "context_en": "Martin Luther (1483-1546) was an Augustinian monk who in 1517 published his 95 theses against indulgences. He was excommunicated but protected by German princes."
+  },
+  {
+    "i": 38,
+    "question_en": "What was the Spanish Armada?",
+    "options_en": ["The English fleet that defeated Spain", "The Spanish fleet sent to invade England in 1588, which was defeated", "A Roman army", "The Portuguese fleet of exploration"],
+    "context_en": "Philip II sent the Spanish Armada in 1588 to invade England. It was defeated by Drake's English fleet and by storms. It marked Spain's decline."
+  },
+  {
+    "i": 39,
+    "question_en": "Who was Galileo Galilei?",
+    "options_en": ["An Italian Renaissance philosopher", "An astronomer and physicist who defended heliocentrism", "A Renaissance explorer", "A doctor who discovered blood circulation"],
+    "context_en": "Galileo (1564-1642) improved the telescope, observed Jupiter's satellites and supported Copernicus's heliocentrism. He was condemned by the Inquisition."
+  },
+  {
+    "i": 40,
+    "question_en": "What was the Industrial Revolution?",
+    "options_en": ["A political revolution in Great Britain", "The process of mechanizing production that began in Great Britain in the 18th century", "An agrarian revolution in France", "A technological revolution in the U.S."],
+    "context_en": "The Industrial Revolution began in Great Britain around 1760 with Watt's steam engine. It transformed the world economy from agricultural to industrial."
+  },
+  {
+    "i": 41,
+    "question_en": "Who invented the movable-type printing press in Europe?",
+    "options_en": ["Leonardo da Vinci", "Johannes Gutenberg", "Roger Bacon", "William Caxton"],
+    "context_en": "Gutenberg invented the movable-type printing press in Europe around 1450, printing the Gutenberg Bible. It revolutionized the spread of knowledge."
+  },
+  {
+    "i": 42,
+    "question_en": "What was the Inquisition?",
+    "options_en": ["A medieval educational institution", "An ecclesiastical tribunal to persecute heresy", "A medieval tax", "An ecclesiastical council"],
+    "context_en": "The Inquisition was an ecclesiastical tribunal that persecuted heresy in Europe from the 12th century. The Spanish one (1478-1834) was especially rigorous."
+  },
+  {
+    "i": 43,
+    "question_en": "When did the United States become independent?",
+    "options_en": ["1775", "1776", "1783", "1789"],
+    "context_en": "The Declaration of Independence was on 4 July 1776. The war ended in 1783 with the Treaty of Paris. The Constitution came into force in 1789."
+  },
+  {
+    "i": 44,
+    "question_en": "Who was Simón Bolívar?",
+    "options_en": ["The liberator of Argentina", "The hero of Latin American independence who liberated Venezuela, Colombia, Ecuador, Peru and Bolivia", "The first president of Mexico", "A Napoleonic general"],
+    "context_en": "Simón Bolívar (1783-1830) led the independence of Venezuela, Colombia, Ecuador, Peru and Bolivia, which bears his name. He is known as 'The Liberator'."
+  },
+  {
+    "i": 45,
+    "question_en": "What was the Crimean War?",
+    "options_en": ["A 19th-century war between Russia and Turkey", "A World War I war", "A medieval war between Mongols and Russians", "A colonial war"],
+    "context_en": "The Crimean War (1853-1856) pitted Russia against the Ottoman Empire, France, the UK and Sardinia. Florence Nightingale modernized nursing during this conflict."
+  },
+  {
+    "i": 46,
+    "question_en": "Who was Nelson Mandela?",
+    "options_en": ["First president of Nigeria", "Activist and first black president of South Africa", "Leader of the civil rights movement in the U.S.", "Prime minister of Zimbabwe"],
+    "context_en": "Nelson Mandela (1918-2013) fought against Apartheid, was imprisoned for 27 years and became the first democratically elected president of South Africa (1994)."
+  },
+  {
+    "i": 47,
+    "question_en": "What was the Cold War?",
+    "options_en": ["A war between the Arctic and Antarctica", "The political and military tension between the U.S. and the USSR (1947-1991)", "A war between Scandinavian countries", "An undeclared war between Europe and Russia"],
+    "context_en": "The Cold War (1947-1991) was the rivalry between the U.S. and the USSR without direct conflict. It included the arms race, the space race and proxy conflicts."
+  },
+  {
+    "i": 48,
+    "question_en": "In what year was the Soviet Union dissolved?",
+    "options_en": ["1989", "1990", "1991", "1992"],
+    "context_en": "The USSR was officially dissolved on 25 December 1991, when Gorbachev resigned. It gave rise to 15 independent republics, with Russia as the main successor."
+  },
+  {
+    "i": 49,
+    "question_en": "Who was Mao Zedong?",
+    "options_en": ["The first president of the Republic of China", "The founder of the People's Republic of China and leader of the Chinese Communist Party", "A World War II general", "The last Chinese emperor"],
+    "context_en": "Mao Zedong (1893-1976) founded the People's Republic of China in 1949. His 'Great Leap Forward' and the Cultural Revolution caused tens of millions of deaths."
+  },
+  {
+    "i": 50,
+    "question_en": "What was Pearl Harbor?",
+    "options_en": ["A British naval base", "The Japanese attack on the U.S. naval base in Hawaii in 1941", "A naval battle in the Pacific", "An Allied supply port"],
+    "context_en": "On 7 December 1941, Japan attacked the base at Pearl Harbor. It brought the U.S. into World War II. Roosevelt called it 'a date which will live in infamy'."
+  },
+  {
+    "i": 51,
+    "question_en": "Who was Hernán Cortés?",
+    "options_en": ["The conqueror of the Inca Empire", "The conqueror of the Aztec Empire", "The discoverer of Florida", "The first governor of Cuba"],
+    "context_en": "Hernán Cortés (1485-1547) conquered the Aztec Empire between 1519-1521 with 600 men, relying on alliances with peoples hostile to the Aztecs."
+  },
+  {
+    "i": 52,
+    "question_en": "What was the Battle of Lepanto (1571)?",
+    "options_en": ["A battle between Spain and Portugal", "The victory of the Holy League over the Ottoman Turks in the Mediterranean", "A battle of the Reconquista", "A naval combat between pirates"],
+    "context_en": "At Lepanto (1571) the Holy League (Spain, Venice, the Pope) defeated the Ottoman fleet. Miguel de Cervantes took part and lost the use of his left hand."
+  },
+  {
+    "i": 53,
+    "question_en": "What was the Marshall Plan?",
+    "options_en": ["A NATO military plan", "The U.S. economic aid program to rebuild Europe after WWII", "A peace treaty between Germany and the Allies", "A military strategy to contain the USSR"],
+    "context_en": "The Marshall Plan (1948-1952) was the U.S. economic aid program that provided $12 billion to rebuild Western Europe."
+  },
+  {
+    "i": 54,
+    "question_en": "When was the Cuban Revolution?",
+    "options_en": ["1953", "1956", "1959", "1962"],
+    "context_en": "The Cuban Revolution triumphed on 1 January 1959, when Fidel Castro overthrew dictator Batista. Fidel ruled Cuba until 2008, when he handed power to his brother Raúl."
+  },
+  {
+    "i": 55,
+    "question_en": "What was the Cuban Missile Crisis (1962)?",
+    "options_en": ["A U.S. invasion of Cuba", "The nuclear confrontation between the U.S. and the USSR over Soviet missiles in Cuba", "A war between Cuba and the U.S.", "An economic blockade of Cuba"],
+    "context_en": "In 1962, the U.S. discovered Soviet missiles in Cuba. The 13 days of tension between Kennedy and Khrushchev were the closest the world came to nuclear war."
+  },
+  {
+    "i": 56,
+    "question_en": "What was the Battle of Waterloo?",
+    "options_en": ["Wellington's defeat by Napoleon", "Napoleon's final defeat by Wellington and Blücher in 1815", "The French victory in the Russian campaign", "A World War I battle"],
+    "context_en": "At Waterloo (18 June 1815), Napoleon was defeated by the coalition of Wellington (UK) and Blücher (Prussia). He was exiled to Saint Helena."
+  },
+  {
+    "i": 57,
+    "question_en": "In what year was the UN founded?",
+    "options_en": ["1943", "1945", "1947", "1950"],
+    "context_en": "The UN was founded on 24 October 1945, with 51 founding countries, to maintain peace after World War II. Today it has 193 member states."
+  },
+  {
+    "i": 58,
+    "question_en": "Who was Leonardo da Vinci?",
+    "options_en": ["Only a Renaissance painter", "A Renaissance genius: painter, sculptor, architect, scientist and inventor", "An Italian mathematician and physicist", "A humanist philosopher"],
+    "context_en": "Leonardo da Vinci (1452-1519) was the archetype of the 'Renaissance man'. He painted the Mona Lisa and The Last Supper, designed flying machines and studied anatomy."
+  },
+  {
+    "i": 59,
+    "question_en": "What was the Vietnam War?",
+    "options_en": ["A war between North and South Vietnam, with U.S. intervention", "A French colonial war", "A Chinese invasion of Vietnam", "A war of independence against Japan"],
+    "context_en": "The Vietnam War (1955-1975) pitted communist North Vietnam (backed by the USSR and China) against the South (backed by the U.S.). It ended with communist unification."
+  },
+  {
+    "i": 60,
+    "question_en": "In what year was the Treaty of Versailles signed?",
+    "options_en": ["1918", "1919", "1920", "1921"],
+    "context_en": "The Treaty of Versailles was signed on 28 June 1919, formally ending World War I and imposing harsh conditions on Germany."
+  },
+  {
+    "i": 61,
+    "question_en": "Who was the last tsar of Russia?",
+    "options_en": ["Alexander III", "Nicholas II", "Peter the Great", "Ivan the Terrible"],
+    "context_en": "Nicholas II Romanov ruled from 1894 to 1917. He was executed along with his family in 1918 after the Bolshevik Revolution."
+  },
+  {
+    "i": 62,
+    "question_en": "Which Roman emperor legalized Christianity?",
+    "options_en": ["Diocletian", "Constantine I", "Theodosius", "Trajan"],
+    "context_en": "Constantine I issued the Edict of Milan in the year 313, which granted religious freedom and legalized Christianity in the Empire."
+  },
+  {
+    "i": 63,
+    "question_en": "In which century did Charlemagne live?",
+    "options_en": ["6th-7th", "8th-9th", "10th-11th", "12th-13th"],
+    "context_en": "Charlemagne (742-814) was king of the Franks and emperor of the Romans. He was crowned by Pope Leo III in the year 800."
+  },
+  {
+    "i": 64,
+    "question_en": "Which Chinese dynasty built most of the current Great Wall?",
+    "options_en": ["Han", "Tang", "Ming", "Qing"],
+    "context_en": "The Ming dynasty (1368-1644) rebuilt and expanded most of the sections of the Great Wall of China visible today."
+  },
+  {
+    "i": 65,
+    "question_en": "Who was assassinated in Sarajevo in 1914?",
+    "options_en": ["Kaiser Wilhelm II", "Archduke Franz Ferdinand", "Tsar Nicholas II", "Edward VII"],
+    "context_en": "The assassination of Archduke Franz Ferdinand of Austria by Gavrilo Princip on 28 June 1914 triggered World War I."
+  },
+  {
+    "i": 66,
+    "question_en": "Which treaty divided the New World between Spain and Portugal?",
+    "options_en": ["Treaty of Utrecht", "Treaty of Tordesillas", "Peace of Westphalia", "Treaty of Paris"],
+    "context_en": "The Treaty of Tordesillas (1494) drew a line of demarcation dividing the discovered and yet-to-be-discovered lands between Castile and Portugal."
+  },
+  {
+    "i": 67,
+    "question_en": "Which event conventionally marks the start of the Modern Age?",
+    "options_en": ["Fall of the Roman Empire", "Discovery of America", "French Revolution", "Invention of the printing press"],
+    "context_en": "The discovery of America in 1492 (along with the fall of Constantinople in 1453) is usually cited as the start of the Modern Age."
+  },
+  {
+    "i": 68,
+    "question_en": "In what year did Constantinople fall?",
+    "options_en": ["1389", "1453", "1492", "1517"],
+    "context_en": "Constantinople fell to the Ottomans of Mehmed II on 29 May 1453, marking the end of the Byzantine Empire."
+  },
+  {
+    "i": 69,
+    "question_en": "Which pharaoh signed the first known peace treaty?",
+    "options_en": ["Tutankhamun", "Ramesses II", "Khufu", "Akhenaten"],
+    "context_en": "Ramesses II signed the Treaty of Kadesh with the Hittites around 1259 BC, considered the first written peace treaty in history."
+  },
+  {
+    "i": 70,
+    "question_en": "What was the Bauhaus?",
+    "options_en": ["A German dynasty", "A design school", "A political party", "A battle"],
+    "context_en": "The Bauhaus was a German school of art, design and architecture founded by Walter Gropius in Weimar in 1919; closed by the Nazis in 1933."
+  },
+  {
+    "i": 71,
+    "question_en": "Which empire did Mehmed II establish after the capture of Constantinople?",
+    "options_en": ["Persian Empire", "Ottoman Empire", "Mongol Empire", "Safavid Empire"],
+    "context_en": "Mehmed II 'the Conqueror' consolidated the Ottoman Empire and made Constantinople (renamed Istanbul) its capital."
+  },
+  {
+    "i": 72,
+    "question_en": "Which U.S. document was signed on 4 July 1776?",
+    "options_en": ["Constitution", "Declaration of Independence", "Bill of Rights", "Treaty of Paris"],
+    "context_en": "The Declaration of Independence, drafted mainly by Thomas Jefferson, proclaimed the independence of the Thirteen Colonies from Great Britain."
+  },
+  {
+    "i": 73,
+    "question_en": "Who was the 'Liberator' of Argentina, Chile and Peru?",
+    "options_en": ["Simón Bolívar", "José de San Martín", "Bernardo O'Higgins", "Antonio José de Sucre"],
+    "context_en": "José de San Martín (1778-1850) led the military campaigns that freed Argentina, Chile and part of Peru from Spanish rule."
+  },
+  {
+    "i": 74,
+    "question_en": "Which war pitted the North and South of the United States (1861-1865)?",
+    "options_en": ["War of Independence", "American Civil War", "Spanish-American War", "War of 1812"],
+    "context_en": "The Civil War pitted the Union (North) against the Confederate States (South). It ended with a Northern victory and the abolition of slavery."
+  },
+  {
+    "i": 75,
+    "question_en": "Who was Abraham Lincoln?",
+    "options_en": ["1st president of the U.S.", "16th president of the U.S.", "Inventor", "Southern general"],
+    "context_en": "Abraham Lincoln was the 16th president of the U.S. (1861-1865). He abolished slavery with the Emancipation Proclamation and was assassinated in 1865."
+  },
+  {
+    "i": 76,
+    "question_en": "In what year was the current Spanish Constitution enacted?",
+    "options_en": ["1975", "1976", "1978", "1981"],
+    "context_en": "The Spanish Constitution was enacted on 27 December 1978 after a referendum, consolidating the transition to democracy."
+  },
+  {
+    "i": 77,
+    "question_en": "Who was the dictator of Spain between 1939 and 1975?",
+    "options_en": ["Primo de Rivera", "Francisco Franco", "Alfonso XIII", "Juan Carlos I"],
+    "context_en": "Francisco Franco ruled Spain as a dictator from the end of the Civil War (1939) until his death in 1975."
+  },
+  {
+    "i": 78,
+    "question_en": "Which empire dominated Mesoamerica before the arrival of the Spanish?",
+    "options_en": ["Inca", "Aztec", "Classic Maya", "Olmec"],
+    "context_en": "The Aztec (Mexica) Empire dominated central Mexico with its capital at Tenochtitlan until its fall in 1521 to Hernán Cortés."
+  },
+  {
+    "i": 79,
+    "question_en": "What was the French May of 1968?",
+    "options_en": ["A student and worker uprising", "A civil war", "A military coup", "An economic crisis"],
+    "context_en": "In May 1968, students and workers led massive protests in France that challenged De Gaulle's government and the established social order."
+  },
+  {
+    "i": 80,
+    "question_en": "Which pre-Columbian empire had its capital at Cuzco?",
+    "options_en": ["Aztec", "Maya", "Inca", "Chimú"],
+    "context_en": "Cuzco was the capital of the Inca Empire, considered by the Incas the 'navel of the world' (Qosqo)."
+  },
+  {
+    "i": 81,
+    "question_en": "Who was Mahatma Gandhi?",
+    "options_en": ["Hindu emperor", "Pacifist leader", "Prime minister of India", "Buddhist philosopher"],
+    "context_en": "Gandhi (1869-1948) led India's independence from the United Kingdom through nonviolent resistance (satyagraha)."
+  },
+  {
+    "i": 82,
+    "question_en": "In what year did India become independent?",
+    "options_en": ["1942", "1945", "1947", "1950"],
+    "context_en": "India became independent from the British Empire on 15 August 1947. The same process gave rise to Pakistan."
+  },
+  {
+    "i": 83,
+    "question_en": "Which war pitted North Korea against South Korea (1950-1953)?",
+    "options_en": ["Vietnam War", "Korean War", "Gulf War", "Cold War"],
+    "context_en": "The Korean War (1950-1953) pitted the communist North (backed by China and the USSR) against the South (backed by the UN and the U.S.)."
+  },
+  {
+    "i": 84,
+    "question_en": "What was the 'Crash' of 1929?",
+    "options_en": ["A stock market crisis in the U.S.", "The crash of an airship", "An attack", "A diplomatic clash"],
+    "context_en": "The Wall Street Crash of October 1929 marked the start of the Great Depression, the largest economic crisis of the 20th century."
+  },
+  {
+    "i": 85,
+    "question_en": "Who delivered the 'I have a dream' speech?",
+    "options_en": ["Malcolm X", "Martin Luther King Jr.", "John F. Kennedy", "Barack Obama"],
+    "context_en": "Martin Luther King Jr. delivered his famous speech on 28 August 1963 during the March on Washington for civil rights."
+  },
+  {
+    "i": 86,
+    "question_en": "In what year was John F. Kennedy assassinated?",
+    "options_en": ["1961", "1962", "1963", "1968"],
+    "context_en": "JFK was assassinated in Dallas on 22 November 1963. The alleged perpetrator, Lee Harvey Oswald, was himself killed two days later."
+  },
+  {
+    "i": 87,
+    "question_en": "What was the Maastricht Treaty (1992)?",
+    "options_en": ["It founded the European Union", "It ended the USSR", "It reunified Germany", "It created NATO"],
+    "context_en": "The Maastricht Treaty, signed in 1992 and in force in 1993, created the European Union and laid the foundations for the euro."
+  },
+  {
+    "i": 88,
+    "question_en": "In what year did the euro enter circulation as physical currency?",
+    "options_en": ["1999", "2000", "2002", "2004"],
+    "context_en": "The euro entered physical circulation on 1 January 2002 in twelve EU countries, although it had existed as an accounting currency since 1999."
+  },
+  {
+    "i": 89,
+    "question_en": "Which empire did Philip II of Spain rule?",
+    "options_en": ["The Roman Empire", "The Spanish Empire", "The Ottoman Empire", "The Holy Roman Empire"],
+    "context_en": "Philip II (1556-1598) ruled an empire on which 'the sun never set', spanning territories in Europe, America, Asia and Africa."
+  },
+  {
+    "i": 90,
+    "question_en": "Who defeated the Persians at the Battle of Marathon (490 BC)?",
+    "options_en": ["Sparta", "Athens", "Thebes", "Macedonia"],
+    "context_en": "Athens, led by Miltiades, defeated the troops of Darius I at Marathon. Pheidippides ran 42 km to announce the victory."
+  },
+  {
+    "i": 91,
+    "question_en": "Which emperor built the Colosseum in Rome?",
+    "options_en": ["Augustus", "Vespasian", "Hadrian", "Caligula"],
+    "context_en": "Emperor Vespasian began construction of the Flavian Amphitheatre (Colosseum) in AD 72; his son Titus inaugurated it in AD 80."
+  },
+  {
+    "i": 92,
+    "question_en": "Who was Alexander the Great?",
+    "options_en": ["Persian king", "King of Macedonia", "Roman emperor", "Egyptian pharaoh"],
+    "context_en": "Alexander III of Macedon (356-323 BC) conquered a vast empire stretching from Greece to India. He was a pupil of Aristotle."
+  },
+  {
+    "i": 93,
+    "question_en": "Which 20th-century war pitted the U.S. against a Southeast Asian country and lasted ~20 years?",
+    "options_en": ["Korea", "Vietnam", "Cambodia", "Philippines"],
+    "context_en": "The Vietnam War (1955-1975) ended with the fall of Saigon and unification under the communist regime of the North."
+  },
+  {
+    "i": 94,
+    "question_en": "What was the 'Prague Spring' (1968)?",
+    "options_en": ["An attempt at reform in Czechoslovakia", "A student revolution", "A famine", "A cultural festival"],
+    "context_en": "The Prague Spring was a period of political liberalization in Czechoslovakia, crushed by the invasion of the Warsaw Pact in August 1968."
+  },
+  {
+    "i": 95,
+    "question_en": "Which year marked the start of the Industrial Revolution in England (approx.)?",
+    "options_en": ["1650", "1760", "1820", "1870"],
+    "context_en": "The Industrial Revolution began around 1760-1780 in Great Britain, with the mechanization of textiles and the steam engine."
+  },
+  {
+    "i": 96,
+    "question_en": "Which empire did Suleiman the Magnificent rule?",
+    "options_en": ["Persian", "Ottoman", "Mongol", "Byzantine"],
+    "context_en": "Suleiman I 'the Magnificent' (1520-1566) brought the Ottoman Empire to its peak, expanding across the Balkans, North Africa and the Middle East."
+  },
+  {
+    "i": 97,
+    "question_en": "What was Mao's 'Long March'?",
+    "options_en": ["A strategic retreat of the CCP", "A religious march", "A trade route", "A Mongol conquest"],
+    "context_en": "The Long March (1934-1935) was the retreat of the Chinese Red Army, covering ~10,000 km. It consolidated Mao Zedong's leadership."
+  },
+  {
+    "i": 98,
+    "question_en": "Who was Charles V?",
+    "options_en": ["King of France", "Holy Roman Emperor", "King of England", "Tsar of Russia"],
+    "context_en": "Charles V (Charles I of Spain) was Holy Roman Emperor (1519-1556). He inherited an immense empire."
+  },
+  {
+    "i": 99,
+    "question_en": "What name is given to the U.S. anti-communist doctrine after World War II?",
+    "options_en": ["Monroe Doctrine", "Truman Doctrine", "Eisenhower Doctrine", "Bush Doctrine"],
+    "context_en": "The Truman Doctrine (1947) declared that the U.S. would help countries threatened by communism, formally beginning the Cold War."
+  },
+  {
+    "i": 100,
+    "question_en": "What was the Enlightenment?",
+    "options_en": ["An 18th-century intellectual movement", "A war", "A religion", "A dynasty"],
+    "context_en": "The Enlightenment was an 18th-century movement that championed reason, science and individual rights. It influenced the French Revolution."
+  },
+  {
+    "i": 101,
+    "question_en": "Which 20th-century civil war inspired Hemingway's 'For Whom the Bell Tolls'?",
+    "options_en": ["Mexican", "Spanish", "Russian", "Chinese"],
+    "context_en": "Ernest Hemingway's novel is set in the Spanish Civil War (1936-1939), in which he took part as a correspondent."
+  },
+  {
+    "i": 102,
+    "question_en": "What was 'D-Day'?",
+    "options_en": ["The bombing of Hiroshima", "The Normandy landings", "The fall of the Wall", "Pearl Harbor"],
+    "context_en": "'D-Day' was the Allied landing in Normandy on 6 June 1944, one of the largest military operations in history."
+  },
+  {
+    "i": 103,
+    "question_en": "Which bomb did the U.S. drop on Hiroshima in 1945?",
+    "options_en": ["Fat Man", "Little Boy", "Trinity", "Tsar Bomba"],
+    "context_en": "'Little Boy' was the uranium atomic bomb dropped on Hiroshima on 6 August 1945. 'Fat Man' fell on Nagasaki three days later."
+  },
+  {
+    "i": 104,
+    "question_en": "Who was Winston Churchill?",
+    "options_en": ["King of England", "British prime minister", "American general", "Philosopher"],
+    "context_en": "Churchill was prime minister of the United Kingdom (1940-1945 and 1951-1955), the British leader during World War II. Nobel laureate in Literature 1953."
+  },
+  {
+    "i": 105,
+    "question_en": "What was Thailand called before 1939?",
+    "options_en": ["Burma", "Indochina", "Siam", "Annam"],
+    "context_en": "Thailand was officially called 'Siam' until 1939. It is one of the few Southeast Asian countries never to be colonized."
+  },
+  {
+    "i": 106,
+    "question_en": "In what year was Germany reunified?",
+    "options_en": ["1989", "1990", "1991", "1992"],
+    "context_en": "Germany was officially reunified on 3 October 1990, almost a year after the fall of the Berlin Wall."
+  },
+  {
+    "i": 107,
+    "question_en": "Who was Joseph Stalin?",
+    "options_en": ["Russian tsar", "Leader of the USSR", "President of the U.S.", "Yugoslav leader"],
+    "context_en": "Stalin led the USSR from the mid-1920s until his death in 1953. He industrialized the country at the cost of millions of victims."
+  },
+  {
+    "i": 108,
+    "question_en": "What was the GULAG?",
+    "options_en": ["The Soviet forced-labor camp system", "A military order", "A Nazi party", "An empire"],
+    "context_en": "The Gulag was the Soviet system of forced-labor camps where millions of people were imprisoned during the Stalinist regime."
+  },
+  {
+    "i": 109,
+    "question_en": "In what year did the war in Ukraine begin (the full-scale Russian invasion)?",
+    "options_en": ["2014", "2020", "2022", "2023"],
+    "context_en": "Russia launched the full-scale invasion of Ukraine on 24 February 2022. The annexation of Crimea had occurred in 2014."
+  },
+  {
+    "i": 110,
+    "question_en": "Which power launched the Crusades in 1095?",
+    "options_en": ["Byzantine", "Medieval Christian Europe", "Ottoman", "Persian"],
+    "context_en": "Pope Urban II called for the First Crusade at the Council of Clermont (1095), beginning the campaigns to reconquer the Holy Land."
+  },
+  {
+    "i": 111,
+    "question_en": "Who was Saladin?",
+    "options_en": ["A medieval Muslim sultan", "An Umayyad caliph", "An Andalusi emir", "A Persian king"],
+    "context_en": "Saladin (Salah ad-Din, 1137-1193) was sultan of Egypt and Syria. He recaptured Jerusalem for Islam in 1187."
+  },
+  {
+    "i": 112,
+    "question_en": "What role did Eva Perón play?",
+    "options_en": ["Spanish queen", "First Lady of Argentina", "Mexican actress", "Cuban revolutionary leader"],
+    "context_en": "Eva Duarte de Perón ('Evita', 1919-1952) was First Lady of Argentina and an icon of Peronism, a champion of social rights and women's rights."
+  },
+  {
+    "i": 113,
+    "question_en": "In what year was Lincoln assassinated?",
+    "options_en": ["1860", "1862", "1865", "1869"],
+    "context_en": "Abraham Lincoln was assassinated by John Wilkes Booth on 14 April 1865, a few days after the end of the Civil War."
+  },
+  {
+    "i": 114,
+    "question_en": "Which Egyptian dynasty did Tutankhamun belong to?",
+    "options_en": ["18th", "19th", "20th", "21st"],
+    "context_en": "Tutankhamun belonged to the 18th dynasty of the Egyptian New Kingdom (14th century BC). His tomb was discovered by Howard Carter in 1922."
+  },
+  {
+    "i": 115,
+    "question_en": "Which Roman emperor formally divided the empire into East and West?",
+    "options_en": ["Diocletian", "Constantine", "Theodosius", "Justinian"],
+    "context_en": "Theodosius I 'the Great' divided the Roman Empire between his sons Arcadius and Honorius in AD 395, a partition that became permanent."
+  },
+  {
+    "i": 116,
+    "question_en": "What was the Battle of Trafalgar (1805)?",
+    "options_en": ["A naval battle", "A battle in the Alps", "A siege", "A cavalry duel"],
+    "context_en": "At Trafalgar (Cádiz), Nelson's British fleet defeated the Franco-Spanish fleet. Nelson died in combat."
+  },
+  {
+    "i": 117,
+    "question_en": "Which dynasty currently rules Spain?",
+    "options_en": ["Habsburg", "Bourbon", "Trastámara", "Savoy"],
+    "context_en": "The House of Bourbon has ruled Spain since 1700 (with interruptions). The current king is Felipe VI since 2014."
+  },
+  {
+    "i": 118,
+    "question_en": "Who first unified China (221 BC)?",
+    "options_en": ["Qin Shi Huang", "Confucius", "Sun Tzu", "Mao Zedong"],
+    "context_en": "Qin Shi Huang was the first emperor of a unified China and ordered the construction of much of the Great Wall and his famous terracotta army."
+  },
+  {
+    "i": 119,
+    "question_en": "What was the 'Pax Romana'?",
+    "options_en": ["A period of imperial stability", "A treaty", "A religion", "A civil war"],
+    "context_en": "The Pax Romana was a period of relative peace and stability in the Roman Empire, roughly from 27 BC to AD 180."
+  },
+  {
+    "i": 120,
+    "question_en": "Which English document of 1215 limited the power of the king?",
+    "options_en": ["Bill of Rights", "Magna Carta", "Petition of Right", "Act of Union"],
+    "context_en": "The Magna Carta was imposed on King John by the barons in 1215; a milestone in limiting royal power and the development of constitutionalism."
+  },
+  {
+    "i": 121,
+    "question_en": "In what year was the attack on the Twin Towers?",
+    "options_en": ["1999", "2000", "2001", "2003"],
+    "context_en": "On 11 September 2001, 19 Al-Qaeda terrorists attacked the WTC and the Pentagon, causing nearly 3,000 deaths."
+  },
+  {
+    "i": 122,
+    "question_en": "Who was the first man to circumnavigate the globe (his expedition achieved it)?",
+    "options_en": ["Vasco da Gama", "Magellan-Elcano", "Christopher Columbus", "Francis Drake"],
+    "context_en": "Ferdinand Magellan began the expedition; he died in the Philippines (1521). Juan Sebastián Elcano completed the voyage in 1522."
+  },
+  {
+    "i": 123,
+    "question_en": "What caused the final fall of the Byzantine Empire?",
+    "options_en": ["Ottoman conquest", "The Crusades", "The Black Death", "A Viking invasion"],
+    "context_en": "The Byzantine Empire fell when the Ottoman Turks took Constantinople in 1453, under the command of Mehmed II."
+  },
+  {
+    "i": 124,
+    "question_en": "Who was the 'Father of the Nation' in Italy after unification (1861)?",
+    "options_en": ["Garibaldi", "Cavour", "Victor Emmanuel II", "Mazzini"],
+    "context_en": "Victor Emmanuel II was proclaimed king of Italy in 1861. Garibaldi and Cavour were decisive figures in the unification process."
+  },
+  {
+    "i": 125,
+    "question_en": "What was the Thirty Years' War (1618-1648)?",
+    "options_en": ["A religious-political conflict in Europe", "The English Civil War", "A colonial war", "A Napoleonic war"],
+    "context_en": "It began as a religious conflict (Catholics vs. Protestants) in the Holy Roman Empire and ended with the Peace of Westphalia, the basis of the modern state system."
+  },
+  {
+    "i": 126,
+    "question_en": "Which Chinese emperor had his terracotta army built?",
+    "options_en": ["Qin Shi Huang", "Han Wudi", "Kublai Khan", "Tang Taizong"],
+    "context_en": "The first emperor, Qin Shi Huang, ordered the construction of the terracotta army (~8,000 figures) to protect him in the afterlife."
+  },
+  {
+    "i": 127,
+    "question_en": "Who led the Cuban Revolution in 1959?",
+    "options_en": ["Che Guevara", "Fidel Castro", "Camilo Cienfuegos", "Raúl Castro"],
+    "context_en": "Fidel Castro overthrew Fulgencio Batista on 1 January 1959 and ruled Cuba for almost five decades."
+  },
+  {
+    "i": 128,
+    "question_en": "What was the Battle of Stalingrad (1942-1943)?",
+    "options_en": ["A turning point in World War II", "A naval battle", "A peace pact", "A 19th-century siege"],
+    "context_en": "It was one of the bloodiest battles in history. The German defeat by the USSR marked the turning of the war on the Eastern Front."
+  },
+  {
+    "i": 129,
+    "question_en": "In what year was NATO founded?",
+    "options_en": ["1945", "1947", "1949", "1955"],
+    "context_en": "NATO was founded on 4 April 1949 through the Treaty of Washington, as a military alliance against the USSR."
+  },
+  {
+    "i": 130,
+    "question_en": "When was the Warsaw Pact signed?",
+    "options_en": ["1945", "1949", "1955", "1961"],
+    "context_en": "The Warsaw Pact was signed in 1955 between the USSR and its Eastern European allies, in response to NATO."
+  },
+  {
+    "i": 131,
+    "question_en": "Which empire destroyed Carthage in 146 BC?",
+    "options_en": ["Macedonia", "Rome", "Persia", "Egypt"],
+    "context_en": "Rome destroyed Carthage at the end of the Third Punic War (146 BC). General Scipio Aemilianus razed the city."
+  },
+  {
+    "i": 132,
+    "question_en": "Who was Hannibal Barca?",
+    "options_en": ["A Greek general", "A Carthaginian general", "A Roman emperor", "A Persian king"],
+    "context_en": "Hannibal (247-183 BC) was the Carthaginian general who crossed the Alps with elephants during the Second Punic War to attack Rome."
+  },
+  {
+    "i": 133,
+    "question_en": "Which emperor made Christianity the official religion of the Roman Empire?",
+    "options_en": ["Constantine", "Theodosius I", "Justinian", "Diocletian"],
+    "context_en": "Theodosius I issued the Edict of Thessalonica (AD 380) which established Nicene Christianity as the official religion of the Empire."
+  },
+  {
+    "i": 134,
+    "question_en": "What was the Paris Commune (1871)?",
+    "options_en": ["A revolutionary government", "A peace treaty", "A political party", "A bank"],
+    "context_en": "The Commune was a popular revolutionary government that controlled Paris from March to May 1871, bloodily repressed by the French government."
+  },
+  {
+    "i": 135,
+    "question_en": "Which European empire colonized Brazil?",
+    "options_en": ["Spain", "Portugal", "The Netherlands", "United Kingdom"],
+    "context_en": "Brazil was a Portuguese colony from 1500 until its independence in 1822. That is why it is the largest Portuguese-speaking country in the world."
+  },
+  {
+    "i": 136,
+    "question_en": "When was the Universal Declaration of Human Rights signed?",
+    "options_en": ["1945", "1948", "1950", "1955"],
+    "context_en": "It was proclaimed by the UN General Assembly on 10 December 1948 in Paris, drafted by a commission chaired by Eleanor Roosevelt."
+  },
+  {
+    "i": 137,
+    "question_en": "Which empire ruled Persia before Alexander the Great?",
+    "options_en": ["Achaemenid", "Sasanian", "Parthian", "Seljuk"],
+    "context_en": "The Achaemenid Empire (550-330 BC) was defeated by Alexander the Great. Its most famous kings were Cyrus, Darius I and Xerxes."
+  },
+  {
+    "i": 138,
+    "question_en": "Which city was the cradle of the Renaissance?",
+    "options_en": ["Rome", "Florence", "Venice", "Milan"],
+    "context_en": "Florence, under the patronage of the Medici, was the main artistic, literary and philosophical hub of the Renaissance in the 15th century."
+  },
+  {
+    "i": 139,
+    "question_en": "Who was Lorenzo de' Medici?",
+    "options_en": ["Painter", "Florentine patron", "Pope", "French king"],
+    "context_en": "Lorenzo 'the Magnificent' (1449-1492) was the de facto ruler of Florence and a great patron of Botticelli, Michelangelo and Leonardo."
+  },
+  {
+    "i": 140,
+    "question_en": "Which empire dominated India between the 16th and 19th centuries?",
+    "options_en": ["Maurya", "Mughal", "Gupta", "Maratha"],
+    "context_en": "The Mughal Empire (1526-1857) ruled much of the Indian subcontinent. Its most famous emperor, Akbar, was tolerant of all religions."
+  },
+  {
+    "i": 141,
+    "question_en": "Who ordered the Taj Mahal to be built?",
+    "options_en": ["Akbar", "Shah Jahan", "Aurangzeb", "Babur"],
+    "context_en": "Shah Jahan ordered the Taj Mahal to be built (1632-1653) in Agra as a mausoleum for his wife Mumtaz Mahal."
+  },
+  {
+    "i": 142,
+    "question_en": "What was the Tudor dynasty?",
+    "options_en": ["An English dynasty (1485-1603)", "A French dynasty", "A Russian dynasty", "A German dynasty"],
+    "context_en": "The Tudors reigned in England from Henry VII to Elizabeth I. They include Henry VIII and his six wives."
+  },
+  {
+    "i": 143,
+    "question_en": "Who was Elizabeth I of England?",
+    "options_en": ["A Catholic queen", "The Virgin Queen", "A Scottish queen", "A Viking queen"],
+    "context_en": "Elizabeth I (1558-1603), daughter of Henry VIII and Anne Boleyn, was known as 'the Virgin Queen'. Her reign was a cultural and naval 'golden age'."
+  },
+  {
+    "i": 144,
+    "question_en": "What was the Boxer Rebellion (1899-1901)?",
+    "options_en": ["A nationalist revolt in China", "A professional boxing war", "An armed conflict in the U.S.", "A religious movement"],
+    "context_en": "It was a nationalist revolt in China against foreign and missionary influence. It was crushed by an international coalition."
+  },
+  {
+    "i": 145,
+    "question_en": "When was the Red Cross founded?",
+    "options_en": ["1853", "1863", "1882", "1901"],
+    "context_en": "The Red Cross was founded in Geneva in 1863 by Henry Dunant after witnessing the Battle of Solferino. It earned him the first Nobel Peace Prize (1901)."
+  },
+  {
+    "i": 146,
+    "question_en": "Which empire dominated the region of Egypt in the 7th century BC?",
+    "options_en": ["Assyrian", "Persian", "Roman", "Macedonian"],
+    "context_en": "The Assyrian Empire conquered Egypt in the 7th century BC under Esarhaddon and Ashurbanipal, before its own fall in 612 BC."
+  },
+  {
+    "i": 147,
+    "question_en": "Which treaty ended the Thirty Years' War (1648)?",
+    "options_en": ["Treaty of Versailles", "Peace of Westphalia", "Treaty of Utrecht", "Peace of Amiens"],
+    "context_en": "The Peace of Westphalia (1648) ended the Thirty Years' War and laid the foundations of the modern nation-state system."
   }
 ]
