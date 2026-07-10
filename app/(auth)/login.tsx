@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   View, Text, TextInput, Pressable,
   KeyboardAvoidingView, Platform, Alert, ScrollView,
@@ -38,6 +39,7 @@ const INPUT = {
 };
 
 export default function LoginScreen() {
+  const { t } = useTranslation();
   const [mode, setMode] = useState<Mode>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -48,8 +50,8 @@ export default function LoginScreen() {
     const normalizedEmail = normalizeEmail(email);
     const emailError = validateEmail(email);
 
-    if (emailError) { Alert.alert('Error', emailError); return; }
-    if (!password) { Alert.alert('Error', 'Rellena email y contraseña'); return; }
+    if (emailError) { Alert.alert(t('common.error'), emailError); return; }
+    if (!password) { Alert.alert(t('common.error'), t('auth.login.fillBoth')); return; }
 
     setLoading(true);
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -57,7 +59,7 @@ export default function LoginScreen() {
       password,
     });
     if (error) {
-      Alert.alert('Error', error.message);
+      Alert.alert(t('common.error'), error.message);
       setLoading(false);
       return;
     }
@@ -71,20 +73,20 @@ export default function LoginScreen() {
 
       if (prof?.is_paused) {
         Alert.alert(
-          'Cuenta pausada',
-          'Tu cuenta está pausada. ¿Quieres reactivarla?',
+          t('auth.login.pausedTitle'),
+          t('auth.login.pausedBody'),
           [
             {
-              text: 'Cancelar',
+              text: t('common.cancel'),
               style: 'cancel',
               onPress: async () => { await supabase.auth.signOut(); },
             },
             {
-              text: 'Reactivar',
+              text: t('auth.login.reactivate'),
               onPress: async () => {
                 const { error: reErr } = await reactivateAccount();
                 if (reErr) {
-                  Alert.alert('Error', reErr);
+                  Alert.alert(t('common.error'), reErr);
                   await supabase.auth.signOut();
                 }
               },
@@ -103,9 +105,9 @@ export default function LoginScreen() {
     const emailError = validateEmail(email);
     const passwordError = validatePassword(password);
 
-    if (usernameError) { Alert.alert('Error', usernameError); return; }
-    if (emailError) { Alert.alert('Error', emailError); return; }
-    if (passwordError) { Alert.alert('Error', passwordError); return; }
+    if (usernameError) { Alert.alert(t('common.error'), usernameError); return; }
+    if (emailError) { Alert.alert(t('common.error'), emailError); return; }
+    if (passwordError) { Alert.alert(t('common.error'), passwordError); return; }
 
     const { data: existingProfile } = await supabase
       .from('profiles')
@@ -114,7 +116,7 @@ export default function LoginScreen() {
       .maybeSingle();
 
     if (existingProfile) {
-      Alert.alert('Error', 'Ese nombre ya está en uso.');
+      Alert.alert(t('common.error'), t('errors.usernameTaken'));
       return;
     }
 
@@ -132,11 +134,11 @@ export default function LoginScreen() {
       },
     });
     if (error) {
-      Alert.alert('Error', error.message);
+      Alert.alert(t('common.error'), error.message);
     } else {
       Alert.alert(
-        'Revisa tu correo',
-        'Te hemos enviado el enlace para confirmar la cuenta y completar el acceso.',
+        t('auth.login.checkEmailTitle'),
+        t('auth.login.checkEmailBody'),
       );
     }
     setLoading(false);
@@ -146,19 +148,19 @@ export default function LoginScreen() {
     const normalizedEmail = normalizeEmail(email);
     const emailError = validateEmail(email);
 
-    if (emailError) { Alert.alert('Error', emailError); return; }
+    if (emailError) { Alert.alert(t('common.error'), emailError); return; }
 
     setLoading(true);
     const { error } = await supabase.auth.resetPasswordForEmail(normalizedEmail, {
       redirectTo: getUpdatePasswordUrl(),
     });
     if (error) {
-      Alert.alert('Error', error.message);
+      Alert.alert(t('common.error'), error.message);
     } else {
       Alert.alert(
-        'Email enviado',
-        'Revisa tu bandeja de entrada y sigue el enlace para restablecer tu contraseña.',
-        [{ text: 'Volver al login', onPress: () => setMode('login') }]
+        t('auth.login.emailSentTitle'),
+        t('auth.login.emailSentBody'),
+        [{ text: t('auth.login.backToLogin'), onPress: () => setMode('login') }]
       );
     }
     setLoading(false);
@@ -174,7 +176,7 @@ export default function LoginScreen() {
       const result = await signInWithGoogle();
       if (result.cancelled) return;
     } catch (error: any) {
-      Alert.alert('Error', error?.message ?? 'No se pudo iniciar sesión con Google.');
+      Alert.alert(t('common.error'), error?.message ?? t('auth.login.googleFailed'));
     } finally {
       setLoading(false);
     }
@@ -182,19 +184,19 @@ export default function LoginScreen() {
 
   const handleApple = async () => {
     Alert.alert(
-      'Apple',
-      'Para entrar en la misma cuenta existente, usa el mismo correo visible y no elijas "Ocultar mi correo".',
+      t('auth.login.appleTitle'),
+      t('auth.login.appleBody'),
       [
-        { text: 'Cancelar', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Continuar',
+          text: t('common.continue'),
           onPress: async () => {
             try {
               setLoading(true);
               await signInWithApple();
             } catch (error: any) {
               if (error?.code === 'ERR_REQUEST_CANCELED') return;
-              Alert.alert('Error', error?.message ?? 'No se pudo iniciar sesión con Apple.');
+              Alert.alert(t('common.error'), error?.message ?? t('auth.login.appleFailed'));
             } finally {
               setLoading(false);
             }
@@ -205,16 +207,16 @@ export default function LoginScreen() {
   };
 
   const getSubtitle = () => {
-    if (mode === 'reset') return 'Recuperar contraseña';
-    if (mode === 'register') return 'Crea tu cuenta gratis';
-    return 'Inicia sesión para continuar';
+    if (mode === 'reset') return t('auth.login.subtitleReset');
+    if (mode === 'register') return t('auth.login.subtitleRegister');
+    return t('auth.login.subtitleLogin');
   };
 
   const getButtonLabel = () => {
-    if (loading) return 'Cargando...';
-    if (mode === 'reset') return 'Enviar enlace';
-    if (mode === 'register') return 'Crear cuenta';
-    return 'Iniciar sesión';
+    if (loading) return t('auth.login.loading');
+    if (mode === 'reset') return t('auth.login.btnReset');
+    if (mode === 'register') return t('auth.login.btnRegister');
+    return t('auth.login.btnLogin');
   };
 
   const handleMainAction = () => {
@@ -232,7 +234,7 @@ export default function LoginScreen() {
         <ScrollView contentContainerStyle={{ flexGrow: 1, padding: 24, justifyContent: 'center' }}>
           <Text style={{ fontSize: 40, marginBottom: 8 }}>🧠</Text>
           <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
-            Cultura General
+            {t('common.appName')}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 40 }}>
             {getSubtitle()}
@@ -242,7 +244,7 @@ export default function LoginScreen() {
             <TextInput
               value={username}
               onChangeText={setUsername}
-              placeholder="Nombre público"
+              placeholder={t('auth.login.placeholderUsername')}
               placeholderTextColor="rgba(255,255,255,0.3)"
               autoCapitalize="words"
               autoCorrect={false}
@@ -253,7 +255,7 @@ export default function LoginScreen() {
           <TextInput
             value={email}
             onChangeText={setEmail}
-            placeholder="Email"
+            placeholder={t('auth.login.placeholderEmail')}
             placeholderTextColor="rgba(255,255,255,0.3)"
             keyboardType="email-address"
             autoCapitalize="none"
@@ -265,7 +267,7 @@ export default function LoginScreen() {
             <TextInput
               value={password}
               onChangeText={setPassword}
-              placeholder="Contraseña"
+              placeholder={t('auth.login.placeholderPassword')}
               placeholderTextColor="rgba(255,255,255,0.3)"
               secureTextEntry
               style={{ ...INPUT, marginBottom: mode === 'login' ? 8 : 24 }}
@@ -278,7 +280,7 @@ export default function LoginScreen() {
               style={{ alignSelf: 'flex-end', marginBottom: 24 }}
             >
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 13 }}>
-                ¿Olvidaste tu contraseña?
+                {t('auth.login.forgotPassword')}
               </Text>
             </Pressable>
           )}
@@ -301,14 +303,14 @@ export default function LoginScreen() {
             <View style={{ marginTop: 18 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                 <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
-                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>o sigue con</Text>
+                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>{t('auth.login.orContinueWith')}</Text>
                 <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
               </View>
 
               <View style={{ gap: 10 }}>
                 <SocialButton
                   provider="google"
-                  label="Continuar con Google"
+                  label={t('auth.login.continueGoogle')}
                   onPress={handleGoogle}
                   disabled={loading}
                 />
@@ -316,7 +318,7 @@ export default function LoginScreen() {
                 {Platform.OS === 'ios' && (
                   <SocialButton
                     provider="apple"
-                    label="Continuar con Apple"
+                    label={t('auth.login.continueApple')}
                     onPress={handleApple}
                     disabled={loading}
                   />
@@ -331,9 +333,9 @@ export default function LoginScreen() {
               style={{ marginTop: 24, alignItems: 'center' }}
             >
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular' }}>
-                {mode === 'login' ? '¿No tienes cuenta? ' : '¿Ya tienes cuenta? '}
+                {mode === 'login' ? t('auth.login.noAccount') : t('auth.login.haveAccount')}
                 <Text style={{ color: '#e8a030', fontFamily: 'Outfit_600SemiBold' }}>
-                  {mode === 'login' ? 'Regístrate' : 'Inicia sesión'}
+                  {mode === 'login' ? t('auth.login.register') : t('auth.login.signIn')}
                 </Text>
               </Text>
             </Pressable>
@@ -343,9 +345,9 @@ export default function LoginScreen() {
               style={{ marginTop: 24, alignItems: 'center' }}
             >
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular' }}>
-                {'Volver a '}
+                {t('auth.login.backTo')}
                 <Text style={{ color: '#e8a030', fontFamily: 'Outfit_600SemiBold' }}>
-                  iniciar sesión
+                  {t('auth.login.signInLower')}
                 </Text>
               </Text>
             </Pressable>
@@ -355,7 +357,7 @@ export default function LoginScreen() {
             <View style={{ marginTop: 32 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                 <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
-                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>o</Text>
+                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>{t('auth.login.or')}</Text>
                 <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
               </View>
               <Pressable onPress={handleGuest}>
@@ -365,12 +367,12 @@ export default function LoginScreen() {
                   borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
                 }}>
                   <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>
-                    Continuar como invitado
+                    {t('auth.login.continueGuest')}
                   </Text>
                 </View>
               </Pressable>
               <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 10, textAlign: 'center', paddingHorizontal: 12 }}>
-                Sin cuenta no podrás participar en la pregunta del día ni en los rankings.
+                {t('auth.login.guestWarning')}
               </Text>
             </View>
           )}

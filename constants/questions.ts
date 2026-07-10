@@ -1,4 +1,6 @@
 import { Category, CategoryMeta, Question, RankingEntry } from '@/types';
+import type { AppLang } from '@/lib/i18n';
+import { QUESTIONS_EN, DAILY_QUESTION_EN } from './questionsEn';
 
 export const QUESTIONS: Record<Category, Question[]> = {
   historia: [
@@ -330,6 +332,16 @@ export const DAILY_QUESTION: Question = {
   ctx: 'La Unión Europea tiene 27 países miembros desde 2020, cuando el Reino Unido salió tras el Brexit. La UE fue fundada por 6 países en 1957 con el Tratado de Roma y ha ido ampliándose progresivamente.',
 };
 
+// Banco offline según el idioma activo (ES por defecto, EN si procede).
+// El nombre de categoría user-facing vive en i18n (`categories.<slug>`).
+export function getLocalQuestions(lang: AppLang): Record<Category, Question[]> {
+  return lang === 'en' ? QUESTIONS_EN : QUESTIONS;
+}
+
+export function getLocalDailyQuestion(lang: AppLang): Question {
+  return lang === 'en' ? DAILY_QUESTION_EN : DAILY_QUESTION;
+}
+
 export const RANKING: RankingEntry[] = [
   { name: 'Ana García', score: 2840, avatar: 'AG', streak: 14 },
   { name: 'Tú', score: 2310, avatar: 'TÚ', streak: 7, isMe: true },
@@ -370,20 +382,7 @@ export const CAT_ICONS: Record<Category, string> = {
   astronomia: '🪐',
 };
 
-export const CAT_NAMES: Record<Category, string> = {
-  historia:   'Historia',
-  geografia:  'Geografía',
-  ciencia:    'Ciencia',
-  arte:       'Arte',
-  filosofia:  'Filosofía',
-  deportes:   'Deportes',
-  biologia:   'Biología',
-  cine:       'Cine y series',
-  musica:     'Música',
-  literatura: 'Literatura',
-  tecnologia: 'Tecnología',
-  mitologia:  'Mitología',
-  astronomia: 'Astronomía',
-};
+// CAT_NAMES eliminado: los nombres de categoría user-facing viven en i18n
+// (`categories.<slug>`). Los consumidores usan t(`categories.${slug}`).
 
 export const ALL_CATEGORIES = Object.keys(QUESTIONS) as Category[];

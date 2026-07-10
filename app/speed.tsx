@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
@@ -15,7 +16,8 @@ import { fetchQuestions, saveSpeedGame } from '@/lib/db';
 import { fetchInventoryMap, consumeItem } from '@/lib/shop';
 import { AwardResult } from '@/lib/gamification';
 import { getGuestSpeedRecord, setGuestSpeedRecord, getLocalSpeedRecord, setLocalSpeedRecord } from '@/lib/guest';
-import { QUESTIONS } from '@/constants/questions';
+import { getLocalQuestions } from '@/constants/questions';
+import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Question } from '@/types';
@@ -27,11 +29,12 @@ const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
 function buildLocal(): Question[] {
   const arr: Question[] = [];
-  Object.values(QUESTIONS).forEach(qs => arr.push(...qs));
+  Object.values(getLocalQuestions(getCurrentLang())).forEach(qs => arr.push(...qs));
   return arr;
 }
 
 export default function SpeedScreen() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh: refreshProfile } = useProfile();
@@ -214,19 +217,19 @@ export default function SpeedScreen() {
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 64, marginBottom: 16 }}>⚡</Text>
             <Text style={{ color: '#fff', fontSize: 26, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8 }}>
-              Contrarreloj
+              {t('speed.title')}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', lineHeight: 24, textAlign: 'center', maxWidth: 260, marginBottom: 12 }}>
-              Responde el máximo de preguntas posible en{' '}
-              <Text style={{ color: '#a030e8', fontFamily: 'Outfit_700Bold' }}>30 segundos</Text>.
-              Cada acierto suma 1 punto y monedas.
+              {t('speed.introDescPre')}
+              <Text style={{ color: '#a030e8', fontFamily: 'Outfit_700Bold' }}>{t('speed.seconds')}</Text>
+              {t('speed.introDescPost')}
             </Text>
             <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center' }}>
               <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginBottom: 4 }}>
-                Tu récord actual
+                {t('speed.recordLabel')}
               </Text>
               <Text style={{ color: '#a030e8', fontSize: 32, fontFamily: 'Outfit_800ExtraBold' }}>
-                {record} {record === 1 ? 'pregunta' : 'preguntas'}
+                {t('speed.questions', { count: record })}
               </Text>
             </View>
             <Pressable onPress={() => setPhase('playing')} style={{ width: '100%' }}>
@@ -235,7 +238,7 @@ export default function SpeedScreen() {
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
                 style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
               >
-                <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>¡Empezar!</Text>
+                <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('speed.start')}</Text>
               </LinearGradient>
             </Pressable>
           </View>
@@ -258,22 +261,22 @@ export default function SpeedScreen() {
             {score >= record && record > 0 ? '🏆' : score >= 5 ? '⭐' : '💪'}
           </Text>
           <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
-            {score} correctas
+            {t('speed.correctCount', { count: score })}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 6 }}>
-            en {DURATION} segundos
+            {t('speed.inSeconds', { seconds: DURATION })}
           </Text>
           {newRecord ? (
             <Text style={{ color: '#e8a030', fontSize: 13, fontFamily: 'Outfit_600SemiBold', marginBottom: 10 }}>
-              🎉 ¡Nuevo récord personal!
+              {t('speed.newRecord')}
             </Text>
           ) : (
             <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', marginBottom: 10 }}>
               {record > 0
                 ? diff > 0
-                  ? `Récord: ${record} · Te faltan ${diff} para superarlo`
-                  : `Récord igualado: ${record}`
-                : 'Primera partida registrada'}
+                  ? t('speed.recordBeat', { record, diff })
+                  : t('speed.recordTied', { record })
+                : t('speed.firstGame')}
             </Text>
           )}
 
@@ -290,8 +293,8 @@ export default function SpeedScreen() {
 
           <View style={{ flexDirection: 'row', gap: 10, width: '100%', marginBottom: 30 }}>
             {[
-              { label: 'Respondidas', value: String(qIdx) },
-              { label: 'Precisión', value: `${accuracy}%` },
+              { label: t('profile.stats.answered'), value: String(qIdx) },
+              { label: t('profile.stats.accuracy'), value: `${accuracy}%` },
             ].map(s => (
               <View key={s.label} style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 14, alignItems: 'center' }}>
                 <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_700Bold' }}>{s.value}</Text>
@@ -305,7 +308,7 @@ export default function SpeedScreen() {
               onPress={() => router.back()}
               style={{ flex: 1, backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}
             >
-              <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Salir</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>{t('speed.exit')}</Text>
             </Pressable>
             <Pressable onPress={() => reset(true)} style={{ flex: 2 }}>
               <LinearGradient
@@ -313,7 +316,7 @@ export default function SpeedScreen() {
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
                 style={{ borderRadius: 14, padding: 14, alignItems: 'center' }}
               >
-                <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_700Bold' }}>Otra vez</Text>
+                <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_700Bold' }}>{t('speed.again')}</Text>
               </LinearGradient>
             </Pressable>
           </View>
