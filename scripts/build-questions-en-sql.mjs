@@ -41,6 +41,10 @@ let emitted = 0, warnings = 0;
 const warn = (m) => { console.warn('  ⚠ ' + m); warnings++; };
 const perCat = {};
 
+// Preguntas con colisión (mismo category+question, distinto contenido) NO se
+// traducen por texto: un UPDATE keyed por texto afectaría a varias filas.
+const collisionSet = new Set((master.collisions ?? []).map(c => `${c.category}|||${c.question}`));
+
 for (const [cat, rows] of Object.entries(master.categories)) {
   const enPath = path.join(enDir, `${cat}.json`);
   if (!fs.existsSync(enPath)) continue; // categoría aún sin traducir → se omite
@@ -55,6 +59,7 @@ for (const [cat, rows] of Object.entries(master.categories)) {
   for (const es of rows) {
     const en = enById.get(es.i);
     if (!en) continue; // sin traducir aún
+    if (collisionSet.has(`${cat}|||${es.question}`)) continue; // colisión: se queda en ES
     // Validación de alineación.
     if (typeof en.question_en !== 'string' || en.question_en.trim() === '') { warn(`${cat}[${es.i}] question_en vacío`); continue; }
     if (!Array.isArray(en.options_en) || en.options_en.length !== 4 || en.options_en.some(o => typeof o !== 'string' || o.trim() === '')) {
