@@ -193,6 +193,22 @@ export async function fetchAnsweredDates(
   return (data ?? []).map((r: any) => r.date as string);
 }
 
+// Actividad diaria del servidor desde `since`, para el heatmap de la home:
+// fechas con pregunta del día respondida y fechas con ≥1 misión reclamada.
+export async function fetchDailyActivity(
+  userId: string,
+  since: string,
+): Promise<{ answered: string[]; missionsClaimed: string[] }> {
+  const [dr, um] = await Promise.all([
+    supabase.from('daily_rankings').select('date').eq('user_id', userId).gte('date', since),
+    supabase.from('user_missions').select('date').eq('user_id', userId).eq('claimed', true).gte('date', since),
+  ]);
+  return {
+    answered: (dr.data ?? []).map((r: any) => r.date as string),
+    missionsClaimed: [...new Set((um.data ?? []).map((r: any) => r.date as string))],
+  };
+}
+
 export async function saveDailyAnswer(
   userId: string,
   questionId: string,

@@ -56,6 +56,18 @@ export async function getDailyPlayed(date = todayStr()): Promise<boolean> {
   return (await AsyncStorage.getItem(PLAYED_KEY_PREFIX + date)) === 'true';
 }
 
+// Conjunto de fechas (de las pasadas) en las que se jugó, leyendo los flags
+// locales en bloque. Para el heatmap de la home.
+export async function getPlayedDates(dates: string[]): Promise<Set<string>> {
+  const keys = dates.map(d => PLAYED_KEY_PREFIX + d);
+  const pairs = await AsyncStorage.multiGet(keys);
+  const played = new Set<string>();
+  pairs.forEach(([, value], i) => {
+    if (value === 'true') played.add(dates[i]);
+  });
+  return played;
+}
+
 export async function isRouteRewardClaimed(date = todayStr()): Promise<boolean> {
   return (await AsyncStorage.getItem(ROUTE_REWARD_KEY_PREFIX + date)) === 'true';
 }

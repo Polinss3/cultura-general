@@ -38,6 +38,8 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
   const [claimingChest, setClaimingChest] = useState(false);
   const [claimingReward, setClaimingReward] = useState(false);
   const [claimingMissions, setClaimingMissions] = useState(false);
+  // null = automático (colapsado si no queda nada por hacer); true/false = override manual.
+  const [userExpanded, setUserExpanded] = useState<boolean | null>(null);
 
   const load = useCallback(() => {
     Promise.all([
@@ -65,6 +67,11 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
   const route = computeRouteState(dailyAnswered, chestClaimed, played);
   const missionsDone = missions.filter(m => m.progress >= m.goal).length;
   const claimableMissions = missions.filter(m => m.progress >= m.goal && !m.claimed);
+
+  // Cuando no queda nada accionable, la tarjeta se colapsa a una barra compacta
+  // (el usuario puede desplegarla). Mientras haya algo por hacer, va desplegada.
+  const nothingActionable = route.complete && rewardClaimed && claimableMissions.length === 0;
+  const expanded = userExpanded ?? !nothingActionable;
 
   const handleClaimMissions = async () => {
     if (claimingMissions || claimableMissions.length === 0) return;
@@ -134,6 +141,27 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
     );
   }
 
+  // Estado colapsado: ruta completada y nada por reclamar → barra compacta.
+  if (!expanded) {
+    return (
+      <Pressable onPress={() => setUserExpanded(true)} style={{ marginTop: 16 }}>
+        <View style={{
+          borderRadius: 16, paddingVertical: 14, paddingHorizontal: 16,
+          flexDirection: 'row', alignItems: 'center', gap: 12,
+          backgroundColor: 'rgba(46,200,122,0.1)', borderWidth: 1, borderColor: 'rgba(46,200,122,0.3)',
+        }}>
+          <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#2ec87a', alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ color: '#000', fontFamily: 'Outfit_800ExtraBold', fontSize: 14 }}>✓</Text>
+          </View>
+          <Text style={{ flex: 1, color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+            {t('home.route.completedCollapsed')}
+          </Text>
+          <Text style={{ color: 'rgba(46,200,122,0.6)', fontSize: 16 }}>⌄</Text>
+        </View>
+      </Pressable>
+    );
+  }
+
   return (
     <View style={{ marginTop: 16, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(232,160,48,0.3)' }}>
       <LinearGradient
@@ -141,20 +169,27 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
         style={{ padding: 16 }}
       >
-        {/* Header */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-            <Text style={{ fontSize: 20 }}>🗓️</Text>
-            <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_800ExtraBold' }}>
-              {t('home.route.title')}
-            </Text>
+        {/* Header (pulsable para colapsar cuando ya está todo hecho) */}
+        <Pressable onPress={nothingActionable ? () => setUserExpanded(false) : undefined} disabled={!nothingActionable}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Text style={{ fontSize: 20 }}>🗓️</Text>
+              <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_800ExtraBold' }}>
+                {t('home.route.title')}
+              </Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <View style={{ backgroundColor: route.complete ? 'rgba(46,200,122,0.15)' : 'rgba(232,160,48,0.15)', borderRadius: 99, paddingHorizontal: 10, paddingVertical: 3 }}>
+                <Text style={{ color: route.complete ? '#2ec87a' : ACCENT, fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
+                  {route.coreDone}/{route.coreTotal}
+                </Text>
+              </View>
+              {nothingActionable && (
+                <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 16 }}>⌃</Text>
+              )}
+            </View>
           </View>
-          <View style={{ backgroundColor: route.complete ? 'rgba(46,200,122,0.15)' : 'rgba(232,160,48,0.15)', borderRadius: 99, paddingHorizontal: 10, paddingVertical: 3 }}>
-            <Text style={{ color: route.complete ? '#2ec87a' : ACCENT, fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
-              {route.coreDone}/{route.coreTotal}
-            </Text>
-          </View>
-        </View>
+        </Pressable>
 
         {/* Progress bar */}
         <View style={{ height: 5, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 99, marginBottom: 14, overflow: 'hidden' }}>

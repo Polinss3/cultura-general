@@ -385,32 +385,27 @@ export default function ProfileScreen() {
         {catStats.length > 0 && (
           <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
             <SectionTitle>{t('profile.categoryTitle')}</SectionTitle>
-            <View style={{ gap: 10 }}>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
               {catStats.map(cs => {
                 const cat = cs.category as Category;
                 const m = masteryFor(cs.correct);
                 const acc = cs.total > 0 ? Math.round((cs.correct / cs.total) * 100) : 0;
                 return (
-                  <View key={cs.category} style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, borderWidth: 1, borderColor: m.tier.color + '2e' }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-                      <Text style={{ fontSize: 20 }}>{CAT_ICONS[cat] ?? '❓'}</Text>
-                      <View style={{ flex: 1 }}>
-                        <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
-                          {t(`categories.${cs.category}`, { defaultValue: cs.category })}
-                        </Text>
-                        <Text style={{ color: m.tier.color, fontFamily: 'Outfit_600SemiBold', fontSize: 11, marginTop: 1 }}>
-                          {m.tier.emoji} {t(`mastery.tiers.${m.tier.id}`)} · {t('mastery.level', { level: m.level })}
-                        </Text>
-                      </View>
-                      <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
-                        {cs.correct}/{cs.total} · {acc}%
+                  <View key={cs.category} style={{ width: '47%', backgroundColor: '#151515', borderRadius: 14, padding: 12, borderWidth: 1, borderColor: m.tier.color + '2e' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                      <Text style={{ fontSize: 18 }}>{CAT_ICONS[cat] ?? '❓'}</Text>
+                      <Text numberOfLines={1} style={{ flex: 1, color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>
+                        {t(`categories.${cs.category}`, { defaultValue: cs.category })}
                       </Text>
                     </View>
+                    <Text style={{ color: m.tier.color, fontFamily: 'Outfit_600SemiBold', fontSize: 11, marginBottom: 8 }}>
+                      {m.tier.emoji} {t(`mastery.tiers.${m.tier.id}`)} · {t('mastery.level', { level: m.level })}
+                    </Text>
                     <View style={{ height: 6, backgroundColor: '#2a2a2a', borderRadius: 99, overflow: 'hidden' }}>
                       <View style={{ height: '100%', width: `${m.pct * 100}%`, backgroundColor: m.tier.color, borderRadius: 99 }} />
                     </View>
-                    <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 5 }}>
-                      {t('mastery.toNext', { count: m.correctToNext })}
+                    <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 6 }}>
+                      {cs.correct}/{cs.total} · {acc}%
                     </Text>
                   </View>
                 );

@@ -302,7 +302,8 @@
       "play2min": "⚡ Jugar 2 min",
       "claimReward": "Reclama tu recompensa · +{{coins}} 🪙 +{{xp}} XP",
       "rewardDone": "✓ Ruta diaria completada",
-      "rewardFailed": "No se pudo reclamar. Inténtalo de nuevo."
+      "rewardFailed": "No se pudo reclamar. Inténtalo de nuevo.",
+      "completedCollapsed": "Has completado la ruta de hoy"
     },
     "lockedToast": "Sin conexión — disponible cuando recuperes los datos",
     "guestCtaTitle": "Crea cuenta gratis",

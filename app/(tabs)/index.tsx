@@ -16,6 +16,7 @@ import { LevelBadge } from '@/components/LevelBadge';
 import { XpBar } from '@/components/XpBar';
 import { CoinPill } from '@/components/CoinPill';
 import { DailyRoute } from '@/components/DailyRoute';
+import { StreakHeatmap } from '@/components/StreakHeatmap';
 import { rankForLevel } from '@/lib/leveling';
 import { getLocaleTag } from '@/lib/i18n';
 import { useEffect, useState } from 'react';
@@ -121,6 +122,8 @@ export default function HomeScreen() {
                 <Text style={{ color: '#e8a030', fontSize: 18 }}>→</Text>
               </View>
             </Pressable>
+          ) : user ? (
+            <StreakHeatmap userId={user.id} streak={profile?.streak ?? 0} />
           ) : (
             <View style={{
               marginTop: 16, backgroundColor: '#151515', borderRadius: 16,

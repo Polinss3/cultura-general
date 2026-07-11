@@ -302,7 +302,8 @@
       "play2min": "⚡ Play 2 min",
       "claimReward": "Claim your reward · +{{coins}} 🪙 +{{xp}} XP",
       "rewardDone": "✓ Daily route complete",
-      "rewardFailed": "Couldn't claim. Please try again."
+      "rewardFailed": "Couldn't claim. Please try again.",
+      "completedCollapsed": "You've completed today's route"
     },
     "lockedToast": "Offline — available when your data is back",
     "guestCtaTitle": "Create free account",
