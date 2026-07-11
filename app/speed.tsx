@@ -12,6 +12,7 @@ import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
 import { showInterstitialAd } from '@/lib/admob';
+import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { fetchQuestions, saveSpeedGame } from '@/lib/db';
 import { fetchInventoryMap, consumeItem } from '@/lib/shop';
 import { AwardResult } from '@/lib/gamification';
@@ -136,6 +137,10 @@ export default function SpeedScreen() {
   useEffect(() => {
     if (phase !== 'done' || adShownRef.current) return;
     adShownRef.current = true;
+    logAppsFlyerEvent('cg_speed_quiz_completed', {
+      score,
+      questions_answered: qIdx,
+    });
     showInterstitialAd('speed_complete');
   }, [phase]);
 

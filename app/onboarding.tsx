@@ -11,6 +11,7 @@ import {
 import { setOnboardingCompleted } from '@/lib/onboarding';
 import { ensureTrackingPermission } from '@/lib/tracking';
 import { syncMetaAdvertiserTracking } from '@/lib/metaSdk';
+import { logTutorialCompletion, startAppsFlyerAfterConsent } from '@/lib/appsflyer';
 import { setAppLanguage, AppLang } from '@/lib/i18n';
 import type { TFunction } from 'i18next';
 
@@ -47,8 +48,11 @@ export default function OnboardingScreen() {
     setLangChosen(true);
   };
 
-  const finish = async () => {
+  const finish = async (skipped = false) => {
     await setOnboardingCompleted(true);
+    if (await startAppsFlyerAfterConsent()) {
+      await logTutorialCompletion(skipped);
+    }
     router.replace('/(tabs)');
   };
 
@@ -61,7 +65,7 @@ export default function OnboardingScreen() {
       // entrar a pantallas con AdMob.
       const decision = await ensureTrackingPermission();
       await syncMetaAdvertiserTracking(decision === 'granted');
-      await finish();
+      await finish(false);
     } else {
       setStep(s => s + 1);
     }
@@ -70,7 +74,7 @@ export default function OnboardingScreen() {
   const handleSkip = async () => {
     const decision = await ensureTrackingPermission();
     await syncMetaAdvertiserTracking(decision === 'granted');
-    await finish();
+    await finish(true);
   };
 
   if (!langChosen) {

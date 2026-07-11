@@ -1,7 +1,7 @@
 {
   "ios": {
     "CFBundleDisplayName": "CG Trivia",
-    "NSUserTrackingUsageDescription": "Your permission lets us show you more relevant ads and keep the app free. You can change it anytime from Settings.",
+    "NSUserTrackingUsageDescription": "Your permission helps us measure which ads lead people to the app, show more relevant advertising, and keep the app free.",
     "NSUserNotificationsUsageDescription": "Get a daily reminder to answer the question of the day and keep your streak."
   },
   "android": {

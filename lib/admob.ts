@@ -74,6 +74,12 @@ async function gatherConsent() {
   return consentPromise;
 }
 
+// Resuelve el CMP una sola vez por sesión. AppsFlyer lo usa antes de iniciar
+// la atribución para poder leer las señales IAB TCF cuando correspondan.
+export function prepareAdvertisingConsent() {
+  return gatherConsent();
+}
+
 async function canRequestPersonalizedAds(info: AdsConsentInfo) {
   let consentAllowsPersonalization = info.status === AdsConsentStatus.NOT_REQUIRED;
 
@@ -139,13 +145,13 @@ function ensureInterstitial() {
 }
 
 export async function initializeAdMob() {
-  if (!isNativePlatform() || !getInterstitialUnitId()) return;
+  if (!isNativePlatform()) return;
   if (initPromise) return initPromise;
 
   initPromise = (async () => {
     try {
       const consentAllowsAds = await gatherConsent();
-      if (!consentAllowsAds) return;
+      if (!consentAllowsAds || !getInterstitialUnitId()) return;
 
       await mobileAds().setRequestConfiguration({
         maxAdContentRating: MaxAdContentRating.G,

@@ -18,6 +18,7 @@ import {
   saveLadderRun, bumpMissions, fetchLadderRanking, AwardResult, LadderRankRow,
 } from '@/lib/gamification';
 import { showRewardedAd, isRewardedReady, showInterstitialAd } from '@/lib/admob';
+import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import {
   getGuestLadderBest, setGuestLadderBest, getLocalLadderBest, setLocalLadderBest,
 } from '@/lib/guest';
@@ -103,6 +104,10 @@ export default function LadderScreen() {
   useEffect(() => {
     if (phase !== 'done' || adShownRef.current) return;
     adShownRef.current = true;
+    logAppsFlyerEvent('cg_ladder_run_completed', {
+      floors_completed: runFloor,
+      coins_banked: banked,
+    });
     showInterstitialAd('ladder_complete');
   }, [phase]);
 

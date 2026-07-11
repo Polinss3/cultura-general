@@ -22,6 +22,7 @@ import { useOffline } from '@/hooks/useOffline';
 import { setOffline, probeConnection } from '@/lib/offline';
 import { initMetaSdk, syncMetaAdvertiserTracking } from '@/lib/metaSdk';
 import { initializeAdMob } from '@/lib/admob';
+import { startAppsFlyerAfterConsent } from '@/lib/appsflyer';
 import { BootScreen } from '@/components/BootScreen';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
@@ -209,6 +210,7 @@ function RootLayout() {
   useEffect(() => {
     if (!ready || !onboarded) return;
     initializeAdMob();
+    startAppsFlyerAfterConsent();
   }, [ready, onboarded]);
 
   // Ocultar la splash nativa cuando ya podemos mostrar UI propia (app o BootScreen).

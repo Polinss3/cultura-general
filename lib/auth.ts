@@ -177,7 +177,11 @@ export async function signInWithGoogle() {
 }
 
 export async function signInWithApple() {
-  const nonce = Crypto.randomUUID();
+  const rawNonce = Crypto.randomUUID();
+  const hashedNonce = await Crypto.digestStringAsync(
+    Crypto.CryptoDigestAlgorithm.SHA256,
+    rawNonce,
+  );
   const state = Crypto.randomUUID();
 
   const credential = await AppleAuthentication.signInAsync({
@@ -185,19 +189,18 @@ export async function signInWithApple() {
       AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
       AppleAuthentication.AppleAuthenticationScope.EMAIL,
     ],
-    nonce,
+    nonce: hashedNonce,
     state,
   });
 
-  if (!credential.identityToken || !credential.authorizationCode) {
+  if (!credential.identityToken) {
     throw new Error(i18n.t('errors.appleTokenInvalid'));
   }
 
   const { data, error } = await supabase.auth.signInWithIdToken({
     provider: 'apple',
     token: credential.identityToken,
-    access_token: credential.authorizationCode,
-    nonce,
+    nonce: rawNonce,
   });
 
   if (error) throw error;

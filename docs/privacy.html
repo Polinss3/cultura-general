@@ -99,7 +99,7 @@
   <main>
     <header>
       <h1>Política de privacidad</h1>
-      <p class="meta">Cultura General · Última actualización: junio 2026</p>
+      <p class="meta">Cultura General · Última actualización: julio 2026</p>
     </header>
 
     <p class="intro">
@@ -115,8 +115,9 @@
         <li>Respuestas a las preguntas (para calcular tus estadísticas y rankings).</li>
         <li>Racha de días consecutivos, puntuaciones y récords personales.</li>
         <li>Identificador único de cuenta (UUID anónimo generado al registrarte).</li>
+        <li>Datos técnicos de atribución, como versión de la app, dispositivo, sistema operativo, dirección IP, campaña de adquisición e identificador publicitario cuando hayas dado permiso.</li>
       </ul>
-      <p>No recopilamos información de geolocalización, contactos, fotos, micrófono, calendario ni ningún otro dato sensible.</p>
+      <p>No recopilamos información de geolocalización precisa, contactos, fotos, micrófono, calendario ni ningún otro dato sensible.</p>
     </section>
 
     <section>
@@ -128,6 +129,7 @@
         <li>Mantener tu racha de días consecutivos respondiendo.</li>
         <li>Encontrar amigos por nombre de usuario y compartir resultados con ellos.</li>
         <li>Enviarte una notificación local diaria (solo si la activas) para recordarte la pregunta del día.</li>
+        <li>Medir qué campañas publicitarias generan instalaciones y acciones dentro de la app, y mejorar su rendimiento.</li>
       </ul>
       <p>No vendemos ni alquilamos tus datos personales. Para mantener la app gratis podemos mostrar publicidad mediante Google AdMob, con las limitaciones descritas en la sección de publicidad.</p>
     </section>
@@ -147,7 +149,6 @@
     <section>
       <h2>4. Almacenamiento y seguridad</h2>
       <p>Tus datos se almacenan en <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>, una plataforma de base de datos PostgreSQL alojada en servidores europeos. Todas las comunicaciones entre la app y el servidor van cifradas con TLS/HTTPS.</p>
-      <p>Las contraseñas se almacenan únicamente como hash mediante el sistema de autenticación de Supabase; en ningún momento las vemos en texto plano.</p>
       <p>Implementamos Row Level Security (RLS) en la base de datos para garantizar que ningún usuario pueda acceder a datos privados de otro usuario.</p>
       <p>Las preguntas y respuestas pueden cachearse temporalmente en tu dispositivo para permitir un uso fluido en condiciones de red intermitente.</p>
     </section>
@@ -164,12 +165,13 @@
     </section>
 
     <section>
-      <h2>6. Publicidad</h2>
+      <h2>6. Publicidad y atribución</h2>
       <p>Cultura General puede mostrar anuncios intersticiales mediante <a href="https://admob.google.com" target="_blank" rel="noopener">Google AdMob</a> tras completar momentos naturales de juego, como la pregunta diaria, una partida de contrarreloj o bloques de preguntas en aprendizaje.</p>
+      <p>También utilizamos <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener">AppsFlyer</a> para atribuir instalaciones y eventos a campañas, y el SDK de <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta</a> para medir campañas de promoción de la aplicación. Estos proveedores pueden tratar los datos técnicos de atribución descritos en esta política.</p>
       <ul>
         <li>Te pediremos permiso mediante el sistema oficial de iOS (App Tracking Transparency).</li>
-        <li>Si lo rechazas, los anuncios se mostrarán de forma no personalizada y sin tracking.</li>
-        <li>Si lo aceptas, AdMob podrá usar tu identificador publicitario (IDFA) para mostrar anuncios relevantes.</li>
+        <li>Si lo rechazas, no accederemos al IDFA; la publicidad será no personalizada y la medición se limitará a mecanismos agregados o respetuosos con la privacidad disponibles en el sistema.</li>
+        <li>Si lo aceptas, AdMob, AppsFlyer y Meta podrán usar el identificador publicitario para personalización y atribución, de acuerdo con tu consentimiento.</li>
       </ul>
     </section>
 
