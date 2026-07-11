@@ -5,20 +5,20 @@
 
 export interface Rank {
   id: string;
-  name: string;
   minLevel: number;
   color: string;   // color principal (texto, bordes)
   color2: string;  // segundo tono para gradientes
 }
 
+// El nombre de cada rango vive en i18n bajo `ranks.<id>` (ver locales/*.json).
 export const RANKS: Rank[] = [
-  { id: 'novato',     name: 'Novato',     minLevel: 1,  color: '#5b8def', color2: '#9b5bef' },
-  { id: 'aprendiz',   name: 'Aprendiz',   minLevel: 5,  color: '#2ec87a', color2: '#12b58f' },
-  { id: 'conocedor',  name: 'Conocedor',  minLevel: 10, color: '#30a8e8', color2: '#3f6ff0' },
-  { id: 'erudito',    name: 'Erudito',    minLevel: 20, color: '#a030e8', color2: '#e030b0' },
-  { id: 'maestro',    name: 'Maestro',    minLevel: 35, color: '#e8a030', color2: '#e86a30' },
-  { id: 'sabio',      name: 'Sabio',      minLevel: 50, color: '#e83060', color2: '#b030e8' },
-  { id: 'leyenda',    name: 'Leyenda',    minLevel: 75, color: '#ffd700', color2: '#ff9500' },
+  { id: 'novato',     minLevel: 1,  color: '#5b8def', color2: '#9b5bef' },
+  { id: 'aprendiz',   minLevel: 5,  color: '#2ec87a', color2: '#12b58f' },
+  { id: 'conocedor',  minLevel: 10, color: '#30a8e8', color2: '#3f6ff0' },
+  { id: 'erudito',    minLevel: 20, color: '#a030e8', color2: '#e030b0' },
+  { id: 'maestro',    minLevel: 35, color: '#e8a030', color2: '#e86a30' },
+  { id: 'sabio',      minLevel: 50, color: '#e83060', color2: '#b030e8' },
+  { id: 'leyenda',    minLevel: 75, color: '#ffd700', color2: '#ff9500' },
 ];
 
 export function levelFromXp(xp: number): number {

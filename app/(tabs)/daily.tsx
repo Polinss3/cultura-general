@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import type { TFunction } from 'i18next';
 import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { OptionBtn } from '@/components/OptionBtn';
@@ -31,11 +33,12 @@ type RankingTab = 'daily' | 'weekly' | 'global' | 'friends';
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const MEDALS = ['🥇', '🥈', '🥉'];
-const RANKING_TABS: { key: RankingTab; label: string }[] = [
-  { key: 'daily',   label: '🗓 Hoy' },
-  { key: 'weekly',  label: '📅 Semana' },
-  { key: 'global',  label: '🌍 Global' },
-  { key: 'friends', label: '👥 Amigos' },
+
+const getRankingTabs = (t: TFunction): { key: RankingTab; label: string }[] => [
+  { key: 'daily',   label: t('daily.tabToday') },
+  { key: 'weekly',  label: t('daily.tabWeek') },
+  { key: 'global',  label: t('daily.tabGlobal') },
+  { key: 'friends', label: t('daily.tabFriends') },
 ];
 
 function timeUntilMidnight(): string {
@@ -57,6 +60,7 @@ function RankRowView({
   isMe: boolean;
   badge?: { text: string; color: string; bg: string };
 }) {
+  const { t } = useTranslation();
   return (
     <View style={{
       flexDirection: 'row', alignItems: 'center', gap: 12,
@@ -79,7 +83,7 @@ function RankRowView({
       </View>
       <View style={{ flex: 1 }}>
         <Text style={{ color: isMe ? '#e8a030' : '#fff', fontFamily: isMe ? 'Outfit_700Bold' : 'Outfit_500Medium', fontSize: 14 }}>
-          {name}{isMe ? ' (tú)' : ''}
+          {name}{isMe ? t('daily.you') : ''}
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>{sub}</Text>
       </View>
@@ -109,6 +113,7 @@ function formatTime(ms: number | null): string {
 }
 
 export default function DailyScreen() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { guest } = useGuest();
   const offline = useOffline();
@@ -116,8 +121,8 @@ export default function DailyScreen() {
   if (offline) {
     return (
       <OfflineNotice
-        title="Pregunta del día sin conexión"
-        description="La pregunta diaria y los rankings necesitan conexión. Mientras tanto puedes jugar a Contrarreloj y Aprender."
+        title={t('daily.offlineTitle')}
+        description={t('daily.offlineDesc')}
       />
     );
   }
@@ -126,8 +131,8 @@ export default function DailyScreen() {
     return (
       <GuestGate
         icon="🏆"
-        title="Pregunta del día y rankings"
-        description="Crea una cuenta gratis para responder la pregunta diaria, mantener tu racha y competir en los rankings."
+        title={t('daily.gateTitle')}
+        description={t('daily.gateDesc')}
       />
     );
   }
@@ -136,6 +141,7 @@ export default function DailyScreen() {
 }
 
 function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
+  const { t, i18n } = useTranslation();
   const { celebrate } = useProgress();
   const [phase, setPhase] = useState<Phase>('loading');
   const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
@@ -155,7 +161,8 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   useEffect(() => {
     if (!user) return;
     init();
-  }, [user?.id]);
+    // Recargar (pregunta + rankings) al cambiar de idioma.
+  }, [user?.id, i18n.language]);
 
   // Lazy-load ranking tabs
   useEffect(() => {
@@ -226,11 +233,12 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const handleShare = async () => {
     const streakLine = dailyRanking.find(r => r.userId === user?.id);
     const streak = streakLine?.streak ?? 0;
+    const appName = t('common.appName');
     const msg = isCorrect
-      ? `¡He acertado la pregunta diaria de Cultura General! 🧠🏆\n🔥 Racha: ${streak} días\n\n¿Puedes superarme? Descarga la app gratis.`
-      : `He respondido la pregunta diaria de Cultura General 🧠\n¿Sabes tú la respuesta? Descarga la app gratis.`;
+      ? t('daily.shareWin', { appName, days: t('common.days', { count: streak }) })
+      : t('daily.shareLose', { appName });
     try {
-      await Share.share({ message: msg, title: 'Cultura General' });
+      await Share.share({ message: msg, title: appName });
     } catch {
       // user cancelled, ignore
     }
@@ -239,14 +247,14 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const handleReport = () => {
     if (!user || !question?.id || reported.current) return;
     Alert.alert(
-      '¿Qué problema tiene esta pregunta?',
+      t('learn.reportTitle'),
       undefined,
       [
-        { text: 'Respuesta incorrecta', onPress: () => doReport('incorrect') },
-        { text: 'Es confusa', onPress: () => doReport('confusing') },
-        { text: 'Está duplicada', onPress: () => doReport('duplicate') },
-        { text: 'Otro', onPress: () => doReport('other') },
-        { text: 'Cancelar', style: 'cancel' },
+        { text: t('learn.reportIncorrect'), onPress: () => doReport('incorrect') },
+        { text: t('learn.reportConfusing'), onPress: () => doReport('confusing') },
+        { text: t('daily.reportDuplicate'), onPress: () => doReport('duplicate') },
+        { text: t('learn.reportOther'), onPress: () => doReport('other') },
+        { text: t('common.cancel'), style: 'cancel' },
       ],
     );
   };
@@ -255,7 +263,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     if (!user || !question?.id) return;
     reported.current = true;
     await reportQuestion(user.id, question.id, reason);
-    Alert.alert('Gracias', 'Tu reporte ayuda a mejorar la calidad de las preguntas.');
+    Alert.alert(t('learn.thanks'), t('daily.reportThanksBody'));
   };
 
   const getState = (i: number): AnswerState => {
@@ -290,26 +298,26 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
           <View style={{ alignItems: 'center', marginBottom: 24 }}>
             <Text style={{ fontSize: 44, marginBottom: 8 }}>{isCorrect ? '🏆' : '💪'}</Text>
             <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>
-              {isCorrect ? '+100 puntos' : 'Sin puntos hoy'}
+              {isCorrect ? t('daily.resultWin') : t('daily.resultLose')}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 4, marginBottom: 16 }}>
               {dailyRanking.length > 0
-                ? `${dailyRanking.length} ${dailyRanking.length === 1 ? 'jugador ha' : 'jugadores han'} respondido hoy`
-                : 'Sé el primero en responder'}
+                ? t('daily.playersAnswered', { count: dailyRanking.length })
+                : t('daily.beFirst')}
             </Text>
             <Pressable
               onPress={handleShare}
               style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#1a1a1a', borderRadius: 99, paddingVertical: 10, paddingHorizontal: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}
             >
               <Text style={{ fontSize: 16 }}>🔗</Text>
-              <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>Compartir resultado</Text>
+              <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>{t('daily.share')}</Text>
             </Pressable>
           </View>
 
           {/* Tab switcher */}
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 16 }}>
             <View style={{ flexDirection: 'row', backgroundColor: '#151515', borderRadius: 12, padding: 4, gap: 2 }}>
-              {RANKING_TABS.map(({ key, label }) => (
+              {getRankingTabs(t).map(({ key, label }) => (
                 <Pressable
                   key={key}
                   onPress={() => setRankingTab(key)}
@@ -336,14 +344,14 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               items={dailyRanking.map((p, i) => ({
                 position: i,
                 name: p.username,
-                sub: `🔥 ${p.streak} días`,
+                sub: `🔥 ${t('common.days', { count: p.streak })}`,
                 value: formatTime(p.timeMs),
                 isMe: p.userId === user?.id,
                 badge: p.isCorrect
                   ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
                   : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
               }))}
-              emptyText="¡Eres el primero en responder hoy!"
+              emptyText={t('daily.emptyDaily')}
             />
           )}
 
@@ -353,10 +361,10 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               <ActivityIndicator color="#e8a030" style={{ marginTop: 20 }} /> :
               <RankingList
                 items={weeklyRanking.map((p, i) => ({
-                  position: i, name: p.username, sub: `🔥 ${p.streak} días`,
-                  value: `${p.weekScore} pts`, isMe: p.userId === user?.id,
+                  position: i, name: p.username, sub: `🔥 ${t('common.days', { count: p.streak })}`,
+                  value: t('daily.weekPts', { score: p.weekScore }), isMe: p.userId === user?.id,
                 }))}
-                emptyText="Nadie ha respondido esta semana aún."
+                emptyText={t('daily.emptyWeekly')}
               />
           )}
 
@@ -366,10 +374,10 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               <ActivityIndicator color="#e8a030" style={{ marginTop: 20 }} /> :
               <RankingList
                 items={globalRanking.map((p, i) => ({
-                  position: i, name: p.username, sub: `🔥 ${p.streak} · ⚡ ${p.speedRecord}`,
-                  value: `${p.totalCorrect} ✓`, isMe: p.userId === user?.id,
+                  position: i, name: p.username, sub: t('daily.globalSub', { streak: p.streak, speed: p.speedRecord }),
+                  value: t('daily.globalCorrect', { count: p.totalCorrect }), isMe: p.userId === user?.id,
                 }))}
-                emptyText="Sin datos globales aún."
+                emptyText={t('daily.emptyGlobal')}
               />
           )}
 
@@ -379,26 +387,26 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               <View style={{ alignItems: 'center', marginTop: 24 }}>
                 <Text style={{ fontSize: 36, marginBottom: 12 }}>👥</Text>
                 <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 14, textAlign: 'center' }}>
-                  Aún no tienes amigos añadidos.{'\n'}¡Busca a alguien en la pestaña Amigos!
+                  {t('daily.noFriends')}
                 </Text>
               </View> :
               <RankingList
                 items={friendRanking.map((p, i) => ({
                   position: i,
                   name: p.username,
-                  sub: `🔥 ${p.streak} días`,
+                  sub: `🔥 ${t('common.days', { count: p.streak })}`,
                   value: formatTime(p.timeMs),
                   isMe: p.userId === user?.id,
                   badge: p.isCorrect
                     ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
                     : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
                 }))}
-                emptyText="Ningún amigo ha respondido hoy."
+                emptyText={t('daily.emptyFriends')}
               />
           )}
 
           <Text style={{ marginTop: 24, textAlign: 'center', color: 'rgba(255,255,255,0.25)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
-            Nueva pregunta en {timeUntilMidnight()}
+            {t('daily.newQuestionIn', { time: timeUntilMidnight() })}
           </Text>
         </ScrollView>
       </SafeAreaView>
@@ -412,7 +420,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <Text style={{ fontSize: 40, marginBottom: 12 }}>😕</Text>
           <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, textAlign: 'center', fontFamily: 'Outfit_400Regular', lineHeight: 24 }}>
-            No hay pregunta disponible hoy.{'\n'}Vuelve más tarde.
+            {t('daily.noQuestion')}
           </Text>
         </View>
       </SafeAreaView>
@@ -427,7 +435,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
           <View style={{ backgroundColor: 'rgba(232,160,48,0.1)', borderWidth: 1, borderColor: 'rgba(232,160,48,0.3)', paddingVertical: 3, paddingHorizontal: 10, borderRadius: 99 }}>
-            <Text style={{ color: '#e8a030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>🏆 PREGUNTA DEL DÍA</Text>
+            <Text style={{ color: '#e8a030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('daily.badge')}</Text>
           </View>
           <Pressable onPress={handleReport} style={{ padding: 6 }}>
             <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 18 }}>⚑</Text>
@@ -435,7 +443,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
         </View>
 
         <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginBottom: 20 }}>
-          ¿Serás el primero en responder hoy?
+          {t('daily.subtitle')}
         </Text>
 
         <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold', lineHeight: 28, marginBottom: 28 }}>
@@ -456,7 +464,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
             borderColor: isCorrect ? 'rgba(46,200,122,0.2)' : 'rgba(232,48,96,0.2)',
           }}>
             <Text style={{ color: isCorrect ? '#2ec87a' : '#e83060', fontFamily: 'Outfit_700Bold', marginBottom: 4 }}>
-              {isCorrect ? '✓ ¡Correcto!' : '✗ Incorrecto'}
+              {isCorrect ? t('daily.correct') : t('daily.incorrect')}
             </Text>
             {question.ctx && (
               <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>

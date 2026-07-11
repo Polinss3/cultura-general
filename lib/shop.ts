@@ -1,4 +1,6 @@
 import { supabase } from './supabase';
+import i18n from './i18n';
+import { getCurrentLang } from './i18n';
 
 // ─── Tienda e inventario ──────────────────────────────────────
 
@@ -23,14 +25,15 @@ export interface InventoryItem {
 export async function fetchShopItems(): Promise<ShopItem[]> {
   const { data } = await supabase
     .from('shop_items')
-    .select('item_id, name, description, price, type, icon, sort')
+    .select('item_id, name, description, name_en, description_en, price, type, icon, sort')
     .eq('active', true)
     .order('sort');
 
+  const en = getCurrentLang() === 'en';
   return (data ?? []).map(r => ({
     itemId: r.item_id,
-    name: r.name,
-    description: r.description ?? '',
+    name: en && r.name_en ? r.name_en : r.name,
+    description: (en && r.description_en ? r.description_en : r.description) ?? '',
     price: r.price,
     type: r.type as ShopItemType,
     icon: r.icon ?? '🎁',
@@ -63,9 +66,9 @@ export async function buyItem(itemId: string): Promise<{ coins?: number; error?:
   const { data, error } = await supabase.rpc('buy_item', { p_item_id: itemId });
   if (error) {
     const msg = error.message || '';
-    if (msg.includes('insufficient')) return { error: 'No tienes monedas suficientes.' };
-    if (msg.includes('already owned')) return { error: 'Ya tienes este objeto.' };
-    return { error: 'No se pudo completar la compra.' };
+    if (msg.includes('insufficient')) return { error: i18n.t('errors.insufficientCoins') };
+    if (msg.includes('already owned')) return { error: i18n.t('errors.alreadyOwned') };
+    return { error: i18n.t('errors.purchaseFailed') };
   }
   return { coins: (data as any)?.coins };
 }

@@ -3,6 +3,7 @@ import {
   View, Text, TextInput, Pressable,
   KeyboardAvoidingView, Platform, Alert, ScrollView,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -22,26 +23,27 @@ const INPUT = {
 };
 
 export default function UpdatePasswordScreen() {
+  const { t } = useTranslation();
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleUpdate = async () => {
-    if (!password || !confirm) { Alert.alert('Error', 'Rellena ambos campos'); return; }
-    if (password !== confirm) { Alert.alert('Error', 'Las contraseñas no coinciden'); return; }
+    if (!password || !confirm) { Alert.alert(t('common.error'), t('auth.updatePassword.fillBoth')); return; }
+    if (password !== confirm) { Alert.alert(t('common.error'), t('auth.updatePassword.noMatch')); return; }
     const passwordError = validatePassword(password);
-    if (passwordError) { Alert.alert('Error', passwordError); return; }
+    if (passwordError) { Alert.alert(t('common.error'), passwordError); return; }
 
     setLoading(true);
     const { error } = await supabase.auth.updateUser({ password });
     if (error) {
-      Alert.alert('Error', error.message);
+      Alert.alert(t('common.error'), error.message);
     } else {
       Alert.alert(
-        '¡Contraseña actualizada!',
-        'Tu contraseña se ha cambiado correctamente.',
-        [{ text: 'Continuar', onPress: () => router.replace('/(tabs)') }]
+        t('auth.updatePassword.successTitle'),
+        t('auth.updatePassword.successBody'),
+        [{ text: t('common.continue'), onPress: () => router.replace('/(tabs)') }]
       );
     }
     setLoading(false);
@@ -56,16 +58,16 @@ export default function UpdatePasswordScreen() {
         <ScrollView contentContainerStyle={{ flexGrow: 1, padding: 24, justifyContent: 'center' }}>
           <Text style={{ fontSize: 40, marginBottom: 8 }}>🔑</Text>
           <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
-            Nueva contraseña
+            {t('auth.updatePassword.title')}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 40 }}>
-            Elige una contraseña segura para tu cuenta
+            {t('auth.updatePassword.subtitle')}
           </Text>
 
           <TextInput
             value={password}
             onChangeText={setPassword}
-            placeholder="Nueva contraseña"
+            placeholder={t('auth.updatePassword.newPlaceholder')}
             placeholderTextColor="rgba(255,255,255,0.3)"
             secureTextEntry
             style={INPUT}
@@ -74,7 +76,7 @@ export default function UpdatePasswordScreen() {
           <TextInput
             value={confirm}
             onChangeText={setConfirm}
-            placeholder="Confirmar contraseña"
+            placeholder={t('auth.updatePassword.confirmPlaceholder')}
             placeholderTextColor="rgba(255,255,255,0.3)"
             secureTextEntry
             style={{ ...INPUT, marginBottom: 24 }}
@@ -87,7 +89,7 @@ export default function UpdatePasswordScreen() {
               style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
             >
               <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
-                {loading ? 'Guardando...' : 'Guardar contraseña'}
+                {loading ? t('auth.updatePassword.saving') : t('auth.updatePassword.save')}
               </Text>
             </LinearGradient>
           </Pressable>

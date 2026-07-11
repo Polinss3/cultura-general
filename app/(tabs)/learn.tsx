@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -12,7 +13,8 @@ import { showInterstitialAd } from '@/lib/admob';
 import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
-import { QUESTIONS, CAT_COLORS, CAT_ICONS, CAT_NAMES, ALL_CATEGORIES } from '@/constants/questions';
+import { getLocalQuestions, CAT_COLORS, CAT_ICONS, ALL_CATEGORIES } from '@/constants/questions';
+import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Category, Question } from '@/types';
@@ -20,19 +22,13 @@ import { AnswerState, Category, Question } from '@/types';
 type Difficulty = 'all' | 'easy' | 'medium' | 'hard';
 type LearnCat = Category | 'random';
 
-const DIFF_LABELS: Record<Difficulty, string> = {
-  all: 'Todas',
-  easy: 'Fácil',
-  medium: 'Media',
-  hard: 'Difícil',
-};
+const DIFFICULTIES: Difficulty[] = ['all', 'easy', 'medium', 'hard'];
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const LEARN_INTERSTITIAL_INTERVAL = 9;
 
 const RANDOM_META = { bg: '#161616', accent: '#cfcfcf', text: '#f0f0f0' };
 const RANDOM_ICON = '🎲';
-const RANDOM_NAME = 'Aleatorio';
 
 const getMeta = (c: LearnCat) => (c === 'random' ? RANDOM_META : CAT_COLORS[c]);
 
@@ -42,6 +38,7 @@ function filterByDifficulty(questions: Question[], diff: Difficulty): Question[]
 }
 
 export default function LearnScreen() {
+  const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const { guest } = useGuest();
   const offline = useOffline();
@@ -77,9 +74,10 @@ export default function LearnScreen() {
       } catch {
         // Sin red / sin caché: usamos el banco local empaquetado.
       }
+      const localBank = getLocalQuestions(getCurrentLang());
       const fallback = cat === 'random'
-        ? ALL_CATEGORIES.flatMap(c => QUESTIONS[c])
-        : QUESTIONS[cat];
+        ? ALL_CATEGORIES.flatMap(c => localBank[c])
+        : localBank[cat];
       const source = remote.length > 0 ? remote : fallback;
       const recent = await getRecentIds('learn', cat);
       const ordered = pickRandomFresh(source, recent, q => q.id, source.length);
@@ -87,7 +85,8 @@ export default function LearnScreen() {
       setQuestions(ordered);
       setLoadingQ(false);
     })();
-  }, [cat]);
+    // Recargar al cambiar de idioma para servir preguntas en el idioma activo.
+  }, [cat, i18n.language]);
 
   // Refilter when difficulty changes
   useEffect(() => {
@@ -164,10 +163,10 @@ export default function LearnScreen() {
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
         <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
           <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
-            ¿Qué quieres aprender?
+            {t('learn.pickerTitle')}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 24 }}>
-            Elige un tema y empieza a practicar
+            {t('learn.pickerSub')}
           </Text>
 
           <View style={{ gap: 10 }}>
@@ -176,10 +175,10 @@ export default function LearnScreen() {
                 <Text style={{ fontSize: 28 }}>{RANDOM_ICON}</Text>
                 <View style={{ flex: 1 }}>
                   <Text style={{ color: RANDOM_META.text, fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
-                    {RANDOM_NAME}
+                    {t('learn.randomName')}
                   </Text>
                   <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>
-                    Preguntas de todas las temáticas
+                    {t('learn.randomDesc')}
                   </Text>
                 </View>
                 <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 20 }}>›</Text>
@@ -187,17 +186,17 @@ export default function LearnScreen() {
             </Pressable>
             {ALL_CATEGORIES.map(c => {
               const col = CAT_COLORS[c];
-              const count = QUESTIONS[c].length;
+              const count = getLocalQuestions(getCurrentLang())[c].length;
               return (
                 <Pressable key={c} onPress={() => setCat(c)}>
                   <View style={{ backgroundColor: col.bg, borderWidth: 1, borderColor: col.accent + '30', borderRadius: 18, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
                     <Text style={{ fontSize: 28 }}>{CAT_ICONS[c]}</Text>
                     <View style={{ flex: 1 }}>
                       <Text style={{ color: col.text, fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
-                        {CAT_NAMES[c]}
+                        {t(`categories.${c}`)}
                       </Text>
                       <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>
-                        {count}+ preguntas
+                        {t('learn.countQuestions', { count })}
                       </Text>
                     </View>
                     <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 20 }}>›</Text>
@@ -231,11 +230,17 @@ export default function LearnScreen() {
 
   const handleReport = () => {
     if (!user || !q.id || reportedRef.current.has(q.id)) return;
-    Alert.alert('¿Qué problema tiene esta pregunta?', undefined, [
-      { text: 'Respuesta incorrecta', onPress: () => { if (q.id) { reportedRef.current.add(q.id); reportQuestion(user.id, q.id, 'incorrect'); Alert.alert('Gracias', 'Reporte enviado.'); } } },
-      { text: 'Es confusa', onPress: () => { if (q.id) { reportedRef.current.add(q.id); reportQuestion(user.id, q.id, 'confusing'); Alert.alert('Gracias', 'Reporte enviado.'); } } },
-      { text: 'Otro', onPress: () => { if (q.id) { reportedRef.current.add(q.id); reportQuestion(user.id, q.id, 'other'); Alert.alert('Gracias', 'Reporte enviado.'); } } },
-      { text: 'Cancelar', style: 'cancel' },
+    const sendReport = (reason: 'incorrect' | 'confusing' | 'other') => {
+      if (!q.id) return;
+      reportedRef.current.add(q.id);
+      reportQuestion(user.id, q.id, reason);
+      Alert.alert(t('learn.thanks'), t('learn.reportSent'));
+    };
+    Alert.alert(t('learn.reportTitle'), undefined, [
+      { text: t('learn.reportIncorrect'), onPress: () => sendReport('incorrect') },
+      { text: t('learn.reportConfusing'), onPress: () => sendReport('confusing') },
+      { text: t('learn.reportOther'), onPress: () => sendReport('other') },
+      { text: t('common.cancel'), style: 'cancel' },
     ]);
   };
 
@@ -254,7 +259,7 @@ export default function LearnScreen() {
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
             <Pressable onPress={goBack} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 20 }}>←</Text>
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>Temas</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>{t('learn.topics')}</Text>
             </Pressable>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <Pressable onPress={handleReport} style={{ padding: 4 }}>
@@ -265,7 +270,7 @@ export default function LearnScreen() {
               ) : cat === 'random' ? (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: RANDOM_META.bg, paddingVertical: 3, paddingHorizontal: 8, borderRadius: 99, borderWidth: 1, borderColor: RANDOM_META.accent + '30' }}>
                   <Text style={{ fontSize: 11 }}>{RANDOM_ICON}</Text>
-                  <Text style={{ color: RANDOM_META.text, fontSize: 11, fontFamily: 'Outfit_600SemiBold' }}>{RANDOM_NAME}</Text>
+                  <Text style={{ color: RANDOM_META.text, fontSize: 11, fontFamily: 'Outfit_600SemiBold' }}>{t('learn.randomName')}</Text>
                 </View>
               ) : (
                 <CategoryBadge cat={cat} small />
@@ -275,7 +280,7 @@ export default function LearnScreen() {
 
           {/* Difficulty filter */}
           <View style={{ flexDirection: 'row', gap: 6, marginBottom: 18 }}>
-            {(Object.keys(DIFF_LABELS) as Difficulty[]).map(d => {
+            {DIFFICULTIES.map(d => {
               const active = difficulty === d;
               return (
                 <Pressable
@@ -295,7 +300,7 @@ export default function LearnScreen() {
                     fontFamily: active ? 'Outfit_600SemiBold' : 'Outfit_400Regular',
                     fontSize: 12,
                   }}>
-                    {DIFF_LABELS[d]}
+                    {t(`learn.diff.${d}`)}
                   </Text>
                 </Pressable>
               );
@@ -331,7 +336,7 @@ export default function LearnScreen() {
         {showCtx && q.ctx && (
           <View style={{ marginHorizontal: 20, marginBottom: 16, padding: 16, backgroundColor: 'rgba(232,48,96,0.06)', borderRadius: 16, borderWidth: 1, borderColor: 'rgba(232,48,96,0.2)' }}>
             <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold', marginBottom: 6, fontSize: 13 }}>
-              💡 Contexto
+              {t('learn.context')}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
               {q.ctx}
@@ -349,7 +354,7 @@ export default function LearnScreen() {
                 style={{ borderRadius: 14, padding: 15, alignItems: 'center' }}
               >
                 <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_700Bold' }}>
-                  {isLast ? '🎉 ¡Tema completado!' : 'Siguiente →'}
+                  {isLast ? t('learn.topicDone') : t('learn.next')}
                 </Text>
               </LinearGradient>
             </Pressable>

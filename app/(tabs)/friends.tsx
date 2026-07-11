@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text, ScrollView, Pressable, TextInput, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -7,7 +8,8 @@ import { OptionBtn } from '@/components/OptionBtn';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { OfflineNotice } from '@/components/OfflineNotice';
-import { QUESTIONS } from '@/constants/questions';
+import { getLocalQuestions } from '@/constants/questions';
+import { getCurrentLang } from '@/lib/i18n';
 import { fetchQuestions } from '@/lib/db';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
@@ -21,7 +23,7 @@ type Screen = 'modes' | 'pasa' | 'duelo' | 'survivor' | 'trivia' | 'marcador';
 
 function buildLocal(): Question[] {
   const arr: Question[] = [];
-  Object.values(QUESTIONS).forEach(qs => arr.push(...qs));
+  Object.values(getLocalQuestions(getCurrentLang())).forEach(qs => arr.push(...qs));
   return arr;
 }
 
@@ -41,22 +43,24 @@ const DURATION = 30;
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
 function BackBtn({ onPress }: { onPress: () => void }) {
+  const { t } = useTranslation();
   return (
     <Pressable onPress={onPress} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 24 }}>
       <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 20 }}>←</Text>
-      <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>Modos</Text>
+      <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>{t('party.back')}</Text>
     </Pressable>
   );
 }
 
 function ExitBtn({ onExit }: { onExit: () => void }) {
+  const { t } = useTranslation();
   const handlePress = () => {
     Alert.alert(
-      '¿Salir de la partida?',
-      'Se perderá el progreso actual.',
+      t('party.exitTitle'),
+      t('party.exitBody'),
       [
-        { text: 'Cancelar', style: 'cancel' },
-        { text: 'Salir', style: 'destructive', onPress: onExit },
+        { text: t('common.cancel'), style: 'cancel' },
+        { text: t('party.exitConfirm'), style: 'destructive', onPress: onExit },
       ],
     );
   };
@@ -69,7 +73,7 @@ function ExitBtn({ onExit }: { onExit: () => void }) {
       }}
       hitSlop={8}
     >
-      <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_600SemiBold' }}>✕ Salir</Text>
+      <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_600SemiBold' }}>{t('party.exit')}</Text>
     </Pressable>
   );
 }
@@ -90,52 +94,31 @@ function PrimaryBtn({ label, onPress, colors = ['#30a8e8', '#1a78b8'] }: {
 // ─── Modes screen ─────────────────────────────────────────────
 
 function ModesScreen({ onSelect }: { onSelect: (s: Screen) => void }) {
+  const { t } = useTranslation();
   const router = useRouter();
   const { guest } = useGuest();
-  const modes = [
-    {
-      id: 'pasa' as Screen,
-      icon: '📱', color: '#30a8e8', bg: '#0a1f2d', border: 'rgba(48,168,232,0.3)',
-      tag: 'CLÁSICO', title: 'Pasa el Móvil',
-      desc: 'Cada jugador hace 30 segundos con las mismas preguntas. ¿Quién responde más?',
-      players: '2-8 jugadores', btn: 'Jugar →',
-    },
-    {
-      id: 'marcador' as Screen,
-      icon: '🎯', color: '#a060e8', bg: '#1a0d2d', border: 'rgba(160,96,232,0.3)',
-      tag: 'ACUMULA', title: 'Marcador',
-      desc: 'Preguntas random por turnos. Sin tiempo, sin rondas, sin eliminaciones. ¿Quién acierta más?',
-      players: '2-8 jugadores', btn: 'Jugar →',
-    },
-    {
-      id: 'duelo' as Screen,
-      icon: '⚔️', color: '#e83060', bg: '#2d0a18', border: 'rgba(232,48,96,0.3)',
-      tag: 'VERSUS', title: 'Duelo 1vs1',
-      desc: 'La misma pregunta para dos. El primero en buzzear y acertar gana el punto.',
-      players: '2 jugadores', btn: 'Jugar →',
-    },
-    {
-      id: 'survivor' as Screen,
-      icon: '💀', color: '#e8a030', bg: '#2d1f0a', border: 'rgba(232,160,48,0.3)',
-      tag: 'ELIMINACIÓN', title: 'Superviviente',
-      desc: 'Una pregunta cada ronda. El que falla, eliminado. El último en pie gana.',
-      players: '3-8 jugadores', btn: 'Jugar →',
-    },
-    {
-      id: 'trivia' as Screen,
-      icon: '🧩', color: '#2ec87a', bg: '#0d2214', border: 'rgba(46,200,122,0.3)',
-      tag: 'EQUIPOS', title: 'Trivia Night',
-      desc: 'Dos equipos se turnan. El equipo con más aciertos al final de 20 preguntas gana.',
-      players: '4-10 jugadores', btn: 'Jugar →',
-    },
+  const MODE_META = [
+    { id: 'pasa' as Screen, icon: '📱', color: '#30a8e8', bg: '#0a1f2d', border: 'rgba(48,168,232,0.3)' },
+    { id: 'marcador' as Screen, icon: '🎯', color: '#a060e8', bg: '#1a0d2d', border: 'rgba(160,96,232,0.3)' },
+    { id: 'duelo' as Screen, icon: '⚔️', color: '#e83060', bg: '#2d0a18', border: 'rgba(232,48,96,0.3)' },
+    { id: 'survivor' as Screen, icon: '💀', color: '#e8a030', bg: '#2d1f0a', border: 'rgba(232,160,48,0.3)' },
+    { id: 'trivia' as Screen, icon: '🧩', color: '#2ec87a', bg: '#0d2214', border: 'rgba(46,200,122,0.3)' },
   ];
+  const modes = MODE_META.map(m => ({
+    ...m,
+    tag: t(`party.modes.${m.id}.tag`),
+    title: t(`party.modes.${m.id}.title`),
+    desc: t(`party.modes.${m.id}.desc`),
+    players: t(`party.modes.${m.id}.players`),
+    btn: t('party.playCta'),
+  }));
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
           <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold' }}>
-            Jugar con amigos
+            {t('party.header')}
           </Text>
           {!guest && (
             <Pressable
@@ -143,12 +126,12 @@ function ModesScreen({ onSelect }: { onSelect: (s: Screen) => void }) {
               style={{ backgroundColor: 'rgba(48,168,232,0.12)', borderRadius: 12, paddingVertical: 8, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 6, borderWidth: 1, borderColor: 'rgba(48,168,232,0.25)' }}
             >
               <Text style={{ fontSize: 14 }}>👥</Text>
-              <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>Amigos</Text>
+              <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{t('party.friendsBtn')}</Text>
             </Pressable>
           )}
         </View>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 24 }}>
-          Pasad el móvil o competid en el mismo sitio
+          {t('party.subtitle')}
         </Text>
         <View style={{ gap: 12 }}>
           {modes.map(m => (
@@ -241,23 +224,24 @@ function PasaGame({ onBack }: { onBack: () => void }) {
 }
 
 function PasaSetup({ onStart, onBack }: { onStart: (players: string[]) => void; onBack: () => void }) {
+  const { t } = useTranslation();
   const [players, setPlayers] = useState(['', '']);
   const addPlayer = () => { if (players.length < 8) setPlayers(p => [...p, '']); };
   const removePlayer = (i: number) => { if (players.length > 2) setPlayers(p => p.filter((_, idx) => idx !== i)); };
   const updatePlayer = (i: number, name: string) => { setPlayers(p => { const n = [...p]; n[i] = name; return n; }); };
-  const handleStart = () => onStart(players.map((p, i) => p.trim() || `Jugador ${i + 1}`));
+  const handleStart = () => onStart(players.map((p, i) => p.trim() || t('party.playerN', { n: i + 1 })));
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
         <BackBtn onPress={onBack} />
         <Text style={{ fontSize: 36, marginBottom: 8 }}>📱</Text>
-        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>Pasa el Móvil</Text>
+        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>{t('party.modes.pasa.title')}</Text>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
-          Cada jugador tendrá 30 segundos con las mismas preguntas.
+          {t('party.pasa.setupDesc')}
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
-          Jugadores ({players.length})
+          {t('party.playersCount', { count: players.length })}
         </Text>
         <View style={{ gap: 10, marginBottom: 16 }}>
           {players.map((p, i) => (
@@ -265,7 +249,7 @@ function PasaSetup({ onStart, onBack }: { onStart: (players: string[]) => void; 
               <View style={{ width: 32, height: 32, borderRadius: 10, backgroundColor: 'rgba(48,168,232,0.15)', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: '#30a8e8', fontSize: 14, fontFamily: 'Outfit_700Bold' }}>{i + 1}</Text>
               </View>
-              <TextInput value={p} onChangeText={t => updatePlayer(i, t)} placeholder={`Jugador ${i + 1}`}
+              <TextInput value={p} onChangeText={val => updatePlayer(i, val)} placeholder={t('party.playerN', { n: i + 1 })}
                 placeholderTextColor="rgba(255,255,255,0.25)"
                 style={{ flex: 1, backgroundColor: '#151515', color: '#fff', borderRadius: 12, padding: 14, fontFamily: 'Outfit_400Regular', fontSize: 15, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }} />
               {players.length > 2 && (
@@ -278,21 +262,22 @@ function PasaSetup({ onStart, onBack }: { onStart: (players: string[]) => void; 
         </View>
         {players.length < 8 && (
           <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', borderRadius: 12, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_500Medium' }}>+ Añadir jugador</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_500Medium' }}>{t('party.addPlayer')}</Text>
           </Pressable>
         )}
-        <PrimaryBtn label="¡Empezar! →" onPress={handleStart} />
+        <PrimaryBtn label={t('party.start')} onPress={handleStart} />
       </ScrollView>
     </SafeAreaView>
   );
 }
 
 function PasaCountdown({ playerName, onDone, onExit }: { playerName: string; onDone: () => void; onExit: () => void }) {
+  const { t } = useTranslation();
   const [count, setCount] = useState(3);
   useEffect(() => {
     if (count <= 0) { onDone(); return; }
-    const t = setTimeout(() => setCount(c => c - 1), 1000);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setCount(c => c - 1), 1000);
+    return () => clearTimeout(timer);
   }, [count]);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -300,10 +285,10 @@ function PasaCountdown({ playerName, onDone, onExit }: { playerName: string; onD
         <ExitBtn onExit={onExit} />
       </View>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-        <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 16, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>Le toca a</Text>
+        <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 16, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>{t('party.turnFor')}</Text>
         <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 48 }}>{playerName}</Text>
         <Text style={{ color: '#30a8e8', fontSize: 96, fontFamily: 'Outfit_800ExtraBold' }}>{count}</Text>
-        <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 24 }}>¡Prepárate!</Text>
+        <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 24 }}>{t('party.pasa.getReady')}</Text>
       </View>
     </SafeAreaView>
   );
@@ -313,6 +298,7 @@ function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone, o
   playerName: string; playerIdx: number; totalPlayers: number; questions: Question[];
   onDone: (score: number, answered: number) => void; onExit: () => void;
 }) {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState(DURATION);
   const [qIdx, setQIdx] = useState(0);
   const [score, setScore] = useState(0);
@@ -360,7 +346,7 @@ function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone, o
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
           <View>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>Jugador {playerIdx + 1}/{totalPlayers}</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>{t('party.pasa.playerOfTotal', { n: playerIdx + 1, total: totalPlayers })}</Text>
             <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>{playerName}</Text>
           </View>
           <Text style={{ color: timerColor, fontSize: 36, fontFamily: 'Outfit_800ExtraBold' }}>{timeLeft}s</Text>
@@ -383,6 +369,7 @@ function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone, o
 function PasaBetween({ playerName, score, answered, isLast, onNext, onExit }: {
   playerName: string; score: number; answered: number; isLast: boolean; onNext: () => void; onExit: () => void;
 }) {
+  const { t } = useTranslation();
   const accuracy = answered > 0 ? Math.round((score / answered) * 100) : 0;
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -391,13 +378,13 @@ function PasaBetween({ playerName, score, answered, isLast, onNext, onExit }: {
       </View>
       <View style={{ flex: 1, padding: 24, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={{ fontSize: 56, marginBottom: 12 }}>{score >= 8 ? '🏆' : score >= 5 ? '⭐' : '💪'}</Text>
-        <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 4 }}>{playerName} ha hecho</Text>
-        <Text style={{ color: '#fff', fontSize: 40, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>{score} correctas</Text>
+        <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 4 }}>{t('party.pasa.betweenDone', { name: playerName })}</Text>
+        <Text style={{ color: '#fff', fontSize: 40, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>{t('party.pasa.correctCount', { count: score })}</Text>
         <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 40 }}>
-          {answered} respondidas · {accuracy}% de acierto
+          {t('party.pasa.betweenStats', { answered, accuracy })}
         </Text>
         <View style={{ width: '100%' }}>
-          <PrimaryBtn label={isLast ? '🏆 Ver resultados' : 'Siguiente →'} onPress={onNext} />
+          <PrimaryBtn label={isLast ? t('party.seeResults') : t('party.next')} onPress={onNext} />
         </View>
       </View>
     </SafeAreaView>
@@ -407,6 +394,7 @@ function PasaBetween({ playerName, score, answered, isLast, onNext, onExit }: {
 function PasaResults({ players, scores, onReplay, onBack }: {
   players: string[]; scores: number[]; onReplay: () => void; onBack: () => void;
 }) {
+  const { t } = useTranslation();
   const ranked = players.map((name, i) => ({ name, score: scores[i] })).sort((a, b) => b.score - a.score);
   const medals = ['🥇', '🥈', '🥉'];
   return (
@@ -414,9 +402,9 @@ function PasaResults({ players, scores, onReplay, onBack }: {
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
         <View style={{ alignItems: 'center', marginBottom: 32 }}>
           <Text style={{ fontSize: 48, marginBottom: 8 }}>🏆</Text>
-          <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold' }}>Resultados</Text>
+          <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold' }}>{t('party.results')}</Text>
           <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 4 }}>
-            ¡Enhorabuena a {ranked[0].name}!
+            {t('party.pasa.resultsCongrats', { name: ranked[0].name })}
           </Text>
         </View>
         <View style={{ gap: 8, marginBottom: 32 }}>
@@ -432,9 +420,9 @@ function PasaResults({ players, scores, onReplay, onBack }: {
           ))}
         </View>
         <View style={{ gap: 10 }}>
-          <PrimaryBtn label="Revancha 🔄" onPress={onReplay} />
+          <PrimaryBtn label={t('party.rematch')} onPress={onReplay} />
           <Pressable onPress={onBack} style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Volver a modos</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -490,18 +478,19 @@ function DueloGame({ onBack }: { onBack: () => void }) {
 }
 
 function DueloSetup({ onStart, onBack }: { onStart: (names: [string, string]) => void; onBack: () => void }) {
+  const { t } = useTranslation();
   const [names, setNames] = useState<[string, string]>(['', '']);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
         <BackBtn onPress={onBack} />
         <Text style={{ fontSize: 36, marginBottom: 8 }}>⚔️</Text>
-        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>Duelo 1vs1</Text>
+        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>{t('party.modes.duelo.title')}</Text>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
-          Cada jugador coge un extremo del móvil. El primero en buzzear y acertar gana el punto. 10 rondas.
+          {t('party.duelo.setupDesc')}
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
-          Jugadores
+          {t('party.playersLabel')}
         </Text>
         <View style={{ gap: 10, marginBottom: 28 }}>
           {([0, 1] as const).map(i => (
@@ -509,13 +498,13 @@ function DueloSetup({ onStart, onBack }: { onStart: (names: [string, string]) =>
               <View style={{ width: 32, height: 32, borderRadius: 10, backgroundColor: i === 0 ? 'rgba(232,48,96,0.15)' : 'rgba(48,168,232,0.15)', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: i === 0 ? '#e83060' : '#30a8e8', fontSize: 14, fontFamily: 'Outfit_700Bold' }}>{i + 1}</Text>
               </View>
-              <TextInput value={names[i]} onChangeText={t => { const n: [string, string] = [...names] as [string, string]; n[i] = t; setNames(n); }}
-                placeholder={`Jugador ${i + 1}`} placeholderTextColor="rgba(255,255,255,0.25)"
+              <TextInput value={names[i]} onChangeText={val => { const n: [string, string] = [...names] as [string, string]; n[i] = val; setNames(n); }}
+                placeholder={t('party.playerN', { n: i + 1 })} placeholderTextColor="rgba(255,255,255,0.25)"
                 style={{ flex: 1, backgroundColor: '#151515', color: '#fff', borderRadius: 12, padding: 14, fontFamily: 'Outfit_400Regular', fontSize: 15, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }} />
             </View>
           ))}
         </View>
-        <PrimaryBtn label="¡Empezar duelo! →" onPress={() => onStart([names[0].trim() || 'Jugador 1', names[1].trim() || 'Jugador 2'])}
+        <PrimaryBtn label={t('party.duelo.start')} onPress={() => onStart([names[0].trim() || t('party.playerN', { n: 1 }), names[1].trim() || t('party.playerN', { n: 2 })])}
           colors={['#e83060', '#a010a0']} />
       </ScrollView>
     </SafeAreaView>
@@ -526,6 +515,7 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
   players: [string, string]; scores: [number, number]; round: number;
   question: Question | undefined; onRoundEnd: (winner: 0 | 1) => void; onExit: () => void;
 }) {
+  const { t } = useTranslation();
   const [buzzed, setBuzzed] = useState<0 | 1 | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [done, setDone] = useState(false);
@@ -574,16 +564,16 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
           transform: [{ rotate: rotated ? '180deg' : '0deg' }],
         }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1 }}>
-            RONDA {round + 1}/{DUELO_ROUNDS}
+            {t('party.duelo.roundUpper', { n: round + 1, total: DUELO_ROUNDS })}
           </Text>
           <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold', textAlign: 'center', lineHeight: 24 }}>
             {question.q}
           </Text>
           <View style={{ backgroundColor: colors[player] + '20', borderRadius: 99, paddingVertical: 16, paddingHorizontal: 32, borderWidth: 2, borderColor: colors[player] }}>
-            <Text style={{ color: colors[player], fontSize: 22, fontFamily: 'Outfit_800ExtraBold' }}>⚡ BUZZEAR</Text>
+            <Text style={{ color: colors[player], fontSize: 22, fontFamily: 'Outfit_800ExtraBold' }}>{t('party.duelo.buzz')}</Text>
           </View>
           <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>
-            {players[player]} · {scores[player]} pts
+            {t('party.duelo.playerPts', { name: players[player], pts: scores[player] })}
           </Text>
         </View>
       </Pressable>
@@ -617,7 +607,7 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
-            Ronda {round + 1}/{DUELO_ROUNDS}
+            {t('party.duelo.round', { n: round + 1, total: DUELO_ROUNDS })}
           </Text>
           <View style={{ backgroundColor: colors[buzzed] + '20', borderRadius: 99, paddingVertical: 4, paddingHorizontal: 12 }}>
             <Text style={{ color: colors[buzzed], fontSize: 13, fontFamily: 'Outfit_700Bold' }}>⚡ {players[buzzed]}</Text>
@@ -627,7 +617,7 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
           </Text>
         </View>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 13, fontFamily: 'Outfit_600SemiBold', textAlign: 'center', marginBottom: 20, letterSpacing: 0.5 }}>
-          Elige la respuesta correcta
+          {t('party.duelo.chooseCorrect')}
         </Text>
         <View style={{ gap: 9 }}>
           {question.opts.map((opt, i) => (
@@ -642,6 +632,7 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
 function DueloResults({ players, scores, onReplay, onBack }: {
   players: [string, string]; scores: [number, number]; onReplay: () => void; onBack: () => void;
 }) {
+  const { t } = useTranslation();
   const winner = scores[0] > scores[1] ? 0 : scores[1] > scores[0] ? 1 : -1;
   const tied = winner === -1;
   return (
@@ -650,10 +641,10 @@ function DueloResults({ players, scores, onReplay, onBack }: {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 64, marginBottom: 12 }}>{tied ? '🤝' : '🏆'}</Text>
           <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4, textAlign: 'center' }}>
-            {tied ? '¡Empate!' : `¡Gana ${players[winner]}!`}
+            {tied ? t('party.tie') : t('party.winnerIs', { name: players[winner] })}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 40 }}>
-            {scores[0]} – {scores[1]} tras {DUELO_ROUNDS} rondas
+            {t('party.duelo.scoreAfterRounds', { a: scores[0], b: scores[1], rounds: DUELO_ROUNDS })}
           </Text>
           {/* Score cards */}
           <View style={{ flexDirection: 'row', gap: 12, width: '100%', marginBottom: 40 }}>
@@ -663,16 +654,16 @@ function DueloResults({ players, scores, onReplay, onBack }: {
                 <View key={i} style={{ flex: 1, backgroundColor: isWinner ? 'rgba(232,48,96,0.1)' : '#151515', borderWidth: 1, borderColor: isWinner ? '#e83060' : 'transparent', borderRadius: 16, padding: 16, alignItems: 'center' }}>
                   <Text style={{ color: i === 0 ? '#e83060' : '#30a8e8', fontSize: 13, fontFamily: 'Outfit_700Bold', marginBottom: 4 }}>{players[i]}</Text>
                   <Text style={{ color: '#fff', fontSize: 36, fontFamily: 'Outfit_800ExtraBold' }}>{scores[i]}</Text>
-                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>puntos</Text>
+                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>{t('party.points')}</Text>
                 </View>
               );
             })}
           </View>
         </View>
         <View style={{ gap: 10 }}>
-          <PrimaryBtn label="Revancha 🔄" onPress={onReplay} colors={['#e83060', '#a010a0']} />
+          <PrimaryBtn label={t('party.rematch')} onPress={onReplay} colors={['#e83060', '#a010a0']} />
           <Pressable onPress={onBack} style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Volver a modos</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
       </View>
@@ -685,6 +676,7 @@ function DueloResults({ players, scores, onReplay, onBack }: {
 // ══════════════════════════════════════════════════════════════
 
 function SurvivorGame({ onBack }: { onBack: () => void }) {
+  const { t } = useTranslation();
   type SS = 'setup' | 'ready' | 'question' | 'answered' | 'reveal' | 'results';
   const [screen, setScreen] = useState<SS>('setup');
   const [players, setPlayers] = useState<string[]>([]);
@@ -792,16 +784,16 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <Text style={{ fontSize: 56, marginBottom: 16 }}>💀</Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>
-          Ronda {roundIdx + 1} · {answeringPos + 1}/{aliveOrder.length}
+          {t('party.survivor.readyRound', { round: roundIdx + 1, pos: answeringPos + 1, total: aliveOrder.length })}
         </Text>
         <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8 }}>
           {players[currentPlayerIdx]}
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 48, textAlign: 'center' }}>
-          ¿Listo? No mires la pantalla{'\n'}hasta que le des a empezar.
+          {t('party.survivor.readyDontLook')}
         </Text>
         <View style={{ width: '100%' }}>
-          <PrimaryBtn label="¡Estoy listo! →" onPress={() => setScreen('question')} colors={['#e8a030', '#c06010']} />
+          <PrimaryBtn label={t('party.imReady')} onPress={() => setScreen('question')} colors={['#e8a030', '#c06010']} />
         </View>
       </View>
     </SafeAreaView>
@@ -818,12 +810,12 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
       </View>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <Text style={{ fontSize: 64, marginBottom: 16 }}>✅</Text>
-        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8 }}>Respondido</Text>
+        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8 }}>{t('party.survivor.answered')}</Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 48, textAlign: 'center' }}>
-          Tapa la pantalla y pasa el móvil{'\n'}al siguiente jugador.
+          {t('party.survivor.coverPass')}
         </Text>
         <View style={{ width: '100%' }}>
-          <PrimaryBtn label={answeringPos + 1 >= aliveOrder.length ? '📊 Ver resultados de ronda' : 'Siguiente jugador →'}
+          <PrimaryBtn label={answeringPos + 1 >= aliveOrder.length ? t('party.survivor.seeRoundResults') : t('party.nextPlayer')}
             onPress={handlePassToNext} colors={['#e8a030', '#c06010']} />
         </View>
       </View>
@@ -845,23 +837,24 @@ function SurvivorGame({ onBack }: { onBack: () => void }) {
 }
 
 function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void; onBack: () => void }) {
+  const { t } = useTranslation();
   const [players, setPlayers] = useState(['', '', '']);
   const addPlayer = () => { if (players.length < 8) setPlayers(p => [...p, '']); };
   const removePlayer = (i: number) => { if (players.length > 3) setPlayers(p => p.filter((_, idx) => idx !== i)); };
   const updatePlayer = (i: number, name: string) => { setPlayers(p => { const n = [...p]; n[i] = name; return n; }); };
-  const handleStart = () => onStart(players.map((p, i) => p.trim() || `Jugador ${i + 1}`));
+  const handleStart = () => onStart(players.map((p, i) => p.trim() || t('party.playerN', { n: i + 1 })));
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
         <BackBtn onPress={onBack} />
         <Text style={{ fontSize: 36, marginBottom: 8 }}>💀</Text>
-        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>Superviviente</Text>
+        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>{t('party.modes.survivor.title')}</Text>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
-          Cada ronda, el que falla es eliminado. Mínimo 3 jugadores.
+          {t('party.survivor.setupDesc')}
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
-          Jugadores ({players.length})
+          {t('party.playersCount', { count: players.length })}
         </Text>
         <View style={{ gap: 10, marginBottom: 16 }}>
           {players.map((p, i) => (
@@ -869,7 +862,7 @@ function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
               <View style={{ width: 32, height: 32, borderRadius: 10, backgroundColor: 'rgba(232,160,48,0.15)', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: '#e8a030', fontSize: 14, fontFamily: 'Outfit_700Bold' }}>{i + 1}</Text>
               </View>
-              <TextInput value={p} onChangeText={t => updatePlayer(i, t)} placeholder={`Jugador ${i + 1}`}
+              <TextInput value={p} onChangeText={val => updatePlayer(i, val)} placeholder={t('party.playerN', { n: i + 1 })}
                 placeholderTextColor="rgba(255,255,255,0.25)"
                 style={{ flex: 1, backgroundColor: '#151515', color: '#fff', borderRadius: 12, padding: 14, fontFamily: 'Outfit_400Regular', fontSize: 15, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }} />
               {players.length > 3 && (
@@ -882,10 +875,10 @@ function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
         </View>
         {players.length < 8 && (
           <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', borderRadius: 12, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_500Medium' }}>+ Añadir jugador</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_500Medium' }}>{t('party.addPlayer')}</Text>
           </Pressable>
         )}
-        <PrimaryBtn label="¡Empezar! →" onPress={handleStart} colors={['#e8a030', '#c06010']} />
+        <PrimaryBtn label={t('party.start')} onPress={handleStart} colors={['#e8a030', '#c06010']} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -983,6 +976,7 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
   players: string[]; aliveOrder: number[]; question: Question | undefined;
   roundAnswers: Record<number, number>; newAlive: boolean[]; onNext: () => void; onExit: () => void;
 }) {
+  const { t } = useTranslation();
   if (!question) return null;
   const eliminated = aliveOrder.filter(pidx => newAlive[pidx] === false);
   const isGameOver = newAlive.filter(Boolean).length <= 1;
@@ -993,9 +987,9 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
         <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginBottom: 12 }}>
           <ExitBtn onExit={onExit} />
         </View>
-        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>Resultados de la ronda</Text>
+        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>{t('party.survivor.roundResults')}</Text>
         <View style={{ backgroundColor: 'rgba(46,200,122,0.08)', borderRadius: 12, padding: 12, marginBottom: 16 }}>
-          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', marginBottom: 4 }}>RESPUESTA CORRECTA</Text>
+          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', marginBottom: 4 }}>{t('party.correctAnswerLabel')}</Text>
           <Text style={{ color: '#2ec87a', fontSize: 15, fontFamily: 'Outfit_700Bold' }}>{question.opts[question.ans]}</Text>
         </View>
         <View style={{ gap: 8, marginBottom: 24 }}>
@@ -1013,7 +1007,7 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
                   </Text>
                 </View>
                 {isElim && <View style={{ backgroundColor: 'rgba(232,48,96,0.2)', borderRadius: 8, paddingVertical: 3, paddingHorizontal: 8 }}>
-                  <Text style={{ color: '#e83060', fontSize: 11, fontFamily: 'Outfit_700Bold' }}>ELIMINADO</Text>
+                  <Text style={{ color: '#e83060', fontSize: 11, fontFamily: 'Outfit_700Bold' }}>{t('party.survivor.eliminatedTag')}</Text>
                 </View>}
               </View>
             );
@@ -1022,11 +1016,11 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
         {eliminated.length === 0 && (
           <View style={{ backgroundColor: '#151515', borderRadius: 12, padding: 12, marginBottom: 16 }}>
             <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, textAlign: 'center', fontFamily: 'Outfit_500Medium' }}>
-              Todos han fallado → nadie eliminado esta ronda
+              {t('party.survivor.allFailed')}
             </Text>
           </View>
         )}
-        <PrimaryBtn label={isGameOver ? '🏆 Ver ganador' : 'Siguiente ronda →'} onPress={onNext} colors={['#e8a030', '#c06010']} />
+        <PrimaryBtn label={isGameOver ? t('party.survivor.seeWinner') : t('party.survivor.nextRound')} onPress={onNext} colors={['#e8a030', '#c06010']} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -1035,15 +1029,16 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
 function SurvivorResults({ winner, players, alive, rounds, onReplay, onBack }: {
   winner: string; players: string[]; alive: boolean[]; rounds: number; onReplay: () => void; onBack: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 24 }}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 80, marginBottom: 16 }}>🏆</Text>
-          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 16, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>El superviviente es</Text>
+          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 16, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>{t('party.survivor.survivorIs')}</Text>
           <Text style={{ color: '#e8a030', fontSize: 32, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8, textAlign: 'center' }}>{winner}</Text>
           <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 48 }}>
-            Sobrevivió {rounds} {rounds === 1 ? 'ronda' : 'rondas'}
+            {t('party.survivor.survivedRounds', { count: rounds })}
           </Text>
           <View style={{ gap: 8, width: '100%', marginBottom: 40 }}>
             {players.map((name, i) => (
@@ -1053,16 +1048,16 @@ function SurvivorResults({ winner, players, alive, rounds, onReplay, onBack }: {
                   {name}
                 </Text>
                 <Text style={{ color: alive[i] ? '#e8a030' : 'rgba(255,255,255,0.2)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>
-                  {alive[i] ? 'GANADOR' : 'ELIMINADO'}
+                  {alive[i] ? t('party.survivor.winnerTag') : t('party.survivor.eliminatedTag')}
                 </Text>
               </View>
             ))}
           </View>
         </View>
         <View style={{ gap: 10 }}>
-          <PrimaryBtn label="Revancha 🔄" onPress={onReplay} colors={['#e8a030', '#c06010']} />
+          <PrimaryBtn label={t('party.rematch')} onPress={onReplay} colors={['#e8a030', '#c06010']} />
           <Pressable onPress={onBack} style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Volver a modos</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
       </View>
@@ -1077,9 +1072,10 @@ function SurvivorResults({ winner, players, alive, rounds, onReplay, onBack }: {
 const TRIVIA_TOTAL = 20;
 
 function TriviaGame({ onBack }: { onBack: () => void }) {
+  const { t } = useTranslation();
   type TS = 'setup' | 'playing' | 'results';
   const [screen, setScreen] = useState<TS>('setup');
-  const [teamNames, setTeamNames] = useState<[string, string]>(['Equipo 1', 'Equipo 2']);
+  const [teamNames, setTeamNames] = useState<[string, string]>([t('party.teamN', { n: 1 }), t('party.teamN', { n: 2 })]);
   const [scores, setScores] = useState<[number, number]>([0, 0]);
   const [currentTeam, setCurrentTeam] = useState<0 | 1>(0);
   const [questionIdx, setQuestionIdx] = useState(0);
@@ -1130,19 +1126,20 @@ function TriviaGame({ onBack }: { onBack: () => void }) {
 }
 
 function TriviaSetup({ onStart, onBack }: { onStart: (names: [string, string]) => void; onBack: () => void }) {
-  const [names, setNames] = useState<[string, string]>(['Equipo 1', 'Equipo 2']);
+  const { t } = useTranslation();
+  const [names, setNames] = useState<[string, string]>([t('party.teamN', { n: 1 }), t('party.teamN', { n: 2 })]);
   const colors = ['#e83060', '#2ec87a'];
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
         <BackBtn onPress={onBack} />
         <Text style={{ fontSize: 36, marginBottom: 8 }}>🧩</Text>
-        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>Trivia Night</Text>
+        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>{t('party.modes.trivia.title')}</Text>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
-          {TRIVIA_TOTAL} preguntas, los equipos se turnan. El equipo con más aciertos gana.
+          {t('party.trivia.setupDesc', { total: TRIVIA_TOTAL })}
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
-          Nombre de los equipos
+          {t('party.trivia.teamNamesLabel')}
         </Text>
         <View style={{ gap: 10, marginBottom: 32 }}>
           {([0, 1] as const).map(i => (
@@ -1150,13 +1147,13 @@ function TriviaSetup({ onStart, onBack }: { onStart: (names: [string, string]) =
               <View style={{ width: 32, height: 32, borderRadius: 10, backgroundColor: colors[i] + '20', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: colors[i], fontSize: 16 }}>{i === 0 ? '🔴' : '🟢'}</Text>
               </View>
-              <TextInput value={names[i]} onChangeText={t => { const n: [string, string] = [...names] as [string, string]; n[i] = t; setNames(n); }}
-                placeholder={`Equipo ${i + 1}`} placeholderTextColor="rgba(255,255,255,0.25)"
+              <TextInput value={names[i]} onChangeText={val => { const n: [string, string] = [...names] as [string, string]; n[i] = val; setNames(n); }}
+                placeholder={t('party.teamN', { n: i + 1 })} placeholderTextColor="rgba(255,255,255,0.25)"
                 style={{ flex: 1, backgroundColor: '#151515', color: '#fff', borderRadius: 12, padding: 14, fontFamily: 'Outfit_400Regular', fontSize: 15, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }} />
             </View>
           ))}
         </View>
-        <PrimaryBtn label="¡Empezar Trivia! →" onPress={() => onStart([names[0].trim() || 'Equipo 1', names[1].trim() || 'Equipo 2'])}
+        <PrimaryBtn label={t('party.trivia.start')} onPress={() => onStart([names[0].trim() || t('party.teamN', { n: 1 }), names[1].trim() || t('party.teamN', { n: 2 })])}
           colors={['#2ec87a', '#1a7845']} />
       </ScrollView>
     </SafeAreaView>
@@ -1167,6 +1164,7 @@ function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: 
   teamNames: [string, string]; scores: [number, number]; currentTeam: 0 | 1;
   questionIdx: number; question: Question | undefined; onAnswer: (correct: boolean) => void; onExit: () => void;
 }) {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
   const teamColors: [string, string] = ['#e83060', '#2ec87a'];
@@ -1204,7 +1202,7 @@ function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: 
         <View style={{ backgroundColor: teamColor + '15', borderRadius: 16, padding: 14, marginBottom: 20, borderWidth: 1, borderColor: teamColor + '40' }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View>
-              <Text style={{ color: teamColor, fontSize: 11, fontFamily: 'Outfit_600SemiBold', marginBottom: 2 }}>TURNO DE</Text>
+              <Text style={{ color: teamColor, fontSize: 11, fontFamily: 'Outfit_600SemiBold', marginBottom: 2 }}>{t('party.trivia.turnOf')}</Text>
               <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>{teamNames[currentTeam]}</Text>
             </View>
             <View style={{ alignItems: 'flex-end' }}>
@@ -1236,6 +1234,7 @@ function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: 
 function TriviaResults({ teamNames, scores, onReplay, onBack }: {
   teamNames: [string, string]; scores: [number, number]; onReplay: () => void; onBack: () => void;
 }) {
+  const { t } = useTranslation();
   const tied = scores[0] === scores[1];
   const winner = tied ? -1 : scores[0] > scores[1] ? 0 : 1;
   const teamColors: [string, string] = ['#e83060', '#2ec87a'];
@@ -1246,10 +1245,10 @@ function TriviaResults({ teamNames, scores, onReplay, onBack }: {
         <View style={{ alignItems: 'center', marginBottom: 32 }}>
           <Text style={{ fontSize: 64, marginBottom: 12 }}>{tied ? '🤝' : '🏆'}</Text>
           <Text style={{ color: '#fff', fontSize: 26, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4, textAlign: 'center' }}>
-            {tied ? '¡Empate!' : `¡Gana ${winner >= 0 ? teamNames[winner as 0 | 1] : ''}!`}
+            {tied ? t('party.tie') : t('party.winnerIs', { name: winner >= 0 ? teamNames[winner as 0 | 1] : '' })}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>
-            {TRIVIA_TOTAL} preguntas en total
+            {t('party.trivia.totalQuestions', { total: TRIVIA_TOTAL })}
           </Text>
         </View>
 
@@ -1261,18 +1260,18 @@ function TriviaResults({ teamNames, scores, onReplay, onBack }: {
                 <Text style={{ color: teamColors[i], fontSize: 13, fontFamily: 'Outfit_700Bold', marginBottom: 4 }}>{teamNames[i]}</Text>
                 <Text style={{ color: '#fff', fontSize: 40, fontFamily: 'Outfit_800ExtraBold' }}>{scores[i]}</Text>
                 <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>
-                  {Math.round((scores[i] / TRIVIA_TOTAL) * 100)}% acierto
+                  {t('party.trivia.accuracyPct', { pct: Math.round((scores[i] / TRIVIA_TOTAL) * 100) })}
                 </Text>
-                {isW && <Text style={{ color: teamColors[i], fontSize: 11, fontFamily: 'Outfit_700Bold', marginTop: 6 }}>GANADORES 🏆</Text>}
+                {isW && <Text style={{ color: teamColors[i], fontSize: 11, fontFamily: 'Outfit_700Bold', marginTop: 6 }}>{t('party.trivia.winnersTag')}</Text>}
               </View>
             );
           })}
         </View>
 
         <View style={{ gap: 10 }}>
-          <PrimaryBtn label="Revancha 🔄" onPress={onReplay} colors={['#2ec87a', '#1a7845']} />
+          <PrimaryBtn label={t('party.rematch')} onPress={onReplay} colors={['#2ec87a', '#1a7845']} />
           <Pressable onPress={onBack} style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Volver a modos</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -1360,23 +1359,24 @@ function MarcadorGame({ onBack }: { onBack: () => void }) {
 }
 
 function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void; onBack: () => void }) {
+  const { t } = useTranslation();
   const [players, setPlayers] = useState(['', '']);
   const addPlayer = () => { if (players.length < 8) setPlayers(p => [...p, '']); };
   const removePlayer = (i: number) => { if (players.length > 2) setPlayers(p => p.filter((_, idx) => idx !== i)); };
   const updatePlayer = (i: number, name: string) => { setPlayers(p => { const n = [...p]; n[i] = name; return n; }); };
-  const handleStart = () => onStart(players.map((p, i) => p.trim() || `Jugador ${i + 1}`));
+  const handleStart = () => onStart(players.map((p, i) => p.trim() || t('party.playerN', { n: i + 1 })));
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
         <BackBtn onPress={onBack} />
         <Text style={{ fontSize: 36, marginBottom: 8 }}>🎯</Text>
-        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>Marcador</Text>
+        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>{t('party.modes.marcador.title')}</Text>
         <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 28 }}>
-          Por turnos, sin tiempo, sin eliminaciones. Solo a sumar puntos.
+          {t('party.marcador.setupDesc')}
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
-          Jugadores ({players.length}/8)
+          {t('party.playersCountMax', { count: players.length })}
         </Text>
         <View style={{ gap: 10, marginBottom: 16 }}>
           {players.map((p, i) => (
@@ -1384,7 +1384,7 @@ function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
               <View style={{ width: 32, height: 32, borderRadius: 10, backgroundColor: 'rgba(160,96,232,0.15)', alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: MARCADOR_COLOR, fontSize: 14, fontFamily: 'Outfit_700Bold' }}>{i + 1}</Text>
               </View>
-              <TextInput value={p} onChangeText={t => updatePlayer(i, t)} placeholder={`Jugador ${i + 1}`}
+              <TextInput value={p} onChangeText={val => updatePlayer(i, val)} placeholder={t('party.playerN', { n: i + 1 })}
                 placeholderTextColor="rgba(255,255,255,0.25)"
                 style={{ flex: 1, backgroundColor: '#151515', color: '#fff', borderRadius: 12, padding: 14, fontFamily: 'Outfit_400Regular', fontSize: 15, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }} />
               {players.length > 2 && (
@@ -1397,10 +1397,10 @@ function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
         </View>
         {players.length < 8 && (
           <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', borderRadius: 12, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_500Medium' }}>+ Añadir jugador</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_500Medium' }}>{t('party.addPlayer')}</Text>
           </Pressable>
         )}
-        <PrimaryBtn label="¡Empezar! →" onPress={handleStart} colors={MARCADOR_GRAD} />
+        <PrimaryBtn label={t('party.start')} onPress={handleStart} colors={MARCADOR_GRAD} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -1436,14 +1436,15 @@ function MarcadorReady({ playerName, players, scores, currentIdx, onReady, onFin
   playerName: string; players: string[]; scores: number[]; currentIdx: number;
   onReady: () => void; onFinish: () => void; onExit: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, gap: 8 }}>
-          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, fontFamily: 'Outfit_600SemiBold' }}>MARCADOR 🎯</Text>
+          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, fontFamily: 'Outfit_600SemiBold' }}>{t('party.marcador.scoreboardTag')}</Text>
           <View style={{ flexDirection: 'row', gap: 8 }}>
             <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
-              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Terminar 🏁</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('party.marcador.finish')}</Text>
             </Pressable>
             <ExitBtn onExit={onExit} />
           </View>
@@ -1454,17 +1455,17 @@ function MarcadorReady({ playerName, players, scores, currentIdx, onReady, onFin
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 24 }}>
           <Text style={{ fontSize: 56, marginBottom: 16 }}>🎯</Text>
           <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 8 }}>
-            Le toca a
+            {t('party.turnFor')}
           </Text>
           <Text style={{ color: '#fff', fontSize: 32, fontFamily: 'Outfit_800ExtraBold', textAlign: 'center', marginBottom: 8 }}>
             {playerName}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', textAlign: 'center', marginBottom: 32 }}>
-            Pasa el móvil a {playerName}
+            {t('party.marcador.turnPass', { name: playerName })}
           </Text>
         </View>
 
-        <PrimaryBtn label="¡Estoy listo! →" onPress={onReady} colors={MARCADOR_GRAD} />
+        <PrimaryBtn label={t('party.imReady')} onPress={onReady} colors={MARCADOR_GRAD} />
       </View>
     </SafeAreaView>
   );
@@ -1473,6 +1474,7 @@ function MarcadorReady({ playerName, players, scores, currentIdx, onReady, onFin
 function MarcadorQuestion({ playerName, question, onAnswer, onFinish, onExit }: {
   playerName: string; question: Question | undefined; onAnswer: (i: number) => void; onFinish: () => void; onExit: () => void;
 }) {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<number | null>(null);
 
   useEffect(() => { setSelected(null); }, [question?.id]);
@@ -1497,7 +1499,7 @@ function MarcadorQuestion({ playerName, question, onAnswer, onFinish, onExit }: 
           </View>
           <View style={{ flexDirection: 'row', gap: 8 }}>
             <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: '#1a1a1a', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
-              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>Terminar 🏁</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('party.marcador.finish')}</Text>
             </Pressable>
             <ExitBtn onExit={onExit} />
           </View>
@@ -1519,6 +1521,7 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
   playerName: string; question: Question | undefined; selected: number; correct: boolean;
   players: string[]; scores: number[]; onNext: () => void; onFinish: () => void; onExit: () => void;
 }) {
+  const { t } = useTranslation();
   if (!question) return null;
   const getState = (i: number): AnswerState => {
     if (i === question.ans) return 'correct';
@@ -1539,7 +1542,7 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
             borderWidth: 1, borderColor: correct ? '#2ec87a' : '#e83060',
           }}>
             <Text style={{ color: correct ? '#2ec87a' : '#e83060', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>
-              {correct ? '✓ Correcto · +1' : '✗ Incorrecto'}
+              {correct ? t('party.marcador.feedbackCorrect') : t('party.marcador.feedbackWrong')}
             </Text>
           </View>
         </View>
@@ -1568,9 +1571,9 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
         </View>
 
         <View style={{ gap: 10 }}>
-          <PrimaryBtn label="Siguiente jugador →" onPress={onNext} colors={MARCADOR_GRAD} />
+          <PrimaryBtn label={t('party.nextPlayer')} onPress={onNext} colors={MARCADOR_GRAD} />
           <Pressable onPress={onFinish} style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>Terminar partida 🏁</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>{t('party.marcador.finishGame')}</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -1581,6 +1584,7 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
 function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
   players: string[]; scores: number[]; turns: number[]; onReplay: () => void; onBack: () => void;
 }) {
+  const { t } = useTranslation();
   const totalTurns = turns.reduce((a, b) => a + b, 0);
   const ranked = players
     .map((name, i) => ({ name, score: scores[i], turns: turns[i] }))
@@ -1594,10 +1598,10 @@ function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
         <View style={{ alignItems: 'center', marginBottom: 32 }}>
           <Text style={{ fontSize: 56, marginBottom: 8 }}>{tied ? '🤝' : '🏆'}</Text>
           <Text style={{ color: '#fff', fontSize: 26, fontFamily: 'Outfit_800ExtraBold', textAlign: 'center' }}>
-            {tied ? '¡Empate!' : `¡Gana ${ranked[0].name}!`}
+            {tied ? t('party.tie') : t('party.winnerIs', { name: ranked[0].name })}
           </Text>
           <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 4 }}>
-            {totalTurns} preguntas jugadas
+            {t('party.marcador.questionsPlayed', { count: totalTurns })}
           </Text>
         </View>
 
@@ -1619,7 +1623,7 @@ function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
                 <View style={{ flex: 1 }}>
                   <Text style={{ color: top ? MARCADOR_COLOR : '#fff', fontSize: 16, fontFamily: top ? 'Outfit_700Bold' : 'Outfit_500Medium' }}>{p.name}</Text>
                   <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>
-                    {p.turns} respondidas · {accuracy}% acierto
+                    {t('party.marcador.playerStats', { turns: p.turns, accuracy })}
                   </Text>
                 </View>
                 <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold' }}>{p.score}</Text>
@@ -1629,9 +1633,9 @@ function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
         </View>
 
         <View style={{ gap: 10 }}>
-          <PrimaryBtn label="Revancha 🔄" onPress={onReplay} colors={MARCADOR_GRAD} />
+          <PrimaryBtn label={t('party.rematch')} onPress={onReplay} colors={MARCADOR_GRAD} />
           <Pressable onPress={onBack} style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>Volver a modos</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -1644,14 +1648,15 @@ function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
 // ══════════════════════════════════════════════════════════════
 
 export default function FriendsScreen() {
+  const { t } = useTranslation();
   const offline = useOffline();
   const [screen, setScreen] = useState<Screen>('modes');
 
   if (offline) {
     return (
       <OfflineNotice
-        title="Jugar con amigos sin conexión"
-        description="El modo multijugador necesita conexión. Mientras tanto puedes jugar a Contrarreloj y Aprender."
+        title={t('party.offlineTitle')}
+        description={t('party.offlineDesc')}
       />
     );
   }

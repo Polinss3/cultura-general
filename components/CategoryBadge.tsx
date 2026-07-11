@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native';
-import { CAT_COLORS, CAT_ICONS, CAT_NAMES } from '@/constants/questions';
+import { useTranslation } from 'react-i18next';
+import { CAT_COLORS, CAT_ICONS } from '@/constants/questions';
 import { Category } from '@/types';
 
 interface Props {
@@ -10,9 +11,10 @@ interface Props {
 const FALLBACK_META = { bg: '#1a1a1a', accent: '#888888', text: '#cccccc' };
 
 export function CategoryBadge({ cat, small }: Props) {
+  const { t } = useTranslation();
   const c = CAT_COLORS[cat as Category] ?? FALLBACK_META;
   const icon = CAT_ICONS[cat as Category] ?? '❓';
-  const name = CAT_NAMES[cat as Category] ?? String(cat);
+  const name = t(`categories.${cat}`, { defaultValue: String(cat) });
   return (
     <View style={{
       flexDirection: 'row',

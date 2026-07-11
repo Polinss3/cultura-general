@@ -1,4 +1,5 @@
 import { View, Text, Pressable } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export function GuestGate({ icon = '🔒', title, description }: Props) {
+  const { t } = useTranslation();
   const router = useRouter();
 
   const goToAuth = async () => {
@@ -37,14 +39,14 @@ export function GuestGate({ icon = '🔒', title, description }: Props) {
             style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
           >
             <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
-              Crear cuenta gratis
+              {t('components.guestGate.createAccount')}
             </Text>
           </LinearGradient>
         </Pressable>
 
         <Pressable onPress={goToAuth} style={{ marginTop: 16 }}>
           <Text style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Outfit_500Medium', fontSize: 14 }}>
-            Ya tengo cuenta · <Text style={{ color: '#e8a030' }}>Iniciar sesión</Text>
+            {t('components.guestGate.haveAccount')}<Text style={{ color: '#e8a030' }}>{t('components.guestGate.signIn')}</Text>
           </Text>
         </Pressable>
       </View>

@@ -1,5 +1,6 @@
 import { supabase } from './supabase';
 import { pickDailyMissions, todayStr, Mission, MissionKind } from './missions';
+import i18n from './i18n';
 
 // ─── Resultado de una recompensa ──────────────────────────────
 export interface AwardResult {
@@ -49,8 +50,8 @@ export async function awardProgress(
 export async function claimDailyChest(): Promise<{ reward?: number; error?: string }> {
   const { data, error } = await supabase.rpc('claim_daily_chest');
   if (error) {
-    if ((error.message || '').includes('already claimed')) return { error: 'Ya has abierto el cofre de hoy.' };
-    return { error: 'No se pudo abrir el cofre.' };
+    if ((error.message || '').includes('already claimed')) return { error: i18n.t('errors.chestAlreadyClaimed') };
+    return { error: i18n.t('errors.chestFailed') };
   }
   return { reward: (data as any)?.reward };
 }
@@ -89,7 +90,7 @@ export async function fetchLadderRanking(): Promise<LadderRankRow[]> {
   const { data } = await supabase.rpc('get_ladder_ranking');
   return (data ?? []).map((r: any) => ({
     userId: r.user_id,
-    username: r.username ?? 'Anónimo',
+    username: r.username ?? i18n.t('common.anonymous'),
     ladderBest: r.ladder_best ?? 0,
     level: r.level ?? 1,
   }));

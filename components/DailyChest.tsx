@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { Pressable, View, Text, Animated, Easing } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Haptics from 'expo-haptics';
 import { Confetti } from './Confetti';
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export function DailyChest({ available, onClaim, onClaimed }: Props) {
+  const { t } = useTranslation();
   const [busy, setBusy] = useState(false);
   const [claimed, setClaimed] = useState(false);
   const [reward, setReward] = useState<number | null>(null);
@@ -97,10 +99,10 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
           <Text style={{ fontSize: 30, opacity: 0.4 }}>🎁</Text>
           <View style={{ flex: 1 }}>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
-              Cofre diario
+              {t('components.dailyChest.title')}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 1 }}>
-              Vuelve mañana por más monedas
+              {t('components.dailyChest.claimedSub')}
             </Text>
           </View>
         </View>
@@ -153,10 +155,10 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
 
             <View style={{ flex: 1 }}>
               <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 16 }}>
-                Cofre diario
+                {t('components.dailyChest.title')}
               </Text>
               <Text style={{ color: 'rgba(255,236,200,0.65)', fontFamily: 'Outfit_500Medium', fontSize: 12, marginTop: 1 }}>
-                ¡Recompensa lista! Mejora con tu racha
+                {t('components.dailyChest.availableSub')}
               </Text>
             </View>
 
@@ -167,7 +169,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
               style={{ borderRadius: 99, paddingVertical: 9, paddingHorizontal: 18 }}
             >
               <Text style={{ color: '#3a2600', fontFamily: 'Outfit_800ExtraBold', fontSize: 14 }}>
-                {busy ? '...' : 'Abrir'}
+                {busy ? '…' : t('components.dailyChest.open')}
               </Text>
             </LinearGradient>
           </LinearGradient>
