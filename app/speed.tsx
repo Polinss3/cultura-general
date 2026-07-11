@@ -17,6 +17,7 @@ import { fetchQuestions, saveSpeedGame } from '@/lib/db';
 import { fetchInventoryMap, consumeItem } from '@/lib/shop';
 import { AwardResult } from '@/lib/gamification';
 import { getGuestSpeedRecord, setGuestSpeedRecord, getLocalSpeedRecord, setLocalSpeedRecord } from '@/lib/guest';
+import { markDailyPlayed } from '@/lib/dailyRoute';
 import { getLocalQuestions } from '@/constants/questions';
 import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
@@ -112,6 +113,7 @@ export default function SpeedScreen() {
   useEffect(() => {
     if (phase !== 'done' || savedRef.current) return;
     savedRef.current = true;
+    markDailyPlayed(); // paso "practica hoy" de la ruta diaria
     if (guest) {
       const isNew = score > guestRecord;
       if (isNew) setGuestSpeedRecord(score).then(() => setGuestRecord(score));

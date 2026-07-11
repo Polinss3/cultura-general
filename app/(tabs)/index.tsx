@@ -4,14 +4,18 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useProfile } from '@/hooks/useProfile';
+import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useToast } from '@/context/ToastContext';
+import { useProgress } from '@/context/ProgressContext';
 import { unlockedCount } from '@/lib/achievements';
+import { grantWelcomeRewardIfPending } from '@/lib/onboarding';
 import { setGuestMode, getGuestSpeedRecord } from '@/lib/guest';
 import { LevelBadge } from '@/components/LevelBadge';
 import { XpBar } from '@/components/XpBar';
 import { CoinPill } from '@/components/CoinPill';
+import { DailyRoute } from '@/components/DailyRoute';
 import { rankForLevel } from '@/lib/leveling';
 import { getLocaleTag } from '@/lib/i18n';
 import { useEffect, useState } from 'react';
@@ -19,11 +23,26 @@ import { useEffect, useState } from 'react';
 export default function HomeScreen() {
   const { t } = useTranslation();
   const router = useRouter();
-  const { profile } = useProfile();
+  const { profile, refresh } = useProfile();
+  const { user } = useAuth();
   const { guest } = useGuest();
   const offline = useOffline();
   const { showToast } = useToast();
+  const { celebrate } = useProgress();
   const [guestSpeedRecord, setGuestSpeedRecordState] = useState(0);
+
+  // Recompensa de bienvenida: se concede la primera vez que se entra a la home
+  // ya con sesión (el onboarding la deja "pendiente"). Para invitados no aplica
+  // hasta que crean cuenta. Celebramos y refrescamos el saldo al concederla.
+  useEffect(() => {
+    if (!user || guest || offline) return;
+    grantWelcomeRewardIfPending().then(award => {
+      if (award) {
+        celebrate(award);
+        refresh();
+      }
+    });
+  }, [user?.id, guest, offline]);
 
   // En modo sin conexión, Diario/Amigos/Perfil no están disponibles.
   const lockedTap = () =>
@@ -147,6 +166,13 @@ export default function HomeScreen() {
             </Pressable>
           )}
         </View>
+
+        {/* Hub "Hoy": ruta diaria (solo logueado y online) */}
+        {!guest && !offline && user && (
+          <View style={{ paddingHorizontal: 20 }}>
+            <DailyRoute userId={user.id} profile={profile} refresh={refresh} />
+          </View>
+        )}
 
         {/* Game modes */}
         <View style={{ paddingHorizontal: 20, marginTop: 22 }}>

@@ -12,6 +12,8 @@ export const REWARDS = {
   missionXp:      30,
   missionCoins:   15,
   rewardedAdCoins: 30,
+  welcomeBonus:   { xp: 25, coins: 100 }, // regalo inicial tras el onboarding
+  dailyRouteBonus: { xp: 40, coins: 30 }, // por completar la ruta diaria del hub
 } as const;
 
 // mult = min(1 + 0.1*streak, 2.0)

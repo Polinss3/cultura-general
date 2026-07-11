@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert } from 'react-native';
+import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
@@ -17,6 +17,8 @@ import { getLocalQuestions, CAT_COLORS, CAT_ICONS, ALL_CATEGORIES } from '@/cons
 import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
+import { markDailyPlayed } from '@/lib/dailyRoute';
+import { feedback } from '@/lib/feedback';
 import { AnswerState, Category, Question } from '@/types';
 
 type Difficulty = 'all' | 'easy' | 'medium' | 'hard';
@@ -53,7 +55,15 @@ export default function LearnScreen() {
   const [selected, setSelected] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
   const [showCtx, setShowCtx] = useState(false);
+  const [combo, setCombo] = useState(0);
+  const comboScale = useRef(new Animated.Value(0)).current;
   const completedQuestionsRef = useRef(0);
+
+  // Micro-animación de "pop" cuando el combo sube.
+  const bumpCombo = () => {
+    comboScale.setValue(0.6);
+    Animated.spring(comboScale, { toValue: 1, friction: 5, tension: 140, useNativeDriver: true }).start();
+  };
 
   useEffect(() => {
     if (!cat) return;
@@ -64,6 +74,7 @@ export default function LearnScreen() {
     setSelected(null);
     setAnswered(false);
     setShowCtx(false);
+    setCombo(0);
     completedQuestionsRef.current = 0;
     setDifficulty('all');
 
@@ -97,6 +108,7 @@ export default function LearnScreen() {
     setSelected(null);
     setAnswered(false);
     setShowCtx(false);
+    setCombo(0);
   }, [difficulty]);
 
   const baseQ = questions[qIdx % Math.max(questions.length, 1)];
@@ -109,6 +121,22 @@ export default function LearnScreen() {
     setAnswered(true);
     const correct = i === q.ans;
     if (!correct) setShowCtx(true);
+
+    markDailyPlayed(); // paso "practica hoy" de la ruta diaria
+
+    // Combo de aciertos consecutivos: refuerzo visual + háptico creciente.
+    if (correct) {
+      setCombo(c => {
+        const nc = c + 1;
+        if (nc >= 2) {
+          bumpCombo();
+          if (nc >= 3) feedback.combo(nc); // vibración extra a partir de x3
+        }
+        return nc;
+      });
+    } else {
+      setCombo(0);
+    }
 
     if (user && !guest && !offline) {
       incrementProfileStats(user.id, 1, correct ? 1 : 0);
@@ -154,6 +182,7 @@ export default function LearnScreen() {
     setAnswered(false);
     setShowCtx(false);
     setDifficulty('all');
+    setCombo(0);
     completedQuestionsRef.current = 0;
   };
 
@@ -314,10 +343,22 @@ export default function LearnScreen() {
             ))}
           </View>
 
-          {/* Question counter */}
-          <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', marginBottom: 12 }}>
-            {(qIdx % questions.length) + 1} / {questions.length}
-          </Text>
+          {/* Question counter + combo */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+            <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>
+              {(qIdx % questions.length) + 1} / {questions.length}
+            </Text>
+            {combo >= 2 && (
+              <Animated.View style={{ transform: [{ scale: comboScale }] }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: 'rgba(232,160,48,0.12)', borderWidth: 1, borderColor: 'rgba(232,160,48,0.4)', borderRadius: 99, paddingVertical: 4, paddingHorizontal: 11 }}>
+                  <Text style={{ fontSize: 13 }}>🔥</Text>
+                  <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
+                    {t('learn.combo', { count: combo })}
+                  </Text>
+                </View>
+              </Animated.View>
+            )}
+          </View>
 
           {/* Question */}
           <Text style={{ color: '#fff', fontSize: 19, fontFamily: 'Outfit_700Bold', lineHeight: 28, marginBottom: 24 }}>

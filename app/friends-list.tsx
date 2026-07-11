@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import * as Haptics from 'expo-haptics';
+import { feedback } from '@/lib/feedback';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { GuestGate } from '@/components/GuestGate';
@@ -88,7 +88,7 @@ export default function FriendsListScreen() {
 
   const handleAddFriend = async (profile: SearchResult) => {
     if (!user) return;
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    feedback.tap();
     const { error } = await sendFriendRequest(user.id, profile.id);
     if (error) {
       Alert.alert(t('common.error'), error);
@@ -101,7 +101,7 @@ export default function FriendsListScreen() {
 
   const handleAccept = async (p: FriendProfile) => {
     if (!p.friendshipId) return;
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    feedback.reward();
     await acceptFriendRequest(p.friendshipId);
     await load();
   };

@@ -179,6 +179,20 @@ export async function checkDailyAnswered(
   return { answered: !!data, score: data?.score ?? 0 };
 }
 
+// Fechas (YYYY-MM-DD) en las que el usuario respondió la pregunta del día
+// desde `since` (inclusive). Para pintar el calendario de racha.
+export async function fetchAnsweredDates(
+  userId: string,
+  since: string,
+): Promise<string[]> {
+  const { data } = await supabase
+    .from('daily_rankings')
+    .select('date')
+    .eq('user_id', userId)
+    .gte('date', since);
+  return (data ?? []).map((r: any) => r.date as string);
+}
+
 export async function saveDailyAnswer(
   userId: string,
   questionId: string,

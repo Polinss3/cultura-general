@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Pressable, View, Text, Animated, Easing } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import * as Haptics from 'expo-haptics';
+import { feedback } from '@/lib/feedback';
 import { Confetti } from './Confetti';
 
 interface Props {
@@ -47,7 +47,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
     setBusy(false);
     if (r == null) return;
 
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    feedback.reward();
     setReward(r);
     setConfetti(true);
 

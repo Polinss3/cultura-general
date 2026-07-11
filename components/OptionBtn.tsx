@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { Pressable, Text, View } from 'react-native';
-import * as Haptics from 'expo-haptics';
+import { useEffect, useRef } from 'react';
+import { Animated, Easing, Pressable, Text, View } from 'react-native';
+import { feedback } from '@/lib/feedback';
 import { AnswerState } from '@/types';
 
 interface Props {
@@ -11,17 +11,38 @@ interface Props {
 }
 
 export function OptionBtn({ text, letter, state, onPress }: Props) {
+  const scale = useRef(new Animated.Value(1)).current;
+
   // Haptic feedback when answer is revealed
   useEffect(() => {
     if (state === 'correct') {
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      feedback.correct();
+      // Pop de celebración al revelar la correcta.
+      Animated.sequence([
+        Animated.timing(scale, { toValue: 1.04, duration: 140, easing: Easing.out(Easing.quad), useNativeDriver: true }),
+        Animated.spring(scale, { toValue: 1, friction: 4, tension: 90, useNativeDriver: true }),
+      ]).start();
     } else if (state === 'wrong') {
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+      feedback.wrong();
+      // Sacudida sutil al fallar.
+      Animated.sequence([
+        Animated.timing(scale, { toValue: 0.97, duration: 60, useNativeDriver: true }),
+        Animated.timing(scale, { toValue: 1.01, duration: 60, useNativeDriver: true }),
+        Animated.spring(scale, { toValue: 1, friction: 5, tension: 120, useNativeDriver: true }),
+      ]).start();
     }
-  }, [state]);
+  }, [state, scale]);
+
+  const handlePressIn = () => {
+    Animated.timing(scale, { toValue: 0.97, duration: 90, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scale, { toValue: 1, friction: 5, tension: 120, useNativeDriver: true }).start();
+  };
 
   const handlePress = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    feedback.tap();
     onPress();
   };
 
@@ -49,32 +70,36 @@ export function OptionBtn({ text, letter, state, onPress }: Props) {
     state === 'wrong'   ? '#e83060' : 'rgba(255,255,255,0.6)';
 
   return (
-    <Pressable
-      onPress={handlePress}
-      style={{
-        borderWidth: 1.5,
-        borderColor,
-        backgroundColor: bg,
-        borderRadius: 14,
-        paddingVertical: 14,
-        paddingHorizontal: 16,
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 12,
-      }}
-    >
-      <View style={{
-        width: 26, height: 26, borderRadius: 8,
-        backgroundColor: badgeBg,
-        alignItems: 'center', justifyContent: 'center',
-      }}>
-        <Text style={{ color: badgeColor, fontSize: 12, fontFamily: 'Outfit_700Bold' }}>
-          {letter}
+    <Animated.View style={{ transform: [{ scale }] }}>
+      <Pressable
+        onPress={handlePress}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        style={{
+          borderWidth: 1.5,
+          borderColor,
+          backgroundColor: bg,
+          borderRadius: 14,
+          paddingVertical: 14,
+          paddingHorizontal: 16,
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 12,
+        }}
+      >
+        <View style={{
+          width: 26, height: 26, borderRadius: 8,
+          backgroundColor: badgeBg,
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          <Text style={{ color: badgeColor, fontSize: 12, fontFamily: 'Outfit_700Bold' }}>
+            {letter}
+          </Text>
+        </View>
+        <Text style={{ color, fontSize: 15, fontFamily: 'Outfit_500Medium', flex: 1 }}>
+          {text}
         </Text>
-      </View>
-      <Text style={{ color, fontSize: 15, fontFamily: 'Outfit_500Medium', flex: 1 }}>
-        {text}
-      </Text>
-    </Pressable>
+      </Pressable>
+    </Animated.View>
   );
 }

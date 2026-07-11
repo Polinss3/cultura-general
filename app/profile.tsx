@@ -32,6 +32,13 @@ import {
 import { setAppLanguage, getLanguagePreference, LangPreference } from '@/lib/i18n';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
 import { CAT_ICONS } from '@/constants/questions';
+import { masteryFor } from '@/lib/mastery';
+import {
+  computeTitles, findTitle, getEquippedTitle,
+  setEquippedTitle as setEquippedTitleStore,
+} from '@/lib/titles';
+import { StreakCalendar } from '@/components/StreakCalendar';
+import { feedback, isHapticsEnabled, setHapticsEnabled } from '@/lib/feedback';
 import { Category } from '@/types';
 
 export default function ProfileScreen() {
@@ -57,12 +64,31 @@ export default function ProfileScreen() {
 
   const [langPref, setLangPref] = useState<LangPreference>('auto');
 
+  const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled());
+
+  const [equippedTitle, setEquippedTitle] = useState<string | null>(null);
+
   useEffect(() => {
     getNotificationsEnabled().then(enabled => {
       setNotificationsOn(enabled);
       setNotifLoading(false);
     });
     getLanguagePreference().then(setLangPref);
+    getEquippedTitle().then(setEquippedTitle);
+  }, []);
+
+  // Equipar/desequipar un título (toque en uno equipado lo quita).
+  const handleEquipTitle = useCallback((id: string, current: string | null) => {
+    const next = current === id ? null : id;
+    setEquippedTitle(next);
+    setEquippedTitleStore(next);
+    feedback.select();
+  }, []);
+
+  const handleHapticsToggle = useCallback((value: boolean) => {
+    setHapticsOn(value);
+    setHapticsEnabled(value);
+    if (value) feedback.tap(); // confirmación táctil al activarlo
   }, []);
 
   const handleLanguageChange = useCallback(async (pref: LangPreference) => {
@@ -248,6 +274,24 @@ export default function ProfileScreen() {
               <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14 }}>✏️</Text>
             </Pressable>
           )}
+
+          {/* Vitrina: título equipado */}
+          {(() => {
+            const eq = findTitle(profile, equippedTitle);
+            if (!eq) return null;
+            return (
+              <View style={{
+                marginTop: 8, flexDirection: 'row', alignItems: 'center', gap: 6,
+                backgroundColor: eq.color + '1f', borderColor: eq.color + '66', borderWidth: 1,
+                borderRadius: 99, paddingVertical: 4, paddingHorizontal: 12,
+              }}>
+                <Text style={{ fontSize: 13 }}>{eq.icon}</Text>
+                <Text style={{ color: eq.color, fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+                  {t(`titles.items.${eq.id}`)}
+                </Text>
+              </View>
+            );
+          })()}
         </View>
 
         {/* Progreso (nivel / XP / monedas) */}
@@ -264,6 +308,46 @@ export default function ProfileScreen() {
               <CoinPill coins={profile?.coins ?? 0} onPress={() => router.push('/shop')} showPlus />
             </View>
             <XpBar xp={profile?.xp ?? 0} />
+          </View>
+        </View>
+
+        {/* Títulos equipables */}
+        <View style={{ paddingHorizontal: 20, marginBottom: 24 }}>
+          <SectionTitle>{t('titles.title')}</SectionTitle>
+          <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginBottom: 12, marginTop: -4 }}>
+            {t('titles.hint')}
+          </Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {computeTitles(profile).map(tt => {
+              const isEquipped = equippedTitle === tt.id;
+              return (
+                <Pressable
+                  key={tt.id}
+                  onPress={() => tt.unlocked && handleEquipTitle(tt.id, equippedTitle)}
+                  disabled={!tt.unlocked}
+                  style={{
+                    flexDirection: 'row', alignItems: 'center', gap: 6,
+                    paddingVertical: 9, paddingHorizontal: 13, borderRadius: 99,
+                    backgroundColor: isEquipped ? tt.color + '26' : tt.unlocked ? '#151515' : '#0f0f0f',
+                    borderWidth: 1.5,
+                    borderColor: isEquipped ? tt.color : tt.unlocked ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)',
+                    opacity: tt.unlocked ? 1 : 0.45,
+                  }}
+                >
+                  <Text style={{ fontSize: 14 }}>{tt.unlocked ? tt.icon : '🔒'}</Text>
+                  <Text style={{
+                    color: isEquipped ? tt.color : tt.unlocked ? '#fff' : 'rgba(255,255,255,0.4)',
+                    fontFamily: isEquipped ? 'Outfit_700Bold' : 'Outfit_500Medium',
+                    fontSize: 13,
+                  }}>
+                    {t(`titles.items.${tt.id}`)}
+                  </Text>
+                  {isEquipped && (
+                    <Text style={{ color: tt.color, fontFamily: 'Outfit_700Bold', fontSize: 12 }}>✓</Text>
+                  )}
+                </Pressable>
+              );
+            })}
           </View>
         </View>
 
@@ -285,27 +369,49 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        {/* Category stats */}
+        {/* Racha emocional: calendario mensual + hitos */}
+        {user && (
+          <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
+            <SectionTitle>{t('streak.title')}</SectionTitle>
+            <StreakCalendar
+              userId={user.id}
+              streak={profile?.streak ?? 0}
+              bestStreak={profile?.best_streak ?? 0}
+            />
+          </View>
+        )}
+
+        {/* Dominio por categorías */}
         {catStats.length > 0 && (
           <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
             <SectionTitle>{t('profile.categoryTitle')}</SectionTitle>
             <View style={{ gap: 10 }}>
               {catStats.map(cs => {
-                const pct = cs.total > 0 ? cs.correct / cs.total : 0;
                 const cat = cs.category as Category;
+                const m = masteryFor(cs.correct);
+                const acc = cs.total > 0 ? Math.round((cs.correct / cs.total) * 100) : 0;
                 return (
-                  <View key={cs.category} style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                      <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
-                        {CAT_ICONS[cat] ?? '❓'} {t(`categories.${cs.category}`, { defaultValue: cs.category })}
-                      </Text>
+                  <View key={cs.category} style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, borderWidth: 1, borderColor: m.tier.color + '2e' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+                      <Text style={{ fontSize: 20 }}>{CAT_ICONS[cat] ?? '❓'}</Text>
+                      <View style={{ flex: 1 }}>
+                        <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>
+                          {t(`categories.${cs.category}`, { defaultValue: cs.category })}
+                        </Text>
+                        <Text style={{ color: m.tier.color, fontFamily: 'Outfit_600SemiBold', fontSize: 11, marginTop: 1 }}>
+                          {m.tier.emoji} {t(`mastery.tiers.${m.tier.id}`)} · {t('mastery.level', { level: m.level })}
+                        </Text>
+                      </View>
                       <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
-                        {cs.correct}/{cs.total} · {Math.round(pct * 100)}%
+                        {cs.correct}/{cs.total} · {acc}%
                       </Text>
                     </View>
-                    <View style={{ height: 5, backgroundColor: '#2a2a2a', borderRadius: 99, overflow: 'hidden' }}>
-                      <View style={{ height: '100%', width: `${pct * 100}%`, backgroundColor: pct >= 0.7 ? '#2ec87a' : pct >= 0.4 ? '#e8a030' : '#e83060', borderRadius: 99 }} />
+                    <View style={{ height: 6, backgroundColor: '#2a2a2a', borderRadius: 99, overflow: 'hidden' }}>
+                      <View style={{ height: '100%', width: `${m.pct * 100}%`, backgroundColor: m.tier.color, borderRadius: 99 }} />
                     </View>
+                    <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 5 }}>
+                      {t('mastery.toNext', { count: m.correctToNext })}
+                    </Text>
                   </View>
                 );
               })}
@@ -427,6 +533,28 @@ export default function ProfileScreen() {
                 thumbColor="#fff"
               />
             )}
+          </View>
+
+          {/* Vibración / feedback táctil */}
+          <View style={{
+            backgroundColor: '#151515', borderRadius: 14, padding: 16,
+            flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+            marginBottom: 10,
+          }}>
+            <View style={{ flex: 1, paddingRight: 12 }}>
+              <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
+                {t('profile.settings.hapticsTitle')}
+              </Text>
+              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
+                {t('profile.settings.hapticsSub')}
+              </Text>
+            </View>
+            <Switch
+              value={hapticsOn}
+              onValueChange={handleHapticsToggle}
+              trackColor={{ false: '#2a2a2a', true: '#e8a030' }}
+              thumbColor="#fff"
+            />
           </View>
 
           {/* Idioma */}

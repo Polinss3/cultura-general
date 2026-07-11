@@ -171,6 +171,8 @@
       "title": "Ajustes",
       "reminderTitle": "Recordatorio diario",
       "reminderSub": "Notificación a las 9:00",
+      "hapticsTitle": "Vibración",
+      "hapticsSub": "Feedback táctil al jugar",
       "language": "Idioma",
       "languageSub": "Elige el idioma de la app",
       "languageAuto": "Auto",
@@ -227,6 +229,41 @@
     "exit": "Salir",
     "again": "Otra vez"
   },
+  "titles": {
+    "title": "Títulos",
+    "hint": "Desbloquéalos con tus logros y equipa el que más te represente.",
+    "items": {
+      "curioso": "Curioso",
+      "estudioso": "Estudioso",
+      "erudito": "Erudito",
+      "imparable": "Imparable",
+      "constante": "Constante",
+      "rayo": "Rayo",
+      "escalador": "Escalador",
+      "sabelotodo": "Sabelotodo",
+      "leyenda": "Leyenda"
+    }
+  },
+  "streak": {
+    "title": "Tu racha",
+    "days_one": "{{count}} día",
+    "days_other": "{{count}} días",
+    "best": "Mejor racha: {{count}}",
+    "nextMilestone_one": "{{count}} día para el hito de {{milestone}} 🔥",
+    "nextMilestone_other": "{{count}} días para el hito de {{milestone}} 🔥"
+  },
+  "mastery": {
+    "level": "Nivel {{level}}",
+    "toNext_one": "{{count}} acierto para subir de nivel",
+    "toNext_other": "{{count}} aciertos para subir de nivel",
+    "tiers": {
+      "novato": "Novato",
+      "bronce": "Bronce",
+      "plata": "Plata",
+      "oro": "Oro",
+      "diamante": "Diamante"
+    }
+  },
   "learn": {
     "pickerTitle": "¿Qué quieres aprender?",
     "pickerSub": "Elige un tema y empieza a practicar",
@@ -237,6 +274,7 @@
     "context": "💡 Contexto",
     "topicDone": "🎉 ¡Tema completado!",
     "next": "Siguiente →",
+    "combo": "{{count}} seguidas",
     "diff": {
       "all": "Todas",
       "easy": "Fácil",
@@ -252,6 +290,20 @@
   },
   "home": {
     "greeting": "Hola, {{name}} 👋",
+    "route": {
+      "title": "Tu ruta de hoy",
+      "daily": "Pregunta del día",
+      "chest": "Cofre diario",
+      "play": "Practica un poco",
+      "claim": "Reclamar",
+      "missions": "Misiones diarias",
+      "claimMissions_one": "🎁 Reclamar {{count}} misión",
+      "claimMissions_other": "🎁 Reclamar {{count}} misiones",
+      "play2min": "⚡ Jugar 2 min",
+      "claimReward": "Reclama tu recompensa · +{{coins}} 🪙 +{{xp}} XP",
+      "rewardDone": "✓ Ruta diaria completada",
+      "rewardFailed": "No se pudo reclamar. Inténtalo de nuevo."
+    },
     "lockedToast": "Sin conexión — disponible cuando recuperes los datos",
     "guestCtaTitle": "Crea cuenta gratis",
     "guestCtaSub": "Guarda tu progreso, juega la pregunta diaria y compite en los rankings.",
@@ -610,6 +662,12 @@
       "subtitle": "Puedes cambiarlo cuando quieras en Ajustes.",
       "es": "Español",
       "en": "English"
+    },
+    "interests": {
+      "title": "¿Qué te apasiona?",
+      "subtitle": "Elige tus temas favoritos para personalizar tu experiencia. Podrás cambiarlos cuando quieras.",
+      "cta": "Empezar y ganar {{coins}} 🪙",
+      "hint": "Elige al menos uno para continuar"
     },
     "step0": {
       "title": "¡Bienvenido a\n{{appName}}!",

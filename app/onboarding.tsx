@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, Pressable, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -8,11 +8,19 @@ import {
   requestNotificationPermission,
   scheduleDailyReminder,
 } from '@/lib/notifications';
-import { setOnboardingCompleted } from '@/lib/onboarding';
+import {
+  setOnboardingCompleted,
+  setInterests,
+  markWelcomeRewardPending,
+} from '@/lib/onboarding';
 import { ensureTrackingPermission } from '@/lib/tracking';
 import { syncMetaAdvertiserTracking } from '@/lib/metaSdk';
 import { logTutorialCompletion, startAppsFlyerAfterConsent } from '@/lib/appsflyer';
 import { setAppLanguage, AppLang } from '@/lib/i18n';
+import { feedback } from '@/lib/feedback';
+import { CAT_COLORS, CAT_ICONS, ALL_CATEGORIES } from '@/constants/questions';
+import { REWARDS } from '@/lib/economy';
+import { Category } from '@/types';
 import type { TFunction } from 'i18next';
 
 // Iconos y flag skip por paso; el texto vive en i18n (`onboarding.stepN`).
@@ -38,6 +46,8 @@ export default function OnboardingScreen() {
   // Primera pantalla: elección de idioma. Al elegir, aplicamos el idioma
   // (persistido) para que el resto del onboarding ya salga en ese idioma.
   const [langChosen, setLangChosen] = useState(false);
+  const [interestsChosen, setInterestsChosen] = useState(false);
+  const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
   const [step, setStep] = useState(0);
   const steps = getSteps(t);
   const current = steps[step];
@@ -46,6 +56,25 @@ export default function OnboardingScreen() {
   const handleLanguage = async (lang: AppLang) => {
     await setAppLanguage(lang);
     setLangChosen(true);
+  };
+
+  const toggleInterest = (cat: Category) => {
+    feedback.select();
+    setInterestsSel(prev => {
+      const next = new Set(prev);
+      if (next.has(cat)) next.delete(cat);
+      else next.add(cat);
+      return next;
+    });
+  };
+
+  // Confirmar intereses: persistir, marcar la recompensa de bienvenida como
+  // pendiente (se concede al entrar a la home ya con sesión) y seguir.
+  const confirmInterests = async () => {
+    feedback.reward();
+    await setInterests(Array.from(interests));
+    await markWelcomeRewardPending();
+    setInterestsChosen(true);
   };
 
   const finish = async (skipped = false) => {
@@ -123,6 +152,100 @@ export default function OnboardingScreen() {
                 </Text>
               </Pressable>
             ))}
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (!interestsChosen) {
+    const canContinue = interests.size > 0;
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
+        <View style={{ flex: 1, padding: 24 }}>
+          <View style={{ alignItems: 'center', paddingTop: 8, marginBottom: 20 }}>
+            <Text style={{ fontSize: 64, marginBottom: 16 }}>✨</Text>
+            <Text style={{
+              color: '#fff',
+              fontSize: 26,
+              fontFamily: 'Outfit_800ExtraBold',
+              textAlign: 'center',
+              lineHeight: 34,
+              marginBottom: 10,
+            }}>
+              {t('onboarding.interests.title')}
+            </Text>
+            <Text style={{
+              color: 'rgba(255,255,255,0.5)',
+              fontSize: 15,
+              fontFamily: 'Outfit_400Regular',
+              textAlign: 'center',
+              lineHeight: 22,
+              maxWidth: 320,
+            }}>
+              {t('onboarding.interests.subtitle')}
+            </Text>
+          </View>
+
+          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 12 }}>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
+              {ALL_CATEGORIES.map(c => {
+                const active = interests.has(c);
+                const col = CAT_COLORS[c];
+                return (
+                  <Pressable
+                    key={c}
+                    onPress={() => toggleInterest(c)}
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 8,
+                      paddingVertical: 10,
+                      paddingHorizontal: 14,
+                      borderRadius: 99,
+                      backgroundColor: active ? col.bg : '#151515',
+                      borderWidth: 1.5,
+                      borderColor: active ? col.accent : 'rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    <Text style={{ fontSize: 18 }}>{CAT_ICONS[c]}</Text>
+                    <Text style={{
+                      color: active ? col.text : 'rgba(255,255,255,0.6)',
+                      fontSize: 14,
+                      fontFamily: active ? 'Outfit_700Bold' : 'Outfit_500Medium',
+                    }}>
+                      {t(`categories.${c}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </ScrollView>
+
+          <View style={{ gap: 8, paddingTop: 12 }}>
+            <Pressable onPress={confirmInterests} disabled={!canContinue}>
+              <LinearGradient
+                colors={canContinue ? ['#e8a030', '#e83060'] : ['#2a2a2a', '#2a2a2a']}
+                start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+                style={{ borderRadius: 16, padding: 18, alignItems: 'center' }}
+              >
+                <Text style={{
+                  color: canContinue ? '#fff' : 'rgba(255,255,255,0.3)',
+                  fontSize: 17,
+                  fontFamily: 'Outfit_700Bold',
+                }}>
+                  {t('onboarding.interests.cta', { coins: REWARDS.welcomeBonus.coins })}
+                </Text>
+              </LinearGradient>
+            </Pressable>
+            <Text style={{
+              color: 'rgba(255,255,255,0.35)',
+              fontSize: 13,
+              fontFamily: 'Outfit_400Regular',
+              textAlign: 'center',
+            }}>
+              {t('onboarding.interests.hint')}
+            </Text>
           </View>
         </View>
       </SafeAreaView>

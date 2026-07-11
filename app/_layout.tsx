@@ -31,6 +31,7 @@ import { getOnboardingCompleted } from '@/lib/onboarding';
 import { applyPersistedLanguage } from '@/lib/i18n';
 import { purgeLegacyQuestionCache } from '@/lib/db';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
+import { initFeedback } from '@/lib/feedback';
 import { supabase } from '@/lib/supabase';
 import { setSentryUser } from '@/lib/sentry';
 import { clearGuestData } from '@/lib/guest';
@@ -91,6 +92,7 @@ function RootLayout() {
       setLangReady(true);
       purgeLegacyQuestionCache();
       rescheduleDailyReminderIfActive();
+      initFeedback();
     });
   }, []);
 
