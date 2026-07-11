@@ -605,6 +605,12 @@
   },
   "onboarding": {
     "skip": "Not now",
+    "language": {
+      "title": "Choose your language",
+      "subtitle": "You can change it anytime in Settings.",
+      "es": "Español",
+      "en": "English"
+    },
     "step0": {
       "title": "Welcome to\n{{appName}}!",
       "body": "Answer questions on history, science, art, geography and philosophy. Learn something new every day.",

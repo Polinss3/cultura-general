@@ -11,6 +11,7 @@ import {
 import { setOnboardingCompleted } from '@/lib/onboarding';
 import { ensureTrackingPermission } from '@/lib/tracking';
 import { syncMetaAdvertiserTracking } from '@/lib/metaSdk';
+import { setAppLanguage, AppLang } from '@/lib/i18n';
 import type { TFunction } from 'i18next';
 
 // Iconos y flag skip por paso; el texto vive en i18n (`onboarding.stepN`).
@@ -33,10 +34,18 @@ function getSteps(t: TFunction) {
 export default function OnboardingScreen() {
   const { t } = useTranslation();
   const router = useRouter();
+  // Primera pantalla: elección de idioma. Al elegir, aplicamos el idioma
+  // (persistido) para que el resto del onboarding ya salga en ese idioma.
+  const [langChosen, setLangChosen] = useState(false);
   const [step, setStep] = useState(0);
   const steps = getSteps(t);
   const current = steps[step];
   const isLast = step === steps.length - 1;
+
+  const handleLanguage = async (lang: AppLang) => {
+    await setAppLanguage(lang);
+    setLangChosen(true);
+  };
 
   const finish = async () => {
     await setOnboardingCompleted(true);
@@ -63,6 +72,58 @@ export default function OnboardingScreen() {
     await syncMetaAdvertiserTracking(decision === 'granted');
     await finish();
   };
+
+  if (!langChosen) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
+        <View style={{ flex: 1, padding: 24, justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{ fontSize: 80, marginBottom: 32 }}>🌐</Text>
+          <Text style={{
+            color: '#fff',
+            fontSize: 28,
+            fontFamily: 'Outfit_800ExtraBold',
+            textAlign: 'center',
+            lineHeight: 36,
+            marginBottom: 12,
+          }}>
+            {t('onboarding.language.title')}
+          </Text>
+          <Text style={{
+            color: 'rgba(255,255,255,0.5)',
+            fontSize: 15,
+            fontFamily: 'Outfit_400Regular',
+            textAlign: 'center',
+            lineHeight: 24,
+            maxWidth: 300,
+            marginBottom: 40,
+          }}>
+            {t('onboarding.language.subtitle')}
+          </Text>
+
+          <View style={{ width: '100%', gap: 12 }}>
+            {(['es', 'en'] as AppLang[]).map(lang => (
+              <Pressable
+                key={lang}
+                onPress={() => handleLanguage(lang)}
+                style={{
+                  borderRadius: 16,
+                  padding: 18,
+                  alignItems: 'center',
+                  backgroundColor: '#151515',
+                  borderWidth: 1,
+                  borderColor: 'rgba(255,255,255,0.08)',
+                }}
+              >
+                <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>
+                  {t(`onboarding.language.${lang}`)}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
