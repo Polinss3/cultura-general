@@ -16,7 +16,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "39",
+      "buildNumber": "40",
       "usesAppleSignIn": true,
       "infoPlist": {
         "NSCameraUsageDescription": "The app does not use the camera.",
@@ -32,7 +32,7 @@
         "backgroundColor": "#0a0a0a"
       },
       "package": "com.polinss3.culturalgeneral",
-      "versionCode": 5,
+      "versionCode": 6,
       "permissions": [
         "RECEIVE_BOOT_COMPLETED",
         "VIBRATE",
