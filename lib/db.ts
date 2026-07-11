@@ -209,6 +209,27 @@ export async function fetchDailyActivity(
   };
 }
 
+// Nº de personas que han respondido la pregunta del día hoy (conteo exacto,
+// sin traer filas). Para el contador "jugadores hoy" de la home.
+export async function fetchDailyPlayerCount(): Promise<number> {
+  const { count } = await supabase
+    .from('daily_rankings')
+    .select('*', { count: 'exact', head: true })
+    .eq('date', todayStr());
+  return count ?? 0;
+}
+
+// Valor de respaldo cuando aún hay poca gente: número "creíble" 10–25,
+// determinista por fecha (estable durante el día, no parpadea entre aperturas).
+export function dailyPlayersFallback(date = todayStr()): number {
+  let h = 2166136261;
+  for (let i = 0; i < date.length; i++) {
+    h ^= date.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return 10 + (Math.abs(h) % 16); // 10..25
+}
+
 export async function saveDailyAnswer(
   userId: string,
   questionId: string,

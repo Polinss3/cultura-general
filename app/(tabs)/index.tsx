@@ -11,6 +11,7 @@ import { useToast } from '@/context/ToastContext';
 import { useProgress } from '@/context/ProgressContext';
 import { unlockedCount } from '@/lib/achievements';
 import { grantWelcomeRewardIfPending } from '@/lib/onboarding';
+import { fetchDailyPlayerCount, dailyPlayersFallback } from '@/lib/db';
 import { setGuestMode, getGuestSpeedRecord } from '@/lib/guest';
 import { LevelBadge } from '@/components/LevelBadge';
 import { XpBar } from '@/components/XpBar';
@@ -31,6 +32,9 @@ export default function HomeScreen() {
   const { showToast } = useToast();
   const { celebrate } = useProgress();
   const [guestSpeedRecord, setGuestSpeedRecordState] = useState(0);
+  // "Jugadores hoy": arranca con un valor de respaldo creíble (10–25, estable
+  // por día) y se sustituye por el número real si supera las 20 personas.
+  const [playersToday, setPlayersToday] = useState(dailyPlayersFallback);
 
   // Recompensa de bienvenida: se concede la primera vez que se entra a la home
   // ya con sesión (el onboarding la deja "pendiente"). Para invitados no aplica
@@ -52,6 +56,15 @@ export default function HomeScreen() {
   useEffect(() => {
     if (guest) getGuestSpeedRecord().then(setGuestSpeedRecordState);
   }, [guest]);
+
+  // Número real de jugadores del día: solo lo mostramos si supera las 20
+  // personas; si no, mantenemos el respaldo. Requiere conexión.
+  useEffect(() => {
+    if (offline) return;
+    fetchDailyPlayerCount().then(count => {
+      if (count > 20) setPlayersToday(count);
+    });
+  }, [offline]);
 
   const today = new Date().toLocaleDateString(getLocaleTag(), {
     weekday: 'long', day: 'numeric', month: 'long',
@@ -210,7 +223,7 @@ export default function HomeScreen() {
                   <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{t('home.dailyCta')}</Text>
                 </View>
                 <Text style={{ color: 'rgba(255,255,255,0.25)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
-                  {offline ? t('home.offline') : t('home.playersToday', { count: 127 })}
+                  {offline ? t('home.offline') : t('home.playersToday', { count: playersToday })}
                 </Text>
               </View>
             </LinearGradient>
