@@ -3,6 +3,7 @@ import { View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useRouter, useFocusEffect } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
+import Svg, { Path } from 'react-native-svg';
 import { useProgress } from '@/context/ProgressContext';
 import { useToast } from '@/context/ToastContext';
 import { checkDailyAnswered } from '@/lib/db';
@@ -156,7 +157,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
           <Text style={{ flex: 1, color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
             {t('home.route.completedCollapsed')}
           </Text>
-          <Text style={{ color: 'rgba(46,200,122,0.6)', fontSize: 16 }}>⌄</Text>
+          <Chevron dir="down" color="rgba(46,200,122,0.9)" />
         </View>
       </Pressable>
     );
@@ -185,7 +186,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
                 </Text>
               </View>
               {nothingActionable && (
-                <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 16 }}>⌃</Text>
+                <Chevron dir="up" color="rgba(255,255,255,0.5)" size={18} />
               )}
             </View>
           </View>
@@ -315,6 +316,15 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         </View>
       </LinearGradient>
     </View>
+  );
+}
+
+function Chevron({ dir, color, size = 20 }: { dir: 'up' | 'down'; color: string; size?: number }) {
+  const d = dir === 'down' ? 'M5 8l5 5 5-5' : 'M5 13l5-5 5 5';
+  return (
+    <Svg width={size} height={size} viewBox="0 0 20 20" fill="none">
+      <Path d={d} stroke={color} strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
   );
 }
 
