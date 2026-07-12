@@ -7,7 +7,9 @@ import { useRouter } from 'expo-router';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { LeagueBadge } from '@/components/LeagueBadge';
+import { UserName } from '@/components/UserName';
 import { usePowerups } from '@/hooks/usePowerups';
+import { resolveCosmetics } from '@/lib/cosmetics';
 import { Confetti } from '@/components/Confetti';
 import { GuestGate } from '@/components/GuestGate';
 import { OfflineNotice } from '@/components/OfflineNotice';
@@ -54,7 +56,7 @@ function timeUntilMidnight(): string {
 }
 
 function RankRowView({
-  position, name, sub, value, isMe, badge, leagueDivision,
+  position, name, sub, value, isMe, badge, leagueDivision, cosmetics,
 }: {
   position: number;
   name: string;
@@ -63,8 +65,10 @@ function RankRowView({
   isMe: boolean;
   badge?: { text: string; color: string; bg: string };
   leagueDivision?: number;
+  cosmetics?: Record<string, string> | null;
 }) {
   const { t } = useTranslation();
+  const cos = resolveCosmetics(cosmetics);
   return (
     <View style={{
       flexDirection: 'row', alignItems: 'center', gap: 12,
@@ -78,17 +82,23 @@ function RankRowView({
       }}>
         {position < 3 ? MEDALS[position] : `${position + 1}`}
       </Text>
-      <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: isMe ? '#e8a030' : '#222',
-        alignItems: 'center', justifyContent: 'center',
-      }}>
-        <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>
-          {name[0]?.toUpperCase() ?? '?'}
-        </Text>
+      <View style={cos.frameColor ? { borderWidth: 2, borderColor: cos.frameColor, borderRadius: 12, padding: 1.5 } : undefined}>
+        <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: isMe ? '#e8a030' : '#222',
+          alignItems: 'center', justifyContent: 'center',
+        }}>
+          <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>
+            {name[0]?.toUpperCase() ?? '?'}
+          </Text>
+        </View>
       </View>
       <View style={{ flex: 1 }}>
-        <Text style={{ color: isMe ? '#e8a030' : '#fff', fontFamily: isMe ? 'Outfit_700Bold' : 'Outfit_500Medium', fontSize: 14 }}>
-          {name}{isMe ? t('daily.you') : ''}
-        </Text>
+        <UserName
+          name={name}
+          cosmetics={cos}
+          suffix={isMe ? t('daily.you') : ''}
+          color={isMe ? '#e8a030' : '#fff'}
+          fontFamily={isMe ? 'Outfit_700Bold' : 'Outfit_500Medium'}
+        />
         <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>{sub}</Text>
       </View>
       {leagueDivision != null && (
@@ -373,6 +383,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                 value: formatTime(p.timeMs),
                 isMe: p.userId === user?.id,
                 leagueDivision: p.division,
+                cosmetics: p.cosmetics,
                 badge: p.isCorrect
                   ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
                   : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
@@ -389,7 +400,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                 items={globalRanking.map((p, i) => ({
                   position: i, name: p.username, sub: t('daily.globalSub', { streak: p.streak, speed: p.speedRecord }),
                   value: t('daily.globalCorrect', { count: p.totalCorrect }), isMe: p.userId === user?.id,
-                  leagueDivision: p.division,
+                  leagueDivision: p.division, cosmetics: p.cosmetics,
                 }))}
                 emptyText={t('daily.emptyGlobal')}
               />
@@ -412,6 +423,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                   value: formatTime(p.timeMs),
                   isMe: p.userId === user?.id,
                   leagueDivision: p.division,
+                  cosmetics: p.cosmetics,
                   badge: p.isCorrect
                     ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
                     : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
@@ -526,6 +538,7 @@ type RankItem = {
   isMe: boolean;
   badge?: { text: string; color: string; bg: string };
   leagueDivision?: number;
+  cosmetics?: Record<string, string> | null;
 };
 
 function RankingList({ items, emptyText }: {

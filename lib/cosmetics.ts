@@ -1,40 +1,69 @@
-// ─── Cosméticos (marcos de avatar y color de nombre) ────────────────────────
-// Traduce los item_id de la tienda a su efecto visual. De momento se muestran
-// para el usuario propio (home y perfil). Los cosméticos se equipan con
-// equipItem() y se leen del inventario (user_items.equipped).
+// ─── Cosméticos (marcos, color/estilo/icono de nombre) ──────────────────────
+// Traduce los item_id de la tienda a su efecto visual. Se muestran para todos
+// los usuarios (leídos de profiles.cosmetics en los rankings) y para el propio
+// (leídos del inventario equipado). Un cosmético equipado por "slot".
 
+import type { TextStyle } from 'react-native';
 import { fetchInventory } from './shop';
 
-export type CosmeticKind = 'frame' | 'name';
+export type CosmeticSlot = 'frame' | 'name_color' | 'name_icon' | 'name_style';
 
-export interface CosmeticMeta {
-  id: string;
-  kind: CosmeticKind;
-  color: string;
+interface CosmeticMeta {
+  slot: CosmeticSlot;
+  color?: string;      // frame / name_color
+  emoji?: string;      // name_icon
+  textStyle?: TextStyle; // name_style
 }
 
 export const COSMETICS: Record<string, CosmeticMeta> = {
-  frame_bronze: { id: 'frame_bronze', kind: 'frame', color: '#c08040' },
-  frame_silver: { id: 'frame_silver', kind: 'frame', color: '#c0c8d0' },
-  frame_gold:   { id: 'frame_gold',   kind: 'frame', color: '#e8c030' },
-  name_neon:    { id: 'name_neon',    kind: 'name',  color: '#b14dff' },
-  name_gold:    { id: 'name_gold',    kind: 'name',  color: '#e8c030' },
+  // Marcos de avatar
+  frame_bronze: { slot: 'frame', color: '#c08040' },
+  frame_silver: { slot: 'frame', color: '#c0c8d0' },
+  frame_gold:   { slot: 'frame', color: '#e8c030' },
+  // Color de nombre
+  name_neon:    { slot: 'name_color', color: '#b14dff' },
+  name_gold:    { slot: 'name_color', color: '#e8c030' },
+  // Icono/emoji antes del nombre
+  icon_fire:    { slot: 'name_icon', emoji: '🔥' },
+  icon_star:    { slot: 'name_icon', emoji: '⭐' },
+  icon_crown:   { slot: 'name_icon', emoji: '👑' },
+  icon_rocket:  { slot: 'name_icon', emoji: '🚀' },
+  // Estilo del nombre
+  style_italic: { slot: 'name_style', textStyle: { fontStyle: 'italic' } },
+  style_upper:  { slot: 'name_style', textStyle: { textTransform: 'uppercase', letterSpacing: 0.5 } },
+  style_glow:   { slot: 'name_style', textStyle: { textShadowColor: '#e8a030', textShadowRadius: 8, textShadowOffset: { width: 0, height: 0 } } },
 };
 
-export interface EquippedCosmetics {
+export interface ResolvedCosmetics {
   frameColor?: string;
   nameColor?: string;
+  nameIcon?: string;
+  nameStyle?: TextStyle;
 }
 
-export async function fetchEquippedCosmetics(userId: string): Promise<EquippedCosmetics> {
+// `map` = slot → item_id (formato de profiles.cosmetics). Devuelve los efectos.
+export function resolveCosmetics(map?: Record<string, string> | null): ResolvedCosmetics {
+  const r: ResolvedCosmetics = {};
+  if (!map) return r;
+  const frame = COSMETICS[map['frame']];
+  if (frame?.color) r.frameColor = frame.color;
+  const nc = COSMETICS[map['name_color']];
+  if (nc?.color) r.nameColor = nc.color;
+  const ic = COSMETICS[map['name_icon']];
+  if (ic?.emoji) r.nameIcon = ic.emoji;
+  const st = COSMETICS[map['name_style']];
+  if (st?.textStyle) r.nameStyle = st.textStyle;
+  return r;
+}
+
+// Cosméticos equipados del usuario propio (leídos del inventario).
+export async function fetchEquippedCosmetics(userId: string): Promise<ResolvedCosmetics> {
   const inv = await fetchInventory(userId);
-  const result: EquippedCosmetics = {};
+  const map: Record<string, string> = {};
   for (const it of inv) {
     if (!it.equipped) continue;
     const meta = COSMETICS[it.itemId];
-    if (!meta) continue;
-    if (meta.kind === 'frame') result.frameColor = meta.color;
-    else if (meta.kind === 'name') result.nameColor = meta.color;
+    if (meta) map[meta.slot] = it.itemId;
   }
-  return result;
+  return resolveCosmetics(map);
 }

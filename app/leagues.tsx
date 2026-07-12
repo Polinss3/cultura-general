@@ -11,6 +11,8 @@ import { setGuestMode } from '@/lib/guest';
 import {
   fetchLeague, divisionMeta, daysUntilReset, TOP_DIVISION, LeagueState,
 } from '@/lib/leagues';
+import { UserName } from '@/components/UserName';
+import { resolveCosmetics } from '@/lib/cosmetics';
 
 export default function LeaguesScreen() {
   const { t } = useTranslation();
@@ -192,6 +194,7 @@ export default function LeaguesScreen() {
               const rowPromo = canPromote && row.rank <= state.promoteZone;
               const rowReleg = showRelegation && row.rank > state.memberCount - state.relegateZone;
               const accent = rowPromo ? '#2ec87a' : rowReleg ? '#e83060' : null;
+              const cos = resolveCosmetics(row.cosmetics);
               return (
                 <View key={row.userId} style={{
                   flexDirection: 'row', alignItems: 'center', gap: 10,
@@ -204,9 +207,15 @@ export default function LeaguesScreen() {
                   <Text style={{ width: 24, textAlign: 'center', color: row.rank <= 3 ? div.color : 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_800ExtraBold', fontSize: 13 }}>
                     {row.rank <= 3 ? ['🥇', '🥈', '🥉'][row.rank - 1] : row.rank}
                   </Text>
-                  <Text style={{ flex: 1, color: isMe ? div.color : '#fff', fontFamily: isMe ? 'Outfit_700Bold' : 'Outfit_500Medium', fontSize: 14 }}>
-                    {row.username}{isMe ? t('ladder.you') : ''}
-                  </Text>
+                  <View style={{ flex: 1 }}>
+                    <UserName
+                      name={row.username}
+                      cosmetics={cos}
+                      suffix={isMe ? t('ladder.you') : ''}
+                      color={isMe ? div.color : '#fff'}
+                      fontFamily={isMe ? 'Outfit_700Bold' : 'Outfit_500Medium'}
+                    />
+                  </View>
                   {rowPromo && <Text style={{ fontSize: 11 }}>⬆️</Text>}
                   {rowReleg && <Text style={{ fontSize: 11 }}>⬇️</Text>}
                   <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>{row.xp} XP</Text>

@@ -11,6 +11,7 @@ export interface LeagueEntry {
   xp: number;
   level: number;
   rank: number;
+  cosmetics: Record<string, string> | null;
 }
 
 export type LeagueResult = 'promoted' | 'relegated' | 'stayed';
@@ -68,6 +69,7 @@ export async function fetchLeague(): Promise<LeagueState | null> {
       xp: e.xp ?? 0,
       level: e.level ?? 1,
       rank: e.rank,
+      cosmetics: e.cosmetics ?? null,
     })),
   };
 }

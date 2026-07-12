@@ -76,6 +76,8 @@ export default function ShopScreen() {
       return next;
     });
     await equipItem(item.itemId, !isEq);
+    // Recargar: equipar es exclusivo por slot (el servidor desequipa el resto).
+    load();
   };
 
   const handleWatchAd = async () => {

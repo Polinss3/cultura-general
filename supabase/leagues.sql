@@ -214,6 +214,7 @@ begin
              'username', p.username,
              'xp', coalesce(wx.xp, 0),
              'level', coalesce(p.level, 1),
+             'cosmetics', coalesce(p.cosmetics, '{}'::jsonb),
              'rank', row_number() over (order by coalesce(wx.xp, 0) desc, lm.user_id)
            ) as row
       from public.league_members lm

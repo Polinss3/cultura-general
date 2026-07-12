@@ -38,6 +38,7 @@ import {
   setEquippedTitle as setEquippedTitleStore,
 } from '@/lib/titles';
 import { StreakCalendar } from '@/components/StreakCalendar';
+import { UserName } from '@/components/UserName';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { feedback, isHapticsEnabled, setHapticsEnabled } from '@/lib/feedback';
 import { Category } from '@/types';
@@ -274,9 +275,13 @@ export default function ProfileScreen() {
               onPress={() => { setNewUsername(profile?.username ?? ''); setEditingUsername(true); }}
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
             >
-              <Text style={{ color: cosmetics.nameColor ?? '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>
-                {profile?.username ?? '…'}
-              </Text>
+              <UserName
+                name={profile?.username ?? '…'}
+                cosmetics={cosmetics}
+                color="#fff"
+                fontFamily="Outfit_700Bold"
+                fontSize={20}
+              />
               <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14 }}>✏️</Text>
             </Pressable>
           )}
