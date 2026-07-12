@@ -48,3 +48,44 @@ export function ladderDifficulty(floor: number): 'easy' | 'medium' | 'hard' {
 export function ladderTimeLimit(floor: number): number {
   return Math.max(8, 18 - Math.floor(floor / 3));
 }
+
+// ─── Zonas del Ascenso (pisos con nombre) ─────────────────────
+// Cada tramo de 5 pisos (= un checkpoint) es una "zona" temática con nombre,
+// emoji y color. El nombre user-facing vive en i18n (`ladder.zones.<id>`).
+export const LADDER_ZONE_SIZE = LADDER_CHECKPOINT_EVERY;
+
+const LADDER_ZONES = [
+  { id: 'cimientos',  emoji: '🏛️', color: '#c08040' },
+  { id: 'escalinata', emoji: '🪜', color: '#2ec87a' },
+  { id: 'alturas',    emoji: '⛰️', color: '#30a8e8' },
+  { id: 'nubes',      emoji: '☁️', color: '#9ab4d4' },
+  { id: 'firmamento', emoji: '🌌', color: '#a030e8' },
+  { id: 'estrellas',  emoji: '⭐', color: '#e8c030' },
+  { id: 'olimpo',     emoji: '👑', color: '#ffd700' },
+] as const;
+
+export interface LadderZone {
+  id: string;
+  emoji: string;
+  color: string;
+  index: number;      // 0-based
+  startFloor: number;
+  endFloor: number;
+  isLast: boolean;    // última zona definida (se repite hacia arriba)
+}
+
+export function ladderZone(floor: number): LadderZone {
+  const idx = Math.floor((Math.max(1, floor) - 1) / LADDER_ZONE_SIZE);
+  const clamped = Math.min(idx, LADDER_ZONES.length - 1);
+  const meta = LADDER_ZONES[clamped];
+  const startFloor = idx * LADDER_ZONE_SIZE + 1;
+  return {
+    id: meta.id,
+    emoji: meta.emoji,
+    color: meta.color,
+    index: idx,
+    startFloor,
+    endFloor: startFloor + LADDER_ZONE_SIZE - 1,
+    isLast: clamped === LADDER_ZONES.length - 1,
+  };
+}

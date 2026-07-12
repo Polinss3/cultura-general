@@ -23,7 +23,7 @@ import {
   getGuestLadderBest, setGuestLadderBest, getLocalLadderBest, setLocalLadderBest,
 } from '@/lib/guest';
 import {
-  LADDER_LIVES, LADDER_CHECKPOINT_EVERY, ladderFloorCoins, ladderDifficulty, ladderTimeLimit,
+  LADDER_LIVES, LADDER_CHECKPOINT_EVERY, ladderFloorCoins, ladderDifficulty, ladderTimeLimit, ladderZone,
 } from '@/lib/economy';
 import { getLocalQuestions } from '@/constants/questions';
 import { getCurrentLang } from '@/lib/i18n';
@@ -295,6 +295,22 @@ export default function LadderScreen() {
             <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold' }}>{t('ladder.introRetire')}</Text>
             {t('ladder.introC')}
           </Text>
+          {/* Viaje por las zonas */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 4, marginBottom: 20, maxWidth: 300 }}>
+            {[1, 6, 11, 16, 21, 26, 31].map((f, i, arr) => {
+              const z = ladderZone(f);
+              const reached = recordBest >= z.startFloor;
+              return (
+                <View key={z.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                  <Text style={{ fontSize: 18, opacity: reached ? 1 : 0.35 }}>{z.emoji}</Text>
+                  {i < arr.length - 1 && (
+                    <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 12 }}>→</Text>
+                  )}
+                </View>
+              );
+            })}
+          </View>
+
           <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center' }}>
             <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginBottom: 4 }}>
               {t('ladder.bestClimb')}
@@ -317,19 +333,39 @@ export default function LadderScreen() {
     );
   }
 
-  // ─ Checkpoint
+  // ─ Checkpoint (zona conquistada)
   if (phase === 'checkpoint') {
+    const conquered = ladderZone(floor);          // zona que se acaba de superar
+    const nextZone = ladderZone(floor + 1);       // zona que viene
+    const zoneChanges = nextZone.index !== conquered.index;
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+        <Confetti active />
         <View style={{ flex: 1, padding: 24, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 56, marginBottom: 10 }}>🛡️</Text>
-          <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_600SemiBold', fontSize: 14, letterSpacing: 1, textTransform: 'uppercase' }}>
+          <Text style={{ fontSize: 64, marginBottom: 10 }}>{conquered.emoji}</Text>
+          <Text style={{ color: conquered.color, fontFamily: 'Outfit_600SemiBold', fontSize: 13, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 2 }}>
             {t('ladder.checkpoint', { floor })}
           </Text>
-          <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 36, marginVertical: 6 }}>
-            {bote} 🪙
+          <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 24, textAlign: 'center', marginBottom: 10 }}>
+            {t('ladder.zoneConquered', { zone: t(`ladder.zones.${conquered.id}`) })}
           </Text>
-          <Text style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Outfit_400Regular', fontSize: 14, textAlign: 'center', lineHeight: 21, marginBottom: 32, maxWidth: 280 }}>
+          <View style={{ backgroundColor: 'rgba(232,160,48,0.12)', borderRadius: 99, paddingVertical: 6, paddingHorizontal: 16, marginBottom: 14 }}>
+            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 22 }}>
+              {bote} 🪙
+            </Text>
+          </View>
+          {zoneChanges && (
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 14 }}>
+              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_500Medium', fontSize: 13 }}>
+                {t('ladder.nextZoneLabel')}:
+              </Text>
+              <Text style={{ fontSize: 15 }}>{nextZone.emoji}</Text>
+              <Text style={{ color: nextZone.color, fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+                {t(`ladder.zones.${nextZone.id}`)}
+              </Text>
+            </View>
+          )}
+          <Text style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Outfit_400Regular', fontSize: 14, textAlign: 'center', lineHeight: 21, marginBottom: 28, maxWidth: 280 }}>
             {t('ladder.checkpointDesc')}
           </Text>
           <View style={{ flexDirection: 'row', gap: 12, width: '100%' }}>
@@ -398,7 +434,15 @@ export default function LadderScreen() {
             <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 28 }}>
               {t('profile.stats.floor', { n: runFloor })}
             </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 14, marginTop: 2 }}>
+            {runFloor > 0 && (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6 }}>
+                <Text style={{ fontSize: 15 }}>{ladderZone(runFloor).emoji}</Text>
+                <Text style={{ color: ladderZone(runFloor).color, fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+                  {t('ladder.zoneReached', { zone: t(`ladder.zones.${ladderZone(runFloor).id}`) })}
+                </Text>
+              </View>
+            )}
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 14, marginTop: 4 }}>
               {newBest ? t('ladder.newBest') : t('ladder.yourRecord', { n: recordBest })}
             </Text>
             {award && (award.gainedXp > 0 || award.gainedCoins > 0) && (
@@ -468,6 +512,14 @@ export default function LadderScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <View style={{ flex: 1, padding: 20 }}>
+        {/* Zona actual */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 10 }}>
+          <Text style={{ fontSize: 14 }}>{ladderZone(floor).emoji}</Text>
+          <Text style={{ color: ladderZone(floor).color, fontFamily: 'Outfit_700Bold', fontSize: 13, letterSpacing: 0.5 }}>
+            {t(`ladder.zones.${ladderZone(floor).id}`)}
+          </Text>
+        </View>
+
         {/* Header: piso, vidas, bote */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
           <View>

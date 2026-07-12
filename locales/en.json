@@ -209,7 +209,20 @@
     "hint": "💡 Hint",
     "checkpointHint": "🛡️ Get this floor right to reach a checkpoint",
     "pwHint": "Hint",
-    "pwSkip": "Skip"
+    "pwSkip": "Skip",
+    "zones": {
+      "cimientos": "The Foundations",
+      "escalinata": "The Stairway",
+      "alturas": "The Heights",
+      "nubes": "The Clouds",
+      "firmamento": "The Firmament",
+      "estrellas": "The Stars",
+      "olimpo": "Olympus"
+    },
+    "zoneConquered": "{{zone}} conquered!",
+    "nextZoneLabel": "Next zone",
+    "zoneReached": "You reached {{zone}}",
+    "zoneFloor": "{{zone}}"
   },
   "speed": {
     "title": "Time Attack",

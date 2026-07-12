@@ -209,7 +209,20 @@
     "hint": "💡 Pista",
     "checkpointHint": "🛡️ Acierta este piso para llegar a un checkpoint",
     "pwHint": "Pista",
-    "pwSkip": "Saltar"
+    "pwSkip": "Saltar",
+    "zones": {
+      "cimientos": "Los Cimientos",
+      "escalinata": "La Escalinata",
+      "alturas": "Las Alturas",
+      "nubes": "Las Nubes",
+      "firmamento": "El Firmamento",
+      "estrellas": "Las Estrellas",
+      "olimpo": "El Olimpo"
+    },
+    "zoneConquered": "¡{{zone}} conquistada!",
+    "nextZoneLabel": "Siguiente zona",
+    "zoneReached": "Llegaste a {{zone}}",
+    "zoneFloor": "{{zone}}"
   },
   "speed": {
     "title": "Contrarreloj",
