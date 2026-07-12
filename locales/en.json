@@ -344,7 +344,9 @@
       "claimReward": "Claim your reward · +{{coins}} 🪙 +{{xp}} XP",
       "rewardDone": "✓ Daily route complete",
       "rewardFailed": "Couldn't claim. Please try again.",
-      "completedCollapsed": "You've completed today's route"
+      "completedCollapsed": "You've completed today's route",
+      "missionsPending_one": "{{count}} daily mission left",
+      "missionsPending_other": "{{count}} daily missions left"
     },
     "lockedToast": "Offline — available when your data is back",
     "guestCtaTitle": "Create free account",

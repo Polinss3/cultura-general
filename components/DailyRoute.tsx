@@ -144,22 +144,44 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
 
   // Estado colapsado: ruta completada y nada por reclamar → barra compacta.
   if (!expanded) {
+    // Aún puede quedar alguna misión diaria por terminar (no reclamable todavía).
+    const missionsPending = missions.length > 0 && missionsDone < missions.length;
+    const pendingCount = missions.length - missionsDone;
     return (
-      <Pressable onPress={() => setUserExpanded(true)} style={{ marginTop: 16 }}>
-        <View style={{
-          borderRadius: 16, paddingVertical: 14, paddingHorizontal: 16,
-          flexDirection: 'row', alignItems: 'center', gap: 12,
-          backgroundColor: 'rgba(46,200,122,0.1)', borderWidth: 1, borderColor: 'rgba(46,200,122,0.3)',
-        }}>
-          <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#2ec87a', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#000', fontFamily: 'Outfit_800ExtraBold', fontSize: 14 }}>✓</Text>
+      <View style={{
+        marginTop: 16, borderRadius: 16, overflow: 'hidden',
+        backgroundColor: 'rgba(46,200,122,0.1)', borderWidth: 1, borderColor: 'rgba(46,200,122,0.3)',
+      }}>
+        {/* Ruta completada → desplegar */}
+        <Pressable onPress={() => setUserExpanded(true)}>
+          <View style={{ paddingVertical: 14, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#2ec87a', alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ color: '#000', fontFamily: 'Outfit_800ExtraBold', fontSize: 14 }}>✓</Text>
+            </View>
+            <Text style={{ flex: 1, color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+              {t('home.route.completedCollapsed')}
+            </Text>
+            <Chevron dir="down" color="rgba(46,200,122,0.9)" />
           </View>
-          <Text style={{ flex: 1, color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
-            {t('home.route.completedCollapsed')}
-          </Text>
-          <Chevron dir="down" color="rgba(46,200,122,0.9)" />
-        </View>
-      </Pressable>
+        </Pressable>
+
+        {/* Misiones diarias aún pendientes → a Arena (como la fila abierta) */}
+        {missionsPending && (
+          <Pressable onPress={() => router.push('/(tabs)/arena')}>
+            <View style={{
+              borderTopWidth: 1, borderTopColor: 'rgba(46,200,122,0.15)',
+              backgroundColor: 'rgba(232,160,48,0.06)',
+              paddingVertical: 11, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 10,
+            }}>
+              <Text style={{ fontSize: 15 }}>🎯</Text>
+              <Text style={{ flex: 1, color: 'rgba(255,255,255,0.75)', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>
+                {t('home.route.missionsPending', { count: pendingCount })}
+              </Text>
+              <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 16 }}>›</Text>
+            </View>
+          </Pressable>
+        )}
+      </View>
     );
   }
 

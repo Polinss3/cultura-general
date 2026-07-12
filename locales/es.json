@@ -344,7 +344,9 @@
       "claimReward": "Reclama tu recompensa · +{{coins}} 🪙 +{{xp}} XP",
       "rewardDone": "✓ Ruta diaria completada",
       "rewardFailed": "No se pudo reclamar. Inténtalo de nuevo.",
-      "completedCollapsed": "Has completado la ruta de hoy"
+      "completedCollapsed": "Has completado la ruta de hoy",
+      "missionsPending_one": "Te queda {{count}} misión diaria",
+      "missionsPending_other": "Te quedan {{count}} misiones diarias"
     },
     "lockedToast": "Sin conexión — disponible cuando recuperes los datos",
     "guestCtaTitle": "Crea cuenta gratis",
