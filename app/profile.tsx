@@ -38,6 +38,7 @@ import {
   setEquippedTitle as setEquippedTitleStore,
 } from '@/lib/titles';
 import { StreakCalendar } from '@/components/StreakCalendar';
+import { useCosmetics } from '@/hooks/useCosmetics';
 import { feedback, isHapticsEnabled, setHapticsEnabled } from '@/lib/feedback';
 import { Category } from '@/types';
 
@@ -47,6 +48,7 @@ export default function ProfileScreen() {
   const { user } = useAuth();
   const { profile, refresh } = useProfile();
   const { celebrate } = useProgress();
+  const cosmetics = useCosmetics(!!user, user?.id);
 
   const [claimed, setClaimed] = useState<Set<string>>(new Set());
   const [claiming, setClaiming] = useState<string | null>(null);
@@ -231,13 +233,17 @@ export default function ProfileScreen() {
 
         {/* Avatar + username */}
         <View style={{ alignItems: 'center', marginBottom: 28 }}>
-          <LinearGradient
-            colors={['#e8a030', '#e83060']}
-            start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-            style={{ width: 80, height: 80, borderRadius: 24, alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}
-          >
-            <Text style={{ color: '#fff', fontSize: 32, fontFamily: 'Outfit_700Bold' }}>{initial}</Text>
-          </LinearGradient>
+          <View style={cosmetics.frameColor
+            ? { borderWidth: 3, borderColor: cosmetics.frameColor, borderRadius: 28, padding: 3, marginBottom: 12 }
+            : { marginBottom: 12 }}>
+            <LinearGradient
+              colors={['#e8a030', '#e83060']}
+              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+              style={{ width: 80, height: 80, borderRadius: 24, alignItems: 'center', justifyContent: 'center' }}
+            >
+              <Text style={{ color: '#fff', fontSize: 32, fontFamily: 'Outfit_700Bold' }}>{initial}</Text>
+            </LinearGradient>
+          </View>
 
           {editingUsername ? (
             <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
@@ -268,7 +274,7 @@ export default function ProfileScreen() {
               onPress={() => { setNewUsername(profile?.username ?? ''); setEditingUsername(true); }}
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
             >
-              <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>
+              <Text style={{ color: cosmetics.nameColor ?? '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>
                 {profile?.username ?? '…'}
               </Text>
               <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14 }}>✏️</Text>

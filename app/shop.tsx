@@ -16,9 +16,9 @@ import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { showRewardedAd, isRewardedReady } from '@/lib/admob';
 
-// Los cosméticos (marcos, color de nombre, temas) todavía no tienen
-// efecto visual en el resto de la app — ocultos hasta que lo tengan.
-const COSMETICS_ENABLED = false;
+// Marcos de avatar y color de nombre ya se muestran en tu home y perfil.
+// (theme_emerald está desactivado en BD hasta que tenga efecto.)
+const COSMETICS_ENABLED = true;
 
 export default function ShopScreen() {
   const { t } = useTranslation();

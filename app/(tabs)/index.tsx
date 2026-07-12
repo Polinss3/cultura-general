@@ -19,6 +19,7 @@ import { CoinPill } from '@/components/CoinPill';
 import { DailyRoute } from '@/components/DailyRoute';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
 import { LeagueBadge } from '@/components/LeagueBadge';
+import { useCosmetics } from '@/hooks/useCosmetics';
 import { rankForLevel } from '@/lib/leveling';
 import { getLocaleTag } from '@/lib/i18n';
 import { useEffect, useState } from 'react';
@@ -32,6 +33,7 @@ export default function HomeScreen() {
   const offline = useOffline();
   const { showToast } = useToast();
   const { celebrate } = useProgress();
+  const cosmetics = useCosmetics(!guest && !!user, user?.id);
   const [guestSpeedRecord, setGuestSpeedRecordState] = useState(0);
   // "Jugadores hoy": arranca con un valor de respaldo creíble (10–25, estable
   // por día) y se sustituye por el número real si supera las 20 personas.
@@ -92,7 +94,7 @@ export default function HomeScreen() {
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, fontFamily: 'Outfit_500Medium', textTransform: 'capitalize' }}>
                 {today}
               </Text>
-              <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_700Bold', marginTop: 2 }}>
+              <Text style={{ color: cosmetics.nameColor ?? '#fff', fontSize: 22, fontFamily: 'Outfit_700Bold', marginTop: 2 }}>
                 {t('home.greeting', { name: displayName })}
               </Text>
               {!guest && profile && (
@@ -110,13 +112,15 @@ export default function HomeScreen() {
                   <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>?</Text>
                 </View>
               ) : (
-                <LinearGradient
-                  colors={['#e8a030', '#e83060']}
-                  start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                  style={{ width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' }}
-                >
-                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{initial}</Text>
-                </LinearGradient>
+                <View style={cosmetics.frameColor ? { borderWidth: 2, borderColor: cosmetics.frameColor, borderRadius: 16, padding: 2 } : undefined}>
+                  <LinearGradient
+                    colors={['#e8a030', '#e83060']}
+                    start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+                    style={{ width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{initial}</Text>
+                  </LinearGradient>
+                </View>
               )}
             </Pressable>
           </View>
