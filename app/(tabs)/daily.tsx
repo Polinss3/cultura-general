@@ -350,7 +350,12 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
           </View>
 
           {/* Tab switcher */}
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 16 }}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={{ marginBottom: 16 }}
+            contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+          >
             <View style={{ flexDirection: 'row', backgroundColor: '#151515', borderRadius: 12, padding: 4, gap: 2 }}>
               {getRankingTabs(t).map(({ key, label }) => (
                 <Pressable
