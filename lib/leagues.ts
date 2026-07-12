@@ -13,13 +13,18 @@ export interface LeagueEntry {
   rank: number;
 }
 
+export type LeagueResult = 'promoted' | 'relegated' | 'stayed';
+
 export interface LeagueState {
   division: number;                 // 0=Bronce..3=Diamante
   weekStart: string;                // 'YYYY-MM-DD' (lunes ISO)
   myXp: number;
   myRank: number | null;
-  promoteThreshold: number | null;  // null si ya está en la división máxima
-  relegateThreshold: number | null; // null si no puede descender (Bronce)
+  memberCount: number;              // jugadores en tu división esta semana
+  promoteZone: number;              // nº de puestos que ascienden (top N)
+  relegateZone: number;             // nº de puestos que descienden (bottom N)
+  lastResult: LeagueResult | null;  // resultado de la semana pasada (para banner)
+  lastReward: number;               // monedas ganadas por el puesto de la semana pasada
   leaderboard: LeagueEntry[];
 }
 
@@ -29,6 +34,8 @@ export const DIVISIONS = [
   { id: 'oro',      emoji: '🥇', color: '#e8c030' },
   { id: 'diamante', emoji: '💎', color: '#30c8e8' },
 ] as const;
+
+export const TOP_DIVISION = DIVISIONS.length - 1; // Diamante
 
 export function divisionMeta(division: number) {
   return DIVISIONS[Math.max(0, Math.min(division, DIVISIONS.length - 1))];
@@ -50,8 +57,11 @@ export async function fetchLeague(): Promise<LeagueState | null> {
     weekStart: data.week_start,
     myXp: data.my_xp ?? 0,
     myRank: data.my_rank ?? null,
-    promoteThreshold: data.promote_threshold ?? null,
-    relegateThreshold: data.relegate_threshold ?? null,
+    memberCount: data.member_count ?? 0,
+    promoteZone: data.promote_zone ?? 5,
+    relegateZone: data.relegate_zone ?? 5,
+    lastResult: (data.last_result as LeagueResult) ?? null,
+    lastReward: data.last_reward ?? 0,
     leaderboard: (data.leaderboard ?? []).map((e: any) => ({
       userId: e.user_id,
       username: e.username ?? i18n.t('common.anonymous'),

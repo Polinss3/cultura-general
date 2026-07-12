@@ -18,6 +18,7 @@ import { XpBar } from '@/components/XpBar';
 import { CoinPill } from '@/components/CoinPill';
 import { DailyRoute } from '@/components/DailyRoute';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
+import { LeagueBadge } from '@/components/LeagueBadge';
 import { rankForLevel } from '@/lib/leveling';
 import { getLocaleTag } from '@/lib/i18n';
 import { useEffect, useState } from 'react';
@@ -94,6 +95,11 @@ export default function HomeScreen() {
               <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_700Bold', marginTop: 2 }}>
                 {t('home.greeting', { name: displayName })}
               </Text>
+              {!guest && profile && (
+                <Pressable onPress={() => offline ? lockedTap() : router.push('/leagues' as any)} style={{ marginTop: 8, alignSelf: 'flex-start' }}>
+                  <LeagueBadge division={profile.league_division ?? 0} variant="chip" />
+                </Pressable>
+              )}
             </View>
             <Pressable onPress={() => guest ? goToAuth() : offline ? lockedTap() : router.push('/profile')}>
               {guest ? (

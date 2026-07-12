@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View, Text, Pressable, ActivityIndicator } from 'react-native';
+import { ScrollView, View, Text, Pressable, ActivityIndicator, Modal } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,7 +9,7 @@ import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setGuestMode } from '@/lib/guest';
 import {
-  fetchLeague, divisionMeta, daysUntilReset, LeagueState,
+  fetchLeague, divisionMeta, daysUntilReset, TOP_DIVISION, LeagueState,
 } from '@/lib/leagues';
 
 export default function LeaguesScreen() {
@@ -21,6 +21,7 @@ export default function LeaguesScreen() {
 
   // undefined = cargando; null = no disponible (RPC sin aplicar/offline); objeto = ok.
   const [state, setState] = useState<LeagueState | null | undefined>(undefined);
+  const [showInfo, setShowInfo] = useState(false);
 
   const load = useCallback(() => {
     if (guest || offline || !user) { setState(null); return; }
@@ -40,11 +41,14 @@ export default function LeaguesScreen() {
       <Pressable onPress={() => router.back()} style={{ padding: 4, marginRight: 12 }}>
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
       </Pressable>
-      <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>{t('leagues.title')}</Text>
+      <Text style={{ flex: 1, color: '#fff', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>{t('leagues.title')}</Text>
+      <Pressable onPress={() => setShowInfo(true)} style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: '#1a1a1a', alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Outfit_800ExtraBold', fontSize: 15 }}>?</Text>
+      </Pressable>
     </View>
   );
 
-  // Invitado / sin conexión: CTA de cuenta.
+  // ── Invitado / sin conexión
   if (guest || offline) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -97,15 +101,35 @@ export default function LeaguesScreen() {
   const div = divisionMeta(state.division);
   const nextDiv = divisionMeta(state.division + 1);
   const days = daysUntilReset(state.weekStart);
-  const promoteRemaining = state.promoteThreshold != null ? Math.max(0, state.promoteThreshold - state.myXp) : null;
-  const promotePct = state.promoteThreshold != null && state.promoteThreshold > 0
-    ? Math.min(1, state.myXp / state.promoteThreshold) : 1;
-  const relegationRisk = state.relegateThreshold != null && state.myXp < state.relegateThreshold;
+
+  const canPromote = state.division < TOP_DIVISION;
+  const canRelegate = state.division > 0;
+  // Solo marcamos zona de descenso si el grupo es lo bastante grande para que
+  // ascenso y descenso no se solapen (con escasez, solo se ve el ascenso).
+  const showRelegation = canRelegate && state.memberCount > state.promoteZone + state.relegateZone;
+
+  const inPromo = canPromote && state.myRank != null && state.myRank <= state.promoteZone;
+  const inRelegation = showRelegation && state.myRank != null && state.myRank > state.memberCount - state.relegateZone;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       {Header}
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 32 }} showsVerticalScrollIndicator={false}>
+
+        {/* Resultado de la semana pasada */}
+        {state.lastResult && (
+          <View style={{
+            borderRadius: 14, padding: 14, marginBottom: 14, flexDirection: 'row', alignItems: 'center', gap: 12,
+            backgroundColor: state.lastResult === 'promoted' ? 'rgba(46,200,122,0.1)' : state.lastResult === 'relegated' ? 'rgba(232,48,96,0.1)' : 'rgba(255,255,255,0.05)',
+            borderWidth: 1,
+            borderColor: state.lastResult === 'promoted' ? 'rgba(46,200,122,0.35)' : state.lastResult === 'relegated' ? 'rgba(232,48,96,0.35)' : 'rgba(255,255,255,0.1)',
+          }}>
+            <Text style={{ fontSize: 24 }}>{state.lastResult === 'promoted' ? '⬆️' : state.lastResult === 'relegated' ? '⬇️' : '🎁'}</Text>
+            <Text style={{ flex: 1, color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13, lineHeight: 19 }}>
+              {t(`leagues.result.${state.lastResult}`, { coins: state.lastReward })}
+            </Text>
+          </View>
+        )}
 
         {/* División actual */}
         <View style={{ borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: div.color + '55', marginBottom: 14 }}>
@@ -115,14 +139,14 @@ export default function LeaguesScreen() {
               {t(`leagues.divisions.${div.id}`)}
             </Text>
             <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 12, marginTop: 2 }}>
-              {t('leagues.endsIn', { count: days })}
+              {t('leagues.endsIn', { count: days })} · {t('leagues.members', { count: state.memberCount })}
             </Text>
           </LinearGradient>
         </View>
 
-        {/* Mi posición + progreso de ascenso */}
+        {/* Mi posición */}
         <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 16, marginBottom: 14 }}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
             <View>
               <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>{t('leagues.yourPosition')}</Text>
               <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 22 }}>
@@ -134,32 +158,26 @@ export default function LeaguesScreen() {
               <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_800ExtraBold', fontSize: 18 }}>{state.myXp} XP</Text>
             </View>
           </View>
-
-          {state.promoteThreshold != null ? (
-            <>
-              <View style={{ height: 8, backgroundColor: '#2a2a2a', borderRadius: 99, overflow: 'hidden', marginBottom: 8 }}>
-                <View style={{ height: '100%', width: `${promotePct * 100}%`, backgroundColor: nextDiv.color, borderRadius: 99 }} />
-              </View>
-              <Text style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Outfit_500Medium', fontSize: 13 }}>
-                {promoteRemaining && promoteRemaining > 0
-                  ? t('leagues.toPromote', { xp: promoteRemaining, division: t(`leagues.divisions.${nextDiv.id}`) })
-                  : t('leagues.willPromote', { division: t(`leagues.divisions.${nextDiv.id}`) })}
-              </Text>
-            </>
-          ) : (
-            <Text style={{ color: div.color, fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
-              {t('leagues.topDivision')}
+          {inPromo ? (
+            <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+              ⬆️ {t('leagues.inPromo', { division: t(`leagues.divisions.${nextDiv.id}`) })}
             </Text>
-          )}
-
-          {relegationRisk && (
-            <Text style={{ color: '#e83060', fontFamily: 'Outfit_600SemiBold', fontSize: 13, marginTop: 8 }}>
-              {t('leagues.relegationWarning', { xp: state.relegateThreshold })}
+          ) : inRelegation ? (
+            <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+              ⬇️ {t('leagues.inRelegation')}
+            </Text>
+          ) : canPromote ? (
+            <Text style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Outfit_500Medium', fontSize: 13 }}>
+              {t('leagues.safeHint', { n: state.promoteZone })}
+            </Text>
+          ) : (
+            <Text style={{ color: div.color, fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+              {t('leagues.topDivisionShort')}
             </Text>
           )}
         </View>
 
-        {/* Ranking de la división */}
+        {/* Clasificación */}
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
           {t('leagues.leaderboard')}
         </Text>
@@ -171,19 +189,26 @@ export default function LeaguesScreen() {
           <View style={{ gap: 8 }}>
             {state.leaderboard.map(row => {
               const isMe = row.userId === user?.id;
+              const rowPromo = canPromote && row.rank <= state.promoteZone;
+              const rowReleg = showRelegation && row.rank > state.memberCount - state.relegateZone;
+              const accent = rowPromo ? '#2ec87a' : rowReleg ? '#e83060' : null;
               return (
                 <View key={row.userId} style={{
-                  flexDirection: 'row', alignItems: 'center', gap: 12,
+                  flexDirection: 'row', alignItems: 'center', gap: 10,
                   backgroundColor: isMe ? div.color + '1a' : '#151515',
                   borderRadius: 12, padding: 11,
                   borderWidth: 1, borderColor: isMe ? div.color + '66' : 'transparent',
+                  borderLeftWidth: accent ? 3 : 1,
+                  borderLeftColor: accent ?? (isMe ? div.color + '66' : 'transparent'),
                 }}>
-                  <Text style={{ width: 26, textAlign: 'center', color: row.rank <= 3 ? div.color : 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_800ExtraBold', fontSize: 13 }}>
+                  <Text style={{ width: 24, textAlign: 'center', color: row.rank <= 3 ? div.color : 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_800ExtraBold', fontSize: 13 }}>
                     {row.rank <= 3 ? ['🥇', '🥈', '🥉'][row.rank - 1] : row.rank}
                   </Text>
                   <Text style={{ flex: 1, color: isMe ? div.color : '#fff', fontFamily: isMe ? 'Outfit_700Bold' : 'Outfit_500Medium', fontSize: 14 }}>
                     {row.username}{isMe ? t('ladder.you') : ''}
                   </Text>
+                  {rowPromo && <Text style={{ fontSize: 11 }}>⬆️</Text>}
+                  {rowReleg && <Text style={{ fontSize: 11 }}>⬇️</Text>}
                   <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>{row.xp} XP</Text>
                 </View>
               );
@@ -191,6 +216,52 @@ export default function LeaguesScreen() {
           </View>
         )}
       </ScrollView>
+
+      {/* Sheet: cómo funcionan las ligas */}
+      <Modal visible={showInfo} transparent animationType="slide" onRequestClose={() => setShowInfo(false)}>
+        <Pressable onPress={() => setShowInfo(false)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.6)', justifyContent: 'flex-end' }}>
+          <Pressable onPress={() => {}} style={{ backgroundColor: '#141416', borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 36 }}>
+            <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.2)', alignSelf: 'center', marginBottom: 18 }} />
+            <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 20, marginBottom: 16 }}>
+              {t('leagues.how.title')}
+            </Text>
+
+            {/* Divisiones */}
+            <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, marginBottom: 18 }}>
+              {[0, 1, 2, 3].map(d => {
+                const m = divisionMeta(d);
+                return (
+                  <View key={d} style={{ alignItems: 'center', gap: 3 }}>
+                    <Text style={{ fontSize: 26 }}>{m.emoji}</Text>
+                    <Text style={{ color: m.color, fontFamily: 'Outfit_600SemiBold', fontSize: 10 }}>{t(`leagues.divisions.${m.id}`)}</Text>
+                  </View>
+                );
+              })}
+            </View>
+
+            {[
+              { icon: '🎮', text: t('leagues.how.compete') },
+              { icon: '⬆️', text: t('leagues.how.promote', { n: state.promoteZone }) },
+              { icon: '⬇️', text: t('leagues.how.relegate', { n: state.relegateZone }) },
+              { icon: '🪙', text: t('leagues.how.rewards') },
+              { icon: '🏅', text: t('leagues.how.badge') },
+            ].map((item, i) => (
+              <View key={i} style={{ flexDirection: 'row', gap: 12, marginBottom: 12, alignItems: 'flex-start' }}>
+                <Text style={{ fontSize: 18 }}>{item.icon}</Text>
+                <Text style={{ flex: 1, color: 'rgba(255,255,255,0.7)', fontFamily: 'Outfit_400Regular', fontSize: 14, lineHeight: 21 }}>
+                  {item.text}
+                </Text>
+              </View>
+            ))}
+
+            <Pressable onPress={() => setShowInfo(false)} style={{ marginTop: 12 }}>
+              <LinearGradient colors={['#e8a030', '#e83060']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 14, padding: 15, alignItems: 'center' }}>
+                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{t('leagues.how.close')}</Text>
+              </LinearGradient>
+            </Pressable>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </SafeAreaView>
   );
 }

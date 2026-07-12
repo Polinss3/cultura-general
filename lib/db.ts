@@ -282,6 +282,7 @@ export type RankRow = {
   streak: number;
   isCorrect: boolean;
   timeMs: number | null;
+  division: number;
 };
 
 export async function fetchDailyRanking(): Promise<RankRow[]> {
@@ -296,7 +297,7 @@ export async function fetchDailyRanking(): Promise<RankRow[]> {
   const userIds = rows.map(r => r.user_id);
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, username, streak')
+    .select('id, username, streak, league_division')
     .in('id', userIds);
 
   const profileMap = new Map(
@@ -313,6 +314,7 @@ export async function fetchDailyRanking(): Promise<RankRow[]> {
         streak: p?.streak ?? 0,
         isCorrect: r.is_correct ?? r.score > 0,
         timeMs: r.time_ms ?? null,
+        division: p?.league_division ?? 0,
       };
     })
     .sort((a, b) => {
@@ -336,12 +338,12 @@ export async function fetchWeeklyRanking(): Promise<WeeklyRow[]> {
   }));
 }
 
-export type GlobalRow = { userId: string; username: string; totalCorrect: number; streak: number; speedRecord: number };
+export type GlobalRow = { userId: string; username: string; totalCorrect: number; streak: number; speedRecord: number; division: number };
 
 export async function fetchAllTimeRanking(): Promise<GlobalRow[]> {
   const { data } = await supabase
     .from('profiles')
-    .select('id, username, total_correct, streak, speed_record')
+    .select('id, username, total_correct, streak, speed_record, league_division')
     .order('total_correct', { ascending: false })
     .limit(50);
 
@@ -351,6 +353,7 @@ export async function fetchAllTimeRanking(): Promise<GlobalRow[]> {
     totalCorrect: r.total_correct ?? 0,
     streak: r.streak ?? 0,
     speedRecord: r.speed_record ?? 0,
+    division: (r as any).league_division ?? 0,
   }));
 }
 
@@ -382,7 +385,7 @@ export async function fetchFriendDailyRanking(userId: string): Promise<RankRow[]
 
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, username, streak')
+    .select('id, username, streak, league_division')
     .in('id', allIds);
 
   const profileMap = new Map(
@@ -399,6 +402,7 @@ export async function fetchFriendDailyRanking(userId: string): Promise<RankRow[]
         streak: p?.streak ?? 0,
         isCorrect: r.is_correct ?? r.score > 0,
         timeMs: r.time_ms ?? null,
+        division: p?.league_division ?? 0,
       };
     })
     .sort((a, b) => {

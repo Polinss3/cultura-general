@@ -3,7 +3,9 @@ import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 import { OptionBtn } from '@/components/OptionBtn';
+import { LeagueBadge } from '@/components/LeagueBadge';
 import { Confetti } from '@/components/Confetti';
 import { GuestGate } from '@/components/GuestGate';
 import { OfflineNotice } from '@/components/OfflineNotice';
@@ -18,26 +20,24 @@ import {
   checkDailyAnswered,
   saveDailyAnswer,
   fetchDailyRanking,
-  fetchWeeklyRanking,
   fetchAllTimeRanking,
   fetchFriendDailyRanking,
   reportQuestion,
   RankRow,
-  WeeklyRow,
   GlobalRow,
 } from '@/lib/db';
 import { shuffleQuestionSeeded, ShuffledQuestion } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
 
 type Phase = 'loading' | 'question' | 'ranking';
-type RankingTab = 'daily' | 'weekly' | 'global' | 'friends';
+type RankingTab = 'daily' | 'league' | 'global' | 'friends';
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const MEDALS = ['🥇', '🥈', '🥉'];
 
 const getRankingTabs = (t: TFunction): { key: RankingTab; label: string }[] => [
   { key: 'daily',   label: t('daily.tabToday') },
-  { key: 'weekly',  label: t('daily.tabWeek') },
+  { key: 'league',  label: t('daily.tabLeague') },
   { key: 'global',  label: t('daily.tabGlobal') },
   { key: 'friends', label: t('daily.tabFriends') },
 ];
@@ -52,7 +52,7 @@ function timeUntilMidnight(): string {
 }
 
 function RankRowView({
-  position, name, sub, value, isMe, badge,
+  position, name, sub, value, isMe, badge, leagueDivision,
 }: {
   position: number;
   name: string;
@@ -60,6 +60,7 @@ function RankRowView({
   value: string;
   isMe: boolean;
   badge?: { text: string; color: string; bg: string };
+  leagueDivision?: number;
 }) {
   const { t } = useTranslation();
   return (
@@ -88,6 +89,11 @@ function RankRowView({
         </Text>
         <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>{sub}</Text>
       </View>
+      {leagueDivision != null && (
+        <View style={{ marginRight: 4 }}>
+          <LeagueBadge division={leagueDivision} variant="mini" />
+        </View>
+      )}
       {badge && (
         <View style={{
           paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8,
@@ -143,6 +149,7 @@ export default function DailyScreen() {
 
 function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const { t, i18n } = useTranslation();
+  const router = useRouter();
   const { celebrate } = useProgress();
   const [phase, setPhase] = useState<Phase>('loading');
   const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
@@ -153,7 +160,6 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
   const [rankingTab, setRankingTab] = useState<RankingTab>('daily');
   const [dailyRanking, setDailyRanking] = useState<RankRow[]>([]);
-  const [weeklyRanking, setWeeklyRanking] = useState<WeeklyRow[]>([]);
   const [globalRanking, setGlobalRanking] = useState<GlobalRow[]>([]);
   const [friendRanking, setFriendRanking] = useState<RankRow[]>([]);
   const loadedTabs = useRef(new Set<RankingTab>());
@@ -170,9 +176,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     if (phase !== 'ranking' || !user || loadedTabs.current.has(rankingTab)) return;
     loadedTabs.current.add(rankingTab);
 
-    if (rankingTab === 'weekly') {
-      fetchWeeklyRanking().then(setWeeklyRanking);
-    } else if (rankingTab === 'global') {
+    if (rankingTab === 'global') {
       fetchAllTimeRanking().then(setGlobalRanking);
     } else if (rankingTab === 'friends') {
       fetchFriendDailyRanking(user.id).then(setFriendRanking);
@@ -291,10 +295,6 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
   // ─ Ranking
   if (phase === 'ranking') {
-    const isLoading = (tab: RankingTab) =>
-      !loadedTabs.current.has(tab) ||
-      (tab === 'weekly' && weeklyRanking.length === 0 && loadedTabs.current.has('weekly') ? false : false);
-
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
         <Confetti active={showConfetti} />
@@ -325,7 +325,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               {getRankingTabs(t).map(({ key, label }) => (
                 <Pressable
                   key={key}
-                  onPress={() => setRankingTab(key)}
+                  onPress={() => key === 'league' ? router.push('/leagues' as any) : setRankingTab(key)}
                   style={{
                     paddingVertical: 8, paddingHorizontal: 14, borderRadius: 9,
                     backgroundColor: rankingTab === key ? '#e8a030' : 'transparent',
@@ -352,25 +352,13 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                 sub: `🔥 ${t('common.days', { count: p.streak })}`,
                 value: formatTime(p.timeMs),
                 isMe: p.userId === user?.id,
+                leagueDivision: p.division,
                 badge: p.isCorrect
                   ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
                   : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
               }))}
               emptyText={t('daily.emptyDaily')}
             />
-          )}
-
-          {/* Weekly */}
-          {rankingTab === 'weekly' && (
-            weeklyRanking.length === 0 && loadedTabs.current.has('weekly') ?
-              <ActivityIndicator color="#e8a030" style={{ marginTop: 20 }} /> :
-              <RankingList
-                items={weeklyRanking.map((p, i) => ({
-                  position: i, name: p.username, sub: `🔥 ${t('common.days', { count: p.streak })}`,
-                  value: t('daily.weekPts', { score: p.weekScore }), isMe: p.userId === user?.id,
-                }))}
-                emptyText={t('daily.emptyWeekly')}
-              />
           )}
 
           {/* Global */}
@@ -381,6 +369,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                 items={globalRanking.map((p, i) => ({
                   position: i, name: p.username, sub: t('daily.globalSub', { streak: p.streak, speed: p.speedRecord }),
                   value: t('daily.globalCorrect', { count: p.totalCorrect }), isMe: p.userId === user?.id,
+                  leagueDivision: p.division,
                 }))}
                 emptyText={t('daily.emptyGlobal')}
               />
@@ -402,6 +391,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                   sub: `🔥 ${t('common.days', { count: p.streak })}`,
                   value: formatTime(p.timeMs),
                   isMe: p.userId === user?.id,
+                  leagueDivision: p.division,
                   badge: p.isCorrect
                     ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
                     : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
@@ -490,6 +480,7 @@ type RankItem = {
   value: string;
   isMe: boolean;
   badge?: { text: string; color: string; bg: string };
+  leagueDivision?: number;
 };
 
 function RankingList({ items, emptyText }: {

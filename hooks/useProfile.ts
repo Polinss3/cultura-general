@@ -16,6 +16,7 @@ export interface Profile {
   coins: number;
   ladder_best: number;
   last_chest_at: string | null;
+  league_division: number;
 }
 
 export function useProfile() {
