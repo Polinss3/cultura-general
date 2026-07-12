@@ -5,7 +5,9 @@ import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share } fr
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { OptionBtn } from '@/components/OptionBtn';
+import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { LeagueBadge } from '@/components/LeagueBadge';
+import { usePowerups } from '@/hooks/usePowerups';
 import { Confetti } from '@/components/Confetti';
 import { GuestGate } from '@/components/GuestGate';
 import { OfflineNotice } from '@/components/OfflineNotice';
@@ -26,7 +28,7 @@ import {
   RankRow,
   GlobalRow,
 } from '@/lib/db';
-import { shuffleQuestionSeeded, ShuffledQuestion } from '@/lib/utils';
+import { shuffleQuestionSeeded, pickRandomFresh, ShuffledQuestion } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
 
 type Phase = 'loading' | 'question' | 'ranking';
@@ -158,6 +160,11 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const reported = useRef(false);
 
+  // Power-ups usables antes de responder (50/50 y pista).
+  const { inventory, consume } = usePowerups(!!user, user?.id);
+  const [fiftyHidden, setFiftyHidden] = useState<number[]>([]);
+  const [hintShown, setHintShown] = useState(false);
+
   const [rankingTab, setRankingTab] = useState<RankingTab>('daily');
   const [dailyRanking, setDailyRanking] = useState<RankRow[]>([]);
   const [globalRanking, setGlobalRanking] = useState<GlobalRow[]>([]);
@@ -208,6 +215,19 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
       questionStartAt.current = Date.now();
       setPhase('question');
     }
+  };
+
+  const usePowerUp = (id: string) => {
+    if (selected !== null || (inventory[id] ?? 0) <= 0) return;
+    if (id === 'pw_5050' && question) {
+      const wrong = question.opts.map((_, idx) => idx).filter(idx => idx !== question.ans);
+      setFiftyHidden(pickRandomFresh(wrong, [], () => undefined, 2));
+    } else if (id === 'pw_hint') {
+      setHintShown(true);
+    } else {
+      return;
+    }
+    consume(id);
   };
 
   const handle = async (i: number) => {
@@ -424,6 +444,10 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
   // ─ Question phase
   const answered = selected !== null;
+  const dailyPowerUps: PowerUpButton[] = [
+    { id: 'pw_5050', icon: '✂️', label: '50/50', count: inventory['pw_5050'] ?? 0 },
+    { id: 'pw_hint', icon: '💡', label: t('ladder.pwHint'), count: inventory['pw_hint'] ?? 0 },
+  ];
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
       <Confetti active={showConfetti} />
@@ -446,10 +470,31 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
         </Text>
 
         <View style={{ gap: 10 }}>
-          {question.opts.map((opt, i) => (
-            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
-          ))}
+          {question.opts.map((opt, i) =>
+            fiftyHidden.includes(i) ? (
+              <View key={i} style={{ borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.04)', borderRadius: 14, paddingVertical: 14, paddingHorizontal: 16, opacity: 0.3 }}>
+                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 15, fontFamily: 'Outfit_500Medium' }}>—</Text>
+              </View>
+            ) : (
+              <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+            ),
+          )}
         </View>
+
+        {/* Pista (power-up) */}
+        {hintShown && !answered && question.ctx && (
+          <View style={{ marginTop: 14, padding: 12, backgroundColor: 'rgba(232,160,48,0.08)', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)' }}>
+            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 12, marginBottom: 3 }}>{t('ladder.hint')}</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 18 }}>{question.ctx}</Text>
+          </View>
+        )}
+
+        {/* Power-ups */}
+        {!answered && dailyPowerUps.some(p => p.count > 0) && (
+          <View style={{ marginTop: 18 }}>
+            <PowerUpBar items={dailyPowerUps} onUse={usePowerUp} />
+          </View>
+        )}
 
         {answered && (
           <View style={{

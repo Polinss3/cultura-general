@@ -651,6 +651,8 @@
     "adReward": "+{{coins}} 🪙 for watching the ad",
     "adUnavailable": "No ad available right now.",
     "bought": "{{name}} purchased!",
+    "inventoryTitle": "Your items",
+    "inventoryEmpty": "You don't have any power-ups yet. Buy them below and use them during questions: Learn, Daily, Time Attack and Climb.",
     "powerups": "Power-ups",
     "cosmetics": "Cosmetics",
     "equip": "Equip",

@@ -4,7 +4,9 @@ import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert, Animated }
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
+import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { CategoryBadge } from '@/components/CategoryBadge';
+import { usePowerups } from '@/hooks/usePowerups';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
@@ -59,6 +61,12 @@ export default function LearnScreen() {
   const comboScale = useRef(new Animated.Value(0)).current;
   const completedQuestionsRef = useRef(0);
 
+  // Power-ups usables durante la pregunta (50/50, pista, saltar).
+  const canUsePowerups = !!user && !guest && !offline;
+  const { inventory, consume } = usePowerups(canUsePowerups, user?.id);
+  const [fiftyHidden, setFiftyHidden] = useState<number[]>([]);
+  const [hintShown, setHintShown] = useState(false);
+
   // Micro-animación de "pop" cuando el combo sube.
   const bumpCombo = () => {
     comboScale.setValue(0.6);
@@ -75,6 +83,8 @@ export default function LearnScreen() {
     setAnswered(false);
     setShowCtx(false);
     setCombo(0);
+    setFiftyHidden([]);
+    setHintShown(false);
     completedQuestionsRef.current = 0;
     setDifficulty('all');
 
@@ -109,6 +119,8 @@ export default function LearnScreen() {
     setAnswered(false);
     setShowCtx(false);
     setCombo(0);
+    setFiftyHidden([]);
+    setHintShown(false);
   }, [difficulty]);
 
   const baseQ = questions[qIdx % Math.max(questions.length, 1)];
@@ -163,6 +175,28 @@ export default function LearnScreen() {
     setSelected(null);
     setAnswered(false);
     setShowCtx(false);
+    setFiftyHidden([]);
+    setHintShown(false);
+  };
+
+  // Usar un power-up en la pregunta actual (antes de responder).
+  const usePowerUp = (id: string) => {
+    if (!canUsePowerups || (inventory[id] ?? 0) <= 0) return;
+    if (id === 'pw_skip') {
+      consume(id);
+      next();
+      return;
+    }
+    if (answered) return; // 50/50 y pista solo tienen sentido antes de responder
+    if (id === 'pw_5050' && q) {
+      const wrong = q.opts.map((_, idx) => idx).filter(idx => idx !== q.ans);
+      setFiftyHidden(pickRandomFresh(wrong, [], () => undefined, 2));
+    } else if (id === 'pw_hint') {
+      setHintShown(true);
+    } else {
+      return;
+    }
+    consume(id);
   };
 
   const finishTopic = () => {
@@ -256,6 +290,12 @@ export default function LearnScreen() {
   const col = getMeta(cat);
   const correct = selected === q.ans;
   const isLast = qIdx % questions.length === questions.length - 1;
+
+  const powerUps: PowerUpButton[] = [
+    { id: 'pw_5050', icon: '✂️', label: '50/50', count: inventory['pw_5050'] ?? 0 },
+    { id: 'pw_hint', icon: '💡', label: t('ladder.pwHint'), count: inventory['pw_hint'] ?? 0 },
+    { id: 'pw_skip', icon: '⏭️', label: t('ladder.pwSkip'), count: inventory['pw_skip'] ?? 0 },
+  ];
 
   const handleReport = () => {
     if (!user || !q.id || reportedRef.current.has(q.id)) return;
@@ -367,10 +407,31 @@ export default function LearnScreen() {
 
           {/* Options */}
           <View style={{ gap: 9 }}>
-            {q.opts.map((opt, i) => (
-              <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
-            ))}
+            {q.opts.map((opt, i) =>
+              fiftyHidden.includes(i) ? (
+                <View key={i} style={{ borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.04)', borderRadius: 14, paddingVertical: 14, paddingHorizontal: 16, opacity: 0.3 }}>
+                  <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 15, fontFamily: 'Outfit_500Medium' }}>—</Text>
+                </View>
+              ) : (
+                <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+              ),
+            )}
           </View>
+
+          {/* Pista (power-up) */}
+          {hintShown && !answered && q.ctx && (
+            <View style={{ marginTop: 14, padding: 12, backgroundColor: 'rgba(232,160,48,0.08)', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)' }}>
+              <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 12, marginBottom: 3 }}>{t('ladder.hint')}</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 18 }}>{q.ctx}</Text>
+            </View>
+          )}
+
+          {/* Power-ups */}
+          {canUsePowerups && !answered && powerUps.some(p => p.count > 0) && (
+            <View style={{ marginTop: 16 }}>
+              <PowerUpBar items={powerUps} onUse={usePowerUp} />
+            </View>
+          )}
         </View>
 
         {/* Context */}

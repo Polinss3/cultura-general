@@ -651,6 +651,8 @@
     "adReward": "+{{coins}} 🪙 por ver el anuncio",
     "adUnavailable": "Anuncio no disponible ahora mismo.",
     "bought": "¡{{name}} comprado!",
+    "inventoryTitle": "Tus objetos",
+    "inventoryEmpty": "Aún no tienes power-ups. Cómpralos abajo y úsalos durante las preguntas: Aprender, Diario, Contrarreloj y Ascenso.",
     "powerups": "Power-ups",
     "cosmetics": "Cosméticos",
     "equip": "Equipar",

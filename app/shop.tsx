@@ -95,6 +95,7 @@ export default function ShopScreen() {
 
   const powerups = items.filter(i => i.type === 'powerup');
   const cosmetics = COSMETICS_ENABLED ? items.filter(i => i.type === 'cosmetic') : [];
+  const ownedPowerups = powerups.filter(p => (inventory[p.itemId] ?? 0) > 0);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
@@ -141,6 +142,26 @@ export default function ShopScreen() {
                 </View>
               </View>
             </Pressable>
+          )}
+
+          {/* Inventario: tus objetos */}
+          <SectionTitle>{t('shop.inventoryTitle')}</SectionTitle>
+          {ownedPowerups.length === 0 ? (
+            <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 16, marginBottom: 22 }}>
+              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 13, lineHeight: 20 }}>
+                {t('shop.inventoryEmpty')}
+              </Text>
+            </View>
+          ) : (
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 22 }}>
+              {ownedPowerups.map(p => (
+                <View key={p.itemId} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#151515', borderRadius: 12, paddingVertical: 8, paddingHorizontal: 12, borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)' }}>
+                  <Text style={{ fontSize: 18 }}>{p.icon}</Text>
+                  <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{p.name}</Text>
+                  <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 13 }}>×{inventory[p.itemId]}</Text>
+                </View>
+              ))}
+            </View>
           )}
 
           {/* Power-ups */}

@@ -473,12 +473,12 @@ $streak_fn$;
 
 -- ─── 13. Seed del catálogo de la tienda ──────────────────────
 insert into public.shop_items (item_id, name, description, price, type, icon, sort, active) values
-  ('pw_5050',      '50/50',          'Elimina dos respuestas incorrectas',        40,  'powerup',  '✂️', 10, true),
-  ('pw_hint',      'Pista',          'Muestra una pista de la pregunta',          30,  'powerup',  '💡', 20, true),
-  ('pw_skip',      'Saltar',         'Salta la pregunta sin penalización',        25,  'powerup',  '⏭️', 30, true),
-  ('pw_time',      '+5 segundos',    'Añade 5 segundos en Contrarreloj',          35,  'powerup',  '⏱️', 40, true),
-  ('pw_revive',    'Vida extra',     'Recupera una vida en Modo Ascenso',         60,  'powerup',  '❤️', 50, true),
-  ('streak_freeze','Congelar racha', 'Protege tu racha un día sin jugar',         120, 'powerup',  '🧊', 60, true),
+  ('pw_5050',      '50/50',          'Elimina dos respuestas incorrectas',        65,  'powerup',  '✂️', 10, true),
+  ('pw_hint',      'Pista',          'Muestra una pista de la pregunta',          45,  'powerup',  '💡', 20, true),
+  ('pw_skip',      'Saltar',         'Salta la pregunta sin penalización',        40,  'powerup',  '⏭️', 30, true),
+  ('pw_time',      '+5 segundos',    'Añade 5 segundos en Contrarreloj',          50,  'powerup',  '⏱️', 40, true),
+  ('pw_revive',    'Vida extra',     'Recupera una vida en Modo Ascenso',         90,  'powerup',  '❤️', 50, true),
+  ('streak_freeze','Congelar racha', 'Protege tu racha un día sin jugar',         180, 'powerup',  '🧊', 60, true),
   ('frame_bronze', 'Marco bronce',   'Marco de avatar de bronce',                 150, 'cosmetic', '🥉', 70, true),
   ('frame_silver', 'Marco plata',    'Marco de avatar de plata',                  400, 'cosmetic', '🥈', 80, true),
   ('frame_gold',   'Marco oro',      'Marco de avatar de oro',                    900, 'cosmetic', '🥇', 90, true),
