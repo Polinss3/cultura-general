@@ -224,6 +224,34 @@
     "zoneReached": "You reached {{zone}}",
     "zoneFloor": "{{zone}}"
   },
+  "leagues": {
+    "title": "Leagues",
+    "divisions": {
+      "bronce": "Bronze",
+      "plata": "Silver",
+      "oro": "Gold",
+      "diamante": "Diamond"
+    },
+    "endsIn_one": "Ends in {{count}} day",
+    "endsIn_other": "Ends in {{count}} days",
+    "yourPosition": "Your position",
+    "xpThisWeek": "XP this week",
+    "toPromote": "Earn {{xp}} more XP to reach {{division}}",
+    "willPromote": "You'll be promoted to {{division}} this week!",
+    "topDivision": "You're in the top division! 💎",
+    "relegationWarning": "Reach {{xp}} XP to avoid relegation",
+    "leaderboard": "Standings",
+    "empty": "No one has scored yet this week. Be the first!",
+    "gatedTitle": "Compete in the Leagues",
+    "gatedSub": "Create an account to compete weekly and climb divisions.",
+    "offline": "Offline — come back when you're connected.",
+    "createAccount": "Create free account",
+    "unavailable": "Leagues will be available very soon.",
+    "cardTag": "COMPETE",
+    "cardTitle": "Weekly Leagues",
+    "cardDesc": "Earn XP each week and climb divisions.",
+    "cardCta": "View league"
+  },
   "speed": {
     "title": "Time Attack",
     "introDescPre": "Answer as many questions as you can in ",

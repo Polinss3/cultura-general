@@ -141,6 +141,35 @@ export default function ArenaScreen() {
           <DailyChest available={chestAvailable} onClaim={handleChest} onClaimed={refresh} />
         )}
 
+        {/* Ligas semanales */}
+        {economyOn && (
+          <Pressable onPress={() => router.push('/leagues' as any)} style={{ marginBottom: 12 }}>
+            <LinearGradient
+              colors={['#1a1408', '#0a0a0a']}
+              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+              style={{ borderRadius: 20, padding: 18, borderWidth: 1, borderColor: 'rgba(232,200,48,0.35)' }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                <View style={{ width: 38, height: 38, borderRadius: 12, backgroundColor: 'rgba(232,200,48,0.15)', alignItems: 'center', justifyContent: 'center' }}>
+                  <Text style={{ fontSize: 18 }}>🏆</Text>
+                </View>
+                <View>
+                  <Text style={{ color: '#e8c030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('leagues.cardTag')}</Text>
+                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('leagues.cardTitle')}</Text>
+                </View>
+              </View>
+              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
+                {t('leagues.cardDesc')}
+              </Text>
+              <View style={{ marginTop: 14 }}>
+                <View style={{ backgroundColor: '#e8c030', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>
+                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{t('leagues.cardCta')}</Text>
+                </View>
+              </View>
+            </LinearGradient>
+          </Pressable>
+        )}
+
         {/* Modos en solitario */}
         <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12, marginTop: 4 }}>
           {t('arena.soloModes')}

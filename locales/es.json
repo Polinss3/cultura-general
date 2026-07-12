@@ -224,6 +224,34 @@
     "zoneReached": "Llegaste a {{zone}}",
     "zoneFloor": "{{zone}}"
   },
+  "leagues": {
+    "title": "Ligas",
+    "divisions": {
+      "bronce": "Bronce",
+      "plata": "Plata",
+      "oro": "Oro",
+      "diamante": "Diamante"
+    },
+    "endsIn_one": "Termina en {{count}} día",
+    "endsIn_other": "Termina en {{count}} días",
+    "yourPosition": "Tu posición",
+    "xpThisWeek": "XP esta semana",
+    "toPromote": "Gana {{xp}} XP más para ascender a {{division}}",
+    "willPromote": "¡Asciendes a {{division}} esta semana!",
+    "topDivision": "¡Estás en la división máxima! 💎",
+    "relegationWarning": "Llega a {{xp}} XP para no descender",
+    "leaderboard": "Clasificación",
+    "empty": "Aún nadie ha puntuado esta semana. ¡Sé el primero!",
+    "gatedTitle": "Compite en las Ligas",
+    "gatedSub": "Crea una cuenta para competir cada semana y ascender de división.",
+    "offline": "Sin conexión — vuelve cuando recuperes los datos.",
+    "createAccount": "Crear cuenta gratis",
+    "unavailable": "Las Ligas estarán disponibles muy pronto.",
+    "cardTag": "COMPITE",
+    "cardTitle": "Ligas semanales",
+    "cardDesc": "Gana XP cada semana y sube de división.",
+    "cardCta": "Ver liga"
+  },
   "speed": {
     "title": "Contrarreloj",
     "introDescPre": "Responde el máximo de preguntas posible en ",
