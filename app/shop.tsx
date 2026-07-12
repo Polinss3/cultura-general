@@ -20,6 +20,14 @@ import { showRewardedAd, isRewardedReady } from '@/lib/admob';
 // (theme_emerald está desactivado en BD hasta que tenga efecto.)
 const COSMETICS_ENABLED = true;
 
+// Subsecciones de cosméticos por slot (orden de aparición en la tienda).
+const COSMETIC_SECTIONS: { slot: string; title: string }[] = [
+  { slot: 'frame',      title: 'shop.cosmeticsFrames' },
+  { slot: 'name_color', title: 'shop.cosmeticsColor' },
+  { slot: 'name_style', title: 'shop.cosmeticsStyle' },
+  { slot: 'name_icon',  title: 'shop.cosmeticsIcons' },
+];
+
 export default function ShopScreen() {
   const { t } = useTranslation();
   const router = useRouter();
@@ -166,11 +174,11 @@ export default function ShopScreen() {
             </View>
           )}
 
-          {/* Power-ups */}
+          {/* Power-ups (2 columnas) */}
           <SectionTitle>{t('shop.powerups')}</SectionTitle>
-          <View style={{ gap: 10, marginBottom: 22 }}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 12 }}>
             {powerups.map(item => (
-              <ShopRow
+              <ShopCard
                 key={item.itemId}
                 item={item}
                 owned={inventory[item.itemId] ?? 0}
@@ -181,34 +189,38 @@ export default function ShopScreen() {
             ))}
           </View>
 
-          {/* Cosméticos (ocultos hasta que tengan efecto visual) */}
-          {cosmetics.length > 0 && (
-            <>
-              <SectionTitle>{t('shop.cosmetics')}</SectionTitle>
-              <View style={{ gap: 10 }}>
-                {cosmetics.map(item => (
-                  <ShopRow
-                    key={item.itemId}
-                    item={item}
-                    owned={inventory[item.itemId] ?? 0}
-                    coins={coins}
-                    busy={busy === item.itemId}
-                    cosmetic
-                    equipped={equipped.has(item.itemId)}
-                    onBuy={() => handleBuy(item)}
-                    onEquip={() => handleEquip(item)}
-                  />
-                ))}
+          {/* Cosméticos, separados por subsecciones (2 columnas) */}
+          {COSMETIC_SECTIONS.map(({ slot, title }) => {
+            const list = cosmetics.filter(c => c.slot === slot);
+            if (list.length === 0) return null;
+            return (
+              <View key={slot}>
+                <SectionTitle>{t(title)}</SectionTitle>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 12 }}>
+                  {list.map(item => (
+                    <ShopCard
+                      key={item.itemId}
+                      item={item}
+                      owned={inventory[item.itemId] ?? 0}
+                      coins={coins}
+                      busy={busy === item.itemId}
+                      cosmetic
+                      equipped={equipped.has(item.itemId)}
+                      onBuy={() => handleBuy(item)}
+                      onEquip={() => handleEquip(item)}
+                    />
+                  ))}
+                </View>
               </View>
-            </>
-          )}
+            );
+          })}
         </ScrollView>
       )}
     </SafeAreaView>
   );
 }
 
-function ShopRow({
+function ShopCard({
   item, owned, coins, busy, cosmetic, equipped, onBuy, onEquip,
 }: {
   item: ShopItem;
@@ -224,26 +236,27 @@ function ShopRow({
   const isOwnedCosmetic = cosmetic && owned > 0;
   const affordable = coins >= item.price;
   return (
-    <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-      <View style={{ width: 42, height: 42, borderRadius: 12, backgroundColor: '#1f1f1f', alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={{ fontSize: 22 }}>{item.icon}</Text>
-      </View>
-      <View style={{ flex: 1 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-          <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>{item.name}</Text>
-          {!cosmetic && owned > 0 && (
-            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>×{owned}</Text>
-          )}
+    <View style={{ width: '48%', backgroundColor: '#151515', borderRadius: 14, padding: 12, marginBottom: 10, borderWidth: 1, borderColor: equipped ? '#2ec87a' : 'transparent' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+        <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: '#1f1f1f', alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 20 }}>{item.icon}</Text>
         </View>
-        <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 1 }}>
-          {item.description}
-        </Text>
+        {!cosmetic && owned > 0 && (
+          <View style={{ backgroundColor: 'rgba(232,160,48,0.15)', borderRadius: 8, paddingHorizontal: 7, paddingVertical: 2 }}>
+            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 12 }}>×{owned}</Text>
+          </View>
+        )}
       </View>
+
+      <Text numberOfLines={1} style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>{item.name}</Text>
+      <Text numberOfLines={2} style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 2, marginBottom: 10, minHeight: 28 }}>
+        {item.description}
+      </Text>
 
       {isOwnedCosmetic ? (
         <Pressable onPress={onEquip}>
           <View style={{
-            borderRadius: 99, paddingVertical: 7, paddingHorizontal: 14,
+            borderRadius: 10, paddingVertical: 8, alignItems: 'center',
             backgroundColor: equipped ? '#2ec87a' : '#1f1f1f',
             borderWidth: 1, borderColor: equipped ? '#2ec87a' : 'rgba(255,255,255,0.12)',
           }}>
@@ -255,7 +268,7 @@ function ShopRow({
       ) : (
         <Pressable onPress={onBuy} disabled={busy || !affordable}>
           <View style={{
-            borderRadius: 99, paddingVertical: 7, paddingHorizontal: 14,
+            borderRadius: 10, paddingVertical: 8, alignItems: 'center',
             backgroundColor: affordable ? '#e8a030' : '#1f1f1f',
             opacity: affordable ? 1 : 0.6,
           }}>

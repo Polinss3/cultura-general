@@ -655,6 +655,10 @@
     "inventoryEmpty": "You don't have any power-ups yet. Buy them below and use them during questions: Learn, Daily, Time Attack and Climb.",
     "powerups": "Power-ups",
     "cosmetics": "Cosmetics",
+    "cosmeticsFrames": "Avatar frames",
+    "cosmeticsColor": "Name color",
+    "cosmeticsStyle": "Name style",
+    "cosmeticsIcons": "Name icons",
     "equip": "Equip",
     "equipped": "Equipped"
   },

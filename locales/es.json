@@ -655,6 +655,10 @@
     "inventoryEmpty": "Aún no tienes power-ups. Cómpralos abajo y úsalos durante las preguntas: Aprender, Diario, Contrarreloj y Ascenso.",
     "powerups": "Power-ups",
     "cosmetics": "Cosméticos",
+    "cosmeticsFrames": "Marcos de avatar",
+    "cosmeticsColor": "Color de nombre",
+    "cosmeticsStyle": "Estilo de nombre",
+    "cosmeticsIcons": "Iconos de nombre",
     "equip": "Equipar",
     "equipped": "Equipado"
   },

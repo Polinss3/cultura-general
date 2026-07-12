@@ -14,6 +14,7 @@ export interface ShopItem {
   type: ShopItemType;
   icon: string;
   sort: number;
+  slot: string | null; // frame | name_color | name_style | name_icon (cosméticos)
 }
 
 export interface InventoryItem {
@@ -25,7 +26,7 @@ export interface InventoryItem {
 export async function fetchShopItems(): Promise<ShopItem[]> {
   const { data } = await supabase
     .from('shop_items')
-    .select('item_id, name, description, name_en, description_en, price, type, icon, sort')
+    .select('item_id, name, description, name_en, description_en, price, type, icon, sort, slot')
     .eq('active', true)
     .order('sort');
 
@@ -38,6 +39,7 @@ export async function fetchShopItems(): Promise<ShopItem[]> {
     type: r.type as ShopItemType,
     icon: r.icon ?? '🎁',
     sort: r.sort ?? 0,
+    slot: (r as any).slot ?? null,
   }));
 }
 
