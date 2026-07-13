@@ -19,6 +19,7 @@ import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
 import { showInterstitialAd } from '@/lib/admob';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
+import { requestReviewAfterDailyCompletion } from '@/lib/appReview';
 import {
   fetchOrAssignDailyQuestion,
   checkDailyAnswered,
@@ -265,7 +266,8 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
         correct,
         response_time_ms: elapsedMs,
       });
-      showInterstitialAd('daily_answered');
+      const reviewRequested = await requestReviewAfterDailyCompletion(user.id, correct);
+      if (!reviewRequested) showInterstitialAd('daily_answered');
     }, 1400);
   };
 

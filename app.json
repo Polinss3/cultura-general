@@ -16,7 +16,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "44",
+      "buildNumber": "53",
       "usesAppleSignIn": true,
       "infoPlist": {
         "NSCameraUsageDescription": "The app does not use the camera.",
