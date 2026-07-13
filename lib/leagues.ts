@@ -42,6 +42,14 @@ export function divisionMeta(division: number) {
   return DIVISIONS[Math.max(0, Math.min(division, DIVISIONS.length - 1))];
 }
 
+// Espejo cliente de league_placement_reward (supabase/leagues.sql): monedas por
+// puesto final, escaladas por división. Solo para mostrar; el servidor decide.
+export function leaguePlacementReward(division: number, rank: number): number {
+  if (!rank || rank <= 0) return 0;
+  const base = rank === 1 ? 100 : rank === 2 ? 70 : rank === 3 ? 50 : rank <= 10 ? 25 : 10;
+  return Math.round(base * (1 + Math.max(0, division) * 0.5));
+}
+
 // Días que faltan para el reset (fin de la semana ISO = weekStart + 7).
 export function daysUntilReset(weekStart: string): number {
   const start = new Date(`${weekStart}T00:00:00Z`);

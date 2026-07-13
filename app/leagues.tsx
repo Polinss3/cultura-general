@@ -9,7 +9,7 @@ import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setGuestMode } from '@/lib/guest';
 import {
-  fetchLeague, divisionMeta, daysUntilReset, TOP_DIVISION, LeagueState,
+  fetchLeague, divisionMeta, daysUntilReset, leaguePlacementReward, TOP_DIVISION, LeagueState,
 } from '@/lib/leagues';
 import { UserName } from '@/components/UserName';
 import { resolveCosmetics } from '@/lib/cosmetics';
@@ -177,6 +177,49 @@ export default function LeaguesScreen() {
               {t('leagues.topDivisionShort')}
             </Text>
           )}
+
+          {/* Premio que ganarías si la semana acabara ahora */}
+          {state.myRank != null && (
+            <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: 'rgba(255,255,255,0.06)', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Text style={{ fontSize: 16 }}>🪙</Text>
+              <Text style={{ flex: 1, color: 'rgba(255,255,255,0.6)', fontFamily: 'Outfit_500Medium', fontSize: 13 }}>
+                {t('leagues.currentPrize')}
+              </Text>
+              <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 16 }}>
+                +{leaguePlacementReward(state.division, state.myRank)} 🪙
+              </Text>
+            </View>
+          )}
+        </View>
+
+        {/* Premios por puesto */}
+        <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 10 }}>
+          {t('leagues.prizesTitle')}
+        </Text>
+        <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 14, marginBottom: 16 }}>
+          {[
+            { icon: '🥇', label: t('leagues.prize1'), rank: 1 },
+            { icon: '🥈', label: t('leagues.prize2'), rank: 2 },
+            { icon: '🥉', label: t('leagues.prize3'), rank: 3 },
+            { icon: '🏅', label: t('leagues.prizeTop10'), rank: 10 },
+            { icon: '🎗️', label: t('leagues.prizeRest'), rank: 11 },
+          ].map((p, i, arr) => (
+            <View key={p.rank} style={{
+              flexDirection: 'row', alignItems: 'center', gap: 10,
+              paddingVertical: 8,
+              borderBottomWidth: i < arr.length - 1 ? 1 : 0,
+              borderBottomColor: 'rgba(255,255,255,0.05)',
+            }}>
+              <Text style={{ fontSize: 17 }}>{p.icon}</Text>
+              <Text style={{ flex: 1, color: '#fff', fontFamily: 'Outfit_500Medium', fontSize: 14 }}>{p.label}</Text>
+              <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+                +{leaguePlacementReward(state.division, p.rank)} 🪙
+              </Text>
+            </View>
+          ))}
+          <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 18, marginTop: 8 }}>
+            {t('leagues.prizesNote')}
+          </Text>
         </View>
 
         {/* Clasificación */}
