@@ -44,7 +44,49 @@ export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // Traduce errores de Supabase a mensajes claros para el usuario.
+  const authErrorMessage = (error: any): string => {
+    const code = error?.code as string | undefined;
+    const msg = (error?.message ?? '').toLowerCase();
+    if (code === 'over_email_send_rate_limit' || code === 'over_request_rate_limit'
+      || msg.includes('rate limit') || msg.includes('security purposes')) {
+      return t('auth.login.errRateLimit');
+    }
+    if (code === 'invalid_credentials' || msg.includes('invalid login')) return t('auth.login.errInvalid');
+    if (code === 'email_not_confirmed' || msg.includes('not confirmed')) return t('auth.login.errNotConfirmed');
+    if (code === 'user_already_exists' || code === 'email_exists' || msg.includes('already registered')) {
+      return t('auth.login.errAlready');
+    }
+    return error?.message ?? t('errors.authFailed');
+  };
+
+  // Reenvía el email de verificación de una cuenta sin confirmar.
+  const resendVerification = async (targetEmail: string) => {
+    setLoading(true);
+    const { error } = await supabase.auth.resend({
+      type: 'signup',
+      email: targetEmail,
+      options: { emailRedirectTo: getAuthCallbackUrl() },
+    });
+    setLoading(false);
+    if (error) Alert.alert(t('common.error'), authErrorMessage(error));
+    else Alert.alert(t('auth.login.checkEmailTitle'), t('auth.login.resentBody'));
+  };
+
+  // Ofrece pasar a iniciar sesión (email ya registrado).
+  const offerSignIn = () => {
+    Alert.alert(
+      t('auth.login.alreadyRegisteredTitle'),
+      t('auth.login.alreadyRegisteredBody'),
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        { text: t('auth.login.signInAction'), onPress: () => { setMode('login'); setPassword(''); } },
+      ],
+    );
+  };
 
   const handleLogin = async () => {
     const normalizedEmail = normalizeEmail(email);
@@ -59,8 +101,37 @@ export default function LoginScreen() {
       password,
     });
     if (error) {
-      Alert.alert(t('common.error'), error.message);
       setLoading(false);
+      const code = (error as any).code as string | undefined;
+      const msg = (error.message ?? '').toLowerCase();
+
+      // Correo sin verificar → ofrecer reenviar el email.
+      if (code === 'email_not_confirmed' || msg.includes('not confirmed')) {
+        Alert.alert(
+          t('auth.login.notConfirmedTitle'),
+          t('auth.login.notConfirmedBody'),
+          [
+            { text: t('common.cancel'), style: 'cancel' },
+            { text: t('auth.login.resendEmail'), onPress: () => resendVerification(normalizedEmail) },
+          ],
+        );
+        return;
+      }
+
+      // Credenciales inválidas → puede que no tenga cuenta: ofrecer registrarse.
+      if (code === 'invalid_credentials' || msg.includes('invalid login')) {
+        Alert.alert(
+          t('auth.login.invalidTitle'),
+          t('auth.login.invalidBody'),
+          [
+            { text: t('auth.login.tryAgain'), style: 'cancel' },
+            { text: t('auth.login.createAccount'), onPress: () => setMode('register') },
+          ],
+        );
+        return;
+      }
+
+      Alert.alert(t('common.error'), authErrorMessage(error));
       return;
     }
 
@@ -121,7 +192,7 @@ export default function LoginScreen() {
     }
 
     setLoading(true);
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: normalizedEmail,
       password,
       options: {
@@ -133,15 +204,32 @@ export default function LoginScreen() {
         emailRedirectTo: getAuthCallbackUrl(),
       },
     });
-    if (error) {
-      Alert.alert(t('common.error'), error.message);
-    } else {
-      Alert.alert(
-        t('auth.login.checkEmailTitle'),
-        t('auth.login.checkEmailBody'),
-      );
-    }
     setLoading(false);
+
+    if (error) {
+      const code = (error as any).code as string | undefined;
+      const msg = (error.message ?? '').toLowerCase();
+      if (code === 'user_already_exists' || code === 'email_exists' || msg.includes('already registered')) {
+        offerSignIn();
+        return;
+      }
+      Alert.alert(t('common.error'), authErrorMessage(error));
+      return;
+    }
+
+    // Protección anti-enumeración de Supabase: si el email ya existe y está
+    // confirmado, signUp devuelve un usuario con `identities` vacío y sin error.
+    if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      offerSignIn();
+      return;
+    }
+
+    // Registro correcto: hay que verificar el correo. Al aceptar, a iniciar sesión.
+    Alert.alert(
+      t('auth.login.checkEmailTitle'),
+      t('auth.login.registeredBody'),
+      [{ text: t('auth.login.goToSignIn'), onPress: () => { setMode('login'); setPassword(''); } }],
+    );
   };
 
   const handleReset = async () => {
@@ -264,14 +352,25 @@ export default function LoginScreen() {
           />
 
           {mode !== 'reset' && (
-            <TextInput
-              value={password}
-              onChangeText={setPassword}
-              placeholder={t('auth.login.placeholderPassword')}
-              placeholderTextColor="rgba(255,255,255,0.3)"
-              secureTextEntry
-              style={{ ...INPUT, marginBottom: mode === 'login' ? 8 : 24 }}
-            />
+            <View style={{ marginBottom: mode === 'login' ? 8 : 24 }}>
+              <TextInput
+                value={password}
+                onChangeText={setPassword}
+                placeholder={t('auth.login.placeholderPassword')}
+                placeholderTextColor="rgba(255,255,255,0.3)"
+                secureTextEntry={!showPassword}
+                autoCapitalize="none"
+                autoCorrect={false}
+                style={{ ...INPUT, marginBottom: 0, paddingRight: 48 }}
+              />
+              <Pressable
+                onPress={() => setShowPassword(s => !s)}
+                hitSlop={8}
+                style={{ position: 'absolute', right: 12, top: 0, bottom: 0, justifyContent: 'center', paddingHorizontal: 4 }}
+              >
+                <Text style={{ fontSize: 18 }}>{showPassword ? '🙈' : '👁️'}</Text>
+              </Pressable>
+            </View>
           )}
 
           {mode === 'login' && (
