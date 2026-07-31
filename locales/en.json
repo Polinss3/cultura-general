@@ -338,6 +338,7 @@
     "randomName": "Surprise me",
     "randomDesc": "Questions from every topic",
     "countQuestions": "{{count}}+ questions",
+    "countQuestionsExact": "{{count}} questions",
     "topics": "Topics",
     "context": "💡 So you don't forget it",
     "topicDone": "🎉 Topic complete!",

@@ -338,6 +338,7 @@
     "randomName": "Sorpréndeme",
     "randomDesc": "Preguntas de todos los temas",
     "countQuestions": "{{count}}+ preguntas",
+    "countQuestionsExact": "{{count}} preguntas",
     "topics": "Temas",
     "context": "💡 Para que no se te olvide",
     "topicDone": "🎉 ¡Tema completado!",

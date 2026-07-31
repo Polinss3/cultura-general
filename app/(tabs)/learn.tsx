@@ -12,7 +12,10 @@ import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
 import { showInterstitialAd } from '@/lib/admob';
-import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
+import {
+  fetchQuestions, fetchQuestionCounts, incrementProfileStats, reportQuestion,
+  type CategoryCounts,
+} from '@/lib/db';
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { getLocalQuestions, CAT_COLORS, CAT_ICONS, ALL_CATEGORIES, catTint } from '@/constants/questions';
@@ -37,6 +40,17 @@ const RANDOM_ICON = '🎲';
 // Por encima de este número de preguntas los segmentos quedan por debajo de
 // 1 px y no se ven: a partir de ahí se muestra una barra continua.
 const SEGMENTED_UP_TO = 14;
+
+/**
+ * Redondea a la baja para que el "+" siga siendo cierto: 182 → 180, 106 → 100,
+ * 47 → 45. Por debajo de 10 se muestra la cifra exacta, que redondear ahí solo
+ * quitaría información.
+ */
+function roundDownCount(n: number): number {
+  if (n < 10) return n;
+  const step = n >= 100 ? 10 : 5;
+  return Math.floor(n / step) * step;
+}
 
 function filterByDifficulty(questions: Question[], diff: Difficulty): Question[] {
   if (diff === 'all') return questions;
@@ -64,6 +78,10 @@ export default function LearnScreen() {
   const comboScale = useRef(new Animated.Value(0)).current;
   const completedQuestionsRef = useRef(0);
 
+  // Nº real de preguntas por tema, para el selector. Sin red se queda vacío y
+  // cada tema cae al tamaño del banco empaquetado.
+  const [counts, setCounts] = useState<CategoryCounts>({});
+
   // Power-ups usables durante la pregunta (50/50, pista, saltar).
   const canUsePowerups = !!user && !guest && !offline;
   const { inventory, consume } = usePowerups(canUsePowerups, user?.id);
@@ -72,6 +90,14 @@ export default function LearnScreen() {
 
   // Color de acento de la pantalla: el de la categoría, o la marca en aleatorio.
   const accent = cat && cat !== 'random' ? readableOn(CAT_COLORS[cat].accent, isDark) : C.brand;
+
+  // Recuentos del catálogo: una sola petición, cacheada 6 h en el cliente.
+  useEffect(() => {
+    if (offline) return;
+    let cancelled = false;
+    fetchQuestionCounts().then(c => { if (!cancelled) setCounts(c); });
+    return () => { cancelled = true; };
+  }, [offline]);
 
   // Micro-animación de "pop" cuando el combo sube.
   const bumpCombo = () => {
@@ -229,9 +255,6 @@ export default function LearnScreen() {
   // ─ Category picker
   if (!cat) {
     const bank = getLocalQuestions(getCurrentLang());
-    // Con 13 categorías la rejilla deja una suelta: la última ocupa el ancho
-    // completo en forma de fila, como en la maqueta.
-    const lastIsOdd = ALL_CATEGORIES.length % 2 === 1;
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
@@ -267,25 +290,23 @@ export default function LearnScreen() {
             </LinearGradient>
           </Pressable>
 
-          {/* Rejilla 2×2 de temas */}
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 14 }}>
-            {ALL_CATEGORIES.map((c, i) => {
+          {/* Rejilla de temas: dos columnas, y el que sobra se queda solo en la
+              última fila con el mismo ancho que los demás. */}
+          <View style={{
+            flexDirection: 'row', flexWrap: 'wrap',
+            justifyContent: 'space-between', rowGap: 10, marginTop: 14,
+          }}>
+            {ALL_CATEGORIES.map(c => {
               const tone = catTint(CAT_COLORS[c], isDark);
-              const count = bank[c].length;
-              const isLastAlone = lastIsOdd && i === ALL_CATEGORIES.length - 1;
+              // El recuento real del catálogo; sin red, el banco empaquetado.
+              const count = counts[c] ?? bank[c].length;
+              const shown = roundDownCount(count);
 
               return (
-                <Pressable
-                  key={c}
-                  onPress={() => setCat(c)}
-                  style={{ width: isLastAlone ? '100%' : '48%', flexGrow: isLastAlone ? 0 : 1 }}
-                >
+                <Pressable key={c} onPress={() => setCat(c)} style={{ width: '48.5%' }}>
                   <View style={{
                     backgroundColor: C.surface, borderWidth: 1, borderColor: C.border,
-                    borderRadius: Radius.card, padding: 14,
-                    ...(isLastAlone
-                      ? { flexDirection: 'row', alignItems: 'center', gap: 12 }
-                      : { gap: 7, minHeight: 118 }),
+                    borderRadius: Radius.card, padding: 14, gap: 7, minHeight: 118,
                   }}>
                     <View style={{
                       width: 40, height: 40, borderRadius: 13,
@@ -293,15 +314,16 @@ export default function LearnScreen() {
                     }}>
                       <Text style={{ fontSize: 20 }}>{CAT_ICONS[c]}</Text>
                     </View>
-                    <View style={isLastAlone ? { flex: 1 } : undefined}>
+                    <View>
                       <Text style={{ color: C.text, fontSize: 15, fontFamily: Font.extra }}>
                         {t(`categories.${c}`)}
                       </Text>
                       <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginTop: 2 }}>
-                        {t('learn.countQuestions', { count })}
+                        {shown < count
+                          ? t('learn.countQuestions', { count: shown })
+                          : t('learn.countQuestionsExact', { count: shown })}
                       </Text>
                     </View>
-                    {isLastAlone && <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>}
                   </View>
                 </Pressable>
               );

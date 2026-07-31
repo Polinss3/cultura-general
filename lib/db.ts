@@ -103,6 +103,55 @@ async function setCache(rows: QuestionRow[], category?: Category): Promise<void>
   }
 }
 
+// ─── Recuento de preguntas por categoría ──────────────────────
+// El selector de Aprender mostraba el tamaño del banco empaquetado (3-5 por
+// tema), que es solo el respaldo sin conexión, no el catálogo real. Aquí se
+// piden los totales al servidor, con la misma caché de 6 h que el resto.
+
+const COUNTS_CACHE_KEY = 'question_counts_v2';
+
+export type CategoryCounts = Partial<Record<Category, number>>;
+
+export async function fetchQuestionCounts(): Promise<CategoryCounts> {
+  try {
+    const raw = await AsyncStorage.getItem(COUNTS_CACHE_KEY);
+    if (raw) {
+      const { data, ts } = JSON.parse(raw);
+      if (Date.now() - ts <= CACHE_TTL_MS) return data as CategoryCounts;
+    }
+  } catch {
+    // Caché ilegible: seguimos a la red.
+  }
+
+  try {
+    // Una consulta `head` por categoría: no transfiere filas, solo el total en
+    // la cabecera. Traer las filas y contarlas en el cliente no vale, porque
+    // PostgREST corta en 1000 y los últimos temas saldrían a cero.
+    const results = await Promise.all(
+      ALL_DB_CATEGORIES.map(async category => {
+        const { count, error } = await supabase
+          .from('questions')
+          .select('*', { count: 'exact', head: true })
+          .eq('active', true)
+          .eq('category', category);
+        return error ? null : ([category, count ?? 0] as const);
+      }),
+    );
+
+    const counts: CategoryCounts = {};
+    for (const r of results) {
+      if (r) counts[r[0]] = r[1];
+    }
+    if (Object.keys(counts).length === 0) return {};
+
+    await AsyncStorage.setItem(COUNTS_CACHE_KEY, JSON.stringify({ data: counts, ts: Date.now() }));
+    return counts;
+  } catch {
+    // Sin red: el selector cae al banco local.
+    return {};
+  }
+}
+
 // Limpia la caché v1 (mapeada, monolingüe) que quedó de versiones anteriores.
 export async function purgeLegacyQuestionCache(): Promise<void> {
   try {
