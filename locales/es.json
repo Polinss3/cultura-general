@@ -27,7 +27,7 @@
   "tabs": {
     "home": "Inicio",
     "daily": "Diario",
-    "arena": "Arena",
+    "world": "Mundo",
     "learn": "Aprender",
     "friends": "Amigos"
   },
@@ -332,6 +332,35 @@
       "diamante": "Diamante"
     }
   },
+  "world": {
+    "tab": "Mundo",
+    "pickerTitle": "Banderas del mundo",
+    "pickerSub": "Elige una zona y a ver cuántas reconoces.",
+    "allWorld": "Todo el mundo",
+    "countFlags_one": "{{count}} bandera",
+    "countFlags_other": "{{count}} banderas",
+    "best": "Récord: {{n}}",
+    "newRecord": "🎉 ¡Nuevo récord!",
+    "hits": "{{n}} ✓",
+    "exit": "Salir",
+    "whichCountry": "¿De qué país es esta bandera?",
+    "whichFlag": "¿Cuál es su bandera?",
+    "playAgain": "Otra ronda",
+    "changeScope": "Cambiar",
+    "continents": {
+      "europa": "Europa",
+      "america": "América",
+      "africa": "África",
+      "asia": "Asia",
+      "oceania": "Oceanía"
+    },
+    "difficulty": {
+      "all": "Todas",
+      "1": "Fácil",
+      "2": "Media",
+      "3": "Difícil"
+    }
+  },
   "learn": {
     "pickerTitle": "¿Qué te apetece hoy?",
     "pickerSub": "Elige un tema y practica a tu ritmo. Sin cronómetro.",
@@ -418,6 +447,8 @@
       "ladder": "Ascenso",
       "learn": "Aprender",
       "friends": "Con amigos",
+      "world": "Banderas",
+      "worldFlags": "{{count}} banderas",
       "speedRecord_one": "Récord: {{count}} acierto",
       "speedRecord_other": "Récord: {{count}} aciertos",
       "ladderRecord": "Récord: piso {{n}}",

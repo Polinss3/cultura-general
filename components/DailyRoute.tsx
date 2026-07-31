@@ -169,9 +169,9 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
           </View>
         </Pressable>
 
-        {/* Misiones diarias aún pendientes → a Arena (como la fila abierta) */}
+        {/* Misiones diarias aún pendientes: informativo, viven más abajo en Inicio */}
         {missionsPending && (
-          <Pressable onPress={() => router.push('/(tabs)/arena')}>
+          <View>
             <View style={{
               borderTopWidth: 1, borderTopColor: C.border,
               backgroundColor: C.surface,
@@ -181,9 +181,8 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
               <Text style={{ flex: 1, color: C.textBody, fontFamily: Font.semi, fontSize: 14 }}>
                 {t('home.route.missionsPending', { count: pendingCount })}
               </Text>
-              <Text style={{ color: C.textFaint, fontSize: 18 }}>›</Text>
             </View>
-          </Pressable>
+          </View>
         )}
       </View>
     );
@@ -281,7 +280,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         {/* Misiones (capa extra) — con reclamo directo si hay recompensas */}
         {missions.length > 0 && (
           <View style={{ marginTop: 12 }}>
-            <Pressable onPress={() => router.push('/(tabs)/arena')}>
+            <View>
               <View style={{
                 backgroundColor: C.surface,
                 borderRadius: Radius.row, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 11,
@@ -306,9 +305,8 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
                     }} />
                   </View>
                 </View>
-                <Text style={{ color: C.textFaint, fontSize: 18 }}>›</Text>
               </View>
-            </Pressable>
+            </View>
 
             {claimableMissions.length > 0 && (
               <Pressable onPress={handleClaimMissions} disabled={claimingMissions} style={{ marginTop: 9 }}>

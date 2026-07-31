@@ -32,7 +32,7 @@ export function subscribeOffline(listener: Listener): () => void {
 // `true` si el backend es alcanzable. Evita añadir dependencias nativas
 // (NetInfo) y mide lo que realmente importa: si podemos hablar con el servidor.
 
-export async function probeConnection(timeoutMs = 8000): Promise<boolean> {
+export async function probeConnection(timeoutMs = 6000): Promise<boolean> {
   const url = process.env.EXPO_PUBLIC_SUPABASE_URL;
   const apikey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
   if (!url) return false;

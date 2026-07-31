@@ -27,7 +27,7 @@
   "tabs": {
     "home": "Home",
     "daily": "Daily",
-    "arena": "Arena",
+    "world": "World",
     "learn": "Learn",
     "friends": "Friends"
   },
@@ -332,6 +332,35 @@
       "diamante": "Diamond"
     }
   },
+  "world": {
+    "tab": "World",
+    "pickerTitle": "Flags of the world",
+    "pickerSub": "Pick an area and see how many you know.",
+    "allWorld": "The whole world",
+    "countFlags_one": "{{count}} flag",
+    "countFlags_other": "{{count}} flags",
+    "best": "Best: {{n}}",
+    "newRecord": "🎉 New record!",
+    "hits": "{{n}} ✓",
+    "exit": "Exit",
+    "whichCountry": "Which country is this flag from?",
+    "whichFlag": "Which one is its flag?",
+    "playAgain": "Another round",
+    "changeScope": "Change",
+    "continents": {
+      "europa": "Europe",
+      "america": "Americas",
+      "africa": "Africa",
+      "asia": "Asia",
+      "oceania": "Oceania"
+    },
+    "difficulty": {
+      "all": "All",
+      "1": "Easy",
+      "2": "Medium",
+      "3": "Hard"
+    }
+  },
   "learn": {
     "pickerTitle": "What do you fancy today?",
     "pickerSub": "Pick a topic and practise at your own pace. No timer.",
@@ -418,6 +447,8 @@
       "ladder": "Climb",
       "learn": "Learn",
       "friends": "With friends",
+      "world": "Flags",
+      "worldFlags": "{{count}} flags",
       "speedRecord_one": "Best: {{count}} correct",
       "speedRecord_other": "Best: {{count}} correct",
       "ladderRecord": "Best: floor {{n}}",

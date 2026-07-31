@@ -19,7 +19,10 @@
       "Bash(npx --yes sharp-cli --version)",
       "Bash(python3)",
       "Bash(cat babel.config.js)",
-      "Bash(cat babel.config.ts)"
+      "Bash(cat babel.config.ts)",
+      "Bash(xcodebuild -version)",
+      "Bash(xcrun simctl *)",
+      "Bash(pod --version)"
     ]
   }
 }

@@ -17,17 +17,24 @@ import { LevelBadge } from '@/components/LevelBadge';
 import { XpBar } from '@/components/XpBar';
 import { CoinPill } from '@/components/CoinPill';
 import { DailyRoute } from '@/components/DailyRoute';
+import { DailyChest } from '@/components/DailyChest';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { rankForLevel, progressToNext } from '@/lib/leveling';
+import { formatMultiplier, REWARDS } from '@/lib/economy';
+import {
+  fetchMissionState, claimMission, claimDailyChest, bumpMissions, MissionState,
+} from '@/lib/gamification';
 import { getLocaleTag } from '@/lib/i18n';
 import { ALL_CATEGORIES } from '@/constants/questions';
+import { COUNTRIES } from '@/constants/flags';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import {
   Font, Radius, Space, Type, cardShadow, inkButton, tint, warmGradient,
 } from '@/constants/theme';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useFocusEffect } from 'expo-router';
 
 // Modos locales que ofrece la pestaña de Amigos (pasa el móvil, marcador,
 // duelo, superviviente y trivia por equipos).
@@ -48,6 +55,38 @@ export default function HomeScreen() {
   // "Jugadores hoy": arranca con un valor de respaldo creíble (10–25, estable
   // por día) y se sustituye por el número real si supera las 20 personas.
   const [playersToday, setPlayersToday] = useState(dailyPlayersFallback);
+  const [missions, setMissions] = useState<MissionState[]>([]);
+  const [claimingMission, setClaimingMission] = useState<string | null>(null);
+
+  // La economía (cofre, misiones, liga) necesita sesión y red.
+  const economyOn = !!user && !guest && !offline;
+  const chestAvailable =
+    economyOn && !!profile && profile.last_chest_at !== new Date().toISOString().slice(0, 10);
+
+  const loadMissions = useCallback(() => {
+    if (!economyOn || !user) return;
+    fetchMissionState(user.id).then(setMissions);
+  }, [economyOn, user?.id]);
+
+  useFocusEffect(useCallback(() => { loadMissions(); }, [loadMissions]));
+
+  const handleChest = async (): Promise<number | null> => {
+    const { reward, error } = await claimDailyChest();
+    if (error) { showToast({ type: 'info', message: error }); return null; }
+    if (reward) bumpMissions('coins_earned', reward);
+    return reward ?? 0;
+  };
+
+  const handleClaimMission = async (m: MissionState) => {
+    if (claimingMission) return;
+    setClaimingMission(m.id);
+    const award = await claimMission(m.id);
+    setClaimingMission(null);
+    if (!award) { showToast({ type: 'info', message: t('arena.claimFailed') }); return; }
+    celebrate(award);
+    refresh();
+    loadMissions();
+  };
 
   // Recompensa de bienvenida: se concede la primera vez que se entra a la home
   // ya con sesión (el onboarding la deja "pendiente"). Para invitados no aplica
@@ -94,6 +133,7 @@ export default function HomeScreen() {
   const speedRecord = guest ? guestSpeedRecord : (profile?.speed_record ?? 0);
   const ladderRecord = profile?.ladder_best ?? 0;
   const rank = rankForLevel(profile?.level ?? 1);
+  const mult = formatMultiplier(profile?.streak ?? 0);
   const xpProgress = progressToNext(profile?.xp ?? 0);
   const ink = inkButton(isDark);
 
@@ -193,7 +233,7 @@ export default function HomeScreen() {
 
           {/* Progreso (nivel + XP + monedas) → Arena */}
           {!guest && (
-            <Pressable onPress={() => offline ? lockedTap() : router.push('/(tabs)/arena')} style={{ marginTop: 12 }}>
+            <Pressable onPress={() => offline ? lockedTap() : router.push('/profile')} style={{ marginTop: 12 }}>
               <View style={{
                 backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 16,
                 borderWidth: 1, borderColor: C.border, gap: 12, ...cardShadow(isDark),
@@ -204,9 +244,16 @@ export default function HomeScreen() {
                     <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 16 }}>
                       {t('components.levelUp.level', { level: profile?.level ?? 1 })}
                     </Text>
-                    <Text style={{ color: readableOn(rank.color, isDark), fontFamily: Font.bold, fontSize: 13, marginTop: 1 }}>
-                      {t(`ranks.${rank.id}`)}
-                    </Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 1 }}>
+                      <Text style={{ color: readableOn(rank.color, isDark), fontFamily: Font.bold, fontSize: 13 }}>
+                        {t(`ranks.${rank.id}`)}
+                      </Text>
+                      {mult && (
+                        <View style={{ backgroundColor: C.brandTint, borderRadius: Radius.pill, paddingHorizontal: 9, paddingVertical: 2 }}>
+                          <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>{mult} XP</Text>
+                        </View>
+                      )}
+                    </View>
                   </View>
                   <CoinPill coins={profile?.coins ?? 0} />
                 </View>
@@ -225,6 +272,35 @@ export default function HomeScreen() {
         {!guest && !offline && user && (
           <View style={{ paddingHorizontal: Space.screen }}>
             <DailyRoute userId={user.id} profile={profile} refresh={refresh} />
+          </View>
+        )}
+
+        {/* Cofre diario y liga semanal (venían de Arena) */}
+        {economyOn && (
+          <View style={{ paddingHorizontal: Space.screen, marginTop: 14 }}>
+            <DailyChest available={chestAvailable} onClaim={handleChest} onClaimed={refresh} />
+
+            <Pressable onPress={() => router.push('/leagues' as any)}>
+              <View style={{
+                backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 16,
+                borderWidth: 1, borderColor: C.border,
+                flexDirection: 'row', alignItems: 'center', gap: 14,
+              }}>
+                <View style={{
+                  width: 46, height: 46, borderRadius: Radius.row,
+                  backgroundColor: C.coinTint, alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <Text style={{ fontSize: 22 }}>🏆</Text>
+                </View>
+                <View style={{ flex: 1, gap: 2 }}>
+                  <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.black }}>{t('leagues.cardTitle')}</Text>
+                  <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, lineHeight: 19 }}>
+                    {t('leagues.cardDesc')}
+                  </Text>
+                </View>
+                <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>
+              </View>
+            </Pressable>
           </View>
         )}
 
@@ -279,7 +355,10 @@ export default function HomeScreen() {
           </Pressable>
 
           {/* Rejilla 2×2 con el resto de modos */}
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 10 }}>
+          <View style={{
+            flexDirection: 'row', flexWrap: 'wrap',
+            justifyContent: 'space-between', rowGap: 10, marginTop: 10,
+          }}>
             <ModeTile
               C={C} isDark={isDark}
               icon="⚡" accent={C.speed}
@@ -303,7 +382,14 @@ export default function HomeScreen() {
             />
             <ModeTile
               C={C} isDark={isDark}
-              icon="👥" accent={C.social}
+              icon="🌍" accent={C.social}
+              title={t('home.modes.world')}
+              meta={t('home.modes.worldFlags', { count: COUNTRIES.length })}
+              onPress={() => router.push('/(tabs)/world')}
+            />
+            <ModeTile
+              C={C} isDark={isDark}
+              icon="👥" accent={C.level}
               title={t('home.modes.friends')}
               meta={t('home.modes.friendsModes', { count: LOCAL_MODES })}
               disabled={offline}
@@ -311,6 +397,59 @@ export default function HomeScreen() {
             />
           </View>
         </View>
+
+        {/* Misiones de hoy (venían de Arena) */}
+        {economyOn && missions.length > 0 && (
+          <View style={{ paddingHorizontal: Space.screen, marginTop: 20 }}>
+            <Text style={{ color: C.textFaint, ...Type.sectionLabel, marginBottom: 12 }}>
+              {t('arena.todayMissions')}
+            </Text>
+            <View style={{ gap: 10 }}>
+              {missions.map(m => {
+                const done = m.progress >= m.goal;
+                return (
+                  <View key={m.id} style={{
+                    backgroundColor: C.surface, borderRadius: 18, padding: 14, gap: 10,
+                    borderWidth: 1, borderColor: C.border,
+                  }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+                      <Text style={{ fontSize: 20 }}>{m.icon}</Text>
+                      <View style={{ flex: 1 }}>
+                        <Text style={{ color: m.claimed ? C.textFaint : C.text, fontFamily: Font.extra, fontSize: 14 }}>
+                          {t(`missions.${m.id}`)}
+                        </Text>
+                        <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 1 }}>
+                          {Math.min(m.progress, m.goal)}/{m.goal}
+                        </Text>
+                      </View>
+                      {m.claimed ? (
+                        <Text style={{ color: C.correctText, fontFamily: Font.extra, fontSize: 13 }}>{t('arena.done')}</Text>
+                      ) : done ? (
+                        <Pressable onPress={() => handleClaimMission(m)} disabled={claimingMission === m.id} hitSlop={8}>
+                          <View style={{ backgroundColor: C.correct, borderRadius: Radius.pill, paddingVertical: 8, paddingHorizontal: 16 }}>
+                            <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 13 }}>{t('arena.claim')}</Text>
+                          </View>
+                        </Pressable>
+                      ) : (
+                        <Text style={{ color: C.textFaint, fontFamily: Font.bold, fontSize: 13 }}>
+                          +{REWARDS.missionCoins} 🪙
+                        </Text>
+                      )}
+                    </View>
+                    <View style={{ height: 6, backgroundColor: C.track, borderRadius: Radius.pill, overflow: 'hidden' }}>
+                      <View style={{
+                        height: '100%',
+                        width: `${Math.min(100, (m.progress / m.goal) * 100)}%`,
+                        backgroundColor: done ? C.correct : C.streak,
+                        borderRadius: Radius.pill,
+                      }} />
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+        )}
 
         {/* Cómo lo llevas — solo para usuarios logueados */}
         {!guest && (
@@ -356,6 +495,29 @@ export default function HomeScreen() {
           </View>
         )}
 
+        {economyOn && (
+          <View style={{ flexDirection: 'row', gap: 10, paddingHorizontal: Space.screen, marginTop: 14 }}>
+            <Pressable onPress={() => router.push('/shop')} style={{ flex: 1 }}>
+              <View style={{
+                backgroundColor: C.surface, borderRadius: 18, padding: 16, alignItems: 'center', gap: 5,
+                borderWidth: 1, borderColor: C.border,
+              }}>
+                <Text style={{ fontSize: 24 }}>🛒</Text>
+                <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 14 }}>{t('arena.shop')}</Text>
+              </View>
+            </Pressable>
+            <Pressable onPress={() => router.push('/profile')} style={{ flex: 1 }}>
+              <View style={{
+                backgroundColor: C.surface, borderRadius: 18, padding: 16, alignItems: 'center', gap: 5,
+                borderWidth: 1, borderColor: C.border,
+              }}>
+                <Text style={{ fontSize: 24 }}>🏅</Text>
+                <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 14 }}>{t('arena.achievements')}</Text>
+              </View>
+            </Pressable>
+          </View>
+        )}
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -378,8 +540,7 @@ function ModeTile({
     <Pressable
       onPress={onPress}
       style={{
-        // Dos por fila con 10 px de separación.
-        width: '48%', flexGrow: 1,
+        width: '48.5%',
         opacity: disabled ? 0.5 : 1,
       }}
     >

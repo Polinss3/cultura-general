@@ -57,7 +57,8 @@ for (const k of keysEs) {
 
 // Barrido de caracteres españoles en literales de código (best-effort).
 const SRC_DIRS = ['app', 'components', 'lib', 'constants', 'context', 'hooks'];
-const SKIP = new Set(['constants/questions.ts', 'constants/questionsEn.ts']); // bancos de preguntas
+// Catálogos de datos bilingües: llevan los dos idiomas dentro a propósito.
+const SKIP = new Set(['constants/questions.ts', 'constants/questionsEn.ts', 'constants/flags.ts']);
 const spanishRe = /[¿¡áéíóúñ]/i;
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

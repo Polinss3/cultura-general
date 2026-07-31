@@ -12,7 +12,7 @@ import mobileAds, {
   TestIds,
 } from 'react-native-google-mobile-ads';
 
-export type AdPlacement = 'daily_answered' | 'speed_complete' | 'learn_checkpoint' | 'ladder_complete';
+export type AdPlacement = 'daily_answered' | 'speed_complete' | 'learn_checkpoint' | 'ladder_complete' | 'flags_complete';
 export type RewardedPlacement = 'shop_coins' | 'ladder_revive' | 'speed_time';
 
 const INTERSTITIAL_COOLDOWN_MS = 45_000;
