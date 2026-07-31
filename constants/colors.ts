@@ -16,13 +16,17 @@ export const LightColors = {
   track:       '#F0E7DA',  // fondo de barras de progreso
   text:        '#2B2621',  // tinta
   textBody:    '#4A443D',
-  textMuted:   '#6E665E',  // ≥13 px  (5,6:1)
-  textFaint:   '#7A6E62',  // etiquetas 12 px (4,9:1) — NO bajar de aquí
+  textMuted:   '#6E665E',  // ≥13 px  (5,1:1 sobre bg)
+  textFaint:   '#796D61',  // etiquetas 12 px (5,2:1) — NO bajar de aquí
+  onBrand:     '#FFFFFF',  // texto sobre los rellenos de color
   brand:       '#E07A3E',  // terracota, acción principal
-  brandDeep:   '#B45F20',  // texto/iconos sobre crema
+  brandDeep:   '#A9591E',  // texto/iconos sobre crema y sobre brandTint
   brandTint:   '#FDF0DC',
   streak:      '#F0A93B',
-  streakText:  '#C97F1E',
+  streakText:  '#C97F1E',  // solo cifras grandes (≥20 px)
+  coinText:    '#94661F',  // monedas a tamaño de texto
+  coinTint:    '#FDF3E0',
+  levelText:   '#3F71A9',  // nombre de rango junto al nivel
   correct:     '#3F9E6C',
   correctText: '#237049',
   correctTint: '#EAF7F0',
@@ -47,12 +51,16 @@ export const DarkColors = {
   text:        '#F7F0E6',
   textBody:    '#CFC4B7',
   textMuted:   '#B8ADA0',
-  textFaint:   '#A2958A',  // 4,6:1 sobre bg — NO bajar de aquí
+  textFaint:   '#A2958A',  // 6,2:1 sobre bg — NO bajar de aquí
+  onBrand:     '#FFFFFF',
   brand:       '#E07A3E',
   brandDeep:   '#F0A93B',
   brandTint:   '#2E2419',
   streak:      '#F0A93B',
   streakText:  '#F0A93B',
+  coinText:    '#E5B564',
+  coinTint:    '#2E2419',
+  levelText:   '#7FB6E6',
   correct:     '#4FB183',
   correctText: '#7FD6AA',
   correctTint: 'rgba(79,177,131,0.13)',

@@ -357,6 +357,7 @@
     "greeting": "Hola, {{name}} 👋",
     "route": {
       "title": "Tu ruta de hoy",
+      "subtitle": "Tres pasos y lo tienes hecho",
       "daily": "Pregunta del día",
       "chest": "Cofre diario",
       "play": "Practica un poco",
@@ -407,7 +408,21 @@
     "statAnswered": "Respondidas",
     "statAccuracy": "Precisión",
     "statStreak": "Racha",
-    "achievementsUnlocked": "Logros desbloqueados"
+    "achievementsUnlocked": "Logros desbloqueados",
+    "modes": {
+      "speed": "Contrarreloj",
+      "ladder": "Ascenso",
+      "learn": "Aprender",
+      "friends": "Con amigos",
+      "speedRecord_one": "Récord: {{count}} acierto",
+      "speedRecord_other": "Récord: {{count}} aciertos",
+      "ladderRecord": "Récord: piso {{n}}",
+      "learnTopics_one": "{{count}} tema",
+      "learnTopics_other": "{{count}} temas",
+      "friendsModes_one": "{{count}} modo local",
+      "friendsModes_other": "{{count}} modos locales",
+      "noRecord": "Aún sin récord"
+    }
   },
   "friendsList": {
     "gateTitle": "Amigos y rankings",

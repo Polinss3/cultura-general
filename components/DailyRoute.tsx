@@ -16,6 +16,8 @@ import {
 import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
 import type { Profile } from '@/hooks/useProfile';
+import { useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Type, cardShadow, highlightGradient } from '@/constants/theme';
 
 interface Props {
   userId: string;
@@ -23,13 +25,12 @@ interface Props {
   refresh: () => void;
 }
 
-const ACCENT = '#e8a030';
-
 export function DailyRoute({ userId, profile, refresh }: Props) {
   const { t } = useTranslation();
   const router = useRouter();
   const { celebrate } = useProgress();
   const { showToast } = useToast();
+  const { C, isDark } = useTheme();
 
   const [dailyAnswered, setDailyAnswered] = useState(false);
   const [played, setPlayed] = useState(false);
@@ -136,8 +137,11 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
 
   if (loading && missions.length === 0) {
     return (
-      <View style={{ marginTop: 16, backgroundColor: '#141110', borderRadius: 20, padding: 24, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(232,160,48,0.2)' }}>
-        <ActivityIndicator color={ACCENT} />
+      <View style={{
+        marginTop: 14, backgroundColor: C.surface, borderRadius: Radius.cardLg,
+        padding: 24, alignItems: 'center', borderWidth: 1, borderColor: C.borderWarm,
+      }}>
+        <ActivityIndicator color={C.brand} />
       </View>
     );
   }
@@ -149,19 +153,19 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
     const pendingCount = missions.length - missionsDone;
     return (
       <View style={{
-        marginTop: 16, borderRadius: 16, overflow: 'hidden',
-        backgroundColor: 'rgba(46,200,122,0.1)', borderWidth: 1, borderColor: 'rgba(46,200,122,0.3)',
+        marginTop: 14, borderRadius: Radius.row, overflow: 'hidden',
+        backgroundColor: C.correctTint, borderWidth: 1, borderColor: C.correct,
       }}>
         {/* Ruta completada → desplegar */}
         <Pressable onPress={() => setUserExpanded(true)}>
-          <View style={{ paddingVertical: 14, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-            <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: '#2ec87a', alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ color: '#000', fontFamily: 'Outfit_800ExtraBold', fontSize: 14 }}>✓</Text>
+          <View style={{ paddingVertical: 15, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <View style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: C.correct, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ color: C.onBrand, fontFamily: Font.black, fontSize: 14 }}>✓</Text>
             </View>
-            <Text style={{ flex: 1, color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+            <Text style={{ flex: 1, color: C.correctText, fontFamily: Font.extra, fontSize: 15 }}>
               {t('home.route.completedCollapsed')}
             </Text>
-            <Chevron dir="down" color="rgba(46,200,122,0.9)" />
+            <Chevron dir="down" color={C.correctText} />
           </View>
         </Pressable>
 
@@ -169,15 +173,15 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         {missionsPending && (
           <Pressable onPress={() => router.push('/(tabs)/arena')}>
             <View style={{
-              borderTopWidth: 1, borderTopColor: 'rgba(46,200,122,0.15)',
-              backgroundColor: 'rgba(232,160,48,0.06)',
-              paddingVertical: 11, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 10,
+              borderTopWidth: 1, borderTopColor: C.border,
+              backgroundColor: C.surface,
+              paddingVertical: 13, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 10,
             }}>
-              <Text style={{ fontSize: 15 }}>🎯</Text>
-              <Text style={{ flex: 1, color: 'rgba(255,255,255,0.75)', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>
+              <Text style={{ fontSize: 16 }}>🎯</Text>
+              <Text style={{ flex: 1, color: C.textBody, fontFamily: Font.semi, fontSize: 14 }}>
                 {t('home.route.missionsPending', { count: pendingCount })}
               </Text>
-              <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 16 }}>›</Text>
+              <Text style={{ color: C.textFaint, fontSize: 18 }}>›</Text>
             </View>
           </Pressable>
         )}
@@ -186,43 +190,56 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
   }
 
   return (
-    <View style={{ marginTop: 16, borderRadius: 20, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(232,160,48,0.3)' }}>
+    <View style={{
+      marginTop: 14, borderRadius: 24, overflow: 'hidden',
+      borderWidth: 1.5, borderColor: C.borderWarm,
+      ...cardShadow(isDark),
+    }}>
       <LinearGradient
-        colors={['#1a1204', '#120d06', '#0d0b09']}
-        start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-        style={{ padding: 16 }}
+        colors={highlightGradient(isDark)}
+        locations={[0, 0.55]}
+        start={{ x: 0, y: 0 }} end={{ x: 0.4, y: 1 }}
+        style={{ paddingVertical: 18, paddingHorizontal: 16 }}
       >
         {/* Header (pulsable para colapsar cuando ya está todo hecho) */}
         <Pressable onPress={nothingActionable ? () => setUserExpanded(false) : undefined} disabled={!nothingActionable}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <Text style={{ fontSize: 20 }}>🗓️</Text>
-              <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_800ExtraBold' }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+            <Text style={{ fontSize: 20 }}>🗓️</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={{ color: C.text, ...Type.cardTitleLg }}>
                 {t('home.route.title')}
               </Text>
+              <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, marginTop: 1 }}>
+                {t('home.route.subtitle')}
+              </Text>
             </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <View style={{ backgroundColor: route.complete ? 'rgba(46,200,122,0.15)' : 'rgba(232,160,48,0.15)', borderRadius: 99, paddingHorizontal: 10, paddingVertical: 3 }}>
-                <Text style={{ color: route.complete ? '#2ec87a' : ACCENT, fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
-                  {route.coreDone}/{route.coreTotal}
-                </Text>
-              </View>
-              {nothingActionable && (
-                <Chevron dir="up" color="rgba(255,255,255,0.5)" size={18} />
-              )}
+            <View style={{
+              backgroundColor: route.complete ? C.correctTint : C.brandTint,
+              borderRadius: Radius.pill, paddingHorizontal: 12, paddingVertical: 5,
+            }}>
+              <Text style={{ color: route.complete ? C.correctText : C.brandDeep, fontFamily: Font.black, fontSize: 13 }}>
+                {route.coreDone}/{route.coreTotal}
+              </Text>
             </View>
+            {nothingActionable && <Chevron dir="up" color={C.textFaint} size={18} />}
           </View>
         </Pressable>
 
         {/* Progress bar */}
-        <View style={{ height: 5, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 99, marginBottom: 14, overflow: 'hidden' }}>
-          <View style={{ height: '100%', width: `${(route.coreDone / route.coreTotal) * 100}%`, backgroundColor: route.complete ? '#2ec87a' : ACCENT, borderRadius: 99 }} />
+        <View style={{ height: 8, backgroundColor: C.track, borderRadius: Radius.pill, marginBottom: 14, overflow: 'hidden' }}>
+          <View style={{
+            height: '100%',
+            width: `${(route.coreDone / route.coreTotal) * 100}%`,
+            backgroundColor: route.complete ? C.correct : C.brand,
+            borderRadius: Radius.pill,
+          }} />
         </View>
 
         {/* Checklist */}
-        <View style={{ gap: 8 }}>
+        <View style={{ gap: 9 }}>
           {/* Pregunta del día */}
           <RouteRow
+            C={C}
             icon="🏆"
             label={t('home.route.daily')}
             done={route.dailyAnswered}
@@ -231,17 +248,18 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
 
           {/* Cofre diario */}
           <RouteRow
+            C={C}
             icon="🎁"
             label={t('home.route.chest')}
             done={route.chestClaimed}
             action={
               !route.chestClaimed
                 ? (claimingChest
-                    ? <ActivityIndicator color={ACCENT} size="small" />
+                    ? <ActivityIndicator color={C.brand} size="small" />
                     : (
-                      <Pressable onPress={handleClaimChest}>
-                        <View style={{ backgroundColor: ACCENT, borderRadius: 99, paddingVertical: 6, paddingHorizontal: 14 }}>
-                          <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>{t('home.route.claim')}</Text>
+                      <Pressable onPress={handleClaimChest} hitSlop={8}>
+                        <View style={{ backgroundColor: C.brand, borderRadius: Radius.pill, paddingVertical: 8, paddingHorizontal: 16 }}>
+                          <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 13 }}>{t('home.route.claim')}</Text>
                         </View>
                       </Pressable>
                     ))
@@ -252,6 +270,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
 
           {/* Practica hoy (Contrarreloj o Aprender) */}
           <RouteRow
+            C={C}
             icon="⚡"
             label={t('home.route.play')}
             done={route.played}
@@ -264,35 +283,43 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
           <View style={{ marginTop: 12 }}>
             <Pressable onPress={() => router.push('/(tabs)/arena')}>
               <View style={{
-                backgroundColor: claimableMissions.length > 0 ? 'rgba(46,200,122,0.08)' : 'rgba(255,255,255,0.04)',
-                borderRadius: 12, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 10,
-                borderWidth: claimableMissions.length > 0 ? 1 : 0, borderColor: 'rgba(46,200,122,0.3)',
+                backgroundColor: C.surface,
+                borderRadius: Radius.row, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 11,
+                borderWidth: 1, borderColor: claimableMissions.length > 0 ? C.correct : C.border,
               }}>
-                <Text style={{ fontSize: 16 }}>🎯</Text>
-                <View style={{ flex: 1 }}>
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 }}>
-                    <Text style={{ color: 'rgba(255,255,255,0.75)', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>
+                <Text style={{ fontSize: 17 }}>🎯</Text>
+                <View style={{ flex: 1, gap: 6 }}>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{ color: C.textBody, fontFamily: Font.bold, fontSize: 14 }}>
                       {t('home.route.missions')}
                     </Text>
-                    <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_600SemiBold', fontSize: 12 }}>
+                    <Text style={{ color: C.textFaint, fontFamily: Font.extra, fontSize: 13 }}>
                       {missionsDone}/{missions.length}
                     </Text>
                   </View>
-                  <View style={{ height: 3, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 99, overflow: 'hidden' }}>
-                    <View style={{ height: '100%', width: `${(missionsDone / missions.length) * 100}%`, backgroundColor: ACCENT, borderRadius: 99 }} />
+                  <View style={{ height: 5, backgroundColor: C.track, borderRadius: Radius.pill, overflow: 'hidden' }}>
+                    <View style={{
+                      height: '100%',
+                      width: `${(missionsDone / missions.length) * 100}%`,
+                      backgroundColor: C.streak,
+                      borderRadius: Radius.pill,
+                    }} />
                   </View>
                 </View>
-                <Text style={{ color: 'rgba(255,255,255,0.25)', fontSize: 16 }}>›</Text>
+                <Text style={{ color: C.textFaint, fontSize: 18 }}>›</Text>
               </View>
             </Pressable>
 
             {claimableMissions.length > 0 && (
-              <Pressable onPress={handleClaimMissions} disabled={claimingMissions} style={{ marginTop: 8 }}>
-                <View style={{ backgroundColor: '#2ec87a', borderRadius: 12, padding: 12, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
+              <Pressable onPress={handleClaimMissions} disabled={claimingMissions} style={{ marginTop: 9 }}>
+                <View style={{
+                  backgroundColor: C.correct, borderRadius: Radius.row, padding: 14,
+                  alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8,
+                }}>
                   {claimingMissions ? (
-                    <ActivityIndicator color="#000" size="small" />
+                    <ActivityIndicator color={C.onBrand} size="small" />
                   ) : (
-                    <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+                    <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>
                       {t('home.route.claimMissions', { count: claimableMissions.length })}
                     </Text>
                   )}
@@ -306,30 +333,32 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         <View style={{ marginTop: 14 }}>
           {route.complete && !rewardClaimed ? (
             <Pressable onPress={handleClaimReward} disabled={claimingReward}>
-              <LinearGradient
-                colors={['#e8a030', '#e83060']}
-                start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                style={{ borderRadius: 14, padding: 14, alignItems: 'center' }}
-              >
+              <View style={{ backgroundColor: C.brand, borderRadius: 18, padding: 15, alignItems: 'center' }}>
                 {claimingReward ? (
-                  <ActivityIndicator color="#fff" />
+                  <ActivityIndicator color={C.onBrand} />
                 ) : (
-                  <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
+                  <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 16 }}>
                     {t('home.route.claimReward', { coins: REWARDS.dailyRouteBonus.coins, xp: REWARDS.dailyRouteBonus.xp })}
                   </Text>
                 )}
-              </LinearGradient>
+              </View>
             </Pressable>
           ) : rewardClaimed ? (
-            <View style={{ borderRadius: 14, padding: 12, alignItems: 'center', backgroundColor: 'rgba(46,200,122,0.1)', borderWidth: 1, borderColor: 'rgba(46,200,122,0.3)' }}>
-              <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+            <View style={{
+              borderRadius: 18, padding: 14, alignItems: 'center',
+              backgroundColor: C.correctTint, borderWidth: 1, borderColor: C.correct,
+            }}>
+              <Text style={{ color: C.correctText, fontFamily: Font.extra, fontSize: 15 }}>
                 {t('home.route.rewardDone')}
               </Text>
             </View>
           ) : (
             <Pressable onPress={() => { feedback.tap(); router.push('/speed'); }}>
-              <View style={{ borderRadius: 14, padding: 14, alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
+              <View style={{
+                borderRadius: 18, padding: 15, alignItems: 'center',
+                backgroundColor: C.surface, borderWidth: 1, borderColor: C.borderStrong,
+              }}>
+                <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 16 }}>
                   {t('home.route.play2min')}
                 </Text>
               </View>
@@ -351,8 +380,9 @@ function Chevron({ dir, color, size = 20 }: { dir: 'up' | 'down'; color: string;
 }
 
 function RouteRow({
-  icon, label, done, action, onPress,
+  C, icon, label, done, action, onPress,
 }: {
+  C: Palette;
   icon: string;
   label: string;
   done: boolean;
@@ -362,31 +392,31 @@ function RouteRow({
   return (
     <Pressable onPress={onPress} disabled={!onPress}>
       <View style={{
-        flexDirection: 'row', alignItems: 'center', gap: 12,
-        backgroundColor: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: 12,
-        opacity: done ? 0.7 : 1,
+        flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 62,
+        backgroundColor: C.surface, borderRadius: Radius.row, padding: 12,
+        borderWidth: 1, borderColor: C.border,
       }}>
         <View style={{
-          width: 34, height: 34, borderRadius: 10,
-          backgroundColor: done ? 'rgba(46,200,122,0.15)' : 'rgba(232,160,48,0.12)',
+          width: 38, height: 38, borderRadius: Radius.iconSm,
+          backgroundColor: done ? C.correctTint : C.brandTint,
           alignItems: 'center', justifyContent: 'center',
         }}>
           <Text style={{ fontSize: 17 }}>{icon}</Text>
         </View>
         <Text style={{
-          flex: 1, color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14,
+          flex: 1, color: done ? C.textFaint : C.text, fontFamily: Font.bold, fontSize: 15,
           textDecorationLine: done ? 'line-through' : 'none',
         }}>
           {label}
         </Text>
         {done ? (
-          <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: '#2ec87a', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#000', fontFamily: 'Outfit_800ExtraBold', fontSize: 13 }}>✓</Text>
+          <View style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: C.correct, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ color: C.onBrand, fontFamily: Font.black, fontSize: 14 }}>✓</Text>
           </View>
         ) : action ? (
           action
         ) : (
-          <Text style={{ color: 'rgba(255,255,255,0.25)', fontSize: 18 }}>›</Text>
+          <Text style={{ color: C.textFaint, fontSize: 18 }}>›</Text>
         )}
       </View>
     </Pressable>

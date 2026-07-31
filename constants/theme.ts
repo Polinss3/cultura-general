@@ -88,7 +88,36 @@ export function highlightGradient(isDark: boolean): [string, string] {
   return isDark ? ['#231C14', '#1D1813'] : ['#FFF6E9', '#FFFFFF'];
 }
 
-/** Gradiente ámbar de las llamadas a la acción (cofre, hero de "A qué jugamos"). */
+/** Gradiente ámbar de las llamadas a la acción: cofre y modo protagonista. */
 export function warmGradient(isDark: boolean): [string, string] {
   return isDark ? ['#33240F', '#291D0F'] : ['#FFF1DE', '#FFE4CA'];
+}
+
+/**
+ * Botón principal. Centralizado a propósito: el relleno de marca con texto
+ * blanco se queda en 3,0:1, por debajo del 4,5:1 que cumple el resto de la
+ * app. Cambiar aquí `backgroundColor` a un terracota más oscuro (#B26131) o
+ * el texto a tinta sube el par a 4,5:1 sin tocar ninguna pantalla.
+ */
+export function primaryFill(C: { brand: string; onBrand: string }) {
+  return { backgroundColor: C.brand, color: C.onBrand };
+}
+
+/**
+ * Botón de tinta: relleno oscuro sobre crema y al revés en oscuro. Es el
+ * secundario fuerte de las tarjetas destacadas ("Jugar ahora", "Compartir").
+ */
+export function inkButton(isDark: boolean): { backgroundColor: string; color: string } {
+  return isDark
+    ? { backgroundColor: '#F0E6D8', color: '#2B2621' }
+    : { backgroundColor: '#2B2621', color: '#FFF6E9' };
+}
+
+/** Tinte suave de un color de acento, para cuadrados de icono y píldoras. */
+export function tint(color: string, isDark: boolean): string {
+  const h = color.replace('#', '');
+  const full = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+  const n = parseInt(full.slice(0, 6), 16);
+  const a = isDark ? 0.18 : 0.13;
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
 }

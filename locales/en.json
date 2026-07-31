@@ -357,6 +357,7 @@
     "greeting": "Hi, {{name}} 👋",
     "route": {
       "title": "Today's route",
+      "subtitle": "Three steps and you're done",
       "daily": "Daily question",
       "chest": "Daily chest",
       "play": "Practice a bit",
@@ -407,7 +408,21 @@
     "statAnswered": "Answered",
     "statAccuracy": "Accuracy",
     "statStreak": "Streak",
-    "achievementsUnlocked": "Achievements unlocked"
+    "achievementsUnlocked": "Achievements unlocked",
+    "modes": {
+      "speed": "Time attack",
+      "ladder": "Climb",
+      "learn": "Learn",
+      "friends": "With friends",
+      "speedRecord_one": "Best: {{count}} correct",
+      "speedRecord_other": "Best: {{count}} correct",
+      "ladderRecord": "Best: floor {{n}}",
+      "learnTopics_one": "{{count}} topic",
+      "learnTopics_other": "{{count}} topics",
+      "friendsModes_one": "{{count}} local mode",
+      "friendsModes_other": "{{count}} local modes",
+      "noRecord": "No record yet"
+    }
   },
   "friendsList": {
     "gateTitle": "Friends & rankings",
