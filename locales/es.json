@@ -391,6 +391,8 @@
     "route": {
       "title": "Tu ruta de hoy",
       "subtitle": "Tres pasos y lo tienes hecho",
+      "see": "Ver",
+      "bannerDone": "Ya la tienes hecha. ¡Bien!",
       "daily": "Pregunta del día",
       "chest": "Cofre diario",
       "play": "Practica un poco",

@@ -10,12 +10,14 @@ import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { UserName } from '@/components/UserName';
 import { Pop } from '@/components/Pop';
+import { DailyRoute } from '@/components/DailyRoute';
 import { usePowerups } from '@/hooks/usePowerups';
 import { resolveCosmetics } from '@/lib/cosmetics';
 import { Confetti } from '@/components/Confetti';
 import { GuestGate } from '@/components/GuestGate';
 import { OfflineNotice } from '@/components/OfflineNotice';
 import { useAuth } from '@/hooks/useAuth';
+import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
@@ -191,6 +193,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const { t, i18n } = useTranslation();
   const router = useRouter();
   const { celebrate } = useProgress();
+  const { profile, refresh: refreshProfile } = useProfile();
   const { C, isDark } = useTheme();
   const [phase, setPhase] = useState<Phase>('loading');
   const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
@@ -395,6 +398,11 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               </Pressable>
             </LinearGradient>
           </Pop>
+
+          {/* Ruta de hoy: el resto del ritual diario, bajo el resultado. */}
+          {user && (
+            <DailyRoute userId={user.id} profile={profile} refresh={refreshProfile} />
+          )}
 
           {/* Tab switcher */}
           <View style={{
@@ -604,6 +612,13 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               </Text>
             )}
           </View>
+        )}
+
+        {/* Ruta de hoy. Va deliberadamente al final: el ranking del día se
+            ordena por tiempo de respuesta, así que nada compite con la
+            pregunta hasta que está contestada. */}
+        {user && (
+          <DailyRoute userId={user.id} profile={profile} refresh={refreshProfile} />
         )}
       </ScrollView>
     </SafeAreaView>

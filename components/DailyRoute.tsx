@@ -242,7 +242,6 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
             icon="🏆"
             label={t('home.route.daily')}
             done={route.dailyAnswered}
-            onPress={() => router.push('/(tabs)/daily')}
           />
 
           {/* Cofre diario */}
@@ -280,7 +279,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         {/* Misiones (capa extra) — con reclamo directo si hay recompensas */}
         {missions.length > 0 && (
           <View style={{ marginTop: 12 }}>
-            <View>
+            <Pressable onPress={() => router.push('/(tabs)')}>
               <View style={{
                 backgroundColor: C.surface,
                 borderRadius: Radius.row, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 11,
@@ -305,8 +304,9 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
                     }} />
                   </View>
                 </View>
+                <Text style={{ color: C.textFaint, fontSize: 18 }}>›</Text>
               </View>
-            </View>
+            </Pressable>
 
             {claimableMissions.length > 0 && (
               <Pressable onPress={handleClaimMissions} disabled={claimingMissions} style={{ marginTop: 9 }}>

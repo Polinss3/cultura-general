@@ -391,6 +391,8 @@
     "route": {
       "title": "Today's route",
       "subtitle": "Three steps and you're done",
+      "see": "See",
+      "bannerDone": "All done for today. Nice!",
       "daily": "Daily question",
       "chest": "Daily chest",
       "play": "Practice a bit",

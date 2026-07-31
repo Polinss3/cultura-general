@@ -16,7 +16,7 @@ import { setGuestMode, getGuestSpeedRecord } from '@/lib/guest';
 import { LevelBadge } from '@/components/LevelBadge';
 import { XpBar } from '@/components/XpBar';
 import { CoinPill } from '@/components/CoinPill';
-import { DailyRoute } from '@/components/DailyRoute';
+import { DailyRouteBanner } from '@/components/DailyRouteBanner';
 import { DailyChest } from '@/components/DailyChest';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
 import { LeagueBadge } from '@/components/LeagueBadge';
@@ -268,10 +268,10 @@ export default function HomeScreen() {
           )}
         </View>
 
-        {/* Hub "Hoy": ruta diaria (solo logueado y online) */}
+        {/* Resumen de la ruta de hoy; la ruta entera está en Diario. */}
         {!guest && !offline && user && (
           <View style={{ paddingHorizontal: Space.screen }}>
-            <DailyRoute userId={user.id} profile={profile} refresh={refresh} />
+            <DailyRouteBanner userId={user.id} profile={profile} />
           </View>
         )}
 
