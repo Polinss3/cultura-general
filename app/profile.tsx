@@ -409,13 +409,13 @@ export default function ProfileScreen() {
                         {t(`categories.${cs.category}`, { defaultValue: cs.category })}
                       </Text>
                     </View>
-                    <Text style={{ color: m.tier.color, fontFamily: 'Outfit_600SemiBold', fontSize: 11, marginBottom: 8 }}>
+                    <Text style={{ color: m.tier.color, fontFamily: 'Outfit_600SemiBold', fontSize: 12, marginBottom: 8 }}>
                       {m.tier.emoji} {t(`mastery.tiers.${m.tier.id}`)} · {t('mastery.level', { level: m.level })}
                     </Text>
                     <View style={{ height: 6, backgroundColor: '#2a2a2a', borderRadius: 99, overflow: 'hidden' }}>
                       <View style={{ height: '100%', width: `${m.pct * 100}%`, backgroundColor: m.tier.color, borderRadius: 99 }} />
                     </View>
-                    <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 6 }}>
+                    <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 6 }}>
                       {cs.correct}/{cs.total} · {acc}%
                     </Text>
                   </View>
@@ -448,19 +448,19 @@ export default function ProfileScreen() {
                   <Text style={{ color: a.unlocked ? '#fff' : 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
                     {a.title}
                   </Text>
-                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 2 }}>
+                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
                     {a.desc}
                   </Text>
                   {claimable ? (
                     <Pressable onPress={() => handleClaimAchievement(a.id)} disabled={claiming === a.id} style={{ marginTop: 8 }}>
                       <View style={{ backgroundColor: a.color, borderRadius: 99, paddingVertical: 5, alignItems: 'center' }}>
-                        <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 11 }}>
+                        <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
                           {claiming === a.id ? '…' : t('profile.claim', { coins: a.reward })}
                         </Text>
                       </View>
                     </Pressable>
                   ) : a.claimed ? (
-                    <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_600SemiBold', fontSize: 11, marginTop: 8 }}>
+                    <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_600SemiBold', fontSize: 12, marginTop: 8 }}>
                       {t('profile.claimed')}
                     </Text>
                   ) : null}
@@ -502,7 +502,7 @@ export default function ProfileScreen() {
                       <Text style={{ color: '#fff', fontFamily: 'Outfit_500Medium', fontSize: 13, lineHeight: 18 }} numberOfLines={2}>
                         {h.questionText}
                       </Text>
-                      <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 4 }}>
+                      <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 4 }}>
                         {CAT_ICONS[cat] ?? ''} {t(`categories.${h.category}`, { defaultValue: h.category })} · {t(`profile.modeLabels.${h.mode}`, { defaultValue: h.mode })}
                       </Text>
                     </View>
@@ -686,7 +686,7 @@ function StatCard({ label, value }: { label: string; value: string }) {
   return (
     <View style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 12, alignItems: 'center' }}>
       <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold' }}>{value}</Text>
-      <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, fontFamily: 'Outfit_400Regular', marginTop: 2, textAlign: 'center' }}>{label}</Text>
+      <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2, textAlign: 'center' }}>{label}</Text>
     </View>
   );
 }

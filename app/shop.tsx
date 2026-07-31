@@ -249,7 +249,7 @@ function ShopCard({
       </View>
 
       <Text numberOfLines={1} style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>{item.name}</Text>
-      <Text numberOfLines={2} style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 2, marginBottom: 10, minHeight: 28 }}>
+      <Text numberOfLines={2} style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2, marginBottom: 10, minHeight: 28 }}>
         {item.description}
       </Text>
 

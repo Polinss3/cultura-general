@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   dev: {
     color: '#e83060',
-    fontSize: 11,
+    fontSize: 12,
     fontFamily: 'Outfit_400Regular',
     backgroundColor: '#1a0a0a',
     padding: 12,

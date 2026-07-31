@@ -523,14 +523,14 @@ export default function LadderScreen() {
         {/* Header: piso, vidas, bote */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
           <View>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>{t('ladder.floorLabel')}</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 12 }}>{t('ladder.floorLabel')}</Text>
             <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 22 }}>{floor}</Text>
           </View>
           <Text style={{ fontSize: 16 }}>
             {'❤️'.repeat(lives)}{'🖤'.repeat(Math.max(0, LADDER_LIVES - lives))}
           </Text>
           <View style={{ alignItems: 'flex-end' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>{t('ladder.pot')}</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 12 }}>{t('ladder.pot')}</Text>
             <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 18 }}>{bote} 🪙</Text>
           </View>
         </View>
@@ -540,7 +540,7 @@ export default function LadderScreen() {
           <View style={{ height: '100%', width: `${Math.max(0, pct * 100)}%`, backgroundColor: timerColor, borderRadius: 99 }} />
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 18 }}>
-          <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>
+          <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_500Medium', fontSize: 12 }}>
             {t('ladder.difficulty', { level: t(`learn.diff.${ladderDifficulty(floor)}`) })}
           </Text>
           <Text style={{ color: timerColor, fontFamily: 'Outfit_700Bold', fontSize: 13 }}>{timeLeft}s</Text>

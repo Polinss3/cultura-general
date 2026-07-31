@@ -150,13 +150,13 @@ export default function LeaguesScreen() {
         <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 16, marginBottom: 14 }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
             <View>
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>{t('leagues.yourPosition')}</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 12 }}>{t('leagues.yourPosition')}</Text>
               <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 22 }}>
                 {state.myRank ? `#${state.myRank}` : '—'}
               </Text>
             </View>
             <View style={{ alignItems: 'flex-end' }}>
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>{t('leagues.xpThisWeek')}</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 12 }}>{t('leagues.xpThisWeek')}</Text>
               <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_800ExtraBold', fontSize: 18 }}>{state.myXp} XP</Text>
             </View>
           </View>
@@ -259,8 +259,8 @@ export default function LeaguesScreen() {
                       fontFamily={isMe ? 'Outfit_700Bold' : 'Outfit_500Medium'}
                     />
                   </View>
-                  {rowPromo && <Text style={{ fontSize: 11 }}>⬆️</Text>}
-                  {rowReleg && <Text style={{ fontSize: 11 }}>⬇️</Text>}
+                  {rowPromo && <Text style={{ fontSize: 12 }}>⬆️</Text>}
+                  {rowReleg && <Text style={{ fontSize: 12 }}>⬇️</Text>}
                   <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>{row.xp} XP</Text>
                 </View>
               );
@@ -285,7 +285,7 @@ export default function LeaguesScreen() {
                 return (
                   <View key={d} style={{ alignItems: 'center', gap: 3 }}>
                     <Text style={{ fontSize: 26 }}>{m.emoji}</Text>
-                    <Text style={{ color: m.color, fontFamily: 'Outfit_600SemiBold', fontSize: 10 }}>{t(`leagues.divisions.${m.id}`)}</Text>
+                    <Text style={{ color: m.color, fontFamily: 'Outfit_600SemiBold', fontSize: 12 }}>{t(`leagues.divisions.${m.id}`)}</Text>
                   </View>
                 );
               })}

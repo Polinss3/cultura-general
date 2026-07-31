@@ -80,7 +80,7 @@ export function StreakCalendar({ userId, streak, bestStreak }: Props) {
       {/* Cabecera de días de la semana */}
       <View style={{ flexDirection: 'row', marginBottom: 6 }}>
         {weekdays.map((w, i) => (
-          <Text key={i} style={{ flex: 1, textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_600SemiBold', fontSize: 11, textTransform: 'uppercase' }}>
+          <Text key={i} style={{ flex: 1, textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_600SemiBold', fontSize: 12, textTransform: 'uppercase' }}>
             {w}
           </Text>
         ))}
