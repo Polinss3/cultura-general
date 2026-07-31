@@ -23,6 +23,8 @@ import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Question } from '@/types';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 type Phase = 'loading' | 'intro' | 'playing' | 'done';
 
@@ -37,6 +39,7 @@ function buildLocal(): Question[] {
 
 export default function SpeedScreen() {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh: refreshProfile } = useProfile();
@@ -202,9 +205,9 @@ export default function SpeedScreen() {
   // ─ Loading
   if (phase === 'loading') {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator color="#a030e8" size="large" />
+          <ActivityIndicator color={C.speed} size="large" />
         </View>
       </SafeAreaView>
     );
@@ -214,39 +217,39 @@ export default function SpeedScreen() {
   if (phase === 'intro') {
     const record = currentRecord;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingTop: 12 }}>
           <Pressable onPress={() => router.back()} style={{ padding: 4 }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
+            <Text style={{ color: C.textMuted, fontSize: 22 }}>←</Text>
           </Pressable>
         </View>
         <View style={{ flex: 1, padding: 20 }}>
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 64, marginBottom: 16 }}>⚡</Text>
-            <Text style={{ color: '#fff', fontSize: 26, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8 }}>
+            <Text style={{ color: C.text, fontSize: 26, fontFamily: Font.black, marginBottom: 8 }}>
               {t('speed.title')}
             </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', lineHeight: 24, textAlign: 'center', maxWidth: 260, marginBottom: 12 }}>
+            <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, lineHeight: 24, textAlign: 'center', maxWidth: 260, marginBottom: 12 }}>
               {t('speed.introDescPre')}
-              <Text style={{ color: '#a030e8', fontFamily: 'Outfit_700Bold' }}>{t('speed.seconds')}</Text>
+              <Text style={{ color: C.speed, fontFamily: Font.bold }}>{t('speed.seconds')}</Text>
               {t('speed.introDescPost')}
             </Text>
-            <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center' }}>
-              <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginBottom: 4 }}>
+            <View style={{
+              backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 20,
+              marginBottom: 30, width: '100%', alignItems: 'center',
+              borderWidth: 1, borderColor: C.border, ...cardShadow(isDark),
+            }}>
+              <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, marginBottom: 4 }}>
                 {t('speed.recordLabel')}
               </Text>
-              <Text style={{ color: '#a030e8', fontSize: 32, fontFamily: 'Outfit_800ExtraBold' }}>
+              <Text style={{ color: C.speedText, fontSize: 32, fontFamily: Font.black }}>
                 {t('speed.questions', { count: record })}
               </Text>
             </View>
             <Pressable onPress={() => setPhase('playing')} style={{ width: '100%' }}>
-              <LinearGradient
-                colors={['#a030e8', '#7020b8']}
-                start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
-              >
-                <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('speed.start')}</Text>
-              </LinearGradient>
+              <View style={{ backgroundColor: C.speed, borderRadius: 18, padding: 16, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontSize: 17, fontFamily: Font.extra }}>{t('speed.start')}</Text>
+              </View>
             </Pressable>
           </View>
         </View>
@@ -262,23 +265,23 @@ export default function SpeedScreen() {
     const diff = record - score;
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flex: 1, padding: 20, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 56, marginBottom: 12 }}>
             {score >= record && record > 0 ? '🏆' : score >= 5 ? '⭐' : '💪'}
           </Text>
-          <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
+          <Text style={{ color: C.text, fontSize: 28, fontFamily: Font.black, marginBottom: 4 }}>
             {t('speed.correctCount', { count: score })}
           </Text>
-          <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 6 }}>
+          <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 6 }}>
             {t('speed.inSeconds', { seconds: DURATION })}
           </Text>
           {newRecord ? (
-            <Text style={{ color: '#e8a030', fontSize: 13, fontFamily: 'Outfit_600SemiBold', marginBottom: 10 }}>
+            <Text style={{ color: C.streak, fontSize: 13, fontFamily: Font.semi, marginBottom: 10 }}>
               {t('speed.newRecord')}
             </Text>
           ) : (
-            <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 13, fontFamily: 'Outfit_400Regular', marginBottom: 10 }}>
+            <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.regular, marginBottom: 10 }}>
               {record > 0
                 ? diff > 0
                   ? t('speed.recordBeat', { record, diff })
@@ -289,11 +292,11 @@ export default function SpeedScreen() {
 
           {award && (award.gainedXp > 0 || award.gainedCoins > 0) && (
             <View style={{ flexDirection: 'row', gap: 8, marginBottom: 22 }}>
-              <View style={{ backgroundColor: 'rgba(48,168,232,0.15)', borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
-                <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>+{award.gainedXp} XP</Text>
+              <View style={{ backgroundColor: tint(C.social, isDark), borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
+                <Text style={{ color: C.social, fontFamily: Font.extra, fontSize: 13 }}>+{award.gainedXp} XP</Text>
               </View>
-              <View style={{ backgroundColor: 'rgba(232,160,48,0.15)', borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
-                <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>+{award.gainedCoins} 🪙</Text>
+              <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
+                <Text style={{ color: C.coinText, fontFamily: Font.extra, fontSize: 13 }}>+{award.gainedCoins} 🪙</Text>
               </View>
             </View>
           )}
@@ -303,9 +306,12 @@ export default function SpeedScreen() {
               { label: t('profile.stats.answered'), value: String(qIdx) },
               { label: t('profile.stats.accuracy'), value: `${accuracy}%` },
             ].map(s => (
-              <View key={s.label} style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 14, alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_700Bold' }}>{s.value}</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>{s.label}</Text>
+              <View key={s.label} style={{
+                flex: 1, backgroundColor: C.surface, borderRadius: 18, padding: 14, alignItems: 'center',
+                borderWidth: 1, borderColor: C.border,
+              }}>
+                <Text style={{ color: C.text, fontSize: 22, fontFamily: Font.black }}>{s.value}</Text>
+                <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginTop: 2 }}>{s.label}</Text>
               </View>
             ))}
           </View>
@@ -313,18 +319,17 @@ export default function SpeedScreen() {
           <View style={{ flexDirection: 'row', gap: 10, width: '100%' }}>
             <Pressable
               onPress={() => router.back()}
-              style={{ flex: 1, backgroundColor: '#1a1a1a', borderRadius: 14, padding: 14, alignItems: 'center' }}
+              style={{
+                flex: 1, backgroundColor: C.surface, borderRadius: 18, padding: 15, alignItems: 'center',
+                borderWidth: 1, borderColor: C.borderStrong,
+              }}
             >
-              <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>{t('speed.exit')}</Text>
+              <Text style={{ color: C.textBody, fontSize: 15, fontFamily: Font.extra }}>{t('speed.exit')}</Text>
             </Pressable>
             <Pressable onPress={() => reset(true)} style={{ flex: 2 }}>
-              <LinearGradient
-                colors={['#a030e8', '#7020b8']}
-                start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                style={{ borderRadius: 14, padding: 14, alignItems: 'center' }}
-              >
-                <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_700Bold' }}>{t('speed.again')}</Text>
-              </LinearGradient>
+              <View style={{ backgroundColor: C.speed, borderRadius: 18, padding: 15, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontSize: 15, fontFamily: Font.extra }}>{t('speed.again')}</Text>
+              </View>
             </Pressable>
           </View>
         </View>
@@ -336,7 +341,7 @@ export default function SpeedScreen() {
   if (allQ.length === 0 || !displayQ) return null;
   const q = displayQ;
   const pct = timeLeft / DURATION;
-  const timerColor = timeLeft > 10 ? '#a030e8' : '#e83060';
+  const timerColor = timeLeft > 10 ? C.speed : C.wrong;
 
   const getState = (i: number): AnswerState => {
     if (!answered) return null;
@@ -346,36 +351,84 @@ export default function SpeedScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
-      <View style={{ flex: 1, padding: 20 }}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-          <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 20 }}>#{qIdx + 1}</Text>
-          <Text style={{ color: timerColor, fontSize: 32, fontFamily: 'Outfit_800ExtraBold' }}>{timeLeft}s</Text>
-          <Text style={{ color: '#a030e8', fontFamily: 'Outfit_700Bold', fontSize: 20 }}>{score} ✓</Text>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+      <View style={{ flex: 1, padding: Space.screen, gap: 20 }}>
+        {/* Salida + distintivo del modo */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Pressable
+            onPress={() => router.back()}
+            style={{
+              paddingVertical: 8, paddingHorizontal: 14, borderRadius: Radius.pill,
+              backgroundColor: C.surface, borderWidth: 1, borderColor: C.border,
+            }}
+            hitSlop={8}
+          >
+            <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.bold }}>✕ {t('speed.exit')}</Text>
+          </Pressable>
+          <View style={{
+            paddingVertical: 8, paddingHorizontal: 14, borderRadius: Radius.pill,
+            backgroundColor: tint(C.speed, isDark),
+          }}>
+            <Text style={{ color: C.speedText, fontSize: 13, fontFamily: Font.extra }}>⚡ {t('speed.title')}</Text>
+          </View>
         </View>
 
-        <View style={{ height: 4, backgroundColor: '#1a1a1a', borderRadius: 99, marginBottom: 20, overflow: 'hidden' }}>
-          <View style={{ height: '100%', width: `${pct * 100}%`, backgroundColor: timerColor, borderRadius: 99 }} />
+        {/* Marcador: tiempo restante y aciertos */}
+        <View style={{
+          backgroundColor: C.surface, borderRadius: 24, padding: 20, gap: 14,
+          borderWidth: 1, borderColor: C.border, ...cardShadow(isDark),
+        }}>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+            <View>
+              <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1 }}>
+                {t('speed.questionN', { n: qIdx + 1 })}
+              </Text>
+              <Text style={{ color: timerColor, fontSize: 44, fontFamily: Font.black, lineHeight: 48 }}>{timeLeft}s</Text>
+            </View>
+            <View style={{ alignItems: 'flex-end' }}>
+              <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1 }}>
+                {t('speed.hitsLabel')}
+              </Text>
+              <Text style={{ color: C.text, fontSize: 44, fontFamily: Font.black, lineHeight: 48 }}>{score} ✓</Text>
+            </View>
+          </View>
+          <View style={{ height: 12, backgroundColor: C.track, borderRadius: Radius.pill, overflow: 'hidden' }}>
+            <View style={{ height: '100%', width: `${pct * 100}%`, backgroundColor: timerColor, borderRadius: Radius.pill }} />
+          </View>
         </View>
 
-        <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold', lineHeight: 26, marginBottom: 18 }}>
+        <Text style={{ color: C.text, ...Type.question }}>
           {q.q}
         </Text>
 
-        <View style={{ gap: 9 }}>
+        <View style={{ gap: 11 }}>
           {q.opts.map((opt, i) =>
             fiftyHidden.includes(i) ? (
-              <View key={i} style={{ borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.04)', borderRadius: 14, paddingVertical: 14, paddingHorizontal: 16, opacity: 0.3 }}>
-                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 15, fontFamily: 'Outfit_500Medium' }}>—</Text>
+              <View key={i} style={{
+                borderWidth: 1.5, borderColor: C.border, backgroundColor: C.surfaceSunk,
+                borderRadius: 18, paddingVertical: 16, paddingHorizontal: 16, opacity: 0.5,
+                minHeight: 60, justifyContent: 'center',
+              }}>
+                <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
               </View>
             ) : (
-              <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+              <OptionBtn
+                key={i}
+                text={opt}
+                letter={LETTERS[i]}
+                state={getState(i)}
+                dimmed={answered && getState(i) === null}
+                onPress={() => handle(i)}
+              />
             ),
           )}
         </View>
 
         {canUsePowerups && (powerUps.some(p => p.count > 0)) && (
-          <View style={{ marginTop: 18 }}>
+          <View style={{ gap: 9 }}>
+            <Text style={{ color: C.textFaint, ...Type.sectionLabel, fontSize: 12 }}>
+              {t('common.yourHelpers')}
+            </Text>
             <PowerUpBar items={powerUps} onUse={usePowerUp} disabled={answered} />
           </View>
         )}

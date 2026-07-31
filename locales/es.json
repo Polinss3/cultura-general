@@ -283,6 +283,8 @@
     "seconds": "30 segundos",
     "introDescPost": ". Cada acierto suma 1 punto y monedas.",
     "recordLabel": "Tu récord actual",
+    "questionN": "PREGUNTA {{n}}",
+    "hitsLabel": "ACIERTOS",
     "questions_one": "{{count}} pregunta",
     "questions_other": "{{count}} preguntas",
     "start": "¡Empezar!",

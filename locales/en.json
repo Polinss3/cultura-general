@@ -283,6 +283,8 @@
     "seconds": "30 seconds",
     "introDescPost": ". Each correct answer is worth 1 point and coins.",
     "recordLabel": "Your current record",
+    "questionN": "QUESTION {{n}}",
+    "hitsLabel": "CORRECT",
     "questions_one": "{{count}} question",
     "questions_other": "{{count}} questions",
     "start": "Start!",
