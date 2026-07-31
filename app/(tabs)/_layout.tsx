@@ -15,9 +15,12 @@ function TabIcon({ label, icon, focused, C }: TabIconProps) {
   return (
     <View style={{
       alignItems: 'center',
-      gap: 3,
+      justifyContent: 'center',
+      gap: 2,
       paddingVertical: 6,
-      paddingHorizontal: 14,
+      // Con 5 pestañas y la etiqueta a 12 px (el suelo), más holgura que esta
+      // corta "Aprender" y "Amigos".
+      paddingHorizontal: 8,
       borderRadius: Radius.row,
       backgroundColor: focused ? C.brandTint : 'transparent',
       // Las inactivas se apagan al 55 %, sin puntito de selección.
@@ -47,9 +50,14 @@ export default function TabLayout() {
           backgroundColor: C.surface2,
           borderTopColor: C.border,
           borderTopWidth: 1,
-          height: 76,
+          // 58 de contenido + el hueco del indicador de inicio. Por debajo de
+          // esto la píldora y la etiqueta se recortan.
+          height: 92,
+          paddingTop: 8,
         },
         tabBarShowLabel: false,
+        // Sin esto el icono va a una caja fija más baja que la píldora.
+        tabBarIconStyle: { width: '100%', height: 52 },
       }}
     >
       <Tabs.Screen

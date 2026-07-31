@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
@@ -15,11 +14,13 @@ import { LevelBadge } from '@/components/LevelBadge';
 import { XpBar } from '@/components/XpBar';
 import { CoinPill } from '@/components/CoinPill';
 import { DailyChest } from '@/components/DailyChest';
-import { formatMultiplier } from '@/lib/economy';
+import { formatMultiplier, REWARDS } from '@/lib/economy';
 import { rankForLevel } from '@/lib/leveling';
 import {
   fetchMissionState, claimMission, claimDailyChest, bumpMissions, MissionState,
 } from '@/lib/gamification';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, tint } from '@/constants/theme';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -34,6 +35,7 @@ export default function ArenaScreen() {
   const offline = useOffline();
   const { celebrate } = useProgress();
   const { showToast } = useToast();
+  const { C, isDark } = useTheme();
 
   const [missions, setMissions] = useState<MissionState[]>([]);
   const [busy, setBusy] = useState<string | null>(null);
@@ -65,7 +67,7 @@ export default function ArenaScreen() {
     setBusy(m.id);
     const award = await claimMission(m.id);
     setBusy(null);
-    if (!award) { showToast({ type: 'info', message: 'No se pudo reclamar.' }); return; }
+    if (!award) { showToast({ type: 'info', message: t('arena.claimFailed') }); return; }
     celebrate(award);
     refresh();
     loadMissions();
@@ -81,57 +83,60 @@ export default function ArenaScreen() {
   const coins = profile?.coins ?? 0;
   const streak = profile?.streak ?? 0;
   const mult = formatMultiplier(streak);
+  const rank = rankForLevel(level);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: 20, paddingBottom: 28 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ padding: Space.screen, paddingBottom: 28 }}>
 
-        <Text style={{ color: '#fff', fontSize: 24, fontFamily: 'Outfit_800ExtraBold', marginBottom: 16 }}>
+        <Text style={{ color: C.text, fontSize: 28, fontFamily: Font.black, letterSpacing: -0.3, marginBottom: 16 }}>
           {t('arena.title')}
         </Text>
 
         {/* Progreso */}
         {economyOn ? (
-          <View style={{ borderRadius: 20, marginBottom: 14, overflow: 'hidden', borderWidth: 1, borderColor: rankForLevel(level).color + '55' }}>
-            <LinearGradient
-              colors={[rankForLevel(level).color + '30', rankForLevel(level).color2 + '14', '#141416']}
-              locations={[0, 0.55, 1]}
-              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ padding: 16 }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                <LevelBadge level={level} size={52} />
-                <View style={{ flex: 1 }}>
-                  <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 18 }}>{t('components.levelUp.level', { level })}</Text>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 2 }}>
-                    <Text style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Outfit_500Medium', fontSize: 12 }}>
-                      🔥 {t('common.days', { count: streak })}
-                    </Text>
-                    {mult && (
-                      <View style={{ backgroundColor: 'rgba(232,160,48,0.2)', borderRadius: 99, paddingHorizontal: 8, paddingVertical: 1 }}>
-                        <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 11 }}>{mult} XP</Text>
-                      </View>
-                    )}
-                  </View>
+          <View style={{
+            backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 16, marginBottom: 14,
+            borderWidth: 1, borderColor: C.border, gap: 14, ...cardShadow(isDark),
+          }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <LevelBadge level={level} size={54} />
+              <View style={{ flex: 1, gap: 3 }}>
+                <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 19 }}>
+                  {t('components.levelUp.level', { level })} · {t(`ranks.${rank.id}`)}
+                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                  <Text style={{ color: C.textMuted, fontFamily: Font.bold, fontSize: 13 }}>
+                    🔥 {t('common.days', { count: streak })}
+                  </Text>
+                  {mult && (
+                    <View style={{ backgroundColor: C.brandTint, borderRadius: Radius.pill, paddingHorizontal: 9, paddingVertical: 2 }}>
+                      <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>{mult} XP</Text>
+                    </View>
+                  )}
                 </View>
-                <CoinPill coins={coins} onPress={() => router.push('/shop')} showPlus />
               </View>
-              <XpBar xp={xp} />
-            </LinearGradient>
+              <CoinPill coins={coins} onPress={() => router.push('/shop')} showPlus />
+            </View>
+            <XpBar xp={xp} />
           </View>
         ) : (
           <Pressable onPress={goToAuth}>
-            <View style={{ backgroundColor: '#151515', borderRadius: 20, padding: 16, marginBottom: 14, borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <View style={{
+              backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 16, marginBottom: 14,
+              borderWidth: 1.5, borderColor: C.borderWarm, flexDirection: 'row', alignItems: 'center', gap: 12,
+              ...cardShadow(isDark),
+            }}>
               <Text style={{ fontSize: 26 }}>✨</Text>
               <View style={{ flex: 1 }}>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+                <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 16 }}>
                   {offline ? t('arena.guestOffline') : t('arena.guestCreate')}
                 </Text>
-                <Text style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
+                <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 2, lineHeight: 19 }}>
                   {offline ? t('arena.guestOfflineSub') : t('arena.guestCreateSub')}
                 </Text>
               </View>
-              {!offline && <Text style={{ color: '#e8a030', fontSize: 18 }}>→</Text>}
+              {!offline && <Text style={{ color: C.brandDeep, fontSize: 20 }}>›</Text>}
             </View>
           </Pressable>
         )}
@@ -143,42 +148,38 @@ export default function ArenaScreen() {
 
         {/* Ligas semanales */}
         {economyOn && (
-          <Pressable onPress={() => router.push('/leagues' as any)} style={{ marginBottom: 12 }}>
-            <LinearGradient
-              colors={['#1a1408', '#0a0a0a']}
-              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 20, padding: 18, borderWidth: 1, borderColor: 'rgba(232,200,48,0.35)' }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-                <View style={{ width: 38, height: 38, borderRadius: 12, backgroundColor: 'rgba(232,200,48,0.15)', alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ fontSize: 18 }}>🏆</Text>
-                </View>
-                <View>
-                  <Text style={{ color: '#e8c030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('leagues.cardTag')}</Text>
-                  <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('leagues.cardTitle')}</Text>
-                </View>
+          <Pressable onPress={() => router.push('/leagues' as any)} style={{ marginBottom: 14 }}>
+            <View style={{
+              backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 16,
+              borderWidth: 1, borderColor: C.border,
+              flexDirection: 'row', alignItems: 'center', gap: 14,
+            }}>
+              <View style={{
+                width: 46, height: 46, borderRadius: Radius.row,
+                backgroundColor: C.coinTint, alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Text style={{ fontSize: 22 }}>🏆</Text>
               </View>
-              <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
-                {t('leagues.cardDesc')}
-              </Text>
-              <View style={{ marginTop: 14 }}>
-                <View style={{ backgroundColor: '#e8c030', paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99, alignSelf: 'flex-start' }}>
-                  <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{t('leagues.cardCta')}</Text>
-                </View>
+              <View style={{ flex: 1, gap: 2 }}>
+                <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.black }}>{t('leagues.cardTitle')}</Text>
+                <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, lineHeight: 19 }}>
+                  {t('leagues.cardDesc')}
+                </Text>
               </View>
-            </LinearGradient>
+              <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>
+            </View>
           </Pressable>
         )}
 
         {/* Modos en solitario */}
-        <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12, marginTop: 4 }}>
+        <Text style={{ color: C.textFaint, ...Type.sectionLabel, marginBottom: 12, marginTop: 4 }}>
           {t('arena.soloModes')}
         </Text>
 
         <ModeCard
-          colors={['#0a001a', '#0a0a0a']}
-          border="rgba(160,48,232,0.3)"
-          accent="#a030e8"
+          C={C} isDark={isDark}
+          accent={C.speed}
+          accentText={C.speedText}
           icon="⚡"
           tag={t('arena.speedTag')}
           title={t('arena.speedTitle')}
@@ -188,9 +189,9 @@ export default function ArenaScreen() {
         />
 
         <ModeCard
-          colors={['#1a1000', '#0a0a0a']}
-          border="rgba(232,160,48,0.3)"
-          accent="#e8a030"
+          C={C} isDark={isDark}
+          accent={C.brand}
+          accentText={C.brandDeep}
           icon="🪜"
           tag={t('arena.ladderTag')}
           title={t('arena.ladderTitle')}
@@ -203,38 +204,48 @@ export default function ArenaScreen() {
         {/* Misiones diarias */}
         {economyOn && missions.length > 0 && (
           <>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12, marginTop: 10 }}>
+            <Text style={{ color: C.textFaint, ...Type.sectionLabel, marginBottom: 12, marginTop: 8 }}>
               {t('arena.todayMissions')}
             </Text>
             <View style={{ gap: 10, marginBottom: 6 }}>
               {missions.map(m => {
                 const done = m.progress >= m.goal;
                 return (
-                  <View key={m.id} style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <View key={m.id} style={{
+                    backgroundColor: C.surface, borderRadius: 18, padding: 14, gap: 10,
+                    borderWidth: 1, borderColor: C.border,
+                  }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11 }}>
                       <Text style={{ fontSize: 20 }}>{m.icon}</Text>
                       <View style={{ flex: 1 }}>
-                        <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{t(`missions.${m.id}`)}</Text>
-                        <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 1 }}>
+                        <Text style={{ color: m.claimed ? C.textFaint : C.text, fontFamily: Font.extra, fontSize: 14 }}>
+                          {t(`missions.${m.id}`)}
+                        </Text>
+                        <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 1 }}>
                           {Math.min(m.progress, m.goal)}/{m.goal}
                         </Text>
                       </View>
                       {m.claimed ? (
-                        <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>{t('arena.done')}</Text>
+                        <Text style={{ color: C.correctText, fontFamily: Font.extra, fontSize: 13 }}>{t('arena.done')}</Text>
                       ) : done ? (
-                        <Pressable onPress={() => handleClaimMission(m)} disabled={busy === m.id}>
-                          <View style={{ backgroundColor: '#2ec87a', borderRadius: 99, paddingVertical: 6, paddingHorizontal: 14 }}>
-                            <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>{t('arena.claim')}</Text>
+                        <Pressable onPress={() => handleClaimMission(m)} disabled={busy === m.id} hitSlop={8}>
+                          <View style={{ backgroundColor: C.correct, borderRadius: Radius.pill, paddingVertical: 8, paddingHorizontal: 16 }}>
+                            <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 13 }}>{t('arena.claim')}</Text>
                           </View>
                         </Pressable>
                       ) : (
-                        <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
-                          +{15} 🪙
+                        <Text style={{ color: C.textFaint, fontFamily: Font.bold, fontSize: 13 }}>
+                          +{REWARDS.missionCoins} 🪙
                         </Text>
                       )}
                     </View>
-                    <View style={{ height: 4, backgroundColor: '#1f1f1f', borderRadius: 99, marginTop: 10, overflow: 'hidden' }}>
-                      <View style={{ height: '100%', width: `${Math.min(100, (m.progress / m.goal) * 100)}%`, backgroundColor: done ? '#2ec87a' : '#e8a030', borderRadius: 99 }} />
+                    <View style={{ height: 6, backgroundColor: C.track, borderRadius: Radius.pill, overflow: 'hidden' }}>
+                      <View style={{
+                        height: '100%',
+                        width: `${Math.min(100, (m.progress / m.goal) * 100)}%`,
+                        backgroundColor: done ? C.correct : C.streak,
+                        borderRadius: Radius.pill,
+                      }} />
                     </View>
                   </View>
                 );
@@ -247,15 +258,21 @@ export default function ArenaScreen() {
         {economyOn && (
           <View style={{ flexDirection: 'row', gap: 10, marginTop: 14 }}>
             <Pressable onPress={() => router.push('/shop')} style={{ flex: 1 }}>
-              <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 16, alignItems: 'center', gap: 4 }}>
-                <Text style={{ fontSize: 22 }}>🛒</Text>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{t('arena.shop')}</Text>
+              <View style={{
+                backgroundColor: C.surface, borderRadius: 18, padding: 16, alignItems: 'center', gap: 5,
+                borderWidth: 1, borderColor: C.border,
+              }}>
+                <Text style={{ fontSize: 24 }}>🛒</Text>
+                <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 14 }}>{t('arena.shop')}</Text>
               </View>
             </Pressable>
             <Pressable onPress={() => router.push('/profile')} style={{ flex: 1 }}>
-              <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 16, alignItems: 'center', gap: 4 }}>
-                <Text style={{ fontSize: 22 }}>🏅</Text>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{t('arena.achievements')}</Text>
+              <View style={{
+                backgroundColor: C.surface, borderRadius: 18, padding: 16, alignItems: 'center', gap: 5,
+                borderWidth: 1, borderColor: C.border,
+              }}>
+                <Text style={{ fontSize: 24 }}>🏅</Text>
+                <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 14 }}>{t('arena.achievements')}</Text>
               </View>
             </Pressable>
           </View>
@@ -267,11 +284,12 @@ export default function ArenaScreen() {
 }
 
 function ModeCard({
-  colors, border, accent, icon, tag, title, desc, cta, extra, onPress,
+  C, isDark, accent, accentText, icon, tag, title, desc, cta, extra, onPress,
 }: {
-  colors: [string, string];
-  border: string;
+  C: Palette;
+  isDark: boolean;
   accent: string;
+  accentText: string;
   icon: string;
   tag: string;
   title: string;
@@ -282,32 +300,34 @@ function ModeCard({
 }) {
   return (
     <Pressable onPress={onPress} style={{ marginBottom: 12 }}>
-      <LinearGradient
-        colors={colors}
-        start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-        style={{ borderRadius: 20, padding: 18, borderWidth: 1, borderColor: border }}
-      >
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-          <View style={{ width: 38, height: 38, borderRadius: 12, backgroundColor: accent + '26', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 18 }}>{icon}</Text>
+      <View style={{
+        backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 16, gap: 11,
+        borderWidth: 1, borderColor: C.border,
+      }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <View style={{
+            width: 44, height: 44, borderRadius: 15,
+            backgroundColor: tint(accent, isDark), alignItems: 'center', justifyContent: 'center',
+          }}>
+            <Text style={{ fontSize: 21 }}>{icon}</Text>
           </View>
-          <View>
-            <Text style={{ color: accent, fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{tag}</Text>
-            <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{title}</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={{ color: accentText, fontSize: 12, fontFamily: Font.black, letterSpacing: 1 }}>{tag}</Text>
+            <Text style={{ color: C.text, fontSize: 18, fontFamily: Font.black }}>{title}</Text>
           </View>
         </View>
-        <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
+        <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, lineHeight: 21 }}>
           {desc}
         </Text>
-        <View style={{ marginTop: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          <View style={{ backgroundColor: accent, paddingVertical: 7, paddingHorizontal: 16, borderRadius: 99 }}>
-            <Text style={{ color: '#000', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>{cta}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <View style={{ backgroundColor: accent, paddingVertical: 10, paddingHorizontal: 20, borderRadius: Radius.pill }}>
+            <Text style={{ color: C.onBrand, fontSize: 14, fontFamily: Font.extra }}>{cta}</Text>
           </View>
           {extra && (
-            <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>{extra}</Text>
+            <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.semi, flex: 1 }}>{extra}</Text>
           )}
         </View>
-      </LinearGradient>
+      </View>
     </Pressable>
   );
 }

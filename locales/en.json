@@ -619,6 +619,7 @@
     "ladderRecord": "Record: floor {{n}}",
     "todayMissions": "Today's missions",
     "claim": "Claim",
+    "claimFailed": "Couldn't claim it. Try again.",
     "done": "✓ Done",
     "shop": "Shop",
     "achievements": "Achievements"
