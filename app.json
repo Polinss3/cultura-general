@@ -6,9 +6,9 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "culturalgeneral",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "automatic",
     "backgroundColor": "#0a0a0a",
-    "primaryColor": "#e8a030",
+    "primaryColor": "#E07A3E",
     "locales": {
       "es": "./locales/native/es.json",
       "en": "./locales/native/en.json"
@@ -16,7 +16,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "53",
+      "buildNumber": "55",
       "usesAppleSignIn": true,
       "infoPlist": {
         "NSCameraUsageDescription": "The app does not use the camera.",

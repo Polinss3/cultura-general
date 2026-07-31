@@ -8,13 +8,12 @@ import * as Linking from 'expo-linking';
 import { Alert } from 'react-native';
 import {
   useFonts,
-  Outfit_300Light,
-  Outfit_400Regular,
-  Outfit_500Medium,
-  Outfit_600SemiBold,
-  Outfit_700Bold,
-  Outfit_800ExtraBold,
-} from '@expo-google-fonts/outfit';
+  Nunito_400Regular,
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+  Nunito_900Black,
+} from '@expo-google-fonts/nunito';
 import * as Sentry from '@sentry/react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
@@ -54,14 +53,21 @@ Sentry.init({
 
 SplashScreen.preventAutoHideAsync();
 
+// Plazos del arranque. Ninguna promesa puede dejar la app clavada en la
+// BootScreen: a los 5s ofrecemos el modo sin conexión y a los 10s entramos
+// igualmente con lo que haya (rechazo 2.1(a) de Apple: "App launched on a
+// splash screen", iPadOS 26.5, al actualizar sobre una versión con sesión
+// guardada y la red del backend inaccesible).
+const BOOT_OFFLINE_HINT_MS = 5000;
+const BOOT_HARD_DEADLINE_MS = 10000;
+
 function RootLayout() {
-  const [fontsLoaded] = useFonts({
-    Outfit_300Light,
-    Outfit_400Regular,
-    Outfit_500Medium,
-    Outfit_600SemiBold,
-    Outfit_700Bold,
-    Outfit_800ExtraBold,
+  const [fontsLoaded, fontError] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+    Nunito_900Black,
   });
 
   const { session, loading } = useAuth();
@@ -78,10 +84,19 @@ function RootLayout() {
   // Arranque sin conexión.
   const [probeDone, setProbeDone] = useState(false);   // sonda de red resuelta
   const [manualEnter, setManualEnter] = useState(false); // usuario pulsó "Continuar sin conexión"
-  const [bootTimedOut, setBootTimedOut] = useState(false); // han pasado ~10s cargando
+  const [bootTimedOut, setBootTimedOut] = useState(false); // toca ofrecer el modo sin conexión
+  const [bootExpired, setBootExpired] = useState(false);   // plazo máximo agotado: entramos igual
 
   useEffect(() => {
-    getOnboardingCompleted().then(setOnboarded);
+    // Ante un fallo de storage asumimos "sin onboarding": preferimos repetirlo
+    // a quedarnos esperando para siempre.
+    getOnboardingCompleted().then(setOnboarded).catch(() => setOnboarded(false));
+  }, []);
+
+  // Red de seguridad del arranque: pase lo que pase, la app entra.
+  useEffect(() => {
+    const timer = setTimeout(() => setBootExpired(true), BOOT_HARD_DEADLINE_MS);
+    return () => clearTimeout(timer);
   }, []);
 
   // Idioma: aplicar override guardado bajo el BootScreen (sin flash), y de
@@ -114,7 +129,7 @@ function RootLayout() {
     });
     const timer = setTimeout(() => {
       if (!cancelled) setBootTimedOut(true);
-    }, 10000);
+    }, BOOT_OFFLINE_HINT_MS);
     return () => {
       cancelled = true;
       clearTimeout(timer);
@@ -143,9 +158,14 @@ function RootLayout() {
     };
 
     const bootstrap = async () => {
-      const initialUrl = await Linking.getInitialURL();
-      if (initialUrl) await handleDeepLink(initialUrl);
-      if (!cancelled) setAuthLinkReady(true);
+      try {
+        const initialUrl = await Linking.getInitialURL();
+        if (initialUrl) await handleDeepLink(initialUrl);
+      } catch {
+        // Un deep link ilegible no puede impedir que la app arranque.
+      } finally {
+        if (!cancelled) setAuthLinkReady(true);
+      }
     };
 
     bootstrap();
@@ -202,12 +222,18 @@ function RootLayout() {
   }, [session?.user?.id, session?.user?.updated_at]);
 
   // ─ Estado de arranque ─
+  // Si las fuentes fallan seguimos con las del sistema: es preferible a no arrancar.
+  const fontsReady = fontsLoaded || !!fontError;
   const authResolved =
-    fontsLoaded && !loading && !guestLoading && onboarded !== null && authLinkReady && profileReady && langReady;
+    fontsReady && !loading && !guestLoading && onboarded !== null && authLinkReady && profileReady && langReady;
   const hasIdentity = !!session || guest;
   // Usuario sin sesión + sin red confirmada: requiere pulsar "Continuar sin conexión".
   const needsManualEntry = offline && !hasIdentity;
-  const ready = authResolved && (hasIdentity || manualEnter || (probeDone && !offline));
+  // `manualEnter` y `bootExpired` entran por su cuenta: son las salidas de
+  // emergencia y no pueden depender de `authResolved`, que es justo lo que
+  // puede quedarse a medias.
+  const ready =
+    (authResolved && (hasIdentity || (probeDone && !offline))) || manualEnter || bootExpired;
 
   useEffect(() => {
     if (!ready || !onboarded) return;
@@ -228,7 +254,7 @@ function RootLayout() {
     let cancelled = false;
 
     const syncOnboardingAndRoute = async () => {
-      const hasCompletedOnboarding = await getOnboardingCompleted();
+      const hasCompletedOnboarding = await getOnboardingCompleted().catch(() => onboarded ?? false);
       if (cancelled) return;
 
       if (hasCompletedOnboarding !== onboarded) {
@@ -332,7 +358,8 @@ function RootLayout() {
     <ErrorBoundary>
       <ToastProvider>
         <ProgressProvider>
-          <StatusBar style="light" />
+          {/* "auto" invierte los iconos según el esquema del sistema. */}
+          <StatusBar style="auto" />
           <Stack
             screenOptions={{
               headerShown: false,

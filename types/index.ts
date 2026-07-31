@@ -33,7 +33,14 @@ export interface RankingEntry {
 }
 
 export interface CategoryMeta {
-  bg: string;
+  /** Identidad de la categoría. No cambia entre esquemas. */
   accent: string;
+  /** Fondo del chip/icono en oscuro. */
+  bg: string;
+  /** Texto sobre `bg`. */
   text: string;
+  /** Fondo del chip/icono en claro. */
+  bgLight: string;
+  /** Texto sobre crema: el acento oscurecido hasta 4,5:1, mismo tono. */
+  textLight: string;
 }

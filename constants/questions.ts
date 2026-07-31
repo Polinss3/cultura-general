@@ -350,21 +350,31 @@ export const RANKING: RankingEntry[] = [
   { name: 'Marcos R.', score: 1200, avatar: 'MR', streak: 1 },
 ];
 
+// El `accent` es la identidad de la categoría y no se toca. `bg`/`text` sirven
+// al esquema oscuro; `bgLight`/`textLight` al claro: mismo tono, con el texto
+// oscurecido lo justo para llegar a 4,5:1 sobre la crema (#F7F2EA).
 export const CAT_COLORS: Record<Category, CategoryMeta> = {
-  historia:   { bg: '#2d1f0a', accent: '#e8a030', text: '#f5c060' },
-  geografia:  { bg: '#0a1f2d', accent: '#30a8e8', text: '#60c5f5' },
-  ciencia:    { bg: '#0d2214', accent: '#2ec87a', text: '#60e09a' },
-  arte:       { bg: '#1f0a2d', accent: '#a030e8', text: '#c560f5' },
-  filosofia:  { bg: '#2d0a18', accent: '#e83060', text: '#f56080' },
-  deportes:   { bg: '#0a2d1a', accent: '#30e89a', text: '#60f5b5' },
-  biologia:   { bg: '#1a2d0a', accent: '#5ec830', text: '#90e060' },
-  cine:       { bg: '#2d2410', accent: '#e8c030', text: '#f5d860' },
-  musica:     { bg: '#2d0a22', accent: '#e83098', text: '#f560b0' },
-  literatura: { bg: '#2d1f10', accent: '#a87030', text: '#d8a060' },
-  tecnologia: { bg: '#0a1a2d', accent: '#3098e8', text: '#60b8f5' },
-  mitologia:  { bg: '#1f0a2d', accent: '#9830e8', text: '#b860f5' },
-  astronomia: { bg: '#0a2530', accent: '#30c8e8', text: '#60e0f5' },
+  historia:   { accent: '#e8a030', bg: '#2d1f0a', text: '#f5c060', bgLight: '#F8EAD6', textLight: '#976211' },
+  geografia:  { accent: '#30a8e8', bg: '#0a1f2d', text: '#60c5f5', bgLight: '#D6ECF8', textLight: '#1375A9' },
+  ciencia:    { accent: '#2ec87a', bg: '#0d2214', text: '#60e09a', bgLight: '#D8F6E7', textLight: '#1D7D4C' },
+  arte:       { accent: '#a030e8', bg: '#1f0a2d', text: '#c560f5', bgLight: '#EAD6F8', textLight: '#A030E8' },
+  filosofia:  { accent: '#e83060', bg: '#2d0a18', text: '#f56080', bgLight: '#F8D6DF', textLight: '#D7184A' },
+  deportes:   { accent: '#30e89a', bg: '#0a2d1a', text: '#60f5b5', bgLight: '#D6F8E9', textLight: '#0E7B4D' },
+  biologia:   { accent: '#5ec830', bg: '#1a2d0a', text: '#90e060', bgLight: '#E1F6D8', textLight: '#397A1D' },
+  cine:       { accent: '#e8c030', bg: '#2d2410', text: '#f5d860', bgLight: '#F8F0D6', textLight: '#856B0F' },
+  musica:     { accent: '#e83098', bg: '#2d0a22', text: '#f560b0', bgLight: '#F8D6E9', textLight: '#CE177E' },
+  literatura: { accent: '#a87030', bg: '#2d1f10', text: '#d8a060', bgLight: '#F4E8D9', textLight: '#94632A' },
+  tecnologia: { accent: '#3098e8', bg: '#0a1a2d', text: '#60b8f5', bgLight: '#D6E9F8', textLight: '#1470B7' },
+  mitologia:  { accent: '#9830e8', bg: '#1f0a2d', text: '#b860f5', bgLight: '#E9D6F8', textLight: '#9830E8' },
+  astronomia: { accent: '#30c8e8', bg: '#0a2530', text: '#60e0f5', bgLight: '#D6F2F8', textLight: '#10788E' },
 };
+
+/** Tinte y color de texto de una categoría según el esquema activo. */
+export function catTint(meta: CategoryMeta, isDark: boolean) {
+  return isDark
+    ? { bg: meta.bg, text: meta.text }
+    : { bg: meta.bgLight, text: meta.textLight };
+}
 
 export const CAT_ICONS: Record<Category, string> = {
   historia:   '📜',
