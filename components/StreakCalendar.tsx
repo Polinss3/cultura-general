@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from 'expo-router';
 import { fetchAnsweredDates } from '@/lib/db';
 import { getLocaleTag } from '@/lib/i18n';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 interface Props {
   userId: string;
@@ -11,7 +13,6 @@ interface Props {
   bestStreak: number;
 }
 
-const ACCENT = '#e8a030';
 const MILESTONES = [3, 7, 14, 30];
 
 function pad(n: number): string {
@@ -20,6 +21,7 @@ function pad(n: number): string {
 
 export function StreakCalendar({ userId, streak, bestStreak }: Props) {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const [answered, setAnswered] = useState<Set<string>>(new Set());
 
   // Mes actual en UTC (coherente con cómo el resto de la app calcula "hoy").
@@ -58,21 +60,21 @@ export function StreakCalendar({ userId, streak, bestStreak }: Props) {
   const nextMilestone = MILESTONES.find(m => m > streak);
 
   return (
-    <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 16 }}>
+    <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 16, borderWidth: 1, borderColor: C.border }}>
       {/* Cabecera: racha actual + récord */}
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <Text style={{ fontSize: 28 }}>🔥</Text>
           <View>
-            <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 22 }}>
+            <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>
               {t('streak.days', { count: streak })}
             </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12 }}>
               {t('streak.best', { count: bestStreak })}
             </Text>
           </View>
         </View>
-        <Text style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Outfit_600SemiBold', fontSize: 13, textTransform: 'capitalize' }}>
+        <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 13, textTransform: 'capitalize' }}>
           {monthLabel}
         </Text>
       </View>
@@ -80,7 +82,7 @@ export function StreakCalendar({ userId, streak, bestStreak }: Props) {
       {/* Cabecera de días de la semana */}
       <View style={{ flexDirection: 'row', marginBottom: 6 }}>
         {weekdays.map((w, i) => (
-          <Text key={i} style={{ flex: 1, textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_600SemiBold', fontSize: 12, textTransform: 'uppercase' }}>
+          <Text key={i} style={{ flex: 1, textAlign: 'center', color: C.textFaint, fontFamily: Font.semi, fontSize: 12, textTransform: 'uppercase' }}>
             {w}
           </Text>
         ))}
@@ -98,14 +100,14 @@ export function StreakCalendar({ userId, streak, bestStreak }: Props) {
             <View key={d} style={{ width: `${100 / 7}%`, aspectRatio: 1, padding: 3 }}>
               <View style={{
                 flex: 1, borderRadius: 10, alignItems: 'center', justifyContent: 'center',
-                backgroundColor: isAnswered ? ACCENT : 'rgba(255,255,255,0.04)',
+                backgroundColor: isAnswered ? C.streak : C.border,
                 borderWidth: isToday ? 1.5 : 0,
-                borderColor: isToday ? '#fff' : 'transparent',
+                borderColor: isToday ? C.text : 'transparent',
                 opacity: isFuture ? 0.35 : 1,
               }}>
                 <Text style={{
-                  color: isAnswered ? '#1a1000' : 'rgba(255,255,255,0.55)',
-                  fontFamily: isAnswered ? 'Outfit_700Bold' : 'Outfit_400Regular',
+                  color: isAnswered ? C.text : C.textMuted,
+                  fontFamily: isAnswered ? Font.bold : Font.regular,
                   fontSize: 12,
                 }}>
                   {d}
@@ -123,11 +125,11 @@ export function StreakCalendar({ userId, streak, bestStreak }: Props) {
           return (
             <View key={m} style={{
               flex: 1, alignItems: 'center', paddingVertical: 8, borderRadius: 10,
-              backgroundColor: reached ? 'rgba(232,160,48,0.15)' : 'rgba(255,255,255,0.04)',
-              borderWidth: 1, borderColor: reached ? ACCENT + '66' : 'transparent',
+              backgroundColor: reached ? tint(C.streak, isDark) : C.border,
+              borderWidth: 1, borderColor: reached ? C.streak + '66' : 'transparent',
             }}>
               <Text style={{ fontSize: 15, opacity: reached ? 1 : 0.4 }}>🔥</Text>
-              <Text style={{ color: reached ? ACCENT : 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_700Bold', fontSize: 12, marginTop: 2 }}>
+              <Text style={{ color: reached ? C.streak : C.textMuted, fontFamily: Font.bold, fontSize: 12, marginTop: 2 }}>
                 {m}
               </Text>
             </View>
@@ -135,7 +137,7 @@ export function StreakCalendar({ userId, streak, bestStreak }: Props) {
         })}
       </View>
       {nextMilestone && (
-        <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, textAlign: 'center', marginTop: 10 }}>
+        <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, textAlign: 'center', marginTop: 10 }}>
           {t('streak.nextMilestone', { count: nextMilestone - streak, milestone: nextMilestone })}
         </Text>
       )}

@@ -283,7 +283,7 @@ function PasaSetup({ onStart, onBack }: { onStart: (players: string[]) => void; 
         <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 28 }}>
           {t('party.pasa.setupDesc')}
         </Text>
-        <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+        <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
           {t('party.playersCount', { count: players.length })}
         </Text>
         <View style={{ gap: 10, marginBottom: 16 }}>
@@ -294,7 +294,7 @@ function PasaSetup({ onStart, onBack }: { onStart: (players: string[]) => void; 
               </View>
               <TextInput value={p} onChangeText={val => updatePlayer(i, val)} placeholder={t('party.playerN', { n: i + 1 })}
                 placeholderTextColor={C.textFaint}
-                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: 12, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
+                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: Radius.row, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
               {players.length > 2 && (
                 <Pressable onPress={() => removePlayer(i)} style={{ padding: 8 }}>
                   <Text style={{ color: C.textFaint, fontSize: 20 }}>×</Text>
@@ -304,7 +304,7 @@ function PasaSetup({ onStart, onBack }: { onStart: (players: string[]) => void; 
           ))}
         </View>
         {players.length < 8 && (
-          <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: C.border, borderRadius: 12, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
+          <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: C.border, borderRadius: Radius.row, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
             <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.semi }}>{t('party.addPlayer')}</Text>
           </Pressable>
         )}
@@ -397,8 +397,8 @@ function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone, o
           <Text style={{ color: timerColor, fontSize: 36, fontFamily: Font.black }}>{timeLeft}s</Text>
           <Text style={{ color: C.social, fontSize: 18, fontFamily: Font.bold }}>{score} ✓</Text>
         </View>
-        <View style={{ height: 4, backgroundColor: C.surface, borderRadius: 99, marginBottom: 24, overflow: 'hidden' }}>
-          <View style={{ height: '100%', width: `${pct * 100}%`, backgroundColor: timerColor, borderRadius: 99 }} />
+        <View style={{ height: 4, backgroundColor: C.surface, borderRadius: Radius.pill, marginBottom: 24, overflow: 'hidden', borderWidth: 1, borderColor: C.border }}>
+          <View style={{ height: '100%', width: `${pct * 100}%`, backgroundColor: timerColor, borderRadius: Radius.pill }} />
         </View>
         <Text style={{ color: C.text, fontSize: 18, fontFamily: Font.bold, lineHeight: 26, marginBottom: 20 }}>{q.q}</Text>
         <View style={{ gap: 9 }}>
@@ -456,9 +456,9 @@ function PasaResults({ players, scores, onReplay, onBack }: {
         </View>
         <View style={{ gap: 8, marginBottom: 32 }}>
           {ranked.map((p, i) => (
-            <View key={`${i}-${p.name}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: i === 0 ? tint(C.social, isDark) : C.surface, borderWidth: 1, borderColor: i === 0 ? C.social : 'transparent', borderRadius: 14, padding: 14 }}>
+            <View key={`${i}-${p.name}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: i === 0 ? tint(C.social, isDark) : C.surface, borderWidth: 1, borderColor: i === 0 ? C.social : 'transparent', borderRadius: 18, padding: 14 }}>
               <Text style={{ fontSize: 22, width: 28 }}>{i < 3 ? medals[i] : `${i + 1}`}</Text>
-              <View style={{ width: 38, height: 38, borderRadius: 12, backgroundColor: i === 0 ? C.social : C.surfaceSunk, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{ width: 38, height: 38, borderRadius: Radius.row, backgroundColor: i === 0 ? C.social : C.surfaceSunk, alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: i === 0 ? C.onBrand : C.textMuted, fontSize: 14, fontFamily: Font.black }}>{p.name[0].toUpperCase()}</Text>
               </View>
               <Text style={{ flex: 1, color: i === 0 ? C.social : C.text, fontSize: 16, fontFamily: i === 0 ? Font.bold : Font.semi }}>{p.name}</Text>
@@ -468,7 +468,7 @@ function PasaResults({ players, scores, onReplay, onBack }: {
         </View>
         <View style={{ gap: 10 }}>
           <PrimaryBtn label={t('party.rematch')} onPress={onReplay} />
-          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 14, padding: 14, alignItems: 'center' }}>
+          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 18, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
             <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.semi }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
@@ -537,7 +537,7 @@ function DueloSetup({ onStart, onBack }: { onStart: (names: [string, string]) =>
         <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 28 }}>
           {t('party.duelo.setupDesc')}
         </Text>
-        <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+        <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
           {t('party.playersLabel')}
         </Text>
         <View style={{ gap: 10, marginBottom: 28 }}>
@@ -548,7 +548,7 @@ function DueloSetup({ onStart, onBack }: { onStart: (names: [string, string]) =>
               </View>
               <TextInput value={names[i]} onChangeText={val => { const n: [string, string] = [...names] as [string, string]; n[i] = val; setNames(n); }}
                 placeholder={t('party.playerN', { n: i + 1 })} placeholderTextColor={C.textFaint}
-                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: 12, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
+                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: Radius.row, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
             </View>
           ))}
         </View>
@@ -618,7 +618,7 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
           <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.bold, textAlign: 'center', lineHeight: 24 }}>
             {question.q}
           </Text>
-          <View style={{ backgroundColor: colors[player] + '20', borderRadius: 99, paddingVertical: 16, paddingHorizontal: 32, borderWidth: 2, borderColor: colors[player] }}>
+          <View style={{ backgroundColor: colors[player] + '20', borderRadius: Radius.pill, paddingVertical: 16, paddingHorizontal: 32, borderWidth: 2, borderColor: colors[player] }}>
             <Text style={{ color: colors[player], fontSize: 22, fontFamily: Font.black }}>{t('party.duelo.buzz')}</Text>
           </View>
           <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.semi }}>
@@ -658,7 +658,7 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
           <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>
             {t('party.duelo.round', { n: round + 1, total: DUELO_ROUNDS })}
           </Text>
-          <View style={{ backgroundColor: colors[buzzed] + '20', borderRadius: 99, paddingVertical: 4, paddingHorizontal: 12 }}>
+          <View style={{ backgroundColor: colors[buzzed] + '20', borderRadius: Radius.pill, paddingVertical: 4, paddingHorizontal: 12 }}>
             <Text style={{ color: colors[buzzed], fontSize: 13, fontFamily: Font.bold }}>⚡ {players[buzzed]}</Text>
           </View>
           <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>
@@ -701,7 +701,7 @@ function DueloResults({ players, scores, onReplay, onBack }: {
             {([0, 1] as const).map(i => {
               const isWinner = winner === i;
               return (
-                <View key={i} style={{ flex: 1, backgroundColor: isWinner ? tint(C.wrong, isDark) : C.surface, borderWidth: 1, borderColor: isWinner ? C.wrong : 'transparent', borderRadius: 16, padding: 16, alignItems: 'center' }}>
+                <View key={i} style={{ flex: 1, backgroundColor: isWinner ? tint(C.wrong, isDark) : C.surface, borderWidth: 1, borderColor: isWinner ? C.wrong : 'transparent', borderRadius: Radius.card, padding: 16, alignItems: 'center' }}>
                   <Text style={{ color: i === 0 ? C.wrong : C.social, fontSize: 13, fontFamily: Font.bold, marginBottom: 4 }}>{players[i]}</Text>
                   <Text style={{ color: C.text, fontSize: 36, fontFamily: Font.black }}>{scores[i]}</Text>
                   <Text style={{ color: C.textFaint, fontSize: 12, fontFamily: Font.regular }}>{t('party.points')}</Text>
@@ -712,7 +712,7 @@ function DueloResults({ players, scores, onReplay, onBack }: {
         </View>
         <View style={{ gap: 10 }}>
           <PrimaryBtn label={t('party.rematch')} onPress={onReplay} color={C.wrong} />
-          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 14, padding: 14, alignItems: 'center' }}>
+          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 18, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
             <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.semi }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
@@ -905,7 +905,7 @@ function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
         <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 28 }}>
           {t('party.survivor.setupDesc')}
         </Text>
-        <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+        <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
           {t('party.playersCount', { count: players.length })}
         </Text>
         <View style={{ gap: 10, marginBottom: 16 }}>
@@ -916,7 +916,7 @@ function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
               </View>
               <TextInput value={p} onChangeText={val => updatePlayer(i, val)} placeholder={t('party.playerN', { n: i + 1 })}
                 placeholderTextColor={C.textFaint}
-                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: 12, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
+                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: Radius.row, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
               {players.length > 3 && (
                 <Pressable onPress={() => removePlayer(i)} style={{ padding: 8 }}>
                   <Text style={{ color: C.textFaint, fontSize: 20 }}>×</Text>
@@ -926,7 +926,7 @@ function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
           ))}
         </View>
         {players.length < 8 && (
-          <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: C.border, borderRadius: 12, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
+          <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: C.border, borderRadius: Radius.row, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
             <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.semi }}>{t('party.addPlayer')}</Text>
           </Pressable>
         )}
@@ -997,7 +997,7 @@ function SurvivorQuestion({ playerName, question, onAnswer, onExit }: {
           <View style={{
             flexDirection: 'row', alignItems: 'center', gap: 6,
             backgroundColor: timerColor + '20', borderWidth: 1, borderColor: timerColor,
-            borderRadius: 99, paddingVertical: 4, paddingHorizontal: 12,
+            borderRadius: Radius.pill, paddingVertical: 4, paddingHorizontal: 12,
           }}>
             <Text style={{ fontSize: 14 }}>⏱</Text>
             <Text style={{ color: timerColor, fontSize: 15, fontFamily: Font.black, minWidth: 22, textAlign: 'right' }}>
@@ -1005,7 +1005,7 @@ function SurvivorQuestion({ playerName, question, onAnswer, onExit }: {
             </Text>
           </View>
         </View>
-        <View style={{ height: 4, backgroundColor: C.surface, borderRadius: 2, marginBottom: 20, overflow: 'hidden' }}>
+        <View style={{ height: 4, backgroundColor: C.surface, borderRadius: 2, marginBottom: 20, overflow: 'hidden', borderWidth: 1, borderColor: C.border }}>
           <View style={{
             height: '100%',
             width: `${(secondsLeft / SURVIVOR_TURN_SECONDS) * 100}%`,
@@ -1042,7 +1042,7 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
           <ExitBtn onExit={onExit} />
         </View>
         <Text style={{ color: C.text, fontSize: 22, fontFamily: Font.black, marginBottom: 4 }}>{t('party.survivor.roundResults')}</Text>
-        <View style={{ backgroundColor: tint(C.correct, isDark), borderRadius: 12, padding: 12, marginBottom: 16 }}>
+        <View style={{ backgroundColor: tint(C.correct, isDark), borderRadius: Radius.row, padding: 12, marginBottom: 16 }}>
           <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi, marginBottom: 4 }}>{t('party.correctAnswerLabel')}</Text>
           <Text style={{ color: C.correct, fontSize: 15, fontFamily: Font.bold }}>{question.opts[question.ans]}</Text>
         </View>
@@ -1052,7 +1052,7 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
             const correct = answer === question.ans;
             const isElim = !newAlive[pidx];
             return (
-              <View key={pidx} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isElim ? tint(C.wrong, isDark) : tint(C.correct, isDark), borderRadius: 14, padding: 14, borderWidth: 1, borderColor: isElim ? C.wrong : 'transparent' }}>
+              <View key={pidx} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isElim ? tint(C.wrong, isDark) : tint(C.correct, isDark), borderRadius: 18, padding: 14, borderWidth: 1, borderColor: isElim ? C.wrong : 'transparent' }}>
                 <Text style={{ fontSize: 20 }}>{correct ? '✅' : '❌'}</Text>
                 <View style={{ flex: 1 }}>
                   <Text style={{ color: isElim ? C.wrong : C.text, fontFamily: Font.semi }}>{players[pidx]}</Text>
@@ -1068,7 +1068,7 @@ function SurvivorReveal({ players, aliveOrder, question, roundAnswers, newAlive,
           })}
         </View>
         {eliminated.length === 0 && (
-          <View style={{ backgroundColor: C.surface, borderRadius: 12, padding: 12, marginBottom: 16 }}>
+          <View style={{ backgroundColor: C.surface, borderRadius: Radius.row, padding: 12, marginBottom: 16, borderWidth: 1, borderColor: C.border }}>
             <Text style={{ color: C.textMuted, fontSize: 13, textAlign: 'center', fontFamily: Font.semi }}>
               {t('party.survivor.allFailed')}
             </Text>
@@ -1097,7 +1097,7 @@ function SurvivorResults({ winner, players, alive, rounds, onReplay, onBack }: {
           </Text>
           <View style={{ gap: 8, width: '100%', marginBottom: 40 }}>
             {players.map((name, i) => (
-              <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: C.surface, borderRadius: 12, padding: 12 }}>
+              <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: C.surface, borderRadius: Radius.row, padding: 12, borderWidth: 1, borderColor: C.border }}>
                 <Text style={{ fontSize: 18 }}>{alive[i] ? '🏆' : '💀'}</Text>
                 <Text style={{ color: alive[i] ? C.streak : C.textFaint, fontSize: 15, fontFamily: alive[i] ? Font.bold : Font.regular, flex: 1 }}>
                   {name}
@@ -1111,7 +1111,7 @@ function SurvivorResults({ winner, players, alive, rounds, onReplay, onBack }: {
         </View>
         <View style={{ gap: 10 }}>
           <PrimaryBtn label={t('party.rematch')} onPress={onReplay} color={C.streak} />
-          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 14, padding: 14, alignItems: 'center' }}>
+          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 18, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
             <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.semi }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
@@ -1194,7 +1194,7 @@ function TriviaSetup({ onStart, onBack }: { onStart: (names: [string, string]) =
         <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 28 }}>
           {t('party.trivia.setupDesc', { total: TRIVIA_TOTAL })}
         </Text>
-        <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+        <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
           {t('party.trivia.teamNamesLabel')}
         </Text>
         <View style={{ gap: 10, marginBottom: 32 }}>
@@ -1205,7 +1205,7 @@ function TriviaSetup({ onStart, onBack }: { onStart: (names: [string, string]) =
               </View>
               <TextInput value={names[i]} onChangeText={val => { const n: [string, string] = [...names] as [string, string]; n[i] = val; setNames(n); }}
                 placeholder={t('party.teamN', { n: i + 1 })} placeholderTextColor={C.textFaint}
-                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: 12, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
+                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: Radius.row, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
             </View>
           ))}
         </View>
@@ -1256,7 +1256,7 @@ function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: 
           <ExitBtn onExit={onExit} />
         </View>
         {/* Header */}
-        <View style={{ backgroundColor: teamColor + '15', borderRadius: 16, padding: 14, marginBottom: 20, borderWidth: 1, borderColor: teamColor + '40' }}>
+        <View style={{ backgroundColor: teamColor + '15', borderRadius: Radius.card, padding: 14, marginBottom: 20, borderWidth: 1, borderColor: teamColor + '40' }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View>
               <Text style={{ color: teamColor, fontSize: 12, fontFamily: Font.semi, marginBottom: 2 }}>{t('party.trivia.turnOf')}</Text>
@@ -1272,8 +1272,8 @@ function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: 
             </View>
           </View>
           {/* Progress bar */}
-          <View style={{ height: 3, backgroundColor: C.border, borderRadius: 99, marginTop: 12, overflow: 'hidden' }}>
-            <View style={{ height: '100%', width: `${((questionIdx + 1) / TRIVIA_TOTAL) * 100}%`, backgroundColor: teamColor, borderRadius: 99 }} />
+          <View style={{ height: 3, backgroundColor: C.border, borderRadius: Radius.pill, marginTop: 12, overflow: 'hidden' }}>
+            <View style={{ height: '100%', width: `${((questionIdx + 1) / TRIVIA_TOTAL) * 100}%`, backgroundColor: teamColor, borderRadius: Radius.pill }} />
           </View>
         </View>
 
@@ -1314,7 +1314,7 @@ function TriviaResults({ teamNames, scores, onReplay, onBack }: {
           {([0, 1] as const).map(i => {
             const isW = winner === i;
             return (
-              <View key={i} style={{ flex: 1, backgroundColor: isW ? teamColors[i] + '15' : C.surface, borderWidth: 1, borderColor: isW ? teamColors[i] : 'transparent', borderRadius: 16, padding: 16, alignItems: 'center' }}>
+              <View key={i} style={{ flex: 1, backgroundColor: isW ? teamColors[i] + '15' : C.surface, borderWidth: 1, borderColor: isW ? teamColors[i] : 'transparent', borderRadius: Radius.card, padding: 16, alignItems: 'center' }}>
                 <Text style={{ color: teamColors[i], fontSize: 13, fontFamily: Font.bold, marginBottom: 4 }}>{teamNames[i]}</Text>
                 <Text style={{ color: C.text, fontSize: 40, fontFamily: Font.black }}>{scores[i]}</Text>
                 <Text style={{ color: C.textFaint, fontSize: 12, fontFamily: Font.regular }}>
@@ -1328,7 +1328,7 @@ function TriviaResults({ teamNames, scores, onReplay, onBack }: {
 
         <View style={{ gap: 10 }}>
           <PrimaryBtn label={t('party.rematch')} onPress={onReplay} color={C.correct} />
-          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 14, padding: 14, alignItems: 'center' }}>
+          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 18, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
             <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.semi }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>
@@ -1432,7 +1432,7 @@ function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
         <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 28 }}>
           {t('party.marcador.setupDesc')}
         </Text>
-        <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+        <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
           {t('party.playersCountMax', { count: players.length })}
         </Text>
         <View style={{ gap: 10, marginBottom: 16 }}>
@@ -1443,7 +1443,7 @@ function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
               </View>
               <TextInput value={p} onChangeText={val => updatePlayer(i, val)} placeholder={t('party.playerN', { n: i + 1 })}
                 placeholderTextColor={C.textFaint}
-                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: 12, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
+                style={{ flex: 1, backgroundColor: C.surface, color: C.text, borderRadius: Radius.row, padding: 14, fontFamily: Font.regular, fontSize: 15, borderWidth: 1, borderColor: C.border }} />
               {players.length > 2 && (
                 <Pressable onPress={() => removePlayer(i)} style={{ padding: 8 }}>
                   <Text style={{ color: C.textFaint, fontSize: 20 }}>×</Text>
@@ -1453,7 +1453,7 @@ function MarcadorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
           ))}
         </View>
         {players.length < 8 && (
-          <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: C.border, borderRadius: 12, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
+          <Pressable onPress={addPlayer} style={{ borderWidth: 1, borderColor: C.border, borderRadius: Radius.row, padding: 14, alignItems: 'center', marginBottom: 28, borderStyle: 'dashed' }}>
             <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.semi }}>{t('party.addPlayer')}</Text>
           </Pressable>
         )}
@@ -1476,7 +1476,7 @@ function MarcadorScoreboard({ players, scores, currentIdx }: {
             flex: 1, alignItems: 'center', paddingVertical: 10, paddingHorizontal: 6,
             backgroundColor: active ? tint(C.speed, isDark) : C.surface,
             borderWidth: 1, borderColor: active ? C.speed : 'transparent',
-            borderRadius: 12,
+            borderRadius: Radius.row,
           }}>
             <Text numberOfLines={1} style={{
               color: active ? C.speed : C.textMuted,
@@ -1502,7 +1502,7 @@ function MarcadorReady({ playerName, players, scores, currentIdx, onReady, onFin
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, gap: 8 }}>
           <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.semi }}>{t('party.marcador.scoreboardTag')}</Text>
           <View style={{ flexDirection: 'row', gap: 8 }}>
-            <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: C.surface, borderWidth: 1, borderColor: C.border }}>
+            <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: Radius.pill, backgroundColor: C.surface, borderWidth: 1, borderColor: C.border }}>
               <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi }}>{t('party.marcador.finish')}</Text>
             </Pressable>
             <ExitBtn onExit={onExit} />
@@ -1558,7 +1558,7 @@ function MarcadorQuestion({ playerName, question, onAnswer, onFinish, onExit }: 
             <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.bold }} numberOfLines={1}>{playerName}</Text>
           </View>
           <View style={{ flexDirection: 'row', gap: 8 }}>
-            <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: 99, backgroundColor: C.surface, borderWidth: 1, borderColor: C.border }}>
+            <Pressable onPress={onFinish} style={{ paddingVertical: 6, paddingHorizontal: 12, borderRadius: Radius.pill, backgroundColor: C.surface, borderWidth: 1, borderColor: C.border }}>
               <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi }}>{t('party.marcador.finish')}</Text>
             </Pressable>
             <ExitBtn onExit={onExit} />
@@ -1598,7 +1598,7 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
           <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.semi }} numberOfLines={1}>{playerName}</Text>
           <View style={{
-            paddingVertical: 4, paddingHorizontal: 12, borderRadius: 99,
+            paddingVertical: 4, paddingHorizontal: 12, borderRadius: Radius.pill,
             backgroundColor: correct ? tint(C.correct, isDark) : tint(C.wrong, isDark),
             borderWidth: 1, borderColor: correct ? C.correct : C.wrong,
           }}>
@@ -1617,7 +1617,7 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
 
         {question.ctx && (
           <View style={{
-            padding: 14, borderRadius: 14, marginBottom: 16,
+            padding: 14, borderRadius: 18, marginBottom: 16,
             backgroundColor: tint(C.speed, isDark),
             borderWidth: 1, borderColor: C.speed,
           }}>
@@ -1633,7 +1633,7 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
 
         <View style={{ gap: 10 }}>
           <PrimaryBtn label={t('party.nextPlayer')} onPress={onNext} color={C.speed} />
-          <Pressable onPress={onFinish} style={{ backgroundColor: C.surface, borderRadius: 14, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
+          <Pressable onPress={onFinish} style={{ backgroundColor: C.surface, borderRadius: 18, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
             <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.semi }}>{t('party.marcador.finishGame')}</Text>
           </Pressable>
         </View>
@@ -1676,10 +1676,10 @@ function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
                 flexDirection: 'row', alignItems: 'center', gap: 12,
                 backgroundColor: top ? tint(C.speed, isDark) : C.surface,
                 borderWidth: 1, borderColor: top ? C.speed : 'transparent',
-                borderRadius: 14, padding: 14,
+                borderRadius: 18, padding: 14,
               }}>
                 <Text style={{ fontSize: 22, width: 28 }}>{i < 3 ? medals[i] : `${i + 1}`}</Text>
-                <View style={{ width: 38, height: 38, borderRadius: 12, backgroundColor: top ? C.speed : C.surfaceSunk, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ width: 38, height: 38, borderRadius: Radius.row, backgroundColor: top ? C.speed : C.surfaceSunk, alignItems: 'center', justifyContent: 'center' }}>
                   <Text style={{ color: top ? C.onBrand : C.textMuted, fontSize: 14, fontFamily: Font.black }}>{p.name[0]?.toUpperCase() ?? '?'}</Text>
                 </View>
                 <View style={{ flex: 1 }}>
@@ -1696,7 +1696,7 @@ function MarcadorResults({ players, scores, turns, onReplay, onBack }: {
 
         <View style={{ gap: 10 }}>
           <PrimaryBtn label={t('party.rematch')} onPress={onReplay} color={C.speed} />
-          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 14, padding: 14, alignItems: 'center' }}>
+          <Pressable onPress={onBack} style={{ backgroundColor: C.surface, borderRadius: 18, padding: 14, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
             <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.semi }}>{t('party.backToModes')}</Text>
           </Pressable>
         </View>

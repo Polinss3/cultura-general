@@ -42,9 +42,12 @@ import { UserName } from '@/components/UserName';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { feedback, isHapticsEnabled, setHapticsEnabled } from '@/lib/feedback';
 import { Category } from '@/types';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 export default function ProfileScreen() {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh } = useProfile();
@@ -221,28 +224,37 @@ export default function ProfileScreen() {
   const level = profile?.level ?? 1;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={false}>
 
         {/* Header */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingTop: 16, marginBottom: 24 }}>
-          <Pressable onPress={() => router.back()} style={{ marginRight: 16 }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: Space.screen, paddingTop: 14, marginBottom: 16 }}>
+          <Pressable onPress={() => router.back()} style={{ marginRight: 14 }} hitSlop={10}>
+            <Text style={{ color: C.textMuted, fontSize: 22 }}>←</Text>
           </Pressable>
-          <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>{t('profile.header')}</Text>
+          <Text style={{ color: C.text, ...Type.navTitle }}>{t('profile.header')}</Text>
         </View>
 
-        {/* Avatar + username */}
-        <View style={{ alignItems: 'center', marginBottom: 28 }}>
+        {/* Avatar + username, sobre la tarjeta destacada */}
+        <LinearGradient
+          colors={highlightGradient(isDark)}
+          locations={[0, 0.65]}
+          start={{ x: 0, y: 0 }} end={{ x: 0.4, y: 1 }}
+          style={{
+            alignItems: 'center', marginHorizontal: Space.screen, marginBottom: 22,
+            borderRadius: 26, paddingVertical: 24, paddingHorizontal: 18,
+            borderWidth: 1.5, borderColor: C.borderWarm,
+          }}
+        >
           <View style={cosmetics.frameColor
-            ? { borderWidth: 3, borderColor: cosmetics.frameColor, borderRadius: 28, padding: 3, marginBottom: 12 }
+            ? { borderWidth: 3, borderColor: cosmetics.frameColor, borderRadius: 31, padding: 3, marginBottom: 12 }
             : { marginBottom: 12 }}>
             <LinearGradient
-              colors={['#e8a030', '#e83060']}
+              colors={[C.streak, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ width: 80, height: 80, borderRadius: 24, alignItems: 'center', justifyContent: 'center' }}
+              style={{ width: 80, height: 80, borderRadius: 28, alignItems: 'center', justifyContent: 'center' }}
             >
-              <Text style={{ color: '#fff', fontSize: 32, fontFamily: 'Outfit_700Bold' }}>{initial}</Text>
+              <Text style={{ color: C.onBrand, fontSize: 32, fontFamily: Font.black }}>{initial}</Text>
             </LinearGradient>
           </View>
 
@@ -252,22 +264,22 @@ export default function ProfileScreen() {
                 value={newUsername}
                 onChangeText={value => setNewUsername(normalizeUsername(value))}
                 placeholder={profile?.username ?? ''}
-                placeholderTextColor="rgba(255,255,255,0.3)"
+                placeholderTextColor={C.textFaint}
                 autoFocus
                 autoCapitalize="words"
                 style={{
-                  color: '#fff', fontFamily: 'Outfit_400Regular', fontSize: 16,
-                  backgroundColor: '#1a1a1a', borderRadius: 10, paddingHorizontal: 12,
-                  paddingVertical: 8, minWidth: 160, borderWidth: 1, borderColor: 'rgba(232,160,48,0.4)',
+                  color: C.text, fontFamily: Font.regular, fontSize: 16,
+                  backgroundColor: C.surface, borderRadius: 10, paddingHorizontal: 12,
+                  paddingVertical: 8, minWidth: 160, borderWidth: 1, borderColor: C.streak,
                 }}
               />
               <Pressable onPress={handleSaveUsername} disabled={saving}>
-                <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
+                <Text style={{ color: C.streak, fontFamily: Font.bold, fontSize: 15 }}>
                   {saving ? '…' : t('common.save')}
                 </Text>
               </Pressable>
               <Pressable onPress={() => setEditingUsername(false)}>
-                <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 15 }}>✕</Text>
+                <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 15 }}>✕</Text>
               </Pressable>
             </View>
           ) : (
@@ -278,11 +290,11 @@ export default function ProfileScreen() {
               <UserName
                 name={profile?.username ?? '…'}
                 cosmetics={cosmetics}
-                color="#fff"
-                fontFamily="Outfit_700Bold"
-                fontSize={20}
+                color={C.text}
+                fontFamily={Font.black}
+                fontSize={24}
               />
-              <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14 }}>✏️</Text>
+              <Text style={{ color: C.textFaint, fontSize: 14 }}>✏️</Text>
             </Pressable>
           )}
 
@@ -294,25 +306,25 @@ export default function ProfileScreen() {
               <View style={{
                 marginTop: 8, flexDirection: 'row', alignItems: 'center', gap: 6,
                 backgroundColor: eq.color + '1f', borderColor: eq.color + '66', borderWidth: 1,
-                borderRadius: 99, paddingVertical: 4, paddingHorizontal: 12,
+                borderRadius: Radius.pill, paddingVertical: 4, paddingHorizontal: 12,
               }}>
                 <Text style={{ fontSize: 13 }}>{eq.icon}</Text>
-                <Text style={{ color: eq.color, fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+                <Text style={{ color: eq.color, fontFamily: Font.bold, fontSize: 13 }}>
                   {t(`titles.items.${eq.id}`)}
                 </Text>
               </View>
             );
           })()}
-        </View>
+        </LinearGradient>
 
         {/* Progreso (nivel / XP / monedas) */}
-        <View style={{ paddingHorizontal: 20, marginBottom: 24 }}>
-          <View style={{ backgroundColor: '#151515', borderRadius: 18, padding: 16 }}>
+        <View style={{ paddingHorizontal: Space.screen, marginBottom: 24 }}>
+          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <LevelBadge level={level} size={48} />
               <View style={{ flex: 1 }}>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>{t('components.levelUp.level', { level })}</Text>
-                <Text style={{ color: rankForLevel(level).color, fontFamily: 'Outfit_600SemiBold', fontSize: 12 }}>
+                <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 16 }}>{t('components.levelUp.level', { level })}</Text>
+                <Text style={{ color: readableOn(rankForLevel(level).color, isDark), fontFamily: Font.bold, fontSize: 13 }}>
                   {t(`ranks.${rankForLevel(level).id}`)}
                 </Text>
               </View>
@@ -323,9 +335,9 @@ export default function ProfileScreen() {
         </View>
 
         {/* Títulos equipables */}
-        <View style={{ paddingHorizontal: 20, marginBottom: 24 }}>
+        <View style={{ paddingHorizontal: Space.screen, marginBottom: 24 }}>
           <SectionTitle>{t('titles.title')}</SectionTitle>
-          <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginBottom: 12, marginTop: -4 }}>
+          <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginBottom: 12, marginTop: -4 }}>
             {t('titles.hint')}
           </Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
@@ -338,23 +350,23 @@ export default function ProfileScreen() {
                   disabled={!tt.unlocked}
                   style={{
                     flexDirection: 'row', alignItems: 'center', gap: 6,
-                    paddingVertical: 9, paddingHorizontal: 13, borderRadius: 99,
-                    backgroundColor: isEquipped ? tt.color + '26' : tt.unlocked ? '#151515' : '#0f0f0f',
+                    paddingVertical: 9, paddingHorizontal: 13, borderRadius: Radius.pill,
+                    backgroundColor: isEquipped ? tt.color + '26' : tt.unlocked ? C.surface : C.surfaceSunk,
                     borderWidth: 1.5,
-                    borderColor: isEquipped ? tt.color : tt.unlocked ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)',
+                    borderColor: isEquipped ? tt.color : tt.unlocked ? C.border : C.border,
                     opacity: tt.unlocked ? 1 : 0.45,
                   }}
                 >
                   <Text style={{ fontSize: 14 }}>{tt.unlocked ? tt.icon : '🔒'}</Text>
                   <Text style={{
-                    color: isEquipped ? tt.color : tt.unlocked ? '#fff' : 'rgba(255,255,255,0.4)',
-                    fontFamily: isEquipped ? 'Outfit_700Bold' : 'Outfit_500Medium',
+                    color: isEquipped ? tt.color : tt.unlocked ? C.text : C.textMuted,
+                    fontFamily: isEquipped ? Font.bold : Font.semi,
                     fontSize: 13,
                   }}>
                     {t(`titles.items.${tt.id}`)}
                   </Text>
                   {isEquipped && (
-                    <Text style={{ color: tt.color, fontFamily: 'Outfit_700Bold', fontSize: 12 }}>✓</Text>
+                    <Text style={{ color: tt.color, fontFamily: Font.bold, fontSize: 12 }}>✓</Text>
                   )}
                 </Pressable>
               );
@@ -363,7 +375,7 @@ export default function ProfileScreen() {
         </View>
 
         {/* Stats */}
-        <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
+        <View style={{ paddingHorizontal: Space.screen, marginBottom: 28 }}>
           <SectionTitle>{t('profile.stats.title')}</SectionTitle>
           <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
             <StatCard label={t('profile.stats.answered')} value={String(answered)} />
@@ -382,7 +394,7 @@ export default function ProfileScreen() {
 
         {/* Racha emocional: calendario mensual + hitos */}
         {user && (
-          <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
+          <View style={{ paddingHorizontal: Space.screen, marginBottom: 28 }}>
             <SectionTitle>{t('streak.title')}</SectionTitle>
             <StreakCalendar
               userId={user.id}
@@ -394,7 +406,7 @@ export default function ProfileScreen() {
 
         {/* Dominio por categorías */}
         {catStats.length > 0 && (
-          <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
+          <View style={{ paddingHorizontal: Space.screen, marginBottom: 28 }}>
             <SectionTitle>{t('profile.categoryTitle')}</SectionTitle>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
               {catStats.map(cs => {
@@ -402,20 +414,20 @@ export default function ProfileScreen() {
                 const m = masteryFor(cs.correct);
                 const acc = cs.total > 0 ? Math.round((cs.correct / cs.total) * 100) : 0;
                 return (
-                  <View key={cs.category} style={{ width: '47%', backgroundColor: '#151515', borderRadius: 14, padding: 12, borderWidth: 1, borderColor: m.tier.color + '2e' }}>
+                  <View key={cs.category} style={{ width: '47%', backgroundColor: C.surface, borderRadius: 18, padding: 12, borderWidth: 1, borderColor: m.tier.color + '2e' }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                       <Text style={{ fontSize: 18 }}>{CAT_ICONS[cat] ?? '❓'}</Text>
-                      <Text numberOfLines={1} style={{ flex: 1, color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>
+                      <Text numberOfLines={1} style={{ flex: 1, color: C.text, fontFamily: Font.semi, fontSize: 13 }}>
                         {t(`categories.${cs.category}`, { defaultValue: cs.category })}
                       </Text>
                     </View>
-                    <Text style={{ color: m.tier.color, fontFamily: 'Outfit_600SemiBold', fontSize: 12, marginBottom: 8 }}>
+                    <Text style={{ color: m.tier.color, fontFamily: Font.semi, fontSize: 12, marginBottom: 8 }}>
                       {m.tier.emoji} {t(`mastery.tiers.${m.tier.id}`)} · {t('mastery.level', { level: m.level })}
                     </Text>
-                    <View style={{ height: 6, backgroundColor: '#2a2a2a', borderRadius: 99, overflow: 'hidden' }}>
-                      <View style={{ height: '100%', width: `${m.pct * 100}%`, backgroundColor: m.tier.color, borderRadius: 99 }} />
+                    <View style={{ height: 6, backgroundColor: C.track, borderRadius: Radius.pill, overflow: 'hidden' }}>
+                      <View style={{ height: '100%', width: `${m.pct * 100}%`, backgroundColor: m.tier.color, borderRadius: Radius.pill }} />
                     </View>
-                    <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 6 }}>
+                    <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 6 }}>
                       {cs.correct}/{cs.total} · {acc}%
                     </Text>
                   </View>
@@ -426,7 +438,7 @@ export default function ProfileScreen() {
         )}
 
         {/* Achievements */}
-        <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
+        <View style={{ paddingHorizontal: Space.screen, marginBottom: 28 }}>
           <SectionTitle>{t('profile.achievementsTitle', { unlocked, total: achievements.length })}</SectionTitle>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {achievements.map(a => {
@@ -436,31 +448,31 @@ export default function ProfileScreen() {
                   key={a.id}
                   style={{
                     width: '47%',
-                    backgroundColor: a.unlocked ? '#151515' : '#0f0f0f',
-                    borderRadius: 14,
+                    backgroundColor: a.unlocked ? C.surface : C.surfaceSunk,
+                    borderRadius: 18,
                     padding: 12,
                     borderWidth: 1,
-                    borderColor: claimable ? a.color : a.unlocked ? a.color + '40' : 'rgba(255,255,255,0.05)',
+                    borderColor: claimable ? a.color : a.unlocked ? a.color + '40' : C.border,
                     opacity: a.unlocked ? 1 : 0.45,
                   }}
                 >
                   <Text style={{ fontSize: 22, marginBottom: 4 }}>{a.icon}</Text>
-                  <Text style={{ color: a.unlocked ? '#fff' : 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+                  <Text style={{ color: a.unlocked ? C.text : C.textMuted, fontFamily: Font.bold, fontSize: 13 }}>
                     {a.title}
                   </Text>
-                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
+                  <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
                     {a.desc}
                   </Text>
                   {claimable ? (
                     <Pressable onPress={() => handleClaimAchievement(a.id)} disabled={claiming === a.id} style={{ marginTop: 8 }}>
-                      <View style={{ backgroundColor: a.color, borderRadius: 99, paddingVertical: 5, alignItems: 'center' }}>
-                        <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
+                      <View style={{ backgroundColor: a.color, borderRadius: Radius.pill, paddingVertical: 5, alignItems: 'center' }}>
+                        <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 12 }}>
                           {claiming === a.id ? '…' : t('profile.claim', { coins: a.reward })}
                         </Text>
                       </View>
                     </Pressable>
                   ) : a.claimed ? (
-                    <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_600SemiBold', fontSize: 12, marginTop: 8 }}>
+                    <Text style={{ color: C.correct, fontFamily: Font.semi, fontSize: 12, marginTop: 8 }}>
                       {t('profile.claimed')}
                     </Text>
                   ) : null}
@@ -471,12 +483,12 @@ export default function ProfileScreen() {
         </View>
 
         {/* Answer history */}
-        <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
+        <View style={{ paddingHorizontal: Space.screen, marginBottom: 28 }}>
           <SectionTitle>{t('profile.historyTitle')}</SectionTitle>
           {loadingHistory ? (
-            <ActivityIndicator color="#e8a030" />
+            <ActivityIndicator color={C.brand} />
           ) : history.length === 0 ? (
-            <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 14 }}>
+            <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 14 }}>
               {t('profile.historyEmpty')}
             </Text>
           ) : (
@@ -487,22 +499,21 @@ export default function ProfileScreen() {
                   <View
                     key={h.id}
                     style={{
-                      backgroundColor: '#151515',
-                      borderRadius: 12,
+                      backgroundColor: C.surface,
+                      borderRadius: Radius.row,
                       padding: 12,
                       borderLeftWidth: 3,
-                      borderLeftColor: h.isCorrect ? '#2ec87a' : '#e83060',
+                      borderLeftColor: h.isCorrect ? C.correct : C.wrong,
                       flexDirection: 'row',
                       alignItems: 'flex-start',
-                      gap: 10,
-                    }}
+                      gap: 10, borderWidth: 1, borderColor: C.border }}
                   >
                     <Text style={{ fontSize: 16 }}>{h.isCorrect ? '✅' : '❌'}</Text>
                     <View style={{ flex: 1 }}>
-                      <Text style={{ color: '#fff', fontFamily: 'Outfit_500Medium', fontSize: 13, lineHeight: 18 }} numberOfLines={2}>
+                      <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 13, lineHeight: 18 }} numberOfLines={2}>
                         {h.questionText}
                       </Text>
-                      <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 4 }}>
+                      <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 12, marginTop: 4 }}>
                         {CAT_ICONS[cat] ?? ''} {t(`categories.${h.category}`, { defaultValue: h.category })} · {t(`profile.modeLabels.${h.mode}`, { defaultValue: h.mode })}
                       </Text>
                     </View>
@@ -514,61 +525,59 @@ export default function ProfileScreen() {
         </View>
 
         {/* Settings */}
-        <View style={{ paddingHorizontal: 20, marginBottom: 28 }}>
+        <View style={{ paddingHorizontal: Space.screen, marginBottom: 28 }}>
           <SectionTitle>{t('profile.settings.title')}</SectionTitle>
           <View style={{
-            backgroundColor: '#151515', borderRadius: 14, padding: 16,
+            backgroundColor: C.surface, borderRadius: 18, padding: 16,
             flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-            marginBottom: 10,
-          }}>
+            marginBottom: 10, borderWidth: 1, borderColor: C.border }}>
             <View>
-              <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
+              <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
                 {t('profile.settings.reminderTitle')}
               </Text>
-              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
                 {t('profile.settings.reminderSub')}
               </Text>
             </View>
             {notifLoading ? (
-              <ActivityIndicator color="#e8a030" size="small" />
+              <ActivityIndicator color={C.brand} size="small" />
             ) : (
               <Switch
                 value={notificationsOn}
                 onValueChange={handleNotifToggle}
-                trackColor={{ false: '#2a2a2a', true: '#e8a030' }}
-                thumbColor="#fff"
+                trackColor={{ false: C.track, true: C.streak }}
+                thumbColor={C.onBrand}
               />
             )}
           </View>
 
           {/* Vibración / feedback táctil */}
           <View style={{
-            backgroundColor: '#151515', borderRadius: 14, padding: 16,
+            backgroundColor: C.surface, borderRadius: 18, padding: 16,
             flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
-            marginBottom: 10,
-          }}>
+            marginBottom: 10, borderWidth: 1, borderColor: C.border }}>
             <View style={{ flex: 1, paddingRight: 12 }}>
-              <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
+              <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
                 {t('profile.settings.hapticsTitle')}
               </Text>
-              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
                 {t('profile.settings.hapticsSub')}
               </Text>
             </View>
             <Switch
               value={hapticsOn}
               onValueChange={handleHapticsToggle}
-              trackColor={{ false: '#2a2a2a', true: '#e8a030' }}
-              thumbColor="#fff"
+              trackColor={{ false: C.track, true: C.streak }}
+              thumbColor={C.onBrand}
             />
           </View>
 
           {/* Idioma */}
-          <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 16 }}>
-            <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
+          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border }}>
+            <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
               {t('profile.settings.language')}
             </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2, marginBottom: 12 }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2, marginBottom: 12 }}>
               {t('profile.settings.languageSub')}
             </Text>
             <View style={{ flexDirection: 'row', gap: 8 }}>
@@ -587,14 +596,14 @@ export default function ProfileScreen() {
                       paddingVertical: 10,
                       borderRadius: 10,
                       alignItems: 'center',
-                      backgroundColor: active ? '#e8a030' : '#1f1f1f',
+                      backgroundColor: active ? C.streak : C.surfaceSunk,
                       borderWidth: 1,
-                      borderColor: active ? '#e8a030' : 'rgba(255,255,255,0.08)',
+                      borderColor: active ? C.streak : C.border,
                     }}
                   >
                     <Text style={{
-                      color: active ? '#000' : 'rgba(255,255,255,0.6)',
-                      fontFamily: active ? 'Outfit_700Bold' : 'Outfit_500Medium',
+                      color: active ? C.text : C.textBody,
+                      fontFamily: active ? Font.bold : Font.semi,
                       fontSize: 14,
                     }}>
                       {label}
@@ -607,45 +616,45 @@ export default function ProfileScreen() {
         </View>
 
         {/* Zona peligrosa */}
-        <View style={{ paddingHorizontal: 20, marginBottom: 24 }}>
+        <View style={{ paddingHorizontal: Space.screen, marginBottom: 24 }}>
           <SectionTitle>{t('profile.dangerZone.title')}</SectionTitle>
           <Pressable
             onPress={handlePause}
-            style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, marginBottom: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}
+            style={{ backgroundColor: C.surface, borderRadius: 18, padding: 14, marginBottom: 10, borderWidth: 1, borderColor: C.border }}
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 4 }}>
               <Text style={{ fontSize: 16 }}>⏸</Text>
-              <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
+              <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>
                 {t('profile.dangerZone.pauseTitle')}
               </Text>
             </View>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 17 }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, lineHeight: 17 }}>
               {t('profile.dangerZone.pauseSub')}
             </Text>
           </Pressable>
           <Pressable
             onPress={handleDelete}
-            style={{ backgroundColor: '#151515', borderRadius: 14, padding: 14, borderWidth: 1, borderColor: 'rgba(232,48,96,0.25)' }}
+            style={{ backgroundColor: C.surface, borderRadius: 18, padding: 14, borderWidth: 1, borderColor: C.wrong }}
           >
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 4 }}>
               <Text style={{ fontSize: 16 }}>🗑</Text>
-              <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
+              <Text style={{ color: C.wrong, fontFamily: Font.bold, fontSize: 15 }}>
                 {t('profile.dangerZone.deleteTitle')}
               </Text>
             </View>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 17 }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, lineHeight: 17 }}>
               {t('profile.dangerZone.deleteSub')}
             </Text>
           </Pressable>
         </View>
 
         {/* Sign out */}
-        <View style={{ paddingHorizontal: 20 }}>
+        <View style={{ paddingHorizontal: Space.screen }}>
           <Pressable
             onPress={handleSignOut}
-            style={{ backgroundColor: '#1a1a1a', borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(232,48,96,0.2)', marginBottom: 16 }}
+            style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: C.wrong, marginBottom: 16 }}
           >
-            <Text style={{ color: '#e83060', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>
+            <Text style={{ color: C.wrong, fontFamily: Font.semi, fontSize: 15 }}>
               {t('profile.signOut')}
             </Text>
           </Pressable>
@@ -654,13 +663,13 @@ export default function ProfileScreen() {
           <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 20 }}>
             <Link href="/privacy" asChild>
               <Pressable>
-                <Text style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
+                <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 12 }}>
                   {t('profile.privacyLink')}
                 </Text>
               </Pressable>
             </Link>
-            <Text style={{ color: 'rgba(255,255,255,0.1)', fontSize: 12 }}>·</Text>
-            <Text style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
+            <Text style={{ color: C.border, fontSize: 12 }}>·</Text>
+            <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 12 }}>
               v1.0.0
             </Text>
           </View>
@@ -672,10 +681,11 @@ export default function ProfileScreen() {
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
+  const { C, isDark } = useTheme();
   return (
     <Text style={{
-      color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold',
-      letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12,
+      color: C.textFaint, fontSize: 13, fontFamily: Font.extra,
+      letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12,
     }}>
       {children}
     </Text>
@@ -683,10 +693,11 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 function StatCard({ label, value }: { label: string; value: string }) {
+  const { C, isDark } = useTheme();
   return (
-    <View style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 12, alignItems: 'center' }}>
-      <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold' }}>{value}</Text>
-      <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2, textAlign: 'center' }}>{label}</Text>
+    <View style={{ flex: 1, backgroundColor: C.surface, borderRadius: 18, padding: 12, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
+      <Text style={{ color: C.text, fontSize: 18, fontFamily: Font.bold }}>{value}</Text>
+      <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginTop: 2, textAlign: 'center' }}>{label}</Text>
     </View>
   );
 }

@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { probeConnection, setOffline } from '@/lib/offline';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 interface Props {
   title?: string;
@@ -15,6 +17,7 @@ interface Props {
 // la red y, si hay conexión, sale del modo sin conexión.
 export function OfflineNotice({ title, description }: Props) {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const heading = title ?? t('components.offlineNotice.title');
   const body = description ?? t('components.offlineNotice.description');
   const [checking, setChecking] = useState(false);
@@ -27,26 +30,26 @@ export function OfflineNotice({ title, description }: Props) {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       <View style={{ flex: 1, padding: 24, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={{ fontSize: 64, marginBottom: 20 }}>📡</Text>
-        <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 10, textAlign: 'center' }}>
+        <Text style={{ color: C.text, fontSize: 22, fontFamily: Font.black, marginBottom: 10, textAlign: 'center' }}>
           {heading}
         </Text>
-        <Text style={{ color: 'rgba(255,255,255,0.45)', fontSize: 14, fontFamily: 'Outfit_400Regular', lineHeight: 22, textAlign: 'center', marginBottom: 36, maxWidth: 300 }}>
+        <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, lineHeight: 22, textAlign: 'center', marginBottom: 36, maxWidth: 300 }}>
           {body}
         </Text>
 
         <Pressable onPress={retry} disabled={checking} style={{ width: '100%', maxWidth: 320 }}>
           <LinearGradient
-            colors={['#e8a030', '#e83060']}
+            colors={[C.streak, C.wrong]}
             start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-            style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
+            style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
           >
             {checking ? (
-              <ActivityIndicator color="#fff" />
+              <ActivityIndicator color={C.text} />
             ) : (
-              <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
+              <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.bold }}>
                 {t('common.retry')}
               </Text>
             )}

@@ -314,7 +314,7 @@ export default function LadderScreen() {
             })}
           </View>
 
-          <View style={{ backgroundColor: C.surface, borderRadius: 16, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center' }}>
+          <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
             <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginBottom: 4 }}>
               {t('ladder.bestClimb')}
             </Text>
@@ -326,7 +326,7 @@ export default function LadderScreen() {
             <LinearGradient
               colors={[C.streak, C.wrong]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
+              style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
               <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.bold }}>{t('ladder.startClimb')}</Text>
             </LinearGradient>
@@ -352,7 +352,7 @@ export default function LadderScreen() {
           <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 24, textAlign: 'center', marginBottom: 10 }}>
             {t('ladder.zoneConquered', { zone: t(`ladder.zones.${conquered.id}`) })}
           </Text>
-          <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: 99, paddingVertical: 6, paddingHorizontal: 16, marginBottom: 14 }}>
+          <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: Radius.pill, paddingVertical: 6, paddingHorizontal: 16, marginBottom: 14 }}>
             <Text style={{ color: C.streak, fontFamily: Font.black, fontSize: 22 }}>
               {bote} 🪙
             </Text>
@@ -372,11 +372,11 @@ export default function LadderScreen() {
             {t('ladder.checkpointDesc')}
           </Text>
           <View style={{ flexDirection: 'row', gap: 12, width: '100%' }}>
-            <Pressable onPress={retire} style={{ flex: 1, backgroundColor: C.surface, borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: C.correct }}>
+            <Pressable onPress={retire} style={{ flex: 1, backgroundColor: C.surface, borderRadius: 18, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: C.correct }}>
               <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.retire')}</Text>
             </Pressable>
             <Pressable onPress={() => advance(floor + 1)} style={{ flex: 1 }}>
-              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}>
+              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}>
                 <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.keepClimbing')}</Text>
               </LinearGradient>
             </Pressable>
@@ -403,20 +403,20 @@ export default function LadderScreen() {
           <View style={{ width: '100%', gap: 10 }}>
             {canUsePowerups && reviveItems > 0 && (
               <Pressable onPress={reviveWithItem}>
-                <View style={{ backgroundColor: C.surface, borderRadius: 14, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: C.wrong }}>
+                <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: C.wrong }}>
                   <Text style={{ color: C.wrong, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.reviveItem', { count: reviveItems })}</Text>
                 </View>
               </Pressable>
             )}
             {!guest && !offline && isRewardedReady() && (
               <Pressable onPress={reviveWithAd}>
-                <View style={{ backgroundColor: tint(C.correct, isDark), borderRadius: 14, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: C.correct }}>
+                <View style={{ backgroundColor: tint(C.correct, isDark), borderRadius: 18, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: C.correct }}>
                   <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.reviveAd')}</Text>
                 </View>
               </Pressable>
             )}
             <Pressable onPress={endGame}>
-              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 14, padding: 15, alignItems: 'center' }}>
+              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
                 <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.finishCash')}</Text>
               </LinearGradient>
             </Pressable>
@@ -450,10 +450,10 @@ export default function LadderScreen() {
             </Text>
             {award && (award.gainedXp > 0 || award.gainedCoins > 0) && (
               <View style={{ flexDirection: 'row', gap: 8, marginTop: 14 }}>
-                <View style={{ backgroundColor: tint(C.social, isDark), borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
+                <View style={{ backgroundColor: tint(C.social, isDark), borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 12 }}>
                   <Text style={{ color: C.social, fontFamily: Font.bold, fontSize: 13 }}>+{award.gainedXp} XP</Text>
                 </View>
-                <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
+                <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 12 }}>
                   <Text style={{ color: C.streak, fontFamily: Font.bold, fontSize: 13 }}>+{award.gainedCoins} 🪙</Text>
                 </View>
               </View>
@@ -462,14 +462,14 @@ export default function LadderScreen() {
 
           {ranking.length > 0 && (
             <>
-              <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.semi, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+              <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
                 {t('ladder.bestClimbs')}
               </Text>
               <View style={{ gap: 8, marginBottom: 22 }}>
                 {ranking.slice(0, 10).map((r, i) => {
                   const isMe = r.userId === user?.id;
                   return (
-                    <View key={r.userId} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isMe ? tint(C.streak, isDark) : C.surface, borderRadius: 12, padding: 11, borderWidth: 1, borderColor: isMe ? C.streak : 'transparent' }}>
+                    <View key={r.userId} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isMe ? tint(C.streak, isDark) : C.surface, borderRadius: Radius.row, padding: 11, borderWidth: 1, borderColor: isMe ? C.streak : 'transparent' }}>
                       <Text style={{ width: 22, textAlign: 'center', color: i < 3 ? C.streak : C.textFaint, fontFamily: Font.black, fontSize: 13 }}>
                         {i < 3 ? ['🥇', '🥈', '🥉'][i] : i + 1}
                       </Text>
@@ -485,11 +485,11 @@ export default function LadderScreen() {
           )}
 
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            <Pressable onPress={() => router.back()} style={{ flex: 1, backgroundColor: C.surface, borderRadius: 14, padding: 15, alignItems: 'center' }}>
+            <Pressable onPress={() => router.back()} style={{ flex: 1, backgroundColor: C.surface, borderRadius: 18, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
               <Text style={{ color: C.textBody, fontFamily: Font.semi, fontSize: 15 }}>{t('speed.exit')}</Text>
             </Pressable>
             <Pressable onPress={start} style={{ flex: 2 }}>
-              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 14, padding: 15, alignItems: 'center' }}>
+              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
                 <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.climbAgain')}</Text>
               </LinearGradient>
             </Pressable>

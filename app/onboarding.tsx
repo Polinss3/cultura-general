@@ -22,6 +22,8 @@ import { CAT_COLORS, CAT_ICONS, ALL_CATEGORIES } from '@/constants/questions';
 import { REWARDS } from '@/lib/economy';
 import { Category } from '@/types';
 import type { TFunction } from 'i18next';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 // Iconos y flag skip por paso; el texto vive en i18n (`onboarding.stepN`).
 const STEP_META = [
@@ -42,6 +44,7 @@ function getSteps(t: TFunction) {
 
 export default function OnboardingScreen() {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const router = useRouter();
   // Primera pantalla: elección de idioma. Al elegir, aplicamos el idioma
   // (persistido) para que el resto del onboarding ya salga en ese idioma.
@@ -108,13 +111,13 @@ export default function OnboardingScreen() {
 
   if (!langChosen) {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
         <View style={{ flex: 1, padding: 24, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{ fontSize: 80, marginBottom: 32 }}>🌐</Text>
           <Text style={{
-            color: '#fff',
+            color: C.text,
             fontSize: 28,
-            fontFamily: 'Outfit_800ExtraBold',
+            fontFamily: Font.black,
             textAlign: 'center',
             lineHeight: 36,
             marginBottom: 12,
@@ -122,9 +125,9 @@ export default function OnboardingScreen() {
             {t('onboarding.language.title')}
           </Text>
           <Text style={{
-            color: 'rgba(255,255,255,0.5)',
+            color: C.textMuted,
             fontSize: 15,
-            fontFamily: 'Outfit_400Regular',
+            fontFamily: Font.regular,
             textAlign: 'center',
             lineHeight: 24,
             maxWidth: 300,
@@ -139,15 +142,15 @@ export default function OnboardingScreen() {
                 key={lang}
                 onPress={() => handleLanguage(lang)}
                 style={{
-                  borderRadius: 16,
+                  borderRadius: Radius.card,
                   padding: 18,
                   alignItems: 'center',
-                  backgroundColor: '#151515',
+                  backgroundColor: C.surface,
                   borderWidth: 1,
-                  borderColor: 'rgba(255,255,255,0.08)',
+                  borderColor: C.border,
                 }}
               >
-                <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>
+                <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.bold }}>
                   {t(`onboarding.language.${lang}`)}
                 </Text>
               </Pressable>
@@ -161,14 +164,14 @@ export default function OnboardingScreen() {
   if (!interestsChosen) {
     const canContinue = interests.size > 0;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
         <View style={{ flex: 1, padding: 24 }}>
           <View style={{ alignItems: 'center', paddingTop: 8, marginBottom: 20 }}>
             <Text style={{ fontSize: 64, marginBottom: 16 }}>✨</Text>
             <Text style={{
-              color: '#fff',
+              color: C.text,
               fontSize: 26,
-              fontFamily: 'Outfit_800ExtraBold',
+              fontFamily: Font.black,
               textAlign: 'center',
               lineHeight: 34,
               marginBottom: 10,
@@ -176,9 +179,9 @@ export default function OnboardingScreen() {
               {t('onboarding.interests.title')}
             </Text>
             <Text style={{
-              color: 'rgba(255,255,255,0.5)',
+              color: C.textMuted,
               fontSize: 15,
-              fontFamily: 'Outfit_400Regular',
+              fontFamily: Font.regular,
               textAlign: 'center',
               lineHeight: 22,
               maxWidth: 320,
@@ -202,17 +205,17 @@ export default function OnboardingScreen() {
                       gap: 8,
                       paddingVertical: 10,
                       paddingHorizontal: 14,
-                      borderRadius: 99,
-                      backgroundColor: active ? col.bg : '#151515',
+                      borderRadius: Radius.pill,
+                      backgroundColor: active ? col.bg : C.surface,
                       borderWidth: 1.5,
-                      borderColor: active ? col.accent : 'rgba(255,255,255,0.08)',
+                      borderColor: active ? col.accent : C.border,
                     }}
                   >
                     <Text style={{ fontSize: 18 }}>{CAT_ICONS[c]}</Text>
                     <Text style={{
-                      color: active ? col.text : 'rgba(255,255,255,0.6)',
+                      color: active ? col.text : C.textBody,
                       fontSize: 14,
-                      fontFamily: active ? 'Outfit_700Bold' : 'Outfit_500Medium',
+                      fontFamily: active ? Font.bold : Font.semi,
                     }}>
                       {t(`categories.${c}`)}
                     </Text>
@@ -225,23 +228,23 @@ export default function OnboardingScreen() {
           <View style={{ gap: 8, paddingTop: 12 }}>
             <Pressable onPress={confirmInterests} disabled={!canContinue}>
               <LinearGradient
-                colors={canContinue ? ['#e8a030', '#e83060'] : ['#2a2a2a', '#2a2a2a']}
+                colors={canContinue ? [C.streak, C.wrong] : [C.track, C.track]}
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                style={{ borderRadius: 16, padding: 18, alignItems: 'center' }}
+                style={{ borderRadius: Radius.card, padding: 18, alignItems: 'center' }}
               >
                 <Text style={{
-                  color: canContinue ? '#fff' : 'rgba(255,255,255,0.3)',
+                  color: canContinue ? C.text : C.textFaint,
                   fontSize: 17,
-                  fontFamily: 'Outfit_700Bold',
+                  fontFamily: Font.bold,
                 }}>
                   {t('onboarding.interests.cta', { coins: REWARDS.welcomeBonus.coins })}
                 </Text>
               </LinearGradient>
             </Pressable>
             <Text style={{
-              color: 'rgba(255,255,255,0.35)',
+              color: C.textMuted,
               fontSize: 13,
-              fontFamily: 'Outfit_400Regular',
+              fontFamily: Font.regular,
               textAlign: 'center',
             }}>
               {t('onboarding.interests.hint')}
@@ -253,7 +256,7 @@ export default function OnboardingScreen() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
       <View style={{ flex: 1, padding: 24, justifyContent: 'space-between' }}>
 
         {/* Progress dots */}
@@ -265,7 +268,7 @@ export default function OnboardingScreen() {
                 width: i === step ? 20 : 6,
                 height: 6,
                 borderRadius: 3,
-                backgroundColor: i === step ? '#e8a030' : '#2a2a2a',
+                backgroundColor: i === step ? C.streak : C.track,
               }}
             />
           ))}
@@ -275,9 +278,9 @@ export default function OnboardingScreen() {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: 40 }}>
           <Text style={{ fontSize: 80, marginBottom: 32 }}>{current.icon}</Text>
           <Text style={{
-            color: '#fff',
+            color: C.text,
             fontSize: 28,
-            fontFamily: 'Outfit_800ExtraBold',
+            fontFamily: Font.black,
             textAlign: 'center',
             lineHeight: 36,
             marginBottom: 20,
@@ -285,9 +288,9 @@ export default function OnboardingScreen() {
             {current.title}
           </Text>
           <Text style={{
-            color: 'rgba(255,255,255,0.5)',
+            color: C.textMuted,
             fontSize: 16,
-            fontFamily: 'Outfit_400Regular',
+            fontFamily: Font.regular,
             textAlign: 'center',
             lineHeight: 26,
             maxWidth: 300,
@@ -300,11 +303,11 @@ export default function OnboardingScreen() {
         <View style={{ gap: 12 }}>
           <Pressable onPress={handleCta}>
             <LinearGradient
-              colors={['#e8a030', '#e83060']}
+              colors={[C.streak, C.wrong]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 16, padding: 18, alignItems: 'center' }}
+              style={{ borderRadius: Radius.card, padding: 18, alignItems: 'center' }}
             >
-              <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>
+              <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.bold }}>
                 {current.cta}
               </Text>
             </LinearGradient>
@@ -312,7 +315,7 @@ export default function OnboardingScreen() {
 
           {current.skip && (
             <Pressable onPress={handleSkip} style={{ alignItems: 'center', padding: 12 }}>
-              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 15 }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 15 }}>
                 {t('onboarding.skip')}
               </Text>
             </Pressable>

@@ -1,6 +1,8 @@
 import { View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 interface Props {
   // Si true, muestra el botón "Continuar sin conexión".
@@ -13,22 +15,23 @@ interface Props {
 // entrada al modo sin conexión.
 export function BootScreen({ showOfflineButton, onContinueOffline }: Props) {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   return (
-    <View style={{ flex: 1, backgroundColor: '#0a0a0a', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
-      <ActivityIndicator color="#e8a030" size="large" />
+    <View style={{ flex: 1, backgroundColor: C.bg, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+      <ActivityIndicator color={C.brand} size="large" />
 
       {showOfflineButton && (
         <View style={{ position: 'absolute', bottom: 60, left: 24, right: 24, alignItems: 'center' }}>
-          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, fontFamily: 'Outfit_400Regular', textAlign: 'center', marginBottom: 14 }}>
+          <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, textAlign: 'center', marginBottom: 14 }}>
             {t('components.bootScreen.slow')}
           </Text>
           <Pressable onPress={onContinueOffline} style={{ width: '100%', maxWidth: 320 }}>
             <LinearGradient
-              colors={['#e8a030', '#e83060']}
+              colors={[C.streak, C.wrong]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
+              style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
-              <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
+              <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.bold }}>
                 {t('components.bootScreen.continueOffline')}
               </Text>
             </LinearGradient>
