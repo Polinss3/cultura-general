@@ -20,6 +20,7 @@
     "anonymous": "Anonymous",
     "points": "points",
     "coins": "coins",
+    "yourHelpers": "Your helpers",
     "days_one": "{{count}} day",
     "days_other": "{{count}} days"
   },

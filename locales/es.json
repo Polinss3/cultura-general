@@ -20,6 +20,7 @@
     "anonymous": "Anónimo",
     "points": "puntos",
     "coins": "monedas",
+    "yourHelpers": "Tus ayudas",
     "days_one": "{{count}} día",
     "days_other": "{{count}} días"
   },

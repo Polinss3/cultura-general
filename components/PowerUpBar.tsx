@@ -1,4 +1,6 @@
 import { Pressable, View, Text } from 'react-native';
+import { useColors } from '@/constants/colors';
+import { Font, Radius } from '@/constants/theme';
 
 export interface PowerUpButton {
   id: string;
@@ -14,9 +16,11 @@ interface Props {
 }
 
 export function PowerUpBar({ items, onUse, disabled }: Props) {
+  const C = useColors();
   if (items.length === 0) return null;
+
   return (
-    <View style={{ flexDirection: 'row', gap: 8, justifyContent: 'center' }}>
+    <View style={{ flexDirection: 'row', gap: 10 }}>
       {items.map(it => {
         const usable = !disabled && it.count > 0;
         return (
@@ -25,20 +29,24 @@ export function PowerUpBar({ items, onUse, disabled }: Props) {
             onPress={() => usable && onUse(it.id)}
             style={{
               flex: 1,
-              backgroundColor: '#151515',
-              borderRadius: 12,
-              paddingVertical: 8,
+              backgroundColor: usable ? C.surface : C.surfaceSunk,
+              borderRadius: Radius.row,
+              paddingVertical: 11,
+              paddingHorizontal: 12,
+              minHeight: 46,
+              flexDirection: 'row',
               alignItems: 'center',
+              gap: 8,
               borderWidth: 1,
-              borderColor: usable ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.04)',
-              opacity: usable ? 1 : 0.4,
+              borderColor: C.border,
+              opacity: usable ? 1 : 0.55,
             }}
           >
             <Text style={{ fontSize: 18 }}>{it.icon}</Text>
-            <Text style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'Outfit_500Medium', fontSize: 10, marginTop: 2 }}>
+            <Text numberOfLines={1} style={{ flex: 1, color: C.text, fontFamily: Font.extra, fontSize: 13 }}>
               {it.label}
             </Text>
-            <Text style={{ color: usable ? '#e8a030' : 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_700Bold', fontSize: 11, marginTop: 1 }}>
+            <Text style={{ color: usable ? C.brandDeep : C.textFaint, fontFamily: Font.black, fontSize: 13 }}>
               ×{it.count}
             </Text>
           </Pressable>

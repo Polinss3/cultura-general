@@ -4,10 +4,12 @@ import type { TFunction } from 'i18next';
 import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { UserName } from '@/components/UserName';
+import { Pop } from '@/components/Pop';
 import { usePowerups } from '@/hooks/usePowerups';
 import { resolveCosmetics } from '@/lib/cosmetics';
 import { Confetti } from '@/components/Confetti';
@@ -33,6 +35,10 @@ import {
 } from '@/lib/db';
 import { shuffleQuestionSeeded, pickRandomFresh, ShuffledQuestion } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
+import { useTheme, type Palette } from '@/constants/colors';
+import {
+  Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton,
+} from '@/constants/theme';
 
 type Phase = 'loading' | 'question' | 'ranking';
 type RankingTab = 'daily' | 'league' | 'global' | 'friends';
@@ -57,50 +63,68 @@ function timeUntilMidnight(): string {
 }
 
 function RankRowView({
-  position, name, sub, value, isMe, badge, leagueDivision, cosmetics,
+  position, name, sub, value, isMe, badge, leagueDivision, cosmetics, C, isDark,
 }: {
   position: number;
   name: string;
   sub: string;
   value: string;
   isMe: boolean;
-  badge?: { text: string; color: string; bg: string };
+  badge?: { kind: 'correct' | 'wrong'; text: string };
   leagueDivision?: number;
   cosmetics?: Record<string, string> | null;
+  C: Palette;
+  isDark: boolean;
 }) {
   const { t } = useTranslation();
   const cos = resolveCosmetics(cosmetics);
+
   return (
     <View style={{
       flexDirection: 'row', alignItems: 'center', gap: 12,
-      backgroundColor: isMe ? 'rgba(232,160,48,0.08)' : '#151515',
-      borderWidth: 1,
-      borderColor: isMe ? 'rgba(232,160,48,0.3)' : 'transparent',
-      borderRadius: 14, padding: 12,
+      backgroundColor: isMe ? C.brandTint : C.surface,
+      borderWidth: isMe ? 1.5 : 1,
+      borderColor: isMe ? C.borderWarm : C.border,
+      borderRadius: 18, paddingVertical: 13, paddingHorizontal: 14,
     }}>
-      <Text style={{ width: 24, fontSize: 14, fontFamily: 'Outfit_800ExtraBold', textAlign: 'center',
-        color: position < 3 ? (['#e8a030', '#aaa', '#cd7f32'] as const)[position] : 'rgba(255,255,255,0.2)',
+      <Text style={{
+        width: 26, fontSize: position < 3 ? 17 : 14, fontFamily: Font.black, textAlign: 'center',
+        color: C.textFaint,
       }}>
         {position < 3 ? MEDALS[position] : `${position + 1}`}
       </Text>
-      <View style={cos.frameColor ? { borderWidth: 2, borderColor: cos.frameColor, borderRadius: 12, padding: 1.5 } : undefined}>
-        <View style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: isMe ? '#e8a030' : '#222',
-          alignItems: 'center', justifyContent: 'center',
-        }}>
-          <Text style={{ color: '#fff', fontSize: 13, fontFamily: 'Outfit_700Bold' }}>
-            {name[0]?.toUpperCase() ?? '?'}
-          </Text>
-        </View>
+      <View style={cos.frameColor ? { borderWidth: 2, borderColor: cos.frameColor, borderRadius: 15, padding: 1.5 } : undefined}>
+        {isMe ? (
+          <LinearGradient
+            colors={[C.streak, C.brand]}
+            start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+            style={{ width: 38, height: 38, borderRadius: 13, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Text style={{ color: C.onBrand, fontSize: 15, fontFamily: Font.black }}>
+              {name[0]?.toUpperCase() ?? '?'}
+            </Text>
+          </LinearGradient>
+        ) : (
+          <View style={{
+            width: 38, height: 38, borderRadius: 13, backgroundColor: C.track,
+            alignItems: 'center', justifyContent: 'center',
+          }}>
+            <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.black }}>
+              {name[0]?.toUpperCase() ?? '?'}
+            </Text>
+          </View>
+        )}
       </View>
       <View style={{ flex: 1 }}>
         <UserName
           name={name}
           cosmetics={cos}
           suffix={isMe ? t('daily.you') : ''}
-          color={isMe ? '#e8a030' : '#fff'}
-          fontFamily={isMe ? 'Outfit_700Bold' : 'Outfit_500Medium'}
+          color={isMe ? C.brandDeep : C.text}
+          fontFamily={isMe ? Font.black : Font.bold}
+          fontSize={15}
         />
-        <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, fontFamily: 'Outfit_400Regular' }}>{sub}</Text>
+        <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>{sub}</Text>
       </View>
       {leagueDivision != null && (
         <View style={{ marginRight: 4 }}>
@@ -109,15 +133,18 @@ function RankRowView({
       )}
       {badge && (
         <View style={{
-          paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8,
-          backgroundColor: badge.bg, marginRight: 6,
+          paddingHorizontal: 9, paddingVertical: 4, borderRadius: 9,
+          backgroundColor: badge.kind === 'correct' ? C.correctTint : C.wrongTint, marginRight: 6,
         }}>
-          <Text style={{ color: badge.color, fontSize: 12, fontFamily: 'Outfit_700Bold' }}>
+          <Text style={{
+            color: badge.kind === 'correct' ? C.correctText : C.wrongText,
+            fontSize: 12, fontFamily: Font.black,
+          }}>
             {badge.text}
           </Text>
         </View>
       )}
-      <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{value}</Text>
+      <Text style={{ color: C.text, fontFamily: isMe ? Font.black : Font.extra, fontSize: 15 }}>{value}</Text>
     </View>
   );
 }
@@ -164,6 +191,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const { t, i18n } = useTranslation();
   const router = useRouter();
   const { celebrate } = useProgress();
+  const { C, isDark } = useTheme();
   const [phase, setPhase] = useState<Phase>('loading');
   const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
@@ -317,9 +345,9 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   // ─ Loading
   if (phase === 'loading') {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator color="#e8a030" size="large" />
+          <ActivityIndicator color={C.brand} size="large" />
         </View>
       </SafeAreaView>
     );
@@ -327,62 +355,79 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
   // ─ Ranking
   if (phase === 'ranking') {
+    const ink = inkButton(isDark);
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <Confetti active={showConfetti} />
-        <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
+        <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
           {/* Result header */}
-          <View style={{ alignItems: 'center', marginBottom: 24 }}>
-            <Text style={{ fontSize: 44, marginBottom: 8 }}>{isCorrect ? '🏆' : '💪'}</Text>
-            <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>
-              {isCorrect ? t('daily.resultWin') : t('daily.resultLose')}
-            </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginTop: 4, marginBottom: 16 }}>
-              {dailyRanking.length > 0
-                ? t('daily.playersAnswered', { count: dailyRanking.length })
-                : t('daily.beFirst')}
-            </Text>
-            <Pressable
-              onPress={handleShare}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#1a1a1a', borderRadius: 99, paddingVertical: 10, paddingHorizontal: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}
+          <Pop>
+            <LinearGradient
+              colors={highlightGradient(isDark)}
+              locations={[0, 0.7]}
+              start={{ x: 0, y: 0 }} end={{ x: 0.4, y: 1 }}
+              style={{
+                alignItems: 'center', gap: 8, borderRadius: 26,
+                paddingVertical: 24, paddingHorizontal: 18,
+                borderWidth: 1.5, borderColor: C.borderWarm,
+                ...cardShadow(isDark),
+              }}
             >
-              <Text style={{ fontSize: 16 }}>🔗</Text>
-              <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 14 }}>{t('daily.share')}</Text>
-            </Pressable>
-          </View>
+              <Text style={{ fontSize: 46 }}>{isCorrect ? '🎉' : '💪'}</Text>
+              <Text style={{ color: C.text, fontSize: 22, fontFamily: Font.black, textAlign: 'center' }}>
+                {isCorrect ? t('daily.resultWin') : t('daily.resultLose')}
+              </Text>
+              <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, textAlign: 'center' }}>
+                {dailyRanking.length > 0
+                  ? t('daily.playersAnswered', { count: dailyRanking.length })
+                  : t('daily.beFirst')}
+              </Text>
+              <Pressable
+                onPress={handleShare}
+                style={{
+                  flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8,
+                  backgroundColor: ink.backgroundColor, borderRadius: Radius.pill,
+                  paddingVertical: 11, paddingHorizontal: 20,
+                }}
+              >
+                <Text style={{ fontSize: 16 }}>🔗</Text>
+                <Text style={{ color: ink.color, fontFamily: Font.extra, fontSize: 15 }}>{t('daily.share')}</Text>
+              </Pressable>
+            </LinearGradient>
+          </Pop>
 
           {/* Tab switcher */}
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={{ marginBottom: 16 }}
-            contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
-          >
-            <View style={{ flexDirection: 'row', backgroundColor: '#151515', borderRadius: 12, padding: 4, gap: 2 }}>
-              {getRankingTabs(t).map(({ key, label }) => (
-                <Pressable
-                  key={key}
-                  onPress={() => key === 'league' ? router.push('/leagues' as any) : setRankingTab(key)}
-                  style={{
-                    paddingVertical: 8, paddingHorizontal: 14, borderRadius: 9,
-                    backgroundColor: rankingTab === key ? '#e8a030' : 'transparent',
-                  }}
-                >
-                  <Text style={{
-                    color: rankingTab === key ? '#000' : 'rgba(255,255,255,0.4)',
-                    fontFamily: rankingTab === key ? 'Outfit_700Bold' : 'Outfit_400Regular',
-                    fontSize: 12,
-                  }}>
-                    {label}
-                  </Text>
-                </Pressable>
-              ))}
-            </View>
-          </ScrollView>
+          <View style={{
+            flexDirection: 'row', gap: 4, marginTop: 18, marginBottom: 16,
+            backgroundColor: C.surface, borderRadius: Radius.row, padding: 5,
+            borderWidth: 1, borderColor: C.border,
+          }}>
+            {getRankingTabs(t).map(({ key, label }) => (
+              <Pressable
+                key={key}
+                onPress={() => key === 'league' ? router.push('/leagues' as any) : setRankingTab(key)}
+                style={{
+                  flex: 1,
+                  paddingVertical: 9, paddingHorizontal: 4, borderRadius: 12,
+                  backgroundColor: rankingTab === key ? C.brand : 'transparent',
+                }}
+              >
+                <Text numberOfLines={1} style={{
+                  color: rankingTab === key ? C.onBrand : C.textMuted,
+                  fontFamily: rankingTab === key ? Font.extra : Font.bold,
+                  fontSize: 13,
+                  textAlign: 'center',
+                }}>
+                  {label}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
 
           {/* Daily */}
           {rankingTab === 'daily' && (
             <RankingList
+              C={C} isDark={isDark}
               items={dailyRanking.map((p, i) => ({
                 position: i,
                 name: p.username,
@@ -391,9 +436,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                 isMe: p.userId === user?.id,
                 leagueDivision: p.division,
                 cosmetics: p.cosmetics,
-                badge: p.isCorrect
-                  ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
-                  : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
+                badge: { kind: p.isCorrect ? 'correct' as const : 'wrong' as const, text: p.isCorrect ? '✓' : '✗' },
               }))}
               emptyText={t('daily.emptyDaily')}
             />
@@ -402,8 +445,9 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
           {/* Global */}
           {rankingTab === 'global' && (
             globalRanking.length === 0 && loadedTabs.current.has('global') ?
-              <ActivityIndicator color="#e8a030" style={{ marginTop: 20 }} /> :
+              <ActivityIndicator color={C.brand} style={{ marginTop: 20 }} /> :
               <RankingList
+                C={C} isDark={isDark}
                 items={globalRanking.map((p, i) => ({
                   position: i, name: p.username, sub: t('daily.globalSub', { streak: p.streak, speed: p.speedRecord }),
                   value: t('daily.globalCorrect', { count: p.totalCorrect }), isMe: p.userId === user?.id,
@@ -418,11 +462,12 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
             friendRanking.length === 0 && loadedTabs.current.has('friends') ?
               <View style={{ alignItems: 'center', marginTop: 24 }}>
                 <Text style={{ fontSize: 36, marginBottom: 12 }}>👥</Text>
-                <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 14, textAlign: 'center' }}>
+                <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 15, textAlign: 'center', lineHeight: 23 }}>
                   {t('daily.noFriends')}
                 </Text>
               </View> :
               <RankingList
+                C={C} isDark={isDark}
                 items={friendRanking.map((p, i) => ({
                   position: i,
                   name: p.username,
@@ -431,15 +476,13 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                   isMe: p.userId === user?.id,
                   leagueDivision: p.division,
                   cosmetics: p.cosmetics,
-                  badge: p.isCorrect
-                    ? { text: '✓', color: '#2ec87a', bg: 'rgba(46,200,122,0.12)' }
-                    : { text: '✗', color: '#e83060', bg: 'rgba(232,48,96,0.12)' },
+                  badge: { kind: p.isCorrect ? 'correct' as const : 'wrong' as const, text: p.isCorrect ? '✓' : '✗' },
                 }))}
                 emptyText={t('daily.emptyFriends')}
               />
           )}
 
-          <Text style={{ marginTop: 24, textAlign: 'center', color: 'rgba(255,255,255,0.25)', fontSize: 12, fontFamily: 'Outfit_400Regular' }}>
+          <Text style={{ marginTop: 24, textAlign: 'center', color: C.textFaint, fontSize: 13, fontFamily: Font.bold }}>
             {t('daily.newQuestionIn', { time: timeUntilMidnight() })}
           </Text>
         </ScrollView>
@@ -450,10 +493,10 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   // ─ No question
   if (!question) {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <Text style={{ fontSize: 40, marginBottom: 12 }}>😕</Text>
-          <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, textAlign: 'center', fontFamily: 'Outfit_400Regular', lineHeight: 24 }}>
+          <Text style={{ color: C.textMuted, fontSize: 15, textAlign: 'center', fontFamily: Font.regular, lineHeight: 24 }}>
             {t('daily.noQuestion')}
           </Text>
         </View>
@@ -467,66 +510,96 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     { id: 'pw_5050', icon: '✂️', label: '50/50', count: inventory['pw_5050'] ?? 0 },
     { id: 'pw_hint', icon: '💡', label: t('ladder.pwHint'), count: inventory['pw_hint'] ?? 0 },
   ];
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       <Confetti active={showConfetti} />
-      <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-          <View style={{ backgroundColor: 'rgba(232,160,48,0.1)', borderWidth: 1, borderColor: 'rgba(232,160,48,0.3)', paddingVertical: 3, paddingHorizontal: 10, borderRadius: 99 }}>
-            <Text style={{ color: '#e8a030', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>{t('daily.badge')}</Text>
+      <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+          <View style={{
+            backgroundColor: C.brandTint, borderWidth: 1, borderColor: C.borderWarm,
+            paddingVertical: 7, paddingHorizontal: 14, borderRadius: Radius.pill,
+          }}>
+            <Text style={{ color: C.brandDeep, fontSize: 12, fontFamily: Font.black, letterSpacing: 0.7 }}>
+              {t('daily.badge')}
+            </Text>
           </View>
-          <Pressable onPress={handleReport} style={{ padding: 6 }}>
-            <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 18 }}>⚑</Text>
+          <Pressable onPress={handleReport} style={{ padding: 8 }} hitSlop={8}>
+            <Text style={{ color: C.textFaint, fontSize: 18 }}>⚑</Text>
           </Pressable>
         </View>
 
-        <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginBottom: 20 }}>
+        <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 10, lineHeight: 21 }}>
           {t('daily.subtitle')}
         </Text>
 
-        <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold', lineHeight: 28, marginBottom: 28 }}>
+        <Text style={{ color: C.text, ...Type.questionLg, marginBottom: 22 }}>
           {question.q}
         </Text>
 
-        <View style={{ gap: 10 }}>
+        <View style={{ gap: 11 }}>
           {question.opts.map((opt, i) =>
             fiftyHidden.includes(i) ? (
-              <View key={i} style={{ borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.04)', borderRadius: 14, paddingVertical: 14, paddingHorizontal: 16, opacity: 0.3 }}>
-                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 15, fontFamily: 'Outfit_500Medium' }}>—</Text>
+              <View key={i} style={{
+                borderWidth: 1.5, borderColor: C.border, backgroundColor: C.surfaceSunk,
+                borderRadius: 18, paddingVertical: 16, paddingHorizontal: 16, opacity: 0.5, minHeight: 60,
+                justifyContent: 'center',
+              }}>
+                <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
               </View>
             ) : (
-              <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+              <OptionBtn
+                key={i}
+                text={opt}
+                letter={LETTERS[i]}
+                state={getState(i)}
+                dimmed={answered && getState(i) === null}
+                onPress={() => handle(i)}
+              />
             ),
           )}
         </View>
 
         {/* Pista (power-up) */}
         {hintShown && !answered && question.ctx && (
-          <View style={{ marginTop: 14, padding: 12, backgroundColor: 'rgba(232,160,48,0.08)', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)' }}>
-            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 12, marginBottom: 3 }}>{t('ladder.hint')}</Text>
-            <Text style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 18 }}>{question.ctx}</Text>
+          <View style={{
+            marginTop: 16, padding: 16, backgroundColor: C.surface, borderRadius: Radius.card,
+            borderWidth: 1.5, borderColor: C.borderWarm,
+          }}>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 15, marginBottom: 6 }}>
+              {t('ladder.hint')}
+            </Text>
+            <Text style={{ color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 22 }}>
+              {question.ctx}
+            </Text>
           </View>
         )}
 
         {/* Power-ups */}
         {!answered && dailyPowerUps.some(p => p.count > 0) && (
-          <View style={{ marginTop: 18 }}>
+          <View style={{ marginTop: 18, gap: 9 }}>
+            <Text style={{ color: C.textFaint, ...Type.sectionLabel, fontSize: 12 }}>
+              {t('common.yourHelpers')}
+            </Text>
             <PowerUpBar items={dailyPowerUps} onUse={usePowerUp} />
           </View>
         )}
 
         {answered && (
           <View style={{
-            marginTop: 20, padding: 14, borderRadius: 14,
-            backgroundColor: isCorrect ? 'rgba(46,200,122,0.08)' : 'rgba(232,48,96,0.08)',
+            marginTop: 20, padding: 16, borderRadius: Radius.card,
+            backgroundColor: isCorrect ? C.correctTint : C.wrongTint,
             borderWidth: 1,
-            borderColor: isCorrect ? 'rgba(46,200,122,0.2)' : 'rgba(232,48,96,0.2)',
+            borderColor: isCorrect ? C.correct : C.wrong,
           }}>
-            <Text style={{ color: isCorrect ? '#2ec87a' : '#e83060', fontFamily: 'Outfit_700Bold', marginBottom: 4 }}>
+            <Text style={{
+              color: isCorrect ? C.correctText : C.wrongText,
+              fontFamily: Font.black, fontSize: 16, marginBottom: 6,
+            }}>
               {isCorrect ? t('daily.correct') : t('daily.incorrect')}
             </Text>
             {question.ctx && (
-              <Text style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
+              <Text style={{ color: C.textBody, fontSize: 14, fontFamily: Font.regular, lineHeight: 22 }}>
                 {question.ctx}
               </Text>
             )}
@@ -543,26 +616,28 @@ type RankItem = {
   sub: string;
   value: string;
   isMe: boolean;
-  badge?: { text: string; color: string; bg: string };
+  badge?: { kind: 'correct' | 'wrong'; text: string };
   leagueDivision?: number;
   cosmetics?: Record<string, string> | null;
 };
 
-function RankingList({ items, emptyText }: {
+function RankingList({ items, emptyText, C, isDark }: {
   items: RankItem[];
   emptyText: string;
+  C: Palette;
+  isDark: boolean;
 }) {
   if (items.length === 0) {
     return (
-      <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, fontFamily: 'Outfit_400Regular', textAlign: 'center', marginTop: 20 }}>
+      <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, textAlign: 'center', marginTop: 20, lineHeight: 23 }}>
         {emptyText}
       </Text>
     );
   }
   return (
-    <View style={{ gap: 8 }}>
+    <View style={{ gap: 9 }}>
       {items.map(item => (
-        <RankRowView key={`${item.position}-${item.name}`} {...item} />
+        <RankRowView key={`${item.position}-${item.name}`} {...item} C={C} isDark={isDark} />
       ))}
     </View>
   );
