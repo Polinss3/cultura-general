@@ -30,6 +30,7 @@ import {
   getNotificationsEnabled,
 } from '@/lib/notifications';
 import { setAppLanguage, getLanguagePreference, LangPreference } from '@/lib/i18n';
+import { useThemePreference, setThemePreference, type ThemePreference } from '@/lib/appearance';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
 import { CAT_ICONS } from '@/constants/questions';
 import { masteryFor } from '@/lib/mastery';
@@ -69,6 +70,7 @@ export default function ProfileScreen() {
   const [notifLoading, setNotifLoading] = useState(true);
 
   const [langPref, setLangPref] = useState<LangPreference>('auto');
+  const themePref = useThemePreference();
 
   const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled());
 
@@ -570,6 +572,51 @@ export default function ProfileScreen() {
               trackColor={{ false: C.track, true: C.streak }}
               thumbColor={C.onBrand}
             />
+          </View>
+
+          {/* Apariencia */}
+          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border, marginBottom: 10 }}>
+            <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
+              {t('profile.settings.theme')}
+            </Text>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2, marginBottom: 12 }}>
+              {t('profile.settings.themeSub')}
+            </Text>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
+              {(['auto', 'light', 'dark'] as ThemePreference[]).map(opt => {
+                const active = themePref === opt;
+                const label =
+                  opt === 'auto' ? t('profile.settings.themeAuto')
+                  : opt === 'light' ? t('profile.settings.themeLight')
+                  : t('profile.settings.themeDark');
+                const icon = opt === 'auto' ? '⚙️' : opt === 'light' ? '☀️' : '🌙';
+                return (
+                  <Pressable
+                    key={opt}
+                    onPress={() => { feedback.select(); setThemePreference(opt); }}
+                    style={{
+                      flex: 1,
+                      paddingVertical: 10,
+                      borderRadius: 10,
+                      alignItems: 'center',
+                      gap: 3,
+                      backgroundColor: active ? C.streak : C.surfaceSunk,
+                      borderWidth: 1,
+                      borderColor: active ? C.streak : C.border,
+                    }}
+                  >
+                    <Text style={{ fontSize: 15 }}>{icon}</Text>
+                    <Text style={{
+                      color: active ? C.text : C.textBody,
+                      fontFamily: active ? Font.bold : Font.semi,
+                      fontSize: 13,
+                    }}>
+                      {label}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
           </View>
 
           {/* Idioma */}

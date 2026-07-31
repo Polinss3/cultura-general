@@ -174,6 +174,11 @@
       "reminderSub": "Notificación a las 9:00",
       "hapticsTitle": "Vibración",
       "hapticsSub": "Feedback táctil al jugar",
+      "theme": "Apariencia",
+      "themeSub": "Claro, oscuro o el del sistema",
+      "themeAuto": "Sistema",
+      "themeLight": "Claro",
+      "themeDark": "Oscuro",
       "language": "Idioma",
       "languageSub": "Elige el idioma de la app",
       "languageAuto": "Auto",
@@ -804,6 +809,12 @@
   },
   "onboarding": {
     "skip": "Ahora no",
+    "theme": {
+      "title": "¿Claro u oscuro?",
+      "subtitle": "Puedes cambiarlo cuando quieras en tu perfil.",
+      "light": "Claro",
+      "dark": "Oscuro"
+    },
     "language": {
       "title": "Elige tu idioma",
       "subtitle": "Puedes cambiarlo cuando quieras en Ajustes.",

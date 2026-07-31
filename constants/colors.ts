@@ -1,4 +1,5 @@
 import { useColorScheme } from 'react-native';
+import { useThemePreference } from '@/lib/appearance';
 
 // ─── Papel cálido ────────────────────────────────────────────────────────────
 // Dos paletas gemelas: crema/tinta en claro, tinta cálida en oscuro. Ni negro
@@ -77,14 +78,25 @@ export const DarkColors = {
 // ambas encajen (con `as const` cada hex sería un tipo literal distinto).
 export type Palette = Record<keyof typeof LightColors, string>;
 
-/** Paleta activa según el ajuste de apariencia del sistema. */
+/**
+ * Esquema activo: la preferencia del usuario manda y, si es 'auto' (el valor
+ * por defecto), se sigue el ajuste del sistema.
+ */
+export function useIsDark(): boolean {
+  const system = useColorScheme();
+  const pref = useThemePreference();
+  if (pref === 'auto') return system === 'dark';
+  return pref === 'dark';
+}
+
+/** Paleta activa. */
 export function useColors(): Palette {
-  return useColorScheme() === 'dark' ? DarkColors : LightColors;
+  return useIsDark() ? DarkColors : LightColors;
 }
 
 /** Paleta + esquema de una vez, que es lo que suele hacer falta en pantalla. */
 export function useTheme(): { C: Palette; isDark: boolean } {
-  const isDark = useColorScheme() === 'dark';
+  const isDark = useIsDark();
   return { C: isDark ? DarkColors : LightColors, isDark };
 }
 

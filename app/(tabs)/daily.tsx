@@ -370,31 +370,32 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               locations={[0, 0.7]}
               start={{ x: 0, y: 0 }} end={{ x: 0.4, y: 1 }}
               style={{
-                alignItems: 'center', gap: 8, borderRadius: 26,
-                paddingVertical: 24, paddingHorizontal: 18,
+                flexDirection: 'row', alignItems: 'center', gap: 13,
+                borderRadius: Radius.cardLg, padding: 14,
                 borderWidth: 1.5, borderColor: C.borderWarm,
                 ...cardShadow(isDark),
               }}
             >
-              <Text style={{ fontSize: 46 }}>{isCorrect ? '🎉' : '💪'}</Text>
-              <Text style={{ color: C.text, fontSize: 22, fontFamily: Font.black, textAlign: 'center' }}>
-                {isCorrect ? t('daily.resultWin') : t('daily.resultLose')}
-              </Text>
-              <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, textAlign: 'center' }}>
-                {dailyRanking.length > 0
-                  ? t('daily.playersAnswered', { count: dailyRanking.length })
-                  : t('daily.beFirst')}
-              </Text>
+              <Text style={{ fontSize: 34 }}>{isCorrect ? '🎉' : '💪'}</Text>
+              <View style={{ flex: 1, gap: 1 }}>
+                <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.black }}>
+                  {isCorrect ? t('daily.resultWin') : t('daily.resultLose')}
+                </Text>
+                <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular }}>
+                  {dailyRanking.length > 0
+                    ? t('daily.playersAnswered', { count: dailyRanking.length })
+                    : t('daily.beFirst')}
+                </Text>
+              </View>
               <Pressable
                 onPress={handleShare}
                 style={{
-                  flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8,
                   backgroundColor: ink.backgroundColor, borderRadius: Radius.pill,
-                  paddingVertical: 11, paddingHorizontal: 20,
+                  paddingVertical: 9, paddingHorizontal: 14,
                 }}
+                hitSlop={8}
               >
-                <Text style={{ fontSize: 16 }}>🔗</Text>
-                <Text style={{ color: ink.color, fontFamily: Font.extra, fontSize: 15 }}>{t('daily.share')}</Text>
+                <Text style={{ color: ink.color, fontFamily: Font.extra, fontSize: 14 }}>🔗</Text>
               </Pressable>
             </LinearGradient>
           </Pop>
@@ -614,12 +615,6 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
           </View>
         )}
 
-        {/* Ruta de hoy. Va deliberadamente al final: el ranking del día se
-            ordena por tiempo de respuesta, así que nada compite con la
-            pregunta hasta que está contestada. */}
-        {user && (
-          <DailyRoute userId={user.id} profile={profile} refresh={refreshProfile} />
-        )}
       </ScrollView>
     </SafeAreaView>
   );

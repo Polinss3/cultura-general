@@ -16,7 +16,9 @@ import {
 import { ensureTrackingPermission } from '@/lib/tracking';
 import { syncMetaAdvertiserTracking } from '@/lib/metaSdk';
 import { logTutorialCompletion, startAppsFlyerAfterConsent } from '@/lib/appsflyer';
-import { setAppLanguage, AppLang } from '@/lib/i18n';
+import { setAppLanguage, AppLang, getCurrentLang } from '@/lib/i18n';
+import { useThemePreference, setThemePreference } from '@/lib/appearance';
+import { ThemePreview } from '@/components/ThemePreview';
 import { feedback } from '@/lib/feedback';
 import { CAT_COLORS, CAT_ICONS, ALL_CATEGORIES } from '@/constants/questions';
 import { REWARDS } from '@/lib/economy';
@@ -56,9 +58,16 @@ export default function OnboardingScreen() {
   const current = steps[step];
   const isLast = step === steps.length - 1;
 
+  // Idioma elegido en esta pantalla. Se aplica al momento para que los textos
+  // de aquí mismo cambien, pero no se avanza: el paso lo cierra "Continuar",
+  // que da tiempo a elegir también el tema.
+  const [pendingLang, setPendingLang] = useState<AppLang>(getCurrentLang());
+  const themePref = useThemePreference();
+
   const handleLanguage = async (lang: AppLang) => {
+    feedback.select();
+    setPendingLang(lang);
     await setAppLanguage(lang);
-    setLangChosen(true);
   };
 
   const toggleInterest = (cat: Category) => {
@@ -110,52 +119,117 @@ export default function OnboardingScreen() {
   };
 
   if (!langChosen) {
+    // El idioma se aplica al tocar, para que el resto de esta misma pantalla
+    // ya cambie. El tema también: la pantalla entera adopta el elegido.
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
-        <View style={{ flex: 1, padding: 24, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ fontSize: 80, marginBottom: 32 }}>🌐</Text>
-          <Text style={{
-            color: C.text,
-            fontSize: 28,
-            fontFamily: Font.black,
-            textAlign: 'center',
-            lineHeight: 36,
-            marginBottom: 12,
-          }}>
-            {t('onboarding.language.title')}
-          </Text>
-          <Text style={{
-            color: C.textMuted,
-            fontSize: 15,
-            fontFamily: Font.regular,
-            textAlign: 'center',
-            lineHeight: 24,
-            maxWidth: 300,
-            marginBottom: 40,
-          }}>
-            {t('onboarding.language.subtitle')}
-          </Text>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+        <View style={{ flex: 1, overflow: 'hidden' }}>
+          <View style={{ paddingHorizontal: 24, paddingTop: 12 }}>
+            <Text style={{
+              color: C.text, fontSize: 26, fontFamily: Font.black,
+              textAlign: 'center', lineHeight: 34, marginBottom: 6,
+            }}>
+              {t('onboarding.language.title')}
+            </Text>
+            <Text style={{
+              color: C.textMuted, fontSize: 15, fontFamily: Font.regular,
+              textAlign: 'center', lineHeight: 23, marginBottom: 16,
+            }}>
+              {t('onboarding.language.subtitle')}
+            </Text>
 
-          <View style={{ width: '100%', gap: 12 }}>
-            {(['es', 'en'] as AppLang[]).map(lang => (
-              <Pressable
-                key={lang}
-                onPress={() => handleLanguage(lang)}
-                style={{
-                  borderRadius: Radius.card,
-                  padding: 18,
-                  alignItems: 'center',
-                  backgroundColor: C.surface,
-                  borderWidth: 1,
-                  borderColor: C.border,
-                }}
-              >
-                <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.bold }}>
-                  {t(`onboarding.language.${lang}`)}
-                </Text>
-              </Pressable>
-            ))}
+            {/* Idioma */}
+            <View style={{ flexDirection: 'row', gap: 10, marginBottom: 18 }}>
+              {(['es', 'en'] as AppLang[]).map(lang => {
+                const active = pendingLang === lang;
+                return (
+                  <Pressable
+                    key={lang}
+                    onPress={() => handleLanguage(lang)}
+                    style={{
+                      flex: 1, borderRadius: Radius.card, paddingVertical: 14, alignItems: 'center',
+                      backgroundColor: active ? C.brand : C.surface,
+                      borderWidth: 1.5, borderColor: active ? C.brand : C.border,
+                    }}
+                  >
+                    <Text style={{
+                      color: active ? C.onBrand : C.text,
+                      fontSize: 16, fontFamily: active ? Font.extra : Font.bold,
+                    }}>
+                      {t(`onboarding.language.${lang}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            {/* Tema */}
+            <Text style={{
+              color: C.text, fontSize: 18, fontFamily: Font.black,
+              textAlign: 'center', marginBottom: 4,
+            }}>
+              {t('onboarding.theme.title')}
+            </Text>
+            <Text style={{
+              color: C.textMuted, fontSize: 14, fontFamily: Font.regular,
+              textAlign: 'center', marginBottom: 14,
+            }}>
+              {t('onboarding.theme.subtitle')}
+            </Text>
+            <View style={{ flexDirection: 'row', gap: 10, marginBottom: 20 }}>
+              {(['light', 'dark'] as const).map(opt => {
+                const active = themePref === opt;
+                return (
+                  <Pressable
+                    key={opt}
+                    onPress={() => { feedback.select(); setThemePreference(opt); }}
+                    style={{
+                      flex: 1, borderRadius: Radius.card, paddingVertical: 12,
+                      alignItems: 'center', gap: 3,
+                      backgroundColor: active ? C.brand : C.surface,
+                      borderWidth: 1.5, borderColor: active ? C.brand : C.border,
+                    }}
+                  >
+                    <Text style={{ fontSize: 20 }}>{opt === 'light' ? '☀️' : '🌙'}</Text>
+                    <Text style={{
+                      color: active ? C.onBrand : C.text,
+                      fontSize: 14, fontFamily: active ? Font.extra : Font.bold,
+                    }}>
+                      {t(`onboarding.theme.${opt}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
           </View>
+
+          {/* Muestra de la home, cortada por abajo: enseña cómo queda el tema
+              elegido sin ocupar una pantalla entera. */}
+          <View style={{
+            flex: 1, marginHorizontal: 24,
+            borderTopLeftRadius: 20, borderTopRightRadius: 20,
+            borderWidth: 1, borderBottomWidth: 0, borderColor: C.border,
+            overflow: 'hidden',
+          }}>
+            <ThemePreview dark={isDark} />
+          </View>
+        </View>
+
+        {/* Continuar: fijo abajo, sobre la muestra. */}
+        <View style={{
+          paddingHorizontal: 24, paddingTop: 12, paddingBottom: 24,
+          backgroundColor: C.bg, borderTopWidth: 1, borderTopColor: C.border,
+        }}>
+          <Pressable onPress={() => setLangChosen(true)}>
+            <View style={{
+              borderRadius: 18, paddingVertical: 16, alignItems: 'center',
+              backgroundColor: C.brand,
+            }}>
+              <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.extra }}>
+                {t('common.continue')}
+              </Text>
+            </View>
+          </Pressable>
         </View>
       </SafeAreaView>
     );

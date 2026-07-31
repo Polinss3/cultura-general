@@ -17,7 +17,7 @@ import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
 import type { Profile } from '@/hooks/useProfile';
 import { useTheme, type Palette } from '@/constants/colors';
-import { Font, Radius, Type, cardShadow, highlightGradient } from '@/constants/theme';
+import { Font, Radius, cardShadow, highlightGradient } from '@/constants/theme';
 
 interface Props {
   userId: string;
@@ -198,20 +198,15 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         colors={highlightGradient(isDark)}
         locations={[0, 0.55]}
         start={{ x: 0, y: 0 }} end={{ x: 0.4, y: 1 }}
-        style={{ paddingVertical: 18, paddingHorizontal: 16 }}
+        style={{ paddingVertical: 14, paddingHorizontal: 14 }}
       >
         {/* Header (pulsable para colapsar cuando ya está todo hecho) */}
         <Pressable onPress={nothingActionable ? () => setUserExpanded(false) : undefined} disabled={!nothingActionable}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-            <Text style={{ fontSize: 20 }}>🗓️</Text>
-            <View style={{ flex: 1 }}>
-              <Text style={{ color: C.text, ...Type.cardTitleLg }}>
-                {t('home.route.title')}
-              </Text>
-              <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, marginTop: 1 }}>
-                {t('home.route.subtitle')}
-              </Text>
-            </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+            <Text style={{ fontSize: 18 }}>🗓️</Text>
+            <Text style={{ flex: 1, color: C.text, fontSize: 17, fontFamily: Font.black }}>
+              {t('home.route.title')}
+            </Text>
             <View style={{
               backgroundColor: route.complete ? C.correctTint : C.brandTint,
               borderRadius: Radius.pill, paddingHorizontal: 12, paddingVertical: 5,
@@ -225,7 +220,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         </Pressable>
 
         {/* Progress bar */}
-        <View style={{ height: 8, backgroundColor: C.track, borderRadius: Radius.pill, marginBottom: 14, overflow: 'hidden' }}>
+        <View style={{ height: 6, backgroundColor: C.track, borderRadius: Radius.pill, marginBottom: 10, overflow: 'hidden' }}>
           <View style={{
             height: '100%',
             width: `${(route.coreDone / route.coreTotal) * 100}%`,
@@ -235,7 +230,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         </View>
 
         {/* Checklist */}
-        <View style={{ gap: 9 }}>
+        <View style={{ gap: 7 }}>
           {/* Pregunta del día */}
           <RouteRow
             C={C}
@@ -278,11 +273,12 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
 
         {/* Misiones (capa extra) — con reclamo directo si hay recompensas */}
         {missions.length > 0 && (
-          <View style={{ marginTop: 12 }}>
+          <View style={{ marginTop: 8 }}>
             <Pressable onPress={() => router.push('/(tabs)')}>
               <View style={{
                 backgroundColor: C.surface,
-                borderRadius: Radius.row, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 11,
+                borderRadius: Radius.row, paddingVertical: 9, paddingHorizontal: 10,
+                flexDirection: 'row', alignItems: 'center', gap: 10,
                 borderWidth: 1, borderColor: claimableMissions.length > 0 ? C.correct : C.border,
               }}>
                 <Text style={{ fontSize: 17 }}>🎯</Text>
@@ -328,10 +324,10 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
         )}
 
         {/* Footer: recompensa de ruta o "jugar 2 min" */}
-        <View style={{ marginTop: 14 }}>
+        <View style={{ marginTop: 10 }}>
           {route.complete && !rewardClaimed ? (
             <Pressable onPress={handleClaimReward} disabled={claimingReward}>
-              <View style={{ backgroundColor: C.brand, borderRadius: 18, padding: 15, alignItems: 'center' }}>
+              <View style={{ backgroundColor: C.brand, borderRadius: Radius.row, paddingVertical: 12, paddingHorizontal: 14, alignItems: 'center' }}>
                 {claimingReward ? (
                   <ActivityIndicator color={C.onBrand} />
                 ) : (
@@ -343,7 +339,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
             </Pressable>
           ) : rewardClaimed ? (
             <View style={{
-              borderRadius: 18, padding: 14, alignItems: 'center',
+              borderRadius: Radius.row, paddingVertical: 11, alignItems: 'center',
               backgroundColor: C.correctTint, borderWidth: 1, borderColor: C.correct,
             }}>
               <Text style={{ color: C.correctText, fontFamily: Font.extra, fontSize: 15 }}>
@@ -353,7 +349,7 @@ export function DailyRoute({ userId, profile, refresh }: Props) {
           ) : (
             <Pressable onPress={() => { feedback.tap(); router.push('/speed'); }}>
               <View style={{
-                borderRadius: 18, padding: 15, alignItems: 'center',
+                borderRadius: Radius.row, paddingVertical: 12, alignItems: 'center',
                 backgroundColor: C.surface, borderWidth: 1, borderColor: C.borderStrong,
               }}>
                 <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 16 }}>
@@ -390,26 +386,26 @@ function RouteRow({
   return (
     <Pressable onPress={onPress} disabled={!onPress}>
       <View style={{
-        flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 62,
-        backgroundColor: C.surface, borderRadius: Radius.row, padding: 12,
+        flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 48,
+        backgroundColor: C.surface, borderRadius: Radius.row, paddingVertical: 8, paddingHorizontal: 10,
         borderWidth: 1, borderColor: C.border,
       }}>
         <View style={{
-          width: 38, height: 38, borderRadius: Radius.iconSm,
+          width: 32, height: 32, borderRadius: 10,
           backgroundColor: done ? C.correctTint : C.brandTint,
           alignItems: 'center', justifyContent: 'center',
         }}>
-          <Text style={{ fontSize: 17 }}>{icon}</Text>
+          <Text style={{ fontSize: 15 }}>{icon}</Text>
         </View>
         <Text style={{
-          flex: 1, color: done ? C.textFaint : C.text, fontFamily: Font.bold, fontSize: 15,
+          flex: 1, color: done ? C.textFaint : C.text, fontFamily: Font.bold, fontSize: 14,
           textDecorationLine: done ? 'line-through' : 'none',
         }}>
           {label}
         </Text>
         {done ? (
-          <View style={{ width: 28, height: 28, borderRadius: 14, backgroundColor: C.correct, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: C.onBrand, fontFamily: Font.black, fontSize: 14 }}>✓</Text>
+          <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: C.correct, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ color: C.onBrand, fontFamily: Font.black, fontSize: 13 }}>✓</Text>
           </View>
         ) : action ? (
           action

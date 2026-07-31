@@ -28,6 +28,7 @@ import { ToastProvider } from '@/context/ToastContext';
 import { ProgressProvider } from '@/context/ProgressContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { applyPersistedLanguage } from '@/lib/i18n';
+import { loadThemePreference } from '@/lib/appearance';
 import { purgeLegacyQuestionCache } from '@/lib/db';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
 import { initFeedback } from '@/lib/feedback';
@@ -36,6 +37,7 @@ import { setSentryUser } from '@/lib/sentry';
 import { clearGuestData } from '@/lib/guest';
 import { handleIncomingAuthUrl } from '@/lib/auth';
 import { requiresProfileCompletion } from '@/lib/authValidation';
+import { useIsDark } from '@/constants/colors';
 
 Sentry.init({
   dsn: 'https://b47aaa6f083737c40dd659db4a776b87@o4511400341995520.ingest.de.sentry.io/4511400352546896',
@@ -60,6 +62,14 @@ SplashScreen.preventAutoHideAsync();
 // guardada y la red del backend inaccesible).
 const BOOT_OFFLINE_HINT_MS = 5000;
 const BOOT_HARD_DEADLINE_MS = 10000;
+
+// La StatusBar necesita el esquema resuelto (preferencia + sistema), así que
+// va en su propio componente: los hooks de tema tienen que estar dentro del
+// árbol que ya se está renderizando.
+function AppStatusBar() {
+  const isDark = useIsDark();
+  return <StatusBar style={isDark ? 'light' : 'dark'} />;
+}
 
 function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
@@ -103,7 +113,7 @@ function RootLayout() {
   // paso limpiar la caché de preguntas v1 y reprogramar el recordatorio en el
   // idioma activo (cubre a quien cambió el idioma del sistema con la app cerrada).
   useEffect(() => {
-    applyPersistedLanguage().finally(() => {
+    Promise.all([applyPersistedLanguage(), loadThemePreference()]).finally(() => {
       setLangReady(true);
       purgeLegacyQuestionCache();
       rescheduleDailyReminderIfActive();
@@ -358,8 +368,7 @@ function RootLayout() {
     <ErrorBoundary>
       <ToastProvider>
         <ProgressProvider>
-          {/* "auto" invierte los iconos según el esquema del sistema. */}
-          <StatusBar style="auto" />
+          <AppStatusBar />
           <Stack
             screenOptions={{
               headerShown: false,
