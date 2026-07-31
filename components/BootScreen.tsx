@@ -27,11 +27,11 @@ export function BootScreen({ showOfflineButton, onContinueOffline }: Props) {
           </Text>
           <Pressable onPress={onContinueOffline} style={{ width: '100%', maxWidth: 320 }}>
             <LinearGradient
-              colors={[C.streak, C.wrong]}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
               style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
-              <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.bold }}>
+              <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.bold }}>
                 {t('components.bootScreen.continueOffline')}
               </Text>
             </LinearGradient>

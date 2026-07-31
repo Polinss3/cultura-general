@@ -277,7 +277,7 @@ export default function SpeedScreen() {
             {t('speed.inSeconds', { seconds: DURATION })}
           </Text>
           {newRecord ? (
-            <Text style={{ color: C.streak, fontSize: 13, fontFamily: Font.semi, marginBottom: 10 }}>
+            <Text style={{ color: C.brandDeep, fontSize: 13, fontFamily: Font.semi, marginBottom: 10 }}>
               {t('speed.newRecord')}
             </Text>
           ) : (

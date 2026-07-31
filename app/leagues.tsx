@@ -68,8 +68,8 @@ export default function LeaguesScreen() {
           </Text>
           {!offline && (
             <Pressable onPress={goToAuth} style={{ width: '100%' }}>
-              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}>
-                <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{t('leagues.createAccount')}</Text>
+              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('leagues.createAccount')}</Text>
               </LinearGradient>
             </Pressable>
           )}
@@ -188,7 +188,7 @@ export default function LeaguesScreen() {
               <Text style={{ flex: 1, color: C.textBody, fontFamily: Font.semi, fontSize: 13 }}>
                 {t('leagues.currentPrize')}
               </Text>
-              <Text style={{ color: C.streak, fontFamily: Font.black, fontSize: 16 }}>
+              <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 16 }}>
                 +{leaguePlacementReward(state.division, state.myRank)} 🪙
               </Text>
             </View>
@@ -215,7 +215,7 @@ export default function LeaguesScreen() {
             }}>
               <Text style={{ fontSize: 17 }}>{p.icon}</Text>
               <Text style={{ flex: 1, color: C.text, fontFamily: Font.semi, fontSize: 14 }}>{p.label}</Text>
-              <Text style={{ color: C.streak, fontFamily: Font.bold, fontSize: 14 }}>
+              <Text style={{ color: C.brandDeep, fontFamily: Font.bold, fontSize: 14 }}>
                 +{leaguePlacementReward(state.division, p.rank)} 🪙
               </Text>
             </View>
@@ -310,8 +310,8 @@ export default function LeaguesScreen() {
             ))}
 
             <Pressable onPress={() => setShowInfo(false)} style={{ marginTop: 12 }}>
-              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
-                <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{t('leagues.how.close')}</Text>
+              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('leagues.how.close')}</Text>
               </LinearGradient>
             </Pressable>
           </Pressable>

@@ -171,7 +171,7 @@ export default function ShopScreen() {
                 <View key={p.itemId} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.surface, borderRadius: Radius.row, paddingVertical: 8, paddingHorizontal: 12, borderWidth: 1, borderColor: C.streak }}>
                   <Text style={{ fontSize: 18 }}>{p.icon}</Text>
                   <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 13 }}>{p.name}</Text>
-                  <Text style={{ color: C.streak, fontFamily: Font.black, fontSize: 13 }}>×{inventory[p.itemId]}</Text>
+                  <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 13 }}>×{inventory[p.itemId]}</Text>
                 </View>
               ))}
             </View>
@@ -247,7 +247,7 @@ function ShopCard({
         </View>
         {!cosmetic && owned > 0 && (
           <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: 8, paddingHorizontal: 7, paddingVertical: 2 }}>
-            <Text style={{ color: C.streak, fontFamily: Font.black, fontSize: 12 }}>×{owned}</Text>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>×{owned}</Text>
           </View>
         )}
       </View>

@@ -295,7 +295,7 @@ export default function LadderScreen() {
             {t('ladder.introA')}
             <Text style={{ color: C.wrong, fontFamily: Font.bold }}>{t('ladder.introLives', { lives: LADDER_LIVES })}</Text>
             {t('ladder.introB')}
-            <Text style={{ color: C.streak, fontFamily: Font.bold }}>{t('ladder.introRetire')}</Text>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.bold }}>{t('ladder.introRetire')}</Text>
             {t('ladder.introC')}
           </Text>
           {/* Viaje por las zonas */}
@@ -324,11 +324,11 @@ export default function LadderScreen() {
           </View>
           <Pressable onPress={start} style={{ width: '100%' }}>
             <LinearGradient
-              colors={[C.streak, C.wrong]}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
               style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
-              <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.bold }}>{t('ladder.startClimb')}</Text>
+              <Text style={{ color: C.onBrand, fontSize: 17, fontFamily: Font.bold }}>{t('ladder.startClimb')}</Text>
             </LinearGradient>
           </Pressable>
         </View>
@@ -376,8 +376,8 @@ export default function LadderScreen() {
               <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.retire')}</Text>
             </Pressable>
             <Pressable onPress={() => advance(floor + 1)} style={{ flex: 1 }}>
-              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}>
-                <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.keepClimbing')}</Text>
+              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('ladder.keepClimbing')}</Text>
               </LinearGradient>
             </Pressable>
           </View>
@@ -416,8 +416,8 @@ export default function LadderScreen() {
               </Pressable>
             )}
             <Pressable onPress={endGame}>
-              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
-                <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.finishCash')}</Text>
+              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('ladder.finishCash')}</Text>
               </LinearGradient>
             </Pressable>
           </View>
@@ -454,7 +454,7 @@ export default function LadderScreen() {
                   <Text style={{ color: C.social, fontFamily: Font.bold, fontSize: 13 }}>+{award.gainedXp} XP</Text>
                 </View>
                 <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 12 }}>
-                  <Text style={{ color: C.streak, fontFamily: Font.bold, fontSize: 13 }}>+{award.gainedCoins} 🪙</Text>
+                  <Text style={{ color: C.brandDeep, fontFamily: Font.bold, fontSize: 13 }}>+{award.gainedCoins} 🪙</Text>
                 </View>
               </View>
             )}
@@ -489,8 +489,8 @@ export default function LadderScreen() {
               <Text style={{ color: C.textBody, fontFamily: Font.semi, fontSize: 15 }}>{t('speed.exit')}</Text>
             </Pressable>
             <Pressable onPress={start} style={{ flex: 2 }}>
-              <LinearGradient colors={[C.streak, C.wrong]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
-                <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.climbAgain')}</Text>
+              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('ladder.climbAgain')}</Text>
               </LinearGradient>
             </Pressable>
           </View>

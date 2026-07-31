@@ -303,11 +303,11 @@ export default function OnboardingScreen() {
         <View style={{ gap: 12 }}>
           <Pressable onPress={handleCta}>
             <LinearGradient
-              colors={[C.streak, C.wrong]}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
               style={{ borderRadius: Radius.card, padding: 18, alignItems: 'center' }}
             >
-              <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.bold }}>
+              <Text style={{ color: C.onBrand, fontSize: 17, fontFamily: Font.bold }}>
                 {current.cta}
               </Text>
             </LinearGradient>

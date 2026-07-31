@@ -274,7 +274,7 @@ export default function ProfileScreen() {
                 }}
               />
               <Pressable onPress={handleSaveUsername} disabled={saving}>
-                <Text style={{ color: C.streak, fontFamily: Font.bold, fontSize: 15 }}>
+                <Text style={{ color: C.brandDeep, fontFamily: Font.bold, fontSize: 15 }}>
                   {saving ? '…' : t('common.save')}
                 </Text>
               </Pressable>

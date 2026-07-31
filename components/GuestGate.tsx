@@ -37,11 +37,11 @@ export function GuestGate({ icon = '🔒', title, description }: Props) {
 
         <Pressable onPress={goToAuth} style={{ width: '100%', maxWidth: 320 }}>
           <LinearGradient
-            colors={[C.streak, C.wrong]}
+            colors={[C.brand, C.brand]}
             start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
             style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
           >
-            <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.bold }}>
+            <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.bold }}>
               {t('components.guestGate.createAccount')}
             </Text>
           </LinearGradient>
@@ -49,7 +49,7 @@ export function GuestGate({ icon = '🔒', title, description }: Props) {
 
         <Pressable onPress={goToAuth} style={{ marginTop: 16 }}>
           <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 14 }}>
-            {t('components.guestGate.haveAccount')}<Text style={{ color: C.streak }}>{t('components.guestGate.signIn')}</Text>
+            {t('components.guestGate.haveAccount')}<Text style={{ color: C.brandDeep }}>{t('components.guestGate.signIn')}</Text>
           </Text>
         </Pressable>
       </View>

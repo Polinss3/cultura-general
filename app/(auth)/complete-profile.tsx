@@ -123,11 +123,11 @@ export default function CompleteProfileScreen() {
 
           <Pressable onPress={handleSave} disabled={loading}>
             <LinearGradient
-              colors={[C.streak, C.wrong]}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
               style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
-              <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.bold }}>
+              <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.bold }}>
                 {loading ? t('auth.completeProfile.saving') : t('auth.completeProfile.save')}
               </Text>
             </LinearGradient>

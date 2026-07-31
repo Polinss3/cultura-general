@@ -912,7 +912,7 @@ function SurvivorSetup({ onStart, onBack }: { onStart: (names: string[]) => void
           {players.map((p, i) => (
             <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               <View style={{ width: 32, height: 32, borderRadius: 10, backgroundColor: tint(C.streak, isDark), alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ color: C.streak, fontSize: 14, fontFamily: Font.bold }}>{i + 1}</Text>
+                <Text style={{ color: C.brandDeep, fontSize: 14, fontFamily: Font.bold }}>{i + 1}</Text>
               </View>
               <TextInput value={p} onChangeText={val => updatePlayer(i, val)} placeholder={t('party.playerN', { n: i + 1 })}
                 placeholderTextColor={C.textFaint}

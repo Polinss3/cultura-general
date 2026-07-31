@@ -87,11 +87,11 @@ export default function UpdatePasswordScreen() {
 
           <Pressable onPress={handleUpdate} disabled={loading}>
             <LinearGradient
-              colors={[C.streak, C.wrong]}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
               style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
-              <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.bold }}>
+              <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.bold }}>
                 {loading ? t('auth.updatePassword.saving') : t('auth.updatePassword.save')}
               </Text>
             </LinearGradient>

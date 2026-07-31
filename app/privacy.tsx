@@ -34,7 +34,7 @@ export default function PrivacyScreen() {
 
         {SECTION_KEYS.map(k => (
           <View key={k} style={{ marginBottom: 28 }}>
-            <Text style={{ color: C.streak, fontSize: 15, fontFamily: Font.bold, marginBottom: 10 }}>
+            <Text style={{ color: C.brandDeep, fontSize: 15, fontFamily: Font.bold, marginBottom: 10 }}>
               {t(`privacy.sections.${k}.title`)}
             </Text>
             <Text style={{ color: C.textBody, fontSize: 14, fontFamily: Font.regular, lineHeight: 22 }}>

@@ -391,11 +391,11 @@ export default function LoginScreen() {
 
           <Pressable onPress={handleMainAction} disabled={loading}>
             <LinearGradient
-              colors={[C.streak, C.wrong]}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
               style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
-              <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.bold }}>
+              <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.bold }}>
                 {getButtonLabel()}
               </Text>
             </LinearGradient>
@@ -436,7 +436,7 @@ export default function LoginScreen() {
             >
               <Text style={{ color: C.textMuted, fontFamily: Font.regular }}>
                 {mode === 'login' ? t('auth.login.noAccount') : t('auth.login.haveAccount')}
-                <Text style={{ color: C.streak, fontFamily: Font.semi }}>
+                <Text style={{ color: C.brandDeep, fontFamily: Font.semi }}>
                   {mode === 'login' ? t('auth.login.register') : t('auth.login.signIn')}
                 </Text>
               </Text>
@@ -448,7 +448,7 @@ export default function LoginScreen() {
             >
               <Text style={{ color: C.textMuted, fontFamily: Font.regular }}>
                 {t('auth.login.backTo')}
-                <Text style={{ color: C.streak, fontFamily: Font.semi }}>
+                <Text style={{ color: C.brandDeep, fontFamily: Font.semi }}>
                   {t('auth.login.signInLower')}
                 </Text>
               </Text>
