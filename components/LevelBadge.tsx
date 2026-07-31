@@ -33,6 +33,7 @@ export function LevelBadge({ level, size = 46 }: { level: number; size?: number 
     >
       <Text
         style={{
+          // Blanco sobre el gradiente del rango, en los dos esquemas.
           color: '#FFFFFF',
           fontFamily: Font.black,
           fontSize: size * 0.42,

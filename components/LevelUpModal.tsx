@@ -19,7 +19,7 @@ export function LevelUpModal({ visible, level, onClose }: Props) {
   const rank = rankForLevel(level);
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
-      <View style={{ flex: 1, backgroundColor: 'rgba(43,38,33,0.55)', alignItems: 'center', justifyContent: 'center', padding: 28 }}>
+      <View style={{ flex: 1, backgroundColor: 'rgba(43,38,33,0.55)' /* velo en tinta cálida */, alignItems: 'center', justifyContent: 'center', padding: 28 }}>
         <Confetti active={visible} />
         <View
           style={{

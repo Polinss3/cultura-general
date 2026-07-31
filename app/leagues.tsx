@@ -274,7 +274,7 @@ export default function LeaguesScreen() {
 
       {/* Sheet: cómo funcionan las ligas */}
       <Modal visible={showInfo} transparent animationType="slide" onRequestClose={() => setShowInfo(false)}>
-        <Pressable onPress={() => setShowInfo(false)} style={{ flex: 1, backgroundColor: 'rgba(43,38,33,0.55)', justifyContent: 'flex-end' }}>
+        <Pressable onPress={() => setShowInfo(false)} style={{ flex: 1, backgroundColor: 'rgba(43,38,33,0.55)' /* velo en tinta cálida */, justifyContent: 'flex-end' }}>
           <Pressable onPress={() => {}} style={{ backgroundColor: C.surface, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 36, borderWidth: 1, borderColor: C.border }}>
             <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: C.textFaint, alignSelf: 'center', marginBottom: 18 }} />
             <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 20, marginBottom: 16 }}>

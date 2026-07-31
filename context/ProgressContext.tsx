@@ -3,6 +3,7 @@ import { Animated, Text, View, StyleSheet } from 'react-native';
 import { AwardResult } from '@/lib/gamification';
 import { LevelUpModal } from '@/components/LevelUpModal';
 import { logLevelAchieved } from '@/lib/appsflyer';
+import { Font } from '@/constants/theme';
 
 interface ProgressContextValue {
   // Muestra el feedback "+XP / +🪙" y, si subió de nivel, la celebración.
@@ -88,27 +89,27 @@ const styles = StyleSheet.create({
     zIndex: 9998,
   },
   chip: {
-    backgroundColor: 'rgba(48,168,232,0.95)',
+    backgroundColor: 'rgba(62,119,180,0.96)',
     borderRadius: 99,
     paddingVertical: 6,
     paddingHorizontal: 14,
-    shadowColor: '#000',
+    shadowColor: '#2B2621',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.3,
     shadowRadius: 6,
     elevation: 8,
   },
   coinChip: {
-    backgroundColor: 'rgba(232,160,48,0.95)',
+    backgroundColor: 'rgba(240,169,59,0.96)',
   },
   chipText: {
     color: '#fff',
-    fontFamily: 'Outfit_700Bold',
+    fontFamily: Font.extra,
     fontSize: 14,
   },
   coinText: {
-    color: '#1a1000',
-    fontFamily: 'Outfit_700Bold',
+    color: '#2B2621',
+    fontFamily: Font.extra,
     fontSize: 14,
   },
 });
