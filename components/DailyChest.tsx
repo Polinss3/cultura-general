@@ -83,14 +83,14 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
   const popRotate = pop.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '-12deg'] });
 
   return (
-    <View style={{ marginBottom: 14 }}>
+    <View style={{ marginBottom: 10 }}>
       {confetti && <Confetti active />}
 
       {showClaimed ? (
         <View
           style={{
             borderRadius: Radius.cardLg,
-            padding: 16,
+            padding: 12,
             backgroundColor: C.surfaceSunk,
             borderWidth: 1,
             borderColor: C.border,
@@ -99,9 +99,9 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
             gap: 14,
           }}
         >
-          <Text style={{ fontSize: 30, opacity: 0.45 }}>🎁</Text>
+          <Text style={{ fontSize: 26, opacity: 0.45 }}>🎁</Text>
           <View style={{ flex: 1 }}>
-            <Text style={{ color: C.textMuted, fontFamily: Font.black, fontSize: 17 }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.black, fontSize: 16 }}>
               {t('components.dailyChest.title')}
             </Text>
             <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 2 }}>
@@ -117,7 +117,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
             end={{ x: 1, y: 1 }}
             style={{
               borderRadius: Radius.cardLg,
-              padding: 16,
+              padding: 12,
               borderWidth: 1.5,
               borderColor: C.borderWarm,
               flexDirection: 'row',
@@ -152,7 +152,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
             </Animated.View>
 
             <View style={{ flex: 1 }}>
-              <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 17 }}>
+              <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 16 }}>
                 {t('components.dailyChest.title')}
               </Text>
               <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 2 }}>
@@ -160,7 +160,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
               </Text>
             </View>
 
-            <View style={{ backgroundColor: C.brand, borderRadius: Radius.pill, paddingVertical: 11, paddingHorizontal: 20 }}>
+            <View style={{ backgroundColor: C.brand, borderRadius: Radius.pill, paddingVertical: 9, paddingHorizontal: 18 }}>
               <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 14 }}>
                 {busy ? '…' : t('components.dailyChest.open')}
               </Text>

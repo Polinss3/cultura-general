@@ -44,21 +44,21 @@ export function DailyRouteBanner({ userId, profile }: Props) {
   const pct = (route.coreDone / route.coreTotal) * 100;
 
   return (
-    <Pressable onPress={() => router.push('/(tabs)/daily')} style={{ marginTop: 14 }}>
+    <Pressable onPress={() => router.push('/(tabs)/daily')} style={{ marginTop: 10 }}>
       <LinearGradient
         colors={highlightGradient(isDark)}
         locations={[0, 0.6]}
         start={{ x: 0, y: 0 }} end={{ x: 0.5, y: 1 }}
         style={{
-          borderRadius: Radius.cardLg, padding: 16, gap: 12,
+          borderRadius: Radius.cardLg, padding: 12, gap: 10,
           borderWidth: 1.5, borderColor: C.borderWarm,
           ...cardShadow(isDark),
         }}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-          <Text style={{ fontSize: 24 }}>🗓️</Text>
+          <Text style={{ fontSize: 21 }}>🗓️</Text>
           <View style={{ flex: 1, gap: 1 }}>
-            <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.black }}>
+            <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.black }}>
               {t('home.route.title')}
             </Text>
             <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular }}>
@@ -67,7 +67,7 @@ export function DailyRouteBanner({ userId, profile }: Props) {
           </View>
           <View style={{
             backgroundColor: route.complete ? C.correct : C.brand,
-            borderRadius: Radius.pill, paddingVertical: 9, paddingHorizontal: 18,
+            borderRadius: Radius.pill, paddingVertical: 8, paddingHorizontal: 16,
           }}>
             <Text style={{ color: C.onBrand, fontSize: 14, fontFamily: Font.extra }}>
               {t('home.route.see')}

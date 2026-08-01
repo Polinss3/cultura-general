@@ -154,7 +154,7 @@ export default function HomeScreen() {
               {!guest && profile && (
                 <Pressable
                   onPress={() => offline ? lockedTap() : router.push('/leagues' as any)}
-                  style={{ marginTop: 8, alignSelf: 'flex-start' }}
+                  style={{ marginTop: 6, alignSelf: 'flex-start' }}
                   hitSlop={8}
                 >
                   <LeagueBadge division={profile.league_division ?? 0} variant="chip" />
@@ -233,13 +233,13 @@ export default function HomeScreen() {
 
           {/* Progreso (nivel + XP + monedas) → Arena */}
           {!guest && (
-            <Pressable onPress={() => offline ? lockedTap() : router.push('/profile')} style={{ marginTop: 12 }}>
+            <Pressable onPress={() => offline ? lockedTap() : router.push('/profile')} style={{ marginTop: 10 }}>
               <View style={{
-                backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 16,
-                borderWidth: 1, borderColor: C.border, gap: 12, ...cardShadow(isDark),
+                backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 12,
+                borderWidth: 1, borderColor: C.border, gap: 10, ...cardShadow(isDark),
               }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                  <LevelBadge level={profile?.level ?? 1} size={46} />
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+                  <LevelBadge level={profile?.level ?? 1} size={40} />
                   <View style={{ flex: 1 }}>
                     <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 16 }}>
                       {t('components.levelUp.level', { level: profile?.level ?? 1 })}
@@ -255,11 +255,15 @@ export default function HomeScreen() {
                       )}
                     </View>
                   </View>
-                  <CoinPill coins={profile?.coins ?? 0} />
+                  <CoinPill coins={profile?.coins ?? 0} small />
                 </View>
-                <View style={{ gap: 6 }}>
-                  <XpBar xp={profile?.xp ?? 0} showLabel={false} height={10} />
-                  <Text style={{ color: C.textFaint, fontFamily: Font.bold, fontSize: 12 }}>
+                {/* Barra y "faltan X XP" en la misma fila: la etiqueta debajo
+                    costaba una línea entera de alto. */}
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <View style={{ flex: 1 }}>
+                    <XpBar xp={profile?.xp ?? 0} showLabel={false} height={8} />
+                  </View>
+                  <Text numberOfLines={1} style={{ color: C.textFaint, fontFamily: Font.bold, fontSize: 12 }}>
                     {t('components.xpBar.toNext', { xp: xpProgress.toNext, level: xpProgress.level + 1 })}
                   </Text>
                 </View>
@@ -277,24 +281,24 @@ export default function HomeScreen() {
 
         {/* Cofre diario y liga semanal (venían de Arena) */}
         {economyOn && (
-          <View style={{ paddingHorizontal: Space.screen, marginTop: 14 }}>
+          <View style={{ paddingHorizontal: Space.screen, marginTop: 10 }}>
             <DailyChest available={chestAvailable} onClaim={handleChest} onClaimed={refresh} />
 
             <Pressable onPress={() => router.push('/leagues' as any)}>
               <View style={{
-                backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 16,
+                backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 12,
                 borderWidth: 1, borderColor: C.border,
-                flexDirection: 'row', alignItems: 'center', gap: 14,
+                flexDirection: 'row', alignItems: 'center', gap: 12,
               }}>
                 <View style={{
-                  width: 46, height: 46, borderRadius: Radius.row,
+                  width: 40, height: 40, borderRadius: 13,
                   backgroundColor: C.coinTint, alignItems: 'center', justifyContent: 'center',
                 }}>
-                  <Text style={{ fontSize: 22 }}>🏆</Text>
+                  <Text style={{ fontSize: 19 }}>🏆</Text>
                 </View>
-                <View style={{ flex: 1, gap: 2 }}>
-                  <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.black }}>{t('leagues.cardTitle')}</Text>
-                  <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, lineHeight: 19 }}>
+                <View style={{ flex: 1, gap: 1 }}>
+                  <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.black }}>{t('leagues.cardTitle')}</Text>
+                  <Text numberOfLines={1} style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular }}>
                     {t('leagues.cardDesc')}
                   </Text>
                 </View>
@@ -305,8 +309,8 @@ export default function HomeScreen() {
         )}
 
         {/* A qué jugamos */}
-        <View style={{ paddingHorizontal: Space.screen, marginTop: 20 }}>
-          <Text style={{ color: C.textFaint, ...Type.sectionLabel, marginBottom: 12 }}>
+        <View style={{ paddingHorizontal: Space.screen, marginTop: 16 }}>
+          <Text style={{ color: C.textFaint, ...Type.sectionLabel, marginBottom: 10 }}>
             {t('home.gameModes')}
           </Text>
 

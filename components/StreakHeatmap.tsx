@@ -58,21 +58,21 @@ export function StreakHeatmap({ userId, streak }: Props) {
 
   return (
     <View style={{
-      marginTop: 14,
+      marginTop: 12,
       backgroundColor: C.surface,
       borderRadius: Radius.cardLg,
       borderWidth: 1,
       borderColor: C.border,
-      padding: 16,
+      padding: 12,
       ...cardShadow(isDark),
     }}>
       {/* Racha */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11, marginBottom: 10 }}>
         <View style={{
-          width: 44, height: 44, borderRadius: Radius.icon,
+          width: 36, height: 36, borderRadius: 12,
           backgroundColor: C.brandTint, alignItems: 'center', justifyContent: 'center',
         }}>
-          <Text style={{ fontSize: 22 }}>🔥</Text>
+          <Text style={{ fontSize: 18 }}>🔥</Text>
         </View>
         <View style={{ flex: 1 }}>
           <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.extra }}>
@@ -82,13 +82,13 @@ export function StreakHeatmap({ userId, streak }: Props) {
             {streak > 0 ? t('home.streakKeep') : t('home.streakStart')}
           </Text>
         </View>
-        <Text style={{ color: C.streakText, fontSize: 30, fontFamily: Font.black, lineHeight: 34 }}>
+        <Text style={{ color: C.streakText, fontSize: 26, fontFamily: Font.black, lineHeight: 30 }}>
           {streak}
         </Text>
       </View>
 
       {/* Heatmap últimas 2 semanas */}
-      <View style={{ flexDirection: 'row', gap: 5 }}>
+      <View style={{ flexDirection: 'row', gap: 4 }}>
         {intensities.map((intensity, i) => {
           const isToday = i === DAYS - 1;
           return (
@@ -96,8 +96,8 @@ export function StreakHeatmap({ userId, streak }: Props) {
               key={days[i]}
               style={{
                 flex: 1,
-                aspectRatio: 1,
-                borderRadius: 6,
+                height: 16,
+                borderRadius: 5,
                 backgroundColor: squareColor(intensity, C, isDark),
                 borderWidth: isToday ? 2 : 0,
                 borderColor: isToday ? C.brand : 'transparent',
