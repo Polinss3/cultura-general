@@ -19,15 +19,15 @@ import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setOffline, probeConnection } from '@/lib/offline';
-import { initMetaSdk, syncMetaAdvertiserTracking } from '@/lib/metaSdk';
-import { initializeAdMob } from '@/lib/admob';
-import { startAppsFlyerAfterConsent } from '@/lib/appsflyer';
+import { markAdsSessionStarted } from '@/lib/ads';
+import { applyAdvertisingDecision } from '@/lib/advertising';
 import { BootScreen } from '@/components/BootScreen';
+import { AdsConsentModal } from '@/components/AdsConsentModal';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { ProgressProvider } from '@/context/ProgressContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
-import { applyPersistedLanguage } from '@/lib/i18n';
+import { applyPersistedLanguage, getCurrentLang } from '@/lib/i18n';
 import { loadThemePreference } from '@/lib/appearance';
 import { purgeLegacyQuestionCache } from '@/lib/db';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
@@ -38,6 +38,12 @@ import { clearGuestData } from '@/lib/guest';
 import { handleIncomingAuthUrl } from '@/lib/auth';
 import { requiresProfileCompletion } from '@/lib/authValidation';
 import { useIsDark } from '@/constants/colors';
+import {
+  type AdsConsentDecision,
+  hydrateAdsConsent,
+  saveAdsConsentDecision,
+  subscribeAdsPreferencesReview,
+} from '@/stores/adsConsentStore';
 
 Sentry.init({
   dsn: 'https://b47aaa6f083737c40dd659db4a776b87@o4511400341995520.ingest.de.sentry.io/4511400352546896',
@@ -96,6 +102,9 @@ function RootLayout() {
   const [manualEnter, setManualEnter] = useState(false); // usuario pulsó "Continuar sin conexión"
   const [bootTimedOut, setBootTimedOut] = useState(false); // toca ofrecer el modo sin conexión
   const [bootExpired, setBootExpired] = useState(false);   // plazo máximo agotado: entramos igual
+  const [adsConsentHydrated, setAdsConsentHydrated] = useState(false);
+  const [adsDecision, setAdsDecision] = useState<AdsConsentDecision | null>(null);
+  const [reviewAdsPreferences, setReviewAdsPreferences] = useState(false);
 
   useEffect(() => {
     // Ante un fallo de storage asumimos "sin onboarding": preferimos repetirlo
@@ -121,12 +130,7 @@ function RootLayout() {
     });
   }, []);
 
-  // Meta SDK: inicializar y sincronizar el tracking publicitario con el ATT
-  // ya concedido (usuarios que respondieron en sesiones anteriores).
-  useEffect(() => {
-    initMetaSdk();
-    syncMetaAdvertiserTracking();
-  }, []);
+  useEffect(() => subscribeAdsPreferencesReview(() => setReviewAdsPreferences(true)), []);
 
   // Sonda de conectividad al arrancar + temporizador para ofrecer el modo
   // sin conexión si la carga se alarga.
@@ -247,8 +251,19 @@ function RootLayout() {
 
   useEffect(() => {
     if (!ready || !onboarded) return;
-    initializeAdMob();
-    startAppsFlyerAfterConsent();
+    let cancelled = false;
+    markAdsSessionStarted();
+    hydrateAdsConsent()
+      .then(decision => {
+        if (cancelled) return;
+        setAdsDecision(decision);
+        setAdsConsentHydrated(true);
+        if (decision) applyAdvertisingDecision(decision);
+      })
+      .catch(() => {
+        if (!cancelled) setAdsConsentHydrated(true);
+      });
+    return () => { cancelled = true; };
   }, [ready, onboarded]);
 
   // Ocultar la splash nativa cuando ya podemos mostrar UI propia (app o BootScreen).
@@ -374,6 +389,21 @@ function RootLayout() {
               headerShown: false,
               animation: 'slide_from_right',
               animationDuration: 250,
+            }}
+          />
+          <AdsConsentModal
+            visible={Boolean(onboarded && adsConsentHydrated && (!adsDecision || reviewAdsPreferences))}
+            initialDecision={adsDecision}
+            dismissible={Boolean(adsDecision && reviewAdsPreferences)}
+            onDismiss={() => setReviewAdsPreferences(false)}
+            onSave={async input => {
+              const decision = await saveAdsConsentDecision({
+                ...input,
+                language: getCurrentLang(),
+              });
+              setAdsDecision(decision);
+              setReviewAdsPreferences(false);
+              await applyAdvertisingDecision(decision);
             }}
           />
         </ProgressProvider>

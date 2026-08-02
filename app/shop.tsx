@@ -14,7 +14,7 @@ import {
 } from '@/lib/shop';
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
-import { showRewardedAd, isRewardedReady } from '@/lib/admob';
+import { showRewardedAd, isRewardedReady } from '@/lib/ads';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 

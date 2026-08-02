@@ -21,7 +21,7 @@ import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
-import { showInterstitialAd } from '@/lib/admob';
+import { showResultInterstitial } from '@/lib/ads';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { requestReviewAfterDailyCompletion } from '@/lib/appReview';
 import {
@@ -298,7 +298,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
         response_time_ms: elapsedMs,
       });
       const reviewRequested = await requestReviewAfterDailyCompletion(user.id, correct);
-      if (!reviewRequested) showInterstitialAd('daily_answered');
+      showResultInterstitial('daily_answered', !reviewRequested);
     }, 1400);
   };
 

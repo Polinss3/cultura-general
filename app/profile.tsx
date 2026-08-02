@@ -45,6 +45,7 @@ import { feedback, isHapticsEnabled, setHapticsEnabled } from '@/lib/feedback';
 import { Category } from '@/types';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
+import { requestAdsPreferencesReview } from '@/stores/adsConsentStore';
 
 export default function ProfileScreen() {
   const { t } = useTranslation();
@@ -321,7 +322,7 @@ export default function ProfileScreen() {
 
         {/* Progreso (nivel / XP / monedas) */}
         <View style={{ paddingHorizontal: Space.screen, marginBottom: 24 }}>
-          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border }}>
+          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border, marginBottom: 10 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <LevelBadge level={level} size={48} />
               <View style={{ flex: 1 }}>
@@ -620,7 +621,7 @@ export default function ProfileScreen() {
           </View>
 
           {/* Idioma */}
-          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border }}>
+          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border, marginBottom: 10 }}>
             <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
               {t('profile.settings.language')}
             </Text>
@@ -660,6 +661,18 @@ export default function ProfileScreen() {
               })}
             </View>
           </View>
+
+          <Pressable
+            onPress={requestAdsPreferencesReview}
+            style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border }}
+          >
+            <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
+              {t('profile.settings.adsPrivacy')}
+            </Text>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
+              {t('profile.settings.adsPrivacySub')}
+            </Text>
+          </Pressable>
         </View>
 
         {/* Zona peligrosa */}
