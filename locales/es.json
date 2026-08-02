@@ -183,7 +183,9 @@
       "languageSub": "Elige el idioma de la app",
       "languageAuto": "Auto",
       "languageEs": "Español",
-      "languageEn": "English"
+      "languageEn": "English",
+      "adsPrivacy": "Privacidad y anuncios",
+      "adsPrivacySub": "Revisa tu tramo de edad y tu elección publicitaria"
     }
   },
   "ladder": {
@@ -667,9 +669,29 @@
     "shop": "Tienda",
     "achievements": "Logros"
   },
+  "adsConsent": {
+    "title": "Tu privacidad y los anuncios",
+    "intro": "La app seguirá funcionando elijas lo que elijas. Guardaremos tu tramo de edad, tu opción, la fecha, el idioma y la versión de este aviso para respetar tu decisión.",
+    "ageQuestion": "¿Qué tramo de edad te corresponde?",
+    "age": {
+      "adult": "Tengo {{age}} años o más",
+      "minor": "Soy menor de {{age}} años"
+    },
+    "minorExplanation": "No iniciaremos AppLovin, AppsFlyer ni Meta y no recibirás anuncios. Todas las funciones del juego permanecen disponibles.",
+    "continueWithoutAds": "Continuar sin anuncios",
+    "contextual": {
+      "title": "Anuncios contextuales",
+      "body": "AppLovin puede mostrar anuncios según el contexto de la app. No pediremos ATT ni iniciaremos AppsFlyer o Meta; indicaremos que no consientes personalización y que no se vendan o compartan tus datos para publicidad dirigida."
+    },
+    "personalized": {
+      "title": "Anuncios personalizados",
+      "body": "Consientes la personalización publicitaria. En iOS pediremos ATT y, después, podremos iniciar AppLovin, AppsFlyer y Meta para personalización y atribución."
+    },
+    "privacyLink": "Leer la política de privacidad completa"
+  },
   "privacy": {
     "title": "Política de privacidad",
-    "updatedAt": "Última actualización: junio 2026",
+    "updatedAt": "Última actualización: agosto 2026",
     "intro": "En {{appName}} nos tomamos tu privacidad en serio. Esta política explica qué datos recopilamos, cómo los usamos y cómo los protegemos.",
     "sections": {
       "s1": {
@@ -678,7 +700,7 @@
       },
       "s2": {
         "title": "2. Cómo usamos tu información",
-        "body": "Usamos tus datos únicamente para:\n\n• Mostrar tu perfil y estadísticas dentro de la app\n• Calcular rankings diarios, semanales y globales\n• Mantener tu racha de respuestas consecutivas\n• Enviarte notificaciones locales si las activas (solo en tu dispositivo)\n• Mantener la app gratis mostrando publicidad limitada mediante Google AdMob\n\nNo vendemos ni alquilamos tus datos personales."
+        "body": "Usamos tus datos únicamente para:\n\n• Mostrar tu perfil y estadísticas dentro de la app\n• Calcular rankings diarios, semanales y globales\n• Mantener tu racha de respuestas consecutivas\n• Enviarte notificaciones locales si las activas (solo en tu dispositivo)\n• Mantener la app gratis mostrando publicidad limitada mediante AppLovin MAX, únicamente a personas adultas que hayan completado la elección de privacidad\n\nNo vendemos ni alquilamos tus datos personales."
       },
       "s3": {
         "title": "3. Almacenamiento de datos",
@@ -686,7 +708,7 @@
       },
       "s4": {
         "title": "4. Publicidad",
-        "body": "{{appName}} puede mostrar anuncios intersticiales mediante Google AdMob tras completar momentos naturales de juego, como la pregunta diaria, una partida de contrarreloj o bloques de preguntas en aprendizaje.\n\nEn iOS te pediremos permiso mediante App Tracking Transparency. Si lo rechazas, los anuncios se mostrarán de forma no personalizada y sin tracking. Si lo aceptas, AdMob podrá usar tu identificador publicitario para mostrar anuncios más relevantes."
+        "body": "{{appName}} puede mostrar anuncios limitados mediante AppLovin MAX, únicamente a personas adultas y tras pausas naturales del juego, como el resultado de la pregunta diaria, una partida de contrarreloj o una escalada.\n\nAntes de inicializar el sistema publicitario te pedimos tu tramo de edad y una elección específica e informada:\n\n• Anuncios contextuales: indicamos a AppLovin que no consientes personalización y que no se vendan ni compartan tus datos para publicidad dirigida. No pedimos App Tracking Transparency ni iniciamos AppsFlyer o Meta.\n• Anuncios personalizados: en iOS pedimos permiso mediante App Tracking Transparency y, después, podemos iniciar AppLovin, AppsFlyer y Meta para personalización y atribución.\n• Si eres menor de 16 años no inicializamos ni usamos AppLovin, AppsFlyer ni Meta, y puedes utilizar la app completa sin anuncios.\n\nPuedes cambiar tu elección cuando quieras desde Ajustes. Un cambio a contextual o a menor de 16 años detiene nuevas solicitudes publicitarias y la medición."
       },
       "s5": {
         "title": "5. Notificaciones push",
@@ -694,11 +716,11 @@
       },
       "s6": {
         "title": "6. Tus derechos",
-        "body": "Tienes derecho a:\n\n• Acceder a tus datos en cualquier momento (desde la pantalla de perfil)\n• Modificar tu nombre de usuario\n• Eliminar tu cuenta (contáctanos en el correo indicado)\n• Exportar tus datos bajo petición\n• Retirar el consentimiento de tracking publicitario desde los ajustes del sistema"
+        "body": "Tienes derecho a:\n\n• Acceder a tus datos en cualquier momento (desde la pantalla de perfil)\n• Modificar tu nombre de usuario\n• Eliminar tu cuenta (contáctanos en el correo indicado)\n• Exportar tus datos bajo petición\n• Cambiar tu elección publicitaria desde Ajustes de la app, y retirar el permiso de tracking en Ajustes > Privacidad > Seguimiento"
       },
       "s7": {
         "title": "7. Menores de edad",
-        "body": "{{appName}} está dirigido a mayores de 13 años. No recopilamos conscientemente datos de menores de 13 años. Si crees que tu hijo ha creado una cuenta, contáctanos para eliminarla."
+        "body": "{{appName}} es una app generalista y no está diseñada exclusivamente para menores. AppLovin no permite usar su SDK con quien sea menor según la ley aplicable, y esa edad varía por país. Aplicamos un corte único de 16 años, el más alto que exigen los estados del Espacio Económico Europeo: no inicializamos ni usamos AppLovin, AppsFlyer ni Meta con personas menores de 16 años. Si crees que tu hijo ha creado una cuenta, contáctanos para eliminarla."
       },
       "s8": {
         "title": "8. Contacto",
@@ -825,6 +847,7 @@
       "title": "¿Qué te apasiona?",
       "subtitle": "Elige tus temas favoritos para personalizar tu experiencia. Podrás cambiarlos cuando quieras.",
       "cta": "Empezar y ganar {{coins}} 🪙",
+      "ctaReturning": "Guardar y continuar",
       "hint": "Elige al menos uno para continuar"
     },
     "step0": {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, Pressable, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,11 +11,14 @@ import {
 import {
   setOnboardingCompleted,
   setInterests,
+  getInterests,
+  getCompletedOnboardingVersion,
   markWelcomeRewardPending,
 } from '@/lib/onboarding';
-import { ensureTrackingPermission } from '@/lib/tracking';
-import { syncMetaAdvertiserTracking } from '@/lib/metaSdk';
-import { logTutorialCompletion, startAppsFlyerAfterConsent } from '@/lib/appsflyer';
+import { AdsConsentForm, type AdsConsentInput } from '@/components/AdsConsentForm';
+import { saveAdsConsentDecision } from '@/stores/adsConsentStore';
+import { applyAdvertisingDecision } from '@/lib/advertising';
+import { logTutorialCompletion } from '@/lib/appsflyer';
 import { setAppLanguage, AppLang, getCurrentLang } from '@/lib/i18n';
 import { useThemePreference, setThemePreference } from '@/lib/appearance';
 import { ThemePreview } from '@/components/ThemePreview';
@@ -33,6 +36,11 @@ const STEP_META = [
   { icon: '🏆', key: 'step1', skip: false },
   { icon: '🔔', key: 'step2', skip: true },
 ] as const;
+
+// La entrada a la app no puede quedarse colgada esperando a un SDK: si ATT o
+// MAX tardan, seguimos. El orden elección -> ATT -> MAX -> AppsFlyer lo
+// garantiza applyAdvertisingDecision, se espere a que termine o no.
+const ADS_APPLY_TIMEOUT_MS = 5000;
 
 function getSteps(t: TFunction) {
   return STEP_META.map(m => ({
@@ -53,6 +61,13 @@ export default function OnboardingScreen() {
   const [langChosen, setLangChosen] = useState(false);
   const [interestsChosen, setInterestsChosen] = useState(false);
   const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
+  // Último paso, obligatorio y sin salida: edad + elección publicitaria.
+  const [privacyPending, setPrivacyPending] = useState(false);
+  const [skippedNotifications, setSkippedNotifications] = useState(false);
+  // Quien ya había completado una versión anterior del onboarding lo repite
+  // (2.0.0 estrena tema claro y el aviso de publicidad), pero no vuelve a
+  // cobrar el regalo de bienvenida.
+  const [returning, setReturning] = useState(false);
   const [step, setStep] = useState(0);
   const steps = getSteps(t);
   const current = steps[step];
@@ -63,6 +78,20 @@ export default function OnboardingScreen() {
   // que da tiempo a elegir también el tema.
   const [pendingLang, setPendingLang] = useState<AppLang>(getCurrentLang());
   const themePref = useThemePreference();
+
+  useEffect(() => {
+    let cancelled = false;
+    getCompletedOnboardingVersion()
+      .then(async version => {
+        if (cancelled || version <= 0) return;
+        setReturning(true);
+        // Repetir el flujo no debe borrarle los intereses que ya tenía.
+        const saved = await getInterests();
+        if (!cancelled && saved.length > 0) setInterestsSel(new Set(saved));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
 
   const handleLanguage = async (lang: AppLang) => {
     feedback.select();
@@ -85,37 +114,44 @@ export default function OnboardingScreen() {
   const confirmInterests = async () => {
     feedback.reward();
     await setInterests(Array.from(interests));
-    await markWelcomeRewardPending();
+    // El regalo de bienvenida es solo para instalaciones nuevas: repetir el
+    // onboarding en 2.0.0 no puede volver a concederlo.
+    if (!returning) await markWelcomeRewardPending();
     setInterestsChosen(true);
   };
 
-  const finish = async (skipped = false) => {
+  const finish = async (skipped: boolean) => {
     await setOnboardingCompleted(true);
-    if (await startAppsFlyerAfterConsent()) {
-      await logTutorialCompletion(skipped);
-    }
+    // No-op salvo que AppsFlyer se haya arrancado tras elección personalizada.
+    void logTutorialCompletion(skipped);
     router.replace('/(tabs)');
+  };
+
+  // Cierre del flujo: se guarda la decisión publicitaria y se aplica antes de
+  // entrar. Ningún SDK se inicializa hasta este punto.
+  const savePrivacyAndFinish = async (input: AdsConsentInput) => {
+    const decision = await saveAdsConsentDecision({ ...input, language: getCurrentLang() });
+    await Promise.race([
+      applyAdvertisingDecision(decision).catch(() => {}),
+      new Promise(resolve => setTimeout(resolve, ADS_APPLY_TIMEOUT_MS)),
+    ]);
+    await finish(skippedNotifications);
   };
 
   const handleCta = async () => {
     if (isLast) {
       const granted = await requestNotificationPermission();
       if (granted) await scheduleDailyReminder();
-      // Pedimos ATT aquí (no en el splash) para que iOS encuentre la app
-      // en estado Active tras un gesto explícito del usuario, antes de
-      // entrar a pantallas con AdMob.
-      const decision = await ensureTrackingPermission();
-      await syncMetaAdvertiserTracking(decision === 'granted');
-      await finish(false);
+      setPrivacyPending(true);
     } else {
       setStep(s => s + 1);
     }
   };
 
-  const handleSkip = async () => {
-    const decision = await ensureTrackingPermission();
-    await syncMetaAdvertiserTracking(decision === 'granted');
-    await finish(true);
+  // "Ahora no" salta las notificaciones, nunca el aviso de publicidad.
+  const handleSkip = () => {
+    setSkippedNotifications(true);
+    setPrivacyPending(true);
   };
 
   if (!langChosen) {
@@ -311,7 +347,9 @@ export default function OnboardingScreen() {
                   fontSize: 17,
                   fontFamily: Font.bold,
                 }}>
-                  {t('onboarding.interests.cta', { coins: REWARDS.welcomeBonus.coins })}
+                  {returning
+                    ? t('onboarding.interests.ctaReturning')
+                    : t('onboarding.interests.cta', { coins: REWARDS.welcomeBonus.coins })}
                 </Text>
               </LinearGradient>
             </Pressable>
@@ -325,6 +363,16 @@ export default function OnboardingScreen() {
             </Text>
           </View>
         </View>
+      </SafeAreaView>
+    );
+  }
+
+  // Último paso: aviso de edad y elección publicitaria. Obligatorio y sin
+  // botón de salida — es la condición para entrar a la app.
+  if (privacyPending) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
+        <AdsConsentForm initialDecision={null} onSave={savePrivacyAndFinish} />
       </SafeAreaView>
     );
   }

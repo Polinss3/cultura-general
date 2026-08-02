@@ -183,7 +183,9 @@
       "languageSub": "Choose the app language",
       "languageAuto": "Auto",
       "languageEs": "Español",
-      "languageEn": "English"
+      "languageEn": "English",
+      "adsPrivacy": "Privacy and ads",
+      "adsPrivacySub": "Review your age bracket and advertising choice"
     }
   },
   "ladder": {
@@ -667,9 +669,29 @@
     "shop": "Shop",
     "achievements": "Achievements"
   },
+  "adsConsent": {
+    "title": "Your privacy and ads",
+    "intro": "The app will keep working whatever you choose. We store your age bracket, choice, date, language and this notice version so we can honor your decision.",
+    "ageQuestion": "Which age bracket applies to you?",
+    "age": {
+      "adult": "I am {{age}} or older",
+      "minor": "I am under {{age}}"
+    },
+    "minorExplanation": "We will not start AppLovin, AppsFlyer or Meta and you will not receive ads. Every game feature remains available.",
+    "continueWithoutAds": "Continue without ads",
+    "contextual": {
+      "title": "Contextual ads",
+      "body": "AppLovin may show ads based on the app context. We will not request ATT or start AppsFlyer or Meta; we tell AppLovin that you do not consent to personalization and opt out of sale/sharing for targeted ads."
+    },
+    "personalized": {
+      "title": "Personalized ads",
+      "body": "You consent to ad personalization. On iOS we request ATT, then we may start AppLovin, AppsFlyer and Meta for personalization and attribution."
+    },
+    "privacyLink": "Read the full privacy policy"
+  },
   "privacy": {
     "title": "Privacy policy",
-    "updatedAt": "Last updated: June 2026",
+    "updatedAt": "Last updated: August 2026",
     "intro": "At {{appName}} we take your privacy seriously. This policy explains what data we collect, how we use it and how we protect it.",
     "sections": {
       "s1": {
@@ -678,7 +700,7 @@
       },
       "s2": {
         "title": "2. How we use your information",
-        "body": "We use your data only to:\n\n• Show your profile and stats within the app\n• Compute daily, weekly and global rankings\n• Keep your streak of consecutive answers\n• Send you local notifications if you enable them (only on your device)\n• Keep the app free by showing limited ads through Google AdMob\n\nWe do not sell or rent your personal data."
+        "body": "We use your data only to:\n\n• Show your profile and stats within the app\n• Compute daily, weekly and global rankings\n• Keep your streak of consecutive answers\n• Send you local notifications if you enable them (only on your device)\n• Keep the app free by showing limited advertising through AppLovin MAX, only to adults who completed the privacy choice\n\nWe do not sell or rent your personal data."
       },
       "s3": {
         "title": "3. Data storage",
@@ -686,7 +708,7 @@
       },
       "s4": {
         "title": "4. Advertising",
-        "body": "{{appName}} may show interstitial ads through Google AdMob after natural moments of play, such as the daily question, a time-attack round or blocks of learning questions.\n\nOn iOS we will ask for permission through App Tracking Transparency. If you decline, ads will be shown in a non-personalized way without tracking. If you accept, AdMob may use your advertising identifier to show more relevant ads."
+        "body": "{{appName}} may show limited advertising through AppLovin MAX, only to adults and after natural pauses in play, such as the daily question result, a time-attack round or a ladder run.\n\nBefore initializing advertising we ask for your age bracket and a specific, informed choice:\n\n• Contextual ads: we tell AppLovin that you do not consent to personalization and that your data must not be sold or shared for targeted advertising. We do not request App Tracking Transparency or start AppsFlyer or Meta.\n• Personalized ads: on iOS we request permission through App Tracking Transparency and then we may start AppLovin, AppsFlyer and Meta for personalization and attribution.\n• If you are under 16 we do not initialize or use AppLovin, AppsFlyer or Meta, and you can use the complete app without ads.\n\nYou can change your choice at any time in Settings. Changing to contextual or under 16 stops new ad requests and measurement."
       },
       "s5": {
         "title": "5. Push notifications",
@@ -694,11 +716,11 @@
       },
       "s6": {
         "title": "6. Your rights",
-        "body": "You have the right to:\n\n• Access your data at any time (from the profile screen)\n• Change your username\n• Delete your account (contact us at the email below)\n• Export your data on request\n• Withdraw advertising-tracking consent from your system settings"
+        "body": "You have the right to:\n\n• Access your data at any time (from the profile screen)\n• Change your username\n• Delete your account (contact us at the email below)\n• Export your data on request\n• Change your advertising choice in the app Settings, and withdraw tracking permission in Settings > Privacy > Tracking"
       },
       "s7": {
         "title": "7. Minors",
-        "body": "{{appName}} is intended for people over 13. We do not knowingly collect data from children under 13. If you believe your child has created an account, contact us to delete it."
+        "body": "{{appName}} is a general-audience app and is not designed exclusively for children. AppLovin does not allow its SDK to be used with anyone who is a child under applicable law, and that age varies by country. We apply a single cutoff of 16, the highest required by any European Economic Area state: we never initialize or use AppLovin, AppsFlyer or Meta for people under 16. If you believe your child has created an account, contact us to delete it."
       },
       "s8": {
         "title": "8. Contact",
@@ -825,6 +847,7 @@
       "title": "What are you into?",
       "subtitle": "Pick your favorite topics to personalize your experience. You can change them anytime.",
       "cta": "Start & earn {{coins}} 🪙",
+      "ctaReturning": "Save & continue",
       "hint": "Pick at least one to continue"
     },
     "step0": {
