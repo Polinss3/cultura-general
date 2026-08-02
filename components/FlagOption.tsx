@@ -56,11 +56,13 @@ export function FlagOption({ flag, state, onPress, dimmed }: Props) {
       <Pressable
         onPress={() => { feedback.tap(); onPress(); }}
         style={{
-          borderWidth: revealed ? 2 : 1.5,
+          // El grosor no cambia al revelar: 0,5 pt por lado bastan para que la
+          // bandera se desplace un pelo. Lo que distingue el estado es el color.
+          borderWidth: 2,
           borderColor,
           backgroundColor: bg,
           borderRadius: 18,
-          paddingVertical: 18,
+          paddingVertical: 14,
           alignItems: 'center',
           justifyContent: 'center',
           minHeight: 104,
@@ -68,14 +70,19 @@ export function FlagOption({ flag, state, onPress, dimmed }: Props) {
         }}
       >
         <Text style={{ fontSize: 54 }}>{flag}</Text>
-        {revealed && (
-          <Text style={{
+        {/* La marca se pinta siempre y solo se hace visible al revelar: si se
+            montara al responder, la tarjeta crecería y recolocaría la rejilla
+            entera justo cuando el usuario está mirando el resultado. */}
+        <Text
+          style={{
             color: state === 'correct' ? C.correctText : C.wrongText,
-            fontSize: 16, fontFamily: Font.black,
-          }}>
-            {state === 'correct' ? '✓' : '✗'}
-          </Text>
-        )}
+            fontSize: 16,
+            fontFamily: Font.black,
+            opacity: revealed ? 1 : 0,
+          }}
+        >
+          {state === 'wrong' ? '✗' : '✓'}
+        </Text>
       </Pressable>
     </Animated.View>
   );

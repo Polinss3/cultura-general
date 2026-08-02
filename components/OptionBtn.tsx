@@ -82,7 +82,9 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         style={{
-          borderWidth: revealed ? 2 : 1.5,
+          // Constante: si engordara al revelar, el texto perdería 1 pt de
+          // ancho y un nombre largo podría saltar a dos líneas.
+          borderWidth: 2,
           borderColor,
           backgroundColor: bg,
           borderRadius: 18,
@@ -106,9 +108,11 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
         <Text style={{ color, fontSize: 16, fontFamily: revealed ? Font.extra : Font.semi, flex: 1 }}>
           {text}
         </Text>
-        {revealed && (
-          <Text style={{ fontSize: 16 }}>{state === 'correct' ? '✓' : '✗'}</Text>
-        )}
+        {/* Hueco reservado: la marca aparece por opacidad, no montándose, para
+            que la etiqueta no cambie de ancho ni reajuste sus líneas. */}
+        <Text style={{ fontSize: 16, width: 18, textAlign: 'right', opacity: revealed ? 1 : 0 }}>
+          {state === 'wrong' ? '✗' : '✓'}
+        </Text>
       </Pressable>
     </Animated.View>
   );
