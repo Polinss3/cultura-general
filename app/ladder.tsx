@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { Confetti } from '@/components/Confetti';
+import { AdBannerSlot } from '@/components/AdBannerSlot';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
@@ -17,7 +18,7 @@ import { fetchInventoryMap, consumeItem } from '@/lib/shop';
 import {
   saveLadderRun, bumpMissions, fetchLadderRanking, AwardResult, LadderRankRow,
 } from '@/lib/gamification';
-import { showRewardedAd, isRewardedReady, showInterstitialAd } from '@/lib/admob';
+import { showRewardedAd, isRewardedReady, showResultInterstitial } from '@/lib/ads';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import {
   getGuestLadderBest, setGuestLadderBest, getLocalLadderBest, setLocalLadderBest,
@@ -111,7 +112,7 @@ export default function LadderScreen() {
       floors_completed: runFloor,
       coins_banked: banked,
     });
-    showInterstitialAd('ladder_complete');
+    showResultInterstitial('ladder_complete');
   }, [phase]);
 
   const pickForFloor = (f: number): ShuffledQuestion | undefined => {
@@ -613,6 +614,7 @@ export default function LadderScreen() {
           )}
         </View>
       </View>
+      <AdBannerSlot />
     </SafeAreaView>
   );
 }

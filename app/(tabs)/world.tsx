@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import { OptionBtn } from '@/components/OptionBtn';
 import { FlagOption } from '@/components/FlagOption';
 import { Confetti } from '@/components/Confetti';
 import { Pop } from '@/components/Pop';
+import { AdBannerSlot } from '@/components/AdBannerSlot';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
@@ -14,7 +15,7 @@ import { useProgress } from '@/context/ProgressContext';
 import { awardProgress } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { markDailyPlayed } from '@/lib/dailyRoute';
-import { showInterstitialAd } from '@/lib/admob';
+import { showResultInterstitial } from '@/lib/ads';
 import { CONTINENTS, COUNTRIES, flagEmoji, type Continent } from '@/constants/flags';
 import {
   buildRound, countryName, poolFor, getFlagRecords, saveFlagRecord,
@@ -60,6 +61,7 @@ export default function WorldScreen() {
   const [correctCount, setCorrectCount] = useState(0);
   const [newRecord, setNewRecord] = useState(false);
   const [confetti, setConfetti] = useState(false);
+  const finishedRef = useRef(false);
 
   // El catálogo va empaquetado, así que Banderas funciona sin conexión y como
   // invitado. Solo las recompensas necesitan sesión.
@@ -71,6 +73,7 @@ export default function WorldScreen() {
   const start = (nextScope: Scope) => {
     const questions = buildRound(nextScope, difficulty);
     if (questions.length === 0) return;
+    finishedRef.current = false;
     setScope(nextScope);
     setRound(questions);
     setQIdx(0);
@@ -82,6 +85,10 @@ export default function WorldScreen() {
   };
 
   const finish = async (finalCorrect: number) => {
+    // Una ronda solo se cierra una vez: ni doble recompensa ni doble
+    // intersticial si `handleAnswer` llegara a reentrar.
+    if (finishedRef.current) return;
+    finishedRef.current = true;
     setPhase('done');
     markDailyPlayed(); // cuenta como "practica hoy" en la ruta diaria
     const isRecord = await saveFlagRecord(scope, finalCorrect);
@@ -97,7 +104,7 @@ export default function WorldScreen() {
       );
       celebrate(award);
     }
-    showInterstitialAd('flags_complete');
+    showResultInterstitial('flags_complete');
   };
 
   const handleAnswer = (cc: string) => {
@@ -312,7 +319,7 @@ export default function WorldScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
         {/* Salida + ámbito */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <Pressable
@@ -421,6 +428,7 @@ export default function WorldScreen() {
           </View>
         )}
       </ScrollView>
+      <AdBannerSlot />
     </SafeAreaView>
   );
 }

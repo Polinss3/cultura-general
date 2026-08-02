@@ -6,12 +6,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { CategoryBadge } from '@/components/CategoryBadge';
+import { AdBannerSlot } from '@/components/AdBannerSlot';
 import { usePowerups } from '@/hooks/usePowerups';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
-import { showInterstitialAd } from '@/lib/admob';
 import {
   fetchQuestions, fetchQuestionCounts, incrementProfileStats, reportQuestion,
   type CategoryCounts,
@@ -34,7 +34,6 @@ type LearnCat = Category | 'random';
 const DIFFICULTIES: Difficulty[] = ['all', 'easy', 'medium', 'hard'];
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
-const LEARN_INTERSTITIAL_INTERVAL = 9;
 
 const RANDOM_ICON = '🎲';
 // Por encima de este número de preguntas los segmentos quedan por debajo de
@@ -76,7 +75,6 @@ export default function LearnScreen() {
   const [showCtx, setShowCtx] = useState(false);
   const [combo, setCombo] = useState(0);
   const comboScale = useRef(new Animated.Value(0)).current;
-  const completedQuestionsRef = useRef(0);
 
   // Nº real de preguntas por tema, para el selector. Sin red se queda vacío y
   // cada tema cae al tamaño del banco empaquetado.
@@ -117,7 +115,6 @@ export default function LearnScreen() {
     setCombo(0);
     setFiftyHidden([]);
     setHintShown(false);
-    completedQuestionsRef.current = 0;
     setDifficulty('all');
 
     (async () => {
@@ -199,10 +196,6 @@ export default function LearnScreen() {
   };
 
   const next = () => {
-    completedQuestionsRef.current += 1;
-    if (completedQuestionsRef.current % LEARN_INTERSTITIAL_INTERVAL === 0) {
-      showInterstitialAd('learn_checkpoint');
-    }
     setQIdx(x => x + 1);
     setSelected(null);
     setAnswered(false);
@@ -232,10 +225,6 @@ export default function LearnScreen() {
   };
 
   const finishTopic = () => {
-    completedQuestionsRef.current += 1;
-    if (completedQuestionsRef.current % LEARN_INTERSTITIAL_INTERVAL === 0) {
-      showInterstitialAd('learn_checkpoint');
-    }
     goBack();
   };
 
@@ -249,7 +238,6 @@ export default function LearnScreen() {
     setShowCtx(false);
     setDifficulty('all');
     setCombo(0);
-    completedQuestionsRef.current = 0;
   };
 
   // ─ Category picker
@@ -381,7 +369,7 @@ export default function LearnScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={{ padding: Space.screen }}>
           {/* Nav */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
@@ -566,6 +554,7 @@ export default function LearnScreen() {
           </View>
         )}
       </ScrollView>
+      <AdBannerSlot />
     </SafeAreaView>
   );
 }

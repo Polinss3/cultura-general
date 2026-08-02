@@ -6,12 +6,13 @@ import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
+import { AdBannerSlot } from '@/components/AdBannerSlot';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
-import { showInterstitialAd } from '@/lib/admob';
+import { showResultInterstitial } from '@/lib/ads';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { fetchQuestions, saveSpeedGame } from '@/lib/db';
 import { fetchInventoryMap, consumeItem } from '@/lib/shop';
@@ -146,7 +147,7 @@ export default function SpeedScreen() {
       score,
       questions_answered: qIdx,
     });
-    showInterstitialAd('speed_complete');
+    showResultInterstitial('speed_complete');
   }, [phase]);
 
   const reset = (startPlaying = false) => {
@@ -433,6 +434,7 @@ export default function SpeedScreen() {
           </View>
         )}
       </View>
+      <AdBannerSlot />
     </SafeAreaView>
   );
 }
