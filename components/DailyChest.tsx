@@ -83,14 +83,14 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
   const popRotate = pop.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '-12deg'] });
 
   return (
-    <View style={{ marginBottom: 10 }}>
+    <View style={{ marginBottom: 8 }}>
       {confetti && <Confetti active />}
 
       {showClaimed ? (
         <View
           style={{
             borderRadius: Radius.cardLg,
-            padding: 12,
+            padding: 10,
             backgroundColor: C.surfaceSunk,
             borderWidth: 1,
             borderColor: C.border,
@@ -104,7 +104,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
             <Text style={{ color: C.textMuted, fontFamily: Font.black, fontSize: 16 }}>
               {t('components.dailyChest.title')}
             </Text>
-            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 2 }}>
+            <Text numberOfLines={1} style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 1 }}>
               {t('components.dailyChest.claimedSub')}
             </Text>
           </View>
@@ -117,7 +117,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
             end={{ x: 1, y: 1 }}
             style={{
               borderRadius: Radius.cardLg,
-              padding: 12,
+              padding: 10,
               borderWidth: 1.5,
               borderColor: C.borderWarm,
               flexDirection: 'row',
@@ -128,7 +128,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
           >
             <Animated.Text
               style={{
-                fontSize: 34,
+                fontSize: 30,
                 transform: [{ translateY: bobY }, { scale: popScale }, { rotate: popRotate }],
               }}
             >
@@ -155,7 +155,7 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
               <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 16 }}>
                 {t('components.dailyChest.title')}
               </Text>
-              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 2 }}>
+              <Text numberOfLines={1} style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 1 }}>
                 {t('components.dailyChest.availableSub')}
               </Text>
             </View>

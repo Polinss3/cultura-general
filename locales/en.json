@@ -873,7 +873,7 @@
     "dailyChest": {
       "title": "Daily chest",
       "claimedSub": "Come back tomorrow for more coins",
-      "availableSub": "Reward ready! Improves with your streak",
+      "availableSub": "Today's reward is waiting",
       "open": "Open"
     }
   }

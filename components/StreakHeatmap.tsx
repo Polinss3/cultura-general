@@ -63,11 +63,11 @@ export function StreakHeatmap({ userId, streak }: Props) {
       borderRadius: Radius.cardLg,
       borderWidth: 1,
       borderColor: C.border,
-      padding: 12,
+      padding: 10,
       ...cardShadow(isDark),
     }}>
       {/* Racha */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11, marginBottom: 10 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11, marginBottom: 8 }}>
         <View style={{
           width: 36, height: 36, borderRadius: 12,
           backgroundColor: C.brandTint, alignItems: 'center', justifyContent: 'center',
@@ -96,8 +96,8 @@ export function StreakHeatmap({ userId, streak }: Props) {
               key={days[i]}
               style={{
                 flex: 1,
-                height: 16,
-                borderRadius: 5,
+                height: 14,
+                borderRadius: 4,
                 backgroundColor: squareColor(intensity, C, isDark),
                 borderWidth: isToday ? 2 : 0,
                 borderColor: isToday ? C.brand : 'transparent',

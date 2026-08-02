@@ -873,7 +873,7 @@
     "dailyChest": {
       "title": "Cofre diario",
       "claimedSub": "Vuelve mañana por más monedas",
-      "availableSub": "¡Recompensa lista! Mejora con tu racha",
+      "availableSub": "Tu recompensa de hoy te espera",
       "open": "Abrir"
     }
   }

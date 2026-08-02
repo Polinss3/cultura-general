@@ -44,13 +44,13 @@ export function DailyRouteBanner({ userId, profile }: Props) {
   const pct = (route.coreDone / route.coreTotal) * 100;
 
   return (
-    <Pressable onPress={() => router.push('/(tabs)/daily')} style={{ marginTop: 10 }}>
+    <Pressable onPress={() => router.push('/(tabs)/daily')} style={{ marginTop: 8 }}>
       <LinearGradient
         colors={highlightGradient(isDark)}
         locations={[0, 0.6]}
         start={{ x: 0, y: 0 }} end={{ x: 0.5, y: 1 }}
         style={{
-          borderRadius: Radius.cardLg, padding: 12, gap: 10,
+          borderRadius: Radius.cardLg, padding: 10, gap: 8,
           borderWidth: 1.5, borderColor: C.borderWarm,
           ...cardShadow(isDark),
         }}

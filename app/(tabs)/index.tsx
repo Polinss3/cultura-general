@@ -68,11 +68,20 @@ export default function HomeScreen() {
     fetchMissionState(user.id).then(setMissions);
   }, [economyOn, user?.id]);
 
-  useFocusEffect(useCallback(() => { loadMissions(); }, [loadMissions]));
+  useFocusEffect(useCallback(() => {
+    // El perfil manda sobre el cofre, el saldo y el nivel: hay que releerlo al
+    // volver a esta pantalla, porque el cofre también se abre desde Diario.
+    if (economyOn) refresh();
+    loadMissions();
+  }, [economyOn, refresh, loadMissions]));
 
   const handleChest = async (): Promise<number | null> => {
     const { reward, error } = await claimDailyChest();
-    if (error) { showToast({ type: 'info', message: error }); return null; }
+    if (error) {
+      showToast({ type: 'info', message: error });
+      refresh(); // deja de ofrecerlo: el servidor ya dice que está reclamado
+      return null;
+    }
     if (reward) bumpMissions('coins_earned', reward);
     return reward ?? 0;
   };
@@ -309,7 +318,15 @@ export default function HomeScreen() {
         )}
 
         {/* A qué jugamos */}
-        <View style={{ paddingHorizontal: Space.screen, marginTop: 16 }}>
+        {/* Corte entre el bloque de estado personal (racha, nivel, ruta, cofre,
+            liga) y los modos de juego: sin él, las tarjetas de arriba y el
+            bloque de abajo se leen como una sola lista larga. */}
+        <View style={{
+          height: 1, backgroundColor: C.borderStrong,
+          marginHorizontal: Space.screen, marginTop: 16,
+        }} />
+
+        <View style={{ paddingHorizontal: Space.screen, marginTop: 14 }}>
           <Text style={{ color: C.textFaint, ...Type.sectionLabel, marginBottom: 10 }}>
             {t('home.gameModes')}
           </Text>
