@@ -162,16 +162,40 @@ export async function purgeLegacyQuestionCache(): Promise<void> {
   }
 }
 
+// PostgREST corta cualquier respuesta en 1000 filas, y no hay cabecera que lo
+// levante desde el cliente. Sin paginar, `fetchQuestions()` sin categoría
+// devolvía 1000 de las 1619 preguntas activas: el resto no aparecía nunca en
+// Contrarreloj, Ascenso, Amigos ni en "Aprender → aleatorio", que son
+// justamente los modos que tiran del banco completo.
+const PAGE_SIZE = 1000;
+
+// Tope de seguridad: si algún día el `break` no se cumpliera (una respuesta
+// siempre llena), esto evita un bucle infinito. 20 páginas son 20 000
+// preguntas, muy por encima de cualquier catálogo previsible.
+const MAX_PAGES = 20;
+
 export async function fetchQuestions(category?: Category): Promise<Question[]> {
   const cached = await getCachedRows(category);
   if (cached) return cached.map(r => mapQuestion(r));
 
   return withRetry(async () => {
-    let query = supabase.from('questions').select('*').eq('active', true);
-    if (category) query = query.eq('category', category);
-    const { data, error } = await query.order('id');
-    if (error) throw new NetworkError();
-    const rows = (data ?? []) as QuestionRow[];
+    const rows: QuestionRow[] = [];
+
+    for (let page = 0; page < MAX_PAGES; page++) {
+      const from = page * PAGE_SIZE;
+      let query = supabase.from('questions').select('*').eq('active', true);
+      if (category) query = query.eq('category', category);
+
+      const { data, error } = await query.order('id').range(from, from + PAGE_SIZE - 1);
+      if (error) throw new NetworkError();
+
+      const batch = (data ?? []) as QuestionRow[];
+      rows.push(...batch);
+
+      // Una página incompleta significa que ya no queda nada detrás.
+      if (batch.length < PAGE_SIZE) break;
+    }
+
     if (rows.length > 0) await setCache(rows, category);
     return rows.map(r => mapQuestion(r));
   });
