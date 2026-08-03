@@ -46,13 +46,9 @@ de la plataforma que se vaya a publicar:
 | `EXPO_PUBLIC_APPLOVIN_IOS_BANNER` | Banner en iOS |
 | `EXPO_PUBLIC_APPLOVIN_ANDROID_BANNER` | Banner en Android |
 
-Aprovecha para **borrar las dos variables muertas de AdMob**, que quedaron de
-antes de la migración y ya no las lee nadie:
-
-```bash
-eas env:delete production --variable-name EXPO_PUBLIC_ADMOB_IOS_INTERSTITIAL_ID
-eas env:delete production --variable-name EXPO_PUBLIC_ADMOB_IOS_REWARDED_ID
-```
+> Las dos variables muertas de AdMob que quedaron de antes de la migración ya se
+> borraron el 2026-08-03. El entorno de producción solo tiene lo de Supabase,
+> AppsFlyer y Sentry.
 
 ### 2. Encender los formatos que quieras
 
