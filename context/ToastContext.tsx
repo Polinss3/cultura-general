@@ -1,5 +1,6 @@
 import { createContext, useContext, useRef, useState, useCallback, ReactNode } from 'react';
 import { Animated, Text, View, StyleSheet } from 'react-native';
+import { Font } from '@/constants/theme';
 
 type ToastType = 'success' | 'error' | 'info';
 
@@ -19,10 +20,12 @@ export function useToast() {
   return useContext(ToastContext);
 }
 
+// El toast flota sobre el contenido con relleno opaco propio, así que lleva su
+// propio contraste y no cambia con el esquema. Los tonos son los de la paleta.
 const COLORS: Record<ToastType, { bg: string; border: string; icon: string }> = {
-  success: { bg: 'rgba(46,200,122,0.95)', border: '#2ec87a', icon: '✓' },
-  error:   { bg: 'rgba(232,48,96,0.95)',  border: '#e83060', icon: '✕' },
-  info:    { bg: 'rgba(48,168,232,0.95)', border: '#30a8e8', icon: 'ℹ' },
+  success: { bg: 'rgba(63,158,108,0.96)', border: '#3F9E6C', icon: '✓' },
+  error:   { bg: 'rgba(196,58,92,0.96)',  border: '#C43A5C', icon: '✕' },
+  info:    { bg: 'rgba(62,119,180,0.96)', border: '#3E77B4', icon: 'ℹ' },
 };
 
 export function ToastProvider({ children }: { children: ReactNode }) {
@@ -72,14 +75,14 @@ const styles = StyleSheet.create({
     bottom: 90,
     left: 20,
     right: 20,
-    borderRadius: 14,
+    borderRadius: 18,
     borderWidth: 1,
     padding: 14,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
     zIndex: 9999,
-    shadowColor: '#000',
+    shadowColor: '#2B2621',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -94,6 +97,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 14,
     flex: 1,
-    fontFamily: 'Outfit_500Medium',
+    fontFamily: Font.semi,
   },
 });

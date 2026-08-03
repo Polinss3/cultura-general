@@ -14,7 +14,9 @@ import {
 } from '@/lib/shop';
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
-import { showRewardedAd, isRewardedReady } from '@/lib/admob';
+import { showRewardedAd, isRewardedReady } from '@/lib/ads';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 // Marcos de avatar y color de nombre ya se muestran en tu home y perfil.
 // (theme_emerald está desactivado en BD hasta que tenga efecto.)
@@ -30,6 +32,7 @@ const COSMETIC_SECTIONS: { slot: string; title: string }[] = [
 
 export default function ShopScreen() {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh } = useProfile();
@@ -108,14 +111,14 @@ export default function ShopScreen() {
   const ownedPowerups = powerups.filter(p => (inventory[p.itemId] ?? 0) > 0);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       {/* Header */}
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingTop: 16, marginBottom: 12 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
           <Pressable onPress={() => router.back()}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
+            <Text style={{ color: C.textMuted, fontSize: 22 }}>←</Text>
           </Pressable>
-          <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>{t('shop.title')}</Text>
+          <Text style={{ color: C.text, fontSize: 20, fontFamily: Font.black }}>{t('shop.title')}</Text>
         </View>
         <CoinPill coins={coins} />
       </View>
@@ -123,13 +126,13 @@ export default function ShopScreen() {
       {!available ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 28 }}>
           <Text style={{ fontSize: 40, marginBottom: 12 }}>🛒</Text>
-          <Text style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, textAlign: 'center', fontFamily: 'Outfit_400Regular', lineHeight: 22 }}>
+          <Text style={{ color: C.textMuted, fontSize: 15, textAlign: 'center', fontFamily: Font.regular, lineHeight: 22 }}>
             {offline ? t('shop.offlineMsg') : t('shop.guestMsg')}
           </Text>
         </View>
       ) : loading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator color="#e8a030" size="large" />
+          <ActivityIndicator color={C.brand} size="large" />
         </View>
       ) : (
         <ScrollView contentContainerStyle={{ padding: 20, paddingTop: 4, paddingBottom: 32 }} showsVerticalScrollIndicator={false}>
@@ -137,16 +140,16 @@ export default function ShopScreen() {
           {/* Anuncio recompensado */}
           {isRewardedReady() && (
             <Pressable onPress={handleWatchAd} disabled={busy === 'ad'} style={{ marginBottom: 18 }}>
-              <View style={{ backgroundColor: 'rgba(46,200,122,0.1)', borderWidth: 1, borderColor: 'rgba(46,200,122,0.35)', borderRadius: 16, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <View style={{ backgroundColor: tint(C.correct, isDark), borderWidth: 1, borderColor: C.correct, borderRadius: Radius.card, padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                 <Text style={{ fontSize: 24 }}>🎬</Text>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>{t('shop.watchAd')}</Text>
-                  <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
+                  <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 14 }}>{t('shop.watchAd')}</Text>
+                  <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12 }}>
                     {t('shop.watchAdSub', { coins: REWARDS.rewardedAdCoins })}
                   </Text>
                 </View>
-                <View style={{ backgroundColor: '#2ec87a', borderRadius: 99, paddingVertical: 6, paddingHorizontal: 14 }}>
-                  <Text style={{ color: '#000', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+                <View style={{ backgroundColor: C.correct, borderRadius: Radius.pill, paddingVertical: 6, paddingHorizontal: 14 }}>
+                  <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 13 }}>
                     {busy === 'ad' ? '…' : `+${REWARDS.rewardedAdCoins} 🪙`}
                   </Text>
                 </View>
@@ -157,18 +160,18 @@ export default function ShopScreen() {
           {/* Inventario: tus objetos */}
           <SectionTitle>{t('shop.inventoryTitle')}</SectionTitle>
           {ownedPowerups.length === 0 ? (
-            <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 16, marginBottom: 22 }}>
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 13, lineHeight: 20 }}>
+            <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, marginBottom: 22, borderWidth: 1, borderColor: C.border }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, lineHeight: 20 }}>
                 {t('shop.inventoryEmpty')}
               </Text>
             </View>
           ) : (
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 22 }}>
               {ownedPowerups.map(p => (
-                <View key={p.itemId} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: '#151515', borderRadius: 12, paddingVertical: 8, paddingHorizontal: 12, borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)' }}>
+                <View key={p.itemId} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.surface, borderRadius: Radius.row, paddingVertical: 8, paddingHorizontal: 12, borderWidth: 1, borderColor: C.streak }}>
                   <Text style={{ fontSize: 18 }}>{p.icon}</Text>
-                  <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 13 }}>{p.name}</Text>
-                  <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 13 }}>×{inventory[p.itemId]}</Text>
+                  <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 13 }}>{p.name}</Text>
+                  <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 13 }}>×{inventory[p.itemId]}</Text>
                 </View>
               ))}
             </View>
@@ -233,23 +236,24 @@ function ShopCard({
   onEquip?: () => void;
 }) {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const isOwnedCosmetic = cosmetic && owned > 0;
   const affordable = coins >= item.price;
   return (
-    <View style={{ width: '48%', backgroundColor: '#151515', borderRadius: 14, padding: 12, marginBottom: 10, borderWidth: 1, borderColor: equipped ? '#2ec87a' : 'transparent' }}>
+    <View style={{ width: '48%', backgroundColor: C.surface, borderRadius: 18, padding: 12, marginBottom: 10, borderWidth: 1, borderColor: equipped ? C.correct : 'transparent' }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-        <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: '#1f1f1f', alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: C.surfaceSunk, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 20 }}>{item.icon}</Text>
         </View>
         {!cosmetic && owned > 0 && (
-          <View style={{ backgroundColor: 'rgba(232,160,48,0.15)', borderRadius: 8, paddingHorizontal: 7, paddingVertical: 2 }}>
-            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 12 }}>×{owned}</Text>
+          <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: 8, paddingHorizontal: 7, paddingVertical: 2 }}>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>×{owned}</Text>
           </View>
         )}
       </View>
 
-      <Text numberOfLines={1} style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>{item.name}</Text>
-      <Text numberOfLines={2} style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 11, marginTop: 2, marginBottom: 10, minHeight: 28 }}>
+      <Text numberOfLines={1} style={{ color: C.text, fontFamily: Font.bold, fontSize: 13 }}>{item.name}</Text>
+      <Text numberOfLines={2} style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2, marginBottom: 10, minHeight: 28 }}>
         {item.description}
       </Text>
 
@@ -257,10 +261,10 @@ function ShopCard({
         <Pressable onPress={onEquip}>
           <View style={{
             borderRadius: 10, paddingVertical: 8, alignItems: 'center',
-            backgroundColor: equipped ? '#2ec87a' : '#1f1f1f',
-            borderWidth: 1, borderColor: equipped ? '#2ec87a' : 'rgba(255,255,255,0.12)',
+            backgroundColor: equipped ? C.correct : C.surfaceSunk,
+            borderWidth: 1, borderColor: equipped ? C.correct : C.border,
           }}>
-            <Text style={{ color: equipped ? '#000' : '#fff', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
+            <Text style={{ color: equipped ? C.text : C.text, fontFamily: Font.bold, fontSize: 12 }}>
               {equipped ? t('shop.equipped') : t('shop.equip')}
             </Text>
           </View>
@@ -269,10 +273,10 @@ function ShopCard({
         <Pressable onPress={onBuy} disabled={busy || !affordable}>
           <View style={{
             borderRadius: 10, paddingVertical: 8, alignItems: 'center',
-            backgroundColor: affordable ? '#e8a030' : '#1f1f1f',
+            backgroundColor: affordable ? C.streak : C.surfaceSunk,
             opacity: affordable ? 1 : 0.6,
           }}>
-            <Text style={{ color: affordable ? '#000' : 'rgba(255,255,255,0.5)', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
+            <Text style={{ color: affordable ? C.text : C.textMuted, fontFamily: Font.bold, fontSize: 12 }}>
               {busy ? '…' : `${item.price} 🪙`}
             </Text>
           </View>
@@ -283,8 +287,9 @@ function ShopCard({
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
+  const { C, isDark } = useTheme();
   return (
-    <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+    <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
       {children}
     </Text>
   );

@@ -2,6 +2,8 @@ import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { progressToNext } from '@/lib/leveling';
+import { readableOn, useTheme } from '@/constants/colors';
+import { Font, Radius } from '@/constants/theme';
 
 interface Props {
   xp: number;
@@ -9,22 +11,24 @@ interface Props {
   height?: number;
 }
 
-export function XpBar({ xp, showLabel = true, height = 8 }: Props) {
+export function XpBar({ xp, showLabel = true, height = 10 }: Props) {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const p = progressToNext(xp);
+
   return (
     <View>
       {showLabel && (
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 }}>
-          <Text style={{ color: p.rank.color, fontFamily: 'Outfit_700Bold', fontSize: 13 }}>
+          <Text style={{ color: readableOn(p.rank.color, isDark), fontFamily: Font.bold, fontSize: 13 }}>
             {t(`ranks.${p.rank.id}`)}
           </Text>
-          <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>
+          <Text style={{ color: C.textFaint, fontFamily: Font.bold, fontSize: 12 }}>
             {t('components.xpBar.toNext', { xp: p.toNext, level: p.level + 1 })}
           </Text>
         </View>
       )}
-      <View style={{ height, backgroundColor: '#000', borderRadius: 99, overflow: 'hidden' }}>
+      <View style={{ height, backgroundColor: C.track, borderRadius: Radius.pill, overflow: 'hidden' }}>
         <LinearGradient
           colors={[p.rank.color, p.rank.color2]}
           start={{ x: 0, y: 0 }}
@@ -32,7 +36,7 @@ export function XpBar({ xp, showLabel = true, height = 8 }: Props) {
           style={{
             height: '100%',
             width: `${Math.max(4, p.pct * 100)}%`,
-            borderRadius: 99,
+            borderRadius: Radius.pill,
           }}
         />
       </View>

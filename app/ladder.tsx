@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { Confetti } from '@/components/Confetti';
+import { AdBannerSlot } from '@/components/AdBannerSlot';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
@@ -17,7 +18,7 @@ import { fetchInventoryMap, consumeItem } from '@/lib/shop';
 import {
   saveLadderRun, bumpMissions, fetchLadderRanking, AwardResult, LadderRankRow,
 } from '@/lib/gamification';
-import { showRewardedAd, isRewardedReady, showInterstitialAd } from '@/lib/admob';
+import { showRewardedAd, isRewardedReady, showResultInterstitial } from '@/lib/ads';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import {
   getGuestLadderBest, setGuestLadderBest, getLocalLadderBest, setLocalLadderBest,
@@ -29,6 +30,8 @@ import { getLocalQuestions } from '@/constants/questions';
 import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion, ShuffledQuestion } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 type Phase = 'loading' | 'intro' | 'playing' | 'checkpoint' | 'gameover' | 'done';
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
@@ -41,6 +44,7 @@ function buildLocal(): Question[] {
 
 export default function LadderScreen() {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const router = useRouter();
   const { user } = useAuth();
   const { profile, refresh: refreshProfile } = useProfile();
@@ -108,7 +112,7 @@ export default function LadderScreen() {
       floors_completed: runFloor,
       coins_banked: banked,
     });
-    showInterstitialAd('ladder_complete');
+    showResultInterstitial('ladder_complete');
   }, [phase]);
 
   const pickForFloor = (f: number): ShuffledQuestion | undefined => {
@@ -266,9 +270,9 @@ export default function LadderScreen() {
   // ─ Loading
   if (phase === 'loading') {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator color="#e8a030" size="large" />
+          <ActivityIndicator color={C.brand} size="large" />
         </View>
       </SafeAreaView>
     );
@@ -277,22 +281,22 @@ export default function LadderScreen() {
   // ─ Intro
   if (phase === 'intro') {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingTop: 12 }}>
           <Pressable onPress={() => router.back()} style={{ padding: 4 }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
+            <Text style={{ color: C.textMuted, fontSize: 22 }}>←</Text>
           </Pressable>
         </View>
         <View style={{ flex: 1, padding: 20, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 64, marginBottom: 16 }}>🪜</Text>
-          <Text style={{ color: '#fff', fontSize: 26, fontFamily: 'Outfit_800ExtraBold', marginBottom: 8 }}>
+          <Text style={{ color: C.text, fontSize: 26, fontFamily: Font.black, marginBottom: 8 }}>
             {t('ladder.title')}
           </Text>
-          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', lineHeight: 24, textAlign: 'center', maxWidth: 280, marginBottom: 14 }}>
+          <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, lineHeight: 24, textAlign: 'center', maxWidth: 280, marginBottom: 14 }}>
             {t('ladder.introA')}
-            <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold' }}>{t('ladder.introLives', { lives: LADDER_LIVES })}</Text>
+            <Text style={{ color: C.wrong, fontFamily: Font.bold }}>{t('ladder.introLives', { lives: LADDER_LIVES })}</Text>
             {t('ladder.introB')}
-            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold' }}>{t('ladder.introRetire')}</Text>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.bold }}>{t('ladder.introRetire')}</Text>
             {t('ladder.introC')}
           </Text>
           {/* Viaje por las zonas */}
@@ -304,28 +308,28 @@ export default function LadderScreen() {
                 <View key={z.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                   <Text style={{ fontSize: 18, opacity: reached ? 1 : 0.35 }}>{z.emoji}</Text>
                   {i < arr.length - 1 && (
-                    <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 12 }}>→</Text>
+                    <Text style={{ color: C.textFaint, fontSize: 12 }}>→</Text>
                   )}
                 </View>
               );
             })}
           </View>
 
-          <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginBottom: 4 }}>
+          <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
+            <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginBottom: 4 }}>
               {t('ladder.bestClimb')}
             </Text>
-            <Text style={{ color: '#e8a030', fontSize: 32, fontFamily: 'Outfit_800ExtraBold' }}>
+            <Text style={{ color: C.streak, fontSize: 32, fontFamily: Font.black }}>
               {t('profile.stats.floor', { n: recordBest })}
             </Text>
           </View>
           <Pressable onPress={start} style={{ width: '100%' }}>
             <LinearGradient
-              colors={['#e8a030', '#e83060']}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
+              style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
-              <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>{t('ladder.startClimb')}</Text>
+              <Text style={{ color: C.onBrand, fontSize: 17, fontFamily: Font.bold }}>{t('ladder.startClimb')}</Text>
             </LinearGradient>
           </Pressable>
         </View>
@@ -339,42 +343,42 @@ export default function LadderScreen() {
     const nextZone = ladderZone(floor + 1);       // zona que viene
     const zoneChanges = nextZone.index !== conquered.index;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <Confetti active />
         <View style={{ flex: 1, padding: 24, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 64, marginBottom: 10 }}>{conquered.emoji}</Text>
-          <Text style={{ color: conquered.color, fontFamily: 'Outfit_600SemiBold', fontSize: 13, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 2 }}>
+          <Text style={{ color: conquered.color, fontFamily: Font.semi, fontSize: 13, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 2 }}>
             {t('ladder.checkpoint', { floor })}
           </Text>
-          <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 24, textAlign: 'center', marginBottom: 10 }}>
+          <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 24, textAlign: 'center', marginBottom: 10 }}>
             {t('ladder.zoneConquered', { zone: t(`ladder.zones.${conquered.id}`) })}
           </Text>
-          <View style={{ backgroundColor: 'rgba(232,160,48,0.12)', borderRadius: 99, paddingVertical: 6, paddingHorizontal: 16, marginBottom: 14 }}>
-            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 22 }}>
+          <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: Radius.pill, paddingVertical: 6, paddingHorizontal: 16, marginBottom: 14 }}>
+            <Text style={{ color: C.streak, fontFamily: Font.black, fontSize: 22 }}>
               {bote} 🪙
             </Text>
           </View>
           {zoneChanges && (
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 14 }}>
-              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_500Medium', fontSize: 13 }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 13 }}>
                 {t('ladder.nextZoneLabel')}:
               </Text>
               <Text style={{ fontSize: 15 }}>{nextZone.emoji}</Text>
-              <Text style={{ color: nextZone.color, fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+              <Text style={{ color: nextZone.color, fontFamily: Font.bold, fontSize: 14 }}>
                 {t(`ladder.zones.${nextZone.id}`)}
               </Text>
             </View>
           )}
-          <Text style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Outfit_400Regular', fontSize: 14, textAlign: 'center', lineHeight: 21, marginBottom: 28, maxWidth: 280 }}>
+          <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 14, textAlign: 'center', lineHeight: 21, marginBottom: 28, maxWidth: 280 }}>
             {t('ladder.checkpointDesc')}
           </Text>
           <View style={{ flexDirection: 'row', gap: 12, width: '100%' }}>
-            <Pressable onPress={retire} style={{ flex: 1, backgroundColor: '#151515', borderRadius: 14, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(46,200,122,0.35)' }}>
-              <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{t('ladder.retire')}</Text>
+            <Pressable onPress={retire} style={{ flex: 1, backgroundColor: C.surface, borderRadius: 18, padding: 16, alignItems: 'center', borderWidth: 1, borderColor: C.correct }}>
+              <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.retire')}</Text>
             </Pressable>
             <Pressable onPress={() => advance(floor + 1)} style={{ flex: 1 }}>
-              <LinearGradient colors={['#e8a030', '#e83060']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{t('ladder.keepClimbing')}</Text>
+              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('ladder.keepClimbing')}</Text>
               </LinearGradient>
             </Pressable>
           </View>
@@ -387,34 +391,34 @@ export default function LadderScreen() {
   if (phase === 'gameover') {
     const reviveItems = inventory['pw_revive'] ?? 0;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flex: 1, padding: 24, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 56, marginBottom: 10 }}>💔</Text>
-          <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 24 }}>
+          <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 24 }}>
             {t('ladder.fell', { floor })}
           </Text>
-          <Text style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Outfit_400Regular', fontSize: 14, textAlign: 'center', marginTop: 6, marginBottom: 28 }}>
+          <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 14, textAlign: 'center', marginTop: 6, marginBottom: 28 }}>
             {t('ladder.fellDesc', { coins: banked })}
           </Text>
 
           <View style={{ width: '100%', gap: 10 }}>
             {canUsePowerups && reviveItems > 0 && (
               <Pressable onPress={reviveWithItem}>
-                <View style={{ backgroundColor: '#151515', borderRadius: 14, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(232,48,96,0.4)' }}>
-                  <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{t('ladder.reviveItem', { count: reviveItems })}</Text>
+                <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: C.wrong }}>
+                  <Text style={{ color: C.wrong, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.reviveItem', { count: reviveItems })}</Text>
                 </View>
               </Pressable>
             )}
             {!guest && !offline && isRewardedReady() && (
               <Pressable onPress={reviveWithAd}>
-                <View style={{ backgroundColor: 'rgba(46,200,122,0.1)', borderRadius: 14, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: 'rgba(46,200,122,0.4)' }}>
-                  <Text style={{ color: '#2ec87a', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{t('ladder.reviveAd')}</Text>
+                <View style={{ backgroundColor: tint(C.correct, isDark), borderRadius: 18, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: C.correct }}>
+                  <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 15 }}>{t('ladder.reviveAd')}</Text>
                 </View>
               </Pressable>
             )}
             <Pressable onPress={endGame}>
-              <LinearGradient colors={['#e8a030', '#e83060']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 14, padding: 15, alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{t('ladder.finishCash')}</Text>
+              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('ladder.finishCash')}</Text>
               </LinearGradient>
             </Pressable>
           </View>
@@ -426,32 +430,32 @@ export default function LadderScreen() {
   // ─ Done
   if (phase === 'done') {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <Confetti active={newBest} />
         <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 32 }}>
           <View style={{ alignItems: 'center', marginBottom: 24, marginTop: 12 }}>
             <Text style={{ fontSize: 56, marginBottom: 8 }}>{newBest ? '🏆' : '🪜'}</Text>
-            <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 28 }}>
+            <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 28 }}>
               {t('profile.stats.floor', { n: runFloor })}
             </Text>
             {runFloor > 0 && (
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6 }}>
                 <Text style={{ fontSize: 15 }}>{ladderZone(runFloor).emoji}</Text>
-                <Text style={{ color: ladderZone(runFloor).color, fontFamily: 'Outfit_700Bold', fontSize: 14 }}>
+                <Text style={{ color: ladderZone(runFloor).color, fontFamily: Font.bold, fontSize: 14 }}>
                   {t('ladder.zoneReached', { zone: t(`ladder.zones.${ladderZone(runFloor).id}`) })}
                 </Text>
               </View>
             )}
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 14, marginTop: 4 }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 14, marginTop: 4 }}>
               {newBest ? t('ladder.newBest') : t('ladder.yourRecord', { n: recordBest })}
             </Text>
             {award && (award.gainedXp > 0 || award.gainedCoins > 0) && (
               <View style={{ flexDirection: 'row', gap: 8, marginTop: 14 }}>
-                <View style={{ backgroundColor: 'rgba(48,168,232,0.15)', borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
-                  <Text style={{ color: '#30a8e8', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>+{award.gainedXp} XP</Text>
+                <View style={{ backgroundColor: tint(C.social, isDark), borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 12 }}>
+                  <Text style={{ color: C.social, fontFamily: Font.bold, fontSize: 13 }}>+{award.gainedXp} XP</Text>
                 </View>
-                <View style={{ backgroundColor: 'rgba(232,160,48,0.15)', borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12 }}>
-                  <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 13 }}>+{award.gainedCoins} 🪙</Text>
+                <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 12 }}>
+                  <Text style={{ color: C.brandDeep, fontFamily: Font.bold, fontSize: 13 }}>+{award.gainedCoins} 🪙</Text>
                 </View>
               </View>
             )}
@@ -459,21 +463,21 @@ export default function LadderScreen() {
 
           {ranking.length > 0 && (
             <>
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12 }}>
+              <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
                 {t('ladder.bestClimbs')}
               </Text>
               <View style={{ gap: 8, marginBottom: 22 }}>
                 {ranking.slice(0, 10).map((r, i) => {
                   const isMe = r.userId === user?.id;
                   return (
-                    <View key={r.userId} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isMe ? 'rgba(232,160,48,0.08)' : '#151515', borderRadius: 12, padding: 11, borderWidth: 1, borderColor: isMe ? 'rgba(232,160,48,0.3)' : 'transparent' }}>
-                      <Text style={{ width: 22, textAlign: 'center', color: i < 3 ? '#e8a030' : 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_800ExtraBold', fontSize: 13 }}>
+                    <View key={r.userId} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, backgroundColor: isMe ? tint(C.streak, isDark) : C.surface, borderRadius: Radius.row, padding: 11, borderWidth: 1, borderColor: isMe ? C.streak : 'transparent' }}>
+                      <Text style={{ width: 22, textAlign: 'center', color: i < 3 ? C.streak : C.textFaint, fontFamily: Font.black, fontSize: 13 }}>
                         {i < 3 ? ['🥇', '🥈', '🥉'][i] : i + 1}
                       </Text>
-                      <Text style={{ flex: 1, color: isMe ? '#e8a030' : '#fff', fontFamily: isMe ? 'Outfit_700Bold' : 'Outfit_500Medium', fontSize: 14 }}>
+                      <Text style={{ flex: 1, color: isMe ? C.streak : C.text, fontFamily: isMe ? Font.bold : Font.semi, fontSize: 14 }}>
                         {r.username}{isMe ? t('ladder.you') : ''}
                       </Text>
-                      <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 14 }}>{t('profile.stats.floor', { n: r.ladderBest })}</Text>
+                      <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 14 }}>{t('profile.stats.floor', { n: r.ladderBest })}</Text>
                     </View>
                   );
                 })}
@@ -482,12 +486,12 @@ export default function LadderScreen() {
           )}
 
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            <Pressable onPress={() => router.back()} style={{ flex: 1, backgroundColor: '#1a1a1a', borderRadius: 14, padding: 15, alignItems: 'center' }}>
-              <Text style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>{t('speed.exit')}</Text>
+            <Pressable onPress={() => router.back()} style={{ flex: 1, backgroundColor: C.surface, borderRadius: 18, padding: 15, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
+              <Text style={{ color: C.textBody, fontFamily: Font.semi, fontSize: 15 }}>{t('speed.exit')}</Text>
             </Pressable>
             <Pressable onPress={start} style={{ flex: 2 }}>
-              <LinearGradient colors={['#e8a030', '#e83060']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 14, padding: 15, alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>{t('ladder.climbAgain')}</Text>
+              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
+                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('ladder.climbAgain')}</Text>
               </LinearGradient>
             </Pressable>
           </View>
@@ -499,7 +503,7 @@ export default function LadderScreen() {
   // ─ Playing
   if (!current) return null;
   const pct = timeLeft / ladderTimeLimit(floor);
-  const timerColor = timeLeft > 4 ? '#e8a030' : '#e83060';
+  const timerColor = timeLeft > 4 ? C.streak : C.wrong;
   const isCheckpointNext = (floor + 1) % LADDER_CHECKPOINT_EVERY === 0;
 
   const getState = (i: number): AnswerState => {
@@ -510,76 +514,107 @@ export default function LadderScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
-      <View style={{ flex: 1, padding: 20 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+      <View style={{ flex: 1, padding: Space.screen, gap: 16 }}>
         {/* Zona actual */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 10 }}>
-          <Text style={{ fontSize: 14 }}>{ladderZone(floor).emoji}</Text>
-          <Text style={{ color: ladderZone(floor).color, fontFamily: 'Outfit_700Bold', fontSize: 13, letterSpacing: 0.5 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7 }}>
+          <Text style={{ fontSize: 15 }}>{ladderZone(floor).emoji}</Text>
+          <Text style={{ color: readableOn(ladderZone(floor).color, isDark), fontFamily: Font.black, fontSize: 14, letterSpacing: 0.5 }}>
             {t(`ladder.zones.${ladderZone(floor).id}`)}
           </Text>
         </View>
 
         {/* Header: piso, vidas, bote */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <View>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>{t('ladder.floorLabel')}</Text>
-            <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 22 }}>{floor}</Text>
+            <Text style={{ color: C.textFaint, fontFamily: Font.extra, fontSize: 12, letterSpacing: 1 }}>{t('ladder.floorLabel')}</Text>
+            <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 30, lineHeight: 34 }}>{floor}</Text>
           </View>
-          <Text style={{ fontSize: 16 }}>
+          <Text style={{ fontSize: 19 }}>
             {'❤️'.repeat(lives)}{'🖤'.repeat(Math.max(0, LADDER_LIVES - lives))}
           </Text>
           <View style={{ alignItems: 'flex-end' }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>{t('ladder.pot')}</Text>
-            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_800ExtraBold', fontSize: 18 }}>{bote} 🪙</Text>
+            <Text style={{ color: C.textFaint, fontFamily: Font.extra, fontSize: 12, letterSpacing: 1 }}>{t('ladder.pot')}</Text>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 26, lineHeight: 30 }}>{bote} 🪙</Text>
           </View>
         </View>
 
         {/* Timer */}
-        <View style={{ height: 4, backgroundColor: '#1a1a1a', borderRadius: 99, marginBottom: 6, overflow: 'hidden' }}>
-          <View style={{ height: '100%', width: `${Math.max(0, pct * 100)}%`, backgroundColor: timerColor, borderRadius: 99 }} />
-        </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 18 }}>
-          <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_500Medium', fontSize: 11 }}>
-            {t('ladder.difficulty', { level: t(`learn.diff.${ladderDifficulty(floor)}`) })}
-          </Text>
-          <Text style={{ color: timerColor, fontFamily: 'Outfit_700Bold', fontSize: 13 }}>{timeLeft}s</Text>
+        <View style={{ gap: 7 }}>
+          <View style={{ height: 8, backgroundColor: C.track, borderRadius: Radius.pill, overflow: 'hidden' }}>
+            <View style={{ height: '100%', width: `${Math.max(0, pct * 100)}%`, backgroundColor: timerColor, borderRadius: Radius.pill }} />
+          </View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <Text style={{ color: C.textFaint, fontFamily: Font.bold, fontSize: 12 }}>
+              {t('ladder.difficulty', { level: t(`learn.diff.${ladderDifficulty(floor)}`) })}
+            </Text>
+            <Text style={{ color: timerColor, fontFamily: Font.black, fontSize: 14 }}>{timeLeft}s</Text>
+          </View>
         </View>
 
-        <Text style={{ color: '#fff', fontSize: 18, fontFamily: 'Outfit_700Bold', lineHeight: 26, marginBottom: 18 }}>
+        {/* Aviso de checkpoint: el bote queda asegurado si aciertas */}
+        {isCheckpointNext && (
+          <View style={{
+            flexDirection: 'row', alignItems: 'center', gap: 9,
+            backgroundColor: C.correctTint, borderWidth: 1, borderColor: C.correct,
+            borderRadius: Radius.icon, paddingVertical: 11, paddingHorizontal: 13,
+          }}>
+            <Text style={{ fontSize: 15 }}>🛡️</Text>
+            <Text style={{ flex: 1, color: C.correctText, fontFamily: Font.bold, fontSize: 13, lineHeight: 19 }}>
+              {t('ladder.checkpointHint')}
+            </Text>
+          </View>
+        )}
+
+        <Text style={{ color: C.text, ...Type.question }}>
           {current.q}
         </Text>
 
-        <View style={{ gap: 9 }}>
+        <View style={{ gap: 11 }}>
           {current.opts.map((opt, i) =>
             fiftyHidden.includes(i) ? (
-              <View key={i} style={{ borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.04)', borderRadius: 14, paddingVertical: 14, paddingHorizontal: 16, opacity: 0.3 }}>
-                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 15, fontFamily: 'Outfit_500Medium' }}>—</Text>
+              <View key={i} style={{
+                borderWidth: 1.5, borderColor: C.border, backgroundColor: C.surfaceSunk,
+                borderRadius: 18, paddingVertical: 16, paddingHorizontal: 16, opacity: 0.5,
+                minHeight: 60, justifyContent: 'center',
+              }}>
+                <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
               </View>
             ) : (
-              <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+              <OptionBtn
+                key={i}
+                text={opt}
+                letter={LETTERS[i]}
+                state={getState(i)}
+                dimmed={answered && getState(i) === null}
+                onPress={() => handle(i)}
+              />
             ),
           )}
         </View>
 
         {hintShown && current.ctx && (
-          <View style={{ marginTop: 14, padding: 12, backgroundColor: 'rgba(232,160,48,0.08)', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)' }}>
-            <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 12, marginBottom: 3 }}>{t('ladder.hint')}</Text>
-            <Text style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 18 }}>{current.ctx}</Text>
+          <View style={{
+            padding: 16, backgroundColor: C.surface, borderRadius: Radius.card,
+            borderWidth: 1.5, borderColor: C.borderWarm,
+          }}>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 15, marginBottom: 6 }}>{t('ladder.hint')}</Text>
+            <Text style={{ color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 22 }}>{current.ctx}</Text>
           </View>
         )}
 
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-          {isCheckpointNext && (
-            <Text style={{ color: 'rgba(46,200,122,0.7)', fontFamily: 'Outfit_600SemiBold', fontSize: 12, textAlign: 'center', marginBottom: 10 }}>
-              {t('ladder.checkpointHint')}
-            </Text>
-          )}
           {canUsePowerups && powerUps.some(p => p.count > 0) && (
-            <PowerUpBar items={powerUps} onUse={usePowerUp} disabled={answered} />
+            <View style={{ gap: 9 }}>
+              <Text style={{ color: C.textFaint, ...Type.sectionLabel, fontSize: 12 }}>
+                {t('common.yourHelpers')}
+              </Text>
+              <PowerUpBar items={powerUps} onUse={usePowerUp} disabled={answered} />
+            </View>
           )}
         </View>
       </View>
+      <AdBannerSlot />
     </SafeAreaView>
   );
 }

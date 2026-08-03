@@ -10,6 +10,8 @@ import { supabase } from '@/lib/supabase';
 import { SocialButton } from '@/components/SocialButton';
 import { reactivateAccount } from '@/lib/db';
 import { setGuestMode } from '@/lib/guest';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 import {
   getAuthCallbackUrl,
   getUpdatePasswordUrl,
@@ -26,20 +28,21 @@ import {
 
 type Mode = 'login' | 'register' | 'reset';
 
-const INPUT = {
-  backgroundColor: '#151515',
-  color: '#fff' as const,
-  borderRadius: 14,
+const inputStyle = (C: Palette) => ({
+  backgroundColor: C.surface,
+  color: C.text,
+  borderRadius: 18,
   padding: 16,
   marginBottom: 12,
-  fontFamily: 'Outfit_400Regular',
+  fontFamily: Font.regular,
   fontSize: 15,
   borderWidth: 1,
-  borderColor: 'rgba(255,255,255,0.08)',
-};
+  borderColor: C.border,
+});
 
 export default function LoginScreen() {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const [mode, setMode] = useState<Mode>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -314,17 +317,17 @@ export default function LoginScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{ flex: 1 }}
       >
         <ScrollView contentContainerStyle={{ flexGrow: 1, padding: 24, justifyContent: 'center' }}>
           <Text style={{ fontSize: 40, marginBottom: 8 }}>🧠</Text>
-          <Text style={{ color: '#fff', fontSize: 28, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
+          <Text style={{ color: C.text, fontSize: 28, fontFamily: Font.black, marginBottom: 4 }}>
             {t('common.appName')}
           </Text>
-          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 15, fontFamily: 'Outfit_400Regular', marginBottom: 40 }}>
+          <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, marginBottom: 40 }}>
             {getSubtitle()}
           </Text>
 
@@ -333,10 +336,10 @@ export default function LoginScreen() {
               value={username}
               onChangeText={setUsername}
               placeholder={t('auth.login.placeholderUsername')}
-              placeholderTextColor="rgba(255,255,255,0.3)"
+              placeholderTextColor={C.textFaint}
               autoCapitalize="words"
               autoCorrect={false}
-              style={INPUT}
+              style={inputStyle(C)}
             />
           )}
 
@@ -344,11 +347,11 @@ export default function LoginScreen() {
             value={email}
             onChangeText={setEmail}
             placeholder={t('auth.login.placeholderEmail')}
-            placeholderTextColor="rgba(255,255,255,0.3)"
+            placeholderTextColor={C.textFaint}
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
-            style={INPUT}
+            style={inputStyle(C)}
           />
 
           {mode !== 'reset' && (
@@ -357,11 +360,11 @@ export default function LoginScreen() {
                 value={password}
                 onChangeText={setPassword}
                 placeholder={t('auth.login.placeholderPassword')}
-                placeholderTextColor="rgba(255,255,255,0.3)"
+                placeholderTextColor={C.textFaint}
                 secureTextEntry={!showPassword}
                 autoCapitalize="none"
                 autoCorrect={false}
-                style={{ ...INPUT, marginBottom: 0, paddingRight: 48 }}
+                style={{ ...inputStyle(C), marginBottom: 0, paddingRight: 48 }}
               />
               <Pressable
                 onPress={() => setShowPassword(s => !s)}
@@ -378,7 +381,7 @@ export default function LoginScreen() {
               onPress={() => setMode('reset')}
               style={{ alignSelf: 'flex-end', marginBottom: 24 }}
             >
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 13 }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13 }}>
                 {t('auth.login.forgotPassword')}
               </Text>
             </Pressable>
@@ -388,11 +391,11 @@ export default function LoginScreen() {
 
           <Pressable onPress={handleMainAction} disabled={loading}>
             <LinearGradient
-              colors={['#e8a030', '#e83060']}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 14, padding: 16, alignItems: 'center' }}
+              style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
             >
-              <Text style={{ color: '#fff', fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
+              <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.bold }}>
                 {getButtonLabel()}
               </Text>
             </LinearGradient>
@@ -401,9 +404,9 @@ export default function LoginScreen() {
           {mode !== 'reset' && (
             <View style={{ marginTop: 18 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
-                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>{t('auth.login.orContinueWith')}</Text>
-                <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
+                <View style={{ flex: 1, height: 1, backgroundColor: C.border }} />
+                <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 12 }}>{t('auth.login.orContinueWith')}</Text>
+                <View style={{ flex: 1, height: 1, backgroundColor: C.border }} />
               </View>
 
               <View style={{ gap: 10 }}>
@@ -431,9 +434,9 @@ export default function LoginScreen() {
               onPress={() => setMode(mode === 'login' ? 'register' : 'login')}
               style={{ marginTop: 24, alignItems: 'center' }}
             >
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular' }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular }}>
                 {mode === 'login' ? t('auth.login.noAccount') : t('auth.login.haveAccount')}
-                <Text style={{ color: '#e8a030', fontFamily: 'Outfit_600SemiBold' }}>
+                <Text style={{ color: C.brandDeep, fontFamily: Font.semi }}>
                   {mode === 'login' ? t('auth.login.register') : t('auth.login.signIn')}
                 </Text>
               </Text>
@@ -443,9 +446,9 @@ export default function LoginScreen() {
               onPress={() => setMode('login')}
               style={{ marginTop: 24, alignItems: 'center' }}
             >
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular' }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular }}>
                 {t('auth.login.backTo')}
-                <Text style={{ color: '#e8a030', fontFamily: 'Outfit_600SemiBold' }}>
+                <Text style={{ color: C.brandDeep, fontFamily: Font.semi }}>
                   {t('auth.login.signInLower')}
                 </Text>
               </Text>
@@ -455,22 +458,22 @@ export default function LoginScreen() {
           {mode === 'login' && (
             <View style={{ marginTop: 32 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
-                <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 12 }}>{t('auth.login.or')}</Text>
-                <View style={{ flex: 1, height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
+                <View style={{ flex: 1, height: 1, backgroundColor: C.border }} />
+                <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 12 }}>{t('auth.login.or')}</Text>
+                <View style={{ flex: 1, height: 1, backgroundColor: C.border }} />
               </View>
               <Pressable onPress={handleGuest}>
                 <View style={{
-                  borderRadius: 14, padding: 16, alignItems: 'center',
-                  backgroundColor: '#1a1a1a',
-                  borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
+                  borderRadius: 18, padding: 16, alignItems: 'center',
+                  backgroundColor: C.surface,
+                  borderWidth: 1, borderColor: C.border,
                 }}>
-                  <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>
+                  <Text style={{ color: C.text, fontSize: 15, fontFamily: Font.semi }}>
                     {t('auth.login.continueGuest')}
                   </Text>
                 </View>
               </Pressable>
-              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 10, textAlign: 'center', paddingHorizontal: 12 }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 10, textAlign: 'center', paddingHorizontal: 12 }}>
                 {t('auth.login.guestWarning')}
               </Text>
             </View>

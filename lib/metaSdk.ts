@@ -1,35 +1,32 @@
 import { Platform } from 'react-native';
 import { Settings } from 'react-native-fbsdk-next';
-import { getTrackingPermissionsAsync, PermissionStatus } from 'expo-tracking-transparency';
 
-// Integración del SDK de Meta (Facebook) para medición y atribución de
-// instalaciones en campañas de App Promotion. El registro de eventos de
-// instalación/activación lo hace el SDK de forma automática (autoLogAppEvents +
-// isAutoInit en el config plugin); aquí solo nos encargamos de inicializarlo de
-// forma idempotente y de respetar la decisión de ATT del usuario en iOS.
+let initialized = false;
 
-export function initMetaSdk(): void {
+// Meta permanece completamente parado hasta la elección personalizada.
+export async function startMetaAfterPersonalizedConsent(trackingGranted: boolean): Promise<void> {
   try {
-    Settings.initializeSDK();
+    Settings.setAutoLogAppEventsEnabled(true);
+    Settings.setAdvertiserIDCollectionEnabled(trackingGranted);
+    if (Platform.OS === 'ios') {
+      await Settings.setAdvertiserTrackingEnabled(trackingGranted);
+    }
+    if (!initialized) {
+      Settings.initializeSDK();
+      initialized = true;
+    }
   } catch {
-    // SDK no disponible (p. ej. en Expo Go o si el módulo nativo no está
-    // presente). No es crítico: en producción el plugin lo provee.
+    // La atribución no puede bloquear la app.
   }
 }
 
-// Activa/desactiva el uso del IDFA por parte de Meta según el permiso ATT.
-// Llamar tras resolver el prompt de ATT y al arrancar (para usuarios que ya
-// respondieron en una sesión anterior). En Android no aplica.
-export async function syncMetaAdvertiserTracking(granted?: boolean): Promise<void> {
-  if (Platform.OS !== 'ios') return;
+export async function stopMetaForPrivacy(): Promise<void> {
+  if (!initialized) return;
   try {
-    let enabled = granted;
-    if (enabled === undefined) {
-      const { status } = await getTrackingPermissionsAsync();
-      enabled = status === PermissionStatus.GRANTED;
-    }
-    await Settings.setAdvertiserTrackingEnabled(enabled);
+    Settings.setAutoLogAppEventsEnabled(false);
+    Settings.setAdvertiserIDCollectionEnabled(false);
+    if (Platform.OS === 'ios') await Settings.setAdvertiserTrackingEnabled(false);
   } catch {
-    // ignore
+    // El módulo puede no existir en Expo Go o web.
   }
 }

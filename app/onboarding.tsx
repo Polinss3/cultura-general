@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, Pressable, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,17 +11,24 @@ import {
 import {
   setOnboardingCompleted,
   setInterests,
+  getInterests,
+  getCompletedOnboardingVersion,
   markWelcomeRewardPending,
 } from '@/lib/onboarding';
-import { ensureTrackingPermission } from '@/lib/tracking';
-import { syncMetaAdvertiserTracking } from '@/lib/metaSdk';
-import { logTutorialCompletion, startAppsFlyerAfterConsent } from '@/lib/appsflyer';
-import { setAppLanguage, AppLang } from '@/lib/i18n';
+import { AdsConsentForm, type AdsConsentInput } from '@/components/AdsConsentForm';
+import { saveAdsConsentDecision } from '@/stores/adsConsentStore';
+import { applyAdvertisingDecision } from '@/lib/advertising';
+import { logTutorialCompletion } from '@/lib/appsflyer';
+import { setAppLanguage, AppLang, getCurrentLang } from '@/lib/i18n';
+import { useThemePreference, setThemePreference } from '@/lib/appearance';
+import { ThemePreview } from '@/components/ThemePreview';
 import { feedback } from '@/lib/feedback';
 import { CAT_COLORS, CAT_ICONS, ALL_CATEGORIES } from '@/constants/questions';
 import { REWARDS } from '@/lib/economy';
 import { Category } from '@/types';
 import type { TFunction } from 'i18next';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 // Iconos y flag skip por paso; el texto vive en i18n (`onboarding.stepN`).
 const STEP_META = [
@@ -29,6 +36,11 @@ const STEP_META = [
   { icon: '🏆', key: 'step1', skip: false },
   { icon: '🔔', key: 'step2', skip: true },
 ] as const;
+
+// La entrada a la app no puede quedarse colgada esperando a un SDK: si ATT o
+// MAX tardan, seguimos. El orden elección -> ATT -> MAX -> AppsFlyer lo
+// garantiza applyAdvertisingDecision, se espere a que termine o no.
+const ADS_APPLY_TIMEOUT_MS = 5000;
 
 function getSteps(t: TFunction) {
   return STEP_META.map(m => ({
@@ -42,20 +54,49 @@ function getSteps(t: TFunction) {
 
 export default function OnboardingScreen() {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const router = useRouter();
   // Primera pantalla: elección de idioma. Al elegir, aplicamos el idioma
   // (persistido) para que el resto del onboarding ya salga en ese idioma.
   const [langChosen, setLangChosen] = useState(false);
   const [interestsChosen, setInterestsChosen] = useState(false);
   const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
+  // Último paso, obligatorio y sin salida: edad + elección publicitaria.
+  const [privacyPending, setPrivacyPending] = useState(false);
+  const [skippedNotifications, setSkippedNotifications] = useState(false);
+  // Quien ya había completado una versión anterior del onboarding lo repite
+  // (2.0.0 estrena tema claro y el aviso de publicidad), pero no vuelve a
+  // cobrar el regalo de bienvenida.
+  const [returning, setReturning] = useState(false);
   const [step, setStep] = useState(0);
   const steps = getSteps(t);
   const current = steps[step];
   const isLast = step === steps.length - 1;
 
+  // Idioma elegido en esta pantalla. Se aplica al momento para que los textos
+  // de aquí mismo cambien, pero no se avanza: el paso lo cierra "Continuar",
+  // que da tiempo a elegir también el tema.
+  const [pendingLang, setPendingLang] = useState<AppLang>(getCurrentLang());
+  const themePref = useThemePreference();
+
+  useEffect(() => {
+    let cancelled = false;
+    getCompletedOnboardingVersion()
+      .then(async version => {
+        if (cancelled || version <= 0) return;
+        setReturning(true);
+        // Repetir el flujo no debe borrarle los intereses que ya tenía.
+        const saved = await getInterests();
+        if (!cancelled && saved.length > 0) setInterestsSel(new Set(saved));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
   const handleLanguage = async (lang: AppLang) => {
+    feedback.select();
+    setPendingLang(lang);
     await setAppLanguage(lang);
-    setLangChosen(true);
   };
 
   const toggleInterest = (cat: Category) => {
@@ -73,86 +114,158 @@ export default function OnboardingScreen() {
   const confirmInterests = async () => {
     feedback.reward();
     await setInterests(Array.from(interests));
-    await markWelcomeRewardPending();
+    // El regalo de bienvenida es solo para instalaciones nuevas: repetir el
+    // onboarding en 2.0.0 no puede volver a concederlo.
+    if (!returning) await markWelcomeRewardPending();
     setInterestsChosen(true);
   };
 
-  const finish = async (skipped = false) => {
+  const finish = async (skipped: boolean) => {
     await setOnboardingCompleted(true);
-    if (await startAppsFlyerAfterConsent()) {
-      await logTutorialCompletion(skipped);
-    }
+    // No-op salvo que AppsFlyer se haya arrancado tras elección personalizada.
+    void logTutorialCompletion(skipped);
     router.replace('/(tabs)');
+  };
+
+  // Cierre del flujo: se guarda la decisión publicitaria y se aplica antes de
+  // entrar. Ningún SDK se inicializa hasta este punto.
+  const savePrivacyAndFinish = async (input: AdsConsentInput) => {
+    const decision = await saveAdsConsentDecision({ ...input, language: getCurrentLang() });
+    await Promise.race([
+      applyAdvertisingDecision(decision).catch(() => {}),
+      new Promise(resolve => setTimeout(resolve, ADS_APPLY_TIMEOUT_MS)),
+    ]);
+    await finish(skippedNotifications);
   };
 
   const handleCta = async () => {
     if (isLast) {
       const granted = await requestNotificationPermission();
       if (granted) await scheduleDailyReminder();
-      // Pedimos ATT aquí (no en el splash) para que iOS encuentre la app
-      // en estado Active tras un gesto explícito del usuario, antes de
-      // entrar a pantallas con AdMob.
-      const decision = await ensureTrackingPermission();
-      await syncMetaAdvertiserTracking(decision === 'granted');
-      await finish(false);
+      setPrivacyPending(true);
     } else {
       setStep(s => s + 1);
     }
   };
 
-  const handleSkip = async () => {
-    const decision = await ensureTrackingPermission();
-    await syncMetaAdvertiserTracking(decision === 'granted');
-    await finish(true);
+  // "Ahora no" salta las notificaciones, nunca el aviso de publicidad.
+  const handleSkip = () => {
+    setSkippedNotifications(true);
+    setPrivacyPending(true);
   };
 
   if (!langChosen) {
+    // El idioma se aplica al tocar, para que el resto de esta misma pantalla
+    // ya cambie. El tema también: la pantalla entera adopta el elegido.
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
-        <View style={{ flex: 1, padding: 24, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ fontSize: 80, marginBottom: 32 }}>🌐</Text>
-          <Text style={{
-            color: '#fff',
-            fontSize: 28,
-            fontFamily: 'Outfit_800ExtraBold',
-            textAlign: 'center',
-            lineHeight: 36,
-            marginBottom: 12,
-          }}>
-            {t('onboarding.language.title')}
-          </Text>
-          <Text style={{
-            color: 'rgba(255,255,255,0.5)',
-            fontSize: 15,
-            fontFamily: 'Outfit_400Regular',
-            textAlign: 'center',
-            lineHeight: 24,
-            maxWidth: 300,
-            marginBottom: 40,
-          }}>
-            {t('onboarding.language.subtitle')}
-          </Text>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+        <View style={{ flex: 1, overflow: 'hidden' }}>
+          <View style={{ paddingHorizontal: 24, paddingTop: 12 }}>
+            <Text style={{
+              color: C.text, fontSize: 26, fontFamily: Font.black,
+              textAlign: 'center', lineHeight: 34, marginBottom: 6,
+            }}>
+              {t('onboarding.language.title')}
+            </Text>
+            <Text style={{
+              color: C.textMuted, fontSize: 15, fontFamily: Font.regular,
+              textAlign: 'center', lineHeight: 23, marginBottom: 16,
+            }}>
+              {t('onboarding.language.subtitle')}
+            </Text>
 
-          <View style={{ width: '100%', gap: 12 }}>
-            {(['es', 'en'] as AppLang[]).map(lang => (
-              <Pressable
-                key={lang}
-                onPress={() => handleLanguage(lang)}
-                style={{
-                  borderRadius: 16,
-                  padding: 18,
-                  alignItems: 'center',
-                  backgroundColor: '#151515',
-                  borderWidth: 1,
-                  borderColor: 'rgba(255,255,255,0.08)',
-                }}
-              >
-                <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>
-                  {t(`onboarding.language.${lang}`)}
-                </Text>
-              </Pressable>
-            ))}
+            {/* Idioma */}
+            <View style={{ flexDirection: 'row', gap: 10, marginBottom: 18 }}>
+              {(['es', 'en'] as AppLang[]).map(lang => {
+                const active = pendingLang === lang;
+                return (
+                  <Pressable
+                    key={lang}
+                    onPress={() => handleLanguage(lang)}
+                    style={{
+                      flex: 1, borderRadius: Radius.card, paddingVertical: 14, alignItems: 'center',
+                      backgroundColor: active ? C.brand : C.surface,
+                      borderWidth: 1.5, borderColor: active ? C.brand : C.border,
+                    }}
+                  >
+                    <Text style={{
+                      color: active ? C.onBrand : C.text,
+                      fontSize: 16, fontFamily: active ? Font.extra : Font.bold,
+                    }}>
+                      {t(`onboarding.language.${lang}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            {/* Tema */}
+            <Text style={{
+              color: C.text, fontSize: 18, fontFamily: Font.black,
+              textAlign: 'center', marginBottom: 4,
+            }}>
+              {t('onboarding.theme.title')}
+            </Text>
+            <Text style={{
+              color: C.textMuted, fontSize: 14, fontFamily: Font.regular,
+              textAlign: 'center', marginBottom: 14,
+            }}>
+              {t('onboarding.theme.subtitle')}
+            </Text>
+            <View style={{ flexDirection: 'row', gap: 10, marginBottom: 20 }}>
+              {(['light', 'dark'] as const).map(opt => {
+                const active = themePref === opt;
+                return (
+                  <Pressable
+                    key={opt}
+                    onPress={() => { feedback.select(); setThemePreference(opt); }}
+                    style={{
+                      flex: 1, borderRadius: Radius.card, paddingVertical: 12,
+                      alignItems: 'center', gap: 3,
+                      backgroundColor: active ? C.brand : C.surface,
+                      borderWidth: 1.5, borderColor: active ? C.brand : C.border,
+                    }}
+                  >
+                    <Text style={{ fontSize: 20 }}>{opt === 'light' ? '☀️' : '🌙'}</Text>
+                    <Text style={{
+                      color: active ? C.onBrand : C.text,
+                      fontSize: 14, fontFamily: active ? Font.extra : Font.bold,
+                    }}>
+                      {t(`onboarding.theme.${opt}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
           </View>
+
+          {/* Muestra de la home, cortada por abajo: enseña cómo queda el tema
+              elegido sin ocupar una pantalla entera. */}
+          <View style={{
+            flex: 1, marginHorizontal: 24,
+            borderTopLeftRadius: 20, borderTopRightRadius: 20,
+            borderWidth: 1, borderBottomWidth: 0, borderColor: C.border,
+            overflow: 'hidden',
+          }}>
+            <ThemePreview dark={isDark} />
+          </View>
+        </View>
+
+        {/* Continuar: fijo abajo, sobre la muestra. */}
+        <View style={{
+          paddingHorizontal: 24, paddingTop: 12, paddingBottom: 24,
+          backgroundColor: C.bg, borderTopWidth: 1, borderTopColor: C.border,
+        }}>
+          <Pressable onPress={() => setLangChosen(true)}>
+            <View style={{
+              borderRadius: 18, paddingVertical: 16, alignItems: 'center',
+              backgroundColor: C.brand,
+            }}>
+              <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.extra }}>
+                {t('common.continue')}
+              </Text>
+            </View>
+          </Pressable>
         </View>
       </SafeAreaView>
     );
@@ -161,14 +274,14 @@ export default function OnboardingScreen() {
   if (!interestsChosen) {
     const canContinue = interests.size > 0;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
         <View style={{ flex: 1, padding: 24 }}>
           <View style={{ alignItems: 'center', paddingTop: 8, marginBottom: 20 }}>
             <Text style={{ fontSize: 64, marginBottom: 16 }}>✨</Text>
             <Text style={{
-              color: '#fff',
+              color: C.text,
               fontSize: 26,
-              fontFamily: 'Outfit_800ExtraBold',
+              fontFamily: Font.black,
               textAlign: 'center',
               lineHeight: 34,
               marginBottom: 10,
@@ -176,9 +289,9 @@ export default function OnboardingScreen() {
               {t('onboarding.interests.title')}
             </Text>
             <Text style={{
-              color: 'rgba(255,255,255,0.5)',
+              color: C.textMuted,
               fontSize: 15,
-              fontFamily: 'Outfit_400Regular',
+              fontFamily: Font.regular,
               textAlign: 'center',
               lineHeight: 22,
               maxWidth: 320,
@@ -202,17 +315,17 @@ export default function OnboardingScreen() {
                       gap: 8,
                       paddingVertical: 10,
                       paddingHorizontal: 14,
-                      borderRadius: 99,
-                      backgroundColor: active ? col.bg : '#151515',
+                      borderRadius: Radius.pill,
+                      backgroundColor: active ? col.bg : C.surface,
                       borderWidth: 1.5,
-                      borderColor: active ? col.accent : 'rgba(255,255,255,0.08)',
+                      borderColor: active ? col.accent : C.border,
                     }}
                   >
                     <Text style={{ fontSize: 18 }}>{CAT_ICONS[c]}</Text>
                     <Text style={{
-                      color: active ? col.text : 'rgba(255,255,255,0.6)',
+                      color: active ? col.text : C.textBody,
                       fontSize: 14,
-                      fontFamily: active ? 'Outfit_700Bold' : 'Outfit_500Medium',
+                      fontFamily: active ? Font.bold : Font.semi,
                     }}>
                       {t(`categories.${c}`)}
                     </Text>
@@ -225,23 +338,25 @@ export default function OnboardingScreen() {
           <View style={{ gap: 8, paddingTop: 12 }}>
             <Pressable onPress={confirmInterests} disabled={!canContinue}>
               <LinearGradient
-                colors={canContinue ? ['#e8a030', '#e83060'] : ['#2a2a2a', '#2a2a2a']}
+                colors={canContinue ? [C.streak, C.wrong] : [C.track, C.track]}
                 start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                style={{ borderRadius: 16, padding: 18, alignItems: 'center' }}
+                style={{ borderRadius: Radius.card, padding: 18, alignItems: 'center' }}
               >
                 <Text style={{
-                  color: canContinue ? '#fff' : 'rgba(255,255,255,0.3)',
+                  color: canContinue ? C.text : C.textFaint,
                   fontSize: 17,
-                  fontFamily: 'Outfit_700Bold',
+                  fontFamily: Font.bold,
                 }}>
-                  {t('onboarding.interests.cta', { coins: REWARDS.welcomeBonus.coins })}
+                  {returning
+                    ? t('onboarding.interests.ctaReturning')
+                    : t('onboarding.interests.cta', { coins: REWARDS.welcomeBonus.coins })}
                 </Text>
               </LinearGradient>
             </Pressable>
             <Text style={{
-              color: 'rgba(255,255,255,0.35)',
+              color: C.textMuted,
               fontSize: 13,
-              fontFamily: 'Outfit_400Regular',
+              fontFamily: Font.regular,
               textAlign: 'center',
             }}>
               {t('onboarding.interests.hint')}
@@ -252,8 +367,18 @@ export default function OnboardingScreen() {
     );
   }
 
+  // Último paso: aviso de edad y elección publicitaria. Obligatorio y sin
+  // botón de salida — es la condición para entrar a la app.
+  if (privacyPending) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
+        <AdsConsentForm initialDecision={null} onSave={savePrivacyAndFinish} />
+      </SafeAreaView>
+    );
+  }
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
       <View style={{ flex: 1, padding: 24, justifyContent: 'space-between' }}>
 
         {/* Progress dots */}
@@ -265,7 +390,7 @@ export default function OnboardingScreen() {
                 width: i === step ? 20 : 6,
                 height: 6,
                 borderRadius: 3,
-                backgroundColor: i === step ? '#e8a030' : '#2a2a2a',
+                backgroundColor: i === step ? C.streak : C.track,
               }}
             />
           ))}
@@ -275,9 +400,9 @@ export default function OnboardingScreen() {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: 40 }}>
           <Text style={{ fontSize: 80, marginBottom: 32 }}>{current.icon}</Text>
           <Text style={{
-            color: '#fff',
+            color: C.text,
             fontSize: 28,
-            fontFamily: 'Outfit_800ExtraBold',
+            fontFamily: Font.black,
             textAlign: 'center',
             lineHeight: 36,
             marginBottom: 20,
@@ -285,9 +410,9 @@ export default function OnboardingScreen() {
             {current.title}
           </Text>
           <Text style={{
-            color: 'rgba(255,255,255,0.5)',
+            color: C.textMuted,
             fontSize: 16,
-            fontFamily: 'Outfit_400Regular',
+            fontFamily: Font.regular,
             textAlign: 'center',
             lineHeight: 26,
             maxWidth: 300,
@@ -300,11 +425,11 @@ export default function OnboardingScreen() {
         <View style={{ gap: 12 }}>
           <Pressable onPress={handleCta}>
             <LinearGradient
-              colors={['#e8a030', '#e83060']}
+              colors={[C.brand, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 16, padding: 18, alignItems: 'center' }}
+              style={{ borderRadius: Radius.card, padding: 18, alignItems: 'center' }}
             >
-              <Text style={{ color: '#fff', fontSize: 17, fontFamily: 'Outfit_700Bold' }}>
+              <Text style={{ color: C.onBrand, fontSize: 17, fontFamily: Font.bold }}>
                 {current.cta}
               </Text>
             </LinearGradient>
@@ -312,7 +437,7 @@ export default function OnboardingScreen() {
 
           {current.skip && (
             <Pressable onPress={handleSkip} style={{ alignItems: 'center', padding: 12 }}>
-              <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 15 }}>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 15 }}>
                 {t('onboarding.skip')}
               </Text>
             </Pressable>

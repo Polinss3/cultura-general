@@ -1,5 +1,7 @@
 import { Pressable, Text, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 // ─── Logos de marca (vectoriales, nítidos a cualquier tamaño) ──
 
@@ -27,6 +29,7 @@ function GoogleIcon({ size = 20 }: { size?: number }) {
 }
 
 function AppleIcon({ size = 20 }: { size?: number }) {
+  const { C, isDark } = useTheme();
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24">
       <Path
@@ -48,9 +51,11 @@ interface Props {
   disabled?: boolean;
 }
 
+// Colores impuestos por las guías de marca de Google y Apple: no siguen el
+// tema de la app.
 const STYLES = {
-  google: { bg: '#fff', text: '#1f1f1f', border: 'rgba(0,0,0,0.12)' },
-  apple: { bg: '#000', text: '#fff', border: 'rgba(255,255,255,0.18)' },
+  google: { bg: '#FFFFFF', text: '#1F1F1F', border: 'rgba(0,0,0,0.14)' },
+  apple: { bg: '#000000', text: '#FFFFFF', border: 'rgba(255,255,255,0.18)' },
 } as const;
 
 export function SocialButton({ provider, label, onPress, disabled }: Props) {
@@ -71,7 +76,7 @@ export function SocialButton({ provider, label, onPress, disabled }: Props) {
         }}
       >
         {provider === 'google' ? <GoogleIcon /> : <AppleIcon />}
-        <Text style={{ color: s.text, fontSize: 15, fontFamily: 'Outfit_600SemiBold' }}>
+        <Text style={{ color: s.text, fontSize: 15, fontFamily: Font.semi }}>
           {label}
         </Text>
       </View>

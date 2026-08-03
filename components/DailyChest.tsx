@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { feedback } from '@/lib/feedback';
 import { Confetti } from './Confetti';
+import { useTheme } from '@/constants/colors';
+import { Font, Radius, warmGradient } from '@/constants/theme';
 
 interface Props {
   available: boolean;
@@ -15,6 +17,7 @@ interface Props {
 
 export function DailyChest({ available, onClaim, onClaimed }: Props) {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const [busy, setBusy] = useState(false);
   const [claimed, setClaimed] = useState(false);
   const [reward, setReward] = useState<number | null>(null);
@@ -80,28 +83,28 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
   const popRotate = pop.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '-12deg'] });
 
   return (
-    <View style={{ marginBottom: 14 }}>
+    <View style={{ marginBottom: 8 }}>
       {confetti && <Confetti active />}
 
       {showClaimed ? (
         <View
           style={{
-            borderRadius: 18,
-            padding: 16,
-            backgroundColor: '#121212',
+            borderRadius: Radius.cardLg,
+            padding: 10,
+            backgroundColor: C.surfaceSunk,
             borderWidth: 1,
-            borderColor: 'rgba(255,255,255,0.05)',
+            borderColor: C.border,
             flexDirection: 'row',
             alignItems: 'center',
-            gap: 12,
+            gap: 14,
           }}
         >
-          <Text style={{ fontSize: 30, opacity: 0.4 }}>🎁</Text>
+          <Text style={{ fontSize: 26, opacity: 0.45 }}>🎁</Text>
           <View style={{ flex: 1 }}>
-            <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_700Bold', fontSize: 15 }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.black, fontSize: 16 }}>
               {t('components.dailyChest.title')}
             </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 1 }}>
+            <Text numberOfLines={1} style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 1 }}>
               {t('components.dailyChest.claimedSub')}
             </Text>
           </View>
@@ -109,28 +112,23 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
       ) : (
         <Pressable onPress={handlePress} disabled={busy}>
           <LinearGradient
-            colors={['#4a3208', '#2a1c04']}
+            colors={warmGradient(isDark)}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={{
-              borderRadius: 18,
-              padding: 16,
+              borderRadius: Radius.cardLg,
+              padding: 10,
               borderWidth: 1.5,
-              borderColor: 'rgba(232,160,48,0.55)',
+              borderColor: C.borderWarm,
               flexDirection: 'row',
               alignItems: 'center',
               gap: 14,
-              shadowColor: '#e8a030',
-              shadowOpacity: 0.35,
-              shadowRadius: 12,
-              shadowOffset: { width: 0, height: 4 },
-              elevation: 6,
               overflow: 'visible',
             }}
           >
             <Animated.Text
               style={{
-                fontSize: 34,
+                fontSize: 30,
                 transform: [{ translateY: bobY }, { scale: popScale }, { rotate: popRotate }],
               }}
             >
@@ -148,30 +146,25 @@ export function DailyChest({ available, onClaim, onClaimed }: Props) {
                 transform: [{ translateY: rewardY }],
               }}
             >
-              <Text style={{ color: '#ffd700', fontFamily: 'Outfit_800ExtraBold', fontSize: 22 }}>
+              <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 22 }}>
                 +{reward} 🪙
               </Text>
             </Animated.View>
 
             <View style={{ flex: 1 }}>
-              <Text style={{ color: '#fff', fontFamily: 'Outfit_800ExtraBold', fontSize: 16 }}>
+              <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 16 }}>
                 {t('components.dailyChest.title')}
               </Text>
-              <Text style={{ color: 'rgba(255,236,200,0.65)', fontFamily: 'Outfit_500Medium', fontSize: 12, marginTop: 1 }}>
+              <Text numberOfLines={1} style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 1 }}>
                 {t('components.dailyChest.availableSub')}
               </Text>
             </View>
 
-            <LinearGradient
-              colors={['#ffd700', '#e8a030']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 99, paddingVertical: 9, paddingHorizontal: 18 }}
-            >
-              <Text style={{ color: '#3a2600', fontFamily: 'Outfit_800ExtraBold', fontSize: 14 }}>
+            <View style={{ backgroundColor: C.brand, borderRadius: Radius.pill, paddingVertical: 9, paddingHorizontal: 18 }}>
+              <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 14 }}>
                 {busy ? '…' : t('components.dailyChest.open')}
               </Text>
-            </LinearGradient>
+            </View>
           </LinearGradient>
         </Pressable>
       )}

@@ -79,6 +79,12 @@ export function unlockedCount(profile: ProfileStats | null): number {
   return computeAchievements(profile).filter(a => a.unlocked).length;
 }
 
+// Total real de logros de la lista. Se calcula en vez de fijarse a mano para
+// que no vuelva a desincronizarse al añadir logros nuevos.
+export function totalAchievements(): number {
+  return computeAchievements(null).length;
+}
+
 // Logros desbloqueados pero aún sin reclamar (para el badge "reclamar").
 export function claimableCount(profile: ProfileStats | null, claimed?: Set<string>): number {
   return computeAchievements(profile, claimed).filter(a => a.unlocked && !a.claimed).length;

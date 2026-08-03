@@ -7,6 +7,9 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ADS_MODE": "test"
+      },
       "ios": {
         "simulator": false
       },
@@ -16,6 +19,9 @@
     },
     "preview": {
       "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ADS_MODE": "test"
+      },
       "ios": {
         "simulator": false
       },
@@ -26,7 +32,8 @@
     "production": {
       "autoIncrement": true,
       "env": {
-        "SENTRY_ALLOW_FAILURE": "true"
+        "SENTRY_ALLOW_FAILURE": "true",
+        "EXPO_PUBLIC_ADS_MODE": "off"
       },
       "ios": {
         "credentialsSource": "remote"

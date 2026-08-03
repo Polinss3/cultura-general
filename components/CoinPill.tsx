@@ -1,4 +1,6 @@
 import { Pressable, View, Text } from 'react-native';
+import { useColors } from '@/constants/colors';
+import { Font, Radius } from '@/constants/theme';
 
 interface Props {
   coins: number;
@@ -8,26 +10,28 @@ interface Props {
 }
 
 export function CoinPill({ coins, onPress, showPlus, small }: Props) {
+  const C = useColors();
+
   const content = (
     <View
       style={{
         flexDirection: 'row',
         alignItems: 'center',
         gap: 6,
-        backgroundColor: 'rgba(232,160,48,0.12)',
-        borderWidth: 1,
-        borderColor: 'rgba(232,160,48,0.35)',
-        borderRadius: 99,
-        paddingVertical: small ? 4 : 6,
-        paddingHorizontal: small ? 10 : 12,
+        backgroundColor: C.coinTint,
+        borderRadius: Radius.pill,
+        paddingVertical: small ? 6 : 8,
+        paddingHorizontal: small ? 12 : 14,
       }}
     >
       <Text style={{ fontSize: small ? 13 : 15 }}>🪙</Text>
-      <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: small ? 13 : 15 }}>
+      <Text style={{ color: C.coinText, fontFamily: Font.extra, fontSize: small ? 13 : 15 }}>
         {coins.toLocaleString('es-ES')}
       </Text>
       {showPlus && (
-        <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: small ? 14 : 16, marginLeft: 2 }}>＋</Text>
+        <Text style={{ color: C.coinText, fontFamily: Font.extra, fontSize: small ? 14 : 16, marginLeft: 2 }}>
+          ＋
+        </Text>
       )}
     </View>
   );

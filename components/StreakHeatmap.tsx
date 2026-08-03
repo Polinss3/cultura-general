@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from 'expo-router';
 import { fetchDailyActivity } from '@/lib/db';
 import { getPlayedDates } from '@/lib/dailyRoute';
+import { useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, cardShadow } from '@/constants/theme';
 
 interface Props {
   userId: string;
@@ -12,15 +14,19 @@ interface Props {
 
 const DAYS = 14;
 
-// Amarillo de la racha (mismo que el perfil), con opacidad según intensidad.
-function squareColor(intensity: number): string {
-  if (intensity <= 0) return 'rgba(255,255,255,0.06)';
-  const op = intensity >= 3 ? 1 : intensity === 2 ? 0.62 : 0.33;
-  return `rgba(232,160,48,${op})`;
+// Escala cálida de la racha: de la pista vacía al ámbar pleno, en tres pasos.
+const STEPS_LIGHT = ['#F7D9A8', '#F3C377', '#EFAE46'];
+const STEPS_DARK = ['#5C4526', '#8F6A2C', '#F0A93B'];
+
+function squareColor(intensity: number, C: Palette, isDark: boolean): string {
+  if (intensity <= 0) return C.track;
+  const steps = isDark ? STEPS_DARK : STEPS_LIGHT;
+  return steps[Math.min(intensity, steps.length) - 1];
 }
 
 export function StreakHeatmap({ userId, streak }: Props) {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const [intensities, setIntensities] = useState<number[]>(() => new Array(DAYS).fill(0));
 
   // Últimos 14 días (UTC, coherente con el resto de la app), terminando hoy.
@@ -52,20 +58,31 @@ export function StreakHeatmap({ userId, streak }: Props) {
 
   return (
     <View style={{
-      marginTop: 16, backgroundColor: '#151515', borderRadius: 16, padding: 14,
+      marginTop: 12,
+      backgroundColor: C.surface,
+      borderRadius: Radius.cardLg,
+      borderWidth: 1,
+      borderColor: C.border,
+      padding: 10,
+      ...cardShadow(isDark),
     }}>
       {/* Racha */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-        <Text style={{ fontSize: 24 }}>🔥</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11, marginBottom: 8 }}>
+        <View style={{
+          width: 36, height: 36, borderRadius: 12,
+          backgroundColor: C.brandTint, alignItems: 'center', justifyContent: 'center',
+        }}>
+          <Text style={{ fontSize: 18 }}>🔥</Text>
+        </View>
         <View style={{ flex: 1 }}>
-          <Text style={{ color: '#fff', fontSize: 14, fontFamily: 'Outfit_600SemiBold' }}>
+          <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.extra }}>
             {t('home.streakDays', { count: streak })}
           </Text>
-          <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 1 }}>
+          <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, marginTop: 2 }}>
             {streak > 0 ? t('home.streakKeep') : t('home.streakStart')}
           </Text>
         </View>
-        <Text style={{ color: '#e8a030', fontSize: 20, fontFamily: 'Outfit_800ExtraBold' }}>
+        <Text style={{ color: C.streakText, fontSize: 26, fontFamily: Font.black, lineHeight: 30 }}>
           {streak}
         </Text>
       </View>
@@ -79,11 +96,11 @@ export function StreakHeatmap({ userId, streak }: Props) {
               key={days[i]}
               style={{
                 flex: 1,
-                aspectRatio: 1,
+                height: 14,
                 borderRadius: 4,
-                backgroundColor: squareColor(intensity),
-                borderWidth: isToday ? 1 : 0,
-                borderColor: isToday ? 'rgba(255,255,255,0.5)' : 'transparent',
+                backgroundColor: squareColor(intensity, C, isDark),
+                borderWidth: isToday ? 2 : 0,
+                borderColor: isToday ? C.brand : 'transparent',
               }}
             />
           );

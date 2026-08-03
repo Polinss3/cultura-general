@@ -10,6 +10,8 @@ import { feedback } from '@/lib/feedback';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { GuestGate } from '@/components/GuestGate';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 import {
   searchUsers,
   fetchFriends,
@@ -28,6 +30,7 @@ type SearchResult = FriendProfile & {
 
 export default function FriendsListScreen() {
   const { t } = useTranslation();
+  const { C, isDark } = useTheme();
   const router = useRouter();
   const { user } = useAuth();
   const { guest } = useGuest();
@@ -128,34 +131,34 @@ export default function FriendsListScreen() {
   const isSearching = query.trim().length >= 2;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       {/* Header */}
       <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingTop: 16, marginBottom: 16 }}>
         <Pressable onPress={() => router.back()} style={{ marginRight: 16 }}>
-          <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>←</Text>
+          <Text style={{ color: C.textMuted, fontSize: 22 }}>←</Text>
         </Pressable>
-        <Text style={{ color: '#fff', fontSize: 20, fontFamily: 'Outfit_700Bold' }}>{t('friendsList.header')}</Text>
+        <Text style={{ color: C.text, fontSize: 20, fontFamily: Font.black }}>{t('friendsList.header')}</Text>
       </View>
 
       {/* Search bar */}
       <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
         <View style={{
           flexDirection: 'row', alignItems: 'center', gap: 10,
-          backgroundColor: '#151515', borderRadius: 14, paddingHorizontal: 14,
-          paddingVertical: 12, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)',
+          backgroundColor: C.surface, borderRadius: 18, paddingHorizontal: 14,
+          paddingVertical: 12, borderWidth: 1, borderColor: C.border,
         }}>
           <Text style={{ fontSize: 16 }}>🔍</Text>
           <TextInput
             value={query}
             onChangeText={setQuery}
             placeholder={t('friendsList.searchPlaceholder')}
-            placeholderTextColor="rgba(255,255,255,0.3)"
+            placeholderTextColor={C.textFaint}
             autoCapitalize="none"
-            style={{ flex: 1, color: '#fff', fontFamily: 'Outfit_400Regular', fontSize: 15 }}
+            style={{ flex: 1, color: C.text, fontFamily: Font.regular, fontSize: 15 }}
           />
           {query.length > 0 && (
             <Pressable onPress={() => setQuery('')}>
-              <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 16 }}>✕</Text>
+              <Text style={{ color: C.textFaint, fontSize: 16 }}>✕</Text>
             </Pressable>
           )}
         </View>
@@ -168,9 +171,9 @@ export default function FriendsListScreen() {
           <View style={{ marginBottom: 28 }}>
             <SectionTitle>{t('friendsList.searchResults')}</SectionTitle>
             {searching ? (
-              <ActivityIndicator color="#30a8e8" />
+              <ActivityIndicator color={C.social} />
             ) : searchResults.length === 0 ? (
-              <Text style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Outfit_400Regular', fontSize: 14 }}>
+              <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 14 }}>
                 {t('friendsList.noResults', { query })}
               </Text>
             ) : (
@@ -181,13 +184,13 @@ export default function FriendsListScreen() {
                     profile={r}
                     right={
                       r.relationStatus === 'accepted' ? (
-                        <Tag label={t('friendsList.friendTag')} color="#2ec87a" />
+                        <Tag label={t('friendsList.friendTag')} color={C.correct} />
                       ) : r.relationStatus === 'pending_sent' ? (
-                        <Tag label={t('friendsList.pendingTag')} color="#e8a030" />
+                        <Tag label={t('friendsList.pendingTag')} color={C.brand} />
                       ) : r.relationStatus === 'pending_received' ? (
-                        <ActionBtn label={t('friendsList.accept')} color="#2ec87a" onPress={() => handleAccept(r as any)} />
+                        <ActionBtn label={t('friendsList.accept')} color={C.correct} onPress={() => handleAccept(r as any)} />
                       ) : (
-                        <ActionBtn label={t('friendsList.add')} color="#30a8e8" onPress={() => handleAddFriend(r)} />
+                        <ActionBtn label={t('friendsList.add')} color={C.social} onPress={() => handleAddFriend(r)} />
                       )
                     }
                   />
@@ -210,8 +213,8 @@ export default function FriendsListScreen() {
                       profile={p}
                       right={
                         <View style={{ flexDirection: 'row', gap: 8 }}>
-                          <ActionBtn label={t('friendsList.accept')} color="#2ec87a" onPress={() => handleAccept(p)} />
-                          <ActionBtn label="✕" color="#e83060" onPress={() => p.friendshipId && removeFriend(p.friendshipId).then(load)} />
+                          <ActionBtn label={t('friendsList.accept')} color={C.correct} onPress={() => handleAccept(p)} />
+                          <ActionBtn label="✕" color={C.wrong} onPress={() => p.friendshipId && removeFriend(p.friendshipId).then(load)} />
                         </View>
                       }
                     />
@@ -226,14 +229,14 @@ export default function FriendsListScreen() {
                 {friends.length > 0 ? t('friendsList.friendsCount', { count: friends.length }) : t('friendsList.friendsTitle')}
               </SectionTitle>
               {loadingFriends ? (
-                <ActivityIndicator color="#30a8e8" />
+                <ActivityIndicator color={C.social} />
               ) : friends.length === 0 ? (
-                <View style={{ backgroundColor: '#151515', borderRadius: 16, padding: 24, alignItems: 'center' }}>
+                <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 24, alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
                   <Text style={{ fontSize: 36, marginBottom: 12 }}>👥</Text>
-                  <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 16, marginBottom: 6 }}>
+                  <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 16, marginBottom: 6 }}>
                     {t('friendsList.noFriendsTitle')}
                   </Text>
-                  <Text style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'Outfit_400Regular', fontSize: 13, textAlign: 'center', lineHeight: 20 }}>
+                  <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, textAlign: 'center', lineHeight: 20 }}>
                     {t('friendsList.noFriendsDesc')}
                   </Text>
                 </View>
@@ -245,7 +248,7 @@ export default function FriendsListScreen() {
                       profile={f}
                       right={
                         <Pressable onPress={() => handleRemove(f)}>
-                          <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 20 }}>···</Text>
+                          <Text style={{ color: C.textFaint, fontSize: 20 }}>···</Text>
                         </Pressable>
                       }
                     />
@@ -263,10 +266,11 @@ export default function FriendsListScreen() {
 // ─── Sub-components ───────────────────────────────────────────
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
+  const { C, isDark } = useTheme();
   return (
     <Text style={{
-      color: 'rgba(255,255,255,0.4)', fontSize: 12, fontFamily: 'Outfit_600SemiBold',
-      letterSpacing: 1, textTransform: 'uppercase', marginBottom: 12,
+      color: C.textFaint, fontSize: 13, fontFamily: Font.extra,
+      letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12,
     }}>
       {children}
     </Text>
@@ -274,21 +278,21 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 function UserRow({ profile, right }: { profile: FriendProfile; right: React.ReactNode }) {
+  const { C, isDark } = useTheme();
   const initial = (profile.username?.[0] ?? '?').toUpperCase();
   return (
     <View style={{
       flexDirection: 'row', alignItems: 'center', gap: 12,
-      backgroundColor: '#151515', borderRadius: 14, padding: 12,
-    }}>
+      backgroundColor: C.surface, borderRadius: 18, padding: 12, borderWidth: 1, borderColor: C.border }}>
       <View style={{
-        width: 40, height: 40, borderRadius: 12,
-        backgroundColor: '#30a8e8', alignItems: 'center', justifyContent: 'center',
+        width: 40, height: 40, borderRadius: Radius.row,
+        backgroundColor: C.social, alignItems: 'center', justifyContent: 'center',
       }}>
-        <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 16 }}>{initial}</Text>
+        <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 16 }}>{initial}</Text>
       </View>
       <View style={{ flex: 1 }}>
-        <Text style={{ color: '#fff', fontFamily: 'Outfit_600SemiBold', fontSize: 15 }}>{profile.username}</Text>
-        <Text style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'Outfit_400Regular', fontSize: 12, marginTop: 2 }}>
+        <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>{profile.username}</Text>
+        <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
           🔥 {profile.streak} · ✓ {profile.totalCorrect}
         </Text>
       </View>
@@ -299,8 +303,8 @@ function UserRow({ profile, right }: { profile: FriendProfile; right: React.Reac
 
 function Tag({ label, color }: { label: string; color: string }) {
   return (
-    <View style={{ backgroundColor: color + '22', borderRadius: 99, paddingVertical: 5, paddingHorizontal: 10 }}>
-      <Text style={{ color, fontFamily: 'Outfit_600SemiBold', fontSize: 12 }}>{label}</Text>
+    <View style={{ backgroundColor: color + '22', borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 10 }}>
+      <Text style={{ color, fontFamily: Font.semi, fontSize: 12 }}>{label}</Text>
     </View>
   );
 }
@@ -309,9 +313,9 @@ function ActionBtn({ label, color, onPress }: { label: string; color: string; on
   return (
     <Pressable
       onPress={onPress}
-      style={{ backgroundColor: color + '22', borderRadius: 99, paddingVertical: 6, paddingHorizontal: 12, borderWidth: 1, borderColor: color + '44' }}
+      style={{ backgroundColor: color + '22', borderRadius: Radius.pill, paddingVertical: 6, paddingHorizontal: 12, borderWidth: 1, borderColor: color + '44' }}
     >
-      <Text style={{ color, fontFamily: 'Outfit_600SemiBold', fontSize: 12 }}>{label}</Text>
+      <Text style={{ color, fontFamily: Font.semi, fontSize: 12 }}>{label}</Text>
     </Pressable>
   );
 }

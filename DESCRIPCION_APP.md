@@ -17,7 +17,7 @@
 | Almacenamiento local | AsyncStorage 2.2.0 |
 | UI / Animaciones | expo-linear-gradient, Animated API nativa, expo-haptics |
 | Notificaciones | expo-notifications 0.32.16 |
-| Ads | react-native-google-mobile-ads 16.3.3 (AdMob interstitial preparado en pregunta diaria, contrarreloj y aprendizaje) |
+| Ads | react-native-applovin-max 9.6.0 (MAX fail-closed; intersticial en resultados y rewarded voluntario) |
 | Tipografía | Outfit (Google Fonts, 6 pesos) |
 | Builds | EAS (Expo Application Services) |
 

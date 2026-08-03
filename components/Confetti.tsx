@@ -3,7 +3,9 @@ import { Animated, Dimensions, StyleSheet, View } from 'react-native';
 
 const { width: W, height: H } = Dimensions.get('window');
 
-const COLORS = ['#e8a030', '#e83060', '#2ec87a', '#a030e8', '#30a8e8', '#fff'];
+// Colores de las partículas: los acentos de la marca, válidos en claro y
+// oscuro (van sobre el contenido, no sobre el fondo).
+const COLORS = ['#F0A93B', '#E07A3E', '#3F9E6C', '#7B57BE', '#3E77B4'];
 const COUNT = 60;
 
 interface Particle {

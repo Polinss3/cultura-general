@@ -5,18 +5,32 @@ import { REWARDS } from './economy';
 
 export const ONBOARDED_STORAGE_KEY = 'onboarded_v1';
 export const INTERESTS_STORAGE_KEY = 'onboarding_interests_v1';
+// Versión del flujo de onboarding. Subirla obliga a repetirlo en la primera
+// apertura tras actualizar. v2 (app 2.0.0) añade la elección de tema
+// claro/oscuro y el aviso obligatorio de edad y publicidad.
+export const ONBOARDING_VERSION = 2;
 // La recompensa de bienvenida se marca "pendiente" al terminar el onboarding y
 // se concede vía servidor la primera vez que hay sesión (así el invitado que
 // luego crea cuenta también la recibe, exactamente una vez).
 export const WELCOME_REWARD_PENDING_KEY = 'welcome_reward_pending_v1';
 
-export async function getOnboardingCompleted(): Promise<boolean> {
+/**
+ * Versión del onboarding que el usuario completó; 0 si nunca lo hizo.
+ * El valor legado `'true'` (apps anteriores a 2.0.0) equivale a la v1.
+ */
+export async function getCompletedOnboardingVersion(): Promise<number> {
   const value = await AsyncStorage.getItem(ONBOARDED_STORAGE_KEY);
-  return value === 'true';
+  if (value === 'true') return 1;
+  const parsed = Number.parseInt(value ?? '', 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+}
+
+export async function getOnboardingCompleted(): Promise<boolean> {
+  return (await getCompletedOnboardingVersion()) >= ONBOARDING_VERSION;
 }
 
 export async function setOnboardingCompleted(completed: boolean): Promise<void> {
-  await AsyncStorage.setItem(ONBOARDED_STORAGE_KEY, completed ? 'true' : 'false');
+  await AsyncStorage.setItem(ONBOARDED_STORAGE_KEY, completed ? String(ONBOARDING_VERSION) : '0');
 }
 
 // ─── Intereses (categorías favoritas elegidas en el onboarding) ────────────

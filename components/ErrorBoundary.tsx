@@ -1,8 +1,9 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { View, Text, Pressable } from 'react-native';
 import { captureSentryException } from '@/lib/sentry';
 import i18n from '@/lib/i18n';
+import { useTheme } from '@/constants/colors';
+import { Font, Radius } from '@/constants/theme';
 
 interface Props {
   children: ReactNode;
@@ -11,6 +12,56 @@ interface Props {
 interface State {
   hasError: boolean;
   error: Error | null;
+}
+
+/**
+ * La pantalla de error va aparte porque el límite de error tiene que ser una
+ * clase, y las clases no pueden usar hooks (y el tema es un hook).
+ */
+function ErrorFallback({ error, onRetry }: { error: Error | null; onRetry: () => void }) {
+  const { C } = useTheme();
+
+  return (
+    <View style={{
+      flex: 1, backgroundColor: C.bg,
+      alignItems: 'center', justifyContent: 'center', padding: 32,
+    }}>
+      <Text style={{ fontSize: 64, marginBottom: 20 }}>😵</Text>
+      <Text style={{
+        color: C.text, fontSize: 24, fontFamily: Font.black,
+        marginBottom: 12, textAlign: 'center',
+      }}>
+        {i18n.t('components.errorBoundary.title')}
+      </Text>
+      <Text style={{
+        color: C.textMuted, fontSize: 15, fontFamily: Font.regular,
+        textAlign: 'center', lineHeight: 24, marginBottom: 32,
+      }}>
+        {i18n.t('components.errorBoundary.body')}
+      </Text>
+      {__DEV__ && error && (
+        <Text
+          numberOfLines={4}
+          style={{
+            color: C.wrongText, fontSize: 12, fontFamily: Font.regular,
+            backgroundColor: C.wrongTint, padding: 12, borderRadius: Radius.iconSm,
+            marginBottom: 24, width: '100%',
+          }}
+        >
+          {error.toString()}
+        </Text>
+      )}
+      <Pressable onPress={onRetry} style={{ width: '100%' }}>
+        <View style={{
+          backgroundColor: C.brand, borderRadius: 18, padding: 16, alignItems: 'center',
+        }}>
+          <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.extra }}>
+            {i18n.t('common.retry')}
+          </Text>
+        </View>
+      </Pressable>
+    </View>
+  );
 }
 
 export class ErrorBoundary extends Component<Props, State> {
@@ -36,80 +87,9 @@ export class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.emoji}>😵</Text>
-          <Text style={styles.title}>{i18n.t('components.errorBoundary.title')}</Text>
-          <Text style={styles.body}>
-            {i18n.t('components.errorBoundary.body')}
-          </Text>
-          {__DEV__ && this.state.error && (
-            <Text style={styles.dev} numberOfLines={4}>
-              {this.state.error.toString()}
-            </Text>
-          )}
-          <Pressable onPress={this.handleRetry} style={{ width: '100%' }}>
-            <LinearGradient
-              colors={['#e8a030', '#e83060']}
-              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={styles.btn}
-            >
-              <Text style={styles.btnText}>{i18n.t('common.retry')}</Text>
-            </LinearGradient>
-          </Pressable>
-        </View>
-      );
+      return <ErrorFallback error={this.state.error} onRetry={this.handleRetry} />;
     }
 
     return this.props.children;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0a0a0a',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 32,
-  },
-  emoji: {
-    fontSize: 64,
-    marginBottom: 20,
-  },
-  title: {
-    color: '#fff',
-    fontSize: 24,
-    fontFamily: 'Outfit_700Bold',
-    marginBottom: 12,
-    textAlign: 'center',
-  },
-  body: {
-    color: 'rgba(255,255,255,0.5)',
-    fontSize: 15,
-    fontFamily: 'Outfit_400Regular',
-    textAlign: 'center',
-    lineHeight: 24,
-    marginBottom: 32,
-  },
-  dev: {
-    color: '#e83060',
-    fontSize: 11,
-    fontFamily: 'Outfit_400Regular',
-    backgroundColor: '#1a0a0a',
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 24,
-    width: '100%',
-  },
-  btn: {
-    borderRadius: 14,
-    padding: 16,
-    alignItems: 'center',
-  },
-  btnText: {
-    color: '#fff',
-    fontSize: 16,
-    fontFamily: 'Outfit_700Bold',
-  },
-});

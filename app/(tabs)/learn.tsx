@@ -6,22 +6,27 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { CategoryBadge } from '@/components/CategoryBadge';
+import { AdBannerSlot } from '@/components/AdBannerSlot';
 import { usePowerups } from '@/hooks/usePowerups';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
-import { showInterstitialAd } from '@/lib/admob';
-import { fetchQuestions, incrementProfileStats, reportQuestion } from '@/lib/db';
+import {
+  fetchQuestions, fetchQuestionCounts, incrementProfileStats, reportQuestion,
+  type CategoryCounts,
+} from '@/lib/db';
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
-import { getLocalQuestions, CAT_COLORS, CAT_ICONS, ALL_CATEGORIES } from '@/constants/questions';
+import { getLocalQuestions, CAT_COLORS, CAT_ICONS, ALL_CATEGORIES, catTint } from '@/constants/questions';
 import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { markDailyPlayed } from '@/lib/dailyRoute';
 import { feedback } from '@/lib/feedback';
 import { AnswerState, Category, Question } from '@/types';
+import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Space, Type, warmGradient } from '@/constants/theme';
 
 type Difficulty = 'all' | 'easy' | 'medium' | 'hard';
 type LearnCat = Category | 'random';
@@ -29,12 +34,22 @@ type LearnCat = Category | 'random';
 const DIFFICULTIES: Difficulty[] = ['all', 'easy', 'medium', 'hard'];
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
-const LEARN_INTERSTITIAL_INTERVAL = 9;
 
-const RANDOM_META = { bg: '#161616', accent: '#cfcfcf', text: '#f0f0f0' };
 const RANDOM_ICON = '🎲';
+// Por encima de este número de preguntas los segmentos quedan por debajo de
+// 1 px y no se ven: a partir de ahí se muestra una barra continua.
+const SEGMENTED_UP_TO = 14;
 
-const getMeta = (c: LearnCat) => (c === 'random' ? RANDOM_META : CAT_COLORS[c]);
+/**
+ * Redondea a la baja para que el "+" siga siendo cierto: 182 → 180, 106 → 100,
+ * 47 → 45. Por debajo de 10 se muestra la cifra exacta, que redondear ahí solo
+ * quitaría información.
+ */
+function roundDownCount(n: number): number {
+  if (n < 10) return n;
+  const step = n >= 100 ? 10 : 5;
+  return Math.floor(n / step) * step;
+}
 
 function filterByDifficulty(questions: Question[], diff: Difficulty): Question[] {
   if (diff === 'all') return questions;
@@ -47,6 +62,7 @@ export default function LearnScreen() {
   const { guest } = useGuest();
   const offline = useOffline();
   const { celebrate } = useProgress();
+  const { C, isDark } = useTheme();
   const [cat, setCat] = useState<LearnCat | null>(null);
   const reportedRef = useRef(new Set<string>());
   const [difficulty, setDifficulty] = useState<Difficulty>('all');
@@ -59,13 +75,27 @@ export default function LearnScreen() {
   const [showCtx, setShowCtx] = useState(false);
   const [combo, setCombo] = useState(0);
   const comboScale = useRef(new Animated.Value(0)).current;
-  const completedQuestionsRef = useRef(0);
+
+  // Nº real de preguntas por tema, para el selector. Sin red se queda vacío y
+  // cada tema cae al tamaño del banco empaquetado.
+  const [counts, setCounts] = useState<CategoryCounts>({});
 
   // Power-ups usables durante la pregunta (50/50, pista, saltar).
   const canUsePowerups = !!user && !guest && !offline;
   const { inventory, consume } = usePowerups(canUsePowerups, user?.id);
   const [fiftyHidden, setFiftyHidden] = useState<number[]>([]);
   const [hintShown, setHintShown] = useState(false);
+
+  // Color de acento de la pantalla: el de la categoría, o la marca en aleatorio.
+  const accent = cat && cat !== 'random' ? readableOn(CAT_COLORS[cat].accent, isDark) : C.brand;
+
+  // Recuentos del catálogo: una sola petición, cacheada 6 h en el cliente.
+  useEffect(() => {
+    if (offline) return;
+    let cancelled = false;
+    fetchQuestionCounts().then(c => { if (!cancelled) setCounts(c); });
+    return () => { cancelled = true; };
+  }, [offline]);
 
   // Micro-animación de "pop" cuando el combo sube.
   const bumpCombo = () => {
@@ -85,7 +115,6 @@ export default function LearnScreen() {
     setCombo(0);
     setFiftyHidden([]);
     setHintShown(false);
-    completedQuestionsRef.current = 0;
     setDifficulty('all');
 
     (async () => {
@@ -167,10 +196,6 @@ export default function LearnScreen() {
   };
 
   const next = () => {
-    completedQuestionsRef.current += 1;
-    if (completedQuestionsRef.current % LEARN_INTERSTITIAL_INTERVAL === 0) {
-      showInterstitialAd('learn_checkpoint');
-    }
     setQIdx(x => x + 1);
     setSelected(null);
     setAnswered(false);
@@ -200,10 +225,6 @@ export default function LearnScreen() {
   };
 
   const finishTopic = () => {
-    completedQuestionsRef.current += 1;
-    if (completedQuestionsRef.current % LEARN_INTERSTITIAL_INTERVAL === 0) {
-      showInterstitialAd('learn_checkpoint');
-    }
     goBack();
   };
 
@@ -217,52 +238,80 @@ export default function LearnScreen() {
     setShowCtx(false);
     setDifficulty('all');
     setCombo(0);
-    completedQuestionsRef.current = 0;
   };
 
   // ─ Category picker
   if (!cat) {
+    const bank = getLocalQuestions(getCurrentLang());
+
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
-        <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
-          <Text style={{ color: '#fff', fontSize: 22, fontFamily: 'Outfit_800ExtraBold', marginBottom: 4 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+        <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+          <Text style={{ color: C.text, ...Type.screenTitle, marginBottom: 4 }}>
             {t('learn.pickerTitle')}
           </Text>
-          <Text style={{ color: 'rgba(255,255,255,0.35)', fontSize: 14, fontFamily: 'Outfit_400Regular', marginBottom: 24 }}>
+          <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, marginBottom: 16, lineHeight: 23 }}>
             {t('learn.pickerSub')}
           </Text>
 
-          <View style={{ gap: 10 }}>
-            <Pressable onPress={() => setCat('random')}>
-              <View style={{ backgroundColor: RANDOM_META.bg, borderWidth: 1, borderColor: RANDOM_META.accent + '30', borderRadius: 18, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-                <Text style={{ fontSize: 28 }}>{RANDOM_ICON}</Text>
-                <View style={{ flex: 1 }}>
-                  <Text style={{ color: RANDOM_META.text, fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
-                    {t('learn.randomName')}
-                  </Text>
-                  <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>
-                    {t('learn.randomDesc')}
-                  </Text>
-                </View>
-                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 20 }}>›</Text>
+          {/* Sorpréndeme, a ancho completo */}
+          <Pressable onPress={() => setCat('random')}>
+            <LinearGradient
+              colors={warmGradient(isDark)}
+              start={{ x: 0, y: 0 }} end={{ x: 0.7, y: 1 }}
+              style={{
+                borderRadius: Radius.cardLg, padding: 16,
+                borderWidth: 1.5, borderColor: C.borderWarm,
+                flexDirection: 'row', alignItems: 'center', gap: 14,
+              }}
+            >
+              <Text style={{ fontSize: 32 }}>{RANDOM_ICON}</Text>
+              <View style={{ flex: 1, gap: 2 }}>
+                <Text style={{ color: C.text, fontSize: 18, fontFamily: Font.black }}>
+                  {t('learn.randomName')}
+                </Text>
+                <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular }}>
+                  {t('learn.randomDesc')}
+                </Text>
               </View>
-            </Pressable>
+              <Text style={{ color: C.brandDeep, fontSize: 20 }}>›</Text>
+            </LinearGradient>
+          </Pressable>
+
+          {/* Rejilla de temas: dos columnas, y el que sobra se queda solo en la
+              última fila con el mismo ancho que los demás. */}
+          <View style={{
+            flexDirection: 'row', flexWrap: 'wrap',
+            justifyContent: 'space-between', rowGap: 10, marginTop: 14,
+          }}>
             {ALL_CATEGORIES.map(c => {
-              const col = CAT_COLORS[c];
-              const count = getLocalQuestions(getCurrentLang())[c].length;
+              const tone = catTint(CAT_COLORS[c], isDark);
+              // El recuento real del catálogo; sin red, el banco empaquetado.
+              const count = counts[c] ?? bank[c].length;
+              const shown = roundDownCount(count);
+
               return (
-                <Pressable key={c} onPress={() => setCat(c)}>
-                  <View style={{ backgroundColor: col.bg, borderWidth: 1, borderColor: col.accent + '30', borderRadius: 18, padding: 16, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-                    <Text style={{ fontSize: 28 }}>{CAT_ICONS[c]}</Text>
-                    <View style={{ flex: 1 }}>
-                      <Text style={{ color: col.text, fontSize: 16, fontFamily: 'Outfit_700Bold' }}>
+                <Pressable key={c} onPress={() => setCat(c)} style={{ width: '48.5%' }}>
+                  <View style={{
+                    backgroundColor: C.surface, borderWidth: 1, borderColor: C.border,
+                    borderRadius: Radius.card, padding: 14, gap: 7, minHeight: 118,
+                  }}>
+                    <View style={{
+                      width: 40, height: 40, borderRadius: 13,
+                      backgroundColor: tone.bg, alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <Text style={{ fontSize: 20 }}>{CAT_ICONS[c]}</Text>
+                    </View>
+                    <View>
+                      <Text style={{ color: C.text, fontSize: 15, fontFamily: Font.extra }}>
                         {t(`categories.${c}`)}
                       </Text>
-                      <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_400Regular', marginTop: 2 }}>
-                        {t('learn.countQuestions', { count })}
+                      <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginTop: 2 }}>
+                        {shown < count
+                          ? t('learn.countQuestions', { count: shown })
+                          : t('learn.countQuestionsExact', { count: shown })}
                       </Text>
                     </View>
-                    <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 20 }}>›</Text>
                   </View>
                 </Pressable>
               );
@@ -275,11 +324,10 @@ export default function LearnScreen() {
 
   // ─ Loading
   if (loadingQ) {
-    const col = getMeta(cat);
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <ActivityIndicator color={col.accent} size="large" />
+          <ActivityIndicator color={accent} size="large" />
         </View>
       </SafeAreaView>
     );
@@ -287,7 +335,6 @@ export default function LearnScreen() {
 
   if (!q) return null;
 
-  const col = getMeta(cat);
   const correct = selected === q.ans;
   const isLast = qIdx % questions.length === questions.length - 1;
 
@@ -321,25 +368,29 @@ export default function LearnScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#0a0a0a' }} edges={['top']}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-        <View style={{ padding: 20 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }}>
+        <View style={{ padding: Space.screen }}>
           {/* Nav */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-            <Pressable onPress={goBack} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 20 }}>←</Text>
-              <Text style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, fontFamily: 'Outfit_400Regular' }}>{t('learn.topics')}</Text>
+            <Pressable onPress={goBack} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }} hitSlop={8}>
+              <Text style={{ color: C.textMuted, fontSize: 20 }}>←</Text>
+              <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.bold }}>{t('learn.topics')}</Text>
             </Pressable>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Pressable onPress={handleReport} style={{ padding: 4 }}>
-                <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 18 }}>⚑</Text>
+              <Pressable onPress={handleReport} style={{ padding: 6 }} hitSlop={8}>
+                <Text style={{ color: C.textFaint, fontSize: 18 }}>⚑</Text>
               </Pressable>
               {cat === 'random' && q.category ? (
                 <CategoryBadge cat={q.category} small />
               ) : cat === 'random' ? (
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: RANDOM_META.bg, paddingVertical: 3, paddingHorizontal: 8, borderRadius: 99, borderWidth: 1, borderColor: RANDOM_META.accent + '30' }}>
-                  <Text style={{ fontSize: 11 }}>{RANDOM_ICON}</Text>
-                  <Text style={{ color: RANDOM_META.text, fontSize: 11, fontFamily: 'Outfit_600SemiBold' }}>{t('learn.randomName')}</Text>
+                <View style={{
+                  flexDirection: 'row', alignItems: 'center', gap: 6,
+                  backgroundColor: C.brandTint, paddingVertical: 6, paddingHorizontal: 12,
+                  borderRadius: Radius.pill,
+                }}>
+                  <Text style={{ fontSize: 12 }}>{RANDOM_ICON}</Text>
+                  <Text style={{ color: C.brandDeep, fontSize: 12, fontFamily: Font.extra }}>{t('learn.randomName')}</Text>
                 </View>
               ) : (
                 <CategoryBadge cat={cat} small />
@@ -348,7 +399,7 @@ export default function LearnScreen() {
           </View>
 
           {/* Difficulty filter */}
-          <View style={{ flexDirection: 'row', gap: 6, marginBottom: 18 }}>
+          <View style={{ flexDirection: 'row', gap: 7, marginBottom: 18 }}>
             {DIFFICULTIES.map(d => {
               const active = difficulty === d;
               return (
@@ -356,18 +407,18 @@ export default function LearnScreen() {
                   key={d}
                   onPress={() => setDifficulty(d)}
                   style={{
-                    paddingVertical: 5,
-                    paddingHorizontal: 12,
-                    borderRadius: 99,
-                    backgroundColor: active ? col.accent : '#1a1a1a',
+                    paddingVertical: 7,
+                    paddingHorizontal: 14,
+                    borderRadius: Radius.pill,
+                    backgroundColor: active ? C.brand : C.surface,
                     borderWidth: 1,
-                    borderColor: active ? col.accent : 'transparent',
+                    borderColor: active ? C.brand : C.border,
                   }}
                 >
                   <Text style={{
-                    color: active ? '#fff' : 'rgba(255,255,255,0.4)',
-                    fontFamily: active ? 'Outfit_600SemiBold' : 'Outfit_400Regular',
-                    fontSize: 12,
+                    color: active ? C.onBrand : C.textMuted,
+                    fontFamily: active ? Font.extra : Font.bold,
+                    fontSize: 13,
                   }}>
                     {t(`learn.diff.${d}`)}
                   </Text>
@@ -376,23 +427,41 @@ export default function LearnScreen() {
             })}
           </View>
 
-          {/* Progress dots */}
-          <View style={{ flexDirection: 'row', gap: 3, marginBottom: 16 }}>
-            {questions.map((_, i) => (
-              <View key={i} style={{ flex: 1, height: 3, borderRadius: 99, backgroundColor: i <= qIdx % questions.length ? col.accent : '#1a1a1a' }} />
-            ))}
-          </View>
+          {/* Progreso: segmentos si el tema es corto; barra continua si no.
+              Con bancos de 100+ preguntas los segmentos no caben y la fila se
+              quedaba en blanco. */}
+          {questions.length <= SEGMENTED_UP_TO ? (
+            <View style={{ flexDirection: 'row', gap: 4, marginBottom: 14 }}>
+              {questions.map((_, i) => (
+                <View key={i} style={{
+                  flex: 1, height: 5, borderRadius: Radius.pill,
+                  backgroundColor: i <= qIdx % questions.length ? C.brand : C.track,
+                }} />
+              ))}
+            </View>
+          ) : (
+            <View style={{ height: 5, borderRadius: Radius.pill, backgroundColor: C.track, marginBottom: 14, overflow: 'hidden' }}>
+              <View style={{
+                height: '100%', borderRadius: Radius.pill, backgroundColor: C.brand,
+                width: `${(((qIdx % questions.length) + 1) / questions.length) * 100}%`,
+              }} />
+            </View>
+          )}
 
           {/* Question counter + combo */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-            <Text style={{ color: 'rgba(255,255,255,0.3)', fontSize: 12, fontFamily: 'Outfit_600SemiBold' }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+            <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra }}>
               {(qIdx % questions.length) + 1} / {questions.length}
             </Text>
             {combo >= 2 && (
               <Animated.View style={{ transform: [{ scale: comboScale }] }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, backgroundColor: 'rgba(232,160,48,0.12)', borderWidth: 1, borderColor: 'rgba(232,160,48,0.4)', borderRadius: 99, paddingVertical: 4, paddingHorizontal: 11 }}>
+                <View style={{
+                  flexDirection: 'row', alignItems: 'center', gap: 6,
+                  backgroundColor: C.brandTint, borderWidth: 1, borderColor: C.borderWarm,
+                  borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 12,
+                }}>
                   <Text style={{ fontSize: 13 }}>🔥</Text>
-                  <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 12 }}>
+                  <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>
                     {t('learn.combo', { count: combo })}
                   </Text>
                 </View>
@@ -401,34 +470,53 @@ export default function LearnScreen() {
           </View>
 
           {/* Question */}
-          <Text style={{ color: '#fff', fontSize: 19, fontFamily: 'Outfit_700Bold', lineHeight: 28, marginBottom: 24 }}>
+          <Text style={{ color: C.text, ...Type.question, marginBottom: 20 }}>
             {q.q}
           </Text>
 
           {/* Options */}
-          <View style={{ gap: 9 }}>
+          <View style={{ gap: 11 }}>
             {q.opts.map((opt, i) =>
               fiftyHidden.includes(i) ? (
-                <View key={i} style={{ borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.04)', borderRadius: 14, paddingVertical: 14, paddingHorizontal: 16, opacity: 0.3 }}>
-                  <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 15, fontFamily: 'Outfit_500Medium' }}>—</Text>
+                <View key={i} style={{
+                  borderWidth: 1.5, borderColor: C.border, backgroundColor: C.surfaceSunk,
+                  borderRadius: 18, paddingVertical: 16, paddingHorizontal: 16, opacity: 0.5,
+                  minHeight: 60, justifyContent: 'center',
+                }}>
+                  <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
                 </View>
               ) : (
-                <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+                <OptionBtn
+                  key={i}
+                  text={opt}
+                  letter={LETTERS[i]}
+                  state={getState(i)}
+                  dimmed={answered && getState(i) === null}
+                  onPress={() => handle(i)}
+                />
               ),
             )}
           </View>
 
           {/* Pista (power-up) */}
           {hintShown && !answered && q.ctx && (
-            <View style={{ marginTop: 14, padding: 12, backgroundColor: 'rgba(232,160,48,0.08)', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(232,160,48,0.25)' }}>
-              <Text style={{ color: '#e8a030', fontFamily: 'Outfit_700Bold', fontSize: 12, marginBottom: 3 }}>{t('ladder.hint')}</Text>
-              <Text style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Outfit_400Regular', fontSize: 12, lineHeight: 18 }}>{q.ctx}</Text>
+            <View style={{
+              marginTop: 16, padding: 16, backgroundColor: C.surface, borderRadius: Radius.card,
+              borderWidth: 1.5, borderColor: C.borderWarm,
+            }}>
+              <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 15, marginBottom: 6 }}>
+                {t('ladder.hint')}
+              </Text>
+              <Text style={{ color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 22 }}>{q.ctx}</Text>
             </View>
           )}
 
           {/* Power-ups */}
           {canUsePowerups && !answered && powerUps.some(p => p.count > 0) && (
-            <View style={{ marginTop: 16 }}>
+            <View style={{ marginTop: 18, gap: 9 }}>
+              <Text style={{ color: C.textFaint, ...Type.sectionLabel, fontSize: 12 }}>
+                {t('common.yourHelpers')}
+              </Text>
               <PowerUpBar items={powerUps} onUse={usePowerUp} />
             </View>
           )}
@@ -436,11 +524,15 @@ export default function LearnScreen() {
 
         {/* Context */}
         {showCtx && q.ctx && (
-          <View style={{ marginHorizontal: 20, marginBottom: 16, padding: 16, backgroundColor: 'rgba(232,48,96,0.06)', borderRadius: 16, borderWidth: 1, borderColor: 'rgba(232,48,96,0.2)' }}>
-            <Text style={{ color: '#e83060', fontFamily: 'Outfit_700Bold', marginBottom: 6, fontSize: 13 }}>
+          <View style={{
+            marginHorizontal: Space.screen, marginBottom: 16, padding: 16,
+            backgroundColor: C.surface, borderRadius: Radius.card,
+            borderWidth: 1.5, borderColor: C.borderWarm,
+          }}>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.black, marginBottom: 6, fontSize: 15 }}>
               {t('learn.context')}
             </Text>
-            <Text style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, fontFamily: 'Outfit_400Regular', lineHeight: 20 }}>
+            <Text style={{ color: C.textBody, fontSize: 14, fontFamily: Font.regular, lineHeight: 22 }}>
               {q.ctx}
             </Text>
           </View>
@@ -448,21 +540,21 @@ export default function LearnScreen() {
 
         {/* Next button */}
         {answered && (
-          <View style={{ paddingHorizontal: 20 }}>
+          <View style={{ paddingHorizontal: Space.screen }}>
             <Pressable onPress={isLast ? finishTopic : next}>
-              <LinearGradient
-                colors={correct ? ['#2ec87a', '#1a9a5c'] : [col.accent, col.accent + '99']}
-                start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-                style={{ borderRadius: 14, padding: 15, alignItems: 'center' }}
-              >
-                <Text style={{ color: '#fff', fontSize: 15, fontFamily: 'Outfit_700Bold' }}>
+              <View style={{
+                borderRadius: 18, padding: 16, alignItems: 'center',
+                backgroundColor: correct ? C.correct : C.brand,
+              }}>
+                <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.extra }}>
                   {isLast ? t('learn.topicDone') : t('learn.next')}
                 </Text>
-              </LinearGradient>
+              </View>
             </Pressable>
           </View>
         )}
       </ScrollView>
+      <AdBannerSlot />
     </SafeAreaView>
   );
 }

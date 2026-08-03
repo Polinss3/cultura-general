@@ -8,27 +8,27 @@ import * as Linking from 'expo-linking';
 import { Alert } from 'react-native';
 import {
   useFonts,
-  Outfit_300Light,
-  Outfit_400Regular,
-  Outfit_500Medium,
-  Outfit_600SemiBold,
-  Outfit_700Bold,
-  Outfit_800ExtraBold,
-} from '@expo-google-fonts/outfit';
+  Nunito_400Regular,
+  Nunito_600SemiBold,
+  Nunito_700Bold,
+  Nunito_800ExtraBold,
+  Nunito_900Black,
+} from '@expo-google-fonts/nunito';
 import * as Sentry from '@sentry/react-native';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setOffline, probeConnection } from '@/lib/offline';
-import { initMetaSdk, syncMetaAdvertiserTracking } from '@/lib/metaSdk';
-import { initializeAdMob } from '@/lib/admob';
-import { startAppsFlyerAfterConsent } from '@/lib/appsflyer';
+import { markAdsSessionStarted } from '@/lib/ads';
+import { applyAdvertisingDecision } from '@/lib/advertising';
 import { BootScreen } from '@/components/BootScreen';
+import { AdsConsentModal } from '@/components/AdsConsentModal';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { ProgressProvider } from '@/context/ProgressContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
-import { applyPersistedLanguage } from '@/lib/i18n';
+import { applyPersistedLanguage, getCurrentLang } from '@/lib/i18n';
+import { loadThemePreference } from '@/lib/appearance';
 import { purgeLegacyQuestionCache } from '@/lib/db';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
 import { initFeedback } from '@/lib/feedback';
@@ -37,6 +37,13 @@ import { setSentryUser } from '@/lib/sentry';
 import { clearGuestData } from '@/lib/guest';
 import { handleIncomingAuthUrl } from '@/lib/auth';
 import { requiresProfileCompletion } from '@/lib/authValidation';
+import { useIsDark } from '@/constants/colors';
+import {
+  type AdsConsentDecision,
+  hydrateAdsConsent,
+  saveAdsConsentDecision,
+  subscribeAdsPreferencesReview,
+} from '@/stores/adsConsentStore';
 
 Sentry.init({
   dsn: 'https://b47aaa6f083737c40dd659db4a776b87@o4511400341995520.ingest.de.sentry.io/4511400352546896',
@@ -54,14 +61,29 @@ Sentry.init({
 
 SplashScreen.preventAutoHideAsync();
 
+// Plazos del arranque. Ninguna promesa puede dejar la app clavada en la
+// BootScreen: a los 5s ofrecemos el modo sin conexión y a los 10s entramos
+// igualmente con lo que haya (rechazo 2.1(a) de Apple: "App launched on a
+// splash screen", iPadOS 26.5, al actualizar sobre una versión con sesión
+// guardada y la red del backend inaccesible).
+const BOOT_OFFLINE_HINT_MS = 5000;
+const BOOT_HARD_DEADLINE_MS = 10000;
+
+// La StatusBar necesita el esquema resuelto (preferencia + sistema), así que
+// va en su propio componente: los hooks de tema tienen que estar dentro del
+// árbol que ya se está renderizando.
+function AppStatusBar() {
+  const isDark = useIsDark();
+  return <StatusBar style={isDark ? 'light' : 'dark'} />;
+}
+
 function RootLayout() {
-  const [fontsLoaded] = useFonts({
-    Outfit_300Light,
-    Outfit_400Regular,
-    Outfit_500Medium,
-    Outfit_600SemiBold,
-    Outfit_700Bold,
-    Outfit_800ExtraBold,
+  const [fontsLoaded, fontError] = useFonts({
+    Nunito_400Regular,
+    Nunito_600SemiBold,
+    Nunito_700Bold,
+    Nunito_800ExtraBold,
+    Nunito_900Black,
   });
 
   const { session, loading } = useAuth();
@@ -78,17 +100,29 @@ function RootLayout() {
   // Arranque sin conexión.
   const [probeDone, setProbeDone] = useState(false);   // sonda de red resuelta
   const [manualEnter, setManualEnter] = useState(false); // usuario pulsó "Continuar sin conexión"
-  const [bootTimedOut, setBootTimedOut] = useState(false); // han pasado ~10s cargando
+  const [bootTimedOut, setBootTimedOut] = useState(false); // toca ofrecer el modo sin conexión
+  const [bootExpired, setBootExpired] = useState(false);   // plazo máximo agotado: entramos igual
+  const [adsConsentHydrated, setAdsConsentHydrated] = useState(false);
+  const [adsDecision, setAdsDecision] = useState<AdsConsentDecision | null>(null);
+  const [reviewAdsPreferences, setReviewAdsPreferences] = useState(false);
 
   useEffect(() => {
-    getOnboardingCompleted().then(setOnboarded);
+    // Ante un fallo de storage asumimos "sin onboarding": preferimos repetirlo
+    // a quedarnos esperando para siempre.
+    getOnboardingCompleted().then(setOnboarded).catch(() => setOnboarded(false));
+  }, []);
+
+  // Red de seguridad del arranque: pase lo que pase, la app entra.
+  useEffect(() => {
+    const timer = setTimeout(() => setBootExpired(true), BOOT_HARD_DEADLINE_MS);
+    return () => clearTimeout(timer);
   }, []);
 
   // Idioma: aplicar override guardado bajo el BootScreen (sin flash), y de
   // paso limpiar la caché de preguntas v1 y reprogramar el recordatorio en el
   // idioma activo (cubre a quien cambió el idioma del sistema con la app cerrada).
   useEffect(() => {
-    applyPersistedLanguage().finally(() => {
+    Promise.all([applyPersistedLanguage(), loadThemePreference()]).finally(() => {
       setLangReady(true);
       purgeLegacyQuestionCache();
       rescheduleDailyReminderIfActive();
@@ -96,12 +130,7 @@ function RootLayout() {
     });
   }, []);
 
-  // Meta SDK: inicializar y sincronizar el tracking publicitario con el ATT
-  // ya concedido (usuarios que respondieron en sesiones anteriores).
-  useEffect(() => {
-    initMetaSdk();
-    syncMetaAdvertiserTracking();
-  }, []);
+  useEffect(() => subscribeAdsPreferencesReview(() => setReviewAdsPreferences(true)), []);
 
   // Sonda de conectividad al arrancar + temporizador para ofrecer el modo
   // sin conexión si la carga se alarga.
@@ -114,7 +143,7 @@ function RootLayout() {
     });
     const timer = setTimeout(() => {
       if (!cancelled) setBootTimedOut(true);
-    }, 10000);
+    }, BOOT_OFFLINE_HINT_MS);
     return () => {
       cancelled = true;
       clearTimeout(timer);
@@ -143,9 +172,14 @@ function RootLayout() {
     };
 
     const bootstrap = async () => {
-      const initialUrl = await Linking.getInitialURL();
-      if (initialUrl) await handleDeepLink(initialUrl);
-      if (!cancelled) setAuthLinkReady(true);
+      try {
+        const initialUrl = await Linking.getInitialURL();
+        if (initialUrl) await handleDeepLink(initialUrl);
+      } catch {
+        // Un deep link ilegible no puede impedir que la app arranque.
+      } finally {
+        if (!cancelled) setAuthLinkReady(true);
+      }
     };
 
     bootstrap();
@@ -202,17 +236,34 @@ function RootLayout() {
   }, [session?.user?.id, session?.user?.updated_at]);
 
   // ─ Estado de arranque ─
+  // Si las fuentes fallan seguimos con las del sistema: es preferible a no arrancar.
+  const fontsReady = fontsLoaded || !!fontError;
   const authResolved =
-    fontsLoaded && !loading && !guestLoading && onboarded !== null && authLinkReady && profileReady && langReady;
+    fontsReady && !loading && !guestLoading && onboarded !== null && authLinkReady && profileReady && langReady;
   const hasIdentity = !!session || guest;
   // Usuario sin sesión + sin red confirmada: requiere pulsar "Continuar sin conexión".
   const needsManualEntry = offline && !hasIdentity;
-  const ready = authResolved && (hasIdentity || manualEnter || (probeDone && !offline));
+  // `manualEnter` y `bootExpired` entran por su cuenta: son las salidas de
+  // emergencia y no pueden depender de `authResolved`, que es justo lo que
+  // puede quedarse a medias.
+  const ready =
+    (authResolved && (hasIdentity || (probeDone && !offline))) || manualEnter || bootExpired;
 
   useEffect(() => {
     if (!ready || !onboarded) return;
-    initializeAdMob();
-    startAppsFlyerAfterConsent();
+    let cancelled = false;
+    markAdsSessionStarted();
+    hydrateAdsConsent()
+      .then(decision => {
+        if (cancelled) return;
+        setAdsDecision(decision);
+        setAdsConsentHydrated(true);
+        if (decision) applyAdvertisingDecision(decision);
+      })
+      .catch(() => {
+        if (!cancelled) setAdsConsentHydrated(true);
+      });
+    return () => { cancelled = true; };
   }, [ready, onboarded]);
 
   // Ocultar la splash nativa cuando ya podemos mostrar UI propia (app o BootScreen).
@@ -228,7 +279,7 @@ function RootLayout() {
     let cancelled = false;
 
     const syncOnboardingAndRoute = async () => {
-      const hasCompletedOnboarding = await getOnboardingCompleted();
+      const hasCompletedOnboarding = await getOnboardingCompleted().catch(() => onboarded ?? false);
       if (cancelled) return;
 
       if (hasCompletedOnboarding !== onboarded) {
@@ -332,12 +383,27 @@ function RootLayout() {
     <ErrorBoundary>
       <ToastProvider>
         <ProgressProvider>
-          <StatusBar style="light" />
+          <AppStatusBar />
           <Stack
             screenOptions={{
               headerShown: false,
               animation: 'slide_from_right',
               animationDuration: 250,
+            }}
+          />
+          <AdsConsentModal
+            visible={Boolean(onboarded && adsConsentHydrated && (!adsDecision || reviewAdsPreferences))}
+            initialDecision={adsDecision}
+            dismissible={Boolean(adsDecision && reviewAdsPreferences)}
+            onDismiss={() => setReviewAdsPreferences(false)}
+            onSave={async input => {
+              const decision = await saveAdsConsentDecision({
+                ...input,
+                language: getCurrentLang(),
+              });
+              setAdsDecision(decision);
+              setReviewAdsPreferences(false);
+              await applyAdvertisingDecision(decision);
             }}
           />
         </ProgressProvider>

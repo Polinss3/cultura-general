@@ -2,13 +2,13 @@
   "expo": {
     "name": "CG Trivia",
     "slug": "cultura-general",
-    "version": "1.3.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "culturalgeneral",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "automatic",
     "backgroundColor": "#0a0a0a",
-    "primaryColor": "#e8a030",
+    "primaryColor": "#E07A3E",
     "locales": {
       "es": "./locales/native/es.json",
       "en": "./locales/native/en.json"
@@ -16,7 +16,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "53",
+      "buildNumber": "61",
       "usesAppleSignIn": true,
       "infoPlist": {
         "NSCameraUsageDescription": "The app does not use the camera.",
@@ -79,20 +79,6 @@
         }
       ],
       [
-        "react-native-google-mobile-ads",
-        {
-          "androidAppId": "ca-app-pub-3235517249572183~6818966509",
-          "iosAppId": "ca-app-pub-3235517249572183~4284527843",
-          "delayAppMeasurementInit": true,
-          "skAdNetworkItems": [
-            "cstr6suwn9.skadnetwork",
-            "4fzdc2evr5.skadnetwork",
-            "2fnua5tdw4.skadnetwork",
-            "ydx93a7ass.skadnetwork"
-          ]
-        }
-      ],
-      [
         "@sentry/react-native/expo",
         {
           "url": "https://sentry.io/",
@@ -109,9 +95,9 @@
           "clientToken": "a75d1a12972b7429f36cbeca78ee4aab",
           "displayName": "Cultura General",
           "scheme": "fb996686176323860",
-          "advertiserIDCollectionEnabled": true,
-          "autoLogAppEventsEnabled": true,
-          "isAutoInitEnabled": true
+          "advertiserIDCollectionEnabled": false,
+          "autoLogAppEventsEnabled": false,
+          "isAutoInitEnabled": false
         }
       ],
       "expo-localization",

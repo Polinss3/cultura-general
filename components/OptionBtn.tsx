@@ -2,25 +2,31 @@ import { useEffect, useRef } from 'react';
 import { Animated, Easing, Pressable, Text, View } from 'react-native';
 import { feedback } from '@/lib/feedback';
 import { AnswerState } from '@/types';
+import { useColors } from '@/constants/colors';
+import { Font, Radius } from '@/constants/theme';
 
 interface Props {
   text: string;
   letter: string;
   state: AnswerState;
   onPress: () => void;
+  /** Apaga las opciones que no son la elegida ni la correcta, tras responder. */
+  dimmed?: boolean;
 }
 
-export function OptionBtn({ text, letter, state, onPress }: Props) {
+export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
+  const C = useColors();
   const scale = useRef(new Animated.Value(1)).current;
 
   // Haptic feedback when answer is revealed
   useEffect(() => {
     if (state === 'correct') {
       feedback.correct();
-      // Pop de celebración al revelar la correcta.
+      // Pop de entrada al revelar la correcta: 0.9 → 1.04 → 1 (~400 ms).
+      scale.setValue(0.9);
       Animated.sequence([
-        Animated.timing(scale, { toValue: 1.04, duration: 140, easing: Easing.out(Easing.quad), useNativeDriver: true }),
-        Animated.spring(scale, { toValue: 1, friction: 4, tension: 90, useNativeDriver: true }),
+        Animated.timing(scale, { toValue: 1.04, duration: 240, easing: Easing.out(Easing.quad), useNativeDriver: true }),
+        Animated.timing(scale, { toValue: 1, duration: 160, easing: Easing.out(Easing.quad), useNativeDriver: true }),
       ]).start();
     } else if (state === 'wrong') {
       feedback.wrong();
@@ -46,58 +52,66 @@ export function OptionBtn({ text, letter, state, onPress }: Props) {
     onPress();
   };
 
+  const revealed = state === 'correct' || state === 'wrong';
+
   const borderColor =
-    state === 'correct' ? '#2ec87a' :
-    state === 'wrong'   ? '#e83060' :
-    state === 'selected'? '#fff'    : 'rgba(255,255,255,0.12)';
+    state === 'correct' ? C.correct :
+    state === 'wrong'   ? C.wrong :
+    state === 'selected'? C.brand : C.borderStrong;
 
   const bg =
-    state === 'correct' ? 'rgba(46,200,122,0.1)'  :
-    state === 'wrong'   ? 'rgba(232,48,96,0.1)'   :
-    state === 'selected'? 'rgba(255,255,255,0.08)' : 'transparent';
+    state === 'correct' ? C.correctTint :
+    state === 'wrong'   ? C.wrongTint :
+    state === 'selected'? C.brandTint : C.surface;
 
   const color =
-    state === 'correct' ? '#2ec87a' :
-    state === 'wrong'   ? '#e83060' : '#fff';
+    state === 'correct' ? C.correctText :
+    state === 'wrong'   ? C.wrongText : C.text;
 
   const badgeBg =
-    state === 'correct' ? 'rgba(46,200,122,0.2)'  :
-    state === 'wrong'   ? 'rgba(232,48,96,0.2)'   :
-    state === 'selected'? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.08)';
+    state === 'correct' ? C.correct :
+    state === 'wrong'   ? C.wrong :
+    state === 'selected'? C.brand : C.surfaceSunk;
 
-  const badgeColor =
-    state === 'correct' ? '#2ec87a' :
-    state === 'wrong'   ? '#e83060' : 'rgba(255,255,255,0.6)';
+  const badgeColor = revealed || state === 'selected' ? C.onBrand : C.textFaint;
 
   return (
-    <Animated.View style={{ transform: [{ scale }] }}>
+    <Animated.View style={{ transform: [{ scale }], opacity: dimmed ? 0.55 : 1 }}>
       <Pressable
         onPress={handlePress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         style={{
-          borderWidth: 1.5,
+          // Constante: si engordara al revelar, el texto perdería 1 pt de
+          // ancho y un nombre largo podría saltar a dos líneas.
+          borderWidth: 2,
           borderColor,
           backgroundColor: bg,
-          borderRadius: 14,
-          paddingVertical: 14,
+          borderRadius: 18,
+          paddingVertical: 16,
           paddingHorizontal: 16,
           flexDirection: 'row',
           alignItems: 'center',
-          gap: 12,
+          gap: 13,
+          minHeight: 60,
         }}
       >
         <View style={{
-          width: 26, height: 26, borderRadius: 8,
+          width: 30, height: 30, borderRadius: 10,
           backgroundColor: badgeBg,
           alignItems: 'center', justifyContent: 'center',
         }}>
-          <Text style={{ color: badgeColor, fontSize: 12, fontFamily: 'Outfit_700Bold' }}>
+          <Text style={{ color: badgeColor, fontSize: 13, fontFamily: Font.black }}>
             {letter}
           </Text>
         </View>
-        <Text style={{ color, fontSize: 15, fontFamily: 'Outfit_500Medium', flex: 1 }}>
+        <Text style={{ color, fontSize: 16, fontFamily: revealed ? Font.extra : Font.semi, flex: 1 }}>
           {text}
+        </Text>
+        {/* Hueco reservado: la marca aparece por opacidad, no montándose, para
+            que la etiqueta no cambie de ancho ni reajuste sus líneas. */}
+        <Text style={{ fontSize: 16, width: 18, textAlign: 'right', opacity: revealed ? 1 : 0 }}>
+          {state === 'wrong' ? '✗' : '✓'}
         </Text>
       </Pressable>
     </Animated.View>
