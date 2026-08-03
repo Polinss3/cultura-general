@@ -13,8 +13,8 @@ consolas (EAS solo sube los binarios, no gestiona metadatos).
    - **Spanish (Mexico/Spain)**: pega `app-store-es.md`.
    - **English (U.S.)**: pega `app-store-en.md`.
 3. Campos por idioma: Name, Subtitle, Promotional Text, Description, Keywords, What's New.
-4. **Privacy Policy URL**: EN → `https://<usuario>.github.io/.../privacy-en.html`;
-   ES → la actual `privacy.html`.
+4. **Privacy Policy URL**: EN → `https://cg-trivia.pablobrasero.com/en/privacy`;
+   ES → `https://cg-trivia.pablobrasero.com/privacy`.
 5. Capturas: subir un set por idioma (pendiente, tarea manual).
 
 > Nota: cambiar el nombre visible puede generar preguntas en revisión. Si
@@ -34,5 +34,5 @@ consolas (EAS solo sube los binarios, no gestiona metadatos).
 
 - [ ] `supabase/i18n_en.sql` aplicado.
 - [ ] `supabase/questions_en.sql` aplicado y `missing_en = 0` (cobertura 100%).
-- [ ] `docs/privacy-en.html` publicado en GitHub Pages.
+- [ ] Web legal publicada en `https://cg-trivia.pablobrasero.com`.
 - [ ] Capturas EN subidas.

@@ -6,8 +6,8 @@ import { getCurrentLang } from '@/lib/i18n';
 import { Font, Radius, Space } from '@/constants/theme';
 import { useTheme } from '@/constants/colors';
 
-const PRIVACY_URL_ES = 'https://polinss3.github.io/cultura-general/privacy.html';
-const PRIVACY_URL_EN = 'https://polinss3.github.io/cultura-general/privacy-en.html';
+const PRIVACY_URL_ES = 'https://cg-trivia.pablobrasero.com/privacy';
+const PRIVACY_URL_EN = 'https://cg-trivia.pablobrasero.com/en/privacy';
 
 function privacyUrl() {
   return getCurrentLang() === 'en' ? PRIVACY_URL_EN : PRIVACY_URL_ES;
