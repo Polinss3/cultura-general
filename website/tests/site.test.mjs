@@ -60,6 +60,26 @@ test("modes and categories on the landing match what the app ships", async () =>
   }
 });
 
+test("the published privacy policy matches the one shipped inside the app", async () => {
+  // La app renderiza sus propias secciones desde locales/*.json, así que son dos
+  // textos distintos que describen el mismo tratamiento de datos. Si se
+  // desincronizan, el revisor de la tienda lee una cosa y el usuario otra. Aquí
+  // se comparan los encabezados de ambas: mismo número, mismo orden, mismo título.
+  for (const [locale, page] of [["es", "privacy/index.html"], ["en", "en/privacy/index.html"]]) {
+    const strings = JSON.parse(await readFile(new URL(`../../locales/${locale}.json`, import.meta.url), "utf8"));
+    const inApp = Object.values(strings.privacy.sections).map((s) => s.title);
+    const body = /<div class="legal-copy">(.*?)<\/div><\/div><\/article>/s.exec(await text(page));
+    assert.ok(body, `no encuentro el cuerpo legal en ${page}`);
+    const published = [...body[1].matchAll(/<h2>([^<]+)<\/h2>/g)].map((m) => m[1]);
+
+    assert.deepEqual(
+      published,
+      inApp,
+      `las secciones de ${locale} no coinciden entre la web y la app`,
+    );
+  }
+});
+
 test("every page includes the accessible three-way appearance selector", async () => {
   const html = await text("index.html");
   assert.match(html, /data-theme-value="system"/);

@@ -691,44 +691,60 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "updatedAt": "Last updated: August 2026",
-    "intro": "At {{appName}} we take your privacy seriously. This policy explains what data we collect, how we use it and how we protect it.",
+    "updatedAt": "Last updated: August 3, 2026",
+    "intro": "Here we explain what information {{appName}} handles, what it is used for and how you can exercise your rights.",
     "sections": {
       "s1": {
-        "title": "1. Information we collect",
-        "body": "We collect the following information when you use {{appName}}:\n\n• Email address (to create your account)\n• The username you choose\n• Answers to questions (to compute your stats)\n• Day streak, scores and personal records\n\nWe do not collect location data, contacts or other sensitive information."
+        "title": "1. Controller and scope",
+        "body": "{{appName}} —also presented as Cultura General— is run by Pablo Brasero, an independent developer based in Spain. Write to pablobrasero@gmail.com with any privacy question.\n\nThis policy covers the iOS and Android app and its official website. The full, always-current version lives at cg-trivia.pablobrasero.com/en/privacy."
       },
       "s2": {
-        "title": "2. How we use your information",
-        "body": "We use your data only to:\n\n• Show your profile and stats within the app\n• Compute daily, weekly and global rankings\n• Keep your streak of consecutive answers\n• Send you local notifications if you enable them (only on your device)\n• Keep the app free by showing limited advertising through AppLovin MAX, only to adults who completed the privacy choice\n\nWe do not sell or rent your personal data."
+        "title": "2. Information we process",
+        "body": "To create an account we handle your email address, the username you choose and an internal identifier. If you sign in with Apple or Google, the identity provider supplies the data needed to authenticate you according to the permissions you accept.\n\nWe also store answers, progress, streaks, scores, records, level, achievements, coins, shop items, friendships and reports needed to run the game features.\n\n• Technical app and device data, such as version, operating system, language and error logs.\n• Advertising attribution data —including campaign, IP address and advertising identifier— only where applicable and once you have granted the required permissions.\n• We do not request precise location, contacts, photos, camera, microphone or calendar."
       },
       "s3": {
-        "title": "3. Data storage",
-        "body": "Your data is stored securely on Supabase (PostgreSQL), with encryption in transit (HTTPS/TLS). Passwords are never stored in plain text.\n\nQuestions and answers may be cached locally on your device to enable offline use."
+        "title": "3. How we use data",
+        "body": "• Creating, authenticating, protecting and recovering your account.\n• Showing your profile, progress, statistics, achievements and unlocked content.\n• Calculating rankings, streaks and results, and enabling friendships and social features.\n• Preventing abuse, investigating reports and keeping the service safe.\n• Diagnosing failures and improving how the app works.\n• Showing ads and measuring campaigns only under the privacy choices described below.\n\nWe do not sell or rent your personal data."
       },
       "s4": {
-        "title": "4. Advertising",
-        "body": "{{appName}} may show limited advertising through AppLovin MAX, only to adults and after natural pauses in play, such as the daily question result, a time-attack round or a ladder run.\n\nBefore initializing advertising we ask for your age bracket and a specific, informed choice:\n\n• Contextual ads: we tell AppLovin that you do not consent to personalization and that your data must not be sold or shared for targeted advertising. We do not request App Tracking Transparency or start AppsFlyer or Meta.\n• Personalized ads: on iOS we request permission through App Tracking Transparency and then we may start AppLovin, AppsFlyer and Meta for personalization and attribution.\n• If you are under 16 we do not initialize or use AppLovin, AppsFlyer or Meta, and you can use the complete app without ads.\n\nYou can change your choice at any time in Settings. Changing to contextual or under 16 stops new ad requests and measurement."
+        "title": "4. Data visible to other players",
+        "body": "Your username, avatar or public customization, level, streak and certain statistics or ranking positions may be visible to other authenticated users. Your email, credentials and individual answers are not shown publicly."
       },
       "s5": {
-        "title": "5. Push notifications",
-        "body": "If you enable notifications, {{appName}} will send a daily reminder at 9:00 so you don't lose your streak. Notifications are completely local and you can disable them at any time from your profile or your system settings."
+        "title": "5. Legal grounds",
+        "body": "We process the data needed to provide the service and perform the terms of use; to comply with legal obligations; and, where applicable, on the legitimate interest of protecting and improving the app. Personalized advertising, cross-app tracking and certain measurement rely on your consent, which you can withdraw at any time."
       },
       "s6": {
-        "title": "6. Your rights",
-        "body": "You have the right to:\n\n• Access your data at any time (from the profile screen)\n• Change your username\n• Delete your account (contact us at the email below)\n• Export your data on request\n• Change your advertising choice in the app Settings, and withdraw tracking permission in Settings > Privacy > Tracking"
+        "title": "6. Providers",
+        "body": "We use Supabase for authentication, database and server functions; Sentry to diagnose errors; AppLovin MAX for advertising; AppsFlyer for attribution; and Meta to measure campaigns when you have chosen personalized ads and system permissions allow it. Apple and Google may also handle information when distributing the app or authenticating you.\n\nYou can review each provider's policy at cg-trivia.pablobrasero.com/en/privacy."
       },
       "s7": {
-        "title": "7. Minors",
-        "body": "{{appName}} is a general-audience app and is not designed exclusively for children. AppLovin does not allow its SDK to be used with anyone who is a child under applicable law, and that age varies by country. We apply a single cutoff of 16, the highest required by any European Economic Area state: we never initialize or use AppLovin, AppsFlyer or Meta for people under 16. If you believe your child has created an account, contact us to delete it."
+        "title": "7. Advertising, age and attribution",
+        "body": "Before initializing any advertising system we ask for an age bracket and an informed choice. Ads, when they appear, show up at natural breaks in play: the result of the daily question, or the end of a Time Attack run, a Climb Mode run or a World round.\n\n• Under 16: we do not initialize AppLovin, AppsFlyer or Meta, and you can use the whole app without ads.\n• Contextual ads: we tell AppLovin that you do not consent to personalization and that data must not be sold or shared for targeted advertising. We do not ask for App Tracking Transparency and we do not start AppsFlyer or Meta.\n• Personalized ads: on iOS we first ask for the official App Tracking Transparency permission. AppLovin may process identifiers and advertising activity to select, cap and measure ads; AppsFlyer and Meta may measure installs and campaign events.\n\nYou can review or change your choice under Profile > Settings > Privacy and ads. Switching to contextual stops new personalized measurement requests."
       },
       "s8": {
-        "title": "8. Contact",
-        "body": "For any questions about this privacy policy or to request the deletion of your data, contact us at:\n\npablobrasero@gmail.com"
+        "title": "8. Notifications",
+        "body": "If you turn them on, {{appName}} sends you a daily reminder at 9:00 so you do not lose your streak. They are local notifications: your own device schedules them and their content never travels through a server. You can turn them off whenever you want under Profile > Settings or in your system settings."
       },
       "s9": {
-        "title": "9. Changes to this policy",
-        "body": "We may update this policy occasionally. We will notify you of significant changes through the app. Continued use of the app implies acceptance of the updated policy."
+        "title": "9. Diagnostics and security",
+        "body": "Sentry may receive the technical stack of the error, app and system versions and an internal identifier used to group incidents. We configure the service to reduce personal data and to deliberately avoid sending your email, username or question content.\n\nCommunications use HTTPS/TLS, passwords are never stored in plain text and we apply access controls on the database. No system is infallible, but we keep measures proportionate to the risk."
+      },
+      "s10": {
+        "title": "10. Retention and transfers",
+        "body": "We keep your account and progress while it is active or until you ask us to delete it. Certain technical logs, backups or data needed to prevent fraud and meet obligations may remain for limited periods. Some providers may handle information outside the European Economic Area under their applicable contractual and legal safeguards."
+      },
+      "s11": {
+        "title": "11. Your rights",
+        "body": "Depending on where you live, you may request access, correction, deletion, objection, restriction and portability, and withdraw consent.\n\n• You can delete your account under Profile > Danger zone, without leaving the app.\n• You can change your advertising choice under Profile > Settings > Privacy and ads.\n• On iPhone or iPad you can withdraw tracking permission under Settings > Privacy & Security > Tracking.\n• For any other request, write to us at pablobrasero@gmail.com.\n\nYou may also complain to the Spanish Data Protection Agency or your local authority."
+      },
+      "s12": {
+        "title": "12. Children",
+        "body": "{{appName}} is a general-audience app and is not directed exclusively at children. AppLovin does not allow its SDK to be used with anyone who is a minor under applicable law, and that age varies by country: we apply a single cut-off of 16, the highest required across the European Economic Area. We do not use advertising or attribution SDKs with anyone who states they are under 16. If you believe a child has given us information without authorization, contact us so we can review and delete it where appropriate."
+      },
+      "s13": {
+        "title": "13. Changes to this policy",
+        "body": "We will update this policy if features, providers or legal requirements change, and we will publish the new version with its effective date. You can always check the current version at cg-trivia.pablobrasero.com/en/privacy."
       }
     }
   },
