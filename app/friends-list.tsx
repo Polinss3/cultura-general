@@ -228,8 +228,9 @@ export default function FriendsListScreen() {
                     <UserRow
                       key={f.id}
                       profile={f}
+                      onPress={() => router.push(`/profile/${f.id}`)}
                       right={
-                        <Pressable onPress={() => handleRemove(f)}>
+                        <Pressable onPress={() => handleRemove(f)} hitSlop={10}>
                           <Text style={{ color: 'rgba(255,255,255,0.2)', fontSize: 20 }}>···</Text>
                         </Pressable>
                       }
@@ -258,9 +259,9 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-function UserRow({ profile, right }: { profile: FriendProfile; right: React.ReactNode }) {
+function UserRow({ profile, right, onPress }: { profile: FriendProfile; right: React.ReactNode; onPress?: () => void }) {
   const initial = (profile.username?.[0] ?? '?').toUpperCase();
-  return (
+  const content = (
     <View style={{
       flexDirection: 'row', alignItems: 'center', gap: 12,
       backgroundColor: '#151515', borderRadius: 14, padding: 12,
@@ -280,6 +281,14 @@ function UserRow({ profile, right }: { profile: FriendProfile; right: React.Reac
       {right}
     </View>
   );
+  if (onPress) {
+    return (
+      <Pressable onPress={onPress} android_ripple={{ color: 'rgba(255,255,255,0.04)' }}>
+        {content}
+      </Pressable>
+    );
+  }
+  return content;
 }
 
 function Tag({ label, color }: { label: string; color: string }) {

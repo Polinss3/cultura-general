@@ -396,6 +396,27 @@ export async function removeFriend(friendshipId: string): Promise<void> {
   await supabase.from('friendships').delete().eq('id', friendshipId);
 }
 
+// Public profile (used to render another user's profile screen).
+export interface PublicProfile {
+  id: string;
+  username: string;
+  avatar_url: string | null;
+  streak: number;
+  best_streak: number;
+  total_correct: number;
+  total_answered: number;
+  speed_record: number;
+}
+
+export async function fetchProfileById(userId: string): Promise<PublicProfile | null> {
+  const { data } = await supabase
+    .from('profiles')
+    .select('id, username, avatar_url, streak, best_streak, total_correct, total_answered, speed_record')
+    .eq('id', userId)
+    .single();
+  return (data as PublicProfile) ?? null;
+}
+
 // Check relationship status between two users
 export async function getFriendshipStatus(
   userId: string,

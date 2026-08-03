@@ -6,8 +6,10 @@ import { useRouter } from 'expo-router';
 import {
   requestNotificationPermission,
   scheduleDailyReminder,
+  registerPushToken,
 } from '@/lib/notifications';
 import { setOnboardingCompleted } from '@/lib/onboarding';
+import { useAuth } from '@/hooks/useAuth';
 
 const STEPS = [
   {
@@ -26,8 +28,8 @@ const STEPS = [
   },
   {
     icon: '🔔',
-    title: 'Recuerda jugar cada día',
-    body: '¿Quieres que te avisemos cuando llegue la pregunta del día?',
+    title: 'Activa las notificaciones',
+    body: 'Te avisaremos cuando tengas nuevas solicitudes de amistad y para tu pregunta del día. Puedes desactivarlas cuando quieras.',
     cta: 'Activar notificaciones',
     skip: true,
   },
@@ -35,6 +37,7 @@ const STEPS = [
 
 export default function OnboardingScreen() {
   const router = useRouter();
+  const { user } = useAuth();
   const [step, setStep] = useState(0);
   const current = STEPS[step];
   const isLast = step === STEPS.length - 1;
@@ -47,7 +50,10 @@ export default function OnboardingScreen() {
   const handleCta = async () => {
     if (isLast) {
       const granted = await requestNotificationPermission();
-      if (granted) await scheduleDailyReminder();
+      if (granted) {
+        await scheduleDailyReminder();
+        if (user) await registerPushToken(user.id);
+      }
       await finish();
     } else {
       setStep(s => s + 1);

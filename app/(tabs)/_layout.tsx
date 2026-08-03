@@ -1,16 +1,42 @@
 import { Tabs } from 'expo-router';
 import { Text, View } from 'react-native';
+import { usePendingFriendRequests } from '@/hooks/usePendingFriendRequests';
 
 interface TabIconProps {
   label: string;
   icon: string;
   focused: boolean;
+  badge?: number;
 }
 
-function TabIcon({ label, icon, focused }: TabIconProps) {
+function TabIcon({ label, icon, focused, badge = 0 }: TabIconProps) {
   return (
     <View style={{ alignItems: 'center', gap: 2, paddingTop: 6 }}>
-      <Text style={{ fontSize: 20 }}>{icon}</Text>
+      <View>
+        <Text style={{ fontSize: 20 }}>{icon}</Text>
+        {badge > 0 && (
+          <View
+            style={{
+              position: 'absolute',
+              top: -4,
+              right: -10,
+              minWidth: 16,
+              height: 16,
+              borderRadius: 8,
+              backgroundColor: '#e83060',
+              paddingHorizontal: 4,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderWidth: 1.5,
+              borderColor: '#111',
+            }}
+          >
+            <Text style={{ color: '#fff', fontFamily: 'Outfit_700Bold', fontSize: 10 }}>
+              {badge > 9 ? '9+' : badge}
+            </Text>
+          </View>
+        )}
+      </View>
       <Text numberOfLines={1} style={{
         fontSize: 9,
         fontFamily: focused ? 'Outfit_600SemiBold' : 'Outfit_400Regular',
@@ -26,6 +52,8 @@ function TabIcon({ label, icon, focused }: TabIconProps) {
 }
 
 export default function TabLayout() {
+  const { count: pendingRequests } = usePendingFriendRequests();
+
   return (
     <Tabs
       screenOptions={{
@@ -74,7 +102,7 @@ export default function TabLayout() {
         name="friends"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon label="Amigos" icon="👥" focused={focused} />
+            <TabIcon label="Amigos" icon="👥" focused={focused} badge={pendingRequests} />
           ),
         }}
       />

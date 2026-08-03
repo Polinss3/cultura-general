@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Linking from 'expo-linking';
+import * as Notifications from 'expo-notifications';
 import {
   useFonts,
   Outfit_300Light,
@@ -60,6 +61,35 @@ function RootLayout() {
   useEffect(() => {
     setSentryUser(session?.user?.id ?? null);
   }, [session?.user?.id]);
+
+  // Notification taps → deep link inside the app.
+  const lastHandledNotificationId = useRef<string | null>(null);
+  useEffect(() => {
+    const handleResponse = (response: Notifications.NotificationResponse) => {
+      // Guard against the same cold-start payload being delivered twice
+      // (getLastNotificationResponseAsync + the live listener can race).
+      const reqId = response.notification.request.identifier;
+      if (lastHandledNotificationId.current === reqId) return;
+      lastHandledNotificationId.current = reqId;
+
+      const data = response.notification.request.content.data as
+        | { type?: string; sender_id?: string }
+        | undefined;
+      if (!data?.type) return;
+      // Only route once we have a session — otherwise auth flow will redirect.
+      if (!session) return;
+
+      if (data.type === 'friend_request') {
+        router.push('/friends-list');
+      } else if (data.type === 'friend_accept' && data.sender_id) {
+        router.push(`/profile/${data.sender_id}`);
+      }
+    };
+
+    Notifications.getLastNotificationResponseAsync().then(r => { if (r) handleResponse(r); });
+    const sub = Notifications.addNotificationResponseReceivedListener(handleResponse);
+    return () => sub.remove();
+  }, [router, session?.user?.id]);
 
   // Handle password recovery deep links (culturalgeneral://update-password#access_token=...)
   useEffect(() => {

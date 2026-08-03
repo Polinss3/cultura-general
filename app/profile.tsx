@@ -16,6 +16,7 @@ import {
   scheduleDailyReminder,
   cancelDailyReminder,
   getNotificationsEnabled,
+  registerPushToken,
 } from '@/lib/notifications';
 import { CAT_NAMES, CAT_ICONS } from '@/constants/questions';
 import { Category } from '@/types';
@@ -65,12 +66,13 @@ export default function ProfileScreen() {
         return;
       }
       await scheduleDailyReminder();
+      if (user) await registerPushToken(user.id);
       setNotificationsOn(true);
     } else {
       await cancelDailyReminder();
       setNotificationsOn(false);
     }
-  }, []);
+  }, [user]);
 
   const handleSaveUsername = useCallback(async () => {
     if (!user || !newUsername.trim()) return;
