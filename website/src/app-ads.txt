@@ -1,0 +1,12 @@
+# Pega aquí el bloque literal de AppLovin MAX > Account > General > app-ads.txt.
+#
+# Una entrada por línea, con el formato del estándar de IAB:
+#   dominio-del-sistema-publicitario, seller ID, DIRECT|RESELLER, [TAG-ID]
+#
+# No inventes seller IDs ni el campo DIRECT/RESELLER: si no coinciden con lo que
+# declara la red, la verificación falla y el inventario se marca como no
+# autorizado. Mientras este fichero solo tenga comentarios, el build publica un
+# placeholder y `npm test` lo da por bueno.
+#
+# Después de pegarlo:  cd website && npm run build && npm test
+#                      cd .. && ./website/deploy/deploy.sh
