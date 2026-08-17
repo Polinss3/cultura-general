@@ -236,18 +236,33 @@ export async function fetchOrAssignDailyQuestion(): Promise<Question | null> {
 
   if (existing?.questions) return mapQuestion(existing.questions as unknown as QuestionRow);
 
-  // No admin-assigned question for today — pick deterministically by date.
-  // (Clients can't INSERT into daily_questions due to RLS, so we skip the upsert.)
-  const { data: allQuestions } = await supabase
+  // Sin pregunta asignada por administración, se elige de forma determinista por
+  // fecha. (El cliente no puede INSERT en `daily_questions` por RLS, así que no
+  // se intenta guardar la elección.)
+  //
+  // Se cuenta primero y se trae una sola fila. Traer el catálogo entero y coger
+  // una tenía dos problemas: PostgREST corta en 1000 filas —y hay ~1.589
+  // activas—, así que un tercio de las preguntas no podía salir NUNCA; y
+  // descargaba 1000 filas completas, con las dos traducciones y el contexto,
+  // para quedarse con una. Es el mismo corte que se arregló paginando en
+  // `fetchQuestions`, solo que aquí no hace falta paginar: basta el total.
+  const { count, error: countError } = await supabase
+    .from('questions')
+    .select('id', { count: 'exact', head: true })
+    .eq('active', true);
+
+  if (countError || !count) return null;
+
+  const dayIdx = Math.floor(Date.now() / 86400000) % count;
+  const { data: picked } = await supabase
     .from('questions')
     .select('*')
     .eq('active', true)
-    .order('id');
+    .order('id')
+    .range(dayIdx, dayIdx);
 
-  if (!allQuestions || allQuestions.length === 0) return null;
-
-  const dayIdx = Math.floor(Date.now() / 86400000);
-  return mapQuestion(allQuestions[dayIdx % allQuestions.length] as QuestionRow);
+  const row = picked?.[0] as QuestionRow | undefined;
+  return row ? mapQuestion(row) : null;
 }
 
 export async function checkDailyAnswered(
@@ -302,17 +317,6 @@ export async function fetchDailyPlayerCount(): Promise<number> {
   return count ?? 0;
 }
 
-// Valor de respaldo cuando aún hay poca gente: número "creíble" 10–25,
-// determinista por fecha (estable durante el día, no parpadea entre aperturas).
-export function dailyPlayersFallback(date = todayStr()): number {
-  let h = 2166136261;
-  for (let i = 0; i < date.length; i++) {
-    h ^= date.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return 10 + (Math.abs(h) % 16); // 10..25
-}
-
 export async function saveDailyAnswer(
   userId: string,
   questionId: string,
@@ -323,7 +327,9 @@ export async function saveDailyAnswer(
   const score = isCorrect ? 100 : 0;
   const date = todayStr();
 
-  await Promise.all([
+  const [, ranking] = await Promise.all([
+    // El historial es información de apoyo: si se pierde una fila, el día sigue
+    // contando. No bloquea.
     supabase.from('user_answers').insert({
       user_id: userId,
       question_id: questionId,
@@ -343,6 +349,12 @@ export async function saveDailyAnswer(
       { onConflict: 'user_id,date' },
     ),
   ]);
+
+  // Esta fila SÍ es la respuesta del día: de ella salen la racha, el ranking y
+  // el "ya has contestado hoy". Si falla y seguimos, el usuario ve la pantalla
+  // de resultado como si hubiera contestado, mañana su racha no cuenta y no hay
+  // forma de que sepa por qué. Mejor avisar y dejarle reintentar.
+  if (ranking.error) throw new NetworkError();
 
   // La racha debe actualizarse antes del award para que el multiplicador
   // refleje la racha del día.
@@ -370,10 +382,25 @@ export type RankRow = {
 };
 
 export async function fetchDailyRanking(): Promise<RankRow[]> {
+  // El orden va en el servidor, no solo en el cliente: `limit(50)` sin `order`
+  // devuelve 50 filas cualesquiera de las de hoy, y ordenarlas después solo
+  // ordena esa muestra arbitraria. Con menos de 50 jugadores al día no se
+  // notaba; por encima, el podio que ve la gente no es el podio y baila entre
+  // recargas.
+  //
+  // Se ordena por `score` y no por `is_correct` aunque el criterio sea el
+  // mismo (100 si acierta, 0 si falla), por dos razones: `is_correct` admite
+  // null y en Postgres `DESC` pone los null PRIMERO, así que una fila sin
+  // rellenar se plantaría en el podio; y existe
+  // `daily_rankings_date_score_time_idx` sobre (date, score desc, time_ms asc
+  // nulls last), que es exactamente esta consulta. El orden de cliente de
+  // abajo se queda: es el que aplica el respaldo `is_correct ?? score > 0`.
   const { data: rows } = await supabase
     .from('daily_rankings')
     .select('user_id, score, is_correct, time_ms, answered_at')
     .eq('date', todayStr())
+    .order('score', { ascending: false, nullsFirst: false })
+    .order('time_ms', { ascending: true, nullsFirst: false })
     .limit(50);
 
   if (!rows || rows.length === 0) return [];
@@ -486,9 +513,12 @@ export interface MyGlobalRank {
 
 /**
  * Puesto propio en el ranking global, para poder anclarlo abajo cuando el
- * usuario no entra en la lista visible. Con empates devuelve el mejor puesto
- * del grupo (los tres que empatan son "el 5.º"), que es lo que espera quien
- * mira una clasificación.
+ * usuario no entra en la lista visible.
+ *
+ * Cuenta a quien va por delante con EL MISMO criterio que ordena la lista
+ * (`fetchAllTimeRanking`), desempates incluidos. Contar solo `> mi cifra`
+ * devolvía el mejor puesto del grupo empatado, así que el número anclado abajo
+ * podía no cuadrar con ninguna posición real de la tabla.
  */
 export async function fetchMyGlobalRank(
   userId: string,
@@ -502,10 +532,21 @@ export async function fetchMyGlobalRank(
   if (!me) return null;
 
   const column = SORT_COLUMN[sort];
+  const mine = Number((me as any)[column] ?? 0);
+  const myCorrect = Number((me as any).total_correct ?? 0);
+
+  // Va por delante quien tenga más en la columna de orden; a igualdad, más
+  // aciertos; y a igualdad de las dos, el `id` menor. Cuando el criterio ya es
+  // `total_correct`, la cláusula de en medio se anula sola (`eq` y `gt` a la
+  // vez), que es justo lo que debe pasar.
   const { count } = await supabase
     .from('profiles')
     .select('id', { count: 'exact', head: true })
-    .gt(column, (me as any)[column] ?? 0);
+    .or([
+      `${column}.gt.${mine}`,
+      `and(${column}.eq.${mine},total_correct.gt.${myCorrect})`,
+      `and(${column}.eq.${mine},total_correct.eq.${myCorrect},id.lt.${userId})`,
+    ].join(','));
 
   return { rank: (count ?? 0) + 1, row: mapGlobalRow(me) };
 }

@@ -21,6 +21,7 @@ import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
+import { useToast } from '@/context/ToastContext';
 import { showResultInterstitial } from '@/lib/ads';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { planReviewAfterDailyCompletion, REVIEW_PROMPT_DELAY_MS } from '@/lib/appReview';
@@ -192,6 +193,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const { t, i18n } = useTranslation();
   const router = useRouter();
   const { celebrate } = useProgress();
+  const { showToast } = useToast();
   const { profile, refresh: refreshProfile } = useProfile();
   const { C, isDark } = useTheme();
   const [phase, setPhase] = useState<Phase>('loading');
@@ -309,7 +311,20 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
       if (question.id) {
         // Translate display-index back to original (DB) index for consistency
         const originalIdx = question.originalIndexMap[i] ?? i;
-        award = await saveDailyAnswer(user.id, question.id, originalIdx, correct, elapsedMs);
+        try {
+          award = await saveDailyAnswer(user.id, question.id, originalIdx, correct, elapsedMs);
+        } catch {
+          // No llegó a guardarse: se vuelve a la pregunta en vez de enseñar un
+          // resultado que el servidor no tiene. `questionStartAt` NO se
+          // reinicia a propósito — el tiempo sigue corriendo desde que se vio
+          // la pregunta, así que un fallo de red no puede convertirse en un
+          // tiempo mejor ahora que la respuesta ya está a la vista.
+          setShowConfetti(false);
+          setSelected(null);
+          setPhase('question');
+          showToast({ type: 'error', message: t('daily.saveFailed') });
+          return;
+        }
         celebrate(award);
       }
       const r = await fetchDailyRanking();

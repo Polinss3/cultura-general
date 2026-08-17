@@ -11,7 +11,7 @@ import { useToast } from '@/context/ToastContext';
 import { useProgress } from '@/context/ProgressContext';
 import { unlockedCount, totalAchievements } from '@/lib/achievements';
 import { grantWelcomeRewardIfPending } from '@/lib/onboarding';
-import { fetchDailyPlayerCount, dailyPlayersFallback } from '@/lib/db';
+import { fetchDailyPlayerCount } from '@/lib/db';
 import { setGuestMode, getGuestSpeedRecord } from '@/lib/guest';
 import { LevelBadge } from '@/components/LevelBadge';
 import { XpBar } from '@/components/XpBar';
@@ -41,6 +41,11 @@ import { useFocusEffect } from 'expo-router';
 // duelo, superviviente y trivia por equipos).
 const LOCAL_MODES = 5;
 
+// A partir de cuántos jugadores del día la cifra dice algo. Por debajo se
+// muestra una frase sin número: "3 personas han jugado hoy" mata la sensación
+// de comunidad, y un número inventado no es una alternativa honesta.
+const MIN_PLAYERS_TO_SHOW = 20;
+
 export default function HomeScreen() {
   const { t } = useTranslation();
   const router = useRouter();
@@ -53,9 +58,12 @@ export default function HomeScreen() {
   const { C, isDark } = useTheme();
   const cosmetics = useCosmetics(!guest && !!user, user?.id);
   const [guestSpeedRecord, setGuestSpeedRecordState] = useState(0);
-  // "Jugadores hoy": arranca con un valor de respaldo creíble (10–25, estable
-  // por día) y se sustituye por el número real si supera las 20 personas.
-  const [playersToday, setPlayersToday] = useState(dailyPlayersFallback);
+  // Jugadores de hoy. `null` mientras no se sepa. La cifra solo se enseña
+  // cuando es lo bastante grande para decir algo; por debajo va una frase sin
+  // número. Antes se mostraba un valor inventado (10–25, determinista por
+  // fecha) hasta que el real superaba los 20: era un dato fabricado presentado
+  // como dato.
+  const [playersToday, setPlayersToday] = useState<number | null>(null);
   const [missions, setMissions] = useState<MissionState[]>([]);
   const [claimingMission, setClaimingMission] = useState<string | null>(null);
 
@@ -119,13 +127,9 @@ export default function HomeScreen() {
     if (guest) getGuestSpeedRecord().then(setGuestSpeedRecordState);
   }, [guest]);
 
-  // Número real de jugadores del día: solo lo mostramos si supera las 20
-  // personas; si no, mantenemos el respaldo. Requiere conexión.
   useEffect(() => {
     if (offline) return;
-    fetchDailyPlayerCount().then(count => {
-      if (count > 20) setPlayersToday(count);
-    });
+    fetchDailyPlayerCount().then(setPlayersToday).catch(() => {});
   }, [offline]);
 
   const today = new Date().toLocaleDateString(getLocaleTag(), {
@@ -370,7 +374,11 @@ export default function HomeScreen() {
                   <Text style={{ color: ink.color, fontSize: 15, fontFamily: Font.extra }}>{t('home.dailyCta')}</Text>
                 </View>
                 <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.semi, flex: 1 }}>
-                  {offline ? t('home.offline') : t('home.playersToday', { count: playersToday })}
+                  {offline
+                    ? t('home.offline')
+                    : playersToday != null && playersToday >= MIN_PLAYERS_TO_SHOW
+                      ? t('home.playersToday', { count: playersToday })
+                      : t('home.playersTodayFew')}
                 </Text>
               </View>
             </LinearGradient>
