@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View, Text, Pressable, ActivityIndicator, Modal } from 'react-native';
+import { ScrollView, View, Text, Pressable, ActivityIndicator, Modal, RefreshControl } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -14,7 +14,29 @@ import {
 import { UserName } from '@/components/UserName';
 import { resolveCosmetics } from '@/lib/cosmetics';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
-import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
+import { Font, Radius, Space, Type, cardShadow, glow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
+
+/** A qué escalón de premio corresponde un puesto. */
+function rankBucket(rank: number): number {
+  if (rank <= 3) return rank;
+  return rank <= 10 ? 10 : 11;
+}
+
+/** Una de las tres cifras de la fila "tu posición". */
+function MiniStat({ C, label, value, color }: {
+  C: Palette; label: string; value: string; color: string;
+}) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', paddingHorizontal: 4, gap: 2 }}>
+      <Text numberOfLines={1} style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 11 }}>
+        {label}
+      </Text>
+      <Text numberOfLines={1} style={{ color, fontFamily: Font.black, fontSize: 18 }}>
+        {value}
+      </Text>
+    </View>
+  );
+}
 
 export default function LeaguesScreen() {
   const { t } = useTranslation();
@@ -27,6 +49,7 @@ export default function LeaguesScreen() {
   // undefined = cargando; null = no disponible (RPC sin aplicar/offline); objeto = ok.
   const [state, setState] = useState<LeagueState | null | undefined>(undefined);
   const [showInfo, setShowInfo] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(() => {
     if (guest || offline || !user) { setState(null); return; }
@@ -35,6 +58,17 @@ export default function LeaguesScreen() {
   }, [guest, offline, user?.id]);
 
   useFocusEffect(useCallback(() => { load(); }, [load]));
+
+  // Recarga al tirar hacia abajo. No pasa por `load` a propósito: ese vacía el
+  // estado y dejaría la pantalla en el spinner de página entera, tapando el
+  // propio indicador del gesto.
+  const onRefresh = useCallback(async () => {
+    if (guest || offline || !user) return;
+    setRefreshing(true);
+    const next = await fetchLeague();
+    setState(next);
+    setRefreshing(false);
+  }, [guest, offline, user?.id]);
 
   const goToAuth = async () => {
     await setGuestMode(false);
@@ -119,7 +153,13 @@ export default function LeaguesScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       {Header}
-      <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 32 }} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={{ padding: 20, paddingBottom: 32 }}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.textMuted} colors={[C.brand]} />
+        }
+      >
 
         {/* Resultado de la semana pasada */}
         {state.lastResult && (
@@ -136,97 +176,113 @@ export default function LeaguesScreen() {
           </View>
         )}
 
-        {/* División actual */}
-        <View style={{ borderRadius: Radius.cardLg, overflow: 'hidden', borderWidth: 1, borderColor: div.color + '55', marginBottom: 14 }}>
-          <LinearGradient colors={[div.color + '2e', C.surface]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 18, alignItems: 'center' }}>
-            <Text style={{ fontSize: 52, marginBottom: 4 }}>{div.emoji}</Text>
-            <Text style={{ color: div.color, fontFamily: Font.black, fontSize: 22 }}>
-              {t(`leagues.divisions.${div.id}`)}
-            </Text>
-            <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 12, marginTop: 2 }}>
-              {t('leagues.endsIn', { count: days })} · {t('leagues.members', { count: state.memberCount })}
-            </Text>
-          </LinearGradient>
-        </View>
-
-        {/* Mi posición */}
-        <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 16, marginBottom: 14, borderWidth: 1, borderColor: C.border }}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-            <View>
-              <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 12 }}>{t('leagues.yourPosition')}</Text>
-              <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>
-                {state.myRank ? `#${state.myRank}` : '—'}
-              </Text>
-            </View>
-            <View style={{ alignItems: 'flex-end' }}>
-              <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 12 }}>{t('leagues.xpThisWeek')}</Text>
-              <Text style={{ color: C.social, fontFamily: Font.black, fontSize: 18 }}>{state.myXp} XP</Text>
-            </View>
+        {/* División actual. La envoltura existe solo para el halo: la sombra y
+            el `overflow: 'hidden'` que clipa el degradado no pueden ir en la
+            misma vista o iOS no pinta el brillo. */}
+        <View style={{
+          borderRadius: Radius.cardLg, backgroundColor: C.surface,
+          marginBottom: 12, ...glow(div.color, isDark),
+        }}>
+          <View style={{ borderRadius: Radius.cardLg, overflow: 'hidden', borderWidth: 1.5, borderColor: div.color + '66' }}>
+            <LinearGradient
+              colors={[div.color + '3d', div.color + '12', C.surface]}
+              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+              style={{ paddingVertical: 13, paddingHorizontal: 15, flexDirection: 'row', alignItems: 'center', gap: 13 }}
+            >
+              <Text style={{ fontSize: 36 }}>{div.emoji}</Text>
+              <View style={{ flex: 1, gap: 1 }}>
+                <Text style={{ color: div.color, fontFamily: Font.black, fontSize: 20 }}>
+                  {t(`leagues.divisions.${div.id}`)}
+                </Text>
+                <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 12 }}>
+                  {t('leagues.endsIn', { count: days })} · {t('leagues.members', { count: state.memberCount })}
+                </Text>
+              </View>
+            </LinearGradient>
           </View>
-          {inPromo ? (
-            <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 13 }}>
-              ⬆️ {t('leagues.inPromo', { division: t(`leagues.divisions.${nextDiv.id}`) })}
-            </Text>
-          ) : inRelegation ? (
-            <Text style={{ color: C.wrong, fontFamily: Font.bold, fontSize: 13 }}>
-              ⬇️ {t('leagues.inRelegation')}
-            </Text>
-          ) : canPromote ? (
-            <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 13 }}>
-              {t('leagues.safeHint', { n: state.promoteZone })}
-            </Text>
-          ) : (
-            <Text style={{ color: div.color, fontFamily: Font.bold, fontSize: 13 }}>
-              {t('leagues.topDivisionShort')}
-            </Text>
-          )}
-
-          {/* Premio que ganarías si la semana acabara ahora */}
-          {state.myRank != null && (
-            <View style={{ marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: C.border, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <Text style={{ fontSize: 16 }}>🪙</Text>
-              <Text style={{ flex: 1, color: C.textBody, fontFamily: Font.semi, fontSize: 13 }}>
-                {t('leagues.currentPrize')}
-              </Text>
-              <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 16 }}>
-                +{leaguePlacementReward(state.division, state.myRank)} 🪙
-              </Text>
-            </View>
-          )}
         </View>
 
-        {/* Premios por puesto */}
-        <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 10 }}>
+        {/* Mi posición: las tres cifras en una fila, y el estado como una línea
+            debajo. Antes eran cuatro bloques apilados y se comían la pantalla
+            antes de llegar a la clasificación. */}
+        <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 12, marginBottom: 12, borderWidth: 1, borderColor: C.border }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MiniStat C={C} label={t('leagues.yourPosition')} value={state.myRank ? `#${state.myRank}` : '—'} color={C.text} />
+            <View style={{ width: 1, alignSelf: 'stretch', backgroundColor: C.border }} />
+            <MiniStat C={C} label={t('leagues.xpThisWeek')} value={`${state.myXp} XP`} color={C.social} />
+            {state.myRank != null && (
+              <>
+                <View style={{ width: 1, alignSelf: 'stretch', backgroundColor: C.border }} />
+                <MiniStat
+                  C={C}
+                  label={t('leagues.currentPrize')}
+                  value={`+${leaguePlacementReward(state.division, state.myRank)} 🪙`}
+                  color={C.brandDeep}
+                />
+              </>
+            )}
+          </View>
+          <View style={{ marginTop: 10, paddingTop: 9, borderTopWidth: 1, borderTopColor: C.border }}>
+            {inPromo ? (
+              <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 12.5 }}>
+                ⬆️ {t('leagues.inPromo', { division: t(`leagues.divisions.${nextDiv.id}`) })}
+              </Text>
+            ) : inRelegation ? (
+              <Text style={{ color: C.wrong, fontFamily: Font.bold, fontSize: 12.5 }}>
+                ⬇️ {t('leagues.inRelegation')}
+              </Text>
+            ) : canPromote ? (
+              <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 12.5 }}>
+                {t('leagues.safeHint', { n: state.promoteZone })}
+              </Text>
+            ) : (
+              <Text style={{ color: div.color, fontFamily: Font.bold, fontSize: 12.5 }}>
+                {t('leagues.topDivisionShort')}
+              </Text>
+            )}
+          </View>
+        </View>
+
+        {/* Premios por puesto, en fila de izquierda a derecha. Como listado
+            ocupaban cinco filas; el dato útil de cada uno son dos cifras y
+            caben de sobra en una columna estrecha. La letra pequeña de cuándo
+            se pagan vive en el modal del "?". */}
+        <Text style={{ color: C.textFaint, fontSize: 12, fontFamily: Font.extra, letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 8 }}>
           {t('leagues.prizesTitle')}
         </Text>
-        <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 14, marginBottom: 16, borderWidth: 1, borderColor: C.border }}>
+        <View style={{ flexDirection: 'row', gap: 6, marginBottom: 16 }}>
           {[
-            { icon: '🥇', label: t('leagues.prize1'), rank: 1 },
-            { icon: '🥈', label: t('leagues.prize2'), rank: 2 },
-            { icon: '🥉', label: t('leagues.prize3'), rank: 3 },
+            { icon: '🥇', label: t('leagues.prizeShort1'), rank: 1 },
+            { icon: '🥈', label: t('leagues.prizeShort2'), rank: 2 },
+            { icon: '🥉', label: t('leagues.prizeShort3'), rank: 3 },
             { icon: '🏅', label: t('leagues.prizeTop10'), rank: 10 },
-            { icon: '🎗️', label: t('leagues.prizeRest'), rank: 11 },
-          ].map((p, i, arr) => (
-            <View key={p.rank} style={{
-              flexDirection: 'row', alignItems: 'center', gap: 10,
-              paddingVertical: 8,
-              borderBottomWidth: i < arr.length - 1 ? 1 : 0,
-              borderBottomColor: C.border,
-            }}>
-              <Text style={{ fontSize: 17 }}>{p.icon}</Text>
-              <Text style={{ flex: 1, color: C.text, fontFamily: Font.semi, fontSize: 14 }}>{p.label}</Text>
-              <Text style={{ color: C.brandDeep, fontFamily: Font.bold, fontSize: 14 }}>
-                +{leaguePlacementReward(state.division, p.rank)} 🪙
-              </Text>
-            </View>
-          ))}
-          <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, lineHeight: 18, marginTop: 8 }}>
-            {t('leagues.prizesNote')}
-          </Text>
+            { icon: '🎗️', label: t('leagues.prizeShortRest'), rank: 11 },
+          ].map(p => {
+            // El puesto que ocupas ahora mismo se resalta: convierte la tabla en
+            // "lo que te llevas" en vez de un cuadro de tarifas.
+            const mine = state.myRank != null && rankBucket(state.myRank) === p.rank;
+            return (
+              <View key={p.rank} style={{
+                flex: 1, alignItems: 'center', gap: 1,
+                backgroundColor: mine ? C.brandTint : C.surface,
+                borderRadius: 14, paddingVertical: 9, paddingHorizontal: 2,
+                borderWidth: mine ? 1.5 : 1,
+                borderColor: mine ? C.borderWarm : C.border,
+              }}>
+                <Text style={{ fontSize: 15 }}>{p.icon}</Text>
+                <Text numberOfLines={1} style={{ color: C.textMuted, fontSize: 10, fontFamily: Font.bold }}>
+                  {p.label}
+                </Text>
+                <Text numberOfLines={1} style={{ color: C.brandDeep, fontSize: 12, fontFamily: Font.black }}>
+                  +{leaguePlacementReward(state.division, p.rank)}
+                </Text>
+              </View>
+            );
+          })}
         </View>
 
         {/* Clasificación */}
-        <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
+        <Text style={{ color: C.textFaint, fontSize: 12, fontFamily: Font.extra, letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 10 }}>
           {t('leagues.leaderboard')}
         </Text>
         {state.leaderboard.length === 0 ? (

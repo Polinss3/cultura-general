@@ -29,6 +29,7 @@ import {
 import { getLocaleTag } from '@/lib/i18n';
 import { ALL_CATEGORIES } from '@/constants/questions';
 import { COUNTRIES } from '@/constants/flags';
+import { YEAR_EVENTS } from '@/constants/years';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import {
   Font, Radius, Space, Type, cardShadow, inkButton, tint, warmGradient,
@@ -406,7 +407,14 @@ export default function HomeScreen() {
               icon="🌍" accent={C.social}
               title={t('home.modes.world')}
               meta={t('home.modes.worldFlags', { count: COUNTRIES.length })}
-              onPress={() => router.push('/(tabs)/world')}
+              onPress={() => router.push({ pathname: '/(tabs)/challenges', params: { mode: 'flags' } })}
+            />
+            <ModeTile
+              C={C} isDark={isDark}
+              icon="📅" accent={C.streak}
+              title={t('home.modes.years')}
+              meta={t('home.modes.yearsEvents', { count: YEAR_EVENTS.length })}
+              onPress={() => router.push({ pathname: '/(tabs)/challenges', params: { mode: 'years' } })}
             />
             <ModeTile
               C={C} isDark={isDark}

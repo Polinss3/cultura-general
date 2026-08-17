@@ -118,7 +118,7 @@ export default function LadderScreen() {
   const pickForFloor = (f: number): ShuffledQuestion | undefined => {
     if (allQ.length === 0) return undefined;
     const diff = ladderDifficulty(f);
-    const byDiff = allQ.filter(q => (q as any).difficulty === diff);
+    const byDiff = allQ.filter(q => q.difficulty === diff);
     const source = byDiff.length >= 4 ? byDiff : allQ;
     const fresh = pickRandomFresh(source, [...usedIds.current], q => q.id, 1);
     const base = fresh[0] ?? source[Math.floor(Math.random() * source.length)];

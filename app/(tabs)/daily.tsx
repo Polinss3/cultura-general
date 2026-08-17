@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
-import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share } from 'react-native';
+import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share, RefreshControl } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter } from 'expo-router';
+import { useRouter, useFocusEffect } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
@@ -23,17 +23,16 @@ import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
 import { showResultInterstitial } from '@/lib/ads';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
-import { requestReviewAfterDailyCompletion } from '@/lib/appReview';
+import { planReviewAfterDailyCompletion, REVIEW_PROMPT_DELAY_MS } from '@/lib/appReview';
+import { noteReviewBlocker } from '@/lib/reviewGate';
 import {
   fetchOrAssignDailyQuestion,
   checkDailyAnswered,
   saveDailyAnswer,
   fetchDailyRanking,
-  fetchAllTimeRanking,
   fetchFriendDailyRanking,
   reportQuestion,
   RankRow,
-  GlobalRow,
 } from '@/lib/db';
 import { shuffleQuestionSeeded, pickRandomFresh, ShuffledQuestion } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
@@ -209,10 +208,22 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
   const [rankingTab, setRankingTab] = useState<RankingTab>('daily');
   const [dailyRanking, setDailyRanking] = useState<RankRow[]>([]);
-  const [globalRanking, setGlobalRanking] = useState<GlobalRow[]>([]);
   const [friendRanking, setFriendRanking] = useState<RankRow[]>([]);
+  const [refreshing, setRefreshing] = useState(false);
   const loadedTabs = useRef(new Set<RankingTab>());
   const questionStartAt = useRef<number>(0);
+  const reviewTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelPendingReview = useCallback(() => {
+    if (!reviewTimer.current) return;
+    clearTimeout(reviewTimer.current);
+    reviewTimer.current = null;
+  }, []);
+
+  // Si el usuario se va de la pestaña antes de que salte el diálogo, se cancela:
+  // pedir la valoración fuera de este momento gastaría uno de los pocos intentos
+  // que iOS concede al año.
+  useFocusEffect(useCallback(() => cancelPendingReview, [cancelPendingReview]));
 
   useEffect(() => {
     if (!user) return;
@@ -225,12 +236,24 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     if (phase !== 'ranking' || !user || loadedTabs.current.has(rankingTab)) return;
     loadedTabs.current.add(rankingTab);
 
-    if (rankingTab === 'global') {
-      fetchAllTimeRanking().then(setGlobalRanking);
-    } else if (rankingTab === 'friends') {
+    if (rankingTab === 'friends') {
       fetchFriendDailyRanking(user.id).then(setFriendRanking);
     }
   }, [rankingTab, phase]);
+
+  // Recarga por gesto de los rankings de esta pantalla. Se refrescan los dos
+  // que viven aquí, no solo el visible: cambiar de pestaña después no vuelve a
+  // pedir datos (`loadedTabs` ya los da por cargados).
+  const onRefreshRanking = useCallback(async () => {
+    if (!user) return;
+    setRefreshing(true);
+    await Promise.all([
+      fetchDailyRanking().then(setDailyRanking),
+      fetchFriendDailyRanking(user.id).then(setFriendRanking),
+    ]);
+    loadedTabs.current.add('friends');
+    setRefreshing(false);
+  }, [user?.id]);
 
   const init = async () => {
     setPhase('loading');
@@ -282,10 +305,11 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
     setTimeout(async () => {
       setPhase('loading');
+      let award = null;
       if (question.id) {
         // Translate display-index back to original (DB) index for consistency
         const originalIdx = question.originalIndexMap[i] ?? i;
-        const award = await saveDailyAnswer(user.id, question.id, originalIdx, correct, elapsedMs);
+        award = await saveDailyAnswer(user.id, question.id, originalIdx, correct, elapsedMs);
         celebrate(award);
       }
       const r = await fetchDailyRanking();
@@ -297,8 +321,23 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
         correct,
         response_time_ms: elapsedMs,
       });
-      const reviewRequested = await requestReviewAfterDailyCompletion(user.id, correct);
-      showResultInterstitial('daily_answered', !reviewRequested);
+
+      // Valoración en tienda: se decide ahora (para no lanzar un intersticial
+      // que taparía el diálogo del sistema) pero se pide más tarde, con la
+      // pantalla de ranking ya montada y quieta.
+      const askReview = await planReviewAfterDailyCompletion(user.id, {
+        correct,
+        streak: r.find(row => row.userId === user.id)?.streak,
+        leveledUp: award?.leveledUp,
+      });
+      showResultInterstitial('daily_answered', !askReview);
+      if (askReview) {
+        cancelPendingReview();
+        reviewTimer.current = setTimeout(() => {
+          reviewTimer.current = null;
+          askReview();
+        }, REVIEW_PROMPT_DELAY_MS);
+      }
     }, 1400);
   };
 
@@ -334,6 +373,9 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const doReport = async (reason: 'incorrect' | 'confusing' | 'duplicate' | 'other') => {
     if (!user || !question?.id) return;
     reported.current = true;
+    // Quien acaba de avisarnos de un fallo no es a quien pedirle 5 estrellas.
+    cancelPendingReview();
+    noteReviewBlocker();
     await reportQuestion(user.id, question.id, reason);
     Alert.alert(t('learn.thanks'), t('daily.reportThanksBody'));
   };
@@ -362,7 +404,12 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <Confetti active={showConfetti} />
-        <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+        <ScrollView
+          contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefreshRanking} tintColor={C.textMuted} colors={[C.brand]} />
+          }
+        >
           {/* Result header */}
           <Pop>
             <LinearGradient
@@ -414,7 +461,13 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
             {getRankingTabs(t).map(({ key, label }) => (
               <Pressable
                 key={key}
-                onPress={() => key === 'league' ? router.push('/leagues' as any) : setRankingTab(key)}
+                // Liga y Global son pantallas propias, con su clasificación
+                // completa; las otras dos se intercambian aquí mismo.
+                onPress={() =>
+                  key === 'league' ? router.push('/leagues' as any)
+                  : key === 'global' ? router.push('/ranking' as any)
+                  : setRankingTab(key)
+                }
                 style={{
                   flex: 1,
                   paddingVertical: 9, paddingHorizontal: 4, borderRadius: 12,
@@ -449,21 +502,6 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               }))}
               emptyText={t('daily.emptyDaily')}
             />
-          )}
-
-          {/* Global */}
-          {rankingTab === 'global' && (
-            globalRanking.length === 0 && loadedTabs.current.has('global') ?
-              <ActivityIndicator color={C.brand} style={{ marginTop: 20 }} /> :
-              <RankingList
-                C={C} isDark={isDark}
-                items={globalRanking.map((p, i) => ({
-                  position: i, name: p.username, sub: t('daily.globalSub', { streak: p.streak, speed: p.speedRecord }),
-                  value: t('daily.globalCorrect', { count: p.totalCorrect }), isMe: p.userId === user?.id,
-                  leagueDivision: p.division, cosmetics: p.cosmetics,
-                }))}
-                emptyText={t('daily.emptyGlobal')}
-              />
           )}
 
           {/* Friends */}

@@ -16,12 +16,24 @@ export type GameMode = 'daily' | 'speed' | 'learn';
 export type AnswerState = null | 'selected' | 'correct' | 'wrong';
 
 export interface Question {
+  /** UUID en la BD. Ausente en las de bandera/año, que son catálogo local. */
   id?: string;
   q: string;
   opts: string[];
   ans: number;
   ctx?: string;
   category?: Category;
+  difficulty?: 'easy' | 'medium' | 'hard';
+  // ─ Campos que solo usa Aprender, al mezclar banderas y años con la trivia.
+  // El resto de modos los ignora.
+  /** Token grande sobre el enunciado: la bandera, o el año en cifras. */
+  media?: { kind: 'flag' | 'year'; value: string };
+  /** Línea pequeña por encima del enunciado ("¿Cuál es su bandera?"). */
+  lead?: string;
+  /** Rejilla 2×2 en vez de lista, para opciones cortas. */
+  layout?: 'flags' | 'years';
+  /** Id estable para el historial de "ya vistas" cuando no hay `id` de BD. */
+  localId?: string;
 }
 
 export interface RankingEntry {

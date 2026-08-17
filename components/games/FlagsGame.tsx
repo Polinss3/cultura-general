@@ -1,12 +1,12 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { FlagOption } from '@/components/FlagOption';
-import { Confetti } from '@/components/Confetti';
-import { Pop } from '@/components/Pop';
+import { RoundHud } from '@/components/RoundHud';
+import { RoundResult } from '@/components/RoundResult';
 import { AdBannerSlot } from '@/components/AdBannerSlot';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
@@ -16,16 +16,14 @@ import { awardProgress } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { markDailyPlayed } from '@/lib/dailyRoute';
 import { showResultInterstitial } from '@/lib/ads';
-import { CONTINENTS, COUNTRIES, flagEmoji, type Continent } from '@/constants/flags';
+import { CONTINENTS, flagEmoji, type Continent } from '@/constants/flags';
 import {
   buildRound, countryName, poolFor, getFlagRecords, saveFlagRecord,
-  ROUND_SIZE, type FlagDifficulty, type FlagQuestion, type FlagRecords,
+  type FlagDifficulty, type FlagQuestion, type FlagRecords,
 } from '@/lib/flags';
 import { AnswerState } from '@/types';
-import { useTheme, type Palette } from '@/constants/colors';
-import {
-  Font, Radius, Space, Type, cardShadow, highlightGradient, tint, warmGradient,
-} from '@/constants/theme';
+import { useTheme } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, tint, warmGradient } from '@/constants/theme';
 
 type Phase = 'picker' | 'playing' | 'done';
 type Scope = Continent | 'all';
@@ -33,7 +31,7 @@ type Scope = Continent | 'all';
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const DIFFICULTIES: FlagDifficulty[] = ['all', 1, 2, 3];
 
-const CONTINENT_ICON: Record<Continent, string> = {
+export const CONTINENT_ICON: Record<Continent, string> = {
   europa: '🏰',
   america: '🗽',
   africa: '🦁',
@@ -41,7 +39,14 @@ const CONTINENT_ICON: Record<Continent, string> = {
   oceania: '🏝️',
 };
 
-export default function WorldScreen() {
+interface Props {
+  /** Conmutador de modo; solo se pinta en el selector, no durante la ronda. */
+  header?: ReactNode;
+  /** Avisa al anfitrión de que el récord pudo cambiar, para refrescarlo. */
+  onRoundFinished?: () => void;
+}
+
+export function FlagsGame({ header, onRoundFinished }: Props) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
   const { user } = useAuth();
@@ -94,6 +99,7 @@ export default function WorldScreen() {
     const isRecord = await saveFlagRecord(scope, finalCorrect);
     setNewRecord(isRecord);
     loadRecords();
+    onRoundFinished?.();
 
     if (canEarn && finalCorrect > 0) {
       const award = await awardProgress(
@@ -145,9 +151,8 @@ export default function WorldScreen() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
         <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
-          <Text style={{ color: C.text, ...Type.screenTitle, marginBottom: 4 }}>
-            {t('world.pickerTitle')}
-          </Text>
+          {header}
+
           <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, marginBottom: 16, lineHeight: 23 }}>
             {t('world.pickerSub')}
           </Text>
@@ -196,7 +201,7 @@ export default function WorldScreen() {
                 </Text>
                 <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular }}>
                   {t('world.countFlags', { count: worldCount })}
-                  {records.all ? ` · ${t('world.best', { n: records.all })}` : ''}
+                  {records.all ? ` · ${t('round.best', { n: records.all })}` : ''}
                 </Text>
               </View>
               <Text style={{ color: C.brandDeep, fontSize: 20 }}>›</Text>
@@ -239,7 +244,7 @@ export default function WorldScreen() {
                       </Text>
                       {record != null && (
                         <Text style={{ color: C.brandDeep, fontSize: 12, fontFamily: Font.bold, marginTop: 2 }}>
-                          {t('world.best', { n: record })}
+                          {t('round.best', { n: record })}
                         </Text>
                       )}
                     </View>
@@ -255,61 +260,16 @@ export default function WorldScreen() {
 
   // ─ Resultado
   if (phase === 'done') {
-    const perfect = correctCount === round.length;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-        <Confetti active={confetti} />
-        <View style={{ flex: 1, padding: Space.screen, alignItems: 'center', justifyContent: 'center' }}>
-          <Pop>
-            <LinearGradient
-              colors={highlightGradient(isDark)}
-              locations={[0, 0.7]}
-              start={{ x: 0, y: 0 }} end={{ x: 0.4, y: 1 }}
-              style={{
-                alignItems: 'center', gap: 8, borderRadius: 26,
-                paddingVertical: 28, paddingHorizontal: 24, width: '100%',
-                borderWidth: 1.5, borderColor: C.borderWarm, ...cardShadow(isDark),
-              }}
-            >
-              <Text style={{ fontSize: 52 }}>{perfect ? '🏆' : correctCount >= round.length / 2 ? '🎉' : '💪'}</Text>
-              <Text style={{ color: C.text, fontSize: 30, fontFamily: Font.black }}>
-                {correctCount} / {round.length}
-              </Text>
-              <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, textAlign: 'center' }}>
-                {scopeLabel(scope)}
-              </Text>
-              {newRecord && (
-                <Text style={{ color: C.brandDeep, fontSize: 14, fontFamily: Font.extra, marginTop: 4 }}>
-                  {t('world.newRecord')}
-                </Text>
-              )}
-            </LinearGradient>
-          </Pop>
-
-          <View style={{ flexDirection: 'row', gap: 10, width: '100%', marginTop: 24 }}>
-            <Pressable
-              onPress={() => { setConfetti(false); setPhase('picker'); }}
-              style={{ flex: 1 }}
-            >
-              <View style={{
-                backgroundColor: C.surface, borderRadius: 18, padding: 15, alignItems: 'center',
-                borderWidth: 1, borderColor: C.borderStrong,
-              }}>
-                <Text style={{ color: C.textBody, fontSize: 15, fontFamily: Font.extra }}>
-                  {t('world.changeScope')}
-                </Text>
-              </View>
-            </Pressable>
-            <Pressable onPress={() => { setConfetti(false); start(scope); }} style={{ flex: 2 }}>
-              <View style={{ backgroundColor: C.brand, borderRadius: 18, padding: 15, alignItems: 'center' }}>
-                <Text style={{ color: C.onBrand, fontSize: 15, fontFamily: Font.extra }}>
-                  {t('world.playAgain')}
-                </Text>
-              </View>
-            </Pressable>
-          </View>
-        </View>
-      </SafeAreaView>
+      <RoundResult
+        correct={correctCount}
+        total={round.length}
+        scopeLabel={scopeLabel(scope)}
+        newRecord={newRecord}
+        confetti={confetti}
+        onChangeScope={() => { setConfetti(false); setPhase('picker'); }}
+        onPlayAgain={() => { setConfetti(false); start(scope); }}
+      />
     );
   }
 
@@ -320,46 +280,14 @@ export default function WorldScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
-        {/* Salida + ámbito */}
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-          <Pressable
-            onPress={() => setPhase('picker')}
-            style={{
-              paddingVertical: 8, paddingHorizontal: 14, borderRadius: Radius.pill,
-              backgroundColor: C.surface, borderWidth: 1, borderColor: C.border,
-            }}
-            hitSlop={8}
-          >
-            <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.bold }}>✕ {t('world.exit')}</Text>
-          </Pressable>
-          <View style={{
-            paddingVertical: 8, paddingHorizontal: 14, borderRadius: Radius.pill,
-            backgroundColor: tint(C.social, isDark),
-          }}>
-            <Text style={{ color: C.social, fontSize: 13, fontFamily: Font.extra }}>
-              {scope === 'all' ? '🌍' : CONTINENT_ICON[scope]} {scopeLabel(scope)}
-            </Text>
-          </View>
-        </View>
-
-        {/* Progreso */}
-        <View style={{ flexDirection: 'row', gap: 4, marginBottom: 14 }}>
-          {round.map((_, i) => (
-            <View key={i} style={{
-              flex: 1, height: 5, borderRadius: Radius.pill,
-              backgroundColor: i <= qIdx ? C.brand : C.track,
-            }} />
-          ))}
-        </View>
-
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-          <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra }}>
-            {qIdx + 1} / {round.length}
-          </Text>
-          <Text style={{ color: C.correctText, fontSize: 13, fontFamily: Font.extra }}>
-            {t('world.hits', { n: correctCount })}
-          </Text>
-        </View>
+        <RoundHud
+          onExit={() => setPhase('picker')}
+          scopeIcon={scope === 'all' ? '🌍' : CONTINENT_ICON[scope]}
+          scopeLabel={scopeLabel(scope)}
+          index={qIdx}
+          total={round.length}
+          correctCount={correctCount}
+        />
 
         {q.direction === 'flagToName' ? (
           <>

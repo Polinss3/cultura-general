@@ -1,14 +1,36 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as StoreReview from 'expo-store-review';
+import { isReviewGateOpen, requestReviewIfAllowed } from './reviewGate';
 
 const STORAGE_KEY_PREFIX = 'store_review_daily_v1_';
 
 type ReviewCadence = 3 | 4;
 
+/**
+ * How long to wait after the ranking screen appears before showing the native
+ * dialog. The screen has to be mounted and still — iOS silently drops the
+ * prompt while a transition or another modal is on top — and the "+XP / +coins"
+ * banner lasts 2.2s, so we let it finish first.
+ */
+export const REVIEW_PROMPT_DELAY_MS = 2600;
+
+/**
+ * Minimum daily streak. The per-day counter below already implies commitment,
+ * but an active streak is the strongest signal that the habit stuck.
+ */
+const MIN_STREAK = 3;
+
 interface ReviewState {
   lastCompletionDate: string | null;
   completionDaysSincePrompt: number;
   nextPromptAfterDays: ReviewCadence;
+}
+
+interface DailyReviewSignals {
+  correct: boolean;
+  /** Current daily streak, or undefined when it could not be read. */
+  streak?: number;
+  /** A level-up opens its own modal; iOS will not stack the prompt on top. */
+  leveledUp?: boolean;
 }
 
 function randomCadence(): ReviewCadence {
@@ -52,27 +74,31 @@ function parseState(raw: string | null): ReviewState {
 }
 
 /**
- * Records one completed question-of-the-day per local calendar day. Once the
- * randomized 3-4 day cadence has elapsed, it requests the native rating dialog
- * only after a correct answer. A wrong answer never triggers the dialog; it
- * simply defers the request until a later correct daily answer.
+ * Records one completed question-of-the-day per local calendar day and decides
+ * whether this is the moment to ask for a rating.
  *
- * The OS ultimately decides whether the native dialog is displayed. Returning
- * true means the app requested it, so callers can avoid showing another modal
- * (such as an interstitial) at the same time.
+ * It never shows the dialog itself: it returns a trigger the caller fires once
+ * the ranking screen has settled (see REVIEW_PROMPT_DELAY_MS), or null when the
+ * moment is not right. Deciding up front lets the caller suppress the
+ * interstitial that would otherwise compete with the native dialog.
+ *
+ * The ask requires all of: a correct answer, the randomized 3-4 day cadence
+ * elapsed, a live streak, no level-up modal in the way, and the global
+ * `reviewGate` allowing it. A wrong answer never triggers the dialog; it simply
+ * defers the request until a later correct daily answer.
  */
-export async function requestReviewAfterDailyCompletion(
+export async function planReviewAfterDailyCompletion(
   userId: string,
-  correct: boolean,
+  signals: DailyReviewSignals,
   completionDate = localDateString(),
-): Promise<boolean> {
+): Promise<(() => Promise<void>) | null> {
   const storageKey = STORAGE_KEY_PREFIX + userId;
 
   try {
     const state = parseState(await AsyncStorage.getItem(storageKey));
 
     // Protect against duplicate calls or reopening today's completed quiz.
-    if (state.lastCompletionDate === completionDate) return false;
+    if (state.lastCompletionDate === completionDate) return null;
 
     const completedState: ReviewState = {
       ...state,
@@ -80,25 +106,36 @@ export async function requestReviewAfterDailyCompletion(
       completionDaysSincePrompt: state.completionDaysSincePrompt + 1,
     };
 
-    // Persist before invoking the native UI so today's completion stays
-    // idempotent even if the app is backgrounded by the store dialog.
+    // Persist before anything else so today's completion stays idempotent even
+    // if the app is backgrounded before the prompt fires.
     await AsyncStorage.setItem(storageKey, JSON.stringify(completedState));
 
     const isDue = completedState.completionDaysSincePrompt >= completedState.nextPromptAfterDays;
-    if (!correct || !isDue || !(await StoreReview.isAvailableAsync())) return false;
+    // An unknown streak must not block the ask: the per-day counter above is
+    // already a commitment signal on its own.
+    const streakOk = (signals.streak ?? MIN_STREAK) >= MIN_STREAK;
+    if (!signals.correct || !isDue || !streakOk || signals.leveledUp) return null;
 
-    await StoreReview.requestReview();
+    // The cadence is deliberately NOT reset when the gate is closed, so the ask
+    // happens on the next completed day once the gate opens again.
+    if (!(await isReviewGateOpen())) return null;
 
-    // A fresh randomized cadence prevents a rigid, predictable interruption.
-    await AsyncStorage.setItem(storageKey, JSON.stringify({
-      lastCompletionDate: completionDate,
-      completionDaysSincePrompt: 0,
-      nextPromptAfterDays: randomCadence(),
-    } satisfies ReviewState));
+    return async () => {
+      try {
+        if (!(await requestReviewIfAllowed())) return;
 
-    return true;
+        // A fresh randomized cadence prevents a rigid, predictable interruption.
+        await AsyncStorage.setItem(storageKey, JSON.stringify({
+          lastCompletionDate: completionDate,
+          completionDaysSincePrompt: 0,
+          nextPromptAfterDays: randomCadence(),
+        } satisfies ReviewState));
+      } catch {
+        // Rating is best-effort and must never interrupt the quiz.
+      }
+    };
   } catch {
     // Rating is best-effort and must never interrupt completion of the quiz.
-    return false;
+    return null;
   }
 }

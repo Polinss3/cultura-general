@@ -4,6 +4,8 @@ import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert, Animated }
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
+import { FlagOption } from '@/components/FlagOption';
+import { YearOption } from '@/components/YearOption';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { AdBannerSlot } from '@/components/AdBannerSlot';
@@ -16,9 +18,11 @@ import {
   fetchQuestions, fetchQuestionCounts, incrementProfileStats, reportQuestion,
   type CategoryCounts,
 } from '@/lib/db';
+import { noteReviewBlocker } from '@/lib/reviewGate';
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { getLocalQuestions, CAT_COLORS, CAT_ICONS, ALL_CATEGORIES, catTint } from '@/constants/questions';
+import { buildLearnFeed } from '@/lib/learnFeed';
 import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
@@ -53,7 +57,13 @@ function roundDownCount(n: number): number {
 
 function filterByDifficulty(questions: Question[], diff: Difficulty): Question[] {
   if (diff === 'all') return questions;
-  return questions.filter((q: any) => q.difficulty === diff);
+  // Los tres orígenes traen ya la dificultad: la trivia remota (`mapQuestion`),
+  // el banco local empaquetado y las banderas/años de `buildLearnFeed`. Por eso
+  // el filtro es estricto; antes dejaba pasar las que no la traían y, como no la
+  // traía ninguna de trivia, no acotaba nada.
+  // Si alguna llegara sin ella, cuenta como 'medium' —el `default` de la tabla—
+  // en vez de colarse en los tres niveles.
+  return questions.filter(q => (q.difficulty ?? 'medium') === diff);
 }
 
 export default function LearnScreen() {
@@ -131,8 +141,11 @@ export default function LearnScreen() {
       const source = remote.length > 0 ? remote : fallback;
       const recent = await getRecentIds('learn', cat);
       const ordered = pickRandomFresh(source, recent, q => q.id, source.length);
-      setAllQuestions(ordered);
-      setQuestions(ordered);
+      // Aprender es el modo "todo": la trivia del banco más las banderas y los
+      // años que le tocan al tema, ya intercalados.
+      const mixed = buildLearnFeed(ordered, cat);
+      setAllQuestions(mixed);
+      setQuestions(mixed);
       setLoadingQ(false);
     })();
     // Recargar al cambiar de idioma para servir preguntas en el idioma activo.
@@ -142,6 +155,10 @@ export default function LearnScreen() {
   useEffect(() => {
     if (allQuestions.length === 0) return;
     const filtered = filterByDifficulty(allQuestions, difficulty);
+    // Si el nivel se queda sin preguntas servimos la tanda entera antes que una
+    // pantalla vacía. Con el catálogo remoto no llega a pasar; sin red sí, porque
+    // el banco empaquetado son 3-5 por tema y hay alguno (Mitología) que las
+    // tiene todas del mismo nivel. Ahí la píldora vuelve a no acotar nada.
     setQuestions(filtered.length > 0 ? filtered : allQuestions);
     setQIdx(0);
     setSelected(null);
@@ -190,8 +207,10 @@ export default function LearnScreen() {
         });
       }
     }
-    if (cat && q.id) {
-      pushSeen('learn', cat, [q.id]);
+    // Las de bandera/año no están en la BD y solo traen `localId`.
+    const seenId = q.id ?? q.localId;
+    if (cat && seenId) {
+      pushSeen('learn', cat, [seenId]);
     }
   };
 
@@ -217,6 +236,9 @@ export default function LearnScreen() {
       const wrong = q.opts.map((_, idx) => idx).filter(idx => idx !== q.ans);
       setFiftyHidden(pickRandomFresh(wrong, [], () => undefined, 2));
     } else if (id === 'pw_hint') {
+      // Las de bandera y año no traen contexto: sin esta guarda, la pista se
+      // consumía igual y no mostraba nada.
+      if (!q?.ctx) return;
       setHintShown(true);
     } else {
       return;
@@ -340,7 +362,11 @@ export default function LearnScreen() {
 
   const powerUps: PowerUpButton[] = [
     { id: 'pw_5050', icon: '✂️', label: '50/50', count: inventory['pw_5050'] ?? 0 },
-    { id: 'pw_hint', icon: '💡', label: t('ladder.pwHint'), count: inventory['pw_hint'] ?? 0 },
+    // La pista solo se ofrece si hay algo que contar: las preguntas de bandera
+    // y de año no llevan contexto.
+    ...(q.ctx
+      ? [{ id: 'pw_hint', icon: '💡', label: t('ladder.pwHint'), count: inventory['pw_hint'] ?? 0 }]
+      : []),
     { id: 'pw_skip', icon: '⏭️', label: t('ladder.pwSkip'), count: inventory['pw_skip'] ?? 0 },
   ];
 
@@ -349,6 +375,8 @@ export default function LearnScreen() {
     const sendReport = (reason: 'incorrect' | 'confusing' | 'other') => {
       if (!q.id) return;
       reportedRef.current.add(q.id);
+      // Quien acaba de avisarnos de un fallo no es a quien pedirle 5 estrellas.
+      noteReviewBlocker();
       reportQuestion(user.id, q.id, reason);
       Alert.alert(t('learn.thanks'), t('learn.reportSent'));
     };
@@ -378,9 +406,13 @@ export default function LearnScreen() {
               <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.bold }}>{t('learn.topics')}</Text>
             </Pressable>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Pressable onPress={handleReport} style={{ padding: 6 }} hitSlop={8}>
-                <Text style={{ color: C.textFaint, fontSize: 18 }}>⚑</Text>
-              </Pressable>
+              {/* Solo las del banco se pueden reportar: las de bandera y año
+                  salen del catálogo local y no tienen fila que señalar. */}
+              {q.id && (
+                <Pressable onPress={handleReport} style={{ padding: 6 }} hitSlop={8}>
+                  <Text style={{ color: C.textFaint, fontSize: 18 }}>⚑</Text>
+                </Pressable>
+              )}
               {cat === 'random' && q.category ? (
                 <CategoryBadge cat={q.category} small />
               ) : cat === 'random' ? (
@@ -469,34 +501,99 @@ export default function LearnScreen() {
             )}
           </View>
 
+          {/* Token grande de las preguntas de bandera y de año: la bandera a
+              reconocer, o el año del que hay que decir qué pasó. */}
+          {q.media && (
+            <View style={{
+              backgroundColor: C.surface, borderRadius: 24,
+              paddingVertical: q.media.kind === 'flag' ? 24 : 28,
+              alignItems: 'center', borderWidth: 1, borderColor: C.border,
+              marginBottom: 18,
+            }}>
+              {q.media.kind === 'flag' ? (
+                <Text style={{ fontSize: 96 }}>{q.media.value}</Text>
+              ) : (
+                <Text
+                  numberOfLines={1}
+                  adjustsFontSizeToFit
+                  style={{ color: C.text, fontSize: 64, fontFamily: Font.black, letterSpacing: -1 }}
+                >
+                  {q.media.value}
+                </Text>
+              )}
+            </View>
+          )}
+
           {/* Question */}
+          {q.lead && (
+            <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 6 }}>
+              {q.lead}
+            </Text>
+          )}
           <Text style={{ color: C.text, ...Type.question, marginBottom: 20 }}>
             {q.q}
           </Text>
 
           {/* Options */}
-          <View style={{ gap: 11 }}>
-            {q.opts.map((opt, i) =>
-              fiftyHidden.includes(i) ? (
-                <View key={i} style={{
-                  borderWidth: 1.5, borderColor: C.border, backgroundColor: C.surfaceSunk,
-                  borderRadius: 18, paddingVertical: 16, paddingHorizontal: 16, opacity: 0.5,
-                  minHeight: 60, justifyContent: 'center',
-                }}>
-                  <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
-                </View>
-              ) : (
-                <OptionBtn
-                  key={i}
-                  text={opt}
-                  letter={LETTERS[i]}
-                  state={getState(i)}
-                  dimmed={answered && getState(i) === null}
-                  onPress={() => handle(i)}
-                />
-              ),
-            )}
-          </View>
+          {q.layout ? (
+            // Banderas y años en rejilla 2×2: son opciones cortas y se comparan
+            // de un vistazo, igual que en sus modos de la pestaña de Retos.
+            <View style={{
+              flexDirection: 'row', flexWrap: 'wrap',
+              justifyContent: 'space-between', rowGap: 11,
+            }}>
+              {q.opts.map((opt, i) =>
+                fiftyHidden.includes(i) ? (
+                  <View key={i} style={{
+                    width: '48.5%', borderWidth: 1.5, borderColor: C.border,
+                    backgroundColor: C.surfaceSunk, borderRadius: 18, opacity: 0.5,
+                    minHeight: 104, alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
+                  </View>
+                ) : q.layout === 'flags' ? (
+                  <FlagOption
+                    key={i}
+                    flag={opt}
+                    state={getState(i)}
+                    dimmed={answered && getState(i) === null}
+                    onPress={() => handle(i)}
+                  />
+                ) : (
+                  <YearOption
+                    key={i}
+                    year={opt}
+                    state={getState(i)}
+                    dimmed={answered && getState(i) === null}
+                    onPress={() => handle(i)}
+                  />
+                ),
+              )}
+            </View>
+          ) : (
+            <View style={{ gap: 11 }}>
+              {q.opts.map((opt, i) =>
+                fiftyHidden.includes(i) ? (
+                  <View key={i} style={{
+                    borderWidth: 1.5, borderColor: C.border, backgroundColor: C.surfaceSunk,
+                    borderRadius: 18, paddingVertical: 16, paddingHorizontal: 16, opacity: 0.5,
+                    minHeight: 60, justifyContent: 'center',
+                  }}>
+                    <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
+                  </View>
+                ) : (
+                  <OptionBtn
+                    key={i}
+                    text={opt}
+                    letter={LETTERS[i]}
+                    state={getState(i)}
+                    dimmed={answered && getState(i) === null}
+                    onPress={() => handle(i)}
+                  />
+                ),
+              )}
+            </View>
+          )}
 
           {/* Pista (power-up) */}
           {hintShown && !answered && q.ctx && (

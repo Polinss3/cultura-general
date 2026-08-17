@@ -77,10 +77,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="world"
+        name="challenges"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon label={t('tabs.world')} icon="🌍" focused={focused} C={C} />
+            <TabIcon label={t('tabs.challenges')} icon="🎯" focused={focused} C={C} />
           ),
         }}
       />

@@ -38,6 +38,7 @@ interface QuestionRow {
   options: string[];
   answer_index: number;
   context: string | null;
+  difficulty: 'easy' | 'medium' | 'hard' | null;
   question_en: string | null;
   options_en: string[] | null;
   context_en: string | null;
@@ -62,6 +63,10 @@ function mapQuestion(row: QuestionRow, lang: AppLang = getCurrentLang()): Questi
     ans: row.answer_index, // el índice es el mismo: el pipeline preserva el orden de opciones
     ctx: en ? (row.context_en ?? row.context ?? undefined) : (row.context ?? undefined),
     category: row.category,
+    // La columna admite null en el esquema (el `check` no lo excluye). Los
+    // seeds la rellenan siempre, pero si algún día llega vacía la tratamos
+    // como 'medium', que es el `default` de la propia tabla.
+    difficulty: row.difficulty ?? 'medium',
   };
 }
 
@@ -76,6 +81,11 @@ const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 
 // v2: cacheamos las filas crudas (ambos idiomas). Cambiar de idioma mapea la
 // caché existente sin necesidad de refetch (funciona offline).
+//
+// Se guarda la fila entera tal como llega de `select('*')`, no un subconjunto
+// de columnas: por eso las cachés v2 ya escritas traen `difficulty` aunque
+// `mapQuestion` no la leyera todavía, y no hace falta invalidarlas al empezar
+// a usarla. Cualquier columna nueva de `questions` entra sola por la misma vía.
 function cacheKey(category?: Category) {
   return `questions_cache_${category ?? 'all'}_v2`;
 }
@@ -413,24 +423,91 @@ export async function fetchWeeklyRanking(): Promise<WeeklyRow[]> {
   }));
 }
 
-export type GlobalRow = { userId: string; username: string; totalCorrect: number; streak: number; speedRecord: number; division: number; cosmetics: Record<string, string> | null };
+export type GlobalRow = {
+  userId: string;
+  username: string;
+  totalAnswered: number;
+  totalCorrect: number;
+  streak: number;
+  speedRecord: number;
+  level: number;
+  division: number;
+  cosmetics: Record<string, string> | null;
+};
 
-export async function fetchAllTimeRanking(): Promise<GlobalRow[]> {
-  const { data } = await supabase
-    .from('profiles')
-    .select('id, username, total_correct, streak, speed_record, league_division, cosmetics')
-    .order('total_correct', { ascending: false })
-    .limit(50);
+/** Criterio de orden del ranking global. */
+export type GlobalSort = 'answered' | 'correct' | 'streak';
 
-  return (data ?? []).map(r => ({
+const SORT_COLUMN: Record<GlobalSort, string> = {
+  answered: 'total_answered',
+  correct: 'total_correct',
+  streak: 'streak',
+};
+
+const GLOBAL_SELECT =
+  'id, username, total_answered, total_correct, streak, speed_record, level, league_division, cosmetics';
+
+function mapGlobalRow(r: any): GlobalRow {
+  return {
     userId: r.id,
     username: r.username ?? i18n.t('common.anonymous'),
+    totalAnswered: r.total_answered ?? 0,
     totalCorrect: r.total_correct ?? 0,
     streak: r.streak ?? 0,
     speedRecord: r.speed_record ?? 0,
-    division: (r as any).league_division ?? 0,
-    cosmetics: (r as any).cosmetics ?? null,
-  }));
+    level: r.level ?? 1,
+    division: r.league_division ?? 0,
+    cosmetics: r.cosmetics ?? null,
+  };
+}
+
+export async function fetchAllTimeRanking(
+  sort: GlobalSort = 'answered',
+  limit = 100,
+): Promise<GlobalRow[]> {
+  const { data } = await supabase
+    .from('profiles')
+    .select(GLOBAL_SELECT)
+    .order(SORT_COLUMN[sort], { ascending: false })
+    // Desempates. Sin ellos, dos perfiles con la misma cifra salen en orden
+    // arbitrario y la lista baila entre recargas: el usuario ve que "sube" o
+    // "baja" sin haber jugado.
+    .order('total_correct', { ascending: false })
+    .order('id', { ascending: true })
+    .limit(limit);
+
+  return (data ?? []).map(mapGlobalRow);
+}
+
+export interface MyGlobalRank {
+  rank: number;
+  row: GlobalRow;
+}
+
+/**
+ * Puesto propio en el ranking global, para poder anclarlo abajo cuando el
+ * usuario no entra en la lista visible. Con empates devuelve el mejor puesto
+ * del grupo (los tres que empatan son "el 5.º"), que es lo que espera quien
+ * mira una clasificación.
+ */
+export async function fetchMyGlobalRank(
+  userId: string,
+  sort: GlobalSort = 'answered',
+): Promise<MyGlobalRank | null> {
+  const { data: me } = await supabase
+    .from('profiles')
+    .select(GLOBAL_SELECT)
+    .eq('id', userId)
+    .maybeSingle();
+  if (!me) return null;
+
+  const column = SORT_COLUMN[sort];
+  const { count } = await supabase
+    .from('profiles')
+    .select('id', { count: 'exact', head: true })
+    .gt(column, (me as any)[column] ?? 0);
+
+  return { rank: (count ?? 0) + 1, row: mapGlobalRow(me) };
 }
 
 // ─── Friend rankings ──────────────────────────────────────────

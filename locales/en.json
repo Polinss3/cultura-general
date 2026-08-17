@@ -27,7 +27,7 @@
   "tabs": {
     "home": "Home",
     "daily": "Daily",
-    "world": "World",
+    "challenges": "Challenges",
     "learn": "Learn",
     "friends": "Friends"
   },
@@ -66,27 +66,90 @@
     "m_coins_100": "Earn 100 coins"
   },
   "achievements": {
-    "first_answer": { "title": "First answer", "desc": "Answer your first question" },
-    "ten_answers": { "title": "Student", "desc": "10 questions answered" },
-    "hundred_answers": { "title": "Scholar", "desc": "100 questions answered" },
-    "five_hundred_answers": { "title": "Genius", "desc": "500 questions answered" },
-    "streak_3": { "title": "On a roll", "desc": "Best streak of 3 days" },
-    "streak_7": { "title": "Unstoppable", "desc": "Best streak of 7 days" },
-    "streak_30": { "title": "Legend", "desc": "Best streak of 30 days" },
-    "accuracy_80": { "title": "Precision", "desc": "80% correct (min. 20)" },
-    "accuracy_95": { "title": "Perfectionist", "desc": "95% correct (min. 50)" },
-    "speed_5": { "title": "Sprinter", "desc": "5 correct in Time Attack" },
-    "speed_10": { "title": "Rocket", "desc": "10 correct in Time Attack" },
-    "speed_20": { "title": "Champion", "desc": "20 correct in Time Attack" },
-    "level_10": { "title": "Connoisseur", "desc": "Reach level 10" },
-    "level_25": { "title": "Veteran", "desc": "Reach level 25" },
-    "level_50": { "title": "Eminence", "desc": "Reach level 50" },
-    "coins_500": { "title": "Saver", "desc": "Accumulate 500 coins" },
-    "coins_2000": { "title": "Loaded", "desc": "Accumulate 2000 coins" },
-    "ladder_5": { "title": "Climber", "desc": "Reach floor 5 in Climb" },
-    "ladder_10": { "title": "Mountaineer", "desc": "Reach floor 10 in Climb" },
-    "ladder_20": { "title": "Summit", "desc": "Reach floor 20 in Climb" },
-    "mult_max": { "title": "Maxed out", "desc": "Max multiplier (streak ≥10)" }
+    "first_answer": {
+      "title": "First answer",
+      "desc": "Answer your first question"
+    },
+    "ten_answers": {
+      "title": "Student",
+      "desc": "10 questions answered"
+    },
+    "hundred_answers": {
+      "title": "Scholar",
+      "desc": "100 questions answered"
+    },
+    "five_hundred_answers": {
+      "title": "Genius",
+      "desc": "500 questions answered"
+    },
+    "streak_3": {
+      "title": "On a roll",
+      "desc": "Best streak of 3 days"
+    },
+    "streak_7": {
+      "title": "Unstoppable",
+      "desc": "Best streak of 7 days"
+    },
+    "streak_30": {
+      "title": "Legend",
+      "desc": "Best streak of 30 days"
+    },
+    "accuracy_80": {
+      "title": "Precision",
+      "desc": "80% correct (min. 20)"
+    },
+    "accuracy_95": {
+      "title": "Perfectionist",
+      "desc": "95% correct (min. 50)"
+    },
+    "speed_5": {
+      "title": "Sprinter",
+      "desc": "5 correct in Time Attack"
+    },
+    "speed_10": {
+      "title": "Rocket",
+      "desc": "10 correct in Time Attack"
+    },
+    "speed_20": {
+      "title": "Champion",
+      "desc": "20 correct in Time Attack"
+    },
+    "level_10": {
+      "title": "Connoisseur",
+      "desc": "Reach level 10"
+    },
+    "level_25": {
+      "title": "Veteran",
+      "desc": "Reach level 25"
+    },
+    "level_50": {
+      "title": "Eminence",
+      "desc": "Reach level 50"
+    },
+    "coins_500": {
+      "title": "Saver",
+      "desc": "Accumulate 500 coins"
+    },
+    "coins_2000": {
+      "title": "Loaded",
+      "desc": "Accumulate 2000 coins"
+    },
+    "ladder_5": {
+      "title": "Climber",
+      "desc": "Reach floor 5 in Climb"
+    },
+    "ladder_10": {
+      "title": "Mountaineer",
+      "desc": "Reach floor 10 in Climb"
+    },
+    "ladder_20": {
+      "title": "Summit",
+      "desc": "Reach floor 20 in Climb"
+    },
+    "mult_max": {
+      "title": "Maxed out",
+      "desc": "Max multiplier (streak ≥10)"
+    }
   },
   "notifications": {
     "channelName": "CG Trivia",
@@ -232,6 +295,24 @@
     "zoneReached": "You reached {{zone}}",
     "zoneFloor": "{{zone}}"
   },
+  "ranking": {
+    "title": "Global ranking",
+    "sortAnswered": "Answered",
+    "sortCorrect": "Correct",
+    "sortStreak": "Streak",
+    "unit": {
+      "answered": "answered",
+      "correct": "correct",
+      "streak": "days"
+    },
+    "level": "Level {{n}}",
+    "yourPosition": "Your position",
+    "empty": "Nobody is on the ranking yet. Answer questions and take the top spot!",
+    "gatedTitle": "Compete in the global ranking",
+    "gatedSub": "Create an account to appear in the app-wide standings.",
+    "offline": "Offline — come back when you're connected.",
+    "createAccount": "Create free account"
+  },
   "leagues": {
     "title": "Leagues",
     "divisions": {
@@ -260,18 +341,13 @@
       "compete": "Each week you compete in your division by earning XP: daily question, Time Attack, Learn, Climb…",
       "promote": "The top {{n}} of the division are promoted to the next one.",
       "relegate": "The bottom {{n}} are relegated to the lower one.",
-      "rewards": "When the week ends you earn coins based on your final rank.",
+      "rewards": "When the week ends you earn coins based on your final rank. Higher divisions give bigger prizes.",
       "badge": "Your division is shown as a badge on your profile and in the rankings.",
       "close": "Got it"
     },
     "currentPrize": "Prize if it ends now",
     "prizesTitle": "Placement prizes",
-    "prize1": "1st place",
-    "prize2": "2nd place",
-    "prize3": "3rd place",
     "prizeTop10": "Top 10",
-    "prizeRest": "Take part",
-    "prizesNote": "Paid when the week ends based on your final rank. Higher divisions give bigger prizes.",
     "leaderboard": "Standings",
     "empty": "No one has scored yet this week. Be the first!",
     "gatedTitle": "Compete in the Leagues",
@@ -282,7 +358,11 @@
     "cardTag": "COMPETE",
     "cardTitle": "Weekly Leagues",
     "cardDesc": "Earn XP each week and climb divisions.",
-    "cardCta": "View league"
+    "cardCta": "View league",
+    "prizeShort1": "1st",
+    "prizeShort2": "2nd",
+    "prizeShort3": "3rd",
+    "prizeShortRest": "Rest"
   },
   "speed": {
     "title": "Time Attack",
@@ -339,21 +419,44 @@
       "diamante": "Diamond"
     }
   },
+  "round": {
+    "exit": "Exit",
+    "hits": "{{n}} ✓",
+    "best": "Best: {{n}}",
+    "newRecord": "🎉 New record!",
+    "playAgain": "Another round",
+    "changeScope": "Change"
+  },
+  "challenges": {
+    "flags": "Flags",
+    "years": "Years"
+  },
+  "years": {
+    "pickerSub": "Pick an era and see how many years you can nail.",
+    "allTime": "All of history",
+    "countEvents_one": "{{count}} event",
+    "countEvents_other": "{{count}} events",
+    "whichYear": "In what year did it happen?",
+    "whatHappened": "What happened this year?",
+    "eras": {
+      "preXX": "Up to 1900",
+      "xx": "20th century",
+      "xxi": "21st century"
+    },
+    "difficulty": {
+      "all": "All",
+      "1": "Easy",
+      "2": "Medium",
+      "3": "Hard"
+    }
+  },
   "world": {
-    "tab": "World",
-    "pickerTitle": "Flags of the world",
     "pickerSub": "Pick an area and see how many you know.",
     "allWorld": "The whole world",
     "countFlags_one": "{{count}} flag",
     "countFlags_other": "{{count}} flags",
-    "best": "Best: {{n}}",
-    "newRecord": "🎉 New record!",
-    "hits": "{{n}} ✓",
-    "exit": "Exit",
     "whichCountry": "Which country is this flag from?",
     "whichFlag": "Which one is its flag?",
-    "playAgain": "Another round",
-    "changeScope": "Change",
     "continents": {
       "europa": "Europe",
       "america": "Americas",
@@ -465,7 +568,10 @@
       "learnTopics_other": "{{count}} topics",
       "friendsModes_one": "{{count}} local mode",
       "friendsModes_other": "{{count}} local modes",
-      "noRecord": "No record yet"
+      "noRecord": "No record yet",
+      "years": "Years",
+      "yearsEvents_one": "{{count}} event",
+      "yearsEvents_other": "{{count}} events"
     }
   },
   "friendsList": {
@@ -628,7 +734,6 @@
     "tabFriends": "👥 Friends",
     "emptyDaily": "You're the first to answer today!",
     "emptyWeekly": "Nobody has answered this week yet.",
-    "emptyGlobal": "No global data yet.",
     "emptyFriends": "No friend has answered today.",
     "noFriends": "You don't have any friends added yet.\nSearch for someone in the Friends tab!",
     "newQuestionIn": "New question in {{time}}",
@@ -639,8 +744,6 @@
     "incorrect": "✗ Incorrect",
     "you": " (you)",
     "weekPts": "{{score}} pts",
-    "globalSub": "🔥 {{streak}} · ⚡ {{speed}}",
-    "globalCorrect": "{{count}} ✓",
     "reportDuplicate": "It's a duplicate",
     "reportThanksBody": "Your report helps improve the quality of the questions.",
     "shareWin": "I got today's {{appName}} daily question right! 🧠🏆\n🔥 Streak: {{days}}\n\nCan you beat me? Download the free app.",

@@ -27,7 +27,7 @@
   "tabs": {
     "home": "Inicio",
     "daily": "Diario",
-    "world": "Mundo",
+    "challenges": "Retos",
     "learn": "Aprender",
     "friends": "Amigos"
   },
@@ -66,27 +66,90 @@
     "m_coins_100": "Gana 100 monedas"
   },
   "achievements": {
-    "first_answer": { "title": "Primera respuesta", "desc": "Responde tu primera pregunta" },
-    "ten_answers": { "title": "Estudiante", "desc": "10 preguntas respondidas" },
-    "hundred_answers": { "title": "Erudito", "desc": "100 preguntas respondidas" },
-    "five_hundred_answers": { "title": "Genio", "desc": "500 preguntas respondidas" },
-    "streak_3": { "title": "En racha", "desc": "Racha máxima de 3 días" },
-    "streak_7": { "title": "Imparable", "desc": "Racha máxima de 7 días" },
-    "streak_30": { "title": "Leyenda", "desc": "Racha máxima de 30 días" },
-    "accuracy_80": { "title": "Precisión", "desc": "80% de aciertos (mín. 20)" },
-    "accuracy_95": { "title": "Perfeccionista", "desc": "95% de aciertos (mín. 50)" },
-    "speed_5": { "title": "Velocista", "desc": "5 aciertos en Contrarreloj" },
-    "speed_10": { "title": "Cohete", "desc": "10 aciertos en Contrarreloj" },
-    "speed_20": { "title": "Campeón", "desc": "20 aciertos en Contrarreloj" },
-    "level_10": { "title": "Conocedor", "desc": "Alcanza el nivel 10" },
-    "level_25": { "title": "Veterano", "desc": "Alcanza el nivel 25" },
-    "level_50": { "title": "Eminencia", "desc": "Alcanza el nivel 50" },
-    "coins_500": { "title": "Ahorrador", "desc": "Acumula 500 monedas" },
-    "coins_2000": { "title": "Ricachón", "desc": "Acumula 2000 monedas" },
-    "ladder_5": { "title": "Escalador", "desc": "Llega al piso 5 en Ascenso" },
-    "ladder_10": { "title": "Alpinista", "desc": "Llega al piso 10 en Ascenso" },
-    "ladder_20": { "title": "Cumbre", "desc": "Llega al piso 20 en Ascenso" },
-    "mult_max": { "title": "A tope", "desc": "Multiplicador máximo (racha ≥10)" }
+    "first_answer": {
+      "title": "Primera respuesta",
+      "desc": "Responde tu primera pregunta"
+    },
+    "ten_answers": {
+      "title": "Estudiante",
+      "desc": "10 preguntas respondidas"
+    },
+    "hundred_answers": {
+      "title": "Erudito",
+      "desc": "100 preguntas respondidas"
+    },
+    "five_hundred_answers": {
+      "title": "Genio",
+      "desc": "500 preguntas respondidas"
+    },
+    "streak_3": {
+      "title": "En racha",
+      "desc": "Racha máxima de 3 días"
+    },
+    "streak_7": {
+      "title": "Imparable",
+      "desc": "Racha máxima de 7 días"
+    },
+    "streak_30": {
+      "title": "Leyenda",
+      "desc": "Racha máxima de 30 días"
+    },
+    "accuracy_80": {
+      "title": "Precisión",
+      "desc": "80% de aciertos (mín. 20)"
+    },
+    "accuracy_95": {
+      "title": "Perfeccionista",
+      "desc": "95% de aciertos (mín. 50)"
+    },
+    "speed_5": {
+      "title": "Velocista",
+      "desc": "5 aciertos en Contrarreloj"
+    },
+    "speed_10": {
+      "title": "Cohete",
+      "desc": "10 aciertos en Contrarreloj"
+    },
+    "speed_20": {
+      "title": "Campeón",
+      "desc": "20 aciertos en Contrarreloj"
+    },
+    "level_10": {
+      "title": "Conocedor",
+      "desc": "Alcanza el nivel 10"
+    },
+    "level_25": {
+      "title": "Veterano",
+      "desc": "Alcanza el nivel 25"
+    },
+    "level_50": {
+      "title": "Eminencia",
+      "desc": "Alcanza el nivel 50"
+    },
+    "coins_500": {
+      "title": "Ahorrador",
+      "desc": "Acumula 500 monedas"
+    },
+    "coins_2000": {
+      "title": "Ricachón",
+      "desc": "Acumula 2000 monedas"
+    },
+    "ladder_5": {
+      "title": "Escalador",
+      "desc": "Llega al piso 5 en Ascenso"
+    },
+    "ladder_10": {
+      "title": "Alpinista",
+      "desc": "Llega al piso 10 en Ascenso"
+    },
+    "ladder_20": {
+      "title": "Cumbre",
+      "desc": "Llega al piso 20 en Ascenso"
+    },
+    "mult_max": {
+      "title": "A tope",
+      "desc": "Multiplicador máximo (racha ≥10)"
+    }
   },
   "notifications": {
     "channelName": "Cultura General",
@@ -232,6 +295,24 @@
     "zoneReached": "Llegaste a {{zone}}",
     "zoneFloor": "{{zone}}"
   },
+  "ranking": {
+    "title": "Ranking global",
+    "sortAnswered": "Respondidas",
+    "sortCorrect": "Aciertos",
+    "sortStreak": "Racha",
+    "unit": {
+      "answered": "respondidas",
+      "correct": "aciertos",
+      "streak": "días"
+    },
+    "level": "Nivel {{n}}",
+    "yourPosition": "Tu posición",
+    "empty": "Aún no hay nadie en el ranking. ¡Responde preguntas y ponte el primero!",
+    "gatedTitle": "Compite en el ranking global",
+    "gatedSub": "Crea una cuenta para aparecer en la clasificación de toda la app.",
+    "offline": "Sin conexión — vuelve cuando recuperes los datos.",
+    "createAccount": "Crear cuenta gratis"
+  },
   "leagues": {
     "title": "Ligas",
     "divisions": {
@@ -260,18 +341,13 @@
       "compete": "Cada semana compites en tu división ganando XP al jugar: pregunta diaria, Contrarreloj, Aprender, Ascenso…",
       "promote": "Los {{n}} primeros de la división ascienden a la superior.",
       "relegate": "Los {{n}} últimos descienden a la inferior.",
-      "rewards": "Al cerrar la semana ganas monedas según tu puesto final.",
+      "rewards": "Al cerrar la semana ganas monedas según tu puesto final. En divisiones superiores los premios son mayores.",
       "badge": "Tu división se muestra como insignia en tu perfil y en los rankings.",
       "close": "Entendido"
     },
     "currentPrize": "Premio si acaba ahora",
     "prizesTitle": "Premios por puesto",
-    "prize1": "1.er puesto",
-    "prize2": "2.º puesto",
-    "prize3": "3.er puesto",
     "prizeTop10": "Top 10",
-    "prizeRest": "Participar",
-    "prizesNote": "Se pagan al cerrar la semana según tu puesto final. En divisiones superiores los premios son mayores.",
     "leaderboard": "Clasificación",
     "empty": "Aún nadie ha puntuado esta semana. ¡Sé el primero!",
     "gatedTitle": "Compite en las Ligas",
@@ -282,7 +358,11 @@
     "cardTag": "COMPITE",
     "cardTitle": "Ligas semanales",
     "cardDesc": "Gana XP cada semana y sube de división.",
-    "cardCta": "Ver liga"
+    "cardCta": "Ver liga",
+    "prizeShort1": "1.º",
+    "prizeShort2": "2.º",
+    "prizeShort3": "3.º",
+    "prizeShortRest": "Resto"
   },
   "speed": {
     "title": "Contrarreloj",
@@ -339,21 +419,44 @@
       "diamante": "Diamante"
     }
   },
+  "round": {
+    "exit": "Salir",
+    "hits": "{{n}} ✓",
+    "best": "Récord: {{n}}",
+    "newRecord": "🎉 ¡Nuevo récord!",
+    "playAgain": "Otra ronda",
+    "changeScope": "Cambiar"
+  },
+  "challenges": {
+    "flags": "Banderas",
+    "years": "Años"
+  },
+  "years": {
+    "pickerSub": "Elige una época y a ver si clavas los años.",
+    "allTime": "Toda la historia",
+    "countEvents_one": "{{count}} hecho",
+    "countEvents_other": "{{count}} hechos",
+    "whichYear": "¿En qué año ocurrió?",
+    "whatHappened": "¿Qué ocurrió este año?",
+    "eras": {
+      "preXX": "Hasta 1900",
+      "xx": "Siglo XX",
+      "xxi": "Siglo XXI"
+    },
+    "difficulty": {
+      "all": "Todas",
+      "1": "Fácil",
+      "2": "Media",
+      "3": "Difícil"
+    }
+  },
   "world": {
-    "tab": "Mundo",
-    "pickerTitle": "Banderas del mundo",
     "pickerSub": "Elige una zona y a ver cuántas reconoces.",
     "allWorld": "Todo el mundo",
     "countFlags_one": "{{count}} bandera",
     "countFlags_other": "{{count}} banderas",
-    "best": "Récord: {{n}}",
-    "newRecord": "🎉 ¡Nuevo récord!",
-    "hits": "{{n}} ✓",
-    "exit": "Salir",
     "whichCountry": "¿De qué país es esta bandera?",
     "whichFlag": "¿Cuál es su bandera?",
-    "playAgain": "Otra ronda",
-    "changeScope": "Cambiar",
     "continents": {
       "europa": "Europa",
       "america": "América",
@@ -465,7 +568,10 @@
       "learnTopics_other": "{{count}} temas",
       "friendsModes_one": "{{count}} modo local",
       "friendsModes_other": "{{count}} modos locales",
-      "noRecord": "Aún sin récord"
+      "noRecord": "Aún sin récord",
+      "years": "Años",
+      "yearsEvents_one": "{{count}} hecho",
+      "yearsEvents_other": "{{count}} hechos"
     }
   },
   "friendsList": {
@@ -628,7 +734,6 @@
     "tabFriends": "👥 Amigos",
     "emptyDaily": "¡Eres el primero en responder hoy!",
     "emptyWeekly": "Nadie ha respondido esta semana aún.",
-    "emptyGlobal": "Sin datos globales aún.",
     "emptyFriends": "Ningún amigo ha respondido hoy.",
     "noFriends": "Aún no tienes amigos añadidos.\n¡Busca a alguien en la pestaña Amigos!",
     "newQuestionIn": "Nueva pregunta en {{time}}",
@@ -639,8 +744,6 @@
     "incorrect": "✗ Incorrecto",
     "you": " (tú)",
     "weekPts": "{{score}} pts",
-    "globalSub": "🔥 {{streak}} · ⚡ {{speed}}",
-    "globalCorrect": "{{count}} ✓",
     "reportDuplicate": "Está duplicada",
     "reportThanksBody": "Tu reporte ayuda a mejorar la calidad de las preguntas.",
     "shareWin": "¡He acertado la pregunta diaria de {{appName}}! 🧠🏆\n🔥 Racha: {{days}}\n\n¿Puedes superarme? Descarga la app gratis.",

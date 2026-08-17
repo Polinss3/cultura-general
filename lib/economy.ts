@@ -8,6 +8,7 @@ export const REWARDS = {
   dailyWrong:     { xp: 15, coins: 5 },
   speedPerCorrect:{ xp: 6,  coins: 2 },   // al terminar, ∝ aciertos
   flagPerCorrect: { xp: 5,  coins: 2 },   // Banderas: al terminar, ∝ aciertos
+  yearPerCorrect: { xp: 5,  coins: 2 },   // Años: mismo esfuerzo, misma paga
   levelUpBonus:   50,                     // monedas por nivel (lo aplica el servidor)
   chestBase:      20,                     // ×multiplicador en servidor
   missionXp:      30,

@@ -21,7 +21,8 @@ export type AdPlacement =
   | 'daily_answered'
   | 'speed_complete'
   | 'ladder_complete'
-  | 'flags_complete';
+  | 'flags_complete'
+  | 'years_complete';
 export type RewardedPlacement = 'shop_coins' | 'ladder_revive' | 'speed_time';
 export type AdsMode = 'off' | 'test' | 'live';
 

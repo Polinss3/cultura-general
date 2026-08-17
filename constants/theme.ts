@@ -113,6 +113,30 @@ export function inkButton(isDark: boolean): { backgroundColor: string; color: st
     : { backgroundColor: '#2B2621', color: '#FFF6E9' };
 }
 
+/**
+ * Halo de color alrededor de una tarjeta, como si la iluminaran por detrás.
+ * A diferencia de `cardShadow`, va sin desplazamiento: la sombra sale por los
+ * cuatro lados por igual y se lee como luz, no como relieve.
+ *
+ * Ojo al montarlo: el recorte y el halo no pueden vivir en la misma vista. Si
+ * la que lleva el `overflow: 'hidden'` (para clipar el degradado) es también la
+ * que lleva la sombra, iOS no pinta nada. Va una envoltura fuera.
+ *
+ * Y el radio tiene que caber en el margen que rodea a la tarjeta. Si el halo
+ * llega al borde del contenedor, este lo recorta en línea recta y lo que se ve
+ * es un rectángulo de luz cortado a cuchillo, no un degradado. Con 12 se queda
+ * holgado dentro de los 20 de padding de pantalla que usan Ligas y compañía.
+ */
+export function glow(color: string, isDark: boolean): ViewStyle {
+  return {
+    shadowColor: color,
+    shadowOpacity: isDark ? 0.6 : 0.45,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 0 },
+    elevation: 9,
+  };
+}
+
 /** Tinte suave de un color de acento, para cuadrados de icono y píldoras. */
 export function tint(color: string, isDark: boolean): string {
   const h = color.replace('#', '');
