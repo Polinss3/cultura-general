@@ -1,57 +1,51 @@
 -- ─────────────────────────────────────────────────────────────
--- Cultura General — el registro deja de romperse si el nombre está cogido
+-- Cultura General — que el alta no se caiga por el nombre de usuario
 --
--- QUÉ ARREGLA: `generate_profile_username` tiene una salida temprana para el
--- registro manual que devuelve el nombre pedido TAL CUAL, sin comprobar si
--- está libre. Como `profiles.username` es `unique not null`, un nombre
--- duplicado revienta el insert del trigger `on_auth_user_created`, que a su
--- vez revienta el insert en `auth.users`: el usuario ve un
--- "Database error saving new user" en vez de "ese nombre ya está en uso".
+-- QUÉ ARREGLA: `handle_new_user`, el trigger que crea el perfil al registrarse,
+-- mete el nombre directamente sin comprobar nada:
 --
--- Hoy eso casi nunca pasa porque el cliente comprueba la disponibilidad ANTES
--- de registrar. Pero esa comprobación:
---   1. tiene una carrera de manual: dos personas registrando el mismo nombre a
---      la vez la pasan las dos, y una se come el 500;
---   2. se hace leyendo `profiles` con el rol `anon`, así que es justo lo que
---      dejaría de funcionar al cerrar la lectura anónima de perfiles (el
---      "bloque E" comentado en security_hardening_v2.sql).
+--     insert into public.profiles (id, username)
+--     values (new.id, coalesce(new.raw_user_meta_data->>'username',
+--                              split_part(new.email, '@', 1)));
 --
--- Con esto aplicado, el servidor deja de depender de que el cliente acierte.
+-- Como `profiles.username` es `unique not null`, eso revienta el insert, que
+-- revienta el insert en `auth.users`, y la persona ve un
+-- "Database error saving new user" en vez de un mensaje que entienda.
 --
--- De paso arregla un segundo camino a 500 en la misma salida temprana: si el
--- nombre pedido llega vacío o no válido, `normalize_username` devuelve NULL y
--- la función devolvía NULL, violando el `not null` de la columna.
+-- Fallos reproducidos contra Postgres 16 con este mismo trigger:
+--   · 23505 — se registra con un nombre que ya existe.
+--   · 23502 — proveedor social sin email y sin nombre en los metadatos: el
+--             `coalesce` da NULL y la columna es `not null`.
+-- Y dos problemas silenciosos que no rompen pero ensucian:
+--   · "Pablo" y "pablo" son perfiles distintos, indistinguibles en un ranking.
+--   · Un correo tipo `jo@x.com` crea el usuario "jo", de dos letras, que las
+--     propias reglas de la app (`lib/authValidation.ts`, 3-20) rechazan.
 --
--- QUÉ NO HACE: no toca ni una fila. No hay DELETE, DROP TABLE, TRUNCATE ni
--- UPDATE de datos. Solo se reemplaza una función.
+-- QUÉ HACE: el trigger pasa a delegar en `generate_profile_username`, que ya
+-- resuelve todo eso — es lo que pretendía `auth_social_username.sql`, que nunca
+-- llegó a aplicarse. Se crean también sus dos auxiliares para que este fichero
+-- no dependa de ninguna migración anterior.
 --
--- COMPATIBILIDAD: total con la 1.3.0 publicada y con la 2.0.0. No cambia la
--- firma ni el comportamiento del camino feliz: si el nombre pedido está libre
--- —que es el 99 % de los registros, porque el cliente ya lo ha comprobado— se
--- devuelve exactamente igual que antes.
+-- QUÉ NO HACE: no toca ni una fila. Nada de DELETE, DROP TABLE, TRUNCATE ni
+-- UPDATE de datos. Los 155 perfiles actuales se quedan como están, con sus
+-- nombres actuales, aunque alguno no cumpla las reglas nuevas: solo se valida
+-- lo que entra a partir de ahora.
 --
--- Idempotente y transaccional. Al final hay VERIFICACIÓN y, comentado, el
--- ROLLBACK.
+-- COMPATIBILIDAD: total con la 1.3.0 publicada y con la 2.0.0. El cliente no
+-- se entera: sigue mandando `username` y `manual_username` en los metadatos
+-- igual que ahora, y si el nombre está libre —el caso normal, porque la app ya
+-- lo comprueba antes— se usa tal cual.
 --
--- ── AUTOSUFICIENTE, y por un motivo ──────────────────────────
--- Crea también `normalize_username` e `is_valid_username`, con las mismas
--- definiciones que ya tienen en schema.sql / auth_social_username.sql /
--- security_hardening.sql. Son `create or replace` de un cuerpo idéntico: si ya
--- estaban, esto no cambia nada.
---
--- Están aquí porque la primera versión de este fichero daba por hecho que
--- existían —las había leído en el repo, no en la base— y la verificación murió
--- con "function public.is_valid_username(text) does not exist". Postgres
--- resuelve las funciones citadas directamente en una consulta al PARSEARLA,
--- antes de ejecutar nada, mientras que las llamadas desde un cuerpo plpgsql se
--- resuelven al EJECUTAR: por eso el `create or replace` de abajo se aplicó sin
--- rechistar y el error saltó después, en la verificación. Un script de
--- migración no debe depender de que otro se aplicara en su día.
+-- Idempotente y transaccional. Al final hay VERIFICACIÓN y ROLLBACK, este con
+-- la definición EXACTA del trigger que había antes.
 -- ─────────────────────────────────────────────────────────────
 
 begin;
 
--- ── Auxiliares (idénticas a las del repo; si ya están, no cambian) ──
+-- ── Auxiliares ─────────────────────────────────────────────────────
+-- Van aquí para que el fichero se sostenga solo. Son las mismas definiciones
+-- de schema.sql / auth_social_username.sql / security_hardening.sql, ninguna
+-- de las cuales llegó a aplicarse en esta base.
 
 create or replace function public.normalize_username(p_username text)
 returns text language sql immutable as $$
@@ -66,7 +60,7 @@ returns boolean language sql immutable as $$
     and p_username !~ '\s{2,}';
 $$;
 
--- ── La función que arregla el alta ─────────────────────────────────
+-- ── Generación del nombre ──────────────────────────────────────────
 
 create or replace function public.generate_profile_username(
   p_user_id uuid,
@@ -89,18 +83,17 @@ declare
   v_attempt int := 0;
 begin
   -- ── Registro manual ────────────────────────────────────────
-  -- El nombre que ha elegido la persona manda, pero solo si está libre. Si no,
-  -- se le pega el sufijo en vez de devolverlo a pelo y reventar: "Pablo" pasa
-  -- a "Pablo A1B2C3", que sigue siendo reconocible para quien lo eligió.
-  -- Si ni así hay hueco, o el nombre no vale, se cae al camino genérico de
-  -- abajo — nunca se devuelve NULL.
+  -- El nombre elegido manda, pero solo si está libre. Si no, se le pega el
+  -- sufijo en vez de reventar: "Pablo" pasa a "Pablo A1B2C3", que sigue siendo
+  -- reconocible para quien lo eligió. Si ni así hay hueco, o el nombre no vale,
+  -- se cae al camino genérico — nunca se devuelve NULL.
   if coalesce((p_meta->>'manual_username')::boolean, false) then
     v_manual := public.normalize_username(p_meta->>'username');
 
     if public.is_valid_username(v_manual) then
       if not exists (
         select 1 from public.profiles
-         where username = v_manual and id <> p_user_id
+         where lower(username) = lower(v_manual) and id <> p_user_id
       ) then
         return v_manual;
       end if;
@@ -116,7 +109,7 @@ begin
         if public.is_valid_username(v_candidate)
           and not exists (
             select 1 from public.profiles
-             where username = v_candidate and id <> p_user_id
+             where lower(username) = lower(v_candidate) and id <> p_user_id
           ) then
           return v_candidate;
         end if;
@@ -125,18 +118,17 @@ begin
       end loop;
     end if;
 
-    -- Sin salida por aquí: sigue al camino genérico.
-    v_attempt := 0;
+    v_attempt := 0;  -- sin salida por aquí: sigue al camino genérico
   end if;
 
-  -- ── Camino genérico (social / sin nombre elegido) ───────────
+  -- ── Camino genérico (social, o sin nombre elegido) ──────────
+  -- La comparación es `lower()` a propósito: "Pablo" y "pablo" son dos perfiles
+  -- distintos para la base pero la misma persona a la vista en un ranking.
   foreach v_candidate in array v_candidates loop
     if public.is_valid_username(v_candidate)
       and not exists (
-        select 1
-          from public.profiles
-         where username = v_candidate
-           and id <> p_user_id
+        select 1 from public.profiles
+         where lower(username) = lower(v_candidate) and id <> p_user_id
       ) then
       return v_candidate;
     end if;
@@ -150,10 +142,8 @@ begin
     );
 
     if not exists (
-      select 1
-        from public.profiles
-       where username = v_candidate
-         and id <> p_user_id
+      select 1 from public.profiles
+       where lower(username) = lower(v_candidate) and id <> p_user_id
     ) then
       return v_candidate;
     end if;
@@ -165,67 +155,90 @@ begin
 end;
 $$;
 
+-- ── El trigger, que ahora delega ───────────────────────────────────
+
+create or replace function public.handle_new_user()
+returns trigger language plpgsql security definer as $$
+begin
+  insert into public.profiles (id, username)
+  values (
+    new.id,
+    public.generate_profile_username(
+      new.id, new.email, coalesce(new.raw_user_meta_data, '{}'::jsonb))
+  );
+  return new;
+end;
+$$;
+
 commit;
 
 
 -- ─────────────────────────────────────────────────────────────
--- VERIFICACIÓN — ejecútala después. Todo debe decir OK.
--- No escribe nada: usa un uuid inventado que no existe en profiles.
+-- VERIFICACIÓN — ejecútala después. Los cinco casos deben decir OK.
+-- Es de solo lectura: no inserta nada, solo pregunta qué nombre saldría.
 -- ─────────────────────────────────────────────────────────────
 
-with libre as (
-  -- Un nombre que seguro no está cogido.
-  select public.generate_profile_username(
-    '00000000-0000-0000-0000-000000000001'::uuid,
-    'quien@ejemplo.com',
-    jsonb_build_object('manual_username', true, 'username', 'Zzq Libre 8421')
-  ) as v
-),
-cogido as (
-  -- El nombre de un perfil que YA existe, pidiéndolo desde otro id.
-  select public.generate_profile_username(
-    '00000000-0000-0000-0000-000000000002'::uuid,
-    'otro@ejemplo.com',
-    jsonb_build_object('manual_username', true,
-                       'username', (select username from public.profiles order by created_at limit 1))
-  ) as v
-),
-vacio as (
-  -- Registro manual sin nombre: antes devolvía NULL y rompía el not null.
-  select public.generate_profile_username(
-    '00000000-0000-0000-0000-000000000003'::uuid,
-    'vacio@ejemplo.com',
-    jsonb_build_object('manual_username', true, 'username', '')
-  ) as v
+with cogido as (select username from public.profiles order by created_at limit 1),
+casos as (
+  select 'A. nombre libre se respeta' as caso,
+         public.generate_profile_username('00000000-0000-0000-0000-000000000001'::uuid,
+           'x@y.com', jsonb_build_object('manual_username', true, 'username', 'Zzq Libre 8421')) as v,
+         'Zzq Libre 8421' as esperado
+  union all
+  select 'B. nombre cogido recibe sufijo',
+         public.generate_profile_username('00000000-0000-0000-0000-000000000002'::uuid,
+           'x@y.com', jsonb_build_object('manual_username', true, 'username', (select username from cogido))),
+         null
+  union all
+  select 'C. mismo nombre en otras mayúsculas también',
+         public.generate_profile_username('00000000-0000-0000-0000-000000000003'::uuid,
+           'x@y.com', jsonb_build_object('manual_username', true, 'username', lower((select username from cogido)))),
+         null
+  union all
+  select 'D. social sin email ni metadatos',
+         public.generate_profile_username('00000000-0000-0000-0000-000000000004'::uuid, null, '{}'::jsonb),
+         null
+  union all
+  select 'E. local-part demasiado corto',
+         public.generate_profile_username('00000000-0000-0000-0000-000000000005'::uuid, 'jo@x.com', '{}'::jsonb),
+         null
 )
-select 'A. nombre libre se respeta' as comprobacion,
-       (select v from libre) as resultado,
-       case when (select v from libre) = 'Zzq Libre 8421' then 'OK' else 'REVISAR' end as estado
+select caso, v as resultado,
+       case
+         when v is null then 'REVISAR: devuelve NULL'
+         when not public.is_valid_username(v) then 'REVISAR: nombre inválido'
+         when esperado is not null and v <> esperado then 'REVISAR: esperaba ' || esperado
+         when esperado is null and exists (
+           select 1 from public.profiles where lower(username) = lower(v)
+         ) then 'REVISAR: choca con uno existente'
+         else 'OK'
+       end as estado
+from casos
 union all
-select 'B. nombre cogido recibe sufijo',
-       (select v from cogido),
-       case when (select v from cogido) is not null
-             and (select v from cogido) <> (select username from public.profiles order by created_at limit 1)
-             and char_length((select v from cogido)) between 3 and 20
-            then 'OK' else 'REVISAR' end
+select 'El trigger delega',
+       case when pg_get_functiondef(to_regprocedure('public.handle_new_user()')::oid)
+                 like '%generate_profile_username%' then 'sí' else 'no' end,
+       case when pg_get_functiondef(to_regprocedure('public.handle_new_user()')::oid)
+                 like '%generate_profile_username%' then 'OK' else 'REVISAR' end
 union all
-select 'C. nombre vacío ya no devuelve NULL',
-       coalesce((select v from vacio), '(NULL)'),
-       case when (select v from vacio) is not null then 'OK' else 'REVISAR' end
-union all
-select 'D. lo devuelto siempre es un username válido',
-       'A, B y C',
-       case when public.is_valid_username((select v from libre))
-             and public.is_valid_username((select v from cogido))
-             and public.is_valid_username((select v from vacio))
-            then 'OK' else 'REVISAR' end
-union all
-select 'Datos intactos: perfiles', count(*)::text || ' perfiles', 'INFO'
-  from public.profiles;
+select 'Datos intactos', count(*)::text || ' perfiles', 'INFO' from public.profiles;
 
 
 -- ─────────────────────────────────────────────────────────────
--- ROLLBACK — vuelve a la versión anterior de la función.
--- Tampoco borra datos. Está en supabase/auth_social_username.sql:19-73;
--- para deshacer, reejecuta ese fichero (es `create or replace`).
+-- ROLLBACK — devuelve el trigger EXACTAMENTE como estaba antes.
+-- Copiado literal de la base el 2026-08-17, no reconstruido de memoria.
+-- Las tres funciones de arriba pueden quedarse: sin este trigger no las llama
+-- nadie, y borrarlas no aporta nada.
+--
+--   create or replace function public.handle_new_user()
+--    returns trigger
+--    language plpgsql
+--    security definer
+--   as $function$
+--   begin
+--     insert into public.profiles (id, username)
+--     values (new.id, coalesce(new.raw_user_meta_data->>'username', split_part(new.email, '@', 1)));
+--     return new;
+--   end;
+--   $function$;
 -- ─────────────────────────────────────────────────────────────
