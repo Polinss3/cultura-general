@@ -1,15 +1,78 @@
 #!/usr/bin/env python3
-"""Genera las capturas promocionales 2.0.0 en español e inglés."""
+"""Genera las capturas promocionales 2.0.0 en español e inglés.
 
+Uso:
+    python3 scripts/generar-capturas-store.py [carpeta-de-assets]
+
+Los materiales pesan cientos de MB y viven fuera de git (`Capturas App Store/`,
+ignorada). Solo se versiona este script. Por eso las rutas NO se resuelven
+contra la carpeta del script: apuntan a la carpeta de assets, que se puede pasar
+por línea de comandos cuando cambie de versión.
+
+Qué espera encontrar dentro de la carpeta de assets:
+
+    _capturas/   capturas crudas del dispositivo, a resolución nativa
+    _fondos/     los seis fondos de los montajes
+    ES/  EN/     salida, una carpeta por idioma
+
+Capturas crudas necesarias (las de Retos hay que rehacerlas para la 2.0.0: la
+pestaña dejó de ser "Mundo" y ahora lleva el conmutador de dos tarjetas arriba,
+y las rondas estrenan la barra superior de `components/RoundHud.tsx`):
+
+    01-inicio-claro.png       Inicio, tema claro
+    02-inicio-oscuro.png      Inicio, tema oscuro
+    03-retos-menu.png         Retos, selector con las dos tarjetas héroe
+    04-banderas-pais.png      Retos > Banderas, pregunta con la bandera grande
+    06-aprender.png           Aprender, una pregunta con su contexto
+    07-amigos.png             Amigos, los modos locales
+    08-progreso.png           Perfil, nivel y recompensas
+    09-ligas.png              Ligas, la clasificación semanal
+    10-anos-pregunta.png      Retos > Años, pregunta con el año grande
+"""
+
+import sys
 from pathlib import Path
 from typing import Iterable
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 
-ROOT = Path(__file__).resolve().parent
+REPO = Path(__file__).resolve().parent.parent
+DEFAULT_ASSETS = REPO / "Capturas App Store" / "2.0.0"
+ROOT = Path(sys.argv[1]).expanduser().resolve() if len(sys.argv) > 1 else DEFAULT_ASSETS
 CANVAS = (1242, 2688)
 FONT_PATH = "/System/Library/Fonts/SFNSRounded.ttf"
+
+# Lo que hace falta para montar las seis capturas. Se comprueba antes de empezar
+# para no morir a mitad con un FileNotFoundError suelto.
+REQUIRED_CAPTURES = (
+    "01-inicio-claro.png", "02-inicio-oscuro.png", "03-retos-menu.png",
+    "04-banderas-pais.png", "06-aprender.png", "07-amigos.png",
+    "08-progreso.png", "09-ligas.png", "10-anos-pregunta.png",
+)
+REQUIRED_BACKGROUNDS = (
+    "01-estilos.png", "02-banderas.png", "03-rediseño.png",
+    "04-amigos.png", "05-progreso.png", "06-ligas.png",
+)
+
+
+def preflight() -> None:
+    """Aborta con una lista legible si falta material, en vez de a mitad."""
+    if not ROOT.is_dir():
+        sys.exit(f"No existe la carpeta de assets: {ROOT}\n"
+                 f"Pásala como argumento: python3 {Path(__file__).name} <carpeta>")
+
+    missing = [
+        str(Path(sub) / name)
+        for sub, names in (("_capturas", REQUIRED_CAPTURES), ("_fondos", REQUIRED_BACKGROUNDS))
+        for name in names
+        if not (ROOT / sub / name).is_file()
+    ]
+    if missing:
+        sys.exit("Faltan materiales en {}:\n  {}".format(ROOT, "\n  ".join(missing)))
+
+    for language in ("ES", "EN"):
+        (ROOT / language).mkdir(exist_ok=True)
 
 
 def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
@@ -200,16 +263,19 @@ def build_language(language: str) -> None:
         dark_stroke=True,
     )
 
+    # La 2.0.0 convirtió la pestaña "Mundo" en "Retos", que aloja Banderas y
+    # Años. La captura enseña las tres pantallas: el selector con las dos
+    # tarjetas héroe en medio, y una pregunta de cada juego a los lados.
     export(
         language,
-        "02-banderas-del-mundo.png" if is_es else "02-world-flags.png",
+        "02-retos-banderas-anos.png" if is_es else "02-challenges-flags-years.png",
         "02-banderas.png",
-        "Domina todas\nlas banderas" if is_es else "Master every flag",
-        "196 banderas. Dos formas de jugar." if is_es else "196 flags. Two ways to play.",
+        "Domina banderas\ny fechas" if is_es else "Master flags\nand dates",
+        "196 países y 98 hechos históricos" if is_es else "196 countries and 98 historical events",
         [
-            ("03-banderas-menu.png", 52, 950, 430, -3.0),
-            ("05-banderas-eleccion.png", 760, 950, 430, 3.0),
-            ("04-banderas-pais.png", 406, 1090, 430, 0.0),
+            ("04-banderas-pais.png", 52, 950, 430, -3.0),
+            ("10-anos-pregunta.png", 760, 950, 430, 3.0),
+            ("03-retos-menu.png", 406, 1090, 430, 0.0),
         ],
         title_fill="#231D19",
         subtitle_fill="#665A51",
@@ -268,6 +334,7 @@ def build_language(language: str) -> None:
 
 
 if __name__ == "__main__":
+    preflight()
     build_language("ES")
     build_language("EN")
-    print("Generadas 12 capturas en ES/ y EN/ a 1242 × 2688 px.")
+    print(f"Generadas 12 capturas a 1242 × 2688 px en {ROOT}/ES y {ROOT}/EN.")

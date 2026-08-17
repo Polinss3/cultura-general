@@ -43,8 +43,8 @@ Cinco pestañas:
 |---|---|---|
 | 🏠 Inicio | `(tabs)/index.tsx` | Saludo, racha, misiones del día, accesos a los modos |
 | 📅 Diario | `(tabs)/daily.tsx` | Pregunta del día, ruta diaria y los cuatro rankings |
-| 🌍 Mundo | `(tabs)/world.tsx` | Banderas de 196 países |
-| 📚 Aprender | `(tabs)/learn.tsx` | Práctica por categoría y dificultad |
+| 🎯 Retos | `(tabs)/challenges.tsx` | Banderas (196 países) y Años (98 hechos), con conmutador propio |
+| 📚 Aprender | `(tabs)/learn.tsx` | Práctica por categoría y dificultad, con banderas y años intercalados |
 | 👥 Amigos | `(tabs)/friends.tsx` | Multijugador local |
 
 Pantallas apiladas: `speed` (Contrarreloj), `ladder` (Modo Ascenso), `leagues`, `shop`,
@@ -63,8 +63,9 @@ una invitación a registrarse.
 | **Pregunta del día** | Una pregunta compartida por todos, con explicación al fallar y cuatro rankings: hoy, semana, global y amigos |
 | **Contrarreloj** | 30 segundos, tantas respuestas como se pueda. Guarda récord personal |
 | **Modo Ascenso** | Dificultad creciente por pisos, 3 vidas, checkpoints cada 5 pisos y un bote que se puede asegurar o arriesgar |
-| **Mundo** | Banderas de 196 países, por continente o mundial, en dos sentidos: bandera → país y país → bandera |
-| **Aprender** | Categoría y dificultad a elección, con el contexto explicativo al fallar |
+| **Retos: Banderas** | Banderas de 196 países, por continente o mundial, en dos sentidos: bandera → país y país → bandera |
+| **Retos: Años** | 98 hechos históricos por épocas (hasta 1900, s. XX, s. XXI), en dos sentidos: hecho → año y año → hecho |
+| **Aprender** | Categoría y dificultad a elección, con el contexto explicativo al fallar. Es el modo "todo": mezcla la trivia del banco con banderas y años |
 | **Amigos** | Cinco modos locales en un solo dispositivo: Pasa el Móvil (2-8), Marcador (2-8), Duelo 1vs1, Superviviente (3-8) y Trivia Night (4-10, por equipos) |
 
 ---

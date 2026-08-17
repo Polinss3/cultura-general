@@ -14,13 +14,37 @@ cumple ninguna.
 |---|---|---|
 | `EXPO_PUBLIC_ADS_MODE` vale `test` o `live` | `off` en el perfil de producción | [eas.json](../eas.json) |
 | Hay SDK key y al menos una unidad de anuncio | No existe ninguna variable de AppLovin en EAS | EAS Environment |
-| El usuario es adulto y ha elegido | Se pregunta en el onboarding | — |
+| El usuario es adulto y ha elegido | **No se pregunta**: sin las dos de arriba no hay aviso | — |
 
 Cualquier valor ausente o distinto de `off`/`test`/`live` se interpreta como
-`off` ([lib/ads.native.ts:58](../lib/ads.native.ts#L58)). Sin SDK key o sin
+`off` ([lib/ads.native.ts:59](../lib/ads.native.ts#L59)). Sin SDK key o sin
 unidades, `initializeAds()` sale antes de inicializar el SDK. Y a quien declara
 menos de 16 años no se le inicializa AppLovin, AppsFlyer ni Meta, pase lo que
 pase con las variables.
+
+## El aviso solo aparece si puede haber anuncios
+
+Las dos primeras condiciones se resumen en `adsConfigured()`
+([lib/ads.native.ts](../lib/ads.native.ts)), y de ahí cuelga toda la pantalla de
+edad y elección publicitaria: el paso final del onboarding, el modal de red de
+seguridad del layout raíz, la fila "Privacidad y anuncios" del perfil y la
+propia `applyAdvertisingDecision`.
+
+Con los anuncios apagados, la 2.0.0 **no pregunta nada, no pide ATT y no arranca
+AppsFlyer ni Meta**. Preguntar por una elección publicitaria que no puede tener
+efecto confunde al usuario, no cuadra con la ficha de tienda —que no menciona
+publicidad— y en el camino "personalizados" acabaría pidiendo permiso de
+seguimiento para medir anuncios que no existen.
+
+Dos consecuencias prácticas:
+
+- **El flujo no se puede probar en local.** Sin `EXPO_PUBLIC_ADS_MODE` en el
+  entorno, `parseMode()` cae a `off` y el aviso no sale. Hay que usar el perfil
+  `preview`, que ya lleva `ADS_MODE=test` (paso 3 de aquí abajo).
+- **Al encender los anuncios no hay que deshacer nada.** En cuanto existan la
+  SDK key y una unidad, `adsConfigured()` pasa a `true` y el aviso vuelve solo.
+  Lo que sí hay que hacer es quitar el "sin anuncios" de las cuatro fichas de
+  `store/` **antes** de subir esa build.
 
 ## Pasos para activarlo
 
@@ -60,7 +84,7 @@ eas env:create production --name EXPO_PUBLIC_BANNER_ADS --value true
 eas env:create production --name EXPO_PUBLIC_REWARDED_HINTS --value true
 ```
 
-El banner se monta al pie de Contrarreloj, Ascenso, Mundo y Aprender, en un
+El banner se monta al pie de Contrarreloj, Ascenso, Retos (Banderas y Años) y Aprender, en un
 hueco reservado por debajo del contenido: nunca se superpone a un control.
 
 ### 3. Probar en un dispositivo real antes de ir a producción
@@ -131,7 +155,7 @@ Los límites están en [utils/adPolicy.ts](../utils/adPolicy.ts) y hay tests en
   incluidos los recompensados que pide el jugador.
 - Máximo **8 intersticiales automáticos por hora**.
 - Los intersticiales solo salen en pausas naturales: resultado de la pregunta
-  diaria, fin de Contrarreloj, fin de Ascenso y fin de una ronda de Mundo.
+  diaria, fin de Contrarreloj, fin de Ascenso y fin de una ronda de Banderas o de Años.
 
 Si se relajan estos números hay que tocar también la política de privacidad de
 la web, que describe el comportamiento real.

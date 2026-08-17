@@ -1,5 +1,10 @@
 # App Store — English (U.S.)
 
+> Ficha de la **2.0.0**, que se publica **sin anuncios**. Ningún texto menciona
+> publicidad. El día que se enciendan los anuncios
+> (`docs/ads-applovin-activation.md`) hay que revisar "no ads, no in-app
+> purchases" aquí y en los otros tres ficheros ANTES de subir la build.
+
 ## Name (max 30)
 CG Trivia: General Knowledge
 
@@ -9,13 +14,13 @@ CG Trivia: General Knowledge
 -->
 
 ## Subtitle (max 30)
-Daily quiz & trivia challenge
+Daily quiz, flags and years
 
 ## Promotional Text (max 170)
-New look and World mode! Name the flags of 196 countries, pick a light or dark theme, and enjoy a fresh question every single day.
+New Challenges tab: name the flags of 196 countries and pin down the year each event happened. Plus a fresh look with a light or dark theme.
 
 ## Keywords (max 100)
-trivia,quiz,general knowledge,flags,countries,brain,daily,questions,learn,history,science
+trivia,quiz,general knowledge,flags,countries,years,dates,daily,questions,history,science,learn
 
 ## Description
 CG Trivia is the daily general-knowledge game that trains your mind in just 2 minutes a day.
@@ -23,11 +28,12 @@ CG Trivia is the daily general-knowledge game that trains your mind in just 2 mi
 A NEW QUESTION EVERY DAY
 The same question for everyone. Answer, keep your streak and climb the daily, weekly and global rankings.
 
-SIX WAYS TO PLAY
+SEVEN WAYS TO PLAY
 • Daily question — one shared question a day, compare with friends.
 • Time Attack — how many can you answer in 30 seconds?
 • Climb Mode — rising difficulty, lives and a pot you risk or cash out.
-• World — flags from 196 countries, by continent or across the whole world.
+• Challenges: Flags — 196 countries, by continent or across the whole world.
+• Challenges: Years — 98 historical events. Can you pin each one to its year?
 • Learn — pick a topic and practice; we explain the context when you miss.
 • Play with Friends — pass the phone, scoreboard, 1v1 duels, survivor and trivia night.
 
@@ -40,14 +46,15 @@ Level up, earn coins, complete daily missions, unlock achievements and titles, a
 MADE YOUR WAY
 Light theme, dark theme or whatever your system uses. Available in English and Spanish — pick your language in Settings.
 
-Free, with no in-app purchases.
+Free, with no ads and no in-app purchases.
 
 ## What's New (2.0.0)
 Our biggest update yet.
 
-• NEW WORLD MODE: test yourself against the flags of 196 countries, by continent or across the whole world.
+• NEW CHALLENGES TAB: two games in one. Flags, with all 196 countries, and Years, where you place 98 historical events on the timeline.
 • A FRESH LOOK: a warmer, easier-to-read design with a light theme, a dark theme, or whatever your system uses.
+• LEARN MIXES IT ALL: alongside the usual trivia, flags and years now show up inside each topic.
+• BRAND-NEW GLOBAL RANKING: sort by answers, correct answers or streak, and see your position even when you are outside the top.
 • DAILY, REORGANIZED: your daily route and the rankings now live together, right where you need them.
-• Learn now shows the real number of questions per topic, and we polished details all across the app.
 
 Thanks for playing! Tell us what you think at pablobrasero@gmail.com

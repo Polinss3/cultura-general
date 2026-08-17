@@ -1,16 +1,21 @@
 # App Store — Español (España)
 
+> Ficha de la **2.0.0**, que se publica **sin anuncios**. Ningún texto menciona
+> publicidad. El día que se enciendan los anuncios
+> (`docs/ads-applovin-activation.md`) hay que revisar "Sin anuncios ni compras"
+> aquí y en los otros tres ficheros ANTES de subir la build.
+
 ## Nombre (máx 30)
 Cultura General: Trivia
 
 ## Subtítulo (máx 30)
-Preguntas y trivia cada día
+Quiz diario, banderas y años
 
 ## Texto promocional (máx 170)
-¡Nuevo diseño y modo Mundo! Reconoce las banderas de 196 países, elige tema claro u oscuro y disfruta de una pregunta nueva cada día.
+Nueva pestaña Retos: adivina las banderas de 196 países y en qué año pasó cada hecho. Con diseño renovado y tema claro u oscuro.
 
 ## Palabras clave (máx 100)
-trivia,cultura general,preguntas,quiz,banderas,paises,saber,diaria,historia,ciencia,aprender
+trivia,cultura general,preguntas,quiz,banderas,paises,años,fechas,diaria,historia,ciencia,aprender
 
 ## Descripción
 Cultura General es el juego diario de preguntas que entrena tu mente en solo 2 minutos al día.
@@ -18,11 +23,12 @@ Cultura General es el juego diario de preguntas que entrena tu mente en solo 2 m
 UNA PREGUNTA NUEVA CADA DÍA
 La misma pregunta para todos. Responde, mantén tu racha y sube en los rankings diario, semanal y global.
 
-SEIS FORMAS DE JUGAR
+SIETE FORMAS DE JUGAR
 • Pregunta del día — una pregunta compartida al día, compárate con tus amigos.
 • Contrarreloj — ¿cuántas aciertas en 30 segundos?
 • Modo Ascenso — dificultad creciente, vidas y un bote que arriesgas o aseguras.
-• Mundo — banderas de 196 países, por continente o del mundo entero.
+• Retos: Banderas — 196 países, por continente o del mundo entero.
+• Retos: Años — 98 hechos históricos. ¿Sabes en qué año ocurrió cada uno?
 • Aprender — elige un tema y practica; te explicamos el contexto cuando fallas.
 • Jugar con amigos — pasa el móvil, marcador, duelos 1vs1, superviviente y trivia por equipos.
 
@@ -35,14 +41,15 @@ Sube de nivel, gana monedas, completa misiones diarias, desbloquea logros y tít
 A TU GUSTO
 Tema claro, oscuro o el del sistema. Disponible en español e inglés, con el idioma que elijas en Ajustes.
 
-Gratis y sin compras dentro de la aplicación.
+Gratis, sin anuncios y sin compras dentro de la aplicación.
 
 ## Novedades (2.0.0)
 La actualización más grande hasta ahora.
 
-• NUEVO MODO MUNDO: pon a prueba lo que sabes con las banderas de 196 países, por continente o del mundo entero.
+• NUEVA PESTAÑA RETOS: dos juegos en uno. Banderas, con los 196 países del mundo, y Años, donde tienes que situar 98 hechos históricos en su fecha.
 • DISEÑO RENOVADO: una estética más cálida y fácil de leer, con tema claro, oscuro o el del sistema.
+• APRENDER LO MEZCLA TODO: además de la trivia de siempre, ahora también caen banderas y años dentro de cada tema.
+• RANKING GLOBAL NUEVO: ordénalo por respuestas, aciertos o racha, y mira tu puesto aunque no estés en el top.
 • DIARIO REORGANIZADO: tu ruta del día y los rankings, ahora juntos y más a mano.
-• Aprender muestra el número real de preguntas de cada tema, y hemos pulido detalles por toda la app.
 
 ¡Gracias por jugar! Cuéntanos qué te parece en pablobrasero@gmail.com
