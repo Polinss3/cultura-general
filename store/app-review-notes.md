@@ -1,66 +1,59 @@
 # Notas para App Review y App Privacy — 2.0.0 (sin anuncios)
 
-Todo lo de aquí depende de una decisión previa: **qué hace la 2.0.0 con el aviso
-publicitario y con ATT**, dado que esta versión no muestra ni un solo anuncio.
-Ver `AUDITORIA` / la sección "Bloqueante 1" del informe.
+La 2.0.0 se publica **sin un solo anuncio** y **sin pedir ATT**: con
+`EXPO_PUBLIC_ADS_MODE=off`, `adsConfigured()` devuelve false y no se monta el
+aviso publicitario, no se pide el permiso de seguimiento y no arrancan AppsFlyer
+ni Meta. A cambio, esta versión no tiene atribución de campañas.
 
-- **Opción A (recomendada)**: con `EXPO_PUBLIC_ADS_MODE=off` no se muestra el
-  aviso, no se pide ATT y no arrancan AppsFlyer ni Meta. Pierdes la atribución
-  de campañas en esta versión, pero la ficha de privacidad queda limpia y no hay
-  nada que un revisor pueda cuestionar.
-- **Opción B**: mantienes el aviso y ATT para conservar la atribución de Meta /
-  AppsFlyer. Entonces hay que reescribir la copia del aviso y de la política
-  para que hable de **medición y atribución**, no de anuncios que no existen.
+**Ojo con el historial**: las notas de la versión anterior decían que la app
+añadía intersticiales de Google AdMob y que pedía ATT. Eso ya no es cierto, así
+que las notas de abajo lo dicen explícitamente — si el revisor busca los
+anuncios que anunciaba la ficha anterior y no los encuentra, es peor que
+habérselo aclarado.
 
 ---
 
 ## Notas para el revisor (App Review Information → Notes)
 
-### Español
+En inglés, que es como estaban las anteriores. **Sin credenciales**: el usuario y
+la contraseña van en los campos de "Información de inicio de sesión" de la propia
+pantalla, no aquí.
 
-> La app se puede usar sin crear cuenta: en la pantalla de inicio de sesión hay
-> un botón "Continuar como invitado" que da acceso inmediato a Contrarreloj,
-> Ascenso, Retos (Banderas y Años) y Aprender.
->
-> Las funciones sociales (pregunta del día, rankings, amigos, ligas y perfil)
-> requieren cuenta porque guardan progreso compartido entre usuarios. Se puede
-> crear una con correo, con Apple o con Google desde la misma pantalla.
->
-> Cuenta de prueba, por si prefieren no crear una:
-> usuario: <RELLENAR>  ·  contraseña: <RELLENAR>
->
-> La app es gratuita, no tiene compras integradas y **esta versión no muestra
-> publicidad**. Los SDK publicitarios están integrados pero desactivados en
-> compilación (`EXPO_PUBLIC_ADS_MODE=off`): no se inicializan y no se realiza
-> ninguna petición de anuncios.
->
-> Borrado de cuenta: Perfil → Zona peligrosa → Eliminar cuenta, con doble
-> confirmación y sin salir de la app.
+```
+This update replaces the previous release's advertising integration:
+this version displays no advertising at all.
 
-### English
+The advertising SDKs are still bundled but are disabled at build time
+(the production build sets the ad mode to "off"), so they are never
+initialised and no ad request is ever made. As a result the app does
+not present the App Tracking Transparency prompt, and no advertising
+or attribution SDK is started. The App Privacy answers for this
+version declare no tracking.
 
-> The app can be used without an account: the sign-in screen has a "Continue as
-> guest" button that gives immediate access to Time Attack, Climb Mode,
-> Challenges (Flags and Years) and Learn.
->
-> Social features (daily question, rankings, friends, leagues and profile)
-> require an account because they store progress shared between users. One can
-> be created with email, Apple or Google from the same screen.
->
-> Demo account, in case you prefer not to create one:
-> username: <FILL IN>  ·  password: <FILL IN>
->
-> The app is free, has no in-app purchases and **this version shows no ads**.
-> The advertising SDKs are bundled but disabled at build time
-> (`EXPO_PUBLIC_ADS_MODE=off`): they are never initialised and no ad request is
-> ever made.
->
-> Account deletion: Profile → Danger zone → Delete account, with a double
-> confirmation, without leaving the app.
+WHAT'S NEW IN THIS VERSION
+A new "Challenges" tab with two games: Flags, covering all 196
+countries, and Years, where you place 98 historical events on the
+timeline. The app has also been redesigned with a light and a dark
+theme, and there is a new global ranking.
 
----
+SIGNING IN
+An account is not required to use the app. The sign-in screen has a
+"Continue as guest" button that gives immediate access to Time Attack,
+Climb Mode, Challenges (Flags and Years) and Learn.
 
-## App Privacy (ficha de privacidad) — Opción A, sin ATT
+Social features — the daily question, rankings, friends, leagues and
+profile — require an account because they store progress shared
+between users. The demo account in the fields above can be used to
+review them.
+
+ACCOUNT DELETION
+Profile → Danger zone → Delete account, with a double confirmation,
+without leaving the app.
+
+The app is free and has no in-app purchases.
+```
+
+## App Privacy — lo que hay que rellenar (sin ATT)
 
 **"Does this app use the Advertising Identifier (IDFA)?" → NO.**
 Y entonces ningún tipo de dato se marca como *Used to Track You*.
@@ -82,7 +75,7 @@ navegación, búsquedas ni contenido de mensajes.
 > `lib/sentry.ts` llama a `setSentryUser(session.user.id)`. Si algún día se
 > quita esa llamada, pasa a "no vinculado".
 
-## App Privacy — Opción B, con ATT y atribución
+## App Privacy — NO aplica hoy: cómo quedaría al encender los anuncios
 
 Todo lo anterior **más**:
 
