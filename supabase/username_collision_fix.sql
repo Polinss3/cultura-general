@@ -32,9 +32,41 @@
 --
 -- Idempotente y transaccional. Al final hay VERIFICACIÓN y, comentado, el
 -- ROLLBACK.
+--
+-- ── AUTOSUFICIENTE, y por un motivo ──────────────────────────
+-- Crea también `normalize_username` e `is_valid_username`, con las mismas
+-- definiciones que ya tienen en schema.sql / auth_social_username.sql /
+-- security_hardening.sql. Son `create or replace` de un cuerpo idéntico: si ya
+-- estaban, esto no cambia nada.
+--
+-- Están aquí porque la primera versión de este fichero daba por hecho que
+-- existían —las había leído en el repo, no en la base— y la verificación murió
+-- con "function public.is_valid_username(text) does not exist". Postgres
+-- resuelve las funciones citadas directamente en una consulta al PARSEARLA,
+-- antes de ejecutar nada, mientras que las llamadas desde un cuerpo plpgsql se
+-- resuelven al EJECUTAR: por eso el `create or replace` de abajo se aplicó sin
+-- rechistar y el error saltó después, en la verificación. Un script de
+-- migración no debe depender de que otro se aplicara en su día.
 -- ─────────────────────────────────────────────────────────────
 
 begin;
+
+-- ── Auxiliares (idénticas a las del repo; si ya están, no cambian) ──
+
+create or replace function public.normalize_username(p_username text)
+returns text language sql immutable as $$
+  select nullif(regexp_replace(btrim(coalesce(p_username, '')), '\s+', ' ', 'g'), '');
+$$;
+
+create or replace function public.is_valid_username(p_username text)
+returns boolean language sql immutable as $$
+  select p_username is not null
+    and char_length(p_username) between 3 and 20
+    and p_username = btrim(p_username)
+    and p_username !~ '\s{2,}';
+$$;
+
+-- ── La función que arregla el alta ─────────────────────────────────
 
 create or replace function public.generate_profile_username(
   p_user_id uuid,
