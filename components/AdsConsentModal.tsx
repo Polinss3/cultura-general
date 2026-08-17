@@ -23,7 +23,11 @@ export function AdsConsentModal({ visible, initialDecision, dismissible, onDismi
     <Modal
       visible={visible}
       animationType="slide"
-      presentationStyle="pageSheet"
+      // Un `pageSheet` de iOS se cierra arrastrando hacia abajo y no hay prop
+      // que lo impida, así que el aviso "sin salida" se saltaba con un dedo.
+      // Cuando no se puede descartar va a pantalla completa; la revisión desde
+      // Ajustes sí se queda en hoja, que ahí el gesto es lo natural.
+      presentationStyle={dismissible ? 'pageSheet' : 'fullScreen'}
       onRequestClose={dismissible ? onDismiss : undefined}
     >
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>

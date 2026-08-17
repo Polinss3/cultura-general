@@ -40,6 +40,13 @@ const DIFFICULTIES: Difficulty[] = ['all', 'easy', 'medium', 'hard'];
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
 const RANDOM_ICON = '🎲';
+// Preguntas de trivia por tanda. Sin tope se servía el tema entero: en
+// aleatorio son ~1.589 del banco, y `buildLearnFeed` les sumaba todas las
+// banderas y todos los años, así que el contador decía "1 / 1883" y armar la
+// lista —196 rondas de banderas, cada una barajando el catálogo— se hacía en el
+// hilo de JS al entrar. Con 60 la tanda queda en ~90 contando la mezcla, y
+// `pickRandomFresh` se encarga de que la siguiente traiga otras.
+const SESSION_SIZE = 60;
 // Por encima de este número de preguntas los segmentos quedan por debajo de
 // 1 px y no se ven: a partir de ahí se muestra una barra continua.
 const SEGMENTED_UP_TO = 14;
@@ -140,7 +147,7 @@ export default function LearnScreen() {
         : localBank[cat];
       const source = remote.length > 0 ? remote : fallback;
       const recent = await getRecentIds('learn', cat);
-      const ordered = pickRandomFresh(source, recent, q => q.id, source.length);
+      const ordered = pickRandomFresh(source, recent, q => q.id, Math.min(source.length, SESSION_SIZE));
       // Aprender es el modo "todo": la trivia del banco más las banderas y los
       // años que le tocan al tema, ya intercalados.
       const mixed = buildLearnFeed(ordered, cat);
