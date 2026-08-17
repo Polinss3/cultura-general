@@ -112,6 +112,27 @@ function getConfiguredAdUnitIds() {
   );
 }
 
+/**
+ * ¿Puede esta build llegar a pedir un anuncio? Son exactamente las condiciones
+ * con las que `initializeAds` decide seguir adelante, menos el tramo de edad,
+ * que es justo lo que hay que preguntar.
+ *
+ * Existe para no montar el aviso de edad y publicidad en una versión que se
+ * publica con los anuncios apagados. Preguntar por una elección publicitaria
+ * que no puede tener ningún efecto confunde al usuario, no cuadra con la ficha
+ * de la tienda —que no menciona publicidad— y, en el camino "personalizados",
+ * acabaría pidiendo ATT y arrancando AppsFlyer y Meta para medir anuncios que
+ * no existen.
+ */
+export function adsConfigured(): boolean {
+  if (!isNativePlatform()) return false;
+  if (currentMode() === 'off') return false;
+  return (
+    Boolean(envValue('EXPO_PUBLIC_APPLOVIN_SDK_KEY')) &&
+    getConfiguredAdUnitIds().length > 0
+  );
+}
+
 function notifyState() {
   stateListeners.forEach(listener => listener());
 }

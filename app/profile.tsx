@@ -2,10 +2,11 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   View, Text, ScrollView, Pressable, TextInput,
-  ActivityIndicator, Alert, Switch,
+  ActivityIndicator, Alert, Switch, RefreshControl,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import Constants from 'expo-constants';
 import { useRouter, Link } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
@@ -46,6 +47,16 @@ import { Category } from '@/types';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 import { requestAdsPreferencesReview } from '@/stores/adsConsentStore';
+import { adsConfigured } from '@/lib/ads';
+
+// Versión de la build instalada, para el pie de la pantalla. Se lee del binario
+// y no de `app.json` porque `autoIncrement` sube el `buildNumber` en el momento
+// de compilar: lo que se firmó manda sobre lo que hubiera en el fichero. Es el
+// dato que pide un revisor y el primero que hay que preguntarle a quien reporta
+// un fallo por correo.
+const APP_VERSION = Constants.nativeAppVersion ?? Constants.expoConfig?.version ?? '—';
+const BUILD_NUMBER = Constants.nativeBuildVersion ?? Constants.expoConfig?.ios?.buildNumber ?? null;
+const VERSION_LABEL = BUILD_NUMBER ? `v${APP_VERSION} (${BUILD_NUMBER})` : `v${APP_VERSION}`;
 
 export default function ProfileScreen() {
   const { t } = useTranslation();
@@ -56,6 +67,7 @@ export default function ProfileScreen() {
   const { celebrate } = useProgress();
   const cosmetics = useCosmetics(!!user, user?.id);
 
+  const [refreshing, setRefreshing] = useState(false);
   const [claimed, setClaimed] = useState<Set<string>>(new Set());
   const [claiming, setClaiming] = useState<string | null>(null);
 
@@ -107,19 +119,29 @@ export default function ProfileScreen() {
     await rescheduleDailyReminderIfActive();
   }, []);
 
-  useEffect(() => {
+  const loadStats = useCallback(async () => {
     if (!user) return;
-    Promise.all([
+    const [h, cs, claimedSet] = await Promise.all([
       fetchAnswerHistory(user.id, 15),
       fetchCategoryStats(user.id),
       fetchClaimedAchievements(user.id),
-    ]).then(([h, cs, claimedSet]) => {
-      setHistory(h);
-      setCatStats(cs);
-      setClaimed(claimedSet);
-      setLoadingHistory(false);
-    });
+    ]);
+    setHistory(h);
+    setCatStats(cs);
+    setClaimed(claimedSet);
+    setLoadingHistory(false);
   }, [user?.id]);
+
+  useEffect(() => { loadStats(); }, [loadStats]);
+
+  // Recarga al tirar hacia abajo: historial, estadísticas y el propio perfil
+  // (nivel, monedas y racha, que cambian jugando en otras pantallas).
+  const onRefresh = useCallback(async () => {
+    if (!user) return;
+    setRefreshing(true);
+    await Promise.all([loadStats(), refresh()]);
+    setRefreshing(false);
+  }, [user?.id, loadStats, refresh]);
 
   const handleClaimAchievement = useCallback(async (id: string) => {
     if (claiming) return;
@@ -228,7 +250,13 @@ export default function ProfileScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 40 }}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={C.textMuted} colors={[C.brand]} />
+        }
+      >
 
         {/* Header */}
         <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: Space.screen, paddingTop: 14, marginBottom: 16 }}>
@@ -662,17 +690,22 @@ export default function ProfileScreen() {
             </View>
           </View>
 
-          <Pressable
-            onPress={requestAdsPreferencesReview}
-            style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border }}
-          >
-            <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
-              {t('profile.settings.adsPrivacy')}
-            </Text>
-            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
-              {t('profile.settings.adsPrivacySub')}
-            </Text>
-          </Pressable>
+          {/* Revisar la elección publicitaria solo tiene sentido si esta build
+              puede mostrar anuncios; si no, no hay ninguna decisión guardada
+              que revisar. */}
+          {adsConfigured() && (
+            <Pressable
+              onPress={requestAdsPreferencesReview}
+              style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border }}
+            >
+              <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
+                {t('profile.settings.adsPrivacy')}
+              </Text>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
+                {t('profile.settings.adsPrivacySub')}
+              </Text>
+            </Pressable>
+          )}
         </View>
 
         {/* Zona peligrosa */}
@@ -730,7 +763,7 @@ export default function ProfileScreen() {
             </Link>
             <Text style={{ color: C.border, fontSize: 12 }}>·</Text>
             <Text style={{ color: C.textFaint, fontFamily: Font.regular, fontSize: 12 }}>
-              v1.0.0
+              {VERSION_LABEL}
             </Text>
           </View>
         </View>

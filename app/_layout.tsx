@@ -19,7 +19,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setOffline, probeConnection } from '@/lib/offline';
-import { markAdsSessionStarted } from '@/lib/ads';
+import { adsConfigured, markAdsSessionStarted } from '@/lib/ads';
+import { noteAppOpen } from '@/lib/reviewGate';
 import { applyAdvertisingDecision } from '@/lib/advertising';
 import { BootScreen } from '@/components/BootScreen';
 import { AdsConsentModal } from '@/components/AdsConsentModal';
@@ -110,6 +111,9 @@ function RootLayout() {
     // Ante un fallo de storage asumimos "sin onboarding": preferimos repetirlo
     // a quedarnos esperando para siempre.
     getOnboardingCompleted().then(setOnboarded).catch(() => setOnboarded(false));
+    // Sella la fecha de instalación (solo la primera vez) para que el portero
+    // de la valoración pueda exigir una antigüedad mínima.
+    noteAppOpen();
   }, []);
 
   // Red de seguridad del arranque: pase lo que pase, la app entra.
@@ -251,6 +255,11 @@ function RootLayout() {
 
   useEffect(() => {
     if (!ready || !onboarded) return;
+    // Build sin anuncios posibles: ni se pregunta ni se aplica una decisión
+    // guardada. Sin esta guarda, quien eligiera "personalizados" en una build
+    // anterior seguiría disparando ATT, AppsFlyer y Meta en cada arranque para
+    // medir anuncios que esta versión no muestra.
+    if (!adsConfigured()) return;
     let cancelled = false;
     markAdsSessionStarted();
     hydrateAdsConsent()
@@ -392,7 +401,10 @@ function RootLayout() {
             }}
           />
           <AdsConsentModal
-            visible={Boolean(onboarded && adsConsentHydrated && (!adsDecision || reviewAdsPreferences))}
+            visible={Boolean(
+              adsConfigured() && onboarded && adsConsentHydrated &&
+              (!adsDecision || reviewAdsPreferences),
+            )}
             initialDecision={adsDecision}
             dismissible={Boolean(adsDecision && reviewAdsPreferences)}
             onDismiss={() => setReviewAdsPreferences(false)}

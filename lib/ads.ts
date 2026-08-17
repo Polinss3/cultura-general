@@ -10,6 +10,7 @@ export type AdPlacement =
 export type RewardedPlacement = 'shop_coins' | 'ladder_revive' | 'speed_time';
 export type AdsMode = 'off' | 'test' | 'live';
 
+export function adsConfigured() { return false; }
 export function markAdsSessionStarted() {}
 export async function initializeAds(_decision: AdsConsentDecision) { return false; }
 export function disableAds() {}

@@ -18,6 +18,7 @@ import {
 import { AdsConsentForm, type AdsConsentInput } from '@/components/AdsConsentForm';
 import { saveAdsConsentDecision } from '@/stores/adsConsentStore';
 import { applyAdvertisingDecision } from '@/lib/advertising';
+import { adsConfigured } from '@/lib/ads';
 import { logTutorialCompletion } from '@/lib/appsflyer';
 import { setAppLanguage, AppLang, getCurrentLang } from '@/lib/i18n';
 import { useThemePreference, setThemePreference } from '@/lib/appearance';
@@ -61,12 +62,13 @@ export default function OnboardingScreen() {
   const [langChosen, setLangChosen] = useState(false);
   const [interestsChosen, setInterestsChosen] = useState(false);
   const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
-  // Último paso, obligatorio y sin salida: edad + elección publicitaria.
+  // Último paso, obligatorio y sin salida: edad + elección publicitaria. Solo
+  // aparece si esta build puede llegar a mostrar anuncios (ver `adsConfigured`).
   const [privacyPending, setPrivacyPending] = useState(false);
   const [skippedNotifications, setSkippedNotifications] = useState(false);
   // Quien ya había completado una versión anterior del onboarding lo repite
-  // (2.0.0 estrena tema claro y el aviso de publicidad), pero no vuelve a
-  // cobrar el regalo de bienvenida.
+  // (2.0.0 estrena el tema claro), pero no vuelve a cobrar el regalo de
+  // bienvenida.
   const [returning, setReturning] = useState(false);
   const [step, setStep] = useState(0);
   const steps = getSteps(t);
@@ -142,6 +144,8 @@ export default function OnboardingScreen() {
     if (isLast) {
       const granted = await requestNotificationPermission();
       if (granted) await scheduleDailyReminder();
+      // Sin anuncios posibles no hay nada que elegir: se entra directo.
+      if (!adsConfigured()) return finish(false);
       setPrivacyPending(true);
     } else {
       setStep(s => s + 1);
@@ -149,8 +153,11 @@ export default function OnboardingScreen() {
   };
 
   // "Ahora no" salta las notificaciones, nunca el aviso de publicidad.
-  const handleSkip = () => {
+  const handleSkip = async () => {
     setSkippedNotifications(true);
+    // `finish` recibe el valor a mano: el estado que acabamos de programar aún
+    // no se ha aplicado en esta misma llamada.
+    if (!adsConfigured()) return finish(true);
     setPrivacyPending(true);
   };
 
