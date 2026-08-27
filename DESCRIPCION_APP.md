@@ -1,6 +1,6 @@
 # Cultura General / CG Trivia — Descripción de la aplicación
 
-> Actualizado para la **versión 2.0.0** (agosto de 2026).
+> Actualizado para la **versión 2.1.0** (agosto de 2026).
 
 ## Resumen
 
