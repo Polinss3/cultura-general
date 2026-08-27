@@ -26,6 +26,10 @@ export function PowerUpBar({ items, onUse, disabled }: Props) {
         return (
           <Pressable
             key={it.id}
+            accessibilityRole="button"
+            accessibilityLabel={`${it.label}, ${it.count}`}
+            accessibilityState={{ disabled: !usable }}
+            disabled={!usable}
             onPress={() => usable && onUse(it.id)}
             style={{
               flex: 1,

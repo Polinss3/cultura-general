@@ -9,6 +9,7 @@ export const REWARDS = {
   speedPerCorrect:{ xp: 6,  coins: 2 },   // al terminar, ∝ aciertos
   flagPerCorrect: { xp: 5,  coins: 2 },   // Banderas: al terminar, ∝ aciertos
   yearPerCorrect: { xp: 5,  coins: 2 },   // Años: mismo esfuerzo, misma paga
+  adventureLevel:{ xp: 80, coins: 20 },   // una vez por nivel perfecto de 10 preguntas
   levelUpBonus:   50,                     // monedas por nivel (lo aplica el servidor)
   chestBase:      20,                     // ×multiplicador en servidor
   missionXp:      30,

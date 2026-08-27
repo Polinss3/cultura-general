@@ -1,0 +1,201 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  ActivityIndicator,
+  Pressable,
+  ScrollView,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
+import { AdventureMap } from '@/components/adventure/adventure-map';
+import { CoinPill } from '@/components/CoinPill';
+import { useAuth } from '@/hooks/useAuth';
+import { useGuest } from '@/hooks/useGuest';
+import { useProfile } from '@/hooks/useProfile';
+import {
+  ADVENTURE_LEVELS_PER_REGION,
+  ADVENTURE_MAX_LEVELS,
+  adventureRegionForLevel,
+  type AdventureProgress,
+} from '@/lib/adventure';
+import { createLocalAdventureRepository } from '@/lib/adventure-progress';
+import { alpha, readableOn, useTheme } from '@/constants/colors';
+import { Font, Radius, Space, Type, cardShadow, warmGradient } from '@/constants/theme';
+
+export default function AdventureScreen() {
+  const { t } = useTranslation();
+  const router = useRouter();
+  const { width } = useWindowDimensions();
+  const { C, isDark } = useTheme();
+  const { user, loading: authLoading } = useAuth();
+  const { guest, loading: guestLoading } = useGuest();
+  const { profile, refresh } = useProfile();
+  const scope = guestLoading
+    ? null
+    : guest
+      ? 'guest'
+      : authLoading
+        ? null
+        : user?.id ?? 'local';
+  const repository = useMemo(
+    () => scope ? createLocalAdventureRepository(scope) : null,
+    [scope],
+  );
+  const [progress, setProgress] = useState<AdventureProgress | null>(null);
+  const [regionNumber, setRegionNumber] = useState(1);
+  const [initialPositioned, setInitialPositioned] = useState(false);
+  const scrollRef = useRef<ScrollView>(null);
+
+  const load = useCallback(async () => {
+    if (!repository) return;
+    const stored = await repository.load();
+    setProgress(stored);
+    setRegionNumber(adventureRegionForLevel(stored.unlockedLevel).number);
+    setInitialPositioned(false);
+    if (user) refresh();
+  }, [repository, refresh, user?.id]);
+
+  useFocusEffect(useCallback(() => {
+    load();
+  }, [load]));
+
+  const region = adventureRegionForLevel((regionNumber - 1) * ADVENTURE_LEVELS_PER_REGION + 1);
+  const maxRegion = Math.ceil(ADVENTURE_MAX_LEVELS / ADVENTURE_LEVELS_PER_REGION);
+  const mapWidth = Math.max(280, Math.min(width, 620));
+
+  useEffect(() => {
+    if (!progress || initialPositioned) return;
+    const timer = setTimeout(() => {
+      const offsetInRegion = progress.unlockedLevel - region.startLevel;
+      const visibleFromBottom = Math.max(0, offsetInRegion - 2) * 96;
+      scrollRef.current?.scrollToEnd({ animated: false });
+      if (visibleFromBottom > 0) {
+        setTimeout(() => scrollRef.current?.scrollTo({ y: Math.max(0, 1900 - visibleFromBottom), animated: false }), 0);
+      }
+      setInitialPositioned(true);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [initialPositioned, progress, region.startLevel]);
+
+  if (!progress) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator color={C.brand} size="large" />
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  const completed = progress.completedLevels.length;
+  const regionTitle = t(`adventure.regions.${region.theme}`);
+  const regionIsFuture = region.startLevel > progress.unlockedLevel;
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+      <View style={{ paddingHorizontal: Space.screen, paddingTop: 10, paddingBottom: 10, gap: 12 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
+          <View style={{ flex: 1, gap: 2 }}>
+            <Text style={{ color: C.text, ...Type.screenTitle }}>{t('adventure.title')}</Text>
+            <Text style={{ color: C.textMuted, ...Type.secondary }}>
+              {t('adventure.progressSummary', { completed, total: ADVENTURE_MAX_LEVELS })}
+            </Text>
+          </View>
+          {!guest && (
+            <CoinPill coins={profile?.coins ?? 0} onPress={() => router.push('/shop')} showPlus small />
+          )}
+        </View>
+
+        <LinearGradient
+          colors={warmGradient(isDark)}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{
+            borderRadius: Radius.cardLg,
+            borderWidth: 1.5,
+            borderColor: C.borderWarm,
+            padding: 14,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 12,
+            ...cardShadow(isDark),
+          }}
+        >
+          <View style={{
+            width: 48,
+            height: 48,
+            borderRadius: Radius.row,
+            backgroundColor: alpha(region.accent, isDark ? 0.22 : 0.14),
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Text style={{ fontSize: 24 }}>{region.icon}</Text>
+          </View>
+          <View style={{ flex: 1, gap: 2 }}>
+            <Text style={{ color: readableOn(region.accent, isDark), ...Type.sectionLabel }}>
+              {t('adventure.chapter', { number: region.number })}
+            </Text>
+            <Text style={{ color: C.text, ...Type.cardTitle }}>{regionTitle}</Text>
+            <Text style={{ color: C.textMuted, ...Type.small }}>
+              {t('adventure.levelRange', { start: region.startLevel, end: region.endLevel })}
+            </Text>
+          </View>
+          {regionIsFuture && <Text style={{ fontSize: 20 }}>🔒</Text>}
+        </LinearGradient>
+
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t('adventure.previousChapter')}
+            disabled={regionNumber === 1}
+            hitSlop={8}
+            onPress={() => { setRegionNumber(value => Math.max(1, value - 1)); setInitialPositioned(true); }}
+            style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center', opacity: regionNumber === 1 ? 0.35 : 1 }}
+          >
+            <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>‹</Text>
+          </Pressable>
+          <View style={{
+            backgroundColor: C.surface,
+            borderRadius: Radius.pill,
+            borderWidth: 1,
+            borderColor: C.border,
+            paddingHorizontal: 14,
+            paddingVertical: 7,
+          }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.extra, fontSize: 13, fontVariant: ['tabular-nums'] }}>
+              {regionNumber} / {maxRegion}
+            </Text>
+          </View>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t('adventure.nextChapter')}
+            disabled={regionNumber === maxRegion}
+            hitSlop={8}
+            onPress={() => { setRegionNumber(value => Math.min(maxRegion, value + 1)); setInitialPositioned(true); }}
+            style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center', opacity: regionNumber === maxRegion ? 0.35 : 1 }}
+          >
+            <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>›</Text>
+          </Pressable>
+        </View>
+      </View>
+
+      <ScrollView
+        ref={scrollRef}
+        contentInsetAdjustmentBehavior="automatic"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ alignItems: 'center', paddingBottom: 32 }}
+      >
+        <AdventureMap
+          width={mapWidth}
+          region={region}
+          progress={progress}
+          onLevelPress={level => router.push(`/adventure-level/${level}` as any)}
+        />
+      </ScrollView>
+    </SafeAreaView>
+  );
+}

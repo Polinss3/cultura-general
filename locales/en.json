@@ -28,6 +28,7 @@
     "home": "Home",
     "daily": "Daily",
     "challenges": "Challenges",
+    "adventure": "Adventure",
     "learn": "Learn",
     "friends": "Friends"
   },
@@ -469,6 +470,51 @@
       "1": "Easy",
       "2": "Medium",
       "3": "Hard"
+    }
+  },
+  "adventure": {
+    "title": "Adventure",
+    "chapter": "Chapter {{number}}",
+    "progressSummary": "{{completed}} of {{total}} levels cleared",
+    "levelRange": "Levels {{start}}–{{end}}",
+    "previousChapter": "Previous chapter",
+    "nextChapter": "Next chapter",
+    "level": "Level {{level}}",
+    "questions": "questions",
+    "toUnlock": "to move on",
+    "firstWin": "first clear",
+    "prepareTitle": "Prepare your helpers",
+    "prepareDescription": "You can buy helpers before starting and use them during the questions.",
+    "openShop": "Open shop",
+    "helpersAccountOnly": "Helpers and rewards need an online account. Your map progress will still be saved on this device.",
+    "noHelpers": "You have no helpers. Play without them or get some in the shop.",
+    "startLevel": "Start level",
+    "backToMap": "Back to map",
+    "hint": "Hint",
+    "explanation": "The answer",
+    "finishLevel": "See result",
+    "score": "Score",
+    "reward": "Reward",
+    "rewardNeedsAccount": "Coin rewards need an online account; the level is saved locally.",
+    "resultPerfect": "The path is clear!",
+    "resultPerfectDescription": "You got all {{total}} questions right and unlocked the next level.",
+    "resultRetry": "Nearly there",
+    "resultRetryDescription": "You got {{correct}} out of {{total}}. You need a perfect run to open the next level.",
+    "nextLevel": "Play next level",
+    "retryLevel": "Retry level",
+    "lockedTitle": "Level locked",
+    "lockedMessage": "Clear the current level with 10 correct answers to open this path.",
+    "regions": {
+      "roots": "Roots of knowledge",
+      "world": "World horizons",
+      "ideas": "Valley of ideas",
+      "nature": "Living territories",
+      "future": "Frontiers of the future"
+    },
+    "levelA11y": {
+      "completed": "Level {{level}} cleared. Best score: {{score}} out of 10. Tap to replay.",
+      "current": "Level {{level}} available. Tap to play.",
+      "locked": "Level {{level}} locked."
     }
   },
   "learn": {
@@ -999,7 +1045,7 @@
     },
     "offlineNotice": {
       "title": "No connection",
-      "description": "This mode needs an internet connection. In the meantime you can play Time Attack and Learn."
+      "description": "This mode needs an internet connection. In the meantime you can play Time Attack, Adventure and Learn."
     },
     "errorBoundary": {
       "title": "Something went wrong",

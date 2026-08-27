@@ -46,6 +46,17 @@ export async function awardProgress(
   return mapAward(data);
 }
 
+// Aventura usa la misma fuente de verdad que el resto de la app. El nivel va
+// en `source` para que el backend de producción pueda volver la operación
+// idempotente sin cambiar el contrato del cliente.
+export async function awardAdventureLevel(
+  level: number,
+  baseXp: number,
+  baseCoins: number,
+): Promise<AwardResult | null> {
+  return awardProgress(baseXp, baseCoins, true, `adventure_level_${level}`);
+}
+
 // ─── Cofre diario ─────────────────────────────────────────────
 export async function claimDailyChest(): Promise<{ reward?: number; error?: string }> {
   const { data, error } = await supabase.rpc('claim_daily_chest');

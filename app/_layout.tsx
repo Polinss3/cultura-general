@@ -309,14 +309,16 @@ function RootLayout() {
       }
 
       // Modo sin conexión: sin acceso a perfil/complete-profile; entrada directa
-      // a los tabs (Rápido y Aprender). Diario/Amigos muestran aviso dentro.
+      // a los tabs (Contrarreloj, Aventura y Aprender). Diario/Amigos muestran aviso dentro.
       if (offline) {
         if (isUpdatePassword) return;
         if (!hasCompletedOnboarding) {
           if (!inOnboarding) router.replace('/onboarding');
           return;
         }
-        if (segs[0] !== '(tabs)') router.replace('/(tabs)');
+        const isOfflinePlayableRoute =
+          segs[0] === '(tabs)' || segs[0] === 'speed' || segs[0] === 'adventure-level';
+        if (!isOfflinePlayableRoute) router.replace('/(tabs)');
         return;
       }
 

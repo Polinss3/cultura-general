@@ -4,6 +4,7 @@ import { AwardResult } from '@/lib/gamification';
 import { LevelUpModal } from '@/components/LevelUpModal';
 import { logLevelAchieved } from '@/lib/appsflyer';
 import { Font } from '@/constants/theme';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 interface ProgressContextValue {
   // Muestra el feedback "+XP / +🪙" y, si subió de nivel, la celebración.
@@ -18,6 +19,7 @@ export function useProgress() {
 
 export function ProgressProvider({ children }: { children: ReactNode }) {
   const [banner, setBanner] = useState<{ xp: number; coins: number } | null>(null);
+  const reducedMotion = useReducedMotion();
   const [levelUp, setLevelUp] = useState<number | null>(null);
   const anim = useRef(new Animated.Value(0)).current;
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -26,11 +28,13 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     if (timer.current) clearTimeout(timer.current);
     setBanner({ xp, coins });
     anim.setValue(0);
-    Animated.spring(anim, { toValue: 1, useNativeDriver: true, friction: 7 }).start();
+    if (reducedMotion) anim.setValue(1);
+    else Animated.spring(anim, { toValue: 1, useNativeDriver: true, friction: 7 }).start();
     timer.current = setTimeout(() => {
-      Animated.timing(anim, { toValue: 0, duration: 250, useNativeDriver: true }).start(() => setBanner(null));
+      if (reducedMotion) setBanner(null);
+      else Animated.timing(anim, { toValue: 0, duration: 250, useNativeDriver: true }).start(() => setBanner(null));
     }, 2200);
-  }, [anim]);
+  }, [anim, reducedMotion]);
 
   const celebrate = useCallback((award: AwardResult | null | undefined) => {
     if (!award) return;

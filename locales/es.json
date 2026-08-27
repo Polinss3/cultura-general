@@ -28,6 +28,7 @@
     "home": "Inicio",
     "daily": "Diario",
     "challenges": "Retos",
+    "adventure": "Aventura",
     "learn": "Aprender",
     "friends": "Amigos"
   },
@@ -469,6 +470,51 @@
       "1": "Fácil",
       "2": "Media",
       "3": "Difícil"
+    }
+  },
+  "adventure": {
+    "title": "Aventura",
+    "chapter": "Capítulo {{number}}",
+    "progressSummary": "{{completed}} de {{total}} niveles superados",
+    "levelRange": "Niveles {{start}}–{{end}}",
+    "previousChapter": "Capítulo anterior",
+    "nextChapter": "Capítulo siguiente",
+    "level": "Nivel {{level}}",
+    "questions": "preguntas",
+    "toUnlock": "para avanzar",
+    "firstWin": "primera victoria",
+    "prepareTitle": "Prepara tus ayudas",
+    "prepareDescription": "Puedes comprar ayudas antes de empezar y usarlas durante las preguntas.",
+    "openShop": "Ir a la tienda",
+    "helpersAccountOnly": "Las ayudas y recompensas requieren una cuenta con conexión. Tu progreso del mapa sí se guardará en este dispositivo.",
+    "noHelpers": "No tienes ayudas. Puedes jugar sin ellas o conseguirlas en la tienda.",
+    "startLevel": "Empezar nivel",
+    "backToMap": "Volver al mapa",
+    "hint": "Pista",
+    "explanation": "La respuesta",
+    "finishLevel": "Ver resultado",
+    "score": "Resultado",
+    "reward": "Recompensa",
+    "rewardNeedsAccount": "La recompensa de monedas necesita una cuenta con conexión; el nivel queda guardado localmente.",
+    "resultPerfect": "¡Camino despejado!",
+    "resultPerfectDescription": "Has acertado las {{total}} preguntas y desbloqueado el siguiente nivel.",
+    "resultRetry": "Casi lo tienes",
+    "resultRetryDescription": "Has acertado {{correct}} de {{total}}. Necesitas un pleno para abrir el siguiente nivel.",
+    "nextLevel": "Jugar el siguiente nivel",
+    "retryLevel": "Reintentar nivel",
+    "lockedTitle": "Nivel bloqueado",
+    "lockedMessage": "Supera el nivel actual con 10 aciertos para abrir este camino.",
+    "regions": {
+      "roots": "Raíces del conocimiento",
+      "world": "Horizontes del mundo",
+      "ideas": "El valle de las ideas",
+      "nature": "Territorios vivos",
+      "future": "Fronteras del futuro"
+    },
+    "levelA11y": {
+      "completed": "Nivel {{level}} superado. Mejor resultado: {{score}} de 10. Toca para rejugar.",
+      "current": "Nivel {{level}} disponible. Toca para jugar.",
+      "locked": "Nivel {{level}} bloqueado."
     }
   },
   "learn": {
@@ -999,7 +1045,7 @@
     },
     "offlineNotice": {
       "title": "Sin conexión",
-      "description": "Este modo necesita conexión a internet. Mientras tanto puedes jugar a Contrarreloj y Aprender."
+      "description": "Este modo necesita conexión a internet. Mientras tanto puedes jugar a Contrarreloj, Aventura y Aprender."
     },
     "errorBoundary": {
       "title": "Algo fue mal",
