@@ -57,6 +57,14 @@ export async function awardAdventureLevel(
   return awardProgress(baseXp, baseCoins, true, `adventure_level_${level}`);
 }
 
+export async function awardAdventureStar(
+  level: number,
+  milestone: 2 | 3,
+  coins: number,
+): Promise<AwardResult | null> {
+  return awardProgress(0, coins, false, `adventure_level_${level}_star_${milestone}`);
+}
+
 // ─── Cofre diario ─────────────────────────────────────────────
 export async function claimDailyChest(): Promise<{ reward?: number; error?: string }> {
   const { data, error } = await supabase.rpc('claim_daily_chest');

@@ -485,6 +485,7 @@
     "title": "Aventura",
     "chapter": "Capítulo {{number}}",
     "progressSummary": "{{completed}} de {{total}} niveles superados",
+    "progressSummaryStars": "{{completed}} de {{total}} niveles · {{stars}}/{{maxStars}} ⭐",
     "levelRange": "Niveles {{start}}–{{end}}",
     "previousChapter": "Capítulo anterior",
     "nextChapter": "Capítulo siguiente",
@@ -497,6 +498,13 @@
     "questions": "preguntas",
     "toUnlock": "para avanzar",
     "firstWin": "primera victoria",
+    "activeTime": "Tiempo activo",
+    "bestTime": "Mejor tiempo",
+    "starsEarned": "{{count}} estrellas conseguidas",
+    "newStarRecord": "¡Nuevo récord de estrellas!",
+    "starBonus": "Bonus de estrellas",
+    "starGoals": "⭐ Completa · ⭐⭐ 120 s · ⭐⭐⭐ 70 s",
+    "starGoalsDescription": "Solo cuenta el tiempo que tardas en responder. Las explicaciones y el segundo plano no suman.",
     "prepareTitle": "Prepara tus ayudas",
     "prepareDescription": "Puedes comprar ayudas antes de empezar y usarlas durante las preguntas.",
     "openShop": "Ir a la tienda",
@@ -533,7 +541,7 @@
       "cosmos": "Más allá de las estrellas"
     },
     "levelA11y": {
-      "completed": "Nivel {{level}} superado. Mejor resultado: {{score}} de 10. Toca para rejugar.",
+      "completed": "Nivel {{level}} superado. Mejor resultado: {{score}} de 10. Toca para rejugar y mejorar sus estrellas.",
       "current": "Nivel {{level}} disponible. Toca para jugar.",
       "locked": "Nivel {{level}} bloqueado."
     }

@@ -2,6 +2,8 @@ export const ADVENTURE_MAX_LEVELS = 200;
 export const ADVENTURE_QUESTIONS_PER_LEVEL = 10;
 export const ADVENTURE_LEVELS_PER_REGION = 20;
 export const ADVENTURE_QUESTION_VERSION = 1;
+export const ADVENTURE_TWO_STAR_TIME_MS = 120_000;
+export const ADVENTURE_THREE_STAR_TIME_MS = 70_000;
 
 export interface AdventureProgress {
   version: 1;
@@ -9,6 +11,9 @@ export interface AdventureProgress {
   completedLevels: number[];
   rewardedLevels: number[];
   bestScores: Record<string, number>;
+  bestTimesMs: Record<string, number>;
+  stars: Record<string, number>;
+  rewardedStarMilestones: Record<string, number>;
   updatedAt: string;
 }
 
@@ -40,6 +45,10 @@ export interface AdventureAttemptResult {
   perfect: boolean;
   newlyUnlocked: boolean;
   shouldReward: boolean;
+  stars: number;
+  previousStars: number;
+  bestTimeMs: number | null;
+  newBestTime: boolean;
 }
 
 const REGION_THEMES: ReadonlyArray<{ theme: AdventureRegionTheme; icon: string }> = [
@@ -90,6 +99,9 @@ export function createAdventureProgress(now = new Date().toISOString()): Adventu
     completedLevels: [],
     rewardedLevels: [],
     bestScores: {},
+    bestTimesMs: {},
+    stars: {},
+    rewardedStarMilestones: {},
     updatedAt: now,
   };
 }
@@ -112,6 +124,19 @@ export function normalizeAdventureProgress(
       })
       .map(([key, score]) => [key, Math.min(ADVENTURE_QUESTIONS_PER_LEVEL, Math.max(0, Math.trunc(score as number)))]),
   );
+  const validMetricRecord = (record: unknown, max: number) => Object.fromEntries(
+    Object.entries(record && typeof record === 'object' ? record as Record<string, unknown> : {})
+      .filter(([key, value]) => Number.isInteger(Number(key)) && Number(key) >= 1 &&
+        Number(key) <= ADVENTURE_MAX_LEVELS && typeof value === 'number' &&
+        Number.isFinite(value) && value > 0)
+      .map(([key, value]) => [key, Math.min(max, Math.max(1, Math.trunc(value as number)))]),
+  );
+  const bestTimesMs = validMetricRecord(raw.bestTimesMs, 86_400_000);
+  const storedStars = validMetricRecord(raw.stars, 3);
+  const stars = Object.fromEntries(completedLevels.map(level => [
+    String(level), Math.max(1, storedStars[String(level)] ?? 0),
+  ]));
+  const rewardedStarMilestones = validMetricRecord(raw.rewardedStarMilestones, 3);
 
   return {
     version: 1,
@@ -119,6 +144,9 @@ export function normalizeAdventureProgress(
     completedLevels,
     rewardedLevels,
     bestScores,
+    bestTimesMs,
+    stars,
+    rewardedStarMilestones,
     updatedAt: typeof raw.updatedAt === 'string' ? raw.updatedAt : now,
   };
 }
@@ -136,8 +164,9 @@ export function resolveAdventureAttempt(
   progress: AdventureProgress,
   level: number,
   correct: number,
-  now = new Date().toISOString(),
+  options: string | { activeTimeMs?: number; now?: string } = new Date().toISOString(),
 ): AdventureAttemptResult {
+  const now = typeof options === 'string' ? options : options.now ?? new Date().toISOString();
   const safeLevel = clampLevel(level);
   if (safeLevel > progress.unlockedLevel) {
     throw new Error(`Adventure level ${safeLevel} is locked`);
@@ -151,6 +180,17 @@ export function resolveAdventureAttempt(
   const completed = new Set(progress.completedLevels);
   const wasCompleted = completed.has(safeLevel);
   if (perfect) completed.add(safeLevel);
+  const activeTimeMs = typeof options === 'object' && typeof options.activeTimeMs === 'number' &&
+    Number.isFinite(options.activeTimeMs) && options.activeTimeMs > 0
+    ? Math.trunc(options.activeTimeMs)
+    : null;
+  const previousStars = progress.stars[String(safeLevel)] ?? (wasCompleted ? 1 : 0);
+  const earnedStars = perfect ? adventureStarsForTime(activeTimeMs) : 0;
+  const stars = Math.max(previousStars, earnedStars);
+  const previousBestTime = progress.bestTimesMs[String(safeLevel)] ?? null;
+  const newBestTime = perfect && activeTimeMs !== null &&
+    (previousBestTime === null || activeTimeMs < previousBestTime);
+  const bestTimeMs = newBestTime ? activeTimeMs : previousBestTime;
 
   const unlockedLevel = perfect
     ? Math.max(progress.unlockedLevel, Math.min(ADVENTURE_MAX_LEVELS, safeLevel + 1))
@@ -165,11 +205,51 @@ export function resolveAdventureAttempt(
         ...progress.bestScores,
         [safeLevel]: Math.max(progress.bestScores[String(safeLevel)] ?? 0, safeCorrect),
       },
+      bestTimesMs: bestTimeMs === null ? progress.bestTimesMs : {
+        ...progress.bestTimesMs,
+        [safeLevel]: bestTimeMs,
+      },
+      stars: perfect ? { ...progress.stars, [safeLevel]: stars } : progress.stars,
       updatedAt: now,
     },
     perfect,
     newlyUnlocked: perfect && !wasCompleted && unlockedLevel > progress.unlockedLevel,
     shouldReward: perfect && !progress.rewardedLevels.includes(safeLevel),
+    stars: perfect ? earnedStars : 0,
+    previousStars,
+    bestTimeMs,
+    newBestTime,
+  };
+}
+
+export function adventureStarsForTime(activeTimeMs: number | null): number {
+  if (activeTimeMs === null || !Number.isFinite(activeTimeMs) || activeTimeMs <= 0) return 1;
+  if (activeTimeMs <= ADVENTURE_THREE_STAR_TIME_MS) return 3;
+  if (activeTimeMs <= ADVENTURE_TWO_STAR_TIME_MS) return 2;
+  return 1;
+}
+
+export function adventureStarsInRange(progress: AdventureProgress, start: number, end: number): number {
+  let total = 0;
+  for (let level = start; level <= end; level += 1) total += progress.stars[String(level)] ?? 0;
+  return total;
+}
+
+export function markAdventureStarRewarded(
+  progress: AdventureProgress,
+  level: number,
+  milestone: 2 | 3,
+  now = new Date().toISOString(),
+): AdventureProgress {
+  const safeLevel = clampLevel(level);
+  if ((progress.stars[String(safeLevel)] ?? 0) < milestone) return progress;
+  return {
+    ...progress,
+    rewardedStarMilestones: {
+      ...progress.rewardedStarMilestones,
+      [safeLevel]: Math.max(progress.rewardedStarMilestones[String(safeLevel)] ?? 0, milestone),
+    },
+    updatedAt: now,
   };
 }
 

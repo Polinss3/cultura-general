@@ -16,6 +16,7 @@ interface Props {
   currentRegion: number;
   totalRegions: number;
   unlockedLevel: number;
+  stars: Record<string, number>;
   onClose: () => void;
   onSelect: (regionNumber: number) => void;
 }
@@ -25,6 +26,7 @@ export function ChapterPickerModal({
   currentRegion,
   totalRegions,
   unlockedLevel,
+  stars,
   onClose,
   onSelect,
 }: Props) {
@@ -40,6 +42,9 @@ export function ChapterPickerModal({
     const selected = item.number === currentRegion;
     const locked = item.startLevel > unlockedLevel;
     const title = t(`adventure.regions.${item.theme}`);
+    let chapterStars = 0;
+    for (let level = item.startLevel; level <= item.endLevel; level += 1) chapterStars += stars[String(level)] ?? 0;
+    const maxChapterStars = (item.endLevel - item.startLevel + 1) * 3;
 
     return (
       <Pressable
@@ -97,6 +102,9 @@ export function ChapterPickerModal({
           </Text>
           <Text style={{ color: C.textMuted, ...Type.small }}>
             {t('adventure.levelRange', { start: item.startLevel, end: item.endLevel })}
+          </Text>
+          <Text style={{ color: readableOn(item.accent, isDark), fontFamily: Font.extra, fontSize: 13 }}>
+            {chapterStars}/{maxChapterStars} ⭐
           </Text>
         </LinearGradient>
       </Pressable>

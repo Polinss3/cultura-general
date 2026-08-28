@@ -485,6 +485,7 @@
     "title": "Adventure",
     "chapter": "Chapter {{number}}",
     "progressSummary": "{{completed}} of {{total}} levels cleared",
+    "progressSummaryStars": "{{completed}} of {{total}} levels · {{stars}}/{{maxStars}} ⭐",
     "levelRange": "Levels {{start}}–{{end}}",
     "previousChapter": "Previous chapter",
     "nextChapter": "Next chapter",
@@ -497,6 +498,13 @@
     "questions": "questions",
     "toUnlock": "to move on",
     "firstWin": "first clear",
+    "activeTime": "Active time",
+    "bestTime": "Best time",
+    "starsEarned": "{{count}} stars earned",
+    "newStarRecord": "New star record!",
+    "starBonus": "Star bonus",
+    "starGoals": "⭐ Clear · ⭐⭐ 120 s · ⭐⭐⭐ 70 s",
+    "starGoalsDescription": "Only answer time counts. Explanations and time in the background are excluded.",
     "prepareTitle": "Prepare your helpers",
     "prepareDescription": "You can buy helpers before starting and use them during the questions.",
     "openShop": "Open shop",
@@ -533,7 +541,7 @@
       "cosmos": "Beyond the stars"
     },
     "levelA11y": {
-      "completed": "Level {{level}} cleared. Best score: {{score}} out of 10. Tap to replay.",
+      "completed": "Level {{level}} cleared. Best score: {{score}} out of 10. Tap to replay and improve its stars.",
       "current": "Level {{level}} available. Tap to play.",
       "locked": "Level {{level}} locked."
     }

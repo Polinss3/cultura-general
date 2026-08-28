@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  AppState,
   Pressable,
   ScrollView,
   Text,
@@ -11,6 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
+import Animated, { FadeInDown, ReduceMotion } from 'react-native-reanimated';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, type PowerUpButton } from '@/components/PowerUpBar';
 import { CategoryBadge } from '@/components/CategoryBadge';
@@ -26,6 +28,7 @@ import {
   ADVENTURE_QUESTIONS_PER_LEVEL,
   adventureRegionForLevel,
   markAdventureRewarded,
+  markAdventureStarRewarded,
   resolveAdventureAttempt,
   type AdventureProgress,
 } from '@/lib/adventure';
@@ -33,7 +36,7 @@ import { fetchAdventureLevelQuestions } from '@/lib/adventure-questions';
 import { createLocalAdventureRepository } from '@/lib/adventure-progress';
 import { getCurrentLang } from '@/lib/i18n';
 import { shuffleQuestionSeeded } from '@/lib/utils';
-import { awardAdventureLevel, bumpMissions } from '@/lib/gamification';
+import { awardAdventureLevel, awardAdventureStar, bumpMissions } from '@/lib/gamification';
 import { incrementProfileStats } from '@/lib/db';
 import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
@@ -85,7 +88,14 @@ export default function AdventureLevelScreen() {
   const [hintShown, setHintShown] = useState(false);
   const [finishing, setFinishing] = useState(false);
   const [rewardGranted, setRewardGranted] = useState(false);
+  const [resultTimeMs, setResultTimeMs] = useState(0);
+  const [resultStars, setResultStars] = useState(0);
+  const [previousStars, setPreviousStars] = useState(0);
+  const [starCoinsGranted, setStarCoinsGranted] = useState(0);
+  const [displayElapsedMs, setDisplayElapsedMs] = useState(0);
   const mountedRef = useRef(true);
+  const activeTimeMsRef = useRef(0);
+  const questionStartedAtRef = useRef<number | null>(null);
 
   useFocusEffect(useCallback(() => {
     if (!repository) return;
@@ -142,7 +152,42 @@ export default function AdventureLevelScreen() {
     setFiftyHidden([]);
     setHintShown(false);
     setRewardGranted(false);
+    activeTimeMsRef.current = 0;
+    questionStartedAtRef.current = null;
   }, [level]);
+
+  const pauseQuestionTimer = useCallback(() => {
+    if (questionStartedAtRef.current === null) return;
+    activeTimeMsRef.current += Date.now() - questionStartedAtRef.current;
+    questionStartedAtRef.current = null;
+  }, []);
+
+  useEffect(() => {
+    if (stage !== 'questions' || answered) return;
+    questionStartedAtRef.current = Date.now();
+    return pauseQuestionTimer;
+  }, [answered, pauseQuestionTimer, questionIndex, stage]);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', nextState => {
+      if (nextState === 'active' && stage === 'questions' && !answered) {
+        if (questionStartedAtRef.current === null) questionStartedAtRef.current = Date.now();
+      } else {
+        pauseQuestionTimer();
+      }
+    });
+    return () => subscription.remove();
+  }, [answered, pauseQuestionTimer, stage]);
+
+  useEffect(() => {
+    if (stage !== 'questions') return;
+    const update = () => setDisplayElapsedMs(
+      activeTimeMsRef.current + (questionStartedAtRef.current === null ? 0 : Date.now() - questionStartedAtRef.current),
+    );
+    update();
+    const timer = setInterval(update, 1000);
+    return () => clearInterval(timer);
+  }, [stage]);
 
   const resetQuestionState = () => {
     setSelected(null);
@@ -154,12 +199,17 @@ export default function AdventureLevelScreen() {
     setQuestionIndex(0);
     setCorrectCount(0);
     setRewardGranted(false);
+    setStarCoinsGranted(0);
+    setDisplayElapsedMs(0);
+    activeTimeMsRef.current = 0;
+    questionStartedAtRef.current = null;
     resetQuestionState();
     setStage('questions');
   };
 
   const answer = (index: number) => {
     if (answered || !question) return;
+    pauseQuestionTimer();
     setSelected(index);
     const correct = index === question.ans;
     if (correct) setCorrectCount(value => value + 1);
@@ -188,10 +238,12 @@ export default function AdventureLevelScreen() {
     setFinishing(true);
     setCorrectCount(finalCorrect);
     const latest = await repository.load();
-    const result = resolveAdventureAttempt(latest, level, finalCorrect);
+    const activeTimeMs = activeTimeMsRef.current;
+    const result = resolveAdventureAttempt(latest, level, finalCorrect, { activeTimeMs });
     await repository.save(result.progress);
     let saved = result.progress;
     let granted = false;
+    let grantedStarCoins = 0;
 
     if (result.shouldReward && canUseEconomy) {
       const award = await awardAdventureLevel(
@@ -203,16 +255,37 @@ export default function AdventureLevelScreen() {
         saved = markAdventureRewarded(saved, level);
         await repository.save(saved);
         celebrate(award);
-        feedback.reward();
         if (award.gainedCoins) bumpMissions('coins_earned', award.gainedCoins);
         refreshProfile();
         granted = true;
       }
     }
 
+    if (result.perfect && canUseEconomy) {
+      const alreadyRewarded = saved.rewardedStarMilestones[String(level)] ?? 0;
+      const achievedStars = saved.stars[String(level)] ?? result.stars;
+      for (const milestone of [2, 3] as const) {
+        if (achievedStars < milestone || alreadyRewarded >= milestone) continue;
+        const starReward = REWARDS[milestone === 2 ? 'adventureStar2' : 'adventureStar3'];
+        const award = await awardAdventureStar(level, milestone, starReward.coins);
+        if (!award) break;
+        saved = markAdventureStarRewarded(saved, level, milestone);
+        await repository.save(saved);
+        grantedStarCoins += award.gainedCoins;
+        if (award.gainedCoins) bumpMissions('coins_earned', award.gainedCoins);
+      }
+    }
+    if (grantedStarCoins > 0) refreshProfile();
+
     if (mountedRef.current) {
       setProgress(saved);
       setRewardGranted(granted);
+      setResultTimeMs(activeTimeMs);
+      const bestStars = saved.stars[String(level)] ?? result.stars;
+      setResultStars(bestStars);
+      setPreviousStars(result.previousStars);
+      setStarCoinsGranted(grantedStarCoins);
+      if (granted || bestStars > result.previousStars) feedback.reward();
       setFinishing(false);
       setStage('result');
     }
@@ -301,6 +374,11 @@ export default function AdventureLevelScreen() {
             </View>
           </LinearGradient>
 
+          <View style={{ backgroundColor: C.surface, borderRadius: Radius.row, borderWidth: 1, borderColor: C.border, padding: 14, gap: 4 }}>
+            <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 15 }}>{t('adventure.starGoals')}</Text>
+            <Text style={{ color: C.textMuted, ...Type.secondary }}>{t('adventure.starGoalsDescription')}</Text>
+          </View>
+
           <View style={{ gap: 10 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
               <View style={{ flex: 1, gap: 2 }}>
@@ -355,7 +433,13 @@ export default function AdventureLevelScreen() {
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
         <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: Space.screen, gap: 18 }}>
           <View style={{ alignItems: 'center', gap: 10 }}>
-            <Text accessibilityElementsHidden style={{ fontSize: 58 }}>{perfect ? '🌟' : '🧭'}</Text>
+            {perfect ? (
+              <View accessibilityLabel={t('adventure.starsEarned', { count: resultStars })} style={{ flexDirection: 'row', gap: 5 }}>
+                {[1, 2, 3].map(star => (
+                  <ResultStar key={star} index={star - 1} earned={star <= resultStars} />
+                ))}
+              </View>
+            ) : <Text accessibilityElementsHidden style={{ fontSize: 58 }}>🧭</Text>}
             <Text style={{ color: C.text, fontSize: 28, fontFamily: Font.black, textAlign: 'center' }}>
               {t(perfect ? 'adventure.resultPerfect' : 'adventure.resultRetry')}
             </Text>
@@ -374,10 +458,35 @@ export default function AdventureLevelScreen() {
                 {correctCount} / {ADVENTURE_QUESTIONS_PER_LEVEL}
               </Text>
             </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <Text style={{ color: C.textMuted, ...Type.body }}>{t('adventure.activeTime')}</Text>
+              <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 17, fontVariant: ['tabular-nums'] }}>
+                {formatAdventureTime(resultTimeMs)}
+              </Text>
+            </View>
+            {perfect && progress.bestTimesMs[String(level)] && (
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Text style={{ color: C.textMuted, ...Type.body }}>{t('adventure.bestTime')}</Text>
+                <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 16, fontVariant: ['tabular-nums'] }}>
+                  {formatAdventureTime(progress.bestTimesMs[String(level)])}
+                </Text>
+              </View>
+            )}
+            {perfect && resultStars > previousStars && (
+              <Text style={{ color: C.correctText, ...Type.smallBold, textAlign: 'center' }}>
+                {t('adventure.newStarRecord')}
+              </Text>
+            )}
             {rewardGranted && (
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={{ color: C.textMuted, ...Type.body }}>{t('adventure.reward')}</Text>
                 <Text style={{ color: C.coinText, fontFamily: Font.black, fontSize: 16 }}>+{REWARDS.adventureLevel.coins} 🪙</Text>
+              </View>
+            )}
+            {starCoinsGranted > 0 && (
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Text style={{ color: C.textMuted, ...Type.body }}>{t('adventure.starBonus')}</Text>
+                <Text style={{ color: C.coinText, fontFamily: Font.black, fontSize: 16 }}>+{starCoinsGranted} 🪙</Text>
               </View>
             )}
             {perfect && !rewardGranted && (guest || offline) && (
@@ -434,7 +543,12 @@ export default function AdventureLevelScreen() {
 
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
           <Text style={{ color: C.textMuted, ...Type.smallBold }}>{t('adventure.level', { level })}</Text>
-          {question.category && <CategoryBadge cat={question.category} small />}
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 9 }}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.extra, fontSize: 13, fontVariant: ['tabular-nums'] }}>
+              ⏱ {formatAdventureTime(displayElapsedMs, false)}
+            </Text>
+            {question.category && <CategoryBadge cat={question.category} small />}
+          </View>
         </View>
 
         <Text style={{ color: C.text, ...Type.question }}>{question.q}</Text>
@@ -496,6 +610,23 @@ export default function AdventureLevelScreen() {
         )}
       </ScrollView>
     </SafeAreaView>
+  );
+}
+
+function formatAdventureTime(milliseconds: number, tenths = true): string {
+  const seconds = Math.max(0, milliseconds) / 1000;
+  return `${tenths ? seconds.toFixed(1) : Math.floor(seconds)} s`;
+}
+
+function ResultStar({ index, earned }: { index: number; earned: boolean }) {
+  const entering = useMemo(
+    () => FadeInDown.duration(250).delay(index * 90).reduceMotion(ReduceMotion.System),
+    [index],
+  );
+  return (
+    <Animated.Text entering={entering} style={{ fontSize: 48, opacity: earned ? 1 : 0.2 }}>
+      {earned ? '⭐' : '☆'}
+    </Animated.Text>
   );
 }
 

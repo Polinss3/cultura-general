@@ -152,6 +152,7 @@ export const AdventureMap = memo(function AdventureMap({
         const locked = status === 'locked';
         const size = current ? 72 : NODE_SIZE;
         const best = progress.bestScores[String(level)] ?? 0;
+        const stars = progress.stars[String(level)] ?? 0;
 
         return (
           <Pressable
@@ -207,9 +208,9 @@ export const AdventureMap = memo(function AdventureMap({
               <>
                 <Text
                   maxFontSizeMultiplier={1.5}
-                  style={{ color: C.onBrand, fontFamily: Font.black, fontSize: current ? 21 : 18 }}
+                  style={{ color: C.onBrand, fontFamily: Font.black, fontSize: current ? 21 : completed ? 12 : 18, letterSpacing: completed ? -1 : 0 }}
                 >
-                  {completed ? '✓' : level}
+                  {completed ? '★'.repeat(stars || 1) : level}
                 </Text>
                 {completed && (
                   <Text

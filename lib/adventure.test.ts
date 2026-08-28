@@ -7,10 +7,13 @@ import {
   adventureAccentForChapter,
   adventureLevelStatus,
   adventureRegionForLevel,
+  adventureStarsForTime,
+  adventureStarsInRange,
   createAdventureProgress,
   markAdventureRewarded,
   normalizeAdventureProgress,
   resolveAdventureAttempt,
+  markAdventureStarRewarded,
 } from './adventure';
 import {
   ADVENTURE_CHAPTER_DECORATIONS,
@@ -52,6 +55,31 @@ test('completed levels remain replayable and never grant their reward twice', ()
   assert.equal(replay.shouldReward, false);
   assert.equal(replay.newlyUnlocked, false);
   assert.equal(replay.progress.unlockedLevel, 2);
+});
+
+test('active answer time grants one to three stars and keeps the best result', () => {
+  assert.equal(adventureStarsForTime(69_999), 3);
+  assert.equal(adventureStarsForTime(70_001), 2);
+  assert.equal(adventureStarsForTime(120_001), 1);
+
+  const first = resolveAdventureAttempt(createAdventureProgress(), 1, 10, { activeTimeMs: 110_000 });
+  const faster = resolveAdventureAttempt(first.progress, 1, 10, { activeTimeMs: 65_000 });
+  const slower = resolveAdventureAttempt(faster.progress, 1, 10, { activeTimeMs: 130_000 });
+
+  assert.equal(first.stars, 2);
+  assert.equal(faster.stars, 3);
+  assert.equal(faster.previousStars, 2);
+  assert.equal(slower.progress.stars['1'], 3);
+  assert.equal(slower.progress.bestTimesMs['1'], 65_000);
+  assert.equal(adventureStarsInRange(slower.progress, 1, 20), 3);
+});
+
+test('star reward milestones are recorded only after they have been achieved', () => {
+  const completed = resolveAdventureAttempt(createAdventureProgress(), 1, 10, { activeTimeMs: 60_000 }).progress;
+  const two = markAdventureStarRewarded(completed, 1, 2);
+  const three = markAdventureStarRewarded(two, 1, 3);
+  assert.equal(three.rewardedStarMilestones['1'], 3);
+  assert.equal(markAdventureStarRewarded(createAdventureProgress(), 1, 2).rewardedStarMilestones['1'], undefined);
 });
 
 test('a locked level cannot be opened through the domain API', () => {
@@ -103,4 +131,5 @@ test('malformed persisted state is normalized and clamped', () => {
   assert.deepEqual(normalized.completedLevels, [1, ADVENTURE_MAX_LEVELS]);
   assert.deepEqual(normalized.rewardedLevels, [1]);
   assert.equal(normalized.bestScores['1'], ADVENTURE_QUESTIONS_PER_LEVEL);
+  assert.equal(normalized.stars['1'], 1);
 });

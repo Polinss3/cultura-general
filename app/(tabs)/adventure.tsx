@@ -29,6 +29,7 @@ import { useProfile } from '@/hooks/useProfile';
 import {
   ADVENTURE_LEVELS_PER_REGION,
   ADVENTURE_MAX_LEVELS,
+  adventureStarsInRange,
   adventureRegionForLevel,
   type AdventureProgress,
 } from '@/lib/adventure';
@@ -174,6 +175,9 @@ export default function AdventureScreen() {
   const completed = progress.completedLevels.length;
   const regionTitle = t(`adventure.regions.${region.theme}`);
   const regionIsFuture = region.startLevel > progress.unlockedLevel;
+  const regionStars = adventureStarsInRange(progress, region.startLevel, region.endLevel);
+  const totalStars = adventureStarsInRange(progress, 1, ADVENTURE_MAX_LEVELS);
+  const regionMaxStars = (region.endLevel - region.startLevel + 1) * 3;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
@@ -184,7 +188,7 @@ export default function AdventureScreen() {
           <View style={{ flex: 1, gap: 2 }}>
             <Text style={{ color: C.text, ...Type.screenTitle }}>{t('adventure.title')}</Text>
             <Text style={{ color: C.textMuted, ...Type.secondary }}>
-              {t('adventure.progressSummary', { completed, total: ADVENTURE_MAX_LEVELS })}
+              {t('adventure.progressSummaryStars', { completed, total: ADVENTURE_MAX_LEVELS, stars: totalStars, maxStars: ADVENTURE_MAX_LEVELS * 3 })}
             </Text>
           </View>
           {!guest && (
@@ -236,7 +240,7 @@ export default function AdventureScreen() {
               </Text>
               <Text style={{ color: C.text, ...Type.cardTitle }}>{regionTitle}</Text>
               <Text style={{ color: C.textMuted, ...Type.small }}>
-                {t('adventure.levelRange', { start: region.startLevel, end: region.endLevel })}
+                {t('adventure.levelRange', { start: region.startLevel, end: region.endLevel })} · {regionStars}/{regionMaxStars} ⭐
               </Text>
             </View>
             <View style={{ alignItems: 'center', gap: 2 }}>
@@ -308,6 +312,7 @@ export default function AdventureScreen() {
         currentRegion={regionNumber}
         totalRegions={maxRegion}
         unlockedLevel={progress.unlockedLevel}
+        stars={progress.stars}
         onClose={() => setChapterPickerOpen(false)}
         onSelect={selectChapter}
       />
