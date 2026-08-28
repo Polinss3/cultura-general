@@ -21,6 +21,9 @@ interface Props {
   onSelect: (regionNumber: number) => void;
 }
 
+const SHEET_CONTENT_INSET = Radius.cardLg;
+const TWO_LINE_TITLE_HEIGHT = 38;
+
 export function ChapterPickerModal({
   visible,
   currentRegion,
@@ -97,7 +100,16 @@ export function ChapterPickerModal({
           <Text style={{ color: readableOn(item.accent, isDark), ...Type.sectionLabel }}>
             {t('adventure.chapter', { number: item.number })}
           </Text>
-          <Text numberOfLines={2} style={{ color: C.text, fontFamily: Font.black, fontSize: 15, lineHeight: 19 }}>
+          <Text
+            numberOfLines={2}
+            style={{
+              minHeight: TWO_LINE_TITLE_HEIGHT,
+              color: C.text,
+              fontFamily: Font.black,
+              fontSize: 15,
+              lineHeight: 19,
+            }}
+          >
             {title}
           </Text>
           <Text style={{ color: C.textMuted, ...Type.small }}>
@@ -121,8 +133,9 @@ export function ChapterPickerModal({
     >
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
         <View style={{
-          paddingHorizontal: Space.screen,
-          paddingVertical: 14,
+          paddingTop: SHEET_CONTENT_INSET,
+          paddingBottom: 16,
+          paddingHorizontal: SHEET_CONTENT_INSET,
           flexDirection: 'row',
           alignItems: 'center',
           gap: 12,

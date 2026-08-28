@@ -266,18 +266,34 @@ export default function AdventureScreen() {
             accessibilityLabel={t('adventure.openChapterPicker')}
             onPress={openChapterPicker}
             style={({ pressed }) => ({
+              minWidth: 96,
+              minHeight: 44,
               backgroundColor: C.surface,
               borderRadius: Radius.pill,
               borderWidth: 1,
               borderColor: C.border,
-              paddingHorizontal: 14,
-              paddingVertical: 7,
+              paddingHorizontal: 16,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 10,
               opacity: pressed ? 0.65 : 1,
             })}
           >
-            <Text style={{ color: C.textMuted, fontFamily: Font.extra, fontSize: 13, fontVariant: ['tabular-nums'] }}>
-              {regionNumber} / {maxRegion}  ⌄
+            <Text style={{ color: C.textMuted, fontFamily: Font.extra, fontSize: 14, lineHeight: 18, fontVariant: ['tabular-nums'] }}>
+              {regionNumber}/{maxRegion}
             </Text>
+            <View
+              accessibilityElementsHidden
+              style={{
+                width: 8,
+                height: 8,
+                borderRightWidth: 2,
+                borderBottomWidth: 2,
+                borderColor: C.textMuted,
+                transform: [{ rotate: '45deg' }, { translateY: -2 }],
+              }}
+            />
           </Pressable>
           <Pressable
             accessibilityRole="button"
