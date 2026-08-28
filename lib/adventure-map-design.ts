@@ -76,7 +76,43 @@ export const ADVENTURE_CHAPTER_DECORATIONS: Record<AdventureRegionTheme, readonl
   ],
 };
 
+const DECORATION_ROWS = [
+  0.04, 0.12, 0.20, 0.28, 0.36, 0.44,
+  0.52, 0.60, 0.68, 0.76, 0.84, 0.92,
+] as const;
+
 export function adventurePathPatternForChapter(chapter: number): readonly number[] {
   const safeChapter = Math.max(1, Math.trunc(chapter) || 1);
   return ADVENTURE_PATH_PATTERNS[(safeChapter - 1) % ADVENTURE_PATH_PATTERNS.length];
+}
+
+/**
+ * Convierte los cinco motivos temáticos en una escena de doce elementos.
+ * Cada dibujo se sitúa en el lado contrario al camino en esa altura para que
+ * tenga presencia sin competir con los nodos ni con sus etiquetas.
+ */
+export function adventureDecorationsForChapter(
+  theme: AdventureRegionTheme,
+  chapter: number,
+): readonly AdventureDecoration[] {
+  const motifs = ADVENTURE_CHAPTER_DECORATIONS[theme];
+  const pattern = adventurePathPatternForChapter(chapter);
+
+  return DECORATION_ROWS.map((y, index) => {
+    const pathIndex = Math.min(
+      pattern.length - 1,
+      Math.max(0, Math.round((1 - y) * (pattern.length - 1))),
+    );
+    const pathX = pattern[pathIndex];
+    const motif = motifs[(index + chapter - 1) % motifs.length];
+    const nearEdge = index % 3 === 0;
+
+    return {
+      symbol: motif.symbol,
+      x: pathX >= 0.5 ? (nearEdge ? 0.11 : 0.18) : (nearEdge ? 0.89 : 0.82),
+      y,
+      size: Math.round(motif.size * (1.55 + (index % 3) * 0.12)),
+      rotation: motif.rotation + ((index % 3) - 1) * 7,
+    };
+  });
 }

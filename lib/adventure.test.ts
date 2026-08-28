@@ -15,6 +15,7 @@ import {
 import {
   ADVENTURE_CHAPTER_DECORATIONS,
   ADVENTURE_PATH_PATTERNS,
+  adventureDecorationsForChapter,
 } from './adventure-map-design';
 
 test('a failed attempt records the best score without unlocking a future level', () => {
@@ -78,6 +79,10 @@ test('all current chapters have their own theme, accent, path and decorations', 
   assert.ok(ADVENTURE_PATH_PATTERNS.every(pattern =>
     pattern.length === 20 && pattern.every(x => x >= 0 && x <= 1)));
   assert.ok(regions.every(region => ADVENTURE_CHAPTER_DECORATIONS[region.theme].length >= 5));
+  assert.ok(regions.every(region => {
+    const decorations = adventureDecorationsForChapter(region.theme, region.number);
+    return decorations.length === 12 && decorations.every(item => item.size >= 35);
+  }));
 });
 
 test('chapter accents do not repeat before the twenty-sixth chapter', () => {

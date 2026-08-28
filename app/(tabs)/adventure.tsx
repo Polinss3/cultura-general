@@ -34,7 +34,7 @@ import {
 import { createLocalAdventureRepository } from '@/lib/adventure-progress';
 import { feedback } from '@/lib/feedback';
 import { alpha, readableOn, useTheme } from '@/constants/colors';
-import { Font, Radius, Space, Type, cardShadow, warmGradient } from '@/constants/theme';
+import { Font, Radius, Space, Type, cardShadow } from '@/constants/theme';
 
 export default function AdventureScreen() {
   const { t } = useTranslation();
@@ -180,13 +180,16 @@ export default function AdventureScreen() {
         </View>
 
         <LinearGradient
-          colors={warmGradient(isDark)}
+          colors={[
+            alpha(region.accent, isDark ? 0.34 : 0.2),
+            alpha(region.accent, isDark ? 0.16 : 0.08),
+          ]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={{
             borderRadius: Radius.cardLg,
             borderWidth: 1.5,
-            borderColor: C.borderWarm,
+            borderColor: alpha(region.accent, isDark ? 0.56 : 0.36),
             padding: 14,
             flexDirection: 'row',
             alignItems: 'center',
@@ -198,7 +201,7 @@ export default function AdventureScreen() {
             width: 48,
             height: 48,
             borderRadius: Radius.row,
-            backgroundColor: alpha(region.accent, isDark ? 0.22 : 0.14),
+            backgroundColor: alpha(region.accent, isDark ? 0.3 : 0.2),
             alignItems: 'center',
             justifyContent: 'center',
           }}>

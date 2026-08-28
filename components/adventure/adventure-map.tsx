@@ -9,7 +9,7 @@ import {
   type AdventureRegion,
 } from '@/lib/adventure';
 import {
-  ADVENTURE_CHAPTER_DECORATIONS,
+  adventureDecorationsForChapter,
   adventurePathPatternForChapter,
 } from '@/lib/adventure-map-design';
 import { alpha, useTheme } from '@/constants/colors';
@@ -77,7 +77,7 @@ export const AdventureMap = memo(function AdventureMap({
   const reducedMotion = useReducedMotion();
   const height = MAP_PADDING * 2 + NODE_SIZE + (ADVENTURE_LEVELS_PER_REGION - 1) * STEP_Y;
   const pattern = adventurePathPatternForChapter(region.number);
-  const decorations = ADVENTURE_CHAPTER_DECORATIONS[region.theme];
+  const decorations = adventureDecorationsForChapter(region.theme, region.number);
   const levels = useMemo(
     () => Array.from(
       { length: region.endLevel - region.startLevel + 1 },
@@ -93,6 +93,27 @@ export const AdventureMap = memo(function AdventureMap({
       accessibilityRole="list"
       style={{ width, height, overflow: 'hidden' }}
     >
+      {decorations.map((decoration, index) => (
+        <Text
+          key={`${decoration.symbol}-${index}`}
+          accessible={false}
+          importantForAccessibility="no-hide-descendants"
+          pointerEvents="none"
+          style={{
+            position: 'absolute',
+            left: decoration.x * width - decoration.size / 2,
+            top: decoration.y * height - decoration.size / 2,
+            color: region.accent,
+            fontSize: decoration.size,
+            lineHeight: decoration.size * 1.2,
+            opacity: isDark ? 0.38 : 0.3,
+            transform: [{ rotate: `${decoration.rotation}deg` }],
+          }}
+        >
+          {decoration.symbol}
+        </Text>
+      ))}
+
       <Svg width={width} height={height} style={{ position: 'absolute' }} pointerEvents="none">
         {Array.from({ length: 34 }, (_, index) => (
           <Circle
@@ -122,27 +143,6 @@ export const AdventureMap = memo(function AdventureMap({
           strokeDasharray="2 16"
         />
       </Svg>
-
-      {decorations.map((decoration, index) => (
-        <Text
-          key={`${decoration.symbol}-${index}`}
-          accessible={false}
-          importantForAccessibility="no-hide-descendants"
-          pointerEvents="none"
-          style={{
-            position: 'absolute',
-            left: decoration.x * width - decoration.size / 2,
-            top: decoration.y * height - decoration.size / 2,
-            color: region.accent,
-            fontSize: decoration.size,
-            lineHeight: decoration.size * 1.2,
-            opacity: isDark ? 0.23 : 0.18,
-            transform: [{ rotate: `${decoration.rotation}deg` }],
-          }}
-        >
-          {decoration.symbol}
-        </Text>
-      ))}
 
       {levels.map(level => {
         const point = pointFor(level, region, width, pattern);
@@ -177,14 +177,14 @@ export const AdventureMap = memo(function AdventureMap({
                 ? C.correct
                 : current
                   ? region.accent
-                  : alpha(region.accent, isDark ? 0.14 : 0.08),
+                  : alpha(region.accent, isDark ? 0.2 : 0.13),
               borderWidth: current ? 5 : 3,
               borderColor: current
                 ? C.surface
                 : completed
                   ? C.correctTint
-                  : alpha(region.accent, isDark ? 0.46 : 0.3),
-              opacity: pressed ? 0.72 : locked ? 0.82 : 1,
+                  : alpha(region.accent, isDark ? 0.66 : 0.5),
+              opacity: pressed ? 0.72 : 1,
               transform: [{ scale: pressed && !reducedMotion ? 0.97 : 1 }],
               shadowColor: current ? region.accent : '#2B2621',
               shadowOpacity: current ? (isDark ? 0.55 : 0.3) : completed && !isDark ? 0.15 : 0,
@@ -195,10 +195,10 @@ export const AdventureMap = memo(function AdventureMap({
           >
             {locked ? (
               <>
-                <Text maxFontSizeMultiplier={1.4} style={{ fontSize: 16, lineHeight: 19 }}>🔒</Text>
+                <Text maxFontSizeMultiplier={1.4} style={{ fontSize: 18, lineHeight: 21 }}>🔒</Text>
                 <Text
                   maxFontSizeMultiplier={1.4}
-                  style={{ color: C.textFaint, fontFamily: Font.black, fontSize: 12, lineHeight: 14 }}
+                  style={{ color: C.textBody, fontFamily: Font.black, fontSize: 14, lineHeight: 16 }}
                 >
                   {level}
                 </Text>
