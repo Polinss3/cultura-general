@@ -11,6 +11,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import Animated, {
+  ReduceMotion,
+  useAnimatedStyle,
+  useReducedMotion as useSystemReducedMotion,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
+import { scheduleOnRN } from 'react-native-worklets';
 import { AdventureMap } from '@/components/adventure/adventure-map';
 import { CoinPill } from '@/components/CoinPill';
 import { useAuth } from '@/hooks/useAuth';
@@ -23,6 +32,7 @@ import {
   type AdventureProgress,
 } from '@/lib/adventure';
 import { createLocalAdventureRepository } from '@/lib/adventure-progress';
+import { feedback } from '@/lib/feedback';
 import { alpha, readableOn, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, warmGradient } from '@/constants/theme';
 
@@ -49,6 +59,8 @@ export default function AdventureScreen() {
   const [regionNumber, setRegionNumber] = useState(1);
   const [initialPositioned, setInitialPositioned] = useState(false);
   const scrollRef = useRef<ScrollView>(null);
+  const translateX = useSharedValue(0);
+  const reducedMotion = useSystemReducedMotion();
 
   const load = useCallback(async () => {
     if (!repository) return;
@@ -66,6 +78,61 @@ export default function AdventureScreen() {
   const region = adventureRegionForLevel((regionNumber - 1) * ADVENTURE_LEVELS_PER_REGION + 1);
   const maxRegion = Math.ceil(ADVENTURE_MAX_LEVELS / ADVENTURE_LEVELS_PER_REGION);
   const mapWidth = Math.max(280, Math.min(width, 620));
+
+  const goToRegion = useCallback((nextRegion: number) => {
+    const bounded = Math.max(1, Math.min(maxRegion, nextRegion));
+    if (bounded === regionNumber) return;
+    feedback.select();
+    setRegionNumber(bounded);
+    setInitialPositioned(true);
+  }, [maxRegion, regionNumber]);
+
+  const swipeGesture = useMemo(() => Gesture.Pan()
+    .activeOffsetX([-22, 22])
+    .failOffsetY([-14, 14])
+    .onUpdate(event => {
+      const beyondFirst = event.translationX > 0 && regionNumber === 1;
+      const beyondLast = event.translationX < 0 && regionNumber === maxRegion;
+      translateX.value = reducedMotion
+        ? 0
+        : event.translationX * (beyondFirst || beyondLast ? 0.22 : 1);
+    })
+    .onEnd(event => {
+      const projectedX = event.translationX + event.velocityX * 0.18;
+      if (projectedX < -72 && regionNumber < maxRegion) {
+        scheduleOnRN(goToRegion, regionNumber + 1);
+      } else if (projectedX > 72 && regionNumber > 1) {
+        scheduleOnRN(goToRegion, regionNumber - 1);
+      }
+      translateX.value = reducedMotion
+        ? 0
+        : withSpring(0, {
+          duration: 400,
+          dampingRatio: 0.8,
+          velocity: event.velocityX,
+          reduceMotion: ReduceMotion.System,
+        });
+    })
+    .onFinalize((_event, success) => {
+      if (!success && translateX.value !== 0) {
+        translateX.value = reducedMotion
+          ? 0
+          : withSpring(0, {
+            duration: 400,
+            dampingRatio: 0.8,
+            reduceMotion: ReduceMotion.System,
+          });
+      }
+    }), [goToRegion, maxRegion, reducedMotion, regionNumber, translateX]);
+
+  const swipeStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
+
+  const openLevel = useCallback((level: number) => {
+    feedback.tap();
+    router.push(`/adventure-level/${level}` as any);
+  }, [router]);
 
   useEffect(() => {
     if (!progress || initialPositioned) return;
@@ -97,7 +164,9 @@ export default function AdventureScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      <View style={{ paddingHorizontal: Space.screen, paddingTop: 10, paddingBottom: 10, gap: 12 }}>
+      <GestureDetector gesture={swipeGesture}>
+        <Animated.View style={[{ flex: 1 }, swipeStyle]}>
+          <View style={{ paddingHorizontal: Space.screen, paddingTop: 10, paddingBottom: 10, gap: 12 }}>
         <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
           <View style={{ flex: 1, gap: 2 }}>
             <Text style={{ color: C.text, ...Type.screenTitle }}>{t('adventure.title')}</Text>
@@ -153,7 +222,7 @@ export default function AdventureScreen() {
             accessibilityLabel={t('adventure.previousChapter')}
             disabled={regionNumber === 1}
             hitSlop={8}
-            onPress={() => { setRegionNumber(value => Math.max(1, value - 1)); setInitialPositioned(true); }}
+            onPress={() => goToRegion(regionNumber - 1)}
             style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center', opacity: regionNumber === 1 ? 0.35 : 1 }}
           >
             <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>‹</Text>
@@ -175,27 +244,29 @@ export default function AdventureScreen() {
             accessibilityLabel={t('adventure.nextChapter')}
             disabled={regionNumber === maxRegion}
             hitSlop={8}
-            onPress={() => { setRegionNumber(value => Math.min(maxRegion, value + 1)); setInitialPositioned(true); }}
+            onPress={() => goToRegion(regionNumber + 1)}
             style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center', opacity: regionNumber === maxRegion ? 0.35 : 1 }}
           >
             <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>›</Text>
           </Pressable>
         </View>
-      </View>
+          </View>
 
-      <ScrollView
-        ref={scrollRef}
-        contentInsetAdjustmentBehavior="automatic"
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ alignItems: 'center', paddingBottom: 32 }}
-      >
-        <AdventureMap
-          width={mapWidth}
-          region={region}
-          progress={progress}
-          onLevelPress={level => router.push(`/adventure-level/${level}` as any)}
-        />
-      </ScrollView>
+          <ScrollView
+            ref={scrollRef}
+            contentInsetAdjustmentBehavior="automatic"
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ alignItems: 'center', paddingBottom: 32 }}
+          >
+            <AdventureMap
+              width={mapWidth}
+              region={region}
+              progress={progress}
+              onLevelPress={openLevel}
+            />
+          </ScrollView>
+        </Animated.View>
+      </GestureDetector>
     </SafeAreaView>
   );
 }

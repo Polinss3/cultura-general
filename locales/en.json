@@ -520,7 +520,12 @@
       "world": "World horizons",
       "ideas": "Valley of ideas",
       "nature": "Living territories",
-      "future": "Frontiers of the future"
+      "arts": "The artists' workshop",
+      "music": "Echoes and melodies",
+      "legends": "Forge of legends",
+      "arena": "The grand arena",
+      "inventions": "Minds and machines",
+      "cosmos": "Beyond the stars"
     },
     "levelA11y": {
       "completed": "Level {{level}} cleared. Best score: {{score}} out of 10. Tap to replay.",

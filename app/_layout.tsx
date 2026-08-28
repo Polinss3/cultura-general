@@ -7,6 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import * as Linking from 'expo-linking';
 import * as Notifications from 'expo-notifications';
 import { Alert, AppState } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   useFonts,
   Nunito_400Regular,
@@ -495,4 +496,12 @@ function RootLayout() {
   );
 }
 
-export default Sentry.wrap(RootLayout);
+function GestureReadyRoot() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <RootLayout />
+    </GestureHandlerRootView>
+  );
+}
+
+export default Sentry.wrap(GestureReadyRoot);

@@ -8,6 +8,10 @@ import {
   type AdventureProgress,
   type AdventureRegion,
 } from '@/lib/adventure';
+import {
+  ADVENTURE_CHAPTER_DECORATIONS,
+  adventurePathPatternForChapter,
+} from '@/lib/adventure-map-design';
 import { alpha, useTheme } from '@/constants/colors';
 import { Font, HIT_MIN, Radius } from '@/constants/theme';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
@@ -22,15 +26,44 @@ interface Props {
 const STEP_Y = 96;
 const MAP_PADDING = 30;
 const NODE_SIZE = 62;
-const X_PATTERN = [0.16, 0.42, 0.76, 0.86, 0.58, 0.24, 0.12, 0.43, 0.8, 0.7] as const;
 
-function pointFor(level: number, region: AdventureRegion, width: number) {
+function pointFor(
+  level: number,
+  region: AdventureRegion,
+  width: number,
+  pattern: readonly number[],
+) {
   const offset = level - region.startLevel;
   const usableWidth = Math.max(220, width - MAP_PADDING * 2 - NODE_SIZE);
   return {
-    x: MAP_PADDING + NODE_SIZE / 2 + X_PATTERN[offset % X_PATTERN.length] * usableWidth,
+    x: MAP_PADDING + NODE_SIZE / 2 + pattern[offset % pattern.length] * usableWidth,
     y: MAP_PADDING + (ADVENTURE_LEVELS_PER_REGION - 1 - offset) * STEP_Y + NODE_SIZE / 2,
   };
+}
+
+function smoothPath(points: readonly { x: number; y: number }[]): string {
+  if (points.length === 0) return '';
+  if (points.length === 1) return `M ${points[0].x} ${points[0].y}`;
+
+  const commands = [`M ${points[0].x} ${points[0].y}`];
+  for (let index = 0; index < points.length - 1; index += 1) {
+    const previous = points[index - 1] ?? points[index];
+    const current = points[index];
+    const next = points[index + 1];
+    const following = points[index + 2] ?? next;
+    const control1 = {
+      x: current.x + (next.x - previous.x) / 6,
+      y: current.y + (next.y - previous.y) / 6,
+    };
+    const control2 = {
+      x: next.x - (following.x - current.x) / 6,
+      y: next.y - (following.y - current.y) / 6,
+    };
+    commands.push(
+      `C ${control1.x} ${control1.y} ${control2.x} ${control2.y} ${next.x} ${next.y}`,
+    );
+  }
+  return commands.join(' ');
 }
 
 export const AdventureMap = memo(function AdventureMap({
@@ -43,6 +76,8 @@ export const AdventureMap = memo(function AdventureMap({
   const { C, isDark } = useTheme();
   const reducedMotion = useReducedMotion();
   const height = MAP_PADDING * 2 + NODE_SIZE + (ADVENTURE_LEVELS_PER_REGION - 1) * STEP_Y;
+  const pattern = adventurePathPatternForChapter(region.number);
+  const decorations = ADVENTURE_CHAPTER_DECORATIONS[region.theme];
   const levels = useMemo(
     () => Array.from(
       { length: region.endLevel - region.startLevel + 1 },
@@ -50,12 +85,8 @@ export const AdventureMap = memo(function AdventureMap({
     ),
     [region.startLevel, region.endLevel],
   );
-  const path = levels
-    .map((level, index) => {
-      const point = pointFor(level, region, width);
-      return `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`;
-    })
-    .join(' ');
+  const points = levels.map(level => pointFor(level, region, width, pattern));
+  const path = smoothPath(points);
 
   return (
     <View
@@ -66,8 +97,8 @@ export const AdventureMap = memo(function AdventureMap({
         {Array.from({ length: 34 }, (_, index) => (
           <Circle
             key={index}
-            cx={18 + ((index * 71) % Math.max(40, width - 36))}
-            cy={22 + index * 55}
+            cx={18 + ((index * (61 + region.number * 7)) % Math.max(40, width - 36))}
+            cy={22 + index * 55 + ((region.number * 19 + index * 11) % 31)}
             r={index % 4 === 0 ? 3 : 1.8}
             fill={index % 3 === 0 ? region.accent : C.borderStrong}
             opacity={isDark ? 0.18 : 0.24}
@@ -92,8 +123,29 @@ export const AdventureMap = memo(function AdventureMap({
         />
       </Svg>
 
+      {decorations.map((decoration, index) => (
+        <Text
+          key={`${decoration.symbol}-${index}`}
+          accessible={false}
+          importantForAccessibility="no-hide-descendants"
+          pointerEvents="none"
+          style={{
+            position: 'absolute',
+            left: decoration.x * width - decoration.size / 2,
+            top: decoration.y * height - decoration.size / 2,
+            color: region.accent,
+            fontSize: decoration.size,
+            lineHeight: decoration.size * 1.2,
+            opacity: isDark ? 0.23 : 0.18,
+            transform: [{ rotate: `${decoration.rotation}deg` }],
+          }}
+        >
+          {decoration.symbol}
+        </Text>
+      ))}
+
       {levels.map(level => {
-        const point = pointFor(level, region, width);
+        const point = pointFor(level, region, width, pattern);
         const status = adventureLevelStatus(level, progress);
         const completed = status === 'completed';
         const current = status === 'current';
@@ -121,9 +173,17 @@ export const AdventureMap = memo(function AdventureMap({
               borderRadius: Radius.pill,
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: completed ? C.correct : current ? region.accent : C.surfaceSunk,
+              backgroundColor: completed
+                ? C.correct
+                : current
+                  ? region.accent
+                  : alpha(region.accent, isDark ? 0.14 : 0.08),
               borderWidth: current ? 5 : 3,
-              borderColor: current ? C.surface : completed ? C.correctTint : C.borderStrong,
+              borderColor: current
+                ? C.surface
+                : completed
+                  ? C.correctTint
+                  : alpha(region.accent, isDark ? 0.46 : 0.3),
               opacity: pressed ? 0.72 : locked ? 0.82 : 1,
               transform: [{ scale: pressed && !reducedMotion ? 0.97 : 1 }],
               shadowColor: current ? region.accent : '#2B2621',

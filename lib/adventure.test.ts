@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  ADVENTURE_CHAPTER_ACCENTS,
   ADVENTURE_MAX_LEVELS,
   ADVENTURE_QUESTIONS_PER_LEVEL,
+  adventureAccentForChapter,
   adventureLevelStatus,
   adventureRegionForLevel,
   createAdventureProgress,
@@ -10,6 +12,10 @@ import {
   normalizeAdventureProgress,
   resolveAdventureAttempt,
 } from './adventure';
+import {
+  ADVENTURE_CHAPTER_DECORATIONS,
+  ADVENTURE_PATH_PATTERNS,
+} from './adventure-map-design';
 
 test('a failed attempt records the best score without unlocking a future level', () => {
   const initial = createAdventureProgress('2026-01-01T00:00:00.000Z');
@@ -60,6 +66,24 @@ test('the adventure has 200 levels and exactly 2,000 question slots', () => {
   assert.equal(adventureRegionForLevel(1).number, 1);
   assert.equal(adventureRegionForLevel(21).number, 2);
   assert.equal(adventureRegionForLevel(ADVENTURE_MAX_LEVELS).number, 10);
+});
+
+test('all current chapters have their own theme, accent, path and decorations', () => {
+  const regions = Array.from({ length: 10 }, (_, index) =>
+    adventureRegionForLevel(index * 20 + 1));
+
+  assert.equal(new Set(regions.map(region => region.theme)).size, 10);
+  assert.equal(new Set(regions.map(region => region.accent)).size, 10);
+  assert.equal(new Set(ADVENTURE_PATH_PATTERNS.map(pattern => pattern.join(','))).size, 10);
+  assert.ok(ADVENTURE_PATH_PATTERNS.every(pattern =>
+    pattern.length === 20 && pattern.every(x => x >= 0 && x <= 1)));
+  assert.ok(regions.every(region => ADVENTURE_CHAPTER_DECORATIONS[region.theme].length >= 5));
+});
+
+test('chapter accents do not repeat before the twenty-sixth chapter', () => {
+  assert.equal(ADVENTURE_CHAPTER_ACCENTS.length, 25);
+  assert.equal(new Set(ADVENTURE_CHAPTER_ACCENTS).size, 25);
+  assert.equal(adventureAccentForChapter(1), adventureAccentForChapter(26));
 });
 
 test('malformed persisted state is normalized and clamped', () => {

@@ -520,7 +520,12 @@
       "world": "Horizontes del mundo",
       "ideas": "El valle de las ideas",
       "nature": "Territorios vivos",
-      "future": "Fronteras del futuro"
+      "arts": "El taller de las artes",
+      "music": "Ecos y melodías",
+      "legends": "Forja de leyendas",
+      "arena": "La gran arena",
+      "inventions": "Mentes y máquinas",
+      "cosmos": "Más allá de las estrellas"
     },
     "levelA11y": {
       "completed": "Nivel {{level}} superado. Mejor resultado: {{score}} de 10. Toca para rejugar.",

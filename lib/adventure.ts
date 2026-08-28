@@ -14,9 +14,21 @@ export interface AdventureProgress {
 
 export type AdventureLevelStatus = 'completed' | 'current' | 'locked';
 
+export type AdventureRegionTheme =
+  | 'roots'
+  | 'world'
+  | 'ideas'
+  | 'nature'
+  | 'arts'
+  | 'music'
+  | 'legends'
+  | 'arena'
+  | 'inventions'
+  | 'cosmos';
+
 export interface AdventureRegion {
   number: number;
-  theme: 'roots' | 'world' | 'ideas' | 'nature' | 'future';
+  theme: AdventureRegionTheme;
   icon: string;
   accent: string;
   startLevel: number;
@@ -30,13 +42,34 @@ export interface AdventureAttemptResult {
   shouldReward: boolean;
 }
 
-const REGION_THEMES = [
-  { theme: 'roots', icon: '🏛️', accent: '#C77A36' },
-  { theme: 'world', icon: '🧭', accent: '#3E77B4' },
-  { theme: 'ideas', icon: '💡', accent: '#7B57BE' },
-  { theme: 'nature', icon: '🌿', accent: '#3F9E6C' },
-  { theme: 'future', icon: '🚀', accent: '#B14E68' },
+const REGION_THEMES: ReadonlyArray<{ theme: AdventureRegionTheme; icon: string }> = [
+  { theme: 'roots', icon: '🏛️' },
+  { theme: 'world', icon: '🧭' },
+  { theme: 'ideas', icon: '💡' },
+  { theme: 'nature', icon: '🌿' },
+  { theme: 'arts', icon: '🎨' },
+  { theme: 'music', icon: '🎼' },
+  { theme: 'legends', icon: '⚔️' },
+  { theme: 'arena', icon: '🏅' },
+  { theme: 'inventions', icon: '💻' },
+  { theme: 'cosmos', icon: '🚀' },
 ] as const;
+
+// Preparada para crecer: un color no vuelve a aparecer hasta el capítulo 26.
+// Las identidades temáticas pueden ciclar antes, pero el mapa conserva una
+// personalidad cromática distinta durante al menos 25 capítulos.
+export const ADVENTURE_CHAPTER_ACCENTS = [
+  '#C7772F', '#3478B9', '#7954B6', '#348B62', '#B54F70',
+  '#B66338', '#526BB2', '#C08A20', '#287F87', '#6B58A7',
+  '#A85E2A', '#3C879C', '#8B4E8C', '#4D8738', '#B24949',
+  '#426EA4', '#A27625', '#2F8A77', '#815A9E', '#C06355',
+  '#5A73A8', '#9A6A36', '#3D8270', '#A44E78', '#657A32',
+] as const;
+
+export function adventureAccentForChapter(chapter: number): string {
+  const safeChapter = Math.max(1, Math.trunc(chapter) || 1);
+  return ADVENTURE_CHAPTER_ACCENTS[(safeChapter - 1) % ADVENTURE_CHAPTER_ACCENTS.length];
+}
 
 function clampLevel(level: number): number {
   return Math.min(ADVENTURE_MAX_LEVELS, Math.max(1, Math.trunc(level) || 1));
@@ -162,6 +195,7 @@ export function adventureRegionForLevel(level: number): AdventureRegion {
   return {
     number: regionIndex + 1,
     ...visual,
+    accent: adventureAccentForChapter(regionIndex + 1),
     startLevel,
     endLevel: Math.min(ADVENTURE_MAX_LEVELS, startLevel + ADVENTURE_LEVELS_PER_REGION - 1),
   };
