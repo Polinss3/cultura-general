@@ -35,7 +35,7 @@ import {
 import { fetchAdventureLevelQuestions } from '@/lib/adventure-questions';
 import { createLocalAdventureRepository } from '@/lib/adventure-progress';
 import { getCurrentLang } from '@/lib/i18n';
-import { shuffleQuestionSeeded } from '@/lib/utils';
+import { shuffleQuestionForAttempt } from '@/lib/utils';
 import { awardAdventureLevel, awardAdventureStar, bumpMissions } from '@/lib/gamification';
 import { incrementProfileStats } from '@/lib/db';
 import { REWARDS } from '@/lib/economy';
@@ -46,6 +46,10 @@ import type { AnswerState, Question } from '@/types';
 
 type Stage = 'preparing' | 'questions' | 'result';
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
+
+function createAttemptSessionSeed(): string {
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+}
 
 export default function AdventureLevelScreen() {
   const { t, i18n } = useTranslation();
@@ -93,9 +97,12 @@ export default function AdventureLevelScreen() {
   const [previousStars, setPreviousStars] = useState(0);
   const [starCoinsGranted, setStarCoinsGranted] = useState(0);
   const [displayElapsedMs, setDisplayElapsedMs] = useState(0);
+  const [attemptNumber, setAttemptNumber] = useState(0);
   const mountedRef = useRef(true);
   const activeTimeMsRef = useRef(0);
   const questionStartedAtRef = useRef<number | null>(null);
+  const attemptNumberRef = useRef(0);
+  const attemptSessionSeedRef = useRef(createAttemptSessionSeed());
 
   useFocusEffect(useCallback(() => {
     if (!repository) return;
@@ -136,9 +143,13 @@ export default function AdventureLevelScreen() {
   const baseQuestion = questions[questionIndex];
   const question = useMemo(
     () => baseQuestion
-      ? shuffleQuestionSeeded(baseQuestion, `adventure-v1-${level}-${questionIndex}`)
+      ? shuffleQuestionForAttempt(
+        baseQuestion,
+        `adventure-v2-${level}-${questionIndex}-${attemptSessionSeedRef.current}`,
+        attemptNumber,
+      )
       : undefined,
-    [baseQuestion, level, questionIndex],
+    [attemptNumber, baseQuestion, level, questionIndex],
   );
   const answered = selected !== null;
   const answerWasCorrect = selected === question?.ans;
@@ -152,6 +163,9 @@ export default function AdventureLevelScreen() {
     setFiftyHidden([]);
     setHintShown(false);
     setRewardGranted(false);
+    attemptNumberRef.current = 0;
+    attemptSessionSeedRef.current = createAttemptSessionSeed();
+    setAttemptNumber(0);
     activeTimeMsRef.current = 0;
     questionStartedAtRef.current = null;
   }, [level]);
@@ -196,6 +210,9 @@ export default function AdventureLevelScreen() {
   };
 
   const start = () => {
+    const nextAttempt = attemptNumberRef.current + 1;
+    attemptNumberRef.current = nextAttempt;
+    setAttemptNumber(nextAttempt);
     setQuestionIndex(0);
     setCorrectCount(0);
     setRewardGranted(false);

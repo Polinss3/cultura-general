@@ -20,6 +20,7 @@ import {
   ADVENTURE_PATH_PATTERNS,
   adventureDecorationsForChapter,
 } from './adventure-map-design';
+import { shuffleQuestionForAttempt } from './utils';
 
 test('a failed attempt records the best score without unlocking a future level', () => {
   const initial = createAdventureProgress('2026-01-01T00:00:00.000Z');
@@ -116,6 +117,27 @@ test('all current chapters have their own theme, accent, path and decorations', 
       && new Set(decorations.map(item => item.symbol)).size === 16
       && decorations.every(item => item.size >= 43);
   }));
+});
+
+test('adventure retries keep the question but move its correct answer', () => {
+  const question = {
+    id: 'fixed-question',
+    q: 'Which option is correct?',
+    opts: ['First', 'Second', 'Correct', 'Fourth'],
+    ans: 2,
+  };
+  const attempts = Array.from({ length: 8 }, (_, index) =>
+    shuffleQuestionForAttempt(question, 'level-1-slot-1-session', index + 1));
+
+  attempts.forEach(attempt => {
+    assert.equal(attempt.q, question.q);
+    assert.equal(attempt.opts[attempt.ans], 'Correct');
+  });
+  for (let index = 1; index < attempts.length; index += 1) {
+    assert.notEqual(attempts[index].ans, attempts[index - 1].ans);
+  }
+  assert.deepEqual(question.opts, ['First', 'Second', 'Correct', 'Fourth']);
+  assert.equal(question.ans, 2);
 });
 
 test('chapter accents do not repeat before the twenty-sixth chapter', () => {
