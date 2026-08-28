@@ -1,10 +1,7 @@
-import type { AppLang } from '@/lib/i18n';
-import { getLocalQuestions } from '@/constants/questions';
-import type { Category, Question } from '@/types';
-
-export const ADVENTURE_MAX_LEVELS = 400;
+export const ADVENTURE_MAX_LEVELS = 200;
 export const ADVENTURE_QUESTIONS_PER_LEVEL = 10;
 export const ADVENTURE_LEVELS_PER_REGION = 20;
+export const ADVENTURE_QUESTION_VERSION = 1;
 
 export interface AdventureProgress {
   version: 1;
@@ -33,10 +30,6 @@ export interface AdventureAttemptResult {
   shouldReward: boolean;
 }
 
-export interface AdventureQuestionProvider {
-  getLevelQuestions(level: number, lang: AppLang): Question[];
-}
-
 const REGION_THEMES = [
   { theme: 'roots', icon: '🏛️', accent: '#C77A36' },
   { theme: 'world', icon: '🧭', accent: '#3E77B4' },
@@ -44,31 +37,6 @@ const REGION_THEMES = [
   { theme: 'nature', icon: '🌿', accent: '#3F9E6C' },
   { theme: 'future', icon: '🚀', accent: '#B14E68' },
 ] as const;
-
-// Manifiesto local estable de la versión 2.1.0. Cada referencia apunta al
-// mismo banco bilingüe empaquetado. El proveedor está aislado para sustituir
-// este fallback por un manifiesto remoto versionado de 4.000 IDs sin cambiar
-// el mapa, la sesión ni la persistencia.
-const FALLBACK_COUNTS: Readonly<Record<Category, number>> = {
-  historia: 5,
-  geografia: 5,
-  ciencia: 5,
-  arte: 5,
-  filosofia: 5,
-  deportes: 3,
-  biologia: 3,
-  cine: 3,
-  musica: 3,
-  literatura: 3,
-  tecnologia: 3,
-  mitologia: 3,
-  astronomia: 3,
-};
-
-const FALLBACK_REFS = (Object.entries(FALLBACK_COUNTS) as [Category, number][])
-  .flatMap(([category, count]) =>
-    Array.from({ length: count }, (_, index) => ({ category, index })),
-  );
 
 function clampLevel(level: number): number {
   return Math.min(ADVENTURE_MAX_LEVELS, Math.max(1, Math.trunc(level) || 1));
@@ -197,26 +165,4 @@ export function adventureRegionForLevel(level: number): AdventureRegion {
     startLevel,
     endLevel: Math.min(ADVENTURE_MAX_LEVELS, startLevel + ADVENTURE_LEVELS_PER_REGION - 1),
   };
-}
-
-export const localAdventureQuestionProvider: AdventureQuestionProvider = {
-  getLevelQuestions(level, lang) {
-    const safeLevel = clampLevel(level);
-    const bank = getLocalQuestions(lang);
-    const offset = ((safeLevel - 1) * ADVENTURE_QUESTIONS_PER_LEVEL) % FALLBACK_REFS.length;
-
-    return Array.from({ length: ADVENTURE_QUESTIONS_PER_LEVEL }, (_, slot) => {
-      const ref = FALLBACK_REFS[(offset + slot) % FALLBACK_REFS.length];
-      const question = bank[ref.category][ref.index];
-      return {
-        ...question,
-        category: ref.category,
-        localId: `adventure-v1-${ref.category}-${ref.index}`,
-      };
-    });
-  },
-};
-
-export function getAdventureQuestions(level: number, lang: AppLang): Question[] {
-  return localAdventureQuestionProvider.getLevelQuestions(level, lang);
 }

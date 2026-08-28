@@ -6,7 +6,6 @@ import {
   adventureLevelStatus,
   adventureRegionForLevel,
   createAdventureProgress,
-  getAdventureQuestions,
   markAdventureRewarded,
   normalizeAdventureProgress,
   resolveAdventureAttempt,
@@ -55,23 +54,18 @@ test('a locked level cannot be opened through the domain API', () => {
   );
 });
 
-test('the packaged provider exposes 400 deterministic levels of ten questions', () => {
-  for (const level of [1, 2, 20, 21, 399, ADVENTURE_MAX_LEVELS]) {
-    const first = getAdventureQuestions(level, 'es');
-    const second = getAdventureQuestions(level, 'es');
-    assert.equal(first.length, ADVENTURE_QUESTIONS_PER_LEVEL);
-    assert.deepEqual(first.map(q => q.localId), second.map(q => q.localId));
-    assert.equal(new Set(first.map(q => q.localId)).size, ADVENTURE_QUESTIONS_PER_LEVEL);
-  }
+test('the adventure has 200 levels and exactly 2,000 question slots', () => {
+  assert.equal(ADVENTURE_MAX_LEVELS, 200);
+  assert.equal(ADVENTURE_MAX_LEVELS * ADVENTURE_QUESTIONS_PER_LEVEL, 2000);
   assert.equal(adventureRegionForLevel(1).number, 1);
   assert.equal(adventureRegionForLevel(21).number, 2);
-  assert.equal(adventureRegionForLevel(ADVENTURE_MAX_LEVELS).number, 20);
+  assert.equal(adventureRegionForLevel(ADVENTURE_MAX_LEVELS).number, 10);
 });
 
 test('malformed persisted state is normalized and clamped', () => {
   const normalized = normalizeAdventureProgress({
     unlockedLevel: 999,
-    completedLevels: [1, 1, 0, 401],
+    completedLevels: [1, 1, 0, 201],
     rewardedLevels: [1, 2],
     bestScores: { 1: 99, nope: 4 },
   });
@@ -81,4 +75,3 @@ test('malformed persisted state is normalized and clamped', () => {
   assert.deepEqual(normalized.rewardedLevels, [1]);
   assert.equal(normalized.bestScores['1'], ADVENTURE_QUESTIONS_PER_LEVEL);
 });
-

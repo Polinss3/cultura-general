@@ -155,7 +155,16 @@
   "notifications": {
     "channelName": "Cultura General",
     "dailyTitle": "🧠 ¡Tu pregunta del día te espera!",
-    "dailyBody": "Responde hoy para mantener tu racha."
+    "dailyBody": "Responde hoy para mantener tu racha.",
+    "dailyEveningTitle": "⏳ Aún estás a tiempo",
+    "dailyEveningBody": "Completa la pregunta del día antes de que termine hoy.",
+    "returnStreakTitle": "🔥 Tu racha te está esperando",
+    "returnStreakBody_one": "Vuelve a jugar y sigue construyendo tu racha de {{count}} día.",
+    "returnStreakBody_other": "Vuelve a jugar y sigue construyendo tu racha de {{count}} días.",
+    "returnAdventureTitle": "🧭 Tu aventura continúa",
+    "returnAdventureBody": "El nivel {{level}} está listo cuando tú lo estés.",
+    "returnTitle": "🧠 Tenemos un nuevo reto para ti",
+    "returnBody": "Vuelve a Cultura General y descubre cuánto recuerdas."
   },
   "errors": {
     "network": "Sin conexión. Comprueba tu red e inténtalo de nuevo.",
@@ -504,6 +513,8 @@
     "retryLevel": "Reintentar nivel",
     "lockedTitle": "Nivel bloqueado",
     "lockedMessage": "Supera el nivel actual con 10 aciertos para abrir este camino.",
+    "questionsUnavailableTitle": "No se ha podido preparar el nivel",
+    "questionsUnavailableMessage": "Conéctate para descargar sus preguntas. Después podrás volver a jugar este nivel sin conexión.",
     "regions": {
       "roots": "Raíces del conocimiento",
       "world": "Horizontes del mundo",

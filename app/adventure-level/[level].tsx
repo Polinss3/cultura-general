@@ -25,11 +25,11 @@ import {
   ADVENTURE_MAX_LEVELS,
   ADVENTURE_QUESTIONS_PER_LEVEL,
   adventureRegionForLevel,
-  getAdventureQuestions,
   markAdventureRewarded,
   resolveAdventureAttempt,
   type AdventureProgress,
 } from '@/lib/adventure';
+import { fetchAdventureLevelQuestions } from '@/lib/adventure-questions';
 import { createLocalAdventureRepository } from '@/lib/adventure-progress';
 import { getCurrentLang } from '@/lib/i18n';
 import { shuffleQuestionSeeded } from '@/lib/utils';
@@ -39,13 +39,13 @@ import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
 import { useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, inkButton, warmGradient } from '@/constants/theme';
-import type { AnswerState } from '@/types';
+import type { AnswerState, Question } from '@/types';
 
 type Stage = 'preparing' | 'questions' | 'result';
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
 export default function AdventureLevelScreen() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const router = useRouter();
   const params = useLocalSearchParams<{ level?: string }>();
   const parsedLevel = Number(params.level);
@@ -69,11 +69,14 @@ export default function AdventureLevelScreen() {
     () => scope ? createLocalAdventureRepository(scope) : null,
     [scope],
   );
-  const questions = useMemo(() => getAdventureQuestions(level, getCurrentLang()), [level, t]);
   const region = adventureRegionForLevel(level);
   const canUseEconomy = !!user && !guest && !offline;
   const { inventory, consume, refresh: refreshPowerups } = usePowerups(canUseEconomy, user?.id);
   const [progress, setProgress] = useState<AdventureProgress | null>(null);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questionsLoading, setQuestionsLoading] = useState(true);
+  const [questionsError, setQuestionsError] = useState(false);
+  const [questionsReload, setQuestionsReload] = useState(0);
   const [stage, setStage] = useState<Stage>('preparing');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -100,6 +103,25 @@ export default function AdventureLevelScreen() {
     if (user) refreshProfile();
     return () => { mountedRef.current = false; };
   }, [level, repository, refreshPowerups, refreshProfile, router, t, user?.id]));
+
+  useEffect(() => {
+    let active = true;
+    setQuestionsLoading(true);
+    setQuestionsError(false);
+    fetchAdventureLevelQuestions(level, getCurrentLang())
+      .then(loaded => {
+        if (!active) return;
+        setQuestions(loaded);
+        setQuestionsLoading(false);
+      })
+      .catch(() => {
+        if (!active) return;
+        setQuestions([]);
+        setQuestionsError(true);
+        setQuestionsLoading(false);
+      });
+    return () => { active = false; };
+  }, [i18n.resolvedLanguage, level, questionsReload]);
 
   const baseQuestion = questions[questionIndex];
   const question = useMemo(
@@ -206,11 +228,33 @@ export default function AdventureLevelScreen() {
     resetQuestionState();
   };
 
-  if (!progress || !question) {
+  if (!progress || questionsLoading) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <ActivityIndicator color={region.accent} size="large" />
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (questionsError || !question) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
+        <View style={{ flex: 1, padding: Space.screen, alignItems: 'center', justifyContent: 'center', gap: 14 }}>
+          <Text style={{ fontSize: 42 }}>🧭</Text>
+          <Text style={{ color: C.text, ...Type.cardTitle, textAlign: 'center' }}>{t('adventure.questionsUnavailableTitle')}</Text>
+          <Text style={{ color: C.textMuted, ...Type.secondary, textAlign: 'center' }}>{t('adventure.questionsUnavailableMessage')}</Text>
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => setQuestionsReload(value => value + 1)}
+            style={({ pressed }) => ({ minHeight: 50, minWidth: 180, borderRadius: Radius.row, backgroundColor: C.brand, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.75 : 1 })}
+          >
+            <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 16 }}>{t('common.retry')}</Text>
+          </Pressable>
+          <Pressable accessibilityRole="button" onPress={() => router.replace('/(tabs)/adventure' as any)} hitSlop={8}>
+            <Text style={{ color: C.textMuted, fontFamily: Font.bold, fontSize: 15 }}>{t('adventure.backToMap')}</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     );

@@ -19,7 +19,7 @@ function TabIcon({ label, icon, focused, C }: TabIconProps) {
       gap: 2,
       paddingVertical: 6,
       // Con 5 pestañas y la etiqueta a 12 px (el suelo), más holgura que esta
-      // corta "Aprender" y "Amigos".
+      // corta "Aventura" y "Aprender".
       paddingHorizontal: 8,
       borderRadius: Radius.row,
       backgroundColor: focused ? C.brandTint : 'transparent',

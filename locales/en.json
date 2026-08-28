@@ -155,7 +155,16 @@
   "notifications": {
     "channelName": "CG Trivia",
     "dailyTitle": "🧠 Your daily question is waiting!",
-    "dailyBody": "Answer today to keep your streak alive."
+    "dailyBody": "Answer today to keep your streak alive.",
+    "dailyEveningTitle": "⏳ There's still time",
+    "dailyEveningBody": "Complete today's question before the day ends.",
+    "returnStreakTitle": "🔥 Your streak is waiting",
+    "returnStreakBody_one": "Come back and keep building your {{count}}-day streak.",
+    "returnStreakBody_other": "Come back and keep building your {{count}}-day streak.",
+    "returnAdventureTitle": "🧭 Your adventure continues",
+    "returnAdventureBody": "Level {{level}} is ready when you are.",
+    "returnTitle": "🧠 A new challenge is waiting",
+    "returnBody": "Come back to CG Trivia and see how much you remember."
   },
   "errors": {
     "network": "No connection. Check your network and try again.",
@@ -504,6 +513,8 @@
     "retryLevel": "Retry level",
     "lockedTitle": "Level locked",
     "lockedMessage": "Clear the current level with 10 correct answers to open this path.",
+    "questionsUnavailableTitle": "This level could not be prepared",
+    "questionsUnavailableMessage": "Connect to download its questions. Once downloaded, you can replay this level offline.",
     "regions": {
       "roots": "Roots of knowledge",
       "world": "World horizons",

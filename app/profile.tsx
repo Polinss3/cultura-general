@@ -163,13 +163,13 @@ export default function ProfileScreen() {
         Alert.alert(t('profile.dialogs.notifPermTitle'), t('profile.dialogs.notifPermBody'));
         return;
       }
-      await scheduleDailyReminder();
+      await scheduleDailyReminder({ streak: profile?.streak ?? 0 });
       setNotificationsOn(true);
     } else {
       await cancelDailyReminder();
       setNotificationsOn(false);
     }
-  }, []);
+  }, [profile?.streak, t]);
 
   const handleSaveUsername = useCallback(async () => {
     if (!user || !newUsername.trim()) return;
