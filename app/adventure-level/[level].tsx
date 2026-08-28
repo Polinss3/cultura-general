@@ -12,11 +12,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import Animated, { FadeInDown, ReduceMotion } from 'react-native-reanimated';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, type PowerUpButton } from '@/components/PowerUpBar';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { CoinPill } from '@/components/CoinPill';
+import { AdventureStars } from '@/components/adventure/adventure-stars';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
@@ -434,11 +434,12 @@ export default function AdventureLevelScreen() {
         <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: Space.screen, gap: 18 }}>
           <View style={{ alignItems: 'center', gap: 10 }}>
             {perfect ? (
-              <View accessibilityLabel={t('adventure.starsEarned', { count: resultStars })} style={{ flexDirection: 'row', gap: 5 }}>
-                {[1, 2, 3].map(star => (
-                  <ResultStar key={star} index={star - 1} earned={star <= resultStars} />
-                ))}
-              </View>
+              <AdventureStars
+                count={resultStars}
+                size={52}
+                animated
+                accessibilityLabel={t('adventure.starsEarned', { count: resultStars })}
+              />
             ) : <Text accessibilityElementsHidden style={{ fontSize: 58 }}>🧭</Text>}
             <Text style={{ color: C.text, fontSize: 28, fontFamily: Font.black, textAlign: 'center' }}>
               {t(perfect ? 'adventure.resultPerfect' : 'adventure.resultRetry')}
@@ -616,18 +617,6 @@ export default function AdventureLevelScreen() {
 function formatAdventureTime(milliseconds: number, tenths = true): string {
   const seconds = Math.max(0, milliseconds) / 1000;
   return `${tenths ? seconds.toFixed(1) : Math.floor(seconds)} s`;
-}
-
-function ResultStar({ index, earned }: { index: number; earned: boolean }) {
-  const entering = useMemo(
-    () => FadeInDown.duration(250).delay(index * 90).reduceMotion(ReduceMotion.System),
-    [index],
-  );
-  return (
-    <Animated.Text entering={entering} style={{ fontSize: 48, opacity: earned ? 1 : 0.2 }}>
-      {earned ? '⭐' : '☆'}
-    </Animated.Text>
-  );
 }
 
 function PrepStat({ icon, value, label }: { icon: string; value: string; label: string }) {

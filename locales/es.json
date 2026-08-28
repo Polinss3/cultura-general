@@ -541,7 +541,7 @@
       "cosmos": "Más allá de las estrellas"
     },
     "levelA11y": {
-      "completed": "Nivel {{level}} superado. Mejor resultado: {{score}} de 10. Toca para rejugar y mejorar sus estrellas.",
+      "completed": "Nivel {{level}} superado con {{stars}} estrellas. Mejor resultado: {{score}} de 10. Toca para rejugar y mejorar sus estrellas.",
       "current": "Nivel {{level}} disponible. Toca para jugar.",
       "locked": "Nivel {{level}} bloqueado."
     }

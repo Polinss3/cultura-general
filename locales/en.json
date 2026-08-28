@@ -541,7 +541,7 @@
       "cosmos": "Beyond the stars"
     },
     "levelA11y": {
-      "completed": "Level {{level}} cleared. Best score: {{score}} out of 10. Tap to replay and improve its stars.",
+      "completed": "Level {{level}} cleared with {{stars}} stars. Best score: {{score}} out of 10. Tap to replay and improve its stars.",
       "current": "Level {{level}} available. Tap to play.",
       "locked": "Level {{level}} locked."
     }

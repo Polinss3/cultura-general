@@ -15,6 +15,7 @@ import {
 import { alpha, useTheme } from '@/constants/colors';
 import { Font, HIT_MIN, Radius } from '@/constants/theme';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
+import { AdventureStars } from '@/components/adventure/adventure-stars';
 
 interface Props {
   width: number;
@@ -155,74 +156,81 @@ export const AdventureMap = memo(function AdventureMap({
         const stars = progress.stars[String(level)] ?? 0;
 
         return (
-          <Pressable
+          <View
             key={level}
-            accessibilityRole="button"
-            accessibilityLabel={t(`adventure.levelA11y.${status}`, { level, score: best })}
-            accessibilityState={{ disabled: locked, selected: current }}
-            disabled={locked}
-            hitSlop={8}
-            onPress={() => onLevelPress(level)}
-            style={({ pressed }) => ({
+            pointerEvents="box-none"
+            style={{
               position: 'absolute',
               left: point.x - size / 2,
               top: point.y - size / 2,
               width: size,
-              height: size,
-              minWidth: HIT_MIN,
-              minHeight: HIT_MIN,
-              borderRadius: Radius.pill,
               alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: completed
-                ? C.correct
-                : current
-                  ? region.accent
-                  : alpha(region.accent, isDark ? 0.2 : 0.13),
-              borderWidth: current ? 5 : 3,
-              borderColor: current
-                ? C.surface
-                : completed
-                  ? C.correctTint
-                  : alpha(region.accent, isDark ? 0.66 : 0.5),
-              opacity: pressed ? 0.72 : 1,
-              transform: [{ scale: pressed && !reducedMotion ? 0.97 : 1 }],
-              shadowColor: current ? region.accent : '#2B2621',
-              shadowOpacity: current ? (isDark ? 0.55 : 0.3) : completed && !isDark ? 0.15 : 0,
-              shadowRadius: current ? 16 : 8,
-              shadowOffset: { width: 0, height: 5 },
-              elevation: current ? 7 : completed ? 2 : 0,
-            })}
+            }}
           >
-            {locked ? (
-              <>
-                <Text maxFontSizeMultiplier={1.4} style={{ fontSize: 18, lineHeight: 21 }}>🔒</Text>
-                <Text
-                  maxFontSizeMultiplier={1.4}
-                  style={{ color: C.textBody, fontFamily: Font.black, fontSize: 14, lineHeight: 16 }}
-                >
-                  {level}
-                </Text>
-              </>
-            ) : (
-              <>
-                <Text
-                  maxFontSizeMultiplier={1.5}
-                  style={{ color: C.onBrand, fontFamily: Font.black, fontSize: current ? 21 : completed ? 12 : 18, letterSpacing: completed ? -1 : 0 }}
-                >
-                  {completed ? '★'.repeat(stars || 1) : level}
-                </Text>
-                {completed && (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={t(`adventure.levelA11y.${status}`, {
+                level,
+                score: best,
+                stars: stars || (completed ? 1 : 0),
+              })}
+              accessibilityState={{ disabled: locked, selected: current }}
+              disabled={locked}
+              hitSlop={8}
+              onPress={() => onLevelPress(level)}
+              style={({ pressed }) => ({
+                width: size,
+                height: size,
+                minWidth: HIT_MIN,
+                minHeight: HIT_MIN,
+                borderRadius: Radius.pill,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: completed
+                  ? C.correct
+                  : current
+                    ? region.accent
+                    : alpha(region.accent, isDark ? 0.2 : 0.13),
+                borderWidth: current ? 5 : 3,
+                borderColor: current
+                  ? C.surface
+                  : completed
+                    ? C.correctTint
+                    : alpha(region.accent, isDark ? 0.66 : 0.5),
+                opacity: pressed ? 0.72 : 1,
+                transform: [{ scale: pressed && !reducedMotion ? 0.97 : 1 }],
+                shadowColor: current ? region.accent : '#2B2621',
+                shadowOpacity: current ? (isDark ? 0.55 : 0.3) : completed && !isDark ? 0.15 : 0,
+                shadowRadius: current ? 16 : 8,
+                shadowOffset: { width: 0, height: 5 },
+                elevation: current ? 7 : completed ? 2 : 0,
+              })}
+            >
+              {locked ? (
+                <>
+                  <Text maxFontSizeMultiplier={1.4} style={{ fontSize: 18, lineHeight: 21 }}>🔒</Text>
                   <Text
-                    maxFontSizeMultiplier={1.3}
-                    style={{ color: C.onBrand, fontFamily: Font.bold, fontSize: 11, lineHeight: 13 }}
+                    maxFontSizeMultiplier={1.4}
+                    style={{ color: C.textBody, fontFamily: Font.black, fontSize: 14, lineHeight: 16 }}
                   >
                     {level}
                   </Text>
-                )}
-              </>
+                </>
+              ) : (
+                <Text
+                  maxFontSizeMultiplier={1.5}
+                  style={{ color: C.onBrand, fontFamily: Font.black, fontSize: current ? 21 : 19 }}
+                >
+                  {level}
+                </Text>
+              )}
+            </Pressable>
+            {completed && (
+              <View style={{ marginTop: -2, minWidth: 62, alignItems: 'center', zIndex: 3 }}>
+                <AdventureStars count={stars || 1} size={19} />
+              </View>
             )}
-          </Pressable>
+          </View>
         );
       })}
     </View>
