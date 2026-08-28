@@ -8,6 +8,12 @@ export interface AdventureDecoration {
   rotation: number;
 }
 
+interface AdventureDecorationMotif {
+  symbol: string;
+  size: number;
+  rotation: number;
+}
+
 // Coordenadas X normalizadas, de abajo arriba. Cada capítulo tiene veinte
 // puntos propios para que su silueta completa sea distinta, no solo su color.
 export const ADVENTURE_PATH_PATTERNS: ReadonlyArray<readonly number[]> = [
@@ -23,57 +29,30 @@ export const ADVENTURE_PATH_PATTERNS: ReadonlyArray<readonly number[]> = [
   [0.78, 0.86, 0.67, 0.36, 0.13, 0.18, 0.47, 0.79, 0.83, 0.55, 0.22, 0.10, 0.34, 0.69, 0.88, 0.72, 0.38, 0.12, 0.24, 0.58],
 ] as const;
 
-export const ADVENTURE_CHAPTER_DECORATIONS: Record<AdventureRegionTheme, readonly AdventureDecoration[]> = {
-  roots: [
-    { symbol: '📜', x: 0.78, y: 0.10, size: 25, rotation: 10 }, { symbol: '🏺', x: 0.13, y: 0.27, size: 26, rotation: -12 },
-    { symbol: '⚖', x: 0.76, y: 0.48, size: 23, rotation: 7 }, { symbol: '✍', x: 0.15, y: 0.68, size: 24, rotation: -15 },
-    { symbol: '🏛', x: 0.78, y: 0.84, size: 27, rotation: 0 },
-  ],
-  world: [
-    { symbol: '▲', x: 0.14, y: 0.12, size: 25, rotation: 0 }, { symbol: '🗺', x: 0.77, y: 0.29, size: 27, rotation: 8 },
-    { symbol: '≈', x: 0.13, y: 0.50, size: 29, rotation: -8 }, { symbol: '🌍', x: 0.77, y: 0.67, size: 25, rotation: 0 },
-    { symbol: '⌖', x: 0.16, y: 0.87, size: 25, rotation: -12 },
-  ],
-  ideas: [
-    { symbol: 'π', x: 0.13, y: 0.13, size: 28, rotation: -8 }, { symbol: '⚗', x: 0.77, y: 0.29, size: 26, rotation: 9 },
-    { symbol: '∴', x: 0.15, y: 0.49, size: 27, rotation: 0 }, { symbol: '🔬', x: 0.77, y: 0.68, size: 25, rotation: -10 },
-    { symbol: '△', x: 0.17, y: 0.86, size: 27, rotation: 12 },
-  ],
-  nature: [
-    { symbol: '🌱', x: 0.15, y: 0.12, size: 25, rotation: -8 }, { symbol: '🧬', x: 0.78, y: 0.28, size: 25, rotation: 9 },
-    { symbol: '🦋', x: 0.14, y: 0.49, size: 24, rotation: -12 }, { symbol: '🍄', x: 0.77, y: 0.68, size: 25, rotation: 8 },
-    { symbol: '❀', x: 0.17, y: 0.87, size: 29, rotation: -7 },
-  ],
-  arts: [
-    { symbol: '✎', x: 0.15, y: 0.12, size: 27, rotation: -18 }, { symbol: '🎭', x: 0.77, y: 0.29, size: 26, rotation: 8 },
-    { symbol: '🎬', x: 0.14, y: 0.50, size: 25, rotation: -9 }, { symbol: '◇', x: 0.78, y: 0.68, size: 28, rotation: 15 },
-    { symbol: '🖼', x: 0.16, y: 0.86, size: 25, rotation: -6 },
-  ],
-  music: [
-    { symbol: '♫', x: 0.14, y: 0.12, size: 30, rotation: -10 }, { symbol: '🎻', x: 0.77, y: 0.29, size: 25, rotation: 9 },
-    { symbol: '♪', x: 0.14, y: 0.50, size: 29, rotation: 12 }, { symbol: '🎹', x: 0.76, y: 0.68, size: 25, rotation: -8 },
-    { symbol: '𝄞', x: 0.17, y: 0.86, size: 31, rotation: 5 },
-  ],
-  legends: [
-    { symbol: '⚔', x: 0.14, y: 0.12, size: 28, rotation: -10 }, { symbol: '🛡', x: 0.77, y: 0.29, size: 25, rotation: 8 },
-    { symbol: '🐉', x: 0.14, y: 0.50, size: 27, rotation: -8 }, { symbol: '♜', x: 0.77, y: 0.68, size: 29, rotation: 8 },
-    { symbol: '🔥', x: 0.16, y: 0.86, size: 25, rotation: 0 },
-  ],
-  arena: [
-    { symbol: '⚽', x: 0.14, y: 0.12, size: 25, rotation: -8 }, { symbol: '🏀', x: 0.77, y: 0.29, size: 25, rotation: 9 },
-    { symbol: '⚡', x: 0.14, y: 0.50, size: 26, rotation: -10 }, { symbol: '🏆', x: 0.77, y: 0.68, size: 25, rotation: 6 },
-    { symbol: '🏁', x: 0.16, y: 0.86, size: 25, rotation: -7 },
-  ],
-  inventions: [
-    { symbol: '⚙', x: 0.14, y: 0.12, size: 28, rotation: -10 }, { symbol: '🖥', x: 0.77, y: 0.29, size: 25, rotation: 7 },
-    { symbol: '🤖', x: 0.14, y: 0.50, size: 25, rotation: -6 }, { symbol: '📡', x: 0.77, y: 0.68, size: 25, rotation: 10 },
-    { symbol: '⌘', x: 0.16, y: 0.86, size: 27, rotation: -8 },
-  ],
-  cosmos: [
-    { symbol: '✦', x: 0.14, y: 0.12, size: 29, rotation: -8 }, { symbol: '🪐', x: 0.77, y: 0.29, size: 26, rotation: 8 },
-    { symbol: '🔭', x: 0.14, y: 0.50, size: 25, rotation: -8 }, { symbol: '☄', x: 0.77, y: 0.68, size: 28, rotation: 10 },
-    { symbol: '🛰', x: 0.16, y: 0.86, size: 26, rotation: -8 },
-  ],
+const MOTIF_SIZES = [27, 26, 25, 28, 26, 25, 27, 26, 24, 28, 25, 27, 26, 24, 27, 25] as const;
+const MOTIF_ROTATIONS = [-12, 9, -7, 14, -4, 11, -15, 6, -10, 13, -5, 8, -14, 4, -8, 12] as const;
+
+function createMotifs(symbols: readonly string[]): readonly AdventureDecorationMotif[] {
+  return symbols.map((symbol, index) => ({
+    symbol,
+    size: MOTIF_SIZES[index % MOTIF_SIZES.length],
+    rotation: MOTIF_ROTATIONS[index % MOTIF_ROTATIONS.length],
+  }));
+}
+
+// Dieciséis motivos únicos por temática: el mapa conserva la misma densidad,
+// pero deja de repetir cuatro veces los mismos cinco dibujos.
+export const ADVENTURE_CHAPTER_DECORATIONS: Record<AdventureRegionTheme, readonly AdventureDecorationMotif[]> = {
+  roots: createMotifs(['📜', '🏺', '⚖', '✍', '🏛', '👑', '🪶', '🗿', '🏰', '⏳', '🧭', '📚', '🪙', '🕯', '🧱', '🏹']),
+  world: createMotifs(['🗺', '🌍', '🧭', '🏔', '🌊', '🏝', '🌋', '🏜', '❄', '🧳', '🚢', '🗽', '🗼', '⛺', '🌐', '🧊']),
+  ideas: createMotifs(['π', '⚗', '∴', '🔬', '△', '🧪', '🧲', '💡', '🧮', '🧠', '⚛', '📐', '🧫', '🔭', '∑', '♾']),
+  nature: createMotifs(['🌱', '🧬', '🦋', '🍄', '❀', '🌿', '🌳', '🐝', '🌻', '🐚', '🦎', '🌵', '🍂', '🐾', '🌧', '🦜']),
+  arts: createMotifs(['✎', '🎭', '🎬', '◇', '🖼', '🎨', '🩰', '📷', '✒', '🗿', '🧵', '🎟', '🖌', '🎞', '🎪', '🏺']),
+  music: createMotifs(['♫', '🎻', '♪', '🎹', '𝄞', '🎸', '🥁', '🎺', '🎷', '🪕', '🎤', '🎧', '🪇', '🪈', '🎼', '📻']),
+  legends: createMotifs(['⚔', '🛡', '🐉', '♜', '🔥', '🏰', '👑', '🧙', '🧜', '🦄', '🏹', '🪄', '🗡', '🐲', '💎', '🧌']),
+  arena: createMotifs(['⚽', '🏀', '⚡', '🏆', '🏁', '🥇', '🎾', '🏐', '🏉', '⚾', '🥊', '🏹', '🏊', '🚴', '⛷', '🏋']),
+  inventions: createMotifs(['⚙', '🖥', '🤖', '📡', '⌘', '💻', '💾', '🔋', '💡', '🔧', '🖨', '📱', '🕹', '🧰', '🚂', '✈']),
+  cosmos: createMotifs(['✦', '🪐', '🔭', '☄', '🛰', '🚀', '🌙', '☀', '🌌', '🧑‍🚀', '🌠', '🌑', '⭐', '🛸', '🌎', '✨']),
 };
 
 const DECORATION_ROWS = [
@@ -92,7 +71,7 @@ export function adventurePathPatternForChapter(chapter: number): readonly number
 }
 
 /**
- * Convierte los cinco motivos temáticos en una escena de dieciséis elementos.
+ * Convierte los dieciséis motivos temáticos en una escena de dieciséis elementos.
  * Cada dibujo se sitúa en el lado contrario al camino en esa altura para que
  * tenga presencia sin competir con los nodos ni con sus etiquetas.
  */

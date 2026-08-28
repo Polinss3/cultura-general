@@ -106,10 +106,15 @@ test('all current chapters have their own theme, accent, path and decorations', 
   assert.equal(new Set(ADVENTURE_PATH_PATTERNS.map(pattern => pattern.join(','))).size, 10);
   assert.ok(ADVENTURE_PATH_PATTERNS.every(pattern =>
     pattern.length === 20 && pattern.every(x => x >= 0 && x <= 1)));
-  assert.ok(regions.every(region => ADVENTURE_CHAPTER_DECORATIONS[region.theme].length >= 5));
+  assert.ok(regions.every(region => {
+    const motifs = ADVENTURE_CHAPTER_DECORATIONS[region.theme];
+    return motifs.length === 16 && new Set(motifs.map(item => item.symbol)).size === 16;
+  }));
   assert.ok(regions.every(region => {
     const decorations = adventureDecorationsForChapter(region.theme, region.number);
-    return decorations.length === 16 && decorations.every(item => item.size >= 43);
+    return decorations.length === 16
+      && new Set(decorations.map(item => item.symbol)).size === 16
+      && decorations.every(item => item.size >= 43);
   }));
 });
 
