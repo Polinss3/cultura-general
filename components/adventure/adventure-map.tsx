@@ -106,7 +106,7 @@ export const AdventureMap = memo(function AdventureMap({
             color: region.accent,
             fontSize: decoration.size,
             lineHeight: decoration.size * 1.2,
-            opacity: isDark ? 0.38 : 0.3,
+            opacity: isDark ? 0.36 : 0.28,
             transform: [{ rotate: `${decoration.rotation}deg` }],
           }}
         >

@@ -21,6 +21,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
 import { AdventureMap } from '@/components/adventure/adventure-map';
+import { ChapterPickerModal } from '@/components/adventure/chapter-picker-modal';
 import { CoinPill } from '@/components/CoinPill';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
@@ -58,6 +59,7 @@ export default function AdventureScreen() {
   const [progress, setProgress] = useState<AdventureProgress | null>(null);
   const [regionNumber, setRegionNumber] = useState(1);
   const [initialPositioned, setInitialPositioned] = useState(false);
+  const [chapterPickerOpen, setChapterPickerOpen] = useState(false);
   const scrollRef = useRef<ScrollView>(null);
   const translateX = useSharedValue(0);
   const reducedMotion = useSystemReducedMotion();
@@ -134,6 +136,17 @@ export default function AdventureScreen() {
     router.push(`/adventure-level/${level}` as any);
   }, [router]);
 
+  const openChapterPicker = useCallback(() => {
+    feedback.tap();
+    setChapterPickerOpen(true);
+  }, []);
+
+  const selectChapter = useCallback((nextRegion: number) => {
+    if (nextRegion === regionNumber) feedback.select();
+    else goToRegion(nextRegion);
+    setChapterPickerOpen(false);
+  }, [goToRegion, regionNumber]);
+
   useEffect(() => {
     if (!progress || initialPositioned) return;
     const timer = setTimeout(() => {
@@ -179,45 +192,59 @@ export default function AdventureScreen() {
           )}
         </View>
 
-        <LinearGradient
-          colors={[
-            alpha(region.accent, isDark ? 0.34 : 0.2),
-            alpha(region.accent, isDark ? 0.16 : 0.08),
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={{
-            borderRadius: Radius.cardLg,
-            borderWidth: 1.5,
-            borderColor: alpha(region.accent, isDark ? 0.56 : 0.36),
-            padding: 14,
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 12,
-            ...cardShadow(isDark),
-          }}
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={t('adventure.openChapterPicker')}
+          onPress={openChapterPicker}
+          style={({ pressed }) => ({
+            opacity: pressed ? 0.76 : 1,
+            transform: [{ scale: pressed && !reducedMotion ? 0.985 : 1 }],
+          })}
         >
-          <View style={{
-            width: 48,
-            height: 48,
-            borderRadius: Radius.row,
-            backgroundColor: alpha(region.accent, isDark ? 0.3 : 0.2),
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-            <Text style={{ fontSize: 24 }}>{region.icon}</Text>
-          </View>
-          <View style={{ flex: 1, gap: 2 }}>
-            <Text style={{ color: readableOn(region.accent, isDark), ...Type.sectionLabel }}>
-              {t('adventure.chapter', { number: region.number })}
-            </Text>
-            <Text style={{ color: C.text, ...Type.cardTitle }}>{regionTitle}</Text>
-            <Text style={{ color: C.textMuted, ...Type.small }}>
-              {t('adventure.levelRange', { start: region.startLevel, end: region.endLevel })}
-            </Text>
-          </View>
-          {regionIsFuture && <Text style={{ fontSize: 20 }}>🔒</Text>}
-        </LinearGradient>
+          <LinearGradient
+            colors={[
+              alpha(region.accent, isDark ? 0.34 : 0.2),
+              alpha(region.accent, isDark ? 0.16 : 0.08),
+            ]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={{
+              borderRadius: Radius.cardLg,
+              borderCurve: 'continuous',
+              borderWidth: 1.5,
+              borderColor: alpha(region.accent, isDark ? 0.56 : 0.36),
+              padding: 14,
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 12,
+              ...cardShadow(isDark),
+            }}
+          >
+            <View style={{
+              width: 48,
+              height: 48,
+              borderRadius: Radius.row,
+              backgroundColor: alpha(region.accent, isDark ? 0.3 : 0.2),
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <Text style={{ fontSize: 24 }}>{region.icon}</Text>
+            </View>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={{ color: readableOn(region.accent, isDark), ...Type.sectionLabel }}>
+                {t('adventure.chapter', { number: region.number })}
+              </Text>
+              <Text style={{ color: C.text, ...Type.cardTitle }}>{regionTitle}</Text>
+              <Text style={{ color: C.textMuted, ...Type.small }}>
+                {t('adventure.levelRange', { start: region.startLevel, end: region.endLevel })}
+              </Text>
+            </View>
+            <View style={{ alignItems: 'center', gap: 2 }}>
+              {regionIsFuture && <Text style={{ fontSize: 20 }}>🔒</Text>}
+              <Text style={{ color: readableOn(region.accent, isDark), fontFamily: Font.black, fontSize: 20 }}>⌄</Text>
+            </View>
+          </LinearGradient>
+        </Pressable>
 
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <Pressable
@@ -230,18 +257,24 @@ export default function AdventureScreen() {
           >
             <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>‹</Text>
           </Pressable>
-          <View style={{
-            backgroundColor: C.surface,
-            borderRadius: Radius.pill,
-            borderWidth: 1,
-            borderColor: C.border,
-            paddingHorizontal: 14,
-            paddingVertical: 7,
-          }}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t('adventure.openChapterPicker')}
+            onPress={openChapterPicker}
+            style={({ pressed }) => ({
+              backgroundColor: C.surface,
+              borderRadius: Radius.pill,
+              borderWidth: 1,
+              borderColor: C.border,
+              paddingHorizontal: 14,
+              paddingVertical: 7,
+              opacity: pressed ? 0.65 : 1,
+            })}
+          >
             <Text style={{ color: C.textMuted, fontFamily: Font.extra, fontSize: 13, fontVariant: ['tabular-nums'] }}>
-              {regionNumber} / {maxRegion}
+              {regionNumber} / {maxRegion}  ⌄
             </Text>
-          </View>
+          </Pressable>
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={t('adventure.nextChapter')}
@@ -270,6 +303,14 @@ export default function AdventureScreen() {
           </ScrollView>
         </Animated.View>
       </GestureDetector>
+      <ChapterPickerModal
+        visible={chapterPickerOpen}
+        currentRegion={regionNumber}
+        totalRegions={maxRegion}
+        unlockedLevel={progress.unlockedLevel}
+        onClose={() => setChapterPickerOpen(false)}
+        onSelect={selectChapter}
+      />
     </SafeAreaView>
   );
 }

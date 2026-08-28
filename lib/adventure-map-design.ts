@@ -77,8 +77,13 @@ export const ADVENTURE_CHAPTER_DECORATIONS: Record<AdventureRegionTheme, readonl
 };
 
 const DECORATION_ROWS = [
-  0.04, 0.12, 0.20, 0.28, 0.36, 0.44,
-  0.52, 0.60, 0.68, 0.76, 0.84, 0.92,
+  0.025, 0.085, 0.145, 0.205, 0.265, 0.325, 0.385, 0.445,
+  0.505, 0.565, 0.625, 0.685, 0.745, 0.805, 0.865, 0.925,
+] as const;
+
+const DECORATION_ROTATIONS = [
+  -24, 17, -13, 28, -20, 11, 23, -29,
+  15, -18, 26, -10, 20, -25, 12, 30,
 ] as const;
 
 export function adventurePathPatternForChapter(chapter: number): readonly number[] {
@@ -87,7 +92,7 @@ export function adventurePathPatternForChapter(chapter: number): readonly number
 }
 
 /**
- * Convierte los cinco motivos temáticos en una escena de doce elementos.
+ * Convierte los cinco motivos temáticos en una escena de dieciséis elementos.
  * Cada dibujo se sitúa en el lado contrario al camino en esa altura para que
  * tenga presencia sin competir con los nodos ni con sus etiquetas.
  */
@@ -105,14 +110,14 @@ export function adventureDecorationsForChapter(
     );
     const pathX = pattern[pathIndex];
     const motif = motifs[(index + chapter - 1) % motifs.length];
-    const nearEdge = index % 3 === 0;
+    const nearEdge = index % 4 === 0;
 
     return {
       symbol: motif.symbol,
       x: pathX >= 0.5 ? (nearEdge ? 0.11 : 0.18) : (nearEdge ? 0.89 : 0.82),
       y,
-      size: Math.round(motif.size * (1.55 + (index % 3) * 0.12)),
-      rotation: motif.rotation + ((index % 3) - 1) * 7,
+      size: Math.round(motif.size * (1.9 + (index % 4) * 0.15)),
+      rotation: motif.rotation * 0.5 + DECORATION_ROTATIONS[index],
     };
   });
 }

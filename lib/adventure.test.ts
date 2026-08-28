@@ -81,7 +81,7 @@ test('all current chapters have their own theme, accent, path and decorations', 
   assert.ok(regions.every(region => ADVENTURE_CHAPTER_DECORATIONS[region.theme].length >= 5));
   assert.ok(regions.every(region => {
     const decorations = adventureDecorationsForChapter(region.theme, region.number);
-    return decorations.length === 12 && decorations.every(item => item.size >= 35);
+    return decorations.length === 16 && decorations.every(item => item.size >= 43);
   }));
 });
 
