@@ -33,7 +33,7 @@ import {
   type AdventureProgress,
 } from '@/lib/adventure';
 import { fetchAdventureLevelQuestions } from '@/lib/adventure-questions';
-import { createLocalAdventureRepository } from '@/lib/adventure-progress';
+import { createAdventureProgressRepository } from '@/lib/adventure-progress';
 import { getCurrentLang } from '@/lib/i18n';
 import { shuffleQuestionForAttempt } from '@/lib/utils';
 import { awardAdventureLevel, awardAdventureStar, bumpMissions } from '@/lib/gamification';
@@ -73,8 +73,10 @@ export default function AdventureLevelScreen() {
         ? null
         : user?.id ?? 'local';
   const repository = useMemo(
-    () => scope ? createLocalAdventureRepository(scope) : null,
-    [scope],
+    () => scope ? createAdventureProgressRepository(scope, {
+      remoteEnabled: !!user && !guest && !offline,
+    }) : null,
+    [guest, offline, scope, user?.id],
   );
   const region = adventureRegionForLevel(level);
   const canUseEconomy = !!user && !guest && !offline;
@@ -263,18 +265,14 @@ export default function AdventureLevelScreen() {
     let grantedStarCoins = 0;
 
     if (result.shouldReward && canUseEconomy) {
-      const award = await awardAdventureLevel(
-        level,
-        REWARDS.adventureLevel.xp,
-        REWARDS.adventureLevel.coins,
-      );
+      const award = await awardAdventureLevel(level);
       if (award) {
         saved = markAdventureRewarded(saved, level);
         await repository.save(saved);
-        celebrate(award);
+        if (!award.alreadyClaimed) celebrate(award);
         if (award.gainedCoins) bumpMissions('coins_earned', award.gainedCoins);
         refreshProfile();
-        granted = true;
+        granted = !award.alreadyClaimed;
       }
     }
 
@@ -283,8 +281,7 @@ export default function AdventureLevelScreen() {
       const achievedStars = saved.stars[String(level)] ?? result.stars;
       for (const milestone of [2, 3] as const) {
         if (achievedStars < milestone || alreadyRewarded >= milestone) continue;
-        const starReward = REWARDS[milestone === 2 ? 'adventureStar2' : 'adventureStar3'];
-        const award = await awardAdventureStar(level, milestone, starReward.coins);
+        const award = await awardAdventureStar(level, milestone);
         if (!award) break;
         saved = markAdventureStarRewarded(saved, level, milestone);
         await repository.save(saved);

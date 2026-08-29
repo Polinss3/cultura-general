@@ -35,7 +35,10 @@ import { loadThemePreference } from '@/lib/appearance';
 import { checkDailyAnswered, purgeLegacyQuestionCache } from '@/lib/db';
 import { getNotificationRoute, syncNotificationSchedule } from '@/lib/notifications';
 import { localDayKey } from '@/lib/notificationPlan';
-import { createLocalAdventureRepository } from '@/lib/adventure-progress';
+import {
+  createAdventureProgressRepository,
+  migrateGuestAdventureProgressToUser,
+} from '@/lib/adventure-progress';
 import { initFeedback } from '@/lib/feedback';
 import { supabase } from '@/lib/supabase';
 import { setSentryUser } from '@/lib/sentry';
@@ -265,7 +268,9 @@ function RootLayout() {
 
     const sync = async () => {
       const scope = guest ? 'guest' : session?.user?.id ?? 'local';
-      const progressPromise = createLocalAdventureRepository(scope).load();
+      const progressPromise = createAdventureProgressRepository(scope, {
+        remoteEnabled: !!session?.user && !guest && !offline,
+      }).load();
       const profilePromise = session?.user && !offline
         ? supabase.from('profiles').select('streak').eq('id', session.user.id).maybeSingle()
         : Promise.resolve({ data: null });
@@ -373,9 +378,12 @@ function RootLayout() {
       const isAuthCallback = segs[0] === 'auth' && segs[1] === 'callback';
       const isCompleteProfile = segs[1] === 'complete-profile';
 
-      // Si llega sesión real estando en modo invitado, limpiamos rastros del invitado.
+      // Si llega una sesion real, el avance del invitado se fusiona con la
+      // cuenta antes de borrar nada. Si Supabase falla conservamos la copia
+      // guest para reintentarlo al recuperar la conexion.
       if (session && guest) {
-        await clearGuestData();
+        const migrated = !offline && await migrateGuestAdventureProgressToUser(session.user.id);
+        if (migrated) await clearGuestData();
       }
 
       // Modo sin conexión: sin acceso a perfil/complete-profile; entrada directa

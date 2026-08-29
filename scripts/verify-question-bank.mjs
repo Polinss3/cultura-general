@@ -1,5 +1,6 @@
 const base = process.env.EXPO_PUBLIC_SUPABASE_URL;
 const key = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
+const assignmentVersion = Number(process.env.ADVENTURE_QUESTION_VERSION ?? '2');
 if (!base || !key) throw new Error('Missing Supabase public environment variables');
 
 async function fetchAll(table, select, filters = {}) {
@@ -30,7 +31,9 @@ const tokenSimilarity = (left, right) => {
   return common / new Set([...a, ...b]).size;
 };
 const questions = await fetchAll('questions', 'id,category,question,options,answer_index,context,difficulty,question_en,options_en,context_en', { active: 'eq.true' });
-const assignments = await fetchAll('adventure_question_assignments', 'version,level,slot,question_id', { version: 'eq.1' });
+const assignments = await fetchAll('adventure_question_assignments', 'version,level,slot,question_id', {
+  version: `eq.${assignmentVersion}`,
+});
 const errors = [];
 
 if (questions.length !== 2000) errors.push(`Expected 2000 active questions, found ${questions.length}`);
@@ -55,6 +58,28 @@ for (let level = 1; level <= 200; level++) {
   if (levelRows.length !== 10 || new Set(levelRows.map(row => row.slot)).size !== 10) errors.push(`Level ${level} is incomplete`);
 }
 
+const questionById = new Map(questions.map(row => [row.id, row]));
+const chapterDifficulty = Array.from({ length: 10 }, (_, chapterIndex) => {
+  const start = chapterIndex * 20 + 1;
+  const rows = assignments
+    .filter(row => row.level >= start && row.level < start + 20)
+    .map(row => questionById.get(row.question_id));
+  return {
+    chapter: chapterIndex + 1,
+    easy: rows.filter(row => row?.difficulty === 'easy').length,
+    medium: rows.filter(row => row?.difficulty === 'medium').length,
+    hard: rows.filter(row => row?.difficulty === 'hard').length,
+  };
+});
+if (assignmentVersion >= 2) {
+  for (let index = 1; index < chapterDifficulty.length; index++) {
+    const previous = chapterDifficulty[index - 1];
+    const current = chapterDifficulty[index];
+    if (current.easy >= previous.easy) errors.push(`Chapter ${current.chapter} does not reduce easy questions`);
+    if (current.hard <= previous.hard) errors.push(`Chapter ${current.chapter} does not increase hard questions`);
+  }
+}
+
 const categories = Object.fromEntries([...new Set(questions.map(row => row.category))]
   .sort()
   .map(category => [category, questions.filter(row => row.category === category).length]));
@@ -77,9 +102,11 @@ console.log(JSON.stringify({
   ok: errors.length === 0,
   activeQuestions: questions.length,
   bilingualQuestions: questions.filter(row => row.question_en && row.options_en?.length === 4 && row.context_en).length,
+  adventureQuestionVersion: assignmentVersion,
   adventureLevels: new Set(assignments.map(row => row.level)).size,
   adventureAssignments: assignments.length,
   uniqueAdventureQuestions: new Set(assignments.map(row => row.question_id)).size,
+  chapterDifficulty,
   categories,
   nearDuplicateCandidates,
   errors: errors.slice(0, 20),

@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   ADVENTURE_CHAPTER_ACCENTS,
   ADVENTURE_MAX_LEVELS,
+  ADVENTURE_QUESTION_VERSION,
   ADVENTURE_QUESTIONS_PER_LEVEL,
   adventureAccentForChapter,
   adventureLevelStatus,
@@ -11,10 +12,18 @@ import {
   adventureStarsInRange,
   createAdventureProgress,
   markAdventureRewarded,
+  mergeAdventureProgress,
   normalizeAdventureProgress,
   resolveAdventureAttempt,
   markAdventureStarRewarded,
 } from './adventure';
+import {
+  adventureProgressStorageKey,
+  createAdventureProgressRepository,
+  migrateGuestAdventureProgressToUser,
+  type AdventureRemoteSync,
+  type KeyValueStorage,
+} from './adventure-progress';
 import {
   ADVENTURE_CHAPTER_DECORATIONS,
   ADVENTURE_PATH_PATTERNS,
@@ -96,6 +105,76 @@ test('the adventure has 200 levels and exactly 2,000 question slots', () => {
   assert.equal(adventureRegionForLevel(1).number, 1);
   assert.equal(adventureRegionForLevel(21).number, 2);
   assert.equal(adventureRegionForLevel(ADVENTURE_MAX_LEVELS).number, 10);
+  assert.equal(ADVENTURE_QUESTION_VERSION, 2);
+});
+
+test('progress from two devices merges without losing either best result', () => {
+  const deviceA = resolveAdventureAttempt(
+    createAdventureProgress(),
+    1,
+    10,
+    { activeTimeMs: 110_000 },
+  ).progress;
+  const deviceB = resolveAdventureAttempt(
+    createAdventureProgress(),
+    1,
+    10,
+    { activeTimeMs: 65_000 },
+  ).progress;
+  deviceA.bestScores['2'] = 7;
+  deviceB.bestScores['2'] = 9;
+
+  const merged = mergeAdventureProgress(deviceA, deviceB, '2026-08-29T10:00:00.000Z');
+
+  assert.deepEqual(merged.completedLevels, [1]);
+  assert.equal(merged.unlockedLevel, 2);
+  assert.equal(merged.bestScores['2'], 9);
+  assert.equal(merged.bestTimesMs['1'], 65_000);
+  assert.equal(merged.stars['1'], 3);
+});
+
+class MemoryStorage implements KeyValueStorage {
+  values = new Map<string, string>();
+
+  async getItem(key: string) { return this.values.get(key) ?? null; }
+  async setItem(key: string, value: string) { this.values.set(key, value); }
+  async removeItem(key: string) { this.values.delete(key); }
+}
+
+test('the synced repository remains playable when Supabase is unavailable', async () => {
+  const storage = new MemoryStorage();
+  const remote: AdventureRemoteSync = { sync: async () => { throw new Error('offline'); } };
+  const repository = createAdventureProgressRepository('user-a', {
+    remoteEnabled: true,
+    remote,
+    storage,
+  });
+  const completed = resolveAdventureAttempt(createAdventureProgress(), 1, 10).progress;
+
+  await repository.save(completed);
+  const loaded = await repository.load();
+
+  assert.deepEqual(loaded.completedLevels, [1]);
+  assert.ok(storage.values.has(adventureProgressStorageKey('user-a')));
+});
+
+test('guest progress is removed only after a successful account sync', async () => {
+  const storage = new MemoryStorage();
+  const guest = createAdventureProgressRepository('guest', { remoteEnabled: false, storage });
+  await guest.save(resolveAdventureAttempt(createAdventureProgress(), 1, 10).progress);
+  const failingRemote: AdventureRemoteSync = { sync: async () => { throw new Error('offline'); } };
+
+  assert.equal(await migrateGuestAdventureProgressToUser('user-b', storage, failingRemote), false);
+  assert.ok(storage.values.has(adventureProgressStorageKey('guest')));
+
+  const remote: AdventureRemoteSync = {
+    sync: async progress => mergeAdventureProgress(createAdventureProgress(), progress),
+  };
+  assert.equal(await migrateGuestAdventureProgressToUser('user-b', storage, remote), true);
+  assert.equal(storage.values.has(adventureProgressStorageKey('guest')), false);
+
+  const account = createAdventureProgressRepository('user-b', { remoteEnabled: false, storage });
+  assert.deepEqual((await account.load()).completedLevels, [1]);
 });
 
 test('all current chapters have their own theme, accent, path and decorations', () => {

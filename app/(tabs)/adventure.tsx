@@ -25,6 +25,7 @@ import { ChapterPickerModal } from '@/components/adventure/chapter-picker-modal'
 import { CoinPill } from '@/components/CoinPill';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
+import { useOffline } from '@/hooks/useOffline';
 import { useProfile } from '@/hooks/useProfile';
 import {
   ADVENTURE_LEVELS_PER_REGION,
@@ -33,7 +34,8 @@ import {
   adventureRegionForLevel,
   type AdventureProgress,
 } from '@/lib/adventure';
-import { createLocalAdventureRepository } from '@/lib/adventure-progress';
+import { createAdventureProgressRepository } from '@/lib/adventure-progress';
+import { bumpMissions, claimPendingAdventureRewards } from '@/lib/gamification';
 import { feedback } from '@/lib/feedback';
 import { alpha, readableOn, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow } from '@/constants/theme';
@@ -45,6 +47,7 @@ export default function AdventureScreen() {
   const { C, isDark } = useTheme();
   const { user, loading: authLoading } = useAuth();
   const { guest, loading: guestLoading } = useGuest();
+  const offline = useOffline();
   const { profile, refresh } = useProfile();
   const scope = guestLoading
     ? null
@@ -54,8 +57,10 @@ export default function AdventureScreen() {
         ? null
         : user?.id ?? 'local';
   const repository = useMemo(
-    () => scope ? createLocalAdventureRepository(scope) : null,
-    [scope],
+    () => scope ? createAdventureProgressRepository(scope, {
+      remoteEnabled: !!user && !guest && !offline,
+    }) : null,
+    [guest, offline, scope, user?.id],
   );
   const [progress, setProgress] = useState<AdventureProgress | null>(null);
   const [regionNumber, setRegionNumber] = useState(1);
@@ -67,12 +72,19 @@ export default function AdventureScreen() {
 
   const load = useCallback(async () => {
     if (!repository) return;
-    const stored = await repository.load();
+    let stored = await repository.load();
+    if (user && !guest && !offline) {
+      const pending = await claimPendingAdventureRewards();
+      if ((pending?.claimedCount ?? 0) > 0) {
+        if (pending?.gainedCoins) void bumpMissions('coins_earned', pending.gainedCoins);
+        stored = await repository.load();
+      }
+    }
     setProgress(stored);
     setRegionNumber(adventureRegionForLevel(stored.unlockedLevel).number);
     setInitialPositioned(false);
     if (user) refresh();
-  }, [repository, refresh, user?.id]);
+  }, [guest, offline, repository, refresh, user?.id]);
 
   useFocusEffect(useCallback(() => {
     load();

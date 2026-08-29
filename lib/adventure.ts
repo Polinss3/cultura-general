@@ -1,7 +1,10 @@
 export const ADVENTURE_MAX_LEVELS = 200;
 export const ADVENTURE_QUESTIONS_PER_LEVEL = 10;
 export const ADVENTURE_LEVELS_PER_REGION = 20;
-export const ADVENTURE_QUESTION_VERSION = 1;
+// La v1 permanece publicada en Supabase para builds anteriores. La 2.1 usa un
+// manifiesto nuevo con una curva de dificultad creciente y el mismo orden en
+// todos los dispositivos.
+export const ADVENTURE_QUESTION_VERSION = 2;
 export const ADVENTURE_TWO_STAR_TIME_MS = 120_000;
 export const ADVENTURE_THREE_STAR_TIME_MS = 70_000;
 
@@ -149,6 +152,59 @@ export function normalizeAdventureProgress(
     rewardedStarMilestones,
     updatedAt: typeof raw.updatedAt === 'string' ? raw.updatedAt : now,
   };
+}
+
+/**
+ * Une dos copias de progreso sin permitir regresiones. Es la misma estrategia
+ * que aplica Supabase al sincronizar dos dispositivos: maximo para puntos y
+ * estrellas, minimo para el mejor tiempo y union para niveles completados.
+ */
+export function mergeAdventureProgress(
+  left: unknown,
+  right: unknown,
+  now = new Date().toISOString(),
+): AdventureProgress {
+  const a = normalizeAdventureProgress(left, now);
+  const b = normalizeAdventureProgress(right, now);
+  const completedLevels = [...new Set([...a.completedLevels, ...b.completedLevels])]
+    .sort((x, y) => x - y);
+  const completed = new Set(completedLevels);
+  const keys = (first: Record<string, number>, second: Record<string, number>) =>
+    [...new Set([...Object.keys(first), ...Object.keys(second)])];
+  const maxRecord = (first: Record<string, number>, second: Record<string, number>) =>
+    Object.fromEntries(keys(first, second).map(key => [
+      key,
+      Math.max(first[key] ?? 0, second[key] ?? 0),
+    ]));
+  const minPositiveRecord = (first: Record<string, number>, second: Record<string, number>) =>
+    Object.fromEntries(keys(first, second).flatMap(key => {
+      const values = [first[key], second[key]].filter(
+        (value): value is number => typeof value === 'number' && value > 0,
+      );
+      return values.length > 0 ? [[key, Math.min(...values)]] : [];
+    }));
+  const lastCompleted = completedLevels.at(-1) ?? 0;
+
+  return normalizeAdventureProgress({
+    version: 1,
+    unlockedLevel: Math.max(
+      a.unlockedLevel,
+      b.unlockedLevel,
+      Math.min(ADVENTURE_MAX_LEVELS, lastCompleted + 1),
+    ),
+    completedLevels,
+    rewardedLevels: [...new Set([...a.rewardedLevels, ...b.rewardedLevels])]
+      .filter(level => completed.has(level))
+      .sort((x, y) => x - y),
+    bestScores: maxRecord(a.bestScores, b.bestScores),
+    bestTimesMs: minPositiveRecord(a.bestTimesMs, b.bestTimesMs),
+    stars: maxRecord(a.stars, b.stars),
+    rewardedStarMilestones: maxRecord(
+      a.rewardedStarMilestones,
+      b.rewardedStarMilestones,
+    ),
+    updatedAt: now,
+  }, now);
 }
 
 export function adventureLevelStatus(
