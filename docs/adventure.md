@@ -31,3 +31,28 @@ ya escritos hasta el siguiente reintento.
 2. `claim_adventure_reward` y `adventure_reward_claims` hacen cada recompensa transaccional e idempotente.
 3. El progreso invitado se fusiona con la cuenta antes de eliminar la copia local; si no hay red se conserva para reintentarlo.
 4. `claim_pending_adventure_rewards` liquida una sola vez las recompensas ganadas offline al volver a conectarse.
+
+## Sesión, aprendizaje y medición
+
+- Las diez estadísticas de una partida se envían juntas al terminar; responder
+  ya no provoca diez RPC independientes.
+- El pleno de 10/10 se mantiene. Las explicaciones aparecen tanto al acertar
+  como al fallar y el resultado enumera las preguntas falladas con la respuesta
+  elegida, la correcta y su contexto.
+- Los objetivos parten de 65/110 segundos para 3/2 estrellas en el capítulo 1
+  y bajan gradualmente hasta 51,5/92 segundos en el capítulo 10. Las estrellas
+  previamente guardadas nunca se degradan.
+- Salir durante una partida pide confirmación y pausa el cronómetro mientras el
+  diálogo está abierto. Cada respuesta produce un solo háptico.
+- AppsFlyer registra inicio, reintento, abandono confirmado, error por pregunta,
+  uso de ayuda y finalización con tiempo y estrellas cuando el usuario ha
+  habilitado la medición personalizada.
+
+## Misiones y logros
+
+El catálogo diario incluye intentos, plenos y estrellas de Aventura sin añadir
+una cuarta misión diaria. La migración
+`20260829020000_adventure_engagement_v2.sql` añade cinco logros validados contra
+el progreso canónico de Supabase. Sus recompensas suman 400 monedas a lo largo
+de los 200 niveles y no incluyen todavía premios especiales de final de
+capítulo.

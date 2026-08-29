@@ -5,8 +5,10 @@ export const ADVENTURE_LEVELS_PER_REGION = 20;
 // manifiesto nuevo con una curva de dificultad creciente y el mismo orden en
 // todos los dispositivos.
 export const ADVENTURE_QUESTION_VERSION = 2;
-export const ADVENTURE_TWO_STAR_TIME_MS = 120_000;
-export const ADVENTURE_THREE_STAR_TIME_MS = 70_000;
+export const ADVENTURE_TWO_STAR_TIME_MS = 110_000;
+export const ADVENTURE_THREE_STAR_TIME_MS = 65_000;
+const ADVENTURE_TWO_STAR_CHAPTER_STEP_MS = 2_000;
+const ADVENTURE_THREE_STAR_CHAPTER_STEP_MS = 1_500;
 
 export interface AdventureProgress {
   version: 1;
@@ -241,7 +243,7 @@ export function resolveAdventureAttempt(
     ? Math.trunc(options.activeTimeMs)
     : null;
   const previousStars = progress.stars[String(safeLevel)] ?? (wasCompleted ? 1 : 0);
-  const earnedStars = perfect ? adventureStarsForTime(activeTimeMs) : 0;
+  const earnedStars = perfect ? adventureStarsForTime(activeTimeMs, safeLevel) : 0;
   const stars = Math.max(previousStars, earnedStars);
   const previousBestTime = progress.bestTimesMs[String(safeLevel)] ?? null;
   const newBestTime = perfect && activeTimeMs !== null &&
@@ -278,10 +280,23 @@ export function resolveAdventureAttempt(
   };
 }
 
-export function adventureStarsForTime(activeTimeMs: number | null): number {
+export function adventureStarThresholdsForLevel(level: number): {
+  twoStarsMs: number;
+  threeStarsMs: number;
+} {
+  const safeLevel = clampLevel(level);
+  const chapter = Math.floor((safeLevel - 1) / ADVENTURE_LEVELS_PER_REGION) + 1;
+  return {
+    twoStarsMs: ADVENTURE_TWO_STAR_TIME_MS - (chapter - 1) * ADVENTURE_TWO_STAR_CHAPTER_STEP_MS,
+    threeStarsMs: ADVENTURE_THREE_STAR_TIME_MS - (chapter - 1) * ADVENTURE_THREE_STAR_CHAPTER_STEP_MS,
+  };
+}
+
+export function adventureStarsForTime(activeTimeMs: number | null, level = 1): number {
   if (activeTimeMs === null || !Number.isFinite(activeTimeMs) || activeTimeMs <= 0) return 1;
-  if (activeTimeMs <= ADVENTURE_THREE_STAR_TIME_MS) return 3;
-  if (activeTimeMs <= ADVENTURE_TWO_STAR_TIME_MS) return 2;
+  const thresholds = adventureStarThresholdsForLevel(level);
+  if (activeTimeMs <= thresholds.threeStarsMs) return 3;
+  if (activeTimeMs <= thresholds.twoStarsMs) return 2;
   return 1;
 }
 

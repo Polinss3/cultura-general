@@ -52,7 +52,7 @@ export function ChapterPickerModal({
     return (
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={`${t('adventure.chapter', { number: item.number })}. ${title}. ${t('adventure.levelRange', { start: item.startLevel, end: item.endLevel })}`}
+        accessibilityLabel={`${t('adventure.chapter', { number: item.number })}. ${title}. ${t('adventure.levelRange', { start: item.startLevel, end: item.endLevel })}. ${t(locked ? 'adventure.chapterLockedStatus' : 'adventure.chapterAvailableStatus')}`}
         accessibilityHint={t('adventure.chapterPickerItemHint')}
         accessibilityState={{ selected }}
         onPress={() => onSelect(item.number)}

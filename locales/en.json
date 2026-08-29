@@ -64,6 +64,9 @@
     "m_daily": "Play the daily question",
     "m_ladder_5": "Reach floor 5 in Climb",
     "m_ladder_play": "Play a Climb run",
+    "m_adventure_play": "Complete an Adventure attempt",
+    "m_adventure_perfect": "Clear an Adventure level",
+    "m_adventure_stars": "Earn 3 stars in Adventure",
     "m_coins_100": "Earn 100 coins"
   },
   "achievements": {
@@ -150,6 +153,26 @@
     "mult_max": {
       "title": "Maxed out",
       "desc": "Max multiplier (streak ≥10)"
+    },
+    "adventure_first": {
+      "title": "First step",
+      "desc": "Clear your first Adventure level"
+    },
+    "adventure_chapter": {
+      "title": "Cartographer",
+      "desc": "Complete 20 Adventure levels"
+    },
+    "adventure_stars_100": {
+      "title": "Constellation",
+      "desc": "Earn 100 Adventure stars"
+    },
+    "adventure_levels_100": {
+      "title": "Great explorer",
+      "desc": "Complete 100 Adventure levels"
+    },
+    "adventure_all": {
+      "title": "Journey's end",
+      "desc": "Complete all 200 Adventure levels"
     }
   },
   "notifications": {
@@ -494,6 +517,8 @@
     "chapterPickerTitle": "Go to a chapter",
     "chapterPickerDescription": "Choose any chapter to open its map.",
     "chapterPickerItemHint": "Opens this chapter's map.",
+    "chapterLockedStatus": "Locked chapter",
+    "chapterAvailableStatus": "Available chapter",
     "level": "Level {{level}}",
     "questions": "questions",
     "toUnlock": "to move on",
@@ -503,7 +528,7 @@
     "starsEarned": "{{count}} stars earned",
     "newStarRecord": "New star record!",
     "starBonus": "Star bonus",
-    "starGoals": "⭐ Clear · ⭐⭐ 120 s · ⭐⭐⭐ 70 s",
+    "starGoals": "⭐ Clear · ⭐⭐ {{two}} · ⭐⭐⭐ {{three}}",
     "starGoalsDescription": "Only answer time counts. Explanations and time in the background are excluded.",
     "prepareTitle": "Prepare your helpers",
     "prepareDescription": "You can buy helpers before starting and use them during the questions.",
@@ -512,10 +537,21 @@
     "noHelpers": "You have no helpers. Play without them or get some in the shop.",
     "startLevel": "Start level",
     "backToMap": "Back to map",
+    "leaveTitle": "Leave this level?",
+    "leaveMessage": "You will lose the answers and time from this attempt.",
+    "leaveConfirm": "Leave",
     "hint": "Hint",
     "explanation": "The answer",
+    "answerCorrectStatus": "Correct answer",
+    "answerIncorrectStatus": "Incorrect answer",
+    "answerCorrectAnnouncement": "Correct answer.",
+    "answerIncorrectAnnouncement": "Incorrect answer. The correct answer is {{answer}}.",
     "finishLevel": "See result",
     "score": "Score",
+    "mistakesTitle_one": "Missed question",
+    "mistakesTitle_other": "Missed questions ({{count}})",
+    "yourAnswer": "Your answer",
+    "correctAnswer": "Correct answer",
     "reward": "Reward",
     "rewardNeedsAccount": "Coin rewards need an online account; the level is saved locally.",
     "rewardPending": "The level is saved. We will grant the reward automatically when the connection returns.",

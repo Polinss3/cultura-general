@@ -13,9 +13,23 @@ interface Props {
   onPress: () => void;
   /** Apaga las opciones que no son la elegida ni la correcta, tras responder. */
   dimmed?: boolean;
+  /** Estado verbal añadido a VoiceOver, por ejemplo «respuesta correcta». */
+  accessibilityStatus?: string;
+  accessibilitySelected?: boolean;
+  /** Permite que una pantalla coordine un único háptico por respuesta. */
+  feedbackDisabled?: boolean;
 }
 
-export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
+export function OptionBtn({
+  text,
+  letter,
+  state,
+  onPress,
+  dimmed,
+  accessibilityStatus,
+  accessibilitySelected,
+  feedbackDisabled = false,
+}: Props) {
   const C = useColors();
   const reducedMotion = useReducedMotion();
   const scale = useRef(new Animated.Value(1)).current;
@@ -23,7 +37,7 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
   // Haptic feedback when answer is revealed
   useEffect(() => {
     if (state === 'correct') {
-      feedback.correct();
+      if (!feedbackDisabled) feedback.correct();
       if (reducedMotion) {
         scale.setValue(1);
         return;
@@ -35,7 +49,7 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
         Animated.timing(scale, { toValue: 1, duration: 160, easing: Easing.out(Easing.quad), useNativeDriver: true }),
       ]).start();
     } else if (state === 'wrong') {
-      feedback.wrong();
+      if (!feedbackDisabled) feedback.wrong();
       if (reducedMotion) {
         scale.setValue(1);
         return;
@@ -47,7 +61,7 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
         Animated.spring(scale, { toValue: 1, friction: 5, tension: 120, useNativeDriver: true }),
       ]).start();
     }
-  }, [reducedMotion, state, scale]);
+  }, [feedbackDisabled, reducedMotion, state, scale]);
 
   const handlePressIn = () => {
     if (reducedMotion) return;
@@ -60,7 +74,7 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
   };
 
   const handlePress = () => {
-    feedback.tap();
+    if (!feedbackDisabled) feedback.tap();
     onPress();
   };
 
@@ -91,8 +105,8 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
     <Animated.View style={{ transform: [{ scale }], opacity: dimmed ? 0.55 : 1 }}>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={`${letter}. ${text}`}
-        accessibilityState={{ selected: state === 'selected' }}
+        accessibilityLabel={`${letter}. ${text}${accessibilityStatus ? `. ${accessibilityStatus}` : ''}`}
+        accessibilityState={{ selected: accessibilitySelected ?? state === 'selected' }}
         onPress={handlePress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}

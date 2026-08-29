@@ -100,7 +100,10 @@ export async function fetchClaimedAchievements(userId: string): Promise<Set<stri
 }
 
 export async function claimAchievement(achievementId: string): Promise<AwardResult | null> {
-  const { data, error } = await supabase.rpc('claim_achievement', { p_achievement_id: achievementId });
+  const rpc = achievementId.startsWith('adventure_')
+    ? 'claim_adventure_achievement'
+    : 'claim_achievement';
+  const { data, error } = await supabase.rpc(rpc, { p_achievement_id: achievementId });
   if (error) return null;
   return mapAward(data);
 }

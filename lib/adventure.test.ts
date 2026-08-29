@@ -8,6 +8,7 @@ import {
   adventureAccentForChapter,
   adventureLevelStatus,
   adventureRegionForLevel,
+  adventureStarThresholdsForLevel,
   adventureStarsForTime,
   adventureStarsInRange,
   createAdventureProgress,
@@ -32,6 +33,7 @@ import {
 } from './adventure-map-design';
 import { shuffleQuestionForAttempt } from './utils';
 import { createAsyncGate } from './async-gate';
+import { pickDailyMissions } from './missions';
 
 test('the async gate blocks a duplicate action in the same render tick', async () => {
   const gate = createAsyncGate();
@@ -97,9 +99,17 @@ test('completed levels remain replayable and never grant their reward twice', ()
 });
 
 test('active answer time grants one to three stars and keeps the best result', () => {
-  assert.equal(adventureStarsForTime(69_999), 3);
-  assert.equal(adventureStarsForTime(70_001), 2);
-  assert.equal(adventureStarsForTime(120_001), 1);
+  assert.equal(adventureStarsForTime(65_000, 1), 3);
+  assert.equal(adventureStarsForTime(65_001, 1), 2);
+  assert.equal(adventureStarsForTime(110_001, 1), 1);
+  assert.deepEqual(adventureStarThresholdsForLevel(1), {
+    twoStarsMs: 110_000,
+    threeStarsMs: 65_000,
+  });
+  assert.deepEqual(adventureStarThresholdsForLevel(200), {
+    twoStarsMs: 92_000,
+    threeStarsMs: 51_500,
+  });
 
   const first = resolveAdventureAttempt(createAdventureProgress(), 1, 10, { activeTimeMs: 110_000 });
   const faster = resolveAdventureAttempt(first.progress, 1, 10, { activeTimeMs: 65_000 });
@@ -135,6 +145,18 @@ test('the adventure has 200 levels and exactly 2,000 question slots', () => {
   assert.equal(adventureRegionForLevel(21).number, 2);
   assert.equal(adventureRegionForLevel(ADVENTURE_MAX_LEVELS).number, 10);
   assert.equal(ADVENTURE_QUESTION_VERSION, 2);
+});
+
+test('daily mission rotation includes Adventure without exceeding three missions', () => {
+  const rotations = Array.from({ length: 90 }, (_, day) =>
+    pickDailyMissions(`2026-09-${String(day + 1).padStart(2, '0')}`));
+  const ids = new Set(rotations.flatMap(missions => missions.map(mission => mission.id)));
+
+  assert.ok(rotations.every(missions => missions.length === 3));
+  assert.ok(rotations.every(missions => new Set(missions.map(mission => mission.id)).size === 3));
+  assert.ok(ids.has('m_adventure_play'));
+  assert.ok(ids.has('m_adventure_perfect'));
+  assert.ok(ids.has('m_adventure_stars'));
 });
 
 test('progress from two devices merges without losing either best result', () => {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  AccessibilityInfo,
   Alert,
   AppState,
   Pressable,
@@ -9,7 +10,7 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
+import { useFocusEffect, useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
@@ -27,6 +28,7 @@ import {
   ADVENTURE_MAX_LEVELS,
   ADVENTURE_QUESTIONS_PER_LEVEL,
   adventureRegionForLevel,
+  adventureStarThresholdsForLevel,
   markAdventureRewarded,
   markAdventureStarRewarded,
   mergeAdventureProgress,
@@ -41,6 +43,7 @@ import { awardAdventureLevel, awardAdventureStar, bumpMissions } from '@/lib/gam
 import { incrementProfileStats } from '@/lib/db';
 import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
+import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { createAsyncGate } from '@/lib/async-gate';
 import { captureSentryException } from '@/lib/sentry';
 import { useTheme } from '@/constants/colors';
@@ -50,6 +53,15 @@ import type { AnswerState, Question } from '@/types';
 type Stage = 'preparing' | 'questions' | 'result';
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
+interface AdventureMistake {
+  key: string;
+  questionNumber: number;
+  question: string;
+  selectedAnswer: string;
+  correctAnswer: string;
+  explanation?: string;
+}
+
 function createAttemptSessionSeed(): string {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 }
@@ -57,6 +69,7 @@ function createAttemptSessionSeed(): string {
 export default function AdventureLevelScreen() {
   const { t, i18n } = useTranslation();
   const router = useRouter();
+  const navigation = useNavigation();
   const params = useLocalSearchParams<{ level?: string }>();
   const parsedLevel = Number(params.level);
   const level = Number.isInteger(parsedLevel)
@@ -82,6 +95,7 @@ export default function AdventureLevelScreen() {
     [guest, offline, scope, user?.id],
   );
   const region = adventureRegionForLevel(level);
+  const starThresholds = adventureStarThresholdsForLevel(level);
   const canUseEconomy = !!user && !guest && !offline;
   const { inventory, consume, refresh: refreshPowerups } = usePowerups(canUseEconomy, user?.id);
   const [progress, setProgress] = useState<AdventureProgress | null>(null);
@@ -104,12 +118,16 @@ export default function AdventureLevelScreen() {
   const [starCoinsGranted, setStarCoinsGranted] = useState(0);
   const [displayElapsedMs, setDisplayElapsedMs] = useState(0);
   const [attemptNumber, setAttemptNumber] = useState(0);
+  const [mistakes, setMistakes] = useState<AdventureMistake[]>([]);
   const mountedRef = useRef(true);
   const activeTimeMsRef = useRef(0);
   const questionStartedAtRef = useRef<number | null>(null);
   const attemptNumberRef = useRef(0);
   const attemptSessionSeedRef = useRef(createAttemptSessionSeed());
   const finishGateRef = useRef(createAsyncGate());
+  const helpersUsedRef = useRef(0);
+  const exitConfirmedRef = useRef(false);
+  const exitAlertOpenRef = useRef(false);
 
   useFocusEffect(useCallback(() => {
     if (!repository) return;
@@ -171,11 +189,14 @@ export default function AdventureLevelScreen() {
     setHintShown(false);
     setRewardGranted(false);
     setRewardPending(false);
+    setMistakes([]);
     attemptNumberRef.current = 0;
     attemptSessionSeedRef.current = createAttemptSessionSeed();
     setAttemptNumber(0);
     activeTimeMsRef.current = 0;
     questionStartedAtRef.current = null;
+    helpersUsedRef.current = 0;
+    exitConfirmedRef.current = false;
   }, [level]);
 
   const pauseQuestionTimer = useCallback(() => {
@@ -201,6 +222,53 @@ export default function AdventureLevelScreen() {
     return () => subscription.remove();
   }, [answered, pauseQuestionTimer, stage]);
 
+  useEffect(() => navigation.addListener('beforeRemove', event => {
+    if (stage !== 'questions' || exitConfirmedRef.current) return;
+    event.preventDefault();
+    if (exitAlertOpenRef.current) return;
+    exitAlertOpenRef.current = true;
+    pauseQuestionTimer();
+
+    const resumeAfterCancel = () => {
+      exitAlertOpenRef.current = false;
+      if (!exitConfirmedRef.current && !answered && stage === 'questions' &&
+          questionStartedAtRef.current === null) {
+        questionStartedAtRef.current = Date.now();
+      }
+    };
+
+    Alert.alert(
+      t('adventure.leaveTitle'),
+      t('adventure.leaveMessage'),
+      [
+        {
+          text: t('common.cancel'),
+          style: 'cancel',
+          onPress: resumeAfterCancel,
+        },
+        {
+          text: t('adventure.leaveConfirm'),
+          style: 'destructive',
+          onPress: () => {
+            exitAlertOpenRef.current = false;
+            exitConfirmedRef.current = true;
+            void logAppsFlyerEvent('cg_adventure_level_abandoned', {
+              level,
+              chapter: region.number,
+              attempt: attemptNumberRef.current,
+              question_number: questionIndex + 1,
+              correct: correctCount,
+              active_time_ms: activeTimeMsRef.current,
+              helpers_used: helpersUsedRef.current,
+            });
+            navigation.dispatch(event.data.action);
+          },
+        },
+      ],
+      { onDismiss: resumeAfterCancel },
+    );
+  }), [answered, correctCount, level, navigation, pauseQuestionTimer, questionIndex, region.number, stage, t]);
+
   useEffect(() => {
     if (stage !== 'questions') return;
     const update = () => setDisplayElapsedMs(
@@ -219,18 +287,28 @@ export default function AdventureLevelScreen() {
 
   const start = () => {
     const nextAttempt = attemptNumberRef.current + 1;
+    const retry = nextAttempt > 1;
     attemptNumberRef.current = nextAttempt;
     setAttemptNumber(nextAttempt);
     setQuestionIndex(0);
     setCorrectCount(0);
     setRewardGranted(false);
     setRewardPending(false);
+    setMistakes([]);
     setStarCoinsGranted(0);
     setDisplayElapsedMs(0);
     activeTimeMsRef.current = 0;
     questionStartedAtRef.current = null;
+    helpersUsedRef.current = 0;
+    exitConfirmedRef.current = false;
     resetQuestionState();
     setStage('questions');
+    void logAppsFlyerEvent(retry ? 'cg_adventure_level_retried' : 'cg_adventure_level_started', {
+      level,
+      chapter: region.number,
+      attempt: nextAttempt,
+      offline,
+    });
   };
 
   const answer = (index: number) => {
@@ -238,10 +316,32 @@ export default function AdventureLevelScreen() {
     pauseQuestionTimer();
     setSelected(index);
     const correct = index === question.ans;
-    if (correct) setCorrectCount(value => value + 1);
-    if (user && !guest && !offline) {
-      incrementProfileStats(user.id, 1, correct ? 1 : 0);
+    if (correct) {
+      feedback.correct();
+      AccessibilityInfo.announceForAccessibility(t('adventure.answerCorrectAnnouncement'));
+    } else {
+      feedback.wrong();
+      setMistakes(current => [...current, {
+        key: question.id ?? `${level}-${questionIndex}`,
+        questionNumber: questionIndex + 1,
+        question: question.q,
+        selectedAnswer: question.opts[index],
+        correctAnswer: question.opts[question.ans],
+        explanation: question.ctx,
+      }]);
+      AccessibilityInfo.announceForAccessibility(t('adventure.answerIncorrectAnnouncement', {
+        answer: question.opts[question.ans],
+      }));
+      void logAppsFlyerEvent('cg_adventure_question_missed', {
+        level,
+        chapter: region.number,
+        question_number: questionIndex + 1,
+        question_id: question.id ?? `${level}-${questionIndex}`,
+        category: question.category ?? 'unknown',
+        difficulty: question.difficulty ?? 'unknown',
+      });
     }
+    if (correct) setCorrectCount(value => value + 1);
   };
 
   const usePowerUp = (id: string) => {
@@ -257,6 +357,13 @@ export default function AdventureLevelScreen() {
       return;
     }
     consume(id);
+    helpersUsedRef.current += 1;
+    void logAppsFlyerEvent('cg_adventure_helper_used', {
+      level,
+      chapter: region.number,
+      question_number: questionIndex + 1,
+      helper: id,
+    });
   };
 
   const finish = async (finalCorrect: number) => {
@@ -288,6 +395,39 @@ export default function AdventureLevelScreen() {
           setStarCoinsGranted(0);
           if (bestStars > result.previousStars) feedback.reward();
           setStage('result');
+        }
+
+        const bestStars = result.progress.stars[String(level)] ?? result.stars;
+        void logAppsFlyerEvent('cg_adventure_level_completed', {
+          level,
+          chapter: region.number,
+          attempt: attemptNumberRef.current,
+          correct: finalCorrect,
+          mistakes: ADVENTURE_QUESTIONS_PER_LEVEL - finalCorrect,
+          active_time_ms: activeTimeMs,
+          attempt_stars: result.stars,
+          best_stars: bestStars,
+          helpers_used: helpersUsedRef.current,
+          offline,
+        });
+
+        if (user && !guest && !offline) {
+          void incrementProfileStats(
+            user.id,
+            ADVENTURE_QUESTIONS_PER_LEVEL,
+            finalCorrect,
+          ).catch(error => {
+            captureSentryException(error, { feature: 'adventure_finish', phase: 'aggregate_profile_stats', level });
+          });
+
+          const missionUpdates = [bumpMissions('adventure_play', 1)];
+          if (result.perfect) {
+            missionUpdates.push(bumpMissions('adventure_perfect', 1));
+            missionUpdates.push(bumpMissions('adventure_stars', result.stars));
+          }
+          void Promise.all(missionUpdates).catch(error => {
+            captureSentryException(error, { feature: 'adventure_finish', phase: 'adventure_missions', level });
+          });
         }
 
         if (!canUseEconomy) return;
@@ -456,7 +596,12 @@ export default function AdventureLevelScreen() {
           </LinearGradient>
 
           <View style={{ backgroundColor: C.surface, borderRadius: Radius.row, borderWidth: 1, borderColor: C.border, padding: 14, gap: 4 }}>
-            <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 15 }}>{t('adventure.starGoals')}</Text>
+            <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 15 }}>
+              {t('adventure.starGoals', {
+                two: formatStarGoalTime(starThresholds.twoStarsMs),
+                three: formatStarGoalTime(starThresholds.threeStarsMs),
+              })}
+            </Text>
             <Text style={{ color: C.textMuted, ...Type.secondary }}>{t('adventure.starGoalsDescription')}</Text>
           </View>
 
@@ -512,7 +657,15 @@ export default function AdventureLevelScreen() {
     const canGoNext = perfect && level < ADVENTURE_MAX_LEVELS;
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
-        <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: Space.screen, gap: 18 }}>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: mistakes.length > 0 ? 'flex-start' : 'center',
+            padding: Space.screen,
+            gap: 18,
+          }}
+        >
           <View style={{ alignItems: 'center', gap: 10 }}>
             {perfect ? (
               <AdventureStars
@@ -578,6 +731,35 @@ export default function AdventureLevelScreen() {
               <Text style={{ color: C.textMuted, ...Type.small }}>{t('adventure.rewardPending')}</Text>
             )}
           </View>
+
+          {mistakes.length > 0 && (
+            <View style={{ gap: 10 }}>
+              <Text style={{ color: C.text, ...Type.cardTitle }}>
+                {t('adventure.mistakesTitle', { count: mistakes.length })}
+              </Text>
+              {mistakes.map((mistake, index) => (
+                <View
+                  key={`${mistake.key}-${index}`}
+                  accessible
+                  accessibilityLabel={`${mistake.question}. ${t('adventure.yourAnswer')}: ${mistake.selectedAnswer}. ${t('adventure.correctAnswer')}: ${mistake.correctAnswer}${mistake.explanation ? `. ${mistake.explanation}` : ''}`}
+                  style={{ backgroundColor: C.surface, borderRadius: Radius.row, borderWidth: 1, borderColor: C.border, padding: 14, gap: 7 }}
+                >
+                  <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 14, lineHeight: 19 }}>
+                    {mistake.questionNumber}. {mistake.question}
+                  </Text>
+                  <Text style={{ color: C.wrongText, ...Type.small }}>
+                    {t('adventure.yourAnswer')}: {mistake.selectedAnswer}
+                  </Text>
+                  <Text style={{ color: C.correctText, ...Type.smallBold }}>
+                    {t('adventure.correctAnswer')}: {mistake.correctAnswer}
+                  </Text>
+                  {mistake.explanation && (
+                    <Text style={{ color: C.textMuted, ...Type.small }}>{mistake.explanation}</Text>
+                  )}
+                </View>
+              ))}
+            </View>
+          )}
 
           <View style={{ gap: 10 }}>
             {canGoNext && (
@@ -650,6 +832,15 @@ export default function AdventureLevelScreen() {
               letter={LETTERS[index]}
               state={getState(index)}
               dimmed={answered && getState(index) === null}
+              accessibilitySelected={selected === index}
+              accessibilityStatus={answered
+                ? index === question.ans
+                  ? t('adventure.answerCorrectStatus')
+                  : selected === index
+                    ? t('adventure.answerIncorrectStatus')
+                    : undefined
+                : undefined}
+              feedbackDisabled
               onPress={() => answer(index)}
             />
           ))}
@@ -671,7 +862,7 @@ export default function AdventureLevelScreen() {
 
         {answered && (
           <View style={{ gap: 10 }}>
-            {!answerWasCorrect && question.ctx && (
+            {question.ctx && (
               <View style={{ padding: 15, borderRadius: Radius.row, backgroundColor: C.surface, borderWidth: 1, borderColor: C.border, gap: 5 }}>
                 <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 14 }}>{t('adventure.explanation')}</Text>
                 <Text style={{ color: C.textBody, ...Type.secondary }}>{question.ctx}</Text>
@@ -701,6 +892,11 @@ export default function AdventureLevelScreen() {
 function formatAdventureTime(milliseconds: number, tenths = true): string {
   const seconds = Math.max(0, milliseconds) / 1000;
   return `${tenths ? seconds.toFixed(1) : Math.floor(seconds)} s`;
+}
+
+function formatStarGoalTime(milliseconds: number): string {
+  const seconds = milliseconds / 1000;
+  return Number.isInteger(seconds) ? `${seconds} s` : `${seconds.toFixed(1)} s`;
 }
 
 function PrepStat({ icon, value, label }: { icon: string; value: string; label: string }) {

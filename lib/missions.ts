@@ -11,6 +11,9 @@ export type MissionKind =
   | 'daily_play'
   | 'ladder_floor'
   | 'ladder_play'
+  | 'adventure_play'
+  | 'adventure_perfect'
+  | 'adventure_stars'
   | 'coins_earned';
 
 export interface Mission {
@@ -29,6 +32,9 @@ const POOL: Mission[] = [
   { id: 'm_daily',          icon: '🏆', goal: 1,  kind: 'daily_play' },
   { id: 'm_ladder_5',       icon: '🪜', goal: 5,  kind: 'ladder_floor' },
   { id: 'm_ladder_play',    icon: '🧗', goal: 1,  kind: 'ladder_play' },
+  { id: 'm_adventure_play', icon: '🧭', goal: 1,  kind: 'adventure_play' },
+  { id: 'm_adventure_perfect', icon: '🎯', goal: 1, kind: 'adventure_perfect' },
+  { id: 'm_adventure_stars', icon: '⭐', goal: 3, kind: 'adventure_stars' },
   { id: 'm_coins_100',      icon: '🪙', goal: 100, kind: 'coins_earned' },
 ];
 
