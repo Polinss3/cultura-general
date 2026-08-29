@@ -79,6 +79,20 @@ export async function claimPendingAdventureRewards(): Promise<AwardResult | null
   return mapAward(data);
 }
 
+export async function awardAdventureChapter(chapter: number): Promise<AwardResult | null> {
+  const { data, error } = await supabase.rpc('claim_adventure_chapter_reward', {
+    p_chapter: chapter,
+  });
+  if (error) return null;
+  return mapAward(data);
+}
+
+export async function claimPendingAdventureChapterRewards(): Promise<AwardResult | null> {
+  const { data, error } = await supabase.rpc('claim_pending_adventure_chapter_rewards');
+  if (error) return null;
+  return mapAward(data);
+}
+
 // ─── Cofre diario ─────────────────────────────────────────────
 export async function claimDailyChest(): Promise<{ reward?: number; error?: string }> {
   const { data, error } = await supabase.rpc('claim_daily_chest');

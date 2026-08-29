@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import {
   ADVENTURE_LEVELS_PER_REGION,
   adventureLevelStatus,
+  isAdventureChapterFinal,
   type AdventureProgress,
   type AdventureRegion,
 } from '@/lib/adventure';
@@ -154,6 +155,7 @@ export const AdventureMap = memo(function AdventureMap({
         const size = current ? 72 : NODE_SIZE;
         const best = progress.bestScores[String(level)] ?? 0;
         const stars = progress.stars[String(level)] ?? 0;
+        const chapterFinal = isAdventureChapterFinal(level);
 
         return (
           <View
@@ -191,9 +193,11 @@ export const AdventureMap = memo(function AdventureMap({
                   : current
                     ? region.accent
                     : alpha(region.accent, isDark ? 0.2 : 0.13),
-                borderWidth: current ? 5 : 3,
+                borderWidth: current || chapterFinal ? 5 : 3,
                 borderColor: current
                   ? C.surface
+                  : chapterFinal
+                    ? '#F5C84C'
                   : completed
                     ? C.correctTint
                     : alpha(region.accent, isDark ? 0.66 : 0.5),
@@ -206,6 +210,14 @@ export const AdventureMap = memo(function AdventureMap({
                 elevation: current ? 7 : completed ? 2 : 0,
               })}
             >
+              {chapterFinal && (
+                <Text
+                  accessible={false}
+                  style={{ position: 'absolute', top: -19, fontSize: 22, zIndex: 4 }}
+                >
+                  👑
+                </Text>
+              )}
               {locked ? (
                 <>
                   <Text maxFontSizeMultiplier={1.4} style={{ fontSize: 18, lineHeight: 21 }}>🔒</Text>

@@ -12,6 +12,7 @@ interface Props {
   onPress: () => void;
   /** Apaga las que no son ni la elegida ni la correcta, tras responder. */
   dimmed?: boolean;
+  disabled?: boolean;
 }
 
 /**
@@ -19,9 +20,14 @@ interface Props {
  * va grande y sin texto, que es justo lo que hace que la rejilla funcione: las
  * banderas ocupan poco y se comparan de un vistazo.
  */
-export function FlagOption({ flag, state, onPress, dimmed }: Props) {
+export function FlagOption({ flag, state, onPress, dimmed, disabled = false }: Props) {
   const C = useColors();
   const scale = useRef(new Animated.Value(1)).current;
+  const pressLocked = useRef(false);
+
+  useEffect(() => {
+    if (!disabled && state === null) pressLocked.current = false;
+  }, [disabled, state]);
 
   useEffect(() => {
     if (state === 'correct') {
@@ -54,7 +60,15 @@ export function FlagOption({ flag, state, onPress, dimmed }: Props) {
   return (
     <Animated.View style={{ width: '48.5%', transform: [{ scale }], opacity: dimmed ? 0.55 : 1 }}>
       <Pressable
-        onPress={() => { feedback.tap(); onPress(); }}
+        accessibilityRole="button"
+        accessibilityState={{ disabled }}
+        disabled={disabled}
+        onPress={() => {
+          if (pressLocked.current) return;
+          pressLocked.current = true;
+          feedback.tap();
+          onPress();
+        }}
         style={{
           // El grosor no cambia al revelar: 0,5 pt por lado bastan para que la
           // bandera se desplace un pelo. Lo que distingue el estado es el color.

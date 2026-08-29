@@ -18,6 +18,8 @@ interface Props {
   accessibilitySelected?: boolean;
   /** Permite que una pantalla coordine un único háptico por respuesta. */
   feedbackDisabled?: boolean;
+  /** Bloquea por completo nuevos toques tras cerrar una respuesta. */
+  disabled?: boolean;
 }
 
 export function OptionBtn({
@@ -29,10 +31,16 @@ export function OptionBtn({
   accessibilityStatus,
   accessibilitySelected,
   feedbackDisabled = false,
+  disabled = false,
 }: Props) {
   const C = useColors();
   const reducedMotion = useReducedMotion();
   const scale = useRef(new Animated.Value(1)).current;
+  const pressLocked = useRef(false);
+
+  useEffect(() => {
+    if (!disabled && state === null) pressLocked.current = false;
+  }, [disabled, state]);
 
   // Haptic feedback when answer is revealed
   useEffect(() => {
@@ -64,16 +72,18 @@ export function OptionBtn({
   }, [feedbackDisabled, reducedMotion, state, scale]);
 
   const handlePressIn = () => {
-    if (reducedMotion) return;
+    if (disabled || reducedMotion) return;
     Animated.timing(scale, { toValue: 0.97, duration: 90, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
   };
 
   const handlePressOut = () => {
-    if (reducedMotion) return;
+    if (disabled || reducedMotion) return;
     Animated.spring(scale, { toValue: 1, friction: 5, tension: 120, useNativeDriver: true }).start();
   };
 
   const handlePress = () => {
+    if (disabled || pressLocked.current) return;
+    pressLocked.current = true;
     if (!feedbackDisabled) feedback.tap();
     onPress();
   };
@@ -106,7 +116,8 @@ export function OptionBtn({
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={`${letter}. ${text}${accessibilityStatus ? `. ${accessibilityStatus}` : ''}`}
-        accessibilityState={{ selected: accessibilitySelected ?? state === 'selected' }}
+        accessibilityState={{ selected: accessibilitySelected ?? state === 'selected', disabled }}
+        disabled={disabled}
         onPress={handlePress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}

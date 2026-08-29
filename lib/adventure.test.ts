@@ -11,6 +11,7 @@ import {
   adventureStarThresholdsForLevel,
   adventureStarsForTime,
   adventureStarsInRange,
+  isAdventureChapterFinal,
   createAdventureProgress,
   markAdventureRewarded,
   mergeAdventureProgress,
@@ -145,6 +146,11 @@ test('the adventure has 200 levels and exactly 2,000 question slots', () => {
   assert.equal(adventureRegionForLevel(21).number, 2);
   assert.equal(adventureRegionForLevel(ADVENTURE_MAX_LEVELS).number, 10);
   assert.equal(ADVENTURE_QUESTION_VERSION, 2);
+  assert.equal(isAdventureChapterFinal(19), false);
+  assert.equal(isAdventureChapterFinal(20), true);
+  assert.equal(isAdventureChapterFinal(40), true);
+  assert.equal(isAdventureChapterFinal(200), true);
+  assert.equal(isAdventureChapterFinal(201), false);
 });
 
 test('daily mission rotation includes Adventure without exceeding three missions', () => {

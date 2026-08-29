@@ -306,6 +306,13 @@ export function adventureStarsInRange(progress: AdventureProgress, start: number
   return total;
 }
 
+export function isAdventureChapterFinal(level: number): boolean {
+  const safeLevel = Math.trunc(level);
+  return safeLevel >= ADVENTURE_LEVELS_PER_REGION &&
+    safeLevel <= ADVENTURE_MAX_LEVELS &&
+    safeLevel % ADVENTURE_LEVELS_PER_REGION === 0;
+}
+
 export function markAdventureStarRewarded(
   progress: AdventureProgress,
   level: number,

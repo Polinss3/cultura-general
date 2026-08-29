@@ -418,6 +418,7 @@ export default function SpeedScreen() {
                 text={opt}
                 letter={LETTERS[i]}
                 state={getState(i)}
+                disabled={answered}
                 dimmed={answered && getState(i) === null}
                 onPress={() => handle(i)}
               />

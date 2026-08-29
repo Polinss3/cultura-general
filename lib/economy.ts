@@ -12,6 +12,7 @@ export const REWARDS = {
   adventureLevel:{ xp: 80, coins: 20 },   // una vez por nivel perfecto de 10 preguntas
   adventureStar2:{ xp: 0, coins: 5 },
   adventureStar3:{ xp: 0, coins: 10 },
+  adventureChapter:{ xp: 0, coins: 40 }, // una vez por final de capítulo
   levelUpBonus:   50,                     // monedas por nivel (lo aplica el servidor)
   chestBase:      20,                     // ×multiplicador en servidor
   missionXp:      30,

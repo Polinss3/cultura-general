@@ -36,7 +36,11 @@ import {
 } from '@/lib/adventure';
 import { createAdventureProgressRepository } from '@/lib/adventure-progress';
 import { prefetchAdventureQuestionBank } from '@/lib/adventure-questions';
-import { bumpMissions, claimPendingAdventureRewards } from '@/lib/gamification';
+import {
+  bumpMissions,
+  claimPendingAdventureChapterRewards,
+  claimPendingAdventureRewards,
+} from '@/lib/gamification';
 import { feedback } from '@/lib/feedback';
 import { alpha, readableOn, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow } from '@/constants/theme';
@@ -75,9 +79,13 @@ export default function AdventureScreen() {
     if (!repository) return;
     let stored = await repository.load();
     if (user && !guest && !offline) {
-      const pending = await claimPendingAdventureRewards();
-      if ((pending?.claimedCount ?? 0) > 0) {
-        if (pending?.gainedCoins) void bumpMissions('coins_earned', pending.gainedCoins);
+      const [pending, pendingChapters] = await Promise.all([
+        claimPendingAdventureRewards(),
+        claimPendingAdventureChapterRewards(),
+      ]);
+      if ((pending?.claimedCount ?? 0) > 0 || (pendingChapters?.claimedCount ?? 0) > 0) {
+        const gainedCoins = (pending?.gainedCoins ?? 0) + (pendingChapters?.gainedCoins ?? 0);
+        if (gainedCoins) void bumpMissions('coins_earned', gainedCoins);
         stored = await repository.load();
       }
     }

@@ -42,8 +42,12 @@ ya escritos hasta el siguiente reintento.
 - Los objetivos parten de 65/110 segundos para 3/2 estrellas en el capítulo 1
   y bajan gradualmente hasta 51,5/92 segundos en el capítulo 10. Las estrellas
   previamente guardadas nunca se degradan.
+- El resultado separa las estrellas y el tiempo del intento actual del mejor
+  récord histórico. Si todavía faltan estrellas, permite reintentar al instante
+  sin impedir avanzar o volver al mapa.
 - Salir durante una partida pide confirmación y pausa el cronómetro mientras el
-  diálogo está abierto. Cada respuesta produce un solo háptico.
+  diálogo está abierto. Cada respuesta produce un solo háptico y las opciones
+  quedan completamente desactivadas al contestar en todos los modos.
 - AppsFlyer registra inicio, reintento, abandono confirmado, error por pregunta,
   uso de ayuda y finalización con tiempo y estrellas cuando el usuario ha
   habilitado la medición personalizada.
@@ -54,5 +58,10 @@ El catálogo diario incluye intentos, plenos y estrellas de Aventura sin añadir
 una cuarta misión diaria. La migración
 `20260829020000_adventure_engagement_v2.sql` añade cinco logros validados contra
 el progreso canónico de Supabase. Sus recompensas suman 400 monedas a lo largo
-de los 200 niveles y no incluyen todavía premios especiales de final de
-capítulo.
+de los 200 niveles.
+
+Los niveles 20, 40, …, 200 son finales de capítulo diferenciados en mapa,
+preparación y resultado. La migración
+`20260829030000_adventure_chapter_finals_v2.sql` añade un bonus único de 40
+monedas por capítulo, validado contra el progreso remoto y con liquidación
+automática si se obtuvo offline.

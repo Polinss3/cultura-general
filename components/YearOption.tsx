@@ -12,6 +12,7 @@ interface Props {
   onPress: () => void;
   /** Apaga los que no son ni el elegido ni el correcto, tras responder. */
   dimmed?: boolean;
+  disabled?: boolean;
 }
 
 /**
@@ -19,9 +20,14 @@ interface Props {
  * FlagOption: una cifra sola se compara de un vistazo, igual que una bandera,
  * y por eso puede ir en rejilla en vez de en columna.
  */
-export function YearOption({ year, state, onPress, dimmed }: Props) {
+export function YearOption({ year, state, onPress, dimmed, disabled = false }: Props) {
   const C = useColors();
   const scale = useRef(new Animated.Value(1)).current;
+  const pressLocked = useRef(false);
+
+  useEffect(() => {
+    if (!disabled && state === null) pressLocked.current = false;
+  }, [disabled, state]);
 
   useEffect(() => {
     if (state === 'correct') {
@@ -58,7 +64,15 @@ export function YearOption({ year, state, onPress, dimmed }: Props) {
   return (
     <Animated.View style={{ width: '48.5%', transform: [{ scale }], opacity: dimmed ? 0.55 : 1 }}>
       <Pressable
-        onPress={() => { feedback.tap(); onPress(); }}
+        accessibilityRole="button"
+        accessibilityState={{ disabled }}
+        disabled={disabled}
+        onPress={() => {
+          if (pressLocked.current) return;
+          pressLocked.current = true;
+          feedback.tap();
+          onPress();
+        }}
         style={{
           borderWidth: 2,
           borderColor,

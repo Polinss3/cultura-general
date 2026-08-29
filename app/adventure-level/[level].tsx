@@ -29,6 +29,7 @@ import {
   ADVENTURE_QUESTIONS_PER_LEVEL,
   adventureRegionForLevel,
   adventureStarThresholdsForLevel,
+  isAdventureChapterFinal,
   markAdventureRewarded,
   markAdventureStarRewarded,
   mergeAdventureProgress,
@@ -39,14 +40,19 @@ import { fetchAdventureLevelQuestions } from '@/lib/adventure-questions';
 import { createAdventureProgressRepository } from '@/lib/adventure-progress';
 import { getCurrentLang } from '@/lib/i18n';
 import { shuffleQuestionForAttempt } from '@/lib/utils';
-import { awardAdventureLevel, awardAdventureStar, bumpMissions } from '@/lib/gamification';
+import {
+  awardAdventureChapter,
+  awardAdventureLevel,
+  awardAdventureStar,
+  bumpMissions,
+} from '@/lib/gamification';
 import { incrementProfileStats } from '@/lib/db';
 import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { createAsyncGate } from '@/lib/async-gate';
 import { captureSentryException } from '@/lib/sentry';
-import { useTheme } from '@/constants/colors';
+import { alpha, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, inkButton, warmGradient } from '@/constants/theme';
 import type { AnswerState, Question } from '@/types';
 
@@ -95,6 +101,7 @@ export default function AdventureLevelScreen() {
     [guest, offline, scope, user?.id],
   );
   const region = adventureRegionForLevel(level);
+  const chapterFinal = isAdventureChapterFinal(level);
   const starThresholds = adventureStarThresholdsForLevel(level);
   const canUseEconomy = !!user && !guest && !offline;
   const { inventory, consume, refresh: refreshPowerups } = usePowerups(canUseEconomy, user?.id);
@@ -114,8 +121,10 @@ export default function AdventureLevelScreen() {
   const [rewardPending, setRewardPending] = useState(false);
   const [resultTimeMs, setResultTimeMs] = useState(0);
   const [resultStars, setResultStars] = useState(0);
+  const [attemptStars, setAttemptStars] = useState(0);
   const [previousStars, setPreviousStars] = useState(0);
   const [starCoinsGranted, setStarCoinsGranted] = useState(0);
+  const [chapterCoinsGranted, setChapterCoinsGranted] = useState(0);
   const [displayElapsedMs, setDisplayElapsedMs] = useState(0);
   const [attemptNumber, setAttemptNumber] = useState(0);
   const [mistakes, setMistakes] = useState<AdventureMistake[]>([]);
@@ -189,6 +198,8 @@ export default function AdventureLevelScreen() {
     setHintShown(false);
     setRewardGranted(false);
     setRewardPending(false);
+    setAttemptStars(0);
+    setChapterCoinsGranted(0);
     setMistakes([]);
     attemptNumberRef.current = 0;
     attemptSessionSeedRef.current = createAttemptSessionSeed();
@@ -296,6 +307,7 @@ export default function AdventureLevelScreen() {
     setRewardPending(false);
     setMistakes([]);
     setStarCoinsGranted(0);
+    setChapterCoinsGranted(0);
     setDisplayElapsedMs(0);
     activeTimeMsRef.current = 0;
     questionStartedAtRef.current = null;
@@ -391,6 +403,7 @@ export default function AdventureLevelScreen() {
           setRewardPending(false);
           setResultTimeMs(activeTimeMs);
           setResultStars(bestStars);
+          setAttemptStars(result.stars);
           setPreviousStars(result.previousStars);
           setStarCoinsGranted(0);
           if (bestStars > result.previousStars) feedback.reward();
@@ -438,6 +451,7 @@ export default function AdventureLevelScreen() {
           let saved = result.progress;
           let granted = false;
           let grantedStarCoins = 0;
+          let grantedChapterCoins = 0;
           let pending = false;
 
           try {
@@ -487,18 +501,40 @@ export default function AdventureLevelScreen() {
                   });
                 }
               }
+
+              if (chapterFinal) {
+                const chapterAward = await awardAdventureChapter(region.number);
+                if (!chapterAward) {
+                  pending = true;
+                } else if (!chapterAward.alreadyClaimed) {
+                  grantedChapterCoins = chapterAward.gainedCoins;
+                  celebrate(chapterAward);
+                  if (chapterAward.gainedCoins) {
+                    void bumpMissions('coins_earned', chapterAward.gainedCoins).catch(error => {
+                      captureSentryException(error, { feature: 'adventure_finish', phase: 'chapter_reward_missions', level });
+                    });
+                  }
+                  void logAppsFlyerEvent('cg_adventure_chapter_completed', {
+                    chapter: region.number,
+                    level,
+                    active_time_ms: activeTimeMs,
+                    attempt_stars: result.stars,
+                  });
+                }
+              }
             }
           } catch (error) {
             pending = true;
             captureSentryException(error, { feature: 'adventure_finish', phase: 'remote_settlement', level });
           }
 
-          if (granted || grantedStarCoins > 0) void refreshProfile();
+          if (granted || grantedStarCoins > 0 || grantedChapterCoins > 0) void refreshProfile();
           if (!mountedRef.current) return;
           setProgress(current => current ? mergeAdventureProgress(current, saved) : saved);
           setRewardGranted(granted);
           setRewardPending(pending);
           setStarCoinsGranted(grantedStarCoins);
+          setChapterCoinsGranted(grantedChapterCoins);
           if (granted) feedback.reward();
         })();
       } catch (error) {
@@ -574,17 +610,22 @@ export default function AdventureLevelScreen() {
           </Pressable>
 
           <LinearGradient
-            colors={warmGradient(isDark)}
+            colors={chapterFinal
+              ? [alpha(region.accent, isDark ? 0.34 : 0.2), alpha(region.accent, isDark ? 0.16 : 0.07)]
+              : warmGradient(isDark)}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
-            style={{ borderRadius: Radius.cardLg, borderWidth: 1.5, borderColor: C.borderWarm, padding: 22, gap: 14 }}
+            style={{ borderRadius: Radius.cardLg, borderWidth: chapterFinal ? 2 : 1.5, borderColor: chapterFinal ? region.accent : C.borderWarm, padding: 22, gap: 14 }}
           >
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
               <View style={{ flex: 1, gap: 3 }}>
-                <Text style={{ color: C.brandDeep, ...Type.sectionLabel }}>{t('adventure.chapter', { number: region.number })}</Text>
+                <Text style={{ color: chapterFinal ? region.accent : C.brandDeep, ...Type.sectionLabel }}>
+                  {chapterFinal ? t('adventure.chapterFinal') : t('adventure.chapter', { number: region.number })}
+                </Text>
                 <Text style={{ color: C.text, fontSize: 32, fontFamily: Font.black }}>{t('adventure.level', { level })}</Text>
                 <Text style={{ color: C.textMuted, ...Type.secondary }}>{t(`adventure.regions.${region.theme}`)}</Text>
               </View>
+              {chapterFinal && <Text accessibilityElementsHidden style={{ fontSize: 42 }}>👑</Text>}
               {!guest && <CoinPill coins={profile?.coins ?? 0} onPress={() => router.push('/shop')} showPlus small />}
             </View>
             <View style={{ height: 1, backgroundColor: C.borderWarm }} />
@@ -593,6 +634,14 @@ export default function AdventureLevelScreen() {
               <PrepStat icon="🎯" value="10/10" label={t('adventure.toUnlock')} />
               <PrepStat icon="🪙" value={`+${REWARDS.adventureLevel.coins}`} label={t('adventure.firstWin')} />
             </View>
+            {chapterFinal && (
+              <View style={{ borderRadius: Radius.row, backgroundColor: alpha(region.accent, isDark ? 0.2 : 0.1), padding: 12, gap: 3 }}>
+                <Text style={{ color: C.text, ...Type.smallBold }}>{t('adventure.chapterFinalDescription')}</Text>
+                <Text style={{ color: C.coinText, ...Type.smallBold }}>
+                  {t('adventure.chapterFinalBonus', { coins: REWARDS.adventureChapter.coins })}
+                </Text>
+              </View>
+            )}
           </LinearGradient>
 
           <View style={{ backgroundColor: C.surface, borderRadius: Radius.row, borderWidth: 1, borderColor: C.border, padding: 14, gap: 4 }}>
@@ -669,19 +718,28 @@ export default function AdventureLevelScreen() {
           <View style={{ alignItems: 'center', gap: 10 }}>
             {perfect ? (
               <AdventureStars
-                count={resultStars}
+                count={attemptStars}
                 size={52}
                 animated
-                accessibilityLabel={t('adventure.starsEarned', { count: resultStars })}
+                accessibilityLabel={t('adventure.starsEarned', { count: attemptStars })}
               />
             ) : <Text accessibilityElementsHidden style={{ fontSize: 58 }}>🧭</Text>}
             <Text style={{ color: C.text, fontSize: 28, fontFamily: Font.black, textAlign: 'center' }}>
-              {t(perfect ? 'adventure.resultPerfect' : 'adventure.resultRetry')}
+              {t(perfect && chapterFinal
+                ? 'adventure.resultChapterFinal'
+                : perfect
+                  ? 'adventure.resultPerfect'
+                  : 'adventure.resultRetry')}
             </Text>
             <Text style={{ color: C.textMuted, ...Type.bodyRegular, textAlign: 'center' }}>
-              {t(perfect ? 'adventure.resultPerfectDescription' : 'adventure.resultRetryDescription', {
+              {t(perfect && chapterFinal
+                ? 'adventure.resultChapterFinalDescription'
+                : perfect
+                  ? 'adventure.resultPerfectDescription'
+                  : 'adventure.resultRetryDescription', {
                 correct: correctCount,
                 total: ADVENTURE_QUESTIONS_PER_LEVEL,
+                chapter: region.number,
               })}
             </Text>
           </View>
@@ -693,20 +751,18 @@ export default function AdventureLevelScreen() {
                 {correctCount} / {ADVENTURE_QUESTIONS_PER_LEVEL}
               </Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style={{ color: C.textMuted, ...Type.body }}>{t('adventure.activeTime')}</Text>
-              <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 17, fontVariant: ['tabular-nums'] }}>
-                {formatAdventureTime(resultTimeMs)}
-              </Text>
+            <View style={{ flexDirection: 'row', gap: 10 }}>
+              <ResultRecord
+                label={t('adventure.thisAttempt')}
+                stars={attemptStars}
+                timeMs={resultTimeMs}
+              />
+              <ResultRecord
+                label={t('adventure.bestRecord')}
+                stars={resultStars}
+                timeMs={progress.bestTimesMs[String(level)] ?? null}
+              />
             </View>
-            {perfect && progress.bestTimesMs[String(level)] && (
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{ color: C.textMuted, ...Type.body }}>{t('adventure.bestTime')}</Text>
-                <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 16, fontVariant: ['tabular-nums'] }}>
-                  {formatAdventureTime(progress.bestTimesMs[String(level)])}
-                </Text>
-              </View>
-            )}
             {perfect && resultStars > previousStars && (
               <Text style={{ color: C.correctText, ...Type.smallBold, textAlign: 'center' }}>
                 {t('adventure.newStarRecord')}
@@ -722,6 +778,12 @@ export default function AdventureLevelScreen() {
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Text style={{ color: C.textMuted, ...Type.body }}>{t('adventure.starBonus')}</Text>
                 <Text style={{ color: C.coinText, fontFamily: Font.black, fontSize: 16 }}>+{starCoinsGranted} 🪙</Text>
+              </View>
+            )}
+            {chapterCoinsGranted > 0 && (
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Text style={{ color: C.textMuted, ...Type.body }}>{t('adventure.chapterBonus')}</Text>
+                <Text style={{ color: C.coinText, fontFamily: Font.black, fontSize: 16 }}>+{chapterCoinsGranted} 🪙</Text>
               </View>
             )}
             {perfect && !rewardGranted && (guest || offline) && (
@@ -773,13 +835,27 @@ export default function AdventureLevelScreen() {
             )}
             <Pressable
               accessibilityRole="button"
-              onPress={perfect ? () => router.replace('/(tabs)/adventure' as any) : start}
+              onPress={perfect && resultStars < 3 ? start : perfect ? () => router.replace('/(tabs)/adventure' as any) : start}
               style={({ pressed }) => ({ minHeight: 52, borderRadius: Radius.row, backgroundColor: C.surface, borderWidth: 1, borderColor: C.border, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.7 : 1 })}
             >
               <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 16 }}>
-                {t(perfect ? 'adventure.backToMap' : 'adventure.retryLevel')}
+                {t(perfect && resultStars < 3
+                  ? 'adventure.retryForStars'
+                  : perfect
+                    ? 'adventure.backToMap'
+                    : 'adventure.retryLevel')}
               </Text>
             </Pressable>
+            {perfect && resultStars < 3 && (
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => router.replace('/(tabs)/adventure' as any)}
+                hitSlop={8}
+                style={({ pressed }) => ({ minHeight: 44, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.65 : 1 })}
+              >
+                <Text style={{ color: C.textMuted, fontFamily: Font.bold, fontSize: 15 }}>{t('adventure.backToMap')}</Text>
+              </Pressable>
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -841,6 +917,7 @@ export default function AdventureLevelScreen() {
                     : undefined
                 : undefined}
               feedbackDisabled
+              disabled={answered}
               onPress={() => answer(index)}
             />
           ))}
@@ -897,6 +974,27 @@ function formatAdventureTime(milliseconds: number, tenths = true): string {
 function formatStarGoalTime(milliseconds: number): string {
   const seconds = milliseconds / 1000;
   return Number.isInteger(seconds) ? `${seconds} s` : `${seconds.toFixed(1)} s`;
+}
+
+function ResultRecord({ label, stars, timeMs }: {
+  label: string;
+  stars: number;
+  timeMs: number | null;
+}) {
+  const { C } = useTheme();
+  return (
+    <View style={{ flex: 1, minHeight: 94, borderRadius: Radius.row, backgroundColor: C.surfaceSunk, padding: 12, alignItems: 'center', justifyContent: 'space-between', gap: 6 }}>
+      <Text style={{ color: C.textMuted, ...Type.smallBold, textAlign: 'center' }}>{label}</Text>
+      <View style={{ minHeight: 26, justifyContent: 'center' }}>
+        {stars > 0 ? <AdventureStars count={stars} size={21} /> : (
+          <Text style={{ color: C.textFaint, fontFamily: Font.black, fontSize: 18 }}>—</Text>
+        )}
+      </View>
+      <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 15, fontVariant: ['tabular-nums'] }}>
+        {timeMs === null ? '—' : formatAdventureTime(timeMs)}
+      </Text>
+    </View>
+  );
 }
 
 function PrepStat({ icon, value, label }: { icon: string; value: string; label: string }) {
