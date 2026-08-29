@@ -11,10 +11,11 @@ definitivo.
 
 - Se ha elegido el punto medio: 200 niveles de 10 preguntas.
 - Producción tiene 2.000 preguntas activas, todas completas en español e inglés.
-- La versión 1 del manifiesto contiene 2.000 IDs distintos: 10 por nivel, sin
-  reutilizar ninguno entre los 200 niveles.
-- Los niveles descargados se conservan en caché para rejugarlos sin conexión;
-  no existe ya el fallback circular de 49 preguntas.
+- La versión 2 del manifiesto contiene 2.000 IDs distintos: 10 por nivel, sin
+  reutilizar ninguno entre los 200 niveles y con dificultad creciente. La v1
+  permanece intacta para las builds anteriores.
+- El manifiesto bilingüe completo se precarga en segundo plano para jugar
+  cualquier nivel sin conexión; no existe fallback circular.
 
 ### Decisión adoptada
 
@@ -42,6 +43,8 @@ calidad y se incluyen una sola vez.
       no tiene 10 preguntas o una pregunta aparece en más de un nivel.
 - [x] Probar el manifiesto completo, no solo una muestra de niveles, antes de
       generar la build de producción.
+- [x] Sincronizar el progreso entre dispositivos con almacenamiento local-first.
+- [x] Hacer las recompensas de nivel y estrellas transaccionales e idempotentes.
 
 Las nuevas preguntas están activas en el catálogo general, por lo que entran
 automáticamente en Aprender, Contrarreloj, Ascenso, Amigos y en la selección de

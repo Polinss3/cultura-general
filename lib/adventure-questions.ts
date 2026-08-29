@@ -22,7 +22,14 @@ interface AssignmentRow {
   questions: BilingualQuestionRow | BilingualQuestionRow[] | null;
 }
 
+interface BankAssignmentRow extends AssignmentRow {
+  level: number;
+}
+
 const cacheKey = (level: number) => `adventure_questions_v${ADVENTURE_QUESTION_VERSION}_${level}`;
+const completeCacheKey = `adventure_questions_v${ADVENTURE_QUESTION_VERSION}_complete`;
+const ADVENTURE_BANK_PAGE_SIZE = 1000;
+let prefetchPromise: Promise<void> | null = null;
 
 function validLevel(level: number): boolean {
   return Number.isInteger(level) && level >= 1 && level <= ADVENTURE_MAX_LEVELS;
@@ -70,6 +77,58 @@ async function writeCache(level: number, rows: BilingualQuestionRow[]): Promise<
   } catch {
     // La caché es una mejora offline; un fallo de almacenamiento no invalida la sesión online.
   }
+}
+
+async function prefetchCompleteAdventureBank(): Promise<void> {
+  if (await AsyncStorage.getItem(completeCacheKey) === 'true') return;
+
+  const assignments: BankAssignmentRow[] = [];
+  for (let from = 0; from < ADVENTURE_MAX_LEVELS * ADVENTURE_QUESTIONS_PER_LEVEL; from += ADVENTURE_BANK_PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from('adventure_question_assignments')
+      .select('level, slot, questions!inner(id, category, question, options, answer_index, context, difficulty, question_en, options_en, context_en)')
+      .eq('version', ADVENTURE_QUESTION_VERSION)
+      .order('level')
+      .order('slot')
+      .range(from, from + ADVENTURE_BANK_PAGE_SIZE - 1);
+    if (error) throw error;
+    assignments.push(...((data ?? []) as unknown as BankAssignmentRow[]));
+  }
+
+  const expected = ADVENTURE_MAX_LEVELS * ADVENTURE_QUESTIONS_PER_LEVEL;
+  if (assignments.length !== expected) {
+    throw new Error(`Incomplete adventure bank: ${assignments.length}/${expected}`);
+  }
+
+  const allQuestionIds = new Set<string>();
+  const cacheEntries: [string, string][] = [];
+  for (let level = 1; level <= ADVENTURE_MAX_LEVELS; level += 1) {
+    const rows = unwrapAssignments(assignments.filter(row => row.level === level));
+    if (rows.length !== ADVENTURE_QUESTIONS_PER_LEVEL ||
+        new Set(rows.map(row => row.id)).size !== ADVENTURE_QUESTIONS_PER_LEVEL) {
+      throw new Error(`Incomplete adventure level ${level}`);
+    }
+    rows.forEach(row => allQuestionIds.add(row.id));
+    cacheEntries.push([cacheKey(level), JSON.stringify(rows)]);
+  }
+  if (allQuestionIds.size !== expected) throw new Error('Adventure bank contains repeated questions');
+
+  // Escrituras pequenas: si el sistema interrumpe la tarea, los bloques ya
+  // guardados siguen siendo utilizables y el marcador fuerza un reintento.
+  for (let index = 0; index < cacheEntries.length; index += 20) {
+    await AsyncStorage.multiSet(cacheEntries.slice(index, index + 20));
+  }
+  await AsyncStorage.setItem(completeCacheKey, 'true');
+}
+
+/** Descarga silenciosamente el banco bilingue completo para juego offline. */
+export function prefetchAdventureQuestionBank(): Promise<void> {
+  if (!prefetchPromise) {
+    prefetchPromise = prefetchCompleteAdventureBank().finally(() => {
+      prefetchPromise = null;
+    });
+  }
+  return prefetchPromise;
 }
 
 export async function fetchAdventureLevelQuestions(level: number, lang: AppLang): Promise<Question[]> {

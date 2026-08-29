@@ -35,6 +35,7 @@ import {
   type AdventureProgress,
 } from '@/lib/adventure';
 import { createAdventureProgressRepository } from '@/lib/adventure-progress';
+import { prefetchAdventureQuestionBank } from '@/lib/adventure-questions';
 import { bumpMissions, claimPendingAdventureRewards } from '@/lib/gamification';
 import { feedback } from '@/lib/feedback';
 import { alpha, readableOn, useTheme } from '@/constants/colors';
@@ -89,6 +90,14 @@ export default function AdventureScreen() {
   useFocusEffect(useCallback(() => {
     load();
   }, [load]));
+
+  useEffect(() => {
+    if (offline) return;
+    void prefetchAdventureQuestionBank().catch(() => {
+      // La precarga es oportunista: abrir un nivel mantiene su descarga normal
+      // y el siguiente acceso con red reintentara el banco completo.
+    });
+  }, [offline]);
 
   const region = adventureRegionForLevel((regionNumber - 1) * ADVENTURE_LEVELS_PER_REGION + 1);
   const maxRegion = Math.ceil(ADVENTURE_MAX_LEVELS / ADVENTURE_LEVELS_PER_REGION);
