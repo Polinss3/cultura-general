@@ -29,6 +29,7 @@ import {
   adventureRegionForLevel,
   markAdventureRewarded,
   markAdventureStarRewarded,
+  mergeAdventureProgress,
   resolveAdventureAttempt,
   type AdventureProgress,
 } from '@/lib/adventure';
@@ -40,6 +41,8 @@ import { awardAdventureLevel, awardAdventureStar, bumpMissions } from '@/lib/gam
 import { incrementProfileStats } from '@/lib/db';
 import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
+import { createAsyncGate } from '@/lib/async-gate';
+import { captureSentryException } from '@/lib/sentry';
 import { useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, inkButton, warmGradient } from '@/constants/theme';
 import type { AnswerState, Question } from '@/types';
@@ -94,6 +97,7 @@ export default function AdventureLevelScreen() {
   const [hintShown, setHintShown] = useState(false);
   const [finishing, setFinishing] = useState(false);
   const [rewardGranted, setRewardGranted] = useState(false);
+  const [rewardPending, setRewardPending] = useState(false);
   const [resultTimeMs, setResultTimeMs] = useState(0);
   const [resultStars, setResultStars] = useState(0);
   const [previousStars, setPreviousStars] = useState(0);
@@ -105,6 +109,7 @@ export default function AdventureLevelScreen() {
   const questionStartedAtRef = useRef<number | null>(null);
   const attemptNumberRef = useRef(0);
   const attemptSessionSeedRef = useRef(createAttemptSessionSeed());
+  const finishGateRef = useRef(createAsyncGate());
 
   useFocusEffect(useCallback(() => {
     if (!repository) return;
@@ -165,6 +170,7 @@ export default function AdventureLevelScreen() {
     setFiftyHidden([]);
     setHintShown(false);
     setRewardGranted(false);
+    setRewardPending(false);
     attemptNumberRef.current = 0;
     attemptSessionSeedRef.current = createAttemptSessionSeed();
     setAttemptNumber(0);
@@ -218,6 +224,7 @@ export default function AdventureLevelScreen() {
     setQuestionIndex(0);
     setCorrectCount(0);
     setRewardGranted(false);
+    setRewardPending(false);
     setStarCoinsGranted(0);
     setDisplayElapsedMs(0);
     activeTimeMsRef.current = 0;
@@ -253,56 +260,116 @@ export default function AdventureLevelScreen() {
   };
 
   const finish = async (finalCorrect: number) => {
-    if (!progress || !repository || finishing) return;
-    setFinishing(true);
-    setCorrectCount(finalCorrect);
-    const latest = await repository.load();
-    const activeTimeMs = activeTimeMsRef.current;
-    const result = resolveAdventureAttempt(latest, level, finalCorrect, { activeTimeMs });
-    await repository.save(result.progress);
-    let saved = result.progress;
-    let granted = false;
-    let grantedStarCoins = 0;
+    if (!progress || !repository) return;
 
-    if (result.shouldReward && canUseEconomy) {
-      const award = await awardAdventureLevel(level);
-      if (award) {
-        saved = markAdventureRewarded(saved, level);
-        await repository.save(saved);
-        if (!award.alreadyClaimed) celebrate(award);
-        if (award.gainedCoins) bumpMissions('coins_earned', award.gainedCoins);
-        refreshProfile();
-        granted = !award.alreadyClaimed;
+    await finishGateRef.current.run(async () => {
+      if (mountedRef.current) setFinishing(true);
+      const activeTimeMs = activeTimeMsRef.current;
+
+      try {
+        // La copia de memoria evita una regresión si AsyncStorage estuviera
+        // temporalmente ilegible justo al terminar el nivel.
+        const latest = mergeAdventureProgress(progress, await repository.loadLocal());
+        const result = resolveAdventureAttempt(latest, level, finalCorrect, { activeTimeMs });
+
+        // Este es el único paso crítico: confirmamos el resultado en el
+        // dispositivo antes de cambiar de pantalla o contactar con Supabase.
+        await repository.saveLocal(result.progress);
+
+        if (mountedRef.current) {
+          const bestStars = result.progress.stars[String(level)] ?? result.stars;
+          setProgress(result.progress);
+          setCorrectCount(finalCorrect);
+          setRewardGranted(false);
+          setRewardPending(false);
+          setResultTimeMs(activeTimeMs);
+          setResultStars(bestStars);
+          setPreviousStars(result.previousStars);
+          setStarCoinsGranted(0);
+          if (bestStars > result.previousStars) feedback.reward();
+          setStage('result');
+        }
+
+        if (!canUseEconomy) return;
+
+        // Sincronización y recompensas son deliberadamente secundarias: el
+        // resultado ya está guardado y el jugador nunca espera a la red.
+        void (async () => {
+          let saved = result.progress;
+          let granted = false;
+          let grantedStarCoins = 0;
+          let pending = false;
+
+          try {
+            saved = mergeAdventureProgress(saved, await repository.sync(saved));
+
+            if (result.shouldReward) {
+              const award = await awardAdventureLevel(level);
+              if (!award) {
+                pending = true;
+              } else {
+                saved = markAdventureRewarded(saved, level);
+                try {
+                  await repository.saveLocal(saved);
+                } catch (error) {
+                  captureSentryException(error, { feature: 'adventure_finish', phase: 'save_level_reward_marker', level });
+                }
+                if (!award.alreadyClaimed) celebrate(award);
+                if (award.gainedCoins) {
+                  void bumpMissions('coins_earned', award.gainedCoins).catch(error => {
+                    captureSentryException(error, { feature: 'adventure_finish', phase: 'level_reward_missions', level });
+                  });
+                }
+                granted = !award.alreadyClaimed;
+              }
+            }
+
+            if (result.perfect) {
+              const alreadyRewarded = saved.rewardedStarMilestones[String(level)] ?? 0;
+              const achievedStars = saved.stars[String(level)] ?? result.stars;
+              for (const milestone of [2, 3] as const) {
+                if (achievedStars < milestone || alreadyRewarded >= milestone) continue;
+                const award = await awardAdventureStar(level, milestone);
+                if (!award) {
+                  pending = true;
+                  break;
+                }
+                saved = markAdventureStarRewarded(saved, level, milestone);
+                try {
+                  await repository.saveLocal(saved);
+                } catch (error) {
+                  captureSentryException(error, { feature: 'adventure_finish', phase: 'save_star_reward_marker', level, milestone });
+                }
+                grantedStarCoins += award.gainedCoins;
+                if (award.gainedCoins) {
+                  void bumpMissions('coins_earned', award.gainedCoins).catch(error => {
+                    captureSentryException(error, { feature: 'adventure_finish', phase: 'star_reward_missions', level, milestone });
+                  });
+                }
+              }
+            }
+          } catch (error) {
+            pending = true;
+            captureSentryException(error, { feature: 'adventure_finish', phase: 'remote_settlement', level });
+          }
+
+          if (granted || grantedStarCoins > 0) void refreshProfile();
+          if (!mountedRef.current) return;
+          setProgress(current => current ? mergeAdventureProgress(current, saved) : saved);
+          setRewardGranted(granted);
+          setRewardPending(pending);
+          setStarCoinsGranted(grantedStarCoins);
+          if (granted) feedback.reward();
+        })();
+      } catch (error) {
+        captureSentryException(error, { feature: 'adventure_finish', phase: 'persist_result', level });
+        if (mountedRef.current) {
+          Alert.alert(t('adventure.saveFailedTitle'), t('adventure.saveFailedMessage'));
+        }
+      } finally {
+        if (mountedRef.current) setFinishing(false);
       }
-    }
-
-    if (result.perfect && canUseEconomy) {
-      const alreadyRewarded = saved.rewardedStarMilestones[String(level)] ?? 0;
-      const achievedStars = saved.stars[String(level)] ?? result.stars;
-      for (const milestone of [2, 3] as const) {
-        if (achievedStars < milestone || alreadyRewarded >= milestone) continue;
-        const award = await awardAdventureStar(level, milestone);
-        if (!award) break;
-        saved = markAdventureStarRewarded(saved, level, milestone);
-        await repository.save(saved);
-        grantedStarCoins += award.gainedCoins;
-        if (award.gainedCoins) bumpMissions('coins_earned', award.gainedCoins);
-      }
-    }
-    if (grantedStarCoins > 0) refreshProfile();
-
-    if (mountedRef.current) {
-      setProgress(saved);
-      setRewardGranted(granted);
-      setResultTimeMs(activeTimeMs);
-      const bestStars = saved.stars[String(level)] ?? result.stars;
-      setResultStars(bestStars);
-      setPreviousStars(result.previousStars);
-      setStarCoinsGranted(grantedStarCoins);
-      if (granted || bestStars > result.previousStars) feedback.reward();
-      setFinishing(false);
-      setStage('result');
-    }
+    });
   };
 
   const next = () => {
@@ -506,6 +573,9 @@ export default function AdventureLevelScreen() {
             )}
             {perfect && !rewardGranted && (guest || offline) && (
               <Text style={{ color: C.textMuted, ...Type.small }}>{t('adventure.rewardNeedsAccount')}</Text>
+            )}
+            {rewardPending && (
+              <Text style={{ color: C.textMuted, ...Type.small }}>{t('adventure.rewardPending')}</Text>
             )}
           </View>
 

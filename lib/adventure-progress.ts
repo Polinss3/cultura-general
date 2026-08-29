@@ -9,6 +9,9 @@ import {
 export interface AdventureProgressRepository {
   load(): Promise<AdventureProgress>;
   save(progress: AdventureProgress): Promise<void>;
+  loadLocal(): Promise<AdventureProgress>;
+  saveLocal(progress: AdventureProgress): Promise<void>;
+  sync(progress: AdventureProgress): Promise<AdventureProgress>;
 }
 
 export interface KeyValueStorage {
@@ -25,9 +28,25 @@ interface SyncedRepositoryOptions {
   remoteEnabled: boolean;
   storage?: KeyValueStorage;
   remote?: AdventureRemoteSync;
+  remoteTimeoutMs?: number;
 }
 
 const STORAGE_PREFIX = 'adventure_progress_v1';
+const DEFAULT_REMOTE_TIMEOUT_MS = 12_000;
+
+async function withTimeout<T>(promise: Promise<T>, milliseconds: number): Promise<T> {
+  let timeout: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise<T>((_resolve, reject) => {
+        timeout = setTimeout(() => reject(new Error('Adventure remote sync timed out')), milliseconds);
+      }),
+    ]);
+  } finally {
+    if (timeout) clearTimeout(timeout);
+  }
+}
 
 export function adventureProgressStorageKey(scope: string): string {
   return `${STORAGE_PREFIX}:${scope.trim() || 'guest'}`;
@@ -50,6 +69,15 @@ export function createLocalAdventureRepository(
     },
     async save(progress) {
       await storage.setItem(key, JSON.stringify(normalizeAdventureProgress(progress)));
+    },
+    async loadLocal() {
+      return this.load();
+    },
+    async saveLocal(progress) {
+      await this.save(progress);
+    },
+    async sync(progress) {
+      return normalizeAdventureProgress(progress);
     },
   };
 }
@@ -79,11 +107,15 @@ export function createAdventureProgressRepository(
 ): AdventureProgressRepository {
   const local = createLocalAdventureRepository(scope, options.storage ?? AsyncStorage);
   const remote = options.remote ?? supabaseAdventureRemote;
+  const syncRemote = (progress: AdventureProgress) => withTimeout(
+    remote.sync(progress),
+    options.remoteTimeoutMs ?? DEFAULT_REMOTE_TIMEOUT_MS,
+  );
 
   const synchronize = async (localProgress: AdventureProgress): Promise<AdventureProgress> => {
     if (!options.remoteEnabled) return localProgress;
     try {
-      const canonical = await remote.sync(localProgress);
+      const canonical = await syncRemote(localProgress);
       await local.save(canonical);
       return canonical;
     } catch {
@@ -94,6 +126,18 @@ export function createAdventureProgressRepository(
   };
 
   return {
+    async loadLocal() {
+      return local.load();
+    },
+    async saveLocal(progress) {
+      await local.save(normalizeAdventureProgress(progress));
+    },
+    async sync(progress) {
+      if (!options.remoteEnabled) return normalizeAdventureProgress(progress);
+      const canonical = await syncRemote(normalizeAdventureProgress(progress));
+      await local.save(canonical);
+      return canonical;
+    },
     async load() {
       const localProgress = await local.load();
       return synchronize(localProgress);

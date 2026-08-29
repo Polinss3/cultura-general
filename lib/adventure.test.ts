@@ -16,6 +16,7 @@ import {
   normalizeAdventureProgress,
   resolveAdventureAttempt,
   markAdventureStarRewarded,
+  type AdventureProgress,
 } from './adventure';
 import {
   adventureProgressStorageKey,
@@ -30,6 +31,34 @@ import {
   adventureDecorationsForChapter,
 } from './adventure-map-design';
 import { shuffleQuestionForAttempt } from './utils';
+import { createAsyncGate } from './async-gate';
+
+test('the async gate blocks a duplicate action in the same render tick', async () => {
+  const gate = createAsyncGate();
+  let release!: () => void;
+  let calls = 0;
+  const first = gate.run(async () => {
+    calls += 1;
+    await new Promise<void>(resolve => { release = resolve; });
+  });
+  const duplicate = await gate.run(async () => { calls += 1; });
+
+  assert.equal(duplicate.started, false);
+  assert.equal(calls, 1);
+  assert.equal(gate.isLocked(), true);
+  release();
+  await first;
+  assert.equal(gate.isLocked(), false);
+});
+
+test('the async gate releases its lock after a failure', async () => {
+  const gate = createAsyncGate();
+  await assert.rejects(gate.run(async () => { throw new Error('storage failed'); }));
+  const retry = await gate.run(async () => 'saved');
+
+  assert.equal(retry.started, true);
+  assert.equal(retry.value, 'saved');
+});
 
 test('a failed attempt records the best score without unlocking a future level', () => {
   const initial = createAdventureProgress('2026-01-01T00:00:00.000Z');
@@ -156,6 +185,48 @@ test('the synced repository remains playable when Supabase is unavailable', asyn
 
   assert.deepEqual(loaded.completedLevels, [1]);
   assert.ok(storage.values.has(adventureProgressStorageKey('user-a')));
+});
+
+test('saving a finished level locally never waits for the remote sync', async () => {
+  const storage = new MemoryStorage();
+  let remoteCalls = 0;
+  const remote: AdventureRemoteSync = {
+    sync: async progress => {
+      remoteCalls += 1;
+      return progress;
+    },
+  };
+  const repository = createAdventureProgressRepository('user-local-first', {
+    remoteEnabled: true,
+    remote,
+    storage,
+  });
+  const completed = resolveAdventureAttempt(createAdventureProgress(), 1, 10).progress;
+
+  await repository.saveLocal(completed);
+  assert.equal(remoteCalls, 0);
+  assert.deepEqual((await repository.loadLocal()).completedLevels, [1]);
+
+  await repository.sync(completed);
+  assert.equal(remoteCalls, 1);
+});
+
+test('a stalled remote sync times out without losing local progress', async () => {
+  const storage = new MemoryStorage();
+  const remote: AdventureRemoteSync = {
+    sync: async () => new Promise<AdventureProgress>(() => {}),
+  };
+  const repository = createAdventureProgressRepository('user-timeout', {
+    remoteEnabled: true,
+    remote,
+    remoteTimeoutMs: 5,
+    storage,
+  });
+  const completed = resolveAdventureAttempt(createAdventureProgress(), 1, 10).progress;
+
+  await repository.saveLocal(completed);
+  await assert.rejects(repository.sync(completed), /timed out/);
+  assert.deepEqual((await repository.loadLocal()).completedLevels, [1]);
 });
 
 test('guest progress is removed only after a successful account sync', async () => {
