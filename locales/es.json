@@ -248,7 +248,7 @@
       "languageEs": "Español",
       "languageEn": "English",
       "adsPrivacy": "Privacidad y anuncios",
-      "adsPrivacySub": "Revisa tu tramo de edad y tu elección publicitaria"
+      "adsPrivacySub": "Revisa tu edad y las opciones de privacidad de Appodeal"
     }
   },
   "ladder": {
@@ -776,22 +776,16 @@
   },
   "adsConsent": {
     "title": "Tu privacidad y los anuncios",
-    "intro": "La app seguirá funcionando elijas lo que elijas. Guardaremos tu tramo de edad, tu opción, la fecha, el idioma y la versión de este aviso para respetar tu decisión.",
+    "intro": "La app seguirá funcionando elijas lo que elijas. Guardaremos solo tu tramo de edad, la fecha, el idioma y la versión de este aviso. Si eres adulto, el gestor oficial de Appodeal te mostrará las opciones de privacidad que correspondan a tu región.",
     "ageQuestion": "¿Qué tramo de edad te corresponde?",
     "age": {
       "adult": "Tengo {{age}} años o más",
       "minor": "Soy menor de {{age}} años"
     },
-    "minorExplanation": "No iniciaremos AppLovin, AppsFlyer ni Meta y no recibirás anuncios. Todas las funciones del juego permanecen disponibles.",
-    "continueWithoutAds": "Continuar sin anuncios",
-    "contextual": {
-      "title": "Anuncios contextuales",
-      "body": "AppLovin puede mostrar anuncios según el contexto de la app. No pediremos ATT ni iniciaremos AppsFlyer o Meta; indicaremos que no consientes personalización y que no se vendan o compartan tus datos para publicidad dirigida."
-    },
-    "personalized": {
-      "title": "Anuncios personalizados",
-      "body": "Consientes la personalización publicitaria. En iOS pediremos ATT y, después, podremos iniciar AppLovin, AppsFlyer y Meta para personalización y atribución."
-    },
+    "minorExplanation": "No iniciaremos Appodeal, AppsFlyer ni Meta y no recibirás anuncios. Todas las funciones del juego permanecen disponibles.",
+    "adultExplanation": "Al continuar, Appodeal mostrará su gestor de consentimiento cuando corresponda. Después, iOS puede pedir el permiso de seguimiento para atribución. Negarlo no impide usar la app ni recibir anuncios regulados por el gestor de Appodeal.",
+    "continue": "Continuar",
+    "providerPrivacy": "Abrir opciones de privacidad de Appodeal",
     "privacyLink": "Leer la política de privacidad completa"
   },
   "privacy": {
@@ -821,11 +815,11 @@
       },
       "s6": {
         "title": "6. Proveedores",
-        "body": "Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; AppLovin MAX para publicidad; AppsFlyer para atribución; y Meta para medir campañas cuando has elegido publicidad personalizada y se cumplen los permisos del sistema. Apple y Google también pueden tratar información al distribuir la app o autenticarte.\n\nPuedes consultar las políticas de cada proveedor desde cg-trivia.pablobrasero.com/privacy."
+        "body": "Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; Appodeal y su gestor de consentimiento para mediación publicitaria; AppsFlyer para atribución; y Meta para medir campañas únicamente cuando ATT está concedido. Apple y Google también pueden tratar información al distribuir la app o autenticarte.\n\nPuedes consultar las políticas de cada proveedor desde cg-trivia.pablobrasero.com/privacy."
       },
       "s7": {
         "title": "7. Publicidad, edad y atribución",
-        "body": "Antes de inicializar los sistemas publicitarios te pedimos un tramo de edad y una elección informada. Los anuncios, cuando aparecen, salen en pausas naturales del juego: el resultado de la pregunta diaria o el final de una partida de contrarreloj, de una escalada o de una ronda de Mundo.\n\n• Menores de 16 años: no inicializamos AppLovin, AppsFlyer ni Meta, y puedes usar la app completa sin anuncios.\n• Anuncios contextuales: comunicamos a AppLovin que no consientes personalización y que no se vendan ni compartan datos para publicidad dirigida. No pedimos App Tracking Transparency ni iniciamos AppsFlyer o Meta.\n• Anuncios personalizados: en iOS pedimos primero el permiso oficial App Tracking Transparency. AppLovin puede tratar identificadores y actividad publicitaria para seleccionar, limitar y medir anuncios; AppsFlyer y Meta pueden medir instalaciones y eventos de campaña.\n\nPuedes revisar o cambiar tu elección en Perfil > Ajustes > Privacidad y anuncios. Al pasar a contextual detenemos nuevas solicitudes de medición personalizada."
+        "body": "Antes de cargar cualquier SDK publicitario te pedimos únicamente el tramo de edad. Los anuncios aparecen en ubicaciones definidas: banners al pie de pantallas de juego, intersticiales tras resultados y vídeos recompensados que solicitas para monedas, revivir o conseguir tiempo extra.\n\n• Menores de 18 años: no inicializamos Appodeal, AppsFlyer ni Meta, y puedes usar la app completa sin anuncios.\n• Adultos: el CMP oficial de Appodeal muestra las opciones regulatorias que correspondan a tu región y transmite la señal IAB TCF a las redes mediadas.\n• En iOS, después del CMP podemos pedir App Tracking Transparency. Negarlo no quita los anuncios: impide usar el IDFA e iniciar AppsFlyer o Meta para atribución.\n\nPuedes revisar tu tramo de edad y abrir de nuevo las opciones de privacidad de Appodeal en Perfil > Ajustes > Privacidad y anuncios."
       },
       "s8": {
         "title": "8. Notificaciones",
@@ -841,11 +835,11 @@
       },
       "s11": {
         "title": "11. Tus derechos",
-        "body": "Según tu lugar de residencia puedes solicitar acceso, rectificación, supresión, oposición, limitación y portabilidad, así como retirar el consentimiento.\n\n• Puedes eliminar tu cuenta desde Perfil > Zona peligrosa, sin salir de la app.\n• Puedes cambiar tu elección publicitaria en Perfil > Ajustes > Privacidad y anuncios.\n• En iPhone o iPad puedes retirar el permiso de seguimiento en Ajustes > Privacidad y seguridad > Seguimiento.\n• Para cualquier otra solicitud, escríbenos a pablobrasero@gmail.com.\n\nTambién puedes reclamar ante la Agencia Española de Protección de Datos o tu autoridad local."
+        "body": "Según tu lugar de residencia puedes solicitar acceso, rectificación, supresión, oposición, limitación y portabilidad, así como retirar el consentimiento.\n\n• Puedes eliminar tu cuenta desde Perfil > Zona peligrosa, sin salir de la app.\n• Puedes revisar la edad y abrir las opciones regulatorias de Appodeal desde Perfil > Ajustes > Privacidad y anuncios.\n• En iPhone o iPad puedes retirar el permiso de seguimiento en Ajustes > Privacidad y seguridad > Seguimiento.\n• Para cualquier otra solicitud, escríbenos a pablobrasero@gmail.com.\n\nTambién puedes reclamar ante la Agencia Española de Protección de Datos o tu autoridad local."
       },
       "s12": {
         "title": "12. Menores",
-        "body": "{{appName}} es una app de público general y no está dirigida exclusivamente a menores. AppLovin no permite usar su SDK con quien sea menor según la ley aplicable, y esa edad varía por país: aplicamos un corte único de 16 años, el más alto que exigen los estados del Espacio Económico Europeo. No usamos los SDK de publicidad o atribución con quien indique ser menor de 16 años. Si crees que un menor nos ha facilitado información sin autorización, contáctanos para revisarla y eliminarla cuando proceda."
+        "body": "{{appName}} es una app de público general y no está dirigida exclusivamente a menores. Aplicamos un corte conservador de 18 años: no cargamos ni usamos Appodeal, AppsFlyer o Meta con quien indique ser menor de 18 años. Si crees que un menor nos ha facilitado información sin autorización, contáctanos para revisarla y eliminarla cuando proceda."
       },
       "s13": {
         "title": "13. Cambios en esta política",

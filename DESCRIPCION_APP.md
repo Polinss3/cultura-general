@@ -25,8 +25,8 @@ El nombre visible depende del idioma del dispositivo: **Cultura General** en esp
 | Almacenamiento local | AsyncStorage |
 | i18n | i18next + react-i18next + expo-localization |
 | Tipografía | **Nunito** (5 pesos) |
-| Publicidad | AppLovin MAX — **apagada**, ver `docs/ads-applovin-activation.md` |
-| Atribución | AppsFlyer + Meta SDK, solo tras consentimiento personalizado |
+| Publicidad | Appodeal — producción **apagada**, TestFlight en prueba; ver `docs/APPODEAL_SAFE_INTEGRATION.md` |
+| Atribución | AppsFlyer + Meta SDK, solo después del CMP y ATT concedido |
 | Errores | Sentry |
 | Builds | EAS |
 
@@ -112,9 +112,9 @@ corta ahí y sin paginar no se veía el catálogo entero.
 
 ## Privacidad y publicidad
 
-Antes de inicializar nada se pide tramo de edad y una elección informada. **Por debajo de
-16 años no se inicializa AppLovin, AppsFlyer ni Meta**, y se juega sin anuncios. El orden
-es obligatorio: elección → ATT (solo si es personalizada) → MAX → AppsFlyer/Meta.
+Antes de cargar nada se pide el tramo de edad. **Por debajo de 18 años no se carga
+Appodeal, AppsFlyer ni Meta**, y se juega sin anuncios. Para adultos, el orden es
+obligatorio: edad → CMP de Appodeal → ATT → Appodeal → AppsFlyer/Meta si ATT se concede.
 
 La política de privacidad de la app tiene las **mismas 13 secciones** que la publicada en
 `cg-trivia.pablobrasero.com/privacy`, y un test lo comprueba en cada build de la web.
@@ -140,7 +140,7 @@ cd website && npm run build && npm test   # web oficial
 
 ## Documentación relacionada
 
-- `docs/ads-applovin-activation.md` — encender los anuncios cuando lleguen las claves
+- `docs/APPODEAL_SAFE_INTEGRATION.md` — dashboard, TestFlight y activación segura
 - `docs/adding-questions.md` — añadir preguntas (siempre bilingües)
 - `docs/appsflyer-meta-setup.md` — atribución
 - `store/README.md` — fichas de App Store y Google Play

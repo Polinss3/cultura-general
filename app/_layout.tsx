@@ -256,8 +256,8 @@ function RootLayout() {
   useEffect(() => {
     if (!ready || !onboarded) return;
     // Build sin anuncios posibles: ni se pregunta ni se aplica una decisión
-    // guardada. Sin esta guarda, quien eligiera "personalizados" en una build
-    // anterior seguiría disparando ATT, AppsFlyer y Meta en cada arranque para
+    // guardada. Sin esta guarda, una decisión de una build anterior seguiría
+    // disparando CMP, ATT, AppsFlyer y Meta en cada arranque para
     // medir anuncios que esta versión no muestra.
     if (!adsConfigured()) return;
     let cancelled = false;

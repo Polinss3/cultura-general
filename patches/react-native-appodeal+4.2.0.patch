@@ -1,0 +1,190 @@
+diff --git a/node_modules/react-native-appodeal/RNAppodeal.podspec b/node_modules/react-native-appodeal/RNAppodeal.podspec
+index 84be7d5..2d0c723 100644
+--- a/node_modules/react-native-appodeal/RNAppodeal.podspec
++++ b/node_modules/react-native-appodeal/RNAppodeal.podspec
+@@ -17,8 +17,12 @@ Pod::Spec.new do |s|
+   s.private_header_files = "ios/*.h"
+ 
+   # Appodeal dependencies
+-  s.dependency "Appodeal", "4.2.0"
+-  s.dependency "AppodealIABAdapter", "3.5.0.0"
++  # Temporary Cultura General bridge: native 4.3 adds setNonPersonalized while the
++  # official React Native wrapper is still on 4.2. Keep this in sync with the
++  # JS/native bridge below and remove the patch once upstream ships 4.3+.
++  s.dependency "Appodeal", "4.3.0"
++  s.dependency "AppodealBidMachineAdapter", "3.8.0.0"
++  s.dependency "AppodealIABAdapter", "3.5.2.0"
+ 
+   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
+   # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
+diff --git a/node_modules/react-native-appodeal/android/build.gradle b/node_modules/react-native-appodeal/android/build.gradle
+index 7c3eb76..6c1b09a 100644
+--- a/node_modules/react-native-appodeal/android/build.gradle
++++ b/node_modules/react-native-appodeal/android/build.gradle
+@@ -85,8 +85,9 @@ def kotlin_version = getExtOrDefault("kotlinVersion")
+ dependencies {
+     implementation "com.facebook.react:react-android"
+     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+-    // Appodeal SDK 4.2.0
+-    implementation "com.appodeal.ads.sdk:core:4.2.0"
++    // Temporary Cultura General bridge; see RNAppodeal.podspec.
++    implementation "com.appodeal.ads.sdk:core:4.3.0"
++    implementation "com.appodeal.ads.sdk.adapters:bidmachine:3.8.0.0"
+     implementation "com.appodeal.ads.sdk.adapters:iab:1.8.1.0"
+ }
+ 
+diff --git a/node_modules/react-native-appodeal/android/src/main/java/com/appodeal/rnappodeal/RNAppodealModuleImpl.kt b/node_modules/react-native-appodeal/android/src/main/java/com/appodeal/rnappodeal/RNAppodealModuleImpl.kt
+index 827e2d2..89e039e 100644
+--- a/node_modules/react-native-appodeal/android/src/main/java/com/appodeal/rnappodeal/RNAppodealModuleImpl.kt
++++ b/node_modules/react-native-appodeal/android/src/main/java/com/appodeal/rnappodeal/RNAppodealModuleImpl.kt
+@@ -219,6 +219,10 @@ internal class RNAppodealModuleImpl(
+         Appodeal.setChildDirectedTreatment(value)
+     }
+ 
++    fun setNonPersonalized(value: Boolean) {
++        Appodeal.setNonPersonalized(value)
++    }
++
+     fun setTesting(value: Boolean) {
+         Appodeal.setTesting(value)
+     }
+@@ -432,4 +436,3 @@ internal class RNAppodealModuleImpl(
+         private const val ERROR_VALIDATION_FAILED = "VALIDATION_FAILED"
+     }
+ }
+-
+diff --git a/node_modules/react-native-appodeal/android/src/newarch/com/appodeal/rnappodeal/RNAppodealModule.kt b/node_modules/react-native-appodeal/android/src/newarch/com/appodeal/rnappodeal/RNAppodealModule.kt
+index 0995c4b..e74d0fd 100644
+--- a/node_modules/react-native-appodeal/android/src/newarch/com/appodeal/rnappodeal/RNAppodealModule.kt
++++ b/node_modules/react-native-appodeal/android/src/newarch/com/appodeal/rnappodeal/RNAppodealModule.kt
+@@ -97,6 +97,10 @@ class RNAppodealModule(
+         moduleImplementation.setChildDirectedTreatment(value)
+     }
+ 
++    override fun setNonPersonalized(value: Boolean) {
++        moduleImplementation.setNonPersonalized(value)
++    }
++
+     override fun setTesting(value: Boolean) {
+         moduleImplementation.setTesting(value)
+     }
+diff --git a/node_modules/react-native-appodeal/android/src/oldarch/com/appodeal/rnappodeal/RNAppodealModule.java b/node_modules/react-native-appodeal/android/src/oldarch/com/appodeal/rnappodeal/RNAppodealModule.java
+index d0a9f6b..ccb7dd8 100644
+--- a/node_modules/react-native-appodeal/android/src/oldarch/com/appodeal/rnappodeal/RNAppodealModule.java
++++ b/node_modules/react-native-appodeal/android/src/oldarch/com/appodeal/rnappodeal/RNAppodealModule.java
+@@ -124,6 +124,11 @@ public class RNAppodealModule extends ReactContextBaseJavaModule {
+         moduleImplementation.setChildDirectedTreatment(flag);
+     }
+ 
++    @ReactMethod
++    public void setNonPersonalized(boolean flag) {
++        moduleImplementation.setNonPersonalized(flag);
++    }
++
+     @ReactMethod
+     public void setTesting(boolean flag) {
+         moduleImplementation.setTesting(flag);
+diff --git a/node_modules/react-native-appodeal/ios/RNAppodeal.mm b/node_modules/react-native-appodeal/ios/RNAppodeal.mm
+index 9281296..1b94b94 100644
+--- a/node_modules/react-native-appodeal/ios/RNAppodeal.mm
++++ b/node_modules/react-native-appodeal/ios/RNAppodeal.mm
+@@ -141,6 +141,10 @@ - (void)initializeWithAppKey:(NSString *)appKey
+     [Appodeal setChildDirectedTreatment:value];
+ }
+ 
++RCT_EXPORT_METHOD(setNonPersonalized:(BOOL)value) {
++    [Appodeal setNonPersonalized:value];
++}
++
+ RCT_EXPORT_METHOD(setTesting:(BOOL)value) {
+     [Appodeal setTestingEnabled:value];
+ }
+@@ -494,6 +498,10 @@ - (void)setChildDirectedTreatment:(BOOL)value {
+     [Appodeal setChildDirectedTreatment:value];
+ }
+ 
++- (void)setNonPersonalized:(BOOL)value {
++    [Appodeal setNonPersonalized:value];
++}
++
+ - (void)setTesting:(BOOL)value {
+     [Appodeal setTestingEnabled:value];
+ }
+diff --git a/node_modules/react-native-appodeal/lib/module/RNAppodeal.js b/node_modules/react-native-appodeal/lib/module/RNAppodeal.js
+index 4a48a46..c872ab8 100644
+--- a/node_modules/react-native-appodeal/lib/module/RNAppodeal.js
++++ b/node_modules/react-native-appodeal/lib/module/RNAppodeal.js
+@@ -109,6 +109,9 @@ const appodeal = {
+   setChildDirectedTreatment: value => {
+     NativeAppodeal.setChildDirectedTreatment(value);
+   },
++  setNonPersonalized: value => {
++    NativeAppodeal.setNonPersonalized(value);
++  },
+   setTesting: value => {
+     NativeAppodeal.setTesting(value);
+   },
+diff --git a/node_modules/react-native-appodeal/lib/typescript/src/RNAppodeal.d.ts b/node_modules/react-native-appodeal/lib/typescript/src/RNAppodeal.d.ts
+index 26daffc..0f4b7f3 100644
+--- a/node_modules/react-native-appodeal/lib/typescript/src/RNAppodeal.d.ts
++++ b/node_modules/react-native-appodeal/lib/typescript/src/RNAppodeal.d.ts
+@@ -108,6 +108,8 @@ export interface Appodeal {
+      * @param value Boolean flag indicating child directed treatment
+      */
+     setChildDirectedTreatment(value: boolean): void;
++    /** Forces non-personalized advertising. Native Appodeal SDK 4.3.0+ only. */
++    setNonPersonalized(value: boolean): void;
+     /**
+      * Returns current user consent status
+      */
+diff --git a/node_modules/react-native-appodeal/lib/typescript/src/specs/NativeAppodealModule.d.ts b/node_modules/react-native-appodeal/lib/typescript/src/specs/NativeAppodealModule.d.ts
+index 21d1578..20fbc75 100644
+--- a/node_modules/react-native-appodeal/lib/typescript/src/specs/NativeAppodealModule.d.ts
++++ b/node_modules/react-native-appodeal/lib/typescript/src/specs/NativeAppodealModule.d.ts
+@@ -28,6 +28,7 @@ export interface Spec extends TurboModule {
+     privacyOptionsRequirementStatus(): number;
+     showPrivacyOptionsForm(): Promise<void>;
+     setChildDirectedTreatment(value: boolean): void;
++    setNonPersonalized(value: boolean): void;
+     setTesting(value: boolean): void;
+     setLogLevel(value: string): void;
+     setTriggerPrecacheCallbacks(adTypes: number, value: boolean): void;
+diff --git a/node_modules/react-native-appodeal/src/RNAppodeal.ts b/node_modules/react-native-appodeal/src/RNAppodeal.ts
+index 9230f3e..18f6a64 100644
+--- a/node_modules/react-native-appodeal/src/RNAppodeal.ts
++++ b/node_modules/react-native-appodeal/src/RNAppodeal.ts
+@@ -124,6 +124,11 @@ export interface Appodeal {
+    * @param value Boolean flag indicating child directed treatment
+    */
+   setChildDirectedTreatment(value: boolean): void;
++  /**
++   * Forces non-personalized advertising. Native Appodeal SDK 4.3.0+ only.
++   * Must be called before initialization.
++   */
++  setNonPersonalized(value: boolean): void;
+   /**
+    * Returns current user consent status
+    */
+@@ -366,6 +371,10 @@ const appodeal: Appodeal = {
+     NativeAppodeal.setChildDirectedTreatment(value);
+   },
+ 
++  setNonPersonalized: (value: boolean): void => {
++    NativeAppodeal.setNonPersonalized(value);
++  },
++
+   setTesting: (value: boolean): void => {
+     NativeAppodeal.setTesting(value);
+   },
+diff --git a/node_modules/react-native-appodeal/src/specs/NativeAppodealModule.ts b/node_modules/react-native-appodeal/src/specs/NativeAppodealModule.ts
+index 2aa6b67..89adb5c 100644
+--- a/node_modules/react-native-appodeal/src/specs/NativeAppodealModule.ts
++++ b/node_modules/react-native-appodeal/src/specs/NativeAppodealModule.ts
+@@ -37,6 +37,7 @@ export interface Spec extends TurboModule {
+ 
+   // Configuration
+   setChildDirectedTreatment(value: boolean): void;
++  setNonPersonalized(value: boolean): void;
+   setTesting(value: boolean): void;
+   setLogLevel(value: string): void;
+   setTriggerPrecacheCallbacks(adTypes: number, value: boolean): void;

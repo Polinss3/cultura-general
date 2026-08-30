@@ -1,21 +1,18 @@
 import { AppState, Platform } from 'react-native';
-import AppLovinMAX, {
-  InterstitialAd,
-  BannerAd,
-  Privacy,
-  RewardedAd,
-  type AdInfo,
-  type Configuration,
-} from 'react-native-applovin-max';
 import type { AdsConsentDecision } from '@/stores/adsConsentStore';
 import {
   RESULT_INTERSTITIAL_DELAY_MS,
   canShowAutomaticInterstitial,
   createAdPolicyState,
+  getAdRetryDelayMs,
+  parseAppodealPaidAmount,
   recordCompletedResult,
   recordFullscreenClosed,
+  resolveAppodealRuntimeConfig,
 } from '@/utils/adPolicy';
-import { logAppsFlyerAdRevenue } from '@/lib/appsflyer';
+import { logAppsFlyerAdRevenue, type AdRevenueFormat } from '@/lib/appsflyer';
+
+type AdsModule = typeof import('react-native-appodeal');
 
 export type AdPlacement =
   | 'daily_answered'
@@ -26,111 +23,86 @@ export type AdPlacement =
 export type RewardedPlacement = 'shop_coins' | 'ladder_revive' | 'speed_time';
 export type AdsMode = 'off' | 'test' | 'live';
 
-const RETRY_DELAYS_MS = [2_000, 4_000, 8_000, 16_000, 32_000, 64_000] as const;
+export const APPODEAL_PLACEMENTS = {
+  gameplayBanner: 'gameplay_banner',
+  resultInterstitial: {
+    daily_answered: 'daily_result_interstitial',
+    speed_complete: 'speed_result_interstitial',
+    ladder_complete: 'ladder_result_interstitial',
+    flags_complete: 'flags_result_interstitial',
+    years_complete: 'years_result_interstitial',
+  },
+  rewarded: {
+    shop_coins: 'shop_coins_rewarded',
+    ladder_revive: 'ladder_revive_rewarded',
+    speed_time: 'speed_time_rewarded',
+  },
+} as const satisfies {
+  gameplayBanner: string;
+  resultInterstitial: Record<AdPlacement, string>;
+  rewarded: Record<RewardedPlacement, string>;
+};
 
+const CONSENT_INFO_TIMEOUT_MS = 10_000;
+
+let modTried = false;
+let mod: AdsModule | null = null;
 let initPromise: Promise<boolean> | null = null;
+let cmpPromise: Promise<void> | null = null;
 let initialized = false;
+let consentAllowsAds = false;
 let requestsEnabled = false;
-let sdkConfiguration: Configuration | null = null;
 let listenersInstalled = false;
-let interstitialReady = false;
 let interstitialLoading = false;
-let rewardedReady = false;
 let rewardedLoading = false;
 let showingInterstitial = false;
 let showingRewarded = false;
-let interstitialRetryIndex = 0;
-let rewardedRetryIndex = 0;
+let interstitialFailureAttempt = 0;
+let rewardedFailureAttempt = 0;
 let interstitialRetryTimer: ReturnType<typeof setTimeout> | null = null;
 let rewardedRetryTimer: ReturnType<typeof setTimeout> | null = null;
 let resultTimer: ReturnType<typeof setTimeout> | null = null;
 let rewardedTimeout: ReturnType<typeof setTimeout> | null = null;
-let pendingReward:
-  | { earned: boolean; resolve: (value: boolean) => void }
-  | null = null;
+let pendingReward: { earned: boolean; resolve: (value: boolean) => void } | null = null;
 let policyState = createAdPolicyState();
 let adsGeneration = 0;
 const stateListeners = new Set<() => void>();
 
-function isNativePlatform() {
-  return Platform.OS === 'ios' || Platform.OS === 'android';
-}
+const runtime = resolveAppodealRuntimeConfig({
+  modeValue: process.env.EXPO_PUBLIC_ADS_MODE,
+  isDev: __DEV__,
+  platform: Platform.OS === 'ios' ? 'ios' : Platform.OS === 'android' ? 'android' : 'other',
+  iosAppKey: process.env.EXPO_PUBLIC_APPODEAL_IOS_APP_KEY,
+  androidAppKey: process.env.EXPO_PUBLIC_APPODEAL_ANDROID_APP_KEY,
+});
 
-function parseMode(raw = process.env.EXPO_PUBLIC_ADS_MODE): AdsMode {
-  const normalized = raw?.trim().toLowerCase();
-  if (normalized !== 'off' && normalized !== 'test' && normalized !== 'live') return 'off';
-  if (__DEV__ && normalized === 'live') return 'test';
-  return normalized;
-}
-
-function currentMode() {
-  return parseMode();
-}
-
-function envValue(name: string): string | null {
-  const value = (() => {
-    switch (name) {
-      case 'EXPO_PUBLIC_APPLOVIN_SDK_KEY': return process.env.EXPO_PUBLIC_APPLOVIN_SDK_KEY;
-      case 'EXPO_PUBLIC_APPLOVIN_IOS_INTERSTITIAL': return process.env.EXPO_PUBLIC_APPLOVIN_IOS_INTERSTITIAL;
-      case 'EXPO_PUBLIC_APPLOVIN_ANDROID_INTERSTITIAL': return process.env.EXPO_PUBLIC_APPLOVIN_ANDROID_INTERSTITIAL;
-      case 'EXPO_PUBLIC_APPLOVIN_IOS_REWARDED': return process.env.EXPO_PUBLIC_APPLOVIN_IOS_REWARDED;
-      case 'EXPO_PUBLIC_APPLOVIN_ANDROID_REWARDED': return process.env.EXPO_PUBLIC_APPLOVIN_ANDROID_REWARDED;
-      case 'EXPO_PUBLIC_APPLOVIN_IOS_BANNER': return process.env.EXPO_PUBLIC_APPLOVIN_IOS_BANNER;
-      case 'EXPO_PUBLIC_APPLOVIN_ANDROID_BANNER': return process.env.EXPO_PUBLIC_APPLOVIN_ANDROID_BANNER;
-      case 'EXPO_PUBLIC_APPLOVIN_TEST_DEVICE_IDS': return process.env.EXPO_PUBLIC_APPLOVIN_TEST_DEVICE_IDS;
-      default: return undefined;
+function getAdsModule(): AdsModule | null {
+  if (!modTried) {
+    modTried = true;
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
+      try {
+        // El SDK solo se evalúa desde módulos nativos y siempre detrás de las
+        // puertas de modo, App Key, edad y CMP.
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        mod = require('react-native-appodeal');
+      } catch {
+        mod = null;
+      }
     }
-  })()?.trim();
-  return value || null;
-}
-
-function getInterstitialAdUnitId() {
-  if (Platform.OS === 'ios') return envValue('EXPO_PUBLIC_APPLOVIN_IOS_INTERSTITIAL');
-  if (Platform.OS === 'android') return envValue('EXPO_PUBLIC_APPLOVIN_ANDROID_INTERSTITIAL');
-  return null;
-}
-
-function getRewardedAdUnitId() {
-  if (Platform.OS === 'ios') return envValue('EXPO_PUBLIC_APPLOVIN_IOS_REWARDED');
-  if (Platform.OS === 'android') return envValue('EXPO_PUBLIC_APPLOVIN_ANDROID_REWARDED');
-  return null;
-}
-
-export function getBannerAdUnitId() {
-  if (Platform.OS === 'ios') return envValue('EXPO_PUBLIC_APPLOVIN_IOS_BANNER');
-  if (Platform.OS === 'android') return envValue('EXPO_PUBLIC_APPLOVIN_ANDROID_BANNER');
-  return null;
+  }
+  return mod;
 }
 
 function parseBoolean(raw: string | undefined) {
   return raw?.trim().toLowerCase() === 'true';
 }
 
-function getConfiguredAdUnitIds() {
-  return [getInterstitialAdUnitId(), getRewardedAdUnitId(), getBannerAdUnitId()].filter(
-    (id): id is string => Boolean(id),
-  );
+function bannerFeatureEnabled() {
+  return parseBoolean(process.env.EXPO_PUBLIC_BANNER_ADS);
 }
 
-/**
- * ¿Puede esta build llegar a pedir un anuncio? Son exactamente las condiciones
- * con las que `initializeAds` decide seguir adelante, menos el tramo de edad,
- * que es justo lo que hay que preguntar.
- *
- * Existe para no montar el aviso de edad y publicidad en una versión que se
- * publica con los anuncios apagados. Preguntar por una elección publicitaria
- * que no puede tener ningún efecto confunde al usuario, no cuadra con la ficha
- * de la tienda —que no menciona publicidad— y, en el camino "personalizados",
- * acabaría pidiendo ATT y arrancando AppsFlyer y Meta para medir anuncios que
- * no existen.
- */
-export function adsConfigured(): boolean {
-  if (!isNativePlatform()) return false;
-  if (currentMode() === 'off') return false;
-  return (
-    Boolean(envValue('EXPO_PUBLIC_APPLOVIN_SDK_KEY')) &&
-    getConfiguredAdUnitIds().length > 0
-  );
+function rewardedFeatureEnabled() {
+  return parseBoolean(process.env.EXPO_PUBLIC_REWARDED_HINTS);
 }
 
 function notifyState() {
@@ -139,208 +111,143 @@ function notifyState() {
 
 export function subscribeAdsState(listener: () => void) {
   stateListeners.add(listener);
-  return () => stateListeners.delete(listener);
+  return () => { stateListeners.delete(listener); };
+}
+
+export function adsConsentGranted() {
+  return consentAllowsAds && initialized && requestsEnabled;
+}
+
+/** Configurada para esta plataforma; no implica que edad/CMP ya permitan pedir anuncios. */
+export function adsConfigured(): boolean {
+  return runtime.enabled;
 }
 
 function clearTimer(timer: ReturnType<typeof setTimeout> | null) {
   if (timer) clearTimeout(timer);
 }
 
-function scheduleInterstitialRetry() {
-  clearTimer(interstitialRetryTimer);
-  if (!requestsEnabled || !getInterstitialAdUnitId()) return;
-  const delay = RETRY_DELAYS_MS[Math.min(interstitialRetryIndex, RETRY_DELAYS_MS.length - 1)];
-  interstitialRetryIndex += 1;
-  interstitialRetryTimer = setTimeout(preloadInterstitial, delay);
+async function runAppodealCmp(m: AdsModule, appKey: string): Promise<void> {
+  try {
+    await Promise.race([
+      m.default.requestConsentInfoUpdate(appKey),
+      new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Appodeal consent info timed out')), CONSENT_INFO_TIMEOUT_MS);
+      }),
+    ]);
+    await m.default.showConsentFormIfNeeded();
+  } catch {
+    // Sin una cadena TCF válida, el fallback más restrictivo es contextual.
+    m.default.setNonPersonalized(true);
+  }
 }
 
-function scheduleRewardedRetry() {
-  clearTimer(rewardedRetryTimer);
-  if (!requestsEnabled || !getRewardedAdUnitId() || !rewardedFeatureEnabled()) return;
-  const delay = RETRY_DELAYS_MS[Math.min(rewardedRetryIndex, RETRY_DELAYS_MS.length - 1)];
-  rewardedRetryIndex += 1;
-  rewardedRetryTimer = setTimeout(preloadRewarded, delay);
-}
+/**
+ * Orden previo al SDK: edad propia → CMP oficial de Appodeal.
+ * La respuesta de personalización vive en la cadena IAB TCF y la aplica el SDK;
+ * no interpretamos AppodealConsentStatus como si fuera un sí/no.
+ */
+export async function resolveAdsConsent(
+  decision: AdsConsentDecision,
+): Promise<{ resolved: boolean; canRequestAds: boolean }> {
+  if (!runtime.enabled || !runtime.appKey) {
+    consentAllowsAds = false;
+    notifyState();
+    return { resolved: false, canRequestAds: false };
+  }
+  if (decision.ageBracket !== 'adult') {
+    disableAds();
+    return { resolved: true, canRequestAds: false };
+  }
 
-function finishRewarded(value: boolean) {
-  if (!pendingReward) return;
-  clearTimer(rewardedTimeout);
-  rewardedTimeout = null;
-  const { resolve } = pendingReward;
-  pendingReward = null;
-  showingRewarded = false;
+  const m = getAdsModule();
+  if (!m) {
+    consentAllowsAds = false;
+    notifyState();
+    return { resolved: false, canRequestAds: false };
+  }
+
+  const generation = adsGeneration;
+  // Test y privacidad se fijan antes del CMP y, sobre todo, antes de initialize().
+  m.default.setTesting(runtime.mode === 'test');
+  m.default.setLogLevel(
+    runtime.mode === 'test' ? m.AppodealLogLevel.VERBOSE : m.AppodealLogLevel.NONE,
+  );
+  m.default.setChildDirectedTreatment(false);
+  m.default.setNonPersonalized(false);
+
+  cmpPromise ??= runAppodealCmp(m, runtime.appKey);
+  await cmpPromise;
+  if (generation !== adsGeneration) {
+    return { resolved: false, canRequestAds: false };
+  }
+
+  consentAllowsAds = true;
   notifyState();
-  resolve(value);
+  return { resolved: true, canRequestAds: true };
 }
 
-function matches(info: { adUnitId: string }, expected: string | null) {
-  return Boolean(expected && info.adUnitId === expected);
+function initializedAdTypes(m: AdsModule): import('react-native-appodeal').AppodealAdType {
+  let types = m.AppodealAdType.INTERSTITIAL;
+  if (rewardedFeatureEnabled()) types |= m.AppodealAdType.REWARDED_VIDEO;
+  if (bannerFeatureEnabled()) types |= m.AppodealAdType.BANNER;
+  return types as import('react-native-appodeal').AppodealAdType;
 }
 
-function installListeners() {
-  if (listenersInstalled) return;
-  listenersInstalled = true;
-
-  InterstitialAd.addAdLoadedEventListener(info => {
-    if (!matches(info, getInterstitialAdUnitId())) return;
-    interstitialReady = true;
-    interstitialLoading = false;
-    interstitialRetryIndex = 0;
-    notifyState();
-  });
-  InterstitialAd.addAdLoadFailedEventListener(info => {
-    if (!matches(info, getInterstitialAdUnitId())) return;
-    interstitialReady = false;
-    interstitialLoading = false;
-    notifyState();
-    scheduleInterstitialRetry();
-  });
-  InterstitialAd.addAdDisplayedEventListener(info => {
-    if (!matches(info, getInterstitialAdUnitId())) return;
-    interstitialReady = false;
-    showingInterstitial = true;
-    notifyState();
-  });
-  InterstitialAd.addAdFailedToDisplayEventListener(info => {
-    if (!matches(info, getInterstitialAdUnitId())) return;
-    showingInterstitial = false;
-    interstitialReady = false;
-    notifyState();
-    scheduleInterstitialRetry();
-  });
-  InterstitialAd.addAdHiddenEventListener(info => {
-    if (!matches(info, getInterstitialAdUnitId())) return;
-    showingInterstitial = false;
-    policyState = recordFullscreenClosed(policyState, 'interstitial');
-    notifyState();
-    preloadInterstitial();
-  });
-  InterstitialAd.addAdRevenuePaidListener(handleAdRevenue);
-
-  RewardedAd.addAdLoadedEventListener(info => {
-    if (!matches(info, getRewardedAdUnitId())) return;
-    rewardedReady = true;
-    rewardedLoading = false;
-    rewardedRetryIndex = 0;
-    notifyState();
-  });
-  RewardedAd.addAdLoadFailedEventListener(info => {
-    if (!matches(info, getRewardedAdUnitId())) return;
-    rewardedReady = false;
-    rewardedLoading = false;
-    notifyState();
-    finishRewarded(false);
-    scheduleRewardedRetry();
-  });
-  RewardedAd.addAdDisplayedEventListener(info => {
-    if (!matches(info, getRewardedAdUnitId())) return;
-    rewardedReady = false;
-    showingRewarded = true;
-    notifyState();
-  });
-  RewardedAd.addAdFailedToDisplayEventListener(info => {
-    if (!matches(info, getRewardedAdUnitId())) return;
-    rewardedReady = false;
-    showingRewarded = false;
-    notifyState();
-    finishRewarded(false);
-    scheduleRewardedRetry();
-  });
-  RewardedAd.addAdReceivedRewardEventListener(info => {
-    if (!matches(info, getRewardedAdUnitId()) || !pendingReward) return;
-    pendingReward.earned = true;
-  });
-  RewardedAd.addAdHiddenEventListener(info => {
-    if (!matches(info, getRewardedAdUnitId())) return;
-    policyState = recordFullscreenClosed(policyState, 'rewarded');
-    finishRewarded(Boolean(pendingReward?.earned));
-    preloadRewarded();
-  });
-  RewardedAd.addAdRevenuePaidListener(handleAdRevenue);
-}
-
-function preloadInterstitial() {
-  const adUnitId = getInterstitialAdUnitId();
-  if (!requestsEnabled || !adUnitId || interstitialReady || interstitialLoading || showingInterstitial) return;
-  try {
-    interstitialLoading = true;
-    InterstitialAd.loadAd(adUnitId);
-  } catch {
-    interstitialLoading = false;
-    scheduleInterstitialRetry();
+async function waitUntilInitialized(
+  m: AdsModule,
+  types: import('react-native-appodeal').AppodealAdType,
+): Promise<void> {
+  const deadline = Date.now() + 20_000;
+  while (!m.default.isInitialized(types)) {
+    if (Date.now() >= deadline) throw new Error('Appodeal initialization timed out');
+    await new Promise(resolve => setTimeout(resolve, 100));
   }
-}
-
-function rewardedFeatureEnabled() {
-  return parseBoolean(process.env.EXPO_PUBLIC_REWARDED_HINTS);
-}
-
-function preloadRewarded() {
-  const adUnitId = getRewardedAdUnitId();
-  if (
-    !requestsEnabled || !rewardedFeatureEnabled() || !adUnitId ||
-    rewardedReady || rewardedLoading || showingRewarded
-  ) return;
-  try {
-    rewardedLoading = true;
-    RewardedAd.loadAd(adUnitId);
-  } catch {
-    rewardedLoading = false;
-    scheduleRewardedRetry();
-  }
-}
-
-export function markAdsSessionStarted() {
-  policyState = createAdPolicyState();
 }
 
 export async function initializeAds(decision: AdsConsentDecision): Promise<boolean> {
-  if (!isNativePlatform() || decision.ageBracket !== 'adult') return false;
-  if (currentMode() === 'off') return false;
-
-  const personalized = decision.choice === 'personalized';
-  Privacy.setHasUserConsent(personalized);
-  Privacy.setDoNotSell(!personalized);
-
+  if (!runtime.enabled || !runtime.appKey || decision.ageBracket !== 'adult') return false;
   if (initialized) {
-    requestsEnabled = currentMode() === 'live' || sdkConfiguration?.isTestModeEnabled === true;
+    requestsEnabled = consentAllowsAds;
+    notifyState();
     if (requestsEnabled) {
       preloadInterstitial();
       preloadRewarded();
     }
-    notifyState();
     return requestsEnabled;
   }
   if (initPromise) return initPromise;
 
-  const sdkKey = envValue('EXPO_PUBLIC_APPLOVIN_SDK_KEY');
-  const adUnitIds = getConfiguredAdUnitIds();
-  if (!sdkKey || adUnitIds.length === 0) return false;
-
   const initializationGeneration = adsGeneration;
   initPromise = (async () => {
+    const consent = await resolveAdsConsent(decision);
+    if (!consent.resolved || !consent.canRequestAds) {
+      initPromise = null;
+      return false;
+    }
+
+    const m = getAdsModule();
+    if (!m) {
+      initPromise = null;
+      return false;
+    }
+
     try {
-      const testDeviceIds = (envValue('EXPO_PUBLIC_APPLOVIN_TEST_DEVICE_IDS') ?? '')
-        .split(',')
-        .map(value => value.trim())
-        .filter(Boolean);
-      if (testDeviceIds.length > 0) AppLovinMAX.setTestDeviceAdvertisingIds(testDeviceIds);
+      installListeners(m);
+      const types = initializedAdTypes(m);
+      m.default.setAutoCache(m.AppodealAdType.INTERSTITIAL, true);
+      m.default.setAutoCache(m.AppodealAdType.REWARDED_VIDEO, rewardedFeatureEnabled());
+      m.default.setSmartBanners(true);
+      m.default.setBannerAnimation(true);
+      m.default.initialize(runtime.appKey!, types);
+      await waitUntilInitialized(m, types);
 
-      AppLovinMAX.setInitializationAdUnitIds(adUnitIds);
-      AppLovinMAX.setVerboseLogging(currentMode() === 'test');
-      installListeners();
-
-      sdkConfiguration = await AppLovinMAX.initialize(sdkKey);
       initialized = true;
-      if (initializationGeneration !== adsGeneration) {
-        requestsEnabled = false;
-        notifyState();
-        return false;
-      }
-      requestsEnabled = currentMode() === 'live' || sdkConfiguration.isTestModeEnabled === true;
+      requestsEnabled =
+        initializationGeneration === adsGeneration && consentAllowsAds;
       notifyState();
-
       if (!requestsEnabled) return false;
+
       preloadInterstitial();
       preloadRewarded();
       return true;
@@ -356,64 +263,131 @@ export async function initializeAds(decision: AdsConsentDecision): Promise<boole
   return initPromise;
 }
 
+export function markAdsSessionStarted() {
+  policyState = createAdPolicyState();
+}
+
+function finishRewarded(value: boolean) {
+  if (!pendingReward) return;
+  clearTimer(rewardedTimeout);
+  rewardedTimeout = null;
+  const { resolve } = pendingReward;
+  pendingReward = null;
+  showingRewarded = false;
+  notifyState();
+  resolve(value);
+}
+
 export function disableAds() {
   adsGeneration += 1;
-  if (initialized || initPromise) {
-    try {
-      Privacy.setHasUserConsent(false);
-      Privacy.setDoNotSell(true);
-    } catch {}
-  }
+  consentAllowsAds = false;
   requestsEnabled = false;
-  interstitialReady = false;
-  rewardedReady = false;
+  interstitialLoading = false;
+  rewardedLoading = false;
+  showingInterstitial = false;
   clearTimer(interstitialRetryTimer);
   clearTimer(rewardedRetryTimer);
   clearTimer(resultTimer);
   interstitialRetryTimer = null;
   rewardedRetryTimer = null;
   resultTimer = null;
-  const bannerId = getBannerAdUnitId();
-  if (bannerId) {
+
+  const m = mod;
+  if (m) {
     try {
-      BannerAd.hideAd(bannerId);
-      BannerAd.stopAutoRefresh(bannerId);
-      BannerAd.destroyAd(bannerId);
+      m.default.setNonPersonalized(true);
+      m.default.setAutoCache(m.AppodealAdType.ALL, false);
+      m.default.hide(m.AppodealAdType.BANNER);
     } catch {}
   }
   finishRewarded(false);
   notifyState();
 }
 
-export async function showResultInterstitial(placement: AdPlacement, allowShow = true): Promise<boolean> {
+function scheduleInterstitialRetry() {
+  clearTimer(interstitialRetryTimer);
+  if (!requestsEnabled) return;
+  interstitialFailureAttempt += 1;
+  interstitialRetryTimer = setTimeout(() => {
+    interstitialRetryTimer = null;
+    preloadInterstitial();
+  }, getAdRetryDelayMs(interstitialFailureAttempt));
+}
+
+function scheduleRewardedRetry() {
+  clearTimer(rewardedRetryTimer);
+  if (!requestsEnabled || !rewardedFeatureEnabled()) return;
+  rewardedFailureAttempt += 1;
+  rewardedRetryTimer = setTimeout(() => {
+    rewardedRetryTimer = null;
+    preloadRewarded();
+  }, getAdRetryDelayMs(rewardedFailureAttempt));
+}
+
+function preloadInterstitial() {
+  const m = getAdsModule();
+  if (!m || !adsConsentGranted() || interstitialLoading || showingInterstitial) return;
+  try {
+    if (!m.default.isLoaded(m.AppodealAdType.INTERSTITIAL)) {
+      interstitialLoading = true;
+      m.default.cache(m.AppodealAdType.INTERSTITIAL);
+    }
+  } catch {
+    interstitialLoading = false;
+    scheduleInterstitialRetry();
+  }
+}
+
+function preloadRewarded() {
+  const m = getAdsModule();
+  if (
+    !m || !rewardedFeatureEnabled() || !adsConsentGranted() ||
+    rewardedLoading || showingRewarded || pendingReward
+  ) return;
+  try {
+    if (!m.default.isLoaded(m.AppodealAdType.REWARDED_VIDEO)) {
+      rewardedLoading = true;
+      m.default.cache(m.AppodealAdType.REWARDED_VIDEO);
+    }
+  } catch {
+    rewardedLoading = false;
+    scheduleRewardedRetry();
+  }
+}
+
+export async function showResultInterstitial(
+  placement: AdPlacement,
+  allowShow = true,
+): Promise<boolean> {
   policyState = recordCompletedResult(policyState);
-  if (!allowShow || !requestsEnabled || showingInterstitial || resultTimer || !canShowAutomaticInterstitial(policyState)) {
+  if (
+    !allowShow || !requestsEnabled || showingInterstitial || resultTimer ||
+    !canShowAutomaticInterstitial(policyState)
+  ) {
     preloadInterstitial();
     return false;
   }
 
   return new Promise(resolve => {
-    resultTimer = setTimeout(async () => {
+    resultTimer = setTimeout(() => {
       resultTimer = null;
-      const adUnitId = getInterstitialAdUnitId();
+      const m = getAdsModule();
+      const appodealPlacement = APPODEAL_PLACEMENTS.resultInterstitial[placement];
       if (
-        !requestsEnabled || !adUnitId || AppState.currentState !== 'active' ||
-        showingInterstitial || !canShowAutomaticInterstitial(policyState)
+        !m || !adsConsentGranted() || AppState.currentState !== 'active' ||
+        showingInterstitial || !canShowAutomaticInterstitial(policyState) ||
+        !m.default.isLoaded(m.AppodealAdType.INTERSTITIAL) ||
+        !m.default.canShow(m.AppodealAdType.INTERSTITIAL, appodealPlacement)
       ) {
         preloadInterstitial();
         resolve(false);
         return;
       }
+
       try {
-        interstitialReady = await InterstitialAd.isAdReady(adUnitId);
-        if (!interstitialReady) {
-          preloadInterstitial();
-          resolve(false);
-          return;
-        }
         showingInterstitial = true;
         notifyState();
-        InterstitialAd.showAd(adUnitId, placement);
+        m.default.show(m.AppodealAdType.INTERSTITIAL, appodealPlacement);
         resolve(true);
       } catch {
         showingInterstitial = false;
@@ -425,17 +399,29 @@ export async function showResultInterstitial(placement: AdPlacement, allowShow =
 }
 
 export function isRewardedReady() {
-  return requestsEnabled && rewardedFeatureEnabled() && Boolean(getRewardedAdUnitId()) && !showingRewarded;
-}
-
-export async function showRewardedAd(placement: RewardedPlacement): Promise<boolean> {
-  const adUnitId = getRewardedAdUnitId();
-  if (!requestsEnabled || !rewardedFeatureEnabled() || !adUnitId || showingRewarded || pendingReward) {
+  const m = mod;
+  if (!m || !requestsEnabled || !rewardedFeatureEnabled() || showingRewarded || pendingReward) {
     return false;
   }
   try {
-    rewardedReady = await RewardedAd.isAdReady(adUnitId);
-    if (!rewardedReady) {
+    return m.default.isLoaded(m.AppodealAdType.REWARDED_VIDEO);
+  } catch {
+    return false;
+  }
+}
+
+export async function showRewardedAd(placement: RewardedPlacement): Promise<boolean> {
+  if (!requestsEnabled || !rewardedFeatureEnabled() || showingRewarded || pendingReward) {
+    return false;
+  }
+  const m = getAdsModule();
+  const appodealPlacement = APPODEAL_PLACEMENTS.rewarded[placement];
+  if (!m) return false;
+  try {
+    if (
+      !m.default.isLoaded(m.AppodealAdType.REWARDED_VIDEO) ||
+      !m.default.canShow(m.AppodealAdType.REWARDED_VIDEO, appodealPlacement)
+    ) {
       preloadRewarded();
       return false;
     }
@@ -446,12 +432,14 @@ export async function showRewardedAd(placement: RewardedPlacement): Promise<bool
 
   return new Promise(resolve => {
     pendingReward = { earned: false, resolve };
+    showingRewarded = true;
     rewardedTimeout = setTimeout(() => {
       finishRewarded(false);
       preloadRewarded();
     }, 120_000);
+    notifyState();
     try {
-      RewardedAd.showAd(adUnitId, placement);
+      m.default.show(m.AppodealAdType.REWARDED_VIDEO, appodealPlacement);
     } catch {
       finishRewarded(false);
       preloadRewarded();
@@ -460,27 +448,106 @@ export async function showRewardedAd(placement: RewardedPlacement): Promise<bool
 }
 
 export function isBannerEnabled() {
-  return requestsEnabled && parseBoolean(process.env.EXPO_PUBLIC_BANNER_ADS) && Boolean(getBannerAdUnitId());
+  return adsConsentGranted() && bannerFeatureEnabled();
 }
 
-export function handleAdRevenue(adInfo?: AdInfo) {
-  if (!adInfo || currentMode() !== 'live' || sdkConfiguration?.isTestModeEnabled) return;
-  if (!Number.isFinite(adInfo.revenue) || adInfo.revenue < 0) return;
-  if (!adInfo.networkName?.trim() || !adInfo.adUnitId?.trim()) return;
-  logAppsFlyerAdRevenue({
-    revenue: adInfo.revenue,
-    networkName: adInfo.networkName,
-    adUnitId: adInfo.adUnitId,
-    placement: adInfo.placement,
-    adFormat: adInfo.adFormat,
+function adFormatFromType(m: AdsModule, adType: unknown): AdRevenueFormat | null {
+  if (adType === m.AppodealAdType.BANNER) return 'banner';
+  if (adType === m.AppodealAdType.INTERSTITIAL) return 'interstitial';
+  if (adType === m.AppodealAdType.REWARDED_VIDEO) return 'rewarded';
+  return null;
+}
+
+export function handleAdRevenue(payload?: unknown) {
+  if (runtime.mode !== 'live' || !payload || typeof payload !== 'object') return;
+  const m = getAdsModule();
+  const paid = parseAppodealPaidAmount(payload);
+  const format = m
+    ? adFormatFromType(m, (payload as Record<string, unknown>).adType)
+    : null;
+  if (!paid || !format) return;
+  logAppsFlyerAdRevenue({ ...paid, format });
+}
+
+function installListeners(m: AdsModule) {
+  if (listenersInstalled) return;
+  listenersInstalled = true;
+
+  m.default.addEventListener(m.AppodealSdkEvents.AD_REVENUE, handleAdRevenue);
+
+  m.default.addEventListener(m.AppodealInterstitialEvents.LOADED, () => {
+    interstitialLoading = false;
+    interstitialFailureAttempt = 0;
+    notifyState();
   });
+  m.default.addEventListener(m.AppodealInterstitialEvents.FAILED_TO_LOAD, () => {
+    interstitialLoading = false;
+    notifyState();
+    scheduleInterstitialRetry();
+  });
+  m.default.addEventListener(m.AppodealInterstitialEvents.SHOWN, () => {
+    showingInterstitial = true;
+    notifyState();
+  });
+  m.default.addEventListener(m.AppodealInterstitialEvents.FAILED_TO_SHOW, () => {
+    showingInterstitial = false;
+    notifyState();
+    preloadInterstitial();
+  });
+  m.default.addEventListener(m.AppodealInterstitialEvents.CLOSED, () => {
+    showingInterstitial = false;
+    policyState = recordFullscreenClosed(policyState, 'interstitial');
+    notifyState();
+    preloadInterstitial();
+  });
+
+  m.default.addEventListener(m.AppodealRewardedEvents.LOADED, () => {
+    rewardedLoading = false;
+    rewardedFailureAttempt = 0;
+    notifyState();
+  });
+  m.default.addEventListener(m.AppodealRewardedEvents.FAILED_TO_LOAD, () => {
+    rewardedLoading = false;
+    notifyState();
+    finishRewarded(false);
+    scheduleRewardedRetry();
+  });
+  m.default.addEventListener(m.AppodealRewardedEvents.SHOWN, () => {
+    showingRewarded = true;
+    notifyState();
+  });
+  m.default.addEventListener(m.AppodealRewardedEvents.REWARD, () => {
+    if (pendingReward) pendingReward.earned = true;
+  });
+  m.default.addEventListener(m.AppodealRewardedEvents.FAILED_TO_SHOW, () => {
+    finishRewarded(false);
+    preloadRewarded();
+  });
+  m.default.addEventListener(m.AppodealRewardedEvents.CLOSED, () => {
+    policyState = recordFullscreenClosed(policyState, 'rewarded');
+    finishRewarded(Boolean(pendingReward?.earned));
+    preloadRewarded();
+  });
+}
+
+export async function openAppodealPrivacyOptions(): Promise<boolean> {
+  if (!runtime.enabled || !runtime.appKey) return false;
+  const m = getAdsModule();
+  if (!m) return false;
+  try {
+    await m.default.requestConsentInfoUpdate(runtime.appKey);
+    await m.default.showPrivacyOptionsForm();
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export function getAdsDiagnostics() {
   return {
-    mode: currentMode(),
+    mode: runtime.mode as AdsMode,
     initialized,
     requestsEnabled,
-    testMode: sdkConfiguration?.isTestModeEnabled === true,
+    testMode: runtime.mode === 'test',
   };
 }

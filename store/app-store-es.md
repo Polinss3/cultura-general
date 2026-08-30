@@ -2,7 +2,7 @@
 
 > Ficha de la **2.0.0**, que se publica **sin anuncios**. Ningún texto menciona
 > publicidad. El día que se enciendan los anuncios
-> (`docs/ads-applovin-activation.md`) hay que revisar "Sin anuncios ni compras"
+> (`docs/APPODEAL_SAFE_INTEGRATION.md`) hay que revisar "Sin anuncios ni compras"
 > aquí y en los otros tres ficheros ANTES de subir la build.
 
 ## Nombre (máx 30)

@@ -8,7 +8,8 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_ADS_MODE": "test"
+        "EXPO_PUBLIC_ADS_MODE": "test",
+        "EXPO_USE_PRECOMPILED_MODULES": "0"
       },
       "ios": {
         "simulator": false
@@ -20,7 +21,8 @@
     "preview": {
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_ADS_MODE": "test"
+        "EXPO_PUBLIC_ADS_MODE": "test",
+        "EXPO_USE_PRECOMPILED_MODULES": "0"
       },
       "ios": {
         "simulator": false
@@ -33,7 +35,8 @@
       "autoIncrement": true,
       "env": {
         "SENTRY_ALLOW_FAILURE": "true",
-        "EXPO_PUBLIC_ADS_MODE": "off"
+        "EXPO_PUBLIC_ADS_MODE": "off",
+        "EXPO_USE_PRECOMPILED_MODULES": "0"
       },
       "ios": {
         "credentialsSource": "remote"
@@ -41,6 +44,16 @@
       "android": {
         "buildType": "app-bundle",
         "credentialsSource": "remote"
+      }
+    },
+    "testflight": {
+      "extends": "production",
+      "environment": "production",
+      "env": {
+        "EXPO_PUBLIC_ADS_MODE": "test",
+        "EXPO_PUBLIC_BANNER_ADS": "true",
+        "EXPO_PUBLIC_REWARDED_HINTS": "true",
+        "EXPO_USE_PRECOMPILED_MODULES": "0"
       }
     }
   },

@@ -39,7 +39,7 @@ const STEP_META = [
 ] as const;
 
 // La entrada a la app no puede quedarse colgada esperando a un SDK: si ATT o
-// MAX tardan, seguimos. El orden elección -> ATT -> MAX -> AppsFlyer lo
+// Appodeal/ATT tardan, seguimos. El orden edad -> CMP -> ATT -> SDK -> AppsFlyer lo
 // garantiza applyAdvertisingDecision, se espere a que termine o no.
 const ADS_APPLY_TIMEOUT_MS = 5000;
 
@@ -62,7 +62,8 @@ export default function OnboardingScreen() {
   const [langChosen, setLangChosen] = useState(false);
   const [interestsChosen, setInterestsChosen] = useState(false);
   const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
-  // Último paso, obligatorio y sin salida: edad + elección publicitaria. Solo
+  // Último paso, obligatorio y sin salida: tramo de edad. La personalización
+  // la resuelve después el CMP oficial de Appodeal. Solo
   // aparece si esta build puede llegar a mostrar anuncios (ver `adsConfigured`).
   const [privacyPending, setPrivacyPending] = useState(false);
   const [skippedNotifications, setSkippedNotifications] = useState(false);
@@ -124,12 +125,12 @@ export default function OnboardingScreen() {
 
   const finish = async (skipped: boolean) => {
     await setOnboardingCompleted(true);
-    // No-op salvo que AppsFlyer se haya arrancado tras elección personalizada.
+    // No-op salvo que AppsFlyer se haya arrancado después de CMP + ATT.
     void logTutorialCompletion(skipped);
     router.replace('/(tabs)');
   };
 
-  // Cierre del flujo: se guarda la decisión publicitaria y se aplica antes de
+  // Cierre del flujo: se guarda la edad y se resuelve CMP/ATT antes de
   // entrar. Ningún SDK se inicializa hasta este punto.
   const savePrivacyAndFinish = async (input: AdsConsentInput) => {
     const decision = await saveAdsConsentDecision({ ...input, language: getCurrentLang() });
@@ -374,7 +375,7 @@ export default function OnboardingScreen() {
     );
   }
 
-  // Último paso: aviso de edad y elección publicitaria. Obligatorio y sin
+  // Último paso: aviso de edad previo al CMP de Appodeal. Obligatorio y sin
   // botón de salida — es la condición para entrar a la app.
   if (privacyPending) {
     return (

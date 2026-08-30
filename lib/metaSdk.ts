@@ -3,7 +3,7 @@ import { Settings } from 'react-native-fbsdk-next';
 
 let initialized = false;
 
-// Meta permanece completamente parado hasta la elección personalizada.
+// Meta permanece completamente parado hasta que el CMP termine y ATT se conceda.
 export async function startMetaAfterPersonalizedConsent(trackingGranted: boolean): Promise<void> {
   try {
     Settings.setAutoLogAppEventsEnabled(true);

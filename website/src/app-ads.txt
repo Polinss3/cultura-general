@@ -1,4 +1,4 @@
-# Pega aquí el bloque literal de AppLovin MAX > Account > General > app-ads.txt.
+# Pega aquí el bloque literal que entregue el dashboard de Appodeal para esta app.
 #
 # Una entrada por línea, con el formato del estándar de IAB:
 #   dominio-del-sistema-publicitario, seller ID, DIRECT|RESELLER, [TAG-ID]
@@ -8,5 +8,6 @@
 # autorizado. Mientras este fichero solo tenga comentarios, el build publica un
 # placeholder y `npm test` lo da por bueno.
 #
+# También puede inyectarse con APPODEAL_APP_ADS_TXT en el hosting.
 # Después de pegarlo:  cd website && npm run build && npm test
 #                      cd .. && ./website/deploy/deploy.sh

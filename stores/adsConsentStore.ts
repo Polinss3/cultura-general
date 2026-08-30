@@ -1,26 +1,19 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const ADS_CONSENT_STORAGE_KEY = 'g101-ads-consent';
-// Subirla invalida las decisiones guardadas y vuelve a preguntar. Sufijo `b`
-// porque el corte de edad bajó de 18 a 16 el mismo día que se publicó `a`.
-export const ADS_NOTICE_VERSION = '2026-08-02b';
+export const ADS_CONSENT_STORAGE_KEY = 'cg-ads-consent';
+const LEGACY_ADS_CONSENT_STORAGE_KEY = 'g101-ads-consent';
+export const ADS_NOTICE_VERSION = '2026-08-30-appodeal-cmp';
 
 /**
- * Edad mínima a partir de la cual tratamos al usuario como adulto a efectos
- * publicitarios. AppLovin no fija ninguna cifra: prohíbe inicializar el SDK
- * con quien sea "child" según la ley aplicable y deja la determinación al
- * publisher. 16 es el número más bajo que vale en todo el EEE sin lógica por
- * país, porque Alemania, Irlanda, Países Bajos y Croacia no bajan del 16 en
- * el art. 8 del RGPD. Bajar más exigiría resolver el país del usuario.
+ * Umbral conservador alineado con la integración de 101 Offline Games.
+ * No guardamos fecha de nacimiento: únicamente el tramo elegido.
  */
-export const ADS_MIN_AGE = 16;
+export const ADS_MIN_AGE = 18;
 
 export type AdsAgeBracket = 'minor' | 'adult';
-export type AdsChoice = 'contextual' | 'personalized';
 
 export type AdsConsentDecision = {
   ageBracket: AdsAgeBracket;
-  choice: AdsChoice | null;
   decidedAt: string;
   language: string;
   noticeVersion: typeof ADS_NOTICE_VERSION;
@@ -37,15 +30,12 @@ const reviewListeners = new Set<ReviewListener>();
 function isValidDecision(value: unknown): value is AdsConsentDecision {
   if (!value || typeof value !== 'object') return false;
   const decision = value as Partial<AdsConsentDecision>;
-  if (decision.noticeVersion !== ADS_NOTICE_VERSION) return false;
-  if (decision.ageBracket !== 'minor' && decision.ageBracket !== 'adult') return false;
-  if (decision.ageBracket === 'minor' && decision.choice !== null) return false;
-  if (
-    decision.ageBracket === 'adult' &&
-    decision.choice !== 'contextual' &&
-    decision.choice !== 'personalized'
-  ) return false;
-  return typeof decision.decidedAt === 'string' && typeof decision.language === 'string';
+  return (
+    decision.noticeVersion === ADS_NOTICE_VERSION &&
+    (decision.ageBracket === 'minor' || decision.ageBracket === 'adult') &&
+    typeof decision.decidedAt === 'string' &&
+    typeof decision.language === 'string'
+  );
 }
 
 function publish(decision: AdsConsentDecision | null) {
@@ -57,6 +47,9 @@ export async function hydrateAdsConsent(): Promise<AdsConsentDecision | null> {
   if (hydrated) return currentDecision;
   hydrated = true;
   try {
+    // La decisión del proveedor anterior incluía una preferencia propia que ya no
+    // gobierna nada: Appodeal debe emitir su propia cadena IAB TCF.
+    await AsyncStorage.removeItem(LEGACY_ADS_CONSENT_STORAGE_KEY);
     const raw = await AsyncStorage.getItem(ADS_CONSENT_STORAGE_KEY);
     if (!raw) return null;
     const parsed: unknown = JSON.parse(raw);
@@ -76,14 +69,14 @@ export function getAdsConsentDecision() {
 }
 
 export async function saveAdsConsentDecision(
-  input: Pick<AdsConsentDecision, 'ageBracket' | 'choice' | 'language'>,
+  input: Pick<AdsConsentDecision, 'ageBracket' | 'language'>,
 ): Promise<AdsConsentDecision> {
   const decision: AdsConsentDecision = {
     ...input,
     decidedAt: new Date().toISOString(),
     noticeVersion: ADS_NOTICE_VERSION,
   };
-  if (!isValidDecision(decision)) throw new Error('Invalid advertising consent decision');
+  if (!isValidDecision(decision)) throw new Error('Invalid advertising age decision');
   await AsyncStorage.setItem(ADS_CONSENT_STORAGE_KEY, JSON.stringify(decision));
   hydrated = true;
   publish(decision);

@@ -79,5 +79,5 @@ rondas estrenan la barra superior de `components/RoundHud.tsx`:
 > Las descripciones **no mencionan publicidad**, porque la 2.0.0 se publica con los
 > anuncios apagados —y ahora además sin pedir consentimiento ni ATT, ver
 > `adsConfigured()` en `lib/ads`—. Cuando se activen (ver
-> `docs/ads-applovin-activation.md`) hay que quitar el "sin anuncios" de los cuatro
+> `docs/APPODEAL_SAFE_INTEGRATION.md`) hay que quitar el "sin anuncios" de los cuatro
 > ficheros **antes** de subir esa build.

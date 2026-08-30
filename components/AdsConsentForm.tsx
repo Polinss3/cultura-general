@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Linking, Pressable, ScrollView, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { ADS_MIN_AGE, type AdsAgeBracket, type AdsConsentDecision } from '@/stores/adsConsentStore';
+import { openAppodealPrivacyOptions } from '@/lib/ads';
 import { getCurrentLang } from '@/lib/i18n';
 import { Font, Radius, Space } from '@/constants/theme';
 import { useTheme } from '@/constants/colors';
@@ -15,7 +16,6 @@ function privacyUrl() {
 
 export type AdsConsentInput = {
   ageBracket: AdsAgeBracket;
-  choice: 'contextual' | 'personalized' | null;
 };
 
 type Props = {
@@ -23,12 +23,12 @@ type Props = {
   onSave: (input: AdsConsentInput) => Promise<void>;
   /** Solo lo pasa la revisión desde Ajustes; en el onboarding no hay salida. */
   onCancel?: () => void;
-  /** Se reinicia la selección cuando el contenedor vuelve a mostrarse. */
+  /** Se reinicia el tramo cuando el contenedor vuelve a mostrarse. */
   resetKey?: unknown;
 };
 
 /**
- * Aviso de edad y elección publicitaria. Es la única fuente de la copia legal:
+ * Aviso propio de edad previo al CMP oficial de Appodeal:
  * lo usan tanto el onboarding (obligatorio, sin salida) como la revisión de
  * preferencias desde Ajustes.
  */
@@ -42,11 +42,11 @@ export function AdsConsentForm({ initialDecision, onSave, onCancel, resetKey }: 
     setAgeBracket(initialDecision?.ageBracket ?? null);
   }, [initialDecision, resetKey]);
 
-  const save = async (choice: 'contextual' | 'personalized' | null) => {
+  const save = async () => {
     if (!ageBracket || saving) return;
     setSaving(true);
     try {
-      await onSave({ ageBracket, choice });
+      await onSave({ ageBracket });
     } finally {
       setSaving(false);
     }
@@ -95,24 +95,24 @@ export function AdsConsentForm({ initialDecision, onSave, onCancel, resetKey }: 
           <Text style={{ color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 21, marginBottom: 18 }}>
             {t('adsConsent.minorExplanation')}
           </Text>
-          <PrimaryButton label={t('adsConsent.continueWithoutAds')} disabled={saving} onPress={() => save(null)} />
+          <PrimaryButton label={t('adsConsent.continue')} disabled={saving} onPress={save} />
         </>
       ) : ageBracket === 'adult' ? (
-        <View style={{ gap: 10 }}>
-          <ChoiceButton
-            title={t('adsConsent.contextual.title')}
-            body={t('adsConsent.contextual.body')}
-            disabled={saving}
-            onPress={() => save('contextual')}
-          />
-          <ChoiceButton
-            title={t('adsConsent.personalized.title')}
-            body={t('adsConsent.personalized.body')}
-            disabled={saving}
-            onPress={() => save('personalized')}
-          />
-        </View>
+        <>
+          <Text style={{ color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 21, marginBottom: 18 }}>
+            {t('adsConsent.adultExplanation')}
+          </Text>
+          <PrimaryButton label={t('adsConsent.continue')} disabled={saving} onPress={save} />
+        </>
       ) : null}
+
+      {initialDecision?.ageBracket === 'adult' && (
+        <Pressable onPress={() => { void openAppodealPrivacyOptions(); }} style={{ paddingTop: 16 }}>
+          <Text style={{ color: C.brandDeep, fontFamily: Font.bold, fontSize: 13, textAlign: 'center' }}>
+            {t('adsConsent.providerPrivacy')}
+          </Text>
+        </Pressable>
+      )}
 
       <Pressable onPress={() => Linking.openURL(privacyUrl())} style={{ paddingVertical: 16 }}>
         <Text style={{ color: C.brandDeep, fontFamily: Font.bold, fontSize: 13, textAlign: 'center' }}>
@@ -128,24 +128,6 @@ export function AdsConsentForm({ initialDecision, onSave, onCancel, resetKey }: 
       )}
     </ScrollView>
   );
-
-  function ChoiceButton({ title, body, disabled, onPress }: {
-    title: string;
-    body: string;
-    disabled: boolean;
-    onPress: () => void;
-  }) {
-    return (
-      <Pressable
-        disabled={disabled}
-        onPress={onPress}
-        style={{ padding: 15, borderRadius: Radius.card, backgroundColor: C.surface, borderWidth: 1, borderColor: C.border }}
-      >
-        <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15, marginBottom: 4 }}>{title}</Text>
-        <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, lineHeight: 19 }}>{body}</Text>
-      </Pressable>
-    );
-  }
 
   function PrimaryButton({ label, disabled, onPress }: { label: string; disabled: boolean; onPress: () => void }) {
     return (

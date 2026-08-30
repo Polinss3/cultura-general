@@ -42,7 +42,7 @@ async function initializeAppsFlyer(): Promise<boolean> {
   return initPromise;
 }
 
-// Solo se invoca tras elección personalizada y después de ATT + MAX.
+// Solo se invoca después del CMP de Appodeal y de un ATT concedido.
 export async function startAppsFlyerAfterPersonalizedConsent(): Promise<boolean> {
   if (started) return true;
   if (startPromise) return startPromise;
@@ -76,26 +76,31 @@ export function stopAppsFlyerForPrivacy(): void {
   startPromise = null;
 }
 
+export type AdRevenueFormat = 'banner' | 'interstitial' | 'rewarded';
+
 export function logAppsFlyerAdRevenue(input: {
-  revenue: number;
+  value: number;
+  currency: string;
   networkName: string;
-  adUnitId: string;
+  adUnitName: string;
   placement?: string | null;
-  adFormat: string;
+  precision?: string | null;
+  format: AdRevenueFormat;
 }): boolean {
   if (!started) return false;
-  if (!Number.isFinite(input.revenue) || input.revenue < 0) return false;
-  if (!input.networkName.trim() || !input.adUnitId.trim()) return false;
+  if (!Number.isFinite(input.value) || input.value < 0) return false;
+  if (!input.networkName.trim() || !input.adUnitName.trim()) return false;
   try {
     appsFlyer.logAdRevenue({
       monetizationNetwork: input.networkName,
-      mediationNetwork: MEDIATION_NETWORK.APPLOVIN_MAX,
-      currencyIso4217Code: 'USD',
-      revenue: input.revenue,
+      mediationNetwork: MEDIATION_NETWORK.APPODEAL,
+      currencyIso4217Code: input.currency,
+      revenue: input.value,
       additionalParameters: {
-        ad_unit_id: input.adUnitId,
-        ad_format: input.adFormat,
+        ad_unit_name: input.adUnitName,
+        ad_format: input.format,
         ...(input.placement ? { placement: input.placement } : {}),
+        ...(input.precision ? { revenue_precision: input.precision } : {}),
       },
     });
     return true;

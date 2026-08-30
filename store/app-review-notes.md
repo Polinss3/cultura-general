@@ -1,4 +1,16 @@
-# Notas para App Review y App Privacy — 2.0.0 (sin anuncios)
+# Notas para App Review y App Privacy — producción sin anuncios / TestFlight Appodeal
+
+## Perfil TestFlight de la rama `ads/appodeal`
+
+Las builds creadas con `eas build --profile testflight --platform ios` incluyen
+Appodeal, pero fuerzan su modo oficial de pruebas **antes** del CMP y de
+`initialize()`. Pueden mostrar creatividades de prueba en los placements
+documentados en `docs/APPODEAL_SAFE_INTEGRATION.md`; no deben generar demanda ni
+ingresos reales. El perfil `production` continúa con
+`EXPO_PUBLIC_ADS_MODE=off` hasta que toda la checklist externa esté validada.
+
+Para una Beta App Review, indicar que los anuncios visibles son creatividades de
+prueba de Appodeal y que la app solicita primero edad, CMP y, en iOS, ATT.
 
 La 2.0.0 se publica **sin un solo anuncio** y **sin pedir ATT**: con
 `EXPO_PUBLIC_ADS_MODE=off`, `adsConfigured()` devuelve false y no se monta el
@@ -96,7 +108,7 @@ served advertisement"*. Las dos casillas de "display advertisements" se dejan
 ## Otros campos de App Store Connect
 
 - **Age Rating**: 4+. No hay contenido sensible, ni chat libre, ni compras.
-  El corte de 16 años del aviso publicitario es una decisión de privacidad
+  El corte de 18 años del aviso publicitario es una decisión de privacidad
   interna, no una clasificación de contenido.
 - **Privacy Policy URL**: ES `https://cg-trivia.pablobrasero.com/privacy`,
   EN `https://cg-trivia.pablobrasero.com/en/privacy`. Ya configuradas.

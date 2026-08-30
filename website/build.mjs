@@ -7,12 +7,12 @@ const projectRoot = dirname(root);
 const dist = join(root, "dist");
 const origin = "https://cg-trivia.pablobrasero.com";
 const email = "pablobrasero@gmail.com";
-const updatedEs = "3 de agosto de 2026";
-const updatedEn = "August 3, 2026";
+const updatedEs = "30 de agosto de 2026";
+const updatedEn = "August 30, 2026";
 // Fecha de la última edición del sitio, para el sitemap. Es distinta de
 // `updatedEs`/`updatedEn`, que datan los textos legales: retocar la portada no
 // cambia la política de privacidad.
-const sitemapUpdated = "2026-08-03";
+const sitemapUpdated = "2026-08-30";
 
 const locales = {
   es: {
@@ -46,15 +46,15 @@ const pages = {
         ["3. Para qué usamos los datos", [], ["Crear, autenticar, proteger y recuperar tu cuenta.", "Mostrar tu perfil, progreso, estadísticas, logros y contenido desbloqueado.", "Calcular rankings, rachas y resultados, y habilitar amistades y funciones sociales.", "Prevenir abuso, investigar reportes y mantener el servicio seguro.", "Diagnosticar fallos y mejorar el funcionamiento de la app.", "Mostrar publicidad y medir campañas solo bajo las opciones de privacidad descritas más abajo."]],
         ["4. Datos visibles para otros jugadores", ["Tu nombre de usuario, avatar o personalización pública, nivel, racha y determinadas estadísticas o posiciones de ranking pueden ser visibles para otros usuarios autenticados. Tu correo, credenciales y respuestas individuales no se muestran públicamente."], []],
         ["5. Base jurídica", ["Tratamos los datos necesarios para prestarte el servicio y ejecutar las condiciones de uso; para cumplir obligaciones legales; y, cuando procede, por interés legítimo en proteger y mejorar la app. La publicidad personalizada, el seguimiento entre apps y determinadas mediciones se basan en tu consentimiento, que puedes retirar en cualquier momento."], []],
-        ["6. Proveedores", ["Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; AppLovin MAX para publicidad; AppsFlyer para atribución; y Meta para medir campañas cuando has elegido publicidad personalizada y se cumplen los permisos del sistema. Apple y Google también pueden tratar información al distribuir la app o autenticarte."], [], [
-          ["Privacidad de Supabase", "https://supabase.com/privacy"], ["Privacidad de Sentry", "https://sentry.io/privacy/"], ["Privacidad de AppLovin", "https://legal.applovin.com/privacy/"], ["Privacidad de AppsFlyer", "https://www.appsflyer.com/legal/privacy-policy/"], ["Privacidad de Meta", "https://www.facebook.com/privacy/policy/"]
+        ["6. Proveedores", ["Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; Appodeal y su gestor de consentimiento para mediación publicitaria; AppsFlyer para atribución; y Meta para medir campañas únicamente cuando ATT está concedido. Apple y Google también pueden tratar información al distribuir la app o autenticarte."], [], [
+          ["Privacidad de Supabase", "https://supabase.com/privacy"], ["Privacidad de Sentry", "https://sentry.io/privacy/"], ["Privacidad de Appodeal", "https://appodeal.com/privacy-policy/"], ["Privacidad de AppsFlyer", "https://www.appsflyer.com/legal/privacy-policy/"], ["Privacidad de Meta", "https://www.facebook.com/privacy/policy/"]
         ]],
-        ["7. Publicidad, edad y atribución", ["Antes de inicializar los sistemas publicitarios solicitamos un tramo de edad y una elección informada. Los anuncios, cuando aparecen, salen en pausas naturales del juego: el resultado de la pregunta diaria o el final de una partida de contrarreloj, de una escalada o de una ronda de Mundo."], ["Menores de 16 años: no inicializamos AppLovin, AppsFlyer ni Meta, y se puede usar la app completa sin anuncios.", "Anuncios contextuales: comunicamos a AppLovin que no consientes personalización y que no se vendan o compartan datos para publicidad dirigida. No pedimos ATT ni iniciamos AppsFlyer o Meta.", "Anuncios personalizados: en iOS pedimos primero el permiso oficial App Tracking Transparency. AppLovin puede tratar identificadores y actividad publicitaria para seleccionar, limitar y medir anuncios; AppsFlyer y Meta pueden medir instalaciones y eventos de campaña."], [["Opciones de privacidad", "/privacy-choices"]]],
+        ["7. Publicidad, edad y atribución", ["Antes de cargar cualquier SDK publicitario solicitamos únicamente un tramo de edad. Los anuncios aparecen en ubicaciones definidas: banners al pie de pantallas de juego, intersticiales tras resultados y vídeos recompensados solicitados para monedas, revivir o conseguir tiempo extra."], ["Menores de 18 años: no inicializamos Appodeal, AppsFlyer ni Meta, y se puede usar la app completa sin anuncios.", "Adultos: el CMP oficial de Appodeal muestra las opciones regulatorias de la región y transmite la señal IAB TCF a las redes mediadas.", "En iOS podemos pedir App Tracking Transparency después del CMP. Negarlo no quita los anuncios; impide usar el IDFA e iniciar AppsFlyer o Meta para atribución."], [["Opciones de privacidad", "/privacy-choices"]]],
         ["8. Notificaciones", ["Si las activas, la app envía un recordatorio diario a las 9:00 para no perder la racha. Son notificaciones locales: las programa el propio dispositivo y su contenido no pasa por ningún servidor. Se desactivan desde Perfil > Ajustes o desde los ajustes del sistema."], []],
         ["9. Diagnóstico y seguridad", ["Sentry puede recibir la pila técnica del error, versiones de la app y del sistema y un identificador interno para agrupar incidencias. Configuramos el servicio para reducir datos personales y no enviar deliberadamente tu correo, nombre de usuario o contenido de preguntas.", "Las comunicaciones usan HTTPS/TLS, las contraseñas nunca se almacenan en texto plano y aplicamos controles de acceso en la base de datos. Ningún sistema es infalible, pero mantenemos medidas proporcionadas al riesgo."], []],
         ["10. Conservación y transferencias", ["Conservamos la cuenta y el progreso mientras esté activa o hasta que solicites su eliminación. Ciertos registros técnicos, copias de seguridad o datos necesarios para prevenir fraude y cumplir obligaciones pueden permanecer durante plazos limitados. Algunos proveedores pueden tratar información fuera del Espacio Económico Europeo con sus garantías contractuales y legales aplicables."], []],
-        ["11. Tus derechos", ["Según tu lugar de residencia puedes solicitar acceso, rectificación, supresión, oposición, limitación y portabilidad, así como retirar el consentimiento."], ["Puedes eliminar tu cuenta desde Perfil > Zona peligrosa, sin salir de la app.", "Puedes cambiar tu elección publicitaria en Perfil > Ajustes > Privacidad y anuncios.", "En iPhone o iPad puedes retirar el permiso de seguimiento en Ajustes > Privacidad y seguridad > Seguimiento.", `Para cualquier otra solicitud, escríbenos a ${email}.`], [["Cómo eliminar tu cuenta", "/data-deletion"], ["Opciones de privacidad", "/privacy-choices"], ["Agencia Española de Protección de Datos", "https://www.aepd.es/"]]],
-        ["12. Menores", ["CG Trivia es una app de público general y no está dirigida exclusivamente a menores. AppLovin no permite usar su SDK con quien sea menor según la ley aplicable, y esa edad varía por país: aplicamos un corte único de 16 años, el más alto que exigen los estados del Espacio Económico Europeo.", "No usamos los SDK de publicidad o atribución con quien indique ser menor de 16 años. Si crees que un menor nos ha facilitado información sin autorización, contáctanos para revisarla y eliminarla cuando proceda."], []],
+        ["11. Tus derechos", ["Según tu lugar de residencia puedes solicitar acceso, rectificación, supresión, oposición, limitación y portabilidad, así como retirar el consentimiento."], ["Puedes eliminar tu cuenta desde Perfil > Zona peligrosa, sin salir de la app.", "Puedes revisar la edad y abrir las opciones regulatorias de Appodeal desde Perfil > Ajustes > Privacidad y anuncios.", "En iPhone o iPad puedes retirar el permiso de seguimiento en Ajustes > Privacidad y seguridad > Seguimiento.", `Para cualquier otra solicitud, escríbenos a ${email}.`], [["Cómo eliminar tu cuenta", "/data-deletion"], ["Opciones de privacidad", "/privacy-choices"], ["Agencia Española de Protección de Datos", "https://www.aepd.es/"]]],
+        ["12. Menores", ["CG Trivia es una app de público general y no está dirigida exclusivamente a menores. Aplicamos un corte conservador de 18 años.", "No cargamos ni usamos Appodeal, AppsFlyer o Meta con quien indique ser menor de 18 años. Si crees que un menor nos ha facilitado información sin autorización, contáctanos para revisarla y eliminarla cuando proceda."], []],
         ["13. Cambios en esta política", ["La web no crea cuentas, no usa analítica ni instala cookies publicitarias. El alojamiento puede generar registros técnicos básicos para servir y proteger el sitio.", "Actualizaremos esta política si cambian las funciones, los proveedores o los requisitos legales. Publicaremos aquí la nueva versión con su fecha de vigencia."], []],
       ],
     },
@@ -83,7 +83,7 @@ const pages = {
         ["No puedo entrar", ["Comprueba la conexión, revisa que el correo no tenga espacios y solicita un nuevo enlace o restablecimiento de contraseña. Si usaste Apple o Google, entra con el mismo proveedor."], []],
         ["Mi progreso no aparece", ["Confirma que has iniciado sesión con la misma cuenta. Cierra y abre la app con conexión estable. Si persiste, escribe indicando tu nombre de usuario; nunca necesitamos tu contraseña."], []],
         ["Una pregunta parece incorrecta", ["Envíanos la categoría, el texto aproximado de la pregunta, la respuesta que aparece como correcta y, si puedes, una fuente fiable. Revisamos las correcciones antes de publicarlas."], []],
-        ["Publicidad y privacidad", ["Puedes revisar o cambiar tu elección desde Perfil > Ajustes > Privacidad y anuncios. Si indicas que eres menor de 16 años, la app no inicializa los sistemas publicitarios."], [], [["Ver opciones de privacidad", "/privacy-choices"]]],
+        ["Publicidad y privacidad", ["Puedes revisar la edad y abrir las opciones regulatorias de Appodeal desde Perfil > Ajustes > Privacidad y anuncios. Si indicas que eres menor de 18 años, la app no inicializa los sistemas publicitarios."], [], [["Ver opciones de privacidad", "/privacy-choices"]]],
         ["Eliminar la cuenta", ["La eliminación está disponible dentro de la app en Perfil > Zona peligrosa. También puedes escribirnos desde el correo asociado."], [], [["Guía de eliminación", "/data-deletion"]]],
       ],
     },
@@ -91,9 +91,9 @@ const pages = {
       eyebrow: "TÚ DECIDES", title: "Opciones de privacidad",
       intro: "CG Trivia te permite controlar la publicidad y el seguimiento desde la propia app y desde el sistema operativo.",
       sections: [
-        ["En la app", ["Abre Perfil > Ajustes > Privacidad y anuncios para revisar o cambiar tu elección. Puedes escoger anuncios contextuales o, si eres adulto, personalizados. Al cambiar a contextual, detenemos nuevas solicitudes de medición personalizada."], []],
-        ["Si eres menor de 16 años", ["Selecciona el tramo de edad correcto. No se inicializan AppLovin, AppsFlyer ni Meta y puedes seguir usando todas las funciones del juego sin anuncios."], []],
-        ["En iPhone o iPad", ["Ve a Ajustes > Privacidad y seguridad > Seguimiento para retirar el permiso de seguimiento. Este control del sistema es adicional a la elección dentro de CG Trivia."], []],
+        ["En la app", ["Abre Perfil > Ajustes > Privacidad y anuncios para revisar tu tramo de edad y volver a abrir el formulario regulatorio de Appodeal. El CMP de Appodeal aplica la señal IAB TCF a las redes mediadas."], []],
+        ["Si eres menor de 18 años", ["Selecciona el tramo de edad correcto. No se cargan Appodeal, AppsFlyer ni Meta y puedes seguir usando todas las funciones del juego sin anuncios."], []],
+        ["En iPhone o iPad", ["Ve a Ajustes > Privacidad y seguridad > Seguimiento para retirar el permiso ATT. Este control gobierna el IDFA y la atribución, no las opciones publicitarias del CMP de Appodeal."], []],
         ["Solicitudes legales", [`Para ejercer derechos de privacidad o plantear una duda, escribe a ${email}. Indica el país y el correo asociado a tu cuenta; no incluyas contraseñas.`], []],
       ],
     },
@@ -147,13 +147,13 @@ pages.en = {
     ["3. How we use data", [], ["Create, authenticate, secure and recover your account.", "Show your profile, progress, statistics, achievements and unlocked content.", "Calculate rankings, streaks and results, and enable friends and social features.", "Prevent abuse, investigate reports and keep the service secure.", "Diagnose errors and improve the app.", "Show ads and measure campaigns only under the choices described below."]],
     ["4. Data visible to other players", ["Your username, public avatar or customization, level, streak and some statistics or ranking positions may be visible to other authenticated users. Your email, credentials and individual answers are not shown publicly."], []],
     ["5. Legal grounds", ["We process data required to provide the service and perform these terms, comply with legal duties, and pursue legitimate interests in protecting and improving the app. Personalized advertising, cross-app tracking and certain measurement rely on consent, which you can withdraw."], []],
-    ["6. Providers", ["We use Supabase for authentication, database and server functions; Sentry for error diagnostics; AppLovin MAX for advertising; AppsFlyer for attribution; and Meta for campaign measurement when you choose personalized ads and system permissions allow it. Apple and Google may process data when distributing the app or authenticating you."], [], [["Supabase privacy", "https://supabase.com/privacy"], ["Sentry privacy", "https://sentry.io/privacy/"], ["AppLovin privacy", "https://legal.applovin.com/privacy/"], ["AppsFlyer privacy", "https://www.appsflyer.com/legal/privacy-policy/"], ["Meta privacy", "https://www.facebook.com/privacy/policy/"]]],
-    ["7. Advertising, age and attribution", ["Before initializing advertising systems, we ask for an age bracket and an informed choice. Ads, when they appear, show up at natural breaks in play: the result of the daily question, or the end of a Time Attack run, a Climb Mode run or a World round."], ["Under 16: we do not initialize AppLovin, AppsFlyer or Meta, and the whole app can be used without ads.", "Contextual ads: we tell AppLovin you do not consent to personalization or sale/sharing for targeted ads. We do not request ATT or start AppsFlyer or Meta.", "Personalized ads: on iOS we first ask for the official App Tracking Transparency permission. AppLovin may process identifiers and ad activity to select, cap and measure ads; AppsFlyer and Meta may measure campaign installs and events."], [["Privacy choices", "/en/privacy-choices"]]],
+    ["6. Providers", ["We use Supabase for authentication, database and server functions; Sentry for error diagnostics; Appodeal and its consent manager for ad mediation; AppsFlyer for attribution; and Meta for campaign measurement only when ATT has been granted. Apple and Google may process data when distributing the app or authenticating you."], [], [["Supabase privacy", "https://supabase.com/privacy"], ["Sentry privacy", "https://sentry.io/privacy/"], ["Appodeal privacy", "https://appodeal.com/privacy-policy/"], ["AppsFlyer privacy", "https://www.appsflyer.com/legal/privacy-policy/"], ["Meta privacy", "https://www.facebook.com/privacy/policy/"]]],
+    ["7. Advertising, age and attribution", ["Before loading any advertising SDK, we only ask for an age bracket. Ads appear in defined locations: banners at the bottom of game screens, interstitials after results, and rewarded videos requested for coins, revival or extra time."], ["Under 18: we do not initialize Appodeal, AppsFlyer or Meta, and the whole app can be used without ads.", "Adults: Appodeal's official CMP shows the regulatory choices required in the region and sends the IAB TCF signal to mediated networks.", "On iOS, we may request App Tracking Transparency after the CMP. Denying it does not remove ads; it prevents use of the IDFA and prevents AppsFlyer or Meta attribution from starting."], [["Privacy choices", "/en/privacy-choices"]]],
     ["8. Notifications", ["If you turn them on, the app sends a daily reminder at 9:00 so you do not lose your streak. They are local notifications: your own device schedules them and their content never travels through a server. Turn them off under Profile > Settings or in your system settings."], []],
     ["9. Diagnostics and security", ["Sentry may receive technical stack traces, app and OS versions and an internal identifier to group incidents. We configure it to reduce personal data and do not deliberately send your email, username or question content.", "Communications use HTTPS/TLS, passwords are never stored in plain text and we apply database access controls. No system is infallible, but we maintain safeguards proportionate to risk."], []],
     ["10. Retention and transfers", ["We retain the account and progress while active or until deletion. Technical logs, backups or information needed to prevent fraud and meet legal duties may remain for limited periods. Providers may process data outside the EEA under applicable safeguards."], []],
-    ["11. Your rights", ["Depending on where you live, you may request access, correction, deletion, objection, restriction and portability, and withdraw consent."], ["You can delete your account under Profile > Danger zone, without leaving the app.", "You can change your advertising choice under Profile > Settings > Privacy and ads.", "On iPhone or iPad you can withdraw tracking permission under Settings > Privacy & Security > Tracking.", `For any other request, write to us at ${email}.`], [["How to delete your account", "/en/data-deletion"], ["Privacy choices", "/en/privacy-choices"], ["Spanish Data Protection Agency", "https://www.aepd.es/"]]],
-    ["12. Children", ["CG Trivia is a general-audience app and is not directed exclusively at children. AppLovin does not allow its SDK to be used with anyone who is a minor under applicable law, and that age varies by country: we apply a single cut-off of 16, the highest required across the European Economic Area.", "We do not use advertising or attribution SDKs with anyone who indicates they are under 16. Contact us if you believe a child supplied information without authorization."], []],
+    ["11. Your rights", ["Depending on where you live, you may request access, correction, deletion, objection, restriction and portability, and withdraw consent."], ["You can delete your account under Profile > Danger zone, without leaving the app.", "You can review age and open Appodeal's regulatory privacy options under Profile > Settings > Privacy and ads.", "On iPhone or iPad you can withdraw tracking permission under Settings > Privacy & Security > Tracking.", `For any other request, write to us at ${email}.`], [["How to delete your account", "/en/data-deletion"], ["Privacy choices", "/en/privacy-choices"], ["Spanish Data Protection Agency", "https://www.aepd.es/"]]],
+    ["12. Children", ["CG Trivia is a general-audience app and is not directed exclusively at children. We apply a conservative cutoff of 18.", "Appodeal, AppsFlyer and Meta are never loaded or used for anyone who indicates they are under 18. Contact us if you believe a child supplied information without authorization."], []],
     ["13. Changes to this policy", ["The website does not create accounts, use analytics or set advertising cookies. Hosting may generate basic technical logs to serve and protect it.", "We will update this policy when features, providers or legal requirements change, publishing the new version and its effective date here."], []],
   ]},
   terms: { eyebrow: "TERMS", title: "Terms of use", intro: "These terms govern your use of CG Trivia. By creating an account or using the app, you agree to these rules.", sections: [
@@ -174,13 +174,13 @@ pages.en = {
     ["I cannot sign in", ["Check your connection and email spelling, then request a new link or password reset. If you used Apple or Google, use the same provider."], []],
     ["My progress is missing", ["Confirm you signed in to the same account. Restart the app with a stable connection. If it continues, send your username; we never need your password."], []],
     ["A question seems wrong", ["Send the category, approximate question, answer marked correct and a reliable source if possible. We review corrections before publishing them."], []],
-    ["Ads and privacy", ["Review or change your choice under Profile > Settings > Privacy and ads. If you indicate that you are under 16, the app does not initialize advertising systems."], [], [["View privacy choices", "/en/privacy-choices"]]],
+    ["Ads and privacy", ["Review age and open Appodeal's regulatory options under Profile > Settings > Privacy and ads. If you indicate that you are under 18, the app does not initialize advertising systems."], [], [["View privacy choices", "/en/privacy-choices"]]],
     ["Delete the account", ["Deletion is available in the app under Profile > Danger zone. You can also email us from the associated address."], [], [["Deletion guide", "/en/data-deletion"]]],
   ]},
   "privacy-choices": { eyebrow: "YOUR CHOICE", title: "Privacy choices", intro: "CG Trivia lets you control advertising and tracking in the app and operating system.", sections: [
-    ["In the app", ["Open Profile > Settings > Privacy and ads to review or change your choice. Choose contextual ads or, if you are an adult, personalized ads. Switching to contextual stops future personalized measurement requests."], []],
-    ["If you are under 16", ["Select the correct age bracket. AppLovin, AppsFlyer and Meta are not initialized and you can use every game feature without ads."], []],
-    ["On iPhone or iPad", ["Open Settings > Privacy & Security > Tracking to withdraw tracking permission. This system control is additional to the choice in CG Trivia."], []],
+    ["In the app", ["Open Profile > Settings > Privacy and ads to review your age bracket and reopen Appodeal's regulatory form. Appodeal's CMP applies the IAB TCF signal to mediated networks."], []],
+    ["If you are under 18", ["Select the correct age bracket. Appodeal, AppsFlyer and Meta are not loaded and you can use every game feature without ads."], []],
+    ["On iPhone or iPad", ["Open Settings > Privacy & Security > Tracking to withdraw ATT permission. This control governs the IDFA and attribution, not Appodeal CMP choices."], []],
     ["Legal requests", [`To exercise privacy rights, email ${email}. Include your country and account email; never include passwords.`], []],
   ]},
   "data-deletion": { eyebrow: "ACCOUNT CONTROL", title: "Delete your account and data", intro: "You can request permanent deletion in the app without visiting this website.", sections: [
@@ -258,7 +258,7 @@ const landingCopy = {
     topicsEyebrow: "13 CATEGORÍAS", topicsTitle: "Siempre hay algo nuevo que descubrir", topics: ["Historia", "Ciencia", "Arte", "Geografía", "Filosofía", "Deportes", "Biología", "Cine", "Música", "Literatura", "Tecnología", "Mitología", "Astronomía"],
     features: [["Una pregunta para todos", "Compara tu respuesta diaria con la comunidad y tus amigos."], ["Aprende al fallar", "Cada explicación convierte una duda en algo que recordarás."], ["Claro, oscuro o sistema", "La nueva estética de papel cálido se adapta a ti y a la luz de cada momento."], ["Juntos en una pantalla", "De 2 a 8 jugadores en modos locales rápidos y fáciles de empezar."]],
     previewLabel: "Así se siente la nueva versión", previewTitle: "Más cálida, clara y fácil de leer", previewText: "Tarjetas limpias, tinta de alto contraste y acentos con significado. La misma experiencia en modo claro y oscuro, siguiendo el sistema si lo prefieres.", previewDaily: "Pregunta del día", previewPlay: "Jugar ahora", previewModes: [["Contrarreloj", "30 s"], ["Modo Ascenso", "5 ❤️"], ["Mundo", "196 banderas"], ["Aprender", "13 temas"], ["Amigos", "2–8"]],
-    privacyEyebrow: "PRIVACIDAD SIN LETRA PEQUEÑA", privacyTitle: "Tus decisiones, antes que la publicidad.", privacyText: "La app pide una elección clara antes de activar anuncios o medición. Los menores de 16 años juegan sin anuncios y puedes cambiar tu decisión desde Ajustes.", privacyCta: "Leer la política de privacidad",
+    privacyEyebrow: "PRIVACIDAD SIN LETRA PEQUEÑA", privacyTitle: "Tu privacidad, antes que la publicidad.", privacyText: "La app resuelve edad, CMP y ATT antes de activar anuncios o medición. Los menores de 18 años juegan sin anuncios y los adultos pueden reabrir las opciones de Appodeal desde Ajustes.", privacyCta: "Leer la política de privacidad",
     finalTitle: "¿Cuánto sabes hoy?", finalText: "Descarga CG Trivia y convierte dos minutos al día en una racha de descubrimientos.", finalCta: "Ver en App Store",
   },
   en: {
@@ -273,7 +273,7 @@ const landingCopy = {
     topicsEyebrow: "13 CATEGORIES", topicsTitle: "There is always something new to discover", topics: ["History", "Science", "Art", "Geography", "Philosophy", "Sports", "Biology", "Film", "Music", "Literature", "Technology", "Mythology", "Astronomy"],
     features: [["One question for everyone", "Compare your daily answer with the community and friends."], ["Learn from mistakes", "Every explanation turns uncertainty into something memorable."], ["Light, dark or system", "The new warm-paper design adapts to you and the light around you."], ["Together on one screen", "Two to eight players in fast local modes that are easy to start."]],
     previewLabel: "A feel for the new version", previewTitle: "Warmer, clearer and easier to read", previewText: "Clean cards, high-contrast ink and meaningful accents. The same experience in light and dark mode, following your system when you prefer.", previewDaily: "Daily question", previewPlay: "Play now", previewModes: [["Time Attack", "30 s"], ["Climb Mode", "5 ❤️"], ["World", "196 flags"], ["Learn", "13 topics"], ["Friends", "2–8"]],
-    privacyEyebrow: "PRIVACY WITHOUT FINE PRINT", privacyTitle: "Your choices come before advertising.", privacyText: "The app asks for a clear choice before enabling ads or measurement. Under-16s play without ads, and you can change your choice in Settings.", privacyCta: "Read the privacy policy",
+    privacyEyebrow: "PRIVACY WITHOUT FINE PRINT", privacyTitle: "Your privacy comes before advertising.", privacyText: "The app resolves age, CMP and ATT before enabling ads or measurement. Under-18s play without ads, and adults can reopen Appodeal options in Settings.", privacyCta: "Read the privacy policy",
     finalTitle: "How much do you know today?", finalText: "Download CG Trivia and turn two minutes a day into a streak of discoveries.", finalCta: "View on the App Store",
   },
 };
@@ -308,26 +308,27 @@ async function put(path, contents) {
 /**
  * Contenido de /app-ads.txt.
  *
- * Las líneas autorizadas las da AppLovin en MAX > Account > General >
- * app-ads.txt, y son literales: no se inventan seller IDs ni DIRECT/RESELLER.
+ * Las líneas autorizadas las da el dashboard de Appodeal y son literales: no
+ * se inventan seller IDs ni DIRECT/RESELLER.
  * Mientras no existan, se publica un fichero solo con comentarios, que es
  * válido y equivale a "todavía no hay vendedores autorizados" — bastante mejor
  * que un 404, que algunos verificadores interpretan como sitio mal configurado.
  *
- * Para activarlo: pega el bloque de MAX en `website/src/app-ads.txt`, ejecuta
+ * Para activarlo: pega el bloque de Appodeal en `website/src/app-ads.txt` o
+ * define `APPODEAL_APP_ADS_TXT` en el hosting, ejecuta
  * `npm run build` y despliega. No hace falta tocar este fichero.
  */
 async function appAdsTxt() {
   const placeholder = [
     "# CG Trivia / Cultura General",
     "# No authorized advertising-system entries are published yet.",
-    "# Paste the block from AppLovin MAX into website/src/app-ads.txt.",
+    "# Paste the exact Appodeal dashboard block into website/src/app-ads.txt.",
     "",
   ].join("\n");
 
-  let raw;
+  let raw = process.env.APPODEAL_APP_ADS_TXT?.trim();
   try {
-    raw = await readFile(join(root, "src/app-ads.txt"), "utf8");
+    if (!raw) raw = await readFile(join(root, "src/app-ads.txt"), "utf8");
   } catch {
     return placeholder;
   }
