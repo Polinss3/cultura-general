@@ -30,7 +30,7 @@ declare
     public.normalize_username(p_meta->>'name'),
     public.normalize_username(split_part(coalesce(p_email, ''), '@', 1))
   ];
-  v_suffix text := upper(substr(replace(coalesce(p_user_id::text, uuid_generate_v4()::text), '-', ''), 1, 6));
+  v_suffix text := upper(substr(replace(coalesce(p_user_id::text, gen_random_uuid()::text), '-', ''), 1, 6));
   v_attempt int := 0;
 begin
   if coalesce((p_meta->>'manual_username')::boolean, false) then
@@ -66,7 +66,7 @@ begin
     end if;
 
     if v_attempt > 50 then
-      return left('Jugador ' || substr(upper(replace(uuid_generate_v4()::text, '-', '')), 1, 10), 20);
+      return left('Jugador ' || substr(upper(replace(gen_random_uuid()::text, '-', '')), 1, 10), 20);
     end if;
   end loop;
 end;

@@ -27,7 +27,7 @@
 -- no dependa de ninguna migración anterior.
 --
 -- QUÉ NO HACE: no toca ni una fila. Nada de DELETE, DROP TABLE, TRUNCATE ni
--- UPDATE de datos. Los 155 perfiles actuales se quedan como están, con sus
+-- UPDATE de datos. Los perfiles actuales se quedan como están, con sus
 -- nombres actuales, aunque alguno no cumpla las reglas nuevas: solo se valida
 -- lo que entra a partir de ahora.
 --
@@ -79,7 +79,7 @@ declare
     public.normalize_username(p_meta->>'name'),
     public.normalize_username(split_part(coalesce(p_email, ''), '@', 1))
   ];
-  v_suffix text := upper(substr(replace(coalesce(p_user_id::text, uuid_generate_v4()::text), '-', ''), 1, 6));
+  v_suffix text := upper(substr(replace(coalesce(p_user_id::text, gen_random_uuid()::text), '-', ''), 1, 6));
   v_attempt int := 0;
 begin
   -- ── Registro manual ────────────────────────────────────────
@@ -149,7 +149,7 @@ begin
     end if;
 
     if v_attempt > 50 then
-      return left('Jugador ' || substr(upper(replace(uuid_generate_v4()::text, '-', '')), 1, 10), 20);
+      return left('Jugador ' || substr(upper(replace(gen_random_uuid()::text, '-', '')), 1, 10), 20);
     end if;
   end loop;
 end;
@@ -169,6 +169,22 @@ begin
   return new;
 end;
 $$;
+
+-- ── Restricción coherente con el generador y con la app ────────────────
+-- La base conservaba el CHECK antiguo `^[A-Za-z0-9_.-]+$`, que rechazaba
+-- los espacios aunque `generate_profile_username` los usa tanto en nombres
+-- sociales ("Pablo García") como en su fallback ("Jugador A1B2C3"). El
+-- trigger terminaba abortando el alta con "Database error saving new user".
+alter table public.profiles
+  drop constraint if exists profiles_username_format_check;
+
+alter table public.profiles
+  add constraint profiles_username_format_check
+  check (public.is_valid_username(username))
+  not valid;
+
+alter table public.profiles
+  validate constraint profiles_username_format_check;
 
 commit;
 
@@ -221,6 +237,14 @@ select 'El trigger delega',
        case when pg_get_functiondef(to_regprocedure('public.handle_new_user()')::oid)
                  like '%generate_profile_username%' then 'OK' else 'REVISAR' end
 union all
+select 'El CHECK usa is_valid_username',
+       pg_get_constraintdef(oid),
+       case when pg_get_constraintdef(oid) like '%is_valid_username%'
+              and convalidated then 'OK' else 'REVISAR' end
+  from pg_constraint
+ where conrelid = 'public.profiles'::regclass
+   and conname = 'profiles_username_format_check'
+union all
 select 'Datos intactos', count(*)::text || ' perfiles', 'INFO' from public.profiles;
 
 
@@ -241,4 +265,14 @@ select 'Datos intactos', count(*)::text || ' perfiles', 'INFO' from public.profi
 --     return new;
 --   end;
 --   $function$;
+--
+--   alter table public.profiles
+--     drop constraint if exists profiles_username_format_check;
+--   alter table public.profiles
+--     add constraint profiles_username_format_check
+--     check (
+--       char_length(username) >= 3
+--       and char_length(username) <= 20
+--       and username ~ '^[A-Za-z0-9_.-]+$'
+--     );
 -- ─────────────────────────────────────────────────────────────
