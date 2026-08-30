@@ -274,7 +274,27 @@ export default function AdventureScreen() {
             </View>
             <View style={{ alignItems: 'center', gap: 2 }}>
               {regionIsFuture && <Text style={{ fontSize: 20 }}>🔒</Text>}
-              <Text style={{ color: readableOn(region.accent, isDark), fontFamily: Font.black, fontSize: 20 }}>⌄</Text>
+              <View
+                accessibilityElementsHidden
+                importantForAccessibility="no"
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: Radius.pill,
+                  backgroundColor: alpha(region.accent, isDark ? 0.3 : 0.16),
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <View style={{
+                  width: 9,
+                  height: 9,
+                  borderRightWidth: 2.25,
+                  borderBottomWidth: 2.25,
+                  borderColor: readableOn(region.accent, isDark),
+                  transform: [{ rotate: '45deg' }, { translateX: -1.5 }, { translateY: -1.5 }],
+                }} />
+              </View>
             </View>
           </LinearGradient>
         </Pressable>

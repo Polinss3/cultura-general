@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   AccessibilityInfo,
@@ -14,6 +14,7 @@ import { useFocusEffect, useLocalSearchParams, useNavigation, useRouter } from '
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
+import { AdBannerSlot } from '@/components/AdBannerSlot';
 import { PowerUpBar, type PowerUpButton } from '@/components/PowerUpBar';
 import { CategoryBadge } from '@/components/CategoryBadge';
 import { CoinPill } from '@/components/CoinPill';
@@ -137,6 +138,13 @@ export default function AdventureLevelScreen() {
   const helpersUsedRef = useRef(0);
   const exitConfirmedRef = useRef(false);
   const exitAlertOpenRef = useRef(false);
+
+  useLayoutEffect(() => {
+    // En plena partida la salida debe pasar siempre por nuestro botón y su
+    // confirmación. Evitamos que el gesto interactivo de iOS complete el pop
+    // antes de que `beforeRemove` pueda resolver la alerta.
+    navigation.setOptions({ gestureEnabled: stage !== 'questions' });
+  }, [navigation, stage]);
 
   useFocusEffect(useCallback(() => {
     if (!repository) return;
@@ -654,19 +662,46 @@ export default function AdventureLevelScreen() {
             <Text style={{ color: C.textMuted, ...Type.secondary }}>{t('adventure.starGoalsDescription')}</Text>
           </View>
 
-          <View style={{ gap: 10 }}>
+          <View style={{
+            gap: 12,
+            backgroundColor: alpha(C.brand, isDark ? 0.1 : 0.055),
+            borderRadius: Radius.card,
+            borderCurve: 'continuous',
+            borderWidth: 1,
+            borderColor: alpha(C.brand, isDark ? 0.3 : 0.18),
+            padding: 14,
+          }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-              <View style={{ flex: 1, gap: 2 }}>
-                <Text style={{ color: C.text, ...Type.cardTitle }}>{t('adventure.prepareTitle')}</Text>
+              <View style={{ flex: 1, gap: 3 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+                  <Text accessibilityElementsHidden style={{ fontSize: 19 }}>✨</Text>
+                  <Text style={{ color: C.text, ...Type.cardTitle }}>{t('adventure.prepareTitle')}</Text>
+                </View>
                 <Text style={{ color: C.textMuted, ...Type.secondary }}>{t('adventure.prepareDescription')}</Text>
               </View>
               {!guest && (
                 <Pressable
                   accessibilityRole="button"
+                  accessibilityLabel={t('adventure.openShop')}
                   onPress={() => router.push('/shop')}
                   hitSlop={8}
-                  style={{ minHeight: 44, justifyContent: 'center' }}
+                  style={({ pressed }) => ({
+                    minHeight: 44,
+                    borderRadius: Radius.pill,
+                    borderCurve: 'continuous',
+                    borderWidth: 1,
+                    borderColor: alpha(C.brand, isDark ? 0.55 : 0.36),
+                    backgroundColor: alpha(C.brand, isDark ? 0.2 : 0.12),
+                    paddingHorizontal: 13,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    opacity: pressed ? 0.72 : 1,
+                    transform: [{ scale: pressed ? 0.98 : 1 }],
+                  })}
                 >
+                  <Text accessibilityElementsHidden style={{ fontSize: 16 }}>🛍️</Text>
                   <Text style={{ color: C.brandDeep, fontFamily: Font.extra, fontSize: 14 }}>{t('adventure.openShop')}</Text>
                 </Pressable>
               )}
@@ -697,6 +732,7 @@ export default function AdventureLevelScreen() {
             )}
           </Pressable>
         </ScrollView>
+        <AdBannerSlot placement="adventure_preparation" />
       </SafeAreaView>
     );
   }
@@ -858,6 +894,7 @@ export default function AdventureLevelScreen() {
             )}
           </View>
         </ScrollView>
+        <AdBannerSlot placement="adventure_result" />
       </SafeAreaView>
     );
   }

@@ -3,6 +3,7 @@
   "main": "expo-router/entry",
   "version": "2.1.0",
   "scripts": {
+    "postinstall": "patch-package",
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
@@ -21,6 +22,7 @@
     "expo": "~54.0.37",
     "expo-apple-authentication": "~8.0.8",
     "expo-asset": "~12.0.12",
+    "expo-build-properties": "~1.0.10",
     "expo-constants": "~18.0.14",
     "expo-crypto": "~15.0.9",
     "expo-dev-client": "~6.0.21",
@@ -59,6 +61,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.0",
     "@types/react": "~19.1.10",
+    "patch-package": "^8.0.1",
     "tsx": "^4.23.2",
     "typescript": "^5.3.0"
   }
