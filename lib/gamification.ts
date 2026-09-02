@@ -13,6 +13,8 @@ export interface AwardResult {
   gainedCoins: number;
   ladderBest?: number;
   newBest?: boolean;
+  alreadyClaimed?: boolean;
+  claimedCount?: number;
 }
 
 function mapAward(data: any): AwardResult {
@@ -26,6 +28,8 @@ function mapAward(data: any): AwardResult {
     gainedCoins: data?.gained_coins ?? 0,
     ladderBest: data?.ladder_best,
     newBest: data?.new_best,
+    alreadyClaimed: !!data?.already_claimed,
+    claimedCount: data?.claimed_count ?? 0,
   };
 }
 
@@ -42,6 +46,49 @@ export async function awardProgress(
     p_apply_multiplier: applyMultiplier,
     p_source: source ?? null,
   });
+  if (error) return null;
+  return mapAward(data);
+}
+
+// Aventura 2.1 no envia cantidades al servidor: el RPC valida el progreso,
+// decide la recompensa y garantiza una sola concesion por nivel/hito.
+export async function awardAdventureLevel(level: number): Promise<AwardResult | null> {
+  const { data, error } = await supabase.rpc('claim_adventure_reward', {
+    p_level: level,
+    p_milestone: 1,
+  });
+  if (error) return null;
+  return mapAward(data);
+}
+
+export async function awardAdventureStar(
+  level: number,
+  milestone: 2 | 3,
+): Promise<AwardResult | null> {
+  const { data, error } = await supabase.rpc('claim_adventure_reward', {
+    p_level: level,
+    p_milestone: milestone,
+  });
+  if (error) return null;
+  return mapAward(data);
+}
+
+export async function claimPendingAdventureRewards(): Promise<AwardResult | null> {
+  const { data, error } = await supabase.rpc('claim_pending_adventure_rewards');
+  if (error) return null;
+  return mapAward(data);
+}
+
+export async function awardAdventureChapter(chapter: number): Promise<AwardResult | null> {
+  const { data, error } = await supabase.rpc('claim_adventure_chapter_reward', {
+    p_chapter: chapter,
+  });
+  if (error) return null;
+  return mapAward(data);
+}
+
+export async function claimPendingAdventureChapterRewards(): Promise<AwardResult | null> {
+  const { data, error } = await supabase.rpc('claim_pending_adventure_chapter_rewards');
   if (error) return null;
   return mapAward(data);
 }
@@ -67,7 +114,10 @@ export async function fetchClaimedAchievements(userId: string): Promise<Set<stri
 }
 
 export async function claimAchievement(achievementId: string): Promise<AwardResult | null> {
-  const { data, error } = await supabase.rpc('claim_achievement', { p_achievement_id: achievementId });
+  const rpc = achievementId.startsWith('adventure_')
+    ? 'claim_adventure_achievement'
+    : 'claim_achievement';
+  const { data, error } = await supabase.rpc(rpc, { p_achievement_id: achievementId });
   if (error) return null;
   return mapAward(data);
 }

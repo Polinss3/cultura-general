@@ -61,7 +61,7 @@ com.polinss3.culturalgeneral`).
       intermedia. Es el otro camino que se tocó.
 - [ ] **Actualizando sobre una instalación previa**, el onboarding se repite
       (`ONBOARDING_VERSION = 2`) pero **no vuelve a dar el regalo de bienvenida**.
-- [ ] **Perfil → pie de pantalla**: dice `v2.0.0 (NN)`, no `v1.0.0`.
+- [ ] **Perfil → pie de pantalla**: dice `v2.1.0 (NN)`, no `v1.0.0`.
 - [ ] **Perfil → Ajustes**: no hay fila "Privacidad y anuncios".
 
 ## C. Los arreglos de esta tanda

@@ -11,9 +11,10 @@ import { useTheme } from '@/constants/colors';
 
 type Props = {
   focused: boolean;
+  placement?: string;
 };
 
-export function AdBannerView({ focused }: Props) {
+export function AdBannerView({ focused, placement = 'game_screen' }: Props) {
   const { height, width } = useWindowDimensions();
   const { C } = useTheme();
   const [revision, setRevision] = useState(0);
@@ -54,7 +55,7 @@ export function AdBannerView({ focused }: Props) {
       <AdView
         adUnitId={adUnitId}
         adFormat={AdFormat.BANNER}
-        placement="game_screen"
+        placement={placement}
         autoRefresh={false}
         loadOnMount
         style={{ width: tablet ? 728 : 320, height: reservedHeight, opacity: loaded ? 1 : 0 }}
@@ -65,4 +66,3 @@ export function AdBannerView({ focused }: Props) {
     </View>
   );
 }
-

@@ -302,6 +302,7 @@ export function YearsGame({ header, onRoundFinished }: Props) {
                   key={year}
                   year={formatYear(year)}
                   state={stateFor(i, year === q.answer.year)}
+                  disabled={answered}
                   dimmed={answered && stateFor(i, year === q.answer.year) === null}
                   onPress={() => handleAnswer(i, year === q.answer.year)}
                 />
@@ -335,6 +336,7 @@ export function YearsGame({ header, onRoundFinished }: Props) {
                   text={eventText(e)}
                   letter={LETTERS[i]}
                   state={stateFor(i, e.id === q.answer.id)}
+                  disabled={answered}
                   dimmed={answered && stateFor(i, e.id === q.answer.id) === null}
                   onPress={() => handleAnswer(i, e.id === q.answer.id)}
                 />

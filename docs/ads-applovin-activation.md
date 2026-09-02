@@ -84,8 +84,10 @@ eas env:create production --name EXPO_PUBLIC_BANNER_ADS --value true
 eas env:create production --name EXPO_PUBLIC_REWARDED_HINTS --value true
 ```
 
-El banner se monta al pie de Contrarreloj, Ascenso, Retos (Banderas y Años) y Aprender, en un
-hueco reservado por debajo del contenido: nunca se superpone a un control.
+El banner se monta al pie de Contrarreloj, Ascenso, Retos (Banderas y Años),
+Aprender y las pausas naturales de Aventura (preparación y resultado del nivel),
+en un hueco reservado por debajo del contenido: nunca se superpone a un control.
+Durante las preguntas de Aventura no se monta ningún banner.
 
 ### 3. Probar en un dispositivo real antes de ir a producción
 

@@ -1,7 +1,6 @@
 # Google Play — Español (España)
 
-> Android sigue aparcado en `versionCode 6`; esta ficha se actualiza para que no
-> se quede desfasada respecto a la 2.0.0 de iOS. Como la de App Store, **no
+> Ficha alineada con la **2.1.0** para Android e iOS. Como la de App Store, **no
 > menciona publicidad**: cuando se enciendan los anuncios hay que revisar la
 > línea de "sin anuncios" en los cuatro ficheros de `store/`.
 

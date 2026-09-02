@@ -5,7 +5,9 @@ import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Linking from 'expo-linking';
-import { Alert } from 'react-native';
+import * as Notifications from 'expo-notifications';
+import { Alert, AppState } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
   useFonts,
   Nunito_400Regular,
@@ -30,8 +32,13 @@ import { ProgressProvider } from '@/context/ProgressContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { applyPersistedLanguage, getCurrentLang } from '@/lib/i18n';
 import { loadThemePreference } from '@/lib/appearance';
-import { purgeLegacyQuestionCache } from '@/lib/db';
-import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
+import { checkDailyAnswered, purgeLegacyQuestionCache } from '@/lib/db';
+import { getNotificationRoute, syncNotificationSchedule } from '@/lib/notifications';
+import { localDayKey } from '@/lib/notificationPlan';
+import {
+  createAdventureProgressRepository,
+  migrateGuestAdventureProgressToUser,
+} from '@/lib/adventure-progress';
 import { initFeedback } from '@/lib/feedback';
 import { supabase } from '@/lib/supabase';
 import { setSentryUser } from '@/lib/sentry';
@@ -122,14 +129,13 @@ function RootLayout() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Idioma: aplicar override guardado bajo el BootScreen (sin flash), y de
-  // paso limpiar la caché de preguntas v1 y reprogramar el recordatorio en el
-  // idioma activo (cubre a quien cambió el idioma del sistema con la app cerrada).
+  // Idioma: aplicar override guardado bajo el BootScreen (sin flash) y limpiar
+  // la caché de preguntas v1. El calendario de notificaciones se reconstruye
+  // después, cuando identidad y progreso ya están disponibles.
   useEffect(() => {
     Promise.all([applyPersistedLanguage(), loadThemePreference()]).finally(() => {
       setLangReady(true);
       purgeLegacyQuestionCache();
-      rescheduleDailyReminderIfActive();
       initFeedback();
     });
   }, []);
@@ -253,6 +259,75 @@ function RootLayout() {
   const ready =
     (authResolved && (hasIdentity || (probeDone && !offline))) || manualEnter || bootExpired;
 
+  // Cada apertura desplaza dos días el aviso de reactivación. El plan reserva
+  // una sola franja a las 20:00 por fecha, así que el mensaje personalizado
+  // sustituye al recordatorio genérico y nunca crea una tercera notificación.
+  useEffect(() => {
+    if (!ready || !onboarded) return;
+    let cancelled = false;
+
+    const sync = async () => {
+      const scope = guest ? 'guest' : session?.user?.id ?? 'local';
+      const progressPromise = createAdventureProgressRepository(scope, {
+        remoteEnabled: !!session?.user && !guest && !offline,
+      }).load();
+      const profilePromise = session?.user && !offline
+        ? supabase.from('profiles').select('streak').eq('id', session.user.id).maybeSingle()
+        : Promise.resolve({ data: null });
+      const dailyPromise = session?.user && !offline
+        ? checkDailyAnswered(session.user.id).catch(() => null)
+        : Promise.resolve(null);
+
+      const [adventureProgress, profileResult, dailyState] = await Promise.all([
+        progressPromise,
+        profilePromise,
+        dailyPromise,
+      ]);
+      if (cancelled) return;
+
+      await syncNotificationSchedule({
+        scope,
+        adventureLevel: adventureProgress.unlockedLevel,
+        streak: session?.user ? (profileResult.data?.streak ?? 0) : 0,
+        // Un `false` leído justo mientras se guarda la respuesta puede estar
+        // obsoleto. Solo confirmamos el positivo; una marca de ayer se ignora
+        // automáticamente porque las fechas se comparan en hora local.
+        completedDayKey: dailyState?.answered ? localDayKey(new Date()) : undefined,
+      });
+    };
+
+    void sync();
+    const sub = AppState.addEventListener('change', state => {
+      if (state === 'active') void sync();
+    });
+    return () => {
+      cancelled = true;
+      sub.remove();
+    };
+  }, [ready, onboarded, guest, session?.user?.id, offline]);
+
+  // Los avisos llevan una ruta cerrada y validada. Se cubren tanto el toque
+  // con la app abierta/segundo plano como el arranque en frío desde el aviso.
+  useEffect(() => {
+    if (!ready || !onboarded) return;
+    let cancelled = false;
+
+    const openFromNotification = (response: Notifications.NotificationResponse | null) => {
+      if (cancelled) return;
+      const route = getNotificationRoute(response);
+      if (!route) return;
+      router.push(route as any);
+      void Notifications.clearLastNotificationResponseAsync();
+    };
+
+    void Notifications.getLastNotificationResponseAsync().then(openFromNotification).catch(() => {});
+    const sub = Notifications.addNotificationResponseReceivedListener(openFromNotification);
+    return () => {
+      cancelled = true;
+      sub.remove();
+    };
+  }, [ready, onboarded, router]);
+
   useEffect(() => {
     if (!ready || !onboarded) return;
     // Build sin anuncios posibles: ni se pregunta ni se aplica una decisión
@@ -303,20 +378,25 @@ function RootLayout() {
       const isAuthCallback = segs[0] === 'auth' && segs[1] === 'callback';
       const isCompleteProfile = segs[1] === 'complete-profile';
 
-      // Si llega sesión real estando en modo invitado, limpiamos rastros del invitado.
+      // Si llega una sesion real, el avance del invitado se fusiona con la
+      // cuenta antes de borrar nada. Si Supabase falla conservamos la copia
+      // guest para reintentarlo al recuperar la conexion.
       if (session && guest) {
-        await clearGuestData();
+        const migrated = !offline && await migrateGuestAdventureProgressToUser(session.user.id);
+        if (migrated) await clearGuestData();
       }
 
       // Modo sin conexión: sin acceso a perfil/complete-profile; entrada directa
-      // a los tabs (Rápido y Aprender). Diario/Amigos muestran aviso dentro.
+      // a los tabs (Contrarreloj, Aventura y Aprender). Diario/Amigos muestran aviso dentro.
       if (offline) {
         if (isUpdatePassword) return;
         if (!hasCompletedOnboarding) {
           if (!inOnboarding) router.replace('/onboarding');
           return;
         }
-        if (segs[0] !== '(tabs)') router.replace('/(tabs)');
+        const isOfflinePlayableRoute =
+          segs[0] === '(tabs)' || segs[0] === 'speed' || segs[0] === 'adventure-level';
+        if (!isOfflinePlayableRoute) router.replace('/(tabs)');
         return;
       }
 
@@ -424,4 +504,12 @@ function RootLayout() {
   );
 }
 
-export default Sentry.wrap(RootLayout);
+function GestureReadyRoot() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <RootLayout />
+    </GestureHandlerRootView>
+  );
+}
+
+export default Sentry.wrap(GestureReadyRoot);

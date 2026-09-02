@@ -1,6 +1,6 @@
 # App Store — English (U.S.)
 
-> Ficha de la **2.0.0**, que se publica **sin anuncios**. Ningún texto menciona
+> Ficha de la **2.1.0**, que se publica **sin anuncios**. Ningún texto menciona
 > publicidad. El día que se enciendan los anuncios
 > (`docs/ads-applovin-activation.md`) hay que revisar "no ads, no in-app
 > purchases" aquí y en los otros tres ficheros ANTES de subir la build.
@@ -48,7 +48,7 @@ Light theme, dark theme or whatever your system uses. Available in English and S
 
 Free, with no ads and no in-app purchases.
 
-## What's New (2.0.0)
+## What's New (2.1.0)
 Our biggest update yet.
 
 • NEW CHALLENGES TAB: two games in one. Flags, with all 196 countries, and Years, where you place 98 historical events on the timeline.

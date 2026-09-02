@@ -1,6 +1,6 @@
 # App Store — Español (España)
 
-> Ficha de la **2.0.0**, que se publica **sin anuncios**. Ningún texto menciona
+> Ficha de la **2.1.0**, que se publica **sin anuncios**. Ningún texto menciona
 > publicidad. El día que se enciendan los anuncios
 > (`docs/ads-applovin-activation.md`) hay que revisar "Sin anuncios ni compras"
 > aquí y en los otros tres ficheros ANTES de subir la build.
@@ -43,7 +43,7 @@ Tema claro, oscuro o el del sistema. Disponible en español e inglés, con el id
 
 Gratis, sin anuncios y sin compras dentro de la aplicación.
 
-## Novedades (2.0.0)
+## Novedades (2.1.0)
 La actualización más grande hasta ahora.
 
 • NUEVA PESTAÑA RETOS: dos juegos en uno. Banderas, con los 196 países del mundo, y Años, donde tienes que situar 98 hechos históricos en su fecha.

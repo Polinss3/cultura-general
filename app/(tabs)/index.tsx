@@ -34,8 +34,10 @@ import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import {
   Font, Radius, Space, Type, cardShadow, inkButton, tint, warmGradient,
 } from '@/constants/theme';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
+import { createAdventureProgressRepository } from '@/lib/adventure-progress';
+import type { AdventureProgress } from '@/lib/adventure';
 
 // Modos locales que ofrece la pestaña de Amigos (pasa el móvil, marcador,
 // duelo, superviviente y trivia por equipos).
@@ -66,6 +68,13 @@ export default function HomeScreen() {
   const [playersToday, setPlayersToday] = useState<number | null>(null);
   const [missions, setMissions] = useState<MissionState[]>([]);
   const [claimingMission, setClaimingMission] = useState<string | null>(null);
+  const [adventureProgress, setAdventureProgress] = useState<AdventureProgress | null>(null);
+  const adventureRepository = useMemo(
+    () => user && !guest
+      ? createAdventureProgressRepository(user.id, { remoteEnabled: !offline })
+      : null,
+    [guest, offline, user?.id],
+  );
 
   // La economía (cofre, misiones, liga) necesita sesión y red.
   const economyOn = !!user && !guest && !offline;
@@ -82,7 +91,16 @@ export default function HomeScreen() {
     // volver a esta pantalla, porque el cofre también se abre desde Diario.
     if (economyOn) refresh();
     loadMissions();
-  }, [economyOn, refresh, loadMissions]));
+    let active = true;
+    if (adventureRepository) {
+      adventureRepository.load().then(stored => {
+        if (active) setAdventureProgress(stored);
+      });
+    } else {
+      setAdventureProgress(null);
+    }
+    return () => { active = false; };
+  }, [adventureRepository, economyOn, refresh, loadMissions]));
 
   const handleChest = async (): Promise<number | null> => {
     const { reward, error } = await claimDailyChest();
@@ -143,7 +161,7 @@ export default function HomeScreen() {
 
   const initial = guest ? '?' : (profile?.username?.[0] ?? '?').toUpperCase();
   const displayName = guest ? t('common.guest') : (profile?.username ?? '…');
-  const achievementCount = unlockedCount(profile);
+  const achievementCount = unlockedCount(profile, adventureProgress);
   const speedRecord = guest ? guestSpeedRecord : (profile?.speed_record ?? 0);
   const ladderRecord = profile?.ladder_best ?? 0;
   const rank = rankForLevel(profile?.level ?? 1);

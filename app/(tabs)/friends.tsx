@@ -403,7 +403,7 @@ function PasaPlaying({ playerName, playerIdx, totalPlayers, questions, onDone, o
         <Text style={{ color: C.text, fontSize: 18, fontFamily: Font.bold, lineHeight: 26, marginBottom: 20 }}>{q.q}</Text>
         <View style={{ gap: 9 }}>
           {q.opts.map((opt, i) => (
-            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} disabled={answered} onPress={() => handle(i)} />
           ))}
         </View>
       </View>
@@ -670,7 +670,7 @@ function DueloPlaying({ players, scores, round, question: rawQuestion, onRoundEn
         </Text>
         <View style={{ gap: 9 }}>
           {question.opts.map((opt, i) => (
-            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handleAnswer(i)} />
+            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} disabled={done} onPress={() => handleAnswer(i)} />
           ))}
         </View>
       </View>
@@ -1017,6 +1017,7 @@ function SurvivorQuestion({ playerName, question, onAnswer, onExit }: {
           {question.opts.map((opt, i) => (
             <OptionBtn key={i} text={opt} letter={LETTERS[i]}
               state={selected === null ? null : i === selected ? 'selected' : null}
+              disabled={selected !== null || secondsLeft <= 0}
               onPress={() => handle(i)} />
           ))}
         </View>
@@ -1280,7 +1281,7 @@ function TriviaPlaying({ teamNames, scores, currentTeam, questionIdx, question: 
         <Text style={{ color: C.text, fontSize: 18, fontFamily: Font.bold, lineHeight: 26, marginBottom: 20 }}>{question.q}</Text>
         <View style={{ gap: 9 }}>
           {question.opts.map((opt, i) => (
-            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => handle(i)} />
+            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} disabled={answered} onPress={() => handle(i)} />
           ))}
         </View>
       </View>
@@ -1569,6 +1570,7 @@ function MarcadorQuestion({ playerName, question, onAnswer, onFinish, onExit }: 
           {question.opts.map((opt, i) => (
             <OptionBtn key={i} text={opt} letter={LETTERS[i]}
               state={selected === null ? null : i === selected ? 'selected' : null}
+              disabled={selected !== null}
               onPress={() => handle(i)} />
           ))}
         </View>
@@ -1611,7 +1613,7 @@ function MarcadorFeedback({ playerName, question, selected, correct, players, sc
         <Text style={{ color: C.text, fontSize: 17, fontFamily: Font.bold, lineHeight: 24, marginBottom: 16 }}>{question.q}</Text>
         <View style={{ gap: 9, marginBottom: 16 }}>
           {question.opts.map((opt, i) => (
-            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} onPress={() => {}} />
+            <OptionBtn key={i} text={opt} letter={LETTERS[i]} state={getState(i)} disabled onPress={() => {}} />
           ))}
         </View>
 
