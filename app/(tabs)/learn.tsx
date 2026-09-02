@@ -563,6 +563,7 @@ export default function LearnScreen() {
                     key={i}
                     flag={opt}
                     state={getState(i)}
+                    disabled={answered}
                     dimmed={answered && getState(i) === null}
                     onPress={() => handle(i)}
                   />
@@ -571,6 +572,7 @@ export default function LearnScreen() {
                     key={i}
                     year={opt}
                     state={getState(i)}
+                    disabled={answered}
                     dimmed={answered && getState(i) === null}
                     onPress={() => handle(i)}
                   />
@@ -594,6 +596,7 @@ export default function LearnScreen() {
                     text={opt}
                     letter={LETTERS[i]}
                     state={getState(i)}
+                    disabled={answered}
                     dimmed={answered && getState(i) === null}
                     onPress={() => handle(i)}
                   />

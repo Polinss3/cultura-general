@@ -1,5 +1,6 @@
 import { levelFromXp } from './leveling';
 import i18n from './i18n';
+import type { AdventureProgress } from './adventure';
 
 export interface Achievement {
   id: string;
@@ -27,6 +28,7 @@ interface ProfileStats {
 export function computeAchievements(
   profile: ProfileStats | null,
   claimed?: Set<string>,
+  adventureProgress?: AdventureProgress | null,
 ): Achievement[] {
   const answered = profile?.total_answered ?? 0;
   const correct = profile?.total_correct ?? 0;
@@ -35,6 +37,9 @@ export function computeAchievements(
   const level = profile?.level ?? levelFromXp(profile?.xp ?? 0);
   const coins = profile?.coins ?? 0;
   const ladderBest = profile?.ladder_best ?? 0;
+  const adventureLevels = adventureProgress?.completedLevels.length ?? 0;
+  const adventureStars = Object.values(adventureProgress?.stars ?? {})
+    .reduce((total, stars) => total + stars, 0);
   const accuracy = answered > 0 ? correct / answered : 0;
   const isClaimed = (id: string) => claimed?.has(id) ?? false;
 
@@ -65,6 +70,12 @@ export function computeAchievements(
     { id: 'ladder_20',          icon: '⛰️', color: '#e83060', reward: 200, unlocked: ladderBest >= 20 },
     // ─ Nuevos: multiplicador
     { id: 'mult_max',           icon: '🔥', color: '#e8a030', reward: 80,  unlocked: bestStreak >= 10 },
+    // ─ Aventura: recompensas deliberadamente moderadas y espaciadas.
+    { id: 'adventure_first',     icon: '🧭', color: '#C7772F', reward: 25,  unlocked: adventureLevels >= 1 },
+    { id: 'adventure_chapter',   icon: '🗺️', color: '#3478B9', reward: 50,  unlocked: adventureLevels >= 20 },
+    { id: 'adventure_stars_100', icon: '⭐', color: '#C08A20', reward: 75,  unlocked: adventureStars >= 100 },
+    { id: 'adventure_levels_100',icon: '🏰', color: '#7954B6', reward: 100, unlocked: adventureLevels >= 100 },
+    { id: 'adventure_all',       icon: '🚀', color: '#287F87', reward: 150, unlocked: adventureLevels >= 200 },
   ];
 
   return defs.map(d => ({
@@ -75,8 +86,11 @@ export function computeAchievements(
   }));
 }
 
-export function unlockedCount(profile: ProfileStats | null): number {
-  return computeAchievements(profile).filter(a => a.unlocked).length;
+export function unlockedCount(
+  profile: ProfileStats | null,
+  adventureProgress?: AdventureProgress | null,
+): number {
+  return computeAchievements(profile, undefined, adventureProgress).filter(a => a.unlocked).length;
 }
 
 // Total real de logros de la lista. Se calcula en vez de fijarse a mano para

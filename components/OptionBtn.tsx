@@ -4,6 +4,7 @@ import { feedback } from '@/lib/feedback';
 import { AnswerState } from '@/types';
 import { useColors } from '@/constants/colors';
 import { Font, Radius } from '@/constants/theme';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 interface Props {
   text: string;
@@ -12,16 +13,43 @@ interface Props {
   onPress: () => void;
   /** Apaga las opciones que no son la elegida ni la correcta, tras responder. */
   dimmed?: boolean;
+  /** Estado verbal añadido a VoiceOver, por ejemplo «respuesta correcta». */
+  accessibilityStatus?: string;
+  accessibilitySelected?: boolean;
+  /** Permite que una pantalla coordine un único háptico por respuesta. */
+  feedbackDisabled?: boolean;
+  /** Bloquea por completo nuevos toques tras cerrar una respuesta. */
+  disabled?: boolean;
 }
 
-export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
+export function OptionBtn({
+  text,
+  letter,
+  state,
+  onPress,
+  dimmed,
+  accessibilityStatus,
+  accessibilitySelected,
+  feedbackDisabled = false,
+  disabled = false,
+}: Props) {
   const C = useColors();
+  const reducedMotion = useReducedMotion();
   const scale = useRef(new Animated.Value(1)).current;
+  const pressLocked = useRef(false);
+
+  useEffect(() => {
+    if (!disabled && state === null) pressLocked.current = false;
+  }, [disabled, state]);
 
   // Haptic feedback when answer is revealed
   useEffect(() => {
     if (state === 'correct') {
-      feedback.correct();
+      if (!feedbackDisabled) feedback.correct();
+      if (reducedMotion) {
+        scale.setValue(1);
+        return;
+      }
       // Pop de entrada al revelar la correcta: 0.9 → 1.04 → 1 (~400 ms).
       scale.setValue(0.9);
       Animated.sequence([
@@ -29,7 +57,11 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
         Animated.timing(scale, { toValue: 1, duration: 160, easing: Easing.out(Easing.quad), useNativeDriver: true }),
       ]).start();
     } else if (state === 'wrong') {
-      feedback.wrong();
+      if (!feedbackDisabled) feedback.wrong();
+      if (reducedMotion) {
+        scale.setValue(1);
+        return;
+      }
       // Sacudida sutil al fallar.
       Animated.sequence([
         Animated.timing(scale, { toValue: 0.97, duration: 60, useNativeDriver: true }),
@@ -37,18 +69,22 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
         Animated.spring(scale, { toValue: 1, friction: 5, tension: 120, useNativeDriver: true }),
       ]).start();
     }
-  }, [state, scale]);
+  }, [feedbackDisabled, reducedMotion, state, scale]);
 
   const handlePressIn = () => {
+    if (disabled || reducedMotion) return;
     Animated.timing(scale, { toValue: 0.97, duration: 90, easing: Easing.out(Easing.quad), useNativeDriver: true }).start();
   };
 
   const handlePressOut = () => {
+    if (disabled || reducedMotion) return;
     Animated.spring(scale, { toValue: 1, friction: 5, tension: 120, useNativeDriver: true }).start();
   };
 
   const handlePress = () => {
-    feedback.tap();
+    if (disabled || pressLocked.current) return;
+    pressLocked.current = true;
+    if (!feedbackDisabled) feedback.tap();
     onPress();
   };
 
@@ -78,6 +114,10 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
   return (
     <Animated.View style={{ transform: [{ scale }], opacity: dimmed ? 0.55 : 1 }}>
       <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`${letter}. ${text}${accessibilityStatus ? `. ${accessibilityStatus}` : ''}`}
+        accessibilityState={{ selected: accessibilitySelected ?? state === 'selected', disabled }}
+        disabled={disabled}
         onPress={handlePress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
@@ -110,7 +150,11 @@ export function OptionBtn({ text, letter, state, onPress, dimmed }: Props) {
         </Text>
         {/* Hueco reservado: la marca aparece por opacidad, no montándose, para
             que la etiqueta no cambie de ancho ni reajuste sus líneas. */}
-        <Text style={{ fontSize: 16, width: 18, textAlign: 'right', opacity: revealed ? 1 : 0 }}>
+        <Text
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+          style={{ fontSize: 16, width: 18, textAlign: 'right', opacity: revealed ? 1 : 0 }}
+        >
           {state === 'wrong' ? '✗' : '✓'}
         </Text>
       </Pressable>

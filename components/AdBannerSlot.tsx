@@ -10,7 +10,11 @@ import { useIsScreenFocused } from '@/hooks/useIsScreenFocused';
  * control. Si la publicidad está apagada no renderiza nada (fuera de `__DEV__`)
  * y la pantalla queda exactamente igual que antes.
  */
-export function AdBannerSlot() {
+type Props = {
+  placement?: string;
+};
+
+export function AdBannerSlot({ placement }: Props = {}) {
   const focused = useIsScreenFocused();
-  return <AdBannerView focused={focused} />;
+  return <AdBannerView focused={focused} placement={placement} />;
 }

@@ -65,6 +65,40 @@ export function shuffleQuestionSeeded(q: Question, seed: string): ShuffledQuesti
   };
 }
 
+/**
+ * Baraja las opciones para un intento concreto y fuerza que la respuesta
+ * correcta cambie de posición entre intentos consecutivos. La pregunta no se
+ * modifica y puede seguir ocupando siempre el mismo slot dentro del nivel.
+ */
+export function shuffleQuestionForAttempt(
+  q: Question,
+  seed: string,
+  attempt: number,
+): ShuffledQuestion {
+  const safeAttempt = Math.max(0, Math.trunc(attempt) || 0);
+  const shuffled = shuffleQuestionSeeded(q, `${seed}-attempt-${safeAttempt}`);
+  const optionCount = shuffled.opts.length;
+  if (optionCount < 2) return shuffled;
+
+  const targetAnswerIndex = (hashSeed(`${seed}-correct-position`) + safeAttempt) % optionCount;
+  if (shuffled.ans === targetAnswerIndex) return shuffled;
+
+  const opts = [...shuffled.opts];
+  const originalIndexMap = [...shuffled.originalIndexMap];
+  [opts[shuffled.ans], opts[targetAnswerIndex]] = [opts[targetAnswerIndex], opts[shuffled.ans]];
+  [originalIndexMap[shuffled.ans], originalIndexMap[targetAnswerIndex]] = [
+    originalIndexMap[targetAnswerIndex],
+    originalIndexMap[shuffled.ans],
+  ];
+
+  return {
+    ...shuffled,
+    opts,
+    ans: targetAnswerIndex,
+    originalIndexMap,
+  };
+}
+
 // Pick up to `n` items from `pool` prioritizing those whose id is NOT in `recentIds`.
 // Fresh ones come first (shuffled), stale ones fill the rest (shuffled).
 // Items without an id are treated as fresh.

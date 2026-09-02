@@ -19,7 +19,7 @@ function TabIcon({ label, icon, focused, C }: TabIconProps) {
       gap: 2,
       paddingVertical: 6,
       // Con 5 pestañas y la etiqueta a 12 px (el suelo), más holgura que esta
-      // corta "Aprender" y "Amigos".
+      // corta "Aventura" y "Aprender".
       paddingHorizontal: 8,
       borderRadius: Radius.row,
       backgroundColor: focused ? C.brandTint : 'transparent',
@@ -58,6 +58,7 @@ export default function TabLayout() {
         tabBarShowLabel: false,
         // Sin esto el icono va a una caja fija más baja que la píldora.
         tabBarIconStyle: { width: '100%', height: 52 },
+        animation: 'none',
       }}
     >
       <Tabs.Screen
@@ -85,6 +86,14 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="adventure"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <TabIcon label={t('tabs.adventure')} icon="🧭" focused={focused} C={C} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="learn"
         options={{
           tabBarIcon: ({ focused }) => (
@@ -92,14 +101,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="friends"
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon label={t('tabs.friends')} icon="👥" focused={focused} C={C} />
-          ),
-        }}
-      />
+      <Tabs.Screen name="friends" options={{ href: null }} />
     </Tabs>
   );
 }

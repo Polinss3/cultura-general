@@ -28,6 +28,7 @@
     "home": "Inicio",
     "daily": "Diario",
     "challenges": "Retos",
+    "adventure": "Aventura",
     "learn": "Aprender",
     "friends": "Amigos"
   },
@@ -63,6 +64,9 @@
     "m_daily": "Juega la pregunta diaria",
     "m_ladder_5": "Llega al piso 5 en Ascenso",
     "m_ladder_play": "Juega una partida de Ascenso",
+    "m_adventure_play": "Completa un intento en Aventura",
+    "m_adventure_perfect": "Supera un nivel de Aventura",
+    "m_adventure_stars": "Consigue 3 estrellas en Aventura",
     "m_coins_100": "Gana 100 monedas"
   },
   "achievements": {
@@ -149,12 +153,41 @@
     "mult_max": {
       "title": "A tope",
       "desc": "Multiplicador máximo (racha ≥10)"
+    },
+    "adventure_first": {
+      "title": "Primer paso",
+      "desc": "Supera tu primer nivel de Aventura"
+    },
+    "adventure_chapter": {
+      "title": "Cartógrafo",
+      "desc": "Completa 20 niveles de Aventura"
+    },
+    "adventure_stars_100": {
+      "title": "Constelación",
+      "desc": "Consigue 100 estrellas de Aventura"
+    },
+    "adventure_levels_100": {
+      "title": "Gran explorador",
+      "desc": "Completa 100 niveles de Aventura"
+    },
+    "adventure_all": {
+      "title": "Fin del viaje",
+      "desc": "Completa los 200 niveles de Aventura"
     }
   },
   "notifications": {
     "channelName": "Cultura General",
     "dailyTitle": "🧠 ¡Tu pregunta del día te espera!",
-    "dailyBody": "Responde hoy para mantener tu racha."
+    "dailyBody": "Responde hoy para mantener tu racha.",
+    "dailyEveningTitle": "⏳ Aún estás a tiempo",
+    "dailyEveningBody": "Completa la pregunta del día antes de que termine hoy.",
+    "returnStreakTitle": "🔥 Tu racha te está esperando",
+    "returnStreakBody_one": "Vuelve a jugar y sigue construyendo tu racha de {{count}} día.",
+    "returnStreakBody_other": "Vuelve a jugar y sigue construyendo tu racha de {{count}} días.",
+    "returnAdventureTitle": "🧭 Tu aventura continúa",
+    "returnAdventureBody": "El nivel {{level}} está listo cuando tú lo estés.",
+    "returnTitle": "🧠 Tenemos un nuevo reto para ti",
+    "returnBody": "Vuelve a Cultura General y descubre cuánto recuerdas."
   },
   "errors": {
     "network": "Sin conexión. Comprueba tu red e inténtalo de nuevo.",
@@ -469,6 +502,96 @@
       "1": "Fácil",
       "2": "Media",
       "3": "Difícil"
+    }
+  },
+  "adventure": {
+    "title": "Aventura",
+    "chapter": "Capítulo {{number}}",
+    "chapterFinal": "Final de capítulo",
+    "chapterFinalDescription": "La última prueba del capítulo: supera las 10 preguntas para cerrar este tramo del viaje.",
+    "chapterFinalBonus": "Bonus único del capítulo: +{{coins}} monedas",
+    "progressSummary": "{{completed}} de {{total}} niveles superados",
+    "progressSummaryStars": "{{completed}} de {{total}} niveles · {{stars}}/{{maxStars}} ⭐",
+    "levelRange": "Niveles {{start}}–{{end}}",
+    "previousChapter": "Capítulo anterior",
+    "nextChapter": "Capítulo siguiente",
+    "openChapterPicker": "Abrir selector de capítulos",
+    "closeChapterPicker": "Cerrar selector de capítulos",
+    "chapterPickerTitle": "Ir a un capítulo",
+    "chapterPickerDescription": "Elige cualquier capítulo para abrir su mapa.",
+    "chapterPickerItemHint": "Abre el mapa de este capítulo.",
+    "chapterLockedStatus": "Capítulo bloqueado",
+    "chapterAvailableStatus": "Capítulo disponible",
+    "level": "Nivel {{level}}",
+    "questions": "preguntas",
+    "toUnlock": "para avanzar",
+    "firstWin": "primera victoria",
+    "activeTime": "Tiempo activo",
+    "bestTime": "Mejor tiempo",
+    "thisAttempt": "Este intento",
+    "bestRecord": "Mejor récord",
+    "starsEarned": "{{count}} estrellas conseguidas",
+    "newStarRecord": "¡Nuevo récord de estrellas!",
+    "starBonus": "Bonus de estrellas",
+    "chapterBonus": "Final de capítulo",
+    "starGoals": "⭐ Completa · ⭐⭐ {{two}} · ⭐⭐⭐ {{three}}",
+    "starGoalsDescription": "Solo cuenta el tiempo que tardas en responder. Las explicaciones y el segundo plano no suman.",
+    "prepareTitle": "Prepara tus ayudas",
+    "prepareDescription": "Puedes comprar ayudas antes de empezar y usarlas durante las preguntas.",
+    "openShop": "Ir a la tienda",
+    "helpersAccountOnly": "Las ayudas y recompensas requieren una cuenta con conexión. Tu progreso del mapa sí se guardará en este dispositivo.",
+    "noHelpers": "No tienes ayudas. Puedes jugar sin ellas o conseguirlas en la tienda.",
+    "startLevel": "Empezar nivel",
+    "backToMap": "Volver al mapa",
+    "leaveTitle": "¿Abandonar el nivel?",
+    "leaveMessage": "Perderás las respuestas y el tiempo de este intento.",
+    "leaveConfirm": "Abandonar",
+    "hint": "Pista",
+    "explanation": "La respuesta",
+    "answerCorrectStatus": "Respuesta correcta",
+    "answerIncorrectStatus": "Respuesta incorrecta",
+    "answerCorrectAnnouncement": "Respuesta correcta.",
+    "answerIncorrectAnnouncement": "Respuesta incorrecta. La respuesta correcta es {{answer}}.",
+    "finishLevel": "Ver resultado",
+    "score": "Resultado",
+    "mistakesTitle_one": "Pregunta fallada",
+    "mistakesTitle_other": "Preguntas falladas ({{count}})",
+    "yourAnswer": "Tu respuesta",
+    "correctAnswer": "Respuesta correcta",
+    "reward": "Recompensa",
+    "rewardNeedsAccount": "La recompensa de monedas necesita una cuenta con conexión; el nivel queda guardado localmente.",
+    "rewardPending": "El nivel está guardado. Entregaremos la recompensa automáticamente cuando vuelva la conexión.",
+    "saveFailedTitle": "No pudimos guardar el nivel",
+    "saveFailedMessage": "Tu resultado sigue en pantalla. Pulsa «Ver resultado» para intentarlo de nuevo.",
+    "resultPerfect": "¡Camino despejado!",
+    "resultPerfectDescription": "Has acertado las {{total}} preguntas y desbloqueado el siguiente nivel.",
+    "resultChapterFinal": "¡Capítulo {{chapter}} completado!",
+    "resultChapterFinalDescription": "Has superado la prueba final y abierto un nuevo tramo de la aventura.",
+    "resultRetry": "Casi lo tienes",
+    "resultRetryDescription": "Has acertado {{correct}} de {{total}}. Necesitas un pleno para abrir el siguiente nivel.",
+    "nextLevel": "Jugar el siguiente nivel",
+    "retryLevel": "Reintentar nivel",
+    "retryForStars": "Reintentar para mejorar estrellas",
+    "lockedTitle": "Nivel bloqueado",
+    "lockedMessage": "Supera el nivel actual con 10 aciertos para abrir este camino.",
+    "questionsUnavailableTitle": "No se ha podido preparar el nivel",
+    "questionsUnavailableMessage": "Conéctate para descargar sus preguntas. Después podrás volver a jugar este nivel sin conexión.",
+    "regions": {
+      "roots": "Raíces del conocimiento",
+      "world": "Horizontes del mundo",
+      "ideas": "El valle de las ideas",
+      "nature": "Territorios vivos",
+      "arts": "El taller de las artes",
+      "music": "Ecos y melodías",
+      "legends": "Forja de leyendas",
+      "arena": "La gran arena",
+      "inventions": "Mentes y máquinas",
+      "cosmos": "Más allá de las estrellas"
+    },
+    "levelA11y": {
+      "completed": "Nivel {{level}} superado con {{stars}} estrellas. Mejor resultado: {{score}} de 10. Toca para rejugar y mejorar sus estrellas.",
+      "current": "Nivel {{level}} disponible. Toca para jugar.",
+      "locked": "Nivel {{level}} bloqueado."
     }
   },
   "learn": {
@@ -993,7 +1116,7 @@
     },
     "offlineNotice": {
       "title": "Sin conexión",
-      "description": "Este modo necesita conexión a internet. Mientras tanto puedes jugar a Contrarreloj y Aprender."
+      "description": "Este modo necesita conexión a internet. Mientras tanto puedes jugar a Contrarreloj, Aventura y Aprender."
     },
     "errorBoundary": {
       "title": "Algo fue mal",

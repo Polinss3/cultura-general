@@ -118,13 +118,21 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       },
     },
     plugins: [
-      ...(base.plugins ?? []),
+      // `app.json` trae su propia entrada de expo-build-properties (Aventura
+      // compila React Native desde fuente) y Appodeal exige frameworks
+      // estaticos y deployment target 15.1. Las dos se funden en una sola
+      // entrada: con el plugin duplicado, lo que acabe en el Podfile depende
+      // del orden en que se apliquen.
+      ...(base.plugins ?? []).filter(
+        plugin => (Array.isArray(plugin) ? plugin[0] : plugin) !== 'expo-build-properties',
+      ),
       [
         'expo-build-properties',
         {
           ios: {
             deploymentTarget: '15.1',
             useFrameworks: 'static',
+            buildReactNativeFromSource: true,
           },
           android: { minSdkVersion: 24 },
         },

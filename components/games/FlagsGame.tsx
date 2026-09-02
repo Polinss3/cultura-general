@@ -310,6 +310,7 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
                   text={countryName(opt)}
                   letter={LETTERS[i]}
                   state={stateFor(opt.cc)}
+                  disabled={answered}
                   dimmed={answered && stateFor(opt.cc) === null}
                   onPress={() => handleAnswer(opt.cc)}
                 />
@@ -334,6 +335,7 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
                   key={opt.cc}
                   flag={flagEmoji(opt.cc)}
                   state={stateFor(opt.cc)}
+                  disabled={answered}
                   dimmed={answered && stateFor(opt.cc) === null}
                   onPress={() => handleAnswer(opt.cc)}
                 />

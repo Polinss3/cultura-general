@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Animated, Dimensions, StyleSheet, View } from 'react-native';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const { width: W, height: H } = Dimensions.get('window');
 
@@ -35,12 +36,13 @@ interface ConfettiProps {
 }
 
 export function Confetti({ active }: ConfettiProps) {
+  const reducedMotion = useReducedMotion();
   const particles = useRef<Particle[]>(
     Array.from({ length: COUNT }, makeParticle),
   ).current;
 
   useEffect(() => {
-    if (!active) return;
+    if (!active || reducedMotion) return;
 
     const anims = particles.map(p => {
       p.x.setValue(0);
@@ -73,9 +75,9 @@ export function Confetti({ active }: ConfettiProps) {
     });
 
     Animated.parallel(anims).start();
-  }, [active]);
+  }, [active, particles, reducedMotion]);
 
-  if (!active) return null;
+  if (!active || reducedMotion) return null;
 
   return (
     <View style={StyleSheet.absoluteFill} pointerEvents="none">

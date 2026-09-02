@@ -12,7 +12,7 @@ ingresos reales. El perfil `production` continúa con
 Para una Beta App Review, indicar que los anuncios visibles son creatividades de
 prueba de Appodeal y que la app solicita primero edad, CMP y, en iOS, ATT.
 
-La 2.0.0 se publica **sin un solo anuncio** y **sin pedir ATT**: con
+La 2.1.0 se publica **sin un solo anuncio** y **sin pedir ATT**: con
 `EXPO_PUBLIC_ADS_MODE=off`, `adsConfigured()` devuelve false y no se monta el
 aviso publicitario, no se pide el permiso de seguimiento y no arrancan AppsFlyer
 ni Meta. A cambio, esta versión no tiene atribución de campañas.

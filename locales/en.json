@@ -28,6 +28,7 @@
     "home": "Home",
     "daily": "Daily",
     "challenges": "Challenges",
+    "adventure": "Adventure",
     "learn": "Learn",
     "friends": "Friends"
   },
@@ -63,6 +64,9 @@
     "m_daily": "Play the daily question",
     "m_ladder_5": "Reach floor 5 in Climb",
     "m_ladder_play": "Play a Climb run",
+    "m_adventure_play": "Complete an Adventure attempt",
+    "m_adventure_perfect": "Clear an Adventure level",
+    "m_adventure_stars": "Earn 3 stars in Adventure",
     "m_coins_100": "Earn 100 coins"
   },
   "achievements": {
@@ -149,12 +153,41 @@
     "mult_max": {
       "title": "Maxed out",
       "desc": "Max multiplier (streak ≥10)"
+    },
+    "adventure_first": {
+      "title": "First step",
+      "desc": "Clear your first Adventure level"
+    },
+    "adventure_chapter": {
+      "title": "Cartographer",
+      "desc": "Complete 20 Adventure levels"
+    },
+    "adventure_stars_100": {
+      "title": "Constellation",
+      "desc": "Earn 100 Adventure stars"
+    },
+    "adventure_levels_100": {
+      "title": "Great explorer",
+      "desc": "Complete 100 Adventure levels"
+    },
+    "adventure_all": {
+      "title": "Journey's end",
+      "desc": "Complete all 200 Adventure levels"
     }
   },
   "notifications": {
     "channelName": "CG Trivia",
     "dailyTitle": "🧠 Your daily question is waiting!",
-    "dailyBody": "Answer today to keep your streak alive."
+    "dailyBody": "Answer today to keep your streak alive.",
+    "dailyEveningTitle": "⏳ There's still time",
+    "dailyEveningBody": "Complete today's question before the day ends.",
+    "returnStreakTitle": "🔥 Your streak is waiting",
+    "returnStreakBody_one": "Come back and keep building your {{count}}-day streak.",
+    "returnStreakBody_other": "Come back and keep building your {{count}}-day streak.",
+    "returnAdventureTitle": "🧭 Your adventure continues",
+    "returnAdventureBody": "Level {{level}} is ready when you are.",
+    "returnTitle": "🧠 A new challenge is waiting",
+    "returnBody": "Come back to CG Trivia and see how much you remember."
   },
   "errors": {
     "network": "No connection. Check your network and try again.",
@@ -469,6 +502,96 @@
       "1": "Easy",
       "2": "Medium",
       "3": "Hard"
+    }
+  },
+  "adventure": {
+    "title": "Adventure",
+    "chapter": "Chapter {{number}}",
+    "chapterFinal": "Chapter finale",
+    "chapterFinalDescription": "The chapter's final trial: get all 10 questions right to close this part of the journey.",
+    "chapterFinalBonus": "One-time chapter bonus: +{{coins}} coins",
+    "progressSummary": "{{completed}} of {{total}} levels cleared",
+    "progressSummaryStars": "{{completed}} of {{total}} levels · {{stars}}/{{maxStars}} ⭐",
+    "levelRange": "Levels {{start}}–{{end}}",
+    "previousChapter": "Previous chapter",
+    "nextChapter": "Next chapter",
+    "openChapterPicker": "Open chapter selector",
+    "closeChapterPicker": "Close chapter selector",
+    "chapterPickerTitle": "Go to a chapter",
+    "chapterPickerDescription": "Choose any chapter to open its map.",
+    "chapterPickerItemHint": "Opens this chapter's map.",
+    "chapterLockedStatus": "Locked chapter",
+    "chapterAvailableStatus": "Available chapter",
+    "level": "Level {{level}}",
+    "questions": "questions",
+    "toUnlock": "to move on",
+    "firstWin": "first clear",
+    "activeTime": "Active time",
+    "bestTime": "Best time",
+    "thisAttempt": "This attempt",
+    "bestRecord": "Best record",
+    "starsEarned": "{{count}} stars earned",
+    "newStarRecord": "New star record!",
+    "starBonus": "Star bonus",
+    "chapterBonus": "Chapter finale",
+    "starGoals": "⭐ Clear · ⭐⭐ {{two}} · ⭐⭐⭐ {{three}}",
+    "starGoalsDescription": "Only answer time counts. Explanations and time in the background are excluded.",
+    "prepareTitle": "Prepare your helpers",
+    "prepareDescription": "You can buy helpers before starting and use them during the questions.",
+    "openShop": "Open shop",
+    "helpersAccountOnly": "Helpers and rewards need an online account. Your map progress will still be saved on this device.",
+    "noHelpers": "You have no helpers. Play without them or get some in the shop.",
+    "startLevel": "Start level",
+    "backToMap": "Back to map",
+    "leaveTitle": "Leave this level?",
+    "leaveMessage": "You will lose the answers and time from this attempt.",
+    "leaveConfirm": "Leave",
+    "hint": "Hint",
+    "explanation": "The answer",
+    "answerCorrectStatus": "Correct answer",
+    "answerIncorrectStatus": "Incorrect answer",
+    "answerCorrectAnnouncement": "Correct answer.",
+    "answerIncorrectAnnouncement": "Incorrect answer. The correct answer is {{answer}}.",
+    "finishLevel": "See result",
+    "score": "Score",
+    "mistakesTitle_one": "Missed question",
+    "mistakesTitle_other": "Missed questions ({{count}})",
+    "yourAnswer": "Your answer",
+    "correctAnswer": "Correct answer",
+    "reward": "Reward",
+    "rewardNeedsAccount": "Coin rewards need an online account; the level is saved locally.",
+    "rewardPending": "The level is saved. We will grant the reward automatically when the connection returns.",
+    "saveFailedTitle": "We couldn't save the level",
+    "saveFailedMessage": "Your result is still on screen. Tap “See result” to try again.",
+    "resultPerfect": "The path is clear!",
+    "resultPerfectDescription": "You got all {{total}} questions right and unlocked the next level.",
+    "resultChapterFinal": "Chapter {{chapter}} complete!",
+    "resultChapterFinalDescription": "You cleared the final trial and opened a new stretch of the adventure.",
+    "resultRetry": "Nearly there",
+    "resultRetryDescription": "You got {{correct}} out of {{total}}. You need a perfect run to open the next level.",
+    "nextLevel": "Play next level",
+    "retryLevel": "Retry level",
+    "retryForStars": "Retry to improve stars",
+    "lockedTitle": "Level locked",
+    "lockedMessage": "Clear the current level with 10 correct answers to open this path.",
+    "questionsUnavailableTitle": "This level could not be prepared",
+    "questionsUnavailableMessage": "Connect to download its questions. Once downloaded, you can replay this level offline.",
+    "regions": {
+      "roots": "Roots of knowledge",
+      "world": "World horizons",
+      "ideas": "Valley of ideas",
+      "nature": "Living territories",
+      "arts": "The artists' workshop",
+      "music": "Echoes and melodies",
+      "legends": "Forge of legends",
+      "arena": "The grand arena",
+      "inventions": "Minds and machines",
+      "cosmos": "Beyond the stars"
+    },
+    "levelA11y": {
+      "completed": "Level {{level}} cleared with {{stars}} stars. Best score: {{score}} out of 10. Tap to replay and improve its stars.",
+      "current": "Level {{level}} available. Tap to play.",
+      "locked": "Level {{level}} locked."
     }
   },
   "learn": {
@@ -993,7 +1116,7 @@
     },
     "offlineNotice": {
       "title": "No connection",
-      "description": "This mode needs an internet connection. In the meantime you can play Time Attack and Learn."
+      "description": "This mode needs an internet connection. In the meantime you can play Time Attack, Adventure and Learn."
     },
     "errorBoundary": {
       "title": "Something went wrong",

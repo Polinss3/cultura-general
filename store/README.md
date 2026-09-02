@@ -1,4 +1,4 @@
-# Fichas de tienda ES/EN — v2.0.0
+# Fichas de tienda ES/EN — v2.1.0
 
 La app usa marca localizada: dispositivos en español ven **"Cultura General"**,
 el resto **"CG Trivia"**. Estas fichas hay que crearlas/actualizarlas a mano en las
@@ -7,7 +7,7 @@ consolas (EAS solo sube los binarios, no gestiona metadatos).
 | Fichero | Para |
 |---|---|
 | [`app-store-es.md`](app-store-es.md) · [`app-store-en.md`](app-store-en.md) | App Store Connect, un idioma por fichero |
-| [`google-play-es.md`](google-play-es.md) · [`google-play-en.md`](google-play-en.md) | Play Console (Android aparcado en `versionCode 6`) |
+| [`google-play-es.md`](google-play-es.md) · [`google-play-en.md`](google-play-en.md) | Play Console, un idioma por fichero |
 | [`app-review-notes.md`](app-review-notes.md) | Notas para el revisor y respuestas de App Privacy |
 
 ## App Store Connect (iOS)
@@ -51,7 +51,7 @@ python3 scripts/generar-capturas-store.py <carpeta>  # o la que le pases
 Comprueba que están todos los materiales antes de empezar y, si falta alguno, dice
 cuál. Las capturas crudas que espera están listadas en la cabecera del script.
 
-**Pendiente para la 2.0.0**: las tres capturas de la pestaña Retos. Las que hay son
+**Pendiente para la 2.1.0**: las tres capturas de la pestaña Retos. Las que hay son
 de cuando se llamaba "Mundo" —se ve el nombre viejo en la barra de pestañas— y las
 rondas estrenan la barra superior de `components/RoundHud.tsx`:
 
@@ -59,13 +59,13 @@ rondas estrenan la barra superior de `components/RoundHud.tsx`:
 - `04-banderas-pais.png` — rehacer: la pregunta de bandera, ya con `RoundHud`.
 - `10-anos-pregunta.png` — nueva: una pregunta del modo Años.
 
-## Checklist de la 2.0.0
+## Checklist de la 2.1.0
 
 - [x] `supabase/i18n_en.sql` aplicado.
 - [x] `supabase/questions_en.sql` aplicado, cobertura EN al 100 %.
 - [x] Web legal publicada en `https://cg-trivia.pablobrasero.com`.
 - [x] Privacy Policy URL apuntando al dominio propio en ASC.
-- [x] Textos ES/EN reescritos para la 2.0.0 real: siete modos, Retos (Banderas y
+- [x] Textos ES/EN alineados con la 2.1.0: siete modos, Retos (Banderas y
       Años), ranking global y "sin anuncios" como argumento.
 - [ ] **Capturas de Retos** (las tres de arriba), un set por idioma.
 - [ ] Pegar los textos en App Store Connect y en Google Play Console.
@@ -76,7 +76,7 @@ rondas estrenan la barra superior de `components/RoundHud.tsx`:
 > activas tras `supabase/questions_dedup.sql`, `constants/flags.ts` y
 > `constants/years.ts`. Si se amplía alguno, conviene revisarlos.
 >
-> Las descripciones **no mencionan publicidad**, porque la 2.0.0 se publica con los
+> Las descripciones **no mencionan publicidad**, porque la 2.1.0 se publica con los
 > anuncios apagados —y ahora además sin pedir consentimiento ni ATT, ver
 > `adsConfigured()` en `lib/ads`—. Cuando se activen (ver
 > `docs/APPODEAL_SAFE_INTEGRATION.md`) hay que quitar el "sin anuncios" de los cuatro

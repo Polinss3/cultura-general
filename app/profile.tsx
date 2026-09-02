@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   View, Text, ScrollView, Pressable, TextInput,
@@ -10,6 +10,7 @@ import Constants from 'expo-constants';
 import { useRouter, Link } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
+import { useOffline } from '@/hooks/useOffline';
 import { supabase } from '@/lib/supabase';
 import {
   fetchAnswerHistory, updateUsername, fetchCategoryStats,
@@ -48,6 +49,8 @@ import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 import { requestAdsPreferencesReview } from '@/stores/adsConsentStore';
 import { adsConfigured } from '@/lib/ads';
+import { createAdventureProgressRepository } from '@/lib/adventure-progress';
+import type { AdventureProgress } from '@/lib/adventure';
 
 // Versión de la build instalada, para el pie de la pantalla. Se lee del binario
 // y no de `app.json` porque `autoIncrement` sube el `buildNumber` en el momento
@@ -63,6 +66,7 @@ export default function ProfileScreen() {
   const { C, isDark } = useTheme();
   const router = useRouter();
   const { user } = useAuth();
+  const offline = useOffline();
   const { profile, refresh } = useProfile();
   const { celebrate } = useProgress();
   const cosmetics = useCosmetics(!!user, user?.id);
@@ -70,6 +74,11 @@ export default function ProfileScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [claimed, setClaimed] = useState<Set<string>>(new Set());
   const [claiming, setClaiming] = useState<string | null>(null);
+  const [adventureProgress, setAdventureProgress] = useState<AdventureProgress | null>(null);
+  const adventureRepository = useMemo(
+    () => user ? createAdventureProgressRepository(user.id, { remoteEnabled: !offline }) : null,
+    [offline, user?.id],
+  );
 
   const [editingUsername, setEditingUsername] = useState(false);
   const [newUsername, setNewUsername] = useState('');
@@ -134,14 +143,24 @@ export default function ProfileScreen() {
 
   useEffect(() => { loadStats(); }, [loadStats]);
 
+  const loadAdventureProgress = useCallback(async () => {
+    if (!adventureRepository) {
+      setAdventureProgress(null);
+      return;
+    }
+    setAdventureProgress(await adventureRepository.load());
+  }, [adventureRepository]);
+
+  useEffect(() => { void loadAdventureProgress(); }, [loadAdventureProgress]);
+
   // Recarga al tirar hacia abajo: historial, estadísticas y el propio perfil
   // (nivel, monedas y racha, que cambian jugando en otras pantallas).
   const onRefresh = useCallback(async () => {
     if (!user) return;
     setRefreshing(true);
-    await Promise.all([loadStats(), refresh()]);
+    await Promise.all([loadStats(), loadAdventureProgress(), refresh()]);
     setRefreshing(false);
-  }, [user?.id, loadStats, refresh]);
+  }, [user?.id, loadAdventureProgress, loadStats, refresh]);
 
   const handleClaimAchievement = useCallback(async (id: string) => {
     if (claiming) return;
@@ -163,13 +182,13 @@ export default function ProfileScreen() {
         Alert.alert(t('profile.dialogs.notifPermTitle'), t('profile.dialogs.notifPermBody'));
         return;
       }
-      await scheduleDailyReminder();
+      await scheduleDailyReminder({ streak: profile?.streak ?? 0 });
       setNotificationsOn(true);
     } else {
       await cancelDailyReminder();
       setNotificationsOn(false);
     }
-  }, []);
+  }, [profile?.streak, t]);
 
   const handleSaveUsername = useCallback(async () => {
     if (!user || !newUsername.trim()) return;
@@ -240,7 +259,7 @@ export default function ProfileScreen() {
     );
   };
 
-  const achievements = computeAchievements(profile, claimed);
+  const achievements = computeAchievements(profile, claimed, adventureProgress);
   const unlocked = achievements.filter(a => a.unlocked).length;
   const answered = profile?.total_answered ?? 0;
   const correct = profile?.total_correct ?? 0;

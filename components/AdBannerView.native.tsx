@@ -11,6 +11,10 @@ type AdsModule = typeof import('react-native-appodeal');
 
 type Props = {
   focused: boolean;
+  // Etiqueta de superficie que traen las pantallas de Aventura. Appodeal solo
+  // tiene dado de alta `gameplay_banner` en el dashboard, asi que no se reenvia
+  // al SDK: mandar un placement inexistente lo degrada al de por defecto.
+  placement?: string;
 };
 
 let modTried = false;

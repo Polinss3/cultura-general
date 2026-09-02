@@ -24,6 +24,7 @@ import { useProgress } from '@/context/ProgressContext';
 import { useToast } from '@/context/ToastContext';
 import { showResultInterstitial } from '@/lib/ads';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
+import { markDailyQuestionCompleted } from '@/lib/notifications';
 import { planReviewAfterDailyCompletion, REVIEW_PROMPT_DELAY_MS } from '@/lib/appReview';
 import { noteReviewBlocker } from '@/lib/reviewGate';
 import {
@@ -273,6 +274,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     }
 
     if (already.answered) {
+      void markDailyQuestionCompleted();
       setIsCorrect(already.score > 0);
       const r = await fetchDailyRanking();
       setDailyRanking(r);
@@ -313,6 +315,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
         const originalIdx = question.originalIndexMap[i] ?? i;
         try {
           award = await saveDailyAnswer(user.id, question.id, originalIdx, correct, elapsedMs);
+          void markDailyQuestionCompleted();
         } catch {
           // No llegó a guardarse: se vuelve a la pregunta en vez de enseñar un
           // resultado que el servidor no tiene. `questionStartAt` NO se
@@ -615,6 +618,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                 text={opt}
                 letter={LETTERS[i]}
                 state={getState(i)}
+                disabled={answered}
                 dimmed={answered && getState(i) === null}
                 onPress={() => handle(i)}
               />
