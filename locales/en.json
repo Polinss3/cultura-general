@@ -1293,6 +1293,79 @@
       "terms": "Terms",
       "privacy": "Privacy",
       "manage": "Manage subscription"
+    },
+    "room": {
+      "title": "PRO Room",
+      "pitchTitle": "Here's what CG PRO gets you",
+      "pitchBody": "Two more game modes, the full Adventure and the statistics that tell you where you're going wrong.",
+      "modesTitle": "Exclusive modes",
+      "modes": {
+        "review": {
+          "title": "Smart review",
+          "description": "Questions you got wrong come back after 1, 3, 7, 21 and 60 days, until you know them."
+        },
+        "exam": {
+          "title": "Exam",
+          "description": "Forty questions, twenty minutes and a mark out of ten. Nothing is marked until the end."
+        }
+      },
+      "benefitsTitle": "Your perks",
+      "stipendTitle": "Coins of the month",
+      "stipendBody": "300 coins every month, for power-ups and cosmetics.",
+      "stipendClaim": "Collect the coins",
+      "stipendClaimed": "+{{coins}} 🪙 for this month",
+      "stipendAlready": "You've already collected this month's coins.",
+      "stipendFailed": "Couldn't collect them. Please try again later.",
+      "subscription": {
+        "none": "No active subscription",
+        "monthly": "Monthly subscription active",
+        "annual": "Yearly subscription active",
+        "lifetime": "Lifetime access"
+      },
+      "renews": "Renews on {{date}}",
+      "homeSubtitleFree": "See what the subscription includes",
+      "homeSubtitlePro": "Your exclusive modes and perks"
     }
+  },
+  "exam": {
+    "title": "Exam",
+    "intro": "Forty questions from every category, twenty minutes and a mark out of ten. Just like the real thing: you won't know what you got wrong until the end.",
+    "ruleQuestions": "{{count}} questions from every category",
+    "ruleTime": "Twenty minutes. Anything unanswered counts as blank",
+    "ruleNoFeedback": "Nothing is marked until you finish",
+    "ruleGrade": "A mark out of ten and how you rank against everyone",
+    "start": "Start the exam",
+    "skip": "Leave blank",
+    "exitTitle": "Leave the exam?",
+    "exitMessage": "You'll lose your answers so far and it won't count as an attempt.",
+    "exitConfirm": "Leave",
+    "yourGrade": "Your mark",
+    "correctCount": "{{correct}} of {{total}} correct",
+    "percentile": "Better than {{percentile}}% of players",
+    "best": "Your best mark: {{grade}}",
+    "reviewTitle": "Worth reviewing",
+    "youAnswered": "You answered: {{answer}}",
+    "blank": "You left this blank",
+    "correctAnswer": "Correct: {{answer}}",
+    "bands": {
+      "fail": "Fail",
+      "pass": "Pass",
+      "good": "Merit",
+      "great": "Distinction",
+      "perfect": "Top marks"
+    }
+  },
+  "review": {
+    "title": "Review",
+    "emptyTitle": "Nothing to review",
+    "emptyBody": "You have no questions pending. Come back when you get one wrong: it'll show up here after 1, 3, 7, 21 and 60 days.",
+    "needsAccount": "Review needs an account and a connection to know what you've got wrong.",
+    "doneTitle": "Review complete",
+    "doneBody": "{{correct}} of {{total}} correct. The ones you missed will be back tomorrow.",
+    "mastered_one": "{{count}} question fully learned!",
+    "mastered_other": "{{count}} questions fully learned!",
+    "remaining_one": "{{count}} still pending for today",
+    "remaining_other": "{{count}} still pending for today",
+    "finish": "Finish"
   }
 }

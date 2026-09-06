@@ -1293,6 +1293,79 @@
       "terms": "Términos",
       "privacy": "Privacidad",
       "manage": "Gestionar suscripción"
+    },
+    "room": {
+      "title": "Sala PRO",
+      "pitchTitle": "Esto es lo que trae CG PRO",
+      "pitchBody": "Dos modos de juego más, la Aventura completa y las estadísticas que te dicen en qué fallas.",
+      "modesTitle": "Modos exclusivos",
+      "modes": {
+        "review": {
+          "title": "Repaso inteligente",
+          "description": "Las preguntas que fallaste vuelven a los 1, 3, 7, 21 y 60 días, hasta que te las sabes."
+        },
+        "exam": {
+          "title": "Examen",
+          "description": "Cuarenta preguntas, veinte minutos y una nota sobre diez. Sin corregir hasta el final."
+        }
+      },
+      "benefitsTitle": "Tus ventajas",
+      "stipendTitle": "Monedas del mes",
+      "stipendBody": "300 monedas cada mes, para power-ups y cosméticos.",
+      "stipendClaim": "Recoger las monedas",
+      "stipendClaimed": "+{{coins}} 🪙 para este mes",
+      "stipendAlready": "Ya recogiste las monedas de este mes.",
+      "stipendFailed": "No se han podido recoger. Inténtalo más tarde.",
+      "subscription": {
+        "none": "Sin suscripción activa",
+        "monthly": "Suscripción mensual activa",
+        "annual": "Suscripción anual activa",
+        "lifetime": "Acceso de por vida"
+      },
+      "renews": "Se renueva el {{date}}",
+      "homeSubtitleFree": "Descubre lo que trae la suscripción",
+      "homeSubtitlePro": "Tus modos exclusivos y tus ventajas"
     }
+  },
+  "exam": {
+    "title": "Examen",
+    "intro": "Cuarenta preguntas de todas las categorías, veinte minutos y una nota sobre diez. Como los de verdad: no sabrás qué has fallado hasta el final.",
+    "ruleQuestions": "{{count}} preguntas de todas las categorías",
+    "ruleTime": "Veinte minutos. Lo que quede sin responder cuenta en blanco",
+    "ruleNoFeedback": "No se corrige nada hasta terminar",
+    "ruleGrade": "Nota sobre diez y tu puesto frente al resto",
+    "start": "Empezar el examen",
+    "skip": "Dejar en blanco",
+    "exitTitle": "¿Abandonar el examen?",
+    "exitMessage": "Perderás lo respondido hasta ahora y no contará como intento.",
+    "exitConfirm": "Abandonar",
+    "yourGrade": "Tu nota",
+    "correctCount": "{{correct}} de {{total}} correctas",
+    "percentile": "Mejor que el {{percentile}} % de los jugadores",
+    "best": "Tu mejor nota: {{grade}}",
+    "reviewTitle": "Para repasar",
+    "youAnswered": "Respondiste: {{answer}}",
+    "blank": "La dejaste en blanco",
+    "correctAnswer": "Correcta: {{answer}}",
+    "bands": {
+      "fail": "Suspenso",
+      "pass": "Aprobado",
+      "good": "Notable",
+      "great": "Sobresaliente",
+      "perfect": "Matrícula de honor"
+    }
+  },
+  "review": {
+    "title": "Repaso",
+    "emptyTitle": "Nada que repasar",
+    "emptyBody": "No tienes preguntas pendientes. Vuelve cuando falles alguna: aparecerán aquí a los 1, 3, 7, 21 y 60 días.",
+    "needsAccount": "El repaso necesita cuenta y conexión para saber qué has fallado.",
+    "doneTitle": "Repaso terminado",
+    "doneBody": "{{correct}} de {{total}} correctas. Las que has fallado volverán mañana.",
+    "mastered_one": "¡{{count}} pregunta aprendida del todo!",
+    "mastered_other": "¡{{count}} preguntas aprendidas del todo!",
+    "remaining_one": "Te queda {{count}} pendiente para hoy",
+    "remaining_other": "Te quedan {{count}} pendientes para hoy",
+    "finish": "Terminar"
   }
 }

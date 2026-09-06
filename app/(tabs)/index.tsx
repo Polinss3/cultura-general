@@ -21,6 +21,8 @@ import { DailyChest } from '@/components/DailyChest';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
+import { useIsPro } from '@/hooks/usePremium';
+import { PRO_ACCENT } from '@/lib/pro';
 import { rankForLevel, progressToNext } from '@/lib/leveling';
 import { formatMultiplier, REWARDS } from '@/lib/economy';
 import {
@@ -30,7 +32,7 @@ import { getLocaleTag } from '@/lib/i18n';
 import { ALL_CATEGORIES } from '@/constants/questions';
 import { COUNTRIES } from '@/constants/flags';
 import { YEAR_EVENTS } from '@/constants/years';
-import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { alpha, readableOn, useTheme, type Palette } from '@/constants/colors';
 import {
   Font, Radius, Space, Type, cardShadow, inkButton, tint, warmGradient,
 } from '@/constants/theme';
@@ -58,6 +60,7 @@ export default function HomeScreen() {
   const { showToast } = useToast();
   const { celebrate } = useProgress();
   const { C, isDark } = useTheme();
+  const isPro = useIsPro();
   const cosmetics = useCosmetics(!guest && !!user, user?.id);
   const [guestSpeedRecord, setGuestSpeedRecordState] = useState(0);
   // Jugadores de hoy. `null` mientras no se sepa. La cifra solo se enseña
@@ -549,6 +552,34 @@ export default function HomeScreen() {
             </Pressable>
           </View>
         )}
+
+        {/* Sala PRO: entra todo el mundo. Para quien no la tiene, es el
+            escaparate; para quien sí, el acceso a sus modos. */}
+        <Pressable
+          onPress={() => router.push('/premium' as any)}
+          style={{ paddingHorizontal: Space.screen, marginTop: 14 }}
+        >
+          <LinearGradient
+            colors={[alpha(PRO_ACCENT, isDark ? 0.3 : 0.15), alpha(PRO_ACCENT, isDark ? 0.13 : 0.055)]}
+            start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+            style={{
+              flexDirection: 'row', alignItems: 'center', gap: 13,
+              borderRadius: 18, padding: 16,
+              borderWidth: 1.5, borderColor: alpha(PRO_ACCENT, 0.36),
+            }}
+          >
+            <Text style={{ fontSize: 26 }}>✨</Text>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 15 }}>
+                {t('pro.room.title')}
+              </Text>
+              <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>
+                {isPro ? t('pro.room.homeSubtitlePro') : t('pro.room.homeSubtitleFree')}
+              </Text>
+            </View>
+            <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>
+          </LinearGradient>
+        </Pressable>
 
         {economyOn && (
           <View style={{ flexDirection: 'row', gap: 10, paddingHorizontal: Space.screen, marginTop: 14 }}>

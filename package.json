@@ -12,7 +12,9 @@
     "test:adventure": "tsx --test lib/adventure.test.ts",
     "test:questions": "node scripts/build-questions-v5.mjs",
     "test:notifications": "tsx --test lib/notificationPlan.test.ts",
-    "test:ads": "tsx --test utils/adPolicy.test.ts"
+    "test:ads": "tsx --test utils/adPolicy.test.ts",
+    "test:exam": "tsx --test lib/exam.test.ts",
+    "test:review": "tsx --test lib/review.test.ts"
   },
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.4.2",
