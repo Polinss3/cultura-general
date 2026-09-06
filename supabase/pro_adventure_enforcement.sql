@@ -1,4 +1,9 @@
--- ⚠️ APLICAR SOLO CUANDO LA 2.2.0 ESTÉ PUBLICADA Y EN MANOS DE LA GENTE.
+-- ⚠️ APLICAR A MANO, Y SOLO CUANDO LA 2.2.0 LLEVE TIEMPO PUBLICADA.
+--
+-- Vive FUERA de supabase/migrations/ a propósito, junto al resto de SQL que se
+-- aplica a mano (leagues.sql, cosmetics_v2.sql...). Si estuviera en migrations/
+-- un `supabase db push` lo aplicaría junto con todo lo demás, que es justo lo
+-- que no puede pasar.
 --
 -- Activa el candado de servidor sobre las recompensas de los capítulos de pago
 -- de Aventura. Va aparte del resto a propósito.

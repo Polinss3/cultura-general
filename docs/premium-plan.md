@@ -335,11 +335,21 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-06.
    aditivas e idempotentes, pero las cuatro últimas dependen de `is_premium()`,
    que crea la primera.
 
-   ⚠️ **`pro_adventure_enforcement_v1` NO se aplica todavía.** Activa el candado
-   de servidor sobre las recompensas de Aventura, y mientras haya gente en la
-   2.1.x su app no sabe pedir el grandfathering: a un usuario por el nivel 51
-   con la app antigua le fallaría la recompensa de un nivel que para él siempre
-   ha sido gratis. Se aplica cuando la 2.2.0 lleve tiempo publicada.
+   ⚠️ **`supabase/pro_adventure_enforcement.sql` NO se aplica todavía**, y por
+   eso vive fuera de `migrations/`: activa el candado de servidor sobre las
+   recompensas de Aventura, y mientras haya gente en la 2.1.x su app no sabe
+   pedir el grandfathering, así que a un usuario por el nivel 51 con la app
+   antigua le fallaría la recompensa de un nivel que para él siempre ha sido
+   gratis. Se aplica a mano cuando la 2.2.0 lleve tiempo publicada.
+
+   Las tres migraciones de Aventura de la 2.1.0 (`20260829*`) están aplicadas en
+   el servidor pero **no registradas** en el historial, porque se aplicaron a
+   mano. Antes de nada, marcarlas como aplicadas para que `db push` no intente
+   repetirlas:
+
+   ```
+   npx supabase migration repair --status applied 20260829010000 20260829020000 20260829030000
+   ```
 2. **Desplegar el webhook** con `--no-verify-jwt` y configurar
    `REVENUECAT_WEBHOOK_SECRET` en los dos lados.
 3. **Crear los productos** en App Store Connect y la oferta en RevenueCat.
