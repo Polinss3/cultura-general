@@ -515,10 +515,8 @@
     "levelRange": "Niveles {{start}}–{{end}}",
     "previousChapter": "Capítulo anterior",
     "nextChapter": "Capítulo siguiente",
-    "openChapterPicker": "Abrir selector de capítulos",
-    "closeChapterPicker": "Cerrar selector de capítulos",
-    "chapterPickerTitle": "Ir a un capítulo",
-    "chapterPickerDescription": "Elige cualquier capítulo para abrir su mapa.",
+    "openChapterPicker": "Abrir el mapa del viaje",
+    "closeChapterPicker": "Cerrar el mapa del viaje",
     "chapterPickerItemHint": "Abre el mapa de este capítulo.",
     "chapterLockedStatus": "Capítulo bloqueado",
     "chapterAvailableStatus": "Capítulo disponible",
@@ -680,7 +678,9 @@
     "guardianDefeated": "¡{{name}} derrotado!",
     "chapterIntroTitle": "Capítulo {{number}}",
     "chapterIntroStart": "Empezar el capítulo",
-    "guardianNoHelpers": "En el duelo con el guardián no se pueden usar ayudas."
+    "guardianNoHelpers": "En el duelo con el guardián no se pueden usar ayudas.",
+    "journeyTitle": "El viaje",
+    "journeySummary": "{{completed}}/{{total}} niveles · {{stars}} ⭐ · {{relics}}/{{maxRelics}} reliquias"
   },
   "learn": {
     "pickerTitle": "¿Qué te apetece hoy?",

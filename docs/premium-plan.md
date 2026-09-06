@@ -320,9 +320,9 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-06.
 | Insignia PRO en rankings, liga y perfil | ✅ |
 | Candado de Aventura cap. 3-10 + grandfathering | ✅ |
 | Reliquias y vitrina | ✅ |
-| Lore de capítulo | ⬜ |
-| Guardianes (finales de capítulo) | ⬜ |
-| Mapa del viaje | ⬜ |
+| Lore de capítulo | ✅ |
+| Guardianes (finales de capítulo) | ✅ |
+| Mapa del viaje | ✅ |
 | Sala PRO + Examen + Repaso inteligente | ⬜ |
 | Métricas con borroso | ⬜ |
 | Estipendio, streak freeze, cosméticos PRO | ⬜ (RPC `claim_pro_stipend` ya en la migración) |

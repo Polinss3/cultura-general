@@ -515,10 +515,8 @@
     "levelRange": "Levels {{start}}–{{end}}",
     "previousChapter": "Previous chapter",
     "nextChapter": "Next chapter",
-    "openChapterPicker": "Open chapter selector",
-    "closeChapterPicker": "Close chapter selector",
-    "chapterPickerTitle": "Go to a chapter",
-    "chapterPickerDescription": "Choose any chapter to open its map.",
+    "openChapterPicker": "Open the journey map",
+    "closeChapterPicker": "Close the journey map",
     "chapterPickerItemHint": "Opens this chapter's map.",
     "chapterLockedStatus": "Locked chapter",
     "chapterAvailableStatus": "Available chapter",
@@ -680,7 +678,9 @@
     "guardianDefeated": "{{name}} defeated!",
     "chapterIntroTitle": "Chapter {{number}}",
     "chapterIntroStart": "Begin the chapter",
-    "guardianNoHelpers": "No power-ups can be used against the guardian."
+    "guardianNoHelpers": "No power-ups can be used against the guardian.",
+    "journeyTitle": "The journey",
+    "journeySummary": "{{completed}}/{{total}} levels · {{stars}} ⭐ · {{relics}}/{{maxRelics}} relics"
   },
   "learn": {
     "pickerTitle": "What do you fancy today?",

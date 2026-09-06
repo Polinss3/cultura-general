@@ -21,7 +21,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
 import { AdventureMap } from '@/components/adventure/adventure-map';
-import { ChapterPickerModal } from '@/components/adventure/chapter-picker-modal';
+import { JourneyModal } from '@/components/adventure/journey-modal';
 import { RelicBadge } from '@/components/adventure/relic-badge';
 import { RelicCaseModal } from '@/components/adventure/relic-case';
 import { adventureRelicFor, adventureRelicsEarned, ADVENTURE_TOTAL_RELICS } from '@/lib/adventure-relics';
@@ -413,12 +413,11 @@ export default function AdventureScreen() {
         access={access}
         onClose={() => setRelicCaseOpen(false)}
       />
-      <ChapterPickerModal
+      <JourneyModal
         visible={chapterPickerOpen}
         currentRegion={regionNumber}
         totalRegions={maxRegion}
-        unlockedLevel={progress.unlockedLevel}
-        stars={progress.stars}
+        progress={progress}
         access={access}
         onClose={() => setChapterPickerOpen(false)}
         onSelect={selectChapter}
