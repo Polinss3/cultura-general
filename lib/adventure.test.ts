@@ -18,8 +18,17 @@ import {
   normalizeAdventureProgress,
   resolveAdventureAttempt,
   markAdventureStarRewarded,
+  ADVENTURE_FREE_MAX_LEVEL,
+  adventureChapterLocked,
+  adventureLevelLocked,
+  adventurePlayableCeiling,
   type AdventureProgress,
 } from './adventure';
+import { FREE_ADVENTURE_ACCESS } from './pro';
+import {
+  highestAdventureLevelReached,
+  qualifiesForAdventureLegacy,
+} from './adventure-access';
 import {
   adventureProgressStorageKey,
   createAdventureProgressRepository,
@@ -337,4 +346,65 @@ test('malformed persisted state is normalized and clamped', () => {
   assert.deepEqual(normalized.rewardedLevels, [1]);
   assert.equal(normalized.bestScores['1'], ADVENTURE_QUESTIONS_PER_LEVEL);
   assert.equal(normalized.stars['1'], 1);
+});
+
+// ─── Acceso PRO ──────────────────────────────────────────────────────────────
+
+test('the first two chapters stay playable without PRO', () => {
+  const free = FREE_ADVENTURE_ACCESS;
+
+  assert.equal(adventureLevelLocked(1, free), false);
+  assert.equal(adventureLevelLocked(ADVENTURE_FREE_MAX_LEVEL, free), false);
+  assert.equal(adventureLevelLocked(ADVENTURE_FREE_MAX_LEVEL + 1, free), true);
+  assert.equal(adventureChapterLocked(2, free), false);
+  assert.equal(adventureChapterLocked(3, free), true);
+});
+
+test('PRO and legacy users both reach the end of the adventure', () => {
+  const pro = { isPro: true, legacy: false };
+  const legacy = { isPro: false, legacy: true };
+
+  for (const access of [pro, legacy]) {
+    assert.equal(adventureLevelLocked(ADVENTURE_MAX_LEVELS, access), false);
+    assert.equal(adventureChapterLocked(10, access), false);
+    assert.equal(adventurePlayableCeiling(access), ADVENTURE_MAX_LEVELS);
+  }
+
+  assert.equal(adventurePlayableCeiling(FREE_ADVENTURE_ACCESS), ADVENTURE_FREE_MAX_LEVEL);
+});
+
+test('only progress beyond the free chapters qualifies as legacy', () => {
+  const fresh = createAdventureProgress();
+  assert.equal(qualifiesForAdventureLegacy(fresh), false);
+
+  // Justo en el límite gratuito: es progreso alcanzable con las reglas nuevas,
+  // así que no demuestra que sea un usuario anterior al cambio.
+  const atLimit = normalizeAdventureProgress({
+    unlockedLevel: ADVENTURE_FREE_MAX_LEVEL,
+    completedLevels: [ADVENTURE_FREE_MAX_LEVEL],
+  });
+  assert.equal(qualifiesForAdventureLegacy(atLimit), false);
+
+  const beyond = normalizeAdventureProgress({
+    unlockedLevel: ADVENTURE_FREE_MAX_LEVEL + 2,
+    completedLevels: [ADVENTURE_FREE_MAX_LEVEL + 1],
+  });
+  assert.equal(qualifiesForAdventureLegacy(beyond), true);
+  assert.equal(highestAdventureLevelReached(beyond), ADVENTURE_FREE_MAX_LEVEL + 1);
+});
+
+test('a merged progress that is ahead in either field still counts as legacy', () => {
+  // Al fusionar dos dispositivos, el nivel desbloqueado puede ir por delante
+  // de los completados (o al revés). Cualquiera de los dos vale como prueba.
+  const onlyUnlocked = normalizeAdventureProgress({
+    unlockedLevel: 120,
+    completedLevels: [],
+  });
+  assert.equal(qualifiesForAdventureLegacy(onlyUnlocked), true);
+
+  const onlyCompleted = normalizeAdventureProgress({
+    unlockedLevel: 1,
+    completedLevels: [90],
+  });
+  assert.equal(qualifiesForAdventureLegacy(onlyCompleted), true);
 });

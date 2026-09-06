@@ -5,9 +5,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import {
   ADVENTURE_LEVELS_PER_REGION,
+  adventureChapterLocked,
   adventureRegionForLevel,
   type AdventureRegion,
 } from '@/lib/adventure';
+import type { AdventureAccess } from '@/lib/pro';
+import { ProBadge } from '@/components/ProBadge';
 import { alpha, readableOn, useTheme } from '@/constants/colors';
 import { Font, HIT_MIN, Radius, Space, Type } from '@/constants/theme';
 
@@ -17,6 +20,7 @@ interface Props {
   totalRegions: number;
   unlockedLevel: number;
   stars: Record<string, number>;
+  access: AdventureAccess;
   onClose: () => void;
   onSelect: (regionNumber: number) => void;
 }
@@ -30,6 +34,7 @@ export function ChapterPickerModal({
   totalRegions,
   unlockedLevel,
   stars,
+  access,
   onClose,
   onSelect,
 }: Props) {
@@ -44,6 +49,9 @@ export function ChapterPickerModal({
   const renderRegion = ({ item }: { item: AdventureRegion }) => {
     const selected = item.number === currentRegion;
     const locked = item.startLevel > unlockedLevel;
+    // El candado de pago manda sobre el de progreso: es el que el usuario
+    // puede resolver ahora mismo, así que es el que hay que enseñar.
+    const proLocked = adventureChapterLocked(item.number, access);
     const title = t(`adventure.regions.${item.theme}`);
     let chapterStars = 0;
     for (let level = item.startLevel; level <= item.endLevel; level += 1) chapterStars += stars[String(level)] ?? 0;
@@ -52,7 +60,7 @@ export function ChapterPickerModal({
     return (
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={`${t('adventure.chapter', { number: item.number })}. ${title}. ${t('adventure.levelRange', { start: item.startLevel, end: item.endLevel })}. ${t(locked ? 'adventure.chapterLockedStatus' : 'adventure.chapterAvailableStatus')}`}
+        accessibilityLabel={`${t('adventure.chapter', { number: item.number })}. ${title}. ${t('adventure.levelRange', { start: item.startLevel, end: item.endLevel })}. ${t(proLocked ? 'adventure.chapterProStatus' : locked ? 'adventure.chapterLockedStatus' : 'adventure.chapterAvailableStatus')}`}
         accessibilityHint={t('adventure.chapterPickerItemHint')}
         accessibilityState={{ selected }}
         onPress={() => onSelect(item.number)}
@@ -92,9 +100,13 @@ export function ChapterPickerModal({
             }}>
               <Text style={{ fontSize: 22 }}>{item.icon}</Text>
             </View>
-            <Text style={{ fontSize: selected ? 19 : 17 }}>
-              {selected ? '✓' : locked ? '🔒' : ''}
-            </Text>
+            {proLocked ? (
+              <ProBadge />
+            ) : (
+              <Text style={{ fontSize: selected ? 19 : 17 }}>
+                {selected ? '✓' : locked ? '🔒' : ''}
+              </Text>
+            )}
           </View>
 
           <Text style={{ color: readableOn(item.accent, isDark), ...Type.sectionLabel }}>

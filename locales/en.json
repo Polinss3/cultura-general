@@ -592,6 +592,11 @@
       "completed": "Level {{level}} cleared with {{stars}} stars. Best score: {{score}} out of 10. Tap to replay and improve its stars.",
       "current": "Level {{level}} available. Tap to play.",
       "locked": "Level {{level}} locked."
+    },
+    "chapterProStatus": "CG PRO chapter",
+    "locked": {
+      "title": "Chapter {{number}} is part of CG PRO",
+      "description": "The first two chapters are free. PRO opens the other eight: 160 more levels."
     }
   },
   "learn": {

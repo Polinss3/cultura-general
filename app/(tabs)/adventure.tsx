@@ -32,9 +32,13 @@ import {
   ADVENTURE_MAX_LEVELS,
   adventureStarsInRange,
   adventureRegionForLevel,
+  adventureChapterLocked,
+  adventureLevelLocked,
   type AdventureProgress,
 } from '@/lib/adventure';
 import { createAdventureProgressRepository } from '@/lib/adventure-progress';
+import { useAdventureAccess } from '@/hooks/useAdventureAccess';
+import { ProGate } from '@/components/ProGate';
 import { prefetchAdventureQuestionBank } from '@/lib/adventure-questions';
 import {
   bumpMissions,
@@ -68,6 +72,7 @@ export default function AdventureScreen() {
     [guest, offline, scope, user?.id],
   );
   const [progress, setProgress] = useState<AdventureProgress | null>(null);
+  const access = useAdventureAccess(progress, scope ?? 'guest', !!user && !guest && !offline);
   const [regionNumber, setRegionNumber] = useState(1);
   const [initialPositioned, setInitialPositioned] = useState(false);
   const [chapterPickerOpen, setChapterPickerOpen] = useState(false);
@@ -163,8 +168,12 @@ export default function AdventureScreen() {
 
   const openLevel = useCallback((level: number) => {
     feedback.tap();
+    if (adventureLevelLocked(level, access)) {
+      router.push('/paywall?source=adventure_node' as any);
+      return;
+    }
     router.push(`/adventure-level/${level}` as any);
-  }, [router]);
+  }, [access, router]);
 
   const openChapterPicker = useCallback(() => {
     feedback.tap();
@@ -207,6 +216,7 @@ export default function AdventureScreen() {
   const regionStars = adventureStarsInRange(progress, region.startLevel, region.endLevel);
   const totalStars = adventureStarsInRange(progress, 1, ADVENTURE_MAX_LEVELS);
   const regionMaxStars = (region.endLevel - region.startLevel + 1) * 3;
+  const chapterLocked = adventureChapterLocked(region.number, access);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
@@ -363,12 +373,19 @@ export default function AdventureScreen() {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ alignItems: 'center', paddingBottom: 32 }}
           >
-            <AdventureMap
-              width={mapWidth}
-              region={region}
-              progress={progress}
-              onLevelPress={openLevel}
-            />
+            <ProGate
+              unlocked={!chapterLocked}
+              title={t('adventure.locked.title', { number: region.number })}
+              description={t('adventure.locked.description')}
+              source="adventure_map"
+            >
+              <AdventureMap
+                width={mapWidth}
+                region={region}
+                progress={progress}
+                onLevelPress={openLevel}
+              />
+            </ProGate>
           </ScrollView>
         </Animated.View>
       </GestureDetector>
@@ -378,6 +395,7 @@ export default function AdventureScreen() {
         totalRegions={maxRegion}
         unlockedLevel={progress.unlockedLevel}
         stars={progress.stars}
+        access={access}
         onClose={() => setChapterPickerOpen(false)}
         onSelect={selectChapter}
       />

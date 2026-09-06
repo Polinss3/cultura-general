@@ -25,9 +25,12 @@ import { useOffline } from '@/hooks/useOffline';
 import { usePowerups } from '@/hooks/usePowerups';
 import { useProfile } from '@/hooks/useProfile';
 import { useProgress } from '@/context/ProgressContext';
+import { useIsPro } from '@/hooks/usePremium';
+import { resolveAdventureLegacy } from '@/lib/adventure-access';
 import {
   ADVENTURE_MAX_LEVELS,
   ADVENTURE_QUESTIONS_PER_LEVEL,
+  adventureLevelLocked,
   adventureRegionForLevel,
   adventureStarThresholdsForLevel,
   isAdventureChapterFinal,
@@ -101,6 +104,7 @@ export default function AdventureLevelScreen() {
     }) : null,
     [guest, offline, scope, user?.id],
   );
+  const isPro = useIsPro();
   const region = adventureRegionForLevel(level);
   const chapterFinal = isAdventureChapterFinal(level);
   const starThresholds = adventureStarThresholdsForLevel(level);
@@ -149,11 +153,24 @@ export default function AdventureLevelScreen() {
   useFocusEffect(useCallback(() => {
     if (!repository) return;
     mountedRef.current = true;
-    repository.load().then(stored => {
+    repository.load().then(async stored => {
       if (!mountedRef.current) return;
       if (level > stored.unlockedLevel) {
         Alert.alert(t('adventure.lockedTitle'), t('adventure.lockedMessage'));
         router.replace('/(tabs)/adventure' as any);
+        return;
+      }
+      // Segundo candado, para quien llegue por enlace directo en vez de
+      // tocando un nodo del mapa. La herencia se resuelve con el progreso ya
+      // cargado, que es el único momento en que se conoce aquí.
+      const legacy = await resolveAdventureLegacy({
+        scope: scope ?? 'guest',
+        progress: stored,
+        remoteEnabled: canUseEconomy,
+      });
+      if (!mountedRef.current) return;
+      if (adventureLevelLocked(level, { isPro, legacy })) {
+        router.replace('/paywall?source=adventure_level' as any);
         return;
       }
       setProgress(stored);
@@ -161,7 +178,7 @@ export default function AdventureLevelScreen() {
     refreshPowerups();
     if (user) refreshProfile();
     return () => { mountedRef.current = false; };
-  }, [level, repository, refreshPowerups, refreshProfile, router, t, user?.id]));
+  }, [canUseEconomy, isPro, level, repository, refreshPowerups, refreshProfile, router, scope, t, user?.id]));
 
   useEffect(() => {
     let active = true;
