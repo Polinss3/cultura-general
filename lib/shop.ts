@@ -15,6 +15,8 @@ export interface ShopItem {
   icon: string;
   sort: number;
   slot: string | null; // frame | name_color | name_style | name_icon (cosméticos)
+  /** Solo comprable con CG PRO activo. El servidor lo vuelve a comprobar. */
+  proOnly: boolean;
 }
 
 export interface InventoryItem {
@@ -26,7 +28,7 @@ export interface InventoryItem {
 export async function fetchShopItems(): Promise<ShopItem[]> {
   const { data } = await supabase
     .from('shop_items')
-    .select('item_id, name, description, name_en, description_en, price, type, icon, sort, slot')
+    .select('item_id, name, description, name_en, description_en, price, type, icon, sort, slot, pro_only')
     .eq('active', true)
     .order('sort');
 
@@ -40,6 +42,7 @@ export async function fetchShopItems(): Promise<ShopItem[]> {
     icon: r.icon ?? '🎁',
     sort: r.sort ?? 0,
     slot: (r as any).slot ?? null,
+    proOnly: !!(r as any).pro_only,
   }));
 }
 

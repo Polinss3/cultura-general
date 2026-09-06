@@ -1083,7 +1083,8 @@
     "cosmeticsStyle": "Estilo de nombre",
     "cosmeticsIcons": "Iconos de nombre",
     "equip": "Equipar",
-    "equipped": "Equipado"
+    "equipped": "Equipado",
+    "proOnly": "Solo CG PRO"
   },
   "auth": {
     "login": {
@@ -1276,7 +1277,7 @@
       },
       "cosmetics": {
         "title": "Cosméticos exclusivos",
-        "description": "Marcos y colores de nombre que no se pueden comprar con monedas."
+        "description": "Marcos, colores y estilos de nombre reservados a quien tiene PRO."
       }
     },
     "paywall": {
@@ -1326,7 +1327,11 @@
       "renews": "Se renueva el {{date}}",
       "homeSubtitleFree": "Descubre lo que trae la suscripción",
       "homeSubtitlePro": "Tus modos exclusivos y tus ventajas",
-      "statsDescription": "Tu evolución, la precisión por dificultad y tus exámenes."
+      "statsDescription": "Tu evolución, la precisión por dificultad y tus exámenes.",
+      "freezeTitle": "Tu racha está protegida",
+      "freezeBody": "Si un día no juegas, la racha sigue. Sin gastar ningún objeto.",
+      "cosmeticsTitle": "Cosméticos exclusivos",
+      "cosmeticsBody": "Marco, color, gema y aura reservados a PRO, en la tienda."
     }
   },
   "exam": {

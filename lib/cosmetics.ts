@@ -5,6 +5,7 @@
 
 import type { TextStyle } from 'react-native';
 import { fetchInventory } from './shop';
+import { PRO_ACCENT } from './pro';
 
 export type CosmeticSlot = 'frame' | 'name_color' | 'name_icon' | 'name_style';
 
@@ -20,18 +21,22 @@ export const COSMETICS: Record<string, CosmeticMeta> = {
   frame_bronze: { slot: 'frame', color: '#c08040' },
   frame_silver: { slot: 'frame', color: '#c0c8d0' },
   frame_gold:   { slot: 'frame', color: '#e8c030' },
+  frame_pro:    { slot: 'frame', color: PRO_ACCENT },
   // Color de nombre
   name_neon:    { slot: 'name_color', color: '#b14dff' },
   name_gold:    { slot: 'name_color', color: '#e8c030' },
+  name_pro:     { slot: 'name_color', color: PRO_ACCENT },
   // Icono/emoji antes del nombre
   icon_fire:    { slot: 'name_icon', emoji: '🔥' },
   icon_star:    { slot: 'name_icon', emoji: '⭐' },
   icon_crown:   { slot: 'name_icon', emoji: '👑' },
   icon_rocket:  { slot: 'name_icon', emoji: '🚀' },
+  icon_gem:     { slot: 'name_icon', emoji: '💎' },
   // Estilo del nombre
   style_italic: { slot: 'name_style', textStyle: { fontStyle: 'italic' } },
   style_upper:  { slot: 'name_style', textStyle: { textTransform: 'uppercase', letterSpacing: 0.5 } },
   style_glow:   { slot: 'name_style', textStyle: { textShadowColor: '#e8a030', textShadowRadius: 8, textShadowOffset: { width: 0, height: 0 } } },
+  style_pro:    { slot: 'name_style', textStyle: { textShadowColor: PRO_ACCENT, textShadowRadius: 10, textShadowOffset: { width: 0, height: 0 } } },
 };
 
 export interface ResolvedCosmetics {

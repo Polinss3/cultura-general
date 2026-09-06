@@ -326,12 +326,14 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-06.
 | Sala PRO + Examen + Repaso inteligente | ✅ (migraciones `..._pro_exam_v1` y `..._pro_review_v1` pendientes de aplicar) |
 | Métricas con borroso | ✅ (migración `..._pro_stats_v1` pendiente de aplicar) |
 | Estipendio | ✅ (recogible desde la Sala PRO) |
-| Streak freeze automático, cosméticos PRO | ⬜ |
+| Streak freeze automático, cosméticos PRO | ✅ (migración `..._pro_perks_v1` pendiente de aplicar) |
 
 ### Pendientes que bloquean la prueba en dispositivo
 
-1. **Aplicar las cuatro migraciones** en Supabase, en orden: `premium_pro_v1`,
-   `pro_exam_v1`, `pro_review_v1`, `pro_stats_v1`.
+1. **Aplicar las cinco migraciones** en Supabase, en orden: `premium_pro_v1`,
+   `pro_exam_v1`, `pro_review_v1`, `pro_stats_v1`, `pro_perks_v1`. Todas son
+   aditivas e idempotentes, pero las cuatro últimas dependen de `is_premium()`,
+   que crea la primera.
 2. **Desplegar el webhook** con `--no-verify-jwt` y configurar
    `REVENUECAT_WEBHOOK_SECRET` en los dos lados.
 3. **Crear los productos** en App Store Connect y la oferta en RevenueCat.

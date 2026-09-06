@@ -36,6 +36,26 @@ const MODES: ModeCard[] = [
  * a la compra en vez de a la función. Esconder la sala detrás de un candado
  * dejaría a la mitad de la gente sin saber siquiera qué se está vendiendo.
  */
+function Perk({ icon, title, body, chevron }: {
+  icon: string; title: string; body: string; chevron?: boolean;
+}) {
+  const { C } = useTheme();
+  return (
+    <View style={{
+      flexDirection: 'row', alignItems: 'center', gap: 13,
+      backgroundColor: C.surface, borderRadius: Radius.cardLg,
+      borderWidth: 1, borderColor: C.border, padding: 16,
+    }}>
+      <Text style={{ fontSize: 22 }}>{icon}</Text>
+      <View style={{ flex: 1, gap: 2 }}>
+        <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15 }}>{title}</Text>
+        <Text style={{ color: C.textMuted, ...Type.small, lineHeight: 18 }}>{body}</Text>
+      </View>
+      {chevron ? <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text> : null}
+    </View>
+  );
+}
+
 export default function PremiumScreen() {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
@@ -199,6 +219,20 @@ export default function PremiumScreen() {
                 </LinearGradient>
               </Pressable>
             </View>
+
+            <Perk
+              icon="🛡️"
+              title={t('pro.room.freezeTitle')}
+              body={t('pro.room.freezeBody')}
+            />
+            <Pressable onPress={() => { feedback.tap(); router.push('/shop'); }}>
+              <Perk
+                icon="🎨"
+                title={t('pro.room.cosmeticsTitle')}
+                body={t('pro.room.cosmeticsBody')}
+                chevron
+              />
+            </Pressable>
 
             <View style={{
               backgroundColor: C.surfaceSunk, borderRadius: Radius.card,

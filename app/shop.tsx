@@ -9,13 +9,16 @@ import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useToast } from '@/context/ToastContext';
 import { CoinPill } from '@/components/CoinPill';
+import { ProBadge } from '@/components/ProBadge';
+import { useIsPro } from '@/hooks/usePremium';
+import { PRO_ACCENT } from '@/lib/pro';
 import {
   fetchShopItems, fetchInventory, buyItem, equipItem, ShopItem,
 } from '@/lib/shop';
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { showRewardedAd, isRewardedReady } from '@/lib/ads';
-import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { alpha, readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 // Marcos de avatar y color de nombre ya se muestran en tu home y perfil.
@@ -39,6 +42,7 @@ export default function ShopScreen() {
   const { guest } = useGuest();
   const offline = useOffline();
   const { showToast } = useToast();
+  const isPro = useIsPro();
 
   const [items, setItems] = useState<ShopItem[]>([]);
   const [inventory, setInventory] = useState<Record<string, number>>({});
@@ -66,6 +70,8 @@ export default function ShopScreen() {
   useFocusEffect(useCallback(() => { refresh(); load(); }, [load, refresh]));
 
   const coins = profile?.coins ?? 0;
+
+  const goToPaywall = () => router.push('/paywall?source=shop_cosmetic' as any);
 
   const handleBuy = async (item: ShopItem) => {
     if (busy) return;
@@ -187,7 +193,9 @@ export default function ShopScreen() {
                 owned={inventory[item.itemId] ?? 0}
                 coins={coins}
                 busy={busy === item.itemId}
+                isPro={isPro}
                 onBuy={() => handleBuy(item)}
+                onLocked={goToPaywall}
               />
             ))}
           </View>
@@ -209,8 +217,10 @@ export default function ShopScreen() {
                       busy={busy === item.itemId}
                       cosmetic
                       equipped={equipped.has(item.itemId)}
+                      isPro={isPro}
                       onBuy={() => handleBuy(item)}
                       onEquip={() => handleEquip(item)}
+                      onLocked={goToPaywall}
                     />
                   ))}
                 </View>
@@ -224,7 +234,7 @@ export default function ShopScreen() {
 }
 
 function ShopCard({
-  item, owned, coins, busy, cosmetic, equipped, onBuy, onEquip,
+  item, owned, coins, busy, cosmetic, equipped, isPro, onBuy, onEquip, onLocked,
 }: {
   item: ShopItem;
   owned: number;
@@ -232,19 +242,25 @@ function ShopCard({
   busy: boolean;
   cosmetic?: boolean;
   equipped?: boolean;
+  isPro: boolean;
   onBuy: () => void;
   onEquip?: () => void;
+  onLocked: () => void;
 }) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
   const isOwnedCosmetic = cosmetic && owned > 0;
   const affordable = coins >= item.price;
+  // Los cosméticos PRO se siguen pagando con monedas: lo exclusivo es el
+  // acceso, no el precio. Para eso está el estipendio mensual.
+  const proLocked = item.proOnly && !isPro && owned === 0;
   return (
     <View style={{ width: '48%', backgroundColor: C.surface, borderRadius: 18, padding: 12, marginBottom: 10, borderWidth: 1, borderColor: equipped ? C.correct : 'transparent' }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
         <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: C.surfaceSunk, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 20 }}>{item.icon}</Text>
         </View>
+        {item.proOnly && <ProBadge />}
         {!cosmetic && owned > 0 && (
           <View style={{ backgroundColor: tint(C.streak, isDark), borderRadius: 8, paddingHorizontal: 7, paddingVertical: 2 }}>
             <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>×{owned}</Text>
@@ -266,6 +282,18 @@ function ShopCard({
           }}>
             <Text style={{ color: equipped ? C.text : C.text, fontFamily: Font.bold, fontSize: 12 }}>
               {equipped ? t('shop.equipped') : t('shop.equip')}
+            </Text>
+          </View>
+        </Pressable>
+      ) : proLocked ? (
+        <Pressable onPress={onLocked}>
+          <View style={{
+            borderRadius: 10, paddingVertical: 8, alignItems: 'center',
+            backgroundColor: alpha(PRO_ACCENT, isDark ? 0.28 : 0.14),
+            borderWidth: 1, borderColor: alpha(PRO_ACCENT, 0.4),
+          }}>
+            <Text style={{ color: isDark ? '#C4A8F5' : PRO_ACCENT, fontFamily: Font.bold, fontSize: 12 }}>
+              {t('shop.proOnly')}
             </Text>
           </View>
         </Pressable>

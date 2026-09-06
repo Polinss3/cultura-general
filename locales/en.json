@@ -1083,7 +1083,8 @@
     "cosmeticsStyle": "Name style",
     "cosmeticsIcons": "Name icons",
     "equip": "Equip",
-    "equipped": "Equipped"
+    "equipped": "Equipped",
+    "proOnly": "CG PRO only"
   },
   "auth": {
     "login": {
@@ -1276,7 +1277,7 @@
       },
       "cosmetics": {
         "title": "Exclusive cosmetics",
-        "description": "Frames and name colours that coins can't buy."
+        "description": "Frames, colours and name styles reserved for PRO members."
       }
     },
     "paywall": {
@@ -1326,7 +1327,11 @@
       "renews": "Renews on {{date}}",
       "homeSubtitleFree": "See what the subscription includes",
       "homeSubtitlePro": "Your exclusive modes and perks",
-      "statsDescription": "Your progress, accuracy by difficulty and your exams."
+      "statsDescription": "Your progress, accuracy by difficulty and your exams.",
+      "freezeTitle": "Your streak is protected",
+      "freezeBody": "Miss a day and your streak carries on. No item spent.",
+      "cosmeticsTitle": "Exclusive cosmetics",
+      "cosmeticsBody": "Frame, colour, gem and aura reserved for PRO, in the shop."
     }
   },
   "exam": {
