@@ -1,7 +1,7 @@
 {
   "name": "cultura-general",
   "main": "expo-router/entry",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "scripts": {
     "postinstall": "patch-package",
     "start": "expo start",
