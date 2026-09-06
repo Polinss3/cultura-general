@@ -1244,7 +1244,24 @@
       "annual": "Yearly",
       "lifetime": "Lifetime",
       "bestValue": "SAVE 58%",
-      "perMonth": "{{price}} per month"
+      "perMonth": "{{price}} per month",
+      "trial": {
+        "day_one": "{{count}} day free",
+        "day_other": "{{count}} days free",
+        "month_one": "{{count}} month free",
+        "month_other": "{{count}} months free"
+      },
+      "trialDuration": {
+        "day_one": "{{count}} day",
+        "day_other": "{{count}} days",
+        "month_one": "{{count}} month",
+        "month_other": "{{count}} months"
+      },
+      "period": {
+        "monthly": "per month",
+        "annual": "per year",
+        "lifetime": "as a one-off payment"
+      }
     },
     "benefits": {
       "adventure": {
@@ -1294,7 +1311,9 @@
       "legal": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. The lifetime plan is a one-off payment. You can manage them from your account settings.",
       "terms": "Terms",
       "privacy": "Privacy",
-      "manage": "Manage subscription"
+      "manage": "Manage subscription",
+      "startTrial": "Start free trial",
+      "trialNotice": "Try it free for {{duration}}. It then renews automatically at {{price}} {{period}}, unless you cancel at least 24 hours before."
     },
     "room": {
       "title": "PRO Room",

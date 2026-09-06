@@ -27,7 +27,7 @@ más: basta con consultar `isPro` antes de `showInterstitial`/`showRewarded` en
 |---|---|
 | SDK de compras | **RevenueCat** (`react-native-purchases`), ya conocido de otros proyectos |
 | Precios | Mensual **3,99 €** · Anual **19,99 €** · Lifetime **29,99 €** |
-| Prueba gratuita | 7 días en mensual y anual (el lifetime no admite) |
+| Prueba gratuita | **3 días** en mensual y anual (el lifetime no admite). Configurada en ASC; el paywall lee la duración del producto, no la trae codificada |
 | Aventura gratis | **Capítulos 1 y 2** (niveles 1-40). Capítulos 3-10 son PRO |
 | Usuarios existentes | **Grandfathering**: quien ya pasó del nivel 40 lo conserva para siempre |
 | Insignia PRO | **Confirmada**, junto al nombre en rankings y ligas |
@@ -272,7 +272,9 @@ comprar pasa primero por registro.
 Apple rechaza por la guideline 3.1.2 si falta algo de esto:
 
 - [ ] Botón **"Restaurar compras"** visible en el paywall.
-- [ ] Precio, duración y **renovación automática** indicados en el propio paywall.
+- [x] Precio, duración y **renovación automática** indicados en el propio paywall.
+- [x] **Duración de la prueba gratuita** anunciada en el punto de compra, con el
+      precio al que se convierte.
 - [ ] Enlaces a **Términos (EULA)** y Privacidad desde el paywall.
       ⚠️ **No existe página de términos**: hay que publicarla en
       `cg-trivia.pablobrasero.com` junto a la de privacidad. Es el olvido más habitual.

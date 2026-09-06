@@ -1244,7 +1244,24 @@
       "annual": "Anual",
       "lifetime": "De por vida",
       "bestValue": "AHORRA 58 %",
-      "perMonth": "{{price}} al mes"
+      "perMonth": "{{price}} al mes",
+      "trial": {
+        "day_one": "{{count}} día gratis",
+        "day_other": "{{count}} días gratis",
+        "month_one": "{{count}} mes gratis",
+        "month_other": "{{count}} meses gratis"
+      },
+      "trialDuration": {
+        "day_one": "{{count}} día",
+        "day_other": "{{count}} días",
+        "month_one": "{{count}} mes",
+        "month_other": "{{count}} meses"
+      },
+      "period": {
+        "monthly": "al mes",
+        "annual": "al año",
+        "lifetime": "como pago único"
+      }
     },
     "benefits": {
       "adventure": {
@@ -1294,7 +1311,9 @@
       "legal": "Las suscripciones se renuevan automáticamente salvo que las canceles al menos 24 horas antes de que termine el periodo. El plan de por vida es un pago único. Puedes gestionarlas desde los ajustes de tu cuenta.",
       "terms": "Términos",
       "privacy": "Privacidad",
-      "manage": "Gestionar suscripción"
+      "manage": "Gestionar suscripción",
+      "startTrial": "Empezar prueba gratis",
+      "trialNotice": "Pruébalo {{duration}} gratis. Al terminar se renueva automáticamente por {{price}} {{period}}, salvo que canceles al menos 24 horas antes."
     },
     "room": {
       "title": "Sala PRO",

@@ -72,11 +72,13 @@ export default function PaywallScreen() {
     router.replace('/(auth)/login');
   }, [router]);
 
+  const selectedPackage = packages.find(pkg => pkg.tier === selected) ?? null;
+
   const handlePurchase = async () => {
     if (busy) return;
     if (!user || guest) { await requireAccount(); return; }
 
-    const pkg = packages.find(p => p.tier === selected);
+    const pkg = selectedPackage;
     if (!pkg) return;
 
     setBusy(true);
@@ -197,7 +199,11 @@ export default function PaywallScreen() {
               }}
             >
               <Text style={{ color: '#FFFFFF', fontFamily: Font.bold, fontSize: 17 }}>
-                {busy ? '…' : t('pro.paywall.subscribe')}
+                {busy
+                  ? '…'
+                  : selectedPackage?.freeTrial
+                    ? t('pro.paywall.startTrial')
+                    : t('pro.paywall.subscribe')}
               </Text>
             </LinearGradient>
           </Pressable>
@@ -210,9 +216,28 @@ export default function PaywallScreen() {
         </Pressable>
 
         {/* Legal: obligatorio para pasar revisión de Apple (3.1.2). */}
+        {/* Apple exige anunciar en el punto de compra cuánto dura la prueba,
+            que se convierte en pago automáticamente y a qué precio (3.1.2). */}
+        {selectedPackage?.freeTrial ? (
+          <Text style={{
+            color: C.textBody, ...Type.small, lineHeight: 19,
+            textAlign: 'center', marginTop: 18,
+          }}>
+            {t('pro.paywall.trialNotice', {
+              count: selectedPackage.freeTrial.count,
+              duration: t(
+                `pro.plans.trialDuration.${selectedPackage.freeTrial.unit}`,
+                { count: selectedPackage.freeTrial.count },
+              ),
+              price: selectedPackage.priceString,
+              period: t(`pro.plans.period.${selectedPackage.tier}`),
+            })}
+          </Text>
+        ) : null}
+
         <Text style={{
           color: C.textFaint, ...Type.tiny, lineHeight: 18,
-          textAlign: 'center', marginTop: 22,
+          textAlign: 'center', marginTop: 12,
         }}>
           {t('pro.paywall.legal')}
         </Text>
@@ -283,6 +308,11 @@ function PlanRow({
             </View>
           ) : null}
         </View>
+        {pkg.freeTrial ? (
+          <Text style={{ color: C.correctText, fontFamily: Font.bold, fontSize: 12, marginTop: 3 }}>
+            {t(`pro.plans.trial.${pkg.freeTrial.unit}`, { count: pkg.freeTrial.count })}
+          </Text>
+        ) : null}
         {pkg.pricePerMonth ? (
           <Text style={{ color: C.textMuted, ...Type.tiny, marginTop: 2 }}>
             {t('pro.plans.perMonth', { price: pkg.pricePerMonth })}

@@ -210,13 +210,48 @@ export async function refreshPremium(): Promise<PremiumState> {
 
 // ─── Ofertas y compra ────────────────────────────────────────────────────────
 
+/**
+ * Prueba gratuita de un plan, normalizada a días o meses.
+ *
+ * La duración NO se codifica en la app: se lee de la oferta introductoria que
+ * haya configurada en App Store Connect. Si mañana pasa de 3 a 7 días, el
+ * paywall lo dice solo, sin publicar build. Y como Apple exige anunciar la
+ * duración exacta en el punto de compra (guideline 3.1.2), tenerla codificada
+ * a mano sería una forma cómoda de acabar con un rechazo.
+ */
+export interface PremiumTrial {
+  unit: 'day' | 'month';
+  count: number;
+}
+
 export interface PremiumPackage {
   identifier: string;
   tier: PremiumTier;
   priceString: string;
   /** Precio mensual equivalente, ya formateado. Solo en el anual. */
   pricePerMonth: string | null;
+  /** `null` si el plan no ofrece prueba gratuita. */
+  freeTrial: PremiumTrial | null;
   raw: any;
+}
+
+function trialFromProduct(product: any): PremiumTrial | null {
+  const intro = product?.introPrice;
+  if (!intro) return null;
+  // Una oferta introductoria puede ser de pago (precio reducido). Solo cuenta
+  // como prueba gratuita la que no cobra nada.
+  if (typeof intro.price === 'number' && intro.price > 0) return null;
+
+  const units = Math.trunc(Number(intro.periodNumberOfUnits)) || 0;
+  if (units <= 0) return null;
+
+  switch (String(intro.periodUnit ?? '').toUpperCase()) {
+    case 'DAY': return { unit: 'day', count: units };
+    case 'WEEK': return { unit: 'day', count: units * 7 };
+    case 'MONTH': return { unit: 'month', count: units };
+    case 'YEAR': return { unit: 'month', count: units * 12 };
+    default: return null;
+  }
 }
 
 function tierFromProductId(productId: string): PremiumTier {
@@ -245,6 +280,7 @@ export async function fetchPremiumPackages(): Promise<PremiumPackage[]> {
           pricePerMonth: tier === 'annual' && typeof product.price === 'number'
             ? formatPerMonth(product.price, product.currencyCode)
             : null,
+          freeTrial: trialFromProduct(product),
           raw: pkg,
         };
       })
