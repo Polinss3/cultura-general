@@ -597,6 +597,29 @@
     "locked": {
       "title": "El capítulo {{number}} es de CG PRO",
       "description": "Los dos primeros capítulos son gratis. Con PRO se abren los ocho restantes: 160 niveles más."
+    },
+    "relics": {
+      "roots": "Papiro de los Orígenes",
+      "world": "Astrolabio del Navegante",
+      "ideas": "Compás de los Sabios",
+      "nature": "El Herbario Perdido",
+      "arts": "Máscara del Teatro",
+      "music": "La Partitura Inacabada",
+      "legends": "Escama de Dragón",
+      "arena": "Laurel del Campeón",
+      "inventions": "El Primer Engranaje",
+      "cosmos": "La Esfera Celeste"
+    },
+    "relicCase": {
+      "title": "Vitrina de reliquias",
+      "open": "Abrir la vitrina de reliquias",
+      "progress": "{{earned}} de {{total}} conseguidas",
+      "unknown": "Reliquia por descubrir",
+      "grades": {
+        "bronze": "Bronce",
+        "silver": "Plata",
+        "gold": "Oro"
+      }
     }
   },
   "learn": {

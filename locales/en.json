@@ -597,6 +597,29 @@
     "locked": {
       "title": "Chapter {{number}} is part of CG PRO",
       "description": "The first two chapters are free. PRO opens the other eight: 160 more levels."
+    },
+    "relics": {
+      "roots": "Papyrus of Origins",
+      "world": "The Navigator's Astrolabe",
+      "ideas": "Compass of the Scholars",
+      "nature": "The Lost Herbarium",
+      "arts": "Mask of the Theatre",
+      "music": "The Unfinished Score",
+      "legends": "Dragon Scale",
+      "arena": "The Champion's Laurel",
+      "inventions": "The First Cog",
+      "cosmos": "The Celestial Sphere"
+    },
+    "relicCase": {
+      "title": "Relic case",
+      "open": "Open the relic case",
+      "progress": "{{earned}} of {{total}} collected",
+      "unknown": "Relic yet to be found",
+      "grades": {
+        "bronze": "Bronze",
+        "silver": "Silver",
+        "gold": "Gold"
+      }
     }
   },
   "learn": {

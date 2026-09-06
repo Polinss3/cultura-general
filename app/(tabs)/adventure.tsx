@@ -22,6 +22,9 @@ import Animated, {
 import { scheduleOnRN } from 'react-native-worklets';
 import { AdventureMap } from '@/components/adventure/adventure-map';
 import { ChapterPickerModal } from '@/components/adventure/chapter-picker-modal';
+import { RelicBadge } from '@/components/adventure/relic-badge';
+import { RelicCaseModal } from '@/components/adventure/relic-case';
+import { adventureRelicFor, adventureRelicsEarned, ADVENTURE_TOTAL_RELICS } from '@/lib/adventure-relics';
 import { CoinPill } from '@/components/CoinPill';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
@@ -76,6 +79,7 @@ export default function AdventureScreen() {
   const [regionNumber, setRegionNumber] = useState(1);
   const [initialPositioned, setInitialPositioned] = useState(false);
   const [chapterPickerOpen, setChapterPickerOpen] = useState(false);
+  const [relicCaseOpen, setRelicCaseOpen] = useState(false);
   const scrollRef = useRef<ScrollView>(null);
   const translateX = useSharedValue(0);
   const reducedMotion = useSystemReducedMotion();
@@ -217,6 +221,8 @@ export default function AdventureScreen() {
   const totalStars = adventureStarsInRange(progress, 1, ADVENTURE_MAX_LEVELS);
   const regionMaxStars = (region.endLevel - region.startLevel + 1) * 3;
   const chapterLocked = adventureChapterLocked(region.number, access);
+  const chapterRelic = adventureRelicFor(region.number, progress);
+  const relicsEarned = adventureRelicsEarned(progress);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
@@ -230,6 +236,24 @@ export default function AdventureScreen() {
               {t('adventure.progressSummaryStars', { completed, total: ADVENTURE_MAX_LEVELS, stars: totalStars, maxStars: ADVENTURE_MAX_LEVELS * 3 })}
             </Text>
           </View>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t('adventure.relicCase.open')}
+            onPress={() => { feedback.tap(); setRelicCaseOpen(true); }}
+            hitSlop={8}
+            style={({ pressed }) => ({
+              flexDirection: 'row', alignItems: 'center', gap: 5,
+              backgroundColor: C.surface, borderRadius: Radius.pill,
+              borderWidth: 1, borderColor: C.border,
+              paddingHorizontal: 11, paddingVertical: 6,
+              opacity: pressed ? 0.7 : 1,
+            })}
+          >
+            <Text style={{ fontSize: 13 }}>🏺</Text>
+            <Text style={{ color: C.textMuted, fontFamily: Font.extra, fontSize: 12, fontVariant: ['tabular-nums'] }}>
+              {relicsEarned}/{ADVENTURE_TOTAL_RELICS}
+            </Text>
+          </Pressable>
           {!guest && (
             <CoinPill coins={profile?.coins ?? 0} onPress={() => router.push('/shop')} showPlus small />
           )}
@@ -263,16 +287,7 @@ export default function AdventureScreen() {
               ...cardShadow(isDark),
             }}
           >
-            <View style={{
-              width: 48,
-              height: 48,
-              borderRadius: Radius.row,
-              backgroundColor: alpha(region.accent, isDark ? 0.3 : 0.2),
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <Text style={{ fontSize: 24 }}>{region.icon}</Text>
-            </View>
+            <RelicBadge relic={chapterRelic} size={48} />
             <View style={{ flex: 1, gap: 2 }}>
               <Text style={{ color: readableOn(region.accent, isDark), ...Type.sectionLabel }}>
                 {t('adventure.chapter', { number: region.number })}
@@ -389,6 +404,12 @@ export default function AdventureScreen() {
           </ScrollView>
         </Animated.View>
       </GestureDetector>
+      <RelicCaseModal
+        visible={relicCaseOpen}
+        progress={progress}
+        access={access}
+        onClose={() => setRelicCaseOpen(false)}
+      />
       <ChapterPickerModal
         visible={chapterPickerOpen}
         currentRegion={regionNumber}

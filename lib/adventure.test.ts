@@ -30,6 +30,12 @@ import {
   qualifiesForAdventureLegacy,
 } from './adventure-access';
 import {
+  ADVENTURE_TOTAL_RELICS,
+  adventureRelicFor,
+  adventureRelics,
+  adventureRelicsEarned,
+} from './adventure-relics';
+import {
   adventureProgressStorageKey,
   createAdventureProgressRepository,
   migrateGuestAdventureProgressToUser,
@@ -407,4 +413,57 @@ test('a merged progress that is ahead in either field still counts as legacy', (
     completedLevels: [90],
   });
   assert.equal(qualifiesForAdventureLegacy(onlyCompleted), true);
+});
+
+// ─── Reliquias ───────────────────────────────────────────────────────────────
+
+function progressWithChapter(chapter: number, starsPerLevel: number, levels = 20) {
+  const start = (chapter - 1) * 20 + 1;
+  const completedLevels: number[] = [];
+  const stars: Record<string, number> = {};
+  for (let i = 0; i < levels; i += 1) {
+    completedLevels.push(start + i);
+    stars[String(start + i)] = starsPerLevel;
+  }
+  return normalizeAdventureProgress({
+    unlockedLevel: start + levels,
+    completedLevels,
+    stars,
+  });
+}
+
+test('a relic needs the whole chapter, not just progress through it', () => {
+  // Diecinueve de veinte niveles, todos perfectos: sigue sin haber reliquia.
+  const almost = adventureRelicFor(1, progressWithChapter(1, 3, 19));
+  assert.equal(almost.grade, 'none');
+  assert.equal(almost.completed, 19);
+
+  const complete = adventureRelicFor(1, progressWithChapter(1, 1));
+  assert.equal(complete.grade, 'bronze');
+});
+
+test('relic grade rises with the stars of the chapter', () => {
+  assert.equal(adventureRelicFor(2, progressWithChapter(2, 1)).grade, 'bronze');
+  assert.equal(adventureRelicFor(2, progressWithChapter(2, 2)).grade, 'silver');
+  assert.equal(adventureRelicFor(2, progressWithChapter(2, 3)).grade, 'gold');
+
+  const gold = adventureRelicFor(2, progressWithChapter(2, 3));
+  assert.equal(gold.stars, gold.maxStars);
+});
+
+test('every chapter has its own relic and none repeats', () => {
+  const fresh = createAdventureProgress();
+  const relics = adventureRelics(fresh);
+
+  assert.equal(relics.length, ADVENTURE_TOTAL_RELICS);
+  assert.equal(new Set(relics.map(r => r.symbol)).size, relics.length);
+  assert.equal(new Set(relics.map(r => r.id)).size, relics.length);
+  assert.equal(adventureRelicsEarned(fresh), 0);
+});
+
+test('relics are counted only for finished chapters', () => {
+  const progress = progressWithChapter(3, 2);
+  assert.equal(adventureRelicsEarned(progress), 1);
+  assert.equal(adventureRelicFor(3, progress).grade, 'silver');
+  assert.equal(adventureRelicFor(4, progress).grade, 'none');
 });
