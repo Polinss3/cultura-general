@@ -139,6 +139,33 @@ export default function PremiumScreen() {
           </Pressable>
         ))}
 
+        {/* Estadísticas: aquí SÍ entra todo el mundo aunque no tenga PRO. La
+            pantalla trae un dato real visible y el resto difuminado, así que es
+            mejor escaparate desde dentro que desde una tarjeta bloqueada. */}
+        <Pressable onPress={() => { feedback.tap(); router.push('/stats' as any); }} accessibilityRole="button">
+          <View style={{
+            flexDirection: 'row', alignItems: 'center', gap: 14,
+            backgroundColor: C.surface, borderRadius: Radius.cardLg,
+            borderWidth: 1, borderColor: C.border, padding: 16,
+            ...cardShadow(isDark),
+          }}>
+            <View style={{
+              width: 48, height: 48, borderRadius: Radius.icon,
+              backgroundColor: alpha(PRO_ACCENT, isDark ? 0.26 : 0.12),
+              alignItems: 'center', justifyContent: 'center',
+            }}>
+              <Text style={{ fontSize: 24 }}>📊</Text>
+            </View>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={{ color: C.text, ...Type.cardTitle }}>{t('stats.title')}</Text>
+              <Text style={{ color: C.textMuted, ...Type.small, lineHeight: 18 }}>
+                {t('pro.room.statsDescription')}
+              </Text>
+            </View>
+            <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>
+          </View>
+        </Pressable>
+
         {/* Beneficios. Solo tienen sentido con cuenta y red. */}
         {isPro && (
           <>

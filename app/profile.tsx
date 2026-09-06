@@ -11,6 +11,7 @@ import { useRouter, Link } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useIsPro } from '@/hooks/usePremium';
+import { ProBadge } from '@/components/ProBadge';
 import { useOffline } from '@/hooks/useOffline';
 import { supabase } from '@/lib/supabase';
 import {
@@ -461,6 +462,24 @@ export default function ProfileScreen() {
         {catStats.length > 0 && (
           <View style={{ paddingHorizontal: Space.screen, marginBottom: 28 }}>
             <SectionTitle>{t('profile.categoryTitle')}</SectionTitle>
+            <Pressable
+              onPress={() => router.push('/stats' as any)}
+              accessibilityRole="button"
+              style={({ pressed }) => ({
+                flexDirection: 'row', alignItems: 'center', gap: 10,
+                backgroundColor: C.surface, borderRadius: 18,
+                borderWidth: 1, borderColor: C.border,
+                padding: 14, marginBottom: 12,
+                opacity: pressed ? 0.7 : 1,
+              })}
+            >
+              <Text style={{ fontSize: 20 }}>📊</Text>
+              <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15, flex: 1 }}>
+                {t('profile.openStats')}
+              </Text>
+              {!isPro ? <ProBadge /> : null}
+              <Text style={{ color: C.textFaint, fontSize: 18 }}>›</Text>
+            </Pressable>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
               {catStats.map(cs => {
                 const cat = cs.category as Category;

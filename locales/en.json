@@ -282,7 +282,8 @@
       "languageEn": "English",
       "adsPrivacy": "Privacy and ads",
       "adsPrivacySub": "Review your age bracket and advertising choice"
-    }
+    },
+    "openStats": "See all my statistics"
   },
   "ladder": {
     "title": "Climb Mode",
@@ -1324,7 +1325,8 @@
       },
       "renews": "Renews on {{date}}",
       "homeSubtitleFree": "See what the subscription includes",
-      "homeSubtitlePro": "Your exclusive modes and perks"
+      "homeSubtitlePro": "Your exclusive modes and perks",
+      "statsDescription": "Your progress, accuracy by difficulty and your exams."
     }
   },
   "exam": {
@@ -1367,5 +1369,32 @@
     "remaining_one": "{{count}} still pending for today",
     "remaining_other": "{{count}} still pending for today",
     "finish": "Finish"
+  },
+  "stats": {
+    "title": "Statistics",
+    "needsAccount": "Statistics need an account and a connection.",
+    "bestCategory": "Your best category",
+    "bestCategoryDetail": "{{accuracy}}% correct across {{answered}} questions",
+    "notEnoughData": "Not enough data yet.",
+    "gateTitle": "This is for CG PRO",
+    "gateDescription": "Your progress over time, accuracy by difficulty and your full history.",
+    "evolutionTitle": "Your progress",
+    "evolutionCaption": "Accuracy over the last twelve weeks",
+    "difficultyTitle": "By difficulty",
+    "difficulties": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "comparisonTitle": "Against everyone else",
+    "comparisonDetail": "The average player sits at {{global}}%",
+    "examsTitle": "Your exams",
+    "noExams": "You haven't taken an exam yet.",
+    "trend": {
+      "up": "You're up {{delta}} points this past month",
+      "down": "You're down {{delta}} points this past month",
+      "flat": "You've held steady this past month",
+      "unknown": "Play a bit more to see your trend"
+    }
   }
 }

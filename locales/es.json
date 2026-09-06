@@ -282,7 +282,8 @@
       "languageEn": "English",
       "adsPrivacy": "Privacidad y anuncios",
       "adsPrivacySub": "Revisa tu tramo de edad y tu elección publicitaria"
-    }
+    },
+    "openStats": "Ver todas mis estadísticas"
   },
   "ladder": {
     "title": "Modo Ascenso",
@@ -1324,7 +1325,8 @@
       },
       "renews": "Se renueva el {{date}}",
       "homeSubtitleFree": "Descubre lo que trae la suscripción",
-      "homeSubtitlePro": "Tus modos exclusivos y tus ventajas"
+      "homeSubtitlePro": "Tus modos exclusivos y tus ventajas",
+      "statsDescription": "Tu evolución, la precisión por dificultad y tus exámenes."
     }
   },
   "exam": {
@@ -1367,5 +1369,32 @@
     "remaining_one": "Te queda {{count}} pendiente para hoy",
     "remaining_other": "Te quedan {{count}} pendientes para hoy",
     "finish": "Terminar"
+  },
+  "stats": {
+    "title": "Estadísticas",
+    "needsAccount": "Las estadísticas necesitan cuenta y conexión.",
+    "bestCategory": "Tu mejor categoría",
+    "bestCategoryDetail": "{{accuracy}} % de aciertos en {{answered}} preguntas",
+    "notEnoughData": "Todavía no hay datos suficientes.",
+    "gateTitle": "Esto lo ve CG PRO",
+    "gateDescription": "Tu evolución, la precisión por dificultad y todo tu histórico.",
+    "evolutionTitle": "Tu evolución",
+    "evolutionCaption": "Precisión de las últimas doce semanas",
+    "difficultyTitle": "Por dificultad",
+    "difficulties": {
+      "easy": "Fáciles",
+      "medium": "Medias",
+      "hard": "Difíciles"
+    },
+    "comparisonTitle": "Frente al resto",
+    "comparisonDetail": "La media de los jugadores está en el {{global}} %",
+    "examsTitle": "Tus exámenes",
+    "noExams": "Todavía no has hecho ningún examen.",
+    "trend": {
+      "up": "Has subido {{delta}} puntos en el último mes",
+      "down": "Has bajado {{delta}} puntos en el último mes",
+      "flat": "Te mantienes estable en el último mes",
+      "unknown": "Juega un poco más para ver tu tendencia"
+    }
   }
 }
