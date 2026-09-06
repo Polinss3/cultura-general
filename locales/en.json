@@ -1143,5 +1143,68 @@
       "availableSub": "Today's reward is waiting",
       "open": "Open"
     }
+  },
+  "pro": {
+    "badge": "PRO",
+    "gate": {
+      "cta": "Discover CG PRO"
+    },
+    "plans": {
+      "monthly": "Monthly",
+      "annual": "Yearly",
+      "lifetime": "Lifetime",
+      "bestValue": "SAVE 58%",
+      "perMonth": "{{price}} per month"
+    },
+    "benefits": {
+      "adventure": {
+        "title": "The full Adventure",
+        "description": "All ten chapters and their 200 levels. Without PRO you get the first two in full."
+      },
+      "review": {
+        "title": "Smart review",
+        "description": "The questions you got wrong come back when they should, until you know them."
+      },
+      "exam": {
+        "title": "Exam mode",
+        "description": "Forty timed questions, a score out of ten and how you rank against everyone else."
+      },
+      "stats": {
+        "title": "Full statistics",
+        "description": "Your progress by category, accuracy by difficulty and every question you've missed."
+      },
+      "badge": {
+        "title": "PRO badge",
+        "description": "Your name stands out in the rankings, in your league and among your friends."
+      },
+      "stipend": {
+        "title": "300 coins a month",
+        "description": "For power-ups and cosmetics, without having to grind for them."
+      },
+      "streakFreeze": {
+        "title": "Your streak never breaks",
+        "description": "Missing a single day no longer costs you your streak."
+      },
+      "cosmetics": {
+        "title": "Exclusive cosmetics",
+        "description": "Frames and name colours that coins can't buy."
+      }
+    },
+    "paywall": {
+      "title": "Unlock everything inside",
+      "subtitle": "The whole Adventure, two more game modes and the statistics that tell you what to work on.",
+      "subscribe": "Get started",
+      "restore": "Restore purchases",
+      "restored": "All set — CG PRO is active.",
+      "nothingToRestore": "We couldn't find any previous purchase.",
+      "welcome": "Welcome to CG PRO!",
+      "purchaseFailed": "We couldn't complete the purchase. Please try again.",
+      "noPlans": "No plans are available right now. Please try again in a moment.",
+      "unavailable": "CG PRO will be available in the next update.",
+      "legal": "Subscriptions renew automatically unless cancelled at least 24 hours before the end of the period. The lifetime plan is a one-off payment. You can manage them from your account settings.",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "manage": "Manage subscription"
+    }
   }
 }

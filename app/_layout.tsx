@@ -18,6 +18,7 @@ import {
 } from '@expo-google-fonts/nunito';
 import * as Sentry from '@sentry/react-native';
 import { useAuth } from '@/hooks/useAuth';
+import { initPremium } from '@/lib/premium';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setOffline, probeConnection } from '@/lib/offline';
@@ -164,6 +165,14 @@ function RootLayout() {
   useEffect(() => {
     setSentryUser(session?.user?.id ?? null);
   }, [session?.user?.id]);
+
+  // CG PRO: el derecho de compra se resuelve al arrancar y en cada cambio de
+  // sesión. `initPremium` restaura primero el último estado conocido de la
+  // caché, así que un usuario PRO sin cobertura entra ya desbloqueado.
+  useEffect(() => {
+    if (loading) return;
+    void initPremium(session?.user?.id ?? null);
+  }, [loading, session?.user?.id]);
 
   // Handle auth deep links (OAuth callback, email confirmation and password recovery).
   useEffect(() => {

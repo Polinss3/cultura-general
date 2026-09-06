@@ -1,3 +1,9 @@
+import {
+  ADVENTURE_FREE_CHAPTERS,
+  hasFullAdventureAccess,
+  type AdventureAccess,
+} from './pro';
+
 export const ADVENTURE_MAX_LEVELS = 200;
 export const ADVENTURE_QUESTIONS_PER_LEVEL = 10;
 export const ADVENTURE_LEVELS_PER_REGION = 20;
@@ -6,6 +12,40 @@ export const ADVENTURE_LEVELS_PER_REGION = 20;
 // todos los dispositivos.
 export const ADVENTURE_QUESTION_VERSION = 2;
 export const ADVENTURE_TWO_STAR_TIME_MS = 110_000;
+
+// ─── Acceso PRO ──────────────────────────────────────────────────────────────
+// Los capítulos 1 y 2 son gratuitos y completos: llevan reliquia, guardián y
+// lore igual que el resto. La demo tiene que ser buena, no mutilada.
+
+/** Último nivel jugable sin PRO. */
+export const ADVENTURE_FREE_MAX_LEVEL =
+  ADVENTURE_FREE_CHAPTERS * ADVENTURE_LEVELS_PER_REGION;
+
+export function adventureChapterIsFree(chapter: number): boolean {
+  return chapter <= ADVENTURE_FREE_CHAPTERS;
+}
+
+export function adventureLevelIsFree(level: number): boolean {
+  return level <= ADVENTURE_FREE_MAX_LEVEL;
+}
+
+/** `true` si hay que enseñar el paywall antes de dejar entrar en el nivel. */
+export function adventureLevelLocked(level: number, access: AdventureAccess): boolean {
+  return !adventureLevelIsFree(level) && !hasFullAdventureAccess(access);
+}
+
+export function adventureChapterLocked(chapter: number, access: AdventureAccess): boolean {
+  return !adventureChapterIsFree(chapter) && !hasFullAdventureAccess(access);
+}
+
+/**
+ * Nivel más alto al que puede llegar el usuario con su acceso actual. Sirve
+ * para no dibujar como "siguiente" un nodo que en realidad está tras el muro.
+ */
+export function adventurePlayableCeiling(access: AdventureAccess): number {
+  return hasFullAdventureAccess(access) ? ADVENTURE_MAX_LEVELS : ADVENTURE_FREE_MAX_LEVEL;
+}
+
 export const ADVENTURE_THREE_STAR_TIME_MS = 65_000;
 const ADVENTURE_TWO_STAR_CHAPTER_STEP_MS = 2_000;
 const ADVENTURE_THREE_STAR_CHAPTER_STEP_MS = 1_500;

@@ -1143,5 +1143,68 @@
       "availableSub": "Tu recompensa de hoy te espera",
       "open": "Abrir"
     }
+  },
+  "pro": {
+    "badge": "PRO",
+    "gate": {
+      "cta": "Descubre CG PRO"
+    },
+    "plans": {
+      "monthly": "Mensual",
+      "annual": "Anual",
+      "lifetime": "De por vida",
+      "bestValue": "AHORRA 58 %",
+      "perMonth": "{{price}} al mes"
+    },
+    "benefits": {
+      "adventure": {
+        "title": "Aventura completa",
+        "description": "Los diez capítulos y sus 200 niveles. Sin PRO se juegan los dos primeros enteros."
+      },
+      "review": {
+        "title": "Repaso inteligente",
+        "description": "Las preguntas que fallaste vuelven cuando toca, hasta que te las sabes."
+      },
+      "exam": {
+        "title": "Modo Examen",
+        "description": "Cuarenta preguntas cronometradas, nota sobre diez y tu puesto frente al resto."
+      },
+      "stats": {
+        "title": "Estadísticas completas",
+        "description": "Tu evolución por categoría, la precisión por dificultad y todo tu histórico de fallos."
+      },
+      "badge": {
+        "title": "Insignia PRO",
+        "description": "Tu nombre destaca en los rankings, en la liga y entre tus amigos."
+      },
+      "stipend": {
+        "title": "300 monedas al mes",
+        "description": "Para power-ups y cosméticos, sin tener que farmearlas."
+      },
+      "streakFreeze": {
+        "title": "Tu racha nunca se rompe",
+        "description": "Un día suelto sin jugar deja de costarte la racha."
+      },
+      "cosmetics": {
+        "title": "Cosméticos exclusivos",
+        "description": "Marcos y colores de nombre que no se pueden comprar con monedas."
+      }
+    },
+    "paywall": {
+      "title": "Saca todo lo que hay dentro",
+      "subtitle": "Toda la Aventura, dos modos de juego más y las estadísticas que te dicen en qué mejorar.",
+      "subscribe": "Empezar",
+      "restore": "Restaurar compras",
+      "restored": "¡Listo! Ya tienes CG PRO.",
+      "nothingToRestore": "No hemos encontrado ninguna compra anterior.",
+      "welcome": "¡Bienvenido a CG PRO!",
+      "purchaseFailed": "No se ha podido completar la compra. Inténtalo de nuevo.",
+      "noPlans": "Ahora mismo no hay planes disponibles. Vuelve a intentarlo en un momento.",
+      "unavailable": "CG PRO estará disponible en la próxima actualización.",
+      "legal": "Las suscripciones se renuevan automáticamente salvo que las canceles al menos 24 horas antes de que termine el periodo. El plan de por vida es un pago único. Puedes gestionarlas desde los ajustes de tu cuenta.",
+      "terms": "Términos",
+      "privacy": "Privacidad",
+      "manage": "Gestionar suscripción"
+    }
   }
 }
