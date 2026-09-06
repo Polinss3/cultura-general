@@ -88,8 +88,15 @@ grant execute on function public.is_premium(uuid) to authenticated;
 grant execute on function public.adventure_level_unlocked(uuid, int) to authenticated;
 
 -- ─── Candado de recompensas de Aventura ──────────────────────────────────────
--- Un cliente modificado podría llamar a claim_adventure_reward para un nivel de
--- pago. Estos triggers lo cortan en la tabla, sin tocar las funciones.
+-- La función se deja creada, pero los TRIGGERS que la usan NO se activan aquí:
+-- viven en `20260906060000_pro_adventure_enforcement_v1.sql`, que solo debe
+-- aplicarse cuando la 2.2.0 esté publicada.
+--
+-- El motivo: mientras la gente siga con la 2.1.x, su app no sabe pedir el
+-- grandfathering. Un usuario por el nivel 51 con la app antigua llamaría a
+-- claim_adventure_reward y el trigger le tumbaría la recompensa de un nivel que
+-- para él es gratis. Aplicar el candado antes de tiempo rompe la app en
+-- producción.
 
 create or replace function public.enforce_adventure_premium_level()
 returns trigger
@@ -104,16 +111,6 @@ begin
   return new;
 end;
 $$;
-
-drop trigger if exists trg_adventure_reward_premium on public.adventure_reward_claims;
-create trigger trg_adventure_reward_premium
-  before insert on public.adventure_reward_claims
-  for each row execute function public.enforce_adventure_premium_level();
-
-drop trigger if exists trg_adventure_chapter_reward_premium on public.adventure_chapter_reward_claims;
-create trigger trg_adventure_chapter_reward_premium
-  before insert on public.adventure_chapter_reward_claims
-  for each row execute function public.enforce_adventure_premium_level();
 
 -- ─── Grandfathering ──────────────────────────────────────────────────────────
 -- Lo llama el cliente una vez, en el primer arranque de la 2.2.0. Marca legacy
@@ -164,6 +161,32 @@ end;
 $$;
 
 grant execute on function public.grant_adventure_legacy_access() to authenticated;
+
+-- Marca de una vez a TODO el que ya había pasado del nivel 40 antes de este
+-- cambio, sin esperar a que abra la 2.2.0. Así el candado nunca puede pillar a
+-- un usuario antiguo desprevenido, y quien no vuelva a entrar en meses conserva
+-- igualmente lo suyo.
+update public.profiles p
+set adventure_legacy = true
+where not p.adventure_legacy
+  and exists (
+    select 1
+    from public.user_adventure_progress ap
+    where ap.user_id = p.id
+      and (
+        (
+          coalesce(ap.progress->>'unlockedLevel', '') ~ '^[0-9]+$'
+          and (ap.progress->>'unlockedLevel')::int - 1 > 40
+        )
+        or exists (
+          select 1
+          from jsonb_array_elements_text(
+            coalesce(ap.progress->'completedLevels', '[]'::jsonb)
+          ) as lvl
+          where lvl ~ '^[0-9]+$' and lvl::int > 40
+        )
+      )
+  );
 
 -- ─── Escritura del estado premium (solo webhook) ─────────────────────────────
 -- La Edge Function `revenuecat-webhook` entra con la service role key. Esta

@@ -330,10 +330,16 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-06.
 
 ### Pendientes que bloquean la prueba en dispositivo
 
-1. **Aplicar las cinco migraciones** en Supabase, en orden: `premium_pro_v1`,
+1. **Aplicar cinco de las seis migraciones**, en orden: `premium_pro_v1`,
    `pro_exam_v1`, `pro_review_v1`, `pro_stats_v1`, `pro_perks_v1`. Todas son
    aditivas e idempotentes, pero las cuatro últimas dependen de `is_premium()`,
    que crea la primera.
+
+   ⚠️ **`pro_adventure_enforcement_v1` NO se aplica todavía.** Activa el candado
+   de servidor sobre las recompensas de Aventura, y mientras haya gente en la
+   2.1.x su app no sabe pedir el grandfathering: a un usuario por el nivel 51
+   con la app antigua le fallaría la recompensa de un nivel que para él siempre
+   ha sido gratis. Se aplica cuando la 2.2.0 lleve tiempo publicada.
 2. **Desplegar el webhook** con `--no-verify-jwt` y configurar
    `REVENUECAT_WEBHOOK_SECRET` en los dos lados.
 3. **Crear los productos** en App Store Connect y la oferta en RevenueCat.
