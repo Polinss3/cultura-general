@@ -57,3 +57,15 @@ export const PRO_BENEFIT_ICONS: Record<ProBenefit, string> = {
   streakFreeze: '🛡️',
   cosmetics: '🎨',
 };
+
+/**
+ * Lee el sello PRO de otro usuario a partir de `profiles.premium_tier`.
+ *
+ * Solo se consulta el tier, nunca `premium_until`: para pintar una insignia
+ * basta con saber que la tiene, y la fecha exacta de caducidad de la
+ * suscripción de otra persona no es asunto de nadie. El webhook de RevenueCat
+ * pone el tier a 'none' al expirar, así que la columna basta.
+ */
+export function isProTier(tier: unknown): boolean {
+  return typeof tier === 'string' && tier.length > 0 && tier !== 'none';
+}

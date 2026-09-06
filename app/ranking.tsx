@@ -260,6 +260,7 @@ function RankingRow({ C, row, rank, sort, isMe }: {
           name={row.username}
           cosmetics={cos}
           suffix={isMe ? t('daily.you') : ''}
+          isPro={row.isPro}
           color={isMe ? C.brandDeep : C.text}
           fontFamily={isMe ? Font.black : Font.bold}
           fontSize={15}

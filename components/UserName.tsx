@@ -1,5 +1,6 @@
 import { View, Text, TextStyle } from 'react-native';
 import { ResolvedCosmetics } from '@/lib/cosmetics';
+import { ProBadge } from './ProBadge';
 import { useColors } from '@/constants/colors';
 import { Font } from '@/constants/theme';
 
@@ -7,6 +8,7 @@ interface Props {
   name: string;
   cosmetics?: ResolvedCosmetics;
   suffix?: string;            // p.ej. " (tú)"
+  isPro?: boolean;            // añade el sello PRO detrás del nombre
   color?: string;             // color por defecto si no hay cosmético de color
   fontFamily?: string;
   fontSize?: number;
@@ -15,7 +17,7 @@ interface Props {
 
 // Nombre de usuario con cosméticos: icono/emoji delante, color y estilo.
 // Si no hay cosméticos, se comporta como un <Text> normal.
-export function UserName({ name, cosmetics, suffix = '', color, fontFamily = Font.semi, fontSize = 14, style }: Props) {
+export function UserName({ name, cosmetics, suffix = '', isPro, color, fontFamily = Font.semi, fontSize = 14, style }: Props) {
   const C = useColors();
   const c = cosmetics ?? {};
   return (
@@ -27,6 +29,7 @@ export function UserName({ name, cosmetics, suffix = '', color, fontFamily = Fon
       >
         {name}{suffix}
       </Text>
+      {isPro ? <ProBadge /> : null}
     </View>
   );
 }

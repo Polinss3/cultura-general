@@ -5,6 +5,7 @@ import { normalizeUsername, validateUsername } from './authValidation';
 import { awardProgress, bumpMissions, AwardResult } from './gamification';
 import { REWARDS } from './economy';
 import i18n, { getCurrentLang, AppLang } from './i18n';
+import { isProTier } from './pro';
 
 // ─── Error handling ───────────────────────────────────────────
 
@@ -379,6 +380,7 @@ export type RankRow = {
   timeMs: number | null;
   division: number;
   cosmetics: Record<string, string> | null;
+  isPro: boolean;
 };
 
 export async function fetchDailyRanking(): Promise<RankRow[]> {
@@ -408,7 +410,7 @@ export async function fetchDailyRanking(): Promise<RankRow[]> {
   const userIds = rows.map(r => r.user_id);
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, username, streak, league_division, cosmetics')
+    .select('id, username, streak, league_division, cosmetics, premium_tier')
     .in('id', userIds);
 
   const profileMap = new Map(
@@ -427,6 +429,7 @@ export async function fetchDailyRanking(): Promise<RankRow[]> {
         timeMs: r.time_ms ?? null,
         division: p?.league_division ?? 0,
         cosmetics: p?.cosmetics ?? null,
+        isPro: isProTier(p?.premium_tier),
       };
     })
     .sort((a, b) => {
@@ -460,6 +463,7 @@ export type GlobalRow = {
   level: number;
   division: number;
   cosmetics: Record<string, string> | null;
+  isPro: boolean;
 };
 
 /** Criterio de orden del ranking global. */
@@ -472,7 +476,7 @@ const SORT_COLUMN: Record<GlobalSort, string> = {
 };
 
 const GLOBAL_SELECT =
-  'id, username, total_answered, total_correct, streak, speed_record, level, league_division, cosmetics';
+  'id, username, total_answered, total_correct, streak, speed_record, level, league_division, cosmetics, premium_tier';
 
 function mapGlobalRow(r: any): GlobalRow {
   return {
@@ -485,6 +489,7 @@ function mapGlobalRow(r: any): GlobalRow {
     level: r.level ?? 1,
     division: r.league_division ?? 0,
     cosmetics: r.cosmetics ?? null,
+    isPro: isProTier(r.premium_tier),
   };
 }
 
@@ -579,7 +584,7 @@ export async function fetchFriendDailyRanking(userId: string): Promise<RankRow[]
 
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, username, streak, league_division, cosmetics')
+    .select('id, username, streak, league_division, cosmetics, premium_tier')
     .in('id', allIds);
 
   const profileMap = new Map(
@@ -598,6 +603,7 @@ export async function fetchFriendDailyRanking(userId: string): Promise<RankRow[]
         timeMs: r.time_ms ?? null,
         division: p?.league_division ?? 0,
         cosmetics: p?.cosmetics ?? null,
+        isPro: isProTier(p?.premium_tier),
       };
     })
     .sort((a, b) => {

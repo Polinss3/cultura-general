@@ -314,6 +314,7 @@ export default function LeaguesScreen() {
                       name={row.username}
                       cosmetics={cos}
                       suffix={isMe ? t('ladder.you') : ''}
+                      isPro={row.isPro}
                       color={isMe ? div.color : C.text}
                       fontFamily={isMe ? Font.bold : Font.semi}
                     />

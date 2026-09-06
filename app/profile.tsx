@@ -10,6 +10,7 @@ import Constants from 'expo-constants';
 import { useRouter, Link } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
+import { useIsPro } from '@/hooks/usePremium';
 import { useOffline } from '@/hooks/useOffline';
 import { supabase } from '@/lib/supabase';
 import {
@@ -70,6 +71,7 @@ export default function ProfileScreen() {
   const { profile, refresh } = useProfile();
   const { celebrate } = useProgress();
   const cosmetics = useCosmetics(!!user, user?.id);
+  const isPro = useIsPro();
 
   const [refreshing, setRefreshing] = useState(false);
   const [claimed, setClaimed] = useState<Set<string>>(new Set());
@@ -340,6 +342,7 @@ export default function ProfileScreen() {
               <UserName
                 name={profile?.username ?? '…'}
                 cosmetics={cosmetics}
+                isPro={isPro}
                 color={C.text}
                 fontFamily={Font.black}
                 fontSize={24}

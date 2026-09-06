@@ -4,6 +4,7 @@
 
 import { supabase } from './supabase';
 import i18n from './i18n';
+import { isProTier } from './pro';
 
 export interface LeagueEntry {
   userId: string;
@@ -12,6 +13,7 @@ export interface LeagueEntry {
   level: number;
   rank: number;
   cosmetics: Record<string, string> | null;
+  isPro: boolean;
 }
 
 export type LeagueResult = 'promoted' | 'relegated' | 'stayed';
@@ -61,6 +63,16 @@ export function daysUntilReset(weekStart: string): number {
 export async function fetchLeague(): Promise<LeagueState | null> {
   const { data, error } = await supabase.rpc('get_league');
   if (error || !data) return null;
+
+  // El sello PRO se resuelve con una consulta aparte en vez de añadiendo la
+  // columna al RPC: `get_league` ya ha obligado a re-aplicar leagues.sql dos
+  // veces, y cada re-aplicación es un build que se rompe si se olvida. Una
+  // lectura de `profiles` acotada a los ids que ya devuelve el ranking sale
+  // más barata que ese riesgo. Si falla, simplemente no se pinta el sello.
+  const proIds = await fetchProUserIds(
+    ((data.leaderboard ?? []) as any[]).map(e => e.user_id).filter(Boolean),
+  );
+
   return {
     division: data.division ?? 0,
     weekStart: data.week_start,
@@ -78,6 +90,22 @@ export async function fetchLeague(): Promise<LeagueState | null> {
       level: e.level ?? 1,
       rank: e.rank,
       cosmetics: e.cosmetics ?? null,
+      isPro: proIds.has(e.user_id),
     })),
   };
+}
+
+async function fetchProUserIds(userIds: string[]): Promise<Set<string>> {
+  if (userIds.length === 0) return new Set();
+  try {
+    const { data } = await supabase
+      .from('profiles')
+      .select('id, premium_tier')
+      .in('id', userIds);
+    return new Set(
+      (data ?? []).filter(row => isProTier((row as any).premium_tier)).map(row => row.id),
+    );
+  } catch {
+    return new Set();
+  }
 }

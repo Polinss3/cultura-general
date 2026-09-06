@@ -66,7 +66,7 @@ function timeUntilMidnight(): string {
 }
 
 function RankRowView({
-  position, name, sub, value, isMe, badge, leagueDivision, cosmetics, C, isDark,
+  position, name, sub, value, isMe, badge, leagueDivision, cosmetics, isPro, C, isDark,
 }: {
   position: number;
   name: string;
@@ -76,6 +76,7 @@ function RankRowView({
   badge?: { kind: 'correct' | 'wrong'; text: string };
   leagueDivision?: number;
   cosmetics?: Record<string, string> | null;
+  isPro?: boolean;
   C: Palette;
   isDark: boolean;
 }) {
@@ -123,6 +124,7 @@ function RankRowView({
           name={name}
           cosmetics={cos}
           suffix={isMe ? t('daily.you') : ''}
+          isPro={isPro}
           color={isMe ? C.brandDeep : C.text}
           fontFamily={isMe ? Font.black : Font.bold}
           fontSize={15}
@@ -516,6 +518,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                 isMe: p.userId === user?.id,
                 leagueDivision: p.division,
                 cosmetics: p.cosmetics,
+                isPro: p.isPro,
                 badge: { kind: p.isCorrect ? 'correct' as const : 'wrong' as const, text: p.isCorrect ? '✓' : '✗' },
               }))}
               emptyText={t('daily.emptyDaily')}
@@ -541,6 +544,7 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
                   isMe: p.userId === user?.id,
                   leagueDivision: p.division,
                   cosmetics: p.cosmetics,
+                  isPro: p.isPro,
                   badge: { kind: p.isCorrect ? 'correct' as const : 'wrong' as const, text: p.isCorrect ? '✓' : '✗' },
                 }))}
                 emptyText={t('daily.emptyFriends')}
@@ -686,6 +690,7 @@ type RankItem = {
   badge?: { kind: 'correct' | 'wrong'; text: string };
   leagueDivision?: number;
   cosmetics?: Record<string, string> | null;
+  isPro?: boolean;
 };
 
 function RankingList({ items, emptyText, C, isDark }: {
