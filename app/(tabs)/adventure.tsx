@@ -296,6 +296,9 @@ export default function AdventureScreen() {
               <Text style={{ color: C.textMuted, ...Type.small }}>
                 {t('adventure.levelRange', { start: region.startLevel, end: region.endLevel })} · {regionStars}/{regionMaxStars} ⭐
               </Text>
+              <Text numberOfLines={3} style={{ color: C.textFaint, ...Type.small, lineHeight: 18, marginTop: 4 }}>
+                {t(`adventure.lore.${region.theme}.intro`)}
+              </Text>
             </View>
             <View style={{ alignItems: 'center', gap: 2 }}>
               {regionIsFuture && <Text style={{ fontSize: 20 }}>🔒</Text>}

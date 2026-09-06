@@ -30,6 +30,11 @@ import {
   qualifiesForAdventureLegacy,
 } from './adventure-access';
 import {
+  adventureAllowsPowerUps,
+  adventureGuardianForChapter,
+  adventureGuardianForLevel,
+} from './adventure-lore';
+import {
   ADVENTURE_TOTAL_RELICS,
   adventureRelicFor,
   adventureRelics,
@@ -466,4 +471,46 @@ test('relics are counted only for finished chapters', () => {
   assert.equal(adventureRelicsEarned(progress), 1);
   assert.equal(adventureRelicFor(3, progress).grade, 'silver');
   assert.equal(adventureRelicFor(4, progress).grade, 'none');
+});
+
+// ─── Lore y guardianes ───────────────────────────────────────────────────────
+
+test('each chapter has its own guardian and no symbol is reused', () => {
+  const guardians = Array.from(
+    { length: ADVENTURE_TOTAL_RELICS },
+    (_, index) => adventureGuardianForChapter(index + 1),
+  );
+
+  assert.equal(new Set(guardians.map(g => g.symbol)).size, guardians.length);
+  assert.equal(new Set(guardians.map(g => g.id)).size, guardians.length);
+
+  // Los tres símbolos de un capítulo (región, reliquia y guardián) llegan a
+  // verse a la vez, así que ninguno puede coincidir con otro.
+  const fresh = createAdventureProgress();
+  for (const guardian of guardians) {
+    const region = adventureRegionForLevel((guardian.chapter - 1) * 20 + 1);
+    const relic = adventureRelicFor(guardian.chapter, fresh);
+    assert.notEqual(guardian.symbol, region.icon);
+    assert.notEqual(guardian.symbol, relic.symbol);
+    assert.notEqual(relic.symbol, region.icon);
+  }
+});
+
+test('only the last level of a chapter bans power-ups', () => {
+  assert.equal(adventureAllowsPowerUps(1), true);
+  assert.equal(adventureAllowsPowerUps(19), true);
+  assert.equal(adventureAllowsPowerUps(20), false);
+  assert.equal(adventureAllowsPowerUps(21), true);
+  assert.equal(adventureAllowsPowerUps(ADVENTURE_MAX_LEVELS), false);
+
+  // Coincide exactamente con lo que ya considera final de capítulo.
+  for (let level = 1; level <= ADVENTURE_MAX_LEVELS; level += 1) {
+    assert.equal(adventureAllowsPowerUps(level), !isAdventureChapterFinal(level));
+  }
+});
+
+test('the guardian of a level is the guardian of its chapter', () => {
+  assert.equal(adventureGuardianForLevel(7).id, adventureGuardianForChapter(1).id);
+  assert.equal(adventureGuardianForLevel(20).id, adventureGuardianForChapter(1).id);
+  assert.equal(adventureGuardianForLevel(21).id, adventureGuardianForChapter(2).id);
 });

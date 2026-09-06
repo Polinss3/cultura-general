@@ -600,11 +600,11 @@
     },
     "relics": {
       "roots": "Papiro de los Orígenes",
-      "world": "Astrolabio del Navegante",
+      "world": "El Mapa del Navegante",
       "ideas": "Compás de los Sabios",
       "nature": "El Herbario Perdido",
       "arts": "Máscara del Teatro",
-      "music": "La Partitura Inacabada",
+      "music": "El Violín Silencioso",
       "legends": "Escama de Dragón",
       "arena": "Laurel del Campeón",
       "inventions": "El Primer Engranaje",
@@ -620,7 +620,67 @@
         "silver": "Plata",
         "gold": "Oro"
       }
-    }
+    },
+    "guardians": {
+      "roots": "El Coloso Olvidado",
+      "world": "El Titán de Fuego",
+      "ideas": "El Oráculo",
+      "nature": "El Espíritu del Bosque",
+      "arts": "El Prestidigitador",
+      "music": "La Sirena",
+      "legends": "El Dragón Anciano",
+      "arena": "El León de la Arena",
+      "inventions": "El Autómata",
+      "cosmos": "El Centinela Estelar"
+    },
+    "lore": {
+      "roots": {
+        "intro": "Todo empezó cuando alguien decidió que valía la pena recordar. Aquí están las primeras ciudades, las primeras leyes y las primeras preguntas que nadie supo responder.",
+        "outro": "Has recorrido el principio de todo. Lo que viene después ya se apoya en estos cimientos."
+      },
+      "world": {
+        "intro": "Mapas mal dibujados, ríos que nadie había medido y fronteras que se movían solas. El mundo tardó siglos en caber en una hoja de papel.",
+        "outro": "El mapa ya no tiene manchas en blanco. Ahora sabes qué hay en cada una."
+      },
+      "ideas": {
+        "intro": "De Tales a Turing, la misma costumbre terca: mirar algo que todos daban por hecho y preguntar por qué. Aquí se guardan esas preguntas.",
+        "outro": "Has seguido el rastro del pensamiento durante veinticinco siglos. No está mal para un rato de trivia."
+      },
+      "nature": {
+        "intro": "Cuatro mil millones de años de ensayo y error, y sigue habiendo más especies sin nombre que con él. Lo vivo nunca se deja clasificar del todo.",
+        "outro": "Has puesto nombre a un buen trozo de lo que respira. Queda muchísimo ahí fuera."
+      },
+      "arts": {
+        "intro": "Pigmento, mármol, celuloide. Distintos materiales para la misma manía humana: dejar constancia de lo que se siente.",
+        "outro": "Sales del taller sabiendo mirar. Es lo único que pedía este capítulo."
+      },
+      "music": {
+        "intro": "Antes de la escritura ya había canciones. Aquí están las que sobrevivieron, y quienes las escribieron sin saber que durarían tanto.",
+        "outro": "El eco se apaga, pero las melodías se quedan. Ya son tuyas."
+      },
+      "legends": {
+        "intro": "Historias que se contaron tantas veces que dejaron de necesitar ser ciertas. Dioses, héroes y monstruos que explican lo que la razón no alcanzaba.",
+        "outro": "Has cruzado la frontera entre lo que pasó y lo que se cuenta. Casi nadie distingue las dos."
+      },
+      "arena": {
+        "intro": "Récords imposibles, remontadas que no tocaban y gente capaz de dedicar una vida entera a hacer algo un segundo más rápido.",
+        "outro": "La arena se vacía y tu nombre queda en el marcador."
+      },
+      "inventions": {
+        "intro": "De la rueda al transistor, cada invento resolvió un problema y creó tres nuevos. Así es como llegamos hasta aquí.",
+        "outro": "Has seguido la cadena de ideas que acaba en el aparato con el que estás leyendo esto."
+      },
+      "cosmos": {
+        "intro": "El último capítulo mira hacia arriba. Distancias que no caben en la cabeza y un puñado de preguntas que siguen abiertas.",
+        "outro": "Se acabó el viaje. Empezaste con tablillas de barro y terminas contando estrellas."
+      }
+    },
+    "guardianTitle": "Guardián del capítulo",
+    "guardianIntro": "{{name}} cierra el capítulo. Se juega sin ayudas.",
+    "guardianDefeated": "¡{{name}} derrotado!",
+    "chapterIntroTitle": "Capítulo {{number}}",
+    "chapterIntroStart": "Empezar el capítulo",
+    "guardianNoHelpers": "En el duelo con el guardián no se pueden usar ayudas."
   },
   "learn": {
     "pickerTitle": "¿Qué te apetece hoy?",

@@ -27,6 +27,7 @@ import { useProfile } from '@/hooks/useProfile';
 import { useProgress } from '@/context/ProgressContext';
 import { useIsPro } from '@/hooks/usePremium';
 import { resolveAdventureLegacy } from '@/lib/adventure-access';
+import { adventureAllowsPowerUps, adventureGuardianForLevel } from '@/lib/adventure-lore';
 import {
   ADVENTURE_MAX_LEVELS,
   ADVENTURE_QUESTIONS_PER_LEVEL,
@@ -107,6 +108,11 @@ export default function AdventureLevelScreen() {
   const isPro = useIsPro();
   const region = adventureRegionForLevel(level);
   const chapterFinal = isAdventureChapterFinal(level);
+  const guardian = adventureGuardianForLevel(level);
+  const guardianName = t(`adventure.guardians.${guardian.id}`);
+  // Los guardianes se juegan sin ayudas: es el único cambio de reglas del
+  // final de capítulo (ver lib/adventure-lore.ts).
+  const powerUpsAllowed = adventureAllowsPowerUps(level);
   const starThresholds = adventureStarThresholdsForLevel(level);
   const canUseEconomy = !!user && !guest && !offline;
   const { inventory, consume, refresh: refreshPowerups } = usePowerups(canUseEconomy, user?.id);
@@ -650,7 +656,7 @@ export default function AdventureLevelScreen() {
                 <Text style={{ color: C.text, fontSize: 32, fontFamily: Font.black }}>{t('adventure.level', { level })}</Text>
                 <Text style={{ color: C.textMuted, ...Type.secondary }}>{t(`adventure.regions.${region.theme}`)}</Text>
               </View>
-              {chapterFinal && <Text accessibilityElementsHidden style={{ fontSize: 42 }}>👑</Text>}
+              {chapterFinal && <Text accessibilityElementsHidden style={{ fontSize: 42 }}>{guardian.symbol}</Text>}
               {!guest && <CoinPill coins={profile?.coins ?? 0} onPress={() => router.push('/shop')} showPlus small />}
             </View>
             <View style={{ height: 1, backgroundColor: C.borderWarm }} />
@@ -661,7 +667,12 @@ export default function AdventureLevelScreen() {
             </View>
             {chapterFinal && (
               <View style={{ borderRadius: Radius.row, backgroundColor: alpha(region.accent, isDark ? 0.2 : 0.1), padding: 12, gap: 3 }}>
-                <Text style={{ color: C.text, ...Type.smallBold }}>{t('adventure.chapterFinalDescription')}</Text>
+                <Text style={{ color: region.accent, ...Type.sectionLabel }}>{t('adventure.guardianTitle')}</Text>
+                <Text style={{ color: C.text, ...Type.cardTitle }}>{guardianName}</Text>
+                <Text style={{ color: C.textMuted, ...Type.small }}>
+                  {t('adventure.guardianIntro', { name: guardianName })}
+                </Text>
+                <Text style={{ color: C.text, ...Type.smallBold, marginTop: 4 }}>{t('adventure.chapterFinalDescription')}</Text>
                 <Text style={{ color: C.coinText, ...Type.smallBold }}>
                   {t('adventure.chapterFinalBonus', { coins: REWARDS.adventureChapter.coins })}
                 </Text>
@@ -723,12 +734,14 @@ export default function AdventureLevelScreen() {
                 </Pressable>
               )}
             </View>
-            {canUseEconomy && powerUps.some(item => item.count > 0) ? (
+            {canUseEconomy && powerUpsAllowed && powerUps.some(item => item.count > 0) ? (
               <PowerUpBar items={powerUps} onUse={() => {}} disabled />
             ) : (
               <View style={{ backgroundColor: C.surface, borderRadius: Radius.row, borderWidth: 1, borderColor: C.border, padding: 14 }}>
                 <Text style={{ color: C.textMuted, ...Type.secondary }}>
-                  {guest || offline ? t('adventure.helpersAccountOnly') : t('adventure.noHelpers')}
+                  {!powerUpsAllowed
+                    ? t('adventure.guardianNoHelpers')
+                    : guest || offline ? t('adventure.helpersAccountOnly') : t('adventure.noHelpers')}
                 </Text>
               </View>
             )}
@@ -776,13 +789,15 @@ export default function AdventureLevelScreen() {
                 animated
                 accessibilityLabel={t('adventure.starsEarned', { count: attemptStars })}
               />
-            ) : <Text accessibilityElementsHidden style={{ fontSize: 58 }}>🧭</Text>}
+            ) : (
+              <Text accessibilityElementsHidden style={{ fontSize: 58 }}>
+                {chapterFinal ? guardian.symbol : '🧭'}
+              </Text>
+            )}
             <Text style={{ color: C.text, fontSize: 28, fontFamily: Font.black, textAlign: 'center' }}>
-              {t(perfect && chapterFinal
-                ? 'adventure.resultChapterFinal'
-                : perfect
-                  ? 'adventure.resultPerfect'
-                  : 'adventure.resultRetry')}
+              {perfect && chapterFinal
+                ? t('adventure.guardianDefeated', { name: guardianName })
+                : t(perfect ? 'adventure.resultPerfect' : 'adventure.resultRetry')}
             </Text>
             <Text style={{ color: C.textMuted, ...Type.bodyRegular, textAlign: 'center' }}>
               {t(perfect && chapterFinal
@@ -795,6 +810,14 @@ export default function AdventureLevelScreen() {
                 chapter: region.number,
               })}
             </Text>
+            {perfect && chapterFinal && (
+              <Text style={{
+                color: C.textFaint, ...Type.secondary, textAlign: 'center',
+                fontStyle: 'italic', marginTop: 6, maxWidth: 320,
+              }}>
+                {t(`adventure.lore.${region.theme}.outro`)}
+              </Text>
+            )}
           </View>
 
           <View style={{ backgroundColor: C.surface, borderRadius: Radius.cardLg, borderWidth: 1, borderColor: C.border, padding: 18, gap: 12 }}>
@@ -984,7 +1007,7 @@ export default function AdventureLevelScreen() {
           </View>
         )}
 
-        {canUseEconomy && !answered && powerUps.some(item => item.count > 0) && (
+        {canUseEconomy && powerUpsAllowed && !answered && powerUps.some(item => item.count > 0) && (
           <View style={{ gap: 8 }}>
             <Text style={{ color: C.textFaint, ...Type.sectionLabel }}>{t('common.yourHelpers')}</Text>
             <PowerUpBar items={powerUps} onUse={usePowerUp} />

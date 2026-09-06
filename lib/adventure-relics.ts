@@ -33,14 +33,19 @@ export interface AdventureRelic {
   total: number;
 }
 
-/** El símbolo es propio de la reliquia, no el icono de la región. */
+/**
+ * El símbolo es propio de la reliquia, no el icono de la región: en la vitrina
+ * y en la tarjeta de capítulo se ven a la vez el icono de región, la reliquia y
+ * el guardián, así que los tres tienen que distinguirse. Hay un test que lo
+ * comprueba capítulo a capítulo.
+ */
 const RELIC_SYMBOLS: Record<AdventureRegionTheme, string> = {
   roots: '📜',
-  world: '🧭',
+  world: '🗺️',
   ideas: '📐',
-  nature: '🌿',
+  nature: '🍂',
   arts: '🎭',
-  music: '🎼',
+  music: '🎻',
   legends: '🐉',
   arena: '🏆',
   inventions: '⚙️',

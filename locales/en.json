@@ -600,11 +600,11 @@
     },
     "relics": {
       "roots": "Papyrus of Origins",
-      "world": "The Navigator's Astrolabe",
+      "world": "The Navigator's Map",
       "ideas": "Compass of the Scholars",
       "nature": "The Lost Herbarium",
       "arts": "Mask of the Theatre",
-      "music": "The Unfinished Score",
+      "music": "The Silent Violin",
       "legends": "Dragon Scale",
       "arena": "The Champion's Laurel",
       "inventions": "The First Cog",
@@ -620,7 +620,67 @@
         "silver": "Silver",
         "gold": "Gold"
       }
-    }
+    },
+    "guardians": {
+      "roots": "The Forgotten Colossus",
+      "world": "The Titan of Fire",
+      "ideas": "The Oracle",
+      "nature": "The Forest Spirit",
+      "arts": "The Conjuror",
+      "music": "The Siren",
+      "legends": "The Elder Dragon",
+      "arena": "The Lion of the Arena",
+      "inventions": "The Automaton",
+      "cosmos": "The Star Sentinel"
+    },
+    "lore": {
+      "roots": {
+        "intro": "It all began when somebody decided things were worth remembering. Here are the first cities, the first laws and the first questions nobody could answer.",
+        "outro": "You've walked through the beginning of everything. What comes next rests on these foundations."
+      },
+      "world": {
+        "intro": "Badly drawn maps, rivers nobody had measured and borders that moved on their own. The world took centuries to fit on a sheet of paper.",
+        "outro": "No blank spaces left on the map. Now you know what's in every one of them."
+      },
+      "ideas": {
+        "intro": "From Thales to Turing, the same stubborn habit: looking at something everyone took for granted and asking why. Those questions are kept here.",
+        "outro": "You've followed the trail of human thought across twenty-five centuries. Not bad for a round of trivia."
+      },
+      "nature": {
+        "intro": "Four billion years of trial and error, and there are still more unnamed species than named ones. Living things never quite let themselves be filed away.",
+        "outro": "You've put names to a fair share of what breathes. There's a great deal more out there."
+      },
+      "arts": {
+        "intro": "Pigment, marble, celluloid. Different materials for the same human compulsion: leaving a record of what it feels like.",
+        "outro": "You leave the workshop knowing how to look. That's all this chapter ever asked."
+      },
+      "music": {
+        "intro": "There were songs before there was writing. Here are the ones that survived, and the people who wrote them without knowing they'd last this long.",
+        "outro": "The echo fades, but the melodies stay. They're yours now."
+      },
+      "legends": {
+        "intro": "Stories told so many times they stopped needing to be true. Gods, heroes and monsters explaining what reason couldn't reach.",
+        "outro": "You've crossed the border between what happened and what gets told. Almost nobody can tell them apart."
+      },
+      "arena": {
+        "intro": "Impossible records, comebacks that had no business happening, and people willing to give a whole life to doing something one second faster.",
+        "outro": "The arena empties and your name stays on the scoreboard."
+      },
+      "inventions": {
+        "intro": "From the wheel to the transistor, every invention solved one problem and created three more. That's how we got here.",
+        "outro": "You've followed the chain of ideas that ends in the device you're reading this on."
+      },
+      "cosmos": {
+        "intro": "The last chapter looks upward. Distances that don't fit in a human head, and a handful of questions still wide open.",
+        "outro": "The journey is over. You started with clay tablets and you finish counting stars."
+      }
+    },
+    "guardianTitle": "Chapter guardian",
+    "guardianIntro": "{{name}} guards the end of the chapter. No power-ups allowed.",
+    "guardianDefeated": "{{name}} defeated!",
+    "chapterIntroTitle": "Chapter {{number}}",
+    "chapterIntroStart": "Begin the chapter",
+    "guardianNoHelpers": "No power-ups can be used against the guardian."
   },
   "learn": {
     "pickerTitle": "What do you fancy today?",
