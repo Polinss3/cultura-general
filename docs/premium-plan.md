@@ -306,6 +306,40 @@ el PRO parezca una compra única.
 
 ---
 
+## 6.1 Estado de implementación
+
+Rama `feature/premium-pro`. Actualizado el 2026-09-06.
+
+| Pieza | Estado |
+|---|---|
+| Migración `20260906010000_premium_pro_v1.sql` | ✅ escrita — **pendiente de aplicar en Supabase** |
+| Edge Function `revenuecat-webhook` | ✅ escrita — **pendiente de desplegar** |
+| `lib/premium.ts` + `hooks/usePremium.ts` | ✅ |
+| `components/ProGate.tsx` (borroso + CTA) | ✅ |
+| `app/paywall.tsx` | ✅ |
+| Insignia PRO en rankings, liga y perfil | ✅ |
+| Candado de Aventura cap. 3-10 + grandfathering | ✅ |
+| Reliquias y vitrina | ✅ |
+| Lore de capítulo | ⬜ |
+| Guardianes (finales de capítulo) | ⬜ |
+| Mapa del viaje | ⬜ |
+| Sala PRO + Examen + Repaso inteligente | ⬜ |
+| Métricas con borroso | ⬜ |
+| Estipendio, streak freeze, cosméticos PRO | ⬜ (RPC `claim_pro_stipend` ya en la migración) |
+
+### Pendientes que bloquean la prueba en dispositivo
+
+1. **Aplicar la migración** en Supabase.
+2. **Desplegar el webhook** con `--no-verify-jwt` y configurar
+   `REVENUECAT_WEBHOOK_SECRET` en los dos lados.
+3. **Crear los productos** en App Store Connect y la oferta en RevenueCat.
+4. **Poner las claves** `EXPO_PUBLIC_REVENUECAT_IOS_KEY` / `_ANDROID_KEY` en EAS.
+5. **Build de EAS nuevo**: `react-native-purchases` es un módulo nativo. Hasta
+   entonces la app funciona entera, pero en modo gratuito.
+6. **Publicar la página de términos** en la web (bloqueante de revisión).
+
+---
+
 ## 7. Expectativas realistas
 
 - Conversión esperable en trivia: **1-3 %**. Sin anuncios, todos los ingresos vienen de ahí.
