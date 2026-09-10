@@ -10,7 +10,9 @@ begin;
 --
 -- Se reproduce la función entera porque hay que insertar una rama en medio.
 -- El resto del cuerpo es idéntico al de gamification.sql, más un
--- `set search_path` que le faltaba.
+-- `set search_path` que le faltaba y sin el filtro `score > 0` al buscar el
+-- último día jugado: con él, fallar la pregunta del día rompía la racha
+-- (ver supabase/streak_wrong_answer_fix.sql).
 
 create or replace function public.update_streak(p_user_id uuid)
 returns void
@@ -26,10 +28,11 @@ begin
     raise exception 'unauthorized';
   end if;
 
+  -- Último día con la pregunta respondida, acertada o no. La racha es de
+  -- constancia: fallar la pregunta no la rompe.
   select max(dr.date) into v_last_date
     from public.daily_rankings dr
    where dr.user_id = p_user_id
-     and dr.score > 0
      and dr.date < current_date;
 
   if v_last_date = current_date - 1 then
