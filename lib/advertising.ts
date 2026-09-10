@@ -1,59 +1,58 @@
 import type { AdsConsentDecision } from '@/stores/adsConsentStore';
 import { adsConfigured, disableAds, initializeAds } from '@/lib/ads';
 import {
-  startAppsFlyerAfterPersonalizedConsent,
+  startAppsFlyerAfterMeasurementConsent,
   stopAppsFlyerForPrivacy,
 } from '@/lib/appsflyer';
-import { startMetaAfterPersonalizedConsent, stopMetaForPrivacy } from '@/lib/metaSdk';
+import { startMetaAfterMeasurementConsent, stopMetaForPrivacy } from '@/lib/metaSdk';
 import { ensureTrackingPermission } from '@/lib/tracking';
 
+/**
+ * Aplica una decisión del aviso de edad y medición.
+ *
+ * Desde la 2.2.0 son dos cosas independientes y este es el único sitio donde se
+ * ven juntas:
+ *
+ *  - **Edad** gobierna los anuncios. Son propios, sin identificadores ni ATT,
+ *    así que basta con ser adulto; no hace falta consentir nada más.
+ *  - **Medición** gobierna ATT, AppsFlyer y Meta, que miden de dónde vienen las
+ *    instalaciones. No tienen nada que ver con qué anuncio se muestra dentro.
+ *
+ * El orden importa en el camino de medición: ATT primero, y solo después
+ * AppsFlyer y Meta, porque en iOS el identificador que ambos pueden usar
+ * depende de la respuesta al diálogo del sistema.
+ */
+
 let generation = 0;
-let lastDecision: AdsConsentDecision | null = null;
-let adsLockedUntilRestart = false;
 
 export async function applyAdvertisingDecision(decision: AdsConsentDecision): Promise<void> {
-  // Cierre último: en una build sin anuncios posibles no hay nada que aplicar
-  // y, sobre todo, nada que pedir. Las pantallas que llevan aquí ya comprueban
-  // `adsConfigured()`, pero esta es la única función que dispara ATT, AppsFlyer
-  // y Meta, así que la condición vive también donde no se puede olvidar.
-  // Detener tampoco hace falta: si nada arrancó, no hay nada que parar.
+  // Cierre último: en una build sin anuncios posibles no se llega a preguntar,
+  // así que no hay nada que aplicar ni, sobre todo, nada que pedir. Detener
+  // tampoco hace falta: si nada arrancó, no hay nada que parar.
   if (!adsConfigured()) return;
 
   const operation = ++generation;
-  const previousDecision = lastDecision;
-  lastDecision = decision;
 
   if (decision.ageBracket === 'minor') {
-    adsLockedUntilRestart = true;
     disableAds();
     stopAppsFlyerForPrivacy();
     await stopMetaForPrivacy();
     return;
   }
 
-  if (decision.choice === 'contextual') {
-    // Si se retira una elección personalizada, cortamos solicitudes de esta
-    // sesión. El siguiente arranque podrá iniciar MAX ya en modo contextual.
-    if (previousDecision?.choice === 'personalized') adsLockedUntilRestart = true;
-    if (adsLockedUntilRestart) {
-      disableAds();
-      stopAppsFlyerForPrivacy();
-      await stopMetaForPrivacy();
-      return;
-    }
+  // Los anuncios propios no esperan a la elección de medición: no la necesitan.
+  await initializeAds(decision);
+  if (operation !== generation) return;
+
+  if (decision.measurement !== 'accepted') {
     stopAppsFlyerForPrivacy();
     await stopMetaForPrivacy();
-    if (operation !== generation) return;
-    await initializeAds(decision);
     return;
   }
 
-  // Orden obligatorio: elección -> ATT -> MAX -> AppsFlyer/Meta.
-  adsLockedUntilRestart = false;
   const trackingDecision = await ensureTrackingPermission();
   if (operation !== generation) return;
-  await initializeAds(decision);
+  await startAppsFlyerAfterMeasurementConsent();
   if (operation !== generation) return;
-  await startAppsFlyerAfterPersonalizedConsent();
-  await startMetaAfterPersonalizedConsent(trackingDecision === 'granted');
+  await startMetaAfterMeasurementConsent(trackingDecision === 'granted');
 }

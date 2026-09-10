@@ -86,6 +86,10 @@ export function YearsGame({ header, onRoundFinished }: Props) {
     // intersticial si `handleAnswer` llegara a reentrar.
     if (finishedRef.current) return;
     finishedRef.current = true;
+    // El intersticial va ANTES del resultado: con el marcador en pantalla el
+    // usuario podía arrancar otra ronda y recibir el anuncio en medio. La
+    // última pregunta se queda respondida y quieta mientras se espera.
+    await showResultInterstitial('years_complete');
     setPhase('done');
     markDailyPlayed(); // cuenta como "practica hoy" en la ruta diaria
     const isRecord = await saveYearRecord(scope, finalCorrect);
@@ -102,7 +106,6 @@ export function YearsGame({ header, onRoundFinished }: Props) {
       );
       celebrate(award);
     }
-    showResultInterstitial('years_complete');
   };
 
   /** `idx` es la posición de la opción pulsada; `isCorrect`, si era la buena. */

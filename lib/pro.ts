@@ -14,12 +14,15 @@ export const PRO_ENTITLEMENT_LABEL = 'PRO';
 /** Capítulos de Aventura jugables sin pagar. Niveles 1-40. */
 export const ADVENTURE_FREE_CHAPTERS = 2;
 
+/** Campaña que ya existía antes de CG PRO. Los usuarios legacy la conservan. */
+export const ADVENTURE_LEGACY_CHAPTERS = 10;
+
 /**
  * Acceso a Aventura de un usuario concreto.
  *
  * `legacy` son las cuentas que ya habían pasado del nivel 40 antes de la 2.2.0.
- * Conservan la Aventura completa para siempre: quitar contenido ya publicado
- * sin respetar esto es la vía rápida a una tanda de reseñas de 1★.
+ * Conservan los capítulos 1-10 para siempre. La ampliación 11-20 sí requiere
+ * PRO porque nunca formó parte del contenido que ya tenían.
  */
 export interface AdventureAccess {
   isPro: boolean;
@@ -30,7 +33,7 @@ export const FULL_ADVENTURE_ACCESS: AdventureAccess = { isPro: true, legacy: tru
 export const FREE_ADVENTURE_ACCESS: AdventureAccess = { isPro: false, legacy: false };
 
 export function hasFullAdventureAccess(access: AdventureAccess): boolean {
-  return access.isPro || access.legacy;
+  return access.isPro;
 }
 
 /** Lista de beneficios del PRO, en el orden en que se muestran en el paywall. */

@@ -1,15 +1,8 @@
-# Notas para App Review y App Privacy — 2.1.0 (sin anuncios)
+# Notas para App Review y App Privacy — 2.2.0 (CG PRO)
 
-La 2.1.0 se publica **sin un solo anuncio** y **sin pedir ATT**: con
-`EXPO_PUBLIC_ADS_MODE=off`, `adsConfigured()` devuelve false y no se monta el
-aviso publicitario, no se pide el permiso de seguimiento y no arrancan AppsFlyer
-ni Meta. A cambio, esta versión no tiene atribución de campañas.
-
-**Ojo con el historial**: las notas de la versión anterior decían que la app
-añadía intersticiales de Google AdMob y que pedía ATT. Eso ya no es cierto, así
-que las notas de abajo lo dicen explícitamente — si el revisor busca los
-anuncios que anunciaba la ficha anterior y no los encuentra, es peor que
-habérselo aclarado.
+La 2.2.0 introduce compras opcionales de CG PRO. La app no inicializa los SDK
+publicitarios ni solicita ATT porque `EXPO_PUBLIC_ADS_MODE=off`. Esto se explica
+al revisor como configuración técnica y no como beneficio comercial de PRO.
 
 ---
 
@@ -20,21 +13,18 @@ la contraseña van en los campos de "Información de inicio de sesión" de la pr
 pantalla, no aquí.
 
 ```
-This update replaces the previous release's advertising integration:
-this version displays no advertising at all.
-
-The advertising SDKs are still bundled but are disabled at build time
-(the production build sets the ad mode to "off"), so they are never
-initialised and no ad request is ever made. As a result the app does
-not present the App Tracking Transparency prompt, and no advertising
-or attribution SDK is started. The App Privacy answers for this
-version declare no tracking.
-
 WHAT'S NEW IN THIS VERSION
-A new "Challenges" tab with two games: Flags, covering all 196
-countries, and Years, where you place 98 historical events on the
-timeline. The app has also been redesigned with a light and a dark
-theme, and there is a new global ranking.
+Adventure now contains 400 levels across 20 themed chapters. The first
+40 levels and the base catalogue of 2,000 questions remain free. CG PRO
+unlocks all 400 Adventure levels, adds 2,000 questions to Learn, and
+includes Smart Review, Exam and advanced insights.
+
+IN-APP PURCHASES
+The paywall offers monthly and annual auto-renewable subscriptions and
+a non-consumable lifetime purchase. It shows localized StoreKit prices,
+trial and renewal terms, Privacy Policy, Terms, Restore Purchases and a
+Manage Subscription link. TestFlight purchases use Apple's sandbox and
+do not charge the reviewer.
 
 SIGNING IN
 An account is not required to use the app. The sign-in screen has a
@@ -50,7 +40,12 @@ ACCOUNT DELETION
 Profile → Danger zone → Delete account, with a double confirmation,
 without leaving the app.
 
-The app is free and has no in-app purchases.
+The app can be downloaded and used without purchasing CG PRO.
+
+ADVERTISING CONFIGURATION
+Advertising and attribution SDKs remain disabled at build time. The app
+does not request ATT and the App Privacy answers for this version declare
+no tracking.
 ```
 
 ## App Privacy — lo que hay que rellenar (sin ATT)
@@ -64,6 +59,7 @@ Y entonces ningún tipo de dato se marca como *Used to Track You*.
 | Name (nombre de usuario) | Sí | Sí | App Functionality |
 | User ID | Sí | Sí | App Functionality, Analytics |
 | Product Interaction (respuestas, rachas, puntuaciones) | Sí | Sí | App Functionality, Analytics |
+| Purchase History (estado de CG PRO gestionado por RevenueCat) | Sí | Sí | App Functionality |
 | Crash Data | Sí | Sí (se adjunta el user id a Sentry) | App Functionality |
 | Performance Data | Sí | Sí | App Functionality |
 | Other Diagnostic Data | Sí | Sí | App Functionality |
@@ -75,29 +71,10 @@ navegación, búsquedas ni contenido de mensajes.
 > `lib/sentry.ts` llama a `setSentryUser(session.user.id)`. Si algún día se
 > quita esa llamada, pasa a "no vinculado".
 
-## App Privacy — NO aplica hoy: cómo quedaría al encender los anuncios
-
-Todo lo anterior **más**:
-
-| Tipo de dato | Se recoge | Vinculado | *Used to Track You* | Propósito |
-|---|---|---|---|---|
-| Device ID (IDFA) | Sí | Sí | **Sí** | Analytics, Developer's Advertising |
-| Coarse Location / IP (AppsFlyer) | Sí | Sí | **Sí** | Analytics |
-| Product Interaction | Sí | Sí | **Sí** | Analytics, Developer's Advertising |
-
-Y hay que responder **SÍ** a "Does this app use the Advertising Identifier?",
-justificando: *"Attribute this app installation to a previously served
-advertisement"* y *"Attribute an action taken within this app to a previously
-served advertisement"*. Las dos casillas de "display advertisements" se dejan
-**sin marcar** mientras no haya anuncios.
-
----
-
 ## Otros campos de App Store Connect
 
-- **Age Rating**: 4+. No hay contenido sensible, ni chat libre, ni compras.
-  El corte de 16 años del aviso publicitario es una decisión de privacidad
-  interna, no una clasificación de contenido.
+- **Age Rating**: revisar la declaración para reflejar que existen compras dentro
+  de la app; no hay chat libre ni contenido sensible.
 - **Privacy Policy URL**: ES `https://cg-trivia.pablobrasero.com/privacy`,
   EN `https://cg-trivia.pablobrasero.com/en/privacy`. Ya configuradas.
 - **Content Rights**: no se usa contenido de terceros.

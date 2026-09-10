@@ -72,7 +72,7 @@ export default function ExamScreen() {
 
   useEffect(() => {
     let cancelled = false;
-    fetchQuestions().then(pool => {
+    fetchQuestions(undefined, true).then(pool => {
       if (cancelled) return;
       setQuestions(buildExam(pool).map(shuffleQuestion));
       setPhase('intro');

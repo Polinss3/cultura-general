@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   AUTO_INTERSTITIAL_COOLDOWN_MS,
   AUTO_INTERSTITIAL_HOURLY_LIMIT,
+  AUTO_INTERSTITIAL_MIN_RESULTS,
   AUTO_INTERSTITIAL_MIN_SESSION_MS,
   FULLSCREEN_SHARED_WINDOW_MS,
   canShowAutomaticInterstitial,
@@ -18,11 +19,13 @@ function withThreeResults(now = 0) {
   return recordCompletedResult(state);
 }
 
-test('blocks the first two results and the first 90 seconds', () => {
-  const twoResults = recordCompletedResult(recordCompletedResult(createAdPolicyState(0)));
-  assert.equal(canShowAutomaticInterstitial(twoResults, AUTO_INTERSTITIAL_MIN_SESSION_MS), false);
-  assert.equal(canShowAutomaticInterstitial(withThreeResults(0), AUTO_INTERSTITIAL_MIN_SESSION_MS - 1), false);
-  assert.equal(canShowAutomaticInterstitial(withThreeResults(0), AUTO_INTERSTITIAL_MIN_SESSION_MS), true);
+test('never shows before a result and shows right after the first one', () => {
+  // Publicidad propia: una partida terminada basta y no hay tiempo mínimo de
+  // sesión. Lo que sigue sin poder pasar es un intersticial sin resultado.
+  assert.equal(AUTO_INTERSTITIAL_MIN_RESULTS, 1);
+  assert.equal(AUTO_INTERSTITIAL_MIN_SESSION_MS, 0);
+  assert.equal(canShowAutomaticInterstitial(createAdPolicyState(0), 0), false);
+  assert.equal(canShowAutomaticInterstitial(recordCompletedResult(createAdPolicyState(0)), 0), true);
 });
 
 test('enforces the automatic cooldown and shared fullscreen window', () => {
@@ -36,7 +39,7 @@ test('enforces the automatic cooldown and shared fullscreen window', () => {
   assert.equal(canShowAutomaticInterstitial(afterRewarded, eligibleAt + FULLSCREEN_SHARED_WINDOW_MS), true);
 });
 
-test('caps automatic interstitials at eight in a rolling hour', () => {
+test('caps automatic interstitials per rolling hour', () => {
   const now = 10_000_000;
   const state = {
     ...withThreeResults(0),

@@ -39,6 +39,16 @@ const GUARDIAN_SYMBOLS: Record<AdventureRegionTheme, string> = {
   arena: '🦁',
   inventions: '🤖',
   cosmos: '🛸',
+  language: '🦜',
+  societies: '🕊️',
+  oceans: '🐙',
+  earth: '🦅',
+  medicine: '🐍',
+  power: '🦊',
+  exploration: '🐋',
+  numbers: '🐢',
+  future: '🐦‍🔥',
+  time: '🦋',
 };
 
 export function adventureGuardianForChapter(chapter: number): AdventureGuardian {

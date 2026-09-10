@@ -1,26 +1,42 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const ADS_CONSENT_STORAGE_KEY = 'g101-ads-consent';
-// Subirla invalida las decisiones guardadas y vuelve a preguntar. Sufijo `b`
-// porque el corte de edad bajó de 18 a 16 el mismo día que se publicó `a`.
-export const ADS_NOTICE_VERSION = '2026-08-02b';
+// Subirla invalida las decisiones guardadas y vuelve a preguntar. La `c` es la
+// 2.2.0: al pasar de AppLovin MAX a publicidad propia, la segunda pregunta dejó
+// de ser "¿anuncios personalizados?" —que ya no existen— y pasó a ser "¿medimos
+// de dónde vienen las instalaciones?". Quien respondiera a la pregunta vieja no
+// respondió a esta, así que su decisión no vale.
+export const ADS_NOTICE_VERSION = '2026-09-10c';
 
 /**
  * Edad mínima a partir de la cual tratamos al usuario como adulto a efectos
- * publicitarios. AppLovin no fija ninguna cifra: prohíbe inicializar el SDK
- * con quien sea "child" según la ley aplicable y deja la determinación al
- * publisher. 16 es el número más bajo que vale en todo el EEE sin lógica por
- * país, porque Alemania, Irlanda, Países Bajos y Croacia no bajan del 16 en
- * el art. 8 del RGPD. Bajar más exigiría resolver el país del usuario.
+ * publicitarios.
+ *
+ * In-House Ads no fija ninguna cifra: exige `adult` y deja la determinación al
+ * host, advirtiendo de que la clasificación por edad de la tienda no acredita
+ * nada. 16 es el número más bajo que vale en todo el EEE sin lógica por país,
+ * porque Alemania, Irlanda, Países Bajos y Croacia no bajan del 16 en el art. 8
+ * del RGPD. Bajar más exigiría resolver el país del usuario.
+ *
+ * Se mantiene el mismo corte que con la red anterior aunque ahora los anuncios
+ * sean propios y sin identificadores: el listón no baja porque cambie quién
+ * sirve el anuncio.
  */
 export const ADS_MIN_AGE = 16;
 
 export type AdsAgeBracket = 'minor' | 'adult';
-export type AdsChoice = 'contextual' | 'personalized';
+
+/**
+ * Elección de medición y atribución. Gobierna ATT, AppsFlyer y Meta, y **solo**
+ * eso: los anuncios propios no tratan identificadores, así que no dependen de
+ * esta respuesta. Es `null` para menores, a quienes no se pregunta porque no se
+ * les inicia nada.
+ */
+export type AdsMeasurementChoice = 'declined' | 'accepted';
 
 export type AdsConsentDecision = {
   ageBracket: AdsAgeBracket;
-  choice: AdsChoice | null;
+  measurement: AdsMeasurementChoice | null;
   decidedAt: string;
   language: string;
   noticeVersion: typeof ADS_NOTICE_VERSION;
@@ -39,11 +55,11 @@ function isValidDecision(value: unknown): value is AdsConsentDecision {
   const decision = value as Partial<AdsConsentDecision>;
   if (decision.noticeVersion !== ADS_NOTICE_VERSION) return false;
   if (decision.ageBracket !== 'minor' && decision.ageBracket !== 'adult') return false;
-  if (decision.ageBracket === 'minor' && decision.choice !== null) return false;
+  if (decision.ageBracket === 'minor' && decision.measurement !== null) return false;
   if (
     decision.ageBracket === 'adult' &&
-    decision.choice !== 'contextual' &&
-    decision.choice !== 'personalized'
+    decision.measurement !== 'declined' &&
+    decision.measurement !== 'accepted'
   ) return false;
   return typeof decision.decidedAt === 'string' && typeof decision.language === 'string';
 }
@@ -76,7 +92,7 @@ export function getAdsConsentDecision() {
 }
 
 export async function saveAdsConsentDecision(
-  input: Pick<AdsConsentDecision, 'ageBracket' | 'choice' | 'language'>,
+  input: Pick<AdsConsentDecision, 'ageBracket' | 'measurement' | 'language'>,
 ): Promise<AdsConsentDecision> {
   const decision: AdsConsentDecision = {
     ...input,

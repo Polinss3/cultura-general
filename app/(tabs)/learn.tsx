@@ -13,6 +13,7 @@ import { usePowerups } from '@/hooks/usePowerups';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
+import { useIsPro } from '@/hooks/usePremium';
 import { useProgress } from '@/context/ProgressContext';
 import {
   fetchQuestions, fetchQuestionCounts, incrementProfileStats, reportQuestion,
@@ -31,6 +32,7 @@ import { feedback } from '@/lib/feedback';
 import { AnswerState, Category, Question } from '@/types';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, warmGradient } from '@/constants/theme';
+import { PRO_ACCENT } from '@/lib/pro';
 
 type Difficulty = 'all' | 'easy' | 'medium' | 'hard';
 type LearnCat = Category | 'random';
@@ -78,6 +80,7 @@ export default function LearnScreen() {
   const { user } = useAuth();
   const { guest } = useGuest();
   const offline = useOffline();
+  const isPro = useIsPro();
   const { celebrate } = useProgress();
   const { C, isDark } = useTheme();
   const [cat, setCat] = useState<LearnCat | null>(null);
@@ -110,9 +113,9 @@ export default function LearnScreen() {
   useEffect(() => {
     if (offline) return;
     let cancelled = false;
-    fetchQuestionCounts().then(c => { if (!cancelled) setCounts(c); });
+    fetchQuestionCounts(isPro).then(c => { if (!cancelled) setCounts(c); });
     return () => { cancelled = true; };
-  }, [offline]);
+  }, [isPro, offline]);
 
   // Micro-animación de "pop" cuando el combo sube.
   const bumpCombo = () => {
@@ -137,7 +140,9 @@ export default function LearnScreen() {
     (async () => {
       let remote: Question[] = [];
       try {
-        remote = cat === 'random' ? await fetchQuestions() : await fetchQuestions(cat);
+        remote = cat === 'random'
+          ? await fetchQuestions(undefined, isPro)
+          : await fetchQuestions(cat, isPro);
       } catch {
         // Sin red / sin caché: usamos el banco local empaquetado.
       }
@@ -156,7 +161,7 @@ export default function LearnScreen() {
       setLoadingQ(false);
     })();
     // Recargar al cambiar de idioma para servir preguntas en el idioma activo.
-  }, [cat, i18n.language]);
+  }, [cat, i18n.language, isPro]);
 
   // Refilter when difficulty changes
   useEffect(() => {
@@ -280,8 +285,21 @@ export default function LearnScreen() {
             {t('learn.pickerTitle')}
           </Text>
           <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, marginBottom: 16, lineHeight: 23 }}>
-            {t('learn.pickerSub')}
+            {t(isPro ? 'learn.pickerSubPro' : 'learn.pickerSub')}
           </Text>
+
+          <View style={{
+            flexDirection: 'row', alignItems: 'center', gap: 10,
+            backgroundColor: isPro ? `${PRO_ACCENT}18` : C.surface,
+            borderWidth: 1, borderColor: isPro ? `${PRO_ACCENT}55` : C.border,
+            borderRadius: Radius.row, paddingHorizontal: 13, paddingVertical: 10,
+            marginBottom: 14,
+          }}>
+            <Text style={{ fontSize: 18 }}>{isPro ? '✨' : '📚'}</Text>
+            <Text style={{ flex: 1, color: C.textBody, ...Type.small, lineHeight: 18 }}>
+              {t(isPro ? 'learn.catalogPro' : 'learn.catalogFree')}
+            </Text>
+          </View>
 
           {/* Sorpréndeme, a ancho completo */}
           <Pressable onPress={() => setCat('random')}>
@@ -384,7 +402,7 @@ export default function LearnScreen() {
       reportedRef.current.add(q.id);
       // Quien acaba de avisarnos de un fallo no es a quien pedirle 5 estrellas.
       noteReviewBlocker();
-      reportQuestion(user.id, q.id, reason);
+      reportQuestion(user.id, q.id, reason, q.catalog);
       Alert.alert(t('learn.thanks'), t('learn.reportSent'));
     };
     Alert.alert(t('learn.reportTitle'), undefined, [

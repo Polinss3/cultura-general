@@ -75,7 +75,7 @@ export function computeAchievements(
     { id: 'adventure_chapter',   icon: '🗺️', color: '#3478B9', reward: 50,  unlocked: adventureLevels >= 20 },
     { id: 'adventure_stars_100', icon: '⭐', color: '#C08A20', reward: 75,  unlocked: adventureStars >= 100 },
     { id: 'adventure_levels_100',icon: '🏰', color: '#7954B6', reward: 100, unlocked: adventureLevels >= 100 },
-    { id: 'adventure_all',       icon: '🚀', color: '#287F87', reward: 150, unlocked: adventureLevels >= 200 },
+    { id: 'adventure_all',       icon: '🚀', color: '#287F87', reward: 150, unlocked: adventureLevels >= 400 },
   ];
 
   return defs.map(d => ({

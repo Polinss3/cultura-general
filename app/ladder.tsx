@@ -19,6 +19,7 @@ import {
   saveLadderRun, bumpMissions, fetchLadderRanking, AwardResult, LadderRankRow,
 } from '@/lib/gamification';
 import { showRewardedAd, isRewardedReady, showResultInterstitial } from '@/lib/ads';
+import { grantRewardOnce } from '@/lib/adRewards';
 import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import {
   getGuestLadderBest, setGuestLadderBest, getLocalLadderBest, setLocalLadderBest,
@@ -104,7 +105,6 @@ export default function LadderScreen() {
     return () => clearTimeout(t);
   }, [phase, answered, timeLeft]);
 
-  // Intersticial al terminar una escalada.
   useEffect(() => {
     if (phase !== 'done' || adShownRef.current) return;
     adShownRef.current = true;
@@ -112,7 +112,6 @@ export default function LadderScreen() {
       floors_completed: runFloor,
       coins_banked: banked,
     });
-    showResultInterstitial('ladder_complete');
   }, [phase]);
 
   const pickForFloor = (f: number): ShuffledQuestion | undefined => {
@@ -211,7 +210,7 @@ export default function LadderScreen() {
 
   // Reanimar tras game over (item o anuncio).
   const reviveWithItem = async () => {
-    if ((inventory['pw_revive'] ?? 0) <= 0) return;
+    if (savedRef.current || (inventory['pw_revive'] ?? 0) <= 0) return;
     setInventory(inv => ({ ...inv, pw_revive: (inv['pw_revive'] ?? 0) - 1 }));
     await consumeItem('pw_revive');
     setLives(1);
@@ -220,8 +219,15 @@ export default function LadderScreen() {
   };
 
   const reviveWithAd = async () => {
-    const ok = await showRewardedAd('ladder_revive');
-    if (!ok) return;
+    if (savedRef.current) return;
+    // La vida es un efecto local, pero pasa por el mismo libro mayor que las
+    // monedas: un recibo, una revivida. Reintentar la misma presentación no
+    // puede devolver dos vidas.
+    const outcome = await showRewardedAd('ladder_revive', async ({ receipt }) => {
+      const applied = await grantRewardOnce(receipt, async () => true);
+      if (applied !== 'applied') throw new Error('reward_not_applied');
+    });
+    if (outcome !== 'granted') return;
     setLives(1);
     loadFloor(floor);
     setPhase('playing');
@@ -232,6 +238,11 @@ export default function LadderScreen() {
     if (savedRef.current) return;
     savedRef.current = true;
     setRunFloor(passedFloors);
+    // El intersticial va ANTES de la pantalla de resultado, que es donde se
+    // elige entre volver a casa o jugar otra: así no puede caer en mitad de la
+    // siguiente escalada. Mientras se espera, la pantalla de game over sigue
+    // visible con los botones de revivir ya bloqueados por `savedRef`.
+    await showResultInterstitial('ladder_complete');
     setPhase('done');
 
     const isBest = passedFloors > recordBest;

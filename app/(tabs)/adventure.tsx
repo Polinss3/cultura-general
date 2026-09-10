@@ -110,15 +110,16 @@ export default function AdventureScreen() {
 
   useEffect(() => {
     if (offline) return;
-    void prefetchAdventureQuestionBank().catch(() => {
+    void prefetchAdventureQuestionBank(access.isPro).catch(() => {
       // La precarga es oportunista: abrir un nivel mantiene su descarga normal
       // y el siguiente acceso con red reintentara el banco completo.
     });
-  }, [offline]);
+  }, [access.isPro, offline]);
 
   const region = adventureRegionForLevel((regionNumber - 1) * ADVENTURE_LEVELS_PER_REGION + 1);
   const maxRegion = Math.ceil(ADVENTURE_MAX_LEVELS / ADVENTURE_LEVELS_PER_REGION);
   const mapWidth = Math.max(280, Math.min(width, 620));
+  const lockedGateWidth = Math.max(280, Math.min(width - Space.screen * 2, 620));
 
   const goToRegion = useCallback((nextRegion: number) => {
     const bounded = Math.max(1, Math.min(maxRegion, nextRegion));
@@ -385,17 +386,24 @@ export default function AdventureScreen() {
         </View>
           </View>
 
-          <ScrollView
-            ref={scrollRef}
-            contentInsetAdjustmentBehavior="automatic"
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ alignItems: 'center', paddingBottom: 32 }}
-          >
-            <ProGate
-              unlocked={!chapterLocked}
-              title={t('adventure.locked.title', { number: region.number })}
-              description={t('adventure.locked.description')}
-              source="adventure_map"
+          {chapterLocked ? (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 32 }}>
+              <ProGate
+                unlocked={false}
+                title={t('adventure.locked.title', { number: region.number })}
+                description={t('adventure.locked.description')}
+                source="adventure_map"
+                minHeight={280}
+              >
+                <View style={{ width: lockedGateWidth, height: 280 }} />
+              </ProGate>
+            </View>
+          ) : (
+            <ScrollView
+              ref={scrollRef}
+              contentInsetAdjustmentBehavior="automatic"
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ alignItems: 'center', paddingBottom: 32 }}
             >
               <AdventureMap
                 width={mapWidth}
@@ -403,8 +411,8 @@ export default function AdventureScreen() {
                 progress={progress}
                 onLevelPress={openLevel}
               />
-            </ProGate>
-          </ScrollView>
+            </ScrollView>
+          )}
         </Animated.View>
       </GestureDetector>
       <RelicCaseModal

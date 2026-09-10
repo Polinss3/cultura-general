@@ -1,16 +1,20 @@
 import {
   ADVENTURE_FREE_CHAPTERS,
-  hasFullAdventureAccess,
+  ADVENTURE_LEGACY_CHAPTERS,
   type AdventureAccess,
 } from './pro';
 
-export const ADVENTURE_MAX_LEVELS = 200;
+export const ADVENTURE_MAX_LEVELS = 400;
 export const ADVENTURE_QUESTIONS_PER_LEVEL = 10;
 export const ADVENTURE_LEVELS_PER_REGION = 20;
+export const ADVENTURE_LEGACY_MAX_LEVEL =
+  ADVENTURE_LEGACY_CHAPTERS * ADVENTURE_LEVELS_PER_REGION;
 // La v1 permanece publicada en Supabase para builds anteriores. La 2.1 usa un
 // manifiesto nuevo con una curva de dificultad creciente y el mismo orden en
 // todos los dispositivos.
 export const ADVENTURE_QUESTION_VERSION = 2;
+/** Manifiesto independiente de las 2.000 preguntas nuevas de los niveles 201-400. */
+export const ADVENTURE_PRO_QUESTION_VERSION = 1;
 export const ADVENTURE_TWO_STAR_TIME_MS = 110_000;
 
 // ─── Acceso PRO ──────────────────────────────────────────────────────────────
@@ -31,11 +35,15 @@ export function adventureLevelIsFree(level: number): boolean {
 
 /** `true` si hay que enseñar el paywall antes de dejar entrar en el nivel. */
 export function adventureLevelLocked(level: number, access: AdventureAccess): boolean {
-  return !adventureLevelIsFree(level) && !hasFullAdventureAccess(access);
+  if (adventureLevelIsFree(level)) return false;
+  if (access.isPro) return false;
+  return !(access.legacy && level <= ADVENTURE_LEGACY_MAX_LEVEL);
 }
 
 export function adventureChapterLocked(chapter: number, access: AdventureAccess): boolean {
-  return !adventureChapterIsFree(chapter) && !hasFullAdventureAccess(access);
+  if (adventureChapterIsFree(chapter)) return false;
+  if (access.isPro) return false;
+  return !(access.legacy && chapter <= ADVENTURE_LEGACY_CHAPTERS);
 }
 
 /**
@@ -43,7 +51,9 @@ export function adventureChapterLocked(chapter: number, access: AdventureAccess)
  * para no dibujar como "siguiente" un nodo que en realidad está tras el muro.
  */
 export function adventurePlayableCeiling(access: AdventureAccess): number {
-  return hasFullAdventureAccess(access) ? ADVENTURE_MAX_LEVELS : ADVENTURE_FREE_MAX_LEVEL;
+  if (access.isPro) return ADVENTURE_MAX_LEVELS;
+  if (access.legacy) return ADVENTURE_LEGACY_MAX_LEVEL;
+  return ADVENTURE_FREE_MAX_LEVEL;
 }
 
 export const ADVENTURE_THREE_STAR_TIME_MS = 65_000;
@@ -74,7 +84,17 @@ export type AdventureRegionTheme =
   | 'legends'
   | 'arena'
   | 'inventions'
-  | 'cosmos';
+  | 'cosmos'
+  | 'language'
+  | 'societies'
+  | 'oceans'
+  | 'earth'
+  | 'medicine'
+  | 'power'
+  | 'exploration'
+  | 'numbers'
+  | 'future'
+  | 'time';
 
 export interface AdventureRegion {
   number: number;
@@ -107,6 +127,16 @@ const REGION_THEMES: ReadonlyArray<{ theme: AdventureRegionTheme; icon: string }
   { theme: 'arena', icon: '🏅' },
   { theme: 'inventions', icon: '💻' },
   { theme: 'cosmos', icon: '🚀' },
+  { theme: 'language', icon: '🗣️' },
+  { theme: 'societies', icon: '🏙️' },
+  { theme: 'oceans', icon: '🌊' },
+  { theme: 'earth', icon: '🌎' },
+  { theme: 'medicine', icon: '🧬' },
+  { theme: 'power', icon: '⚖️' },
+  { theme: 'exploration', icon: '⛵' },
+  { theme: 'numbers', icon: '🔢' },
+  { theme: 'future', icon: '📡' },
+  { theme: 'time', icon: '⏳' },
 ] as const;
 
 // Preparada para crecer: un color no vuelve a aparecer hasta el capítulo 26.

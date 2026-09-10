@@ -515,7 +515,15 @@ export default function HomeScreen() {
             <Text style={{ color: C.textFaint, ...Type.sectionLabel, marginBottom: 10 }}>
               {t('home.statsTitle')}
             </Text>
-            <View style={{ flexDirection: 'row', gap: 10, marginBottom: 10 }}>
+            <Pressable
+              onPress={() => offline ? lockedTap() : router.push('/stats' as any)}
+              accessibilityRole="button"
+              accessibilityLabel={t('home.statsTitle')}
+              style={({ pressed }) => ({
+                flexDirection: 'row', gap: 10, marginBottom: 10,
+                opacity: pressed ? 0.72 : 1,
+              })}
+            >
               {[
                 { label: t('home.statAnswered'), value: String(profile?.total_answered ?? 0), color: C.text },
                 {
@@ -534,7 +542,7 @@ export default function HomeScreen() {
                   <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginTop: 2 }}>{s.label}</Text>
                 </View>
               ))}
-            </View>
+            </Pressable>
             <Pressable onPress={() => offline ? lockedTap() : router.push('/profile')}>
               <View style={{
                 backgroundColor: C.surface, borderRadius: 18, paddingVertical: 14, paddingHorizontal: 16,

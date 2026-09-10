@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Linking, Pressable, ScrollView, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { ADS_MIN_AGE, type AdsAgeBracket, type AdsConsentDecision } from '@/stores/adsConsentStore';
+import {
+  ADS_MIN_AGE,
+  type AdsAgeBracket,
+  type AdsConsentDecision,
+  type AdsMeasurementChoice,
+} from '@/stores/adsConsentStore';
 import { getCurrentLang } from '@/lib/i18n';
 import { Font, Radius, Space } from '@/constants/theme';
 import { useTheme } from '@/constants/colors';
@@ -15,7 +20,7 @@ function privacyUrl() {
 
 export type AdsConsentInput = {
   ageBracket: AdsAgeBracket;
-  choice: 'contextual' | 'personalized' | null;
+  measurement: AdsMeasurementChoice | null;
 };
 
 type Props = {
@@ -28,9 +33,15 @@ type Props = {
 };
 
 /**
- * Aviso de edad y elección publicitaria. Es la única fuente de la copia legal:
- * lo usan tanto el onboarding (obligatorio, sin salida) como la revisión de
- * preferencias desde Ajustes.
+ * Aviso de edad y medición. Es la única fuente de la copia legal: lo usan tanto
+ * el onboarding (obligatorio, sin salida) como la revisión de preferencias
+ * desde Ajustes.
+ *
+ * Son dos preguntas independientes desde la 2.2.0. La edad decide si se ven
+ * anuncios, que son propios y no tratan identificadores. La segunda decide si
+ * arrancan ATT, AppsFlyer y Meta, que miden campañas de captación y no cambian
+ * ni un anuncio de los que se ven dentro. Mezclarlas fue correcto mientras los
+ * anuncios los servía una red externa; ya no lo es.
  */
 export function AdsConsentForm({ initialDecision, onSave, onCancel, resetKey }: Props) {
   const { t } = useTranslation();
@@ -42,11 +53,11 @@ export function AdsConsentForm({ initialDecision, onSave, onCancel, resetKey }: 
     setAgeBracket(initialDecision?.ageBracket ?? null);
   }, [initialDecision, resetKey]);
 
-  const save = async (choice: 'contextual' | 'personalized' | null) => {
+  const save = async (measurement: AdsMeasurementChoice | null) => {
     if (!ageBracket || saving) return;
     setSaving(true);
     try {
-      await onSave({ ageBracket, choice });
+      await onSave({ ageBracket, measurement });
     } finally {
       setSaving(false);
     }
@@ -98,20 +109,28 @@ export function AdsConsentForm({ initialDecision, onSave, onCancel, resetKey }: 
           <PrimaryButton label={t('adsConsent.continueWithoutAds')} disabled={saving} onPress={() => save(null)} />
         </>
       ) : ageBracket === 'adult' ? (
-        <View style={{ gap: 10 }}>
-          <ChoiceButton
-            title={t('adsConsent.contextual.title')}
-            body={t('adsConsent.contextual.body')}
-            disabled={saving}
-            onPress={() => save('contextual')}
-          />
-          <ChoiceButton
-            title={t('adsConsent.personalized.title')}
-            body={t('adsConsent.personalized.body')}
-            disabled={saving}
-            onPress={() => save('personalized')}
-          />
-        </View>
+        <>
+          <Text style={{ color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 21, marginBottom: 18 }}>
+            {t('adsConsent.adsExplanation')}
+          </Text>
+          <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 16, marginBottom: 12 }}>
+            {t('adsConsent.measurementQuestion')}
+          </Text>
+          <View style={{ gap: 10 }}>
+            <ChoiceButton
+              title={t('adsConsent.measurement.declined.title')}
+              body={t('adsConsent.measurement.declined.body')}
+              disabled={saving}
+              onPress={() => save('declined')}
+            />
+            <ChoiceButton
+              title={t('adsConsent.measurement.accepted.title')}
+              body={t('adsConsent.measurement.accepted.body')}
+              disabled={saving}
+              onPress={() => save('accepted')}
+            />
+          </View>
+        </>
       ) : null}
 
       <Pressable onPress={() => Linking.openURL(privacyUrl())} style={{ paddingVertical: 16 }}>

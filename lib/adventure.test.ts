@@ -19,6 +19,7 @@ import {
   resolveAdventureAttempt,
   markAdventureStarRewarded,
   ADVENTURE_FREE_MAX_LEVEL,
+  ADVENTURE_LEGACY_MAX_LEVEL,
   adventureChapterLocked,
   adventureLevelLocked,
   adventurePlayableCeiling,
@@ -131,6 +132,10 @@ test('active answer time grants one to three stars and keeps the best result', (
     twoStarsMs: 92_000,
     threeStarsMs: 51_500,
   });
+  assert.deepEqual(adventureStarThresholdsForLevel(400), {
+    twoStarsMs: 72_000,
+    threeStarsMs: 36_500,
+  });
 
   const first = resolveAdventureAttempt(createAdventureProgress(), 1, 10, { activeTimeMs: 110_000 });
   const faster = resolveAdventureAttempt(first.progress, 1, 10, { activeTimeMs: 65_000 });
@@ -159,18 +164,19 @@ test('a locked level cannot be opened through the domain API', () => {
   );
 });
 
-test('the adventure has 200 levels and exactly 2,000 question slots', () => {
-  assert.equal(ADVENTURE_MAX_LEVELS, 200);
-  assert.equal(ADVENTURE_MAX_LEVELS * ADVENTURE_QUESTIONS_PER_LEVEL, 2000);
+test('the adventure has 400 levels and exactly 4,000 question slots', () => {
+  assert.equal(ADVENTURE_MAX_LEVELS, 400);
+  assert.equal(ADVENTURE_MAX_LEVELS * ADVENTURE_QUESTIONS_PER_LEVEL, 4000);
   assert.equal(adventureRegionForLevel(1).number, 1);
   assert.equal(adventureRegionForLevel(21).number, 2);
-  assert.equal(adventureRegionForLevel(ADVENTURE_MAX_LEVELS).number, 10);
+  assert.equal(adventureRegionForLevel(ADVENTURE_MAX_LEVELS).number, 20);
   assert.equal(ADVENTURE_QUESTION_VERSION, 2);
   assert.equal(isAdventureChapterFinal(19), false);
   assert.equal(isAdventureChapterFinal(20), true);
   assert.equal(isAdventureChapterFinal(40), true);
   assert.equal(isAdventureChapterFinal(200), true);
-  assert.equal(isAdventureChapterFinal(201), false);
+  assert.equal(isAdventureChapterFinal(399), false);
+  assert.equal(isAdventureChapterFinal(400), true);
 });
 
 test('daily mission rotation includes Adventure without exceeding three missions', () => {
@@ -297,12 +303,12 @@ test('guest progress is removed only after a successful account sync', async () 
 });
 
 test('all current chapters have their own theme, accent, path and decorations', () => {
-  const regions = Array.from({ length: 10 }, (_, index) =>
+  const regions = Array.from({ length: 20 }, (_, index) =>
     adventureRegionForLevel(index * 20 + 1));
 
-  assert.equal(new Set(regions.map(region => region.theme)).size, 10);
-  assert.equal(new Set(regions.map(region => region.accent)).size, 10);
-  assert.equal(new Set(ADVENTURE_PATH_PATTERNS.map(pattern => pattern.join(','))).size, 10);
+  assert.equal(new Set(regions.map(region => region.theme)).size, 20);
+  assert.equal(new Set(regions.map(region => region.accent)).size, 20);
+  assert.equal(new Set(ADVENTURE_PATH_PATTERNS.map(pattern => pattern.join(','))).size, 20);
   assert.ok(ADVENTURE_PATH_PATTERNS.every(pattern =>
     pattern.length === 20 && pattern.every(x => x >= 0 && x <= 1)));
   assert.ok(regions.every(region => {
@@ -347,7 +353,7 @@ test('chapter accents do not repeat before the twenty-sixth chapter', () => {
 test('malformed persisted state is normalized and clamped', () => {
   const normalized = normalizeAdventureProgress({
     unlockedLevel: 999,
-    completedLevels: [1, 1, 0, 201],
+    completedLevels: [1, 1, 0, 401],
     rewardedLevels: [1, 2],
     bestScores: { 1: 99, nope: 4 },
   });
@@ -371,15 +377,19 @@ test('the first two chapters stay playable without PRO', () => {
   assert.equal(adventureChapterLocked(3, free), true);
 });
 
-test('PRO and legacy users both reach the end of the adventure', () => {
+test('PRO reaches the new campaign while legacy keeps the original 200 levels', () => {
   const pro = { isPro: true, legacy: false };
   const legacy = { isPro: false, legacy: true };
 
-  for (const access of [pro, legacy]) {
-    assert.equal(adventureLevelLocked(ADVENTURE_MAX_LEVELS, access), false);
-    assert.equal(adventureChapterLocked(10, access), false);
-    assert.equal(adventurePlayableCeiling(access), ADVENTURE_MAX_LEVELS);
-  }
+  assert.equal(adventureLevelLocked(ADVENTURE_MAX_LEVELS, pro), false);
+  assert.equal(adventureChapterLocked(20, pro), false);
+  assert.equal(adventurePlayableCeiling(pro), ADVENTURE_MAX_LEVELS);
+
+  assert.equal(adventureLevelLocked(ADVENTURE_LEGACY_MAX_LEVEL, legacy), false);
+  assert.equal(adventureChapterLocked(10, legacy), false);
+  assert.equal(adventureLevelLocked(ADVENTURE_LEGACY_MAX_LEVEL + 1, legacy), true);
+  assert.equal(adventureChapterLocked(11, legacy), true);
+  assert.equal(adventurePlayableCeiling(legacy), ADVENTURE_LEGACY_MAX_LEVEL);
 
   assert.equal(adventurePlayableCeiling(FREE_ADVENTURE_ACCESS), ADVENTURE_FREE_MAX_LEVEL);
 });

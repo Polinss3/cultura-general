@@ -27,7 +27,9 @@ import { AnswerState, Question } from '@/types';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
-type Phase = 'loading' | 'intro' | 'playing' | 'done';
+// `ending`: el tiempo se acabó y estamos esperando al intersticial. Se pinta
+// como `playing` congelado y no admite respuestas.
+type Phase = 'loading' | 'intro' | 'playing' | 'ending' | 'done';
 
 const DURATION = 30;
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
@@ -108,7 +110,13 @@ export default function SpeedScreen() {
   // Timer
   useEffect(() => {
     if (phase !== 'playing') return;
-    if (timeLeft <= 0) { setPhase('done'); return; }
+    if (timeLeft <= 0) {
+      // El anuncio va ANTES del marcador: si se pidiera con el resultado ya en
+      // pantalla, el usuario podía arrancar otra partida y recibirlo en medio.
+      setPhase('ending');
+      void showResultInterstitial('speed_complete').finally(() => setPhase('done'));
+      return;
+    }
     const t = setTimeout(() => setTimeLeft(n => n - 1), 1000);
     return () => clearTimeout(t);
   }, [phase, timeLeft]);
@@ -147,7 +155,6 @@ export default function SpeedScreen() {
       score,
       questions_answered: qIdx,
     });
-    showResultInterstitial('speed_complete');
   }, [phase]);
 
   const reset = (startPlaying = false) => {
@@ -171,7 +178,7 @@ export default function SpeedScreen() {
   };
 
   const handle = (i: number) => {
-    if (answered || allQ.length === 0 || fiftyHidden.includes(i)) return;
+    if (phase !== 'playing' || answered || allQ.length === 0 || fiftyHidden.includes(i)) return;
     setSelected(i);
     setAnswered(true);
     const current = displayQ;

@@ -43,6 +43,8 @@ interface QuestionRow {
   question_en: string | null;
   options_en: string[] | null;
   context_en: string | null;
+  /** Solo se añade al serializar la caché combinada; no es columna de BD. */
+  catalog?: 'core' | 'pro';
 }
 
 // La traducción EN se usa como bloque atómico: solo si hay pregunta EN y 4
@@ -55,10 +57,15 @@ function hasCompleteEn(row: QuestionRow): boolean {
   );
 }
 
-function mapQuestion(row: QuestionRow, lang: AppLang = getCurrentLang()): Question {
+function mapQuestion(
+  row: QuestionRow,
+  lang: AppLang = getCurrentLang(),
+  catalog: 'core' | 'pro' = 'core',
+): Question {
   const en = lang === 'en' && hasCompleteEn(row);
   return {
     id: row.id,
+    catalog: row.catalog ?? catalog,
     q: en ? row.question_en! : row.question,
     opts: en ? row.options_en! : row.options,
     ans: row.answer_index, // el índice es el mismo: el pipeline preserva el orden de opciones
@@ -87,13 +94,13 @@ const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
 // de columnas: por eso las cachés v2 ya escritas traen `difficulty` aunque
 // `mapQuestion` no la leyera todavía, y no hace falta invalidarlas al empezar
 // a usarla. Cualquier columna nueva de `questions` entra sola por la misma vía.
-function cacheKey(category?: Category) {
-  return `questions_cache_${category ?? 'all'}_v2`;
+function cacheKey(category?: Category, includePro = false) {
+  return `questions_cache_${category ?? 'all'}_${includePro ? 'pro_v1' : 'v2'}`;
 }
 
-async function getCachedRows(category?: Category): Promise<QuestionRow[] | null> {
+async function getCachedRows(category?: Category, includePro = false): Promise<QuestionRow[] | null> {
   try {
-    const raw = await AsyncStorage.getItem(cacheKey(category));
+    const raw = await AsyncStorage.getItem(cacheKey(category, includePro));
     if (!raw) return null;
     const { data, ts } = JSON.parse(raw);
     if (Date.now() - ts > CACHE_TTL_MS) return null;
@@ -103,10 +110,10 @@ async function getCachedRows(category?: Category): Promise<QuestionRow[] | null>
   }
 }
 
-async function setCache(rows: QuestionRow[], category?: Category): Promise<void> {
+async function setCache(rows: QuestionRow[], category?: Category, includePro = false): Promise<void> {
   try {
     await AsyncStorage.setItem(
-      cacheKey(category),
+      cacheKey(category, includePro),
       JSON.stringify({ data: rows, ts: Date.now() }),
     );
   } catch {
@@ -119,13 +126,15 @@ async function setCache(rows: QuestionRow[], category?: Category): Promise<void>
 // tema), que es solo el respaldo sin conexión, no el catálogo real. Aquí se
 // piden los totales al servidor, con la misma caché de 6 h que el resto.
 
-const COUNTS_CACHE_KEY = 'question_counts_v2';
+const countsCacheKey = (includePro: boolean) =>
+  `question_counts_${includePro ? 'pro_v1' : 'v2'}`;
 
 export type CategoryCounts = Partial<Record<Category, number>>;
 
-export async function fetchQuestionCounts(): Promise<CategoryCounts> {
+export async function fetchQuestionCounts(includePro = false): Promise<CategoryCounts> {
+  const cacheKey = countsCacheKey(includePro);
   try {
-    const raw = await AsyncStorage.getItem(COUNTS_CACHE_KEY);
+    const raw = await AsyncStorage.getItem(cacheKey);
     if (raw) {
       const { data, ts } = JSON.parse(raw);
       if (Date.now() - ts <= CACHE_TTL_MS) return data as CategoryCounts;
@@ -138,7 +147,7 @@ export async function fetchQuestionCounts(): Promise<CategoryCounts> {
     // Una consulta `head` por categoría: no transfiere filas, solo el total en
     // la cabecera. Traer las filas y contarlas en el cliente no vale, porque
     // PostgREST corta en 1000 y los últimos temas saldrían a cero.
-    const results = await Promise.all(
+    const coreResults = await Promise.all(
       ALL_DB_CATEGORIES.map(async category => {
         const { count, error } = await supabase
           .from('questions')
@@ -150,12 +159,38 @@ export async function fetchQuestionCounts(): Promise<CategoryCounts> {
     );
 
     const counts: CategoryCounts = {};
-    for (const r of results) {
+    for (const r of coreResults) {
       if (r) counts[r[0]] = r[1];
     }
     if (Object.keys(counts).length === 0) return {};
 
-    await AsyncStorage.setItem(COUNTS_CACHE_KEY, JSON.stringify({ data: counts, ts: Date.now() }));
+    // La tabla PRO es aditiva y no existe en el backend de la 2.1.x. Hasta
+    // que se aplique el SQL de lanzamiento, fallar aquí deja intactos los
+    // recuentos core y permite probar la build 2.2.0 contra producción.
+    let proCatalogAvailable = !includePro;
+    if (includePro) {
+      const proResults = await Promise.all(
+        ALL_DB_CATEGORIES.map(async category => {
+          const { count, error } = await supabase
+            .from('pro_questions')
+            .select('*', { count: 'exact', head: true })
+            .eq('active', true)
+            .eq('category', category);
+          return error ? null : ([category, count ?? 0] as const);
+        }),
+      );
+      proCatalogAvailable = proResults.every(result => result !== null) &&
+        proResults.some(result => result !== null && result[1] > 0);
+      if (proCatalogAvailable) {
+        for (const r of proResults) {
+          if (r) counts[r[0]] = (counts[r[0]] ?? 0) + r[1];
+        }
+      }
+    }
+
+    if (proCatalogAvailable) {
+      await AsyncStorage.setItem(cacheKey, JSON.stringify({ data: counts, ts: Date.now() }));
+    }
     return counts;
   } catch {
     // Sin red: el selector cae al banco local.
@@ -185,29 +220,60 @@ const PAGE_SIZE = 1000;
 // preguntas, muy por encima de cualquier catálogo previsible.
 const MAX_PAGES = 20;
 
-export async function fetchQuestions(category?: Category): Promise<Question[]> {
-  const cached = await getCachedRows(category);
+async function fetchRowsFrom(table: 'questions' | 'pro_questions', category?: Category): Promise<QuestionRow[]> {
+  const rows: QuestionRow[] = [];
+
+  for (let page = 0; page < MAX_PAGES; page++) {
+    const from = page * PAGE_SIZE;
+    let query = supabase.from(table).select('*').eq('active', true);
+    if (category) query = query.eq('category', category);
+
+    const { data, error } = await query.order('id').range(from, from + PAGE_SIZE - 1);
+    if (error) throw new NetworkError();
+
+    const batch = (data ?? []) as QuestionRow[];
+    rows.push(...batch);
+    if (batch.length < PAGE_SIZE) break;
+  }
+
+  return rows;
+}
+
+/**
+ * Catálogo de juego. Por defecto devuelve solo las 2.000 preguntas core para
+ * que Diario y los modos competitivos sigan siendo idénticos para todo el
+ * mundo. `includePro` se usa únicamente desde superficies que ya exigen PRO.
+ */
+export async function fetchQuestions(category?: Category, includePro = false): Promise<Question[]> {
+  const cached = await getCachedRows(category, includePro);
   if (cached) return cached.map(r => mapQuestion(r));
 
   return withRetry(async () => {
-    const rows: QuestionRow[] = [];
-
-    for (let page = 0; page < MAX_PAGES; page++) {
-      const from = page * PAGE_SIZE;
-      let query = supabase.from('questions').select('*').eq('active', true);
-      if (category) query = query.eq('category', category);
-
-      const { data, error } = await query.order('id').range(from, from + PAGE_SIZE - 1);
-      if (error) throw new NetworkError();
-
-      const batch = (data ?? []) as QuestionRow[];
-      rows.push(...batch);
-
-      // Una página incompleta significa que ya no queda nada detrás.
-      if (batch.length < PAGE_SIZE) break;
+    const coreRows = await fetchRowsFrom('questions', category);
+    if (!includePro) {
+      if (coreRows.length > 0) await setCache(coreRows, category);
+      return coreRows.map(r => mapQuestion(r));
     }
 
-    if (rows.length > 0) await setCache(rows, category);
+    let proRows: QuestionRow[];
+    try {
+      proRows = await fetchRowsFrom('pro_questions', category);
+    } catch {
+      // Compatibilidad temporal con el backend 2.1.x, donde la tabla aún no
+      // existe. No se cachea como catálogo PRO para reintentarlo después.
+      return coreRows.map(r => mapQuestion(r));
+    }
+
+    // Una tabla todavía vacía o invisible por RLS no es un catálogo PRO listo.
+    // Servimos el banco base, pero no lo guardamos bajo la clave combinada para
+    // que la siguiente entrada vuelva a comprobar el rollout/webhook.
+    if (proRows.length === 0) return coreRows.map(r => mapQuestion(r));
+
+    const rows: QuestionRow[] = [
+      ...coreRows.map(row => ({ ...row, catalog: 'core' as const })),
+      ...proRows.map(row => ({ ...row, catalog: 'pro' as const })),
+    ];
+    if (rows.length > 0) await setCache(rows, category, true);
     return rows.map(r => mapQuestion(r));
   });
 }
@@ -790,9 +856,10 @@ export async function reportQuestion(
   userId: string,
   questionId: string,
   reason: 'incorrect' | 'confusing' | 'duplicate' | 'other',
+  catalog: 'core' | 'pro' = 'core',
 ): Promise<void> {
   await supabase
-    .from('question_reports')
+    .from(catalog === 'pro' ? 'pro_question_reports' : 'question_reports')
     .upsert({ user_id: userId, question_id: questionId, reason }, { onConflict: 'user_id,question_id' });
 }
 

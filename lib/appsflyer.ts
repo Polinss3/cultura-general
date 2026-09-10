@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import appsFlyer, { MEDIATION_NETWORK } from 'react-native-appsflyer';
+import appsFlyer from 'react-native-appsflyer';
 
 const IOS_APP_ID = '6766927114';
 
@@ -42,8 +42,8 @@ async function initializeAppsFlyer(): Promise<boolean> {
   return initPromise;
 }
 
-// Solo se invoca tras elección personalizada y después de ATT + MAX.
-export async function startAppsFlyerAfterPersonalizedConsent(): Promise<boolean> {
+// Solo se invoca tras consentir la medición y después de ATT.
+export async function startAppsFlyerAfterMeasurementConsent(): Promise<boolean> {
   if (started) return true;
   if (startPromise) return startPromise;
 
@@ -74,34 +74,6 @@ export function stopAppsFlyerForPrivacy(): void {
   }
   started = false;
   startPromise = null;
-}
-
-export function logAppsFlyerAdRevenue(input: {
-  revenue: number;
-  networkName: string;
-  adUnitId: string;
-  placement?: string | null;
-  adFormat: string;
-}): boolean {
-  if (!started) return false;
-  if (!Number.isFinite(input.revenue) || input.revenue < 0) return false;
-  if (!input.networkName.trim() || !input.adUnitId.trim()) return false;
-  try {
-    appsFlyer.logAdRevenue({
-      monetizationNetwork: input.networkName,
-      mediationNetwork: MEDIATION_NETWORK.APPLOVIN_MAX,
-      currencyIso4217Code: 'USD',
-      revenue: input.revenue,
-      additionalParameters: {
-        ad_unit_id: input.adUnitId,
-        ad_format: input.adFormat,
-        ...(input.placement ? { placement: input.placement } : {}),
-      },
-    });
-    return true;
-  } catch {
-    return false;
-  }
 }
 
 export async function logAppsFlyerEvent(

@@ -3,8 +3,8 @@ import { Settings } from 'react-native-fbsdk-next';
 
 let initialized = false;
 
-// Meta permanece completamente parado hasta la elección personalizada.
-export async function startMetaAfterPersonalizedConsent(trackingGranted: boolean): Promise<void> {
+// Meta permanece completamente parado hasta que se consiente la medición.
+export async function startMetaAfterMeasurementConsent(trackingGranted: boolean): Promise<void> {
   try {
     Settings.setAutoLogAppEventsEnabled(true);
     Settings.setAdvertiserIDCollectionEnabled(trackingGranted);

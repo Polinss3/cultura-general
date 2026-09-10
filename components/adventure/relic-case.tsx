@@ -21,7 +21,7 @@ interface Props {
   onClose: () => void;
 }
 
-/** La vitrina: las diez reliquias, conseguidas y por conseguir. */
+/** La vitrina: las veinte reliquias, conseguidas y por conseguir. */
 export function RelicCaseModal({ visible, progress, access, onClose }: Props) {
   const { t } = useTranslation();
   const { C } = useTheme();

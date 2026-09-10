@@ -34,7 +34,7 @@ comment on column public.profiles.premium_tier is
 comment on column public.profiles.premium_until is
   'Fin del periodo pagado. NULL en lifetime (no caduca) y en none.';
 comment on column public.profiles.adventure_legacy is
-  'Usuario que ya había pasado del capítulo 2 antes de la 2.2.0: conserva la Aventura completa para siempre.';
+  'Usuario que ya había pasado del capítulo 2 antes de la 2.2.0: conserva los capítulos 1-10 para siempre.';
 
 -- El cliente ya solo puede escribir `username` en profiles (security_hardening),
 -- así que estas columnas quedan protegidas por la política existente.

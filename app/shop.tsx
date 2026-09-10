@@ -18,6 +18,7 @@ import {
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { showRewardedAd, isRewardedReady } from '@/lib/ads';
+import { grantRewardOnce } from '@/lib/adRewards';
 import { alpha, readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
@@ -100,15 +101,26 @@ export default function ShopScreen() {
   const handleWatchAd = async () => {
     if (busy) return;
     setBusy('ad');
-    const ok = await showRewardedAd('shop_coins');
-    if (ok) {
-      await awardProgress(0, REWARDS.rewardedAdCoins, false, 'rewarded_ad');
+    // Las monedas las concede el servidor de anuncios con un recibo firmado, y
+    // el libro mayor garantiza que ese recibo solo se cobra una vez. Si el RPC
+    // falla, lanzamos: el visor deja el anuncio abierto con su botón de
+    // reintento y el mismo recibo, en vez de tragarse la recompensa ganada.
+    const outcome = await showRewardedAd('shop_coins', async ({ receipt }) => {
+      const applied = await grantRewardOnce(receipt, async () => {
+        const award = await awardProgress(0, REWARDS.rewardedAdCoins, false, 'rewarded_ad');
+        return award !== null;
+      });
+      if (applied !== 'applied') throw new Error('reward_not_applied');
+    });
+    if (outcome === 'granted') {
       showToast({ type: 'success', message: t('shop.adReward', { coins: REWARDS.rewardedAdCoins }) });
       bumpMissions('coins_earned', REWARDS.rewardedAdCoins);
       refresh();
-    } else {
+    } else if (outcome === 'unavailable') {
       showToast({ type: 'info', message: t('shop.adUnavailable') });
     }
+    // 'dismissed' es una decisión del usuario: cerró el anuncio antes de
+    // ganarlo y ya se lo avisó el propio visor. No hace falta insistir.
     setBusy(null);
   };
 

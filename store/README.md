@@ -59,25 +59,22 @@ rondas estrenan la barra superior de `components/RoundHud.tsx`:
 - `04-banderas-pais.png` — rehacer: la pregunta de bandera, ya con `RoundHud`.
 - `10-anos-pregunta.png` — nueva: una pregunta del modo Años.
 
-## Checklist de la 2.1.0
+## Checklist de la 2.2.0
 
 - [x] `supabase/i18n_en.sql` aplicado.
 - [x] `supabase/questions_en.sql` aplicado, cobertura EN al 100 %.
 - [x] Web legal publicada en `https://cg-trivia.pablobrasero.com`.
 - [x] Privacy Policy URL apuntando al dominio propio en ASC.
-- [x] Textos ES/EN alineados con la 2.1.0: siete modos, Retos (Banderas y
-      Años), ranking global y "sin anuncios" como argumento.
+- [x] Borradores ES/EN alineados con la 2.2.0: ocho modos, Aventura de 400
+      niveles, catálogo base de 2.000 preguntas y catálogo total PRO de 4.000.
+- [x] Ninguna ficha presenta la ausencia o retirada de anuncios como beneficio.
 - [ ] **Capturas de Retos** (las tres de arriba), un set por idioma.
 - [ ] Pegar los textos en App Store Connect y en Google Play Console.
 - [ ] Rellenar App Privacy y las notas del revisor (`app-review-notes.md`).
 
-> Los recuentos que aparecen en las fichas ("más de 1.500 preguntas", "13 categorías",
-> "196 países", "98 hechos históricos") salen de los datos reales: 1.589 preguntas
-> activas tras `supabase/questions_dedup.sql`, `constants/flags.ts` y
-> `constants/years.ts`. Si se amplía alguno, conviene revisarlos.
+> Los recuentos nuevos de la 2.2.0 distinguen siempre 2.000 preguntas base y 2.000
+> preguntas PRO. No publicar la cifra total de 4.000 hasta haber completado y revisado
+> `data/questions-pro-v1-2000.json` y generado su seed.
 >
-> Las descripciones **no mencionan publicidad**, porque la 2.1.0 se publica con los
-> anuncios apagados —y ahora además sin pedir consentimiento ni ATT, ver
-> `adsConfigured()` en `lib/ads`—. Cuando se activen (ver
-> `docs/ads-applovin-activation.md`) hay que quitar el "sin anuncios" de los cuatro
-> ficheros **antes** de subir esa build.
+> La propuesta de valor de CG PRO se basa en contenido y herramientas de estudio.
+> Publicidad no forma parte de la ficha ni de sus beneficios.

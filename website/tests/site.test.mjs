@@ -44,8 +44,8 @@ test("app-ads.txt is served and only ever lists authorized entries", async () =>
     assert.match(entry, /^[^\s,]+\.[^\s,]+,\s*[^,]+,\s*(DIRECT|RESELLER)(,\s*[0-9a-f]+)?\s*$/i, `entrada inválida: ${entry}`);
   }
 
-  // Sin credenciales de AppLovin todavía no hay entradas, y el fichero debe
-  // seguir existiendo apuntando a dónde se pegan.
+  // Con publicidad propia no se vende inventario a nadie, así que no hay
+  // entradas; el fichero debe seguir existiendo y decir dónde se pegarían.
   if (entries.length === 0) assert.match(published, /website\/src\/app-ads\.txt/);
 });
 

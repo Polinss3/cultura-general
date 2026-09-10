@@ -277,8 +277,12 @@ export async function fetchPremiumPackages(): Promise<PremiumPackage[]> {
           identifier: pkg.identifier,
           tier,
           priceString: product.priceString ?? '',
-          pricePerMonth: tier === 'annual' && typeof product.price === 'number'
-            ? formatPerMonth(product.price, product.currencyCode)
+          pricePerMonth: tier === 'annual'
+            ? product.pricePerMonthString ?? (
+                typeof product.price === 'number'
+                  ? formatPerMonth(product.price, product.currencyCode)
+                  : null
+              )
             : null,
           freeTrial: trialFromProduct(product),
           raw: pkg,

@@ -1,9 +1,10 @@
 // ─── Acceso a Aventura: PRO y usuarios heredados ─────────────────────────────
 //
-// Desde la 2.2.0 los capítulos 3-10 exigen PRO. Eso significa quitar contenido
+// Desde la 2.2.0 los capítulos 3-20 exigen PRO. Eso significa limitar contenido
 // que ya estaba publicado, así que hay una excepción permanente: quien ya había
-// pasado del nivel 40 antes del cambio conserva la Aventura entera para
-// siempre. Sin esto, la actualización castiga justo a los usuarios más fieles.
+// pasado del nivel 40 antes del cambio conserva para siempre la campaña que ya
+// existía (capítulos 1-10). Los capítulos 11-20 son una ampliación nueva PRO.
+// Sin esta excepción, la actualización castigaría a los usuarios más fieles.
 //
 // El marcado es una operación de una sola dirección: una vez legacy, siempre
 // legacy. Nunca se retira, ni aunque el progreso se borre después.

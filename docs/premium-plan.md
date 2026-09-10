@@ -1,7 +1,7 @@
 # CG PRO — Plan de suscripción premium
 
 > Objetivo de versión: **2.2.0**. Documento de decisiones y alcance.
-> Estado: propuesta acordada con Pablo el 2026-09-06, pendiente de implementar.
+> Estado: implementación en curso en `feature/premium-pro`, actualizado el 2026-09-08.
 
 ## Contexto y restricción principal
 
@@ -15,9 +15,9 @@ consecuencias que condicionan todo el plan:
 2. **El tier gratuito no genera ingresos.** Cada usuario gratis es coste puro de Supabase.
    Es asumible al volumen actual, pero refuerza que el PRO tiene que convertir bien.
 
-**Cuando lleguen los anuncios**, "sin anuncios" se añade como beneficio sin tocar nada
-más: basta con consultar `isPro` antes de `showInterstitial`/`showRewarded` en
-`lib/ads.native.ts`. El diseño lo deja preparado, pero **no se comunica hasta que exista**.
+La 2.2.0 se plantea como producto freemium + CG PRO. La infraestructura publicitaria
+inactiva no forma parte de la propuesta de valor ni se comunica al usuario. Si en el futuro
+existe un proveedor, será una decisión de producto y privacidad separada.
 
 ---
 
@@ -28,8 +28,10 @@ más: basta con consultar `isPro` antes de `showInterstitial`/`showRewarded` en
 | SDK de compras | **RevenueCat** (`react-native-purchases`), ya conocido de otros proyectos |
 | Precios | Mensual **3,99 €** · Anual **19,99 €** · Lifetime **29,99 €** |
 | Prueba gratuita | **3 días** en mensual y anual (el lifetime no admite). Configurada en ASC; el paywall lee la duración del producto, no la trae codificada |
-| Aventura gratis | **Capítulos 1 y 2** (niveles 1-40). Capítulos 3-10 son PRO |
-| Usuarios existentes | **Grandfathering**: quien ya pasó del nivel 40 lo conserva para siempre |
+| Aventura gratis | **Capítulos 1 y 2** (niveles 1-40). Capítulos 3-20 son PRO |
+| Usuarios existentes | **Grandfathering**: conserva los capítulos 3-10 ya publicados; los nuevos 11-20 son PRO |
+| Catálogo de preguntas | 2.000 base para todos + 2.000 nuevas exclusivas de PRO en Aprender y Aventura 201-400 |
+| Pregunta diaria | Usa solo el catálogo base de 2.000 preguntas |
 | Insignia PRO | **Confirmada**, junto al nombre en rankings y ligas |
 | Métricas | Sección **visible para todos**, con datos **borrosos + CTA** para los gratuitos |
 | Modos exclusivos | **Los dos**: Repaso inteligente y Examen, en una pantalla dedicada |
@@ -42,7 +44,7 @@ de paywall de toda la app**. Un componente único, `<ProGate>`, que envuelve con
 lo difumina, lo hace no interactivo y superpone un mensaje + botón. Se usa en:
 
 - la sección de métricas del perfil,
-- el mapa de los capítulos 3-10 de Aventura,
+- el mapa general de Aventura y otras previsualizaciones PRO,
 - las tarjetas de la Sala PRO.
 
 Ver siempre lo que te pierdes convierte mucho mejor que un candado opaco, y usar **el
@@ -52,23 +54,23 @@ mismo gesto visual en los tres sitios** hace que el usuario aprenda qué signifi
 
 ## 1. Aventura: el ancla del PRO
 
-Hoy la Aventura ya está sólida por dentro: 200 niveles, 10 capítulos de 20, silueta de
+La Aventura de la 2.2.0 pasa a 400 niveles, 20 capítulos de 20, silueta de
 camino propia por capítulo (`ADVENTURE_PATH_PATTERNS`), 16 motivos temáticos, 25 acentos
 cromáticos, estrellas por tiempo, finales de capítulo y sincronización idempotente.
 
 **Lo que le falta no es mecánica, es *sentido de viaje y recompensa*.** Si vamos a cobrar
-por 8 de los 10 capítulos, el usuario tiene que sentir que compra una campaña, no 160
+por 18 de los 20 capítulos, el usuario tiene que sentir que compra una campaña, no 360
 niveles más de lo mismo. Cuatro añadidos, ninguno de ellos caro:
 
 ### 1.A — Mapa del viaje (pantalla de conjunto) · esfuerzo medio
 
 Hoy solo se ve un capítulo a la vez (swipe + `ChapterPickerModal`). Falta el plano
-general. Una pantalla que muestre los 10 capítulos como un único recorrido, con estrellas
+general. Una pantalla que muestre los 20 capítulos como un único recorrido, con estrellas
 y progreso de cada uno, hace tres cosas a la vez:
 
 - transmite **escala** ("esto es largo, merece la pena"),
 - da el momento **"mira lo lejos que he llegado"**,
-- es **la superficie natural del paywall**: capítulos 3-10 con `<ProGate>` encima.
+- es **una superficie natural del paywall** para previsualizar los capítulos bloqueados.
 
 ### 1.B — Reliquias: la colección · esfuerzo medio-bajo, **sin backend**
 
@@ -89,7 +91,7 @@ ya tiene el perfil.
 
 ### 1.C — Guardianes: los finales de capítulo con identidad · esfuerzo bajo-medio
 
-Los niveles 20, 40, …, 200 ya son finales diferenciados por la migración
+Los niveles 20, 40, …, 400 son finales diferenciados por la configuración
 `20260829030000_adventure_chapter_finals_v2.sql`, pero solo mecánicamente. Darles **nombre,
 retrato y reglas propias** los convierte en un evento:
 
@@ -104,19 +106,19 @@ Es casi todo copy, i18n y UI sobre lógica que ya existe.
 
 Dos o tres líneas al entrar en un capítulo y una de cierre al terminarlo. Como es una app
 de cultura general, **el lore puede ser educativo**: "Ideas recorre el camino de Tales a
-Turing". Es solo texto en i18n y transforma la percepción de "200 niveles generados" a
+Turing". Es solo texto en i18n y transforma la percepción de "400 niveles generados" a
 "un recorrido comisariado". Muy barato, muy rentable.
 
 ### Reparto gratis / PRO
 
 - **Capítulos 1-2 (niveles 1-40)**: gratis y **completos** — con reliquias, guardianes y
   lore. La demo tiene que ser buena, no mutilada.
-- **Capítulos 3-10**: PRO. El mapa del capítulo 3 se ve con `<ProGate>`.
+- **Capítulos 3-20**: PRO. Un capítulo bloqueado muestra directamente el mensaje y CTA,
+  sin un lienzo desplazable vacío.
 - **Grandfathering**: en el primer arranque de la 2.2.0, si `unlockedLevel > 40` o hay
   niveles completados por encima del 40, se marca `profiles.adventure_legacy = true` (y su
-  equivalente local para invitados) vía RPC. Ese flag **desactiva el gate para siempre**.
-  No es opcional: quitar contenido ya publicado sin esto garantiza una tanda de reseñas de
-  1★.
+  equivalente local para invitados) vía RPC. Ese flag conserva los niveles 41-200 que ya
+  existían en la 2.1.0; los nuevos niveles 201-400 siguen siendo exclusivos de PRO.
 
 ### Extras opcionales (no en 2.2.0)
 
@@ -292,7 +294,7 @@ Usar `react-native-purchases-ui` para el paywall permite reconfigurar precios y 
 | Fase | Contenido | Esfuerzo |
 |---|---|---|
 | **1 — Fundamentos** | RevenueCat, productos en ASC, esquema, webhook, paywall, restaurar compras, página de términos en la web | ~1 semana |
-| **2 — Gates y estatus** | Componente `<ProGate>`, insignia PRO, gate de Aventura 3-10, grandfathering | ~3 días |
+| **2 — Gates y estatus** | Componente `<ProGate>`, insignia PRO, gate de Aventura 3-20, grandfathering 41-200 | ~3 días |
 | **3 — Revamp Aventura** | Mapa del viaje, reliquias, guardianes, lore | ~1,5 semanas |
 | **4 — Sala PRO** | Pantalla + Examen + Repaso inteligente | ~1,5 semanas |
 | **5 — Métricas** | Panel completo con borroso + CTA | ~4 días |
@@ -310,7 +312,7 @@ el PRO parezca una compra única.
 
 ## 6.1 Estado de implementación
 
-Rama `feature/premium-pro`. Actualizado el 2026-09-06.
+Rama `feature/premium-pro`. Actualizado el 2026-09-08.
 
 | Pieza | Estado |
 |---|---|
@@ -320,7 +322,10 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-06.
 | `components/ProGate.tsx` (borroso + CTA) | ✅ |
 | `app/paywall.tsx` | ✅ |
 | Insignia PRO en rankings, liga y perfil | ✅ |
-| Candado de Aventura cap. 3-10 + grandfathering | ✅ |
+| Candado de Aventura cap. 3-20 + grandfathering limitado a 41-200 | ✅ cliente; SQL de rollout diferido |
+| Aventura 400 niveles / 20 capítulos | ✅ cliente y contenido de capítulo; SQL de rollout diferido |
+| Catálogo base/PRO en Aprender | ✅ cliente; faltan autoría y revisión de las 2.000 preguntas PRO |
+| Manifiesto Aventura 201-400 | ✅ generador; se genera al completar el catálogo PRO |
 | Reliquias y vitrina | ✅ |
 | Lore de capítulo | ✅ |
 | Guardianes (finales de capítulo) | ✅ |
@@ -330,9 +335,16 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-06.
 | Estipendio | ✅ (recogible desde la Sala PRO) |
 | Streak freeze automático, cosméticos PRO | ✅ (migración `..._pro_perks_v1` pendiente de aplicar) |
 
-### Pendientes que bloquean la prueba en dispositivo
+### Pendientes que bloquean el rollout completo
 
-1. **Aplicar cinco de las seis migraciones**, en orden: `premium_pro_v1`,
+1. **No aplicar todavía ningún cambio que altere Aventura para la 2.1.0.**
+   `supabase/adventure_400_rollout.sql`, `supabase/pro_question_catalog_v1.sql`,
+   `supabase/pro_questions_seed_v1.sql` y `supabase/pro_adventure_enforcement.sql`
+   viven fuera de `migrations/` deliberadamente. Se ejecutarán a mano, en el orden
+   documentado, cuando la 2.2.0 esté lista para su rollout.
+2. **Completar y revisar el catálogo bilingüe de 2.000 preguntas PRO** en
+   `data/questions-pro-v1-2000.json`; después ejecutar `npm run build:questions:pro`.
+3. **Aplicar las migraciones base de PRO cuando corresponda**, en orden: `premium_pro_v1`,
    `pro_exam_v1`, `pro_review_v1`, `pro_stats_v1`, `pro_perks_v1`. Todas son
    aditivas e idempotentes, pero las cuatro últimas dependen de `is_premium()`,
    que crea la primera.
@@ -352,13 +364,13 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-06.
    ```
    npx supabase migration repair --status applied 20260829010000 20260829020000 20260829030000
    ```
-2. **Desplegar el webhook** con `--no-verify-jwt` y configurar
+4. **Desplegar el webhook** con `--no-verify-jwt` y configurar
    `REVENUECAT_WEBHOOK_SECRET` en los dos lados.
-3. **Crear los productos** en App Store Connect y la oferta en RevenueCat.
-4. **Poner las claves** `EXPO_PUBLIC_REVENUECAT_IOS_KEY` / `_ANDROID_KEY` en EAS.
-5. **Build de EAS nuevo**: `react-native-purchases` es un módulo nativo. Hasta
+5. **Crear los productos** en App Store Connect y la oferta en RevenueCat.
+6. **Poner las claves** `EXPO_PUBLIC_REVENUECAT_IOS_KEY` / `_ANDROID_KEY` en EAS.
+7. **Build de EAS nuevo**: `react-native-purchases` es un módulo nativo. Hasta
    entonces la app funciona entera, pero en modo gratuito.
-6. **Publicar la página de términos** en la web (bloqueante de revisión).
+8. **Publicar la página de términos** en la web (bloqueante de revisión).
 
 ---
 

@@ -8,6 +8,7 @@ import * as Linking from 'expo-linking';
 import * as Notifications from 'expo-notifications';
 import { Alert, AppState } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import {
   useFonts,
   Nunito_400Regular,
@@ -22,11 +23,12 @@ import { initPremium } from '@/lib/premium';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setOffline, probeConnection } from '@/lib/offline';
-import { adsConfigured, markAdsSessionStarted } from '@/lib/ads';
+import { adsConfigured, flushAdEvents, markAdsSessionStarted } from '@/lib/ads';
 import { noteAppOpen } from '@/lib/reviewGate';
 import { applyAdvertisingDecision } from '@/lib/advertising';
 import { BootScreen } from '@/components/BootScreen';
 import { AdsConsentModal } from '@/components/AdsConsentModal';
+import { AdFullscreenHost } from '@/components/AdFullscreenHost';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { ProgressProvider } from '@/context/ProgressContext';
@@ -340,9 +342,9 @@ function RootLayout() {
   useEffect(() => {
     if (!ready || !onboarded) return;
     // Build sin anuncios posibles: ni se pregunta ni se aplica una decisión
-    // guardada. Sin esta guarda, quien eligiera "personalizados" en una build
-    // anterior seguiría disparando ATT, AppsFlyer y Meta en cada arranque para
-    // medir anuncios que esta versión no muestra.
+    // guardada. Sin esta guarda, quien hubiera aceptado la medición en una
+    // build anterior seguiría disparando ATT, AppsFlyer y Meta en cada
+    // arranque de una versión que no muestra publicidad.
     if (!adsConfigured()) return;
     let cancelled = false;
     markAdsSessionStarted();
@@ -356,7 +358,16 @@ function RootLayout() {
       .catch(() => {
         if (!cancelled) setAdsConsentHydrated(true);
       });
-    return () => { cancelled = true; };
+    // El SDK no tiene tareas de fondo: la cola de eventos se vacía al medir,
+    // cerrar o reclamar. Volver al primer plano es el momento en que hay más
+    // probabilidades de haber recuperado la red con eventos pendientes.
+    const foreground = AppState.addEventListener('change', state => {
+      if (state === 'active') flushAdEvents();
+    });
+    return () => {
+      cancelled = true;
+      foreground.remove();
+    };
   }, [ready, onboarded]);
 
   // Ocultar la splash nativa cuando ya podemos mostrar UI propia (app o BootScreen).
@@ -507,6 +518,10 @@ function RootLayout() {
               await applyAdvertisingDecision(decision);
             }}
           />
+          {/* Los anuncios a pantalla completa se pintan aquí, fuera del `Stack`:
+              el visor es un modal y no puede depender de la pantalla que lo
+              pidió, que muchas veces está navegando justo en ese momento. */}
+          <AdFullscreenHost />
         </ProgressProvider>
       </ToastProvider>
     </ErrorBoundary>
@@ -514,9 +529,15 @@ function RootLayout() {
 }
 
 function GestureReadyRoot() {
+  // `SafeAreaProvider` explícito: el visor de anuncios pide los insets dentro
+  // de su propio `Modal` y no puede confiar en el proveedor que monta
+  // react-navigation por su cuenta. `initialWindowMetrics` evita el fotograma
+  // en blanco del primer render.
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <RootLayout />
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <RootLayout />
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

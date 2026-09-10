@@ -62,7 +62,7 @@ export default function OnboardingScreen() {
   const [langChosen, setLangChosen] = useState(false);
   const [interestsChosen, setInterestsChosen] = useState(false);
   const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
-  // Último paso, obligatorio y sin salida: edad + elección publicitaria. Solo
+  // Último paso, obligatorio y sin salida: edad + elección de medición. Solo
   // aparece si esta build puede llegar a mostrar anuncios (ver `adsConfigured`).
   const [privacyPending, setPrivacyPending] = useState(false);
   const [skippedNotifications, setSkippedNotifications] = useState(false);
@@ -124,7 +124,7 @@ export default function OnboardingScreen() {
 
   const finish = async (skipped: boolean) => {
     await setOnboardingCompleted(true);
-    // No-op salvo que AppsFlyer se haya arrancado tras elección personalizada.
+    // No-op salvo que AppsFlyer se haya arrancado tras consentir la medición.
     void logTutorialCompletion(skipped);
     router.replace('/(tabs)');
   };
@@ -374,7 +374,7 @@ export default function OnboardingScreen() {
     );
   }
 
-  // Último paso: aviso de edad y elección publicitaria. Obligatorio y sin
+  // Último paso: aviso de edad y medición. Obligatorio y sin
   // botón de salida — es la condición para entrar a la app.
   if (privacyPending) {
     return (

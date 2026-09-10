@@ -46,8 +46,9 @@ import { StreakCalendar } from '@/components/StreakCalendar';
 import { UserName } from '@/components/UserName';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { feedback, isHapticsEnabled, setHapticsEnabled } from '@/lib/feedback';
+import { PRO_ACCENT } from '@/lib/pro';
 import { Category } from '@/types';
-import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { alpha, readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 import { requestAdsPreferencesReview } from '@/stores/adsConsentStore';
 import { adsConfigured } from '@/lib/ads';
@@ -444,6 +445,29 @@ export default function ProfileScreen() {
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <StatCard label={t('profile.stats.ladderRecord')} value={t('profile.stats.floor', { n: profile?.ladder_best ?? 0 })} />
           </View>
+          <Pressable
+            onPress={() => { feedback.tap(); router.push('/stats' as any); }}
+            accessibilityRole="button"
+            accessibilityLabel={t('profile.openStats')}
+            style={({ pressed }) => ({ marginTop: 12, opacity: pressed ? 0.72 : 1 })}
+          >
+            <LinearGradient
+              colors={[alpha(PRO_ACCENT, isDark ? 0.28 : 0.14), alpha(PRO_ACCENT, isDark ? 0.12 : 0.05)]}
+              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+              style={{
+                flexDirection: 'row', alignItems: 'center', gap: 11,
+                borderRadius: Radius.card, borderWidth: 1.5,
+                borderColor: alpha(PRO_ACCENT, 0.38), padding: 14,
+              }}
+            >
+              <Text style={{ fontSize: 21 }}>📊</Text>
+              <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15, flex: 1 }}>
+                {t('profile.openStats')}
+              </Text>
+              {!isPro ? <ProBadge /> : null}
+              <Text style={{ color: PRO_ACCENT, fontSize: 20 }}>›</Text>
+            </LinearGradient>
+          </Pressable>
         </View>
 
         {/* Racha emocional: calendario mensual + hitos */}
@@ -462,24 +486,6 @@ export default function ProfileScreen() {
         {catStats.length > 0 && (
           <View style={{ paddingHorizontal: Space.screen, marginBottom: 28 }}>
             <SectionTitle>{t('profile.categoryTitle')}</SectionTitle>
-            <Pressable
-              onPress={() => router.push('/stats' as any)}
-              accessibilityRole="button"
-              style={({ pressed }) => ({
-                flexDirection: 'row', alignItems: 'center', gap: 10,
-                backgroundColor: C.surface, borderRadius: 18,
-                borderWidth: 1, borderColor: C.border,
-                padding: 14, marginBottom: 12,
-                opacity: pressed ? 0.7 : 1,
-              })}
-            >
-              <Text style={{ fontSize: 20 }}>📊</Text>
-              <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 15, flex: 1 }}>
-                {t('profile.openStats')}
-              </Text>
-              {!isPro ? <ProBadge /> : null}
-              <Text style={{ color: C.textFaint, fontSize: 18 }}>›</Text>
-            </Pressable>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
               {catStats.map(cs => {
                 const cat = cs.category as Category;
@@ -731,7 +737,7 @@ export default function ProfileScreen() {
             </View>
           </View>
 
-          {/* Revisar la elección publicitaria solo tiene sentido si esta build
+          {/* Revisar la elección de edad y medición solo tiene sentido si esta build
               puede mostrar anuncios; si no, no hay ninguna decisión guardada
               que revisar. */}
           {adsConfigured() && (

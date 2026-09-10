@@ -50,6 +50,16 @@ const RELIC_SYMBOLS: Record<AdventureRegionTheme, string> = {
   arena: '🏆',
   inventions: '⚙️',
   cosmos: '🪐',
+  language: '🪶',
+  societies: '🗝️',
+  oceans: '🐚',
+  earth: '💎',
+  medicine: '🧪',
+  power: '👑',
+  exploration: '🔭',
+  numbers: '🧮',
+  future: '🦾',
+  time: '⌛',
 };
 
 export const RELIC_GRADE_COLORS: Record<Exclude<RelicGrade, 'none'>, string> = {

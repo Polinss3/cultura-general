@@ -19,6 +19,8 @@ import { getLocaleTag } from '@/lib/i18n';
 import { alpha, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow } from '@/constants/theme';
 
+const LOCKED_SECTION_HEIGHT = 210;
+
 export default function StatsScreen() {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
@@ -116,7 +118,7 @@ export default function StatsScreen() {
           <Section title={t('stats.evolutionTitle')}>
             <ProGate
               unlocked={isPro}
-              minHeight={200}
+              minHeight={isPro ? undefined : LOCKED_SECTION_HEIGHT}
               title={t('stats.gateTitle')}
               description={t('stats.gateDescription')}
               source="stats_evolution"
@@ -158,7 +160,7 @@ export default function StatsScreen() {
           <Section title={t('stats.difficultyTitle')}>
             <ProGate
               unlocked={isPro}
-              minHeight={150}
+              minHeight={isPro ? undefined : LOCKED_SECTION_HEIGHT}
               title={t('stats.gateTitle')}
               description={t('stats.gateDescription')}
               source="stats_difficulty"
@@ -193,7 +195,7 @@ export default function StatsScreen() {
           <Section title={t('stats.comparisonTitle')}>
             <ProGate
               unlocked={isPro}
-              minHeight={120}
+              minHeight={isPro ? undefined : LOCKED_SECTION_HEIGHT}
               title={t('stats.gateTitle')}
               description={t('stats.gateDescription')}
               source="stats_comparison"
@@ -216,7 +218,7 @@ export default function StatsScreen() {
           <Section title={t('stats.examsTitle')}>
             <ProGate
               unlocked={isPro}
-              minHeight={140}
+              minHeight={isPro ? undefined : LOCKED_SECTION_HEIGHT}
               title={t('stats.gateTitle')}
               description={t('stats.gateDescription')}
               source="stats_exams"

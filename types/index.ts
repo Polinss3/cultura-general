@@ -18,6 +18,8 @@ export type AnswerState = null | 'selected' | 'correct' | 'wrong';
 export interface Question {
   /** UUID en la BD. Ausente en las de bandera/año, que son catálogo local. */
   id?: string;
+  /** Origen persistente; permite reportar una pregunta en su tabla correcta. */
+  catalog?: 'core' | 'pro';
   q: string;
   opts: string[];
   ans: number;

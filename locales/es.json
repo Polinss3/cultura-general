@@ -172,7 +172,7 @@
     },
     "adventure_all": {
       "title": "Fin del viaje",
-      "desc": "Completa los 200 niveles de Aventura"
+      "desc": "Completa los 400 niveles de Aventura"
     }
   },
   "notifications": {
@@ -281,7 +281,7 @@
       "languageEs": "Español",
       "languageEn": "English",
       "adsPrivacy": "Privacidad y anuncios",
-      "adsPrivacySub": "Revisa tu tramo de edad y tu elección publicitaria"
+      "adsPrivacySub": "Revisa tu tramo de edad y tu elección de medición"
     },
     "openStats": "Ver todas mis estadísticas"
   },
@@ -585,7 +585,17 @@
       "legends": "Forja de leyendas",
       "arena": "La gran arena",
       "inventions": "Mentes y máquinas",
-      "cosmos": "Más allá de las estrellas"
+      "cosmos": "Más allá de las estrellas",
+      "language": "Las rutas del lenguaje",
+      "societies": "El tejido de las sociedades",
+      "oceans": "Los reinos del océano",
+      "earth": "El pulso de la Tierra",
+      "medicine": "El atlas del cuerpo",
+      "power": "Los salones del poder",
+      "exploration": "Fronteras desconocidas",
+      "numbers": "El jardín de los números",
+      "future": "El umbral del futuro",
+      "time": "La biblioteca del tiempo"
     },
     "levelA11y": {
       "completed": "Nivel {{level}} superado con {{stars}} estrellas. Mejor resultado: {{score}} de 10. Toca para rejugar y mejorar sus estrellas.",
@@ -595,7 +605,7 @@
     "chapterProStatus": "Capítulo de CG PRO",
     "locked": {
       "title": "El capítulo {{number}} es de CG PRO",
-      "description": "Los dos primeros capítulos son gratis. Con PRO se abren los ocho restantes: 160 niveles más."
+      "description": "Los dos primeros capítulos son gratis. Con PRO se abren los dieciocho restantes: 360 niveles más."
     },
     "relics": {
       "roots": "Papiro de los Orígenes",
@@ -607,7 +617,17 @@
       "legends": "Escama de Dragón",
       "arena": "Laurel del Campeón",
       "inventions": "El Primer Engranaje",
-      "cosmos": "La Esfera Celeste"
+      "cosmos": "La Esfera Celeste",
+      "language": "La Pluma de las Voces",
+      "societies": "La Llave de la Ciudad",
+      "oceans": "La Caracola Abisal",
+      "earth": "El Cristal del Planeta",
+      "medicine": "El Vial de la Vida",
+      "power": "La Corona del Pacto",
+      "exploration": "El Catalejo del Horizonte",
+      "numbers": "El Ábaco Infinito",
+      "future": "El Brazo del Mañana",
+      "time": "El Reloj de las Eras"
     },
     "relicCase": {
       "title": "Vitrina de reliquias",
@@ -630,7 +650,17 @@
       "legends": "El Dragón Anciano",
       "arena": "El León de la Arena",
       "inventions": "El Autómata",
-      "cosmos": "El Centinela Estelar"
+      "cosmos": "El Centinela Estelar",
+      "language": "El Guardián de las Mil Voces",
+      "societies": "La Paloma de la Concordia",
+      "oceans": "El Kraken de las Profundidades",
+      "earth": "El Águila de las Cumbres",
+      "medicine": "La Serpiente de Asclepio",
+      "power": "El Zorro de la Corte",
+      "exploration": "La Ballena del Confín",
+      "numbers": "La Tortuga de los Cálculos",
+      "future": "El Fénix Sintético",
+      "time": "La Mariposa de las Eras"
     },
     "lore": {
       "roots": {
@@ -670,8 +700,48 @@
         "outro": "Has seguido la cadena de ideas que acaba en el aparato con el que estás leyendo esto."
       },
       "cosmos": {
-        "intro": "El último capítulo mira hacia arriba. Distancias que no caben en la cabeza y un puñado de preguntas que siguen abiertas.",
-        "outro": "Se acabó el viaje. Empezaste con tablillas de barro y terminas contando estrellas."
+        "intro": "El cielo dejó de ser un techo cuando aprendimos a medirlo. Aquí empiezan las distancias que no caben en la cabeza y las preguntas que siguen abiertas.",
+        "outro": "Has contado estrellas y medido lo invisible. El viaje continúa de nuevo en la Tierra."
+      },
+      "language": {
+        "intro": "Miles de lenguas han puesto nombres distintos a las mismas cosas. Sus palabras guardan migraciones, conquistas y formas enteras de mirar el mundo.",
+        "outro": "Has seguido el rastro de las palabras. Ahora sabes que ninguna aparece por casualidad."
+      },
+      "societies": {
+        "intro": "Ciudades, costumbres e instituciones: convivir ha sido siempre el experimento más grande de la humanidad.",
+        "outro": "Has recorrido las reglas visibles e invisibles que mantienen unida una sociedad."
+      },
+      "oceans": {
+        "intro": "Cubren la mayor parte del planeta y aún esconden territorios que nunca hemos visto. Los océanos son frontera, despensa y memoria del clima.",
+        "outro": "Regresas a la superficie sabiendo cuánto del mundo permanece bajo el agua."
+      },
+      "earth": {
+        "intro": "Continentes que se desplazan, montañas que nacen y rocas que conservan historias de millones de años. El suelo nunca está realmente quieto.",
+        "outro": "Has leído la historia escrita en piedra. El planeta parece inmóvil solo porque nuestra vida es breve."
+      },
+      "medicine": {
+        "intro": "Curar empezó con observación, ensayo y muchos errores. Del pulso al genoma, cada avance cambió lo que significa estar sano.",
+        "outro": "Has recorrido el cuerpo y las ideas que aprendieron a repararlo."
+      },
+      "power": {
+        "intro": "Imperios, parlamentos, revoluciones y tratados. El poder cambia de forma, pero siempre deja huellas en leyes y fronteras.",
+        "outro": "Has atravesado los lugares donde se tomaron decisiones capaces de cambiar millones de vidas."
+      },
+      "exploration": {
+        "intro": "Cada horizonte fue alguna vez un límite. Navegantes, científicas y viajeros lo cruzaron sin saber qué habría al otro lado.",
+        "outro": "Ya no quedan bordes en el mapa, pero sí preguntas suficientes para seguir viajando."
+      },
+      "numbers": {
+        "intro": "Los números permiten encontrar orden donde parecía haber ruido. Están en la música, las órbitas, los mercados y la forma de una concha.",
+        "outro": "Has reconocido los patrones. El universo lleva mucho tiempo hablando en matemáticas."
+      },
+      "future": {
+        "intro": "Cada tecnología fue imposible justo antes de existir. Este capítulo reúne las ideas que están cambiando el presente y diseñando lo que viene.",
+        "outro": "Has mirado más allá del presente. El futuro ya había empezado mientras respondías."
+      },
+      "time": {
+        "intro": "Todo el viaje desemboca aquí: épocas que se conectan, descubrimientos que responden a otros y preguntas que atraviesan siglos.",
+        "outro": "Has llegado al final de cuatrocientos niveles. La cultura general no termina: ahora tienes un mapa mucho más grande para seguir explorando."
       }
     },
     "guardianTitle": "Guardián del capítulo",
@@ -686,6 +756,9 @@
   "learn": {
     "pickerTitle": "¿Qué te apetece hoy?",
     "pickerSub": "Elige un tema y practica a tu ritmo. Sin cronómetro.",
+    "pickerSubPro": "Elige un tema y practica con el catálogo completo. Sin cronómetro.",
+    "catalogFree": "Tienes 2.000 preguntas. CG PRO añade otras 2.000.",
+    "catalogPro": "Catálogo PRO activo: 4.000 preguntas disponibles.",
     "randomName": "Sorpréndeme",
     "randomDesc": "Preguntas de todos los temas",
     "countQuestions": "{{count}}+ preguntas",
@@ -988,27 +1061,31 @@
   },
   "adsConsent": {
     "title": "Tu privacidad y los anuncios",
-    "intro": "La app seguirá funcionando elijas lo que elijas. Guardaremos tu tramo de edad, tu opción, la fecha, el idioma y la versión de este aviso para respetar tu decisión.",
+    "intro": "La app seguirá funcionando elijas lo que elijas. Guardaremos tu tramo de edad, tu elección, la fecha, el idioma y la versión de este aviso para respetar tu decisión.",
     "ageQuestion": "¿Qué tramo de edad te corresponde?",
     "age": {
       "adult": "Tengo {{age}} años o más",
       "minor": "Soy menor de {{age}} años"
     },
-    "minorExplanation": "No iniciaremos AppLovin, AppsFlyer ni Meta y no recibirás anuncios. Todas las funciones del juego permanecen disponibles.",
+    "adsExplanation": "Los anuncios de CG Trivia son nuestros: solo promocionan aplicaciones y webs propias, aparecen en pausas naturales del juego y no usan identificadores publicitarios ni perfiles de nadie. Con CG PRO no verás ninguno.",
+    "minorExplanation": "No te mostraremos anuncios y no iniciaremos AppsFlyer ni Meta. Todas las funciones del juego permanecen disponibles.",
     "continueWithoutAds": "Continuar sin anuncios",
-    "contextual": {
-      "title": "Anuncios contextuales",
-      "body": "AppLovin puede mostrar anuncios según el contexto de la app. No pediremos ATT ni iniciaremos AppsFlyer o Meta; indicaremos que no consientes personalización y que no se vendan o compartan tus datos para publicidad dirigida."
-    },
-    "personalized": {
-      "title": "Anuncios personalizados",
-      "body": "Consientes la personalización publicitaria. En iOS pediremos ATT y, después, podremos iniciar AppLovin, AppsFlyer y Meta para personalización y atribución."
+    "measurementQuestion": "¿Nos dejas medir de dónde vienen las instalaciones?",
+    "measurement": {
+      "declined": {
+        "title": "Solo lo básico",
+        "body": "No pediremos ATT ni iniciaremos AppsFlyer o Meta. Verás exactamente los mismos anuncios: no dependen de esta elección."
+      },
+      "accepted": {
+        "title": "Permitir medición",
+        "body": "En iOS pediremos primero el permiso oficial App Tracking Transparency. Después, AppsFlyer y Meta podrán medir instalaciones y eventos de nuestras campañas de captación. No cambia qué anuncios ves dentro de la app."
+      }
     },
     "privacyLink": "Leer la política de privacidad completa"
   },
   "privacy": {
     "title": "Política de privacidad",
-    "updatedAt": "Última actualización: 3 de agosto de 2026",
+    "updatedAt": "Última actualización: 8 de septiembre de 2026",
     "intro": "Aquí explicamos qué información trata {{appName}}, para qué se utiliza y cómo puedes ejercer tus derechos.",
     "sections": {
       "s1": {
@@ -1017,11 +1094,11 @@
       },
       "s2": {
         "title": "2. Información que tratamos",
-        "body": "Para crear una cuenta tratamos tu correo electrónico, el nombre de usuario que eliges y un identificador interno. Si accedes con Apple o Google, el proveedor de identidad facilita los datos necesarios para autenticarte según los permisos que aceptes.\n\nTambién guardamos respuestas, progreso, rachas, puntuaciones, récords, nivel, logros, monedas, artículos de la tienda, relaciones de amistad y reportes necesarios para prestar las funciones del juego.\n\n• Datos técnicos de la app y del dispositivo, como versión, sistema operativo, idioma y registros de errores.\n• Datos de atribución publicitaria —incluidos campaña, dirección IP e identificador publicitario— únicamente cuando corresponda y hayas dado los permisos requeridos.\n• No solicitamos geolocalización precisa, contactos, fotos, cámara, micrófono ni calendario."
+        "body": "Para crear una cuenta tratamos tu correo electrónico, el nombre de usuario que eliges y un identificador interno. Si accedes con Apple o Google, el proveedor de identidad facilita los datos necesarios para autenticarte según los permisos que aceptes.\n\nTambién guardamos respuestas, progreso, rachas, puntuaciones, récords, nivel, logros, monedas, artículos de la tienda, relaciones de amistad y reportes necesarios para prestar las funciones del juego.\n\n• Datos técnicos de la app y del dispositivo, como versión, sistema operativo, idioma y registros de errores.\n• Estado de compra y suscripción necesario para activar CG PRO; no recibimos los datos completos de tu tarjeta ni de tu método de pago.\n• No solicitamos geolocalización precisa, contactos, fotos, cámara, micrófono ni calendario."
       },
       "s3": {
         "title": "3. Para qué usamos los datos",
-        "body": "• Crear, autenticar, proteger y recuperar tu cuenta.\n• Mostrar tu perfil, progreso, estadísticas, logros y contenido desbloqueado.\n• Calcular rankings, rachas y resultados, y habilitar amistades y funciones sociales.\n• Prevenir abuso, investigar reportes y mantener el servicio seguro.\n• Diagnosticar fallos y mejorar el funcionamiento de la app.\n• Mostrar publicidad y medir campañas solo bajo las opciones de privacidad descritas más abajo.\n\nNo vendemos ni alquilamos tus datos personales."
+        "body": "• Crear, autenticar, proteger y recuperar tu cuenta.\n• Mostrar tu perfil, progreso, estadísticas, logros y contenido desbloqueado.\n• Calcular rankings, rachas y resultados, y habilitar amistades y funciones sociales.\n• Verificar compras, restaurar tu acceso a CG PRO y sincronizarlo entre dispositivos.\n• Prevenir abuso, investigar reportes y mantener el servicio seguro.\n• Diagnosticar fallos y mejorar el funcionamiento de la app.\n\nNo vendemos ni alquilamos tus datos personales."
       },
       "s4": {
         "title": "4. Datos visibles para otros jugadores",
@@ -1029,38 +1106,42 @@
       },
       "s5": {
         "title": "5. Base jurídica",
-        "body": "Tratamos los datos necesarios para prestarte el servicio y ejecutar las condiciones de uso; para cumplir obligaciones legales; y, cuando procede, por interés legítimo en proteger y mejorar la app. La publicidad personalizada, el seguimiento entre apps y determinadas mediciones se basan en tu consentimiento, que puedes retirar en cualquier momento."
+        "body": "Tratamos los datos necesarios para prestarte el servicio, gestionar las compras que solicites y ejecutar las condiciones de uso; para cumplir obligaciones legales; y, cuando procede, por interés legítimo en proteger y mejorar la app."
       },
       "s6": {
         "title": "6. Proveedores",
-        "body": "Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; AppLovin MAX para publicidad; AppsFlyer para atribución; y Meta para medir campañas cuando has elegido publicidad personalizada y se cumplen los permisos del sistema. Apple y Google también pueden tratar información al distribuir la app o autenticarte.\n\nPuedes consultar las políticas de cada proveedor desde cg-trivia.pablobrasero.com/privacy."
+        "body": "Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; RevenueCat para verificar compras y mantener el estado de CG PRO; e In-House Ads, un servicio del mismo responsable, para servir la publicidad propia. Si aceptas la medición, AppsFlyer y Meta miden nuestras campañas de captación. Apple y Google también pueden tratar información al distribuir la app, autenticarte o procesar una compra.\n\nPuedes consultar las políticas de cada proveedor desde cg-trivia.pablobrasero.com/privacy."
       },
       "s7": {
-        "title": "7. Publicidad, edad y atribución",
-        "body": "Antes de inicializar los sistemas publicitarios te pedimos un tramo de edad y una elección informada. Los anuncios, cuando aparecen, salen en pausas naturales del juego: el resultado de la pregunta diaria, el final de una partida de contrarreloj, de una escalada o de una ronda de Mundo, y antes o después de un nivel de Aventura. Nunca mostramos banners durante las preguntas de Aventura.\n\n• Menores de 16 años: no inicializamos AppLovin, AppsFlyer ni Meta, y puedes usar la app completa sin anuncios.\n• Anuncios contextuales: comunicamos a AppLovin que no consientes personalización y que no se vendan ni compartan datos para publicidad dirigida. No pedimos App Tracking Transparency ni iniciamos AppsFlyer o Meta.\n• Anuncios personalizados: en iOS pedimos primero el permiso oficial App Tracking Transparency. AppLovin puede tratar identificadores y actividad publicitaria para seleccionar, limitar y medir anuncios; AppsFlyer y Meta pueden medir instalaciones y eventos de campaña.\n\nPuedes revisar o cambiar tu elección en Perfil > Ajustes > Privacidad y anuncios. Al pasar a contextual detenemos nuevas solicitudes de medición personalizada."
+        "title": "7. Compras y suscripciones",
+        "body": "CG PRO es una compra opcional gestionada por la tienda de tu dispositivo. RevenueCat recibe los identificadores de compra y el estado de la suscripción necesarios para validar y restaurar el acceso, pero ni la app ni RevenueCat reciben los datos completos de tu tarjeta.\n\nLas suscripciones se renuevan y se cancelan desde tu cuenta de Apple o Google. El precio, la duración, cualquier prueba gratuita y la fecha de renovación se muestran en la hoja de compra oficial antes de confirmar. Las solicitudes de reembolso se tramitan con la tienda correspondiente."
       },
       "s8": {
-        "title": "8. Notificaciones",
-        "body": "Si las activas, {{appName}} te envía un recordatorio diario a las 9:00 para que no pierdas tu racha. Son notificaciones locales: las programa tu propio dispositivo y su contenido no pasa por ningún servidor. Puedes desactivarlas cuando quieras desde Perfil > Ajustes o desde los ajustes de tu sistema."
+        "title": "8. Publicidad, edad y medición",
+        "body": "La publicidad de {{appName}} es propia: solo promociona aplicaciones y webs del mismo responsable, no usa identificadores publicitarios, perfiles ni redes de terceros, y no escribe cookies ni almacenamiento persistente en tu dispositivo. Los anuncios aparecen en pausas naturales del juego —el resultado de la pregunta del día o el final de una partida de Contrarreloj, Ascenso, Mundo o Años— o cuando eliges voluntariamente ver uno a cambio de una recompensa. Con CG PRO no se solicita ni se muestra ningún anuncio.\n\nAntes de mostrar el primero te preguntamos tu tramo de edad y, por separado, si aceptas que midamos nuestras campañas de captación. Son decisiones independientes. Si indicas ser menor de 16 años no se muestra publicidad y no se inicia ningún SDK de medición. Si aceptas la medición, en iOS pedimos primero el permiso App Tracking Transparency y después AppsFlyer y Meta pueden medir instalaciones y eventos de esas campañas; eso no cambia qué anuncios ves dentro de la app.\n\nPuedes revisar o cambiar ambas decisiones cuando quieras desde Perfil > Ajustes > Privacidad y anuncios."
       },
       "s9": {
-        "title": "9. Diagnóstico y seguridad",
-        "body": "Sentry puede recibir la pila técnica del error, versiones de la app y del sistema y un identificador interno para agrupar incidencias. Configuramos el servicio para reducir datos personales y no enviar deliberadamente tu correo, nombre de usuario o contenido de preguntas.\n\nLas comunicaciones usan HTTPS/TLS, las contraseñas nunca se almacenan en texto plano y aplicamos controles de acceso en la base de datos. Ningún sistema es infalible, pero mantenemos medidas proporcionadas al riesgo."
+        "title": "9. Notificaciones",
+        "body": "Si las activas, {{appName}} te envía un recordatorio diario a las 9:00 para que no pierdas tu racha. Son notificaciones locales: las programa tu propio dispositivo y su contenido no pasa por ningún servidor. Puedes desactivarlas cuando quieras desde Perfil > Ajustes o desde los ajustes de tu sistema."
       },
       "s10": {
-        "title": "10. Conservación y transferencias",
-        "body": "Conservamos la cuenta y el progreso mientras esté activa o hasta que solicites su eliminación. Ciertos registros técnicos, copias de seguridad o datos necesarios para prevenir fraude y cumplir obligaciones pueden permanecer durante plazos limitados. Algunos proveedores pueden tratar información fuera del Espacio Económico Europeo con sus garantías contractuales y legales aplicables."
+        "title": "10. Diagnóstico y seguridad",
+        "body": "Sentry puede recibir la pila técnica del error, versiones de la app y del sistema y un identificador interno para agrupar incidencias. Configuramos el servicio para reducir datos personales y no enviar deliberadamente tu correo, nombre de usuario o contenido de preguntas.\n\nLas comunicaciones usan HTTPS/TLS, las contraseñas nunca se almacenan en texto plano y aplicamos controles de acceso en la base de datos. Ningún sistema es infalible, pero mantenemos medidas proporcionadas al riesgo."
       },
       "s11": {
-        "title": "11. Tus derechos",
-        "body": "Según tu lugar de residencia puedes solicitar acceso, rectificación, supresión, oposición, limitación y portabilidad, así como retirar el consentimiento.\n\n• Puedes eliminar tu cuenta desde Perfil > Zona peligrosa, sin salir de la app.\n• Puedes cambiar tu elección publicitaria en Perfil > Ajustes > Privacidad y anuncios.\n• En iPhone o iPad puedes retirar el permiso de seguimiento en Ajustes > Privacidad y seguridad > Seguimiento.\n• Para cualquier otra solicitud, escríbenos a pablobrasero@gmail.com.\n\nTambién puedes reclamar ante la Agencia Española de Protección de Datos o tu autoridad local."
+        "title": "11. Conservación y transferencias",
+        "body": "Conservamos la cuenta y el progreso mientras esté activa o hasta que solicites su eliminación. Ciertos registros técnicos, copias de seguridad o datos necesarios para prevenir fraude y cumplir obligaciones pueden permanecer durante plazos limitados. Algunos proveedores pueden tratar información fuera del Espacio Económico Europeo con sus garantías contractuales y legales aplicables."
       },
       "s12": {
-        "title": "12. Menores",
-        "body": "{{appName}} es una app de público general y no está dirigida exclusivamente a menores. AppLovin no permite usar su SDK con quien sea menor según la ley aplicable, y esa edad varía por país: aplicamos un corte único de 16 años, el más alto que exigen los estados del Espacio Económico Europeo. No usamos los SDK de publicidad o atribución con quien indique ser menor de 16 años. Si crees que un menor nos ha facilitado información sin autorización, contáctanos para revisarla y eliminarla cuando proceda."
+        "title": "12. Tus derechos",
+        "body": "Según tu lugar de residencia puedes solicitar acceso, rectificación, supresión, oposición, limitación y portabilidad.\n\n• Puedes eliminar tu cuenta desde Perfil > Zona peligrosa, sin salir de la app.\n• Puedes gestionar o cancelar la suscripción desde tu cuenta de Apple o Google. Eliminar la cuenta no cancela automáticamente una suscripción de la tienda.\n• Para cualquier otra solicitud, escríbenos a pablobrasero@gmail.com.\n\nTambién puedes reclamar ante la Agencia Española de Protección de Datos o tu autoridad local."
       },
       "s13": {
-        "title": "13. Cambios en esta política",
+        "title": "13. Menores",
+        "body": "{{appName}} es una app de público general y no está dirigida exclusivamente a menores. Las compras requieren la autorización de la cuenta de Apple o Google y quedan sujetas a sus controles familiares. Si crees que un menor nos ha facilitado información sin autorización, contáctanos para revisarla y eliminarla cuando proceda."
+      },
+      "s14": {
+        "title": "14. Cambios en esta política",
         "body": "Actualizaremos esta política si cambian las funciones, los proveedores o los requisitos legales, y publicaremos la nueva versión con su fecha de vigencia. Puedes consultar en cualquier momento la versión vigente en cg-trivia.pablobrasero.com/privacy."
       }
     }
@@ -1266,7 +1347,7 @@
     "benefits": {
       "adventure": {
         "title": "Aventura completa",
-        "description": "Los diez capítulos y sus 200 niveles. Sin PRO se juegan los dos primeros enteros."
+        "description": "Veinte capítulos y 400 niveles. Sin PRO se juegan los dos primeros enteros."
       },
       "review": {
         "title": "Repaso inteligente",
@@ -1299,7 +1380,7 @@
     },
     "paywall": {
       "title": "Saca todo lo que hay dentro",
-      "subtitle": "Toda la Aventura, dos modos de juego más y las estadísticas que te dicen en qué mejorar.",
+      "subtitle": "4.000 preguntas, toda la Aventura, dos modos de juego más y las estadísticas que te dicen en qué mejorar.",
       "subscribe": "Empezar",
       "restore": "Restaurar compras",
       "restored": "¡Listo! Ya tienes CG PRO.",

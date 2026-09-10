@@ -1,9 +1,14 @@
-export const AUTO_INTERSTITIAL_MIN_RESULTS = 3;
-export const AUTO_INTERSTITIAL_MIN_SESSION_MS = 90_000;
-export const AUTO_INTERSTITIAL_COOLDOWN_MS = 120_000;
-export const FULLSCREEN_SHARED_WINDOW_MS = 25_000;
-export const AUTO_INTERSTITIAL_HOURLY_LIMIT = 8;
-export const RESULT_INTERSTITIAL_DELAY_MS = 600;
+// Política de pausas naturales para publicidad PROPIA (2.2.0). Con AppLovin
+// exigía 3 partidas y 90 s de sesión antes del primero y 2 minutos entre
+// intersticiales; eran anuncios ajenos y molestos. Los nuestros solo
+// promocionan apps propias, así que salen al acabar cada partida. El único
+// freno es no encadenar dos: en Contrarreloj o Ascenso una partida puede durar
+// diez segundos.
+export const AUTO_INTERSTITIAL_MIN_RESULTS = 1;
+export const AUTO_INTERSTITIAL_MIN_SESSION_MS = 0;
+export const AUTO_INTERSTITIAL_COOLDOWN_MS = 30_000;
+export const FULLSCREEN_SHARED_WINDOW_MS = 15_000;
+export const AUTO_INTERSTITIAL_HOURLY_LIMIT = 20;
 
 const ONE_HOUR_MS = 60 * 60 * 1000;
 

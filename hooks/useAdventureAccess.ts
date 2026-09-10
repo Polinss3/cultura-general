@@ -5,7 +5,7 @@ import type { AdventureProgress } from '@/lib/adventure';
 import type { AdventureAccess } from '@/lib/pro';
 
 /**
- * Acceso del usuario a la Aventura completa: por suscripción o por herencia.
+ * Acceso del usuario a Aventura: PRO abre 1-20; la herencia conserva 1-10.
  *
  * El efecto no depende de la identidad del objeto `progress` —cambia en cada
  * carga y sincronización— sino del nivel más alto alcanzado, que es lo único

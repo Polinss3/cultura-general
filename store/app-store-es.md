@@ -1,9 +1,7 @@
 # App Store — Español (España)
 
-> Ficha de la **2.1.0**, que se publica **sin anuncios**. Ningún texto menciona
-> publicidad. El día que se enciendan los anuncios
-> (`docs/ads-applovin-activation.md`) hay que revisar "Sin anuncios ni compras"
-> aquí y en los otros tres ficheros ANTES de subir la build.
+> Borrador de ficha para la **2.2.0**, con modelo freemium y CG PRO.
+> No se comunica ningún beneficio relacionado con publicidad.
 
 ## Nombre (máx 30)
 Cultura General: Trivia
@@ -12,7 +10,7 @@ Cultura General: Trivia
 Quiz diario, banderas y años
 
 ## Texto promocional (máx 170)
-Nueva pestaña Retos: adivina las banderas de 196 países y en qué año pasó cada hecho. Con diseño renovado y tema claro u oscuro.
+Nueva Aventura de 400 niveles y 20 capítulos. Juega gratis los dos primeros y desbloquea el viaje completo con CG PRO.
 
 ## Palabras clave (máx 100)
 trivia,cultura general,preguntas,quiz,banderas,paises,años,fechas,diaria,historia,ciencia,aprender
@@ -23,17 +21,21 @@ Cultura General es el juego diario de preguntas que entrena tu mente en solo 2 m
 UNA PREGUNTA NUEVA CADA DÍA
 La misma pregunta para todos. Responde, mantén tu racha y sube en los rankings diario, semanal y global.
 
-SIETE FORMAS DE JUGAR
+OCHO FORMAS DE JUGAR
 • Pregunta del día — una pregunta compartida al día, compárate con tus amigos.
 • Contrarreloj — ¿cuántas aciertas en 30 segundos?
 • Modo Ascenso — dificultad creciente, vidas y un bote que arriesgas o aseguras.
 • Retos: Banderas — 196 países, por continente o del mundo entero.
 • Retos: Años — 98 hechos históricos. ¿Sabes en qué año ocurrió cada uno?
 • Aprender — elige un tema y practica; te explicamos el contexto cuando fallas.
+• Aventura — recorre capítulos temáticos, supera guardianes y reúne reliquias.
 • Jugar con amigos — pasa el móvil, marcador, duelos 1vs1, superviviente y trivia por equipos.
 
 APRENDE MIENTRAS JUEGAS
-Más de 1.500 preguntas en 13 categorías: historia, ciencia, arte, geografía, filosofía, deportes, biología, cine, música, literatura, tecnología, mitología y astronomía. Cada fallo viene con su explicación.
+2.000 preguntas gratuitas en 13 categorías: historia, ciencia, arte, geografía, filosofía, deportes, biología, cine, música, literatura, tecnología, mitología y astronomía. Cada fallo viene con su explicación.
+
+CG PRO, OPCIONAL
+Amplía el catálogo hasta 4.000 preguntas, abre los 400 niveles y 20 capítulos de Aventura, y añade herramientas de estudio como Repaso inteligente, Examen y métricas avanzadas. Los precios y condiciones se muestran antes de confirmar la compra.
 
 PROGRESO QUE ENGANCHA
 Sube de nivel, gana monedas, completa misiones diarias, desbloquea logros y títulos, y compite en ligas semanales por divisiones.
@@ -41,15 +43,11 @@ Sube de nivel, gana monedas, completa misiones diarias, desbloquea logros y tít
 A TU GUSTO
 Tema claro, oscuro o el del sistema. Disponible en español e inglés, con el idioma que elijas en Ajustes.
 
-Gratis, sin anuncios y sin compras dentro de la aplicación.
+Puedes descargar y jugar gratis. CG PRO es una compra opcional.
 
-## Novedades (2.1.0)
-La actualización más grande hasta ahora.
-
-• NUEVA PESTAÑA RETOS: dos juegos en uno. Banderas, con los 196 países del mundo, y Años, donde tienes que situar 98 hechos históricos en su fecha.
-• DISEÑO RENOVADO: una estética más cálida y fácil de leer, con tema claro, oscuro o el del sistema.
-• APRENDER LO MEZCLA TODO: además de la trivia de siempre, ahora también caen banderas y años dentro de cada tema.
-• RANKING GLOBAL NUEVO: ordénalo por respuestas, aciertos o racha, y mira tu puesto aunque no estés en el top.
-• DIARIO REORGANIZADO: tu ruta del día y los rankings, ahora juntos y más a mano.
+## Novedades (2.2.0)
+• AVENTURA MÁS GRANDE: 400 niveles repartidos en 20 capítulos, con nuevos temas, guardianes, historias y reliquias.
+• CG PRO: desbloquea el viaje completo, un catálogo de 4.000 preguntas en Aprender y herramientas avanzadas de estudio.
+• MÁS CONTENIDO GRATIS: los dos primeros capítulos de Aventura y 2.000 preguntas siguen disponibles para todos.
 
 ¡Gracias por jugar! Cuéntanos qué te parece en pablobrasero@gmail.com

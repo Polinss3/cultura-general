@@ -16,12 +16,12 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "82",
+      "buildNumber": "89",
       "usesAppleSignIn": true,
       "infoPlist": {
         "NSCameraUsageDescription": "The app does not use the camera.",
         "NSUserNotificationsUsageDescription": "Get a daily reminder to answer the question of the day and keep your streak.",
-        "NSUserTrackingUsageDescription": "Your permission helps us measure which ads lead people to the app, show more relevant advertising, and keep the app free.",
+        "NSUserTrackingUsageDescription": "Your permission helps us measure which ads brought people to the app. It does not change the ads you see inside CG Trivia.",
         "ITSAppUsesNonExemptEncryption": false,
         "CFBundleAllowMixedLocalizations": true
       }
@@ -72,10 +72,11 @@
         }
       ],
       "expo-asset",
+      "expo-video",
       [
         "expo-tracking-transparency",
         {
-          "userTrackingPermission": "Your permission helps us measure which ads lead people to the app, show more relevant advertising, and keep the app free."
+          "userTrackingPermission": "Your permission helps us measure which ads brought people to the app. It does not change the ads you see inside CG Trivia."
         }
       ],
       [
