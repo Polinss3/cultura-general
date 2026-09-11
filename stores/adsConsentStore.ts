@@ -1,12 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const ADS_CONSENT_STORAGE_KEY = 'g101-ads-consent';
-// Subirla invalida las decisiones guardadas y vuelve a preguntar. La `c` es la
-// 2.2.0: al pasar de AppLovin MAX a publicidad propia, la segunda pregunta dejó
-// de ser "¿anuncios personalizados?" —que ya no existen— y pasó a ser "¿medimos
-// de dónde vienen las instalaciones?". Quien respondiera a la pregunta vieja no
-// respondió a esta, así que su decisión no vale.
-export const ADS_NOTICE_VERSION = '2026-09-10c';
+// Subirla invalida las decisiones guardadas y vuelve a preguntar. La `d` es la
+// 2.2.0 definitiva: al pasar de AppLovin MAX a publicidad propia se retiraron
+// también AppsFlyer, Meta y ATT, y con ellos la segunda pregunta ("¿anuncios
+// personalizados?" primero, "¿medimos las instalaciones?" después). El aviso
+// pregunta solo el tramo de edad, y una decisión anterior guardaba una
+// respuesta a algo que ya no existe.
+export const ADS_NOTICE_VERSION = '2026-09-11d';
 
 /**
  * Edad mínima a partir de la cual tratamos al usuario como adulto a efectos
@@ -27,16 +28,12 @@ export const ADS_MIN_AGE = 16;
 export type AdsAgeBracket = 'minor' | 'adult';
 
 /**
- * Elección de medición y atribución. Gobierna ATT, AppsFlyer y Meta, y **solo**
- * eso: los anuncios propios no tratan identificadores, así que no dependen de
- * esta respuesta. Es `null` para menores, a quienes no se pregunta porque no se
- * les inicia nada.
+ * Lo único que se pregunta es el tramo de edad. Los anuncios propios no tratan
+ * identificadores ni datos personales, así que no hay nada que consentir: el
+ * aviso existe porque el SDK exige `adult` y no lo determina por su cuenta.
  */
-export type AdsMeasurementChoice = 'declined' | 'accepted';
-
 export type AdsConsentDecision = {
   ageBracket: AdsAgeBracket;
-  measurement: AdsMeasurementChoice | null;
   decidedAt: string;
   language: string;
   noticeVersion: typeof ADS_NOTICE_VERSION;
@@ -55,12 +52,6 @@ function isValidDecision(value: unknown): value is AdsConsentDecision {
   const decision = value as Partial<AdsConsentDecision>;
   if (decision.noticeVersion !== ADS_NOTICE_VERSION) return false;
   if (decision.ageBracket !== 'minor' && decision.ageBracket !== 'adult') return false;
-  if (decision.ageBracket === 'minor' && decision.measurement !== null) return false;
-  if (
-    decision.ageBracket === 'adult' &&
-    decision.measurement !== 'declined' &&
-    decision.measurement !== 'accepted'
-  ) return false;
   return typeof decision.decidedAt === 'string' && typeof decision.language === 'string';
 }
 
@@ -92,7 +83,7 @@ export function getAdsConsentDecision() {
 }
 
 export async function saveAdsConsentDecision(
-  input: Pick<AdsConsentDecision, 'ageBracket' | 'measurement' | 'language'>,
+  input: Pick<AdsConsentDecision, 'ageBracket' | 'language'>,
 ): Promise<AdsConsentDecision> {
   const decision: AdsConsentDecision = {
     ...input,

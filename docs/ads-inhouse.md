@@ -111,20 +111,19 @@ matiz técnico que queda es que el cliente admite una sola presentación activa,
 por lo que `lib/ads.native.ts` retira el banner antes de pedir un anuncio a
 pantalla completa.
 
-## Edad y medición son dos preguntas distintas
+## El aviso pregunta solo la edad
 
-Con AppLovin, «anuncios personalizados» significaba a la vez *ads* y *tracking*.
-Con publicidad propia eso dejó de tener sentido, así que el aviso pregunta dos
-cosas independientes:
+Con AppLovin, «anuncios personalizados» significaba a la vez *ads* y *tracking*,
+y el aviso pedía consentimiento. Con publicidad propia no hay nada que consentir:
+el SDK no trata identificadores ni datos personales, así que ni el RGPD ni ATT
+entran en juego. Lo único que se pregunta es el **tramo de edad**, y solo porque
+el SDK exige `adult` y deja al host determinarlo.
 
-- **Tramo de edad** → decide si se muestran anuncios.
-- **Medición** → decide si arrancan ATT, AppsFlyer y Meta, que miden nuestras
-  campañas de captación y **no cambian ni un anuncio** de los que se ven dentro.
-
-AppsFlyer y Meta se conservan porque tienen función propia (atribución de
-instalaciones y eventos como `af_tutorial_completion` o `af_level_achieved`). Lo
-único que se retiró de AppsFlyer fue `logAdRevenue`, que reportaba el eCPM
-mediado de MAX: la publicidad propia no genera ingresos que reportar.
+AppsFlyer, el SDK de Meta y `expo-tracking-transparency` se retiraron en el
+mismo cambio: no hay campañas de captación que atribuir, y eran lo único que
+justificaba una segunda pregunta («¿nos dejas medir?») y el diálogo de ATT. Si
+algún día vuelven, vuelve también esa pregunta, porque sí son *tracking* en el
+sentido de Apple y sí necesitan consentimiento en la UE.
 
 ## Inventario de prueba disponible
 

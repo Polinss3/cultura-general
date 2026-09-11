@@ -281,7 +281,7 @@
       "languageEs": "Español",
       "languageEn": "English",
       "adsPrivacy": "Privacy and ads",
-      "adsPrivacySub": "Review your age bracket and measurement choice"
+      "adsPrivacySub": "Review your age bracket"
     },
     "openStats": "See all my statistics"
   },
@@ -1060,32 +1060,22 @@
     "achievements": "Achievements"
   },
   "adsConsent": {
-    "title": "Your privacy and ads",
-    "intro": "The app will keep working whatever you choose. We store your age bracket, choice, date, language and this notice version so we can honor your decision.",
+    "title": "Your age and ads",
+    "intro": "The app will keep working whatever you choose. We store your age bracket, date, language and this notice version so we can honor your decision.",
     "ageQuestion": "Which age bracket applies to you?",
     "age": {
       "adult": "I am {{age}} or older",
       "minor": "I am under {{age}}"
     },
     "adsExplanation": "CG Trivia's ads are our own: they only promote our apps and sites, they show up at natural breaks in play, and they use no advertising identifiers or profiles. With CG PRO you see none at all.",
-    "minorExplanation": "We will not show you ads and we will not start AppsFlyer or Meta. Every game feature remains available.",
+    "minorExplanation": "We will not show you ads. Every game feature remains available.",
+    "continue": "Continue",
     "continueWithoutAds": "Continue without ads",
-    "measurementQuestion": "May we measure where installs come from?",
-    "measurement": {
-      "declined": {
-        "title": "Essentials only",
-        "body": "We will not request ATT or start AppsFlyer or Meta. You will see exactly the same ads: they do not depend on this choice."
-      },
-      "accepted": {
-        "title": "Allow measurement",
-        "body": "On iOS we first request the official App Tracking Transparency permission. AppsFlyer and Meta may then measure installs and events from our acquisition campaigns. It does not change which ads you see inside the app."
-      }
-    },
     "privacyLink": "Read the full privacy policy"
   },
   "privacy": {
     "title": "Privacy policy",
-    "updatedAt": "Last updated: September 8, 2026",
+    "updatedAt": "Last updated: September 11, 2026",
     "intro": "Here we explain what information {{appName}} handles, what it is used for and how you can exercise your rights.",
     "sections": {
       "s1": {
@@ -1110,15 +1100,15 @@
       },
       "s6": {
         "title": "6. Providers",
-        "body": "We use Supabase for authentication, database and server functions; Sentry for error diagnostics; RevenueCat to verify purchases and maintain CG PRO status; and In-House Ads, a service run by the same controller, to serve our first-party advertising. If you accept measurement, AppsFlyer and Meta measure our acquisition campaigns. Apple and Google may also process information when distributing the app, authenticating you or processing a purchase.\n\nYou can review each provider's policy at cg-trivia.pablobrasero.com/en/privacy."
+        "body": "We use Supabase for authentication, database and server functions; Sentry for error diagnostics; RevenueCat to verify purchases and maintain CG PRO status; and In-House Ads, a service run by the same controller, to serve our first-party advertising. Apple and Google may also process information when distributing the app, authenticating you or processing a purchase.\n\nYou can review each provider's policy at cg-trivia.pablobrasero.com/en/privacy."
       },
       "s7": {
         "title": "7. Purchases and subscriptions",
         "body": "CG PRO is an optional purchase managed by your device's store. RevenueCat receives the purchase identifiers and subscription status needed to validate and restore access, but neither the app nor RevenueCat receives your full card details.\n\nSubscriptions renew and are cancelled through your Apple or Google account. The official purchase sheet shows the price, duration, any free trial and renewal date before you confirm. Refund requests are handled by the relevant store."
       },
       "s8": {
-        "title": "8. Advertising, age and measurement",
-        "body": "{{appName}}'s advertising is first-party: it only promotes apps and sites run by the same controller, it uses no advertising identifiers, profiles or third-party networks, and it writes no cookies or persistent storage on your device. Ads appear at natural breaks in play — the result of the daily question or the end of a Time Attack, Climb Mode, World or Years run — or when you voluntarily choose to watch one in exchange for a reward. With CG PRO no ad is ever requested or shown.\n\nBefore showing the first one we ask for your age bracket and, separately, whether you accept measurement of our acquisition campaigns. They are independent decisions. If you indicate you are under 16, no advertising is shown and no measurement SDK is started. If you accept measurement, on iOS we first request App Tracking Transparency permission and then AppsFlyer and Meta may measure installs and events from those campaigns; that does not change which ads you see inside the app.\n\nYou can review or change both decisions at any time under Profile > Settings > Privacy and ads."
+        "title": "8. Advertising and age",
+        "body": "{{appName}}'s advertising is first-party: it only promotes apps and sites run by the same controller, it uses no advertising identifiers, profiles or third-party networks, and it writes no cookies or persistent storage on your device. Ads appear at natural breaks in play — the result of the daily question or the end of a Time Attack, Climb Mode, World or Years run — or when you voluntarily choose to watch one in exchange for a reward. With CG PRO no ad is ever requested or shown.\n\nBefore showing the first one we ask for your age bracket. If you indicate you are under 16, no advertising is shown. We use no attribution or campaign-measurement SDKs, and the app never requests iOS App Tracking Transparency permission.\n\nYou can review or change your answer at any time under Profile > Settings > Privacy and ads."
       },
       "s9": {
         "title": "9. Notifications",

@@ -1,5 +1,4 @@
 import { Modal, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import type { AdsConsentDecision } from '@/stores/adsConsentStore';
 import { AdsConsentForm, type AdsConsentInput } from '@/components/AdsConsentForm';
 import { useTheme } from '@/constants/colors';
@@ -30,16 +29,14 @@ export function AdsConsentModal({ visible, initialDecision, dismissible, onDismi
       presentationStyle={dismissible ? 'pageSheet' : 'fullScreen'}
       onRequestClose={dismissible ? onDismiss : undefined}
     >
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
-        <View style={{ flex: 1 }}>
-          <AdsConsentForm
-            initialDecision={initialDecision}
-            onSave={onSave}
-            onCancel={dismissible ? onDismiss : undefined}
-            resetKey={visible}
-          />
-        </View>
-      </SafeAreaView>
+      <View style={{ flex: 1, backgroundColor: C.bg }}>
+        <AdsConsentForm
+          initialDecision={initialDecision}
+          onSave={onSave}
+          onCancel={dismissible ? onDismiss : undefined}
+          resetKey={visible}
+        />
+      </View>
     </Modal>
   );
 }

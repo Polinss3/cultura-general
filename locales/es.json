@@ -281,7 +281,7 @@
       "languageEs": "Español",
       "languageEn": "English",
       "adsPrivacy": "Privacidad y anuncios",
-      "adsPrivacySub": "Revisa tu tramo de edad y tu elección de medición"
+      "adsPrivacySub": "Revisa tu tramo de edad"
     },
     "openStats": "Ver todas mis estadísticas"
   },
@@ -1060,32 +1060,22 @@
     "achievements": "Logros"
   },
   "adsConsent": {
-    "title": "Tu privacidad y los anuncios",
-    "intro": "La app seguirá funcionando elijas lo que elijas. Guardaremos tu tramo de edad, tu elección, la fecha, el idioma y la versión de este aviso para respetar tu decisión.",
+    "title": "Tu edad y los anuncios",
+    "intro": "La app seguirá funcionando elijas lo que elijas. Guardaremos tu tramo de edad, la fecha, el idioma y la versión de este aviso para respetar tu decisión.",
     "ageQuestion": "¿Qué tramo de edad te corresponde?",
     "age": {
       "adult": "Tengo {{age}} años o más",
       "minor": "Soy menor de {{age}} años"
     },
     "adsExplanation": "Los anuncios de CG Trivia son nuestros: solo promocionan aplicaciones y webs propias, aparecen en pausas naturales del juego y no usan identificadores publicitarios ni perfiles de nadie. Con CG PRO no verás ninguno.",
-    "minorExplanation": "No te mostraremos anuncios y no iniciaremos AppsFlyer ni Meta. Todas las funciones del juego permanecen disponibles.",
+    "minorExplanation": "No te mostraremos anuncios. Todas las funciones del juego permanecen disponibles.",
+    "continue": "Continuar",
     "continueWithoutAds": "Continuar sin anuncios",
-    "measurementQuestion": "¿Nos dejas medir de dónde vienen las instalaciones?",
-    "measurement": {
-      "declined": {
-        "title": "Solo lo básico",
-        "body": "No pediremos ATT ni iniciaremos AppsFlyer o Meta. Verás exactamente los mismos anuncios: no dependen de esta elección."
-      },
-      "accepted": {
-        "title": "Permitir medición",
-        "body": "En iOS pediremos primero el permiso oficial App Tracking Transparency. Después, AppsFlyer y Meta podrán medir instalaciones y eventos de nuestras campañas de captación. No cambia qué anuncios ves dentro de la app."
-      }
-    },
     "privacyLink": "Leer la política de privacidad completa"
   },
   "privacy": {
     "title": "Política de privacidad",
-    "updatedAt": "Última actualización: 8 de septiembre de 2026",
+    "updatedAt": "Última actualización: 11 de septiembre de 2026",
     "intro": "Aquí explicamos qué información trata {{appName}}, para qué se utiliza y cómo puedes ejercer tus derechos.",
     "sections": {
       "s1": {
@@ -1110,15 +1100,15 @@
       },
       "s6": {
         "title": "6. Proveedores",
-        "body": "Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; RevenueCat para verificar compras y mantener el estado de CG PRO; e In-House Ads, un servicio del mismo responsable, para servir la publicidad propia. Si aceptas la medición, AppsFlyer y Meta miden nuestras campañas de captación. Apple y Google también pueden tratar información al distribuir la app, autenticarte o procesar una compra.\n\nPuedes consultar las políticas de cada proveedor desde cg-trivia.pablobrasero.com/privacy."
+        "body": "Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; RevenueCat para verificar compras y mantener el estado de CG PRO; e In-House Ads, un servicio del mismo responsable, para servir la publicidad propia. Apple y Google también pueden tratar información al distribuir la app, autenticarte o procesar una compra.\n\nPuedes consultar las políticas de cada proveedor desde cg-trivia.pablobrasero.com/privacy."
       },
       "s7": {
         "title": "7. Compras y suscripciones",
         "body": "CG PRO es una compra opcional gestionada por la tienda de tu dispositivo. RevenueCat recibe los identificadores de compra y el estado de la suscripción necesarios para validar y restaurar el acceso, pero ni la app ni RevenueCat reciben los datos completos de tu tarjeta.\n\nLas suscripciones se renuevan y se cancelan desde tu cuenta de Apple o Google. El precio, la duración, cualquier prueba gratuita y la fecha de renovación se muestran en la hoja de compra oficial antes de confirmar. Las solicitudes de reembolso se tramitan con la tienda correspondiente."
       },
       "s8": {
-        "title": "8. Publicidad, edad y medición",
-        "body": "La publicidad de {{appName}} es propia: solo promociona aplicaciones y webs del mismo responsable, no usa identificadores publicitarios, perfiles ni redes de terceros, y no escribe cookies ni almacenamiento persistente en tu dispositivo. Los anuncios aparecen en pausas naturales del juego —el resultado de la pregunta del día o el final de una partida de Contrarreloj, Ascenso, Mundo o Años— o cuando eliges voluntariamente ver uno a cambio de una recompensa. Con CG PRO no se solicita ni se muestra ningún anuncio.\n\nAntes de mostrar el primero te preguntamos tu tramo de edad y, por separado, si aceptas que midamos nuestras campañas de captación. Son decisiones independientes. Si indicas ser menor de 16 años no se muestra publicidad y no se inicia ningún SDK de medición. Si aceptas la medición, en iOS pedimos primero el permiso App Tracking Transparency y después AppsFlyer y Meta pueden medir instalaciones y eventos de esas campañas; eso no cambia qué anuncios ves dentro de la app.\n\nPuedes revisar o cambiar ambas decisiones cuando quieras desde Perfil > Ajustes > Privacidad y anuncios."
+        "title": "8. Publicidad y edad",
+        "body": "La publicidad de {{appName}} es propia: solo promociona aplicaciones y webs del mismo responsable, no usa identificadores publicitarios, perfiles ni redes de terceros, y no escribe cookies ni almacenamiento persistente en tu dispositivo. Los anuncios aparecen en pausas naturales del juego —el resultado de la pregunta del día o el final de una partida de Contrarreloj, Ascenso, Mundo o Años— o cuando eliges voluntariamente ver uno a cambio de una recompensa. Con CG PRO no se solicita ni se muestra ningún anuncio.\n\nAntes de mostrar el primero te preguntamos tu tramo de edad. Si indicas ser menor de 16 años no se muestra publicidad. No usamos SDKs de atribución ni de medición de campañas, y la app no solicita el permiso App Tracking Transparency de iOS.\n\nPuedes revisar o cambiar tu respuesta cuando quieras desde Perfil > Ajustes > Privacidad y anuncios."
       },
       "s9": {
         "title": "9. Notificaciones",

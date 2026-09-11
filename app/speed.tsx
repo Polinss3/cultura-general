@@ -13,7 +13,6 @@ import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
 import { showResultInterstitial } from '@/lib/ads';
-import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { fetchQuestions, saveSpeedGame } from '@/lib/db';
 import { fetchInventoryMap, consumeItem } from '@/lib/shop';
 import { AwardResult } from '@/lib/gamification';
@@ -64,7 +63,6 @@ export default function SpeedScreen() {
   const [inventory, setInventory] = useState<Record<string, number>>({});
   const [fiftyHidden, setFiftyHidden] = useState<number[]>([]);
   const savedRef = useRef(false);
-  const adShownRef = useRef(false);
 
   const canUsePowerups = !!user && !guest && !offline;
 
@@ -148,18 +146,8 @@ export default function SpeedScreen() {
     });
   }, [phase]);
 
-  useEffect(() => {
-    if (phase !== 'done' || adShownRef.current) return;
-    adShownRef.current = true;
-    logAppsFlyerEvent('cg_speed_quiz_completed', {
-      score,
-      questions_answered: qIdx,
-    });
-  }, [phase]);
-
   const reset = (startPlaying = false) => {
     savedRef.current = false;
-    adShownRef.current = false;
     setNewRecord(false);
     setAward(null);
     (async () => {

@@ -23,7 +23,6 @@ import { useOffline } from '@/hooks/useOffline';
 import { useProgress } from '@/context/ProgressContext';
 import { useToast } from '@/context/ToastContext';
 import { showResultInterstitial } from '@/lib/ads';
-import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { markDailyQuestionCompleted } from '@/lib/notifications';
 import { planReviewAfterDailyCompletion, REVIEW_PROMPT_DELAY_MS } from '@/lib/appReview';
 import { noteReviewBlocker } from '@/lib/reviewGate';
@@ -337,10 +336,6 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
       loadedTabs.current = new Set(['daily']);
       setRankingTab('daily');
       setPhase('ranking');
-      logAppsFlyerEvent('cg_daily_quiz_completed', {
-        correct,
-        response_time_ms: elapsedMs,
-      });
 
       // Valoración en tienda: se decide ahora (para no lanzar un intersticial
       // que taparía el diálogo del sistema) pero se pide más tarde, con la

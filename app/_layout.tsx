@@ -23,9 +23,8 @@ import { initPremium } from '@/lib/premium';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setOffline, probeConnection } from '@/lib/offline';
-import { adsConfigured, flushAdEvents, markAdsSessionStarted } from '@/lib/ads';
+import { adsConfigured, flushAdEvents, initializeAds, markAdsSessionStarted } from '@/lib/ads';
 import { noteAppOpen } from '@/lib/reviewGate';
-import { applyAdvertisingDecision } from '@/lib/advertising';
 import { BootScreen } from '@/components/BootScreen';
 import { AdsConsentModal } from '@/components/AdsConsentModal';
 import { AdFullscreenHost } from '@/components/AdFullscreenHost';
@@ -342,9 +341,7 @@ function RootLayout() {
   useEffect(() => {
     if (!ready || !onboarded) return;
     // Build sin anuncios posibles: ni se pregunta ni se aplica una decisión
-    // guardada. Sin esta guarda, quien hubiera aceptado la medición en una
-    // build anterior seguiría disparando ATT, AppsFlyer y Meta en cada
-    // arranque de una versión que no muestra publicidad.
+    // guardada.
     if (!adsConfigured()) return;
     let cancelled = false;
     markAdsSessionStarted();
@@ -353,7 +350,7 @@ function RootLayout() {
         if (cancelled) return;
         setAdsDecision(decision);
         setAdsConsentHydrated(true);
-        if (decision) applyAdvertisingDecision(decision);
+        if (decision) void initializeAds(decision);
       })
       .catch(() => {
         if (!cancelled) setAdsConsentHydrated(true);
@@ -515,7 +512,7 @@ function RootLayout() {
               });
               setAdsDecision(decision);
               setReviewAdsPreferences(false);
-              await applyAdvertisingDecision(decision);
+              await initializeAds(decision);
             }}
           />
           {/* Los anuncios a pantalla completa se pintan aquí, fuera del `Stack`:

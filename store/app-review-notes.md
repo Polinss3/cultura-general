@@ -1,8 +1,10 @@
 # Notas para App Review y App Privacy — 2.2.0 (CG PRO)
 
-La 2.2.0 introduce compras opcionales de CG PRO. La app no inicializa los SDK
-publicitarios ni solicita ATT porque `EXPO_PUBLIC_ADS_MODE=off`. Esto se explica
-al revisor como configuración técnica y no como beneficio comercial de PRO.
+La 2.2.0 introduce compras opcionales de CG PRO. La app no lleva SDKs de
+atribución (AppsFlyer y Meta se retiraron) ni solicita ATT: la publicidad es
+propia y no trata identificadores. Con `EXPO_PUBLIC_ADS_MODE=off` tampoco se
+muestran anuncios. Esto se explica al revisor como configuración técnica y no
+como beneficio comercial de PRO.
 
 ---
 
@@ -43,9 +45,10 @@ without leaving the app.
 The app can be downloaded and used without purchasing CG PRO.
 
 ADVERTISING CONFIGURATION
-Advertising and attribution SDKs remain disabled at build time. The app
-does not request ATT and the App Privacy answers for this version declare
-no tracking.
+The app ships no attribution SDKs and never requests ATT: its advertising
+is first-party and uses no advertising identifiers. In this build advertising
+is additionally disabled at build time. The App Privacy answers for this
+version declare no tracking.
 ```
 
 ## App Privacy — lo que hay que rellenar (sin ATT)

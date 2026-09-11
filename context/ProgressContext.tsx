@@ -2,7 +2,6 @@ import { createContext, useContext, useRef, useState, useCallback, ReactNode } f
 import { Animated, Text, View, StyleSheet } from 'react-native';
 import { AwardResult } from '@/lib/gamification';
 import { LevelUpModal } from '@/components/LevelUpModal';
-import { logLevelAchieved } from '@/lib/appsflyer';
 import { Font } from '@/constants/theme';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
@@ -42,7 +41,6 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
       showBanner(award.gainedXp, award.gainedCoins);
     }
     if (award.leveledUp) {
-      logLevelAchieved(award.level);
       // Damos un instante para que el banner no choque con el modal.
       setTimeout(() => setLevelUp(award.level), 400);
     }

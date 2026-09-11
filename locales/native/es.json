@@ -1,7 +1,6 @@
 {
   "ios": {
     "CFBundleDisplayName": "Cultura General",
-    "NSUserTrackingUsageDescription": "Tu permiso nos ayuda a medir qué anuncios llevan personas a la app, mostrar publicidad más relevante y mantenerla gratis.",
     "NSUserNotificationsUsageDescription": "Recibe un recordatorio diario para responder la pregunta del día y mantener tu racha."
   },
   "android": {

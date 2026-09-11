@@ -16,7 +16,6 @@ import { supabase } from '@/lib/supabase';
 import { awardProgress } from '@/lib/gamification';
 import { shuffleQuestion } from '@/lib/utils';
 import { feedback } from '@/lib/feedback';
-import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { markDailyPlayed } from '@/lib/dailyRoute';
 import {
   EXAM_DURATION_MS,
@@ -96,7 +95,6 @@ export default function ExamScreen() {
 
     setPhase('result');
     setOutcome({ grade, best: null, percentile: null });
-    void logAppsFlyerEvent('cg_pro_exam_completed', { grade, correct, total });
     void markDailyPlayed();
 
     if (!user || guest || offline) return;
@@ -145,7 +143,6 @@ export default function ExamScreen() {
     setIndex(0);
     setRemainingMs(EXAM_DURATION_MS);
     setPhase('playing');
-    void logAppsFlyerEvent('cg_pro_exam_started', {});
   };
 
   const answer = (selected: number | null) => {

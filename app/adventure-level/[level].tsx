@@ -54,7 +54,6 @@ import {
 import { incrementProfileStats } from '@/lib/db';
 import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
-import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { createAsyncGate } from '@/lib/async-gate';
 import { captureSentryException } from '@/lib/sentry';
 import { alpha, useTheme } from '@/constants/colors';
@@ -294,15 +293,6 @@ export default function AdventureLevelScreen() {
           onPress: () => {
             exitAlertOpenRef.current = false;
             exitConfirmedRef.current = true;
-            void logAppsFlyerEvent('cg_adventure_level_abandoned', {
-              level,
-              chapter: region.number,
-              attempt: attemptNumberRef.current,
-              question_number: questionIndex + 1,
-              correct: correctCount,
-              active_time_ms: activeTimeMsRef.current,
-              helpers_used: helpersUsedRef.current,
-            });
             navigation.dispatch(event.data.action);
           },
         },
@@ -346,12 +336,6 @@ export default function AdventureLevelScreen() {
     exitConfirmedRef.current = false;
     resetQuestionState();
     setStage('questions');
-    void logAppsFlyerEvent(retry ? 'cg_adventure_level_retried' : 'cg_adventure_level_started', {
-      level,
-      chapter: region.number,
-      attempt: nextAttempt,
-      offline,
-    });
   };
 
   const answer = (index: number) => {
@@ -375,14 +359,6 @@ export default function AdventureLevelScreen() {
       AccessibilityInfo.announceForAccessibility(t('adventure.answerIncorrectAnnouncement', {
         answer: question.opts[question.ans],
       }));
-      void logAppsFlyerEvent('cg_adventure_question_missed', {
-        level,
-        chapter: region.number,
-        question_number: questionIndex + 1,
-        question_id: question.id ?? `${level}-${questionIndex}`,
-        category: question.category ?? 'unknown',
-        difficulty: question.difficulty ?? 'unknown',
-      });
     }
     if (correct) setCorrectCount(value => value + 1);
   };
@@ -401,12 +377,6 @@ export default function AdventureLevelScreen() {
     }
     consume(id);
     helpersUsedRef.current += 1;
-    void logAppsFlyerEvent('cg_adventure_helper_used', {
-      level,
-      chapter: region.number,
-      question_number: questionIndex + 1,
-      helper: id,
-    });
   };
 
   const finish = async (finalCorrect: number) => {
@@ -442,18 +412,6 @@ export default function AdventureLevelScreen() {
         }
 
         const bestStars = result.progress.stars[String(level)] ?? result.stars;
-        void logAppsFlyerEvent('cg_adventure_level_completed', {
-          level,
-          chapter: region.number,
-          attempt: attemptNumberRef.current,
-          correct: finalCorrect,
-          mistakes: ADVENTURE_QUESTIONS_PER_LEVEL - finalCorrect,
-          active_time_ms: activeTimeMs,
-          attempt_stars: result.stars,
-          best_stars: bestStars,
-          helpers_used: helpersUsedRef.current,
-          offline,
-        });
 
         if (user && !guest && !offline) {
           void incrementProfileStats(
@@ -545,12 +503,6 @@ export default function AdventureLevelScreen() {
                       captureSentryException(error, { feature: 'adventure_finish', phase: 'chapter_reward_missions', level });
                     });
                   }
-                  void logAppsFlyerEvent('cg_adventure_chapter_completed', {
-                    chapter: region.number,
-                    level,
-                    active_time_ms: activeTimeMs,
-                    attempt_stars: result.stars,
-                  });
                 }
               }
             }

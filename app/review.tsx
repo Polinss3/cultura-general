@@ -17,7 +17,6 @@ import { awardProgress } from '@/lib/gamification';
 import { shuffleQuestion } from '@/lib/utils';
 import { feedback } from '@/lib/feedback';
 import { markDailyPlayed } from '@/lib/dailyRoute';
-import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { REVIEW_SESSION_SIZE, type ReviewItem } from '@/lib/review';
 import { PRO_ACCENT } from '@/lib/pro';
 import type { AnswerState, Question } from '@/types';
@@ -104,10 +103,6 @@ export default function ReviewScreen() {
 
     setPhase('done');
     void markDailyPlayed();
-    void logAppsFlyerEvent('cg_pro_review_completed', {
-      answered: queue.length,
-      correct: correctCount,
-    });
     // Recompensa modesta y sin multiplicador: repasar ya tiene premio propio.
     const award = await awardProgress(queue.length * 4, queue.length, false, 'review');
     if (award) celebrate(award);

@@ -17,9 +17,7 @@ import {
 } from '@/lib/onboarding';
 import { AdsConsentForm, type AdsConsentInput } from '@/components/AdsConsentForm';
 import { saveAdsConsentDecision } from '@/stores/adsConsentStore';
-import { applyAdvertisingDecision } from '@/lib/advertising';
-import { adsConfigured } from '@/lib/ads';
-import { logTutorialCompletion } from '@/lib/appsflyer';
+import { adsConfigured, initializeAds } from '@/lib/ads';
 import { setAppLanguage, AppLang, getCurrentLang } from '@/lib/i18n';
 import { useThemePreference, setThemePreference } from '@/lib/appearance';
 import { ThemePreview } from '@/components/ThemePreview';
@@ -37,11 +35,6 @@ const STEP_META = [
   { icon: '🏆', key: 'step1', skip: false },
   { icon: '🔔', key: 'step2', skip: true },
 ] as const;
-
-// La entrada a la app no puede quedarse colgada esperando a un SDK: si ATT o
-// MAX tardan, seguimos. El orden elección -> ATT -> MAX -> AppsFlyer lo
-// garantiza applyAdvertisingDecision, se espere a que termine o no.
-const ADS_APPLY_TIMEOUT_MS = 5000;
 
 function getSteps(t: TFunction) {
   return STEP_META.map(m => ({
@@ -62,10 +55,9 @@ export default function OnboardingScreen() {
   const [langChosen, setLangChosen] = useState(false);
   const [interestsChosen, setInterestsChosen] = useState(false);
   const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
-  // Último paso, obligatorio y sin salida: edad + elección de medición. Solo
-  // aparece si esta build puede llegar a mostrar anuncios (ver `adsConfigured`).
+  // Último paso, obligatorio y sin salida: el tramo de edad. Solo aparece si
+  // esta build puede llegar a mostrar anuncios (ver `adsConfigured`).
   const [privacyPending, setPrivacyPending] = useState(false);
-  const [skippedNotifications, setSkippedNotifications] = useState(false);
   // Quien ya había completado una versión anterior del onboarding lo repite
   // (2.0.0 estrena el tema claro), pero no vuelve a cobrar el regalo de
   // bienvenida.
@@ -122,22 +114,17 @@ export default function OnboardingScreen() {
     setInterestsChosen(true);
   };
 
-  const finish = async (skipped: boolean) => {
+  const finish = async () => {
     await setOnboardingCompleted(true);
-    // No-op salvo que AppsFlyer se haya arrancado tras consentir la medición.
-    void logTutorialCompletion(skipped);
     router.replace('/(tabs)');
   };
 
-  // Cierre del flujo: se guarda la decisión publicitaria y se aplica antes de
-  // entrar. Ningún SDK se inicializa hasta este punto.
+  // Cierre del flujo: se guarda el tramo de edad y se aplica antes de entrar.
+  // `initializeAds` no toca la red, así que no hay nada a lo que esperar.
   const savePrivacyAndFinish = async (input: AdsConsentInput) => {
     const decision = await saveAdsConsentDecision({ ...input, language: getCurrentLang() });
-    await Promise.race([
-      applyAdvertisingDecision(decision).catch(() => {}),
-      new Promise(resolve => setTimeout(resolve, ADS_APPLY_TIMEOUT_MS)),
-    ]);
-    await finish(skippedNotifications);
+    await initializeAds(decision).catch(() => {});
+    await finish();
   };
 
   const handleCta = async () => {
@@ -145,7 +132,7 @@ export default function OnboardingScreen() {
       const granted = await requestNotificationPermission();
       if (granted) await scheduleDailyReminder();
       // Sin anuncios posibles no hay nada que elegir: se entra directo.
-      if (!adsConfigured()) return finish(false);
+      if (!adsConfigured()) return finish();
       setPrivacyPending(true);
     } else {
       setStep(s => s + 1);
@@ -154,10 +141,7 @@ export default function OnboardingScreen() {
 
   // "Ahora no" salta las notificaciones, nunca el aviso de publicidad.
   const handleSkip = async () => {
-    setSkippedNotifications(true);
-    // `finish` recibe el valor a mano: el estado que acabamos de programar aún
-    // no se ha aplicado en esta misma llamada.
-    if (!adsConfigured()) return finish(true);
+    if (!adsConfigured()) return finish();
     setPrivacyPending(true);
   };
 
@@ -378,9 +362,9 @@ export default function OnboardingScreen() {
   // botón de salida — es la condición para entrar a la app.
   if (privacyPending) {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }}>
+      <View style={{ flex: 1, backgroundColor: C.bg }}>
         <AdsConsentForm initialDecision={null} onSave={savePrivacyAndFinish} />
-      </SafeAreaView>
+      </View>
     );
   }
 

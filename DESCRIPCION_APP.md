@@ -26,7 +26,6 @@ El nombre visible depende del idioma del dispositivo: **Cultura General** en esp
 | i18n | i18next + react-i18next + expo-localization |
 | Tipografía | **Nunito** (5 pesos) |
 | Publicidad | In-House Ads (propia) — **modo pruebas**, ver `docs/ads-inhouse.md` |
-| Atribución | AppsFlyer + Meta SDK, solo tras consentir la medición |
 | Errores | Sentry |
 | Builds | EAS |
 
@@ -116,11 +115,10 @@ La publicidad es **propia**: In-House Ads solo promociona apps y webs del mismo
 responsable, sin identificadores publicitarios, sin redes de terceros y sin almacenamiento
 persistente. Con CG PRO no se pide ni se muestra ningún anuncio.
 
-El aviso hace **dos preguntas independientes**. El tramo de edad decide si se ven anuncios
-—**por debajo de 16 años no se muestra publicidad ni se inicia ningún SDK de medición**— y
-la elección de medición decide si arrancan ATT, AppsFlyer y Meta, que miden campañas de
-captación y no cambian ni un anuncio de los que se ven dentro. En ese camino el orden es
-obligatorio: elección → ATT → AppsFlyer/Meta.
+El aviso hace **una sola pregunta**: el tramo de edad, que decide si se ven anuncios
+(**por debajo de 16 años no se muestra publicidad**). No hay SDKs de atribución ni de
+medición y la app no solicita ATT: los anuncios propios no tratan datos personales, así
+que no hay consentimiento que pedir.
 
 La política de privacidad de la app tiene las **mismas 14 secciones** que la publicada en
 `cg-trivia.pablobrasero.com/privacy`, y un test lo comprueba en cada build de la web.
@@ -148,7 +146,6 @@ cd website && npm run build && npm test   # web oficial
 
 - `docs/ads-inhouse.md` — publicidad propia: ubicaciones, reglas y qué falta validar
 - `docs/adding-questions.md` — añadir preguntas (siempre bilingües)
-- `docs/appsflyer-meta-setup.md` — atribución
 - `store/README.md` — fichas de App Store y Google Play
 - `website/README.md` — web oficial
 - `supabase/security_hardening_v2.sql` — blindaje del backend (fase 1, aplicada)

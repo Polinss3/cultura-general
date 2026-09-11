@@ -18,7 +18,6 @@ import {
 import {
   PRO_BENEFITS, PRO_BENEFIT_ICONS, PRO_ACCENT,
 } from '@/lib/pro';
-import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import { alpha, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow } from '@/constants/theme';
 
@@ -44,7 +43,6 @@ export default function PaywallScreen() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    void logAppsFlyerEvent('cg_pro_paywall_view', { source: source ?? 'unknown' });
   }, [source]);
 
   useEffect(() => {
@@ -82,12 +80,10 @@ export default function PaywallScreen() {
     if (!pkg) return;
 
     setBusy(true);
-    void logAppsFlyerEvent('cg_pro_purchase_start', { tier: pkg.tier, source: source ?? 'unknown' });
     const outcome = await purchasePremium(pkg);
     setBusy(false);
 
     if (outcome === 'purchased') {
-      void logAppsFlyerEvent('cg_pro_purchase_success', { tier: pkg.tier });
       showToast({ type: 'success', message: t('pro.paywall.welcome') });
       router.back();
     } else if (outcome === 'error') {

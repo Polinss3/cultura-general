@@ -48,9 +48,6 @@ ya escritos hasta el siguiente reintento.
 - Salir durante una partida pide confirmación y pausa el cronómetro mientras el
   diálogo está abierto. Cada respuesta produce un solo háptico y las opciones
   quedan completamente desactivadas al contestar en todos los modos.
-- AppsFlyer registra inicio, reintento, abandono confirmado, error por pregunta,
-  uso de ayuda y finalización con tiempo y estrellas cuando el usuario ha
-  habilitado la medición personalizada.
 
 ## Misiones y logros
 

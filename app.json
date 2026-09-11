@@ -21,7 +21,6 @@
       "infoPlist": {
         "NSCameraUsageDescription": "The app does not use the camera.",
         "NSUserNotificationsUsageDescription": "Get a daily reminder to answer the question of the day and keep your streak.",
-        "NSUserTrackingUsageDescription": "Your permission helps us measure which ads brought people to the app. It does not change the ads you see inside CG Trivia.",
         "ITSAppUsesNonExemptEncryption": false,
         "CFBundleAllowMixedLocalizations": true
       }
@@ -74,12 +73,6 @@
       "expo-asset",
       "expo-video",
       [
-        "expo-tracking-transparency",
-        {
-          "userTrackingPermission": "Your permission helps us measure which ads brought people to the app. It does not change the ads you see inside CG Trivia."
-        }
-      ],
-      [
         "expo-notifications",
         {
           "icon": "./assets/adaptive-icon.png",
@@ -98,20 +91,7 @@
       ],
       "expo-apple-authentication",
       "expo-web-browser",
-      [
-        "react-native-fbsdk-next",
-        {
-          "appID": "996686176323860",
-          "clientToken": "a75d1a12972b7429f36cbeca78ee4aab",
-          "displayName": "Cultura General",
-          "scheme": "fb996686176323860",
-          "advertiserIDCollectionEnabled": false,
-          "autoLogAppEventsEnabled": false,
-          "isAutoInitEnabled": false
-        }
-      ],
-      "expo-localization",
-      "react-native-appsflyer"
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true

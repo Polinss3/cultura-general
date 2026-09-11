@@ -20,7 +20,6 @@ import {
 } from '@/lib/gamification';
 import { showRewardedAd, isRewardedReady, showResultInterstitial } from '@/lib/ads';
 import { grantRewardOnce } from '@/lib/adRewards';
-import { logAppsFlyerEvent } from '@/lib/appsflyer';
 import {
   getGuestLadderBest, setGuestLadderBest, getLocalLadderBest, setLocalLadderBest,
 } from '@/lib/guest';
@@ -75,7 +74,6 @@ export default function LadderScreen() {
 
   const usedIds = useRef<Set<string>>(new Set());
   const savedRef = useRef(false);
-  const adShownRef = useRef(false);
   const canUsePowerups = !!user && !guest && !offline;
 
   // Cargar récord y banco de preguntas.
@@ -105,15 +103,6 @@ export default function LadderScreen() {
     return () => clearTimeout(t);
   }, [phase, answered, timeLeft]);
 
-  useEffect(() => {
-    if (phase !== 'done' || adShownRef.current) return;
-    adShownRef.current = true;
-    logAppsFlyerEvent('cg_ladder_run_completed', {
-      floors_completed: runFloor,
-      coins_banked: banked,
-    });
-  }, [phase]);
-
   const pickForFloor = (f: number): ShuffledQuestion | undefined => {
     if (allQ.length === 0) return undefined;
     const diff = ladderDifficulty(f);
@@ -138,7 +127,6 @@ export default function LadderScreen() {
   const start = () => {
     usedIds.current = new Set();
     savedRef.current = false;
-    adShownRef.current = false;
     setFloor(1);
     setLives(LADDER_LIVES);
     setBote(0);
