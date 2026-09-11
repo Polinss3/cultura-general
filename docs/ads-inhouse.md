@@ -35,10 +35,11 @@ autorizaciones de evento, redirección y recompensa. No hay ninguna clave
 secreta que guardar en la app.
 
 - **Aplicación** `cultura-general` → `485e0aab-572e-4051-879a-85a60ef978da`
-- **SDK** `@inhouse/mobile-sdk` 1.1.2, empaquetado en
-  [`vendor/inhouse-mobile-sdk-1.1.2.tgz`](../vendor). La cuenta atrás de vídeo
+- **SDK** `@inhouse/mobile-sdk` 1.1.3, empaquetado en
+  [`vendor/inhouse-mobile-sdk-1.1.3.tgz`](../vendor). La cuenta atrás de vídeo
   usa su duración completa y el visor ya no duplica el estado de recompensa en
-  una franja inferior. Visor con Liquid Glass en
+  una franja inferior. El vídeo comienza silenciado sin detener audio externo,
+  y toda la creatividad abre el destino del anuncio. Visor con Liquid Glass en
   iOS 26+ vía `expo-glass-effect` (módulo nativo: exige build nueva; sin él o
   en iOS anterior dibuja superficies translúcidas equivalentes).
 
