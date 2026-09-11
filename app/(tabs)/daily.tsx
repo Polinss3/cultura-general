@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
-import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share, RefreshControl } from 'react-native';
+import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share, RefreshControl, AppState } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -24,6 +24,7 @@ import { useProgress } from '@/context/ProgressContext';
 import { useToast } from '@/context/ToastContext';
 import { showResultInterstitial } from '@/lib/ads';
 import { markDailyQuestionCompleted } from '@/lib/notifications';
+import { todayStr } from '@/lib/dailyRoute';
 import { planReviewAfterDailyCompletion, REVIEW_PROMPT_DELAY_MS } from '@/lib/appReview';
 import { noteReviewBlocker } from '@/lib/reviewGate';
 import {
@@ -55,10 +56,14 @@ const getRankingTabs = (t: TFunction): { key: RankingTab; label: string }[] => [
   { key: 'friends', label: t('daily.tabFriends') },
 ];
 
+// La pregunta cambia a medianoche UTC (así se calcula "hoy" en toda la app y
+// en el servidor), no a medianoche local: en España son las 02:00 en verano y
+// la 01:00 en invierno. Contar hasta la local prometía una pregunta nueva que
+// no llegaba.
 function timeUntilMidnight(): string {
   const now = new Date();
-  const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-  const diff = midnight.getTime() - now.getTime();
+  const midnight = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1);
+  const diff = midnight - now.getTime();
   const h = Math.floor(diff / 3600000);
   const m = Math.floor((diff % 3600000) / 60000);
   return `${h}h ${m}m`;
@@ -217,6 +222,8 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const loadedTabs = useRef(new Set<RankingTab>());
   const questionStartAt = useRef<number>(0);
   const reviewTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Día (UTC) para el que se cargó la pantalla; si cambia, hay que recargar.
+  const initDay = useRef<string>('');
 
   const cancelPendingReview = useCallback(() => {
     if (!reviewTimer.current) return;
@@ -234,6 +241,34 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     init();
     // Recargar (pregunta + rankings) al cambiar de idioma.
   }, [user?.id, i18n.language]);
+
+  // La pestaña vive montada mientras viva el proceso, e iOS mantiene la app en
+  // segundo plano durante días. Sin esto, quien respondió ayer y vuelve hoy
+  // sin haber cerrado la app sigue viendo el ranking de ayer con su ✓, cree
+  // que ya ha jugado y pierde la racha (reporte de un usuario, 2026-09-11).
+  // Se comprueba al enfocar la pestaña y al volver al primer plano.
+  const reinitIfNewDay = useCallback(() => {
+    if (!user || !initDay.current || initDay.current === todayStr()) return;
+    void init();
+  }, [user?.id]);
+
+  useFocusEffect(reinitIfNewDay);
+
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', state => {
+      if (state === 'active') reinitIfNewDay();
+    });
+    return () => sub.remove();
+  }, [reinitIfNewDay]);
+
+  // El "nueva pregunta en Xh Ym" se recalcula por minuto mientras se ve el
+  // ranking; si no, se queda con la hora del último render.
+  const [, tick] = useState(0);
+  useEffect(() => {
+    if (phase !== 'ranking') return;
+    const id = setInterval(() => tick(n => n + 1), 60_000);
+    return () => clearInterval(id);
+  }, [phase]);
 
   // Lazy-load ranking tabs
   useEffect(() => {
@@ -260,15 +295,24 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   }, [user?.id]);
 
   const init = async () => {
+    const today = todayStr();
+    initDay.current = today;
     setPhase('loading');
     reported.current = false;
+    // Estado de la pregunta y rankings del día anterior: no debe sobrevivir
+    // a una recarga por cambio de día.
+    setSelected(null);
+    setFiftyHidden([]);
+    setHintShown(false);
+    setDailyRanking([]);
+    setFriendRanking([]);
+    loadedTabs.current = new Set();
     const [q, already] = await Promise.all([
       fetchOrAssignDailyQuestion(),
       user ? checkDailyAnswered(user.id) : Promise.resolve({ answered: false, score: 0 }),
     ]);
     if (q) {
       // Seed per-user-per-day so the order is stable on refresh but changes daily.
-      const today = new Date().toISOString().slice(0, 10);
       setQuestion(shuffleQuestionSeeded(q, `${user?.id ?? 'anon'}-${today}`));
     } else {
       setQuestion(null);
