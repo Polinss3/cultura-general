@@ -64,6 +64,7 @@ const STOPWORDS_ES = new Set(`
   famosa primer primera principal mayor obra autor pais ciudad ano siglo
   poblado poblada habitantes grande pequeno largo alto alta bajo baja extenso
   extensa profundo mundo continente region encuentra encuentran esta estan
+  simbolo quimico quimica unidad mide tipo clase
 `.split(/\s+/).filter(Boolean));
 
 const STOPWORDS_EN = new Set(`
@@ -72,7 +73,7 @@ const STOPWORDS_EN = new Set(`
   where which who whom whose why will with you your
   name called known considered famous first main largest work author country city
   year century most populous biggest smallest longest highest deepest lowest
-  world continent region located lies
+  world continent region located lies symbol chemical unit measures type kind
 `.split(/\s+/).filter(Boolean));
 
 function tokens(text, stopwords) {
