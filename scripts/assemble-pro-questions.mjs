@@ -62,6 +62,8 @@ const STOPWORDS_ES = new Set(`
   todos tu tus un una unas uno unos y ya
   cual es el la nombre llama llamaba se denomina como conoce considera famoso
   famosa primer primera principal mayor obra autor pais ciudad ano siglo
+  poblado poblada habitantes grande pequeno largo alto alta bajo baja extenso
+  extensa profundo mundo continente region encuentra encuentran esta estan
 `.split(/\s+/).filter(Boolean));
 
 const STOPWORDS_EN = new Set(`
@@ -69,7 +71,8 @@ const STOPWORDS_EN = new Set(`
   of on or she that the their there these they this those to was were what when
   where which who whom whose why will with you your
   name called known considered famous first main largest work author country city
-  year century
+  year century most populous biggest smallest longest highest deepest lowest
+  world continent region located lies
 `.split(/\s+/).filter(Boolean));
 
 function tokens(text, stopwords) {
