@@ -20,10 +20,15 @@
 -- baja, porque un "Congelar racha" consumido no deja huella en
 -- `daily_rankings` y recalcular a la baja rompería rachas legítimas.
 --
--- CÓMO APLICARLO: SQL Editor de Supabase, entero. Idempotente. No depende
--- de nada de la 2.2.0 (is_premium, etc.). Cuando se apliquen las
--- migraciones PRO, `pro_perks_v1` vuelve a definir la función ya con este
--- mismo arreglo.
+-- ⚠️ YA APLICADO (2026-09-10) Y SUPERADO. NO VOLVER A EJECUTAR ENTERO.
+-- Este fichero redefine `update_streak` SIN la rama PRO de racha protegida
+-- (`is_premium`). Se aplicó en producción DESPUÉS de `pro_perks_v1` y pisó esa
+-- rama sin que nadie se diera cuenta hasta la auditoría del 2026-09-12, cuando
+-- se volvió a aplicar la versión de `pro_perks_v1` (que ya incluye este mismo
+-- arreglo del `score > 0`). La definición buena de la función es la de
+-- `migrations/20260906050000_pro_perks_v1.sql`; si hace falta tocar la racha,
+-- tocarla ahí. Este fichero se conserva solo por el bloque de REPARACIÓN de
+-- abajo (recalcular rachas al alza), que sigue siendo válido.
 -- ─────────────────────────────────────────────────────────────
 
 begin;

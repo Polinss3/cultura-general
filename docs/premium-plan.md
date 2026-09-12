@@ -273,14 +273,13 @@ comprar pasa primero por registro.
 
 Apple rechaza por la guideline 3.1.2 si falta algo de esto:
 
-- [ ] Botón **"Restaurar compras"** visible en el paywall.
+- [x] Botón **"Restaurar compras"** visible en el paywall.
 - [x] Precio, duración y **renovación automática** indicados en el propio paywall.
 - [x] **Duración de la prueba gratuita** anunciada en el punto de compra, con el
       precio al que se convierte.
-- [ ] Enlaces a **Términos (EULA)** y Privacidad desde el paywall.
-      ⚠️ **No existe página de términos**: hay que publicarla en
-      `cg-trivia.pablobrasero.com` junto a la de privacidad. Es el olvido más habitual.
-- [ ] Enlace a gestionar suscripción (`itms-apps://apps.apple.com/account/subscriptions`).
+- [x] Enlaces a **Términos (EULA)** y Privacidad desde el paywall. La página de
+      términos se publicó con una sección de suscripción (§7) el 2026-09-12.
+- [x] Enlace a gestionar suscripción (`itms-apps://apps.apple.com/account/subscriptions`).
 - [ ] Ficha de App Store actualizada con la información de suscripción.
 - [ ] Inscripción en el **App Store Small Business Program** (comisión 15 % en vez de 30 %).
 
@@ -312,12 +311,12 @@ el PRO parezca una compra única.
 
 ## 6.1 Estado de implementación
 
-Rama `feature/premium-pro`. Actualizado el 2026-09-08.
+Rama `feature/premium-pro`. Actualizado el 2026-09-12.
 
 | Pieza | Estado |
 |---|---|
-| Migración `20260906010000_premium_pro_v1.sql` | ✅ escrita — **pendiente de aplicar en Supabase** |
-| Edge Function `revenuecat-webhook` | ✅ escrita — **pendiente de desplegar** |
+| Migración `20260906010000_premium_pro_v1.sql` | ✅ aplicada en producción (verificado 2026-09-12) |
+| Edge Function `revenuecat-webhook` | ✅ desplegada el 2026-09-12 con `--no-verify-jwt` y secreto configurado — **falta darla de alta en el panel de RevenueCat** |
 | `lib/premium.ts` + `hooks/usePremium.ts` | ✅ |
 | `components/ProGate.tsx` (borroso + CTA) | ✅ |
 | `app/paywall.tsx` | ✅ |
@@ -330,10 +329,10 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-08.
 | Lore de capítulo | ✅ |
 | Guardianes (finales de capítulo) | ✅ |
 | Mapa del viaje | ✅ |
-| Sala PRO + Examen + Repaso inteligente | ✅ (migraciones `..._pro_exam_v1` y `..._pro_review_v1` pendientes de aplicar) |
-| Métricas con borroso | ✅ (migración `..._pro_stats_v1` pendiente de aplicar) |
+| Sala PRO + Examen + Repaso inteligente | ✅ (migraciones aplicadas) |
+| Métricas con borroso | ✅ (migración aplicada) |
 | Estipendio | ✅ (recogible desde la Sala PRO) |
-| Streak freeze automático, cosméticos PRO | ✅ (migración `..._pro_perks_v1` pendiente de aplicar) |
+| Streak freeze automático, cosméticos PRO | ✅ (migración aplicada; ojo: el hotfix de racha del 09-10 pisó `update_streak` y se reaplicó la versión PRO el 09-12) |
 
 ### Pendientes que bloquean el rollout completo
 
@@ -364,13 +363,16 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-08.
    ```
    npx supabase migration repair --status applied 20260829010000 20260829020000 20260829030000
    ```
-4. **Desplegar el webhook** con `--no-verify-jwt` y configurar
-   `REVENUECAT_WEBHOOK_SECRET` en los dos lados.
+4. ~~Desplegar el webhook~~ Hecho el 2026-09-12: desplegado, secreto en Supabase y
+   webhook dado de alta en RevenueCat. Verificado con compra sandbox real (lifetime y
+   anual con trial). El webhook consulta el estado real del cliente en la API v1 de
+   RevenueCat (`REVENUECAT_API_KEY`, clave secreta `supabase-webhook`) en cada evento,
+   así lifetime + suscripción a la vez no se pisan; sin clave cae a las guardas por evento.
 5. **Crear los productos** en App Store Connect y la oferta en RevenueCat.
 6. **Poner las claves** `EXPO_PUBLIC_REVENUECAT_IOS_KEY` / `_ANDROID_KEY` en EAS.
 7. **Build de EAS nuevo**: `react-native-purchases` es un módulo nativo. Hasta
    entonces la app funciona entera, pero en modo gratuito.
-8. **Publicar la página de términos** en la web (bloqueante de revisión).
+8. ~~Publicar la página de términos~~ Hecho el 2026-09-12 (privacidad y términos actualizados con CG PRO y sin restos de AppsFlyer/ATT).
 
 ---
 
