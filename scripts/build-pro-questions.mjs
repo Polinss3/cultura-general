@@ -60,9 +60,13 @@ for (const key of ['question', 'question_en']) {
 
 // Un duplicado del banco gratuito tampoco aporta valor PRO. Esta comprobación
 // exacta-normalizada es automática; la revisión semántica sigue siendo humana.
-const corePath = path.join(root, 'data/questions-v5-2000.json');
-if (!fs.existsSync(corePath)) throw new Error('Falta el catálogo core de referencia');
-const coreRows = JSON.parse(fs.readFileSync(corePath, 'utf8'));
+// `questions-v5-2000.json` solo trae las 411 añadidas en la 2.1.0;
+// `questions-core-prod-2000.json` es el volcado completo de producción.
+const coreRows = ['data/questions-core-prod-2000.json', 'data/questions-v5-2000.json']
+  .map(file => path.join(root, file))
+  .filter(file => fs.existsSync(file))
+  .flatMap(file => JSON.parse(fs.readFileSync(file, 'utf8')));
+if (coreRows.length === 0) throw new Error('Falta el catálogo core de referencia');
 for (const key of ['question', 'question_en']) {
   const coreQuestions = new Set(coreRows.map(row => normalize(row[key])));
   const duplicateIndex = rows.findIndex(row => coreQuestions.has(normalize(row[key])));
