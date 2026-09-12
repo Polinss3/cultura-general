@@ -1,0 +1,989 @@
+[
+ {
+  "category": "arte",
+  "question": "¿Qué monumento funerario egipcio es el más grande de la meseta de Guiza?",
+  "options": [
+   "La pirámide de Kefrén",
+   "La Gran Pirámide de Keops",
+   "La pirámide de Micerino",
+   "La Esfinge"
+  ],
+  "answer_index": 1,
+  "context": "Medía originalmente 146 metros y fue la construcción más alta del mundo durante casi 4.000 años. Es la única de las siete maravillas antiguas que sigue en pie.",
+  "difficulty": "easy",
+  "question_en": "Which Egyptian funerary monument is the largest on the Giza plateau?",
+  "options_en": [
+   "The Pyramid of Khafre",
+   "The Great Pyramid of Khufu",
+   "The Pyramid of Menkaure",
+   "The Sphinx"
+  ],
+  "context_en": "It originally stood 146 metres tall and was the tallest structure in the world for almost 4,000 years. It is the only one of the seven ancient wonders still standing."
+ },
+ {
+  "category": "arte",
+  "question": "¿Cómo se llama el dibujo previo y rápido que un artista hace para preparar una obra?",
+  "options": [
+   "Boceto",
+   "Retablo",
+   "Fresco",
+   "Paleta"
+  ],
+  "answer_index": 0,
+  "context": "También se llama apunte o esbozo. Los cuadernos de bocetos de Leonardo, con más de 7.000 páginas conservadas, son un documento excepcional de su forma de pensar.",
+  "difficulty": "easy",
+  "question_en": "What is the quick preliminary drawing an artist makes to prepare a work called?",
+  "options_en": [
+   "Sketch",
+   "Altarpiece",
+   "Fresco",
+   "Palette"
+  ],
+  "context_en": "Leonardo's sketchbooks, with more than 7,000 surviving pages, are an exceptional record of how he thought."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué instrumento usa el pintor para mezclar sus colores mientras trabaja?",
+  "options": [
+   "El caballete",
+   "La paleta",
+   "El bastidor",
+   "La espátula"
+  ],
+  "answer_index": 1,
+  "context": "La palabra ha pasado a significar también el conjunto de colores característico de un artista: se habla de la paleta fría de Picasso en su periodo azul.",
+  "difficulty": "easy",
+  "question_en": "Which tool does a painter use to mix colours while working?",
+  "options_en": [
+   "The easel",
+   "The palette",
+   "The stretcher",
+   "The palette knife"
+  ],
+  "context_en": "The word has also come to mean an artist's characteristic range of colours: people speak of Picasso's cold palette in his blue period."
+ },
+ {
+  "category": "arte",
+  "question": "¿En qué país se encuentra el templo de Angkor Wat?",
+  "options": [
+   "Tailandia",
+   "Camboya",
+   "Vietnam",
+   "Birmania"
+  ],
+  "answer_index": 1,
+  "context": "Se construyó en el siglo XII como templo hindú dedicado a Visnú y después pasó al budismo. Su silueta de cinco torres aparece en la bandera nacional.",
+  "difficulty": "easy",
+  "question_en": "In which country is the temple of Angkor Wat?",
+  "options_en": [
+   "Thailand",
+   "Cambodia",
+   "Vietnam",
+   "Burma"
+  ],
+  "context_en": "It was built in the 12th century as a Hindu temple dedicated to Vishnu and later became Buddhist. Its silhouette of five towers appears on the national flag."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué material recubre las ondulantes fachadas del Guggenheim de Bilbao?",
+  "options": [
+   "Cobre",
+   "Titanio",
+   "Aluminio",
+   "Acero corten"
+  ],
+  "answer_index": 1,
+  "context": "Son 33.000 finas láminas de titanio que cambian de tono con la luz y el cielo de la ría. El edificio, de Frank Gehry, se inauguró en 1997 y transformó la ciudad.",
+  "difficulty": "easy",
+  "question_en": "Which material covers the undulating façades of the Bilbao Guggenheim?",
+  "options_en": [
+   "Copper",
+   "Titanium",
+   "Aluminium",
+   "Corten steel"
+  ],
+  "context_en": "They are 33,000 thin titanium sheets that change tone with the light and the sky over the estuary. The building, by Frank Gehry, opened in 1997 and transformed the city."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué se conoce como \"arte urbano\" o street art?",
+  "options": [
+   "La escultura de los parques públicos",
+   "El arte creado en espacios públicos, como murales y grafitis",
+   "La arquitectura de las ciudades",
+   "El diseño de mobiliario urbano"
+  ],
+  "answer_index": 1,
+  "context": "Nació en el Nueva York de los años setenta con las firmas en el metro. Hoy artistas como Banksy o Shepard Fairey venden en galerías obras nacidas en la calle.",
+  "difficulty": "easy",
+  "question_en": "What is known as \"street art\"?",
+  "options_en": [
+   "Sculpture in public parks",
+   "Art created in public spaces, such as murals and graffiti",
+   "The architecture of cities",
+   "The design of street furniture"
+  ],
+  "context_en": "It was born in 1970s New York with tags on the subway. Today artists such as Banksy and Shepard Fairey sell in galleries work that began on the street."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué gran plaza de Madrid, de planta rectangular y soportales, se terminó en el siglo XVII?",
+  "options": [
+   "La Puerta del Sol",
+   "La Plaza Mayor",
+   "La plaza de Oriente",
+   "La plaza de Cibeles"
+  ],
+  "answer_index": 1,
+  "context": "Juan Gómez de Mora la concluyó en 1619 bajo Felipe III, cuya estatua ecuestre preside el centro. Acogió corridas, autos de fe, mercados y ejecuciones.",
+  "difficulty": "easy",
+  "question_en": "Which large square in Madrid, rectangular and arcaded, was completed in the 17th century?",
+  "options_en": [
+   "Puerta del Sol",
+   "Plaza Mayor",
+   "Plaza de Oriente",
+   "Plaza de Cibeles"
+  ],
+  "context_en": "Juan Gómez de Mora finished it in 1619 under Philip III, whose equestrian statue stands in the centre. It hosted bullfights, autos-da-fé, markets and executions."
+ },
+ {
+  "category": "arte",
+  "question": "¿Cómo se llama la escultura que representa solo la cabeza y parte del pecho de una persona?",
+  "options": [
+   "Relieve",
+   "Busto",
+   "Estatua ecuestre",
+   "Friso"
+  ],
+  "answer_index": 1,
+  "context": "Los romanos lo convirtieron en el formato del retrato oficial, con un realismo que no ocultaba arrugas ni calvicies. El relieve, en cambio, sobresale de un fondo plano.",
+  "difficulty": "easy",
+  "question_en": "What is a sculpture showing only a person's head and upper chest called?",
+  "options_en": [
+   "Relief",
+   "Bust",
+   "Equestrian statue",
+   "Frieze"
+  ],
+  "context_en": "The Romans made it the format of the official portrait, with a realism that hid neither wrinkles nor baldness. A relief, by contrast, projects from a flat background."
+ },
+ {
+  "category": "arte",
+  "question": "¿Cuántas torres tendrá la Sagrada Familia cuando se termine?",
+  "options": [
+   "Doce",
+   "Quince",
+   "Dieciocho",
+   "Veinticuatro"
+  ],
+  "answer_index": 2,
+  "context": "Doce por los apóstoles, cuatro por los evangelistas, una por la Virgen y la central por Jesucristo, que será la más alta de todas. Gaudí dedicó al templo sus últimos cuarenta años.",
+  "difficulty": "easy",
+  "question_en": "How many towers will the Sagrada Família have when it is finished?",
+  "options_en": [
+   "Twelve",
+   "Fifteen",
+   "Eighteen",
+   "Twenty-four"
+  ],
+  "context_en": "Twelve for the apostles, four for the evangelists, one for the Virgin and the central one for Jesus Christ, which will be the tallest. Gaudí devoted his last forty years to the church."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué museo de Florencia guarda \"El nacimiento de Venus\" y \"La Anunciación\" de Leonardo?",
+  "options": [
+   "El Palacio Pitti",
+   "La Galería de los Uffizi",
+   "El Bargello",
+   "El museo de San Marcos"
+  ],
+  "answer_index": 1,
+  "context": "El edificio lo proyectó Vasari en 1560 como oficinas administrativas de los Médici, de ahí su nombre. La familia legó la colección a la ciudad con la condición de que nunca saliera de ella.",
+  "difficulty": "medium",
+  "question_en": "Which museum in Florence holds \"The Birth of Venus\" and Leonardo's \"Annunciation\"?",
+  "options_en": [
+   "The Pitti Palace",
+   "The Uffizi Gallery",
+   "The Bargello",
+   "The Museum of San Marco"
+  ],
+  "context_en": "Vasari designed the building in 1560 as administrative offices for the Medici, hence its name. The family bequeathed the collection to the city on condition it never leave."
+ },
+ {
+  "category": "arte",
+  "question": "¿Quién escribió \"Las vidas de los más excelentes pintores, escultores y arquitectos\", la primera historia del arte?",
+  "options": [
+   "Leon Battista Alberti",
+   "Giorgio Vasari",
+   "Cennino Cennini",
+   "Baldassare Castiglione"
+  ],
+  "answer_index": 1,
+  "context": "Publicada en 1550, fijó la idea de que el arte italiano progresaba de Giotto a Miguel Ángel. Vasari fue además pintor y arquitecto, y suyo es el edificio de los Uffizi.",
+  "difficulty": "medium",
+  "question_en": "Who wrote \"Lives of the Most Excellent Painters, Sculptors and Architects\", the first history of art?",
+  "options_en": [
+   "Leon Battista Alberti",
+   "Giorgio Vasari",
+   "Cennino Cennini",
+   "Baldassare Castiglione"
+  ],
+  "context_en": "Published in 1550, it established the idea that Italian art progressed from Giotto to Michelangelo. Vasari was also a painter and architect, and designed the Uffizi building."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué técnica pictórica de Leonardo difumina los contornos con transiciones casi imperceptibles, \"como el humo\"?",
+  "options": [
+   "El claroscuro",
+   "El esfumado",
+   "El impasto",
+   "La grisalla"
+  ],
+  "answer_index": 1,
+  "context": "Lo aplicó sobre todo en el rostro de la Gioconda, cuya sonrisa cambia según dónde se mire. Lo lograba con decenas de veladuras finísimas de óleo.",
+  "difficulty": "medium",
+  "question_en": "Which of Leonardo's painting techniques blurs outlines with almost imperceptible transitions, \"like smoke\"?",
+  "options_en": [
+   "Chiaroscuro",
+   "Sfumato",
+   "Impasto",
+   "Grisaille"
+  ],
+  "context_en": "He applied it above all to the Mona Lisa's face, whose smile changes depending on where you look. He achieved it with dozens of extremely thin oil glazes."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué mausoleo de mármol blanco mandó construir el emperador Sha Jahan en memoria de su esposa?",
+  "options": [
+   "El Fuerte Rojo",
+   "El Taj Mahal",
+   "La tumba de Humayun",
+   "El Qutab Minar"
+  ],
+  "answer_index": 1,
+  "context": "Se levantó en Agra entre 1632 y 1653 para Mumtaz Mahal, muerta al dar a luz a su decimocuarto hijo. Emplearon más de veinte mil obreros y mármol incrustado de piedras semipreciosas.",
+  "difficulty": "medium",
+  "question_en": "Which white marble mausoleum did Emperor Shah Jahan build in memory of his wife?",
+  "options_en": [
+   "The Red Fort",
+   "The Taj Mahal",
+   "Humayun's Tomb",
+   "The Qutb Minar"
+  ],
+  "context_en": "It was raised in Agra between 1632 and 1653 for Mumtaz Mahal, who died giving birth to her fourteenth child. More than twenty thousand workers used marble inlaid with semi-precious stones."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué escuela de diseño alemana, fundada en Weimar en 1919, unió arte, artesanía e industria?",
+  "options": [
+   "La Werkbund",
+   "La Bauhaus",
+   "La Vkhutemas",
+   "La Escuela de Ulm"
+  ],
+  "answer_index": 1,
+  "context": "Pasó por Weimar, Dessau y Berlín antes de que los nazis la cerraran en 1933. Su idea de que la forma sigue a la función define todavía el diseño de objetos cotidianos.",
+  "difficulty": "medium",
+  "question_en": "Which German design school, founded in Weimar in 1919, united art, craft and industry?",
+  "options_en": [
+   "The Werkbund",
+   "The Bauhaus",
+   "The Vkhutemas",
+   "The Ulm School"
+  ],
+  "context_en": "It moved through Weimar, Dessau and Berlin before the Nazis closed it in 1933. Its idea that form follows function still defines the design of everyday objects."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué artista firmó con el seudónimo R. Mutt un urinario expuesto como obra de arte en 1917?",
+  "options": [
+   "Man Ray",
+   "Marcel Duchamp",
+   "Francis Picabia",
+   "Tristan Tzara"
+  ],
+  "answer_index": 1,
+  "context": "Lo llamó \"Fuente\" y lo presentó a una exposición sin jurado que aun así lo rechazó. Con sus \"ready-mades\" planteó que es el artista quien decide qué es arte.",
+  "difficulty": "medium",
+  "question_en": "Which artist signed a urinal exhibited as an artwork in 1917 with the pseudonym R. Mutt?",
+  "options_en": [
+   "Man Ray",
+   "Marcel Duchamp",
+   "Francis Picabia",
+   "Tristan Tzara"
+  ],
+  "context_en": "He called it \"Fountain\" and submitted it to a jury-free exhibition that rejected it anyway. With his \"readymades\" he argued that it is the artist who decides what art is."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor neerlandés compuso cuadros con líneas negras y rectángulos en rojo, amarillo y azul?",
+  "options": [
+   "Piet Mondrian",
+   "Kees van Dongen",
+   "Willem de Kooning",
+   "Jan Toorop"
+  ],
+  "answer_index": 0,
+  "context": "Llamó neoplasticismo a esa reducción a lo esencial. Su estética inspiró desde vestidos de Yves Saint Laurent hasta fachadas de edificios y portadas de discos.",
+  "difficulty": "medium",
+  "question_en": "Which Dutch painter composed paintings with black lines and rectangles in red, yellow and blue?",
+  "options_en": [
+   "Piet Mondrian",
+   "Kees van Dongen",
+   "Willem de Kooning",
+   "Jan Toorop"
+  ],
+  "context_en": "He called that reduction to essentials neoplasticism. His aesthetic has inspired everything from Yves Saint Laurent dresses to building façades and album covers."
+ },
+ {
+  "category": "arte",
+  "question": "¿Cómo se llama el conjunto de pinturas o tallas que decora la parte posterior de un altar?",
+  "options": [
+   "Tríptico",
+   "Retablo",
+   "Políptico",
+   "Predela"
+  ],
+  "answer_index": 1,
+  "context": "En España alcanzaron tamaños monumentales, cubriendo el muro entero del ábside. El de la catedral de Sevilla, con más de mil figuras talladas, es el mayor del mundo.",
+  "difficulty": "medium",
+  "question_en": "What is the set of paintings or carvings that decorates the back of an altar called?",
+  "options_en": [
+   "Triptych",
+   "Altarpiece (retablo)",
+   "Polyptych",
+   "Predella"
+  ],
+  "context_en": "In Spain they reached monumental sizes, covering the whole apse wall. The one in Seville Cathedral, with more than a thousand carved figures, is the largest in the world."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor noruego pintó varias versiones de una figura angustiada sobre un puente y un cielo rojo?",
+  "options": [
+   "Edvard Munch",
+   "Christian Krohg",
+   "Harald Sohlberg",
+   "Nikolai Astrup"
+  ],
+  "answer_index": 0,
+  "context": "Escribió en su diario que sintió \"un grito infinito atravesando la naturaleza\" viendo un atardecer rojo sangre sobre Oslo. Hizo dos pinturas, un pastel y una litografía del motivo.",
+  "difficulty": "medium",
+  "question_en": "Which Norwegian painter made several versions of an anguished figure on a bridge under a red sky?",
+  "options_en": [
+   "Edvard Munch",
+   "Christian Krohg",
+   "Harald Sohlberg",
+   "Nikolai Astrup"
+  ],
+  "context_en": "He wrote in his diary that he felt \"an infinite scream passing through nature\" while watching a blood-red sunset over Oslo. He made two paintings, a pastel and a lithograph of the motif."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué gran anfiteatro romano de Mérida se conserva junto a su teatro, ambos del siglo I a. C.?",
+  "options": [
+   "El circo máximo",
+   "El anfiteatro de Augusta Emerita",
+   "El coliseo de Itálica",
+   "El teatro de Sagunto"
+  ],
+  "answer_index": 1,
+  "context": "Mérida fue fundada en el 25 a. C. como retiro para los soldados veteranos de Augusto. Su teatro sigue acogiendo cada verano un festival de teatro clásico.",
+  "difficulty": "medium",
+  "question_en": "Which great Roman amphitheatre in Mérida stands beside its theatre, both from the 1st century BC?",
+  "options_en": [
+   "The circus maximus",
+   "The amphitheatre of Augusta Emerita",
+   "The colosseum of Italica",
+   "The theatre of Sagunto"
+  ],
+  "context_en": "Mérida was founded in 25 BC as a settlement for Augustus's veteran soldiers. Its theatre still hosts a classical drama festival every summer."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor y grabador inglés del siglo XVIII creó series satíricas como \"La carrera del libertino\"?",
+  "options": [
+   "William Hogarth",
+   "George Stubbs",
+   "Henry Fuseli",
+   "Joseph Wright"
+  ],
+  "answer_index": 0,
+  "context": "Sus secuencias de imágenes contaban historias morales como un cómic avant la lettre. Impulsó la primera ley de derechos de autor para grabadores, apodada \"Ley Hogarth\".",
+  "difficulty": "medium",
+  "question_en": "Which 18th-century English painter and engraver created satirical series such as \"A Rake's Progress\"?",
+  "options_en": [
+   "William Hogarth",
+   "George Stubbs",
+   "Henry Fuseli",
+   "Joseph Wright"
+  ],
+  "context_en": "His sequences of images told moral tales like a comic strip avant la lettre. He pushed through the first copyright act for engravers, nicknamed the \"Hogarth Act\"."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué movimiento artístico de principios del siglo XX exaltó la máquina, la velocidad y la guerra en su manifiesto de 1909?",
+  "options": [
+   "El vorticismo",
+   "El futurismo",
+   "El rayonismo",
+   "El orfismo"
+  ],
+  "answer_index": 1,
+  "context": "Lo lanzó el poeta italiano Marinetti en la portada de Le Figaro. Proponía quemar los museos y afirmaba que un automóvil de carreras era más bello que la Victoria de Samotracia.",
+  "difficulty": "medium",
+  "question_en": "Which early 20th-century art movement glorified the machine, speed and war in its 1909 manifesto?",
+  "options_en": [
+   "Vorticism",
+   "Futurism",
+   "Rayonism",
+   "Orphism"
+  ],
+  "context_en": "The Italian poet Marinetti launched it on the front page of Le Figaro. It called for burning the museums and declared a racing car more beautiful than the Winged Victory of Samothrace."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor francés posimpresionista afirmó que había que tratar la naturaleza \"por el cilindro, la esfera y el cono\"?",
+  "options": [
+   "Paul Cézanne",
+   "Paul Signac",
+   "Édouard Vuillard",
+   "Pierre Puvis de Chavannes"
+  ],
+  "answer_index": 0,
+  "context": "Pintó decenas de veces la montaña Sainte-Victoire desde su Provenza natal. Picasso y Braque lo consideraron el padre del cubismo y Matisse lo llamó \"el padre de todos nosotros\".",
+  "difficulty": "medium",
+  "question_en": "Which French Post-Impressionist painter said nature should be treated \"by the cylinder, the sphere and the cone\"?",
+  "options_en": [
+   "Paul Cézanne",
+   "Paul Signac",
+   "Édouard Vuillard",
+   "Pierre Puvis de Chavannes"
+  ],
+  "context_en": "He painted Mont Sainte-Victoire dozens of times from his native Provence. Picasso and Braque saw him as the father of Cubism and Matisse called him \"the father of us all\"."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor austriaco del modernismo cubrió sus cuadros de pan de oro en obras como \"Retrato de Adele Bloch-Bauer\"?",
+  "options": [
+   "Egon Schiele",
+   "Gustav Klimt",
+   "Oskar Kokoschka",
+   "Koloman Moser"
+  ],
+  "answer_index": 1,
+  "context": "Presidió la Secesión vienesa, que rompió con la academia en 1897. El retrato de Adele, expoliado por los nazis, fue devuelto a sus herederos en 2006 tras un largo pleito.",
+  "difficulty": "medium",
+  "question_en": "Which Austrian modernist painter covered his canvases in gold leaf in works such as \"Portrait of Adele Bloch-Bauer\"?",
+  "options_en": [
+   "Egon Schiele",
+   "Gustav Klimt",
+   "Oskar Kokoschka",
+   "Koloman Moser"
+  ],
+  "context_en": "He led the Vienna Secession, which broke with the academy in 1897. The portrait of Adele, looted by the Nazis, was returned to her heirs in 2006 after a long lawsuit."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor francés del romanticismo viajó a Marruecos y pintó \"Mujeres de Argel\"?",
+  "options": [
+   "Jean-Auguste-Dominique Ingres",
+   "Eugène Delacroix",
+   "Théodore Chassériau",
+   "Horace Vernet"
+  ],
+  "answer_index": 1,
+  "context": "El viaje de 1832 le dio una paleta de colores intensos que influyó en los impresionistas. Encabezó el bando del color frente al del dibujo, liderado por Ingres.",
+  "difficulty": "medium",
+  "question_en": "Which French Romantic painter travelled to Morocco and painted \"Women of Algiers\"?",
+  "options_en": [
+   "Jean-Auguste-Dominique Ingres",
+   "Eugène Delacroix",
+   "Théodore Chassériau",
+   "Horace Vernet"
+  ],
+  "context_en": "The 1832 trip gave him a palette of intense colours that influenced the Impressionists. He led the camp of colour against that of drawing, headed by Ingres."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué edificio de París, terminado en 1977, muestra al exterior sus tuberías y escaleras de colores?",
+  "options": [
+   "La Ópera Garnier",
+   "El Centro Pompidou",
+   "La Villette",
+   "El Instituto del Mundo Árabe"
+  ],
+  "answer_index": 1,
+  "context": "Lo proyectaron Renzo Piano y Richard Rogers sacando fuera las instalaciones para dejar diáfano el interior. Cada color identifica una función: azul aire, verde agua, amarillo electricidad.",
+  "difficulty": "medium",
+  "question_en": "Which Paris building, completed in 1977, displays its pipes and escalators in colour on the outside?",
+  "options_en": [
+   "The Palais Garnier",
+   "The Pompidou Centre",
+   "La Villette",
+   "The Arab World Institute"
+  ],
+  "context_en": "Renzo Piano and Richard Rogers designed it by moving the services outside to leave the interior open. Each colour marks a function: blue for air, green for water, yellow for electricity."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor español fue el máximo representante del informalismo y fundó una fundación con su nombre en Barcelona?",
+  "options": [
+   "Antonio Saura",
+   "Antoni Tàpies",
+   "Manolo Millares",
+   "Rafael Canogar"
+  ],
+  "answer_index": 1,
+  "context": "Incorporaba polvo de mármol, arena, trapos y arañazos a sus cuadros de materia. La fundación ocupa un edificio modernista de Domènech i Montaner coronado por una maraña de alambre.",
+  "difficulty": "medium",
+  "question_en": "Which Spanish painter was the leading figure of Informalism and founded a foundation bearing his name in Barcelona?",
+  "options_en": [
+   "Antonio Saura",
+   "Antoni Tàpies",
+   "Manolo Millares",
+   "Rafael Canogar"
+  ],
+  "context_en": "He worked marble dust, sand, rags and scratches into his matter paintings. The foundation occupies a modernista building by Domènech i Montaner crowned with a tangle of wire."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor valenciano es célebre por sus escenas de playa bañadas por la luz del Mediterráneo?",
+  "options": [
+   "Ignacio Zuloaga",
+   "Joaquín Sorolla",
+   "Ramón Casas",
+   "Santiago Rusiñol"
+  ],
+  "answer_index": 1,
+  "context": "Pintaba al aire libre y a gran formato, a menudo con el lienzo clavado en la arena. Su casa-museo de Madrid conserva el estudio y el jardín que él mismo diseñó.",
+  "difficulty": "medium",
+  "question_en": "Which painter from Valencia is famous for beach scenes bathed in Mediterranean light?",
+  "options_en": [
+   "Ignacio Zuloaga",
+   "Joaquín Sorolla",
+   "Ramón Casas",
+   "Santiago Rusiñol"
+  ],
+  "context_en": "He painted outdoors on a large scale, often with the canvas staked into the sand. His house-museum in Madrid preserves the studio and the garden he designed himself."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué movimiento artístico de los años sesenta redujo la obra a formas geométricas simples y repetidas?",
+  "options": [
+   "El expresionismo abstracto",
+   "El minimalismo",
+   "El neoexpresionismo",
+   "El arte conceptual"
+  ],
+  "answer_index": 1,
+  "context": "Donald Judd fabricaba cajas metálicas idénticas y rechazaba que su trabajo fuera escultura. \"Lo que ves es lo que ves\", resumió Frank Stella.",
+  "difficulty": "medium",
+  "question_en": "Which 1960s art movement reduced the work to simple, repeated geometric forms?",
+  "options_en": [
+   "Abstract Expressionism",
+   "Minimalism",
+   "Neo-Expressionism",
+   "Conceptual art"
+  ],
+  "context_en": "Donald Judd made identical metal boxes and denied his work was sculpture. \"What you see is what you see\", Frank Stella summed up."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintora brasileña fue una figura central del modernismo de su país con obras como \"Abaporu\"?",
+  "options": [
+   "Anita Malfatti",
+   "Tarsila do Amaral",
+   "Lygia Clark",
+   "Beatriz Milhazes"
+  ],
+  "answer_index": 1,
+  "context": "El cuadro, de 1928, inspiró el Manifiesto Antropófago, que proponía \"devorar\" la cultura europea para crear una brasileña. Se vendió en 1995 por la cifra más alta pagada por una obra brasileña.",
+  "difficulty": "medium",
+  "question_en": "Which Brazilian painter was a central figure of her country's modernism with works such as \"Abaporu\"?",
+  "options_en": [
+   "Anita Malfatti",
+   "Tarsila do Amaral",
+   "Lygia Clark",
+   "Beatriz Milhazes"
+  ],
+  "context_en": "The 1928 painting inspired the Cannibalist Manifesto, which proposed \"devouring\" European culture to create a Brazilian one. In 1995 it sold for the highest price ever paid for a Brazilian work."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor británico contemporáneo, afincado en California, es célebre por sus cuadros de piscinas?",
+  "options": [
+   "Lucian Freud",
+   "David Hockney",
+   "Francis Bacon",
+   "Peter Blake"
+  ],
+  "answer_index": 1,
+  "context": "\"A Bigger Splash\", de 1967, captura el instante posterior a un salto que no vemos. Ya octogenario, empezó a dibujar los paisajes de Yorkshire en un iPad.",
+  "difficulty": "medium",
+  "question_en": "Which contemporary British painter, based in California, is famous for his swimming pool paintings?",
+  "options_en": [
+   "Lucian Freud",
+   "David Hockney",
+   "Francis Bacon",
+   "Peter Blake"
+  ],
+  "context_en": "\"A Bigger Splash\", from 1967, captures the instant after a dive we never see. In his eighties he began drawing Yorkshire landscapes on an iPad."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué disciplina artística consiste en una acción del propio artista ante un público, sin objeto que la sobreviva?",
+  "options": [
+   "La instalación",
+   "La performance",
+   "El videoarte",
+   "El land art"
+  ],
+  "answer_index": 1,
+  "context": "Marina Abramović permaneció 736 horas sentada frente a desconocidos en el MoMA en 2010. Al no dejar obra física, se documenta con fotografías, vídeo y testimonios.",
+  "difficulty": "medium",
+  "question_en": "Which artistic discipline consists of an action by the artist before an audience, leaving no object behind?",
+  "options_en": [
+   "Installation",
+   "Performance",
+   "Video art",
+   "Land art"
+  ],
+  "context_en": "Marina Abramović sat facing strangers for 736 hours at MoMA in 2010. Since it leaves no physical work, it is documented with photographs, video and accounts."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor español del siglo XVII, nacido en Játiva pero afincado en Nápoles, fue apodado \"lo Spagnoletto\"?",
+  "options": [
+   "José de Ribera",
+   "Luis Tristán",
+   "Juan Bautista Maíno",
+   "Antonio de Pereda"
+  ],
+  "answer_index": 0,
+  "context": "Trabajó toda su carrera para los virreyes españoles de Nápoles. Su tenebrismo llevó al lienzo mártires y filósofos con una crudeza anatómica poco habitual.",
+  "difficulty": "medium",
+  "question_en": "Which 17th-century Spanish painter, born in Xàtiva but settled in Naples, was nicknamed \"lo Spagnoletto\"?",
+  "options_en": [
+   "José de Ribera",
+   "Luis Tristán",
+   "Juan Bautista Maíno",
+   "Antonio de Pereda"
+  ],
+  "context_en": "He worked his whole career for the Spanish viceroys of Naples. His tenebrism brought martyrs and philosophers to canvas with unusual anatomical rawness."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor irlandés-británico deformó rostros y cuerpos en trípticos como sus estudios sobre el papa Inocencio X?",
+  "options": [
+   "Lucian Freud",
+   "Francis Bacon",
+   "Frank Auerbach",
+   "Graham Sutherland"
+  ],
+  "answer_index": 1,
+  "context": "Nunca pintó del natural: trabajaba con fotografías y recortes acumulados en un estudio caótico de Londres, que se trasladó pieza a pieza a un museo de Dublín.",
+  "difficulty": "medium",
+  "question_en": "Which Irish-British painter distorted faces and bodies in triptychs such as his studies after Pope Innocent X?",
+  "options_en": [
+   "Lucian Freud",
+   "Francis Bacon",
+   "Frank Auerbach",
+   "Graham Sutherland"
+  ],
+  "context_en": "He never painted from life: he worked from photographs and clippings piled up in a chaotic London studio, later moved piece by piece to a museum in Dublin."
+ },
+ {
+  "category": "arte",
+  "question": "¿Cómo se llama el movimiento artístico que interviene directamente en el paisaje con obras a gran escala?",
+  "options": [
+   "El arte povera",
+   "El land art",
+   "El hiperrealismo",
+   "El arte cinético"
+  ],
+  "answer_index": 1,
+  "context": "El \"Spiral Jetty\" de Robert Smithson, una espiral de roca de 450 metros en el Gran Lago Salado, es su obra más célebre. Muchas de estas piezas están pensadas para erosionarse.",
+  "difficulty": "medium",
+  "question_en": "What is the art movement that intervenes directly in the landscape with large-scale works called?",
+  "options_en": [
+   "Arte povera",
+   "Land art",
+   "Hyperrealism",
+   "Kinetic art"
+  ],
+  "context_en": "Robert Smithson's \"Spiral Jetty\", a 450-metre rock spiral in the Great Salt Lake, is its most famous work. Many of these pieces are meant to erode."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué palacio imperial chino de Pekín, con casi mil edificios, fue residencia de las dinastías Ming y Qing?",
+  "options": [
+   "El Palacio de Verano",
+   "La Ciudad Prohibida",
+   "El Templo del Cielo",
+   "El Palacio de Potala"
+  ],
+  "answer_index": 1,
+  "context": "Se construyó entre 1406 y 1420 y ninguna persona común pudo entrar durante cinco siglos. Hoy es el Museo del Palacio y uno de los conjuntos de madera antigua más grandes del mundo.",
+  "difficulty": "medium",
+  "question_en": "Which imperial Chinese palace in Beijing, with almost a thousand buildings, was home to the Ming and Qing dynasties?",
+  "options_en": [
+   "The Summer Palace",
+   "The Forbidden City",
+   "The Temple of Heaven",
+   "The Potala Palace"
+  ],
+  "context_en": "It was built between 1406 and 1420 and no commoner could enter for five centuries. Today it is the Palace Museum and one of the largest ancient wooden complexes in the world."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor y arquitecto italiano proyectó la escalinata de la plaza de España de Roma y numerosas fuentes barrocas?",
+  "options": [
+   "Francesco Borromini",
+   "Francesco De Sanctis",
+   "Carlo Maderno",
+   "Pietro da Cortona"
+  ],
+  "answer_index": 1,
+  "context": "La escalinata, de 1725, salva el desnivel entre la plaza y la iglesia de Trinità dei Monti con 135 peldaños. En su base está la Barcaccia, fuente de Pietro Bernini.",
+  "difficulty": "hard",
+  "question_en": "Which Italian architect designed the Spanish Steps in Rome?",
+  "options_en": [
+   "Francesco Borromini",
+   "Francesco De Sanctis",
+   "Carlo Maderno",
+   "Pietro da Cortona"
+  ],
+  "context_en": "The staircase, from 1725, bridges the slope between the square and the church of Trinità dei Monti with 135 steps. At its foot stands the Barcaccia, a fountain by Pietro Bernini."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué arquitecto barroco italiano, rival de Bernini, proyectó la iglesia de San Carlo alle Quattro Fontane?",
+  "options": [
+   "Francesco Borromini",
+   "Carlo Rainaldi",
+   "Guarino Guarini",
+   "Baldassare Longhena"
+  ],
+  "answer_index": 0,
+  "context": "Sus plantas ovaladas y sus muros ondulantes rompieron con la geometría clásica. De carácter atormentado, se suicidó en Roma en 1667 arrojándose sobre su espada.",
+  "difficulty": "hard",
+  "question_en": "Which Italian Baroque architect, Bernini's rival, designed the church of San Carlo alle Quattro Fontane?",
+  "options_en": [
+   "Francesco Borromini",
+   "Carlo Rainaldi",
+   "Guarino Guarini",
+   "Baldassare Longhena"
+  ],
+  "context_en": "His oval plans and undulating walls broke with classical geometry. A tormented man, he took his own life in Rome in 1667 by falling on his sword."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor renacentista italiano pintó \"Cristo muerto\" con un escorzo radical de los pies hacia el espectador?",
+  "options": [
+   "Andrea Mantegna",
+   "Cosmè Tura",
+   "Antonello da Messina",
+   "Carlo Crivelli"
+  ],
+  "answer_index": 0,
+  "context": "Pintado hacia 1480, se conserva en la Pinacoteca de Brera de Milán. Su dominio de la perspectiva y su gusto por la antigüedad romana marcaron la escuela del norte de Italia.",
+  "difficulty": "hard",
+  "question_en": "Which Italian Renaissance painter painted \"The Lamentation of Christ\" with a radical foreshortening of the feet towards the viewer?",
+  "options_en": [
+   "Andrea Mantegna",
+   "Cosmè Tura",
+   "Antonello da Messina",
+   "Carlo Crivelli"
+  ],
+  "context_en": "Painted around 1480, it hangs in the Brera Gallery in Milan. His command of perspective and taste for Roman antiquity shaped the school of northern Italy."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintora italiana del Renacimiento fue dama de compañía de Isabel de Valois y retratista en la corte de Felipe II?",
+  "options": [
+   "Properzia de' Rossi",
+   "Sofonisba Anguissola",
+   "Marietta Robusti",
+   "Fede Galizia"
+  ],
+  "answer_index": 1,
+  "context": "Nacida en Cremona hacia 1535, pasó catorce años en la corte española. Van Dyck la visitó casi centenaria en Palermo y dijo haber aprendido más de ella que de muchos maestros.",
+  "difficulty": "hard",
+  "question_en": "Which Italian Renaissance painter was lady-in-waiting to Elisabeth of Valois and a portraitist at the court of Philip II?",
+  "options_en": [
+   "Properzia de' Rossi",
+   "Sofonisba Anguissola",
+   "Marietta Robusti",
+   "Fede Galizia"
+  ],
+  "context_en": "Born in Cremona around 1535, she spent fourteen years at the Spanish court. Van Dyck visited her in Palermo when she was almost a hundred and said he learned more from her than from many masters."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué escultor español del siglo XX, hermano de una saga de artistas, creó las \"Cajas metafísicas\" y teorizó sobre el vacío?",
+  "options": [
+   "Julio González",
+   "Jorge Oteiza",
+   "Pablo Gargallo",
+   "Ángel Ferrant"
+  ],
+  "answer_index": 1,
+  "context": "Concluyó en 1959 su Propósito Experimental y abandonó la escultura al considerar agotada la investigación del vacío. Publicó ensayos polémicos sobre el arte y la identidad vasca.",
+  "difficulty": "hard",
+  "question_en": "Which 20th-century Basque sculptor created the \"Metaphysical Boxes\" and theorised about emptiness?",
+  "options_en": [
+   "Julio González",
+   "Jorge Oteiza",
+   "Pablo Gargallo",
+   "Ángel Ferrant"
+  ],
+  "context_en": "He concluded his Experimental Purpose in 1959 and gave up sculpture, considering his research into emptiness complete. He published polemical essays on art and Basque identity."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué artista aragonés fue pionero en la escultura con hierro soldado y maestro de Picasso en esa técnica?",
+  "options": [
+   "Pablo Gargallo",
+   "Julio González",
+   "Honorio García Condoy",
+   "Pablo Serrano"
+  ],
+  "answer_index": 1,
+  "context": "Aprendió a soldar trabajando en la fábrica Renault durante la Primera Guerra Mundial. Enseñó la técnica a Picasso hacia 1928, abriendo un camino que seguirían Calder y Chillida.",
+  "difficulty": "hard",
+  "question_en": "Which Spanish artist pioneered sculpture in welded iron and taught Picasso the technique?",
+  "options_en": [
+   "Pablo Gargallo",
+   "Julio González",
+   "Honorio García Condoy",
+   "Pablo Serrano"
+  ],
+  "context_en": "He learned to weld while working at the Renault factory during the First World War. He taught the technique to Picasso around 1928, opening a path later followed by Calder and Chillida."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué escultor estadounidense inventó los móviles, esculturas suspendidas que se mueven con el aire?",
+  "options": [
+   "David Smith",
+   "Alexander Calder",
+   "Isamu Noguchi",
+   "Richard Serra"
+  ],
+  "answer_index": 1,
+  "context": "Duchamp bautizó las piezas como \"mobiles\" en 1931, y Arp llamó \"stabiles\" a las fijas. Formado como ingeniero mecánico, empezó construyendo un circo en miniatura con alambre.",
+  "difficulty": "hard",
+  "question_en": "Which American sculptor invented mobiles, hanging sculptures that move with the air?",
+  "options_en": [
+   "David Smith",
+   "Alexander Calder",
+   "Isamu Noguchi",
+   "Richard Serra"
+  ],
+  "context_en": "Duchamp named the pieces \"mobiles\" in 1931, and Arp called the fixed ones \"stabiles\". Trained as a mechanical engineer, he began by building a miniature circus out of wire."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué fotógrafa estadounidense retrató la Gran Depresión con la imagen conocida como \"Madre migrante\"?",
+  "options": [
+   "Berenice Abbott",
+   "Dorothea Lange",
+   "Margaret Bourke-White",
+   "Diane Arbus"
+  ],
+  "answer_index": 1,
+  "context": "La tomó en 1936 en un campamento de recolectores de guisantes de California, trabajando para la Farm Security Administration. La mujer retratada, Florence Owens Thompson, no fue identificada hasta 1978.",
+  "difficulty": "hard",
+  "question_en": "Which American photographer documented the Great Depression with the image known as \"Migrant Mother\"?",
+  "options_en": [
+   "Berenice Abbott",
+   "Dorothea Lange",
+   "Margaret Bourke-White",
+   "Diane Arbus"
+  ],
+  "context_en": "She took it in 1936 at a Californian pea-pickers' camp while working for the Farm Security Administration. The woman portrayed, Florence Owens Thompson, was not identified until 1978."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué arquitecto japonés diseñó el Museo de Arte Contemporáneo del Siglo XXI de Kanazawa junto a Ryue Nishizawa, en el estudio SANAA?",
+  "options": [
+   "Kazuyo Sejima",
+   "Arata Isozaki",
+   "Fumihiko Maki",
+   "Shigeru Ban"
+  ],
+  "answer_index": 0,
+  "context": "SANAA recibió el Pritzker en 2010 por una arquitectura ligera, transparente y de curvas suaves. Sejima fue la segunda mujer en obtener el premio, seis años después de Zaha Hadid.",
+  "difficulty": "hard",
+  "question_en": "Which Japanese architect designed Kanazawa's 21st Century Museum of Contemporary Art with Ryue Nishizawa at the SANAA studio?",
+  "options_en": [
+   "Kazuyo Sejima",
+   "Arata Isozaki",
+   "Fumihiko Maki",
+   "Shigeru Ban"
+  ],
+  "context_en": "SANAA received the Pritzker Prize in 2010 for a light, transparent architecture of gentle curves. Sejima was the second woman to win it, six years after Zaha Hadid."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué artista estadounidense, muerto a los 27 años, pasó del grafiti firmado SAMO a la pintura neoexpresionista?",
+  "options": [
+   "Keith Haring",
+   "Jean-Michel Basquiat",
+   "Kenny Scharf",
+   "Julian Schnabel"
+  ],
+  "answer_index": 1,
+  "context": "De padre haitiano y madre puertorriqueña, empezó pintando frases en el bajo Manhattan a los diecisiete años. Colaboró con Warhol y sus cuadros baten hoy récords de subasta.",
+  "difficulty": "hard",
+  "question_en": "Which American artist, dead at 27, went from graffiti signed SAMO to Neo-Expressionist painting?",
+  "options_en": [
+   "Keith Haring",
+   "Jean-Michel Basquiat",
+   "Kenny Scharf",
+   "Julian Schnabel"
+  ],
+  "context_en": "Of Haitian and Puerto Rican descent, he began painting phrases in lower Manhattan at seventeen. He collaborated with Warhol and his canvases now break auction records."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué monasterio medieval francés, construido sobre un islote rocoso, queda rodeado por el mar en las mareas altas?",
+  "options": [
+   "Mont Saint-Michel",
+   "La abadía de Cluny",
+   "Fontevraud",
+   "Le Thoronet"
+  ],
+  "answer_index": 0,
+  "context": "La abadía gótica corona una roca de 80 metros en la bahía normanda, donde se dan las mareas más amplias de Europa continental. Fue prisión durante la Revolución.",
+  "difficulty": "hard",
+  "question_en": "Which medieval French monastery, built on a rocky islet, is surrounded by the sea at high tide?",
+  "options_en": [
+   "Mont Saint-Michel",
+   "Cluny Abbey",
+   "Fontevraud",
+   "Le Thoronet"
+  ],
+  "context_en": "The Gothic abbey crowns an 80-metre rock in the Norman bay, where the widest tides in continental Europe occur. It served as a prison during the Revolution."
+ },
+ {
+  "category": "arte",
+  "question": "¿Qué pintor holandés del Siglo de Oro fue también marchante y murió arruinado, dejando solo 35 cuadros conocidos?",
+  "options": [
+   "Jan Vermeer",
+   "Frans Hals",
+   "Jacob van Ruisdael",
+   "Gerrit Dou"
+  ],
+  "answer_index": 0,
+  "context": "Trabajaba muy despacio, con pigmentos carísimos como el lapislázuli, y vendía sobre todo a un único coleccionista de Delft. Cayó en el olvido hasta que la crítica lo redescubrió en 1866.",
+  "difficulty": "hard",
+  "question_en": "Which Dutch Golden Age painter was also an art dealer and died in debt, leaving only 35 known paintings?",
+  "options_en": [
+   "Jan Vermeer",
+   "Frans Hals",
+   "Jacob van Ruisdael",
+   "Gerrit Dou"
+  ],
+  "context_en": "He worked very slowly, with costly pigments such as lapis lazuli, and sold mainly to a single collector in Delft. He fell into obscurity until critics rediscovered him in 1866."
+ }
+]
