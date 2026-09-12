@@ -341,45 +341,54 @@ Rama `feature/premium-pro`. Actualizado el 2026-09-12.
 
 ### Pendientes que bloquean el rollout completo
 
-1. **No aplicar todavía ningún cambio que altere Aventura para la 2.1.0.**
-   `supabase/adventure_400_rollout.sql`, `supabase/pro_question_catalog_v1.sql`,
-   `supabase/pro_questions_seed_v1.sql` y `supabase/pro_adventure_enforcement.sql`
-   viven fuera de `migrations/` deliberadamente. Se ejecutarán a mano, en el orden
-   documentado, cuando la 2.2.0 esté lista para su rollout.
-2. **Completar y revisar el catálogo bilingüe de 2.000 preguntas PRO** en
-   `data/questions-pro-v1-2000.json`; después ejecutar `npm run build:questions:pro`.
-3. **Aplicar las migraciones base de PRO cuando corresponda**, en orden: `premium_pro_v1`,
-   `pro_exam_v1`, `pro_review_v1`, `pro_stats_v1`, `pro_perks_v1`. Todas son
-   aditivas e idempotentes, pero las cuatro últimas dependen de `is_premium()`,
-   que crea la primera.
+Revisado el 2026-09-12. Todo lo de servidor y tienda está hecho y verificado; lo
+que queda es **contenido** (el catálogo PRO) y los pasos de rollout que dependen de él.
 
-   ⚠️ **`supabase/pro_adventure_enforcement.sql` NO se aplica todavía**, y por
-   eso vive fuera de `migrations/`: activa el candado de servidor sobre las
-   recompensas de Aventura, y mientras haya gente en la 2.1.x su app no sabe
-   pedir el grandfathering, así que a un usuario por el nivel 51 con la app
-   antigua le fallaría la recompensa de un nivel que para él siempre ha sido
-   gratis. Se aplica a mano cuando la 2.2.0 lleve tiempo publicada.
+**Hecho y verificado**
 
-   Las tres migraciones de Aventura de la 2.1.0 (`20260829*`) están aplicadas en
-   el servidor pero **no registradas** en el historial, porque se aplicaron a
-   mano. Antes de nada, marcarlas como aplicadas para que `db push` no intente
-   repetirlas:
+- Migraciones `premium_pro_v1`, `pro_exam_v1`, `pro_review_v1`, `pro_stats_v1` y
+  `pro_perks_v1`: aplicadas y registradas en el historial de producción (las tres
+  `20260829*` de Aventura también, no hace falta `migration repair`).
+- Webhook `revenuecat-webhook`: desplegado, secreto compartido en Supabase y en
+  RevenueCat, y consulta la API v1 de RevenueCat (`REVENUECAT_API_KEY`, clave
+  `supabase-webhook`) para resolver el tier real. Verificado con compras sandbox
+  (lifetime y anual con trial).
+- Productos en ASC y RevenueCat: `cg_pro_monthly`, `cg_pro_annual`, `cg_pro_lifetime`;
+  entitlement `pro`; offering `default` current; IAP key y ASC API key válidas.
+- `EXPO_PUBLIC_REVENUECAT_IOS_KEY` en el entorno `production` de EAS (lo usan
+  `testflight` y `production`). Android aparcado: no hay clave Android a propósito.
+- Build 92 (TestFlight) con `react-native-purchases` y el paywall completo; compra
+  sandbox probada de extremo a extremo.
+- Páginas de términos y privacidad publicadas con la sección de suscripción.
+- Anuncios: perfil `production` en `live` con todos los placements; "Sin anuncios" es
+  beneficio PRO (ver `docs/ads-inhouse.md`).
 
-   ```
-   npx supabase migration repair --status applied 20260829010000 20260829020000 20260829030000
-   ```
-4. ~~Desplegar el webhook~~ Hecho el 2026-09-12: desplegado, secreto en Supabase y
-   webhook dado de alta en RevenueCat. Verificado con compra sandbox real (lifetime y
-   anual con trial). El webhook consulta el estado real del cliente en la API v1 de
-   RevenueCat (`REVENUECAT_API_KEY`, clave secreta `supabase-webhook`) en cada evento,
-   así lifetime + suscripción a la vez no se pisan; sin clave cae a las guardas por evento.
-5. **Crear los productos** en App Store Connect y la oferta en RevenueCat.
-6. **Poner las claves** `EXPO_PUBLIC_REVENUECAT_IOS_KEY` / `_ANDROID_KEY` en EAS.
-7. **Build de EAS nuevo**: `react-native-purchases` es un módulo nativo. Hasta
-   entonces la app funciona entera, pero en modo gratuito.
-8. ~~Publicar la página de términos~~ Hecho el 2026-09-12 (privacidad y términos actualizados con CG PRO y sin restos de AppsFlyer/ATT).
+**Bloqueante: el catálogo PRO**
 
----
+1. Escribir y revisar el catálogo bilingüe de **2.000 preguntas PRO** en
+   `data/questions-pro-v1-2000.json` (estructura en `data/README-pro-questions.md`) y
+   ejecutar `npm run build:questions:pro`, que valida y genera
+   `supabase/pro_questions_seed_v1.sql`.
+2. Generar el manifiesto de Aventura 201-400 (`npm run build:adventure:400`).
+3. Aplicar a mano, en este orden y solo cuando la 2.2.0 esté lista para enviar:
+   `supabase/pro_question_catalog_v1.sql` → `supabase/pro_questions_seed_v1.sql` →
+   `supabase/adventure_400_rollout.sql`. Viven fuera de `migrations/` a propósito;
+   nunca con `db push`. Las builds 2.1.x siguen operando dentro de 1-200.
+4. `supabase/pro_adventure_enforcement.sql` (candado de servidor sobre las recompensas
+   de Aventura) se aplica **después**, cuando la 2.2.0 lleve tiempo publicada: mientras
+   haya gente en la 2.1.x su app no sabe pedir el grandfathering. Hoy no hay ningún
+   usuario por encima del nivel 21, así que el riesgo real es mínimo.
+
+**Pendientes que no son de código (los hace Pablo antes de enviar)**
+
+- ASC: captura de revisión en los tres productos (→ "Ready to Submit"), adjuntar las
+  suscripciones a la versión 2.2.0, App Privacy (Tracking: No; Purchase History
+  añadido), Age Rating con compras, inscripción en el Small Business Program.
+- In-House Ads: campañas reales en el panel (hoy solo `Prueba — …`) y la checklist de
+  dispositivo de `docs/ads-inhouse.md` con una cuenta que no sea PRO.
+- Capturas nuevas para la ficha (paywall, Sala PRO, mapa del viaje, estadísticas).
+- Merge a `main`, `eas build --profile production` (autoIncrement → commitear
+  `app.json`), `eas submit`.
 
 ## 7. Expectativas realistas
 
