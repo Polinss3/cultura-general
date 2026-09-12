@@ -1,0 +1,1073 @@
+[
+ {
+  "category": "deportes",
+  "question": "¿Cuántas ruedas tiene una bicicleta de carreras?",
+  "options": [
+   "Una",
+   "Dos",
+   "Tres",
+   "Cuatro"
+  ],
+  "answer_index": 1,
+  "context": "La UCI limita el peso mínimo de una bicicleta de competición a 6,8 kilos, una norma pensada para evitar cuadros demasiado frágiles.",
+  "difficulty": "easy",
+  "question_en": "How many wheels does a racing bicycle have?",
+  "options_en": [
+   "One",
+   "Two",
+   "Three",
+   "Four"
+  ],
+  "context_en": "The UCI sets a minimum weight of 6.8 kilos for a racing bicycle, a rule intended to prevent overly fragile frames."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Con qué parte del cuerpo está prohibido tocar el balón a los jugadores de campo en fútbol?",
+  "options": [
+   "El pecho",
+   "La cabeza",
+   "Las manos y los brazos",
+   "Los muslos"
+  ],
+  "answer_index": 2,
+  "context": "Solo el portero puede usarlas, y únicamente dentro de su área. La regla distingue entre tocar el balón de forma deliberada y que este golpee el brazo de manera fortuita.",
+  "difficulty": "easy",
+  "question_en": "Which part of the body may outfield football players not use to touch the ball?",
+  "options_en": [
+   "The chest",
+   "The head",
+   "The hands and arms",
+   "The thighs"
+  ],
+  "context_en": "Only the goalkeeper may use them, and only inside their own area. The rule distinguishes deliberate handling from the ball accidentally striking an arm."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cómo se llama la carrera a pie de larga distancia por montaña y senderos?",
+  "options": [
+   "El trail running",
+   "El sprint",
+   "La marcha",
+   "El parkour"
+  ],
+  "answer_index": 0,
+  "context": "Las pruebas más duras, como el Ultra-Trail del Mont Blanc, superan los 170 kilómetros y 10.000 metros de desnivel acumulado.",
+  "difficulty": "easy",
+  "question_en": "What is long-distance running over mountains and trails called?",
+  "options_en": [
+   "Trail running",
+   "Sprinting",
+   "Race walking",
+   "Parkour"
+  ],
+  "context_en": "The hardest races, such as the Ultra-Trail du Mont-Blanc, exceed 170 kilometres and 10,000 metres of cumulative climbing."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué se necesita para ganar un punto en voleibol cuando el balón toca el suelo?",
+  "options": [
+   "Que caiga en el campo contrario",
+   "Que toque la red",
+   "Que salga fuera",
+   "Que lo toque el árbitro"
+  ],
+  "answer_index": 0,
+  "context": "Desde 1999 se puntúa en cada jugada, se saque o se reciba. Antes solo sumaba puntos el equipo que tenía el saque, y los partidos podían eternizarse.",
+  "difficulty": "easy",
+  "question_en": "What is needed to win a point in volleyball when the ball hits the floor?",
+  "options_en": [
+   "That it lands in the opponents' court",
+   "That it touches the net",
+   "That it goes out",
+   "That the referee touches it"
+  ],
+  "context_en": "Since 1999 every rally scores, whether serving or receiving. Before that only the serving team could score, and matches could drag on endlessly."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué deporte practican los equipos que compiten en la NFL?",
+  "options": [
+   "El béisbol",
+   "El fútbol americano",
+   "El baloncesto",
+   "El hockey hielo"
+  ],
+  "answer_index": 1,
+  "context": "Su final, la Super Bowl, es el programa de televisión más visto cada año en Estados Unidos. La liga se fundó en 1920 con once equipos.",
+  "difficulty": "easy",
+  "question_en": "Which sport do the teams competing in the NFL play?",
+  "options_en": [
+   "Baseball",
+   "American football",
+   "Basketball",
+   "Ice hockey"
+  ],
+  "context_en": "Its final, the Super Bowl, is the most watched television programme in the United States every year. The league was founded in 1920 with eleven teams."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué implemento se usa para golpear la pelota en el tenis de mesa?",
+  "options": [
+   "Una raqueta de cuerdas",
+   "Una pala con goma",
+   "Un bate",
+   "Un stick"
+  ],
+  "answer_index": 1,
+  "context": "Las gomas de cada cara suelen ser de colores distintos, rojo y negro, para que el rival vea qué efecto puede aplicar el jugador. China domina el deporte desde los años sesenta.",
+  "difficulty": "easy",
+  "question_en": "What implement is used to hit the ball in table tennis?",
+  "options_en": [
+   "A strung racket",
+   "A rubber-covered paddle",
+   "A bat",
+   "A stick"
+  ],
+  "context_en": "The rubbers on each side are usually different colours, red and black, so the opponent can see what spin the player may apply. China has dominated the sport since the 1960s."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué hace un portero de fútbol cuando detiene un disparo a puerta?",
+  "options": [
+   "Una parada",
+   "Un saque de esquina",
+   "Un fuera de juego",
+   "Un penalti"
+  ],
+  "answer_index": 0,
+  "context": "Es la única posición que ha tenido cambios de reglas propios: desde 1992 no puede coger con las manos un pase con el pie de un compañero.",
+  "difficulty": "easy",
+  "question_en": "What does a football goalkeeper make when they stop a shot on goal?",
+  "options_en": [
+   "A save",
+   "A corner kick",
+   "An offside",
+   "A penalty"
+  ],
+  "context_en": "It is the only position with rule changes of its own: since 1992 they cannot pick up a deliberate back-pass played with a teammate's foot."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué deporte se compite escalando paredes con presas de colores?",
+  "options": [
+   "La escalada deportiva",
+   "El alpinismo",
+   "El senderismo",
+   "El espeleísmo"
+  ],
+  "answer_index": 0,
+  "context": "Es olímpica desde Tokio 2020 y combina las modalidades de velocidad, bloque y dificultad. Las presas de distintos colores marcan las vías o \"problemas\" de cada nivel.",
+  "difficulty": "easy",
+  "question_en": "In which sport do athletes climb walls fitted with coloured holds?",
+  "options_en": [
+   "Sport climbing",
+   "Mountaineering",
+   "Hiking",
+   "Caving"
+  ],
+  "context_en": "It has been Olympic since Tokyo 2020 and combines speed, bouldering and lead disciplines. Holds of different colours mark the routes or \"problems\" of each grade."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuántas patas tiene el caballo que los jinetes saltan en las pruebas de hípica de salto?",
+  "options": [
+   "Dos",
+   "Cuatro",
+   "Seis",
+   "Ocho"
+  ],
+  "answer_index": 1,
+  "context": "En salto de obstáculos se penaliza derribar barras, negarse a saltar o exceder el tiempo. La hípica es el único deporte olímpico en el que hombres y mujeres compiten juntos.",
+  "difficulty": "easy",
+  "question_en": "How many legs does the horse that riders use in show jumping have?",
+  "options_en": [
+   "Two",
+   "Four",
+   "Six",
+   "Eight"
+  ],
+  "context_en": "Show jumping penalises knocking down poles, refusals and exceeding the time allowed. Equestrian is the only Olympic sport where men and women compete together."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué color de bandera se agita en automovilismo para señalar el final de una carrera?",
+  "options": [
+   "Roja",
+   "Amarilla",
+   "A cuadros",
+   "Azul"
+  ],
+  "answer_index": 2,
+  "context": "La roja detiene la carrera, la amarilla avisa de peligro y prohíbe adelantar, y la azul indica a un piloto que va a ser doblado.",
+  "difficulty": "easy",
+  "question_en": "Which flag is waved in motor racing to signal the end of a race?",
+  "options_en": [
+   "Red",
+   "Yellow",
+   "Chequered",
+   "Blue"
+  ],
+  "context_en": "Red stops the race, yellow warns of danger and bans overtaking, and blue tells a driver they are about to be lapped."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué deporte de combate olímpico usa el término \"ippon\" para una victoria inmediata?",
+  "options": [
+   "El boxeo",
+   "El judo",
+   "La esgrima",
+   "La lucha"
+  ],
+  "answer_index": 1,
+  "context": "Se concede al proyectar al rival de espaldas con fuerza y control, o al inmovilizarlo veinte segundos. También existe en kárate con otro significado.",
+  "difficulty": "easy",
+  "question_en": "Which Olympic combat sport uses the term \"ippon\" for an immediate victory?",
+  "options_en": [
+   "Boxing",
+   "Judo",
+   "Fencing",
+   "Wrestling"
+  ],
+  "context_en": "It is awarded for throwing the opponent onto their back with force and control, or pinning them for twenty seconds. It also exists in karate with a different meaning."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué competición europea de clubes de fútbol es el segundo torneo continental por detrás de la Champions?",
+  "options": [
+   "La Europa League",
+   "La Supercopa",
+   "La Conference League",
+   "La Recopa"
+  ],
+  "answer_index": 0,
+  "context": "Se llamaba Copa de la UEFA hasta 2009. El Sevilla la ha ganado siete veces, más que ningún otro club de Europa.",
+  "difficulty": "medium",
+  "question_en": "Which European club football competition is the second continental tournament behind the Champions League?",
+  "options_en": [
+   "The Europa League",
+   "The Super Cup",
+   "The Conference League",
+   "The Cup Winners' Cup"
+  ],
+  "context_en": "It was called the UEFA Cup until 2009. Sevilla have won it seven times, more than any other club in Europe."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Hasta cuántos puntos se juega un set normal de voleibol?",
+  "options": [
+   "15",
+   "21",
+   "25",
+   "30"
+  ],
+  "answer_index": 2,
+  "context": "Siempre con dos puntos de ventaja, así que un set puede alargarse indefinidamente. El quinto set, de desempate, se juega solo a quince.",
+  "difficulty": "medium",
+  "question_en": "How many points is a standard volleyball set played to?",
+  "options_en": [
+   "15",
+   "21",
+   "25",
+   "30"
+  ],
+  "context_en": "Always with a two-point margin, so a set can go on indefinitely. The deciding fifth set is played only to fifteen."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué liga de fútbol inglesa es la máxima categoría desde 1992?",
+  "options": [
+   "La Championship",
+   "La Premier League",
+   "La FA Cup",
+   "La League One"
+  ],
+  "answer_index": 1,
+  "context": "Nació de la escisión de los grandes clubes de la vieja First Division para negociar por su cuenta los derechos televisivos. La Championship es la segunda categoría.",
+  "difficulty": "medium",
+  "question_en": "Which English football league has been the top tier since 1992?",
+  "options_en": [
+   "The Championship",
+   "The Premier League",
+   "The FA Cup",
+   "League One"
+  ],
+  "context_en": "It was created when the big clubs split from the old First Division to negotiate television rights on their own. The Championship is the second tier."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué distancia tiene la prueba de marcha atlética más larga del programa olímpico?",
+  "options": [
+   "10 kilómetros",
+   "20 kilómetros",
+   "35 kilómetros",
+   "50 kilómetros"
+  ],
+  "answer_index": 2,
+  "context": "Sustituyó a la de 50 kilómetros a partir de 2024 para igualar el programa masculino y femenino. La norma exige que un pie mantenga siempre contacto visible con el suelo.",
+  "difficulty": "medium",
+  "question_en": "What is the longest race walking distance on the current Olympic programme?",
+  "options_en": [
+   "10 kilometres",
+   "20 kilometres",
+   "35 kilometres",
+   "50 kilometres"
+  ],
+  "context_en": "It replaced the 50 kilometres from 2024 to equalise the men's and women's programmes. The rules require one foot to keep visible contact with the ground at all times."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué torneo de tenis abre cada año el calendario de Grand Slam?",
+  "options": [
+   "El Abierto de Australia",
+   "Roland Garros",
+   "Wimbledon",
+   "El Abierto de Estados Unidos"
+  ],
+  "answer_index": 0,
+  "context": "Se juega en Melbourne en enero, en pleno verano austral, con temperaturas que a veces superan los 40 grados. Sus pistas principales tienen techo retráctil.",
+  "difficulty": "medium",
+  "question_en": "Which tennis tournament opens the Grand Slam calendar each year?",
+  "options_en": [
+   "The Australian Open",
+   "Roland Garros",
+   "Wimbledon",
+   "The US Open"
+  ],
+  "context_en": "It is played in Melbourne in January, in the southern summer, with temperatures sometimes above 40 degrees. Its main courts have retractable roofs."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué país ha ganado más medallas de oro en gimnasia rítmica olímpica?",
+  "options": [
+   "Rusia",
+   "Ucrania",
+   "Bulgaria",
+   "España"
+  ],
+  "answer_index": 0,
+  "context": "Rusia y la antigua Unión Soviética dominan la disciplina desde su debut olímpico en 1984. España ganó el oro por equipos en Atlanta 1996 con las \"niñas de oro\".",
+  "difficulty": "medium",
+  "question_en": "Which country has won the most Olympic gold medals in rhythmic gymnastics?",
+  "options_en": [
+   "Russia",
+   "Ukraine",
+   "Bulgaria",
+   "Spain"
+  ],
+  "context_en": "Russia and the former Soviet Union have dominated the discipline since its Olympic debut in 1984. Spain won team gold at Atlanta 1996 with the \"golden girls\"."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué deporte se enfrentan un pitcher y un bateador?",
+  "options": [
+   "El críquet",
+   "El béisbol",
+   "El softbol",
+   "El hockey"
+  ],
+  "answer_index": 1,
+  "context": "La distancia entre el montículo del lanzador y el home es de 18,44 metros. Un lanzamiento rápido de Grandes Ligas puede superar los 160 km/h.",
+  "difficulty": "medium",
+  "question_en": "In which sport do a pitcher and a batter face each other?",
+  "options_en": [
+   "Cricket",
+   "Baseball",
+   "Softball",
+   "Hockey"
+  ],
+  "context_en": "The distance from the pitcher's mound to home plate is 18.44 metres. A Major League fastball can exceed 160 km/h."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué estadio se disputó la final de la Copa América de 2021?",
+  "options": [
+   "El Monumental",
+   "El Maracaná",
+   "El Morumbí",
+   "El Centenario"
+  ],
+  "answer_index": 1,
+  "context": "Argentina venció allí a Brasil por 1-0 con gol de Di María. Fue el primer título de Messi con la selección absoluta.",
+  "difficulty": "medium",
+  "question_en": "In which stadium was the 2021 Copa América final played?",
+  "options_en": [
+   "El Monumental",
+   "The Maracanã",
+   "Morumbi",
+   "The Centenario"
+  ],
+  "context_en": "Argentina beat Brazil 1-0 there with a goal by Di María. It was Messi's first senior international trophy."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué se lanza en la prueba atlética de martillo?",
+  "options": [
+   "Una herramienta con mango",
+   "Una bola metálica unida a un cable",
+   "Un disco pesado",
+   "Una jabalina corta"
+  ],
+  "answer_index": 1,
+  "context": "La bola pesa 7,26 kilos, igual que la del peso, y el conjunto mide unos 120 centímetros. El atleta gira tres o cuatro veces sobre sí mismo antes de soltarlo.",
+  "difficulty": "medium",
+  "question_en": "What is thrown in the athletics hammer event?",
+  "options_en": [
+   "A tool with a handle",
+   "A metal ball attached to a wire",
+   "A heavy disc",
+   "A short javelin"
+  ],
+  "context_en": "The ball weighs 7.26 kilos, the same as the shot, and the whole implement is about 120 centimetres long. The athlete spins three or four times before releasing it."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuántos periodos tiene un partido de hockey sobre hielo profesional?",
+  "options": [
+   "Dos",
+   "Tres",
+   "Cuatro",
+   "Cinco"
+  ],
+  "answer_index": 1,
+  "context": "Son tres periodos de veinte minutos de juego efectivo. El hielo se rasca con una máquina Zamboni entre periodo y periodo.",
+  "difficulty": "medium",
+  "question_en": "How many periods does a professional ice hockey game have?",
+  "options_en": [
+   "Two",
+   "Three",
+   "Four",
+   "Five"
+  ],
+  "context_en": "Three periods of twenty minutes of actual play. The ice is resurfaced with a Zamboni machine between periods."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué apodo recibe la selección brasileña de fútbol?",
+  "options": [
+   "La Canarinha",
+   "La Albiceleste",
+   "La Tricolor",
+   "La Roja"
+  ],
+  "answer_index": 0,
+  "context": "Por el color amarillo canario de su camiseta, adoptada en 1954 tras el trauma del Maracanazo. Antes jugaba de blanco.",
+  "difficulty": "medium",
+  "question_en": "What nickname does the Brazilian football team go by?",
+  "options_en": [
+   "A Canarinha",
+   "La Albiceleste",
+   "La Tricolor",
+   "La Roja"
+  ],
+  "context_en": "It comes from the canary yellow of their shirt, adopted in 1954 after the trauma of the Maracanazo. Before that they played in white."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué gimnasta soviética popularizó en 1972 un elemento en barras que después fue prohibido por peligroso?",
+  "options": [
+   "Olga Korbut",
+   "Nelli Kim",
+   "Svetlana Jorkina",
+   "Larisa Latynina"
+  ],
+  "answer_index": 0,
+  "context": "El \"lazo de Korbut\" consistía en ponerse de pie sobre la barra alta y lanzarse hacia atrás. Su carisma en Múnich 1972 disparó la popularidad mundial de la gimnasia.",
+  "difficulty": "hard",
+  "question_en": "Which Soviet gymnast popularised a bars element in 1972 that was later banned as too dangerous?",
+  "options_en": [
+   "Olga Korbut",
+   "Nelli Kim",
+   "Svetlana Khorkina",
+   "Larisa Latynina"
+  ],
+  "context_en": "The \"Korbut flip\" involved standing on the high bar and throwing herself backwards. Her charisma at Munich 1972 sent gymnastics' worldwide popularity soaring."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué atleta etíope ganó el maratón olímpico de Roma en 1960 corriendo descalzo?",
+  "options": [
+   "Abebe Bikila",
+   "Mamo Wolde",
+   "Haile Gebrselassie",
+   "Kenenisa Bekele"
+  ],
+  "answer_index": 0,
+  "context": "No encontró zapatillas cómodas y decidió correr sin ellas. Ganó pasando junto al obelisco de Axum, que Italia había saqueado de Etiopía, y repitió oro en Tokio 1964, ya calzado.",
+  "difficulty": "hard",
+  "question_en": "Which Ethiopian athlete won the 1960 Olympic marathon in Rome running barefoot?",
+  "options_en": [
+   "Abebe Bikila",
+   "Mamo Wolde",
+   "Haile Gebrselassie",
+   "Kenenisa Bekele"
+  ],
+  "context_en": "He could not find comfortable shoes and decided to run without them. He won passing the Axum obelisk, looted by Italy from Ethiopia, and repeated gold in Tokyo 1964, this time shod."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué futbolista italiano fue portero y capitán de la selección campeona del mundo en 2006?",
+  "options": [
+   "Gianluigi Buffon",
+   "Fabio Cannavaro",
+   "Francesco Totti",
+   "Andrea Pirlo"
+  ],
+  "answer_index": 1,
+  "context": "Cannavaro, defensa central, levantó la copa como capitán y ganó ese año el Balón de Oro, algo insólito para un defensa. Buffon era el portero de aquel equipo.",
+  "difficulty": "hard",
+  "question_en": "Which Italian footballer was captain of the 2006 world champion side and won the Ballon d'Or that year?",
+  "options_en": [
+   "Gianluigi Buffon",
+   "Fabio Cannavaro",
+   "Francesco Totti",
+   "Andrea Pirlo"
+  ],
+  "context_en": "Cannavaro, a centre-back, lifted the trophy as captain and won the Ballon d'Or that year, a rarity for a defender. Buffon was that team's goalkeeper."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugadora de tenis fue número uno del mundo con solo diecisiete años en 1997?",
+  "options": [
+   "Martina Hingis",
+   "Jennifer Capriati",
+   "Anna Kournikova",
+   "Lindsay Davenport"
+  ],
+  "answer_index": 0,
+  "context": "Sigue siendo la número uno más joven de la historia. Ganó tres Grand Slams aquel año y se retiró y volvió varias veces antes de destacar en dobles.",
+  "difficulty": "hard",
+  "question_en": "Which tennis player became world number one at just seventeen in 1997?",
+  "options_en": [
+   "Martina Hingis",
+   "Jennifer Capriati",
+   "Anna Kournikova",
+   "Lindsay Davenport"
+  ],
+  "context_en": "She is still the youngest number one in history. She won three Grand Slams that year and retired and returned several times before excelling in doubles."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué selección ganó el primer Mundial de baloncesto masculino, disputado en 1950?",
+  "options": [
+   "Estados Unidos",
+   "Argentina",
+   "Brasil",
+   "Yugoslavia"
+  ],
+  "answer_index": 1,
+  "context": "Se celebró en Buenos Aires y la anfitriona venció a Estados Unidos en el partido decisivo. Argentina no volvería a ganar un título mundial de baloncesto.",
+  "difficulty": "hard",
+  "question_en": "Which national team won the first men's Basketball World Cup, held in 1950?",
+  "options_en": [
+   "United States",
+   "Argentina",
+   "Brazil",
+   "Yugoslavia"
+  ],
+  "context_en": "It was held in Buenos Aires and the hosts beat the United States in the decisive game. Argentina would never win another basketball world title."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué escalador italiano fue el primero en coronar los catorce ochomiles del planeta?",
+  "options": [
+   "Reinhold Messner",
+   "Walter Bonatti",
+   "Simone Moro",
+   "Riccardo Cassin"
+  ],
+  "answer_index": 0,
+  "context": "Completó la lista en 1986, y todas sin oxígeno suplementario. En 1980 había subido el Everest en solitario y sin botellas, una hazaña que se consideraba imposible.",
+  "difficulty": "hard",
+  "question_en": "Which Italian climber was the first to summit all fourteen eight-thousanders?",
+  "options_en": [
+   "Reinhold Messner",
+   "Walter Bonatti",
+   "Simone Moro",
+   "Riccardo Cassin"
+  ],
+  "context_en": "He completed the list in 1986, all without supplementary oxygen. In 1980 he had climbed Everest solo and without bottled oxygen, a feat considered impossible."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugador de fútbol americano batió el récord de yardas de pase en la NFL y jugó casi toda su carrera en los Saints?",
+  "options": [
+   "Peyton Manning",
+   "Drew Brees",
+   "Dan Marino",
+   "Brett Favre"
+  ],
+  "answer_index": 1,
+  "context": "Ganó la Super Bowl de 2010 con Nueva Orleans, cuatro años después del huracán Katrina, en una victoria que la ciudad vivió como símbolo de recuperación.",
+  "difficulty": "hard",
+  "question_en": "Which American football player set the NFL passing yards record and spent most of his career with the Saints?",
+  "options_en": [
+   "Peyton Manning",
+   "Drew Brees",
+   "Dan Marino",
+   "Brett Favre"
+  ],
+  "context_en": "He won the 2010 Super Bowl with New Orleans, four years after Hurricane Katrina, in a victory the city took as a symbol of recovery."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué danza maorí interpretan los All Blacks antes de cada partido?",
+  "options": [
+   "El poi",
+   "La haka",
+   "El hongi",
+   "El waiata"
+  ],
+  "answer_index": 1,
+  "context": "La versión más conocida es el Ka Mate, compuesto hacia 1820 por un jefe maorí. Desde 2005 el equipo interpreta a veces otra haka, el Kapa o Pango, escrito para ellos.",
+  "difficulty": "hard",
+  "question_en": "Which Maori dance do the All Blacks perform before every match?",
+  "options_en": [
+   "The poi",
+   "The haka",
+   "The hongi",
+   "The waiata"
+  ],
+  "context_en": "The best-known version is Ka Mate, composed around 1820 by a Maori chief. Since 2005 the team sometimes performs another haka, Kapa o Pango, written for them."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué tenista checoslovaca ganó nueve títulos individuales de Wimbledon, récord absoluto del torneo?",
+  "options": [
+   "Martina Navratilova",
+   "Hana Mandlíková",
+   "Jana Novotná",
+   "Helena Suková"
+  ],
+  "answer_index": 0,
+  "context": "Ganó seis de ellos consecutivos entre 1982 y 1987. Se nacionalizó estadounidense en 1981 tras pedir asilo político a los dieciocho años.",
+  "difficulty": "hard",
+  "question_en": "Which Czechoslovak tennis player won nine Wimbledon singles titles, the tournament's all-time record?",
+  "options_en": [
+   "Martina Navratilova",
+   "Hana Mandlíková",
+   "Jana Novotná",
+   "Helena Suková"
+  ],
+  "context_en": "Six of them came consecutively between 1982 and 1987. She became an American citizen in 1981 after seeking political asylum at eighteen."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué corredora keniana batió el récord mundial femenino del maratón en Chicago en 2024?",
+  "options": [
+   "Ruth Chepngetich",
+   "Brigid Kosgei",
+   "Peres Jepchirchir",
+   "Mary Keitany"
+  ],
+  "answer_index": 0,
+  "context": "Bajó por primera vez de las 2 horas y 10 minutos, rebajando en casi dos minutos la marca anterior. Kenia y Etiopía copan las mejores marcas históricas de la distancia.",
+  "difficulty": "hard",
+  "question_en": "Which Kenyan runner broke the women's marathon world record in Chicago in 2024?",
+  "options_en": [
+   "Ruth Chepngetich",
+   "Brigid Kosgei",
+   "Peres Jepchirchir",
+   "Mary Keitany"
+  ],
+  "context_en": "She went under 2 hours 10 minutes for the first time, taking almost two minutes off the previous mark. Kenya and Ethiopia hold most of the all-time best times at the distance."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué equipo de la Fórmula 1 ganó ocho campeonatos de constructores consecutivos entre 2014 y 2021?",
+  "options": [
+   "Red Bull",
+   "Mercedes",
+   "Ferrari",
+   "McLaren"
+  ],
+  "answer_index": 1,
+  "context": "Aprovechó el cambio a los motores híbridos turbo de 2014 mejor que ningún rival. Lewis Hamilton ganó seis títulos de pilotos con ese coche y Nico Rosberg uno.",
+  "difficulty": "hard",
+  "question_en": "Which Formula 1 team won eight consecutive constructors' championships between 2014 and 2021?",
+  "options_en": [
+   "Red Bull",
+   "Mercedes",
+   "Ferrari",
+   "McLaren"
+  ],
+  "context_en": "It handled the 2014 switch to turbo-hybrid engines better than any rival. Lewis Hamilton won six drivers' titles with that car and Nico Rosberg one."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugador de baloncesto español fue elegido MVP de la final de la Copa del Mundo de 2006?",
+  "options": [
+   "Juan Carlos Navarro",
+   "Pau Gasol",
+   "José Manuel Calderón",
+   "Felipe Reyes"
+  ],
+  "answer_index": 0,
+  "context": "Gasol se lesionó en semifinales y no pudo jugar la final ante Grecia. Navarro, apodado \"la Bomba\", lideró al equipo en Saitama y fue nombrado mejor jugador del torneo.",
+  "difficulty": "hard",
+  "question_en": "Which Spanish basketball player was named MVP of the 2006 World Championship?",
+  "options_en": [
+   "Juan Carlos Navarro",
+   "Pau Gasol",
+   "José Manuel Calderón",
+   "Felipe Reyes"
+  ],
+  "context_en": "Gasol was injured in the semi-final and could not play the final against Greece. Navarro, nicknamed \"La Bomba\", led the team in Saitama and was named tournament MVP."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué ciclista colombiano fue el primer latinoamericano en ganar el Tour de Francia, en 2019?",
+  "options": [
+   "Nairo Quintana",
+   "Egan Bernal",
+   "Rigoberto Urán",
+   "Fernando Gaviria"
+  ],
+  "answer_index": 1,
+  "context": "Tenía 22 años, el ganador más joven en más de un siglo. Al año siguiente ganó también el Giro, pero una grave caída en 2022 estuvo a punto de acabar con su carrera.",
+  "difficulty": "hard",
+  "question_en": "Which Colombian cyclist was the first Latin American to win the Tour de France, in 2019?",
+  "options_en": [
+   "Nairo Quintana",
+   "Egan Bernal",
+   "Rigoberto Urán",
+   "Fernando Gaviria"
+  ],
+  "context_en": "He was 22, the youngest winner in more than a century. The following year he also won the Giro, but a serious crash in 2022 nearly ended his career."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué boxeador mexicano ostenta el récord de más combates disputados por un campeón del mundo moderno, con más de cien victorias?",
+  "options": [
+   "Julio César Chávez",
+   "Rubén Olivares",
+   "Salvador Sánchez",
+   "Ricardo López"
+  ],
+  "answer_index": 0,
+  "context": "Encadenó 87 combates sin derrota entre 1980 y 1994. Su pelea contra Greg Haugen en el Azteca reunió a más de 130.000 espectadores, récord mundial de asistencia en boxeo.",
+  "difficulty": "hard",
+  "question_en": "Which Mexican boxer holds the record for most fights by a modern world champion, with more than a hundred wins?",
+  "options_en": [
+   "Julio César Chávez",
+   "Rubén Olivares",
+   "Salvador Sánchez",
+   "Ricardo López"
+  ],
+  "context_en": "He went 87 fights unbeaten between 1980 and 1994. His bout against Greg Haugen at the Azteca drew more than 130,000 spectators, a world attendance record for boxing."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué selección femenina de fútbol ha ganado más Mundiales?",
+  "options": [
+   "Alemania",
+   "Estados Unidos",
+   "Noruega",
+   "Japón"
+  ],
+  "answer_index": 1,
+  "context": "Suma cuatro títulos: 1991, 1999, 2015 y 2019. Alemania tiene dos, y España ganó su primero en 2023.",
+  "difficulty": "hard",
+  "question_en": "Which women's national football team has won the most World Cups?",
+  "options_en": [
+   "Germany",
+   "United States",
+   "Norway",
+   "Japan"
+  ],
+  "context_en": "It has four titles: 1991, 1999, 2015 and 2019. Germany has two, and Spain won its first in 2023."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué motociclista italiano ganó nueve títulos mundiales entre 125 cc, 250 cc y la categoría reina?",
+  "options": [
+   "Valentino Rossi",
+   "Giacomo Agostini",
+   "Max Biaggi",
+   "Loris Capirossi"
+  ],
+  "answer_index": 0,
+  "context": "Agostini suma quince títulos, más que nadie, pero repartidos entre 350 y 500 cc. Rossi ganó siete en la categoría reina y compitió hasta los 42 años.",
+  "difficulty": "hard",
+  "question_en": "Which Italian motorcyclist won nine world titles across 125 cc, 250 cc and the premier class?",
+  "options_en": [
+   "Valentino Rossi",
+   "Giacomo Agostini",
+   "Max Biaggi",
+   "Loris Capirossi"
+  ],
+  "context_en": "Agostini has fifteen titles, more than anyone, but split between 350 and 500 cc. Rossi won seven in the premier class and raced until he was 42."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué nadadora española ganó el oro olímpico en natación sincronizada por equipos en Londres 2012... o más bien, qué metal logró el dúo español allí?",
+  "options": [
+   "Oro",
+   "Plata",
+   "Bronce",
+   "Ninguno"
+  ],
+  "answer_index": 1,
+  "context": "Ona Carbonell y Andrea Fuentes lograron la plata en dúo y el bronce por equipos en Londres 2012. Rusia dominó la disciplina durante dos décadas.",
+  "difficulty": "hard",
+  "question_en": "Which medal did the Spanish duet win in synchronised swimming at London 2012?",
+  "options_en": [
+   "Gold",
+   "Silver",
+   "Bronze",
+   "None"
+  ],
+  "context_en": "Ona Carbonell and Andrea Fuentes took silver in the duet and bronze in the team event at London 2012. Russia dominated the discipline for two decades."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugador de tenis de mesa o qué país domina históricamente el medallero olímpico de ese deporte?",
+  "options": [
+   "Japón",
+   "China",
+   "Corea del Sur",
+   "Suecia"
+  ],
+  "answer_index": 1,
+  "context": "China ha ganado más del 80 % de los oros desde que el tenis de mesa es olímpico, en 1988. Suecia fue su gran rival en los años ochenta y noventa.",
+  "difficulty": "hard",
+  "question_en": "Which country historically dominates the Olympic medal table in table tennis?",
+  "options_en": [
+   "Japan",
+   "China",
+   "South Korea",
+   "Sweden"
+  ],
+  "context_en": "China has won more than 80% of the golds since table tennis became Olympic in 1988. Sweden was its great rival in the 1980s and 1990s."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué portero soviético es el único guardameta que ha ganado el Balón de Oro?",
+  "options": [
+   "Lev Yashin",
+   "Rinat Dasáyev",
+   "Vladímir Maslachenko",
+   "Anzor Kavazashvili"
+  ],
+  "answer_index": 0,
+  "context": "Lo recibió en 1963. Apodado \"la Araña Negra\" por vestir siempre de ese color, se calcula que detuvo más de 150 penaltis a lo largo de su carrera.",
+  "difficulty": "hard",
+  "question_en": "Which Soviet goalkeeper is the only keeper ever to win the Ballon d'Or?",
+  "options_en": [
+   "Lev Yashin",
+   "Rinat Dasayev",
+   "Vladimir Maslachenko",
+   "Anzor Kavazashvili"
+  ],
+  "context_en": "He received it in 1963. Nicknamed \"the Black Spider\" for always wearing that colour, he is reckoned to have saved more than 150 penalties in his career."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué atleta cubano ganó dos oros olímpicos consecutivos en salto de altura y ostenta el récord mundial desde 1993?",
+  "options": [
+   "Javier Sotomayor",
+   "Iván Pedroso",
+   "Alberto Juantorena",
+   "Dayron Robles"
+  ],
+  "answer_index": 0,
+  "context": "Su marca de 2,45 metros lleva más de tres décadas sin batirse. Es el único atleta que ha superado los 2,45 en competición.",
+  "difficulty": "hard",
+  "question_en": "Which Cuban athlete has held the high jump world record since 1993?",
+  "options_en": [
+   "Javier Sotomayor",
+   "Iván Pedroso",
+   "Alberto Juantorena",
+   "Dayron Robles"
+  ],
+  "context_en": "His mark of 2.45 metres has stood for more than three decades. He is the only athlete ever to clear 2.45 in competition."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué entrenador dirigió a la selección española campeona del Mundial de 2010?",
+  "options": [
+   "Luis Aragonés",
+   "Vicente del Bosque",
+   "Julen Lopetegui",
+   "Luis Enrique"
+  ],
+  "answer_index": 1,
+  "context": "Luis Aragonés había ganado la Eurocopa de 2008 y le cedió el puesto. Del Bosque es el único entrenador que ha ganado Mundial, Eurocopa y Copa de Europa.",
+  "difficulty": "hard",
+  "question_en": "Which manager led the Spanish team that won the 2010 World Cup?",
+  "options_en": [
+   "Luis Aragonés",
+   "Vicente del Bosque",
+   "Julen Lopetegui",
+   "Luis Enrique"
+  ],
+  "context_en": "Luis Aragonés had won Euro 2008 and handed over the job. Del Bosque is the only manager to have won the World Cup, the European Championship and the European Cup."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugador de críquet australiano acabó su carrera con un promedio de bateo de 99,94, cifra legendaria en el deporte?",
+  "options": [
+   "Don Bradman",
+   "Shane Warne",
+   "Ricky Ponting",
+   "Steve Waugh"
+  ],
+  "answer_index": 0,
+  "context": "Necesitaba solo cuatro carreras en su última entrada para cerrar en cien y se fue sin puntuar. Su promedio sigue siendo más del doble que el de casi cualquier otro bateador.",
+  "difficulty": "hard",
+  "question_en": "Which Australian cricketer ended his career with a batting average of 99.94, a legendary figure in the sport?",
+  "options_en": [
+   "Don Bradman",
+   "Shane Warne",
+   "Ricky Ponting",
+   "Steve Waugh"
+  ],
+  "context_en": "He needed only four runs in his final innings to finish on a hundred and was dismissed for a duck. His average is still more than double almost any other batsman's."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugadora de baloncesto española es la máxima anotadora histórica de la selección femenina?",
+  "options": [
+   "Amaya Valdemoro",
+   "Alba Torrens",
+   "Laia Palau",
+   "Marta Xargay"
+  ],
+  "answer_index": 0,
+  "context": "Fue la primera española en jugar en la WNBA, donde ganó tres anillos con Houston Comets. Se retiró en 2013 tras el bronce del Eurobasket.",
+  "difficulty": "hard",
+  "question_en": "Which Spanish basketball player is the women's national team's all-time leading scorer?",
+  "options_en": [
+   "Amaya Valdemoro",
+   "Alba Torrens",
+   "Laia Palau",
+   "Marta Xargay"
+  ],
+  "context_en": "She was the first Spaniard to play in the WNBA, where she won three rings with the Houston Comets. She retired in 2013 after EuroBasket bronze."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué país ganó la primera edición de la Liga de Naciones de la UEFA, en 2019?",
+  "options": [
+   "Países Bajos",
+   "Portugal",
+   "Inglaterra",
+   "Suiza"
+  ],
+  "answer_index": 1,
+  "context": "Venció a Países Bajos por 1-0 en la final de Oporto, jugando en casa. España ganó la edición de 2023 ante Croacia en los penaltis.",
+  "difficulty": "hard",
+  "question_en": "Which country won the first UEFA Nations League, in 2019?",
+  "options_en": [
+   "Netherlands",
+   "Portugal",
+   "England",
+   "Switzerland"
+  ],
+  "context_en": "It beat the Netherlands 1-0 in the final in Porto, playing at home. Spain won the 2023 edition against Croatia on penalties."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué velocista sudafricano compitió en unos Juegos Olímpicos con prótesis de fibra de carbono en 2012?",
+  "options": [
+   "Oscar Pistorius",
+   "Wayde van Niekerk",
+   "Akani Simbine",
+   "Caster Semenya"
+  ],
+  "answer_index": 0,
+  "context": "Fue el primer atleta con amputación doble en competir en unos Juegos Olímpicos, tras un litigio sobre si sus prótesis daban ventaja. Su carrera acabó con una condena por homicidio.",
+  "difficulty": "hard",
+  "question_en": "Which South African sprinter competed at the Olympic Games with carbon fibre prostheses in 2012?",
+  "options_en": [
+   "Oscar Pistorius",
+   "Wayde van Niekerk",
+   "Akani Simbine",
+   "Caster Semenya"
+  ],
+  "context_en": "He was the first double amputee to compete at an Olympic Games, after a legal battle over whether his blades gave an advantage. His career ended with a homicide conviction."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué equipo de fútbol ganó la Liga inglesa en la temporada 2015-16 partiendo con una cuota de 5.000 a 1?",
+  "options": [
+   "Leicester City",
+   "Tottenham",
+   "Everton",
+   "Southampton"
+  ],
+  "answer_index": 0,
+  "context": "Dirigido por Claudio Ranieri, había estado a punto de descender la temporada anterior. Las casas de apuestas pagaron más de veinticinco millones de libras en premios.",
+  "difficulty": "hard",
+  "question_en": "Which football club won the English league in 2015-16 having started at odds of 5,000 to 1?",
+  "options_en": [
+   "Leicester City",
+   "Tottenham",
+   "Everton",
+   "Southampton"
+  ],
+  "context_en": "Managed by Claudio Ranieri, it had narrowly avoided relegation the season before. Bookmakers paid out more than twenty-five million pounds in winnings."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué piloto español ganó cinco títulos mundiales en la categoría reina de MotoGP entre 2013 y 2019?",
+  "options": [
+   "Jorge Lorenzo",
+   "Marc Márquez",
+   "Dani Pedrosa",
+   "Álex Crivillé"
+  ],
+  "answer_index": 1,
+  "context": "Ganó el primero con veinte años, el campeón más joven de la categoría. Una lesión de húmero en 2020 lo apartó de la lucha por el título durante varias temporadas.",
+  "difficulty": "hard",
+  "question_en": "Which Spanish rider won five premier-class MotoGP titles between 2013 and 2019?",
+  "options_en": [
+   "Jorge Lorenzo",
+   "Marc Márquez",
+   "Dani Pedrosa",
+   "Álex Crivillé"
+  ],
+  "context_en": "He won the first at twenty, the youngest champion in the class. A humerus injury in 2020 kept him out of the title fight for several seasons."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué país ha ganado más medallas en la historia de los Juegos Olímpicos de Invierno?",
+  "options": [
+   "Estados Unidos",
+   "Noruega",
+   "Alemania",
+   "Rusia"
+  ],
+  "answer_index": 1,
+  "context": "Con menos de seis millones de habitantes, supera las 400 medallas gracias al esquí de fondo, el biatlón y el patinaje de velocidad.",
+  "difficulty": "hard",
+  "question_en": "Which country has won the most medals in the history of the Winter Olympics?",
+  "options_en": [
+   "United States",
+   "Norway",
+   "Germany",
+   "Russia"
+  ],
+  "context_en": "With fewer than six million inhabitants, it has more than 400 medals thanks to cross-country skiing, biathlon and speed skating."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugadora de tenis ganó el Abierto de Australia de 2023 y es de origen bielorruso?",
+  "options": [
+   "Aryna Sabalenka",
+   "Victoria Azarenka",
+   "Iga Swiatek",
+   "Elena Rybakina"
+  ],
+  "answer_index": 0,
+  "context": "Fue su primer Grand Slam, logrado sin bandera nacional por la sanción a Bielorrusia. Azarenka, también bielorrusa, había ganado el torneo en 2012 y 2013.",
+  "difficulty": "hard",
+  "question_en": "Which Belarusian-born tennis player won the 2023 Australian Open?",
+  "options_en": [
+   "Aryna Sabalenka",
+   "Victoria Azarenka",
+   "Iga Swiatek",
+   "Elena Rybakina"
+  ],
+  "context_en": "It was her first Grand Slam, won without a national flag because of the sanctions on Belarus. Azarenka, also Belarusian, had won the tournament in 2012 and 2013."
+ }
+]

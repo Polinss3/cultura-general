@@ -1,0 +1,1052 @@
+[
+ {
+  "category": "deportes",
+  "question": "¿Cuántos jugadores forman un equipo de hockey sobre hielo en pista, incluido el portero?",
+  "options": [
+   "Cinco",
+   "Seis",
+   "Siete",
+   "Ocho"
+  ],
+  "answer_index": 1,
+  "context": "Son cinco patinadores y el portero. Los cambios se hacen sobre la marcha, sin detener el juego, y un equipo puede llevar hasta veinte jugadores en el banquillo.",
+  "difficulty": "easy",
+  "question_en": "How many players make up an ice hockey team on the rink, including the goalie?",
+  "options_en": [
+   "Five",
+   "Six",
+   "Seven",
+   "Eight"
+  ],
+  "context_en": "Five skaters plus the goaltender. Substitutions are made on the fly, without stopping play, and a team may dress up to twenty players."
+ },
+ {
+  "category": "deportes",
+  "question": "¿De qué color es el maillot del líder del Tour de Francia?",
+  "options": [
+   "Verde",
+   "Amarillo",
+   "Blanco",
+   "De lunares rojos"
+  ],
+  "answer_index": 1,
+  "context": "Se eligió el amarillo por el color del papel del diario L'Auto, organizador de la carrera. El verde premia la regularidad y el de lunares, la montaña.",
+  "difficulty": "easy",
+  "question_en": "What colour is the leader's jersey in the Tour de France?",
+  "options_en": [
+   "Green",
+   "Yellow",
+   "White",
+   "Red polka dots"
+  ],
+  "context_en": "Yellow was chosen for the colour of the paper used by L'Auto, the newspaper that organised the race. Green rewards consistency and polka dots, the mountains."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuántas casillas tiene un tablero de ajedrez?",
+  "options": [
+   "36",
+   "49",
+   "64",
+   "81"
+  ],
+  "answer_index": 2,
+  "context": "Ocho filas por ocho columnas, alternando claras y oscuras. Cada jugador debe tener una casilla blanca en su esquina derecha al colocar el tablero.",
+  "difficulty": "easy",
+  "question_en": "How many squares does a chessboard have?",
+  "options_en": [
+   "36",
+   "49",
+   "64",
+   "81"
+  ],
+  "context_en": "Eight ranks by eight files, alternating light and dark. Each player should have a white square in their right-hand corner when the board is set up."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué deporte se utiliza un tatami como superficie de competición?",
+  "options": [
+   "La esgrima",
+   "El judo",
+   "La halterofilia",
+   "El bádminton"
+  ],
+  "answer_index": 1,
+  "context": "La palabra japonesa designa las esteras tradicionales de paja. Hoy son de material sintético y amortiguan las caídas en judo, kárate y otras artes marciales.",
+  "difficulty": "easy",
+  "question_en": "In which sport is a tatami used as the competition surface?",
+  "options_en": [
+   "Fencing",
+   "Judo",
+   "Weightlifting",
+   "Badminton"
+  ],
+  "context_en": "The Japanese word refers to traditional straw mats. Today they are made of synthetic material and cushion falls in judo, karate and other martial arts."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué país nació el fútbol sala en los años treinta?",
+  "options": [
+   "Brasil",
+   "Uruguay",
+   "España",
+   "Portugal"
+  ],
+  "answer_index": 1,
+  "context": "El profesor Juan Carlos Ceriani lo ideó en Montevideo para adaptar el fútbol a los patios y gimnasios de las escuelas. Brasil lo popularizó después por todo el continente.",
+  "difficulty": "easy",
+  "question_en": "In which country was futsal invented in the 1930s?",
+  "options_en": [
+   "Brazil",
+   "Uruguay",
+   "Spain",
+   "Portugal"
+  ],
+  "context_en": "The teacher Juan Carlos Ceriani devised it in Montevideo to adapt football to school playgrounds and gyms. Brazil later spread it across the continent."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué se lanza en la prueba atlética de peso?",
+  "options": [
+   "Un disco",
+   "Una jabalina",
+   "Una bola metálica",
+   "Un martillo"
+  ],
+  "answer_index": 2,
+  "context": "La bola pesa 7,26 kilos en categoría masculina y 4 en femenina. Se empuja desde el hombro con una sola mano, sin lanzarla por encima de la cabeza.",
+  "difficulty": "easy",
+  "question_en": "What is thrown in the athletics shot put event?",
+  "options_en": [
+   "A discus",
+   "A javelin",
+   "A metal ball",
+   "A hammer"
+  ],
+  "context_en": "The ball weighs 7.26 kilos for men and 4 for women. It is pushed from the shoulder with one hand, not thrown overarm."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cómo se llama la acción de encestar agarrando el aro con la mano en baloncesto?",
+  "options": [
+   "Bandeja",
+   "Mate",
+   "Gancho",
+   "Palmeo"
+  ],
+  "answer_index": 1,
+  "context": "La NCAA lo prohibió entre 1967 y 1976, en buena medida por el dominio de Kareem Abdul-Jabbar. La bandeja se hace en carrera y el gancho, de espaldas al aro.",
+  "difficulty": "easy",
+  "question_en": "What is the move of scoring by grabbing the rim with your hand in basketball called?",
+  "options_en": [
+   "Lay-up",
+   "Dunk",
+   "Hook shot",
+   "Tip-in"
+  ],
+  "context_en": "The NCAA banned it between 1967 and 1976, largely because of Kareem Abdul-Jabbar's dominance. A lay-up is taken on the run and a hook shot with your back to the basket."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué instrumento usa el árbitro de fútbol para detener el juego?",
+  "options": [
+   "Una campana",
+   "Un silbato",
+   "Una bocina",
+   "Una bandera"
+  ],
+  "answer_index": 1,
+  "context": "Se introdujo en el fútbol inglés hacia 1878; antes los árbitros gritaban o agitaban un pañuelo. Los jueces de línea sí usan banderas.",
+  "difficulty": "easy",
+  "question_en": "Which instrument does a football referee use to stop play?",
+  "options_en": [
+   "A bell",
+   "A whistle",
+   "A horn",
+   "A flag"
+  ],
+  "context_en": "It was introduced in English football around 1878; before that referees shouted or waved a handkerchief. Assistant referees do use flags."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué deporte se compite en las modalidades de estilo libre y grecorromana?",
+  "options": [
+   "La lucha",
+   "El boxeo",
+   "El taekwondo",
+   "La esgrima"
+  ],
+  "answer_index": 0,
+  "context": "En grecorromana no se pueden usar las piernas ni atacar por debajo de la cintura. Ambas modalidades son olímpicas desde los primeros Juegos modernos.",
+  "difficulty": "easy",
+  "question_en": "In which sport do athletes compete in freestyle and Greco-Roman styles?",
+  "options_en": [
+   "Wrestling",
+   "Boxing",
+   "Taekwondo",
+   "Fencing"
+  ],
+  "context_en": "In Greco-Roman, the legs cannot be used and holds below the waist are banned. Both styles have been Olympic since the first modern Games."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cómo se llama la prueba que combina natación, ciclismo y carrera a pie?",
+  "options": [
+   "Pentatlón",
+   "Triatlón",
+   "Biatlón",
+   "Duatlón"
+  ],
+  "answer_index": 1,
+  "context": "En distancia olímpica son 1,5 km nadando, 40 en bicicleta y 10 corriendo. El Ironman de Hawái multiplica esas distancias por más de tres.",
+  "difficulty": "easy",
+  "question_en": "What is the event combining swimming, cycling and running called?",
+  "options_en": [
+   "Pentathlon",
+   "Triathlon",
+   "Biathlon",
+   "Duathlon"
+  ],
+  "context_en": "The Olympic distance is 1.5 km swimming, 40 cycling and 10 running. The Hawaii Ironman multiplies those distances by more than three."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuánto tiempo dura un asalto en el boxeo profesional masculino?",
+  "options": [
+   "Un minuto",
+   "Dos minutos",
+   "Tres minutos",
+   "Cinco minutos"
+  ],
+  "answer_index": 2,
+  "context": "Entre asalto y asalto hay un minuto de descanso. Los combates de título suelen ser a doce asaltos, reducidos desde los quince tras varias muertes en el ring en los años ochenta.",
+  "difficulty": "medium",
+  "question_en": "How long is a round in men's professional boxing?",
+  "options_en": [
+   "One minute",
+   "Two minutes",
+   "Three minutes",
+   "Five minutes"
+  ],
+  "context_en": "There is a one-minute rest between rounds. Title fights are usually twelve rounds, cut down from fifteen after several ring deaths in the 1980s."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué torneo de tenis se disputa en Nueva York y cierra la temporada de Grand Slam?",
+  "options": [
+   "El Abierto de Australia",
+   "Roland Garros",
+   "Wimbledon",
+   "El Abierto de Estados Unidos"
+  ],
+  "answer_index": 3,
+  "context": "Se juega en pista dura en Flushing Meadows desde 1978. Fue el primer torneo grande en pagar el mismo premio a hombres y mujeres, en 1973.",
+  "difficulty": "medium",
+  "question_en": "Which tennis tournament is played in New York and closes the Grand Slam season?",
+  "options_en": [
+   "The Australian Open",
+   "Roland Garros",
+   "Wimbledon",
+   "The US Open"
+  ],
+  "context_en": "It has been played on hard courts at Flushing Meadows since 1978. It was the first major to pay men and women equal prize money, in 1973."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuántas vallas debe superar un atleta en la prueba de 110 metros vallas?",
+  "options": [
+   "Ocho",
+   "Diez",
+   "Doce",
+   "Quince"
+  ],
+  "answer_index": 1,
+  "context": "Miden 1,067 metros de altura y están separadas por 9,14 metros. La prueba femenina equivalente es la de 100 metros vallas, con obstáculos más bajos.",
+  "difficulty": "medium",
+  "question_en": "How many hurdles must an athlete clear in the 110 metres hurdles?",
+  "options_en": [
+   "Eight",
+   "Ten",
+   "Twelve",
+   "Fifteen"
+  ],
+  "context_en": "They are 1.067 metres high and 9.14 metres apart. The women's equivalent is the 100 metres hurdles, with lower barriers."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué equipo ha ganado más veces la Liga española de fútbol?",
+  "options": [
+   "FC Barcelona",
+   "Real Madrid",
+   "Atlético de Madrid",
+   "Athletic Club"
+  ],
+  "answer_index": 1,
+  "context": "Supera las treinta y cinco ligas, por delante del Barcelona. El Athletic y el Atlético completan el grupo de equipos que nunca han descendido de Primera.",
+  "difficulty": "medium",
+  "question_en": "Which team has won the Spanish football league the most times?",
+  "options_en": [
+   "FC Barcelona",
+   "Real Madrid",
+   "Atlético Madrid",
+   "Athletic Club"
+  ],
+  "context_en": "It has more than thirty-five league titles, ahead of Barcelona. Athletic and Atlético complete the group of clubs never relegated from the top flight."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cómo se llama la carrera ciclista de tres semanas que recorre Italia cada mayo?",
+  "options": [
+   "El Giro de Italia",
+   "La Milán-San Remo",
+   "El Tour de Lombardía",
+   "La Tirreno-Adriático"
+  ],
+  "answer_index": 0,
+  "context": "Se disputa desde 1909 y su etapa más dura suele coronar la Cima Coppi, el puerto más alto de la edición. Junto al Tour y la Vuelta forma las tres grandes.",
+  "difficulty": "medium",
+  "question_en": "What is the three-week cycling race held across Italy every May called?",
+  "options_en": [
+   "The Giro d'Italia",
+   "Milan-San Remo",
+   "The Tour of Lombardy",
+   "Tirreno-Adriatico"
+  ],
+  "context_en": "It has been run since 1909 and its hardest stage usually crowns the Cima Coppi, the highest pass of that edition. With the Tour and the Vuelta it forms the three grand tours."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué deporte se disputa el trofeo de los Seis Naciones?",
+  "options": [
+   "El críquet",
+   "El rugby",
+   "El hockey hierba",
+   "El balonmano"
+  ],
+  "answer_index": 1,
+  "context": "Lo juegan Inglaterra, Francia, Gales, Escocia, Irlanda e Italia. Quien gana a los otros cinco logra el Grand Slam, y las islas británicas compiten además por la Triple Corona.",
+  "difficulty": "medium",
+  "question_en": "In which sport is the Six Nations trophy contested?",
+  "options_en": [
+   "Cricket",
+   "Rugby",
+   "Field hockey",
+   "Handball"
+  ],
+  "context_en": "England, France, Wales, Scotland, Ireland and Italy take part. Beating the other five earns the Grand Slam, and the British and Irish sides also compete for the Triple Crown."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuántos puntos vale una diana en el centro del blanco, o \"bull's eye\", en dardos?",
+  "options": [
+   "25",
+   "50",
+   "60",
+   "100"
+  ],
+  "answer_index": 1,
+  "context": "El anillo exterior de ese centro vale 25. La puntuación máxima con tres dardos es 180, con tres triples veinte, y una partida clásica empieza en 501.",
+  "difficulty": "medium",
+  "question_en": "How many points is the bull's eye worth in darts?",
+  "options_en": [
+   "25",
+   "50",
+   "60",
+   "100"
+  ],
+  "context_en": "The outer ring of that centre is worth 25. The maximum with three darts is 180, three treble twenties, and a classic leg starts from 501."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué país ha ganado más medallas en la historia de los Juegos Olímpicos de verano?",
+  "options": [
+   "Rusia",
+   "Alemania",
+   "Estados Unidos",
+   "China"
+  ],
+  "answer_index": 2,
+  "context": "Supera las 2.600 medallas, más del doble que el segundo clasificado. Su dominio se apoya sobre todo en la natación y el atletismo.",
+  "difficulty": "medium",
+  "question_en": "Which country has won the most medals in the history of the Summer Olympics?",
+  "options_en": [
+   "Russia",
+   "Germany",
+   "United States",
+   "China"
+  ],
+  "context_en": "It has more than 2,600 medals, over twice as many as the runner-up. Its dominance rests above all on swimming and athletics."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué deporte destacó la gimnasta estadounidense Simone Biles?",
+  "options": [
+   "La natación sincronizada",
+   "La gimnasia artística",
+   "El atletismo",
+   "El patinaje artístico"
+  ],
+  "answer_index": 1,
+  "context": "Tiene cuatro elementos bautizados con su nombre en el código de puntuación. En Tokio 2020 se retiró de varias finales por problemas de salud mental y volvió a competir después.",
+  "difficulty": "medium",
+  "question_en": "In which sport did the American athlete Simone Biles excel?",
+  "options_en": [
+   "Synchronised swimming",
+   "Artistic gymnastics",
+   "Athletics",
+   "Figure skating"
+  ],
+  "context_en": "Four elements in the code of points are named after her. At Tokyo 2020 she withdrew from several finals for mental health reasons and later returned to competition."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué escudería de Fórmula 1 ha ganado más campeonatos de constructores?",
+  "options": [
+   "McLaren",
+   "Ferrari",
+   "Williams",
+   "Mercedes"
+  ],
+  "answer_index": 1,
+  "context": "Es además la única escudería que ha competido en todas las temporadas desde 1950. Su sede está en Maranello, cerca de Módena.",
+  "difficulty": "medium",
+  "question_en": "Which Formula 1 team has won the most constructors' championships?",
+  "options_en": [
+   "McLaren",
+   "Ferrari",
+   "Williams",
+   "Mercedes"
+  ],
+  "context_en": "It is also the only team to have competed in every season since 1950. Its headquarters are in Maranello, near Modena."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuántos jugadores forman un equipo de rugby a siete en el campo?",
+  "options": [
+   "Cinco",
+   "Seis",
+   "Siete",
+   "Nueve"
+  ],
+  "answer_index": 2,
+  "context": "Es olímpico desde Río 2016 y sus partidos duran catorce minutos, frente a los ochenta del rugby a quince. Fiyi ganó el primer oro de su historia en esa modalidad.",
+  "difficulty": "medium",
+  "question_en": "How many players make up a rugby sevens team on the pitch?",
+  "options_en": [
+   "Five",
+   "Six",
+   "Seven",
+   "Nine"
+  ],
+  "context_en": "It has been Olympic since Rio 2016 and matches last fourteen minutes, against eighty in fifteen-a-side rugby. Fiji won its first ever Olympic gold in the discipline."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué deporte se emplean términos como \"eagle\", \"bogey\" y \"putt\"?",
+  "options": [
+   "El polo",
+   "El golf",
+   "El críquet",
+   "El billar"
+  ],
+  "answer_index": 1,
+  "context": "Un eagle son dos golpes bajo par y un bogey, uno por encima. El putt es el golpe suave sobre el green para meter la bola en el hoyo.",
+  "difficulty": "medium",
+  "question_en": "In which sport are terms such as \"eagle\", \"bogey\" and \"putt\" used?",
+  "options_en": [
+   "Polo",
+   "Golf",
+   "Cricket",
+   "Billiards"
+  ],
+  "context_en": "An eagle is two strokes under par and a bogey one over. The putt is the gentle stroke on the green to send the ball into the hole."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuánto mide de altura la canasta de baloncesto desde el suelo?",
+  "options": [
+   "2,75 metros",
+   "3,05 metros",
+   "3,25 metros",
+   "3,50 metros"
+  ],
+  "answer_index": 1,
+  "context": "Equivale a diez pies exactos, la altura a la que James Naismith clavó las cestas de melocotones en 1891. No ha cambiado desde entonces.",
+  "difficulty": "medium",
+  "question_en": "How high is a basketball hoop from the floor?",
+  "options_en": [
+   "2.75 metres",
+   "3.05 metres",
+   "3.25 metres",
+   "3.50 metres"
+  ],
+  "context_en": "That is exactly ten feet, the height at which James Naismith nailed the peach baskets in 1891. It has not changed since."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué selección ha ganado más veces la Eurocopa de fútbol masculino?",
+  "options": [
+   "Alemania",
+   "España",
+   "Italia",
+   "Francia"
+  ],
+  "answer_index": 1,
+  "context": "España suma cuatro títulos: 1964, 2008, 2012 y 2024. Alemania tiene tres y fue la primera en encadenar dos finales consecutivas.",
+  "difficulty": "medium",
+  "question_en": "Which national team has won the men's European Championship the most times?",
+  "options_en": [
+   "Germany",
+   "Spain",
+   "Italy",
+   "France"
+  ],
+  "context_en": "Spain has four titles: 1964, 2008, 2012 and 2024. Germany has three and was the first to reach two consecutive finals."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cómo se llama el movimiento de halterofilia en que la barra se lleva del suelo sobre la cabeza en un solo tiempo?",
+  "options": [
+   "Arrancada",
+   "Dos tiempos",
+   "Press militar",
+   "Peso muerto"
+  ],
+  "answer_index": 0,
+  "context": "Las dos modalidades olímpicas son la arrancada y el dos tiempos, y se suman los mejores intentos de cada una. El dos tiempos permite levantar más peso.",
+  "difficulty": "medium",
+  "question_en": "What is the weightlifting movement in which the bar goes from the floor to overhead in one motion called?",
+  "options_en": [
+   "The snatch",
+   "The clean and jerk",
+   "The military press",
+   "The deadlift"
+  ],
+  "context_en": "The two Olympic lifts are the snatch and the clean and jerk, and the best attempt at each is added together. More weight can be lifted in the clean and jerk."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuánto dura un partido de baloncesto FIBA, el formato usado en competiciones internacionales?",
+  "options": [
+   "Cuatro cuartos de 10 minutos",
+   "Cuatro cuartos de 12 minutos",
+   "Dos tiempos de 20 minutos",
+   "Tres tercios de 15 minutos"
+  ],
+  "answer_index": 0,
+  "context": "Son cuarenta minutos de juego frente a los cuarenta y ocho de la NBA. El reloj de posesión es de veinticuatro segundos en ambas competiciones.",
+  "difficulty": "medium",
+  "question_en": "How long is a FIBA basketball game, the format used in international competition?",
+  "options_en": [
+   "Four 10-minute quarters",
+   "Four 12-minute quarters",
+   "Two 20-minute halves",
+   "Three 15-minute periods"
+  ],
+  "context_en": "That is forty minutes of play against forty-eight in the NBA. The shot clock is twenty-four seconds in both competitions."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué deporte practicaba el atleta jamaicano que ostenta el récord mundial de 200 metros lisos?",
+  "options": [
+   "El salto de longitud",
+   "El atletismo de velocidad",
+   "El decatlón",
+   "La marcha atlética"
+  ],
+  "answer_index": 1,
+  "context": "El récord, 19,19 segundos, se estableció en el Mundial de Berlín de 2009. El mismo atleta batió también el de 100 metros dos días antes.",
+  "difficulty": "medium",
+  "question_en": "Which discipline does the Jamaican athlete who holds the 200 metres world record compete in?",
+  "options_en": [
+   "Long jump",
+   "Sprinting",
+   "Decathlon",
+   "Race walking"
+  ],
+  "context_en": "The record, 19.19 seconds, was set at the 2009 Berlin World Championships. The same athlete had broken the 100 metres record two days earlier."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué deporte compiten las categorías de peso mosca, pluma y pesado?",
+  "options": [
+   "El boxeo",
+   "El remo",
+   "La natación",
+   "El ciclismo"
+  ],
+  "answer_index": 0,
+  "context": "Las categorías se crearon a finales del siglo XIX para evitar combates muy desiguales. El peso mosca no supera los 51 kilos y el pesado no tiene límite superior.",
+  "difficulty": "medium",
+  "question_en": "In which sport do athletes compete in flyweight, featherweight and heavyweight categories?",
+  "options_en": [
+   "Boxing",
+   "Rowing",
+   "Swimming",
+   "Cycling"
+  ],
+  "context_en": "The categories were created in the late 19th century to avoid badly mismatched fights. Flyweight tops out at 51 kilos and heavyweight has no upper limit."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué ciudad organizó los Juegos Olímpicos de Invierno de 2022?",
+  "options": [
+   "Pyeongchang",
+   "Pekín",
+   "Sochi",
+   "Vancouver"
+  ],
+  "answer_index": 1,
+  "context": "Fue la primera ciudad de la historia en acoger unos Juegos de verano, en 2008, y otros de invierno. Toda la nieve de las pruebas fue artificial.",
+  "difficulty": "medium",
+  "question_en": "Which city hosted the 2022 Winter Olympics?",
+  "options_en": [
+   "Pyeongchang",
+   "Beijing",
+   "Sochi",
+   "Vancouver"
+  ],
+  "context_en": "It was the first city in history to host both a Summer Games, in 2008, and a Winter Games. All the snow used in the events was artificial."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué deporte de invierno combina el esquí de fondo con el tiro con rifle?",
+  "options": [
+   "El biatlón",
+   "El esquí alpino",
+   "El salto de esquí",
+   "La combinada nórdica"
+  ],
+  "answer_index": 0,
+  "context": "Cada disparo fallado se penaliza con una vuelta extra o con tiempo añadido. Nació de los entrenamientos militares escandinavos y es el deporte de invierno más visto en Alemania.",
+  "difficulty": "medium",
+  "question_en": "Which winter sport combines cross-country skiing with rifle shooting?",
+  "options_en": [
+   "Biathlon",
+   "Alpine skiing",
+   "Ski jumping",
+   "Nordic combined"
+  ],
+  "context_en": "Each missed shot is penalised with an extra loop or added time. It grew out of Scandinavian military training and is the most watched winter sport in Germany."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué país fue el anfitrión del Mundial de fútbol masculino de 2018?",
+  "options": [
+   "Brasil",
+   "Rusia",
+   "Sudáfrica",
+   "Alemania"
+  ],
+  "answer_index": 1,
+  "context": "Francia ganó aquella edición venciendo a Croacia por 4-2 en la final de Moscú. Fue el primer Mundial disputado en Europa del Este.",
+  "difficulty": "medium",
+  "question_en": "Which country hosted the 2018 men's football World Cup?",
+  "options_en": [
+   "Brazil",
+   "Russia",
+   "South Africa",
+   "Germany"
+  ],
+  "context_en": "France won that edition, beating Croatia 4-2 in the Moscow final. It was the first World Cup held in Eastern Europe."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué distancia recorren los remeros en la prueba olímpica estándar de remo?",
+  "options": [
+   "1.000 metros",
+   "1.500 metros",
+   "2.000 metros",
+   "5.000 metros"
+  ],
+  "answer_index": 2,
+  "context": "Se disputa en aguas tranquilas, con seis calles. La regata entre Oxford y Cambridge, en cambio, recorre casi siete kilómetros por el Támesis.",
+  "difficulty": "medium",
+  "question_en": "What distance do crews cover in the standard Olympic rowing event?",
+  "options_en": [
+   "1,000 metres",
+   "1,500 metres",
+   "2,000 metres",
+   "5,000 metres"
+  ],
+  "context_en": "It is held on flat water in six lanes. The Oxford-Cambridge Boat Race, by contrast, covers almost seven kilometres on the Thames."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugadora de tenis dominó el circuito femenino con 22 títulos de Grand Slam entre 1987 y 1999?",
+  "options": [
+   "Martina Navratilova",
+   "Steffi Graf",
+   "Monica Seles",
+   "Chris Evert"
+  ],
+  "answer_index": 1,
+  "context": "En 1988 logró el Golden Slam: los cuatro grandes y el oro olímpico en el mismo año, hazaña que nadie más ha repetido en individuales.",
+  "difficulty": "medium",
+  "question_en": "Which tennis player dominated the women's tour with 22 Grand Slam titles between 1987 and 1999?",
+  "options_en": [
+   "Martina Navratilova",
+   "Steffi Graf",
+   "Monica Seles",
+   "Chris Evert"
+  ],
+  "context_en": "In 1988 she achieved the Golden Slam: all four majors and Olympic gold in the same year, a feat nobody else has repeated in singles."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué equipo de la NBA ha ganado más títulos junto a Los Angeles Lakers?",
+  "options": [
+   "Chicago Bulls",
+   "Boston Celtics",
+   "Golden State Warriors",
+   "San Antonio Spurs"
+  ],
+  "answer_index": 1,
+  "context": "Ambos superan los diecisiete anillos. Los Celtics ganaron ocho consecutivos entre 1959 y 1966, récord absoluto en los deportes profesionales estadounidenses.",
+  "difficulty": "medium",
+  "question_en": "Which NBA team has won as many titles as the Los Angeles Lakers?",
+  "options_en": [
+   "Chicago Bulls",
+   "Boston Celtics",
+   "Golden State Warriors",
+   "San Antonio Spurs"
+  ],
+  "context_en": "Both have more than seventeen championships. The Celtics won eight in a row between 1959 and 1966, an absolute record in US professional sport."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Cuántos largos de piscina olímpica nada un atleta en la prueba de 1.500 metros libres?",
+  "options": [
+   "15",
+   "20",
+   "30",
+   "60"
+  ],
+  "answer_index": 2,
+  "context": "Son treinta largos de 50 metros, la prueba más larga en piscina de los Juegos. Suele durar entre catorce y quince minutos en la élite masculina.",
+  "difficulty": "medium",
+  "question_en": "How many lengths of an Olympic pool does a swimmer cover in the 1,500 metres freestyle?",
+  "options_en": [
+   "15",
+   "20",
+   "30",
+   "60"
+  ],
+  "context_en": "That is thirty 50-metre lengths, the longest pool event at the Games. Elite men usually finish in between fourteen and fifteen minutes."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué golfista estadounidense ganó dieciocho grandes entre 1962 y 1986, récord aún vigente?",
+  "options": [
+   "Arnold Palmer",
+   "Jack Nicklaus",
+   "Gary Player",
+   "Tom Watson"
+  ],
+  "answer_index": 1,
+  "context": "Apodado \"el Oso Dorado\", ganó su último Masters con 46 años. También diseñó más de cuatrocientos campos de golf por todo el mundo.",
+  "difficulty": "hard",
+  "question_en": "Which American golfer won eighteen majors between 1962 and 1986, a record that still stands?",
+  "options_en": [
+   "Arnold Palmer",
+   "Jack Nicklaus",
+   "Gary Player",
+   "Tom Watson"
+  ],
+  "context_en": "Nicknamed \"the Golden Bear\", he won his last Masters at 46. He has also designed more than four hundred golf courses around the world."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué ciclista español ganó la Vuelta, el Giro y el Tour a lo largo de su carrera, además de dos oros olímpicos?",
+  "options": [
+   "Alberto Contador",
+   "Pedro Delgado",
+   "Óscar Pereiro",
+   "Joaquim Rodríguez"
+  ],
+  "answer_index": 0,
+  "context": "Contador ganó las tres grandes vueltas, aunque no logró oros olímpicos: ese detalle corresponde a otros ciclistas. Se retiró en 2017 tras ganar una etapa en el Angliru.",
+  "difficulty": "hard",
+  "question_en": "Which Spanish cyclist won the Vuelta, the Giro and the Tour over his career?",
+  "options_en": [
+   "Alberto Contador",
+   "Pedro Delgado",
+   "Óscar Pereiro",
+   "Joaquim Rodríguez"
+  ],
+  "context_en": "Contador won all three grand tours. He retired in 2017 after winning a stage on the Angliru climb."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué futbolista alemán ganó el Mundial como jugador en 1974 y como seleccionador en 1990?",
+  "options": [
+   "Franz Beckenbauer",
+   "Gerd Müller",
+   "Jürgen Klinsmann",
+   "Berti Vogts"
+  ],
+  "answer_index": 0,
+  "context": "Apodado \"el Káiser\", inventó el papel del líbero moderno. Solo Mário Zagallo y Didier Deschamps han repetido esa doble hazaña.",
+  "difficulty": "hard",
+  "question_en": "Which German footballer won the World Cup as a player in 1974 and as a manager in 1990?",
+  "options_en": [
+   "Franz Beckenbauer",
+   "Gerd Müller",
+   "Jürgen Klinsmann",
+   "Berti Vogts"
+  ],
+  "context_en": "Nicknamed \"the Kaiser\", he invented the modern sweeper role. Only Mário Zagallo and Didier Deschamps have matched that double feat."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué atleta finlandés ganó nueve oros olímpicos en fondo en los años veinte y fue apodado \"el finlandés volador\"?",
+  "options": [
+   "Paavo Nurmi",
+   "Ville Ritola",
+   "Hannes Kolehmainen",
+   "Lasse Virén"
+  ],
+  "answer_index": 0,
+  "context": "Corría con un cronómetro en la mano para controlar sus ritmos, algo insólito entonces. En París 1924 ganó el 1.500 y el 5.000 con apenas una hora de diferencia.",
+  "difficulty": "hard",
+  "question_en": "Which Finnish athlete won nine Olympic golds in distance running in the 1920s and was nicknamed \"the Flying Finn\"?",
+  "options_en": [
+   "Paavo Nurmi",
+   "Ville Ritola",
+   "Hannes Kolehmainen",
+   "Lasse Virén"
+  ],
+  "context_en": "He ran with a stopwatch in his hand to control his pace, unheard of at the time. At Paris 1924 he won the 1,500 and the 5,000 barely an hour apart."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué atleta estadounidense ganó cuatro oros en los Juegos de Berlín de 1936?",
+  "options": [
+   "Jesse Owens",
+   "Ralph Metcalfe",
+   "Carl Lewis",
+   "Bob Hayes"
+  ],
+  "answer_index": 0,
+  "context": "Venció en 100, 200, longitud y relevo 4x100 ante Hitler. El saltador alemán Luz Long le aconsejó en la clasificación de longitud y se hicieron amigos.",
+  "difficulty": "hard",
+  "question_en": "Which American athlete won four golds at the 1936 Berlin Olympics?",
+  "options_en": [
+   "Jesse Owens",
+   "Ralph Metcalfe",
+   "Carl Lewis",
+   "Bob Hayes"
+  ],
+  "context_en": "He won the 100, 200, long jump and 4x100 relay in front of Hitler. The German jumper Luz Long advised him during long jump qualifying and the two became friends."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué piloto argentino ganó cinco campeonatos del mundo de Fórmula 1 en los años cincuenta?",
+  "options": [
+   "Juan Manuel Fangio",
+   "José Froilán González",
+   "Carlos Reutemann",
+   "Alberto Ascari"
+  ],
+  "answer_index": 0,
+  "context": "Ganó con cuatro escuderías distintas, algo que nadie ha repetido. Su porcentaje de victorias, un 46 % de las carreras disputadas, sigue siendo el más alto de la historia.",
+  "difficulty": "hard",
+  "question_en": "Which Argentine driver won five Formula 1 world championships in the 1950s?",
+  "options_en": [
+   "Juan Manuel Fangio",
+   "José Froilán González",
+   "Carlos Reutemann",
+   "Alberto Ascari"
+  ],
+  "context_en": "He won with four different teams, something nobody has matched. His win rate, 46% of the races he entered, is still the highest in history."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué jugador de críquet indio es conocido como \"el pequeño maestro\" y superó los 15.000 tantos en test?",
+  "options": [
+   "Sachin Tendulkar",
+   "Rahul Dravid",
+   "Virat Kohli",
+   "Kapil Dev"
+  ],
+  "answer_index": 0,
+  "context": "Debutó con dieciséis años y jugó veinticuatro temporadas internacionales. Es el único jugador que ha alcanzado cien centurias internacionales.",
+  "difficulty": "hard",
+  "question_en": "Which Indian cricketer is known as \"the Little Master\" and passed 15,000 test runs?",
+  "options_en": [
+   "Sachin Tendulkar",
+   "Rahul Dravid",
+   "Virat Kohli",
+   "Kapil Dev"
+  ],
+  "context_en": "He debuted at sixteen and played twenty-four international seasons. He is the only player to have reached one hundred international centuries."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué nadadora estadounidense ostenta los récords mundiales de 800 y 1.500 metros libres?",
+  "options": [
+   "Katie Ledecky",
+   "Missy Franklin",
+   "Allison Schmitt",
+   "Simone Manuel"
+  ],
+  "answer_index": 0,
+  "context": "Ganó su primer oro olímpico con quince años en Londres 2012. Su ventaja en las pruebas largas es tan amplia que a veces saca más de una piscina a sus rivales.",
+  "difficulty": "hard",
+  "question_en": "Which American swimmer holds the world records in the 800 and 1,500 metres freestyle?",
+  "options_en": [
+   "Katie Ledecky",
+   "Missy Franklin",
+   "Allison Schmitt",
+   "Simone Manuel"
+  ],
+  "context_en": "She won her first Olympic gold at fifteen in London 2012. Her margin in the long events is so wide that she sometimes finishes a pool length ahead."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué entrenador de la NBA tiene más títulos de liga, con once anillos?",
+  "options": [
+   "Pat Riley",
+   "Phil Jackson",
+   "Gregg Popovich",
+   "Red Auerbach"
+  ],
+  "answer_index": 1,
+  "context": "Ganó seis con los Bulls de Jordan y cinco con los Lakers de Shaquille O'Neal y Kobe Bryant. Aplicaba el ataque triangular y técnicas de meditación con sus plantillas.",
+  "difficulty": "hard",
+  "question_en": "Which NBA coach has the most championships, with eleven rings?",
+  "options_en": [
+   "Pat Riley",
+   "Phil Jackson",
+   "Gregg Popovich",
+   "Red Auerbach"
+  ],
+  "context_en": "He won six with Jordan's Bulls and five with the Lakers of Shaquille O'Neal and Kobe Bryant. He used the triangle offence and meditation techniques with his squads."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué pívot de la NBA promedió más de cincuenta puntos por partido en la temporada 1961-62?",
+  "options": [
+   "Bill Russell",
+   "Wilt Chamberlain",
+   "Elgin Baylor",
+   "Oscar Robertson"
+  ],
+  "answer_index": 1,
+  "context": "Promedió 50,4 puntos y 25,7 rebotes, además de jugar casi todos los minutos de cada partido. Ningún jugador ha vuelto a acercarse a esas medias.",
+  "difficulty": "hard",
+  "question_en": "Which NBA centre averaged more than fifty points per game in the 1961-62 season?",
+  "options_en": [
+   "Bill Russell",
+   "Wilt Chamberlain",
+   "Elgin Baylor",
+   "Oscar Robertson"
+  ],
+  "context_en": "He averaged 50.4 points and 25.7 rebounds while playing almost every minute of every game. No player has come near those averages since."
+ },
+ {
+  "category": "deportes",
+  "question": "¿En qué estadio de Montevideo se jugó la final del primer Mundial de fútbol?",
+  "options": [
+   "El Centenario",
+   "El Gran Parque Central",
+   "El Estadio Nacional",
+   "El Campeón del Siglo"
+  ],
+  "answer_index": 0,
+  "context": "Se inauguró en 1930 para el torneo, con capacidad para casi 100.000 espectadores. Uruguay venció allí a Argentina por 4-2.",
+  "difficulty": "hard",
+  "question_en": "In which Montevideo stadium was the final of the first football World Cup played?",
+  "options_en": [
+   "The Centenario",
+   "Gran Parque Central",
+   "Estadio Nacional",
+   "Campeón del Siglo"
+  ],
+  "context_en": "It was opened in 1930 for the tournament, with room for almost 100,000 spectators. Uruguay beat Argentina 4-2 there."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué futbolista húngaro lideró el llamado \"Equipo de Oro\" de los años cincuenta y triunfó después en el Real Madrid?",
+  "options": [
+   "Ferenc Puskás",
+   "Sándor Kocsis",
+   "Nándor Hidegkuti",
+   "Zoltán Czibor"
+  ],
+  "answer_index": 0,
+  "context": "Aquella Hungría venció a Inglaterra por 6-3 en Wembley en 1953, su primera derrota en casa ante un rival continental. El trofeo al máximo goleador del Mundial lleva su nombre.",
+  "difficulty": "hard",
+  "question_en": "Which Hungarian footballer led the so-called \"Golden Team\" of the 1950s and later starred at Real Madrid?",
+  "options_en": [
+   "Ferenc Puskás",
+   "Sándor Kocsis",
+   "Nándor Hidegkuti",
+   "Zoltán Czibor"
+  ],
+  "context_en": "That Hungary side beat England 6-3 at Wembley in 1953, England's first home defeat by a continental team. The World Cup top scorer award is named after him."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué deporte de raqueta, nacido en Inglaterra, se juega dentro de una pista cerrada golpeando la pelota contra la pared frontal?",
+  "options": [
+   "El squash",
+   "El frontón",
+   "El racquetball",
+   "El pickleball"
+  ],
+  "answer_index": 0,
+  "context": "Surgió en la escuela de Harrow en el siglo XIX, con una pelota más blanda que la del rackets. Su nombre viene del sonido que hace la pelota al aplastarse contra la pared.",
+  "difficulty": "hard",
+  "question_en": "Which racket sport, born in England, is played inside an enclosed court by hitting the ball against the front wall?",
+  "options_en": [
+   "Squash",
+   "Basque pelota",
+   "Racquetball",
+   "Pickleball"
+  ],
+  "context_en": "It emerged at Harrow School in the 19th century, with a softer ball than rackets. Its name comes from the sound the ball makes as it squashes against the wall."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué maratón, el más antiguo del mundo celebrado de forma ininterrumpida, se disputa cada abril desde 1897?",
+  "options": [
+   "El maratón de Boston",
+   "El maratón de Nueva York",
+   "El maratón de Londres",
+   "El maratón de Berlín"
+  ],
+  "answer_index": 0,
+  "context": "Se corre el Día de los Patriotas, festivo en Massachusetts, y exige marca mínima para participar. Su tramo final incluye la temida Heartbreak Hill.",
+  "difficulty": "hard",
+  "question_en": "Which marathon, the oldest continuously held in the world, has been run every April since 1897?",
+  "options_en": [
+   "The Boston Marathon",
+   "The New York Marathon",
+   "The London Marathon",
+   "The Berlin Marathon"
+  ],
+  "context_en": "It is run on Patriots' Day, a Massachusetts holiday, and requires a qualifying time. Its closing miles include the dreaded Heartbreak Hill."
+ },
+ {
+  "category": "deportes",
+  "question": "¿Qué velocista estadounidense igualó los cuatro oros de Jesse Owens en unos mismos Juegos, en Los Ángeles 1984?",
+  "options": [
+   "Carl Lewis",
+   "Michael Johnson",
+   "Edwin Moses",
+   "Calvin Smith"
+  ],
+  "answer_index": 0,
+  "context": "Ganó 100, 200, longitud y relevo, y siguió compitiendo hasta sumar nueve oros olímpicos en cuatro Juegos distintos. En longitud ganó cuatro ediciones consecutivas.",
+  "difficulty": "hard",
+  "question_en": "Which American sprinter matched Jesse Owens's four golds at a single Games, in Los Angeles 1984?",
+  "options_en": [
+   "Carl Lewis",
+   "Michael Johnson",
+   "Edwin Moses",
+   "Calvin Smith"
+  ],
+  "context_en": "He won the 100, 200, long jump and relay, and kept competing until he had nine Olympic golds across four Games. He won the long jump at four consecutive editions."
+ }
+]
