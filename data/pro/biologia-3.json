@@ -1,0 +1,947 @@
+[
+ {
+  "category": "biologia",
+  "question": "¿Cuántas patas tiene una mariquita?",
+  "options": [
+   "Cuatro",
+   "Seis",
+   "Ocho",
+   "Diez"
+  ],
+  "answer_index": 1,
+  "context": "Como todo insecto, tiene tres pares. Sus manchas no indican la edad, sino la especie, y muchas agricultoras las sueltan para que devoren pulgones.",
+  "difficulty": "easy",
+  "question_en": "How many legs does a ladybird have?",
+  "options_en": [
+   "Four",
+   "Six",
+   "Eight",
+   "Ten"
+  ],
+  "context_en": "Like every insect, it has three pairs. Its spots indicate the species rather than its age, and many growers release them to devour aphids."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué produce el hígado para ayudar a digerir las grasas?",
+  "options": [
+   "Saliva",
+   "Bilis",
+   "Insulina",
+   "Ácido clorhídrico"
+  ],
+  "answer_index": 1,
+  "context": "Se almacena en la vesícula biliar y se vierte al intestino cuando llega la comida. No digiere las grasas: las rompe en gotas diminutas para que las enzimas trabajen mejor.",
+  "difficulty": "easy",
+  "question_en": "What does the liver produce to help digest fats?",
+  "options_en": [
+   "Saliva",
+   "Bile",
+   "Insulin",
+   "Hydrochloric acid"
+  ],
+  "context_en": "It is stored in the gall bladder and released into the intestine when food arrives. It does not digest fat: it breaks it into tiny droplets so enzymes can work better."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de animal es la abeja?",
+  "options": [
+   "Un arácnido",
+   "Un insecto",
+   "Un crustáceo",
+   "Un miriápodo"
+  ],
+  "answer_index": 1,
+  "context": "Como todos los insectos tiene seis patas, cuerpo en tres partes y antenas. Ve el ultravioleta, lo que le permite detectar señales en las flores invisibles para nosotros.",
+  "difficulty": "easy",
+  "question_en": "What type of animal is the bee?",
+  "options_en": [
+   "An arachnid",
+   "An insect",
+   "A crustacean",
+   "A myriapod"
+  ],
+  "context_en": "Like all insects it has six legs, a three-part body and antennae. It sees ultraviolet, which lets it spot markings on flowers invisible to us."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué parte de la planta suele contener las semillas?",
+  "options": [
+   "La raíz",
+   "El fruto",
+   "El tallo",
+   "La hoja"
+  ],
+  "answer_index": 1,
+  "context": "El fruto es el ovario maduro de la flor y protege la semilla. Muchos son carnosos y dulces precisamente para que los animales los coman y dispersen las semillas.",
+  "difficulty": "easy",
+  "question_en": "Which part of a plant usually contains the seeds?",
+  "options_en": [
+   "The root",
+   "The fruit",
+   "The stem",
+   "The leaf"
+  ],
+  "context_en": "The fruit is the flower's ripened ovary and protects the seed. Many are fleshy and sweet precisely so animals eat them and disperse the seeds."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué hueso protege los pulmones y el corazón?",
+  "options": [
+   "La pelvis",
+   "La caja torácica",
+   "El fémur",
+   "El omóplato"
+  ],
+  "answer_index": 1,
+  "context": "La forman doce pares de costillas, el esternón y las vértebras dorsales. Los dos últimos pares se llaman costillas flotantes porque no llegan al esternón.",
+  "difficulty": "easy",
+  "question_en": "Which bones protect the lungs and heart?",
+  "options_en": [
+   "The pelvis",
+   "The rib cage",
+   "The femur",
+   "The shoulder blade"
+  ],
+  "context_en": "It is formed by twelve pairs of ribs, the sternum and the thoracic vertebrae. The last two pairs are called floating ribs because they do not reach the sternum."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal es famoso por cambiar de color para camuflarse en las ramas?",
+  "options": [
+   "La salamandra",
+   "El camaleón",
+   "El geco",
+   "La lagartija"
+  ],
+  "answer_index": 1,
+  "context": "No cambia de color solo para camuflarse: también comunica su estado de ánimo y regula su temperatura. Su lengua puede medir el doble que su cuerpo.",
+  "difficulty": "easy",
+  "question_en": "Which animal is famous for changing colour to blend into branches?",
+  "options_en": [
+   "The salamander",
+   "The chameleon",
+   "The gecko",
+   "The wall lizard"
+  ],
+  "context_en": "It does not change colour only to camouflage: it also communicates mood and regulates temperature. Its tongue can be twice its body length."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tienen en común las aves, además de tener pico y poner huevos?",
+  "options": [
+   "Tienen plumas",
+   "Tienen escamas",
+   "Tienen branquias",
+   "Tienen pelo"
+  ],
+  "answer_index": 0,
+  "context": "Las plumas son el rasgo que las define, y evolucionaron antes que el vuelo: servían para aislar del frío y para exhibirse. Hasta los avestruces y los pingüinos las tienen.",
+  "difficulty": "easy",
+  "question_en": "What do all birds have in common, besides a beak and laying eggs?",
+  "options_en": [
+   "They have feathers",
+   "They have scales",
+   "They have gills",
+   "They have fur"
+  ],
+  "context_en": "Feathers are their defining trait, and they evolved before flight: they served for insulation and display. Even ostriches and penguins have them."
+ },
+ {
+  "category": "biologia",
+  "question": "¿De qué se alimenta un animal carnívoro?",
+  "options": [
+   "De plantas",
+   "De otros animales",
+   "De minerales",
+   "De luz solar"
+  ],
+  "answer_index": 1,
+  "context": "Su intestino es más corto que el de un herbívoro, porque la carne se digiere con más facilidad. Los omnívoros, como el ser humano o el oso, comen de todo.",
+  "difficulty": "easy",
+  "question_en": "What does a carnivorous animal eat?",
+  "options_en": [
+   "Plants",
+   "Other animals",
+   "Minerals",
+   "Sunlight"
+  ],
+  "context_en": "Its intestine is shorter than a herbivore's, because meat is easier to digest. Omnivores, like humans or bears, eat both."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué órgano del cuerpo humano permite respirar intercambiando gases con el aire?",
+  "options": [
+   "El estómago",
+   "Los pulmones",
+   "El hígado",
+   "Los riñones"
+  ],
+  "answer_index": 1,
+  "context": "El izquierdo es algo más pequeño para dejar sitio al corazón. Desplegados, sus alveolos cubrirían una superficie parecida a la de media pista de tenis.",
+  "difficulty": "easy",
+  "question_en": "Which organ lets the human body breathe by exchanging gases with the air?",
+  "options_en": [
+   "The stomach",
+   "The lungs",
+   "The liver",
+   "The kidneys"
+  ],
+  "context_en": "The left one is slightly smaller to make room for the heart. Spread out, their alveoli would cover an area like half a tennis court."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal de la Antártida incuba su huevo sobre las patas durante el invierno polar?",
+  "options": [
+   "El pingüino emperador",
+   "La foca leopardo",
+   "El albatros",
+   "El petrel"
+  ],
+  "answer_index": 0,
+  "context": "El macho ayuna durante dos meses a 40 grados bajo cero mientras la hembra se alimenta en el mar. Los machos se apiñan y rotan para conservar el calor.",
+  "difficulty": "medium",
+  "question_en": "Which Antarctic animal incubates its egg on its feet through the polar winter?",
+  "options_en": [
+   "The emperor penguin",
+   "The leopard seal",
+   "The albatross",
+   "The petrel"
+  ],
+  "context_en": "The male fasts for two months at 40 degrees below zero while the female feeds at sea. The males huddle and rotate to conserve heat."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el conjunto de especies distintas que habitan un lugar, medido como riqueza natural?",
+  "options": [
+   "Biodiversidad",
+   "Biomasa",
+   "Densidad",
+   "Nicho ecológico"
+  ],
+  "answer_index": 0,
+  "context": "El término lo popularizó el biólogo E. O. Wilson en los años ochenta. Se calcula que perdemos especies a un ritmo cien veces superior al natural.",
+  "difficulty": "medium",
+  "question_en": "What is the variety of different species living in a place, as a measure of natural richness, called?",
+  "options_en": [
+   "Biodiversity",
+   "Biomass",
+   "Density",
+   "Ecological niche"
+  ],
+  "context_en": "The biologist E. O. Wilson popularised the term in the 1980s. Species are reckoned to be disappearing about a hundred times faster than the natural rate."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal es el único primate, además del ser humano, que fabrica y usa herramientas de forma habitual?",
+  "options": [
+   "El gorila",
+   "El chimpancé",
+   "El orangután",
+   "El babuino"
+  ],
+  "answer_index": 1,
+  "context": "Jane Goodall lo documentó en 1960 pescando termitas con ramitas, lo que obligó a redefinir qué distingue al ser humano. También usan piedras como yunque para partir nueces.",
+  "difficulty": "medium",
+  "question_en": "Which primate besides humans routinely makes and uses tools?",
+  "options_en": [
+   "The gorilla",
+   "The chimpanzee",
+   "The orangutan",
+   "The baboon"
+  ],
+  "context_en": "Jane Goodall documented it in 1960 fishing for termites with twigs, forcing a rethink of what sets humans apart. They also use stones as anvils to crack nuts."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué porcentaje del ADN comparten aproximadamente el ser humano y el chimpancé?",
+  "options": [
+   "Alrededor del 60 %",
+   "Alrededor del 80 %",
+   "Alrededor del 98 %",
+   "El 100 %"
+  ],
+  "answer_index": 2,
+  "context": "La diferencia está menos en los genes que en cuándo y cuánto se activan. Nuestros linajes se separaron hace unos siete millones de años.",
+  "difficulty": "medium",
+  "question_en": "Roughly what percentage of DNA do humans and chimpanzees share?",
+  "options_en": [
+   "About 60%",
+   "About 80%",
+   "About 98%",
+   "100%"
+  ],
+  "context_en": "The difference lies less in the genes than in when and how strongly they are switched on. Our lineages split about seven million years ago."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué especie humana convivió con el Homo sapiens en Europa hasta hace unos 40.000 años?",
+  "options": [
+   "El Homo erectus",
+   "El hombre de Neandertal",
+   "El Homo habilis",
+   "El Australopithecus"
+  ],
+  "answer_index": 1,
+  "context": "Enterraban a sus muertos, usaban fuego y fabricaban herramientas complejas. Los europeos actuales conservan entre un 1 y un 2 % de su ADN.",
+  "difficulty": "medium",
+  "question_en": "Which human species lived alongside Homo sapiens in Europe until about 40,000 years ago?",
+  "options_en": [
+   "Homo erectus",
+   "Neanderthals",
+   "Homo habilis",
+   "Australopithecus"
+  ],
+  "context_en": "They buried their dead, used fire and made complex tools. Present-day Europeans carry between 1 and 2% of their DNA."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué grupo de plantas produce semillas desnudas, sin fruto que las envuelva?",
+  "options": [
+   "Las angiospermas",
+   "Las gimnospermas",
+   "Los musgos",
+   "Los helechos"
+  ],
+  "answer_index": 1,
+  "context": "Pinos, abetos y cipreses llevan sus semillas entre las escamas de las piñas. Las angiospermas, con flor y fruto, son mucho más numerosas y recientes.",
+  "difficulty": "medium",
+  "question_en": "Which group of plants produces naked seeds, with no fruit enclosing them?",
+  "options_en": [
+   "Angiosperms",
+   "Gymnosperms",
+   "Mosses",
+   "Ferns"
+  ],
+  "context_en": "Pines, firs and cypresses carry their seeds between the scales of cones. Angiosperms, with flowers and fruit, are far more numerous and more recent."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el árbol más alto del mundo, que crece en California?",
+  "options": [
+   "El eucalipto",
+   "La secuoya roja",
+   "El abeto Douglas",
+   "El baobab"
+  ],
+  "answer_index": 1,
+  "context": "El ejemplar más alto conocido, llamado Hyperion, supera los 115 metros. Su ubicación exacta se mantiene en secreto para protegerlo de los visitantes.",
+  "difficulty": "medium",
+  "question_en": "Which is the tallest tree in the world, growing in California?",
+  "options_en": [
+   "The eucalyptus",
+   "The coast redwood",
+   "The Douglas fir",
+   "The baobab"
+  ],
+  "context_en": "The tallest known specimen, named Hyperion, is more than 115 metres tall. Its exact location is kept secret to protect it from visitors."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal tiene la mordida más potente del reino animal?",
+  "options": [
+   "El león",
+   "El cocodrilo marino",
+   "El tiburón blanco",
+   "El hipopótamo"
+  ],
+  "answer_index": 1,
+  "context": "Supera los 16.000 newtons de fuerza. Curiosamente, los músculos que abren la mandíbula son tan débiles que se pueden sujetar con las manos.",
+  "difficulty": "hard",
+  "question_en": "Which animal has the most powerful bite in the animal kingdom?",
+  "options_en": [
+   "The lion",
+   "The saltwater crocodile",
+   "The great white shark",
+   "The hippopotamus"
+  ],
+  "context_en": "It exceeds 16,000 newtons of force. Curiously, the muscles that open the jaw are so weak they can be held shut by hand."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué mamífero marino puede sumergirse a más de dos kilómetros de profundidad en busca de calamares?",
+  "options": [
+   "La orca",
+   "El cachalote",
+   "La foca de Weddell",
+   "El narval"
+  ],
+  "answer_index": 1,
+  "context": "Aguanta hasta hora y media bajo el agua y caza en total oscuridad usando ecolocalización. Su cabeza contiene espermaceti, una cera que ayudaría a regular la flotabilidad.",
+  "difficulty": "hard",
+  "question_en": "Which marine mammal can dive more than two kilometres deep in search of squid?",
+  "options_en": [
+   "The orca",
+   "The sperm whale",
+   "The Weddell seal",
+   "The narwhal"
+  ],
+  "context_en": "It can stay under for up to an hour and a half and hunts in total darkness using echolocation. Its head holds spermaceti, a wax thought to help regulate buoyancy."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal posee el genoma con más pares de bases conocido, muy superior al humano?",
+  "options": [
+   "El elefante",
+   "Cierto pez pulmonado",
+   "La ballena azul",
+   "El gorila"
+  ],
+  "answer_index": 1,
+  "context": "El pez pulmonado sudamericano tiene un genoma unas treinta veces mayor que el nuestro. El tamaño del genoma no guarda relación con la complejidad del organismo.",
+  "difficulty": "hard",
+  "question_en": "Which animal has the largest known genome in base pairs, far bigger than the human one?",
+  "options_en": [
+   "The elephant",
+   "A lungfish",
+   "The blue whale",
+   "The gorilla"
+  ],
+  "context_en": "The South American lungfish has a genome about thirty times larger than ours. Genome size bears no relation to an organism's complexity."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué insecto realiza una migración de varias generaciones entre Canadá y México?",
+  "options": [
+   "La libélula emperador",
+   "La mariposa monarca",
+   "La langosta del desierto",
+   "La abeja melífera"
+  ],
+  "answer_index": 1,
+  "context": "Ninguna mariposa completa el viaje de ida y vuelta: tardan tres o cuatro generaciones. Aun así, la última encuentra los mismos bosques de oyamel donde invernaron sus bisabuelas.",
+  "difficulty": "hard",
+  "question_en": "Which insect migrates across several generations between Canada and Mexico?",
+  "options_en": [
+   "The emperor dragonfly",
+   "The monarch butterfly",
+   "The desert locust",
+   "The honeybee"
+  ],
+  "context_en": "No single butterfly completes the round trip: it takes three or four generations. Even so, the last one finds the same fir forests where its great-grandparents overwintered."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué proceso permite a ciertas bacterias y arqueas obtener energía de compuestos químicos sin luz solar?",
+  "options": [
+   "La fotosíntesis anoxigénica",
+   "La quimiosíntesis",
+   "La glucólisis",
+   "La fosforilación oxidativa"
+  ],
+  "answer_index": 1,
+  "context": "Sostiene ecosistemas enteros en las fumarolas del fondo oceánico, donde nunca llega la luz. Se descubrieron en 1977 en las Galápagos, a 2.500 metros de profundidad.",
+  "difficulty": "hard",
+  "question_en": "Which process lets certain bacteria and archaea obtain energy from chemical compounds without sunlight?",
+  "options_en": [
+   "Anoxygenic photosynthesis",
+   "Chemosynthesis",
+   "Glycolysis",
+   "Oxidative phosphorylation"
+  ],
+  "context_en": "It sustains whole ecosystems at deep-sea vents, where light never reaches. They were discovered in 1977 off the Galápagos, 2,500 metres down."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el fenómeno por el que un gen influye en varios rasgos distintos del organismo?",
+  "options": [
+   "Epistasia",
+   "Pleiotropía",
+   "Codominancia",
+   "Penetrancia"
+  ],
+  "answer_index": 1,
+  "context": "El gen de la fenilcetonuria afecta al desarrollo neurológico, al color del pelo y al olor corporal. La epistasia es lo contrario: un gen que enmascara el efecto de otro.",
+  "difficulty": "hard",
+  "question_en": "What is it called when one gene influences several different traits of an organism?",
+  "options_en": [
+   "Epistasis",
+   "Pleiotropy",
+   "Codominance",
+   "Penetrance"
+  ],
+  "context_en": "The phenylketonuria gene affects neurological development, hair colour and body odour. Epistasis is the opposite: one gene masking another's effect."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué mecanismo explica que las células de un mismo cuerpo, con el mismo ADN, sean tan distintas entre sí?",
+  "options": [
+   "La mutación aleatoria",
+   "La expresión diferencial de los genes",
+   "La recombinación meiótica",
+   "La poliploidía"
+  ],
+  "answer_index": 1,
+  "context": "Una neurona y una célula de la piel leen distintos capítulos del mismo libro. Factores de transcripción y marcas epigenéticas deciden qué genes se activan en cada tejido.",
+  "difficulty": "hard",
+  "question_en": "Which mechanism explains why cells in the same body, with the same DNA, are so different from each other?",
+  "options_en": [
+   "Random mutation",
+   "Differential gene expression",
+   "Meiotic recombination",
+   "Polyploidy"
+  ],
+  "context_en": "A neuron and a skin cell read different chapters of the same book. Transcription factors and epigenetic marks decide which genes switch on in each tissue."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué científico alemán identificó en 1882 la bacteria que causa la tuberculosis?",
+  "options": [
+   "Robert Koch",
+   "Rudolf Virchow",
+   "Paul Ehrlich",
+   "Emil von Behring"
+  ],
+  "answer_index": 0,
+  "context": "Sus \"postulados\" fijaron cómo demostrar que un microbio concreto causa una enfermedad. También identificó el bacilo del cólera y recibió el Nobel en 1905.",
+  "difficulty": "hard",
+  "question_en": "Which German scientist identified the bacterium that causes tuberculosis in 1882?",
+  "options_en": [
+   "Robert Koch",
+   "Rudolf Virchow",
+   "Paul Ehrlich",
+   "Emil von Behring"
+  ],
+  "context_en": "His \"postulates\" set out how to prove that a specific microbe causes a disease. He also identified the cholera bacillus and received the Nobel Prize in 1905."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué médico húngaro demostró en el siglo XIX que lavarse las manos reducía drásticamente la mortalidad en los partos?",
+  "options": [
+   "Ignaz Semmelweis",
+   "Joseph Lister",
+   "William Harvey",
+   "Rudolf Virchow"
+  ],
+  "answer_index": 0,
+  "context": "Sus colegas rechazaron la idea y acabó ingresado en un manicomio, donde murió. Pasteur confirmaría años después la teoría microbiana que daba sentido a sus datos.",
+  "difficulty": "hard",
+  "question_en": "Which Hungarian physician showed in the 19th century that hand-washing sharply cut deaths in childbirth?",
+  "options_en": [
+   "Ignaz Semmelweis",
+   "Joseph Lister",
+   "William Harvey",
+   "Rudolf Virchow"
+  ],
+  "context_en": "His colleagues rejected the idea and he ended up committed to an asylum, where he died. Pasteur would later confirm the germ theory that made sense of his data."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué médico inglés describió en 1628 la circulación de la sangre impulsada por el corazón?",
+  "options": [
+   "William Harvey",
+   "Thomas Sydenham",
+   "John Hunter",
+   "Edward Jenner"
+  ],
+  "answer_index": 0,
+  "context": "Calculó que el corazón bombea más sangre en una hora que el peso del cuerpo, así que no podía fabricarse de nuevo continuamente como creía Galeno. Debía circular en circuito cerrado.",
+  "difficulty": "hard",
+  "question_en": "Which English physician described the circulation of blood driven by the heart in 1628?",
+  "options_en": [
+   "William Harvey",
+   "Thomas Sydenham",
+   "John Hunter",
+   "Edward Jenner"
+  ],
+  "context_en": "He calculated that the heart pumps more blood in an hour than the body's weight, so it could not be made afresh continuously as Galen believed. It had to circulate in a closed loop."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué naturalista francés propuso antes que Darwin una teoría de la evolución basada en la herencia de caracteres adquiridos?",
+  "options": [
+   "Jean-Baptiste Lamarck",
+   "Georges Cuvier",
+   "Étienne Geoffroy",
+   "Buffon"
+  ],
+  "answer_index": 0,
+  "context": "Sostuvo que el uso o desuso de un órgano lo modificaba y que ese cambio se heredaba. Aunque el mecanismo era erróneo, fue el primero en defender que las especies cambian.",
+  "difficulty": "hard",
+  "question_en": "Which French naturalist proposed, before Darwin, a theory of evolution based on inherited acquired characteristics?",
+  "options_en": [
+   "Jean-Baptiste Lamarck",
+   "Georges Cuvier",
+   "Étienne Geoffroy",
+   "Buffon"
+  ],
+  "context_en": "He held that using or not using an organ changed it and that the change was inherited. Though the mechanism was wrong, he was the first to argue that species change."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué naturalista francés fundó la anatomía comparada y demostró que las especies pueden extinguirse?",
+  "options": [
+   "Georges Cuvier",
+   "Lamarck",
+   "Linneo",
+   "Alexander von Humboldt"
+  ],
+  "answer_index": 0,
+  "context": "Al estudiar fósiles de mamuts y mastodontes concluyó que eran especies desaparecidas, algo entonces impensable. Sin embargo, rechazó la evolución y defendió el catastrofismo.",
+  "difficulty": "hard",
+  "question_en": "Which French naturalist founded comparative anatomy and proved that species can go extinct?",
+  "options_en": [
+   "Georges Cuvier",
+   "Lamarck",
+   "Linnaeus",
+   "Alexander von Humboldt"
+  ],
+  "context_en": "Studying mammoth and mastodon fossils he concluded they were vanished species, unthinkable at the time. He nonetheless rejected evolution and defended catastrophism."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué naturalista prusiano recorrió América entre 1799 y 1804 y sentó las bases de la biogeografía?",
+  "options": [
+   "Alexander von Humboldt",
+   "Carl Ritter",
+   "Johann Blumenbach",
+   "Adelbert von Chamisso"
+  ],
+  "answer_index": 0,
+  "context": "Midió temperaturas, altitudes y especies para mostrar que la vegetación se distribuye en franjas según el clima. Su nombre está en corrientes marinas, montañas y cientos de especies.",
+  "difficulty": "hard",
+  "question_en": "Which Prussian naturalist travelled the Americas between 1799 and 1804 and laid the foundations of biogeography?",
+  "options_en": [
+   "Alexander von Humboldt",
+   "Carl Ritter",
+   "Johann Blumenbach",
+   "Adelbert von Chamisso"
+  ],
+  "context_en": "He measured temperatures, altitudes and species to show that vegetation is arranged in bands according to climate. His name is on ocean currents, mountains and hundreds of species."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el conjunto de reacciones químicas que mantienen viva a una célula?",
+  "options": [
+   "Homeostasis",
+   "Metabolismo",
+   "Catálisis",
+   "Turgencia"
+  ],
+  "answer_index": 1,
+  "context": "Se divide en catabolismo, que rompe moléculas liberando energía, y anabolismo, que las construye consumiéndola. El ATP es la moneda que conecta ambos procesos.",
+  "difficulty": "hard",
+  "question_en": "What is the set of chemical reactions that keeps a cell alive called?",
+  "options_en": [
+   "Homeostasis",
+   "Metabolism",
+   "Catalysis",
+   "Turgor"
+  ],
+  "context_en": "It splits into catabolism, which breaks molecules down releasing energy, and anabolism, which builds them using it. ATP is the currency linking both."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué molécula actúa como \"moneda energética\" en todas las células vivas?",
+  "options": [
+   "La glucosa",
+   "El ATP",
+   "El colesterol",
+   "La urea"
+  ],
+  "answer_index": 1,
+  "context": "Un ser humano en reposo recicla su propio peso en ATP cada día, porque la molécula se consume y se regenera constantemente. Se descubrió en 1929.",
+  "difficulty": "hard",
+  "question_en": "Which molecule acts as the \"energy currency\" of all living cells?",
+  "options_en": [
+   "Glucose",
+   "ATP",
+   "Cholesterol",
+   "Urea"
+  ],
+  "context_en": "A resting human recycles their own body weight in ATP every day, because the molecule is constantly used and regenerated. It was discovered in 1929."
+ },
+ {
+  "category": "biologia",
+  "question": "¿En qué parte de la célula se produce la mayor parte del ATP durante la respiración celular?",
+  "options": [
+   "En el núcleo",
+   "En la membrana interna de la mitocondria",
+   "En el retículo endoplasmático",
+   "En el citosol"
+  ],
+  "answer_index": 1,
+  "context": "La cadena de transporte de electrones crea un gradiente de protones que mueve la ATP sintasa, una enzima que gira como una turbina molecular.",
+  "difficulty": "hard",
+  "question_en": "Where in the cell is most ATP produced during cellular respiration?",
+  "options_en": [
+   "In the nucleus",
+   "In the inner mitochondrial membrane",
+   "In the endoplasmic reticulum",
+   "In the cytosol"
+  ],
+  "context_en": "The electron transport chain creates a proton gradient that drives ATP synthase, an enzyme that spins like a molecular turbine."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de célula sanguínea carece de núcleo en los mamíferos adultos?",
+  "options": [
+   "El linfocito",
+   "El eritrocito",
+   "El monocito",
+   "El neutrófilo"
+  ],
+  "answer_index": 1,
+  "context": "Pierde el núcleo al madurar para hacer sitio a más hemoglobina. Por eso no puede repararse y vive unos 120 días antes de ser reciclado en el bazo.",
+  "difficulty": "hard",
+  "question_en": "Which blood cell lacks a nucleus in adult mammals?",
+  "options_en": [
+   "The lymphocyte",
+   "The erythrocyte",
+   "The monocyte",
+   "The neutrophil"
+  ],
+  "context_en": "It sheds its nucleus as it matures to make room for more haemoglobin. That is why it cannot repair itself and lives about 120 days before being recycled in the spleen."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué órgano linfático, situado tras el esternón, madura los linfocitos T y se atrofia con la edad?",
+  "options": [
+   "El bazo",
+   "El timo",
+   "La médula ósea",
+   "Las amígdalas"
+  ],
+  "answer_index": 1,
+  "context": "Es grande en la infancia y va sustituyéndose por grasa desde la pubertad. La \"T\" de los linfocitos T viene precisamente de su nombre.",
+  "difficulty": "hard",
+  "question_en": "Which lymphatic organ, behind the breastbone, matures T lymphocytes and shrinks with age?",
+  "options_en": [
+   "The spleen",
+   "The thymus",
+   "The bone marrow",
+   "The tonsils"
+  ],
+  "context_en": "It is large in childhood and is gradually replaced by fat from puberty. The \"T\" in T lymphocytes comes precisely from its name."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué hormona segregada por la glándula pineal regula el ciclo de sueño y vigilia?",
+  "options": [
+   "La melatonina",
+   "La serotonina",
+   "El cortisol",
+   "La oxitocina"
+  ],
+  "answer_index": 0,
+  "context": "Se produce con la oscuridad, y la luz azul de las pantallas frena su liberación. Los viajes transoceánicos desajustan su ritmo y provocan el jet lag.",
+  "difficulty": "hard",
+  "question_en": "Which hormone secreted by the pineal gland regulates the sleep-wake cycle?",
+  "options_en": [
+   "Melatonin",
+   "Serotonin",
+   "Cortisol",
+   "Oxytocin"
+  ],
+  "context_en": "It is produced in darkness, and the blue light of screens suppresses its release. Long-haul flights upset its rhythm and cause jet lag."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué zona del cerebro humano es clave para formar nuevos recuerdos?",
+  "options": [
+   "El hipocampo",
+   "La amígdala",
+   "El tálamo",
+   "El bulbo raquídeo"
+  ],
+  "answer_index": 0,
+  "context": "El paciente H. M., al que se lo extirparon en 1953, no pudo volver a formar recuerdos nuevos y se convirtió en el caso más estudiado de la neurociencia.",
+  "difficulty": "hard",
+  "question_en": "Which area of the human brain is key to forming new memories?",
+  "options_en": [
+   "The hippocampus",
+   "The amygdala",
+   "The thalamus",
+   "The medulla"
+  ],
+  "context_en": "Patient H. M., whose hippocampus was removed in 1953, could never form new memories again and became neuroscience's most studied case."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué estructura del cerebro conecta los dos hemisferios?",
+  "options": [
+   "El cuerpo calloso",
+   "El cerebelo",
+   "La hipófisis",
+   "El puente de Varolio"
+  ],
+  "answer_index": 0,
+  "context": "Lo forman unos 200 millones de fibras nerviosas. Seccionarlo fue durante décadas un tratamiento para epilepsias graves, y esos pacientes revelaron cuánto se especializa cada hemisferio.",
+  "difficulty": "hard",
+  "question_en": "Which brain structure connects the two hemispheres?",
+  "options_en": [
+   "The corpus callosum",
+   "The cerebellum",
+   "The pituitary",
+   "The pons"
+  ],
+  "context_en": "It is made of some 200 million nerve fibres. Cutting it was for decades a treatment for severe epilepsy, and those patients revealed how specialised each hemisphere is."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué grupo de animales invertebrados incluye a las medusas, las anémonas y los corales?",
+  "options": [
+   "Los poríferos",
+   "Los cnidarios",
+   "Los platelmintos",
+   "Los moluscos"
+  ],
+  "answer_index": 1,
+  "context": "Su nombre viene de los cnidocitos, células urticantes que disparan un arpón microscópico. No tienen cerebro ni corazón, solo una red nerviosa difusa.",
+  "difficulty": "hard",
+  "question_en": "Which group of invertebrates includes jellyfish, sea anemones and corals?",
+  "options_en": [
+   "Poriferans",
+   "Cnidarians",
+   "Flatworms",
+   "Molluscs"
+  ],
+  "context_en": "The name comes from cnidocytes, stinging cells that fire a microscopic harpoon. They have no brain or heart, only a diffuse nerve net."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animales son los más antiguos del reino animal, sin tejidos ni órganos verdaderos?",
+  "options": [
+   "Las esponjas",
+   "Las medusas",
+   "Los gusanos planos",
+   "Los corales"
+  ],
+  "answer_index": 0,
+  "context": "Filtran el agua bombeándola a través de sus poros. Si se las pasa por un colador, sus células pueden reorganizarse y reconstruir el animal entero.",
+  "difficulty": "hard",
+  "question_en": "Which animals are the oldest in the animal kingdom, lacking true tissues and organs?",
+  "options_en": [
+   "Sponges",
+   "Jellyfish",
+   "Flatworms",
+   "Corals"
+  ],
+  "context_en": "They filter water by pumping it through their pores. Pushed through a sieve, their cells can reorganise and rebuild the whole animal."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué medusa mediterránea e inmortal puede volver a su fase juvenil de pólipo?",
+  "options": [
+   "La carabela portuguesa",
+   "La Turritopsis dohrnii",
+   "La medusa luna",
+   "La avispa de mar"
+  ],
+  "answer_index": 1,
+  "context": "Ante el estrés o la vejez revierte sus células a un estado anterior y vuelve a empezar el ciclo. Mide apenas cinco milímetros.",
+  "difficulty": "hard",
+  "question_en": "Which Mediterranean jellyfish is effectively immortal and can revert to its juvenile polyp stage?",
+  "options_en": [
+   "The Portuguese man o' war",
+   "Turritopsis dohrnii",
+   "The moon jellyfish",
+   "The sea wasp"
+  ],
+  "context_en": "Faced with stress or old age it reverts its cells to an earlier state and starts the cycle again. It measures barely five millimetres."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué fenómeno explica que algunos antibióticos dejen de funcionar contra las bacterias?",
+  "options": [
+   "La resistencia por selección natural",
+   "La mutación del propio fármaco",
+   "El aumento de la temperatura",
+   "La pérdida de vitaminas"
+  ],
+  "answer_index": 0,
+  "context": "Las bacterias supervivientes se multiplican y transmiten sus genes de resistencia, incluso entre especies distintas mediante plásmidos. La OMS lo considera una de las grandes amenazas sanitarias.",
+  "difficulty": "hard",
+  "question_en": "Which phenomenon explains why some antibiotics stop working against bacteria?",
+  "options_en": [
+   "Resistance through natural selection",
+   "Mutation of the drug itself",
+   "Rising temperature",
+   "Vitamin loss"
+  ],
+  "context_en": "Surviving bacteria multiply and pass on their resistance genes, even between species via plasmids. The WHO regards it as one of the great health threats."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué virus se transmite por la picadura del mosquito Aedes aegypti y causa fiebre y dolor articular?",
+  "options": [
+   "El dengue",
+   "La gripe",
+   "El sarampión",
+   "La hepatitis B"
+  ],
+  "answer_index": 0,
+  "context": "El mismo mosquito transmite también el zika, el chikunguña y la fiebre amarilla. Su expansión hacia latitudes más altas se relaciona con el calentamiento global.",
+  "difficulty": "hard",
+  "question_en": "Which virus is spread by the Aedes aegypti mosquito and causes fever and joint pain?",
+  "options_en": [
+   "Dengue",
+   "Influenza",
+   "Measles",
+   "Hepatitis B"
+  ],
+  "context_en": "The same mosquito also spreads zika, chikungunya and yellow fever. Its spread to higher latitudes is linked to global warming."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué parásito unicelular transmitido por el mosquito Anopheles causa la malaria?",
+  "options": [
+   "El Plasmodium",
+   "El Trypanosoma",
+   "La Leishmania",
+   "La Giardia"
+  ],
+  "answer_index": 0,
+  "context": "Solo pican las hembras, que necesitan sangre para sus huevos. La enfermedad sigue causando más de medio millón de muertes al año, la mayoría niños africanos.",
+  "difficulty": "hard",
+  "question_en": "Which single-celled parasite transmitted by the Anopheles mosquito causes malaria?",
+  "options_en": [
+   "Plasmodium",
+   "Trypanosoma",
+   "Leishmania",
+   "Giardia"
+  ],
+  "context_en": "Only females bite, as they need blood for their eggs. The disease still causes more than half a million deaths a year, most of them African children."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué científica china recibió el Nobel en 2015 por descubrir la artemisinina, clave contra la malaria?",
+  "options": [
+   "Tu Youyou",
+   "Chien-Shiung Wu",
+   "Shirley Tilghman",
+   "Youyou Chen"
+  ],
+  "answer_index": 0,
+  "context": "La extrajo del ajenjo dulce siguiendo una receta de un texto médico chino del siglo IV. Fue la primera mujer china en recibir un Nobel científico.",
+  "difficulty": "hard",
+  "question_en": "Which Chinese scientist received the 2015 Nobel Prize for discovering artemisinin, key against malaria?",
+  "options_en": [
+   "Tu Youyou",
+   "Chien-Shiung Wu",
+   "Shirley Tilghman",
+   "Youyou Chen"
+  ],
+  "context_en": "She extracted it from sweet wormwood following a recipe in a 4th-century Chinese medical text. She was the first Chinese woman to receive a science Nobel."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué órgano de las aves almacena piedrecillas para triturar el alimento?",
+  "options": [
+   "El buche",
+   "La molleja",
+   "El proventrículo",
+   "La cloaca"
+  ],
+  "answer_index": 1,
+  "context": "Al carecer de dientes, tragan gastrolitos que hacen de muelas. Se han encontrado piedras similares junto a esqueletos de dinosaurios herbívoros.",
+  "difficulty": "hard",
+  "question_en": "Which bird organ stores small stones to grind up food?",
+  "options_en": [
+   "The crop",
+   "The gizzard",
+   "The proventriculus",
+   "The cloaca"
+  ],
+  "context_en": "Lacking teeth, birds swallow gastroliths that act as millstones. Similar stones have been found alongside the skeletons of herbivorous dinosaurs."
+ }
+]

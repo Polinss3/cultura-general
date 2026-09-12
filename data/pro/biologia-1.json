@@ -1,0 +1,1157 @@
+[
+ {
+  "category": "biologia",
+  "question": "¿Qué animal es el único mamífero capaz de volar de forma sostenida?",
+  "options": [
+   "La ardilla voladora",
+   "El murciélago",
+   "El colugo",
+   "El petauro del azúcar"
+  ],
+  "answer_index": 1,
+  "context": "Los demás \"voladores\" en realidad planean. Las alas del murciélago son membranas de piel tensadas entre dedos alargadísimos, y son una cuarta parte de todas las especies de mamíferos.",
+  "difficulty": "easy",
+  "question_en": "Which animal is the only mammal capable of sustained flight?",
+  "options_en": [
+   "The flying squirrel",
+   "The bat",
+   "The colugo",
+   "The sugar glider"
+  ],
+  "context_en": "The other \"flyers\" actually glide. A bat's wings are skin membranes stretched between greatly elongated fingers, and bats make up a quarter of all mammal species."
+ },
+ {
+  "category": "biologia",
+  "question": "¿De qué se alimentan los animales herbívoros?",
+  "options": [
+   "De carne",
+   "De plantas",
+   "De insectos",
+   "De restos en descomposición"
+  ],
+  "answer_index": 1,
+  "context": "Muchos tienen estómagos con varias cámaras o intestinos larguísimos porque la celulosa es difícil de digerir. Los carroñeros comen restos y los detritívoros, materia en descomposición.",
+  "difficulty": "easy",
+  "question_en": "What do herbivorous animals eat?",
+  "options_en": [
+   "Meat",
+   "Plants",
+   "Insects",
+   "Decaying remains"
+  ],
+  "context_en": "Many have multi-chambered stomachs or very long intestines because cellulose is hard to digest. Scavengers eat carcasses and detritivores, decaying matter."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué parte de la planta absorbe el agua y los minerales del suelo?",
+  "options": [
+   "La hoja",
+   "El tallo",
+   "La raíz",
+   "La flor"
+  ],
+  "answer_index": 2,
+  "context": "Los pelos absorbentes multiplican la superficie de contacto con el suelo. Muchas raíces se asocian con hongos, formando micorrizas que amplían aún más su alcance.",
+  "difficulty": "easy",
+  "question_en": "Which part of a plant absorbs water and minerals from the soil?",
+  "options_en": [
+   "The leaf",
+   "The stem",
+   "The root",
+   "The flower"
+  ],
+  "context_en": "Root hairs multiply the surface in contact with the soil. Many roots partner with fungi, forming mycorrhizae that extend their reach even further."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animales ponen huevos con cáscara dura y tienen la piel cubierta de escamas?",
+  "options": [
+   "Los anfibios",
+   "Los reptiles",
+   "Los peces",
+   "Los mamíferos"
+  ],
+  "answer_index": 1,
+  "context": "El huevo amniota, con su cáscara protectora, les permitió independizarse del agua para reproducirse. Los anfibios, en cambio, siguen necesitando humedad para sus huevos.",
+  "difficulty": "easy",
+  "question_en": "Which animals lay hard-shelled eggs and have scaly skin?",
+  "options_en": [
+   "Amphibians",
+   "Reptiles",
+   "Fish",
+   "Mammals"
+  ],
+  "context_en": "The amniotic egg, with its protective shell, freed them from water for reproduction. Amphibians, by contrast, still need moisture for their eggs."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué insecto produce la miel?",
+  "options": [
+   "La avispa",
+   "La abeja",
+   "El abejorro",
+   "La hormiga"
+  ],
+  "answer_index": 1,
+  "context": "Una obrera produce en toda su vida menos de una cucharadita. Para llenar un tarro de medio kilo, la colmena debe visitar unos dos millones de flores.",
+  "difficulty": "easy",
+  "question_en": "Which insect produces honey?",
+  "options_en": [
+   "The wasp",
+   "The honeybee",
+   "The bumblebee",
+   "The ant"
+  ],
+  "context_en": "A single worker makes less than a teaspoonful in her whole life. To fill a half-kilo jar, the hive must visit about two million flowers."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Cómo se llama el cambio de forma que sufre un renacuajo hasta convertirse en rana?",
+  "options": [
+   "Mimetismo",
+   "Metamorfosis",
+   "Mutación",
+   "Regeneración"
+  ],
+  "answer_index": 1,
+  "context": "La hormona tiroidea desencadena el proceso: le crecen las patas, reabsorbe la cola y sus branquias dan paso a pulmones. Insectos como la mariposa también la experimentan.",
+  "difficulty": "easy",
+  "question_en": "What is the change of form a tadpole undergoes to become a frog called?",
+  "options_en": [
+   "Mimicry",
+   "Metamorphosis",
+   "Mutation",
+   "Regeneration"
+  ],
+  "context_en": "Thyroid hormone triggers the process: legs grow, the tail is reabsorbed and gills give way to lungs. Insects such as butterflies also undergo it."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué órgano del cuerpo humano se encarga de bombear la sangre?",
+  "options": [
+   "El hígado",
+   "El corazón",
+   "El bazo",
+   "El páncreas"
+  ],
+  "answer_index": 1,
+  "context": "Late unas 100.000 veces al día y mueve unos 7.000 litros de sangre en ese tiempo. Su músculo, el miocardio, no se cansa porque está lleno de mitocondrias.",
+  "difficulty": "easy",
+  "question_en": "Which organ of the human body pumps the blood?",
+  "options_en": [
+   "The liver",
+   "The heart",
+   "The spleen",
+   "The pancreas"
+  ],
+  "context_en": "It beats about 100,000 times a day and moves some 7,000 litres of blood in that time. Its muscle, the myocardium, does not tire because it is packed with mitochondria."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué gas absorben las plantas del aire para realizar la fotosíntesis?",
+  "options": [
+   "Oxígeno",
+   "Nitrógeno",
+   "Dióxido de carbono",
+   "Hidrógeno"
+  ],
+  "answer_index": 2,
+  "context": "Entra por unos poros microscópicos de las hojas llamados estomas, que las plantas abren y cierran para no perder demasiada agua.",
+  "difficulty": "easy",
+  "question_en": "Which gas do plants take from the air to carry out photosynthesis?",
+  "options_en": [
+   "Oxygen",
+   "Nitrogen",
+   "Carbon dioxide",
+   "Hydrogen"
+  ],
+  "context_en": "It enters through microscopic pores in the leaves called stomata, which plants open and close to avoid losing too much water."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal marino tiene ocho brazos y puede cambiar de color?",
+  "options": [
+   "El calamar",
+   "El pulpo",
+   "La sepia",
+   "La estrella de mar"
+  ],
+  "answer_index": 1,
+  "context": "Cambia de color gracias a unas células de la piel llamadas cromatóforos, y lo hace pese a ser daltónico. Dos tercios de sus neuronas están en los brazos, no en el cerebro.",
+  "difficulty": "easy",
+  "question_en": "Which sea animal has eight arms and can change colour?",
+  "options_en": [
+   "The squid",
+   "The octopus",
+   "The cuttlefish",
+   "The starfish"
+  ],
+  "context_en": "It changes colour thanks to skin cells called chromatophores, and does so despite being colour-blind. Two-thirds of its neurons are in its arms, not its brain."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal africano tiene el cuello más largo del reino animal?",
+  "options": [
+   "El avestruz",
+   "La jirafa",
+   "El camello",
+   "El flamenco"
+  ],
+  "answer_index": 1,
+  "context": "Aunque mida hasta dos metros, tiene el mismo número de vértebras cervicales que nosotros: siete, solo que enormes. Su corazón pesa unos once kilos para bombear sangre hasta el cerebro.",
+  "difficulty": "easy",
+  "question_en": "Which African animal has the longest neck in the animal kingdom?",
+  "options_en": [
+   "The ostrich",
+   "The giraffe",
+   "The camel",
+   "The flamingo"
+  ],
+  "context_en": "Although it can be two metres long, it has the same number of neck vertebrae as we do: seven, just enormous ones. Its heart weighs about eleven kilos to pump blood to the brain."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el conjunto de seres vivos que habitan un lugar junto con su entorno físico?",
+  "options": [
+   "Población",
+   "Ecosistema",
+   "Especie",
+   "Genoma"
+  ],
+  "answer_index": 1,
+  "context": "El término lo acuñó el botánico Arthur Tansley en 1935. Una población son individuos de la misma especie; la comunidad, todas las especies; el ecosistema añade el medio físico.",
+  "difficulty": "easy",
+  "question_en": "What is the set of living beings in a place together with their physical surroundings called?",
+  "options_en": [
+   "Population",
+   "Ecosystem",
+   "Species",
+   "Genome"
+  ],
+  "context_en": "The botanist Arthur Tansley coined the term in 1935. A population is individuals of one species; a community, all the species; an ecosystem adds the physical environment."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué proceso permite a las plantas transportar agua desde la raíz hasta las hojas?",
+  "options": [
+   "La ósmosis inversa",
+   "La transpiración",
+   "La respiración celular",
+   "La germinación"
+  ],
+  "answer_index": 1,
+  "context": "Al evaporarse el agua por los estomas se genera una succión que arrastra la columna de agua por el xilema. Un roble grande puede mover varios cientos de litros al día.",
+  "difficulty": "medium",
+  "question_en": "Which process lets plants move water from the roots up to the leaves?",
+  "options_en": [
+   "Reverse osmosis",
+   "Transpiration",
+   "Cellular respiration",
+   "Germination"
+  ],
+  "context_en": "As water evaporates through the stomata it creates a suction that pulls the water column up the xylem. A large oak can move several hundred litres a day."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Cómo se llama el tejido vegetal que transporta la savia elaborada con azúcares?",
+  "options": [
+   "El xilema",
+   "El floema",
+   "El cámbium",
+   "La epidermis"
+  ],
+  "answer_index": 1,
+  "context": "El xilema lleva agua y sales hacia arriba; el floema reparte los azúcares en ambos sentidos. Los pulgones se alimentan pinchando directamente el floema.",
+  "difficulty": "medium",
+  "question_en": "What is the plant tissue that transports sap loaded with sugars called?",
+  "options_en": [
+   "Xylem",
+   "Phloem",
+   "Cambium",
+   "Epidermis"
+  ],
+  "context_en": "Xylem carries water and salts upwards; phloem distributes sugars in both directions. Aphids feed by piercing the phloem directly."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué científico sueco creó el sistema de nomenclatura binomial para nombrar a las especies?",
+  "options": [
+   "Georges Cuvier",
+   "Carl von Linné",
+   "Jean-Baptiste Lamarck",
+   "Georges-Louis Buffon"
+  ],
+  "answer_index": 1,
+  "context": "Su \"Systema Naturae\", de 1735, asignó a cada especie dos nombres en latín: género y especie. Nosotros somos Homo sapiens según su método.",
+  "difficulty": "medium",
+  "question_en": "Which Swedish scientist created the binomial system for naming species?",
+  "options_en": [
+   "Georges Cuvier",
+   "Carl Linnaeus",
+   "Jean-Baptiste Lamarck",
+   "Georges-Louis Buffon"
+  ],
+  "context_en": "His \"Systema Naturae\", from 1735, gave each species two Latin names: genus and species. We are Homo sapiens under his system."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Cuál es el orden correcto de las categorías taxonómicas, de mayor a menor?",
+  "options": [
+   "Reino, filo, clase, orden, familia, género, especie",
+   "Filo, reino, orden, clase, género, familia, especie",
+   "Reino, clase, filo, familia, orden, género, especie",
+   "Especie, género, familia, orden, clase, filo, reino"
+  ],
+  "answer_index": 0,
+  "context": "Por encima del reino se añadió después el dominio, con tres grandes ramas: bacterias, arqueas y eucariotas.",
+  "difficulty": "medium",
+  "question_en": "What is the correct order of taxonomic ranks, from largest to smallest?",
+  "options_en": [
+   "Kingdom, phylum, class, order, family, genus, species",
+   "Phylum, kingdom, order, class, genus, family, species",
+   "Kingdom, class, phylum, family, order, genus, species",
+   "Species, genus, family, order, class, phylum, kingdom"
+  ],
+  "context_en": "Above kingdom, the domain was later added, with three great branches: bacteria, archaea and eukaryotes."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animales forman el grupo de los cetáceos?",
+  "options": [
+   "Focas y morsas",
+   "Ballenas y delfines",
+   "Tiburones y rayas",
+   "Pingüinos y alcas"
+  ],
+  "answer_index": 1,
+  "context": "Descienden de mamíferos terrestres que volvieron al mar hace unos 50 millones de años. Su pariente vivo más cercano en tierra es el hipopótamo.",
+  "difficulty": "medium",
+  "question_en": "Which animals make up the cetacean group?",
+  "options_en": [
+   "Seals and walruses",
+   "Whales and dolphins",
+   "Sharks and rays",
+   "Penguins and auks"
+  ],
+  "context_en": "They descend from land mammals that returned to the sea about 50 million years ago. Their closest living land relative is the hippopotamus."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe la relación en la que una especie se beneficia y la otra ni gana ni pierde?",
+  "options": [
+   "Mutualismo",
+   "Comensalismo",
+   "Parasitismo",
+   "Depredación"
+  ],
+  "answer_index": 1,
+  "context": "Las rémoras que viajan pegadas a los tiburones son el ejemplo clásico. En el mutualismo ganan las dos partes, y en el parasitismo una perjudica a la otra.",
+  "difficulty": "medium",
+  "question_en": "What is the relationship in which one species benefits and the other neither gains nor loses called?",
+  "options_en": [
+   "Mutualism",
+   "Commensalism",
+   "Parasitism",
+   "Predation"
+  ],
+  "context_en": "Remoras riding attached to sharks are the classic example. In mutualism both sides gain, and in parasitism one harms the other."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué bioma terrestre se caracteriza por el suelo permanentemente helado y la ausencia de árboles?",
+  "options": [
+   "La taiga",
+   "La tundra",
+   "La estepa",
+   "La sabana"
+  ],
+  "answer_index": 1,
+  "context": "El permafrost impide que las raíces profundicen, así que dominan musgos, líquenes y arbustos enanos. Guarda enormes cantidades de carbono que el deshielo puede liberar.",
+  "difficulty": "medium",
+  "question_en": "Which terrestrial biome is characterised by permanently frozen ground and the absence of trees?",
+  "options_en": [
+   "Taiga",
+   "Tundra",
+   "Steppe",
+   "Savanna"
+  ],
+  "context_en": "Permafrost stops roots going deep, so mosses, lichens and dwarf shrubs dominate. It stores vast amounts of carbon that thawing can release."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué gran bosque de coníferas se extiende por el norte de Rusia, Escandinavia y Canadá?",
+  "options": [
+   "La taiga",
+   "La selva templada",
+   "El bosque mediterráneo",
+   "El manglar"
+  ],
+  "answer_index": 0,
+  "context": "También se llama bosque boreal y es el bioma terrestre más extenso del planeta. Sus árboles tienen forma cónica para que la nieve resbale sin romper las ramas.",
+  "difficulty": "medium",
+  "question_en": "Which vast conifer forest stretches across northern Russia, Scandinavia and Canada?",
+  "options_en": [
+   "The taiga",
+   "Temperate rainforest",
+   "Mediterranean woodland",
+   "Mangrove"
+  ],
+  "context_en": "Also called boreal forest, it is the largest land biome on the planet. Its trees are cone-shaped so snow slides off without breaking the branches."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el conjunto de microorganismos que viven en nuestro intestino?",
+  "options": [
+   "Microbiota",
+   "Citoplasma",
+   "Plancton",
+   "Simbionte"
+  ],
+  "answer_index": 0,
+  "context": "Pesa entre uno y dos kilos y contiene tantas células como todo nuestro cuerpo. Influye en la digestión, el sistema inmunitario y, según muestra la investigación reciente, en el estado de ánimo.",
+  "difficulty": "medium",
+  "question_en": "What is the community of microorganisms living in our gut called?",
+  "options_en": [
+   "Microbiota",
+   "Cytoplasm",
+   "Plankton",
+   "Symbiont"
+  ],
+  "context_en": "It weighs one to two kilos and holds as many cells as our whole body. It affects digestion, the immune system and, as recent research shows, mood."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué grupo de organismos se reproduce mediante esporas y carece de clorofila?",
+  "options": [
+   "Las algas",
+   "Los hongos",
+   "Los musgos",
+   "Las cianobacterias"
+  ],
+  "answer_index": 1,
+  "context": "Al no poder hacer la fotosíntesis, se alimentan descomponiendo materia orgánica. Genéticamente están más cerca de los animales que de las plantas.",
+  "difficulty": "medium",
+  "question_en": "Which group of organisms reproduces by spores and lacks chlorophyll?",
+  "options_en": [
+   "Algae",
+   "Fungi",
+   "Mosses",
+   "Cyanobacteria"
+  ],
+  "context_en": "Unable to photosynthesise, they feed by decomposing organic matter. Genetically they are closer to animals than to plants."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Cómo se llama el fenómeno por el que un animal imita el aspecto de otro peligroso para protegerse?",
+  "options": [
+   "Camuflaje",
+   "Mimetismo",
+   "Hibernación",
+   "Territorialidad"
+  ],
+  "answer_index": 1,
+  "context": "La falsa coral copia los anillos de la coral venenosa, y ciertas moscas imitan a las avispas. En el camuflaje, en cambio, el animal se confunde con el entorno.",
+  "difficulty": "medium",
+  "question_en": "What is it called when an animal imitates the appearance of a dangerous one for protection?",
+  "options_en": [
+   "Camouflage",
+   "Mimicry",
+   "Hibernation",
+   "Territoriality"
+  ],
+  "context_en": "The false coral snake copies the rings of the venomous coral snake, and some flies imitate wasps. In camouflage, by contrast, the animal blends into its surroundings."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal utiliza la ecolocalización para orientarse emitiendo sonidos y escuchando su eco?",
+  "options": [
+   "El topo",
+   "El murciélago",
+   "La lechuza",
+   "La serpiente"
+  ],
+  "answer_index": 1,
+  "context": "Emite ultrasonidos de hasta 120 kilohercios y reconstruye el entorno con los ecos. Los delfines y algunas ballenas usan el mismo principio bajo el agua.",
+  "difficulty": "medium",
+  "question_en": "Which animal uses echolocation to navigate, emitting sounds and listening to the echo?",
+  "options_en": [
+   "The mole",
+   "The bat",
+   "The owl",
+   "The snake"
+  ],
+  "context_en": "It emits ultrasound of up to 120 kilohertz and reconstructs its surroundings from the echoes. Dolphins and some whales use the same principle underwater."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué estado de letargo invernal adoptan algunos animales para ahorrar energía?",
+  "options": [
+   "La muda",
+   "La hibernación",
+   "La migración",
+   "La estivación"
+  ],
+  "answer_index": 1,
+  "context": "Bajan la temperatura corporal y el ritmo cardiaco hasta límites extremos: la marmota alpina pasa de 200 a 30 latidos por minuto. La estivación es su equivalente en verano.",
+  "difficulty": "medium",
+  "question_en": "Which winter state of torpor do some animals enter to save energy?",
+  "options_en": [
+   "Moulting",
+   "Hibernation",
+   "Migration",
+   "Aestivation"
+  ],
+  "context_en": "They drop their body temperature and heart rate to extremes: the alpine marmot goes from 200 to 30 beats per minute. Aestivation is its summer equivalent."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué ave realiza la migración más larga del planeta, de polo a polo?",
+  "options": [
+   "La cigüeña blanca",
+   "El charrán ártico",
+   "El albatros errante",
+   "La golondrina común"
+  ],
+  "answer_index": 1,
+  "context": "Recorre más de 70.000 kilómetros al año persiguiendo el verano de ambos hemisferios. A lo largo de su vida acumula una distancia equivalente a tres viajes de ida y vuelta a la Luna.",
+  "difficulty": "medium",
+  "question_en": "Which bird makes the longest migration on the planet, from pole to pole?",
+  "options_en": [
+   "The white stork",
+   "The Arctic tern",
+   "The wandering albatross",
+   "The barn swallow"
+  ],
+  "context_en": "It covers more than 70,000 kilometres a year chasing summer in both hemispheres. Over its life it racks up the equivalent of three round trips to the Moon."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal es el mamífero terrestre más pequeño del mundo?",
+  "options": [
+   "El ratón espiguero",
+   "El musgaño enano",
+   "El topillo",
+   "La musaraña común"
+  ],
+  "answer_index": 1,
+  "context": "Pesa menos de dos gramos y debe comer cada par de horas o muere de inanición. Su corazón late más de mil veces por minuto.",
+  "difficulty": "medium",
+  "question_en": "Which animal is the smallest land mammal in the world?",
+  "options_en": [
+   "The harvest mouse",
+   "The Etruscan shrew",
+   "The vole",
+   "The common shrew"
+  ],
+  "context_en": "It weighs under two grams and must eat every couple of hours or starve. Its heart beats more than a thousand times a minute."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué proceso realizan las plantas de noche, cuando no hay luz para la fotosíntesis?",
+  "options": [
+   "La respiración celular",
+   "La transpiración inversa",
+   "La fermentación láctica",
+   "La fijación de nitrógeno"
+  ],
+  "answer_index": 0,
+  "context": "Las plantas respiran las veinticuatro horas: consumen oxígeno y liberan CO₂. De día la fotosíntesis lo compensa con creces, por eso el balance neto es de producción de oxígeno.",
+  "difficulty": "medium",
+  "question_en": "Which process do plants carry out at night, when there is no light for photosynthesis?",
+  "options_en": [
+   "Cellular respiration",
+   "Reverse transpiration",
+   "Lactic fermentation",
+   "Nitrogen fixation"
+  ],
+  "context_en": "Plants respire around the clock: they use oxygen and release CO₂. By day photosynthesis more than makes up for it, which is why the net balance is oxygen production."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de animales son invertebrados con el cuerpo dividido en segmentos y un exoesqueleto de quitina?",
+  "options": [
+   "Los anélidos",
+   "Los artrópodos",
+   "Los equinodermos",
+   "Los cnidarios"
+  ],
+  "answer_index": 1,
+  "context": "Insectos, arácnidos, crustáceos y miriápodos forman el grupo más numeroso del reino animal: más del 80 % de las especies conocidas.",
+  "difficulty": "medium",
+  "question_en": "Which animals are invertebrates with a segmented body and a chitin exoskeleton?",
+  "options_en": [
+   "Annelids",
+   "Arthropods",
+   "Echinoderms",
+   "Cnidarians"
+  ],
+  "context_en": "Insects, arachnids, crustaceans and myriapods form the largest group in the animal kingdom: more than 80% of known species."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animales forman el grupo de los equinodermos?",
+  "options": [
+   "Medusas y corales",
+   "Estrellas y erizos de mar",
+   "Pulpos y calamares",
+   "Esponjas y anémonas"
+  ],
+  "answer_index": 1,
+  "context": "El nombre significa \"piel espinosa\". Tienen simetría radial de cinco radios y un sistema hidráulico de canales de agua que mueve sus pies ambulacrales.",
+  "difficulty": "medium",
+  "question_en": "Which animals make up the echinoderm group?",
+  "options_en": [
+   "Jellyfish and corals",
+   "Starfish and sea urchins",
+   "Octopuses and squid",
+   "Sponges and anemones"
+  ],
+  "context_en": "The name means \"spiny skin\". They have five-rayed radial symmetry and a hydraulic system of water canals that moves their tube feet."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué vitamina se obtiene principalmente de los cítricos y previene el escorbuto?",
+  "options": [
+   "La vitamina A",
+   "La vitamina C",
+   "La vitamina K",
+   "La vitamina B12"
+  ],
+  "answer_index": 1,
+  "context": "El médico James Lind demostró en 1747 que los cítricos curaban la enfermedad de los marineros, casi dos siglos antes de que se aislara la molécula.",
+  "difficulty": "medium",
+  "question_en": "Which vitamin comes mainly from citrus fruit and prevents scurvy?",
+  "options_en": [
+   "Vitamin A",
+   "Vitamin C",
+   "Vitamin K",
+   "Vitamin B12"
+  ],
+  "context_en": "The physician James Lind showed in 1747 that citrus cured the sailors' disease, almost two centuries before the molecule was isolated."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de microorganismo es la levadura que se usa para hacer pan y cerveza?",
+  "options": [
+   "Una bacteria",
+   "Un hongo",
+   "Un virus",
+   "Un alga"
+  ],
+  "answer_index": 1,
+  "context": "Saccharomyces cerevisiae es un hongo unicelular que fermenta los azúcares produciendo alcohol y dióxido de carbono. Ese gas es el que hace subir la masa del pan.",
+  "difficulty": "medium",
+  "question_en": "What kind of microorganism is the yeast used to make bread and beer?",
+  "options_en": [
+   "A bacterium",
+   "A fungus",
+   "A virus",
+   "An alga"
+  ],
+  "context_en": "Saccharomyces cerevisiae is a single-celled fungus that ferments sugars into alcohol and carbon dioxide. That gas is what makes bread dough rise."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué se necesita para que una bacteria sea eliminada por un antibiótico, pero no un virus?",
+  "options": [
+   "Que tenga pared celular y ribosomas propios",
+   "Que sea más grande",
+   "Que viva en el intestino",
+   "Que produzca esporas"
+  ],
+  "answer_index": 0,
+  "context": "Los antibióticos atacan estructuras que los virus no tienen, porque estos usan la maquinaria de nuestras células. Por eso no sirven contra la gripe o el resfriado.",
+  "difficulty": "medium",
+  "question_en": "What makes a bacterium vulnerable to an antibiotic, unlike a virus?",
+  "options_en": [
+   "Having a cell wall and its own ribosomes",
+   "Being larger",
+   "Living in the gut",
+   "Producing spores"
+  ],
+  "context_en": "Antibiotics attack structures viruses lack, because viruses use our own cells' machinery. That is why they are useless against flu or the common cold."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué órgano humano puede regenerarse hasta recuperar casi todo su tamaño tras una extirpación parcial?",
+  "options": [
+   "El corazón",
+   "El hígado",
+   "El cerebro",
+   "El páncreas"
+  ],
+  "answer_index": 1,
+  "context": "Puede recuperar su masa en unas semanas a partir de apenas una cuarta parte del tejido. Esa capacidad hace posible el trasplante de donante vivo.",
+  "difficulty": "medium",
+  "question_en": "Which human organ can regenerate almost to its full size after partial removal?",
+  "options_en": [
+   "The heart",
+   "The liver",
+   "The brain",
+   "The pancreas"
+  ],
+  "context_en": "It can regain its mass within weeks from as little as a quarter of the tissue. That ability makes living donor transplants possible."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe la selección que practica el ser humano al elegir qué animales o plantas se reproducen?",
+  "options": [
+   "Selección natural",
+   "Selección artificial",
+   "Deriva genética",
+   "Especiación"
+  ],
+  "answer_index": 1,
+  "context": "Darwin dedicó el primer capítulo de \"El origen de las especies\" a las palomas de cría para explicar por analogía la selección natural. Todas las razas de perro salen de ahí.",
+  "difficulty": "medium",
+  "question_en": "What is the selection humans practise by choosing which animals or plants reproduce called?",
+  "options_en": [
+   "Natural selection",
+   "Artificial selection",
+   "Genetic drift",
+   "Speciation"
+  ],
+  "context_en": "Darwin devoted the first chapter of \"On the Origin of Species\" to pigeon breeding to explain natural selection by analogy. Every dog breed comes from it."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué naturalista británico llegó a la teoría de la evolución por selección natural a la vez que Darwin?",
+  "options": [
+   "Thomas Huxley",
+   "Alfred Russel Wallace",
+   "Joseph Hooker",
+   "Charles Lyell"
+  ],
+  "answer_index": 1,
+  "context": "Le envió a Darwin un ensayo desde Indonesia en 1858 con la misma idea. Ambos la presentaron juntos ante la Sociedad Linneana ese año, antes de que Darwin publicara su libro.",
+  "difficulty": "medium",
+  "question_en": "Which British naturalist arrived at the theory of evolution by natural selection at the same time as Darwin?",
+  "options_en": [
+   "Thomas Huxley",
+   "Alfred Russel Wallace",
+   "Joseph Hooker",
+   "Charles Lyell"
+  ],
+  "context_en": "He sent Darwin an essay from Indonesia in 1858 with the same idea. The two presented it jointly to the Linnean Society that year, before Darwin published his book."
+ },
+ {
+  "category": "biologia",
+  "question": "¿En qué archipiélago estudió Darwin los pinzones que le ayudaron a formular su teoría?",
+  "options": [
+   "Las Canarias",
+   "Las Galápagos",
+   "Las Azores",
+   "Las Malvinas"
+  ],
+  "answer_index": 1,
+  "context": "Cada isla tenía pinzones con picos adaptados a un alimento distinto. Darwin no comprendió su importancia hasta volver a Londres, donde el ornitólogo John Gould los clasificó.",
+  "difficulty": "medium",
+  "question_en": "In which archipelago did Darwin study the finches that helped him formulate his theory?",
+  "options_en": [
+   "The Canaries",
+   "The Galápagos",
+   "The Azores",
+   "The Falklands"
+  ],
+  "context_en": "Each island had finches with beaks adapted to a different food. Darwin only grasped their importance back in London, where the ornithologist John Gould classified them."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Con qué planta hizo Gregor Mendel sus experimentos sobre la herencia?",
+  "options": [
+   "El trigo",
+   "El guisante",
+   "El maíz",
+   "El tabaco"
+  ],
+  "answer_index": 1,
+  "context": "Cultivó unas 28.000 plantas en el huerto de su monasterio de Brno. Eligió el guisante porque se autopoliniza y presenta caracteres claramente diferenciados.",
+  "difficulty": "medium",
+  "question_en": "Which plant did Gregor Mendel use for his experiments on inheritance?",
+  "options_en": [
+   "Wheat",
+   "The pea plant",
+   "Maize",
+   "Tobacco"
+  ],
+  "context_en": "He grew some 28,000 plants in his monastery garden in Brno. He chose peas because they self-pollinate and show clearly distinct traits."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el conjunto completo de genes de un organismo?",
+  "options": [
+   "Genoma",
+   "Cariotipo",
+   "Fenotipo",
+   "Alelo"
+  ],
+  "answer_index": 0,
+  "context": "El humano tiene unos 20.000 genes codificantes, menos que un arroz. El Proyecto Genoma Humano publicó su primer borrador en 2001 tras trece años de trabajo.",
+  "difficulty": "medium",
+  "question_en": "What is the complete set of an organism's genes called?",
+  "options_en": [
+   "Genome",
+   "Karyotype",
+   "Phenotype",
+   "Allele"
+  ],
+  "context_en": "Humans have about 20,000 coding genes, fewer than rice. The Human Genome Project published its first draft in 2001 after thirteen years of work."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué diferencia hay entre genotipo y fenotipo?",
+  "options": [
+   "El genotipo es la información genética; el fenotipo, lo visible",
+   "Son sinónimos",
+   "El genotipo es el aspecto externo",
+   "El fenotipo solo existe en plantas"
+  ],
+  "answer_index": 0,
+  "context": "Dos personas con el mismo genotipo pueden tener fenotipos distintos según su alimentación, su entorno o su historia. Los gemelos idénticos lo demuestran.",
+  "difficulty": "medium",
+  "question_en": "What is the difference between genotype and phenotype?",
+  "options_en": [
+   "Genotype is the genetic information; phenotype, what is visible",
+   "They are synonyms",
+   "The genotype is the external appearance",
+   "The phenotype only exists in plants"
+  ],
+  "context_en": "Two people with the same genotype can have different phenotypes depending on diet, environment or history. Identical twins show this."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre reciben las variantes de un mismo gen?",
+  "options": [
+   "Codones",
+   "Alelos",
+   "Intrones",
+   "Plásmidos"
+  ],
+  "answer_index": 1,
+  "context": "Heredamos un alelo de cada progenitor. Si uno enmascara al otro se llama dominante, y el que queda oculto, recesivo, como el alelo de los ojos azules.",
+  "difficulty": "medium",
+  "question_en": "What are the variants of the same gene called?",
+  "options_en": [
+   "Codons",
+   "Alleles",
+   "Introns",
+   "Plasmids"
+  ],
+  "context_en": "We inherit one allele from each parent. If one masks the other it is called dominant, and the hidden one recessive, like the allele for blue eyes."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal es el ave más grande del mundo y no puede volar?",
+  "options": [
+   "El emú",
+   "El avestruz",
+   "El casuario",
+   "El pingüino emperador"
+  ],
+  "answer_index": 1,
+  "context": "Puede superar los 2,7 metros y los 150 kilos, y correr a 70 km/h. Sus huevos, de kilo y medio, son las células individuales más grandes del reino animal.",
+  "difficulty": "medium",
+  "question_en": "Which animal is the largest bird in the world and cannot fly?",
+  "options_en": [
+   "The emu",
+   "The ostrich",
+   "The cassowary",
+   "The emperor penguin"
+  ],
+  "context_en": "It can top 2.7 metres and 150 kilos, and run at 70 km/h. Its eggs, weighing a kilo and a half, are the largest single cells in the animal kingdom."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué científico francés demostró que los microorganismos causan enfermedades y desarrolló la vacuna contra la rabia?",
+  "options": [
+   "Claude Bernard",
+   "Louis Pasteur",
+   "Robert Koch",
+   "Paul Ehrlich"
+  ],
+  "answer_index": 1,
+  "context": "Refutó la generación espontánea con sus matraces de cuello de cisne. En 1885 salvó a un niño mordido por un perro rabioso con una vacuna aún sin probar en humanos.",
+  "difficulty": "medium",
+  "question_en": "Which French scientist proved that microorganisms cause disease and developed the rabies vaccine?",
+  "options_en": [
+   "Claude Bernard",
+   "Louis Pasteur",
+   "Robert Koch",
+   "Paul Ehrlich"
+  ],
+  "context_en": "He refuted spontaneous generation with his swan-neck flasks. In 1885 he saved a boy bitten by a rabid dog with a vaccine not yet tested on humans."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué científica británica obtuvo la imagen de difracción de rayos X clave para descifrar la estructura del ADN?",
+  "options": [
+   "Rosalind Franklin",
+   "Dorothy Hodgkin",
+   "Barbara McClintock",
+   "Rita Levi-Montalcini"
+  ],
+  "answer_index": 0,
+  "context": "La llamada Fotografía 51, tomada en 1952, mostraba el patrón de una hélice. Murió en 1958, cuatro años antes del Nobel concedido a Watson, Crick y Wilkins.",
+  "difficulty": "hard",
+  "question_en": "Which British scientist produced the X-ray diffraction image key to deciphering the structure of DNA?",
+  "options_en": [
+   "Rosalind Franklin",
+   "Dorothy Hodgkin",
+   "Barbara McClintock",
+   "Rita Levi-Montalcini"
+  ],
+  "context_en": "The so-called Photograph 51, taken in 1952, showed the pattern of a helix. She died in 1958, four years before the Nobel awarded to Watson, Crick and Wilkins."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué genetista estadounidense descubrió los \"genes saltarines\" o transposones en el maíz?",
+  "options": [
+   "Barbara McClintock",
+   "Nettie Stevens",
+   "Esther Lederberg",
+   "Martha Chase"
+  ],
+  "answer_index": 0,
+  "context": "Publicó su hallazgo en 1950 y la comunidad científica tardó treinta años en aceptarlo. Recibió el Nobel en solitario en 1983, a los 81 años.",
+  "difficulty": "hard",
+  "question_en": "Which American geneticist discovered \"jumping genes\", or transposons, in maize?",
+  "options_en": [
+   "Barbara McClintock",
+   "Nettie Stevens",
+   "Esther Lederberg",
+   "Martha Chase"
+  ],
+  "context_en": "She published her finding in 1950 and the scientific community took thirty years to accept it. She received an unshared Nobel Prize in 1983, aged 81."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el proceso por el que una sola especie da lugar a muchas que ocupan nichos distintos?",
+  "options": [
+   "Convergencia evolutiva",
+   "Radiación adaptativa",
+   "Coevolución",
+   "Deriva continental"
+  ],
+  "answer_index": 1,
+  "context": "Los pinzones de Darwin y los cíclidos de los lagos africanos son los ejemplos de manual. Suele ocurrir tras una extinción masiva o al colonizar un territorio vacío.",
+  "difficulty": "hard",
+  "question_en": "What is the process by which a single species gives rise to many occupying different niches called?",
+  "options_en": [
+   "Convergent evolution",
+   "Adaptive radiation",
+   "Coevolution",
+   "Continental drift"
+  ],
+  "context_en": "Darwin's finches and the cichlids of the African lakes are the textbook examples. It usually follows a mass extinction or the colonisation of empty territory."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Cómo se llama el fenómeno por el que especies no emparentadas desarrollan rasgos parecidos ante presiones similares?",
+  "options": [
+   "Evolución convergente",
+   "Especiación alopátrica",
+   "Herencia epigenética",
+   "Neotenia"
+  ],
+  "answer_index": 0,
+  "context": "El ojo de los vertebrados y el del pulpo se parecen mucho pese a haber surgido por separado. Las alas de aves, murciélagos e insectos son otro ejemplo clásico.",
+  "difficulty": "hard",
+  "question_en": "What is it called when unrelated species develop similar traits under similar pressures?",
+  "options_en": [
+   "Convergent evolution",
+   "Allopatric speciation",
+   "Epigenetic inheritance",
+   "Neoteny"
+  ],
+  "context_en": "The vertebrate eye and the octopus eye are strikingly alike despite arising separately. The wings of birds, bats and insects are another classic example."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el mamífero marsupial australiano que se alimenta casi exclusivamente de hojas de eucalipto?",
+  "options": [
+   "El wombat",
+   "El koala",
+   "El numbat",
+   "El bandicut"
+  ],
+  "answer_index": 1,
+  "context": "Las hojas son tan pobres en nutrientes y tan tóxicas que duerme hasta veinte horas al día para ahorrar energía. Su intestino ciego mide más de dos metros.",
+  "difficulty": "hard",
+  "question_en": "Which Australian marsupial feeds almost exclusively on eucalyptus leaves?",
+  "options_en": [
+   "The wombat",
+   "The koala",
+   "The numbat",
+   "The bandicoot"
+  ],
+  "context_en": "The leaves are so low in nutrients and so toxic that it sleeps up to twenty hours a day to save energy. Its caecum is more than two metres long."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué molécula transporta la información del ADN desde el núcleo hasta los ribosomas?",
+  "options": [
+   "El ARN de transferencia",
+   "El ARN mensajero",
+   "El ARN ribosómico",
+   "La ADN polimerasa"
+  ],
+  "answer_index": 1,
+  "context": "Se copia del ADN en el núcleo y sale al citoplasma, donde se traduce en proteína. Las vacunas de ARN mensajero aprovechan ese mecanismo para enseñar a la célula a fabricar un antígeno.",
+  "difficulty": "hard",
+  "question_en": "Which molecule carries information from DNA in the nucleus to the ribosomes?",
+  "options_en": [
+   "Transfer RNA",
+   "Messenger RNA",
+   "Ribosomal RNA",
+   "DNA polymerase"
+  ],
+  "context_en": "It is copied from DNA in the nucleus and travels to the cytoplasm, where it is translated into protein. Messenger RNA vaccines use that mechanism to teach cells to make an antigen."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué teoría explica que las mitocondrias y los cloroplastos fueron en su origen bacterias independientes?",
+  "options": [
+   "La teoría celular",
+   "La teoría endosimbiótica",
+   "La teoría del equilibrio puntuado",
+   "La teoría cromosómica"
+  ],
+  "answer_index": 1,
+  "context": "Lynn Margulis la defendió en 1967 contra el rechazo casi unánime de sus colegas. Que estos orgánulos conserven su propio ADN circular acabó dándole la razón.",
+  "difficulty": "hard",
+  "question_en": "Which theory explains that mitochondria and chloroplasts were originally independent bacteria?",
+  "options_en": [
+   "Cell theory",
+   "Endosymbiotic theory",
+   "Punctuated equilibrium",
+   "Chromosome theory"
+  ],
+  "context_en": "Lynn Margulis argued for it in 1967 against almost unanimous rejection by her colleagues. That these organelles keep their own circular DNA eventually proved her right."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué grupo de organismos unicelulares vive en ambientes extremos y forma un dominio propio junto a bacterias y eucariotas?",
+  "options": [
+   "Las arqueas",
+   "Los protozoos",
+   "Los virus",
+   "Los priones"
+  ],
+  "answer_index": 0,
+  "context": "Carl Woese las separó de las bacterias en 1977 comparando su ARN ribosómico. Viven en fuentes termales, salinas y en nuestro propio intestino.",
+  "difficulty": "hard",
+  "question_en": "Which group of single-celled organisms lives in extreme environments and forms its own domain alongside bacteria and eukaryotes?",
+  "options_en": [
+   "Archaea",
+   "Protozoa",
+   "Viruses",
+   "Prions"
+  ],
+  "context_en": "Carl Woese separated them from bacteria in 1977 by comparing ribosomal RNA. They live in hot springs, salt flats and in our own gut."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué agente infeccioso, formado solo por proteína mal plegada, causa enfermedades como el mal de las vacas locas?",
+  "options": [
+   "Un virus",
+   "Un prión",
+   "Un viroide",
+   "Una micoplasma"
+  ],
+  "answer_index": 1,
+  "context": "No contiene material genético: se propaga obligando a otras proteínas a plegarse mal. Stanley Prusiner recibió el Nobel en 1997 por describirlos.",
+  "difficulty": "hard",
+  "question_en": "Which infectious agent, made only of misfolded protein, causes diseases such as mad cow disease?",
+  "options_en": [
+   "A virus",
+   "A prion",
+   "A viroid",
+   "A mycoplasma"
+  ],
+  "context_en": "It contains no genetic material: it spreads by forcing other proteins to misfold. Stanley Prusiner received the Nobel Prize in 1997 for describing them."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal invertebrado puede sobrevivir al vacío del espacio, a la radiación y a temperaturas extremas?",
+  "options": [
+   "El tardígrado",
+   "El rotífero",
+   "El nematodo",
+   "El copépodo"
+  ],
+  "answer_index": 0,
+  "context": "Mide menos de un milímetro y entra en un estado llamado criptobiosis en el que casi detiene su metabolismo. En 2007 sobrevivió a diez días expuesto en órbita.",
+  "difficulty": "hard",
+  "question_en": "Which invertebrate can survive the vacuum of space, radiation and extreme temperatures?",
+  "options_en": [
+   "The tardigrade",
+   "The rotifer",
+   "The nematode",
+   "The copepod"
+  ],
+  "context_en": "It measures under a millimetre and enters a state called cryptobiosis in which its metabolism almost stops. In 2007 it survived ten days exposed in orbit."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué hormona vegetal provoca la maduración de los frutos y es un gas?",
+  "options": [
+   "La auxina",
+   "El etileno",
+   "La giberelina",
+   "El ácido abscísico"
+  ],
+  "answer_index": 1,
+  "context": "Por eso una manzana madura acelera la maduración de las que tiene al lado. Los plátanos se transportan verdes y se tratan con etileno antes de llegar a la tienda.",
+  "difficulty": "hard",
+  "question_en": "Which plant hormone triggers fruit ripening and is a gas?",
+  "options_en": [
+   "Auxin",
+   "Ethylene",
+   "Gibberellin",
+   "Abscisic acid"
+  ],
+  "context_en": "That is why a ripe apple speeds up the ripening of those beside it. Bananas are shipped green and treated with ethylene before reaching the shop."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de simbiosis forman los hongos con las raíces de la mayoría de las plantas?",
+  "options": [
+   "Las micorrizas",
+   "Los líquenes",
+   "Los nódulos radiculares",
+   "Los estolones"
+  ],
+  "answer_index": 0,
+  "context": "El hongo amplía enormemente la superficie de absorción y recibe azúcares a cambio. Conectan árboles entre sí formando redes por las que intercambian nutrientes y señales.",
+  "difficulty": "hard",
+  "question_en": "What kind of symbiosis do fungi form with the roots of most plants?",
+  "options_en": [
+   "Mycorrhizae",
+   "Lichens",
+   "Root nodules",
+   "Stolons"
+  ],
+  "context_en": "The fungus hugely extends the absorbing surface and receives sugars in return. They link trees into networks through which nutrients and signals are exchanged."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué proceso da lugar a nuevas especies cuando una población queda aislada geográficamente?",
+  "options": [
+   "Especiación simpátrica",
+   "Especiación alopátrica",
+   "Hibridación",
+   "Poliploidía"
+  ],
+  "answer_index": 1,
+  "context": "Una cordillera, un río o una isla bastan para cortar el flujo genético. La simpátrica ocurre sin barrera física, por ejemplo si dos grupos empiezan a reproducirse en épocas distintas.",
+  "difficulty": "hard",
+  "question_en": "Which process gives rise to new species when a population becomes geographically isolated?",
+  "options_en": [
+   "Sympatric speciation",
+   "Allopatric speciation",
+   "Hybridisation",
+   "Polyploidy"
+  ],
+  "context_en": "A mountain range, a river or an island is enough to cut gene flow. Sympatric speciation happens without a physical barrier, for instance if two groups start breeding at different times."
+ }
+]

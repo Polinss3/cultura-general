@@ -1,0 +1,1136 @@
+[
+ {
+  "category": "biologia",
+  "question": "¿Qué animal pone huevos y amamanta a sus crías, siendo un mamífero muy peculiar?",
+  "options": [
+   "El armadillo",
+   "El ornitorrinco",
+   "El perezoso",
+   "El erizo"
+  ],
+  "answer_index": 1,
+  "context": "Tiene pico de pato, cola de castor y espolones venenosos. Cuando llegó a Europa el primer ejemplar disecado, los naturalistas creyeron que era un fraude cosido a mano.",
+  "difficulty": "easy",
+  "question_en": "Which animal lays eggs and yet suckles its young, making it a very peculiar mammal?",
+  "options_en": [
+   "The armadillo",
+   "The platypus",
+   "The sloth",
+   "The hedgehog"
+  ],
+  "context_en": "It has a duck's bill, a beaver's tail and venomous spurs. When the first stuffed specimen reached Europe, naturalists thought it was a hand-stitched hoax."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Por qué las hojas se vuelven amarillas y rojizas en otoño?",
+  "options": [
+   "Porque el árbol fabrica pigmentos nuevos",
+   "Porque se degrada la clorofila y quedan a la vista otros pigmentos",
+   "Porque absorben más agua",
+   "Porque las ataca un hongo"
+  ],
+  "answer_index": 1,
+  "context": "Los carotenoides amarillos y anaranjados están ahí todo el año, ocultos por el verde. Los rojos, las antocianinas, sí se fabrican en otoño y protegen la hoja mientras el árbol retira nutrientes.",
+  "difficulty": "easy",
+  "question_en": "Why do leaves turn yellow and red in autumn?",
+  "options_en": [
+   "Because the tree makes new pigments",
+   "Because chlorophyll breaks down and other pigments show through",
+   "Because they absorb more water",
+   "Because a fungus attacks them"
+  ],
+  "context_en": "Yellow and orange carotenoids are there all year, hidden by the green. The reds, anthocyanins, are made in autumn and protect the leaf while the tree withdraws nutrients."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal es conocido por su caparazón y por retraer la cabeza dentro de él?",
+  "options": [
+   "El cocodrilo",
+   "La tortuga",
+   "El camaleón",
+   "La iguana"
+  ],
+  "answer_index": 1,
+  "context": "Su caparazón está formado por costillas y vértebras fusionadas, así que no puede salir de él. Existen desde hace más de 200 millones de años, antes que muchos dinosaurios.",
+  "difficulty": "easy",
+  "question_en": "Which animal is known for its shell and for pulling its head inside it?",
+  "options_en": [
+   "The crocodile",
+   "The tortoise",
+   "The chameleon",
+   "The iguana"
+  ],
+  "context_en": "Its shell is made of fused ribs and vertebrae, so it cannot leave it. They have existed for more than 200 million years, predating many dinosaurs."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué parte de la flor produce el polen?",
+  "options": [
+   "El pistilo",
+   "El estambre",
+   "El pétalo",
+   "El sépalo"
+  ],
+  "answer_index": 1,
+  "context": "Es la parte masculina de la flor y termina en la antera, donde madura el polen. El pistilo es la parte femenina y recibe ese polen en su estigma.",
+  "difficulty": "easy",
+  "question_en": "Which part of a flower produces pollen?",
+  "options_en": [
+   "The pistil",
+   "The stamen",
+   "The petal",
+   "The sepal"
+  ],
+  "context_en": "It is the male part of the flower and ends in the anther, where pollen matures. The pistil is the female part and receives that pollen on its stigma."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animales tienen la sangre a temperatura variable según el ambiente?",
+  "options": [
+   "Las aves",
+   "Los mamíferos",
+   "Los reptiles",
+   "Los cetáceos"
+  ],
+  "answer_index": 2,
+  "context": "Se llaman ectotermos: regulan su temperatura buscando sol o sombra. Eso les permite comer mucho menos que un mamífero del mismo tamaño.",
+  "difficulty": "easy",
+  "question_en": "Which animals have a body temperature that varies with their surroundings?",
+  "options_en": [
+   "Birds",
+   "Mammals",
+   "Reptiles",
+   "Cetaceans"
+  ],
+  "context_en": "They are called ectotherms: they regulate temperature by seeking sun or shade. That lets them eat far less than a mammal of the same size."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal es el felino más grande del mundo?",
+  "options": [
+   "El león",
+   "El tigre",
+   "El jaguar",
+   "El leopardo"
+  ],
+  "answer_index": 1,
+  "context": "El tigre siberiano puede superar los 300 kilos y los tres metros de largo. A diferencia del león, es solitario y buen nadador.",
+  "difficulty": "easy",
+  "question_en": "Which animal is the largest cat in the world?",
+  "options_en": [
+   "The lion",
+   "The tiger",
+   "The jaguar",
+   "The leopard"
+  ],
+  "context_en": "The Siberian tiger can top 300 kilos and three metres in length. Unlike the lion it is solitary and a strong swimmer."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué necesitan las semillas, además de agua y temperatura adecuada, para germinar?",
+  "options": [
+   "Oxígeno",
+   "Nitrógeno puro",
+   "Luz ultravioleta",
+   "Sal"
+  ],
+  "answer_index": 0,
+  "context": "El embrión respira para obtener la energía de sus reservas. Algunas semillas necesitan además pasar frío o incluso fuego, como muchas especies mediterráneas.",
+  "difficulty": "easy",
+  "question_en": "What do seeds need to germinate, besides water and a suitable temperature?",
+  "options_en": [
+   "Oxygen",
+   "Pure nitrogen",
+   "Ultraviolet light",
+   "Salt"
+  ],
+  "context_en": "The embryo respires to draw energy from its reserves. Some seeds also need cold or even fire, as many Mediterranean species do."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal marino es conocido por su gran aleta dorsal y por tener esqueleto de cartílago?",
+  "options": [
+   "El atún",
+   "El tiburón",
+   "El delfín",
+   "La orca"
+  ],
+  "answer_index": 1,
+  "context": "Su esqueleto cartilaginoso es más ligero que el óseo y le ayuda a flotar. Renueva los dientes continuamente: puede perder decenas de miles a lo largo de su vida.",
+  "difficulty": "easy",
+  "question_en": "Which sea animal is known for its large dorsal fin and a skeleton of cartilage?",
+  "options_en": [
+   "The tuna",
+   "The shark",
+   "The dolphin",
+   "The orca"
+  ],
+  "context_en": "Its cartilaginous skeleton is lighter than bone and helps it stay buoyant. It replaces its teeth continuously: it can lose tens of thousands over its life."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué produce el sistema inmunitario para reconocer y neutralizar a los invasores?",
+  "options": [
+   "Enzimas digestivas",
+   "Anticuerpos",
+   "Hormonas sexuales",
+   "Neurotransmisores"
+  ],
+  "answer_index": 1,
+  "context": "Cada anticuerpo encaja con un antígeno concreto, como una llave en su cerradura. Las vacunas entrenan al cuerpo para fabricarlos antes de encontrarse con el patógeno real.",
+  "difficulty": "easy",
+  "question_en": "What does the immune system produce to recognise and neutralise invaders?",
+  "options_en": [
+   "Digestive enzymes",
+   "Antibodies",
+   "Sex hormones",
+   "Neurotransmitters"
+  ],
+  "context_en": "Each antibody fits one specific antigen, like a key in a lock. Vaccines train the body to make them before it meets the real pathogen."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal transporta a su cría en una bolsa ventral llamada marsupio?",
+  "options": [
+   "El oso panda",
+   "El canguro",
+   "El mapache",
+   "La nutria"
+  ],
+  "answer_index": 1,
+  "context": "La cría nace del tamaño de una alubia y trepa sola hasta la bolsa, donde termina de desarrollarse durante meses. Australia concentra casi todos los marsupiales actuales.",
+  "difficulty": "easy",
+  "question_en": "Which animal carries its young in a belly pouch called a marsupium?",
+  "options_en": [
+   "The giant panda",
+   "The kangaroo",
+   "The raccoon",
+   "The otter"
+  ],
+  "context_en": "The young is born the size of a bean and climbs unaided to the pouch, where it finishes developing over months. Australia is home to almost all living marsupials."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de hueso protege el cerebro humano?",
+  "options": [
+   "Las vértebras",
+   "Los huesos del cráneo",
+   "El esternón",
+   "La clavícula"
+  ],
+  "answer_index": 1,
+  "context": "Son ocho huesos unidos por suturas dentadas que en el recién nacido aún no están soldadas, lo que permite el parto y el crecimiento del cerebro.",
+  "difficulty": "easy",
+  "question_en": "Which bones protect the human brain?",
+  "options_en": [
+   "The vertebrae",
+   "The skull bones",
+   "The sternum",
+   "The clavicle"
+  ],
+  "context_en": "They are eight bones joined by jagged sutures that are not yet fused in a newborn, which allows birth and brain growth."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animales polinizan la mayoría de las plantas con flor?",
+  "options": [
+   "Los gusanos",
+   "Los insectos",
+   "Los reptiles",
+   "Los peces"
+  ],
+  "answer_index": 1,
+  "context": "Abejas, mariposas, moscas y escarabajos hacen el grueso del trabajo, aunque también polinizan aves y murciélagos. Un tercio de los alimentos que comemos depende de ellos.",
+  "difficulty": "medium",
+  "question_en": "Which animals pollinate most flowering plants?",
+  "options_en": [
+   "Worms",
+   "Insects",
+   "Reptiles",
+   "Fish"
+  ],
+  "context_en": "Bees, butterflies, flies and beetles do the bulk of the work, though birds and bats also pollinate. A third of the food we eat depends on them."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal es el más venenoso por gramo de toxina, la rana dorada de Colombia?",
+  "options": [
+   "Una serpiente",
+   "Un anfibio",
+   "Un pez",
+   "Un molusco"
+  ],
+  "answer_index": 1,
+  "context": "Un solo ejemplar contiene batracotoxina suficiente para matar a diez personas. En cautividad pierde su toxicidad, porque la obtiene de los insectos que come en libertad.",
+  "difficulty": "medium",
+  "question_en": "The golden poison frog of Colombia, the most toxic animal per gram, belongs to which group?",
+  "options_en": [
+   "A snake",
+   "An amphibian",
+   "A fish",
+   "A mollusc"
+  ],
+  "context_en": "A single specimen holds enough batrachotoxin to kill ten people. In captivity it loses its toxicity, because it gets it from the insects it eats in the wild."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué estructura de la célula vegetal le da rigidez y no existe en la célula animal?",
+  "options": [
+   "La membrana plasmática",
+   "La pared celular",
+   "El citoesqueleto",
+   "El aparato de Golgi"
+  ],
+  "answer_index": 1,
+  "context": "Está hecha de celulosa, el compuesto orgánico más abundante de la Tierra. Es la razón por la que las plantas se sostienen de pie sin esqueleto.",
+  "difficulty": "medium",
+  "question_en": "Which structure of a plant cell gives it rigidity and is absent in animal cells?",
+  "options_en": [
+   "The plasma membrane",
+   "The cell wall",
+   "The cytoskeleton",
+   "The Golgi apparatus"
+  ],
+  "context_en": "It is made of cellulose, the most abundant organic compound on Earth. It is why plants stand upright without a skeleton."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué orgánulo actúa como \"sistema de correos\" de la célula, empaquetando proteínas para enviarlas?",
+  "options": [
+   "El lisosoma",
+   "El aparato de Golgi",
+   "El peroxisoma",
+   "El nucléolo"
+  ],
+  "answer_index": 1,
+  "context": "Lo descubrió Camillo Golgi en 1898 y durante décadas se dudó de que existiera de verdad. Modifica las proteínas, las etiqueta y las despacha en vesículas.",
+  "difficulty": "medium",
+  "question_en": "Which organelle acts as the cell's \"post office\", packaging proteins for dispatch?",
+  "options_en": [
+   "The lysosome",
+   "The Golgi apparatus",
+   "The peroxisome",
+   "The nucleolus"
+  ],
+  "context_en": "Camillo Golgi discovered it in 1898 and for decades people doubted it really existed. It modifies proteins, labels them and ships them out in vesicles."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué orgánulo celular digiere los residuos con sus enzimas?",
+  "options": [
+   "El lisosoma",
+   "El ribosoma",
+   "El centriolo",
+   "La vacuola"
+  ],
+  "answer_index": 0,
+  "context": "Contiene medio centenar de enzimas capaces de degradar casi cualquier molécula. Se le ha llamado \"el estómago\" o incluso \"la bolsa suicida\" de la célula.",
+  "difficulty": "medium",
+  "question_en": "Which cell organelle digests waste with its enzymes?",
+  "options_en": [
+   "The lysosome",
+   "The ribosome",
+   "The centriole",
+   "The vacuole"
+  ],
+  "context_en": "It holds some fifty enzymes able to break down almost any molecule. It has been called the cell's \"stomach\" or even its \"suicide bag\"."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de reproducción da lugar a descendientes genéticamente idénticos al progenitor?",
+  "options": [
+   "Sexual",
+   "Asexual",
+   "Alogamia",
+   "Hibridación"
+  ],
+  "answer_index": 1,
+  "context": "Es rápida y no necesita pareja, pero produce clones vulnerables a un mismo patógeno. Los esquejes de jardinería aprovechan ese mecanismo.",
+  "difficulty": "medium",
+  "question_en": "Which type of reproduction produces offspring genetically identical to the parent?",
+  "options_en": [
+   "Sexual",
+   "Asexual",
+   "Cross-pollination",
+   "Hybridisation"
+  ],
+  "context_en": "It is fast and needs no mate, but produces clones vulnerable to the same pathogen. Garden cuttings exploit that mechanism."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal construye presas en los ríos modificando el paisaje a su alrededor?",
+  "options": [
+   "La nutria",
+   "El castor",
+   "El visón",
+   "La rata almizclera"
+  ],
+  "answer_index": 1,
+  "context": "Se le considera una especie \"ingeniera de ecosistemas\": sus presas crean humedales que benefician a decenas de especies. La mayor registrada mide más de 800 metros.",
+  "difficulty": "medium",
+  "question_en": "Which animal builds dams in rivers, reshaping the landscape around it?",
+  "options_en": [
+   "The otter",
+   "The beaver",
+   "The mink",
+   "The muskrat"
+  ],
+  "context_en": "It is considered an \"ecosystem engineer\": its dams create wetlands that benefit dozens of species. The largest recorded is more than 800 metres long."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe la capacidad de un ecosistema para recuperarse tras una perturbación?",
+  "options": [
+   "Resiliencia",
+   "Sucesión primaria",
+   "Biodiversidad",
+   "Eutrofización"
+  ],
+  "answer_index": 0,
+  "context": "Los ecosistemas más diversos suelen ser más resilientes, porque si falla una especie otras cumplen su papel. Un bosque quemado puede tardar décadas en recuperarse del todo.",
+  "difficulty": "medium",
+  "question_en": "What is an ecosystem's ability to recover after a disturbance called?",
+  "options_en": [
+   "Resilience",
+   "Primary succession",
+   "Biodiversity",
+   "Eutrophication"
+  ],
+  "context_en": "More diverse ecosystems tend to be more resilient, because if one species fails others take over its role. A burned forest can take decades to recover fully."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué problema ambiental provoca el exceso de nutrientes en un lago, con proliferación de algas y falta de oxígeno?",
+  "options": [
+   "La eutrofización",
+   "La desertificación",
+   "La salinización",
+   "La acidificación"
+  ],
+  "answer_index": 0,
+  "context": "Los fertilizantes agrícolas arrastrados por la lluvia son la causa más frecuente. Al morir, las algas se descomponen y consumen el oxígeno, asfixiando a los peces.",
+  "difficulty": "medium",
+  "question_en": "Which environmental problem is caused by excess nutrients in a lake, with algal blooms and lack of oxygen?",
+  "options_en": [
+   "Eutrophication",
+   "Desertification",
+   "Salinisation",
+   "Acidification"
+  ],
+  "context_en": "Agricultural fertiliser washed in by rain is the most common cause. As the algae die they decompose and use up the oxygen, suffocating the fish."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué organismos ocupan el primer nivel de una cadena trófica?",
+  "options": [
+   "Los descomponedores",
+   "Los productores",
+   "Los consumidores primarios",
+   "Los depredadores"
+  ],
+  "answer_index": 1,
+  "context": "Son las plantas y algas, capaces de fabricar su alimento a partir de la luz. En cada escalón de la cadena solo pasa al siguiente en torno al 10 % de la energía.",
+  "difficulty": "medium",
+  "question_en": "Which organisms occupy the first level of a food chain?",
+  "options_en": [
+   "Decomposers",
+   "Producers",
+   "Primary consumers",
+   "Predators"
+  ],
+  "context_en": "They are plants and algae, able to make their own food from light. At each step of the chain only about 10% of the energy passes to the next level."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe una especie que llega a un ecosistema donde no es originaria y causa daños?",
+  "options": [
+   "Especie endémica",
+   "Especie invasora",
+   "Especie clave",
+   "Especie indicadora"
+  ],
+  "answer_index": 1,
+  "context": "El mejillón cebra o la avispa asiática son ejemplos en Europa. Son la segunda causa de pérdida de biodiversidad, solo por detrás de la destrucción del hábitat.",
+  "difficulty": "medium",
+  "question_en": "What is a species that arrives in an ecosystem where it is not native and causes damage called?",
+  "options_en": [
+   "Endemic species",
+   "Invasive species",
+   "Keystone species",
+   "Indicator species"
+  ],
+  "context_en": "The zebra mussel and the Asian hornet are examples in Europe. They are the second cause of biodiversity loss, behind only habitat destruction."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe una especie que solo existe de forma natural en un territorio concreto?",
+  "options": [
+   "Cosmopolita",
+   "Endémica",
+   "Migratoria",
+   "Introducida"
+  ],
+  "answer_index": 1,
+  "context": "El lince ibérico, el drago canario o los lémures de Madagascar lo son. Las islas concentran muchos endemismos porque el aislamiento favorece la evolución en solitario.",
+  "difficulty": "medium",
+  "question_en": "What is a species that occurs naturally only in one particular territory called?",
+  "options_en": [
+   "Cosmopolitan",
+   "Endemic",
+   "Migratory",
+   "Introduced"
+  ],
+  "context_en": "The Iberian lynx, the Canary dragon tree and Madagascar's lemurs are examples. Islands hold many endemics because isolation favours evolution in isolation."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué felino ibérico estuvo al borde de la extinción y se ha recuperado gracias a la cría en cautividad?",
+  "options": [
+   "El gato montés",
+   "El lince ibérico",
+   "El lince boreal",
+   "El caracal"
+  ],
+  "answer_index": 1,
+  "context": "En 2002 quedaban menos de cien ejemplares; hoy superan los 2.000. Depende casi por completo del conejo de monte, cuyas epidemias lo pusieron en peligro.",
+  "difficulty": "medium",
+  "question_en": "Which Iberian wild cat was on the brink of extinction and has recovered thanks to captive breeding?",
+  "options_en": [
+   "The wildcat",
+   "The Iberian lynx",
+   "The Eurasian lynx",
+   "The caracal"
+  ],
+  "context_en": "In 2002 fewer than a hundred remained; today there are more than 2,000. It depends almost entirely on the wild rabbit, whose epidemics put it at risk."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué es un arrecife de coral?",
+  "options": [
+   "Una formación rocosa erosionada",
+   "Una estructura construida por animales coloniales",
+   "Un banco de algas",
+   "Un depósito de sal marina"
+  ],
+  "answer_index": 1,
+  "context": "Los pólipos segregan carbonato cálcico y viven en simbiosis con algas microscópicas que los alimentan. Ocupan menos del 1 % del océano pero albergan un cuarto de las especies marinas.",
+  "difficulty": "medium",
+  "question_en": "What is a coral reef?",
+  "options_en": [
+   "An eroded rock formation",
+   "A structure built by colonial animals",
+   "A bed of algae",
+   "A deposit of sea salt"
+  ],
+  "context_en": "Polyps secrete calcium carbonate and live in symbiosis with microscopic algae that feed them. They cover under 1% of the ocean but host a quarter of marine species."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué le ocurre a un coral cuando expulsa a las algas que viven en su interior por el calor del agua?",
+  "options": [
+   "Se blanquea",
+   "Se vuelve más resistente",
+   "Crece más rápido",
+   "Cambia de especie"
+  ],
+  "answer_index": 0,
+  "context": "Pierde el color y su fuente principal de alimento. Si la temperatura baja pronto puede recuperarse; si el estrés se prolonga, muere.",
+  "difficulty": "medium",
+  "question_en": "What happens to a coral when it expels the algae living inside it because of warm water?",
+  "options_en": [
+   "It bleaches",
+   "It becomes hardier",
+   "It grows faster",
+   "It changes species"
+  ],
+  "context_en": "It loses its colour and its main food source. If the temperature drops soon it can recover; if the stress lasts, it dies."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué grupo de organismos microscópicos flota en el mar y produce buena parte del oxígeno del planeta?",
+  "options": [
+   "El zooplancton",
+   "El fitoplancton",
+   "El bentos",
+   "El necton"
+  ],
+  "answer_index": 1,
+  "context": "Se calcula que genera entre la mitad y dos tercios del oxígeno que respiramos. El zooplancton, en cambio, son animales diminutos que se alimentan de él.",
+  "difficulty": "medium",
+  "question_en": "Which group of microscopic organisms floats in the sea and produces much of the planet's oxygen?",
+  "options_en": [
+   "Zooplankton",
+   "Phytoplankton",
+   "Benthos",
+   "Nekton"
+  ],
+  "context_en": "It is reckoned to generate between half and two-thirds of the oxygen we breathe. Zooplankton, by contrast, are tiny animals that feed on it."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de pez cambia de sexo a lo largo de su vida, como el pez payaso?",
+  "options": [
+   "Los ovíparos",
+   "Los hermafroditas secuenciales",
+   "Los cartilaginosos",
+   "Los anádromos"
+  ],
+  "answer_index": 1,
+  "context": "En el pez payaso, si muere la hembra dominante, el macho principal cambia de sexo y ocupa su lugar. Los meros hacen el recorrido inverso, de hembra a macho.",
+  "difficulty": "medium",
+  "question_en": "Which kind of fish changes sex during its life, like the clownfish?",
+  "options_en": [
+   "Oviparous fish",
+   "Sequential hermaphrodites",
+   "Cartilaginous fish",
+   "Anadromous fish"
+  ],
+  "context_en": "In clownfish, if the dominant female dies, the main male changes sex and takes her place. Groupers do the reverse, from female to male."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre reciben los peces que nacen en ríos, viven en el mar y vuelven al río a desovar?",
+  "options": [
+   "Catádromos",
+   "Anádromos",
+   "Pelágicos",
+   "Demersales"
+  ],
+  "answer_index": 1,
+  "context": "El salmón es el caso más conocido: vuelve al mismo río donde nació guiándose por el olfato. La anguila hace lo contrario y se llama catádroma.",
+  "difficulty": "medium",
+  "question_en": "What are fish that are born in rivers, live in the sea and return to the river to spawn called?",
+  "options_en": [
+   "Catadromous",
+   "Anadromous",
+   "Pelagic",
+   "Demersal"
+  ],
+  "context_en": "The salmon is the best-known case: it returns to the very river where it was born, guided by smell. The eel does the opposite and is called catadromous."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué insecto social vive en colonias con una reina, obreras y soldados, y construye termiteros?",
+  "options": [
+   "La hormiga",
+   "La termita",
+   "La abeja",
+   "La avispa"
+  ],
+  "answer_index": 1,
+  "context": "Están emparentadas con las cucarachas, no con las hormigas. Algunos termiteros africanos superan los seis metros y funcionan como chimeneas que regulan la temperatura.",
+  "difficulty": "medium",
+  "question_en": "Which social insect lives in colonies with a queen, workers and soldiers, and builds mounds?",
+  "options_en": [
+   "The ant",
+   "The termite",
+   "The bee",
+   "The wasp"
+  ],
+  "context_en": "They are related to cockroaches, not ants. Some African mounds top six metres and work as chimneys that regulate temperature."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué proceso permite a las plantas leguminosas enriquecer el suelo en nitrógeno?",
+  "options": [
+   "La simbiosis con bacterias en sus raíces",
+   "La absorción directa del aire por las hojas",
+   "La descomposición de sus frutos",
+   "La transpiración nocturna"
+  ],
+  "answer_index": 0,
+  "context": "Las bacterias del género Rhizobium viven en nódulos de la raíz y convierten el nitrógeno atmosférico en amonio. Por eso se alternan legumbres y cereales en la rotación de cultivos.",
+  "difficulty": "medium",
+  "question_en": "Which process lets legumes enrich the soil with nitrogen?",
+  "options_en": [
+   "Symbiosis with bacteria in their roots",
+   "Direct absorption from the air by the leaves",
+   "The decomposition of their fruit",
+   "Night-time transpiration"
+  ],
+  "context_en": "Rhizobium bacteria live in root nodules and convert atmospheric nitrogen into ammonium. That is why legumes and cereals are alternated in crop rotation."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de célula sanguínea combate las infecciones?",
+  "options": [
+   "El glóbulo rojo",
+   "El glóbulo blanco",
+   "La plaqueta",
+   "El plasmocito reticular"
+  ],
+  "answer_index": 1,
+  "context": "Hay varios tipos: neutrófilos, linfocitos, monocitos, eosinófilos y basófilos, cada uno con una función. En un litro de sangre hay unos siete mil millones.",
+  "difficulty": "medium",
+  "question_en": "Which type of blood cell fights infection?",
+  "options_en": [
+   "The red blood cell",
+   "The white blood cell",
+   "The platelet",
+   "The reticular plasmocyte"
+  ],
+  "context_en": "There are several types: neutrophils, lymphocytes, monocytes, eosinophils and basophils, each with a role. A litre of blood holds about seven billion of them."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué parte del ojo humano regula la cantidad de luz que entra?",
+  "options": [
+   "La córnea",
+   "El iris",
+   "La retina",
+   "El cristalino"
+  ],
+  "answer_index": 1,
+  "context": "Es el anillo de color que rodea la pupila, y su músculo la abre o la cierra. El cristalino enfoca y la retina convierte la luz en señales nerviosas.",
+  "difficulty": "medium",
+  "question_en": "Which part of the human eye regulates how much light enters?",
+  "options_en": [
+   "The cornea",
+   "The iris",
+   "The retina",
+   "The lens"
+  ],
+  "context_en": "It is the coloured ring around the pupil, and its muscle opens or closes it. The lens focuses and the retina turns light into nerve signals."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué células de la retina permiten ver los colores?",
+  "options": [
+   "Los bastones",
+   "Los conos",
+   "Las células ganglionares",
+   "Las células de Müller"
+  ],
+  "answer_index": 1,
+  "context": "Hay tres tipos, sensibles al rojo, al verde y al azul. Los bastones son mucho más numerosos pero solo distinguen intensidades, por eso de noche vemos casi en blanco y negro.",
+  "difficulty": "medium",
+  "question_en": "Which retinal cells allow us to see colour?",
+  "options_en": [
+   "Rods",
+   "Cones",
+   "Ganglion cells",
+   "Müller cells"
+  ],
+  "context_en": "There are three types, sensitive to red, green and blue. Rods are far more numerous but only detect intensity, which is why at night we see almost in black and white."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué sustancia del oído interno permite mantener el equilibrio?",
+  "options": [
+   "El cerumen",
+   "El líquido de los canales semicirculares",
+   "La saliva",
+   "El humor vítreo"
+  ],
+  "answer_index": 1,
+  "context": "Tres conductos en ángulo recto detectan los giros de la cabeza por el movimiento de ese líquido. El mareo aparece cuando lo que dicen no coincide con lo que ven los ojos.",
+  "difficulty": "medium",
+  "question_en": "Which substance in the inner ear allows us to keep our balance?",
+  "options_en": [
+   "Earwax",
+   "The fluid in the semicircular canals",
+   "Saliva",
+   "The vitreous humour"
+  ],
+  "context_en": "Three canals set at right angles detect head rotation through the movement of that fluid. Motion sickness appears when what they report clashes with what the eyes see."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué mineral es imprescindible para formar la hemoglobina de la sangre?",
+  "options": [
+   "El calcio",
+   "El hierro",
+   "El potasio",
+   "El magnesio"
+  ],
+  "answer_index": 1,
+  "context": "Cada molécula de hemoglobina lleva cuatro átomos de hierro, y cada uno fija una molécula de oxígeno. Su falta provoca la anemia más frecuente del mundo.",
+  "difficulty": "medium",
+  "question_en": "Which mineral is essential to form the haemoglobin in blood?",
+  "options_en": [
+   "Calcium",
+   "Iron",
+   "Potassium",
+   "Magnesium"
+  ],
+  "context_en": "Each haemoglobin molecule carries four iron atoms, and each one binds an oxygen molecule. Its shortage causes the most common anaemia in the world."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué parte del sistema digestivo absorbe la mayoría de los nutrientes?",
+  "options": [
+   "El estómago",
+   "El intestino delgado",
+   "El intestino grueso",
+   "El esófago"
+  ],
+  "answer_index": 1,
+  "context": "Mide unos siete metros y sus vellosidades multiplican la superficie de absorción hasta unos 250 metros cuadrados, como una pista de tenis.",
+  "difficulty": "medium",
+  "question_en": "Which part of the digestive system absorbs most nutrients?",
+  "options_en": [
+   "The stomach",
+   "The small intestine",
+   "The large intestine",
+   "The oesophagus"
+  ],
+  "context_en": "It is about seven metres long and its villi multiply the absorbing surface to some 250 square metres, the size of a tennis court."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué tipo de músculo funciona sin control voluntario, como el de las paredes del intestino?",
+  "options": [
+   "El músculo esquelético",
+   "El músculo liso",
+   "El músculo cardíaco",
+   "El tejido conjuntivo"
+  ],
+  "answer_index": 1,
+  "context": "Se contrae despacio y sin cansarse, y forma las paredes de vasos, estómago e intestinos. El cardíaco también es involuntario, pero tiene estrías como el esquelético.",
+  "difficulty": "medium",
+  "question_en": "Which type of muscle works without voluntary control, such as that in the intestinal walls?",
+  "options_en": [
+   "Skeletal muscle",
+   "Smooth muscle",
+   "Cardiac muscle",
+   "Connective tissue"
+  ],
+  "context_en": "It contracts slowly and without tiring, and forms the walls of vessels, stomach and intestines. Cardiac muscle is also involuntary but striated like skeletal muscle."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué animal de la sabana africana es el más peligroso para el ser humano por número de muertes anuales?",
+  "options": [
+   "El león",
+   "El hipopótamo",
+   "El rinoceronte",
+   "El búfalo"
+  ],
+  "answer_index": 1,
+  "context": "Es herbívoro, pero extremadamente territorial y capaz de correr a 30 km/h. Provoca más muertes humanas que leones, leopardos y cocodrilos juntos.",
+  "difficulty": "medium",
+  "question_en": "Which African savanna animal kills the most people each year?",
+  "options_en": [
+   "The lion",
+   "The hippopotamus",
+   "The rhinoceros",
+   "The buffalo"
+  ],
+  "context_en": "It is a herbivore, but extremely territorial and able to run at 30 km/h. It causes more human deaths than lions, leopards and crocodiles combined."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el estudio científico de los insectos?",
+  "options": [
+   "Ornitología",
+   "Entomología",
+   "Herpetología",
+   "Ictiología"
+  ],
+  "answer_index": 1,
+  "context": "La ornitología estudia las aves, la herpetología los reptiles y anfibios, y la ictiología los peces. Los insectos descritos superan el millón de especies.",
+  "difficulty": "medium",
+  "question_en": "What is the scientific study of insects called?",
+  "options_en": [
+   "Ornithology",
+   "Entomology",
+   "Herpetology",
+   "Ichthyology"
+  ],
+  "context_en": "Ornithology studies birds, herpetology reptiles and amphibians, and ichthyology fish. More than a million insect species have been described."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué científico inglés propuso en 1858, junto a Darwin, que las especies cambian con el tiempo?",
+  "options": [
+   "Alfred Russel Wallace",
+   "Richard Owen",
+   "William Buckland",
+   "Adam Sedgwick"
+  ],
+  "answer_index": 0,
+  "context": "Wallace desarrolló la idea estudiando la fauna del archipiélago malayo. La línea que separa la fauna asiática de la australiana lleva su nombre.",
+  "difficulty": "medium",
+  "question_en": "Which English scientist proposed in 1858, alongside Darwin, that species change over time?",
+  "options_en": [
+   "Alfred Russel Wallace",
+   "Richard Owen",
+   "William Buckland",
+   "Adam Sedgwick"
+  ],
+  "context_en": "Wallace developed the idea while studying the fauna of the Malay Archipelago. The line separating Asian from Australian fauna bears his name."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué hormona segrega el páncreas para que las células capten la glucosa de la sangre?",
+  "options": [
+   "El glucagón",
+   "La insulina",
+   "El cortisol",
+   "La adrenalina"
+  ],
+  "answer_index": 1,
+  "context": "La aislaron Banting y Best en 1921 y transformaron la diabetes de sentencia de muerte en enfermedad crónica. Vendieron la patente por un dólar simbólico.",
+  "difficulty": "medium",
+  "question_en": "Which hormone does the pancreas release so that cells take up glucose from the blood?",
+  "options_en": [
+   "Glucagon",
+   "Insulin",
+   "Cortisol",
+   "Adrenaline"
+  ],
+  "context_en": "Banting and Best isolated it in 1921, turning diabetes from a death sentence into a chronic condition. They sold the patent for a symbolic dollar."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué técnica permite editar el ADN con precisión usando una enzima guiada por ARN?",
+  "options": [
+   "La PCR",
+   "CRISPR-Cas9",
+   "La electroforesis",
+   "La cromatografía"
+  ],
+  "answer_index": 1,
+  "context": "El microbiólogo español Francis Mojica identificó y bautizó las secuencias CRISPR en bacterias de las salinas de Santa Pola. Doudna y Charpentier recibieron el Nobel en 2020.",
+  "difficulty": "hard",
+  "question_en": "Which technique allows precise DNA editing using an RNA-guided enzyme?",
+  "options_en": [
+   "PCR",
+   "CRISPR-Cas9",
+   "Electrophoresis",
+   "Chromatography"
+  ],
+  "context_en": "The Spanish microbiologist Francis Mojica identified and named CRISPR sequences in bacteria from the Santa Pola salt flats. Doudna and Charpentier won the Nobel in 2020."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué técnica de laboratorio multiplica millones de veces un fragmento de ADN?",
+  "options": [
+   "La reacción en cadena de la polimerasa",
+   "La tinción de Gram",
+   "El western blot",
+   "La citometría de flujo"
+  ],
+  "answer_index": 0,
+  "context": "Kary Mullis la ideó en 1983 y ganó el Nobel una década después. Es la base de las pruebas diagnósticas que se popularizaron durante la pandemia de covid.",
+  "difficulty": "hard",
+  "question_en": "Which laboratory technique copies a DNA fragment millions of times?",
+  "options_en": [
+   "The polymerase chain reaction",
+   "Gram staining",
+   "Western blot",
+   "Flow cytometry"
+  ],
+  "context_en": "Kary Mullis devised it in 1983 and won the Nobel a decade later. It underpins the diagnostic tests that became familiar during the covid pandemic."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué oveja se convirtió en 1996 en el primer mamífero clonado a partir de una célula adulta?",
+  "options": [
+   "Dolly",
+   "Molly",
+   "Polly",
+   "Megan"
+  ],
+  "answer_index": 0,
+  "context": "La crearon en el Instituto Roslin de Edimburgo a partir de una célula de glándula mamaria, de ahí su nombre, en honor a Dolly Parton. Vivió seis años y tuvo seis corderos.",
+  "difficulty": "hard",
+  "question_en": "Which sheep became in 1996 the first mammal cloned from an adult cell?",
+  "options_en": [
+   "Dolly",
+   "Molly",
+   "Polly",
+   "Megan"
+  ],
+  "context_en": "She was created at the Roslin Institute in Edinburgh from a mammary gland cell, hence her name, after Dolly Parton. She lived six years and had six lambs."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué molécula descubierta por Rita Levi-Montalcini regula el crecimiento de las neuronas?",
+  "options": [
+   "La dopamina",
+   "El factor de crecimiento nervioso",
+   "La mielina",
+   "La serotonina"
+  ],
+  "answer_index": 1,
+  "context": "Investigó en un laboratorio casero durante la persecución fascista de los judíos en Italia. Recibió el Nobel en 1986 y siguió trabajando hasta su muerte, a los 103 años.",
+  "difficulty": "hard",
+  "question_en": "Which molecule discovered by Rita Levi-Montalcini regulates the growth of neurons?",
+  "options_en": [
+   "Dopamine",
+   "Nerve growth factor",
+   "Myelin",
+   "Serotonin"
+  ],
+  "context_en": "She did her research in a home laboratory during the fascist persecution of Jews in Italy. She received the Nobel in 1986 and kept working until her death at 103."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué científico español recibió el Nobel en 1906 por describir la estructura del sistema nervioso?",
+  "options": [
+   "Santiago Ramón y Cajal",
+   "Severo Ochoa",
+   "Gregorio Marañón",
+   "Pío del Río Hortega"
+  ],
+  "answer_index": 0,
+  "context": "Demostró que las neuronas son células independientes y no una red continua, la llamada doctrina de la neurona. Compartió el premio con Camillo Golgi, que defendía la tesis contraria.",
+  "difficulty": "hard",
+  "question_en": "Which Spanish scientist received the Nobel Prize in 1906 for describing the structure of the nervous system?",
+  "options_en": [
+   "Santiago Ramón y Cajal",
+   "Severo Ochoa",
+   "Gregorio Marañón",
+   "Pío del Río Hortega"
+  ],
+  "context_en": "He showed that neurons are independent cells rather than a continuous network, the so-called neuron doctrine. He shared the prize with Camillo Golgi, who argued the opposite."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué bioquímico español ganó el Nobel de Medicina en 1959 por sus trabajos sobre la síntesis del ARN?",
+  "options": [
+   "Severo Ochoa",
+   "Margarita Salas",
+   "Juan Oró",
+   "Antonio García-Bellido"
+  ],
+  "answer_index": 0,
+  "context": "Descubrió una enzima capaz de sintetizar ARN en el tubo de ensayo, lo que ayudó a descifrar el código genético. Margarita Salas fue discípula suya.",
+  "difficulty": "hard",
+  "question_en": "Which Spanish biochemist won the 1959 Nobel Prize in Medicine for his work on RNA synthesis?",
+  "options_en": [
+   "Severo Ochoa",
+   "Margarita Salas",
+   "Joan Oró",
+   "Antonio García-Bellido"
+  ],
+  "context_en": "He discovered an enzyme able to synthesise RNA in a test tube, which helped crack the genetic code. Margarita Salas was his student."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué enzima descubrió Margarita Salas, base de una técnica muy usada para amplificar ADN?",
+  "options": [
+   "La ADN polimerasa del virus phi29",
+   "La telomerasa",
+   "La luciferasa",
+   "La transcriptasa inversa"
+  ],
+  "answer_index": 0,
+  "context": "Su patente fue durante años la más rentable del CSIC. Permite amplificar cantidades mínimas de ADN, algo clave en análisis forenses y en paleontología molecular.",
+  "difficulty": "hard",
+  "question_en": "Which enzyme did Margarita Salas discover, the basis of a widely used DNA amplification technique?",
+  "options_en": [
+   "The DNA polymerase of virus phi29",
+   "Telomerase",
+   "Luciferase",
+   "Reverse transcriptase"
+  ],
+  "context_en": "Her patent was for years the most profitable held by Spain's CSIC. It amplifies minute amounts of DNA, key in forensic analysis and molecular palaeontology."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe el estudio de los cambios en la expresión de los genes que no alteran la secuencia del ADN?",
+  "options": [
+   "La genómica",
+   "La epigenética",
+   "La proteómica",
+   "La citogenética"
+  ],
+  "answer_index": 1,
+  "context": "Marcas químicas como la metilación activan o silencian genes según la dieta, el estrés o el entorno. Algunas de esas marcas pueden heredarse.",
+  "difficulty": "hard",
+  "question_en": "What is the study of changes in gene expression that do not alter the DNA sequence called?",
+  "options_en": [
+   "Genomics",
+   "Epigenetics",
+   "Proteomics",
+   "Cytogenetics"
+  ],
+  "context_en": "Chemical marks such as methylation switch genes on or off depending on diet, stress or environment. Some of those marks can be inherited."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué estructuras de los cromosomas se acortan con cada división celular y se relacionan con el envejecimiento?",
+  "options": [
+   "Los centrómeros",
+   "Los telómeros",
+   "Los cinetocoros",
+   "Los nucleosomas"
+  ],
+  "answer_index": 1,
+  "context": "Actúan como el plástico del extremo de un cordón. La enzima telomerasa puede reconstruirlos, y su hallazgo valió el Nobel a Blackburn, Greider y Szostak en 2009.",
+  "difficulty": "hard",
+  "question_en": "Which chromosome structures shorten with each cell division and are linked to ageing?",
+  "options_en": [
+   "Centromeres",
+   "Telomeres",
+   "Kinetochores",
+   "Nucleosomes"
+  ],
+  "context_en": "They work like the plastic tip of a shoelace. The enzyme telomerase can rebuild them, a discovery that won Blackburn, Greider and Szostak the Nobel in 2009."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué nombre recibe la muerte celular programada que el organismo usa para eliminar células dañadas?",
+  "options": [
+   "Necrosis",
+   "Apoptosis",
+   "Autofagia",
+   "Mitosis"
+  ],
+  "answer_index": 1,
+  "context": "Es un suicidio ordenado y limpio, sin inflamación. Gracias a ella desaparecen las membranas entre los dedos del embrión humano, y su fallo está detrás de muchos tumores.",
+  "difficulty": "hard",
+  "question_en": "What is the programmed cell death the body uses to remove damaged cells called?",
+  "options_en": [
+   "Necrosis",
+   "Apoptosis",
+   "Autophagy",
+   "Mitosis"
+  ],
+  "context_en": "It is an orderly, clean suicide without inflammation. It is how the webbing between an embryo's fingers disappears, and its failure lies behind many tumours."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué grupo de dinosaurios sobrevivió a la extinción de hace 66 millones de años y sigue entre nosotros?",
+  "options": [
+   "Los pterosaurios",
+   "Las aves",
+   "Los cocodrilos",
+   "Los ictiosaurios"
+  ],
+  "answer_index": 1,
+  "context": "Las aves son dinosaurios terópodos, el mismo grupo del Tyrannosaurus. Los fósiles con plumas hallados en China desde los años noventa lo confirmaron.",
+  "difficulty": "hard",
+  "question_en": "Which group of dinosaurs survived the extinction 66 million years ago and is still with us?",
+  "options_en": [
+   "Pterosaurs",
+   "Birds",
+   "Crocodiles",
+   "Ichthyosaurs"
+  ],
+  "context_en": "Birds are theropod dinosaurs, the same group as Tyrannosaurus. Feathered fossils found in China since the 1990s confirmed it."
+ },
+ {
+  "category": "biologia",
+  "question": "¿Qué yacimiento burgalés ha proporcionado los restos de homínidos más abundantes de Europa?",
+  "options": [
+   "Atapuerca",
+   "Altamira",
+   "El Sidrón",
+   "Orce"
+  ],
+  "answer_index": 0,
+  "context": "La Sima de los Huesos ha dado más de 6.500 fósiles de al menos 28 individuos. Allí se definió la especie Homo antecessor, de unos 800.000 años.",
+  "difficulty": "hard",
+  "question_en": "Which site in Burgos has yielded the most abundant hominin remains in Europe?",
+  "options_en": [
+   "Atapuerca",
+   "Altamira",
+   "El Sidrón",
+   "Orce"
+  ],
+  "context_en": "The Sima de los Huesos has produced more than 6,500 fossils from at least 28 individuals. The species Homo antecessor, about 800,000 years old, was defined there."
+ }
+]
