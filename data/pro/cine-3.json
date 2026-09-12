@@ -1,0 +1,1052 @@
+[
+ {
+  "category": "cine",
+  "question": "¿Qué color de alfombra se extiende en los grandes estrenos y galas de cine?",
+  "options": [
+   "Azul",
+   "Roja",
+   "Verde",
+   "Dorada"
+  ],
+  "answer_index": 1,
+  "context": "La costumbre viene de la Grecia antigua, donde el color púrpura se reservaba a los dioses. Su uso moderno lo popularizó una compañía de ferrocarriles estadounidense en 1902.",
+  "difficulty": "easy",
+  "question_en": "What colour carpet is rolled out at big film premieres and galas?",
+  "options_en": [
+   "Blue",
+   "Red",
+   "Green",
+   "Gold"
+  ],
+  "context_en": "The custom goes back to ancient Greece, where purple was reserved for the gods. Its modern use was popularised by an American railway company in 1902."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué nombre recibe el conjunto de actores elegidos para una película?",
+  "options": [
+   "El reparto",
+   "El equipo técnico",
+   "La productora",
+   "La distribuidora"
+  ],
+  "answer_index": 0,
+  "context": "El proceso de selección se llama casting. El equipo técnico son quienes trabajan detrás de la cámara, y la distribuidora se ocupa de llevar la película a las salas.",
+  "difficulty": "easy",
+  "question_en": "What is the group of actors chosen for a film called?",
+  "options_en": [
+   "The cast",
+   "The crew",
+   "The production company",
+   "The distributor"
+  ],
+  "context_en": "The selection process is called casting. The crew are those who work behind the camera, and the distributor takes the film to cinemas."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué superhéroe de Marvel tiene garras de metal y capacidad de regeneración?",
+  "options": [
+   "Lobezno",
+   "Cíclope",
+   "Bestia",
+   "Coloso"
+  ],
+  "answer_index": 0,
+  "context": "Hugh Jackman lo interpretó durante diecisiete años, un récord de permanencia en un mismo papel de superhéroe. Sus garras son de adamantium, un metal ficticio.",
+  "difficulty": "easy",
+  "question_en": "Which Marvel superhero has metal claws and a healing factor?",
+  "options_en": [
+   "Wolverine",
+   "Cyclops",
+   "Beast",
+   "Colossus"
+  ],
+  "context_en": "Hugh Jackman played him for seventeen years, a record run in a single superhero role. His claws are made of adamantium, a fictional metal."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de Disney de 1994 está protagonizada por el cachorro de león Simba?",
+  "options": [
+   "El libro de la selva",
+   "El rey león",
+   "Bambi",
+   "Hermano oso"
+  ],
+  "answer_index": 1,
+  "context": "Fue la película más taquillera de animación tradicional de la historia. Su banda sonora, con canciones de Elton John y Tim Rice, ganó dos Óscar.",
+  "difficulty": "easy",
+  "question_en": "Which 1994 Disney film stars the lion cub Simba?",
+  "options_en": [
+   "The Jungle Book",
+   "The Lion King",
+   "Bambi",
+   "Brother Bear"
+  ],
+  "context_en": "It was the highest-grossing traditionally animated film in history. Its soundtrack, with songs by Elton John and Tim Rice, won two Oscars."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué escuela de magia aparece en la saga de Harry Potter?",
+  "options": [
+   "Durmstrang",
+   "Hogwarts",
+   "Beauxbatons",
+   "Ilvermorny"
+  ],
+  "answer_index": 1,
+  "context": "Las escenas del castillo se rodaron en varias catedrales inglesas, entre ellas Durham y Gloucester. Los otros tres nombres también son escuelas de magia del mismo universo.",
+  "difficulty": "easy",
+  "question_en": "Which school of magic appears in the Harry Potter saga?",
+  "options_en": [
+   "Durmstrang",
+   "Hogwarts",
+   "Beauxbatons",
+   "Ilvermorny"
+  ],
+  "context_en": "The castle scenes were shot in several English cathedrals, including Durham and Gloucester. The other three names are also magic schools in the same universe."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué aparato se usaba para proyectar películas en las salas antes de la llegada del digital?",
+  "options": [
+   "El proyector de 35 milímetros",
+   "El escáner",
+   "El telecine",
+   "El magnetoscopio"
+  ],
+  "answer_index": 0,
+  "context": "El formato de 35 mm se impuso en 1909 y aguantó un siglo. Cada bobina duraba unos veinte minutos, y por eso las películas llevaban marcas en la esquina para avisar del cambio.",
+  "difficulty": "easy",
+  "question_en": "Which device was used to project films in cinemas before digital arrived?",
+  "options_en": [
+   "The 35 mm projector",
+   "The scanner",
+   "The telecine",
+   "The video recorder"
+  ],
+  "context_en": "The 35 mm format was standardised in 1909 and lasted a century. Each reel ran about twenty minutes, which is why films had corner cue marks to signal the changeover."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué serie animada estadounidense sigue a una familia amarilla de Springfield?",
+  "options": [
+   "Padre de familia",
+   "Los Simpson",
+   "Futurama",
+   "South Park"
+  ],
+  "answer_index": 1,
+  "context": "Se emite desde 1989 y es la serie de ficción en horario de máxima audiencia más longeva de Estados Unidos. Matt Groening la creó en quince minutos en una sala de espera.",
+  "difficulty": "easy",
+  "question_en": "Which American animated series follows a yellow family from Springfield?",
+  "options_en": [
+   "Family Guy",
+   "The Simpsons",
+   "Futurama",
+   "South Park"
+  ],
+  "context_en": "It has aired since 1989 and is the longest-running American prime-time scripted series. Matt Groening created it in fifteen minutes in a waiting room."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué animal protagoniza la película \"Tiburón\", de Steven Spielberg?",
+  "options": [
+   "Una orca",
+   "Un tiburón blanco",
+   "Un pulpo gigante",
+   "Un cocodrilo"
+  ],
+  "answer_index": 1,
+  "context": "El tiburón mecánico se averiaba constantemente, así que Spielberg lo mostró lo mínimo posible. Esa limitación técnica hizo la película mucho más inquietante.",
+  "difficulty": "easy",
+  "question_en": "Which animal stars in Steven Spielberg's \"Jaws\"?",
+  "options_en": [
+   "An orca",
+   "A great white shark",
+   "A giant octopus",
+   "A crocodile"
+  ],
+  "context_en": "The mechanical shark kept breaking down, so Spielberg showed it as little as possible. That technical limit made the film far more unsettling."
+ },
+ {
+  "category": "cine",
+  "question": "¿Cómo se llama el avance breve que anuncia una película antes de su estreno?",
+  "options": [
+   "El tráiler",
+   "El epílogo",
+   "La secuela",
+   "El making of"
+  ],
+  "answer_index": 0,
+  "context": "El nombre viene de que al principio se proyectaban detrás de la película, no antes. El making of es el reportaje sobre el rodaje.",
+  "difficulty": "easy",
+  "question_en": "What is the short preview announcing a film before its release called?",
+  "options_en": [
+   "The trailer",
+   "The epilogue",
+   "The sequel",
+   "The making of"
+  ],
+  "context_en": "The name comes from the fact that they were originally screened after the film, not before. The making of is the documentary about the shoot."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué personaje de \"Star Wars\" es el maestro jedi verde y bajito que habla con sintaxis peculiar?",
+  "options": [
+   "Obi-Wan",
+   "Yoda",
+   "Mace Windu",
+   "Qui-Gon"
+  ],
+  "answer_index": 1,
+  "context": "Frank Oz lo manejó como marioneta durante tres películas antes de que se hiciera digital. Su forma de hablar coloca el verbo al final, como en algunas lenguas antiguas.",
+  "difficulty": "easy",
+  "question_en": "Which \"Star Wars\" character is the small green Jedi master who speaks with peculiar syntax?",
+  "options_en": [
+   "Obi-Wan",
+   "Yoda",
+   "Mace Windu",
+   "Qui-Gon"
+  ],
+  "context_en": "Frank Oz operated him as a puppet for three films before he went digital. His speech puts the verb last, as in some ancient languages."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de Wes Anderson de 2014 transcurre en un hotel de la ficticia república de Zubrowka?",
+  "options": [
+   "El Gran Hotel Budapest",
+   "Moonrise Kingdom",
+   "Los Tenenbaums",
+   "Isla de perros"
+  ],
+  "answer_index": 0,
+  "context": "Anderson cambia el formato de imagen según la época que narra, cada vez más estrecho cuanto más atrás va. Se inspiró en los relatos del escritor austriaco Stefan Zweig.",
+  "difficulty": "medium",
+  "question_en": "Which 2014 Wes Anderson film takes place in a hotel in the fictional republic of Zubrowka?",
+  "options_en": [
+   "The Grand Budapest Hotel",
+   "Moonrise Kingdom",
+   "The Royal Tenenbaums",
+   "Isle of Dogs"
+  ],
+  "context_en": "Anderson changes the aspect ratio according to the era being narrated, narrower the further back it goes. He drew on the writings of Austrian author Stefan Zweig."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1997 de Roberto Benigni cuenta la historia de un padre que convierte un campo de concentración en un juego?",
+  "options": [
+   "La vida es bella",
+   "El pianista",
+   "Jojo Rabbit",
+   "El hijo de Saúl"
+  ],
+  "answer_index": 0,
+  "context": "Benigni saltó sobre las butacas al recoger su Óscar. Ganó tres estatuillas, incluida la de mejor actor, algo muy raro en un papel no hablado en inglés.",
+  "difficulty": "medium",
+  "question_en": "Which 1997 Roberto Benigni film tells of a father who turns a concentration camp into a game?",
+  "options_en": [
+   "Life Is Beautiful",
+   "The Pianist",
+   "Jojo Rabbit",
+   "Son of Saul"
+  ],
+  "context_en": "Benigni climbed over the seats to collect his Oscar. It won three awards, including best actor, very rare for a non-English-speaking role."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 2001 de Jean-Pierre Jeunet retrata a una camarera de Montmartre que arregla vidas ajenas?",
+  "options": [
+   "Amélie",
+   "El fabuloso destino",
+   "Delicatessen",
+   "Micmacs"
+  ],
+  "answer_index": 0,
+  "context": "Su fotografía verde y dorada la firmó Bruno Delbonnel, que después trabajó en Harry Potter. El café donde trabaja el personaje existe de verdad en París.",
+  "difficulty": "hard",
+  "question_en": "Which 2001 Jean-Pierre Jeunet film portrays a Montmartre waitress who fixes other people's lives?",
+  "options_en": [
+   "Amélie",
+   "A Very Long Engagement",
+   "Delicatessen",
+   "Micmacs"
+  ],
+  "context_en": "Its green and gold cinematography was by Bruno Delbonnel, who later worked on Harry Potter. The café where the character works really exists in Paris."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1976 de Scorsese sigue a un taxista insomne en Nueva York?",
+  "options": [
+   "Taxi Driver",
+   "Malas calles",
+   "Barrio chino",
+   "Serpico"
+  ],
+  "answer_index": 0,
+  "context": "La frase \"¿Estás hablando conmigo?\" la improvisó De Niro, ya que el guion solo indicaba que el personaje se miraba al espejo.",
+  "difficulty": "hard",
+  "question_en": "Which 1976 Scorsese film follows an insomniac taxi driver in New York?",
+  "options_en": [
+   "Taxi Driver",
+   "Mean Streets",
+   "Chinatown",
+   "Serpico"
+  ],
+  "context_en": "The line \"You talking to me?\" was improvised by De Niro, since the script only said the character looks in the mirror."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1982 de Ridley Scott imagina un Los Ángeles lluvioso lleno de replicantes?",
+  "options": [
+   "Blade Runner",
+   "Doce monos",
+   "Dark City",
+   "Gattaca"
+  ],
+  "answer_index": 0,
+  "context": "Se basa en una novela de Philip K. Dick y fracasó en su estreno. El monólogo final de Rutger Hauer sobre las lágrimas en la lluvia lo escribió él mismo la noche anterior.",
+  "difficulty": "hard",
+  "question_en": "Which 1982 Ridley Scott film imagines a rainy Los Angeles full of replicants?",
+  "options_en": [
+   "Blade Runner",
+   "Twelve Monkeys",
+   "Dark City",
+   "Gattaca"
+  ],
+  "context_en": "It is based on a Philip K. Dick novel and flopped on release. Rutger Hauer wrote the closing monologue about tears in rain himself, the night before."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película española de 1973 dirigida por Víctor Erice cuenta la fascinación de una niña por Frankenstein?",
+  "options": [
+   "El espíritu de la colmena",
+   "Cría cuervos",
+   "El sur",
+   "La caza"
+  ],
+  "answer_index": 0,
+  "context": "Ana Torrent tenía seis años y Erice le hizo creer que el monstruo existía de verdad. Suele encabezar las listas de mejores películas españolas de la historia.",
+  "difficulty": "hard",
+  "question_en": "Which 1973 Spanish film by Víctor Erice tells of a girl's fascination with Frankenstein?",
+  "options_en": [
+   "The Spirit of the Beehive",
+   "Cría cuervos",
+   "El Sur",
+   "The Hunt"
+  ],
+  "context_en": "Ana Torrent was six and Erice made her believe the monster was real. It regularly tops lists of the best Spanish films ever made."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de Almodóvar de 2002 transcurre en su mayor parte en una clínica con dos mujeres en coma?",
+  "options": [
+   "Hable con ella",
+   "La flor de mi secreto",
+   "Carne trémula",
+   "Los abrazos rotos"
+  ],
+  "answer_index": 0,
+  "context": "Ganó el Óscar al mejor guion original en 2003, el segundo del director. Incluye el cortometraje mudo \"El amante menguante\", rodado expresamente para la película.",
+  "difficulty": "hard",
+  "question_en": "Which 2002 Almodóvar film takes place mostly in a clinic with two women in comas?",
+  "options_en": [
+   "Talk to Her",
+   "The Flower of My Secret",
+   "Live Flesh",
+   "Broken Embraces"
+  ],
+  "context_en": "It won the Oscar for best original screenplay in 2003, the director's second. It includes the silent short \"The Shrinking Lover\", shot specially for the film."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película mexicana de 2018 rodada en blanco y negro retrata a una empleada doméstica en la Ciudad de México?",
+  "options": [
+   "Roma",
+   "Amores perros",
+   "Y tu mamá también",
+   "Güeros"
+  ],
+  "answer_index": 0,
+  "context": "Alfonso Cuarón la basó en su propia infancia y en la mujer que cuidó de él. Ganó tres Óscar, entre ellos el de dirección y el de fotografía, que firmó el propio Cuarón.",
+  "difficulty": "hard",
+  "question_en": "Which 2018 Mexican film shot in black and white portrays a domestic worker in Mexico City?",
+  "options_en": [
+   "Roma",
+   "Amores perros",
+   "Y tu mamá también",
+   "Güeros"
+  ],
+  "context_en": "Alfonso Cuarón based it on his own childhood and the woman who raised him. It won three Oscars, including director and cinematography, which Cuarón shot himself."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 2013 de Alfonso Cuarón transcurre casi entera en el espacio con Sandra Bullock?",
+  "options": [
+   "Gravity",
+   "Interstellar",
+   "Marte",
+   "Apolo 13"
+  ],
+  "answer_index": 0,
+  "context": "Se rodó con una \"caja de luz\" de LED que envolvía a la actriz para simular los reflejos del espacio. Ganó siete Óscar, incluido el de dirección.",
+  "difficulty": "medium",
+  "question_en": "Which 2013 Alfonso Cuarón film takes place almost entirely in space with Sandra Bullock?",
+  "options_en": [
+   "Gravity",
+   "Interstellar",
+   "The Martian",
+   "Apollo 13"
+  ],
+  "context_en": "It was shot inside an LED \"light box\" that surrounded the actress to simulate the reflections of space. It won seven Oscars, including director."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actriz encarnó a Amy Dunne en \"Perdida\", de David Fincher?",
+  "options": [
+   "Rosamund Pike",
+   "Rooney Mara",
+   "Emily Blunt",
+   "Amy Adams"
+  ],
+  "answer_index": 0,
+  "context": "Fue nominada al Óscar por ese papel. Fincher repite las tomas decenas de veces hasta dar con el tono que busca, y ella lo describió como agotador.",
+  "difficulty": "medium",
+  "question_en": "Which actress played Amy Dunne in David Fincher's \"Gone Girl\"?",
+  "options_en": [
+   "Rosamund Pike",
+   "Rooney Mara",
+   "Emily Blunt",
+   "Amy Adams"
+  ],
+  "context_en": "She was Oscar-nominated for the role. Fincher repeats takes dozens of times until he finds the tone he wants, which she described as exhausting."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué serie de ciencia ficción de Netflix ambientada en los ochenta transcurre en el pueblo de Hawkins?",
+  "options": [
+   "Dark",
+   "Stranger Things",
+   "The OA",
+   "Fringe"
+  ],
+  "answer_index": 1,
+  "context": "Sus creadores, los hermanos Duffer, recibieron quince negativas antes de que Netflix la aceptara. Su estética homenajea a Spielberg, Stephen King y John Carpenter.",
+  "difficulty": "medium",
+  "question_en": "Which Netflix science fiction series set in the 1980s takes place in the town of Hawkins?",
+  "options_en": [
+   "Dark",
+   "Stranger Things",
+   "The OA",
+   "Fringe"
+  ],
+  "context_en": "Its creators, the Duffer brothers, were turned down fifteen times before Netflix took it. Its look pays homage to Spielberg, Stephen King and John Carpenter."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 2008 de Christopher Nolan incluye la última interpretación completa de Heath Ledger?",
+  "options": [
+   "El caballero oscuro",
+   "Origen",
+   "El truco final",
+   "Insomnio"
+  ],
+  "answer_index": 0,
+  "context": "Ledger murió meses antes del estreno y ganó el Óscar a mejor actor de reparto a título póstumo. Se encerró seis semanas en una habitación para construir al personaje.",
+  "difficulty": "medium",
+  "question_en": "Which 2008 Christopher Nolan film features Heath Ledger's last completed performance?",
+  "options_en": [
+   "The Dark Knight",
+   "Inception",
+   "The Prestige",
+   "Insomnia"
+  ],
+  "context_en": "Ledger died months before the release and won a posthumous Oscar for best supporting actor. He shut himself in a room for six weeks to build the character."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 2015 de George Miller consiste casi entera en una persecución por el desierto?",
+  "options": [
+   "Mad Max: Furia en la carretera",
+   "Sicario",
+   "El renacido",
+   "Rescate en el tiempo"
+  ],
+  "answer_index": 0,
+  "context": "Se rodó en Namibia con muy pocos efectos digitales y un guion dibujado como storyboard antes de escribirse. Ganó seis Óscar técnicos, más que ninguna otra ese año.",
+  "difficulty": "medium",
+  "question_en": "Which 2015 George Miller film consists almost entirely of a chase through the desert?",
+  "options_en": [
+   "Mad Max: Fury Road",
+   "Sicario",
+   "The Revenant",
+   "Timeline"
+  ],
+  "context_en": "It was shot in Namibia with very few digital effects and a script drawn as a storyboard before being written. It won six technical Oscars, more than any other film that year."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de animación de 2001 de DreamWorks parodia los cuentos de hadas con un ogro verde?",
+  "options": [
+   "Shrek",
+   "Madagascar",
+   "Kung Fu Panda",
+   "Hormigaz"
+  ],
+  "answer_index": 0,
+  "context": "Ganó el primer Óscar a mejor película de animación que se concedió. Buena parte de su humor iba dirigido contra Disney, algo deliberado por parte del estudio.",
+  "difficulty": "medium",
+  "question_en": "Which 2001 DreamWorks animated film parodies fairy tales with a green ogre?",
+  "options_en": [
+   "Shrek",
+   "Madagascar",
+   "Kung Fu Panda",
+   "Antz"
+  ],
+  "context_en": "It won the very first Oscar for best animated feature. Much of its humour targeted Disney, quite deliberately on the studio's part."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué formato de proyección usa pantallas gigantes y película de mayor tamaño para más resolución?",
+  "options": [
+   "IMAX",
+   "Dolby Atmos",
+   "VistaVision",
+   "Panavision"
+  ],
+  "answer_index": 0,
+  "context": "Nació en Canadá en 1970 y su película de 70 milímetros corre en horizontal. Nolan ha rodado buena parte de sus últimas películas con esas cámaras, pese a su peso y su ruido.",
+  "difficulty": "hard",
+  "question_en": "Which projection format uses giant screens and larger film stock for higher resolution?",
+  "options_en": [
+   "IMAX",
+   "Dolby Atmos",
+   "VistaVision",
+   "Panavision"
+  ],
+  "context_en": "It was born in Canada in 1970 and its 70 mm film runs horizontally. Nolan has shot much of his recent work with those cameras, despite their weight and noise."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película francesa de 2011 narra la amistad entre un aristócrata tetrapléjico y su cuidador?",
+  "options": [
+   "Intocable",
+   "Amor",
+   "La clase",
+   "El erizo"
+  ],
+  "answer_index": 0,
+  "context": "Está basada en una historia real y fue la película francesa más taquillera fuera de Francia. Omar Sy ganó el César al mejor actor por su papel.",
+  "difficulty": "hard",
+  "question_en": "Which 2011 French film tells of the friendship between a quadriplegic aristocrat and his carer?",
+  "options_en": [
+   "The Intouchables",
+   "Amour",
+   "The Class",
+   "The Hedgehog"
+  ],
+  "context_en": "It is based on a true story and became the highest-grossing French film outside France. Omar Sy won the César for best actor."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película italiana de 1988 narra la amistad de un niño con el proyeccionista de su pueblo?",
+  "options": [
+   "Cinema Paradiso",
+   "La strada",
+   "Rocco y sus hermanos",
+   "El cartero y Pablo Neruda"
+  ],
+  "answer_index": 0,
+  "context": "Su versión internacional se acortó casi una hora respecto al montaje italiano original, que había fracasado. Con ese recorte ganó el Óscar a mejor película extranjera.",
+  "difficulty": "hard",
+  "question_en": "Which 1988 Italian film tells of a boy's friendship with his village projectionist?",
+  "options_en": [
+   "Cinema Paradiso",
+   "La Strada",
+   "Rocco and His Brothers",
+   "Il Postino"
+  ],
+  "context_en": "Its international version was cut by almost an hour from the original Italian edit, which had flopped. With that cut it won the Oscar for best foreign film."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actor estadounidense ganó el Óscar por \"Días de gloria\" y por \"Training Day\"?",
+  "options": [
+   "Denzel Washington",
+   "Samuel L. Jackson",
+   "Morgan Freeman",
+   "Laurence Fishburne"
+  ],
+  "answer_index": 0,
+  "context": "Ganó el de reparto en 1990 y el de protagonista en 2002, once años después. Ha dirigido además varias películas, entre ellas \"Un lugar donde soñar\".",
+  "difficulty": "medium",
+  "question_en": "Which American actor won Oscars for \"Glory\" and for \"Training Day\"?",
+  "options_en": [
+   "Denzel Washington",
+   "Samuel L. Jackson",
+   "Morgan Freeman",
+   "Laurence Fishburne"
+  ],
+  "context_en": "He won supporting actor in 1990 and lead actor in 2002, eleven years later. He has also directed several films, among them \"Antwone Fisher\"."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director austriaco firmó \"Amor\", \"La cinta blanca\" y \"Funny Games\"?",
+  "options": [
+   "Michael Haneke",
+   "Ulrich Seidl",
+   "Markus Schleinzer",
+   "Jessica Hausner"
+  ],
+  "answer_index": 0,
+  "context": "Ha ganado dos Palmas de Oro consecutivas, en 2009 y 2012. Rueda sin música extradiegética y con planos largos y fijos que incomodan deliberadamente al espectador.",
+  "difficulty": "hard",
+  "question_en": "Which Austrian director made \"Amour\", \"The White Ribbon\" and \"Funny Games\"?",
+  "options_en": [
+   "Michael Haneke",
+   "Ulrich Seidl",
+   "Markus Schleinzer",
+   "Jessica Hausner"
+  ],
+  "context_en": "He has won two consecutive Palmes d'Or, in 2009 and 2012. He shoots without non-diegetic music and with long static takes that deliberately unsettle the viewer."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director ruso rodó \"Solaris\", \"Stalker\" y \"Andréi Rubliov\"?",
+  "options": [
+   "Andréi Tarkovski",
+   "Serguéi Paradjánov",
+   "Nikita Mijalkov",
+   "Alexander Sokúrov"
+  ],
+  "answer_index": 0,
+  "context": "Defendía el cine como \"esculpir en el tiempo\", título de su libro sobre teoría cinematográfica. Murió en el exilio en París a los 54 años.",
+  "difficulty": "hard",
+  "question_en": "Which Russian director made \"Solaris\", \"Stalker\" and \"Andrei Rublev\"?",
+  "options_en": [
+   "Andrei Tarkovsky",
+   "Sergei Parajanov",
+   "Nikita Mikhalkov",
+   "Alexander Sokurov"
+  ],
+  "context_en": "He described cinema as \"sculpting in time\", the title of his book on film theory. He died in exile in Paris at 54."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director japonés retrató la vida familiar en \"Cuentos de Tokio\", de 1953?",
+  "options": [
+   "Yasujiro Ozu",
+   "Kenji Mizoguchi",
+   "Mikio Naruse",
+   "Masaki Kobayashi"
+  ],
+  "answer_index": 0,
+  "context": "Rodaba con la cámara a la altura de una persona sentada sobre un tatami, casi sin moverla nunca. Su tumba lleva grabado un solo carácter: \"mu\", la nada.",
+  "difficulty": "hard",
+  "question_en": "Which Japanese director portrayed family life in \"Tokyo Story\", from 1953?",
+  "options_en": [
+   "Yasujiro Ozu",
+   "Kenji Mizoguchi",
+   "Mikio Naruse",
+   "Masaki Kobayashi"
+  ],
+  "context_en": "He shot with the camera at the height of someone seated on a tatami, almost never moving it. His gravestone bears a single character: \"mu\", nothingness."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director iraní ganó el Óscar con \"Nader y Simin, una separación\"?",
+  "options": [
+   "Asghar Farhadi",
+   "Abbas Kiarostami",
+   "Jafar Panahi",
+   "Majid Majidi"
+  ],
+  "answer_index": 0,
+  "context": "Fue el primer Óscar de Irán, en 2012, y volvió a ganarlo en 2017 con \"El viajante\". En esa segunda ocasión no acudió a la ceremonia como protesta por el veto migratorio estadounidense.",
+  "difficulty": "hard",
+  "question_en": "Which Iranian director won the Oscar with \"A Separation\"?",
+  "options_en": [
+   "Asghar Farhadi",
+   "Abbas Kiarostami",
+   "Jafar Panahi",
+   "Majid Majidi"
+  ],
+  "context_en": "It was Iran's first Oscar, in 2012, and he won again in 2017 with \"The Salesman\". On that second occasion he skipped the ceremony in protest at the US travel ban."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director senegalés está considerado el padre del cine africano subsahariano?",
+  "options": [
+   "Ousmane Sembène",
+   "Djibril Diop Mambéty",
+   "Souleymane Cissé",
+   "Abderrahmane Sissako"
+  ],
+  "answer_index": 0,
+  "context": "Era novelista y aprendió cine en Moscú a los cuarenta años. Rodó \"La noire de…\" en 1966, considerada la primera película de un director del África subsahariana.",
+  "difficulty": "hard",
+  "question_en": "Which Senegalese director is regarded as the father of sub-Saharan African cinema?",
+  "options_en": [
+   "Ousmane Sembène",
+   "Djibril Diop Mambéty",
+   "Souleymane Cissé",
+   "Abderrahmane Sissako"
+  ],
+  "context_en": "He was a novelist and learned filmmaking in Moscow at forty. He made \"Black Girl\" in 1966, considered the first feature by a sub-Saharan African director."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1966 de Gillo Pontecorvo reconstruye la lucha independentista argelina con estilo documental?",
+  "options": [
+   "La batalla de Argel",
+   "Queimada",
+   "Kapò",
+   "Z"
+  ],
+  "answer_index": 0,
+  "context": "No usó ni un solo metro de imágenes de archivo pese a parecerlo. Estuvo prohibida en Francia durante cinco años y el Pentágono la proyectó en 2003 antes de la guerra de Irak.",
+  "difficulty": "hard",
+  "question_en": "Which 1966 Gillo Pontecorvo film reconstructs the Algerian independence struggle in documentary style?",
+  "options_en": [
+   "The Battle of Algiers",
+   "Burn!",
+   "Kapò",
+   "Z"
+  ],
+  "context_en": "It used not a single frame of archive footage despite appearing to. It was banned in France for five years, and the Pentagon screened it in 2003 before the Iraq war."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1960 de Godard, con Jean-Paul Belmondo, popularizó el uso expresivo del jump cut?",
+  "options": [
+   "Al final de la escapada",
+   "Vivir su vida",
+   "Pierrot el loco",
+   "Banda aparte"
+  ],
+  "answer_index": 0,
+  "context": "El montaje entrecortado nació de la necesidad de acortar la película, y acabó convertido en manifiesto estético. Fue el primer largometraje de Godard.",
+  "difficulty": "hard",
+  "question_en": "Which 1960 Godard film, starring Jean-Paul Belmondo, popularised the expressive use of the jump cut?",
+  "options_en": [
+   "Breathless",
+   "Vivre sa vie",
+   "Pierrot le Fou",
+   "Band of Outsiders"
+  ],
+  "context_en": "The choppy editing began as a way to shorten the film and ended up an aesthetic manifesto. It was Godard's first feature."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de Truffaut de 1959 sigue a un adolescente rebelde llamado Antoine Doinel?",
+  "options": [
+   "Los 400 golpes",
+   "Jules y Jim",
+   "La noche americana",
+   "El pequeño salvaje"
+  ],
+  "answer_index": 0,
+  "context": "Truffaut siguió al mismo personaje, interpretado siempre por Jean-Pierre Léaud, en cuatro películas más a lo largo de veinte años. Su plano final congelado se hizo célebre.",
+  "difficulty": "hard",
+  "question_en": "Which 1959 Truffaut film follows a rebellious teenager named Antoine Doinel?",
+  "options_en": [
+   "The 400 Blows",
+   "Jules and Jim",
+   "Day for Night",
+   "The Wild Child"
+  ],
+  "context_en": "Truffaut followed the same character, always played by Jean-Pierre Léaud, in four more films over twenty years. Its final freeze-frame became famous."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actriz alemana protagonizó \"El ángel azul\" y emigró a Hollywood en los años treinta?",
+  "options": [
+   "Marlene Dietrich",
+   "Hildegard Knef",
+   "Brigitte Helm",
+   "Romy Schneider"
+  ],
+  "answer_index": 0,
+  "context": "Rechazó las ofertas del régimen nazi para volver a Alemania y actuó para las tropas aliadas durante la guerra. Josef von Sternberg la dirigió en siete películas.",
+  "difficulty": "hard",
+  "question_en": "Which German actress starred in \"The Blue Angel\" and emigrated to Hollywood in the 1930s?",
+  "options_en": [
+   "Marlene Dietrich",
+   "Hildegard Knef",
+   "Brigitte Helm",
+   "Romy Schneider"
+  ],
+  "context_en": "She rejected Nazi offers to return to Germany and performed for Allied troops during the war. Josef von Sternberg directed her in seven films."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actriz mexicana de la época dorada fue apodada \"la Doña\"?",
+  "options": [
+   "María Félix",
+   "Dolores del Río",
+   "Katy Jurado",
+   "Silvia Pinal"
+  ],
+  "answer_index": 0,
+  "context": "Rodó casi cincuenta películas en México, España, Francia e Italia y rechazó siempre trabajar en Hollywood. Agustín Lara le compuso \"María bonita\".",
+  "difficulty": "hard",
+  "question_en": "Which Mexican actress of the golden age was nicknamed \"La Doña\"?",
+  "options_en": [
+   "María Félix",
+   "Dolores del Río",
+   "Katy Jurado",
+   "Silvia Pinal"
+  ],
+  "context_en": "She made almost fifty films in Mexico, Spain, France and Italy and always refused to work in Hollywood. Agustín Lara composed \"María bonita\" for her."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué pionero francés del cine, ilusionista de profesión, terminó vendiendo juguetes en una estación de París?",
+  "options": [
+   "Georges Méliès",
+   "Émile Reynaud",
+   "Léon Gaumont",
+   "Charles Pathé"
+  ],
+  "answer_index": 0,
+  "context": "Arruinado, vio cómo buena parte de sus copias se fundían para fabricar tacones de celuloide. Rodó \"Viaje a la Luna\" en 1902 e inventó gran parte de los trucos visuales del cine.",
+  "difficulty": "hard",
+  "question_en": "Which French film pioneer, a magician by trade, ended up selling toys in a Paris railway station?",
+  "options_en": [
+   "Georges Méliès",
+   "Émile Reynaud",
+   "Léon Gaumont",
+   "Charles Pathé"
+  ],
+  "context_en": "Ruined, he watched many of his prints melted down to make celluloid shoe heels. He made \"A Trip to the Moon\" in 1902 and invented much of cinema's visual trickery."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de Buñuel ganó el Óscar a mejor película extranjera en 1973?",
+  "options": [
+   "El discreto encanto de la burguesía",
+   "Viridiana",
+   "Belle de jour",
+   "Los olvidados"
+  ],
+  "answer_index": 0,
+  "context": "Buñuel no acudió a recogerlo y bromeó diciendo que había pagado por el premio. \"Viridiana\" había ganado la Palma de Oro en 1961 y fue prohibida en España.",
+  "difficulty": "hard",
+  "question_en": "Which Buñuel film won the Oscar for best foreign film in 1973?",
+  "options_en": [
+   "The Discreet Charm of the Bourgeoisie",
+   "Viridiana",
+   "Belle de Jour",
+   "Los Olvidados"
+  ],
+  "context_en": "Buñuel did not collect it and joked that he had paid for the award. \"Viridiana\" had won the Palme d'Or in 1961 and was banned in Spain."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1954 de Fellini narra el viaje de una joven vendida a un forzudo ambulante?",
+  "options": [
+   "La strada",
+   "Las noches de Cabiria",
+   "Amarcord",
+   "I vitelloni"
+  ],
+  "answer_index": 0,
+  "context": "Giulietta Masina, esposa de Fellini, interpreta a Gelsomina, y Anthony Quinn al forzudo Zampanò. Ganó el primer Óscar a mejor película extranjera que se concedió como categoría fija.",
+  "difficulty": "hard",
+  "question_en": "Which 1954 Fellini film follows a young woman sold to a travelling strongman?",
+  "options_en": [
+   "La Strada",
+   "Nights of Cabiria",
+   "Amarcord",
+   "I Vitelloni"
+  ],
+  "context_en": "Giulietta Masina, Fellini's wife, plays Gelsomina and Anthony Quinn the strongman Zampanò. It won the first Oscar awarded in the permanent foreign film category."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1950 de Billy Wilder retrata a una estrella olvidada del cine mudo?",
+  "options": [
+   "El crepúsculo de los dioses",
+   "Perdición",
+   "El apartamento",
+   "Traidor en el infierno"
+  ],
+  "answer_index": 0,
+  "context": "Gloria Swanson, que interpreta a Norma Desmond, había sido una verdadera estrella del mudo. La película empieza con el narrador muerto flotando en una piscina.",
+  "difficulty": "hard",
+  "question_en": "Which 1950 Billy Wilder film portrays a forgotten silent film star?",
+  "options_en": [
+   "Sunset Boulevard",
+   "Double Indemnity",
+   "The Apartment",
+   "Stalag 17"
+  ],
+  "context_en": "Gloria Swanson, who plays Norma Desmond, had been a real silent film star. The film opens with its narrator dead, floating in a swimming pool."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué nombre recibe el género de cine estadounidense de los cuarenta, con detectives, sombras y mujeres fatales?",
+  "options": [
+   "El cine negro",
+   "El giallo",
+   "El screwball",
+   "El cine de serie B"
+  ],
+  "answer_index": 0,
+  "context": "La expresión la acuñaron críticos franceses en 1946 al ver de golpe las películas estadounidenses que la guerra había retenido. El giallo es su primo italiano, más sangriento.",
+  "difficulty": "hard",
+  "question_en": "What is the 1940s American genre of detectives, shadows and femmes fatales called?",
+  "options_en": [
+   "Film noir",
+   "Giallo",
+   "Screwball comedy",
+   "B movies"
+  ],
+  "context_en": "French critics coined the term in 1946 on seeing all at once the American films the war had held back. Giallo is its bloodier Italian cousin."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1952 protagonizada por Gary Cooper transcurre casi en tiempo real hasta la llegada de un tren?",
+  "options": [
+   "Solo ante el peligro",
+   "Raíces profundas",
+   "El tren de las 3:10",
+   "Río Bravo"
+  ],
+  "answer_index": 0,
+  "context": "Su guionista, Carl Foreman, fue incluido en la lista negra durante el rodaje, y muchos leyeron la película como alegoría del macartismo. Howard Hawks rodó \"Río Bravo\" como respuesta.",
+  "difficulty": "hard",
+  "question_en": "Which 1952 film starring Gary Cooper unfolds almost in real time until a train arrives?",
+  "options_en": [
+   "High Noon",
+   "Shane",
+   "3:10 to Yuma",
+   "Rio Bravo"
+  ],
+  "context_en": "Its writer, Carl Foreman, was blacklisted during the shoot, and many read the film as an allegory of McCarthyism. Howard Hawks made \"Rio Bravo\" as a reply."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué lista prohibió trabajar en Hollywood a guionistas y directores acusados de comunismo?",
+  "options": [
+   "La lista negra",
+   "El código Hays",
+   "La ley Taft",
+   "El comité Warren"
+  ],
+  "answer_index": 0,
+  "context": "Los llamados Diez de Hollywood fueron a la cárcel en 1950 por negarse a declarar. Dalton Trumbo siguió escribiendo con seudónimo y ganó dos Óscar que no pudo recoger.",
+  "difficulty": "hard",
+  "question_en": "Which list barred screenwriters and directors accused of communism from working in Hollywood?",
+  "options_en": [
+   "The blacklist",
+   "The Hays Code",
+   "The Taft Act",
+   "The Warren Commission"
+  ],
+  "context_en": "The so-called Hollywood Ten went to prison in 1950 for refusing to testify. Dalton Trumbo kept writing under pseudonyms and won two Oscars he could not collect."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué código de censura reguló el contenido de las películas de Hollywood entre 1934 y 1968?",
+  "options": [
+   "El código Hays",
+   "El sistema MPAA",
+   "La norma Brown",
+   "El decreto Paramount"
+  ],
+  "answer_index": 0,
+  "context": "Prohibía mostrar a una pareja casada en la misma cama y exigía que el crimen nunca saliera impune. Lo sustituyó el sistema actual de clasificación por edades.",
+  "difficulty": "hard",
+  "question_en": "Which censorship code regulated the content of Hollywood films between 1934 and 1968?",
+  "options_en": [
+   "The Hays Code",
+   "The MPAA system",
+   "The Brown rule",
+   "The Paramount decree"
+  ],
+  "context_en": "It banned showing a married couple in the same bed and required that crime never go unpunished. It was replaced by today's age rating system."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué cineasta estadounidense dirigió \"Las uvas de la ira\" y ganó cuatro Óscar a mejor dirección?",
+  "options": [
+   "John Ford",
+   "Howard Hawks",
+   "Frank Capra",
+   "King Vidor"
+  ],
+  "answer_index": 0,
+  "context": "Rodó más de ciento cuarenta películas, muchas en el Valle de los Monumentos. Decía de sí mismo, lacónicamente, que hacía wésterns.",
+  "difficulty": "hard",
+  "question_en": "Which American filmmaker directed \"The Grapes of Wrath\" and won four best director Oscars?",
+  "options_en": [
+   "John Ford",
+   "Howard Hawks",
+   "Frank Capra",
+   "King Vidor"
+  ],
+  "context_en": "He made more than a hundred and forty films, many in Monument Valley. He described himself laconically as someone who made westerns."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película documental de 2004 de Michael Moore ganó la Palma de Oro criticando la política de Bush?",
+  "options": [
+   "Fahrenheit 9/11",
+   "Bowling for Columbine",
+   "Sicko",
+   "Roger y yo"
+  ],
+  "answer_index": 0,
+  "context": "Es el documental más taquillero de la historia. Quentin Tarantino presidía el jurado y negó que el premio tuviera motivación política.",
+  "difficulty": "hard",
+  "question_en": "Which 2004 Michael Moore documentary won the Palme d'Or criticising Bush's policies?",
+  "options_en": [
+   "Fahrenheit 9/11",
+   "Bowling for Columbine",
+   "Sicko",
+   "Roger & Me"
+  ],
+  "context_en": "It is the highest-grossing documentary in history. Quentin Tarantino chaired the jury and denied the award had any political motivation."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película española de 2023 dirigida por Juan Antonio Bayona recrea el accidente aéreo de los Andes de 1972?",
+  "options": [
+   "La sociedad de la nieve",
+   "Lo imposible",
+   "El orfanato",
+   "Un monstruo viene a verme"
+  ],
+  "answer_index": 0,
+  "context": "Se rodó con actores uruguayos y argentinos, en parte en el lugar real del accidente. Ganó doce Goyas y fue nominada al Óscar a mejor película internacional.",
+  "difficulty": "hard",
+  "question_en": "Which 2023 Spanish film by Juan Antonio Bayona recreates the 1972 Andes plane crash?",
+  "options_en": [
+   "Society of the Snow",
+   "The Impossible",
+   "The Orphanage",
+   "A Monster Calls"
+  ],
+  "context_en": "It was shot with Uruguayan and Argentine actors, partly at the real crash site. It won twelve Goyas and was Oscar-nominated for best international film."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1954 de Kurosawa inspiró el wéstern \"Los siete magníficos\"?",
+  "options": [
+   "Los siete samuráis",
+   "Yojimbo",
+   "Ran",
+   "Dersu Uzala"
+  ],
+  "answer_index": 0,
+  "context": "\"Yojimbo\" inspiró a su vez \"Por un puñado de dólares\" de Leone, que perdió un juicio por plagio. Kurosawa ganó más dinero con esa demanda que con la película original.",
+  "difficulty": "hard",
+  "question_en": "Which 1954 Kurosawa film inspired the western \"The Magnificent Seven\"?",
+  "options_en": [
+   "Seven Samurai",
+   "Yojimbo",
+   "Ran",
+   "Dersu Uzala"
+  ],
+  "context_en": "\"Yojimbo\" in turn inspired Leone's \"A Fistful of Dollars\", which lost a plagiarism suit. Kurosawa earned more from that case than from the original film."
+ }
+]

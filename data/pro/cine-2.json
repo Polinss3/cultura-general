@@ -1,0 +1,1094 @@
+[
+ {
+  "category": "cine",
+  "question": "¿Qué nombre recibe la música compuesta expresamente para una película?",
+  "options": [
+   "La banda sonora original",
+   "El doblaje",
+   "El foley",
+   "La mezcla"
+  ],
+  "answer_index": 0,
+  "context": "Suele grabarse al final, cuando el montaje ya está cerrado, para ajustarla al fotograma. Se abrevia como BSO en español y OST en inglés.",
+  "difficulty": "easy",
+  "question_en": "What is music composed specifically for a film called?",
+  "options_en": [
+   "The original soundtrack",
+   "The dubbing",
+   "The foley",
+   "The mix"
+  ],
+  "context_en": "It is usually recorded last, once the edit is locked, so it fits frame by frame. It is abbreviated OST in English and BSO in Spanish."
+ },
+ {
+  "category": "cine",
+  "question": "¿Cómo se llama la persona que sustituye al actor en las escenas peligrosas?",
+  "options": [
+   "El extra",
+   "El doble de acción",
+   "El figurante",
+   "El apuntador"
+  ],
+  "answer_index": 1,
+  "context": "Los Óscar siguen sin tener una categoría propia para ellos pese a décadas de reclamaciones. Los extras y figurantes, en cambio, solo aparecen de fondo.",
+  "difficulty": "easy",
+  "question_en": "What is the person who replaces an actor in dangerous scenes called?",
+  "options_en": [
+   "The extra",
+   "The stunt performer",
+   "The background artist",
+   "The prompter"
+  ],
+  "context_en": "The Oscars still have no category for them despite decades of campaigning. Extras, by contrast, only appear in the background."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué animal gigante trepa por el Empire State en una película de 1933?",
+  "options": [
+   "Godzilla",
+   "King Kong",
+   "Mothra",
+   "Kraken"
+  ],
+  "answer_index": 1,
+  "context": "Se animó con stop motion usando una maqueta de apenas 45 centímetros. El rascacielos acababa de inaugurarse dos años antes.",
+  "difficulty": "easy",
+  "question_en": "Which giant animal climbs the Empire State Building in a 1933 film?",
+  "options_en": [
+   "Godzilla",
+   "King Kong",
+   "Mothra",
+   "The Kraken"
+  ],
+  "context_en": "It was animated in stop motion with a model barely 45 centimetres tall. The skyscraper had opened just two years earlier."
+ },
+ {
+  "category": "cine",
+  "question": "¿En qué década se generalizó el cine en color en Hollywood?",
+  "options": [
+   "Los años veinte",
+   "Los años treinta y cuarenta",
+   "Los años sesenta",
+   "Los años ochenta"
+  ],
+  "answer_index": 1,
+  "context": "El Technicolor de tres tiras se impuso con títulos como \"El mago de Oz\" y \"Lo que el viento se llevó\", ambos de 1939. Era caro y exigía una iluminación potentísima.",
+  "difficulty": "easy",
+  "question_en": "In which decade did colour film become widespread in Hollywood?",
+  "options_en": [
+   "The twenties",
+   "The thirties and forties",
+   "The sixties",
+   "The eighties"
+  ],
+  "context_en": "Three-strip Technicolor took hold with titles such as \"The Wizard of Oz\" and \"Gone with the Wind\", both from 1939. It was costly and needed very powerful lighting."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué personaje azul y peludo protagoniza \"Monstruos, S.A.\" junto a Mike Wazowski?",
+  "options": [
+   "Sulley",
+   "Randall",
+   "Roz",
+   "Boo"
+  ],
+  "answer_index": 0,
+  "context": "Su pelaje tiene más de dos millones de pelos animados individualmente, un récord técnico en 2001. Boo es la niña humana que se cuela en el mundo de los monstruos.",
+  "difficulty": "easy",
+  "question_en": "Which big blue furry character stars in \"Monsters, Inc.\" alongside Mike Wazowski?",
+  "options_en": [
+   "Sulley",
+   "Randall",
+   "Roz",
+   "Boo"
+  ],
+  "context_en": "His fur has more than two million individually animated hairs, a technical record in 2001. Boo is the human girl who sneaks into the monster world."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué saga de películas sigue a una familia que se dedica a las carreras callejeras y los atracos?",
+  "options": [
+   "Fast & Furious",
+   "Ocean's",
+   "Transporter",
+   "Mad Max"
+  ],
+  "answer_index": 0,
+  "context": "Empezó en 2001 como una película modesta sobre carreras y acabó convertida en una de las franquicias más taquilleras del cine de acción.",
+  "difficulty": "easy",
+  "question_en": "Which film saga follows a family devoted to street racing and heists?",
+  "options_en": [
+   "Fast & Furious",
+   "Ocean's",
+   "Transporter",
+   "Mad Max"
+  ],
+  "context_en": "It began in 2001 as a modest film about racing and became one of the highest-grossing action franchises in cinema."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué tipo de película cuenta hechos reales sin actores ni guion de ficción?",
+  "options": [
+   "El biopic",
+   "El documental",
+   "El cortometraje",
+   "El falso documental"
+  ],
+  "answer_index": 1,
+  "context": "El biopic dramatiza con actores la vida de una persona real. El falso documental, o mockumentary, imita el formato para contar una ficción.",
+  "difficulty": "easy",
+  "question_en": "Which kind of film tells real events without actors or a fictional script?",
+  "options_en": [
+   "The biopic",
+   "The documentary",
+   "The short film",
+   "The mockumentary"
+  ],
+  "context_en": "A biopic dramatises a real person's life with actors. A mockumentary imitates the format to tell a fictional story."
+ },
+ {
+  "category": "cine",
+  "question": "¿Cómo se llama una película de duración muy breve, normalmente de menos de media hora?",
+  "options": [
+   "Cortometraje",
+   "Tráiler",
+   "Teaser",
+   "Piloto"
+  ],
+  "answer_index": 0,
+  "context": "Los Óscar premian tres categorías de cortos: ficción, animación y documental. El tráiler es el avance promocional y el piloto, el primer episodio de una serie.",
+  "difficulty": "easy",
+  "question_en": "What is a very brief film, usually under half an hour, called?",
+  "options_en": [
+   "A short film",
+   "A trailer",
+   "A teaser",
+   "A pilot"
+  ],
+  "context_en": "The Oscars award three short categories: live action, animation and documentary. A trailer is a promotional preview and a pilot, a series' first episode."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué personaje de dibujos animados de Warner repite \"¿Qué hay de nuevo, viejo?\"?",
+  "options": [
+   "El Pato Lucas",
+   "Bugs Bunny",
+   "El Coyote",
+   "Piolín"
+  ],
+  "answer_index": 1,
+  "context": "Debutó en 1940 y su voz original fue la de Mel Blanc, que puso voz a casi todos los personajes de la Warner. Su frase es \"What's up, Doc?\".",
+  "difficulty": "easy",
+  "question_en": "Which Warner cartoon character is famous for the catchphrase \"What's up, Doc\"?",
+  "options_en": [
+   "Daffy Duck",
+   "Bugs Bunny",
+   "Wile E. Coyote",
+   "Tweety"
+  ],
+  "context_en": "He debuted in 1940 and was originally voiced by Mel Blanc, who played almost every Warner character."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué estudio de animación creó \"Toy Story\", la primera película enteramente por ordenador?",
+  "options": [
+   "DreamWorks",
+   "Pixar",
+   "Blue Sky",
+   "Illumination"
+  ],
+  "answer_index": 1,
+  "context": "Se estrenó en 1995 tras cuatro años de producción. Steve Jobs había comprado el estudio a Lucasfilm en 1986 por cinco millones de dólares.",
+  "difficulty": "easy",
+  "question_en": "Which animation studio created \"Toy Story\", the first fully computer-animated film?",
+  "options_en": [
+   "DreamWorks",
+   "Pixar",
+   "Blue Sky",
+   "Illumination"
+  ],
+  "context_en": "It was released in 1995 after four years of production. Steve Jobs had bought the studio from Lucasfilm in 1986 for five million dollars."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actor británico interpretó a Gandalf en \"El Señor de los Anillos\"?",
+  "options": [
+   "Ian McKellen",
+   "Christopher Lee",
+   "Patrick Stewart",
+   "Michael Gambon"
+  ],
+  "answer_index": 0,
+  "context": "Christopher Lee, que interpretó a Saruman, había querido ese papel y era el único del reparto que conocía a Tolkien en persona.",
+  "difficulty": "medium",
+  "question_en": "Which British actor played Gandalf in \"The Lord of the Rings\"?",
+  "options_en": [
+   "Ian McKellen",
+   "Christopher Lee",
+   "Patrick Stewart",
+   "Michael Gambon"
+  ],
+  "context_en": "Christopher Lee, who played Saruman, had wanted the role and was the only cast member who had met Tolkien in person."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1999 de los hermanos Wachowski popularizó el efecto \"bullet time\"?",
+  "options": [
+   "Matrix",
+   "El sexto sentido",
+   "Fight Club",
+   "eXistenZ"
+  ],
+  "answer_index": 0,
+  "context": "El efecto se logró con más de cien cámaras fotográficas disparando en secuencia alrededor del actor. Ganó cuatro Óscar técnicos.",
+  "difficulty": "medium",
+  "question_en": "Which 1999 film by the Wachowskis popularised the \"bullet time\" effect?",
+  "options_en": [
+   "The Matrix",
+   "The Sixth Sense",
+   "Fight Club",
+   "eXistenZ"
+  ],
+  "context_en": "The effect was achieved with more than a hundred stills cameras firing in sequence around the actor. It won four technical Oscars."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de Hitchcock transcurre casi entera en el patio visto desde la ventana de un fotógrafo con una pierna rota?",
+  "options": [
+   "La ventana indiscreta",
+   "Los pájaros",
+   "Encadenados",
+   "Náufragos"
+  ],
+  "answer_index": 0,
+  "context": "James Stewart no sale del apartamento en toda la película. El decorado del patio, construido en estudio, fue el más grande levantado hasta entonces en Paramount.",
+  "difficulty": "medium",
+  "question_en": "Which Hitchcock film takes place almost entirely in a courtyard seen from the window of a photographer with a broken leg?",
+  "options_en": [
+   "Rear Window",
+   "The Birds",
+   "Notorious",
+   "Lifeboat"
+  ],
+  "context_en": "James Stewart never leaves the apartment in the whole film. The courtyard set, built in studio, was the largest ever erected at Paramount at that time."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1995 de Michael Mann enfrenta a De Niro y Pacino en un atraco en Los Ángeles?",
+  "options": [
+   "Heat",
+   "Colateral",
+   "El dilema",
+   "Cabo de miedo"
+  ],
+  "answer_index": 0,
+  "context": "Su escena del tiroteo en el centro de la ciudad se usa como material de entrenamiento en algunas academias militares. Era la primera vez que ambos actores compartían plano.",
+  "difficulty": "medium",
+  "question_en": "Which 1995 Michael Mann film pits De Niro against Pacino in a Los Angeles heist?",
+  "options_en": [
+   "Heat",
+   "Collateral",
+   "The Insider",
+   "Cape Fear"
+  ],
+  "context_en": "Its downtown shootout is used as training material in some military academies. It was the first time both actors shared a shot."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1994 sigue a dos presos en una cárcel de Maine a lo largo de décadas?",
+  "options": [
+   "Cadena perpetua",
+   "La milla verde",
+   "Camino a la perdición",
+   "Alcatraz"
+  ],
+  "answer_index": 0,
+  "context": "Fracasó en taquilla y se convirtió en un clásico gracias al vídeo doméstico y la televisión. Está basada en un relato de Stephen King.",
+  "difficulty": "medium",
+  "question_en": "Which 1994 film follows two inmates in a Maine prison over several decades?",
+  "options_en": [
+   "The Shawshank Redemption",
+   "The Green Mile",
+   "Road to Perdition",
+   "Alcatraz"
+  ],
+  "context_en": "It flopped at the box office and became a classic thanks to home video and television. It is based on a Stephen King novella."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1985 lanzó a Michael J. Fox al estrellato viajando en un DeLorean?",
+  "options": [
+   "Regreso al futuro",
+   "Cazafantasmas",
+   "Los Goonies",
+   "Cuenta conmigo"
+  ],
+  "answer_index": 0,
+  "context": "Fox rodaba de día una serie de televisión y de noche la película, durmiendo apenas cuatro horas. El papel se había rodado antes con Eric Stoltz.",
+  "difficulty": "medium",
+  "question_en": "Which 1985 film made Michael J. Fox a star travelling in a DeLorean?",
+  "options_en": [
+   "Back to the Future",
+   "Ghostbusters",
+   "The Goonies",
+   "Stand by Me"
+  ],
+  "context_en": "Fox shot a TV series by day and the film by night, sleeping barely four hours. The role had already been filmed with Eric Stoltz."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1982 de Spielberg cuenta la amistad de un niño con un extraterrestre?",
+  "options": [
+   "E.T., el extraterrestre",
+   "Encuentros en la tercera fase",
+   "Cocoon",
+   "Flight of the Navigator"
+  ],
+  "answer_index": 0,
+  "context": "Fue la película más taquillera de la historia hasta \"Jurassic Park\", del propio Spielberg. Se rodó en orden cronológico para ayudar a los actores infantiles.",
+  "difficulty": "medium",
+  "question_en": "Which 1982 Spielberg film tells of a boy's friendship with an alien?",
+  "options_en": [
+   "E.T. the Extra-Terrestrial",
+   "Close Encounters of the Third Kind",
+   "Cocoon",
+   "Flight of the Navigator"
+  ],
+  "context_en": "It was the highest-grossing film ever until Spielberg's own \"Jurassic Park\". It was shot in chronological order to help the child actors."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1975 sobre un hospital psiquiátrico ganó los cinco Óscar principales?",
+  "options": [
+   "Alguien voló sobre el nido del cuco",
+   "Taxi Driver",
+   "Network",
+   "Kramer contra Kramer"
+  ],
+  "answer_index": 0,
+  "context": "Película, dirección, guion, actor y actriz: solo tres películas en la historia han logrado ese pleno. Milos Forman la dirigió y Jack Nicholson la protagonizó.",
+  "difficulty": "medium",
+  "question_en": "Which 1975 film set in a psychiatric hospital won the five main Oscars?",
+  "options_en": [
+   "One Flew Over the Cuckoo's Nest",
+   "Taxi Driver",
+   "Network",
+   "Kramer vs. Kramer"
+  ],
+  "context_en": "Picture, director, screenplay, actor and actress: only three films in history have swept those five. Miloš Forman directed and Jack Nicholson starred."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actor interpretó a Vito Corleone en la primera parte de \"El padrino\"?",
+  "options": [
+   "Al Pacino",
+   "Marlon Brando",
+   "James Caan",
+   "Robert Duvall"
+  ],
+  "answer_index": 1,
+  "context": "Rechazó el Óscar que ganó por el papel y envió en su lugar a una activista apache a denunciar el trato del cine a los indígenas. Se rellenó las mejillas con algodón en la prueba de cámara.",
+  "difficulty": "medium",
+  "question_en": "Which actor played Vito Corleone in the first \"Godfather\" film?",
+  "options_en": [
+   "Al Pacino",
+   "Marlon Brando",
+   "James Caan",
+   "Robert Duvall"
+  ],
+  "context_en": "He refused the Oscar he won for the role and sent an Apache activist to denounce Hollywood's treatment of Native Americans. He stuffed his cheeks with cotton wool at the screen test."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actriz interpretó a Katniss Everdeen en \"Los juegos del hambre\"?",
+  "options": [
+   "Jennifer Lawrence",
+   "Shailene Woodley",
+   "Kristen Stewart",
+   "Emma Stone"
+  ],
+  "answer_index": 0,
+  "context": "Ese mismo año ganó el Óscar por \"El lado bueno de las cosas\", y tropezó en la escalera al subir a recogerlo. Tenía 22 años.",
+  "difficulty": "medium",
+  "question_en": "Which actress played Katniss Everdeen in \"The Hunger Games\"?",
+  "options_en": [
+   "Jennifer Lawrence",
+   "Shailene Woodley",
+   "Kristen Stewart",
+   "Emma Stone"
+  ],
+  "context_en": "That same year she won the Oscar for \"Silver Linings Playbook\", tripping on the steps as she went up to collect it. She was 22."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actor británico ha interpretado a James Bond en más películas oficiales?",
+  "options": [
+   "Sean Connery",
+   "Roger Moore",
+   "Pierce Brosnan",
+   "Timothy Dalton"
+  ],
+  "answer_index": 1,
+  "context": "Rodó siete entregas entre 1973 y 1985, una más que Connery. Tenía 58 años cuando rodó la última, \"Panorama para matar\".",
+  "difficulty": "medium",
+  "question_en": "Which British actor has played James Bond in the most official films?",
+  "options_en": [
+   "Sean Connery",
+   "Roger Moore",
+   "Pierce Brosnan",
+   "Timothy Dalton"
+  ],
+  "context_en": "He made seven instalments between 1973 and 1985, one more than Connery. He was 58 when he shot the last, \"A View to a Kill\"."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 2016 sobre un adolescente negro en Miami ganó el Óscar tras un célebre error al anunciar el premio?",
+  "options": [
+   "Moonlight",
+   "Luces de noche",
+   "Manchester frente al mar",
+   "Figuras ocultas"
+  ],
+  "answer_index": 0,
+  "context": "Se anunció por error \"La La Land\" como ganadora por un sobre equivocado. El equipo de \"Moonlight\" subió al escenario en medio de la confusión.",
+  "difficulty": "medium",
+  "question_en": "Which 2016 film about a Black teenager in Miami won the Oscar after a famous announcing error?",
+  "options_en": [
+   "Moonlight",
+   "Nightlights",
+   "Manchester by the Sea",
+   "Hidden Figures"
+  ],
+  "context_en": "\"La La Land\" was announced by mistake because of a wrong envelope. The \"Moonlight\" team came on stage amid the confusion."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué serie de televisión sigue a los publicistas de una agencia neoyorquina en los años sesenta?",
+  "options": [
+   "Mad Men",
+   "The Newsroom",
+   "Suits",
+   "Halt and Catch Fire"
+  ],
+  "answer_index": 0,
+  "context": "Su reconstrucción de la época, del vestuario al tabaco en la oficina, influyó en la moda y el diseño de los años siguientes. Se emitió entre 2007 y 2015.",
+  "difficulty": "medium",
+  "question_en": "Which television series follows the advertising men of a New York agency in the 1960s?",
+  "options_en": [
+   "Mad Men",
+   "The Newsroom",
+   "Suits",
+   "Halt and Catch Fire"
+  ],
+  "context_en": "Its period detail, from the costumes to the office smoking, influenced fashion and design in the years that followed. It ran from 2007 to 2015."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué serie estadounidense retrata el tráfico de drogas y las instituciones de Baltimore?",
+  "options": [
+   "The Wire",
+   "Homicide",
+   "The Shield",
+   "Narcos"
+  ],
+  "answer_index": 0,
+  "context": "La creó David Simon, periodista del Baltimore Sun, y cada temporada se centra en una institución distinta: puerto, escuela, política, prensa. Nunca ganó un Emmy importante.",
+  "difficulty": "medium",
+  "question_en": "Which American series portrays the drug trade and institutions of Baltimore?",
+  "options_en": [
+   "The Wire",
+   "Homicide",
+   "The Shield",
+   "Narcos"
+  ],
+  "context_en": "It was created by David Simon, a Baltimore Sun reporter, and each season focuses on a different institution: the docks, schools, politics, the press. It never won a major Emmy."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué serie española ambientada en los años ochenta narra el ascenso de un narcotraficante gallego?",
+  "options": [
+   "Fariña",
+   "Vis a vis",
+   "El Príncipe",
+   "Hache"
+  ],
+  "answer_index": 0,
+  "context": "Se basa en el libro homónimo de Nacho Carretero, que estuvo secuestrado judicialmente durante meses. La serie se emitió en 2018.",
+  "difficulty": "medium",
+  "question_en": "Which Spanish series set in the 1980s follows the rise of a Galician drug trafficker?",
+  "options_en": [
+   "Fariña (Cocaine Coast)",
+   "Vis a vis",
+   "El Príncipe",
+   "Hache"
+  ],
+  "context_en": "It is based on Nacho Carretero's book of the same name, which was banned by court order for months. The series aired in 2018."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de animación japonesa de 1988 se ambienta en Neo-Tokio tras una explosión?",
+  "options": [
+   "Akira",
+   "Ghost in the Shell",
+   "Perfect Blue",
+   "Paprika"
+  ],
+  "answer_index": 0,
+  "context": "Katsuhiro Otomo adaptó su propio manga con un presupuesto enorme para la época. Su estreno en Occidente cambió la percepción del anime como género solo infantil.",
+  "difficulty": "medium",
+  "question_en": "Which 1988 Japanese animated film is set in Neo-Tokyo after an explosion?",
+  "options_en": [
+   "Akira",
+   "Ghost in the Shell",
+   "Perfect Blue",
+   "Paprika"
+  ],
+  "context_en": "Katsuhiro Otomo adapted his own manga with a budget enormous for the time. Its Western release changed the perception of anime as a children's genre."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de Studio Ghibli narra la historia de una niña atrapada en un mundo de espíritus y un balneario?",
+  "options": [
+   "El viaje de Chihiro",
+   "La princesa Mononoke",
+   "Mi vecino Totoro",
+   "El castillo ambulante"
+  ],
+  "answer_index": 0,
+  "context": "Fue la primera película no inglesa en ganar el Óscar de animación, en 2003. Miyazaki no acudió a la ceremonia en protesta por la guerra de Irak.",
+  "difficulty": "medium",
+  "question_en": "Which Studio Ghibli film tells of a girl trapped in a spirit world and a bathhouse?",
+  "options_en": [
+   "Spirited Away",
+   "Princess Mononoke",
+   "My Neighbour Totoro",
+   "Howl's Moving Castle"
+  ],
+  "context_en": "It was the first non-English film to win the animation Oscar, in 2003. Miyazaki skipped the ceremony in protest at the Iraq war."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué término designa a la película que continúa la historia de otra anterior?",
+  "options": [
+   "Precuela",
+   "Secuela",
+   "Remake",
+   "Spin-off"
+  ],
+  "answer_index": 1,
+  "context": "La precuela cuenta lo ocurrido antes, el remake rehace la misma historia y el spin-off desarrolla a un personaje secundario en su propia película o serie.",
+  "difficulty": "medium",
+  "question_en": "Which term describes a film that continues the story of an earlier one?",
+  "options_en": [
+   "Prequel",
+   "Sequel",
+   "Remake",
+   "Spin-off"
+  ],
+  "context_en": "A prequel tells what happened before, a remake redoes the same story and a spin-off develops a secondary character in their own film or series."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué nombre recibe la versión de una película con la voz de actores en otro idioma?",
+  "options": [
+   "Subtitulado",
+   "Doblaje",
+   "Versión original",
+   "Audiodescripción"
+  ],
+  "answer_index": 1,
+  "context": "España es uno de los países con mayor tradición de doblaje, impulsada por una orden de 1941 que lo hizo obligatorio. Portugal o Países Bajos prefieren los subtítulos.",
+  "difficulty": "medium",
+  "question_en": "What is the version of a film with actors' voices in another language called?",
+  "options_en": [
+   "Subtitling",
+   "Dubbing",
+   "Original version",
+   "Audio description"
+  ],
+  "context_en": "Spain has one of the strongest dubbing traditions, boosted by a 1941 decree that made it compulsory. Portugal and the Netherlands prefer subtitles."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película documental de 2005 sigue a los pingüinos emperador en la Antártida?",
+  "options": [
+   "El viaje del emperador",
+   "Océanos",
+   "Nómadas del viento",
+   "Home"
+  ],
+  "answer_index": 0,
+  "context": "Ganó el Óscar al mejor documental y fue una de las películas francesas más vistas del mundo. Su equipo pasó más de un año rodando en condiciones extremas.",
+  "difficulty": "medium",
+  "question_en": "Which 2005 documentary follows emperor penguins in Antarctica?",
+  "options_en": [
+   "March of the Penguins",
+   "Oceans",
+   "Winged Migration",
+   "Home"
+  ],
+  "context_en": "It won the Oscar for best documentary and became one of the most watched French films worldwide. Its crew spent more than a year shooting in extreme conditions."
+ },
+ {
+  "category": "cine",
+  "question": "¿En qué novela de Stephen King se basa la película \"El resplandor\" de Kubrick?",
+  "options": [
+   "Cementerio de animales",
+   "El resplandor",
+   "Misery",
+   "It"
+  ],
+  "answer_index": 1,
+  "context": "King detestó la adaptación y produjo en 1997 una miniserie más fiel al libro. El hotel del libro se inspira en el Stanley de Colorado, donde el autor pasó una noche.",
+  "difficulty": "medium",
+  "question_en": "Which Stephen King novel is Kubrick's film \"The Shining\" based on?",
+  "options_en": [
+   "Pet Sematary",
+   "The Shining",
+   "Misery",
+   "It"
+  ],
+  "context_en": "King hated the adaptation and produced a more faithful miniseries in 1997. The book's hotel was inspired by the Stanley in Colorado, where the author spent a night."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1972 dirigida por Coppola comienza con una boda siciliana en Nueva York?",
+  "options": [
+   "El padrino",
+   "Érase una vez en América",
+   "Uno de los nuestros",
+   "Scarface"
+  ],
+  "answer_index": 0,
+  "context": "La secuencia inicial dura casi media hora y presenta a casi todos los personajes. El estudio no quería a Coppola, ni a Brando, ni a Pacino.",
+  "difficulty": "medium",
+  "question_en": "Which 1972 film directed by Coppola opens with a Sicilian wedding in New York?",
+  "options_en": [
+   "The Godfather",
+   "Once Upon a Time in America",
+   "Goodfellas",
+   "Scarface"
+  ],
+  "context_en": "The opening sequence lasts almost half an hour and introduces nearly every character. The studio wanted neither Coppola, nor Brando, nor Pacino."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 2019 sobre una familia surcoreana pobre ganó la Palma de Oro y el Óscar?",
+  "options": [
+   "Parásitos",
+   "Burning",
+   "Decision to Leave",
+   "Old Boy"
+  ],
+  "answer_index": 0,
+  "context": "Fue la primera película en lograr ambos premios desde \"Marty\", en 1955, y la primera no inglesa en ganar el Óscar a mejor película. Bong Joon-ho recogió cuatro estatuillas esa noche.",
+  "difficulty": "medium",
+  "question_en": "Which 2019 film about a poor South Korean family won both the Palme d'Or and the Oscar?",
+  "options_en": [
+   "Parasite",
+   "Burning",
+   "Decision to Leave",
+   "Oldboy"
+  ],
+  "context_en": "It was the first film to take both since \"Marty\" in 1955, and the first non-English film to win the best picture Oscar. Bong Joon-ho collected four awards that night."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1998 comienza con un desembarco en la playa de Omaha durante el Día D?",
+  "options": [
+   "Salvar al soldado Ryan",
+   "La delgada línea roja",
+   "El día más largo",
+   "Dunkerque"
+  ],
+  "answer_index": 0,
+  "context": "Los primeros veinticinco minutos cambiaron la forma de rodar escenas bélicas: cámara al hombro, obturador reducido y sonido brutal. Spielberg ganó su segundo Óscar de dirección.",
+  "difficulty": "medium",
+  "question_en": "Which 1998 film opens with a landing on Omaha Beach during D-Day?",
+  "options_en": [
+   "Saving Private Ryan",
+   "The Thin Red Line",
+   "The Longest Day",
+   "Dunkirk"
+  ],
+  "context_en": "Its first twenty-five minutes changed how war scenes are shot: handheld camera, reduced shutter angle and brutal sound. Spielberg won his second directing Oscar."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actriz española ganó el Goya por \"Te doy mis ojos\" y ha dirigido varias películas?",
+  "options": [
+   "Laia Marull",
+   "Icíar Bollaín",
+   "Candela Peña",
+   "Ana Belén"
+  ],
+  "answer_index": 1,
+  "context": "Bollaín fue actriz antes que directora, y \"Te doy mis ojos\", que dirigió en 2003, ganó siete Goyas. También dirigió \"También la lluvia\" y \"Maixabel\".",
+  "difficulty": "medium",
+  "question_en": "Which Spanish filmmaker directed \"Take My Eyes\", winner of seven Goyas?",
+  "options_en": [
+   "Laia Marull",
+   "Icíar Bollaín",
+   "Candela Peña",
+   "Ana Belén"
+  ],
+  "context_en": "Bollaín was an actress before directing, and \"Take My Eyes\", which she directed in 2003, won seven Goyas. She also directed \"Even the Rain\" and \"Maixabel\"."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de Amenábar protagonizada por Nicole Kidman transcurre en una casa envuelta en niebla?",
+  "options": [
+   "Los otros",
+   "Abre los ojos",
+   "Tesis",
+   "Ágora"
+  ],
+  "answer_index": 0,
+  "context": "Se rodó en Cantabria en el año 2000 y ganó ocho Goyas, incluido el de mejor película, con un reparto que hablaba en inglés.",
+  "difficulty": "medium",
+  "question_en": "Which Amenábar film starring Nicole Kidman takes place in a house wrapped in fog?",
+  "options_en": [
+   "The Others",
+   "Open Your Eyes",
+   "Thesis",
+   "Agora"
+  ],
+  "context_en": "It was shot in Cantabria in 2000 and won eight Goyas, including best film, with an English-speaking cast."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 2014 de Christopher Nolan combina viajes espaciales con la teoría de la relatividad?",
+  "options": [
+   "Interstellar",
+   "Gravity",
+   "Ad Astra",
+   "Contact"
+  ],
+  "answer_index": 0,
+  "context": "El físico Kip Thorne asesoró la película, y las simulaciones del agujero negro dieron lugar a un artículo científico. Ganó el Óscar a mejores efectos visuales.",
+  "difficulty": "medium",
+  "question_en": "Which 2014 Christopher Nolan film combines space travel with the theory of relativity?",
+  "options_en": [
+   "Interstellar",
+   "Gravity",
+   "Ad Astra",
+   "Contact"
+  ],
+  "context_en": "The physicist Kip Thorne advised on the film, and the black hole simulations led to a scientific paper. It won the Oscar for best visual effects."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1994 de Tarantino entrelaza varias historias de gánsteres en Los Ángeles?",
+  "options": [
+   "Pulp Fiction",
+   "Jackie Brown",
+   "Reservoir Dogs",
+   "Amor a quemarropa"
+  ],
+  "answer_index": 0,
+  "context": "Ganó la Palma de Oro y devolvió la carrera a John Travolta. Su estructura desordenada en el tiempo influyó en todo el cine independiente de los noventa.",
+  "difficulty": "medium",
+  "question_en": "Which 1994 Tarantino film interweaves several gangster stories in Los Angeles?",
+  "options_en": [
+   "Pulp Fiction",
+   "Jackie Brown",
+   "Reservoir Dogs",
+   "True Romance"
+  ],
+  "context_en": "It won the Palme d'Or and revived John Travolta's career. Its scrambled timeline influenced all of 1990s independent cinema."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actriz interpretó a Clarice Starling en \"El silencio de los corderos\"?",
+  "options": [
+   "Jodie Foster",
+   "Michelle Pfeiffer",
+   "Meg Ryan",
+   "Geena Davis"
+  ],
+  "answer_index": 0,
+  "context": "Ganó el Óscar por el papel, uno de los cinco que consiguió la película en las categorías principales. Hopkins aparece en pantalla poco más de dieciséis minutos.",
+  "difficulty": "medium",
+  "question_en": "Which actress played Clarice Starling in \"The Silence of the Lambs\"?",
+  "options_en": [
+   "Jodie Foster",
+   "Michelle Pfeiffer",
+   "Meg Ryan",
+   "Geena Davis"
+  ],
+  "context_en": "She won the Oscar for the role, one of five the film took in the main categories. Hopkins is on screen for barely sixteen minutes."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1986 sobre pilotos de caza lanzó a Tom Cruise al estrellato?",
+  "options": [
+   "Top Gun",
+   "Días de trueno",
+   "Cocktail",
+   "El color del dinero"
+  ],
+  "answer_index": 0,
+  "context": "La Marina estadounidense instaló mesas de reclutamiento en los cines tras el estreno. Su secuela, de 2022, se rodó con cámaras dentro de cazas reales.",
+  "difficulty": "medium",
+  "question_en": "Which 1986 film about fighter pilots made Tom Cruise a star?",
+  "options_en": [
+   "Top Gun",
+   "Days of Thunder",
+   "Cocktail",
+   "The Color of Money"
+  ],
+  "context_en": "The US Navy set up recruiting tables in cinemas after its release. Its 2022 sequel was shot with cameras inside real fighter jets."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película muda de 1925 muestra a Chaplin comiéndose un zapato en Alaska?",
+  "options": [
+   "La quimera del oro",
+   "El circo",
+   "Luces de la ciudad",
+   "Una mujer de París"
+  ],
+  "answer_index": 0,
+  "context": "El zapato era de regaliz y tuvo que comerse decenas de tomas, hasta acabar en el hospital. Chaplin la consideraba la película por la que quería ser recordado.",
+  "difficulty": "hard",
+  "question_en": "Which 1925 silent film shows Chaplin eating a shoe in Alaska?",
+  "options_en": [
+   "The Gold Rush",
+   "The Circus",
+   "City Lights",
+   "A Woman of Paris"
+  ],
+  "context_en": "The shoe was made of liquorice and he had to eat dozens of takes, ending up in hospital. Chaplin said it was the film he wanted to be remembered for."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué cineasta francesa, figura de la nouvelle vague, dirigió \"Cleo de 5 a 7\" y \"Los espigadores y la espigadora\"?",
+  "options": [
+   "Agnès Varda",
+   "Claire Denis",
+   "Catherine Breillat",
+   "Marguerite Duras"
+  ],
+  "answer_index": 0,
+  "context": "Empezó como fotógrafa y rodó su primera película antes que Godard o Truffaut. Ganó un Óscar honorífico en 2017, con 89 años.",
+  "difficulty": "hard",
+  "question_en": "Which French filmmaker, a nouvelle vague figure, directed \"Cléo from 5 to 7\" and \"The Gleaners and I\"?",
+  "options_en": [
+   "Agnès Varda",
+   "Claire Denis",
+   "Catherine Breillat",
+   "Marguerite Duras"
+  ],
+  "context_en": "She began as a photographer and shot her first film before Godard or Truffaut. She received an honorary Oscar in 2017, aged 89."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director sueco firmó \"Fresas salvajes\" y \"Gritos y susurros\"?",
+  "options": [
+   "Ingmar Bergman",
+   "Victor Sjöström",
+   "Jan Troell",
+   "Bo Widerberg"
+  ],
+  "answer_index": 0,
+  "context": "Rodó casi siempre en la isla de Fårö con el operador Sven Nykvist y un grupo fijo de actores. Woody Allen lo consideraba el mejor cineasta de la historia.",
+  "difficulty": "hard",
+  "question_en": "Which Swedish director made \"Wild Strawberries\" and \"Cries and Whispers\"?",
+  "options_en": [
+   "Ingmar Bergman",
+   "Victor Sjöström",
+   "Jan Troell",
+   "Bo Widerberg"
+  ],
+  "context_en": "He shot mostly on the island of Fårö with cinematographer Sven Nykvist and a regular troupe of actors. Woody Allen considered him the greatest filmmaker in history."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director italiano rodó \"Ocho y medio\", una película sobre un cineasta bloqueado?",
+  "options": [
+   "Federico Fellini",
+   "Michelangelo Antonioni",
+   "Luchino Visconti",
+   "Pier Paolo Pasolini"
+  ],
+  "answer_index": 0,
+  "context": "El título alude al número de películas que llevaba rodadas. El adjetivo \"felliniano\" describe desde entonces lo grotesco y onírico.",
+  "difficulty": "hard",
+  "question_en": "Which Italian director made \"8½\", a film about a blocked filmmaker?",
+  "options_en": [
+   "Federico Fellini",
+   "Michelangelo Antonioni",
+   "Luchino Visconti",
+   "Pier Paolo Pasolini"
+  ],
+  "context_en": "The title refers to the number of films he had made by then. The adjective \"Fellinian\" has since described the grotesque and dreamlike."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director taiwanés ganó el Óscar a mejor dirección por \"La vida de Pi\"?",
+  "options": [
+   "Ang Lee",
+   "Hou Hsiao-hsien",
+   "Edward Yang",
+   "Tsai Ming-liang"
+  ],
+  "answer_index": 0,
+  "context": "Ya lo había ganado en 2006 por \"Brokeback Mountain\". Es el único director asiático con dos Óscar de dirección.",
+  "difficulty": "hard",
+  "question_en": "Which Taiwanese director won the best director Oscar for \"Life of Pi\"?",
+  "options_en": [
+   "Ang Lee",
+   "Hou Hsiao-hsien",
+   "Edward Yang",
+   "Tsai Ming-liang"
+  ],
+  "context_en": "He had already won in 2006 for \"Brokeback Mountain\". He is the only Asian director with two directing Oscars."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1927 de Abel Gance se proyectó con tres pantallas simultáneas?",
+  "options": [
+   "Napoleón",
+   "La rueda",
+   "J'accuse",
+   "El fin del mundo"
+  ],
+  "answer_index": 0,
+  "context": "Su sistema, llamado Polyvisión, anticipó el cinerama en treinta años. Durante décadas solo se conservaron versiones fragmentarias.",
+  "difficulty": "hard",
+  "question_en": "Which 1927 Abel Gance film was projected on three simultaneous screens?",
+  "options_en": [
+   "Napoléon",
+   "La Roue",
+   "J'accuse",
+   "End of the World"
+  ],
+  "context_en": "Its system, called Polyvision, anticipated Cinerama by thirty years. For decades only fragmentary versions survived."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué director danés impulsó el movimiento Dogma 95 y dirigió \"Rompiendo las olas\"?",
+  "options": [
+   "Lars von Trier",
+   "Thomas Vinterberg",
+   "Susanne Bier",
+   "Nicolas Winding Refn"
+  ],
+  "answer_index": 0,
+  "context": "El manifiesto prohibía la música añadida, los decorados y los trípodes, entre otras diez reglas. Vinterberg rodó \"Celebración\", la primera película del movimiento.",
+  "difficulty": "hard",
+  "question_en": "Which Danish director drove the Dogme 95 movement and made \"Breaking the Waves\"?",
+  "options_en": [
+   "Lars von Trier",
+   "Thomas Vinterberg",
+   "Susanne Bier",
+   "Nicolas Winding Refn"
+  ],
+  "context_en": "The manifesto banned added music, sets and tripods, among ten rules. Vinterberg made \"Festen\", the movement's first film."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué película de 1963 sobre la reina de Egipto estuvo a punto de arruinar a la Fox por su presupuesto?",
+  "options": [
+   "Cleopatra",
+   "Ben-Hur",
+   "Espartaco",
+   "Los diez mandamientos"
+  ],
+  "answer_index": 0,
+  "context": "Costó 44 millones de dólares de la época, unos 400 actuales. Elizabeth Taylor fue la primera actriz en cobrar un millón por una película.",
+  "difficulty": "hard",
+  "question_en": "Which 1963 film about the Egyptian queen nearly bankrupted Fox with its budget?",
+  "options_en": [
+   "Cleopatra",
+   "Ben-Hur",
+   "Spartacus",
+   "The Ten Commandments"
+  ],
+  "context_en": "It cost 44 million dollars at the time, about 400 million today. Elizabeth Taylor was the first actress to be paid a million for a film."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actriz estadounidense tiene el récord de Óscar de interpretación, con cuatro estatuillas?",
+  "options": [
+   "Katharine Hepburn",
+   "Meryl Streep",
+   "Bette Davis",
+   "Ingrid Bergman"
+  ],
+  "answer_index": 0,
+  "context": "Los ganó entre 1934 y 1982 y no acudió a recoger ninguno. Meryl Streep tiene tres, pero ostenta el récord de nominaciones, con más de veinte.",
+  "difficulty": "hard",
+  "question_en": "Which American actress holds the record for acting Oscars, with four statuettes?",
+  "options_en": [
+   "Katharine Hepburn",
+   "Meryl Streep",
+   "Bette Davis",
+   "Ingrid Bergman"
+  ],
+  "context_en": "She won them between 1934 and 1982 and never collected one in person. Meryl Streep has three but holds the nominations record, with more than twenty."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué compositor firmó las bandas sonoras de \"El padrino\" y varias películas de Fellini?",
+  "options": [
+   "Nino Rota",
+   "Ennio Morricone",
+   "Bernard Herrmann",
+   "Georges Delerue"
+  ],
+  "answer_index": 0,
+  "context": "Su tema para \"El padrino\" fue descalificado del Óscar en 1972 por reutilizar una melodía anterior, y lo ganó dos años después con la segunda parte.",
+  "difficulty": "hard",
+  "question_en": "Which composer wrote the scores for \"The Godfather\" and several Fellini films?",
+  "options_en": [
+   "Nino Rota",
+   "Ennio Morricone",
+   "Bernard Herrmann",
+   "Georges Delerue"
+  ],
+  "context_en": "His \"Godfather\" theme was disqualified from the 1972 Oscars for reusing an earlier melody, and he won two years later with the second part."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué compositor firmó la música de \"Psicosis\" y \"Vértigo\" para Hitchcock?",
+  "options": [
+   "Bernard Herrmann",
+   "Miklós Rózsa",
+   "Max Steiner",
+   "Franz Waxman"
+  ],
+  "answer_index": 0,
+  "context": "Los chirridos de cuerda de la escena de la ducha los compuso pese a que Hitchcock quería esa secuencia sin música. El director acabó doblándole el sueldo.",
+  "difficulty": "hard",
+  "question_en": "Which composer wrote the music for \"Psycho\" and \"Vertigo\" for Hitchcock?",
+  "options_en": [
+   "Bernard Herrmann",
+   "Miklós Rózsa",
+   "Max Steiner",
+   "Franz Waxman"
+  ],
+  "context_en": "He wrote the shrieking strings of the shower scene even though Hitchcock wanted it without music. The director ended up doubling his fee."
+ },
+ {
+  "category": "cine",
+  "question": "¿Qué actriz mexicana fue nominada al Óscar por \"Roma\", su primera película?",
+  "options": [
+   "Yalitza Aparicio",
+   "Marina de Tavira",
+   "Adriana Barraza",
+   "Salma Hayek"
+  ],
+  "answer_index": 0,
+  "context": "Era maestra de preescolar y acompañó a su hermana a un casting. Fue la segunda mexicana nominada a mejor actriz y la primera de origen indígena.",
+  "difficulty": "hard",
+  "question_en": "Which Mexican actress was Oscar-nominated for \"Roma\", her first film?",
+  "options_en": [
+   "Yalitza Aparicio",
+   "Marina de Tavira",
+   "Adriana Barraza",
+   "Salma Hayek"
+  ],
+  "context_en": "She was a preschool teacher and went along with her sister to a casting call. She was the second Mexican woman nominated for best actress and the first of Indigenous descent."
+ }
+]
