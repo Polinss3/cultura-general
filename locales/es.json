@@ -1314,7 +1314,8 @@
       "monthly": "Mensual",
       "annual": "Anual",
       "lifetime": "De por vida",
-      "bestValue": "AHORRA 58 %",
+      "bestValue": "MEJOR PRECIO",
+      "save": "AHORRA {{percent}} %",
       "perMonth": "{{price}} al mes",
       "trial": {
         "day_one": "{{count}} día gratis",

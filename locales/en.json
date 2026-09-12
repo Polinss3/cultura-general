@@ -1314,7 +1314,8 @@
       "monthly": "Monthly",
       "annual": "Yearly",
       "lifetime": "Lifetime",
-      "bestValue": "SAVE 58%",
+      "bestValue": "BEST VALUE",
+      "save": "SAVE {{percent}}%",
       "perMonth": "{{price}} per month",
       "trial": {
         "day_one": "{{count}} day free",

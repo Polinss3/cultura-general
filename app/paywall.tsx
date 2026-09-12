@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
@@ -12,7 +12,7 @@ import { usePremium } from '@/hooks/usePremium';
 import { useToast } from '@/context/ToastContext';
 import { setGuestMode } from '@/lib/guest';
 import {
-  fetchPremiumPackages, purchasePremium, restorePremium,
+  annualSavingsPercent, fetchPremiumPackages, purchasePremium, restorePremium,
   type PremiumPackage, type PremiumTier,
 } from '@/lib/premium';
 import {
@@ -22,8 +22,8 @@ import { alpha, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow } from '@/constants/theme';
 
 const PRIVACY_URL = 'https://cg-trivia.pablobrasero.com/privacy';
-// TODO(pro): publicar la página de términos en la web antes de enviar a
-// revisión. Apple exige el enlace desde el paywall (guideline 3.1.2).
+// La página de términos está publicada (cg-trivia.pablobrasero.com/terms) e
+// incluye la sección de suscripción; Apple exige el enlace desde el paywall (3.1.2).
 const TERMS_URL = 'https://cg-trivia.pablobrasero.com/terms';
 const MANAGE_URL = 'itms-apps://apps.apple.com/account/subscriptions';
 
@@ -35,15 +35,11 @@ export default function PaywallScreen() {
   const { guest } = useGuest();
   const { isPro, unavailable } = usePremium();
   const { showToast } = useToast();
-  const { source } = useLocalSearchParams<{ source?: string }>();
 
   const [packages, setPackages] = useState<PremiumPackage[]>([]);
   const [selected, setSelected] = useState<PremiumTier>('annual');
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
-
-  useEffect(() => {
-  }, [source]);
 
   useEffect(() => {
     let cancelled = false;
@@ -71,6 +67,7 @@ export default function PaywallScreen() {
   }, [router]);
 
   const selectedPackage = packages.find(pkg => pkg.tier === selected) ?? null;
+  const savings = annualSavingsPercent(packages);
 
   const handlePurchase = async () => {
     if (busy) return;
@@ -178,6 +175,7 @@ export default function PaywallScreen() {
                 key={pkg.identifier}
                 pkg={pkg}
                 selected={selected === pkg.tier}
+                savings={pkg.tier === 'annual' ? savings : null}
                 onSelect={() => setSelected(pkg.tier)}
               />
             ))}
@@ -259,8 +257,8 @@ function LegalLink({ label, url }: { label: string; url: string }) {
 }
 
 function PlanRow({
-  pkg, selected, onSelect,
-}: { pkg: PremiumPackage; selected: boolean; onSelect: () => void }) {
+  pkg, selected, savings, onSelect,
+}: { pkg: PremiumPackage; selected: boolean; savings: number | null; onSelect: () => void }) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
   const best = pkg.tier === 'annual';
@@ -299,7 +297,7 @@ function PlanRow({
               paddingHorizontal: 8, paddingVertical: 2,
             }}>
               <Text style={{ color: '#FFFFFF', fontFamily: Font.bold, fontSize: 11 }}>
-                {t('pro.plans.bestValue')}
+                {savings ? t('pro.plans.save', { percent: savings }) : t('pro.plans.bestValue')}
               </Text>
             </View>
           ) : null}

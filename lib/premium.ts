@@ -228,6 +228,9 @@ export interface PremiumPackage {
   identifier: string;
   tier: PremiumTier;
   priceString: string;
+  /** Importe numérico y su divisa, para comparar planes entre sí. */
+  price: number | null;
+  currencyCode: string | null;
   /** Precio mensual equivalente, ya formateado. Solo en el anual. */
   pricePerMonth: string | null;
   /** `null` si el plan no ofrece prueba gratuita. */
@@ -277,6 +280,8 @@ export async function fetchPremiumPackages(): Promise<PremiumPackage[]> {
           identifier: pkg.identifier,
           tier,
           priceString: product.priceString ?? '',
+          price: typeof product.price === 'number' ? product.price : null,
+          currencyCode: typeof product.currencyCode === 'string' ? product.currencyCode : null,
           pricePerMonth: tier === 'annual'
             ? product.pricePerMonthString ?? (
                 typeof product.price === 'number'
@@ -304,6 +309,25 @@ function formatPerMonth(yearlyPrice: number, currencyCode?: string): string | nu
   } catch {
     return null;
   }
+}
+
+/**
+ * Ahorro del anual frente a doce mensualidades, en porcentaje entero.
+ *
+ * Se calcula con los precios reales de la tienda del usuario en vez de llevar
+ * un "58 %" escrito a mano: Apple equaliza los precios por país y en EE. UU.,
+ * por ejemplo, la diferencia es del 62 %. `null` si falta alguno de los dos
+ * planes, las divisas no coinciden o el resultado no tiene sentido.
+ */
+export function annualSavingsPercent(packages: PremiumPackage[]): number | null {
+  const annual = packages.find(pkg => pkg.tier === 'annual');
+  const monthly = packages.find(pkg => pkg.tier === 'monthly');
+  if (!annual?.price || !monthly?.price) return null;
+  if (annual.currencyCode && monthly.currencyCode && annual.currencyCode !== monthly.currencyCode) {
+    return null;
+  }
+  const percent = Math.round((1 - annual.price / (monthly.price * 12)) * 100);
+  return percent >= 1 && percent <= 99 ? percent : null;
 }
 
 export type PurchaseOutcome = 'purchased' | 'cancelled' | 'error';
