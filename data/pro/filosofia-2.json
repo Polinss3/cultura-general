@@ -1,0 +1,1073 @@
+[
+ {
+  "category": "filosofia",
+  "question": "¿Qué rama de la filosofía estudia las formas correctas del razonamiento?",
+  "options": [
+   "La retórica",
+   "La lógica",
+   "La política",
+   "La antropología"
+  ],
+  "answer_index": 1,
+  "context": "Aristóteles fue el primero en sistematizarla con los silogismos. En el siglo XIX se formalizó con símbolos matemáticos y acabó siendo la base de la informática.",
+  "difficulty": "easy",
+  "question_en": "Which branch of philosophy studies the correct forms of reasoning?",
+  "options_en": [
+   "Rhetoric",
+   "Logic",
+   "Politics",
+   "Anthropology"
+  ],
+  "context_en": "Aristotle was the first to systematise it with syllogisms. In the 19th century it was formalised with mathematical symbols and became the basis of computing."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué religión fundó Siddharta Gautama en la India hace unos 2.500 años?",
+  "options": [
+   "El hinduismo",
+   "El budismo",
+   "El jainismo",
+   "El sijismo"
+  ],
+  "answer_index": 1,
+  "context": "Príncipe criado entre lujos, salió del palacio y descubrió la vejez, la enfermedad y la muerte. Tras años de ascetismo alcanzó la iluminación bajo un árbol en Bodh Gaya.",
+  "difficulty": "easy",
+  "question_en": "Which religion did Siddhartha Gautama found in India some 2,500 years ago?",
+  "options_en": [
+   "Hinduism",
+   "Buddhism",
+   "Jainism",
+   "Sikhism"
+  ],
+  "context_en": "A prince raised in luxury, he left the palace and discovered old age, sickness and death. After years of asceticism he reached enlightenment under a tree at Bodh Gaya."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Cómo se llama el diálogo por el que dos personas con posturas distintas buscan entenderse o convencerse?",
+  "options": [
+   "Debate",
+   "Monólogo",
+   "Sofisma",
+   "Aforismo"
+  ],
+  "answer_index": 0,
+  "context": "Los griegos distinguían el diálogo, que busca la verdad, de la erística, que solo busca ganar. Los sofistas enseñaban a defender cualquier postura por dinero.",
+  "difficulty": "easy",
+  "question_en": "What is the exchange in which two people with different positions try to understand or persuade each other called?",
+  "options_en": [
+   "Debate",
+   "Monologue",
+   "Sophism",
+   "Aphorism"
+  ],
+  "context_en": "The Greeks distinguished dialogue, which seeks truth, from eristic, which only seeks to win. The Sophists taught how to defend any position for money."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué documento aprobó la ONU en 1948 para proclamar los derechos básicos de todas las personas?",
+  "options": [
+   "La Carta de las Naciones Unidas",
+   "La Declaración Universal de los Derechos Humanos",
+   "El Convenio de Ginebra",
+   "El Pacto de Derechos Civiles"
+  ],
+  "answer_index": 1,
+  "context": "Se aprobó en París el 10 de diciembre de 1948, con la jurista Eleanor Roosevelt presidiendo la comisión redactora. Sus 30 artículos son el texto más traducido del mundo.",
+  "difficulty": "easy",
+  "question_en": "Which document did the UN adopt in 1948 to proclaim the basic rights of all people?",
+  "options_en": [
+   "The UN Charter",
+   "The Universal Declaration of Human Rights",
+   "The Geneva Convention",
+   "The Covenant on Civil Rights"
+  ],
+  "context_en": "It was adopted in Paris on 10 December 1948, with the jurist Eleanor Roosevelt chairing the drafting committee. Its 30 articles form the most translated text in the world."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué corriente defiende que hombres y mujeres deben tener los mismos derechos y oportunidades?",
+  "options": [
+   "El feminismo",
+   "El humanismo",
+   "El anarquismo",
+   "El republicanismo"
+  ],
+  "answer_index": 0,
+  "context": "Mary Wollstonecraft publicó en 1792 la \"Vindicación de los derechos de la mujer\", su texto fundacional. La palabra \"feminismo\" se empezó a usar en Francia un siglo después.",
+  "difficulty": "easy",
+  "question_en": "Which movement holds that men and women should have the same rights and opportunities?",
+  "options_en": [
+   "Feminism",
+   "Humanism",
+   "Anarchism",
+   "Republicanism"
+  ],
+  "context_en": "Mary Wollstonecraft published \"A Vindication of the Rights of Woman\" in 1792, its founding text. The word \"feminism\" began to be used in France a century later."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué símbolo chino representa la unión de dos fuerzas opuestas y complementarias?",
+  "options": [
+   "El mandala",
+   "El yin y el yang",
+   "El ouroboros",
+   "El trisquel"
+  ],
+  "answer_index": 1,
+  "context": "El yin se asocia a lo oscuro, húmedo y receptivo; el yang, a lo luminoso, seco y activo. Ninguno existe sin el otro, y cada uno lleva dentro una semilla del contrario.",
+  "difficulty": "easy",
+  "question_en": "Which Chinese symbol represents the union of two opposing and complementary forces?",
+  "options_en": [
+   "The mandala",
+   "Yin and yang",
+   "The ouroboros",
+   "The triskelion"
+  ],
+  "context_en": "Yin is associated with the dark, moist and receptive; yang with the bright, dry and active. Neither exists without the other, and each contains a seed of its opposite."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Cómo se llama la actitud de quien piensa que el ser humano es bueno por naturaleza y confía en las personas?",
+  "options": [
+   "Optimismo antropológico",
+   "Misantropía",
+   "Cinismo",
+   "Pesimismo"
+  ],
+  "answer_index": 0,
+  "context": "Rousseau lo defendió frente al pesimismo de Hobbes, para quien el hombre era un lobo para el hombre. La misantropía es justo lo contrario: la aversión al género humano.",
+  "difficulty": "easy",
+  "question_en": "What is the attitude of someone who believes human beings are good by nature and trusts people called?",
+  "options_en": [
+   "Anthropological optimism",
+   "Misanthropy",
+   "Cynicism",
+   "Pessimism"
+  ],
+  "context_en": "Rousseau defended it against the pessimism of Hobbes, for whom man was a wolf to man. Misanthropy is the opposite: a dislike of humankind."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué palabra designa un conjunto de creencias que se aceptan sin someterlas a crítica?",
+  "options": [
+   "Hipótesis",
+   "Dogma",
+   "Teoría",
+   "Conjetura"
+  ],
+  "answer_index": 1,
+  "context": "Del griego dokein, \"parecer\" o \"pensar\". En su origen no era peyorativo: designaba la doctrina oficial de una escuela o una religión.",
+  "difficulty": "easy",
+  "question_en": "Which word denotes a set of beliefs accepted without being subjected to criticism?",
+  "options_en": [
+   "Hypothesis",
+   "Dogma",
+   "Theory",
+   "Conjecture"
+  ],
+  "context_en": "From the Greek dokein, \"to seem\" or \"to think\". It was not originally pejorative: it meant the official doctrine of a school or a religion."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué movimiento cultural del Renacimiento situó al ser humano en el centro del pensamiento?",
+  "options": [
+   "La escolástica",
+   "El humanismo",
+   "La patrística",
+   "El nominalismo"
+  ],
+  "answer_index": 1,
+  "context": "Recuperó los textos griegos y latinos frente al predominio de la teología medieval. Erasmo, Vives y Tomás Moro fueron algunas de sus figuras europeas.",
+  "difficulty": "easy",
+  "question_en": "Which Renaissance cultural movement placed the human being at the centre of thought?",
+  "options_en": [
+   "Scholasticism",
+   "Humanism",
+   "Patristics",
+   "Nominalism"
+  ],
+  "context_en": "It recovered Greek and Latin texts against the dominance of medieval theology. Erasmus, Vives and Thomas More were among its European figures."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Cómo se llama el sistema político en el que el poder reside en el pueblo, que lo ejerce mediante el voto?",
+  "options": [
+   "Oligarquía",
+   "Democracia",
+   "Teocracia",
+   "Aristocracia"
+  ],
+  "answer_index": 1,
+  "context": "Del griego demos, pueblo, y kratos, poder. La Atenas del siglo V a. C. la practicó de forma directa, aunque excluía a mujeres, esclavos y extranjeros.",
+  "difficulty": "easy",
+  "question_en": "What is the political system in which power resides in the people, exercised through voting, called?",
+  "options_en": [
+   "Oligarchy",
+   "Democracy",
+   "Theocracy",
+   "Aristocracy"
+  ],
+  "context_en": "From the Greek demos, people, and kratos, power. Fifth-century BC Athens practised it directly, though it excluded women, slaves and foreigners."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué texto clásico chino, atribuido a Confucio y sus discípulos, recoge sus conversaciones y máximas?",
+  "options": [
+   "El Libro de las Mutaciones",
+   "Las Analectas",
+   "El Arte de la Guerra",
+   "El Libro de los Ritos"
+  ],
+  "answer_index": 1,
+  "context": "Fueron durante siglos materia obligatoria en los exámenes imperiales chinos. Su ética se apoya en el ren, la benevolencia, y en el respeto a las jerarquías familiares.",
+  "difficulty": "medium",
+  "question_en": "Which Chinese classic, attributed to Confucius and his disciples, collects his conversations and maxims?",
+  "options_en": [
+   "The Book of Changes",
+   "The Analects",
+   "The Art of War",
+   "The Book of Rites"
+  ],
+  "context_en": "For centuries they were compulsory material in the Chinese imperial examinations. Their ethics rests on ren, benevolence, and on respect for family hierarchies."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué principio de la filosofía india predica la no violencia hacia todos los seres vivos?",
+  "options": [
+   "Ahimsa",
+   "Satyagraha",
+   "Maya",
+   "Atman"
+  ],
+  "answer_index": 0,
+  "context": "Es central en el jainismo, el budismo y el hinduismo. Gandhi lo convirtió en estrategia política junto con el satyagraha, la \"fuerza de la verdad\".",
+  "difficulty": "medium",
+  "question_en": "Which principle of Indian philosophy preaches non-violence towards all living beings?",
+  "options_en": [
+   "Ahimsa",
+   "Satyagraha",
+   "Maya",
+   "Atman"
+  ],
+  "context_en": "It is central to Jainism, Buddhism and Hinduism. Gandhi turned it into political strategy alongside satyagraha, \"truth force\"."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo inglés del siglo XVII propuso el método inductivo y escribió el \"Novum Organum\"?",
+  "options": [
+   "Francis Bacon",
+   "Robert Boyle",
+   "Thomas Browne",
+   "Isaac Newton"
+  ],
+  "answer_index": 0,
+  "context": "Frente al Organon aristotélico, defendió partir de la observación y el experimento. Sus \"ídolos\" describen los prejuicios que deforman el conocimiento.",
+  "difficulty": "medium",
+  "question_en": "Which 17th-century English philosopher proposed the inductive method and wrote the \"Novum Organum\"?",
+  "options_en": [
+   "Francis Bacon",
+   "Robert Boyle",
+   "Thomas Browne",
+   "Isaac Newton"
+  ],
+  "context_en": "Against the Aristotelian Organon, he argued for starting from observation and experiment. His \"idols\" describe the prejudices that distort knowledge."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué concepto kantiano designa la realidad tal como es en sí misma, más allá de lo que percibimos?",
+  "options": [
+   "El fenómeno",
+   "El noúmeno",
+   "La categoría",
+   "El juicio sintético"
+  ],
+  "answer_index": 1,
+  "context": "Kant sostuvo que solo conocemos fenómenos, moldeados por nuestras formas de percibir. La cosa en sí queda fuera del alcance del conocimiento.",
+  "difficulty": "medium",
+  "question_en": "Which Kantian concept denotes reality as it is in itself, beyond what we perceive?",
+  "options_en": [
+   "The phenomenon",
+   "The noumenon",
+   "The category",
+   "The synthetic judgement"
+  ],
+  "context_en": "Kant held that we know only phenomena, shaped by our forms of perceiving. The thing in itself lies beyond the reach of knowledge."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Cómo llamó Kant al giro que sitúa al sujeto, y no al objeto, en el centro del conocimiento?",
+  "options": [
+   "El giro copernicano",
+   "El giro lingüístico",
+   "El giro hermenéutico",
+   "El giro ontológico"
+  ],
+  "answer_index": 0,
+  "context": "Así como Copérnico puso el Sol en el centro, Kant invirtió la relación: no es el conocimiento el que se ajusta a los objetos, sino los objetos a nuestras formas de conocer.",
+  "difficulty": "medium",
+  "question_en": "What did Kant call the shift that places the subject, not the object, at the centre of knowledge?",
+  "options_en": [
+   "The Copernican turn",
+   "The linguistic turn",
+   "The hermeneutic turn",
+   "The ontological turn"
+  ],
+  "context_en": "Just as Copernicus put the Sun at the centre, Kant reversed the relation: knowledge does not conform to objects, but objects to our ways of knowing."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué idea política sostiene que el poder legítimo nace de un acuerdo entre los ciudadanos?",
+  "options": [
+   "El derecho divino",
+   "El contrato social",
+   "El despotismo ilustrado",
+   "La razón de Estado"
+  ],
+  "answer_index": 1,
+  "context": "Hobbes, Locke y Rousseau la desarrollaron con conclusiones muy distintas: absolutismo, gobierno limitado y soberanía popular respectivamente.",
+  "difficulty": "medium",
+  "question_en": "Which political idea holds that legitimate power arises from an agreement among citizens?",
+  "options_en": [
+   "Divine right",
+   "The social contract",
+   "Enlightened despotism",
+   "Reason of state"
+  ],
+  "context_en": "Hobbes, Locke and Rousseau developed it with very different conclusions: absolutism, limited government and popular sovereignty respectively."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué corriente política defiende la abolición del Estado y de toda autoridad coercitiva?",
+  "options": [
+   "El anarquismo",
+   "El socialismo utópico",
+   "El sindicalismo",
+   "El mutualismo"
+  ],
+  "answer_index": 0,
+  "context": "Proudhon fue el primero en declararse anarquista, en 1840. Bakunin y Kropotkin desarrollaron sus corrientes colectivista y comunista dentro del movimiento obrero.",
+  "difficulty": "medium",
+  "question_en": "Which political current advocates abolishing the state and all coercive authority?",
+  "options_en": [
+   "Anarchism",
+   "Utopian socialism",
+   "Syndicalism",
+   "Mutualism"
+  ],
+  "context_en": "Proudhon was the first to call himself an anarchist, in 1840. Bakunin and Kropotkin developed its collectivist and communist strands within the labour movement."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué escuela de pensamiento estudia cómo interpretar textos y desentrañar su sentido?",
+  "options": [
+   "La semiótica",
+   "La hermenéutica",
+   "La retórica",
+   "La filología"
+  ],
+  "answer_index": 1,
+  "context": "Nació como técnica de interpretación de la Biblia y el derecho. Con Gadamer y Ricoeur pasó a ser una filosofía general de la comprensión humana.",
+  "difficulty": "medium",
+  "question_en": "Which school of thought studies how to interpret texts and uncover their meaning?",
+  "options_en": [
+   "Semiotics",
+   "Hermeneutics",
+   "Rhetoric",
+   "Philology"
+  ],
+  "context_en": "It began as a technique for interpreting the Bible and the law. With Gadamer and Ricoeur it became a general philosophy of human understanding."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué disciplina estudia los signos y cómo producen significado?",
+  "options": [
+   "La semiótica",
+   "La gramática",
+   "La lexicografía",
+   "La estilística"
+  ],
+  "answer_index": 0,
+  "context": "Saussure la llamó semiología y Peirce, semiótica, trabajando por separado. Umberto Eco la aplicó a la publicidad, el cine y la cultura de masas.",
+  "difficulty": "medium",
+  "question_en": "Which discipline studies signs and how they produce meaning?",
+  "options_en": [
+   "Semiotics",
+   "Grammar",
+   "Lexicography",
+   "Stylistics"
+  ],
+  "context_en": "Saussure called it semiology and Peirce semiotics, working independently. Umberto Eco applied it to advertising, cinema and mass culture."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué corriente sostiene que los conceptos generales no existen realmente, solo son nombres que damos a las cosas?",
+  "options": [
+   "El realismo",
+   "El nominalismo",
+   "El conceptualismo",
+   "El esencialismo"
+  ],
+  "answer_index": 1,
+  "context": "Fue una de las posturas de la disputa medieval de los universales. Guillermo de Ockham la defendió, y su navaja es una consecuencia de esa economía ontológica.",
+  "difficulty": "medium",
+  "question_en": "Which position holds that general concepts do not really exist and are only names we give to things?",
+  "options_en": [
+   "Realism",
+   "Nominalism",
+   "Conceptualism",
+   "Essentialism"
+  ],
+  "context_en": "It was one side of the medieval dispute over universals. William of Ockham defended it, and his razor follows from that ontological economy."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué postura moral sostiene que las acciones deben juzgarse por sus consecuencias?",
+  "options": [
+   "El consecuencialismo",
+   "La deontología",
+   "El intuicionismo",
+   "El emotivismo"
+  ],
+  "answer_index": 0,
+  "context": "El utilitarismo es su versión más conocida. Se opone a las éticas del deber, que juzgan los actos en sí mismos con independencia de lo que produzcan.",
+  "difficulty": "medium",
+  "question_en": "Which moral position holds that actions should be judged by their consequences?",
+  "options_en": [
+   "Consequentialism",
+   "Deontology",
+   "Intuitionism",
+   "Emotivism"
+  ],
+  "context_en": "Utilitarianism is its best-known version. It stands against duty-based ethics, which judge acts in themselves regardless of what they produce."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué rama de la ética se ocupa de dilemas como la eutanasia, el aborto o la edición genética?",
+  "options": [
+   "La metaética",
+   "La bioética",
+   "La ética empresarial",
+   "La ética ambiental"
+  ],
+  "answer_index": 1,
+  "context": "Se consolidó en los años setenta con los comités hospitalarios de ética. Sus cuatro principios clásicos son autonomía, beneficencia, no maleficencia y justicia.",
+  "difficulty": "medium",
+  "question_en": "Which branch of ethics deals with dilemmas such as euthanasia, abortion or gene editing?",
+  "options_en": [
+   "Metaethics",
+   "Bioethics",
+   "Business ethics",
+   "Environmental ethics"
+  ],
+  "context_en": "It took shape in the 1970s with hospital ethics committees. Its four classic principles are autonomy, beneficence, non-maleficence and justice."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo inglés del siglo XVIII fundó el utilitarismo y propuso el panóptico como diseño carcelario?",
+  "options": [
+   "Jeremy Bentham",
+   "Adam Ferguson",
+   "William Godwin",
+   "Joseph Priestley"
+  ],
+  "answer_index": 0,
+  "context": "Pidió que su cuerpo se conservara y se exhibiera: sigue en el University College de Londres. Foucault convirtió su panóptico en metáfora de la sociedad vigilada.",
+  "difficulty": "medium",
+  "question_en": "Which 18th-century English philosopher founded utilitarianism and proposed the panopticon prison design?",
+  "options_en": [
+   "Jeremy Bentham",
+   "Adam Ferguson",
+   "William Godwin",
+   "Joseph Priestley"
+  ],
+  "context_en": "He asked for his body to be preserved and displayed: it is still at University College London. Foucault turned his panopticon into a metaphor for the surveillance society."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra de Charles Darwin, publicada en 1871, aplicó la evolución al ser humano?",
+  "options": [
+   "El origen de las especies",
+   "El origen del hombre",
+   "La expresión de las emociones",
+   "Viaje del Beagle"
+  ],
+  "answer_index": 1,
+  "context": "Doce años después de \"El origen de las especies\", abordó explícitamente lo que antes solo había insinuado. Su impacto filosófico obligó a repensar la idea de naturaleza humana.",
+  "difficulty": "medium",
+  "question_en": "Which work by Charles Darwin, published in 1871, applied evolution to human beings?",
+  "options_en": [
+   "On the Origin of Species",
+   "The Descent of Man",
+   "The Expression of the Emotions",
+   "The Voyage of the Beagle"
+  ],
+  "context_en": "Twelve years after \"On the Origin of Species\", he tackled explicitly what he had only hinted at. Its philosophical impact forced a rethinking of human nature."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué corriente psicológica y filosófica estudia la conducta observable y rechaza hablar de estados mentales internos?",
+  "options": [
+   "El conductismo",
+   "La gestalt",
+   "El cognitivismo",
+   "El estructuralismo"
+  ],
+  "answer_index": 0,
+  "context": "Watson lo proclamó en 1913 y Skinner lo llevó a su forma más radical. La \"revolución cognitiva\" de los años cincuenta devolvió la mente al centro de la psicología.",
+  "difficulty": "medium",
+  "question_en": "Which psychological and philosophical current studies observable behaviour and rejects talk of inner mental states?",
+  "options_en": [
+   "Behaviourism",
+   "Gestalt",
+   "Cognitivism",
+   "Structuralism"
+  ],
+  "context_en": "Watson proclaimed it in 1913 and Skinner took it to its most radical form. The \"cognitive revolution\" of the 1950s brought the mind back to the centre of psychology."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué concepto de Freud designa la parte de la psique que contiene deseos y recuerdos fuera de la conciencia?",
+  "options": [
+   "El yo",
+   "El inconsciente",
+   "El superyó",
+   "La libido"
+  ],
+  "answer_index": 1,
+  "context": "Freud lo consideró su descubrimiento capital, comparable a los de Copérnico y Darwin en cuanto a herida al orgullo humano. El ello, el yo y el superyó son su segunda tópica.",
+  "difficulty": "medium",
+  "question_en": "Which of Freud's concepts denotes the part of the psyche holding desires and memories outside consciousness?",
+  "options_en": [
+   "The ego",
+   "The unconscious",
+   "The superego",
+   "The libido"
+  ],
+  "context_en": "Freud regarded it as his central discovery, comparable to those of Copernicus and Darwin as a wound to human pride. The id, ego and superego are his second model."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué concepto de Carl Jung designa el fondo de símbolos y arquetipos compartido por toda la humanidad?",
+  "options": [
+   "La sombra",
+   "El inconsciente colectivo",
+   "La sincronicidad",
+   "La individuación"
+  ],
+  "answer_index": 1,
+  "context": "Lo dedujo de la coincidencia de motivos en mitos y sueños de culturas sin contacto entre sí. Los arquetipos serían moldes heredados, no imágenes concretas.",
+  "difficulty": "medium",
+  "question_en": "Which of Carl Jung's concepts denotes the reservoir of symbols and archetypes shared by all humanity?",
+  "options_en": [
+   "The shadow",
+   "The collective unconscious",
+   "Synchronicity",
+   "Individuation"
+  ],
+  "context_en": "He inferred it from the recurrence of motifs in the myths and dreams of cultures with no contact. Archetypes would be inherited moulds, not concrete images."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué tradición filosófica sostiene que existen derechos anteriores a las leyes escritas, propios de la naturaleza humana?",
+  "options": [
+   "El positivismo jurídico",
+   "El iusnaturalismo",
+   "El realismo jurídico",
+   "El decisionismo"
+  ],
+  "answer_index": 1,
+  "context": "De Cicerón a Tomás de Aquino y Locke, sostiene que una ley injusta no obliga en conciencia. El positivismo jurídico replica que el derecho es solo lo que está promulgado.",
+  "difficulty": "medium",
+  "question_en": "Which philosophical tradition holds that there are rights prior to written laws, inherent to human nature?",
+  "options_en": [
+   "Legal positivism",
+   "Natural law theory",
+   "Legal realism",
+   "Decisionism"
+  ],
+  "context_en": "From Cicero to Aquinas and Locke, it holds that an unjust law does not bind in conscience. Legal positivism replies that law is only what has been enacted."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué teólogo y jurista español del siglo XVI, de la Escuela de Salamanca, sentó las bases del derecho internacional al debatir sobre la conquista de América?",
+  "options": [
+   "Francisco de Vitoria",
+   "Juan Ginés de Sepúlveda",
+   "Melchor Cano",
+   "Domingo de Soto"
+  ],
+  "answer_index": 0,
+  "context": "Sus \"Relecciones\" de 1539 defendieron que los indígenas eran dueños legítimos de sus tierras. De ahí arranca la idea de una comunidad de naciones con derechos recíprocos.",
+  "difficulty": "medium",
+  "question_en": "Which 16th-century Spanish theologian and jurist of the School of Salamanca laid the foundations of international law while debating the conquest of America?",
+  "options_en": [
+   "Francisco de Vitoria",
+   "Juan Ginés de Sepúlveda",
+   "Melchor Cano",
+   "Domingo de Soto"
+  ],
+  "context_en": "His 1539 \"Relectiones\" argued that indigenous peoples were the rightful owners of their lands. From there springs the idea of a community of nations with reciprocal rights."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué fraile dominico denunció en el siglo XVI el trato a los indígenas americanos en su \"Brevísima relación de la destrucción de las Indias\"?",
+  "options": [
+   "Bartolomé de las Casas",
+   "Bernardino de Sahagún",
+   "Toribio de Benavente",
+   "José de Acosta"
+  ],
+  "answer_index": 0,
+  "context": "Fue encomendero antes de renunciar a sus indios y hacerse dominico. Debatió en Valladolid en 1550 con Sepúlveda sobre la licitud de la conquista.",
+  "difficulty": "medium",
+  "question_en": "Which 16th-century Dominican friar denounced the treatment of American indigenous peoples in his \"Short Account of the Destruction of the Indies\"?",
+  "options_en": [
+   "Bartolomé de las Casas",
+   "Bernardino de Sahagún",
+   "Toribio de Benavente",
+   "José de Acosta"
+  ],
+  "context_en": "He was an encomendero before giving up his labourers and becoming a Dominican. He debated Sepúlveda at Valladolid in 1550 over the legitimacy of the conquest."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué doctrina sostiene que la realidad última es material y niega la existencia de sustancias espirituales?",
+  "options": [
+   "El idealismo",
+   "El materialismo",
+   "El vitalismo",
+   "El espiritualismo"
+  ],
+  "answer_index": 1,
+  "context": "Ya lo defendieron Demócrito y Epicuro en la Antigüedad. En el siglo XIX se unió a la ciencia natural y, con Marx, tomó la forma del materialismo histórico.",
+  "difficulty": "medium",
+  "question_en": "Which doctrine holds that ultimate reality is material and denies the existence of spiritual substances?",
+  "options_en": [
+   "Idealism",
+   "Materialism",
+   "Vitalism",
+   "Spiritualism"
+  ],
+  "context_en": "Democritus and Epicurus already defended it in antiquity. In the 19th century it joined natural science and, with Marx, took the form of historical materialism."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué corriente filosófica del siglo XX analiza el lenguaje ordinario para disolver problemas filosóficos?",
+  "options": [
+   "La filosofía del lenguaje ordinario",
+   "El neokantismo",
+   "El intuicionismo",
+   "El personalismo"
+  ],
+  "answer_index": 0,
+  "context": "El segundo Wittgenstein, Austin y Ryle la impulsaron en Oxford y Cambridge. Muchos problemas clásicos serían, según ellos, confusiones gramaticales.",
+  "difficulty": "medium",
+  "question_en": "Which 20th-century philosophical current analyses ordinary language to dissolve philosophical problems?",
+  "options_en": [
+   "Ordinary language philosophy",
+   "Neo-Kantianism",
+   "Intuitionism",
+   "Personalism"
+  ],
+  "context_en": "The later Wittgenstein, Austin and Ryle drove it in Oxford and Cambridge. Many classic problems would be, on their view, grammatical confusions."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué escuela de pensamiento sostiene que solo tienen sentido los enunciados verificables empíricamente?",
+  "options": [
+   "El positivismo lógico",
+   "El historicismo",
+   "El vitalismo",
+   "El realismo crítico"
+  ],
+  "answer_index": 0,
+  "context": "Lo defendió el Círculo de Viena en los años veinte, con Schlick y Carnap. Su propio criterio de verificación no era verificable, objeción que acabó desarmando el programa.",
+  "difficulty": "medium",
+  "question_en": "Which school of thought holds that only empirically verifiable statements are meaningful?",
+  "options_en": [
+   "Logical positivism",
+   "Historicism",
+   "Vitalism",
+   "Critical realism"
+  ],
+  "context_en": "The Vienna Circle defended it in the 1920s, with Schlick and Carnap. Its own verification criterion was not verifiable, an objection that eventually undid the programme."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué pensador italiano del Renacimiento fue quemado en Roma en 1600 por defender, entre otras tesis, la infinitud del universo?",
+  "options": [
+   "Pico della Mirandola",
+   "Giordano Bruno",
+   "Tommaso Campanella",
+   "Marsilio Ficino"
+  ],
+  "answer_index": 1,
+  "context": "Sostuvo que las estrellas eran soles con sus propios mundos habitados. La Inquisición lo juzgó durante ocho años antes de ejecutarlo en el Campo de' Fiori.",
+  "difficulty": "medium",
+  "question_en": "Which Italian Renaissance thinker was burned in Rome in 1600 for defending, among other theses, the infinity of the universe?",
+  "options_en": [
+   "Pico della Mirandola",
+   "Giordano Bruno",
+   "Tommaso Campanella",
+   "Marsilio Ficino"
+  ],
+  "context_en": "He held that the stars were suns with their own inhabited worlds. The Inquisition tried him for eight years before executing him in the Campo de' Fiori."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra escribió Michel de Montaigne, inventando de paso el género del ensayo?",
+  "options": [
+   "Los Ensayos",
+   "Las Confesiones",
+   "Las Máximas",
+   "Los Pensamientos"
+  ],
+  "answer_index": 0,
+  "context": "Se retiró a su torre en 1571 para escribir sobre sí mismo sin sistema ni pretensión de doctrina. \"¿Qué sé yo?\" fue su divisa escéptica.",
+  "difficulty": "medium",
+  "question_en": "Which work did Michel de Montaigne write, inventing the essay genre in the process?",
+  "options_en": [
+   "The Essays",
+   "The Confessions",
+   "The Maxims",
+   "The Pensées"
+  ],
+  "context_en": "He retired to his tower in 1571 to write about himself with no system or doctrinal ambition. \"What do I know?\" was his sceptical motto."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué concepto de Heidegger describe el modo de ser propio del ser humano, abierto a preguntarse por el ser?",
+  "options": [
+   "Dasein",
+   "Gestell",
+   "Aletheia",
+   "Ereignis"
+  ],
+  "answer_index": 0,
+  "context": "Se traduce como \"ser ahí\" o \"existencia\". Heidegger evitó la palabra \"sujeto\" para romper con la tradición cartesiana que separaba mente y mundo.",
+  "difficulty": "medium",
+  "question_en": "Which of Heidegger's concepts describes the mode of being proper to human beings, open to asking about being?",
+  "options_en": [
+   "Dasein",
+   "Gestell",
+   "Aletheia",
+   "Ereignis"
+  ],
+  "context_en": "It translates as \"being there\" or \"existence\". Heidegger avoided the word \"subject\" to break with the Cartesian tradition that separated mind and world."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo francés del siglo XX afirmó que \"no se nace mujer: se llega a serlo\"?",
+  "options": [
+   "Julia Kristeva",
+   "Simone de Beauvoir",
+   "Luce Irigaray",
+   "Hélène Cixous"
+  ],
+  "answer_index": 1,
+  "context": "La frase abre el segundo volumen de \"El segundo sexo\", de 1949. Distingue el sexo biológico de la construcción social de la feminidad, idea capital del feminismo posterior.",
+  "difficulty": "medium",
+  "question_en": "Which 20th-century French philosopher wrote that \"one is not born, but rather becomes, a woman\"?",
+  "options_en": [
+   "Julia Kristeva",
+   "Simone de Beauvoir",
+   "Luce Irigaray",
+   "Hélène Cixous"
+  ],
+  "context_en": "The line opens the second volume of \"The Second Sex\", from 1949. It distinguishes biological sex from the social construction of femininity, a key idea for later feminism."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra de Karl Popper de 1945 critica a Platón, Hegel y Marx como enemigos de la libertad?",
+  "options": [
+   "La lógica de la investigación científica",
+   "La sociedad abierta y sus enemigos",
+   "La miseria del historicismo",
+   "Conjeturas y refutaciones"
+  ],
+  "answer_index": 1,
+  "context": "La escribió en Nueva Zelanda durante la guerra y la llamó su \"esfuerzo de guerra\". Ataca el historicismo, la idea de que la historia sigue leyes que permiten predecir su curso.",
+  "difficulty": "hard",
+  "question_en": "Which 1945 work by Karl Popper attacks Plato, Hegel and Marx as enemies of freedom?",
+  "options_en": [
+   "The Logic of Scientific Discovery",
+   "The Open Society and Its Enemies",
+   "The Poverty of Historicism",
+   "Conjectures and Refutations"
+  ],
+  "context_en": "He wrote it in New Zealand during the war and called it his \"war effort\". It attacks historicism, the idea that history follows laws allowing its course to be predicted."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo austriaco de la ciencia defendió el \"todo vale\" metodológico en su obra \"Contra el método\"?",
+  "options": [
+   "Otto Neurath",
+   "Paul Feyerabend",
+   "Rudolf Carnap",
+   "Moritz Schlick"
+  ],
+  "answer_index": 1,
+  "context": "Sostuvo que ningún método fijo explica los grandes avances científicos y que Galileo triunfó también por propaganda y retórica. Se le apodó \"el peor enemigo de la ciencia\".",
+  "difficulty": "hard",
+  "question_en": "Which Austrian philosopher of science defended methodological \"anything goes\" in his work \"Against Method\"?",
+  "options_en": [
+   "Otto Neurath",
+   "Paul Feyerabend",
+   "Rudolf Carnap",
+   "Moritz Schlick"
+  ],
+  "context_en": "He argued that no fixed method explains the great scientific advances and that Galileo also won through propaganda and rhetoric. He was dubbed \"the worst enemy of science\"."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo estadounidense propuso el experimento mental de la Tierra Gemela para mostrar que el significado no está solo en la cabeza?",
+  "options": [
+   "Hilary Putnam",
+   "Donald Davidson",
+   "Willard Quine",
+   "Nelson Goodman"
+  ],
+  "answer_index": 0,
+  "context": "En un planeta idéntico donde el agua tuviera otra composición química, la misma palabra significaría algo distinto. El significado dependería también del entorno, no solo del hablante.",
+  "difficulty": "hard",
+  "question_en": "Which American philosopher proposed the Twin Earth thought experiment to show that meaning is not just in the head?",
+  "options_en": [
+   "Hilary Putnam",
+   "Donald Davidson",
+   "Willard Quine",
+   "Nelson Goodman"
+  ],
+  "context_en": "On an identical planet where water had a different chemical make-up, the same word would mean something different. Meaning would depend on the environment too, not only the speaker."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo estadounidense sostuvo en \"Dos dogmas del empirismo\" que no hay distinción tajante entre verdades analíticas y sintéticas?",
+  "options": [
+   "Willard Van Orman Quine",
+   "Wilfrid Sellars",
+   "Nelson Goodman",
+   "Carl Hempel"
+  ],
+  "answer_index": 0,
+  "context": "El artículo, de 1951, socavó los cimientos del positivismo lógico. Propuso que nuestras creencias forman una red que se enfrenta a la experiencia en conjunto, no una por una.",
+  "difficulty": "hard",
+  "question_en": "Which American philosopher argued in \"Two Dogmas of Empiricism\" that there is no sharp distinction between analytic and synthetic truths?",
+  "options_en": [
+   "Willard Van Orman Quine",
+   "Wilfrid Sellars",
+   "Nelson Goodman",
+   "Carl Hempel"
+  ],
+  "context_en": "The 1951 article undermined the foundations of logical positivism. He proposed that our beliefs form a web that faces experience as a whole, not one by one."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué concepto de Wittgenstein describe las actividades regladas en las que el lenguaje adquiere sentido?",
+  "options": [
+   "Los juegos de lenguaje",
+   "Las figuras lógicas",
+   "Los actos de habla",
+   "Las formas simbólicas"
+  ],
+  "answer_index": 0,
+  "context": "Es central en las \"Investigaciones filosóficas\", donde rompe con su propio Tractatus. El significado de una palabra sería su uso dentro de una práctica compartida.",
+  "difficulty": "hard",
+  "question_en": "Which of Wittgenstein's concepts describes the rule-governed activities in which language acquires meaning?",
+  "options_en": [
+   "Language games",
+   "Logical pictures",
+   "Speech acts",
+   "Symbolic forms"
+  ],
+  "context_en": "It is central to the \"Philosophical Investigations\", where he breaks with his own Tractatus. The meaning of a word would be its use within a shared practice."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo británico desarrolló la teoría de los actos de habla en \"Cómo hacer cosas con palabras\"?",
+  "options": [
+   "Gilbert Ryle",
+   "John Langshaw Austin",
+   "Peter Strawson",
+   "Alfred Ayer"
+  ],
+  "answer_index": 1,
+  "context": "Mostró que muchas frases no describen nada: al decir \"prometo\" o \"sí, quiero\" se realiza la acción misma. Searle continuó y sistematizó su trabajo.",
+  "difficulty": "hard",
+  "question_en": "Which British philosopher developed speech act theory in \"How to Do Things with Words\"?",
+  "options_en": [
+   "Gilbert Ryle",
+   "John Langshaw Austin",
+   "Peter Strawson",
+   "Alfred Ayer"
+  ],
+  "context_en": "He showed that many sentences describe nothing: saying \"I promise\" or \"I do\" performs the action itself. Searle continued and systematised his work."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo francés desarrolló el concepto de \"habitus\" para explicar cómo la posición social moldea los gustos?",
+  "options": [
+   "Pierre Bourdieu",
+   "Raymond Aron",
+   "Michel de Certeau",
+   "Alain Touraine"
+  ],
+  "answer_index": 0,
+  "context": "En \"La distinción\", de 1979, mostró que el gusto estético funciona como marcador de clase. El capital cultural se hereda como el económico, pero de forma menos visible.",
+  "difficulty": "hard",
+  "question_en": "Which French thinker developed the concept of \"habitus\" to explain how social position shapes taste?",
+  "options_en": [
+   "Pierre Bourdieu",
+   "Raymond Aron",
+   "Michel de Certeau",
+   "Alain Touraine"
+  ],
+  "context_en": "In \"Distinction\", from 1979, he showed that aesthetic taste works as a class marker. Cultural capital is inherited like economic capital, but less visibly."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo alemán del siglo XX escribió sobre el \"principio de responsabilidad\" y la ética hacia las generaciones futuras?",
+  "options": [
+   "Hans Jonas",
+   "Odo Marquard",
+   "Hans Blumenberg",
+   "Karl-Otto Apel"
+  ],
+  "answer_index": 0,
+  "context": "Publicado en 1979, adaptó el imperativo kantiano: \"obra de tal modo que los efectos de tu acción sean compatibles con la permanencia de una vida humana auténtica\".",
+  "difficulty": "hard",
+  "question_en": "Which 20th-century German philosopher wrote on the \"imperative of responsibility\" and ethics towards future generations?",
+  "options_en": [
+   "Hans Jonas",
+   "Odo Marquard",
+   "Hans Blumenberg",
+   "Karl-Otto Apel"
+  ],
+  "context_en": "Published in 1979, it adapted Kant's imperative: \"act so that the effects of your action are compatible with the permanence of genuine human life\"."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofa estadounidense desarrolló junto a Amartya Sen el enfoque de las capacidades para medir el desarrollo humano?",
+  "options": [
+   "Martha Nussbaum",
+   "Susan Haack",
+   "Christine Korsgaard",
+   "Seyla Benhabib"
+  ],
+  "answer_index": 0,
+  "context": "Propone medir el bienestar por lo que las personas pueden realmente hacer y ser, no por su renta. El índice de desarrollo humano de la ONU se inspira en ese enfoque.",
+  "difficulty": "hard",
+  "question_en": "Which American philosopher developed the capabilities approach with Amartya Sen to measure human development?",
+  "options_en": [
+   "Martha Nussbaum",
+   "Susan Haack",
+   "Christine Korsgaard",
+   "Seyla Benhabib"
+  ],
+  "context_en": "It proposes measuring wellbeing by what people can actually do and be, rather than by income. The UN human development index draws on that approach."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo alemán del siglo XIX propuso que la idea de Dios es una proyección de las cualidades humanas?",
+  "options": [
+   "Ludwig Feuerbach",
+   "Max Stirner",
+   "Friedrich Schelling",
+   "Johann Fichte"
+  ],
+  "answer_index": 0,
+  "context": "En \"La esencia del cristianismo\", de 1841, invirtió la relación: no es Dios quien crea al hombre, sino el hombre quien proyecta en Dios su propia esencia. Marx partió de ahí.",
+  "difficulty": "hard",
+  "question_en": "Which 19th-century German philosopher argued that the idea of God is a projection of human qualities?",
+  "options_en": [
+   "Ludwig Feuerbach",
+   "Max Stirner",
+   "Friedrich Schelling",
+   "Johann Fichte"
+  ],
+  "context_en": "In \"The Essence of Christianity\", from 1841, he reversed the relation: God does not create man, but man projects his own essence onto God. Marx started from there."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo mexicano-argentino desarrolló la \"filosofía de la liberación\" desde América Latina?",
+  "options": [
+   "Enrique Dussel",
+   "Leopoldo Zea",
+   "Arturo Andrés Roig",
+   "Rodolfo Kusch"
+  ],
+  "answer_index": 0,
+  "context": "Nacido en Argentina y exiliado en México desde 1975, propuso pensar desde la perspectiva de los excluidos del sistema mundial. Dialogó críticamente con Levinas, Marx y Apel.",
+  "difficulty": "hard",
+  "question_en": "Which Mexican-Argentine philosopher developed the \"philosophy of liberation\" from Latin America?",
+  "options_en": [
+   "Enrique Dussel",
+   "Leopoldo Zea",
+   "Arturo Andrés Roig",
+   "Rodolfo Kusch"
+  ],
+  "context_en": "Born in Argentina and exiled in Mexico from 1975, he proposed thinking from the perspective of those excluded by the world system. He engaged critically with Levinas, Marx and Apel."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo persa medieval escribió \"El libro de la curación\" y \"El canon de medicina\"?",
+  "options": [
+   "Al-Farabi",
+   "Avicena",
+   "Al-Kindi",
+   "Rhazes"
+  ],
+  "answer_index": 1,
+  "context": "Su \"Canon\" se usó como manual en las universidades europeas hasta el siglo XVII. Su experimento del \"hombre volante\" anticipó en seis siglos el cogito de Descartes.",
+  "difficulty": "hard",
+  "question_en": "Which medieval Persian philosopher wrote \"The Book of Healing\" and \"The Canon of Medicine\"?",
+  "options_en": [
+   "Al-Farabi",
+   "Avicenna",
+   "Al-Kindi",
+   "Rhazes"
+  ],
+  "context_en": "His \"Canon\" was used as a textbook in European universities until the 17th century. His \"flying man\" experiment anticipated Descartes's cogito by six centuries."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra de Baltasar Gracián reúne trescientos aforismos sobre cómo conducirse con astucia en el mundo?",
+  "options": [
+   "El Criticón",
+   "Oráculo manual y arte de prudencia",
+   "El Discreto",
+   "Agudeza y arte de ingenio"
+  ],
+  "answer_index": 1,
+  "context": "Publicado en 1647, Schopenhauer lo tradujo al alemán y Nietzsche lo admiró. Su prosa condensada es uno de los cumbres del conceptismo español.",
+  "difficulty": "hard",
+  "question_en": "Which work by Baltasar Gracián gathers three hundred aphorisms on how to act shrewdly in the world?",
+  "options_en": [
+   "El Criticón",
+   "The Art of Worldly Wisdom",
+   "El Discreto",
+   "Agudeza y arte de ingenio"
+  ],
+  "context_en": "Published in 1647, Schopenhauer translated it into German and Nietzsche admired it. Its compressed prose is a peak of Spanish conceptism."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué pensador francés del siglo XX describió la \"sociedad del espectáculo\" en 1967?",
+  "options": [
+   "Guy Debord",
+   "Henri Lefebvre",
+   "Roland Barthes",
+   "Jean Baudrillard"
+  ],
+  "answer_index": 0,
+  "context": "Fundador de la Internacional Situacionista, sostuvo que en el capitalismo avanzado las relaciones sociales están mediadas por imágenes. Su libro inspiró parte de Mayo del 68.",
+  "difficulty": "hard",
+  "question_en": "Which 20th-century French thinker described \"the society of the spectacle\" in 1967?",
+  "options_en": [
+   "Guy Debord",
+   "Henri Lefebvre",
+   "Roland Barthes",
+   "Jean Baudrillard"
+  ],
+  "context_en": "A founder of the Situationist International, he argued that in advanced capitalism social relations are mediated by images. His book helped inspire May 1968."
+ }
+]

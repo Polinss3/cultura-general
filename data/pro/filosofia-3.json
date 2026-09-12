@@ -1,0 +1,1010 @@
+[
+ {
+  "category": "filosofia",
+  "question": "¿Cómo se llama el libro sagrado del islam?",
+  "options": [
+   "La Torá",
+   "El Corán",
+   "El Talmud",
+   "Los Vedas"
+  ],
+  "answer_index": 1,
+  "context": "Según la tradición, el arcángel Gabriel se lo reveló a Mahoma durante veintitrés años. Se organiza en 114 azoras, ordenadas de mayor a menor extensión salvo la primera.",
+  "difficulty": "easy",
+  "question_en": "What is the holy book of Islam called?",
+  "options_en": [
+   "The Torah",
+   "The Quran",
+   "The Talmud",
+   "The Vedas"
+  ],
+  "context_en": "According to tradition, the archangel Gabriel revealed it to Muhammad over twenty-three years. It is arranged in 114 suras, ordered from longest to shortest except the first."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Cómo se llama la creencia en muchos dioses?",
+  "options": [
+   "Monoteísmo",
+   "Politeísmo",
+   "Ateísmo",
+   "Henoteísmo"
+  ],
+  "answer_index": 1,
+  "context": "Fue la forma religiosa mayoritaria en la Antigüedad, de Egipto a Grecia, Roma o la India. El henoteísmo es un caso intermedio: adorar a un dios sin negar la existencia de otros.",
+  "difficulty": "easy",
+  "question_en": "What is the belief in many gods called?",
+  "options_en": [
+   "Monotheism",
+   "Polytheism",
+   "Atheism",
+   "Henotheism"
+  ],
+  "context_en": "It was the dominant religious form in antiquity, from Egypt to Greece, Rome and India. Henotheism is an in-between case: worshipping one god without denying others exist."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué es un aforismo?",
+  "options": [
+   "Una sentencia breve que expresa una idea profunda",
+   "Un tratado extenso sobre un tema",
+   "Una pregunta sin respuesta",
+   "Un tipo de razonamiento circular"
+  ],
+  "answer_index": 0,
+  "context": "Hipócrates escribió el primer libro de aforismos, sobre medicina. Nietzsche, Gracián y Cioran hicieron de ellos su forma principal de escritura filosófica.",
+  "difficulty": "easy",
+  "question_en": "What is an aphorism?",
+  "options_en": [
+   "A brief statement expressing a deep idea",
+   "A long treatise on a subject",
+   "A question with no answer",
+   "A type of circular reasoning"
+  ],
+  "context_en": "Hippocrates wrote the first book of aphorisms, on medicine. Nietzsche, Gracián and Cioran made them their main form of philosophical writing."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué es la tolerancia en el pensamiento político?",
+  "options": [
+   "La indiferencia hacia los demás",
+   "El respeto a opiniones y creencias distintas de las propias",
+   "La obligación de compartir las ideas ajenas",
+   "La ausencia de leyes"
+  ],
+  "answer_index": 1,
+  "context": "Locke escribió su \"Carta sobre la tolerancia\" en 1689, tras las guerras de religión europeas. Voltaire la convirtió en bandera de la Ilustración con su \"Tratado sobre la tolerancia\".",
+  "difficulty": "easy",
+  "question_en": "What is tolerance in political thought?",
+  "options_en": [
+   "Indifference towards others",
+   "Respect for opinions and beliefs different from one's own",
+   "The duty to share other people's ideas",
+   "The absence of laws"
+  ],
+  "context_en": "Locke wrote his \"Letter Concerning Toleration\" in 1689, after Europe's wars of religion. Voltaire made it an Enlightenment banner with his \"Treatise on Tolerance\"."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿En qué ciudad enseñaron Sócrates, Platón y Aristóteles?",
+  "options": [
+   "Esparta",
+   "Atenas",
+   "Corinto",
+   "Mileto"
+  ],
+  "answer_index": 1,
+  "context": "La ciudad reunió en el siglo IV a. C. la Academia de Platón y el Liceo de Aristóteles. Aristóteles, sin embargo, no era ateniense: nació en Estagira, al norte de Grecia.",
+  "difficulty": "easy",
+  "question_en": "In which city did Socrates, Plato and Aristotle teach?",
+  "options_en": [
+   "Sparta",
+   "Athens",
+   "Corinth",
+   "Miletus"
+  ],
+  "context_en": "In the 4th century BC the city hosted both Plato's Academy and Aristotle's Lyceum. Aristotle, however, was not Athenian: he was born in Stagira, in northern Greece."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué significa que una afirmación sea \"subjetiva\"?",
+  "options": [
+   "Que depende del punto de vista de quien la hace",
+   "Que se puede comprobar con datos",
+   "Que la comparte toda la humanidad",
+   "Que es lógicamente necesaria"
+  ],
+  "answer_index": 0,
+  "context": "\"Esta sopa está rica\" es subjetiva; \"esta sopa está a 60 grados\" es objetiva. Buena parte de la filosofía moderna discute hasta qué punto es posible la objetividad pura.",
+  "difficulty": "easy",
+  "question_en": "What does it mean for a statement to be \"subjective\"?",
+  "options_en": [
+   "That it depends on the point of view of whoever makes it",
+   "That it can be checked with data",
+   "That all humanity shares it",
+   "That it is logically necessary"
+  ],
+  "context_en": "\"This soup is tasty\" is subjective; \"this soup is at 60 degrees\" is objective. Much of modern philosophy debates how far pure objectivity is possible."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Cómo se llama el periodo de la historia del pensamiento europeo del siglo XVIII que confió en la razón y el progreso?",
+  "options": [
+   "El Romanticismo",
+   "La Ilustración",
+   "El Barroco",
+   "La Escolástica"
+  ],
+  "answer_index": 1,
+  "context": "Kant la definió como la salida del hombre de su minoría de edad. La Enciclopedia de Diderot y D'Alembert fue su gran empresa colectiva.",
+  "difficulty": "easy",
+  "question_en": "What is the 18th-century period of European thought that trusted in reason and progress called?",
+  "options_en": [
+   "Romanticism",
+   "The Enlightenment",
+   "The Baroque",
+   "Scholasticism"
+  ],
+  "context_en": "Kant defined it as humanity's emergence from its self-imposed immaturity. Diderot and D'Alembert's Encyclopédie was its great collective enterprise."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué prácticas de atención plena, de origen budista, se han incorporado a la psicología occidental con el nombre de mindfulness?",
+  "options": [
+   "La hipnosis",
+   "La meditación",
+   "La sugestión",
+   "La catarsis"
+  ],
+  "answer_index": 1,
+  "context": "Jon Kabat-Zinn adaptó estas técnicas a la medicina en 1979, despojándolas de su marco religioso, para tratar el dolor crónico y el estrés.",
+  "difficulty": "easy",
+  "question_en": "Which attention practices of Buddhist origin have entered Western psychology under the name mindfulness?",
+  "options_en": [
+   "Hypnosis",
+   "Meditation",
+   "Suggestion",
+   "Catharsis"
+  ],
+  "context_en": "Jon Kabat-Zinn adapted these techniques to medicine in 1979, stripped of their religious framework, to treat chronic pain and stress."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué es un prejuicio?",
+  "options": [
+   "Un juicio formado antes de conocer los hechos",
+   "Una conclusión demostrada lógicamente",
+   "Una norma jurídica anterior",
+   "Un tipo de silogismo"
+  ],
+  "answer_index": 0,
+  "context": "Literalmente, un juicio previo. Bacon los llamó \"ídolos\" y los consideró el principal obstáculo del conocimiento; Gadamer, en cambio, sostuvo que sin ellos no podríamos comprender nada.",
+  "difficulty": "easy",
+  "question_en": "What is a prejudice?",
+  "options_en": [
+   "A judgement formed before knowing the facts",
+   "A logically proven conclusion",
+   "An earlier legal rule",
+   "A type of syllogism"
+  ],
+  "context_en": "Literally, a prior judgement. Bacon called them \"idols\" and saw them as the main obstacle to knowledge; Gadamer, by contrast, argued that without them we could understand nothing."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué se entiende por \"sentido común\" en filosofía?",
+  "options": [
+   "El conjunto de creencias básicas compartidas por la mayoría",
+   "Un método de demostración lógica",
+   "La opinión de los expertos",
+   "El conocimiento revelado"
+  ],
+  "answer_index": 0,
+  "context": "La escuela escocesa de Thomas Reid lo convirtió en criterio filosófico frente al escepticismo de Hume. Descartes ironizó diciendo que es la cosa mejor repartida del mundo.",
+  "difficulty": "easy",
+  "question_en": "What is meant by \"common sense\" in philosophy?",
+  "options_en": [
+   "The set of basic beliefs shared by most people",
+   "A method of logical proof",
+   "The opinion of experts",
+   "Revealed knowledge"
+  ],
+  "context_en": "Thomas Reid's Scottish school made it a philosophical criterion against Hume's scepticism. Descartes joked that it is the most evenly distributed thing in the world."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué significa la expresión latina \"carpe diem\"?",
+  "options": [
+   "Recuerda que morirás",
+   "Aprovecha el día",
+   "Conócete a ti mismo",
+   "Pienso, luego existo"
+  ],
+  "answer_index": 1,
+  "context": "La escribió el poeta Horacio en una de sus Odas, en clave epicúrea. \"Memento mori\" significa \"recuerda que morirás\" y \"nosce te ipsum\", \"conócete a ti mismo\".",
+  "difficulty": "easy",
+  "question_en": "What does the Latin expression \"carpe diem\" mean?",
+  "options_en": [
+   "Remember you will die",
+   "Seize the day",
+   "Know thyself",
+   "I think, therefore I am"
+  ],
+  "context_en": "The poet Horace wrote it in one of his Odes, in an Epicurean spirit. \"Memento mori\" means \"remember you will die\" and \"nosce te ipsum\", \"know thyself\"."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué corriente sostiene que la verdad de una idea depende de su utilidad práctica?",
+  "options": [
+   "El pragmatismo",
+   "El formalismo",
+   "El intuicionismo",
+   "El convencionalismo"
+  ],
+  "answer_index": 0,
+  "context": "Nació en Estados Unidos con Peirce, James y Dewey a finales del siglo XIX. Para James, una idea es verdadera si \"funciona\" al guiarnos por la experiencia.",
+  "difficulty": "medium",
+  "question_en": "Which current holds that the truth of an idea depends on its practical usefulness?",
+  "options_en": [
+   "Pragmatism",
+   "Formalism",
+   "Intuitionism",
+   "Conventionalism"
+  ],
+  "context_en": "It emerged in the United States with Peirce, James and Dewey in the late 19th century. For James, an idea is true if it \"works\" in guiding us through experience."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra de Immanuel Kant, publicada en 1795, propone una federación de repúblicas para acabar con las guerras?",
+  "options": [
+   "Crítica de la razón práctica",
+   "Sobre la paz perpetua",
+   "Antropología en sentido pragmático",
+   "La religión dentro de los límites de la mera razón"
+  ],
+  "answer_index": 1,
+  "context": "Propone abolir los ejércitos permanentes y crear un derecho cosmopolita. Es uno de los antecedentes intelectuales de la Sociedad de Naciones y de la ONU.",
+  "difficulty": "medium",
+  "question_en": "Which work by Immanuel Kant, published in 1795, proposes a federation of republics to end wars?",
+  "options_en": [
+   "Critique of Practical Reason",
+   "Perpetual Peace",
+   "Anthropology from a Pragmatic Point of View",
+   "Religion within the Bounds of Bare Reason"
+  ],
+  "context_en": "It proposes abolishing standing armies and creating a cosmopolitan law. It is one of the intellectual forerunners of the League of Nations and the UN."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué tesis de Max Weber relaciona el desarrollo del capitalismo con una determinada ética religiosa?",
+  "options": [
+   "Que el catolicismo impulsó el comercio",
+   "Que el ascetismo protestante favoreció el trabajo metódico",
+   "Que el islam prohibió el préstamo",
+   "Que la Ilustración creó el mercado"
+  ],
+  "answer_index": 1,
+  "context": "Publicada entre 1904 y 1905, sostiene que la idea calvinista de vocación convirtió el trabajo y el ahorro en deber religioso. Weber acuñó también la idea de la \"jaula de hierro\".",
+  "difficulty": "medium",
+  "question_en": "Which thesis by Max Weber links the rise of capitalism to a particular religious ethic?",
+  "options_en": [
+   "That Catholicism drove commerce",
+   "That Protestant asceticism favoured methodical work",
+   "That Islam banned lending",
+   "That the Enlightenment created the market"
+  ],
+  "context_en": "Published in 1904-1905, it argues that the Calvinist idea of calling turned work and saving into a religious duty. Weber also coined the idea of the \"iron cage\"."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo italiano del siglo XVIII escribió \"De los delitos y de las penas\" y se opuso a la tortura y la pena de muerte?",
+  "options": [
+   "Giambattista Vico",
+   "Cesare Beccaria",
+   "Antonio Genovesi",
+   "Ludovico Muratori"
+  ],
+  "answer_index": 1,
+  "context": "Publicado anónimamente en 1764, fue traducido por toda Europa en pocos años. Influyó en las reformas penales de Catalina II, Leopoldo de Toscana y los revolucionarios franceses.",
+  "difficulty": "medium",
+  "question_en": "Which 18th-century Italian philosopher wrote \"On Crimes and Punishments\" and opposed torture and the death penalty?",
+  "options_en": [
+   "Giambattista Vico",
+   "Cesare Beccaria",
+   "Antonio Genovesi",
+   "Ludovico Muratori"
+  ],
+  "context_en": "Published anonymously in 1764, it was translated across Europe within a few years. It influenced the penal reforms of Catherine II, Leopold of Tuscany and the French revolutionaries."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué doctrina defiende que la naturaleza tiene valor propio y no solo como recurso para el ser humano?",
+  "options": [
+   "El antropocentrismo",
+   "La ecología profunda",
+   "El productivismo",
+   "El instrumentalismo"
+  ],
+  "answer_index": 1,
+  "context": "El noruego Arne Næss acuñó el término en 1973. Frente al ecologismo \"superficial\", que busca reducir daños, propone cambiar la relación entera con el mundo natural.",
+  "difficulty": "medium",
+  "question_en": "Which doctrine holds that nature has value in itself and not only as a resource for humans?",
+  "options_en": [
+   "Anthropocentrism",
+   "Deep ecology",
+   "Productivism",
+   "Instrumentalism"
+  ],
+  "context_en": "The Norwegian Arne Næss coined the term in 1973. Against \"shallow\" environmentalism, which seeks to limit damage, it proposes changing our whole relation to the natural world."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué tradición filosófica india sostiene que el alma individual y lo absoluto son en el fondo lo mismo?",
+  "options": [
+   "El samkhya",
+   "El vedanta advaita",
+   "El nyaya",
+   "El vaisesika"
+  ],
+  "answer_index": 1,
+  "context": "Advaita significa \"no dualidad\". Shankara, en el siglo VIII, la sistematizó: atman, el yo, y Brahman, el absoluto, serían idénticos, y la separación una ilusión.",
+  "difficulty": "medium",
+  "question_en": "Which Indian philosophical tradition holds that the individual soul and the absolute are ultimately the same?",
+  "options_en": [
+   "Samkhya",
+   "Advaita Vedanta",
+   "Nyaya",
+   "Vaisheshika"
+  ],
+  "context_en": "Advaita means \"non-duality\". Shankara systematised it in the 8th century: atman, the self, and Brahman, the absolute, would be identical, and their separation an illusion."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo suizo-francés del siglo XVIII escribió \"Emilio, o De la educación\"?",
+  "options": [
+   "Voltaire",
+   "Jean-Jacques Rousseau",
+   "Denis Diderot",
+   "Condorcet"
+  ],
+  "answer_index": 1,
+  "context": "Publicado en 1762, propone una educación que siga el desarrollo natural del niño en lugar de imponerle contenidos. El Parlamento de París ordenó quemarlo.",
+  "difficulty": "medium",
+  "question_en": "Which 18th-century Genevan philosopher wrote \"Emile, or On Education\"?",
+  "options_en": [
+   "Voltaire",
+   "Jean-Jacques Rousseau",
+   "Denis Diderot",
+   "Condorcet"
+  ],
+  "context_en": "Published in 1762, it proposes an education that follows the child's natural development rather than imposing content. The Parlement of Paris ordered it burned."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra dirigieron Diderot y D'Alembert para reunir todo el saber de su tiempo?",
+  "options": [
+   "El Diccionario filosófico",
+   "La Enciclopedia",
+   "El Espíritu de las leyes",
+   "Las Cartas persas"
+  ],
+  "answer_index": 1,
+  "context": "Publicada entre 1751 y 1772, reunió 28 volúmenes y más de 70.000 artículos de unos 150 colaboradores. Fue censurada varias veces por su crítica velada a la Iglesia y la monarquía.",
+  "difficulty": "medium",
+  "question_en": "Which work did Diderot and D'Alembert edit to gather all the knowledge of their time?",
+  "options_en": [
+   "The Philosophical Dictionary",
+   "The Encyclopédie",
+   "The Spirit of the Laws",
+   "The Persian Letters"
+  ],
+  "context_en": "Published between 1751 and 1772, it ran to 28 volumes and more than 70,000 articles by some 150 contributors. It was censored several times for its veiled criticism of Church and monarchy."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo británico del siglo XX, autor de \"Principia Mathematica\" con Whitehead, fue encarcelado por su pacifismo?",
+  "options": [
+   "Bertrand Russell",
+   "G. E. Moore",
+   "Alfred Ayer",
+   "Michael Oakeshott"
+  ],
+  "answer_index": 0,
+  "context": "Pasó seis meses en prisión en 1918 por oponerse a la Primera Guerra Mundial. Recibió el Nobel de Literatura en 1950 y encabezó el movimiento antinuclear con casi noventa años.",
+  "difficulty": "medium",
+  "question_en": "Which 20th-century British philosopher, co-author of \"Principia Mathematica\" with Whitehead, was jailed for his pacifism?",
+  "options_en": [
+   "Bertrand Russell",
+   "G. E. Moore",
+   "Alfred Ayer",
+   "Michael Oakeshott"
+  ],
+  "context_en": "He spent six months in prison in 1918 for opposing the First World War. He received the Nobel Prize in Literature in 1950 and led the anti-nuclear movement in his late eighties."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué doctrina defiende que el conocimiento verdadero procede únicamente de la ciencia empírica?",
+  "options": [
+   "El cientificismo",
+   "El romanticismo",
+   "El vitalismo",
+   "El pluralismo"
+  ],
+  "answer_index": 0,
+  "context": "Sus críticos señalan que la afirmación misma no puede probarse científicamente. Se distingue del respeto a la ciencia: es la tesis filosófica de que nada más cuenta como saber.",
+  "difficulty": "medium",
+  "question_en": "Which doctrine holds that true knowledge comes only from empirical science?",
+  "options_en": [
+   "Scientism",
+   "Romanticism",
+   "Vitalism",
+   "Pluralism"
+  ],
+  "context_en": "Critics note that the claim itself cannot be proved scientifically. It is distinct from respect for science: it is the philosophical thesis that nothing else counts as knowledge."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué pensador italiano del siglo XX desarrolló el concepto de \"hegemonía cultural\" desde la cárcel fascista?",
+  "options": [
+   "Benedetto Croce",
+   "Antonio Gramsci",
+   "Giovanni Gentile",
+   "Norberto Bobbio"
+  ],
+  "answer_index": 1,
+  "context": "Escribió más de treinta cuadernos en prisión entre 1929 y 1935. Sostuvo que las clases dominantes gobiernan sobre todo por consentimiento cultural, no solo por la fuerza.",
+  "difficulty": "medium",
+  "question_en": "Which 20th-century Italian thinker developed the concept of \"cultural hegemony\" from a fascist prison?",
+  "options_en": [
+   "Benedetto Croce",
+   "Antonio Gramsci",
+   "Giovanni Gentile",
+   "Norberto Bobbio"
+  ],
+  "context_en": "He wrote more than thirty notebooks in prison between 1929 and 1935. He argued that ruling classes govern above all by cultural consent, not only by force."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué corriente sostiene que el significado de un texto no lo fija su autor, sino el lector y el juego del lenguaje?",
+  "options": [
+   "El positivismo",
+   "La deconstrucción",
+   "El empirismo lógico",
+   "El esencialismo"
+  ],
+  "answer_index": 1,
+  "context": "Barthes proclamó \"la muerte del autor\" en 1967 y Derrida desarrolló su lectura deconstructiva. Ambos sostuvieron que todo texto desborda las intenciones de quien lo escribió.",
+  "difficulty": "medium",
+  "question_en": "Which current holds that a text's meaning is not fixed by its author but by the reader and the play of language?",
+  "options_en": [
+   "Positivism",
+   "Deconstruction",
+   "Logical empiricism",
+   "Essentialism"
+  ],
+  "context_en": "Barthes proclaimed \"the death of the author\" in 1967 and Derrida developed his deconstructive reading. Both held that every text exceeds the intentions of whoever wrote it."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra de Étienne de La Boétie, escrita en el siglo XVI, se pregunta por qué los pueblos obedecen a los tiranos?",
+  "options": [
+   "El Discurso de la servidumbre voluntaria",
+   "El Príncipe",
+   "La política",
+   "Los seis libros de la República"
+  ],
+  "answer_index": 0,
+  "context": "La escribió siendo muy joven, quizá con dieciocho años, y no se publicó en vida. Sostiene que el tirano solo tiene el poder que los súbditos le conceden al obedecer.",
+  "difficulty": "hard",
+  "question_en": "Which work by Étienne de La Boétie, written in the 16th century, asks why peoples obey tyrants?",
+  "options_en": [
+   "Discourse on Voluntary Servitude",
+   "The Prince",
+   "Politics",
+   "Six Books of the Commonwealth"
+  ],
+  "context_en": "He wrote it very young, perhaps at eighteen, and it went unpublished in his lifetime. It argues that a tyrant has only the power his subjects grant him by obeying."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo napolitano del siglo XVIII propuso en \"Ciencia nueva\" que la historia sigue ciclos de nacimiento, esplendor y decadencia?",
+  "options": [
+   "Giambattista Vico",
+   "Pietro Verri",
+   "Paolo Mattia Doria",
+   "Antonio Genovesi"
+  ],
+  "answer_index": 0,
+  "context": "Sostuvo el principio del verum factum: solo conocemos del todo aquello que nosotros mismos hemos hecho, y por eso la historia es más cognoscible que la naturaleza.",
+  "difficulty": "hard",
+  "question_en": "Which 18th-century Neapolitan philosopher proposed in \"New Science\" that history follows cycles of birth, flourishing and decline?",
+  "options_en": [
+   "Giambattista Vico",
+   "Pietro Verri",
+   "Paolo Mattia Doria",
+   "Antonio Genovesi"
+  ],
+  "context_en": "He held the verum factum principle: we fully know only what we ourselves have made, which is why history is more knowable than nature."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo alemán del siglo XIX escribió \"El único y su propiedad\", obra radical del individualismo?",
+  "options": [
+   "Max Stirner",
+   "Bruno Bauer",
+   "Arnold Ruge",
+   "Moses Hess"
+  ],
+  "answer_index": 0,
+  "context": "Publicada en 1844, rechaza toda causa superior al individuo, incluidas la humanidad y la moral. Marx y Engels le dedicaron cientos de páginas de refutación en \"La ideología alemana\".",
+  "difficulty": "hard",
+  "question_en": "Which 19th-century German philosopher wrote \"The Ego and Its Own\", a radical work of individualism?",
+  "options_en": [
+   "Max Stirner",
+   "Bruno Bauer",
+   "Arnold Ruge",
+   "Moses Hess"
+  ],
+  "context_en": "Published in 1844, it rejects every cause above the individual, humanity and morality included. Marx and Engels devoted hundreds of pages to refuting it in \"The German Ideology\"."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo francés fundó en 1945 la revista Les Temps Modernes junto a Merleau-Ponty y Beauvoir?",
+  "options": [
+   "Albert Camus",
+   "Jean-Paul Sartre",
+   "Raymond Aron",
+   "Emmanuel Mounier"
+  ],
+  "answer_index": 1,
+  "context": "La revista marcó el debate intelectual francés durante décadas. Su director rechazó el Nobel de Literatura en 1964 para no dejarse institucionalizar.",
+  "difficulty": "hard",
+  "question_en": "Which French philosopher founded the journal Les Temps Modernes in 1945 with Merleau-Ponty and Beauvoir?",
+  "options_en": [
+   "Albert Camus",
+   "Jean-Paul Sartre",
+   "Raymond Aron",
+   "Emmanuel Mounier"
+  ],
+  "context_en": "The journal shaped French intellectual debate for decades. Its editor refused the Nobel Prize in Literature in 1964 so as not to be institutionalised."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo francés desarrolló una fenomenología del cuerpo en \"Fenomenología de la percepción\"?",
+  "options": [
+   "Maurice Merleau-Ponty",
+   "Jean Wahl",
+   "Vladimir Jankélévitch",
+   "Georges Canguilhem"
+  ],
+  "answer_index": 0,
+  "context": "Publicada en 1945, sostiene que no tenemos un cuerpo: somos cuerpo, y percibimos el mundo siempre desde una situación encarnada. Fue amigo y luego rival intelectual de Sartre.",
+  "difficulty": "hard",
+  "question_en": "Which French philosopher developed a phenomenology of the body in \"Phenomenology of Perception\"?",
+  "options_en": [
+   "Maurice Merleau-Ponty",
+   "Jean Wahl",
+   "Vladimir Jankélévitch",
+   "Georges Canguilhem"
+  ],
+  "context_en": "Published in 1945, it argues that we do not have a body: we are body, and always perceive the world from an embodied situation. He was Sartre's friend and later intellectual rival."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué pensadora estadounidense recibió el Nobel de Economía en 2009 por su estudio del gobierno de los bienes comunes?",
+  "options": [
+   "Elinor Ostrom",
+   "Deirdre McCloskey",
+   "Anna Schwartz",
+   "Joan Robinson"
+  ],
+  "answer_index": 0,
+  "context": "Documentó comunidades que gestionan bosques, pastos y agua sin privatizarlos ni estatalizarlos, refutando la inevitabilidad de la \"tragedia de los comunes\".",
+  "difficulty": "hard",
+  "question_en": "Which American thinker received the 2009 Nobel Prize in Economics for her study of governing the commons?",
+  "options_en": [
+   "Elinor Ostrom",
+   "Deirdre McCloskey",
+   "Anna Schwartz",
+   "Joan Robinson"
+  ],
+  "context_en": "She documented communities that manage forests, pastures and water without privatising or nationalising them, refuting the inevitability of the \"tragedy of the commons\"."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo británico definió en 1958 dos conceptos de libertad, la negativa y la positiva?",
+  "options": [
+   "Isaiah Berlin",
+   "Herbert Hart",
+   "Stuart Hampshire",
+   "Bernard Williams"
+  ],
+  "answer_index": 0,
+  "context": "La negativa es la ausencia de interferencia; la positiva, la capacidad efectiva de gobernarse a uno mismo. Berlin advirtió que la segunda puede justificar imponer a otros lo que \"realmente\" querrían.",
+  "difficulty": "hard",
+  "question_en": "Which British philosopher defined two concepts of liberty, negative and positive, in 1958?",
+  "options_en": [
+   "Isaiah Berlin",
+   "Herbert Hart",
+   "Stuart Hampshire",
+   "Bernard Williams"
+  ],
+  "context_en": "Negative liberty is the absence of interference; positive liberty, the effective capacity for self-government. Berlin warned that the second can justify imposing on others what they \"really\" want."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué economista y filósofo indio, premio Nobel en 1998, sostuvo que las hambrunas no ocurren en democracias con prensa libre?",
+  "options": [
+   "Amartya Sen",
+   "Jagdish Bhagwati",
+   "Raghuram Rajan",
+   "Partha Dasgupta"
+  ],
+  "answer_index": 0,
+  "context": "Estudió la hambruna de Bengala de 1943, que vivió de niño: había alimentos, pero mucha gente no podía adquirirlos. Su trabajo cambió la forma de medir la pobreza.",
+  "difficulty": "hard",
+  "question_en": "Which Indian economist and philosopher, Nobel laureate in 1998, argued that famines do not occur in democracies with a free press?",
+  "options_en": [
+   "Amartya Sen",
+   "Jagdish Bhagwati",
+   "Raghuram Rajan",
+   "Partha Dasgupta"
+  ],
+  "context_en": "He studied the 1943 Bengal famine, which he witnessed as a child: food existed, but many could not afford it. His work changed how poverty is measured."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo alemán acuñó el concepto de \"situaciones límite\" como momentos que revelan la existencia?",
+  "options": [
+   "Karl Jaspers",
+   "Max Scheler",
+   "Nicolai Hartmann",
+   "Helmuth Plessner"
+  ],
+  "answer_index": 0,
+  "context": "La muerte, el sufrimiento, la lucha y la culpa nos ponen ante lo que no podemos cambiar. Psiquiatra de formación, fue apartado de la universidad por los nazis por su esposa judía.",
+  "difficulty": "hard",
+  "question_en": "Which German philosopher coined the concept of \"limit situations\" as moments that reveal existence?",
+  "options_en": [
+   "Karl Jaspers",
+   "Max Scheler",
+   "Nicolai Hartmann",
+   "Helmuth Plessner"
+  ],
+  "context_en": "Death, suffering, struggle and guilt confront us with what we cannot change. Trained as a psychiatrist, he was removed from his university post by the Nazis because of his Jewish wife."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo austriaco-británico escribió \"El camino de servidumbre\" contra la planificación económica?",
+  "options": [
+   "Ludwig von Mises",
+   "Friedrich Hayek",
+   "Karl Polanyi",
+   "Joseph Schumpeter"
+  ],
+  "answer_index": 1,
+  "context": "Publicado en 1944, sostiene que la planificación centralizada lleva inevitablemente a la pérdida de libertades políticas. Recibió el Nobel de Economía en 1974.",
+  "difficulty": "hard",
+  "question_en": "Which Austrian-British philosopher wrote \"The Road to Serfdom\" against economic planning?",
+  "options_en": [
+   "Ludwig von Mises",
+   "Friedrich Hayek",
+   "Karl Polanyi",
+   "Joseph Schumpeter"
+  ],
+  "context_en": "Published in 1944, it argues that central planning inevitably leads to the loss of political freedoms. He received the Nobel Prize in Economics in 1974."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué pensador húngaro sostuvo en \"La gran transformación\" que el mercado autorregulado es una construcción política reciente?",
+  "options": [
+   "Karl Polanyi",
+   "György Lukács",
+   "Michael Polanyi",
+   "Karl Mannheim"
+  ],
+  "answer_index": 0,
+  "context": "Publicado en 1944, el mismo año que la obra de Hayek, defiende la tesis contraria: la economía estuvo siempre incrustada en relaciones sociales hasta el siglo XIX.",
+  "difficulty": "hard",
+  "question_en": "Which Hungarian thinker argued in \"The Great Transformation\" that the self-regulating market is a recent political construction?",
+  "options_en": [
+   "Karl Polanyi",
+   "György Lukács",
+   "Michael Polanyi",
+   "Karl Mannheim"
+  ],
+  "context_en": "Published in 1944, the same year as Hayek's book, it defends the opposite thesis: the economy was always embedded in social relations until the 19th century."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo francés del siglo XX dedicó su obra a la ética como \"filosofía primera\" a partir del rostro del otro?",
+  "options": [
+   "Emmanuel Levinas",
+   "Paul Ricoeur",
+   "Jean-Luc Marion",
+   "Michel Henry"
+  ],
+  "answer_index": 0,
+  "context": "Lituano de nacimiento, perdió a casi toda su familia en el Holocausto. Sostuvo que el rostro del otro me interpela antes de cualquier razonamiento y funda mi responsabilidad.",
+  "difficulty": "hard",
+  "question_en": "Which 20th-century French philosopher devoted his work to ethics as \"first philosophy\", starting from the face of the other?",
+  "options_en": [
+   "Emmanuel Levinas",
+   "Paul Ricoeur",
+   "Jean-Luc Marion",
+   "Michel Henry"
+  ],
+  "context_en": "Lithuanian by birth, he lost almost his entire family in the Holocaust. He held that the face of the other addresses me before any reasoning and founds my responsibility."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo rumano-francés, célebre por su pesimismo aforístico, escribió \"En las cimas de la desesperación\"?",
+  "options": [
+   "Emil Cioran",
+   "Mircea Eliade",
+   "Eugène Ionesco",
+   "Benjamin Fondane"
+  ],
+  "answer_index": 0,
+  "context": "Lo publicó con 22 años en rumano y después escribió solo en francés, una lengua que consideraba una camisa de fuerza saludable. Vivió casi toda su vida en una buhardilla parisina.",
+  "difficulty": "hard",
+  "question_en": "Which Romanian-French philosopher, famous for his aphoristic pessimism, wrote \"On the Heights of Despair\"?",
+  "options_en": [
+   "Emil Cioran",
+   "Mircea Eliade",
+   "Eugène Ionesco",
+   "Benjamin Fondane"
+  ],
+  "context_en": "He published it at 22 in Romanian and afterwards wrote only in French, a language he considered a healthy straitjacket. He lived most of his life in a Paris attic."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué historiador de las religiones rumano estudió la distinción entre lo sagrado y lo profano?",
+  "options": [
+   "Mircea Eliade",
+   "Rudolf Otto",
+   "Georges Dumézil",
+   "Walter Burkert"
+  ],
+  "answer_index": 0,
+  "context": "Sostuvo que el ser humano religioso vive un espacio y un tiempo cualitativamente distintos. Su concepto de \"hierofanía\" designa la irrupción de lo sagrado en el mundo cotidiano.",
+  "difficulty": "hard",
+  "question_en": "Which Romanian historian of religions studied the distinction between the sacred and the profane?",
+  "options_en": [
+   "Mircea Eliade",
+   "Rudolf Otto",
+   "Georges Dumézil",
+   "Walter Burkert"
+  ],
+  "context_en": "He argued that religious people live in a qualitatively different space and time. His concept of \"hierophany\" denotes the irruption of the sacred into the everyday world."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo alemán del siglo XX describió la técnica moderna como un \"emplazamiento\" que convierte la naturaleza en reserva disponible?",
+  "options": [
+   "Martin Heidegger",
+   "Ernst Jünger",
+   "Arnold Gehlen",
+   "Günther Anders"
+  ],
+  "answer_index": 0,
+  "context": "Lo expuso en \"La pregunta por la técnica\", de 1954. El Rin deja de ser un río para convertirse en proveedor de energía hidráulica: esa mirada es lo que él llamó Gestell.",
+  "difficulty": "hard",
+  "question_en": "Which 20th-century German philosopher described modern technology as an \"enframing\" that turns nature into a standing reserve?",
+  "options_en": [
+   "Martin Heidegger",
+   "Ernst Jünger",
+   "Arnold Gehlen",
+   "Günther Anders"
+  ],
+  "context_en": "He set it out in \"The Question Concerning Technology\", from 1954. The Rhine ceases to be a river and becomes a supplier of hydroelectric power: that outlook is what he called Gestell."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofa estadounidense, autora de \"Manifiesto ciborg\", cuestionó las fronteras entre humano, animal y máquina?",
+  "options": [
+   "Donna Haraway",
+   "Sandra Harding",
+   "Rosi Braidotti",
+   "Karen Barad"
+  ],
+  "answer_index": 0,
+  "context": "Publicado en 1985, propone el ciborg como figura política que escapa a los dualismos. Bióloga de formación, ha escrito después sobre la convivencia entre especies.",
+  "difficulty": "hard",
+  "question_en": "Which American philosopher, author of \"A Cyborg Manifesto\", questioned the boundaries between human, animal and machine?",
+  "options_en": [
+   "Donna Haraway",
+   "Sandra Harding",
+   "Rosi Braidotti",
+   "Karen Barad"
+  ],
+  "context_en": "Published in 1985, it proposes the cyborg as a political figure that escapes dualisms. Trained as a biologist, she has since written on living alongside other species."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo canadiense escribió \"Fuentes del yo\" y \"La era secular\" sobre la identidad moderna?",
+  "options": [
+   "Charles Taylor",
+   "Will Kymlicka",
+   "Ian Hacking",
+   "Bernard Lonergan"
+  ],
+  "answer_index": 0,
+  "context": "Comunitarista frente al liberalismo de Rawls, ha estudiado cómo se formó la idea moderna de interioridad. Recibió el Premio Kioto y el Templeton.",
+  "difficulty": "hard",
+  "question_en": "Which Canadian philosopher wrote \"Sources of the Self\" and \"A Secular Age\" on modern identity?",
+  "options_en": [
+   "Charles Taylor",
+   "Will Kymlicka",
+   "Ian Hacking",
+   "Bernard Lonergan"
+  ],
+  "context_en": "A communitarian against Rawls's liberalism, he has studied how the modern idea of inwardness took shape. He has received the Kyoto and Templeton prizes."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo surcoreano-alemán diagnosticó la \"sociedad del cansancio\" y el exceso de positividad?",
+  "options": [
+   "Byung-Chul Han",
+   "Peter Sloterdijk",
+   "Markus Gabriel",
+   "Hartmut Rosa"
+  ],
+  "answer_index": 0,
+  "context": "Sostiene que hemos pasado de una sociedad disciplinaria a otra del rendimiento, donde cada uno se explota a sí mismo creyéndose libre. Publicó el ensayo en 2010.",
+  "difficulty": "hard",
+  "question_en": "Which South Korean-German philosopher diagnosed \"the burnout society\" and an excess of positivity?",
+  "options_en": [
+   "Byung-Chul Han",
+   "Peter Sloterdijk",
+   "Markus Gabriel",
+   "Hartmut Rosa"
+  ],
+  "context_en": "He argues that we have moved from a disciplinary society to one of achievement, where each person exploits themselves while feeling free. He published the essay in 2010."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo francés escribió \"La sociedad del riesgo\"... o más bien, qué sociólogo alemán acuñó ese concepto en 1986?",
+  "options": [
+   "Ulrich Beck",
+   "Niklas Luhmann",
+   "Norbert Elias",
+   "Anthony Giddens"
+  ],
+  "answer_index": 0,
+  "context": "Publicado pocos meses antes de Chernóbil, sostiene que las sociedades industriales avanzadas ya no reparten solo riqueza, sino también riesgos que ellas mismas producen.",
+  "difficulty": "hard",
+  "question_en": "Which German sociologist coined the concept of \"risk society\" in 1986?",
+  "options_en": [
+   "Ulrich Beck",
+   "Niklas Luhmann",
+   "Norbert Elias",
+   "Anthony Giddens"
+  ],
+  "context_en": "Published a few months before Chernobyl, it argues that advanced industrial societies no longer distribute only wealth but also the risks they themselves produce."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo alemán desarrolló la teoría de sistemas sociales frente a la teoría crítica de Habermas?",
+  "options": [
+   "Niklas Luhmann",
+   "Axel Honneth",
+   "Hans-Georg Gadamer",
+   "Ernst Tugendhat"
+  ],
+  "answer_index": 0,
+  "context": "Sostuvo que la sociedad se compone de sistemas de comunicación autorreferenciales: derecho, economía, ciencia. Su polémica con Habermas en 1971 marcó la sociología alemana.",
+  "difficulty": "hard",
+  "question_en": "Which German philosopher developed social systems theory against Habermas's critical theory?",
+  "options_en": [
+   "Niklas Luhmann",
+   "Axel Honneth",
+   "Hans-Georg Gadamer",
+   "Ernst Tugendhat"
+  ],
+  "context_en": "He argued that society consists of self-referential communication systems: law, economy, science. His 1971 debate with Habermas shaped German sociology."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra de Hannah Arendt analiza el totalitarismo nazi y soviético como un fenómeno político nuevo?",
+  "options": [
+   "Los orígenes del totalitarismo",
+   "Sobre la revolución",
+   "La vida del espíritu",
+   "Entre el pasado y el futuro"
+  ],
+  "answer_index": 0,
+  "context": "Publicada en 1951, sostiene que el totalitarismo no es una tiranía más: destruye la vida privada y la capacidad misma de pensar. Arendt había huido de Alemania en 1933.",
+  "difficulty": "hard",
+  "question_en": "Which work by Hannah Arendt analyses Nazi and Soviet totalitarianism as a new political phenomenon?",
+  "options_en": [
+   "The Origins of Totalitarianism",
+   "On Revolution",
+   "The Life of the Mind",
+   "Between Past and Future"
+  ],
+  "context_en": "Published in 1951, it argues that totalitarianism is not just another tyranny: it destroys private life and the very capacity to think. Arendt had fled Germany in 1933."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofa alemana, discípula de Husserl y carmelita descalza, murió en Auschwitz en 1942?",
+  "options": [
+   "Edith Stein",
+   "Hedwig Conrad-Martius",
+   "Gerda Walther",
+   "Else Lasker-Schüler"
+  ],
+  "answer_index": 0,
+  "context": "Fue asistente de Husserl y escribió sobre la empatía en su tesis doctoral. De origen judío, se convirtió al catolicismo en 1922 y fue canonizada en 1998.",
+  "difficulty": "hard",
+  "question_en": "Which German philosopher, a student of Husserl and a Discalced Carmelite nun, died in Auschwitz in 1942?",
+  "options_en": [
+   "Edith Stein",
+   "Hedwig Conrad-Martius",
+   "Gerda Walther",
+   "Else Lasker-Schüler"
+  ],
+  "context_en": "She was Husserl's assistant and wrote on empathy in her doctoral thesis. Of Jewish origin, she converted to Catholicism in 1922 and was canonised in 1998."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo alemán del siglo XVIII, amigo de Lessing, defendió la Ilustración judía o Haskalá?",
+  "options": [
+   "Moses Mendelssohn",
+   "Salomon Maimon",
+   "Hermann Cohen",
+   "Franz Rosenzweig"
+  ],
+  "answer_index": 0,
+  "context": "Defendió la separación entre Estado y religión en \"Jerusalén\", de 1783. Su nieto Felix fue el compositor que rescató del olvido la Pasión según San Mateo de Bach.",
+  "difficulty": "hard",
+  "question_en": "Which 18th-century German philosopher, a friend of Lessing, championed the Jewish Enlightenment or Haskalah?",
+  "options_en": [
+   "Moses Mendelssohn",
+   "Salomon Maimon",
+   "Hermann Cohen",
+   "Franz Rosenzweig"
+  ],
+  "context_en": "He argued for the separation of state and religion in \"Jerusalem\", from 1783. His grandson Felix was the composer who rescued Bach's St Matthew Passion from oblivion."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué obra de Georges Bataille explora el gasto improductivo frente a la lógica de la acumulación?",
+  "options": [
+   "La parte maldita",
+   "El erotismo",
+   "La experiencia interior",
+   "La literatura y el mal"
+  ],
+  "answer_index": 0,
+  "context": "Publicada en 1949, propone una \"economía general\" en la que las sociedades deben derrochar el excedente de energía: en fiestas, arte o guerra.",
+  "difficulty": "hard",
+  "question_en": "Which work by Georges Bataille explores unproductive expenditure against the logic of accumulation?",
+  "options_en": [
+   "The Accursed Share",
+   "Eroticism",
+   "Inner Experience",
+   "Literature and Evil"
+  ],
+  "context_en": "Published in 1949, it proposes a \"general economy\" in which societies must squander their surplus energy: in festivals, art or war."
+ },
+ {
+  "category": "filosofia",
+  "question": "¿Qué filósofo checo, portavoz de la Carta 77, desarrolló una fenomenología del \"mundo natural\"?",
+  "options": [
+   "Jan Patočka",
+   "Karel Kosík",
+   "Vilém Flusser",
+   "Ladislav Hejdánek"
+  ],
+  "answer_index": 0,
+  "context": "Discípulo de Husserl y Heidegger, murió en 1977 tras once horas de interrogatorio policial. Su idea de la \"solidaridad de los conmovidos\" influyó en la disidencia del Este.",
+  "difficulty": "hard",
+  "question_en": "Which Czech philosopher, a spokesman for Charter 77, developed a phenomenology of the \"natural world\"?",
+  "options_en": [
+   "Jan Patočka",
+   "Karel Kosík",
+   "Vilém Flusser",
+   "Ladislav Hejdánek"
+  ],
+  "context_en": "A student of Husserl and Heidegger, he died in 1977 after eleven hours of police interrogation. His idea of the \"solidarity of the shaken\" influenced Eastern European dissent."
+ }
+]
