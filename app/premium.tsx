@@ -221,6 +221,11 @@ export default function PremiumScreen() {
             </View>
 
             <Perk
+              icon="🚫"
+              title={t('pro.room.noAdsTitle')}
+              body={t('pro.room.noAdsBody')}
+            />
+            <Perk
               icon="🛡️"
               title={t('pro.room.freezeTitle')}
               body={t('pro.room.freezeBody')}

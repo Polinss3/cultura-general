@@ -1340,6 +1340,10 @@
         "title": "Aventura completa",
         "description": "Veinte capítulos y 400 niveles. Sin PRO se juegan los dos primeros enteros."
       },
+      "noAds": {
+        "title": "Sin anuncios",
+        "description": "Ni un solo anuncio, ni al acabar la partida ni en la pregunta del día."
+      },
       "review": {
         "title": "Repaso inteligente",
         "description": "Las preguntas que fallaste vuelven cuando toca, hasta que te las sabes."
@@ -1371,7 +1375,7 @@
     },
     "paywall": {
       "title": "Saca todo lo que hay dentro",
-      "subtitle": "4.000 preguntas, toda la Aventura, dos modos de juego más y las estadísticas que te dicen en qué mejorar.",
+      "subtitle": "4.000 preguntas, toda la Aventura, dos modos de juego más, estadísticas que te dicen en qué mejorar y ni un solo anuncio.",
       "subscribe": "Empezar",
       "restore": "Restaurar compras",
       "restored": "¡Listo! Ya tienes CG PRO.",
@@ -1419,6 +1423,8 @@
       "homeSubtitleFree": "Descubre lo que trae la suscripción",
       "homeSubtitlePro": "Tus modos exclusivos y tus ventajas",
       "statsDescription": "Tu evolución, la precisión por dificultad y tus exámenes.",
+      "noAdsTitle": "Sin anuncios",
+      "noAdsBody": "Con PRO la app no pide ni muestra ningún anuncio.",
       "freezeTitle": "Tu racha está protegida",
       "freezeBody": "Si un día no juegas, la racha sigue. Sin gastar ningún objeto.",
       "cosmeticsTitle": "Cosméticos exclusivos",

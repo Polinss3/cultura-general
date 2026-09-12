@@ -68,7 +68,19 @@
       "autoIncrement": true,
       "env": {
         "SENTRY_ALLOW_FAILURE": "true",
-        "EXPO_PUBLIC_ADS_MODE": "off"
+        "EXPO_PUBLIC_ADS_MODE": "live",
+        "EXPO_PUBLIC_INHOUSE_ADS_URL": "https://inhouseads.pablobrasero.com",
+        "EXPO_PUBLIC_INHOUSE_APP_ID": "485e0aab-572e-4051-879a-85a60ef978da",
+        "EXPO_PUBLIC_INHOUSE_PLACEMENT_DAILY_RESULT": "be2c2b30-49f0-43df-b914-3300dabd99e9",
+        "EXPO_PUBLIC_INHOUSE_PLACEMENT_SPEED_RESULT": "e2b4e80b-dfce-4185-a553-61589cbed236",
+        "EXPO_PUBLIC_INHOUSE_PLACEMENT_LADDER_RESULT": "acdc4aa7-2e95-4c09-bd6a-c8e91d3d715d",
+        "EXPO_PUBLIC_INHOUSE_PLACEMENT_FLAGS_RESULT": "00f7e7e9-32a4-48a9-b6fc-be93751e5fdf",
+        "EXPO_PUBLIC_INHOUSE_PLACEMENT_YEARS_RESULT": "58a2d748-9ca2-4f5b-aeb3-579ab5a10da0",
+        "EXPO_PUBLIC_INHOUSE_PLACEMENT_SHOP_COINS": "8bd87ce0-3407-4fc9-b732-48539589e3ef",
+        "EXPO_PUBLIC_INHOUSE_PLACEMENT_LADDER_REVIVE": "a9dbc3d6-bee7-4a08-bc0a-fa1b2c5d24af",
+        "EXPO_PUBLIC_INHOUSE_PLACEMENT_BANNER": "348a3903-529b-478f-9ac1-d88e58906bd8",
+        "EXPO_PUBLIC_REWARDED_ADS": "true",
+        "EXPO_PUBLIC_BANNER_ADS": "false"
       },
       "ios": {
         "credentialsSource": "remote"

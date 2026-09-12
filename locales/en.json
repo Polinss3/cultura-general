@@ -1340,6 +1340,10 @@
         "title": "The full Adventure",
         "description": "Twenty chapters and 400 levels. Without PRO you get the first two in full."
       },
+      "noAds": {
+        "title": "No ads",
+        "description": "Not a single ad, not after a round and not on the daily question."
+      },
       "review": {
         "title": "Smart review",
         "description": "The questions you got wrong come back when they should, until you know them."
@@ -1371,7 +1375,7 @@
     },
     "paywall": {
       "title": "Unlock everything inside",
-      "subtitle": "4,000 questions, the whole Adventure, two more game modes and the statistics that tell you what to work on.",
+      "subtitle": "4,000 questions, the whole Adventure, two more game modes, statistics that tell you what to work on, and not a single ad.",
       "subscribe": "Get started",
       "restore": "Restore purchases",
       "restored": "All set — CG PRO is active.",
@@ -1419,6 +1423,8 @@
       "homeSubtitleFree": "See what the subscription includes",
       "homeSubtitlePro": "Your exclusive modes and perks",
       "statsDescription": "Your progress, accuracy by difficulty and your exams.",
+      "noAdsTitle": "No ads",
+      "noAdsBody": "With PRO the app never requests or shows an ad.",
       "freezeTitle": "Your streak is protected",
       "freezeBody": "Miss a day and your streak carries on. No item spent.",
       "cosmeticsTitle": "Exclusive cosmetics",

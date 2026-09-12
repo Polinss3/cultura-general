@@ -35,7 +35,7 @@ APRENDE MIENTRAS JUEGAS
 2.000 preguntas gratuitas en 13 categorías: historia, ciencia, arte, geografía, filosofía, deportes, biología, cine, música, literatura, tecnología, mitología y astronomía. Cada fallo viene con su explicación.
 
 CG PRO, OPCIONAL
-Amplía el catálogo hasta 4.000 preguntas, abre los 400 niveles y 20 capítulos de Aventura, y añade herramientas de estudio como Repaso inteligente, Examen y métricas avanzadas. Los precios y condiciones se muestran antes de confirmar la compra.
+Quita los anuncios, amplía el catálogo hasta 4.000 preguntas, abre los 400 niveles y 20 capítulos de Aventura, y añade herramientas de estudio como Repaso inteligente, Examen y métricas avanzadas. Los precios y condiciones se muestran antes de confirmar la compra.
 
 PROGRESO QUE ENGANCHA
 Sube de nivel, gana monedas, completa misiones diarias, desbloquea logros y títulos, y compite en ligas semanales por divisiones.
@@ -47,7 +47,7 @@ Puedes descargar y jugar gratis. CG PRO es una compra opcional.
 
 ## Novedades (2.2.0)
 • AVENTURA MÁS GRANDE: 400 niveles repartidos en 20 capítulos, con nuevos temas, guardianes, historias y reliquias.
-• CG PRO: desbloquea el viaje completo, un catálogo de 4.000 preguntas en Aprender y herramientas avanzadas de estudio.
+• CG PRO: sin anuncios, el viaje completo, un catálogo de 4.000 preguntas en Aprender y herramientas avanzadas de estudio.
 • MÁS CONTENIDO GRATIS: los dos primeros capítulos de Aventura y 2.000 preguntas siguen disponibles para todos.
 
 ¡Gracias por jugar! Cuéntanos qué te parece en pablobrasero@gmail.com

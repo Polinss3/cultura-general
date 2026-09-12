@@ -40,7 +40,7 @@ LEARN WHILE YOU PLAY
 2,000 free questions across 13 categories: history, science, art, geography, philosophy, sports, biology, film, music, literature, technology, mythology and astronomy. Every wrong answer comes with an explanation.
 
 OPTIONAL CG PRO
-Expand the catalogue to 4,000 questions, open all 400 Adventure levels across 20 chapters, and add study tools such as Smart Review, Exam and advanced insights. Prices and terms are shown before you confirm a purchase.
+Remove the ads, expand the catalogue to 4,000 questions, open all 400 Adventure levels across 20 chapters, and add study tools such as Smart Review, Exam and advanced insights. Prices and terms are shown before you confirm a purchase.
 
 PROGRESS THAT HOOKS YOU
 Level up, earn coins, complete daily missions, unlock achievements and titles, and compete in weekly leagues across divisions.
@@ -52,7 +52,7 @@ Free to download and play. CG PRO is an optional purchase.
 
 ## What's New (2.2.0)
 • A BIGGER ADVENTURE: 400 levels across 20 chapters, with new themes, guardians, stories and relics.
-• CG PRO: unlock the full journey, a 4,000-question catalogue in Learn and advanced study tools.
+• CG PRO: no ads, the full journey, a 4,000-question catalogue in Learn and advanced study tools.
 • MORE FREE CONTENT: the first two Adventure chapters and 2,000 questions remain available to everyone.
 
 Thanks for playing! Tell us what you think at pablobrasero@gmail.com

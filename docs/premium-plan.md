@@ -5,6 +5,11 @@
 
 ## Contexto y restricción principal
 
+> **Actualización 2026-09-12:** esta restricción ya no aplica. Desde la 2.2.0 los anuncios
+> los sirve In-House Ads (ver `docs/ads-inhouse.md`), el perfil `production` va en
+> `EXPO_PUBLIC_ADS_MODE=live`, y **"Sin anuncios" es un beneficio del PRO** (segundo de la
+> lista del paywall). El texto que sigue se conserva como contexto de las decisiones.
+
 **No hay proveedor de anuncios operativo.** `EXPO_PUBLIC_ADS_MODE=off` en el perfil de
 producción de `eas.json` y la rama `ads/appodeal` está a medias. Esto tiene dos
 consecuencias que condicionan todo el plan:

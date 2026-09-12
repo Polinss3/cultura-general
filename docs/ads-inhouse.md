@@ -14,10 +14,10 @@ vive en memoria y muere con el proceso.
 
 | Condición | Valor hoy | Dónde se cambia |
 |---|---|---|
-| `EXPO_PUBLIC_ADS_MODE` | `test` en `development`/`preview`, `off` en `production` | [eas.json](../eas.json) |
+| `EXPO_PUBLIC_ADS_MODE` | `test` en `development`/`preview`/`testflight`, **`live` en `production`** (desde 2026-09-12) | [eas.json](../eas.json) |
 | App y ubicaciones del panel | creadas y habilitadas | panel de In-House Ads |
-| Campañas | solo las internas de prueba (`Prueba — …`) | panel de In-House Ads |
-| `EXPO_PUBLIC_REWARDED_ADS` | `true` en las builds internas | [eas.json](../eas.json) |
+| Campañas | solo las internas de prueba (`Prueba — …`); **faltan las reales antes de publicar** | panel de In-House Ads |
+| `EXPO_PUBLIC_REWARDED_ADS` | `true` en todos los perfiles | [eas.json](../eas.json) |
 | `EXPO_PUBLIC_BANNER_ADS` | `false` a propósito, ver más abajo | [eas.json](../eas.json) |
 
 El sistema es *fail-closed*: cualquier valor de `EXPO_PUBLIC_ADS_MODE` ausente o
@@ -71,7 +71,9 @@ vuelve a comprobar por su cuenta.
 2. **CG PRO.** `lib/ads.native.ts` se suscribe a `lib/premium.ts`: al activarse
    la suscripción se llama a `updateContext({isPremium: true})`, que invalida al
    instante lo que hubiera cargado y vacía cola y caché. Un PRO no llega a
-   emitir una sola petición.
+   emitir una sola petición. Desde 2026-09-12 es un beneficio anunciado en el
+   paywall y en la Sala PRO ("Sin anuncios"), así que es un compromiso con el
+   usuario, no solo una cortesía.
 3. **Pausas naturales.** [`utils/adPolicy.ts`](../utils/adPolicy.ts): un
    intersticial al acabar cada partida, nunca sin resultado, con 30 s de
    enfriamiento (para no encadenar dos en partidas de diez segundos), 20 por
@@ -152,8 +154,10 @@ que tenga sentido fuera de la App Store.
 6. Comprobar en el panel que el tráfico aparece bajo el filtro **Pruebas**.
 7. Inspeccionar el IPA/AAB para confirmar que no queda nada de AppLovin.
 
-Solo después: subir `EXPO_PUBLIC_ADS_MODE` a `live` en el perfil que
-corresponda y publicar campañas reales desde el panel.
+El perfil `production` ya va en `live` con todas las variables (2026-09-12).
+Antes de publicar la 2.2.0 quedan los puntos 1-6 de arriba y **crear las
+campañas reales** en el panel: hoy solo hay las de prueba, así que una build de
+producción pediría anuncios y recibiría relleno de prueba o `null`.
 
 ## Documentación del servicio
 

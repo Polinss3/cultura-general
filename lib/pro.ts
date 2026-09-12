@@ -39,6 +39,7 @@ export function hasFullAdventureAccess(access: AdventureAccess): boolean {
 /** Lista de beneficios del PRO, en el orden en que se muestran en el paywall. */
 export const PRO_BENEFITS = [
   'adventure',
+  'noAds',
   'review',
   'exam',
   'stats',
@@ -52,6 +53,7 @@ export type ProBenefit = (typeof PRO_BENEFITS)[number];
 
 export const PRO_BENEFIT_ICONS: Record<ProBenefit, string> = {
   adventure: '🗺️',
+  noAds: '🚫',
   review: '🔁',
   exam: '📝',
   stats: '📊',
