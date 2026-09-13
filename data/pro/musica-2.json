@@ -1,0 +1,968 @@
+[
+ {
+  "category": "musica",
+  "question": "¿Qué instrumento de cuatro cuerdas y mástil corto es típico de Hawái?",
+  "options": [
+   "El ukelele",
+   "El banjo",
+   "La mandolina",
+   "El charango"
+  ],
+  "answer_index": 0,
+  "context": "Lo llevaron a las islas emigrantes portugueses de Madeira en el siglo XIX. Su nombre significa aproximadamente \"pulga saltarina\" en hawaiano.",
+  "difficulty": "easy",
+  "question_en": "Which four-stringed instrument with a short neck is typical of Hawaii?",
+  "options_en": [
+   "The ukulele",
+   "The banjo",
+   "The mandolin",
+   "The charango"
+  ],
+  "context_en": "Portuguese emigrants from Madeira took it to the islands in the 19th century. Its name roughly means \"jumping flea\" in Hawaiian."
+ },
+ {
+  "category": "musica",
+  "question": "¿A qué familia pertenecen el violín, la viola y el violonchelo?",
+  "options": [
+   "La cuerda frotada",
+   "El viento madera",
+   "La percusión",
+   "El viento metal"
+  ],
+  "answer_index": 0,
+  "context": "Todos suenan al frotar las cuerdas con un arco de crin, aunque también se pueden pulsar con el dedo. El contrabajo completa la familia en la orquesta.",
+  "difficulty": "easy",
+  "question_en": "Which family do the violin, viola and cello belong to?",
+  "options_en": [
+   "Bowed strings",
+   "Woodwind",
+   "Percussion",
+   "Brass"
+  ],
+  "context_en": "All sound by drawing a horsehair bow across the strings, though they can also be plucked. The double bass completes the family in the orchestra."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué aparato marca un pulso constante para ayudar a mantener el tempo al ensayar?",
+  "options": [
+   "El metrónomo",
+   "El diapasón",
+   "El afinador",
+   "El amplificador"
+  ],
+  "answer_index": 0,
+  "context": "El de péndulo se patentó en 1815 y Beethoven fue de los primeros en anotar su marca en las partituras. El diapasón sirve para afinar, no para medir el tiempo.",
+  "difficulty": "easy",
+  "question_en": "Which device beats a steady pulse to help keep tempo while practising?",
+  "options_en": [
+   "The metronome",
+   "The tuning fork",
+   "The tuner",
+   "The amplifier"
+  ],
+  "context_en": "The pendulum version was patented in 1815 and Beethoven was among the first to mark its settings in scores. A tuning fork sets pitch, not time."
+ },
+ {
+  "category": "musica",
+  "question": "¿Cómo se llama la parte de una canción que se repite igual después de cada estrofa?",
+  "options": [
+   "El estribillo",
+   "El puente",
+   "La introducción",
+   "El solo"
+  ],
+  "answer_index": 0,
+  "context": "Es la parte pensada para quedarse en la memoria y que el público cante. El puente, en cambio, aparece una sola vez y rompe la estructura.",
+  "difficulty": "easy",
+  "question_en": "What is the part of a song that repeats unchanged after each verse called?",
+  "options_en": [
+   "The chorus",
+   "The bridge",
+   "The intro",
+   "The solo"
+  ],
+  "context_en": "It is the part designed to stick in the memory and be sung by the audience. The bridge, by contrast, appears once and breaks the structure."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué instrumento de teclado suena mediante tubos de aire y es habitual en las iglesias?",
+  "options": [
+   "El órgano",
+   "El clavecín",
+   "El armonio",
+   "La celesta"
+  ],
+  "answer_index": 0,
+  "context": "Se toca con las manos y también con los pies, sobre un teclado llamado pedalero. Algunos ejemplares de catedral superan los diez mil tubos.",
+  "difficulty": "easy",
+  "question_en": "Which keyboard instrument sounds through air pipes and is common in churches?",
+  "options_en": [
+   "The organ",
+   "The harpsichord",
+   "The harmonium",
+   "The celesta"
+  ],
+  "context_en": "It is played with the hands and also with the feet, on a keyboard called a pedalboard. Some cathedral instruments have over ten thousand pipes."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué grupo británico de los noventa lanzó la canción \"Wannabe\"?",
+  "options": [
+   "Spice Girls",
+   "All Saints",
+   "Bananarama",
+   "Sugababes"
+  ],
+  "answer_index": 0,
+  "context": "Su lema, \"girl power\", se convirtió en eslogan de toda una época. El vídeo de esa canción se rodó en un solo plano dentro de un hotel de Londres.",
+  "difficulty": "easy",
+  "question_en": "Which nineties British group released the song \"Wannabe\"?",
+  "options_en": [
+   "Spice Girls",
+   "All Saints",
+   "Bananarama",
+   "Sugababes"
+  ],
+  "context_en": "Their motto, \"girl power\", became the slogan of an era. That song's video was shot in a single take inside a London hotel."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué cantante estadounidense popularizó \"Single Ladies\" y \"Crazy in Love\"?",
+  "options": [
+   "Beyoncé",
+   "Rihanna",
+   "Alicia Keys",
+   "Ciara"
+  ],
+  "answer_index": 0,
+  "context": "Antes de su carrera en solitario cantaba en el grupo Destiny's Child. Es la artista con más premios Grammy de la historia.",
+  "difficulty": "easy",
+  "question_en": "Which American singer popularised \"Single Ladies\" and \"Crazy in Love\"?",
+  "options_en": [
+   "Beyoncé",
+   "Rihanna",
+   "Alicia Keys",
+   "Ciara"
+  ],
+  "context_en": "Before her solo career she sang in the group Destiny's Child. She is the most Grammy-awarded artist in history."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué pieza de la batería se toca con un pedal accionado con el pie?",
+  "options": [
+   "El bombo",
+   "La caja",
+   "El charles",
+   "El timbal"
+  ],
+  "answer_index": 0,
+  "context": "Es el tambor más grande del conjunto y marca el pulso grave de la canción. El charles también lleva pedal, pero se toca sobre todo con las baquetas.",
+  "difficulty": "easy",
+  "question_en": "Which piece of the drum kit is played with a foot pedal?",
+  "options_en": [
+   "The bass drum",
+   "The snare",
+   "The hi-hat",
+   "The tom"
+  ],
+  "context_en": "It is the largest drum in the kit and marks the song's low pulse. The hi-hat also has a pedal, but is played mostly with sticks."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué aparato recoge la voz del cantante para que suene por los altavoces?",
+  "options": [
+   "El micrófono",
+   "El ecualizador",
+   "La mesa de mezclas",
+   "El pedal"
+  ],
+  "answer_index": 0,
+  "context": "Convierte las vibraciones del aire en señal eléctrica, justo lo contrario que un altavoz. Su llegada en los años veinte permitió cantar en voz baja e íntima.",
+  "difficulty": "easy",
+  "question_en": "Which device picks up a singer's voice so it comes out of the speakers?",
+  "options_en": [
+   "The microphone",
+   "The equaliser",
+   "The mixing desk",
+   "The pedal"
+  ],
+  "context_en": "It turns air vibrations into an electrical signal, the exact opposite of a speaker. Its arrival in the twenties allowed soft, intimate singing."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué instrumento de viento madera tiene una sola lengüeta y un tubo cilíndrico?",
+  "options": [
+   "El clarinete",
+   "El oboe",
+   "El fagot",
+   "La flauta travesera"
+  ],
+  "answer_index": 0,
+  "context": "El oboe y el fagot usan lengüeta doble, y la flauta no tiene lengüeta ninguna. Es el instrumento que abre \"Rhapsody in Blue\" con un glissando ascendente.",
+  "difficulty": "easy",
+  "question_en": "Which woodwind instrument has a single reed and a cylindrical tube?",
+  "options_en": [
+   "The clarinet",
+   "The oboe",
+   "The bassoon",
+   "The flute"
+  ],
+  "context_en": "Oboe and bassoon use double reeds, and the flute has no reed at all. It opens \"Rhapsody in Blue\" with a rising glissando."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué cantautor canadiense compuso la canción \"Hallelujah\"?",
+  "options": [
+   "Leonard Cohen",
+   "Neil Young",
+   "Gordon Lightfoot",
+   "Rufus Wainwright"
+  ],
+  "answer_index": 0,
+  "context": "Tardó años en escribirla y llegó a redactar decenas de estrofas. Pasó desapercibida hasta que Jeff Buckley la versionó en 1994.",
+  "difficulty": "medium",
+  "question_en": "Which Canadian singer-songwriter wrote the song \"Hallelujah\"?",
+  "options_en": [
+   "Leonard Cohen",
+   "Neil Young",
+   "Gordon Lightfoot",
+   "Rufus Wainwright"
+  ],
+  "context_en": "He took years to write it and drafted dozens of verses. It went unnoticed until Jeff Buckley covered it in 1994."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué cantautora canadiense publicó el álbum \"Blue\" en 1971?",
+  "options": [
+   "Joni Mitchell",
+   "Carole King",
+   "Judy Collins",
+   "Anne Murray"
+  ],
+  "answer_index": 0,
+  "context": "Afinaba la guitarra de formas poco habituales porque la polio le había debilitado la mano izquierda. También es pintora y firma sus propias portadas.",
+  "difficulty": "medium",
+  "question_en": "Which Canadian singer-songwriter released the album \"Blue\" in 1971?",
+  "options_en": [
+   "Joni Mitchell",
+   "Carole King",
+   "Judy Collins",
+   "Anne Murray"
+  ],
+  "context_en": "She tuned her guitar in unusual ways because polio had weakened her left hand. She is also a painter and makes her own album covers."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué banda estadounidense de metal grabó \"Enter Sandman\"?",
+  "options": [
+   "Metallica",
+   "Megadeth",
+   "Slayer",
+   "Anthrax"
+  ],
+  "answer_index": 0,
+  "context": "Pleitearon contra Napster en 2000 por el intercambio de archivos, lo que les costó buena parte de su prestigio entre el público joven.",
+  "difficulty": "medium",
+  "question_en": "Which American metal band recorded \"Enter Sandman\"?",
+  "options_en": [
+   "Metallica",
+   "Megadeth",
+   "Slayer",
+   "Anthrax"
+  ],
+  "context_en": "They sued Napster in 2000 over file sharing, which cost them much of their standing with young listeners."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué banda de Birmingham liderada por Ozzy Osbourne fundó el heavy metal?",
+  "options": [
+   "Black Sabbath",
+   "Deep Purple",
+   "Uriah Heep",
+   "Thin Lizzy"
+  ],
+  "answer_index": 0,
+  "context": "Su guitarrista perdió las yemas de dos dedos en una fábrica y aflojó las cuerdas para poder tocar, lo que dio al grupo su sonido grave característico.",
+  "difficulty": "medium",
+  "question_en": "Which Birmingham band led by Ozzy Osbourne founded heavy metal?",
+  "options_en": [
+   "Black Sabbath",
+   "Deep Purple",
+   "Uriah Heep",
+   "Thin Lizzy"
+  ],
+  "context_en": "Their guitarist lost the tips of two fingers in a factory and slackened his strings to keep playing, giving the band its trademark heavy sound."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué banda californiana mezcla funk y rock en el álbum \"Californication\"?",
+  "options": [
+   "Red Hot Chili Peppers",
+   "Faith No More",
+   "Incubus",
+   "Jane's Addiction"
+  ],
+  "answer_index": 0,
+  "context": "Su bajista, Flea, toca con la técnica de slap heredada del funk de los setenta. El grupo se formó en un instituto de Los Ángeles a comienzos de los ochenta.",
+  "difficulty": "medium",
+  "question_en": "Which Californian band mixes funk and rock on the album \"Californication\"?",
+  "options_en": [
+   "Red Hot Chili Peppers",
+   "Faith No More",
+   "Incubus",
+   "Jane's Addiction"
+  ],
+  "context_en": "Their bassist, Flea, plays with the slap technique inherited from seventies funk. The band formed at a Los Angeles high school in the early eighties."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué cantante estadounidense de country escribió y grabó \"Jolene\"?",
+  "options": [
+   "Dolly Parton",
+   "Loretta Lynn",
+   "Tammy Wynette",
+   "Patsy Cline"
+  ],
+  "answer_index": 0,
+  "context": "Escribió esa canción y \"I Will Always Love You\" el mismo día. Financia con sus derechos una fundación que regala libros a la infancia.",
+  "difficulty": "medium",
+  "question_en": "Which American country singer wrote and recorded \"Jolene\"?",
+  "options_en": [
+   "Dolly Parton",
+   "Loretta Lynn",
+   "Tammy Wynette",
+   "Patsy Cline"
+  ],
+  "context_en": "She wrote that song and \"I Will Always Love You\" on the same day. Her royalties fund a foundation that gives books to children."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué cantante estadounidense, siempre vestido de negro, grabó un disco en la cárcel de Folsom?",
+  "options": [
+   "Johnny Cash",
+   "Willie Nelson",
+   "Merle Haggard",
+   "Waylon Jennings"
+  ],
+  "answer_index": 0,
+  "context": "Actuó varias veces en prisiones y defendió públicamente la reforma penitenciaria. Su apodo, el Hombre de Negro, aludía a los pobres y los presos.",
+  "difficulty": "medium",
+  "question_en": "Which American singer, always dressed in black, recorded an album at Folsom Prison?",
+  "options_en": [
+   "Johnny Cash",
+   "Willie Nelson",
+   "Merle Haggard",
+   "Waylon Jennings"
+  ],
+  "context_en": "He played prisons several times and publicly backed penal reform. His nickname, the Man in Black, referred to the poor and the imprisoned."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué género jamaicano aportó el patrón rítmico que sostiene al reguetón?",
+  "options": [
+   "El dancehall",
+   "El rocksteady",
+   "El dub",
+   "El nyabinghi"
+  ],
+  "answer_index": 0,
+  "context": "La base, llamada dembow, procede de una canción de Shabba Ranks de 1990 que se reutilizó en Panamá y Puerto Rico.",
+  "difficulty": "medium",
+  "question_en": "Which Jamaican genre supplied the rhythmic pattern that underpins reggaeton?",
+  "options_en": [
+   "Dancehall",
+   "Rocksteady",
+   "Dub",
+   "Nyabinghi"
+  ],
+  "context_en": "The beat, called dembow, comes from a 1990 Shabba Ranks song that was reused in Panama and Puerto Rico."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué artista catalana mezcló flamenco y producción urbana en el álbum \"El mal querer\"?",
+  "options": [
+   "Rosalía",
+   "Bad Gyal",
+   "Zahara",
+   "La Mala Rodríguez"
+  ],
+  "answer_index": 0,
+  "context": "El disco de 2018 fue su trabajo de fin de carrera en el conservatorio, basado en una novela occitana del siglo XIII.",
+  "difficulty": "medium",
+  "question_en": "Which Catalan artist mixed flamenco and urban production on the album \"El mal querer\"?",
+  "options_en": [
+   "Rosalía",
+   "Bad Gyal",
+   "Zahara",
+   "La Mala Rodríguez"
+  ],
+  "context_en": "The 2018 record was her conservatory final project, based on a 13th-century Occitan novel."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué grupo de rock español lideró Enrique Bunbury hasta su disolución en 1996?",
+  "options": [
+   "Héroes del Silencio",
+   "Los Rodríguez",
+   "La Unión",
+   "Duncan Dhu"
+  ],
+  "answer_index": 0,
+  "context": "Nacidos en Zaragoza, tuvieron un éxito enorme en Alemania y en toda Latinoamérica. Se reunieron brevemente en 2007 para una gira de diez conciertos.",
+  "difficulty": "medium",
+  "question_en": "Which Spanish rock band did Enrique Bunbury lead until it split in 1996?",
+  "options_en": [
+   "Héroes del Silencio",
+   "Los Rodríguez",
+   "La Unión",
+   "Duncan Dhu"
+  ],
+  "context_en": "Formed in Zaragoza, they were hugely successful in Germany and across Latin America. They briefly reunited in 2007 for a ten-concert tour."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué grupo madrileño de la Movida grabó \"La chica de ayer\"?",
+  "options": [
+   "Nacha Pop",
+   "Radio Futura",
+   "Alaska y Dinarama",
+   "Los Secretos"
+  ],
+  "answer_index": 0,
+  "context": "Antonio Vega la compuso con veinte años y la canción se ha convertido en un himno generacional de la Transición española.",
+  "difficulty": "medium",
+  "question_en": "Which Madrid band from the Movida recorded \"La chica de ayer\"?",
+  "options_en": [
+   "Nacha Pop",
+   "Radio Futura",
+   "Alaska y Dinarama",
+   "Los Secretos"
+  ],
+  "context_en": "Antonio Vega wrote it at twenty and the song became a generational anthem of Spain's transition to democracy."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué compositor estadounidense fusionó jazz y música clásica en \"Rhapsody in Blue\"?",
+  "options": [
+   "George Gershwin",
+   "Cole Porter",
+   "Irving Berlin",
+   "Jerome Kern"
+  ],
+  "answer_index": 0,
+  "context": "La escribió en pocas semanas para un concierto de 1924 y la estrenó él mismo al piano. También compuso la ópera \"Porgy and Bess\".",
+  "difficulty": "medium",
+  "question_en": "Which American composer fused jazz and classical music in \"Rhapsody in Blue\"?",
+  "options_en": [
+   "George Gershwin",
+   "Cole Porter",
+   "Irving Berlin",
+   "Jerome Kern"
+  ],
+  "context_en": "He wrote it in a few weeks for a 1924 concert and premiered it himself at the piano. He also composed the opera \"Porgy and Bess\"."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué pianista y director estadounidense compuso \"Mood Indigo\" al frente de su orquesta de jazz?",
+  "options": [
+   "Duke Ellington",
+   "Count Basie",
+   "Fletcher Henderson",
+   "Benny Goodman"
+  ],
+  "answer_index": 0,
+  "context": "Escribía pensando en el sonido concreto de cada músico de su banda, no en instrumentos genéricos. Firmó más de mil composiciones a lo largo de medio siglo.",
+  "difficulty": "medium",
+  "question_en": "Which American pianist and bandleader composed \"Mood Indigo\" for his jazz orchestra?",
+  "options_en": [
+   "Duke Ellington",
+   "Count Basie",
+   "Fletcher Henderson",
+   "Benny Goodman"
+  ],
+  "context_en": "He wrote for the specific sound of each player in his band, not for generic instruments. He signed over a thousand compositions across half a century."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué cantante sudafricana, apodada \"Mamá África\", difundió la canción \"Pata Pata\"?",
+  "options": [
+   "Miriam Makeba",
+   "Yvonne Chaka Chaka",
+   "Brenda Fassie",
+   "Angélique Kidjo"
+  ],
+  "answer_index": 0,
+  "context": "Denunció el apartheid ante la ONU y su país le retiró el pasaporte durante treinta años. Vivió exiliada en Guinea y en Estados Unidos.",
+  "difficulty": "medium",
+  "question_en": "Which South African singer, nicknamed \"Mama Africa\", spread the song \"Pata Pata\"?",
+  "options_en": [
+   "Miriam Makeba",
+   "Yvonne Chaka Chaka",
+   "Brenda Fassie",
+   "Angélique Kidjo"
+  ],
+  "context_en": "She denounced apartheid at the UN and her country revoked her passport for thirty years. She lived in exile in Guinea and the United States."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué músico nigeriano creó el género llamado afrobeat?",
+  "options": [
+   "Fela Kuti",
+   "King Sunny Adé",
+   "Tony Allen",
+   "Ebenezer Obey"
+  ],
+  "answer_index": 0,
+  "context": "Mezcló el highlife y el jazz con el funk de James Brown. Sus canciones, de veinte minutos y letras políticas, le costaron detenciones y palizas.",
+  "difficulty": "medium",
+  "question_en": "Which Nigerian musician created the genre known as Afrobeat?",
+  "options_en": [
+   "Fela Kuti",
+   "King Sunny Adé",
+   "Tony Allen",
+   "Ebenezer Obey"
+  ],
+  "context_en": "He mixed highlife and jazz with James Brown's funk. His twenty-minute, politically charged songs brought him arrests and beatings."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué instrumento de cuerda de África occidental, con un gran calabazo como caja, tocan los griots?",
+  "options": [
+   "La kora",
+   "El balafón",
+   "El ngoni",
+   "La djembé"
+  ],
+  "answer_index": 0,
+  "context": "Sus cuerdas se reparten en dos hileras y se pulsan solo con los pulgares y los índices. Los griots son narradores y músicos que custodian la memoria de la comunidad.",
+  "difficulty": "medium",
+  "question_en": "Which West African string instrument, with a large gourd body, do griots play?",
+  "options_en": [
+   "The kora",
+   "The balafon",
+   "The ngoni",
+   "The djembe"
+  ],
+  "context_en": "Its strings run in two rows and are plucked only with thumbs and index fingers. Griots are storytellers and musicians who guard a community's memory."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué pinchadiscos del club Warehouse de Chicago es llamado el padrino del house?",
+  "options": [
+   "Frankie Knuckles",
+   "Larry Levan",
+   "Ron Hardy",
+   "Marshall Jefferson"
+  ],
+  "answer_index": 0,
+  "context": "A comienzos de los ochenta alargaba los temas disco con cajas de ritmos para que la pista no parase. El género tomó su nombre de aquella sala.",
+  "difficulty": "medium",
+  "question_en": "Which DJ at Chicago's Warehouse club is called the godfather of house?",
+  "options_en": [
+   "Frankie Knuckles",
+   "Larry Levan",
+   "Ron Hardy",
+   "Marshall Jefferson"
+  ],
+  "context_en": "In the early eighties he stretched disco tracks with drum machines so the floor never stopped. The genre took its name from that venue."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué estándar permite desde 1983 que instrumentos electrónicos y ordenadores se entiendan entre sí?",
+  "options": [
+   "El MIDI",
+   "El MP3",
+   "El USB",
+   "El jack"
+  ],
+  "answer_index": 0,
+  "context": "No transmite sonido, sino instrucciones: qué nota, con qué fuerza y durante cuánto tiempo. Los fabricantes lo acordaron sin cobrar licencias, y por eso sobrevive.",
+  "difficulty": "medium",
+  "question_en": "Which standard has allowed electronic instruments and computers to talk to each other since 1983?",
+  "options_en": [
+   "MIDI",
+   "MP3",
+   "USB",
+   "The jack plug"
+  ],
+  "context_en": "It carries no sound, only instructions: which note, how hard and for how long. Manufacturers agreed on it without licence fees, which is why it survives."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué compositor checo escribió la sinfonía \"Del Nuevo Mundo\"?",
+  "options": [
+   "Antonín Dvořák",
+   "Bedřich Smetana",
+   "Leoš Janáček",
+   "Bohuslav Martinů"
+  ],
+  "answer_index": 0,
+  "context": "La compuso mientras dirigía un conservatorio en Nueva York, influido por la música afroamericana y por melodías indígenas. Su tema lento se convirtió en la canción \"Goin' Home\".",
+  "difficulty": "hard",
+  "question_en": "Which Czech composer wrote the \"New World\" symphony?",
+  "options_en": [
+   "Antonín Dvořák",
+   "Bedřich Smetana",
+   "Leoš Janáček",
+   "Bohuslav Martinů"
+  ],
+  "context_en": "He composed it while running a conservatory in New York, influenced by African American music and indigenous melodies. Its slow theme became the song \"Goin' Home\"."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué compositor noruego escribió la música incidental para \"Peer Gynt\"?",
+  "options": [
+   "Edvard Grieg",
+   "Carl Nielsen",
+   "Johan Svendsen",
+   "Christian Sinding"
+  ],
+  "answer_index": 0,
+  "context": "Detestaba el encargo y llamó \"estiércol\" a alguna de sus piezas, entre ellas la que hoy es más famosa: \"En la gruta del rey de la montaña\".",
+  "difficulty": "hard",
+  "question_en": "Which Norwegian composer wrote the incidental music for \"Peer Gynt\"?",
+  "options_en": [
+   "Edvard Grieg",
+   "Carl Nielsen",
+   "Johan Svendsen",
+   "Christian Sinding"
+  ],
+  "context_en": "He loathed the commission and called some of its pieces \"dung\", among them the best known today: \"In the Hall of the Mountain King\"."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué pedagoga francesa formó en París a Copland, Philip Glass y Quincy Jones?",
+  "options": [
+   "Nadia Boulanger",
+   "Lili Boulanger",
+   "Germaine Tailleferre",
+   "Marguerite Long"
+  ],
+  "answer_index": 0,
+  "context": "Enseñó durante más de setenta años y fue la primera mujer en dirigir varias orquestas importantes. Su hermana, también compositora, murió muy joven.",
+  "difficulty": "hard",
+  "question_en": "Which French teacher trained Copland, Philip Glass and Quincy Jones in Paris?",
+  "options_en": [
+   "Nadia Boulanger",
+   "Lili Boulanger",
+   "Germaine Tailleferre",
+   "Marguerite Long"
+  ],
+  "context_en": "She taught for more than seventy years and was the first woman to conduct several major orchestras. Her sister, also a composer, died very young."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué pianista y compositora alemana del siglo XIX estuvo casada con Robert Schumann?",
+  "options": [
+   "Clara Wieck",
+   "Fanny Mendelssohn",
+   "Emilie Mayer",
+   "Josephine Lang"
+  ],
+  "answer_index": 0,
+  "context": "Dio conciertos durante más de sesenta años y sostuvo sola a ocho hijos tras el internamiento de su marido. Fue quien impuso la costumbre de tocar de memoria.",
+  "difficulty": "hard",
+  "question_en": "Which 19th-century German pianist and composer was married to Robert Schumann?",
+  "options_en": [
+   "Clara Wieck",
+   "Fanny Mendelssohn",
+   "Emilie Mayer",
+   "Josephine Lang"
+  ],
+  "context_en": "She performed for over sixty years and supported eight children alone after her husband was committed. She established the custom of playing from memory."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué obra de John Cage consiste enteramente en silencio interpretado por el músico?",
+  "options": [
+   "4′33″",
+   "Imaginary Landscape",
+   "Sonatas e interludios",
+   "Europeras"
+  ],
+  "answer_index": 0,
+  "context": "El intérprete se sienta y no toca nada durante tres movimientos. La pieza propone que la música real son los ruidos de la sala y del público.",
+  "difficulty": "hard",
+  "question_en": "Which John Cage work consists entirely of silence performed by the musician?",
+  "options_en": [
+   "4′33″",
+   "Imaginary Landscape",
+   "Sonatas and Interludes",
+   "Europeras"
+  ],
+  "context_en": "The performer sits and plays nothing across three movements. The piece argues that the real music is the noise of the room and the audience."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué compositor griego, también arquitecto, aplicó las matemáticas a la música estocástica?",
+  "options": [
+   "Iannis Xenakis",
+   "Mikis Theodorakis",
+   "Manos Hadjidakis",
+   "Nikos Skalkottas"
+  ],
+  "answer_index": 0,
+  "context": "Trabajó con Le Corbusier y diseñó el pabellón Philips de la Exposición de Bruselas. Componía calculando nubes de sonidos con leyes de probabilidad.",
+  "difficulty": "hard",
+  "question_en": "Which Greek composer, also an architect, applied mathematics to stochastic music?",
+  "options_en": [
+   "Iannis Xenakis",
+   "Mikis Theodorakis",
+   "Manos Hadjidakis",
+   "Nikos Skalkottas"
+  ],
+  "context_en": "He worked with Le Corbusier and designed the Philips Pavilion at the Brussels Expo. He composed by calculating clouds of sound with laws of probability."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué compositor estonio desarrolló el estilo minimalista que llamó tintinnabuli?",
+  "options": [
+   "Arvo Pärt",
+   "Veljo Tormis",
+   "Erkki-Sven Tüür",
+   "Eduard Tubin"
+  ],
+  "answer_index": 0,
+  "context": "Tras una crisis creativa pasó años estudiando canto gregoriano antes de encontrar ese lenguaje. Su nombre alude al sonido de las campanillas.",
+  "difficulty": "hard",
+  "question_en": "Which Estonian composer developed the minimalist style he called tintinnabuli?",
+  "options_en": [
+   "Arvo Pärt",
+   "Veljo Tormis",
+   "Erkki-Sven Tüür",
+   "Eduard Tubin"
+  ],
+  "context_en": "After a creative crisis he spent years studying Gregorian chant before finding that language. Its name evokes the sound of small bells."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué compositor estadounidense escribió la ópera minimalista \"Einstein on the Beach\"?",
+  "options": [
+   "Philip Glass",
+   "Steve Reich",
+   "Terry Riley",
+   "John Adams"
+  ],
+  "answer_index": 0,
+  "context": "La obra dura más de cuatro horas sin intermedio y el público puede entrar y salir. Su autor conducía un taxi en Nueva York mientras la estrenaba.",
+  "difficulty": "hard",
+  "question_en": "Which American composer wrote the minimalist opera \"Einstein on the Beach\"?",
+  "options_en": [
+   "Philip Glass",
+   "Steve Reich",
+   "Terry Riley",
+   "John Adams"
+  ],
+  "context_en": "The work runs over four hours with no interval and the audience may come and go. Its composer was driving a New York taxi when it premiered."
+ },
+ {
+  "category": "musica",
+  "question": "¿A qué ópera de Puccini pertenece el aria \"Nessun dorma\"?",
+  "options": [
+   "Turandot",
+   "Tosca",
+   "Manon Lescaut",
+   "La rondine"
+  ],
+  "answer_index": 0,
+  "context": "El compositor murió antes de terminarla y el final lo completó Franco Alfano. En su estreno, Toscanini detuvo la función donde se había interrumpido la escritura.",
+  "difficulty": "hard",
+  "question_en": "Which Puccini opera does the aria \"Nessun dorma\" belong to?",
+  "options_en": [
+   "Turandot",
+   "Tosca",
+   "Manon Lescaut",
+   "La rondine"
+  ],
+  "context_en": "The composer died before finishing it and Franco Alfano completed the ending. At the premiere, Toscanini stopped where the writing had broken off."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué soprano nacida en Nueva York y de origen griego renovó la interpretación operística?",
+  "options": [
+   "Maria Callas",
+   "Renata Tebaldi",
+   "Joan Sutherland",
+   "Montserrat Caballé"
+  ],
+  "answer_index": 0,
+  "context": "Recuperó óperas del belcanto olvidadas y llevó a escena una actuación teatral inédita hasta entonces. Su rivalidad con Renata Tebaldi llenó la prensa de los años cincuenta.",
+  "difficulty": "hard",
+  "question_en": "Which soprano born in New York to Greek parents transformed operatic performance?",
+  "options_en": [
+   "Maria Callas",
+   "Renata Tebaldi",
+   "Joan Sutherland",
+   "Montserrat Caballé"
+  ],
+  "context_en": "She revived forgotten bel canto operas and brought an unprecedented acting intensity to the stage. Her rivalry with Renata Tebaldi filled the fifties press."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué tenor napolitano fue el primer cantante de ópera en vender millones de discos?",
+  "options": [
+   "Enrico Caruso",
+   "Beniamino Gigli",
+   "Tito Schipa",
+   "Giuseppe di Stefano"
+  ],
+  "answer_index": 0,
+  "context": "Grabó desde 1902 con la técnica acústica, cantando hacia una bocina. Su éxito convirtió al gramófono en un aparato de consumo masivo.",
+  "difficulty": "hard",
+  "question_en": "Which Neapolitan tenor was the first opera singer to sell millions of records?",
+  "options_en": [
+   "Enrico Caruso",
+   "Beniamino Gigli",
+   "Tito Schipa",
+   "Giuseppe di Stefano"
+  ],
+  "context_en": "He recorded from 1902 with the acoustic method, singing into a horn. His success turned the gramophone into a mass consumer device."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué castrato italiano pasó dos décadas cantando en la corte española de Felipe V?",
+  "options": [
+   "Farinelli",
+   "Caffarelli",
+   "Senesino",
+   "Porporino"
+  ],
+  "answer_index": 0,
+  "context": "Lo llamaron para aliviar la melancolía del rey y acabó como consejero y organizador de la ópera cortesana. Está enterrado en Bolonia.",
+  "difficulty": "hard",
+  "question_en": "Which Italian castrato spent two decades singing at the Spanish court of Philip V?",
+  "options_en": [
+   "Farinelli",
+   "Caffarelli",
+   "Senesino",
+   "Porporino"
+  ],
+  "context_en": "He was summoned to ease the king's melancholy and ended up an adviser and organiser of court opera. He is buried in Bologna."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué forma barroca alterna un pequeño grupo solista con toda la orquesta?",
+  "options": [
+   "El concerto grosso",
+   "La fuga",
+   "La suite",
+   "El oratorio"
+  ],
+  "answer_index": 0,
+  "context": "El grupo pequeño se llama concertino y el conjunto, ripieno. Corelli lo consolidó y Händel y Bach escribieron colecciones célebres.",
+  "difficulty": "hard",
+  "question_en": "Which Baroque form alternates a small solo group with the full orchestra?",
+  "options_en": [
+   "The concerto grosso",
+   "The fugue",
+   "The suite",
+   "The oratorio"
+  ],
+  "context_en": "The small group is called the concertino and the full body the ripieno. Corelli established it, and Handel and Bach wrote famous sets."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué nombre recibe la voz masculina que canta en el registro agudo propio de una contralto?",
+  "options": [
+   "Contratenor",
+   "Barítono",
+   "Bajo profundo",
+   "Tenor lírico"
+  ],
+  "answer_index": 0,
+  "context": "Usa el registro de falsete y recuperó en el siglo XX los papeles escritos para castrati. Alfred Deller impulsó su renacimiento en los años cuarenta.",
+  "difficulty": "hard",
+  "question_en": "What is the male voice that sings in the high register of a contralto called?",
+  "options_en": [
+   "Countertenor",
+   "Baritone",
+   "Basso profondo",
+   "Lyric tenor"
+  ],
+  "context_en": "It uses the falsetto register and in the 20th century reclaimed roles written for castrati. Alfred Deller drove its revival in the forties."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué escala de cinco sonidos sostiene buena parte de la música folclórica del mundo?",
+  "options": [
+   "La pentatónica",
+   "La cromática",
+   "La de tonos enteros",
+   "La octatónica"
+  ],
+  "answer_index": 0,
+  "context": "Se obtiene tocando solo las teclas negras del piano. Al carecer de semitonos, cualquier combinación de sus notas suena consonante.",
+  "difficulty": "hard",
+  "question_en": "Which five-note scale underpins much of the world's folk music?",
+  "options_en": [
+   "The pentatonic",
+   "The chromatic",
+   "The whole-tone",
+   "The octatonic"
+  ],
+  "context_en": "You get it by playing only the black keys of the piano. Having no semitones, any combination of its notes sounds consonant."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué modo se obtiene al tocar las teclas blancas del piano empezando por la nota re?",
+  "options": [
+   "El dórico",
+   "El frigio",
+   "El lidio",
+   "El mixolidio"
+  ],
+  "answer_index": 0,
+  "context": "Suena menor pero con la sexta elevada, lo que le da un color menos sombrío. Aparece mucho en el jazz modal y en la música celta.",
+  "difficulty": "hard",
+  "question_en": "Which mode do you get by playing the white keys of the piano starting on D?",
+  "options_en": [
+   "Dorian",
+   "Phrygian",
+   "Lydian",
+   "Mixolydian"
+  ],
+  "context_en": "It sounds minor but with a raised sixth, giving it a less sombre colour. It appears often in modal jazz and in Celtic music."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué compositor brasileño escribió las \"Bachianas Brasileiras\"?",
+  "options": [
+   "Heitor Villa-Lobos",
+   "Alberto Nepomuceno",
+   "Camargo Guarnieri",
+   "Francisco Mignone"
+  ],
+  "answer_index": 0,
+  "context": "La serie adapta el lenguaje de Bach al folclore de su país, y una de sus piezas está escrita para soprano y ocho violonchelos.",
+  "difficulty": "hard",
+  "question_en": "Which Brazilian composer wrote the \"Bachianas Brasileiras\"?",
+  "options_en": [
+   "Heitor Villa-Lobos",
+   "Alberto Nepomuceno",
+   "Camargo Guarnieri",
+   "Francisco Mignone"
+  ],
+  "context_en": "The series adapts Bach's language to his country's folk music, and one of its pieces is scored for soprano and eight cellos."
+ },
+ {
+  "category": "musica",
+  "question": "¿Qué director venezolano formado en El Sistema dirigió la Filarmónica de Los Ángeles?",
+  "options": [
+   "Gustavo Dudamel",
+   "Rafael Payare",
+   "Diego Matheuz",
+   "Christian Vásquez"
+  ],
+  "answer_index": 0,
+  "context": "El Sistema es un programa público que enseña música a la infancia en orquestas de barrio. Empezó dirigiendo la Orquesta Simón Bolívar siendo aún adolescente.",
+  "difficulty": "hard",
+  "question_en": "Which Venezuelan conductor trained in El Sistema led the Los Angeles Philharmonic?",
+  "options_en": [
+   "Gustavo Dudamel",
+   "Rafael Payare",
+   "Diego Matheuz",
+   "Christian Vásquez"
+  ],
+  "context_en": "El Sistema is a public programme teaching children music in neighbourhood orchestras. He began conducting the Simón Bolívar Orchestra while still a teenager."
+ }
+]
