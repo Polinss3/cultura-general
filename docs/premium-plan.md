@@ -363,14 +363,17 @@ que queda es **contenido** (el catálogo PRO) y los pasos de rollout que depende
 - Anuncios: perfil `production` en `live` con todos los placements; "Sin anuncios" es
   beneficio PRO (ver `docs/ads-inhouse.md`).
 
-**Bloqueante: el catálogo PRO**
+**El catálogo PRO: hecho (2026-09-13)**
 
-1. Escribir y revisar el catálogo bilingüe de **2.000 preguntas PRO** en
-   `data/questions-pro-v1-2000.json` (estructura en `data/README-pro-questions.md`) y
-   ejecutar `npm run build:questions:pro`, que valida y genera
-   `supabase/pro_questions_seed_v1.sql`.
-2. Generar el manifiesto de Aventura 201-400 (`npm run build:adventure:400`).
-3. Aplicar a mano, en este orden y solo cuando la 2.2.0 esté lista para enviar:
+1. ~~Escribir y revisar el catálogo bilingüe de 2.000 preguntas PRO.~~ **Hecho.** Las
+   13 categorías están en `data/pro/<categoria>-{1,2,3}.json` y se ensamblan con
+   `node scripts/assemble-pro-questions.mjs` en `data/questions-pro-v1-2000.json`:
+   2.000 preguntas ES/EN (401 easy, 897 medium, 702 hard), sin errores de validación
+   ni duplicados contra las 2.000 del core de producción.
+   `npm run build:questions:pro` ya ha generado `supabase/pro_questions_seed_v1.sql`.
+2. ~~Generar el manifiesto de Aventura 201-400.~~ **Hecho:**
+   `supabase/adventure_400_rollout.sql` regenerado con `npm run build:adventure:400`.
+3. **Pendiente.** Aplicar a mano, en este orden y solo cuando la 2.2.0 esté lista para enviar:
    `supabase/pro_question_catalog_v1.sql` → `supabase/pro_questions_seed_v1.sql` →
    `supabase/adventure_400_rollout.sql`. Viven fuera de `migrations/` a propósito;
    nunca con `db push`. Las builds 2.1.x siguen operando dentro de 1-200.
