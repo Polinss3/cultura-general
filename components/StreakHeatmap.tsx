@@ -1,15 +1,18 @@
 import { useState, useMemo, useCallback } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from 'expo-router';
 import { fetchDailyActivity } from '@/lib/db';
 import { getPlayedDates } from '@/lib/dailyRoute';
+import { feedback } from '@/lib/feedback';
+import { StreakSheet } from '@/components/StreakSheet';
 import { useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, cardShadow } from '@/constants/theme';
 
 interface Props {
   userId: string;
   streak: number;
+  bestStreak: number;
 }
 
 const DAYS = 14;
@@ -24,10 +27,11 @@ function squareColor(intensity: number, C: Palette, isDark: boolean): string {
   return steps[Math.min(intensity, steps.length) - 1];
 }
 
-export function StreakHeatmap({ userId, streak }: Props) {
+export function StreakHeatmap({ userId, streak, bestStreak }: Props) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
   const [intensities, setIntensities] = useState<number[]>(() => new Array(DAYS).fill(0));
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   // Últimos 14 días (UTC, coherente con el resto de la app), terminando hoy.
   const days = useMemo(() => {
@@ -57,15 +61,24 @@ export function StreakHeatmap({ userId, streak }: Props) {
   );
 
   return (
-    <View style={{
-      marginTop: 12,
-      backgroundColor: C.surface,
-      borderRadius: Radius.cardLg,
-      borderWidth: 1,
-      borderColor: C.border,
-      padding: 10,
-      ...cardShadow(isDark),
-    }}>
+    <>
+    {/* Pulsar la tarjeta abre la sheet con el calendario por meses: aquí
+        solo caben las dos últimas semanas. */}
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={t('streak.openCalendar')}
+      onPress={() => { feedback.tap(); setSheetOpen(true); }}
+      style={({ pressed }) => ({
+        marginTop: 12,
+        backgroundColor: C.surface,
+        borderRadius: Radius.cardLg,
+        borderWidth: 1,
+        borderColor: C.border,
+        padding: 10,
+        opacity: pressed ? 0.8 : 1,
+        ...cardShadow(isDark),
+      })}
+    >
       {/* Racha */}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11, marginBottom: 8 }}>
         <View style={{
@@ -106,6 +119,15 @@ export function StreakHeatmap({ userId, streak }: Props) {
           );
         })}
       </View>
-    </View>
+    </Pressable>
+
+    <StreakSheet
+      visible={sheetOpen}
+      userId={userId}
+      streak={streak}
+      bestStreak={bestStreak}
+      onClose={() => setSheetOpen(false)}
+    />
+    </>
   );
 }

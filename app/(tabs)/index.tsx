@@ -20,6 +20,7 @@ import { DailyRouteBanner } from '@/components/DailyRouteBanner';
 import { DailyChest } from '@/components/DailyChest';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
 import { LeagueBadge } from '@/components/LeagueBadge';
+import { ProBadge } from '@/components/ProBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { useIsPro } from '@/hooks/usePremium';
 import { PRO_ACCENT } from '@/lib/pro';
@@ -187,13 +188,22 @@ export default function HomeScreen() {
                 {t('home.greeting', { name: displayName })}
               </Text>
               {!guest && profile && (
-                <Pressable
-                  onPress={() => offline ? lockedTap() : router.push('/leagues' as any)}
-                  style={{ marginTop: 6, alignSelf: 'flex-start' }}
-                  hitSlop={8}
-                >
-                  <LeagueBadge division={profile.league_division ?? 0} variant="chip" />
-                </Pressable>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6, alignSelf: 'flex-start' }}>
+                  <Pressable
+                    onPress={() => offline ? lockedTap() : router.push('/leagues' as any)}
+                    hitSlop={8}
+                  >
+                    <LeagueBadge division={profile.league_division ?? 0} variant="chip" />
+                  </Pressable>
+                  {/* El sello PRO va pegado a la liga: son las dos cosas que
+                      el usuario "tiene", y juntas se leen como una sola línea
+                      de estatus. */}
+                  {isPro && (
+                    <Pressable onPress={() => router.push('/premium' as any)} hitSlop={8}>
+                      <ProBadge variant="chip" />
+                    </Pressable>
+                  )}
+                </View>
               )}
             </View>
             <Pressable onPress={() => guest ? goToAuth() : offline ? lockedTap() : router.push('/profile')}>
@@ -239,7 +249,7 @@ export default function HomeScreen() {
               </View>
             </Pressable>
           ) : user ? (
-            <StreakHeatmap userId={user.id} streak={profile?.streak ?? 0} />
+            <StreakHeatmap userId={user.id} streak={profile?.streak ?? 0} bestStreak={profile?.best_streak ?? 0} />
           ) : (
             <View style={{
               marginTop: 14, backgroundColor: C.surface, borderRadius: Radius.cardLg,
@@ -456,6 +466,35 @@ export default function HomeScreen() {
           </View>
         </View>
 
+        {/* Sala PRO: cierra el bloque de modos de juego, justo antes de las
+            misiones. Entra todo el mundo: para quien no la tiene, es el
+            escaparate; para quien sí, el acceso a sus modos. */}
+        <Pressable
+          onPress={() => router.push('/premium' as any)}
+          style={{ paddingHorizontal: Space.screen, marginTop: 10 }}
+        >
+          <LinearGradient
+            colors={[alpha(PRO_ACCENT, isDark ? 0.3 : 0.15), alpha(PRO_ACCENT, isDark ? 0.13 : 0.055)]}
+            start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
+            style={{
+              flexDirection: 'row', alignItems: 'center', gap: 13,
+              borderRadius: 18, padding: 16,
+              borderWidth: 1.5, borderColor: alpha(PRO_ACCENT, 0.36),
+            }}
+          >
+            <Text style={{ fontSize: 26 }}>✨</Text>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 15 }}>
+                {t('pro.room.title')}
+              </Text>
+              <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>
+                {isPro ? t('pro.room.homeSubtitlePro') : t('pro.room.homeSubtitleFree')}
+              </Text>
+            </View>
+            <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>
+          </LinearGradient>
+        </Pressable>
+
         {/* Misiones de hoy (venían de Arena) */}
         {economyOn && missions.length > 0 && (
           <View style={{ paddingHorizontal: Space.screen, marginTop: 20 }}>
@@ -560,34 +599,6 @@ export default function HomeScreen() {
             </Pressable>
           </View>
         )}
-
-        {/* Sala PRO: entra todo el mundo. Para quien no la tiene, es el
-            escaparate; para quien sí, el acceso a sus modos. */}
-        <Pressable
-          onPress={() => router.push('/premium' as any)}
-          style={{ paddingHorizontal: Space.screen, marginTop: 14 }}
-        >
-          <LinearGradient
-            colors={[alpha(PRO_ACCENT, isDark ? 0.3 : 0.15), alpha(PRO_ACCENT, isDark ? 0.13 : 0.055)]}
-            start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-            style={{
-              flexDirection: 'row', alignItems: 'center', gap: 13,
-              borderRadius: 18, padding: 16,
-              borderWidth: 1.5, borderColor: alpha(PRO_ACCENT, 0.36),
-            }}
-          >
-            <Text style={{ fontSize: 26 }}>✨</Text>
-            <View style={{ flex: 1, gap: 2 }}>
-              <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 15 }}>
-                {t('pro.room.title')}
-              </Text>
-              <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>
-                {isPro ? t('pro.room.homeSubtitlePro') : t('pro.room.homeSubtitleFree')}
-              </Text>
-            </View>
-            <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>
-          </LinearGradient>
-        </Pressable>
 
         {economyOn && (
           <View style={{ flexDirection: 'row', gap: 10, paddingHorizontal: Space.screen, marginTop: 14 }}>

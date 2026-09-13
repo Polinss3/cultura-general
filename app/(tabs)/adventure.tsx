@@ -42,6 +42,8 @@ import {
 import { createAdventureProgressRepository } from '@/lib/adventure-progress';
 import { useAdventureAccess } from '@/hooks/useAdventureAccess';
 import { ProGate } from '@/components/ProGate';
+import { ProBadge } from '@/components/ProBadge';
+import { ADVENTURE_FREE_CHAPTERS } from '@/lib/pro';
 import { prefetchAdventureQuestionBank } from '@/lib/adventure-questions';
 import {
   bumpMissions,
@@ -232,7 +234,12 @@ export default function AdventureScreen() {
           <View style={{ paddingHorizontal: Space.screen, paddingTop: 10, paddingBottom: 10, gap: 12 }}>
         <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
           <View style={{ flex: 1, gap: 2 }}>
-            <Text style={{ color: C.text, ...Type.screenTitle }}>{t('adventure.title')}</Text>
+            {/* Quien paga la Aventura completa lo ve junto al título: es el
+                beneficio principal de PRO y aquí es donde se disfruta. */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Text style={{ color: C.text, ...Type.screenTitle }}>{t('adventure.title')}</Text>
+              {access.isPro && <ProBadge />}
+            </View>
             <Text style={{ color: C.textMuted, ...Type.secondary }}>
               {t('adventure.progressSummaryStars', { completed, total: ADVENTURE_MAX_LEVELS, stars: totalStars, maxStars: ADVENTURE_MAX_LEVELS * 3 })}
             </Text>
@@ -290,9 +297,13 @@ export default function AdventureScreen() {
           >
             <RelicBadge relic={chapterRelic} size={48} />
             <View style={{ flex: 1, gap: 2 }}>
-              <Text style={{ color: readableOn(region.accent, isDark), ...Type.sectionLabel }}>
-                {t('adventure.chapter', { number: region.number })}
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                <Text style={{ color: readableOn(region.accent, isDark), ...Type.sectionLabel }}>
+                  {t('adventure.chapter', { number: region.number })}
+                </Text>
+                {/* Capítulo de pago que el usuario tiene abierto gracias a PRO. */}
+                {access.isPro && region.number > ADVENTURE_FREE_CHAPTERS && <ProBadge />}
+              </View>
               <Text style={{ color: C.text, ...Type.cardTitle }}>{regionTitle}</Text>
               <Text style={{ color: C.textMuted, ...Type.small }}>
                 {t('adventure.levelRange', { start: region.startLevel, end: region.endLevel })} · {regionStars}/{regionMaxStars} ⭐

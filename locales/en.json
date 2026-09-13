@@ -439,7 +439,12 @@
     "days_other": "{{count}} days",
     "best": "Best streak: {{count}}",
     "nextMilestone_one": "{{count}} day to the {{milestone}} 🔥 milestone",
-    "nextMilestone_other": "{{count}} days to the {{milestone}} 🔥 milestone"
+    "nextMilestone_other": "{{count}} days to the {{milestone}} 🔥 milestone",
+    "openCalendar": "See your streak calendar",
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month",
+    "playedThisMonth_one": "{{count}} day played this month",
+    "playedThisMonth_other": "{{count}} days played this month"
   },
   "mastery": {
     "level": "Level {{level}}",

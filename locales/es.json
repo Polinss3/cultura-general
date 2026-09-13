@@ -439,7 +439,12 @@
     "days_other": "{{count}} días",
     "best": "Mejor racha: {{count}}",
     "nextMilestone_one": "{{count}} día para el hito de {{milestone}} 🔥",
-    "nextMilestone_other": "{{count}} días para el hito de {{milestone}} 🔥"
+    "nextMilestone_other": "{{count}} días para el hito de {{milestone}} 🔥",
+    "openCalendar": "Ver el calendario de tu racha",
+    "previousMonth": "Mes anterior",
+    "nextMonth": "Mes siguiente",
+    "playedThisMonth_one": "{{count}} día jugado este mes",
+    "playedThisMonth_other": "{{count}} días jugados este mes"
   },
   "mastery": {
     "level": "Nivel {{level}}",
