@@ -1,0 +1,1073 @@
+[
+ {
+  "category": "literatura",
+  "question": "¿Cómo se llama cada grupo de versos separados por un espacio dentro de un poema?",
+  "options": [
+   "La estrofa",
+   "El párrafo",
+   "La sílaba",
+   "El canto"
+  ],
+  "answer_index": 0,
+  "context": "Existen muchas con nombre propio, como el terceto, el cuarteto o la décima. En prosa, el bloque equivalente es el párrafo.",
+  "difficulty": "easy",
+  "question_en": "What is each group of lines separated by a space within a poem called?",
+  "options_en": [
+   "The stanza",
+   "The paragraph",
+   "The syllable",
+   "The canto"
+  ],
+  "context_en": "Many have their own names, such as the tercet, the quatrain or the décima. In prose, the equivalent block is the paragraph."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novela de Cervantes protagoniza un hidalgo que confunde unos molinos con gigantes?",
+  "options": [
+   "Don Quijote de la Mancha",
+   "Los trabajos de Persiles",
+   "La Galatea",
+   "Novelas ejemplares"
+  ],
+  "answer_index": 0,
+  "context": "Está considerada la primera novela moderna y se ha traducido a más de cincuenta lenguas. Su autor perdió el uso de una mano en la batalla de Lepanto.",
+  "difficulty": "easy",
+  "question_en": "Which Cervantes novel stars a gentleman who mistakes windmills for giants?",
+  "options_en": [
+   "Don Quixote",
+   "The Travails of Persiles",
+   "La Galatea",
+   "Exemplary Novels"
+  ],
+  "context_en": "It is regarded as the first modern novel and has been translated into over fifty languages. Its author lost the use of a hand at the battle of Lepanto."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritora creó a la niñera mágica que llega volando con un paraguas?",
+  "options": [
+   "P. L. Travers",
+   "Enid Blyton",
+   "Beatrix Potter",
+   "Edith Nesbit"
+  ],
+  "answer_index": 0,
+  "context": "Nació en Australia y detestó la adaptación que Disney hizo de su personaje en 1964. Lloró en el estreno, y no de emoción.",
+  "difficulty": "easy",
+  "question_en": "Which writer created the magical nanny who arrives flying with an umbrella?",
+  "options_en": [
+   "P. L. Travers",
+   "Enid Blyton",
+   "Beatrix Potter",
+   "Edith Nesbit"
+  ],
+  "context_en": "She was born in Australia and hated Disney's 1964 adaptation of her character. She cried at the premiere, and not from joy."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué libro de Rudyard Kipling narra la vida del niño Mowgli entre los animales?",
+  "options": [
+   "El libro de la selva",
+   "Kim",
+   "Capitanes intrépidos",
+   "El hombre que pudo reinar"
+  ],
+  "answer_index": 0,
+  "context": "Su autor nació en Bombay y fue el primer escritor en lengua inglesa en ganar el Nobel. El escultismo tomó de ese libro los nombres de sus grupos infantiles.",
+  "difficulty": "easy",
+  "question_en": "Which Rudyard Kipling book tells of the boy Mowgli living among animals?",
+  "options_en": [
+   "The Jungle Book",
+   "Kim",
+   "Captains Courageous",
+   "The Man Who Would Be King"
+  ],
+  "context_en": "Its author was born in Bombay and was the first English-language writer to win the Nobel. Scouting took the names of its youngest groups from that book."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Cómo se llama la lista de capítulos con sus páginas que acompaña a un libro?",
+  "options": [
+   "El índice",
+   "La portada",
+   "El colofón",
+   "La solapa"
+  ],
+  "answer_index": 0,
+  "context": "El colofón es la nota final con los datos de impresión, y la solapa, el pliegue de la cubierta donde suele ir la biografía del autor.",
+  "difficulty": "easy",
+  "question_en": "What is the list of chapters with their page numbers in a book called?",
+  "options_en": [
+   "The table of contents",
+   "The cover",
+   "The colophon",
+   "The flap"
+  ],
+  "context_en": "The colophon is the closing note with printing details, and the flap is the folded cover panel that usually carries the author's biography."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novela de Michael Ende cuenta cómo un niño entra en el libro que está leyendo?",
+  "options": [
+   "La historia interminable",
+   "Momo",
+   "El ponche de los deseos",
+   "Jim Botón"
+  ],
+  "answer_index": 0,
+  "context": "La edición original se imprimió con dos colores de tinta para distinguir los dos mundos. El autor renegó públicamente de la película alemana de 1984.",
+  "difficulty": "easy",
+  "question_en": "Which Michael Ende novel tells of a boy who enters the book he is reading?",
+  "options_en": [
+   "The Neverending Story",
+   "Momo",
+   "The Night of Wishes",
+   "Jim Button"
+  ],
+  "context_en": "The original edition was printed in two ink colours to separate the two worlds. The author publicly disowned the 1984 German film."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué personaje de Astrid Lindgren es una niña pelirroja de fuerza descomunal?",
+  "options": [
+   "Pippi Calzaslargas",
+   "Heidi",
+   "Matilda",
+   "Momo"
+  ],
+  "answer_index": 0,
+  "context": "La autora inventó el personaje para su hija enferma, que le pidió una historia con ese nombre. Vive sola, con un caballo y un mono, sin ningún adulto que la mande.",
+  "difficulty": "easy",
+  "question_en": "Which Astrid Lindgren character is a red-haired girl of extraordinary strength?",
+  "options_en": [
+   "Pippi Longstocking",
+   "Heidi",
+   "Matilda",
+   "Momo"
+  ],
+  "context_en": "The author invented her for her sick daughter, who asked for a story with that name. She lives alone with a horse and a monkey, with no adult in charge."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué diario recoge los dos años que pasó escondida una adolescente judía en Ámsterdam?",
+  "options": [
+   "El diario de Ana Frank",
+   "El diario de Etty Hillesum",
+   "El diario de Nikolái",
+   "Cartas a Theo"
+  ],
+  "answer_index": 0,
+  "context": "Su padre fue el único de los ocho escondidos que sobrevivió y publicó el cuaderno en 1947. Hoy la casa del canal es uno de los museos más visitados de Europa.",
+  "difficulty": "easy",
+  "question_en": "Which diary records the two years a Jewish teenager spent hidden in Amsterdam?",
+  "options_en": [
+   "The Diary of Anne Frank",
+   "The Diary of Etty Hillesum",
+   "Nikolai's Diary",
+   "Letters to Theo"
+  ],
+  "context_en": "Her father was the only one of the eight in hiding to survive, and published the notebook in 1947. The canal house is now one of Europe's most visited museums."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué género literario imagina futuros posibles a partir de avances científicos?",
+  "options": [
+   "La ciencia ficción",
+   "La novela histórica",
+   "El costumbrismo",
+   "La hagiografía"
+  ],
+  "answer_index": 0,
+  "context": "Suele situarse su nacimiento moderno en \"Frankenstein\", de 1818. A diferencia de la fantasía, busca explicaciones plausibles dentro de las leyes naturales.",
+  "difficulty": "easy",
+  "question_en": "Which literary genre imagines possible futures based on scientific advances?",
+  "options_en": [
+   "Science fiction",
+   "Historical fiction",
+   "Local colour writing",
+   "Hagiography"
+  ],
+  "context_en": "Its modern birth is usually placed with \"Frankenstein\", in 1818. Unlike fantasy, it seeks plausible explanations within natural laws."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Con qué fórmula empiezan tradicionalmente los cuentos populares en español?",
+  "options": [
+   "Érase una vez",
+   "Colorín colorado",
+   "Y comieron perdices",
+   "Cuentan las crónicas"
+  ],
+  "answer_index": 0,
+  "context": "\"Colorín colorado\" y \"comieron perdices\" son fórmulas de cierre, no de apertura. Cada lengua tiene la suya, y casi todas sitúan la historia en un tiempo impreciso.",
+  "difficulty": "easy",
+  "question_en": "Which formula traditionally opens folk tales in Spanish?",
+  "options_en": [
+   "Érase una vez",
+   "Colorín colorado",
+   "Y comieron perdices",
+   "Cuentan las crónicas"
+  ],
+  "context_en": "\"Colorín colorado\" and \"comieron perdices\" are closing formulas, not openings. Every language has its own, and nearly all place the story in a vague time."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novela de Émile Zola retrata una huelga de mineros en el norte de Francia?",
+  "options": [
+   "Germinal",
+   "Nana",
+   "La bestia humana",
+   "El vientre de París"
+  ],
+  "answer_index": 0,
+  "context": "Forma parte de un ciclo de veinte novelas sobre una misma familia a lo largo de generaciones. El autor bajó a las minas y tomó notas antes de escribirla.",
+  "difficulty": "medium",
+  "question_en": "Which Émile Zola novel portrays a miners' strike in northern France?",
+  "options_en": [
+   "Germinal",
+   "Nana",
+   "La Bête humaine",
+   "The Belly of Paris"
+  ],
+  "context_en": "It belongs to a twenty-novel cycle about one family across generations. The author went down the mines and took notes before writing it."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué filósofa francesa escribió el ensayo \"El segundo sexo\" en 1949?",
+  "options": [
+   "Simone de Beauvoir",
+   "Simone Weil",
+   "Hannah Arendt",
+   "Marguerite Yourcenar"
+  ],
+  "answer_index": 0,
+  "context": "De ese libro procede la idea de que no se nace mujer, sino que se llega a serlo. El Vaticano lo incluyó en su índice de libros prohibidos.",
+  "difficulty": "medium",
+  "question_en": "Which French philosopher wrote the essay \"The Second Sex\" in 1949?",
+  "options_en": [
+   "Simone de Beauvoir",
+   "Simone Weil",
+   "Hannah Arendt",
+   "Marguerite Yourcenar"
+  ],
+  "context_en": "The idea that one is not born but becomes a woman comes from that book. The Vatican placed it on its index of forbidden books."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novelista inglés ambientó sus historias en la región ficticia de Wessex?",
+  "options": [
+   "Thomas Hardy",
+   "George Meredith",
+   "Anthony Trollope",
+   "Samuel Butler"
+  ],
+  "answer_index": 0,
+  "context": "Recuperó ese nombre medieval para rebautizar el suroeste inglés donde vivía. Tras las críticas feroces a \"Jude el oscuro\" abandonó la novela y se dedicó a la poesía.",
+  "difficulty": "medium",
+  "question_en": "Which English novelist set his stories in the fictional region of Wessex?",
+  "options_en": [
+   "Thomas Hardy",
+   "George Meredith",
+   "Anthony Trollope",
+   "Samuel Butler"
+  ],
+  "context_en": "He revived that medieval name for the English south-west where he lived. After savage reviews of \"Jude the Obscure\" he abandoned the novel for poetry."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novela de E. M. Forster transcurre en la India colonial en torno a un juicio?",
+  "options": [
+   "Pasaje a la India",
+   "Howards End",
+   "Una habitación con vistas",
+   "Maurice"
+  ],
+  "answer_index": 0,
+  "context": "Fue su última novela publicada en vida, en 1924, y tardó diez años en escribirla. \"Maurice\" quedó inédita hasta después de su muerte por su tema homosexual.",
+  "difficulty": "medium",
+  "question_en": "Which E. M. Forster novel is set in colonial India around a trial?",
+  "options_en": [
+   "A Passage to India",
+   "Howards End",
+   "A Room with a View",
+   "Maurice"
+  ],
+  "context_en": "It was his last novel published in his lifetime, in 1924, and took ten years to write. \"Maurice\" stayed unpublished until after his death because of its gay subject."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor británico, antiguo agente de inteligencia, escribió \"El espía que surgió del frío\"?",
+  "options": [
+   "John le Carré",
+   "Frederick Forsyth",
+   "Len Deighton",
+   "Graham Greene"
+  ],
+  "answer_index": 0,
+  "context": "Trabajó para los servicios secretos británicos y usó seudónimo por ese motivo. Su personaje George Smiley es la antítesis exacta de James Bond.",
+  "difficulty": "medium",
+  "question_en": "Which British writer, a former intelligence officer, wrote \"The Spy Who Came in from the Cold\"?",
+  "options_en": [
+   "John le Carré",
+   "Frederick Forsyth",
+   "Len Deighton",
+   "Graham Greene"
+  ],
+  "context_en": "He worked for British intelligence and used a pen name for that reason. His character George Smiley is the exact antithesis of James Bond."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novela de George Eliot retrata la vida de una ciudad inglesa de provincias?",
+  "options": [
+   "Middlemarch",
+   "Cumbres borrascosas",
+   "Villette",
+   "Norte y sur"
+  ],
+  "answer_index": 0,
+  "context": "Virginia Woolf la llamó una de las pocas novelas inglesas escritas para personas adultas. Su autora firmaba con nombre de varón para que la tomaran en serio.",
+  "difficulty": "medium",
+  "question_en": "Which George Eliot novel portrays life in an English provincial town?",
+  "options_en": [
+   "Middlemarch",
+   "Wuthering Heights",
+   "Villette",
+   "North and South"
+  ],
+  "context_en": "Virginia Woolf called it one of the few English novels written for grown-up people. Its author signed with a man's name to be taken seriously."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novelista estadounidense contó el bombardeo de Dresde en \"Matadero cinco\"?",
+  "options": [
+   "Kurt Vonnegut",
+   "Joseph Heller",
+   "Norman Mailer",
+   "John Updike"
+  ],
+  "answer_index": 0,
+  "context": "Sobrevivió al bombardeo como prisionero de guerra, encerrado en un matadero subterráneo. Tardó más de veinte años en conseguir escribir sobre ello.",
+  "difficulty": "medium",
+  "question_en": "Which American novelist told of the bombing of Dresden in \"Slaughterhouse-Five\"?",
+  "options_en": [
+   "Kurt Vonnegut",
+   "Joseph Heller",
+   "Norman Mailer",
+   "John Updike"
+  ],
+  "context_en": "He survived the bombing as a prisoner of war, locked in an underground slaughterhouse. It took him over twenty years to manage to write about it."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor estadounidense formuló las tres leyes de la robótica?",
+  "options": [
+   "Isaac Asimov",
+   "Arthur C. Clarke",
+   "Robert Heinlein",
+   "Philip K. Dick"
+  ],
+  "answer_index": 0,
+  "context": "Era bioquímico y publicó libros sobre casi todas las materias, de la Biblia a la química. Sus leyes siguen citándose en debates reales sobre inteligencia artificial.",
+  "difficulty": "medium",
+  "question_en": "Which American writer formulated the three laws of robotics?",
+  "options_en": [
+   "Isaac Asimov",
+   "Arthur C. Clarke",
+   "Robert Heinlein",
+   "Philip K. Dick"
+  ],
+  "context_en": "He was a biochemist and published books on almost every subject, from the Bible to chemistry. His laws are still cited in real debates about artificial intelligence."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritora estadounidense imaginó un planeta sin sexos fijos en \"La mano izquierda de la oscuridad\"?",
+  "options": [
+   "Ursula K. Le Guin",
+   "Octavia Butler",
+   "Joanna Russ",
+   "Connie Willis"
+  ],
+  "answer_index": 0,
+  "context": "Era hija de dos antropólogos y construyó sus mundos como culturas completas. También escribió la saga juvenil de Terramar.",
+  "difficulty": "medium",
+  "question_en": "Which American writer imagined a planet without fixed sexes in \"The Left Hand of Darkness\"?",
+  "options_en": [
+   "Ursula K. Le Guin",
+   "Octavia Butler",
+   "Joanna Russ",
+   "Connie Willis"
+  ],
+  "context_en": "She was the daughter of two anthropologists and built her worlds as complete cultures. She also wrote the Earthsea books for younger readers."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novelista estadounidense escribió \"La carretera\" y \"No es país para viejos\"?",
+  "options": [
+   "Cormac McCarthy",
+   "Don DeLillo",
+   "Richard Ford",
+   "Thomas Pynchon"
+  ],
+  "answer_index": 0,
+  "context": "Escribía sin comillas ni casi puntuación y apenas concedió entrevistas. Pasó años viviendo con muy poco dinero antes de tener éxito comercial.",
+  "difficulty": "medium",
+  "question_en": "Which American novelist wrote \"The Road\" and \"No Country for Old Men\"?",
+  "options_en": [
+   "Cormac McCarthy",
+   "Don DeLillo",
+   "Richard Ford",
+   "Thomas Pynchon"
+  ],
+  "context_en": "He wrote without quotation marks and with almost no punctuation, and gave few interviews. He spent years living on very little before commercial success."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor estadounidense de terror publicó \"Carrie\" y \"Misery\"?",
+  "options": [
+   "Stephen King",
+   "Dean Koontz",
+   "Peter Straub",
+   "Clive Barker"
+  ],
+  "answer_index": 0,
+  "context": "Tiró a la basura el manuscrito de su primera novela y su mujer lo rescató. Publicó varios libros con seudónimo para comprobar si vendía por su nombre o por sus historias.",
+  "difficulty": "medium",
+  "question_en": "Which American horror writer published \"Carrie\" and \"Misery\"?",
+  "options_en": [
+   "Stephen King",
+   "Dean Koontz",
+   "Peter Straub",
+   "Clive Barker"
+  ],
+  "context_en": "He threw his first novel's manuscript in the bin and his wife fished it out. He published several books under a pen name to test whether he sold on his name or his stories."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novela de Patrick Süskind sigue a un asesino de olfato prodigioso en el París del siglo XVIII?",
+  "options": [
+   "El perfume",
+   "La paloma",
+   "El contrabajo",
+   "Un combate"
+  ],
+  "answer_index": 0,
+  "context": "Su autor vive apartado de la vida pública y rechaza premios y entrevistas. El libro se tradujo a casi cincuenta idiomas y tardó veinte años en llegar al cine.",
+  "difficulty": "medium",
+  "question_en": "Which Patrick Süskind novel follows a murderer with an extraordinary sense of smell in 18th-century Paris?",
+  "options_en": [
+   "Perfume",
+   "The Pigeon",
+   "The Double Bass",
+   "A Battle"
+  ],
+  "context_en": "Its author lives away from public life and turns down prizes and interviews. The book was translated into almost fifty languages and took twenty years to reach the screen."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor austriaco narró el final de la Europa anterior a las guerras en \"El mundo de ayer\"?",
+  "options": [
+   "Stefan Zweig",
+   "Joseph Roth",
+   "Robert Musil",
+   "Hermann Broch"
+  ],
+  "answer_index": 0,
+  "context": "Huyó del nazismo y se quitó la vida en Brasil en 1942, junto a su esposa. Fue uno de los autores más traducidos del mundo en los años treinta.",
+  "difficulty": "medium",
+  "question_en": "Which Austrian writer described the end of pre-war Europe in \"The World of Yesterday\"?",
+  "options_en": [
+   "Stefan Zweig",
+   "Joseph Roth",
+   "Robert Musil",
+   "Hermann Broch"
+  ],
+  "context_en": "He fled Nazism and took his own life in Brazil in 1942, together with his wife. He was one of the most translated authors in the world in the thirties."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novelista alemán escribió \"El lector\", sobre la culpa de la posguerra?",
+  "options": [
+   "Bernhard Schlink",
+   "Siegfried Lenz",
+   "Heinrich Böll",
+   "Uwe Timm"
+  ],
+  "answer_index": 0,
+  "context": "Es jurista y fue magistrado constitucional en un estado alemán. La novela plantea qué hacer con el amor hacia alguien que participó en el horror.",
+  "difficulty": "medium",
+  "question_en": "Which German novelist wrote \"The Reader\", about post-war guilt?",
+  "options_en": [
+   "Bernhard Schlink",
+   "Siegfried Lenz",
+   "Heinrich Böll",
+   "Uwe Timm"
+  ],
+  "context_en": "He is a jurist and served as a constitutional judge in a German state. The novel asks what to do with love for someone who took part in the horror."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritora argentina de terror publicó \"Nuestra parte de noche\"?",
+  "options": [
+   "Mariana Enriquez",
+   "Samanta Schweblin",
+   "Claudia Piñeiro",
+   "Selva Almada"
+  ],
+  "answer_index": 0,
+  "context": "Mezcla el horror gótico con la dictadura argentina y la marginalidad urbana. Ganó el Premio Herralde de Novela en 2019.",
+  "difficulty": "medium",
+  "question_en": "Which Argentine horror writer published \"Our Share of Night\"?",
+  "options_en": [
+   "Mariana Enriquez",
+   "Samanta Schweblin",
+   "Claudia Piñeiro",
+   "Selva Almada"
+  ],
+  "context_en": "She mixes gothic horror with Argentina's dictatorship and urban poverty. She won the Herralde Novel Prize in 2019."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritora mexicana entrelazó recetas de cocina y amores imposibles en \"Como agua para chocolate\"?",
+  "options": [
+   "Laura Esquivel",
+   "Ángeles Mastretta",
+   "Carmen Boullosa",
+   "Guadalupe Nettel"
+  ],
+  "answer_index": 0,
+  "context": "Cada capítulo empieza con una receta y la trama avanza entre fogones. La adaptación al cine de 1992 batió récords de taquilla para una película mexicana.",
+  "difficulty": "medium",
+  "question_en": "Which Mexican writer wove recipes and impossible love into \"Like Water for Chocolate\"?",
+  "options_en": [
+   "Laura Esquivel",
+   "Ángeles Mastretta",
+   "Carmen Boullosa",
+   "Guadalupe Nettel"
+  ],
+  "context_en": "Each chapter opens with a recipe and the plot advances around the stove. The 1992 film adaptation broke box office records for a Mexican film."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novelista valenciano escribió \"Cañas y barro\" y \"Sangre y arena\"?",
+  "options": [
+   "Vicente Blasco Ibáñez",
+   "Azorín",
+   "Gabriel Miró",
+   "Juan Gil-Albert"
+  ],
+  "answer_index": 0,
+  "context": "Fue diputado republicano, fundó un periódico y se exilió en Francia. Hollywood adaptó varias de sus novelas en los años veinte, con Rodolfo Valentino como protagonista.",
+  "difficulty": "medium",
+  "question_en": "Which Valencian novelist wrote \"Reeds and Mud\" and \"Blood and Sand\"?",
+  "options_en": [
+   "Vicente Blasco Ibáñez",
+   "Azorín",
+   "Gabriel Miró",
+   "Juan Gil-Albert"
+  ],
+  "context_en": "He was a republican MP, founded a newspaper and went into exile in France. Hollywood adapted several of his novels in the twenties, starring Rudolph Valentino."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué seudónimo adoptó el escritor alicantino José Martínez Ruiz?",
+  "options": [
+   "Azorín",
+   "Clarín",
+   "Fígaro",
+   "Juan de Mairena"
+  ],
+  "answer_index": 0,
+  "context": "Lo tomó del protagonista de una de sus propias novelas y acabó sustituyendo a su nombre real. Fue quien bautizó a la Generación del 98.",
+  "difficulty": "medium",
+  "question_en": "Which pen name did the writer José Martínez Ruiz, from Alicante, adopt?",
+  "options_en": [
+   "Azorín",
+   "Clarín",
+   "Fígaro",
+   "Juan de Mairena"
+  ],
+  "context_en": "He took it from the protagonist of one of his own novels and it replaced his real name. He was the one who named the Generation of '98."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué poeta sevillano de la Generación del 27 recibió el Nobel de Literatura en 1977?",
+  "options": [
+   "Vicente Aleixandre",
+   "Luis Cernuda",
+   "Manuel Altolaguirre",
+   "Emilio Prados"
+  ],
+  "answer_index": 0,
+  "context": "Se quedó en España tras la guerra, enfermo y en silencio, y su casa de Madrid fue refugio de poetas jóvenes. El premio se leyó entonces como un gesto hacia toda su generación.",
+  "difficulty": "medium",
+  "question_en": "Which Seville-born poet of the Generation of '27 received the Nobel Prize in 1977?",
+  "options_en": [
+   "Vicente Aleixandre",
+   "Luis Cernuda",
+   "Manuel Altolaguirre",
+   "Emilio Prados"
+  ],
+  "context_en": "He stayed in Spain after the war, ill and silent, and his Madrid house sheltered young poets. The prize was read at the time as a gesture towards his whole generation."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué poeta gaditano del 27 escribió \"Marinero en tierra\" y se exilió en Argentina?",
+  "options": [
+   "Rafael Alberti",
+   "Pedro Salinas",
+   "Jorge Guillén",
+   "Gerardo Diego"
+  ],
+  "answer_index": 0,
+  "context": "Empezó como pintor y sus poemas conservan esa mirada visual. Regresó a España en 1977 y fue elegido diputado ese mismo año.",
+  "difficulty": "medium",
+  "question_en": "Which Cádiz-born poet of the '27 group wrote \"Sailor on Land\" and went into exile in Argentina?",
+  "options_en": [
+   "Rafael Alberti",
+   "Pedro Salinas",
+   "Jorge Guillén",
+   "Gerardo Diego"
+  ],
+  "context_en": "He began as a painter and his poems keep that visual eye. He returned to Spain in 1977 and was elected an MP that same year."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritora catalana narró la guerra civil desde una portería en \"La plaza del Diamante\"?",
+  "options": [
+   "Mercè Rodoreda",
+   "Montserrat Roig",
+   "Víctor Català",
+   "Maria Aurèlia Capmany"
+  ],
+  "answer_index": 0,
+  "context": "Escribió la novela en Ginebra, durante un largo exilio. Está narrada en primera persona por una mujer que apenas entiende lo que le ocurre alrededor.",
+  "difficulty": "medium",
+  "question_en": "Which Catalan writer told of the civil war from a caretaker's flat in \"In Diamond Square\"?",
+  "options_en": [
+   "Mercè Rodoreda",
+   "Montserrat Roig",
+   "Víctor Català",
+   "Maria Aurèlia Capmany"
+  ],
+  "context_en": "She wrote the novel in Geneva during a long exile. It is narrated in the first person by a woman who barely understands what is happening around her."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué dramaturgo español estrenó \"Historia de una escalera\" en 1949?",
+  "options": [
+   "Antonio Buero Vallejo",
+   "Alfonso Sastre",
+   "Miguel Mihura",
+   "Enrique Jardiel Poncela"
+  ],
+  "answer_index": 0,
+  "context": "Había sido condenado a muerte tras la guerra y pasó seis años en prisión. Su obra abrió una vía de teatro social posible dentro de la censura franquista.",
+  "difficulty": "medium",
+  "question_en": "Which Spanish playwright premiered \"Story of a Stairway\" in 1949?",
+  "options_en": [
+   "Antonio Buero Vallejo",
+   "Alfonso Sastre",
+   "Miguel Mihura",
+   "Enrique Jardiel Poncela"
+  ],
+  "context_en": "He had been sentenced to death after the war and spent six years in prison. His play opened a path for social theatre possible under Franco's censorship."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué historietista español creó a los agentes secretos Mortadelo y Filemón?",
+  "options": [
+   "Francisco Ibáñez",
+   "Manuel Vázquez",
+   "Escobar",
+   "Jan"
+  ],
+  "answer_index": 0,
+  "context": "Dibujó la serie durante más de sesenta años en la editorial Bruguera y sus herederas. Trabajaba antes en un banco y dibujaba por las noches.",
+  "difficulty": "medium",
+  "question_en": "Which Spanish comics artist created the secret agents Mortadelo and Filemón?",
+  "options_en": [
+   "Francisco Ibáñez",
+   "Manuel Vázquez",
+   "Escobar",
+   "Jan"
+  ],
+  "context_en": "He drew the series for over sixty years for the publisher Bruguera and its successors. He previously worked in a bank and drew at night."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué cantar de gesta castellano narra el destierro de un caballero de Vivar?",
+  "options": [
+   "El cantar de Mio Cid",
+   "El poema de Fernán González",
+   "Las mocedades de Rodrigo",
+   "El cantar de Roncesvalles"
+  ],
+  "answer_index": 0,
+  "context": "Se conserva en un único manuscrito copiado por un tal Per Abbat. A diferencia de otras epopeyas europeas, su héroe recupera la honra por la vía legal.",
+  "difficulty": "hard",
+  "question_en": "Which Castilian epic poem tells of the exile of a knight from Vivar?",
+  "options_en": [
+   "The Song of the Cid",
+   "The Poem of Fernán González",
+   "The Youthful Deeds of Rodrigo",
+   "The Song of Roncesvalles"
+  ],
+  "context_en": "It survives in a single manuscript copied by one Per Abbat. Unlike other European epics, its hero regains his honour through the courts."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué obra de don Juan Manuel reúne cuentos con moraleja contados por un consejero?",
+  "options": [
+   "El conde Lucanor",
+   "El libro de los estados",
+   "El libro del caballero Zifar",
+   "Los castigos de Sancho IV"
+  ],
+  "answer_index": 0,
+  "context": "Cada relato termina con dos versos que resumen la enseñanza. Su autor era sobrino de Alfonso X y se preocupó mucho de que no le copiaran mal los manuscritos.",
+  "difficulty": "hard",
+  "question_en": "Which Don Juan Manuel work gathers moral tales told by an adviser?",
+  "options_en": [
+   "El conde Lucanor",
+   "El libro de los estados",
+   "The Book of the Knight Zifar",
+   "The Castigos of Sancho IV"
+  ],
+  "context_en": "Each tale ends with two lines summing up its lesson. Its author was a nephew of Alfonso X and worried greatly about manuscripts being copied badly."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué nombre dio Valle-Inclán a su estética de deformación grotesca de la realidad?",
+  "options": [
+   "El esperpento",
+   "El tremendismo",
+   "El costumbrismo",
+   "El culteranismo"
+  ],
+  "answer_index": 0,
+  "context": "Lo comparó con mirarse en los espejos cóncavos del callejón del Gato de Madrid. El tremendismo, en cambio, es la corriente cruda de la posguerra asociada a Cela.",
+  "difficulty": "hard",
+  "question_en": "What name did Valle-Inclán give to his aesthetic of grotesque distortion of reality?",
+  "options_en": [
+   "The esperpento",
+   "Tremendismo",
+   "Costumbrismo",
+   "Culteranismo"
+  ],
+  "context_en": "He compared it to looking into the concave mirrors of Madrid's Callejón del Gato. Tremendismo, by contrast, is the raw post-war current associated with Cela."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué grupo de escritores españoles reaccionó ante la pérdida colonial de 1898?",
+  "options": [
+   "La Generación del 98",
+   "La Generación del 27",
+   "El Novecentismo",
+   "La Generación del 50"
+  ],
+  "answer_index": 0,
+  "context": "Se preguntaban por la identidad de España y escribieron mucho sobre el paisaje castellano. Unamuno, Baroja y Machado se cuentan entre sus figuras.",
+  "difficulty": "hard",
+  "question_en": "Which group of Spanish writers reacted to the colonial loss of 1898?",
+  "options_en": [
+   "The Generation of '98",
+   "The Generation of '27",
+   "Novecentismo",
+   "The Generation of '50"
+  ],
+  "context_en": "They questioned Spain's identity and wrote extensively about the Castilian landscape. Unamuno, Baroja and Machado are among its figures."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor ruso denunció el sistema de campos soviéticos en \"Archipiélago Gulag\"?",
+  "options": [
+   "Alexandr Solzhenitsyn",
+   "Varlam Shalámov",
+   "Vasili Grossman",
+   "Yuri Dombrovski"
+  ],
+  "answer_index": 0,
+  "context": "Pasó ocho años preso por criticar a Stalin en una carta privada. Fue expulsado de la Unión Soviética en 1974 y no regresó hasta veinte años después.",
+  "difficulty": "hard",
+  "question_en": "Which Russian writer denounced the Soviet camp system in \"The Gulag Archipelago\"?",
+  "options_en": [
+   "Aleksandr Solzhenitsyn",
+   "Varlam Shalamov",
+   "Vasily Grossman",
+   "Yuri Dombrovsky"
+  ],
+  "context_en": "He spent eight years imprisoned for criticising Stalin in a private letter. He was expelled from the Soviet Union in 1974 and did not return for twenty years."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué poeta rusa escribió \"Réquiem\" mientras hacía cola ante una prisión de Leningrado?",
+  "options": [
+   "Anna Ajmátova",
+   "Marina Tsvetáieva",
+   "Zinaída Gippius",
+   "Bella Ajmadúlina"
+  ],
+  "answer_index": 0,
+  "context": "Memorizó el poema y se lo hizo aprender a sus amigas porque no podía escribirlo. Su hijo pasó años en los campos y su primer marido fue fusilado.",
+  "difficulty": "hard",
+  "question_en": "Which Russian poet wrote \"Requiem\" while queuing outside a Leningrad prison?",
+  "options_en": [
+   "Anna Akhmatova",
+   "Marina Tsvetaeva",
+   "Zinaida Gippius",
+   "Bella Akhmadulina"
+  ],
+  "context_en": "She memorised the poem and had friends learn it because she could not write it down. Her son spent years in the camps and her first husband was shot."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué novelista ruso tuvo que rechazar el Nobel de 1958 por presión de su gobierno?",
+  "options": [
+   "Borís Pasternak",
+   "Mijaíl Shólojov",
+   "Iván Bunin",
+   "Andréi Platónov"
+  ],
+  "answer_index": 0,
+  "context": "Su novela había sido prohibida en su país y se publicó primero en Italia. Su hijo recogió la medalla treinta y un años después.",
+  "difficulty": "hard",
+  "question_en": "Which Russian novelist had to decline the 1958 Nobel under pressure from his government?",
+  "options_en": [
+   "Boris Pasternak",
+   "Mikhail Sholokhov",
+   "Ivan Bunin",
+   "Andrei Platonov"
+  ],
+  "context_en": "His novel had been banned at home and was first published in Italy. His son collected the medal thirty-one years later."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritora bielorrusa ganó el Nobel en 2015 con libros hechos de testimonios orales?",
+  "options": [
+   "Svetlana Alexiévich",
+   "Olga Tokarczuk",
+   "Herta Müller",
+   "Ludmila Ulítskaya"
+  ],
+  "answer_index": 0,
+  "context": "Reunió cientos de entrevistas sobre Chernóbil, la guerra de Afganistán y el fin de la Unión Soviética. Ella llama a su método \"novela de voces\".",
+  "difficulty": "hard",
+  "question_en": "Which Belarusian writer won the Nobel in 2015 with books built from oral testimony?",
+  "options_en": [
+   "Svetlana Alexievich",
+   "Olga Tokarczuk",
+   "Herta Müller",
+   "Lyudmila Ulitskaya"
+  ],
+  "context_en": "She gathered hundreds of interviews about Chernobyl, the Afghan war and the end of the Soviet Union. She calls her method the \"novel of voices\"."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor turco ganó el Nobel en 2006 tras publicar la novela \"Nieve\"?",
+  "options": [
+   "Orhan Pamuk",
+   "Yaşar Kemal",
+   "Elif Şafak",
+   "Ahmet Hamdi Tanpınar"
+  ],
+  "answer_index": 0,
+  "context": "Fue procesado en su país por declaraciones sobre las matanzas de armenios y kurdos. Abrió en Estambul un museo real basado en una de sus novelas.",
+  "difficulty": "hard",
+  "question_en": "Which Turkish writer won the Nobel in 2006 after publishing the novel \"Snow\"?",
+  "options_en": [
+   "Orhan Pamuk",
+   "Yaşar Kemal",
+   "Elif Şafak",
+   "Ahmet Hamdi Tanpınar"
+  ],
+  "context_en": "He was prosecuted at home over statements about the killings of Armenians and Kurds. He opened a real museum in Istanbul based on one of his novels."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor de origen indio narró la independencia de la India en \"Hijos de la medianoche\"?",
+  "options": [
+   "Salman Rushdie",
+   "V. S. Naipaul",
+   "Vikram Seth",
+   "Amitav Ghosh"
+  ],
+  "answer_index": 0,
+  "context": "Vivió escondido durante años tras la condena religiosa dictada contra él en 1989. Esa novela ganó el Booker y después el premio a la mejor novela de toda su historia.",
+  "difficulty": "hard",
+  "question_en": "Which writer of Indian origin told of India's independence in \"Midnight's Children\"?",
+  "options_en": [
+   "Salman Rushdie",
+   "V. S. Naipaul",
+   "Vikram Seth",
+   "Amitav Ghosh"
+  ],
+  "context_en": "He lived in hiding for years after the religious death sentence issued against him in 1989. That novel won the Booker and later the award for the best in its whole history."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritora india ganó el Booker con \"El dios de las pequeñas cosas\"?",
+  "options": [
+   "Arundhati Roy",
+   "Kiran Desai",
+   "Anita Desai",
+   "Jhumpa Lahiri"
+  ],
+  "answer_index": 0,
+  "context": "Era arquitecta y guionista antes de publicar esa primera novela en 1997. Después dedicó veinte años al activismo antes de volver a la ficción.",
+  "difficulty": "hard",
+  "question_en": "Which Indian writer won the Booker with \"The God of Small Things\"?",
+  "options_en": [
+   "Arundhati Roy",
+   "Kiran Desai",
+   "Anita Desai",
+   "Jhumpa Lahiri"
+  ],
+  "context_en": "She was an architect and screenwriter before publishing that first novel in 1997. She then spent twenty years on activism before returning to fiction."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor keniano decidió abandonar el inglés para escribir en su lengua materna?",
+  "options": [
+   "Ngũgĩ wa Thiong'o",
+   "Nuruddin Farah",
+   "Meja Mwangi",
+   "Grace Ogot"
+  ],
+  "answer_index": 0,
+  "context": "Escribió una novela en papel higiénico mientras estaba preso sin juicio en 1978. Defendió que mantener la lengua colonial en la literatura prolonga la colonización mental.",
+  "difficulty": "hard",
+  "question_en": "Which Kenyan writer chose to abandon English and write in his mother tongue?",
+  "options_en": [
+   "Ngũgĩ wa Thiong'o",
+   "Nuruddin Farah",
+   "Meja Mwangi",
+   "Grace Ogot"
+  ],
+  "context_en": "He wrote a novel on toilet paper while jailed without trial in 1978. He argued that keeping the colonial language in literature prolongs mental colonisation."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué escritor sudafricano ganó dos veces el Booker y el Nobel de Literatura en 2003?",
+  "options": [
+   "J. M. Coetzee",
+   "Nadine Gordimer",
+   "André Brink",
+   "Athol Fugard"
+  ],
+  "answer_index": 0,
+  "context": "No acudió a recoger ninguno de sus dos Booker, algo insólito en el premio. Vive en Australia desde 2002 y adoptó esa nacionalidad.",
+  "difficulty": "hard",
+  "question_en": "Which South African writer won the Booker twice and the Nobel Prize in 2003?",
+  "options_en": [
+   "J. M. Coetzee",
+   "Nadine Gordimer",
+   "André Brink",
+   "Athol Fugard"
+  ],
+  "context_en": "He attended neither of his two Booker ceremonies, unheard of for the prize. He has lived in Australia since 2002 and took its nationality."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué poeta griego nacido en Alejandría escribió el poema \"Ítaca\"?",
+  "options": [
+   "Constantino Cavafis",
+   "Yorgos Seferis",
+   "Odiseas Elytis",
+   "Yannis Ritsos"
+  ],
+  "answer_index": 0,
+  "context": "Trabajó de funcionario toda su vida y apenas publicó en vida: repartía sus poemas en hojas sueltas entre amigos. Su poema aconseja desear que el viaje sea largo.",
+  "difficulty": "hard",
+  "question_en": "Which Greek poet born in Alexandria wrote the poem \"Ithaca\"?",
+  "options_en": [
+   "Constantine Cavafy",
+   "George Seferis",
+   "Odysseas Elytis",
+   "Yannis Ritsos"
+  ],
+  "context_en": "He worked as a civil servant all his life and barely published: he handed his poems to friends on loose sheets. His poem advises hoping the journey is long."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué poeta irlandés ganó el Nobel en 1923 y recuperó los mitos celtas en su obra?",
+  "options": [
+   "W. B. Yeats",
+   "Seamus Heaney",
+   "Patrick Kavanagh",
+   "Oliver Goldsmith"
+  ],
+  "answer_index": 0,
+  "context": "Fundó el teatro nacional irlandés y fue senador de su país. Se interesó por el ocultismo y organizó su cosmovisión en un sistema de espirales llamado \"Una visión\".",
+  "difficulty": "hard",
+  "question_en": "Which Irish poet won the Nobel in 1923 and revived Celtic myths in his work?",
+  "options_en": [
+   "W. B. Yeats",
+   "Seamus Heaney",
+   "Patrick Kavanagh",
+   "Oliver Goldsmith"
+  ],
+  "context_en": "He founded Ireland's national theatre and served as a senator. He was drawn to the occult and organised his worldview into a system of spirals called \"A Vision\"."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué término griego designa la purificación emocional que, según Aristóteles, provoca la tragedia?",
+  "options": [
+   "La catarsis",
+   "La mímesis",
+   "La hybris",
+   "La anagnórisis"
+  ],
+  "answer_index": 0,
+  "context": "Aristóteles apenas la define en su \"Poética\", lo que ha dado lugar a siglos de discusión. La anagnórisis es el momento en que el personaje descubre la verdad.",
+  "difficulty": "hard",
+  "question_en": "Which Greek term names the emotional purification that, for Aristotle, tragedy produces?",
+  "options_en": [
+   "Catharsis",
+   "Mimesis",
+   "Hubris",
+   "Anagnorisis"
+  ],
+  "context_en": "Aristotle barely defines it in his \"Poetics\", which has fuelled centuries of argument. Anagnorisis is the moment a character discovers the truth."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué premio británico distingue cada año a la mejor novela escrita en inglés?",
+  "options": [
+   "El Booker",
+   "El Pulitzer",
+   "El Goncourt",
+   "El Strega"
+  ],
+  "answer_index": 0,
+  "context": "Se concede desde 1969 y desde 2014 admite a cualquier autor que publique en el Reino Unido. El Goncourt es francés, el Strega italiano y el Pulitzer estadounidense.",
+  "difficulty": "hard",
+  "question_en": "Which British prize honours the best novel written in English each year?",
+  "options_en": [
+   "The Booker",
+   "The Pulitzer",
+   "The Goncourt",
+   "The Strega"
+  ],
+  "context_en": "It has been awarded since 1969 and since 2014 accepts any author published in the United Kingdom. The Goncourt is French, the Strega Italian and the Pulitzer American."
+ },
+ {
+  "category": "literatura",
+  "question": "¿Qué poema de T. S. Eliot arranca declarando que abril es el mes más cruel?",
+  "options": [
+   "La tierra baldía",
+   "Cuatro cuartetos",
+   "Miércoles de ceniza",
+   "Los hombres huecos"
+  ],
+  "answer_index": 0,
+  "context": "Ezra Pound recortó el manuscrito casi a la mitad antes de publicarse, en 1922. Mezcla citas en seis idiomas y obligó al autor a añadirle notas finales.",
+  "difficulty": "hard",
+  "question_en": "Which T. S. Eliot poem opens by declaring that April is the cruellest month?",
+  "options_en": [
+   "The Waste Land",
+   "Four Quartets",
+   "Ash Wednesday",
+   "The Hollow Men"
+  ],
+  "context_en": "Ezra Pound cut the manuscript almost in half before its 1922 publication. It mixes quotations in six languages and forced the author to add endnotes."
+ }
+]
