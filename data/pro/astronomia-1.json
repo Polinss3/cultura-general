@@ -1,0 +1,1094 @@
+[
+ {
+  "category": "astronomia",
+  "question": "¿Qué planeta luce un sistema de anillos visible con un telescopio pequeño?",
+  "options": [
+   "Saturno",
+   "Mercurio",
+   "Venus",
+   "Marte"
+  ],
+  "answer_index": 0,
+  "context": "Los anillos están hechos sobre todo de trozos de hielo, algunos del tamaño de una casa. Júpiter, Urano y Neptuno también tienen, pero son mucho más tenues.",
+  "difficulty": "easy",
+  "question_en": "Which planet has a ring system visible through a small telescope?",
+  "options_en": [
+   "Saturn",
+   "Mercury",
+   "Venus",
+   "Mars"
+  ],
+  "context_en": "The rings are made mostly of chunks of ice, some the size of a house. Jupiter, Uranus and Neptune have rings too, but far fainter ones."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué instrumento permite observar los astros con más detalle desde la Tierra?",
+  "options": [
+   "El telescopio",
+   "El microscopio",
+   "El barómetro",
+   "El sismógrafo"
+  ],
+  "answer_index": 0,
+  "context": "Los hay de lentes y de espejos; los grandes observatorios usan estos últimos. Galileo fue el primero en apuntar uno al cielo de forma sistemática.",
+  "difficulty": "easy",
+  "question_en": "Which instrument allows the stars to be observed in more detail from Earth?",
+  "options_en": [
+   "The telescope",
+   "The microscope",
+   "The barometer",
+   "The seismograph"
+  ],
+  "context_en": "Some use lenses and some mirrors; big observatories use the latter. Galileo was the first to point one at the sky systematically."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué forma tiene la Tierra?",
+  "options": [
+   "Casi esférica",
+   "Plana",
+   "Cúbica",
+   "Cilíndrica"
+  ],
+  "answer_index": 0,
+  "context": "Está ligeramente achatada por los polos y abultada en el ecuador por su propia rotación. Eratóstenes ya midió su circunferencia con bastante precisión hace más de dos mil años.",
+  "difficulty": "easy",
+  "question_en": "What shape is the Earth?",
+  "options_en": [
+   "Almost spherical",
+   "Flat",
+   "Cubic",
+   "Cylindrical"
+  ],
+  "context_en": "It is slightly flattened at the poles and bulges at the equator because of its own rotation. Eratosthenes measured its circumference fairly accurately over two thousand years ago."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué planeta tiene por sí solo más masa que todos los demás juntos?",
+  "options": [
+   "Júpiter",
+   "Saturno",
+   "Neptuno",
+   "La Tierra"
+  ],
+  "answer_index": 0,
+  "context": "Es un gigante gaseoso sin superficie sólida donde posarse. Su gravedad desvía cometas y asteroides, lo que protege parcialmente a los planetas interiores.",
+  "difficulty": "easy",
+  "question_en": "Which planet alone has more mass than all the others combined?",
+  "options_en": [
+   "Jupiter",
+   "Saturn",
+   "Neptune",
+   "Earth"
+  ],
+  "context_en": "It is a gas giant with no solid surface to land on. Its gravity deflects comets and asteroids, partly shielding the inner planets."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué prenda permite a los astronautas salir al vacío fuera de la nave?",
+  "options": [
+   "El traje espacial",
+   "El mono de vuelo",
+   "El chaleco térmico",
+   "El casco de piloto"
+  ],
+  "answer_index": 0,
+  "context": "Mantiene presión, oxígeno y temperatura, y protege de la radiación y de los micrometeoritos. Cada uno pesa más de cien kilos en la Tierra y cuesta millones.",
+  "difficulty": "easy",
+  "question_en": "Which garment lets astronauts step into the vacuum outside the craft?",
+  "options_en": [
+   "The spacesuit",
+   "The flight suit",
+   "The thermal vest",
+   "The pilot's helmet"
+  ],
+  "context_en": "It maintains pressure, oxygen and temperature, and shields from radiation and micrometeorites. Each weighs over a hundred kilos on Earth and costs millions."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre reciben los grupos de estrellas que dibujan figuras en el cielo?",
+  "options": [
+   "Las constelaciones",
+   "Las galaxias",
+   "Los cúmulos globulares",
+   "Las nebulosas"
+  ],
+  "answer_index": 0,
+  "context": "Sus estrellas no están realmente cerca entre sí: solo lo parecen desde nuestro punto de vista. Cada cultura ha trazado las suyas con figuras distintas.",
+  "difficulty": "easy",
+  "question_en": "What are the groups of stars that trace figures in the sky called?",
+  "options_en": [
+   "Constellations",
+   "Galaxies",
+   "Globular clusters",
+   "Nebulae"
+  ],
+  "context_en": "Their stars are not really close together: they only look so from our vantage point. Every culture has drawn its own figures."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astro provoca junto al Sol las mareas de los océanos terrestres?",
+  "options": [
+   "La Luna",
+   "Venus",
+   "Júpiter",
+   "Sirio"
+  ],
+  "answer_index": 0,
+  "context": "Su atracción deforma ligeramente la masa de agua, creando dos abultamientos opuestos. Cuando se alinea con el Sol, las mareas son las más fuertes del mes.",
+  "difficulty": "easy",
+  "question_en": "Which body, together with the Sun, causes the tides in Earth's oceans?",
+  "options_en": [
+   "The Moon",
+   "Venus",
+   "Jupiter",
+   "Sirius"
+  ],
+  "context_en": "Its pull slightly deforms the mass of water, creating two opposite bulges. When it lines up with the Sun, the tides are the strongest of the month."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué vehículo impulsa cargas al espacio quemando combustible y expulsando gases?",
+  "options": [
+   "El cohete",
+   "El planeador",
+   "El dirigible",
+   "El helicóptero"
+  ],
+  "answer_index": 0,
+  "context": "Funciona por acción y reacción, así que no necesita aire para empujarse. Casi todo su peso al despegar es combustible.",
+  "difficulty": "easy",
+  "question_en": "Which vehicle pushes payloads into space by burning fuel and expelling gases?",
+  "options_en": [
+   "The rocket",
+   "The glider",
+   "The airship",
+   "The helicopter"
+  ],
+  "context_en": "It works by action and reaction, so it needs no air to push against. Almost all its weight at launch is fuel."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre reciben las personas que viajan fuera de la atmósfera terrestre?",
+  "options": [
+   "Astronautas",
+   "Aviadores",
+   "Geólogos",
+   "Topógrafos"
+  ],
+  "answer_index": 0,
+  "context": "En Rusia se les llama cosmonautas y en China, taikonautas. La frontera oficial del espacio suele situarse a cien kilómetros de altura.",
+  "difficulty": "easy",
+  "question_en": "What are people who travel beyond Earth's atmosphere called?",
+  "options_en": [
+   "Astronauts",
+   "Aviators",
+   "Geologists",
+   "Surveyors"
+  ],
+  "context_en": "In Russia they are called cosmonauts and in China taikonauts. The official boundary of space is usually set at a hundred kilometres up."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué capa de gases envuelve la Tierra y hace posible la vida en su superficie?",
+  "options": [
+   "La atmósfera",
+   "La litosfera",
+   "La magnetosfera",
+   "La hidrosfera"
+  ],
+  "answer_index": 0,
+  "context": "Filtra buena parte de la radiación dañina y desintegra los meteoroides pequeños. La magnetosfera, más allá, desvía las partículas cargadas del Sol.",
+  "difficulty": "easy",
+  "question_en": "Which layer of gases wraps the Earth and makes life on its surface possible?",
+  "options_en": [
+   "The atmosphere",
+   "The lithosphere",
+   "The magnetosphere",
+   "The hydrosphere"
+  ],
+  "context_en": "It filters much of the harmful radiation and burns up small meteoroids. The magnetosphere, further out, deflects charged particles from the Sun."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe el conjunto formado por el Sol y todos los cuerpos que lo orbitan?",
+  "options": [
+   "El sistema solar",
+   "La galaxia",
+   "El cúmulo local",
+   "La nebulosa"
+  ],
+  "answer_index": 0,
+  "context": "Incluye planetas, lunas, asteroides, cometas y una enorme nube de cuerpos helados en su borde. Ocupa una porción minúscula de nuestra galaxia.",
+  "difficulty": "easy",
+  "question_en": "What is the Sun together with all the bodies orbiting it called?",
+  "options_en": [
+   "The solar system",
+   "The galaxy",
+   "The local cluster",
+   "The nebula"
+  ],
+  "context_en": "It includes planets, moons, asteroids, comets and a vast cloud of icy bodies at its edge. It occupies a minuscule portion of our galaxy."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué asterismo de siete estrellas brillantes forma parte de la Osa Mayor?",
+  "options": [
+   "El Carro",
+   "El Cinturón",
+   "La Cruz",
+   "El Cuadrado"
+  ],
+  "answer_index": 0,
+  "context": "Prolongando sus dos estrellas finales unas cinco veces se llega a la estrella Polar. En inglés se le llama cazo por su forma.",
+  "difficulty": "medium",
+  "question_en": "Which asterism of seven bright stars forms part of Ursa Major?",
+  "options_en": [
+   "The Plough",
+   "The Belt",
+   "The Cross",
+   "The Square"
+  ],
+  "context_en": "Extending its two end stars about five times leads to the Pole Star. In America it is called the Big Dipper for its shape."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué constelación sirve para orientarse hacia el sur en el hemisferio austral?",
+  "options": [
+   "La Cruz del Sur",
+   "Casiopea",
+   "La Osa Menor",
+   "El Cochero"
+  ],
+  "answer_index": 0,
+  "context": "Allí no hay una estrella polar brillante, así que se usa su eje mayor prolongado. Aparece en las banderas de Australia, Nueva Zelanda y Brasil.",
+  "difficulty": "medium",
+  "question_en": "Which constellation is used to find south in the southern hemisphere?",
+  "options_en": [
+   "The Southern Cross",
+   "Cassiopeia",
+   "Ursa Minor",
+   "Auriga"
+  ],
+  "context_en": "There is no bright pole star there, so its long axis is extended instead. It appears on the flags of Australia, New Zealand and Brazil."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué estrella supergigante roja marca uno de los hombros de Orión?",
+  "options": [
+   "Betelgeuse",
+   "Rigel",
+   "Bellatrix",
+   "Saiph"
+  ],
+  "answer_index": 0,
+  "context": "Es tan grande que, puesta en el lugar del Sol, engulliría la órbita de Marte. Su brillo varía y se espera que estalle como supernova en un futuro astronómico cercano.",
+  "difficulty": "medium",
+  "question_en": "Which red supergiant star marks one of Orion's shoulders?",
+  "options_en": [
+   "Betelgeuse",
+   "Rigel",
+   "Bellatrix",
+   "Saiph"
+  ],
+  "context_en": "It is so large that, placed where the Sun is, it would swallow Mars's orbit. Its brightness varies and it is expected to explode as a supernova in the astronomically near future."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué estrella azulada y brillante marca un pie de la constelación de Orión?",
+  "options": [
+   "Rigel",
+   "Betelgeuse",
+   "Alnilam",
+   "Mintaka"
+  ],
+  "answer_index": 0,
+  "context": "Es una supergigante azul, mucho más caliente que su vecina anaranjada del hombro. Su color delata una temperatura superficial muy superior a la del Sol.",
+  "difficulty": "medium",
+  "question_en": "Which bright bluish star marks one of Orion's feet?",
+  "options_en": [
+   "Rigel",
+   "Betelgeuse",
+   "Alnilam",
+   "Mintaka"
+  ],
+  "context_en": "It is a blue supergiant, far hotter than its orange neighbour on the shoulder. Its colour betrays a surface temperature well above the Sun's."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué cúmulo de estrellas se conoce popularmente como las Siete Cabrillas?",
+  "options": [
+   "Las Pléyades",
+   "Las Híades",
+   "El Pesebre",
+   "Las Osas"
+  ],
+  "answer_index": 0,
+  "context": "A simple vista se distinguen seis o siete, pero contiene más de mil estrellas jóvenes. Su salida marcaba el calendario agrícola en muchas culturas antiguas.",
+  "difficulty": "medium",
+  "question_en": "Which star cluster is popularly known as the Seven Sisters?",
+  "options_en": [
+   "The Pleiades",
+   "The Hyades",
+   "The Beehive",
+   "The Bears"
+  ],
+  "context_en": "Six or seven are visible to the naked eye, but it holds over a thousand young stars. Its rising marked the farming calendar in many ancient cultures."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué estrella rojiza es el corazón de la constelación de Escorpio?",
+  "options": [
+   "Antares",
+   "Espiga",
+   "Régulo",
+   "Fomalhaut"
+  ],
+  "answer_index": 0,
+  "context": "Su nombre griego significa aproximadamente \"rival de Marte\", por su color parecido. Es otra supergigante roja, de tamaño colosal comparada con el Sol.",
+  "difficulty": "medium",
+  "question_en": "Which reddish star is the heart of the constellation Scorpius?",
+  "options_en": [
+   "Antares",
+   "Spica",
+   "Regulus",
+   "Fomalhaut"
+  ],
+  "context_en": "Its Greek name means roughly \"rival of Mars\", because of its similar colour. It is another red supergiant, colossal compared with the Sun."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué tres estrellas forman el llamado triángulo de verano en el cielo del norte?",
+  "options": [
+   "Vega, Deneb y Altair",
+   "Sirio, Proción y Betelgeuse",
+   "Arturo, Espiga y Régulo",
+   "Capella, Aldebarán y Pólux"
+  ],
+  "answer_index": 0,
+  "context": "Pertenecen a las constelaciones de Lira, Cisne y Águila. La primera de ellas fue la estrella polar hace unos catorce mil años y volverá a serlo.",
+  "difficulty": "medium",
+  "question_en": "Which three stars form the so-called summer triangle in the northern sky?",
+  "options_en": [
+   "Vega, Deneb and Altair",
+   "Sirius, Procyon and Betelgeuse",
+   "Arcturus, Spica and Regulus",
+   "Capella, Aldebaran and Pollux"
+  ],
+  "context_en": "They belong to the constellations Lyra, Cygnus and Aquila. The first was the pole star some fourteen thousand years ago and will be again."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe la línea imaginaria por la que el Sol parece recorrer el cielo durante el año?",
+  "options": [
+   "La eclíptica",
+   "El ecuador celeste",
+   "El meridiano",
+   "La línea de nodos"
+  ],
+  "answer_index": 0,
+  "context": "Los planetas se mantienen siempre cerca de ella porque orbitan casi en el mismo plano. Su cruce con el ecuador celeste define los equinoccios.",
+  "difficulty": "medium",
+  "question_en": "What is the imaginary line along which the Sun appears to travel through the year called?",
+  "options_en": [
+   "The ecliptic",
+   "The celestial equator",
+   "The meridian",
+   "The line of nodes"
+  ],
+  "context_en": "The planets stay close to it because they orbit in almost the same plane. Its crossing with the celestial equator defines the equinoxes."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué constelación atraviesa el Sol sin figurar entre los doce signos del zodiaco?",
+  "options": [
+   "Ofiuco",
+   "Pegaso",
+   "Hércules",
+   "Delfín"
+  ],
+  "answer_index": 0,
+  "context": "El Sol pasa por ella unas dos semanas cada año, entre Escorpio y Sagitario. Los doce signos quedaron fijados hace milenios y no se han actualizado.",
+  "difficulty": "medium",
+  "question_en": "Which constellation does the Sun cross without being one of the twelve zodiac signs?",
+  "options_en": [
+   "Ophiuchus",
+   "Pegasus",
+   "Hercules",
+   "Delphinus"
+  ],
+  "context_en": "The Sun passes through it about two weeks a year, between Scorpius and Sagittarius. The twelve signs were fixed millennia ago and never updated."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe el punto de la órbita terrestre más cercano al Sol?",
+  "options": [
+   "El perihelio",
+   "El afelio",
+   "El perigeo",
+   "El apogeo"
+  ],
+  "answer_index": 0,
+  "context": "La Tierra lo atraviesa a comienzos de enero, en pleno invierno boreal. Las estaciones no dependen de esa distancia, sino de la inclinación del eje.",
+  "difficulty": "medium",
+  "question_en": "What is the point of Earth's orbit closest to the Sun called?",
+  "options_en": [
+   "Perihelion",
+   "Aphelion",
+   "Perigee",
+   "Apogee"
+  ],
+  "context_en": "Earth passes it in early January, in the middle of northern winter. The seasons do not depend on that distance but on the tilt of the axis."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe el punto del cielo situado justo encima del observador?",
+  "options": [
+   "El cenit",
+   "El nadir",
+   "El acimut",
+   "El horizonte"
+  ],
+  "answer_index": 0,
+  "context": "Su opuesto, bajo los pies, se llama nadir. El acimut, en cambio, mide la dirección sobre el horizonte en grados.",
+  "difficulty": "medium",
+  "question_en": "What is the point of the sky directly above the observer called?",
+  "options_en": [
+   "The zenith",
+   "The nadir",
+   "The azimuth",
+   "The horizon"
+  ],
+  "context_en": "Its opposite, beneath the feet, is the nadir. Azimuth, by contrast, measures direction along the horizon in degrees."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué unidad de distancia usan los astrónomos y equivale a unos tres años luz y cuarto?",
+  "options": [
+   "El pársec",
+   "El radián",
+   "El estereorradián",
+   "El julio"
+  ],
+  "answer_index": 0,
+  "context": "Se definió a partir del paralaje: es la distancia a la que una estrella se desplaza un segundo de arco. Las distancias entre galaxias se expresan en millones de esta unidad.",
+  "difficulty": "medium",
+  "question_en": "Which distance unit do astronomers use, equal to about three and a quarter light years?",
+  "options_en": [
+   "The parsec",
+   "The radian",
+   "The steradian",
+   "The joule"
+  ],
+  "context_en": "It was defined from parallax: the distance at which a star shifts by one arcsecond. Distances between galaxies are given in millions of this unit."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué escala mide el brillo con que vemos una estrella desde la Tierra?",
+  "options": [
+   "La magnitud aparente",
+   "La paralaje",
+   "La declinación",
+   "El albedo"
+  ],
+  "answer_index": 0,
+  "context": "Funciona al revés de lo esperado: cuanto menor es el número, más brilla el astro. Hiparco la estableció hace más de dos mil años dividiendo las estrellas en seis clases.",
+  "difficulty": "medium",
+  "question_en": "Which scale measures how bright a star looks from Earth?",
+  "options_en": [
+   "Apparent magnitude",
+   "Parallax",
+   "Declination",
+   "Albedo"
+  ],
+  "context_en": "It works backwards from what you would expect: the lower the number, the brighter the object. Hipparchus set it up over two thousand years ago, sorting stars into six classes."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué efecto cambia la frecuencia de una onda cuando la fuente se acerca o se aleja?",
+  "options": [
+   "El efecto Doppler",
+   "El efecto Zeeman",
+   "El efecto Compton",
+   "El efecto Coriolis"
+  ],
+  "answer_index": 0,
+  "context": "Se nota a diario en el sonido de una sirena que pasa de largo. En astronomía permite saber si una estrella se acerca o se aleja de nosotros.",
+  "difficulty": "medium",
+  "question_en": "Which effect changes a wave's frequency when the source approaches or recedes?",
+  "options_en": [
+   "The Doppler effect",
+   "The Zeeman effect",
+   "The Compton effect",
+   "The Coriolis effect"
+  ],
+  "context_en": "It is noticed daily in the sound of a siren driving past. In astronomy it reveals whether a star is approaching or receding."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué perra viajó al espacio a bordo del Sputnik 2 en 1957?",
+  "options": [
+   "Laika",
+   "Belka",
+   "Strelka",
+   "Zvezdochka"
+  ],
+  "answer_index": 0,
+  "context": "Era una perra callejera de Moscú y murió a las pocas horas por el calor de la cápsula. La misión no preveía ningún sistema de regreso.",
+  "difficulty": "medium",
+  "question_en": "Which dog travelled into space aboard Sputnik 2 in 1957?",
+  "options_en": [
+   "Laika",
+   "Belka",
+   "Strelka",
+   "Zvezdochka"
+  ],
+  "context_en": "She was a Moscow stray and died within hours from the capsule's heat. The mission included no system for returning."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué misión Apolo sufrió la explosión de un tanque de oxígeno y volvió sin alunizar?",
+  "options": [
+   "Apolo 13",
+   "Apolo 8",
+   "Apolo 12",
+   "Apolo 15"
+  ],
+  "answer_index": 0,
+  "context": "La tripulación usó el módulo lunar como bote salvavidas y rodeó la Luna para volver. Improvisaron un filtro de dióxido de carbono con cinta adhesiva y una funda de manual.",
+  "difficulty": "medium",
+  "question_en": "Which Apollo mission suffered an oxygen tank explosion and returned without landing?",
+  "options_en": [
+   "Apollo 13",
+   "Apollo 8",
+   "Apollo 12",
+   "Apollo 15"
+  ],
+  "context_en": "The crew used the lunar module as a lifeboat and swung round the Moon to get home. They improvised a carbon dioxide filter with duct tape and a manual cover."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué cosmonauta soviético realizó el primer paseo espacial de la historia?",
+  "options": [
+   "Alekséi Leónov",
+   "Yuri Gagarin",
+   "Gherman Titov",
+   "Vladímir Komarov"
+  ],
+  "answer_index": 0,
+  "context": "Su traje se hinchó en el vacío y tuvo que despresurizarlo para volver a entrar. Estuvo fuera unos doce minutos en 1965.",
+  "difficulty": "medium",
+  "question_en": "Which Soviet cosmonaut performed the first spacewalk in history?",
+  "options_en": [
+   "Alexei Leonov",
+   "Yuri Gagarin",
+   "Gherman Titov",
+   "Vladimir Komarov"
+  ],
+  "context_en": "His suit ballooned in the vacuum and he had to depressurise it to get back in. He was outside for about twelve minutes in 1965."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué estación espacial soviética y rusa orbitó la Tierra desde 1986 hasta 2001?",
+  "options": [
+   "La Mir",
+   "La Salyut 1",
+   "El Skylab",
+   "La Tiangong"
+  ],
+  "answer_index": 0,
+  "context": "Su nombre significa a la vez \"paz\" y \"mundo\" en ruso. Se desintegró de forma controlada sobre el Pacífico tras quince años en servicio.",
+  "difficulty": "medium",
+  "question_en": "Which Soviet and Russian space station orbited Earth from 1986 to 2001?",
+  "options_en": [
+   "Mir",
+   "Salyut 1",
+   "Skylab",
+   "Tiangong"
+  ],
+  "context_en": "Its name means both \"peace\" and \"world\" in Russian. It was brought down in a controlled re-entry over the Pacific after fifteen years of service."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué sondas gemelas lanzadas en 1977 llevan un disco de oro con sonidos de la Tierra?",
+  "options": [
+   "Las Voyager",
+   "Las Pioneer",
+   "Las Mariner",
+   "Las Venera"
+  ],
+  "answer_index": 0,
+  "context": "Una de ellas es el objeto humano más lejano y ya viaja por el espacio interestelar. El disco incluye saludos en decenas de idiomas y música de varias culturas.",
+  "difficulty": "medium",
+  "question_en": "Which twin probes launched in 1977 carry a golden record with sounds of Earth?",
+  "options_en": [
+   "The Voyagers",
+   "The Pioneers",
+   "The Mariners",
+   "The Veneras"
+  ],
+  "context_en": "One of them is the most distant human object and already travels through interstellar space. The record includes greetings in dozens of languages and music from many cultures."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué vehículo de la NASA aterrizó en el cráter Gale de Marte en 2012?",
+  "options": [
+   "Curiosity",
+   "Spirit",
+   "Opportunity",
+   "Sojourner"
+  ],
+  "answer_index": 0,
+  "context": "Descendió colgado de una grúa aérea propulsada por cohetes, una maniobra nunca probada antes. Lleva un generador nuclear en lugar de paneles solares.",
+  "difficulty": "medium",
+  "question_en": "Which NASA vehicle landed in Mars's Gale crater in 2012?",
+  "options_en": [
+   "Curiosity",
+   "Spirit",
+   "Opportunity",
+   "Sojourner"
+  ],
+  "context_en": "It descended hanging from a rocket-powered sky crane, a manoeuvre never tried before. It carries a nuclear generator instead of solar panels."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué país logró posar por primera vez una sonda en la cara oculta de la Luna?",
+  "options": [
+   "China",
+   "India",
+   "Japón",
+   "Rusia"
+  ],
+  "answer_index": 0,
+  "context": "Lo consiguió en 2019 y necesitó un satélite repetidor para mantener las comunicaciones. Desde esa cara no hay línea directa de radio con la Tierra.",
+  "difficulty": "medium",
+  "question_en": "Which country first landed a probe on the far side of the Moon?",
+  "options_en": [
+   "China",
+   "India",
+   "Japan",
+   "Russia"
+  ],
+  "context_en": "It managed it in 2019 and needed a relay satellite to keep communications going. There is no direct radio line to Earth from that side."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué red mundial de radiotelescopios obtuvo la primera imagen de un agujero negro?",
+  "options": [
+   "El Telescopio del Horizonte de Sucesos",
+   "El Hubble",
+   "El observatorio LIGO",
+   "La red de rastreo profundo"
+  ],
+  "answer_index": 0,
+  "context": "Combinó antenas de varios continentes para funcionar como un telescopio del tamaño del planeta. La imagen, publicada en 2019, corresponde al centro de la galaxia M87.",
+  "difficulty": "medium",
+  "question_en": "Which worldwide network of radio telescopes produced the first image of a black hole?",
+  "options_en": [
+   "The Event Horizon Telescope",
+   "Hubble",
+   "The LIGO observatory",
+   "The deep space network"
+  ],
+  "context_en": "It combined antennas on several continents to act as a planet-sized telescope. The image, published in 2019, shows the centre of galaxy M87."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué lluvia de meteoros alcanza su máximo cada mes de agosto?",
+  "options": [
+   "Las Perseidas",
+   "Las Leónidas",
+   "Las Gemínidas",
+   "Las Cuadrántidas"
+  ],
+  "answer_index": 0,
+  "context": "Proceden del polvo dejado por el cometa Swift-Tuttle. Se las llama popularmente lágrimas de San Lorenzo por coincidir con esa festividad.",
+  "difficulty": "medium",
+  "question_en": "Which meteor shower peaks every August?",
+  "options_en": [
+   "The Perseids",
+   "The Leonids",
+   "The Geminids",
+   "The Quadrantids"
+  ],
+  "context_en": "They come from dust left by comet Swift-Tuttle. They are popularly called the tears of Saint Lawrence for coinciding with that feast day."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónomo danés reunió las observaciones precisas que permitieron a Kepler formular sus leyes?",
+  "options": [
+   "Tycho Brahe",
+   "Christiaan Huygens",
+   "Ole Rømer",
+   "Simon Marius"
+  ],
+  "answer_index": 0,
+  "context": "Perdió parte de la nariz en un duelo y llevaba una prótesis metálica. Observó sin telescopio, con instrumentos enormes, desde un observatorio construido en una isla.",
+  "difficulty": "hard",
+  "question_en": "Which Danish astronomer gathered the precise observations that let Kepler formulate his laws?",
+  "options_en": [
+   "Tycho Brahe",
+   "Christiaan Huygens",
+   "Ole Rømer",
+   "Simon Marius"
+  ],
+  "context_en": "He lost part of his nose in a duel and wore a metal prosthesis. He observed without a telescope, using huge instruments, from an observatory built on an island."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónomo de Alejandría fijó el modelo geocéntrico que se enseñó durante catorce siglos?",
+  "options": [
+   "Ptolomeo",
+   "Aristarco",
+   "Eratóstenes",
+   "Hiparco"
+  ],
+  "answer_index": 0,
+  "context": "Su obra, conocida como Almagesto, se conservó gracias a las traducciones árabes. Aristarco había propuesto mucho antes un modelo con el Sol en el centro, sin éxito.",
+  "difficulty": "hard",
+  "question_en": "Which Alexandrian astronomer fixed the geocentric model taught for fourteen centuries?",
+  "options_en": [
+   "Ptolemy",
+   "Aristarchus",
+   "Eratosthenes",
+   "Hipparchus"
+  ],
+  "context_en": "His work, known as the Almagest, survived thanks to Arabic translations. Aristarchus had proposed a Sun-centred model much earlier, without success."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónomo descubrió el planeta Urano en 1781?",
+  "options": [
+   "William Herschel",
+   "Johann Galle",
+   "Giuseppe Piazzi",
+   "Percival Lowell"
+  ],
+  "answer_index": 0,
+  "context": "Era músico de profesión y construía sus propios telescopios. Quiso llamar al planeta \"estrella de Jorge\" en honor al rey británico, pero el nombre no prosperó.",
+  "difficulty": "hard",
+  "question_en": "Which astronomer discovered the planet Uranus in 1781?",
+  "options_en": [
+   "William Herschel",
+   "Johann Galle",
+   "Giuseppe Piazzi",
+   "Percival Lowell"
+  ],
+  "context_en": "He was a musician by profession and built his own telescopes. He wanted to name the planet after the British king, but the name did not catch on."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónoma descubrió ocho cometas y elaboró catálogos de nebulosas en el siglo XVIII?",
+  "options": [
+   "Caroline Herschel",
+   "Maria Mitchell",
+   "Nicole-Reine Lepaute",
+   "Mary Somerville"
+  ],
+  "answer_index": 0,
+  "context": "Fue la primera mujer en cobrar un salario oficial por trabajo científico en Inglaterra. Empezó como ayudante de su hermano y acabó publicando con su propio nombre.",
+  "difficulty": "hard",
+  "question_en": "Which astronomer discovered eight comets and compiled nebula catalogues in the 18th century?",
+  "options_en": [
+   "Caroline Herschel",
+   "Maria Mitchell",
+   "Nicole-Reine Lepaute",
+   "Mary Somerville"
+  ],
+  "context_en": "She was the first woman paid an official salary for scientific work in England. She began as her brother's assistant and ended up publishing under her own name."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué matemático francés predijo con cálculos la posición de Neptuno antes de verse?",
+  "options": [
+   "Urbain Le Verrier",
+   "Pierre-Simon Laplace",
+   "Jean Foucault",
+   "Camille Flammarion"
+  ],
+  "answer_index": 0,
+  "context": "Dedujo dónde buscarlo a partir de las irregularidades en la órbita de Urano. El observatorio de Berlín lo localizó la misma noche que recibió sus coordenadas.",
+  "difficulty": "hard",
+  "question_en": "Which French mathematician predicted Neptune's position by calculation before it was seen?",
+  "options_en": [
+   "Urbain Le Verrier",
+   "Pierre-Simon Laplace",
+   "Jean Foucault",
+   "Camille Flammarion"
+  ],
+  "context_en": "He worked out where to look from irregularities in Uranus's orbit. The Berlin observatory found it the very night it received his coordinates."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónomo francés catalogó objetos difusos del cielo para no confundirlos con cometas?",
+  "options": [
+   "Charles Messier",
+   "Nicolas Lacaille",
+   "Jérôme Lalande",
+   "Pierre Méchain"
+  ],
+  "answer_index": 0,
+  "context": "Su lista de poco más de cien entradas sigue usándose por los aficionados. Irónicamente, hoy se le recuerda más por ese catálogo secundario que por los cometas que buscaba.",
+  "difficulty": "hard",
+  "question_en": "Which French astronomer catalogued fuzzy sky objects so as not to mistake them for comets?",
+  "options_en": [
+   "Charles Messier",
+   "Nicolas Lacaille",
+   "Jérôme Lalande",
+   "Pierre Méchain"
+  ],
+  "context_en": "His list of little more than a hundred entries is still used by amateurs. Ironically he is remembered more for that side catalogue than for the comets he hunted."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónoma demostró en 1925 que las estrellas están hechas sobre todo de hidrógeno?",
+  "options": [
+   "Cecilia Payne",
+   "Williamina Fleming",
+   "Antonia Maury",
+   "Margaret Burbidge"
+  ],
+  "answer_index": 0,
+  "context": "Su tesis doctoral fue calificada después como la más brillante de la astronomía moderna. Un colega la convenció de matizar la conclusión, que él mismo confirmó años más tarde.",
+  "difficulty": "hard",
+  "question_en": "Which astronomer proved in 1925 that stars are made mostly of hydrogen?",
+  "options_en": [
+   "Cecilia Payne",
+   "Williamina Fleming",
+   "Antonia Maury",
+   "Margaret Burbidge"
+  ],
+  "context_en": "Her doctoral thesis was later called the most brilliant in modern astronomy. A colleague talked her into softening the conclusion, which he confirmed himself years later."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónoma estadounidense clasificó cientos de miles de espectros estelares en Harvard?",
+  "options": [
+   "Annie Jump Cannon",
+   "Henrietta Leavitt",
+   "Vera Rubin",
+   "Nancy Grace Roman"
+  ],
+  "answer_index": 0,
+  "context": "Ordenó las clases espectrales en la secuencia que todavía se enseña hoy. Trabajaba casi sorda y con una rapidez asombrosa clasificando placas fotográficas.",
+  "difficulty": "hard",
+  "question_en": "Which American astronomer classified hundreds of thousands of stellar spectra at Harvard?",
+  "options_en": [
+   "Annie Jump Cannon",
+   "Henrietta Leavitt",
+   "Vera Rubin",
+   "Nancy Grace Roman"
+  ],
+  "context_en": "She arranged the spectral classes into the sequence still taught today. She worked almost deaf and with astonishing speed sorting photographic plates."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónoma halló la relación entre el periodo y el brillo de las estrellas cefeidas?",
+  "options": [
+   "Henrietta Leavitt",
+   "Cecilia Payne",
+   "Caroline Herschel",
+   "Jocelyn Bell"
+  ],
+  "answer_index": 0,
+  "context": "Su descubrimiento permitió medir por primera vez distancias a otras galaxias. Hubble se apoyó directamente en ese método para demostrar la expansión del universo.",
+  "difficulty": "hard",
+  "question_en": "Which astronomer found the relation between the period and brightness of Cepheid stars?",
+  "options_en": [
+   "Henrietta Leavitt",
+   "Cecilia Payne",
+   "Caroline Herschel",
+   "Jocelyn Bell"
+  ],
+  "context_en": "Her discovery made it possible to measure distances to other galaxies for the first time. Hubble relied directly on that method to prove the universe expands."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónoma aportó la primera prueba sólida de la materia oscura midiendo la rotación de galaxias?",
+  "options": [
+   "Vera Rubin",
+   "Jocelyn Bell",
+   "Sandra Faber",
+   "Beatrice Tinsley"
+  ],
+  "answer_index": 0,
+  "context": "Descubrió que las estrellas de los bordes giran tan rápido como las del centro, algo imposible con la masa visible. Nunca recibió el Nobel pese a lo decisivo del hallazgo.",
+  "difficulty": "hard",
+  "question_en": "Which astronomer gave the first solid evidence for dark matter by measuring galaxy rotation?",
+  "options_en": [
+   "Vera Rubin",
+   "Jocelyn Bell",
+   "Sandra Faber",
+   "Beatrice Tinsley"
+  ],
+  "context_en": "She found that stars at the edges orbit as fast as those at the centre, impossible with the visible mass alone. She never received the Nobel despite how decisive the finding was."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué sacerdote y físico belga propuso la idea del átomo primitivo del que surgió el universo?",
+  "options": [
+   "Georges Lemaître",
+   "Fred Hoyle",
+   "Willem de Sitter",
+   "Alexander Friedmann"
+  ],
+  "answer_index": 0,
+  "context": "Dedujo la expansión del universo a partir de las ecuaciones de la relatividad antes de que se midiera. El nombre popular de su teoría se lo puso un rival que se burlaba de ella.",
+  "difficulty": "hard",
+  "question_en": "Which Belgian priest and physicist proposed the primeval atom from which the universe emerged?",
+  "options_en": [
+   "Georges Lemaître",
+   "Fred Hoyle",
+   "Willem de Sitter",
+   "Alexander Friedmann"
+  ],
+  "context_en": "He deduced the universe's expansion from relativity's equations before it was measured. The popular name of his theory was coined by a rival mocking it."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué diagrama relaciona la luminosidad de las estrellas con su temperatura superficial?",
+  "options": [
+   "El diagrama de Hertzsprung-Russell",
+   "El diagrama de fases",
+   "El diagrama de Feynman",
+   "El diagrama de Bode"
+  ],
+  "answer_index": 0,
+  "context": "La mayoría de las estrellas se alinean en una banda diagonal llamada secuencia principal. Fuera de ella quedan las gigantes, las supergigantes y las enanas blancas.",
+  "difficulty": "hard",
+  "question_en": "Which diagram relates stellar luminosity to surface temperature?",
+  "options_en": [
+   "The Hertzsprung-Russell diagram",
+   "The phase diagram",
+   "The Feynman diagram",
+   "The Bode diagram"
+  ],
+  "context_en": "Most stars line up along a diagonal band called the main sequence. Giants, supergiants and white dwarfs fall outside it."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué proceso convierte hidrógeno en helio en el núcleo de una estrella como el Sol?",
+  "options": [
+   "La cadena protón-protón",
+   "La fisión del uranio",
+   "La combustión del carbono",
+   "La desintegración beta"
+  ],
+  "answer_index": 0,
+  "context": "Cada segundo el Sol transforma millones de toneladas de materia en energía. En estrellas más masivas domina otro ciclo que usa el carbono como catalizador.",
+  "difficulty": "hard",
+  "question_en": "Which process turns hydrogen into helium in the core of a star like the Sun?",
+  "options_en": [
+   "The proton-proton chain",
+   "Uranium fission",
+   "Carbon combustion",
+   "Beta decay"
+  ],
+  "context_en": "Every second the Sun converts millions of tonnes of matter into energy. In more massive stars another cycle dominates, using carbon as a catalyst."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué envoltura de gas expulsa una estrella como el Sol al final de su vida?",
+  "options": [
+   "Una nebulosa planetaria",
+   "Una supernova",
+   "Un cuásar",
+   "Un púlsar"
+  ],
+  "answer_index": 0,
+  "context": "El nombre engaña: no tiene nada que ver con los planetas, pero en telescopios antiguos parecían discos. En el centro queda el núcleo desnudo, convertido en enana blanca.",
+  "difficulty": "hard",
+  "question_en": "Which shell of gas does a star like the Sun expel at the end of its life?",
+  "options_en": [
+   "A planetary nebula",
+   "A supernova",
+   "A quasar",
+   "A pulsar"
+  ],
+  "context_en": "The name misleads: it has nothing to do with planets, but in old telescopes they looked like discs. The bare core remains at the centre as a white dwarf."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué revelan las líneas oscuras que Fraunhofer observó en el espectro del Sol?",
+  "options": [
+   "Los elementos de su atmósfera",
+   "Su distancia a la Tierra",
+   "Su velocidad de rotación",
+   "Su campo magnético"
+  ],
+  "answer_index": 0,
+  "context": "Cada elemento químico absorbe longitudes de onda concretas y deja su huella. Gracias a ellas se descubrió el helio en el Sol antes que en la Tierra.",
+  "difficulty": "hard",
+  "question_en": "What do the dark lines Fraunhofer observed in the Sun's spectrum reveal?",
+  "options_en": [
+   "The elements in its atmosphere",
+   "Its distance from Earth",
+   "Its rotation speed",
+   "Its magnetic field"
+  ],
+  "context_en": "Each chemical element absorbs particular wavelengths and leaves its fingerprint. Thanks to them, helium was found in the Sun before it was found on Earth."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué observatorio detectó en 2015 las primeras ondas gravitacionales?",
+  "options": [
+   "LIGO",
+   "ALMA",
+   "CERN",
+   "Fermilab"
+  ],
+  "answer_index": 0,
+  "context": "La señal procedía de la fusión de dos agujeros negros ocurrida hace más de mil millones de años. Sus instrumentos miden variaciones menores que el tamaño de un protón.",
+  "difficulty": "hard",
+  "question_en": "Which observatory detected the first gravitational waves in 2015?",
+  "options_en": [
+   "LIGO",
+   "ALMA",
+   "CERN",
+   "Fermilab"
+  ],
+  "context_en": "The signal came from two black holes merging over a billion years ago. Its instruments measure changes smaller than the size of a proton."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué fenómeno curva la luz de objetos lejanos al pasar cerca de una gran masa?",
+  "options": [
+   "La lente gravitacional",
+   "La refracción atmosférica",
+   "La aberración cromática",
+   "La difracción"
+  ],
+  "answer_index": 0,
+  "context": "Einstein lo predijo y una expedición lo confirmó durante el eclipse de 1919. Hoy se usa para pesar cúmulos de galaxias y detectar materia invisible.",
+  "difficulty": "hard",
+  "question_en": "Which phenomenon bends the light of distant objects passing near a large mass?",
+  "options_en": [
+   "Gravitational lensing",
+   "Atmospheric refraction",
+   "Chromatic aberration",
+   "Diffraction"
+  ],
+  "context_en": "Einstein predicted it and an expedition confirmed it during the 1919 eclipse. It is now used to weigh galaxy clusters and detect invisible matter."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué expansión brutal y brevísima del universo temprano explica su uniformidad a gran escala?",
+  "options": [
+   "La inflación cósmica",
+   "La recombinación",
+   "La nucleosíntesis",
+   "La reionización"
+  ],
+  "answer_index": 0,
+  "context": "Habría multiplicado el tamaño del universo en una fracción ínfima de segundo. Explica por qué regiones opuestas del cielo tienen la misma temperatura sin haber estado en contacto.",
+  "difficulty": "hard",
+  "question_en": "Which brutal, extremely brief expansion of the early universe explains its large-scale uniformity?",
+  "options_en": [
+   "Cosmic inflation",
+   "Recombination",
+   "Nucleosynthesis",
+   "Reionisation"
+  ],
+  "context_en": "It would have multiplied the universe's size in a tiny fraction of a second. It explains why opposite regions of the sky share the same temperature without ever touching."
+ }
+]

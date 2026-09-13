@@ -1,0 +1,1073 @@
+[
+ {
+  "category": "astronomia",
+  "question": "¿Qué planeta lleva el nombre del dios romano de la guerra?",
+  "options": [
+   "Marte",
+   "Júpiter",
+   "Saturno",
+   "Mercurio"
+  ],
+  "answer_index": 0,
+  "context": "Su tono anaranjado, causado por el óxido de hierro del suelo, sugirió a los antiguos la sangre. Su día dura poco más que el terrestre, unos treinta y siete minutos más.",
+  "difficulty": "easy",
+  "question_en": "Which planet is named after the Roman god of war?",
+  "options_en": [
+   "Mars",
+   "Jupiter",
+   "Saturn",
+   "Mercury"
+  ],
+  "context_en": "Its orange tint, caused by iron oxide in the soil, suggested blood to the ancients. Its day lasts slightly longer than Earth's, by about thirty-seven minutes."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Cómo se llama el momento del año en que el día y la noche duran prácticamente lo mismo?",
+  "options": [
+   "El equinoccio",
+   "El solsticio",
+   "El perigeo",
+   "El cenit"
+  ],
+  "answer_index": 0,
+  "context": "Ocurre dos veces al año, en marzo y en septiembre, y marca el cambio de estación. El solsticio es justo lo contrario: el día más largo o el más corto.",
+  "difficulty": "easy",
+  "question_en": "What is the moment of the year when day and night last practically the same called?",
+  "options_en": [
+   "The equinox",
+   "The solstice",
+   "Perigee",
+   "The zenith"
+  ],
+  "context_en": "It happens twice a year, in March and September, and marks the change of season. The solstice is the opposite: the longest or the shortest day."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué tipo de energía aprovechan los paneles que alimentan a los satélites?",
+  "options": [
+   "La solar",
+   "La eólica",
+   "La geotérmica",
+   "La mareomotriz"
+  ],
+  "answer_index": 0,
+  "context": "En órbita reciben luz sin el filtro de la atmósfera, así que rinden bastante más. Las sondas que viajan lejos del Sol necesitan en cambio generadores nucleares.",
+  "difficulty": "easy",
+  "question_en": "Which kind of energy do the panels powering satellites use?",
+  "options_en": [
+   "Solar",
+   "Wind",
+   "Geothermal",
+   "Tidal"
+  ],
+  "context_en": "In orbit they receive light unfiltered by the atmosphere, so they yield considerably more. Probes travelling far from the Sun need nuclear generators instead."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe la trayectoria que describe un cuerpo alrededor de otro?",
+  "options": [
+   "La órbita",
+   "El eje",
+   "El meridiano",
+   "El radio"
+  ],
+  "answer_index": 0,
+  "context": "Kepler demostró que las de los planetas son elipses y no círculos perfectos. Cuanto más cerca está el cuerpo del centro, más deprisa recorre su trayectoria.",
+  "difficulty": "easy",
+  "question_en": "What is the path a body traces around another called?",
+  "options_en": [
+   "The orbit",
+   "The axis",
+   "The meridian",
+   "The radius"
+  ],
+  "context_en": "Kepler showed that the planets' are ellipses, not perfect circles. The closer a body is to the centre, the faster it travels along its path."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué fuerza mantiene a los planetas girando en torno al Sol?",
+  "options": [
+   "La gravedad",
+   "El magnetismo",
+   "La fricción",
+   "La presión"
+  ],
+  "answer_index": 0,
+  "context": "Newton la describió como una atracción universal entre todas las masas. Einstein la reinterpretó después como una curvatura del espacio y el tiempo.",
+  "difficulty": "easy",
+  "question_en": "Which force keeps the planets circling the Sun?",
+  "options_en": [
+   "Gravity",
+   "Magnetism",
+   "Friction",
+   "Pressure"
+  ],
+  "context_en": "Newton described it as a universal attraction between all masses. Einstein later reinterpreted it as a curvature of space and time."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe el mapa que muestra las constelaciones visibles en una fecha concreta?",
+  "options": [
+   "La carta celeste",
+   "El nomograma",
+   "El portulano",
+   "La isobara"
+  ],
+  "answer_index": 0,
+  "context": "Suele girarse según la hora y el día para hacer coincidir el dibujo con el cielo real. Un portulano, en cambio, es una antigua carta náutica de costas y puertos.",
+  "difficulty": "easy",
+  "question_en": "What is the map showing the constellations visible on a given date called?",
+  "options_en": [
+   "The star chart",
+   "The nomogram",
+   "The portolan",
+   "The isobar"
+  ],
+  "context_en": "It is usually rotated by hour and day to match the drawing with the real sky. A portolan, by contrast, is an old nautical chart of coasts and ports."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué elemento químico es, con diferencia, el más abundante en el Sol?",
+  "options": [
+   "El hidrógeno",
+   "El hierro",
+   "El oxígeno",
+   "El carbono"
+  ],
+  "answer_index": 0,
+  "context": "Supone alrededor de tres cuartas partes de su masa, seguido del helio. En su núcleo se fusiona continuamente, y ese proceso es la fuente de toda su energía.",
+  "difficulty": "easy",
+  "question_en": "Which chemical element is by far the most abundant in the Sun?",
+  "options_en": [
+   "Hydrogen",
+   "Iron",
+   "Oxygen",
+   "Carbon"
+  ],
+  "context_en": "It makes up about three quarters of its mass, followed by helium. It fuses continuously in the core, and that process is the source of all its energy."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué instalación proyecta el cielo estrellado sobre el interior de una cúpula?",
+  "options": [
+   "El planetario",
+   "El observatorio",
+   "El acuario",
+   "El herbario"
+  ],
+  "answer_index": 0,
+  "context": "Permite acelerar el paso del tiempo y mostrar el cielo de cualquier lugar o época. Los primeros modernos se construyeron en Alemania en los años veinte.",
+  "difficulty": "easy",
+  "question_en": "Which facility projects the starry sky onto the inside of a dome?",
+  "options_en": [
+   "The planetarium",
+   "The observatory",
+   "The aquarium",
+   "The herbarium"
+  ],
+  "context_en": "It can speed up time and show the sky of any place or era. The first modern ones were built in Germany in the 1920s."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué planeta se ve tan brillante al amanecer y al anochecer que se le llama lucero?",
+  "options": [
+   "Venus",
+   "Saturno",
+   "Urano",
+   "Neptuno"
+  ],
+  "answer_index": 0,
+  "context": "Su densa capa de nubes refleja buena parte de la luz solar. Los griegos creyeron durante siglos que el lucero del alba y el del atardecer eran dos astros distintos.",
+  "difficulty": "easy",
+  "question_en": "Which planet shines so brightly at dawn and dusk that it is called the morning star?",
+  "options_en": [
+   "Venus",
+   "Saturn",
+   "Uranus",
+   "Neptune"
+  ],
+  "context_en": "Its dense cloud layer reflects much of the sunlight. The Greeks believed for centuries that the morning and evening stars were two different objects."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe el vehículo con ruedas que recorre la superficie de otro mundo?",
+  "options": [
+   "El rover",
+   "El módulo orbital",
+   "El satélite geodésico",
+   "El transbordador"
+  ],
+  "answer_index": 0,
+  "context": "El primero llegó a la Luna en 1970, enviado por la Unión Soviética y sin tripulación. Los marcianos se mueven muy despacio, a pocos centímetros por segundo.",
+  "difficulty": "easy",
+  "question_en": "What is the wheeled vehicle that travels across another world's surface called?",
+  "options_en": [
+   "The rover",
+   "The orbital module",
+   "The geodetic satellite",
+   "The shuttle"
+  ],
+  "context_en": "The first reached the Moon in 1970, sent uncrewed by the Soviet Union. The Martian ones move very slowly, a few centimetres per second."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nube de gas y polvo interestelar da origen a nuevas estrellas?",
+  "options": [
+   "La nebulosa",
+   "El cuásar",
+   "El bólido",
+   "El asteroide"
+  ],
+  "answer_index": 0,
+  "context": "Cuando una región se comprime lo suficiente, la gravedad enciende la fusión en su interior. Las llamadas nebulosas oscuras se ven como manchas negras que tapan el fondo estelar.",
+  "difficulty": "medium",
+  "question_en": "Which cloud of interstellar gas and dust gives rise to new stars?",
+  "options_en": [
+   "The nebula",
+   "The quasar",
+   "The bolide",
+   "The asteroid"
+  ],
+  "context_en": "When a region compresses enough, gravity ignites fusion inside it. So-called dark nebulae appear as black patches blocking the starry background."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Cada cuántos años se repite aproximadamente el ciclo de actividad del Sol?",
+  "options": [
+   "Once",
+   "Tres",
+   "Treinta",
+   "Cien"
+  ],
+  "answer_index": 0,
+  "context": "Al final de cada ciclo su campo magnético invierte los polos. Durante los máximos aumentan las erupciones y las auroras se ven a latitudes más bajas.",
+  "difficulty": "medium",
+  "question_en": "Roughly how many years does the Sun's cycle of activity take to repeat?",
+  "options_en": [
+   "Eleven",
+   "Three",
+   "Thirty",
+   "A hundred"
+  ],
+  "context_en": "At the end of each cycle its magnetic field flips its poles. During maxima flares increase and auroras are seen at lower latitudes."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué zonas más frías y oscuras aparecen periódicamente en la superficie del Sol?",
+  "options": [
+   "Las manchas solares",
+   "Los cráteres",
+   "Las fosas tectónicas",
+   "Los casquetes"
+  ],
+  "answer_index": 0,
+  "context": "Están unos mil quinientos grados más frías que el entorno, por eso se ven oscuras. Su número sirve desde hace siglos para medir la actividad de nuestra estrella.",
+  "difficulty": "medium",
+  "question_en": "Which cooler, darker areas appear periodically on the Sun's surface?",
+  "options_en": [
+   "Sunspots",
+   "Craters",
+   "Tectonic trenches",
+   "Ice caps"
+  ],
+  "context_en": "They are about fifteen hundred degrees cooler than their surroundings, hence their darkness. Counting them has measured our star's activity for centuries."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué expulsión de plasma solar puede dañar satélites y redes eléctricas al llegar a la Tierra?",
+  "options": [
+   "La eyección de masa coronal",
+   "La lluvia de meteoros",
+   "El rayo cósmico de baja energía",
+   "La nube zodiacal"
+  ],
+  "answer_index": 0,
+  "context": "En 1859 una de gran tamaño hizo arder telégrafos en Europa y América. Un episodio similar hoy causaría pérdidas enormes en comunicaciones y transporte.",
+  "difficulty": "medium",
+  "question_en": "Which expulsion of solar plasma can damage satellites and power grids on reaching Earth?",
+  "options_en": [
+   "The coronal mass ejection",
+   "The meteor shower",
+   "The low-energy cosmic ray",
+   "The zodiacal cloud"
+  ],
+  "context_en": "In 1859 a large one set telegraph offices alight in Europe and America. A similar episode today would cause enormous losses in communications and transport."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué roca volcánica oscura forma las llanuras que llamamos mares de la Luna?",
+  "options": [
+   "El basalto",
+   "El granito",
+   "La caliza",
+   "La pizarra"
+  ],
+  "answer_index": 0,
+  "context": "Son antiguas coladas de lava que rellenaron grandes cuencas de impacto. Su tono oscuro contrasta con las tierras altas, más claras y llenas de cráteres.",
+  "difficulty": "medium",
+  "question_en": "Which dark volcanic rock forms the plains we call the Moon's seas?",
+  "options_en": [
+   "Basalt",
+   "Granite",
+   "Limestone",
+   "Slate"
+  ],
+  "context_en": "They are ancient lava flows that filled large impact basins. Their dark tone contrasts with the paler, crater-covered highlands."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué leve balanceo permite observar algo más de la mitad de la superficie lunar desde la Tierra?",
+  "options": [
+   "La libración",
+   "La nutación",
+   "La aberración",
+   "La refracción"
+  ],
+  "answer_index": 0,
+  "context": "Gracias a él llegamos a ver cerca del cincuenta y nueve por ciento del total con el tiempo. Se debe a la excentricidad de su órbita y a la inclinación de su eje.",
+  "difficulty": "medium",
+  "question_en": "Which slight rocking lets us observe a little more than half the lunar surface from Earth?",
+  "options_en": [
+   "Libration",
+   "Nutation",
+   "Aberration",
+   "Refraction"
+  ],
+  "context_en": "Thanks to it we come to see about fifty-nine per cent of the total over time. It results from its orbit's eccentricity and the tilt of its axis."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué magnitud mide la fracción de luz que refleja la superficie de un cuerpo celeste?",
+  "options": [
+   "El albedo",
+   "La declinación",
+   "El paralaje",
+   "La excentricidad"
+  ],
+  "answer_index": 0,
+  "context": "La nieve fresca tiene uno altísimo y el carbón, casi nulo. Los cometas son de los cuerpos más oscuros del sistema solar pese a su apariencia brillante.",
+  "difficulty": "medium",
+  "question_en": "Which quantity measures the fraction of light a celestial body's surface reflects?",
+  "options_en": [
+   "Albedo",
+   "Declination",
+   "Parallax",
+   "Eccentricity"
+  ],
+  "context_en": "Fresh snow has a very high one and coal almost none. Comets are among the darkest bodies in the solar system despite their bright appearance."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Cómo se llama el fenómeno en que la Luna se interpone y tapa una estrella lejana?",
+  "options": [
+   "Una ocultación",
+   "Una conjunción",
+   "Una oposición",
+   "Una culminación"
+  ],
+  "answer_index": 0,
+  "context": "Como la Luna carece de atmósfera, la estrella se apaga de golpe. Cronometrar ese instante permitió medir con precisión el perfil del borde lunar.",
+  "difficulty": "medium",
+  "question_en": "What is it called when the Moon passes in front of and covers a distant star?",
+  "options_en": [
+   "An occultation",
+   "A conjunction",
+   "An opposition",
+   "A culmination"
+  ],
+  "context_en": "Since the Moon has no atmosphere, the star blinks out instantly. Timing that moment allowed the lunar limb's profile to be measured precisely."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre popular recibe la Luna llena que coincide con su máxima cercanía a la Tierra?",
+  "options": [
+   "La superluna",
+   "La luna azul",
+   "La luna de sangre",
+   "La luna nueva"
+  ],
+  "answer_index": 0,
+  "context": "Se ve alrededor de un catorce por ciento mayor que en su punto más lejano, una diferencia difícil de apreciar a simple vista. La luna de sangre, en cambio, es el tono rojizo de un eclipse total.",
+  "difficulty": "medium",
+  "question_en": "What is the popular name for a full Moon coinciding with its closest approach to Earth?",
+  "options_en": [
+   "The supermoon",
+   "The blue moon",
+   "The blood moon",
+   "The new moon"
+  ],
+  "context_en": "It looks about fourteen per cent larger than at its farthest point, a difference hard to notice by eye. A blood moon, by contrast, is the reddish tint of a total eclipse."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué lento bamboleo del eje terrestre cambia la estrella polar a lo largo de los milenios?",
+  "options": [
+   "La precesión de los equinoccios",
+   "La deriva polar",
+   "El bamboleo de Chandler",
+   "La oblicuidad variable"
+  ],
+  "answer_index": 0,
+  "context": "El eje describe un cono completo en unos veintiséis mil años. Por eso los signos del zodiaco ya no coinciden con las constelaciones que les dieron nombre.",
+  "difficulty": "medium",
+  "question_en": "Which slow wobble of Earth's axis changes the pole star over millennia?",
+  "options_en": [
+   "The precession of the equinoxes",
+   "Polar drift",
+   "The Chandler wobble",
+   "Variable obliquity"
+  ],
+  "context_en": "The axis traces a full cone in about twenty-six thousand years. That is why the zodiac signs no longer match the constellations that named them."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué causa que la Tierra tenga estaciones a lo largo del año?",
+  "options": [
+   "La inclinación de su eje",
+   "Su distancia variable al Sol",
+   "La velocidad de su órbita",
+   "La atracción de la Luna"
+  ],
+  "answer_index": 0,
+  "context": "El eje está inclinado unos veintitrés grados y medio respecto al plano de la órbita. Por eso, cuando es verano en un hemisferio, en el otro es invierno.",
+  "difficulty": "medium",
+  "question_en": "What causes Earth to have seasons through the year?",
+  "options_en": [
+   "The tilt of its axis",
+   "Its varying distance from the Sun",
+   "Its orbital speed",
+   "The Moon's pull"
+  ],
+  "context_en": "The axis tilts about twenty-three and a half degrees from the orbital plane. That is why, when one hemisphere has summer, the other has winter."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué ajuste se añade de vez en cuando a los relojes para seguir el ritmo de la rotación terrestre?",
+  "options": [
+   "El segundo intercalar",
+   "El huso adicional",
+   "La hora de verano",
+   "El año bisiesto"
+  ],
+  "answer_index": 0,
+  "context": "La rotación del planeta se frena poco a poco por el rozamiento de las mareas. Se ha decidido dejar de aplicarlo a partir de 2035 por los problemas que causa en los sistemas informáticos.",
+  "difficulty": "medium",
+  "question_en": "Which adjustment is occasionally added to clocks to keep pace with Earth's rotation?",
+  "options_en": [
+   "The leap second",
+   "The extra time zone",
+   "Daylight saving",
+   "The leap year"
+  ],
+  "context_en": "The planet's rotation gradually slows from tidal friction. It has been agreed to stop applying it from 2035 because of the trouble it causes computer systems."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué calendario corrigió en 1582 el desfase acumulado por el juliano?",
+  "options": [
+   "El gregoriano",
+   "El republicano",
+   "El copto",
+   "El hebreo"
+  ],
+  "answer_index": 0,
+  "context": "Para reajustarlo se suprimieron diez días de golpe en octubre de aquel año. Cambió también la regla de los años bisiestos en los cambios de siglo.",
+  "difficulty": "medium",
+  "question_en": "Which calendar corrected in 1582 the drift accumulated by the Julian one?",
+  "options_en": [
+   "The Gregorian",
+   "The Republican",
+   "The Coptic",
+   "The Hebrew"
+  ],
+  "context_en": "To realign it, ten days were dropped at once in October of that year. It also changed the leap year rule at century boundaries."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué programa pretende devolver a personas a la superficie de la Luna en esta década?",
+  "options": [
+   "Artemis",
+   "Gemini",
+   "Mercury",
+   "Constellation"
+  ],
+  "answer_index": 0,
+  "context": "Su nombre es el de la hermana gemela del dios que bautizó al programa lunar de los sesenta. Prevé además establecer una estación en órbita lunar.",
+  "difficulty": "medium",
+  "question_en": "Which programme aims to return people to the Moon's surface this decade?",
+  "options_en": [
+   "Artemis",
+   "Gemini",
+   "Mercury",
+   "Constellation"
+  ],
+  "context_en": "It is named after the twin sister of the god who named the sixties lunar programme. It also plans a station in lunar orbit."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿En qué órbita un satélite parece quedarse quieto sobre un mismo punto del ecuador?",
+  "options": [
+   "La geoestacionaria",
+   "La polar",
+   "La heliosíncrona",
+   "La de transferencia"
+  ],
+  "answer_index": 0,
+  "context": "Está a unos treinta y seis mil kilómetros de altura y tarda exactamente un día en dar la vuelta. Las antenas parabólicas de casa apuntan siempre a satélites situados en ella.",
+  "difficulty": "medium",
+  "question_en": "In which orbit does a satellite appear to stay fixed above one point of the equator?",
+  "options_en": [
+   "Geostationary",
+   "Polar",
+   "Sun-synchronous",
+   "Transfer"
+  ],
+  "context_en": "It sits about thirty-six thousand kilometres up and takes exactly one day to go round. Home satellite dishes always point at satellites placed there."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué maniobra aprovecha la gravedad de un planeta para acelerar una sonda sin gastar combustible?",
+  "options": [
+   "La asistencia gravitatoria",
+   "El frenado aerodinámico",
+   "La rotación de giro",
+   "El encendido de circularización"
+  ],
+  "answer_index": 0,
+  "context": "La sonda roba una cantidad minúscula de energía orbital al planeta al pasar cerca. Las Voyager la encadenaron para visitar los cuatro planetas exteriores.",
+  "difficulty": "medium",
+  "question_en": "Which manoeuvre uses a planet's gravity to speed up a probe without spending fuel?",
+  "options_en": [
+   "The gravity assist",
+   "Aerobraking",
+   "Spin rotation",
+   "The circularisation burn"
+  ],
+  "context_en": "The probe steals a minuscule amount of orbital energy from the planet as it passes. The Voyagers chained them together to visit all four outer planets."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe el conjunto de restos de cohetes y satélites inservibles que orbita la Tierra?",
+  "options": [
+   "La basura espacial",
+   "El polvo zodiacal",
+   "El medio interplanetario",
+   "La nube de Oort"
+  ],
+  "answer_index": 0,
+  "context": "Se rastrean decenas de miles de fragmentos mayores de diez centímetros. A la velocidad de la órbita baja, un tornillo puede atravesar el casco de una nave.",
+  "difficulty": "medium",
+  "question_en": "What is the mass of defunct rocket and satellite remains orbiting Earth called?",
+  "options_en": [
+   "Space debris",
+   "Zodiacal dust",
+   "The interplanetary medium",
+   "The Oort cloud"
+  ],
+  "context_en": "Tens of thousands of fragments larger than ten centimetres are tracked. At low orbit speeds, a bolt can punch through a spacecraft hull."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué efecto en cadena podría hacer inutilizable la órbita baja por colisiones sucesivas de fragmentos?",
+  "options": [
+   "El síndrome de Kessler",
+   "El efecto Yarkovsky",
+   "La resonancia de Lidov",
+   "La inestabilidad de Jeans"
+  ],
+  "answer_index": 0,
+  "context": "Cada choque genera miles de restos nuevos que aumentan la probabilidad del siguiente. Lo describió un científico de la NASA en 1978, mucho antes de que hubiera tantos satélites.",
+  "difficulty": "medium",
+  "question_en": "Which chain effect could render low orbit unusable through successive fragment collisions?",
+  "options_en": [
+   "The Kessler syndrome",
+   "The Yarkovsky effect",
+   "Lidov resonance",
+   "Jeans instability"
+  ],
+  "context_en": "Each crash creates thousands of new fragments that raise the odds of the next. A NASA scientist described it in 1978, long before there were so many satellites."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué cinturones de partículas cargadas rodean la Tierra y se descubrieron en 1958?",
+  "options": [
+   "Los de Van Allen",
+   "Los de Kuiper",
+   "Los de Roche",
+   "Los de Kirkwood"
+  ],
+  "answer_index": 0,
+  "context": "El campo magnético terrestre atrapa ahí partículas del viento solar. Las naves tripuladas los atraviesan deprisa y por las zonas menos intensas.",
+  "difficulty": "medium",
+  "question_en": "Which belts of charged particles surround the Earth and were discovered in 1958?",
+  "options_en": [
+   "The Van Allen belts",
+   "The Kuiper belts",
+   "The Roche belts",
+   "The Kirkwood belts"
+  ],
+  "context_en": "Earth's magnetic field traps solar wind particles there. Crewed craft cross them quickly and through the least intense regions."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué telescopio espacial europeo ha cartografiado la posición de casi dos mil millones de estrellas?",
+  "options": [
+   "Gaia",
+   "Planck",
+   "Herschel",
+   "XMM-Newton"
+  ],
+  "answer_index": 0,
+  "context": "Midió también sus distancias y movimientos, permitiendo reconstruir la historia de la Vía Láctea. Su catálogo es hoy la referencia básica de casi toda la astronomía galáctica.",
+  "difficulty": "medium",
+  "question_en": "Which European space telescope has mapped the positions of almost two billion stars?",
+  "options_en": [
+   "Gaia",
+   "Planck",
+   "Herschel",
+   "XMM-Newton"
+  ],
+  "context_en": "It also measured their distances and motions, allowing the Milky Way's history to be reconstructed. Its catalogue is now the basic reference for almost all galactic astronomy."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué frontera marca el punto en que el viento solar deja de imponerse al medio interestelar?",
+  "options": [
+   "La heliopausa",
+   "La magnetopausa",
+   "La tropopausa",
+   "La exosfera"
+  ],
+  "answer_index": 0,
+  "context": "Las sondas Voyager la cruzaron en 2012 y 2018, a más de dieciocho mil millones de kilómetros. Es el límite razonable de lo que puede llamarse sistema solar por influencia del Sol.",
+  "difficulty": "medium",
+  "question_en": "Which boundary marks where the solar wind stops prevailing over the interstellar medium?",
+  "options_en": [
+   "The heliopause",
+   "The magnetopause",
+   "The tropopause",
+   "The exosphere"
+  ],
+  "context_en": "The Voyager probes crossed it in 2012 and 2018, over eighteen billion kilometres out. It is the reasonable edge of what counts as the solar system by the Sun's influence."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué instrumento descompone la luz de una estrella para analizar sus colores por separado?",
+  "options": [
+   "El espectrógrafo",
+   "El fotómetro",
+   "El coronógrafo",
+   "El astrolabio"
+  ],
+  "answer_index": 0,
+  "context": "De ese análisis se deduce la composición química, la temperatura y la velocidad del astro. El coronógrafo, en cambio, tapa la luz central para ver lo que hay alrededor.",
+  "difficulty": "medium",
+  "question_en": "Which instrument splits a star's light to analyse its colours separately?",
+  "options_en": [
+   "The spectrograph",
+   "The photometer",
+   "The coronagraph",
+   "The astrolabe"
+  ],
+  "context_en": "That analysis yields the object's chemical makeup, temperature and speed. A coronagraph, by contrast, blocks the central light to see what lies around it."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre reciben los cinco lugares donde la gravedad de dos cuerpos permite a un tercero mantenerse estable?",
+  "options": [
+   "Los puntos de Lagrange",
+   "Los nodos orbitales",
+   "Los ápsides",
+   "Las resonancias de Kirkwood"
+  ],
+  "answer_index": 0,
+  "context": "Dos de ellos son especialmente estables y acumulan asteroides, llamados troyanos. Varios observatorios espaciales se sitúan en el que queda en la sombra de la Tierra.",
+  "difficulty": "medium",
+  "question_en": "What are the five places where two bodies' gravity lets a third stay in place called?",
+  "options_en": [
+   "The Lagrange points",
+   "The orbital nodes",
+   "The apsides",
+   "The Kirkwood gaps"
+  ],
+  "context_en": "Two of them are especially stable and gather asteroids, called trojans. Several space observatories sit at the one in Earth's shadow."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué filósofa y astrónoma enseñó en Alejandría y murió linchada a comienzos del siglo V?",
+  "options": [
+   "Hipatia",
+   "Aglaonice",
+   "Sosípatra",
+   "Teano"
+  ],
+  "answer_index": 0,
+  "context": "Dirigía la escuela neoplatónica de la ciudad y comentó obras de matemáticas y astronomía. Su muerte se ha convertido en símbolo del choque entre saber y fanatismo.",
+  "difficulty": "hard",
+  "question_en": "Which philosopher and astronomer taught in Alexandria and was lynched in the early 5th century?",
+  "options_en": [
+   "Hypatia",
+   "Aglaonice",
+   "Sosipatra",
+   "Theano"
+  ],
+  "context_en": "She led the city's Neoplatonic school and wrote commentaries on mathematics and astronomy. Her death has become a symbol of the clash between learning and fanaticism."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué sabio persa dirigió el observatorio de Maraga y propuso modelos que anticiparon a Copérnico?",
+  "options": [
+   "Nasir al-Din al-Tusi",
+   "Al-Juarismi",
+   "Avicena",
+   "Al-Farabi"
+  ],
+  "answer_index": 0,
+  "context": "Su construcción geométrica para sustituir un artificio de Ptolomeo reaparece siglos después en Europa. Trabajó bajo el patrocinio del nieto de Gengis Kan.",
+  "difficulty": "hard",
+  "question_en": "Which Persian scholar directed the Maragheh observatory and proposed models anticipating Copernicus?",
+  "options_en": [
+   "Nasir al-Din al-Tusi",
+   "Al-Khwarizmi",
+   "Avicenna",
+   "Al-Farabi"
+  ],
+  "context_en": "His geometric device replacing one of Ptolemy's reappears centuries later in Europe. He worked under the patronage of Genghis Khan's grandson."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué astrónomo del califato midió la duración del año con un error de apenas unos minutos?",
+  "options": [
+   "Al-Battani",
+   "Al-Kindi",
+   "Ibn Jaldún",
+   "Al-Idrisi"
+  ],
+  "answer_index": 0,
+  "context": "Observó durante décadas desde el norte de la actual Siria en el siglo IX. Copérnico lo cita repetidamente en su obra principal.",
+  "difficulty": "hard",
+  "question_en": "Which astronomer of the caliphate measured the year's length to within a few minutes?",
+  "options_en": [
+   "Al-Battani",
+   "Al-Kindi",
+   "Ibn Khaldun",
+   "Al-Idrisi"
+  ],
+  "context_en": "He observed for decades from northern present-day Syria in the 9th century. Copernicus cites him repeatedly in his main work."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nieto de Tamerlán levantó en Samarcanda un gran observatorio y un catálogo de estrellas?",
+  "options": [
+   "Ulugh Beg",
+   "Babur",
+   "Sha Ruj",
+   "Husain Baiqara"
+  ],
+  "answer_index": 0,
+  "context": "Su sextante de piedra, de decenas de metros, aún se conserva excavado en la roca. Era gobernante y astrónomo a la vez, y acabó asesinado por su propio hijo.",
+  "difficulty": "hard",
+  "question_en": "Which grandson of Tamerlane built a great observatory and star catalogue in Samarkand?",
+  "options_en": [
+   "Ulugh Beg",
+   "Babur",
+   "Shah Rukh",
+   "Husayn Bayqara"
+  ],
+  "context_en": "His stone sextant, tens of metres long, survives carved into the rock. He was both ruler and astronomer, and was murdered by his own son."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué civilización americana elaboró tablas muy precisas del ciclo del planeta Venus?",
+  "options": [
+   "La maya",
+   "La olmeca",
+   "La mapuche",
+   "La guaraní"
+  ],
+  "answer_index": 0,
+  "context": "El códice de Dresde recoge esas tablas junto a predicciones de eclipses. Ajustaban el calendario ritual a los ciclos observados con correcciones periódicas.",
+  "difficulty": "hard",
+  "question_en": "Which American civilisation produced highly accurate tables of the planet Venus's cycle?",
+  "options_en": [
+   "The Maya",
+   "The Olmec",
+   "The Mapuche",
+   "The Guaraní"
+  ],
+  "context_en": "The Dresden Codex holds those tables alongside eclipse predictions. They fitted the ritual calendar to observed cycles with periodic corrections."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué matemático neozelandés halló la solución que describe los agujeros negros en rotación?",
+  "options": [
+   "Roy Kerr",
+   "Roger Penrose",
+   "John Wheeler",
+   "Kip Thorne"
+  ],
+  "answer_index": 0,
+  "context": "Su solución, publicada en 1963, es la que describe los agujeros negros reales, que giran. Alrededor de ellos aparece una región donde nada puede permanecer quieto.",
+  "difficulty": "hard",
+  "question_en": "Which New Zealand mathematician found the solution describing rotating black holes?",
+  "options_en": [
+   "Roy Kerr",
+   "Roger Penrose",
+   "John Wheeler",
+   "Kip Thorne"
+  ],
+  "context_en": "His 1963 solution describes real black holes, which spin. Around them lies a region where nothing can stay still."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué radio define el horizonte de sucesos de un agujero negro que no gira?",
+  "options": [
+   "El radio de Schwarzschild",
+   "El radio de Bohr",
+   "El radio de Hill",
+   "El radio de Roche"
+  ],
+  "answer_index": 0,
+  "context": "Depende solo de la masa: para el Sol serían unos tres kilómetros. El radio de Hill, en cambio, marca hasta dónde llega el dominio gravitatorio de un planeta.",
+  "difficulty": "hard",
+  "question_en": "Which radius defines the event horizon of a non-rotating black hole?",
+  "options_en": [
+   "The Schwarzschild radius",
+   "The Bohr radius",
+   "The Hill radius",
+   "The Roche radius"
+  ],
+  "context_en": "It depends only on mass: for the Sun it would be about three kilometres. The Hill radius, by contrast, marks how far a planet's gravitational domain reaches."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué proceso teórico hace que los agujeros negros pierdan masa y acaben evaporándose?",
+  "options": [
+   "La radiación de Hawking",
+   "El efecto Casimir",
+   "La desintegración alfa",
+   "La emisión sincrotrón"
+  ],
+  "answer_index": 0,
+  "context": "Surge de la creación de pares de partículas junto al horizonte de sucesos. Es tan lenta que un agujero negro estelar tardaría muchísimo más que la edad del universo en desaparecer.",
+  "difficulty": "hard",
+  "question_en": "Which theoretical process makes black holes lose mass and eventually evaporate?",
+  "options_en": [
+   "Hawking radiation",
+   "The Casimir effect",
+   "Alpha decay",
+   "Synchrotron emission"
+  ],
+  "context_en": "It arises from particle pairs created near the event horizon. It is so slow that a stellar black hole would take far longer than the universe's age to vanish."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué tipo de estrella de neutrones posee el campo magnético más intenso que se conoce?",
+  "options": [
+   "El magnetar",
+   "La enana marrón",
+   "La gigante azul",
+   "La variable cataclísmica"
+  ],
+  "answer_index": 0,
+  "context": "Su campo es billones de veces más fuerte que el terrestre. A la distancia de la Luna borraría los datos de cualquier tarjeta magnética de la Tierra.",
+  "difficulty": "hard",
+  "question_en": "Which kind of neutron star has the most intense magnetic field known?",
+  "options_en": [
+   "The magnetar",
+   "The brown dwarf",
+   "The blue giant",
+   "The cataclysmic variable"
+  ],
+  "context_en": "Its field is trillions of times stronger than Earth's. At the Moon's distance it would wipe every magnetic card on Earth."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué suceso de 2017 se observó a la vez en luz y en ondas gravitacionales?",
+  "options": [
+   "La fusión de dos estrellas de neutrones",
+   "El paso de un cometa rasante",
+   "Una erupción solar extrema",
+   "El tránsito de un exoplaneta gigante"
+  ],
+  "answer_index": 0,
+  "context": "Inauguró la llamada astronomía multimensajero, que combina distintos tipos de señal. Decenas de telescopios apuntaron al mismo punto del cielo en cuestión de horas.",
+  "difficulty": "hard",
+  "question_en": "Which 2017 event was observed simultaneously in light and in gravitational waves?",
+  "options_en": [
+   "The merger of two neutron stars",
+   "A grazing comet's passage",
+   "An extreme solar flare",
+   "A giant exoplanet transit"
+  ],
+  "context_en": "It launched so-called multi-messenger astronomy, combining different kinds of signal. Dozens of telescopes pointed at the same patch of sky within hours."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué metales preciosos se forman sobre todo en las fusiones de estrellas de neutrones?",
+  "options": [
+   "El oro y el platino",
+   "El hierro y el níquel",
+   "El cobre y el estaño",
+   "El aluminio y el silicio"
+  ],
+  "answer_index": 0,
+  "context": "Se producen por captura rápida de neutrones en condiciones extremas. Eso significa que el metal de un anillo se formó en una colisión estelar hace miles de millones de años.",
+  "difficulty": "hard",
+  "question_en": "Which precious metals form mainly in neutron star mergers?",
+  "options_en": [
+   "Gold and platinum",
+   "Iron and nickel",
+   "Copper and tin",
+   "Aluminium and silicon"
+  ],
+  "context_en": "They are made by rapid neutron capture under extreme conditions. That means the metal in a ring formed in a stellar collision billions of years ago."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué nombre recibe el remolino de materia que cae en espiral hacia un agujero negro?",
+  "options": [
+   "El disco de acreción",
+   "El toro de polvo",
+   "El lóbulo de Roche",
+   "La corona estelar"
+  ],
+  "answer_index": 0,
+  "context": "El rozamiento lo calienta a millones de grados, así que emite sobre todo rayos X. Es lo que hace visibles a unos objetos que por sí mismos no emiten nada.",
+  "difficulty": "hard",
+  "question_en": "What is the whirl of matter spiralling into a black hole called?",
+  "options_en": [
+   "The accretion disc",
+   "The dust torus",
+   "The Roche lobe",
+   "The stellar corona"
+  ],
+  "context_en": "Friction heats it to millions of degrees, so it shines mostly in X-rays. It is what makes visible objects that emit nothing of themselves."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué núcleo galáctico activo dirige justo hacia la Tierra su chorro de partículas?",
+  "options": [
+   "El blázar",
+   "La galaxia Seyfert",
+   "La radiogalaxia",
+   "La galaxia starburst"
+  ],
+  "answer_index": 0,
+  "context": "Al mirar el chorro de frente, su brillo aparente se dispara y varía en cuestión de horas. Son de los objetos más energéticos que se conocen.",
+  "difficulty": "hard",
+  "question_en": "Which active galactic nucleus aims its jet of particles straight at Earth?",
+  "options_en": [
+   "The blazar",
+   "The Seyfert galaxy",
+   "The radio galaxy",
+   "The starburst galaxy"
+  ],
+  "context_en": "Seen head-on, the jet's apparent brightness soars and varies within hours. They are among the most energetic objects known."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué explosión repentina se produce cuando una enana blanca quema material robado a su compañera?",
+  "options": [
+   "La nova",
+   "El cuásar",
+   "El púlsar",
+   "El bólido"
+  ],
+  "answer_index": 0,
+  "context": "A diferencia de una supernova, la estrella sobrevive y el proceso puede repetirse. Los antiguos las tomaban por estrellas nuevas que aparecían de la nada.",
+  "difficulty": "hard",
+  "question_en": "Which sudden explosion occurs when a white dwarf burns material stolen from its companion?",
+  "options_en": [
+   "The nova",
+   "The quasar",
+   "The pulsar",
+   "The bolide"
+  ],
+  "context_en": "Unlike a supernova, the star survives and the process can repeat. The ancients took them for new stars appearing out of nowhere."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué objeto detectado en 2017 fue el primero confirmado como visitante de otro sistema estelar?",
+  "options": [
+   "ʻOumuamua",
+   "Arrokoth",
+   "Sedna",
+   "Quaoar"
+  ],
+  "answer_index": 0,
+  "context": "Su nombre significa aproximadamente \"explorador\" en hawaiano. Su forma alargada y su aceleración inesperada dieron pie a hipótesis muy discutidas.",
+  "difficulty": "hard",
+  "question_en": "Which object detected in 2017 was the first confirmed visitor from another star system?",
+  "options_en": [
+   "ʻOumuamua",
+   "Arrokoth",
+   "Sedna",
+   "Quaoar"
+  ],
+  "context_en": "Its name means roughly \"scout\" in Hawaiian. Its elongated shape and unexpected acceleration prompted much-debated hypotheses."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué misión europea lanzada en 2023 cartografía galaxias para medir la energía oscura?",
+  "options": [
+   "Euclid",
+   "Rosetta",
+   "BepiColombo",
+   "Solar Orbiter"
+  ],
+  "answer_index": 0,
+  "context": "Observará miles de millones de galaxias para reconstruir cómo se ha expandido el universo. Su nombre homenajea al matemático que sistematizó la geometría.",
+  "difficulty": "hard",
+  "question_en": "Which European mission launched in 2023 maps galaxies to measure dark energy?",
+  "options_en": [
+   "Euclid",
+   "Rosetta",
+   "BepiColombo",
+   "Solar Orbiter"
+  ],
+  "context_en": "It will survey billions of galaxies to reconstruct how the universe has expanded. Its name honours the mathematician who systematised geometry."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué telescopio en construcción en Chile tendrá un espejo principal de casi cuarenta metros?",
+  "options": [
+   "El Telescopio Extremadamente Grande",
+   "El Gran Telescopio Canarias",
+   "El telescopio Hale",
+   "El telescopio Hooker"
+  ],
+  "answer_index": 0,
+  "context": "Su espejo se compone de casi ochocientos segmentos hexagonales. Se levanta sobre un cerro del desierto de Atacama, uno de los lugares más secos del planeta.",
+  "difficulty": "hard",
+  "question_en": "Which telescope under construction in Chile will have a primary mirror of almost forty metres?",
+  "options_en": [
+   "The Extremely Large Telescope",
+   "The Gran Telescopio Canarias",
+   "The Hale telescope",
+   "The Hooker telescope"
+  ],
+  "context_en": "Its mirror is made of nearly eight hundred hexagonal segments. It rises on a hill in the Atacama desert, one of the driest places on the planet."
+ },
+ {
+  "category": "astronomia",
+  "question": "¿Qué hipótesis propone un cuerpo masivo aún no visto orbitando muy lejos del Sol?",
+  "options": [
+   "El Planeta Nueve",
+   "La estrella Némesis",
+   "El cinturón de Hills",
+   "La barrera de Kuiper"
+  ],
+  "answer_index": 0,
+  "context": "Se planteó al observar que varios objetos lejanos tienen órbitas curiosamente alineadas. Las búsquedas no han dado resultado y algunos astrónomos atribuyen el patrón a un sesgo de observación.",
+  "difficulty": "hard",
+  "question_en": "Which hypothesis proposes a massive unseen body orbiting far from the Sun?",
+  "options_en": [
+   "Planet Nine",
+   "The star Nemesis",
+   "The Hills belt",
+   "The Kuiper barrier"
+  ],
+  "context_en": "It was proposed on noticing that several distant objects have curiously aligned orbits. Searches have found nothing and some astronomers attribute the pattern to observational bias."
+ }
+]
