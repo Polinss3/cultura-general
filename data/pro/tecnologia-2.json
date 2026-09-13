@@ -1,0 +1,1073 @@
+[
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe la copia de los datos que se guarda por si se pierden los originales?",
+  "options": [
+   "La copia de seguridad",
+   "El acceso directo",
+   "La papelera",
+   "El historial"
+  ],
+  "answer_index": 0,
+  "context": "La regla más recomendada guarda tres copias, en dos soportes distintos y una fuera de casa. Una copia conectada permanentemente no protege frente al secuestro de archivos.",
+  "difficulty": "easy",
+  "question_en": "What is the copy of data kept in case the originals are lost called?",
+  "options_en": [
+   "The backup",
+   "The shortcut",
+   "The recycle bin",
+   "The history"
+  ],
+  "context_en": "The most recommended rule keeps three copies, on two different media, one of them off site. A permanently connected copy gives no protection against file-hijacking malware."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué dispositivo se usa para escribir texto en un ordenador?",
+  "options": [
+   "El teclado",
+   "El altavoz",
+   "La impresora",
+   "El micrófono"
+  ],
+  "answer_index": 0,
+  "context": "Su distribución de letras viene de las máquinas de escribir del siglo XIX, pensada para que los tipos no se atascaran. Existen alternativas más rápidas que nunca se impusieron.",
+  "difficulty": "easy",
+  "question_en": "Which device is used to type text on a computer?",
+  "options_en": [
+   "The keyboard",
+   "The speaker",
+   "The printer",
+   "The microphone"
+  ],
+  "context_en": "Its letter layout comes from 19th-century typewriters, designed to stop the type bars jamming. Faster alternatives exist but never caught on."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tipo de batería recargable llevan casi todos los móviles actuales?",
+  "options": [
+   "De ion de litio",
+   "De plomo y ácido",
+   "De níquel y cadmio",
+   "Alcalina"
+  ],
+  "answer_index": 0,
+  "context": "No conviene dejarla ni al cero ni al cien por cien durante mucho tiempo, porque envejece antes. Las alcalinas corrientes no son recargables.",
+  "difficulty": "easy",
+  "question_en": "Which kind of rechargeable battery do almost all current phones use?",
+  "options_en": [
+   "Lithium-ion",
+   "Lead-acid",
+   "Nickel-cadmium",
+   "Alkaline"
+  ],
+  "context_en": "It is best not left at zero or at full charge for long, since it ages faster. Ordinary alkaline batteries are not rechargeable."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Cómo se llama la cámara pequeña integrada en la pantalla de un portátil?",
+  "options": [
+   "La webcam",
+   "El sensor",
+   "El altavoz",
+   "El lector"
+  ],
+  "answer_index": 0,
+  "context": "Muchos modelos incluyen un piloto que se enciende cuando está activa. Taparla con una pegatina es una precaución habitual entre profesionales de la seguridad.",
+  "difficulty": "easy",
+  "question_en": "What is the small camera built into a laptop screen called?",
+  "options_en": [
+   "The webcam",
+   "The sensor",
+   "The speaker",
+   "The reader"
+  ],
+  "context_en": "Many models include a light that turns on when it is active. Covering it with a sticker is a common precaution among security professionals."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué signo se antepone a una palabra en redes sociales para etiquetar un tema?",
+  "options": [
+   "La almohadilla",
+   "La arroba",
+   "El asterisco",
+   "El guion"
+  ],
+  "answer_index": 0,
+  "context": "Su uso lo propuso un usuario de Twitter en 2007 y la plataforma tardó dos años en adoptarlo. La arroba, en cambio, sirve para mencionar a una persona.",
+  "difficulty": "easy",
+  "question_en": "Which sign is placed before a word on social media to tag a topic?",
+  "options_en": [
+   "The hash",
+   "The at sign",
+   "The asterisk",
+   "The hyphen"
+  ],
+  "context_en": "A Twitter user proposed its use in 2007 and the platform took two years to adopt it. The at sign, by contrast, is used to mention a person."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tipo de programa detecta y elimina software malicioso del ordenador?",
+  "options": [
+   "El antivirus",
+   "El navegador",
+   "El compresor",
+   "El reproductor"
+  ],
+  "answer_index": 0,
+  "context": "Compara los archivos con firmas conocidas y vigila comportamientos sospechosos. Mantener el sistema actualizado suele proteger tanto como el propio programa.",
+  "difficulty": "easy",
+  "question_en": "Which kind of program detects and removes malicious software from a computer?",
+  "options_en": [
+   "The antivirus",
+   "The browser",
+   "The compressor",
+   "The media player"
+  ],
+  "context_en": "It compares files against known signatures and watches for suspicious behaviour. Keeping the system updated usually protects as much as the program itself."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué memoria portátil se enchufa a un puerto USB para llevar archivos de un sitio a otro?",
+  "options": [
+   "El pendrive",
+   "El disquete",
+   "El módem",
+   "El adaptador"
+  ],
+  "answer_index": 0,
+  "context": "Usa memoria flash, la misma tecnología de las tarjetas de las cámaras. Sustituyó al disquete, que apenas guardaba un megabyte y medio.",
+  "difficulty": "easy",
+  "question_en": "Which portable memory plugs into a USB port to carry files from place to place?",
+  "options_en": [
+   "The flash drive",
+   "The floppy disk",
+   "The modem",
+   "The adapter"
+  ],
+  "context_en": "It uses flash memory, the same technology as camera cards. It replaced the floppy disk, which held barely a megabyte and a half."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe guardar archivos en servidores de internet en lugar del propio ordenador?",
+  "options": [
+   "La nube",
+   "La red local",
+   "El disco óptico",
+   "La memoria caché"
+  ],
+  "answer_index": 0,
+  "context": "Permite acceder a los archivos desde cualquier aparato, pero esos servidores pertenecen a alguien. Conviene cifrar lo sensible antes de subirlo.",
+  "difficulty": "easy",
+  "question_en": "What is storing files on internet servers instead of your own computer called?",
+  "options_en": [
+   "The cloud",
+   "The local network",
+   "The optical disc",
+   "The cache"
+  ],
+  "context_en": "It allows access from any device, but those servers belong to someone. It is wise to encrypt anything sensitive before uploading it."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe el televisor que se conecta a internet y ejecuta aplicaciones?",
+  "options": [
+   "La televisión inteligente",
+   "El proyector",
+   "El decodificador",
+   "El sintonizador"
+  ],
+  "answer_index": 0,
+  "context": "Muchos modelos recogen datos sobre lo que se ve para vender publicidad segmentada. El decodificador solo traduce la señal de un operador concreto.",
+  "difficulty": "easy",
+  "question_en": "What is a television that connects to the internet and runs apps called?",
+  "options_en": [
+   "The smart TV",
+   "The projector",
+   "The set-top box",
+   "The tuner"
+  ],
+  "context_en": "Many models collect data on what is watched in order to sell targeted advertising. A set-top box merely decodes one provider's signal."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Cómo se llama el texto que aparece sobreimpreso en un vídeo para transcribir lo que se dice?",
+  "options": [
+   "Los subtítulos",
+   "Los créditos",
+   "Los metadatos",
+   "Las etiquetas"
+  ],
+  "answer_index": 0,
+  "context": "Cuando además describen sonidos ambientales se llaman subtítulos para personas sordas. Los créditos, en cambio, listan a quienes participaron en la obra.",
+  "difficulty": "easy",
+  "question_en": "What is the text overlaid on a video transcribing what is said called?",
+  "options_en": [
+   "Subtitles",
+   "The credits",
+   "The metadata",
+   "The tags"
+  ],
+  "context_en": "When they also describe ambient sounds they are called captions for deaf viewers. Credits, by contrast, list who worked on the production."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tipo de conexión cifra el tráfico y hace parecer que te conectas desde otro lugar?",
+  "options": [
+   "La VPN",
+   "El proxy de caché",
+   "La red local",
+   "El punto de acceso"
+  ],
+  "answer_index": 0,
+  "context": "Las empresas la usan para que sus empleados accedan a recursos internos desde fuera. Quien la ofrece ve todo el tráfico, así que elegir proveedor importa mucho.",
+  "difficulty": "medium",
+  "question_en": "Which kind of connection encrypts traffic and makes you appear to connect from elsewhere?",
+  "options_en": [
+   "The VPN",
+   "The caching proxy",
+   "The local network",
+   "The access point"
+  ],
+  "context_en": "Companies use it so staff can reach internal resources from outside. Whoever provides it sees all the traffic, so choosing the provider matters a great deal."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe el conjunto de reglas que permite a dos programas pedirse datos entre sí?",
+  "options": [
+   "La API",
+   "El kernel",
+   "El puerto",
+   "La terminal"
+  ],
+  "answer_index": 0,
+  "context": "Es lo que permite que una aplicación del móvil consulte el tiempo o pague con tarjeta sin saber cómo funciona el servicio del otro lado.",
+  "difficulty": "medium",
+  "question_en": "What is the set of rules letting two programs request data from each other called?",
+  "options_en": [
+   "The API",
+   "The kernel",
+   "The port",
+   "The terminal"
+  ],
+  "context_en": "It is what lets a phone app check the weather or take a card payment without knowing how the service on the other side works."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué programa traduce todo el código fuente a lenguaje máquina antes de ejecutarlo?",
+  "options": [
+   "El compilador",
+   "El intérprete",
+   "El depurador",
+   "El editor"
+  ],
+  "answer_index": 0,
+  "context": "El intérprete, en cambio, va traduciendo y ejecutando línea a línea mientras el programa corre. Por eso lo compilado suele ser más rápido y lo interpretado, más flexible.",
+  "difficulty": "medium",
+  "question_en": "Which program translates all the source code into machine language before running it?",
+  "options_en": [
+   "The compiler",
+   "The interpreter",
+   "The debugger",
+   "The editor"
+  ],
+  "context_en": "An interpreter, by contrast, translates and runs line by line while the program executes. Compiled code is usually faster, interpreted code more flexible."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué método de trabajo organiza el desarrollo en ciclos cortos llamados sprints?",
+  "options": [
+   "Scrum",
+   "El modelo en cascada",
+   "El modelo en V",
+   "La programación por capas"
+  ],
+  "answer_index": 0,
+  "context": "Pertenece a las metodologías ágiles y toma su nombre de una formación del rugby. El modelo en cascada, anterior, exigía cerrar cada fase antes de empezar la siguiente.",
+  "difficulty": "medium",
+  "question_en": "Which working method organises development into short cycles called sprints?",
+  "options_en": [
+   "Scrum",
+   "The waterfall model",
+   "The V-model",
+   "Layered programming"
+  ],
+  "context_en": "It belongs to the agile methods and takes its name from a rugby formation. The earlier waterfall model required closing each phase before starting the next."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué red de servidores distribuidos acerca los contenidos al usuario para acelerar la carga?",
+  "options": [
+   "La CDN",
+   "La VPN",
+   "El DNS",
+   "El firewall"
+  ],
+  "answer_index": 0,
+  "context": "Guarda copias de imágenes y vídeos en decenas de países, de modo que los datos viajen menos. Una caída suya puede dejar sin servicio a miles de webs a la vez.",
+  "difficulty": "medium",
+  "question_en": "Which network of distributed servers brings content closer to the user to speed up loading?",
+  "options_en": [
+   "The CDN",
+   "The VPN",
+   "The DNS",
+   "The firewall"
+  ],
+  "context_en": "It keeps copies of images and video in dozens of countries so data travels less. An outage in one can take thousands of sites down at once."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué magnitud mide el retardo entre enviar una petición y recibir la respuesta?",
+  "options": [
+   "La latencia",
+   "El ancho de banda",
+   "La resolución",
+   "La frecuencia"
+  ],
+  "answer_index": 0,
+  "context": "El ancho de banda mide cuántos datos caben por segundo, no lo rápido que empiezan a llegar. En videojuegos y videollamadas importa más la primera que el segundo.",
+  "difficulty": "medium",
+  "question_en": "Which measure records the delay between sending a request and getting a reply?",
+  "options_en": [
+   "Latency",
+   "Bandwidth",
+   "Resolution",
+   "Frequency"
+  ],
+  "context_en": "Bandwidth measures how much data fits per second, not how quickly it starts arriving. For gaming and video calls the former matters more than the latter."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué orden de red comprueba si un equipo remoto responde y en cuánto tiempo?",
+  "options": [
+   "ping",
+   "grep",
+   "chmod",
+   "curl"
+  ],
+  "answer_index": 0,
+  "context": "Su nombre imita el sonido del sonar, que rebota y vuelve. Envía un paquete y mide cuánto tarda en regresar la respuesta.",
+  "difficulty": "medium",
+  "question_en": "Which network command checks whether a remote machine answers, and how quickly?",
+  "options_en": [
+   "ping",
+   "grep",
+   "chmod",
+   "curl"
+  ],
+  "context_en": "Its name imitates the sound of sonar, which bounces and returns. It sends a packet and measures how long the reply takes to come back."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tecnología empaqueta una aplicación con sus dependencias para que corra igual en cualquier máquina?",
+  "options": [
+   "Los contenedores",
+   "Las macros",
+   "Los enlaces simbólicos",
+   "Los complementos"
+  ],
+  "answer_index": 0,
+  "context": "A diferencia de una máquina virtual completa, comparten el núcleo del sistema anfitrión y arrancan en segundos. Resuelven el clásico problema de que algo funcione solo en un equipo.",
+  "difficulty": "medium",
+  "question_en": "Which technology packages an application with its dependencies so it runs the same anywhere?",
+  "options_en": [
+   "Containers",
+   "Macros",
+   "Symbolic links",
+   "Plugins"
+  ],
+  "context_en": "Unlike a full virtual machine, they share the host's kernel and start in seconds. They solve the classic problem of something working only on one machine."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué fallo informático se temía al llegar el año 2000 por guardar los años con dos cifras?",
+  "options": [
+   "El efecto Y2K",
+   "El desbordamiento de búfer",
+   "La pantalla azul",
+   "El bloqueo mutuo"
+  ],
+  "answer_index": 0,
+  "context": "Se invirtieron cientos de miles de millones en revisar sistemas antiguos. Que apenas ocurriera nada es hoy motivo de discusión: para muchos fue justo por ese trabajo previo.",
+  "difficulty": "medium",
+  "question_en": "Which computing fault was feared as the year 2000 arrived, from storing years with two digits?",
+  "options_en": [
+   "The Y2K problem",
+   "Buffer overflow",
+   "The blue screen",
+   "Deadlock"
+  ],
+  "context_en": "Hundreds of billions were spent reviewing old systems. That almost nothing happened is still debated: for many it was precisely because of that work."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué técnica oculta un mensaje dentro de una imagen o un sonido aparentemente normal?",
+  "options": [
+   "La esteganografía",
+   "La criptografía",
+   "La compresión",
+   "La ofuscación"
+  ],
+  "answer_index": 0,
+  "context": "La criptografía hace ilegible el mensaje; esta otra técnica esconde que exista siquiera. Se puede lograr alterando levemente el último bit de cada píxel.",
+  "difficulty": "medium",
+  "question_en": "Which technique hides a message inside an apparently normal image or sound?",
+  "options_en": [
+   "Steganography",
+   "Cryptography",
+   "Compression",
+   "Obfuscation"
+  ],
+  "context_en": "Cryptography makes a message unreadable; this hides that it exists at all. It can be done by slightly altering the last bit of each pixel."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué valor aleatorio se añade a una contraseña antes de calcular su resumen criptográfico?",
+  "options": [
+   "La sal",
+   "El token",
+   "El certificado",
+   "El vector"
+  ],
+  "answer_index": 0,
+  "context": "Evita que dos personas con la misma contraseña tengan el mismo resultado guardado. También inutiliza las tablas precalculadas que usan los atacantes.",
+  "difficulty": "medium",
+  "question_en": "Which random value is added to a password before computing its cryptographic digest?",
+  "options_en": [
+   "The salt",
+   "The token",
+   "The certificate",
+   "The vector"
+  ],
+  "context_en": "It stops two people with the same password from having the same stored result. It also defeats the precomputed tables attackers use."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué sensor mide distancias lanzando pulsos láser y equipa a muchos coches autónomos?",
+  "options": [
+   "El lidar",
+   "El barómetro",
+   "El acelerómetro",
+   "El termopar"
+  ],
+  "answer_index": 0,
+  "context": "Construye una nube de puntos tridimensional del entorno varias veces por segundo. La arqueología lo usa desde avionetas para descubrir ruinas bajo la selva.",
+  "difficulty": "medium",
+  "question_en": "Which sensor measures distance by firing laser pulses and equips many self-driving cars?",
+  "options_en": [
+   "Lidar",
+   "The barometer",
+   "The accelerometer",
+   "The thermocouple"
+  ],
+  "context_en": "It builds a three-dimensional point cloud of the surroundings several times a second. Archaeology uses it from light aircraft to find ruins under jungle canopy."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué etiqueta sin batería responde por radio y se usa para controlar el inventario de las tiendas?",
+  "options": [
+   "La RFID",
+   "La banda magnética",
+   "El chip EMV",
+   "El código Morse"
+  ],
+  "answer_index": 0,
+  "context": "El lector la alimenta a distancia con su propio campo electromagnético. Permite leer decenas de artículos a la vez sin sacarlos de la caja.",
+  "difficulty": "medium",
+  "question_en": "Which battery-free tag answers by radio and is used to track shop inventory?",
+  "options_en": [
+   "RFID",
+   "The magnetic stripe",
+   "The EMV chip",
+   "Morse code"
+  ],
+  "context_en": "The reader powers it from a distance with its own electromagnetic field. It can read dozens of items at once without taking them out of the box."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tecnología de pantalla imita el papel y solo consume al cambiar de página?",
+  "options": [
+   "La tinta electrónica",
+   "El plasma",
+   "El cristal líquido",
+   "El tubo de rayos catódicos"
+  ],
+  "answer_index": 0,
+  "context": "Mueve microcápsulas con partículas blancas y negras mediante un campo eléctrico. Como no emite luz propia, necesita iluminación externa igual que un libro.",
+  "difficulty": "medium",
+  "question_en": "Which display technology imitates paper and draws power only when the page changes?",
+  "options_en": [
+   "Electronic ink",
+   "Plasma",
+   "Liquid crystal",
+   "The cathode ray tube"
+  ],
+  "context_en": "It moves microcapsules holding white and black particles with an electric field. Emitting no light of its own, it needs external lighting just like a book."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué técnica de fabricación crea objetos depositando capas sucesivas de material?",
+  "options": [
+   "La impresión 3D",
+   "El torneado",
+   "El estampado",
+   "La fundición"
+  ],
+  "answer_index": 0,
+  "context": "Se llama también fabricación aditiva porque añade material en lugar de quitarlo. Se usa ya para prótesis médicas y piezas de motores aeronáuticos.",
+  "difficulty": "medium",
+  "question_en": "Which manufacturing technique creates objects by laying down successive layers of material?",
+  "options_en": [
+   "3D printing",
+   "Turning",
+   "Stamping",
+   "Casting"
+  ],
+  "context_en": "It is also called additive manufacturing because it adds material instead of removing it. It is already used for medical prosthetics and aircraft engine parts."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe una aeronave sin tripulación pilotada a distancia o de forma autónoma?",
+  "options": [
+   "El dron",
+   "El planeador",
+   "El dirigible",
+   "El ultraligero"
+  ],
+  "answer_index": 0,
+  "context": "Los de reparto y los agrícolas ya operan comercialmente en varios países. Su regulación exige licencia y seguro por encima de cierto peso.",
+  "difficulty": "medium",
+  "question_en": "What is an uncrewed aircraft flown remotely or autonomously called?",
+  "options_en": [
+   "The drone",
+   "The glider",
+   "The airship",
+   "The microlight"
+  ],
+  "context_en": "Delivery and agricultural models already operate commercially in several countries. Regulations require a licence and insurance above a certain weight."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe la red de objetos cotidianos conectados que envían datos entre sí?",
+  "options": [
+   "El internet de las cosas",
+   "La red neuronal",
+   "La intranet",
+   "La realidad aumentada"
+  ],
+  "answer_index": 0,
+  "context": "Incluye termostatos, pulseras, sensores agrícolas y cerraduras. Su principal problema es que muchos fabricantes dejan de publicar actualizaciones de seguridad enseguida.",
+  "difficulty": "medium",
+  "question_en": "What is the network of everyday connected objects sending data to each other called?",
+  "options_en": [
+   "The internet of things",
+   "The neural network",
+   "The intranet",
+   "Augmented reality"
+  ],
+  "context_en": "It includes thermostats, wristbands, farm sensors and door locks. Its main problem is that many makers stop publishing security updates very quickly."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tipo de aprendizaje automático agrupa datos sin que nadie los haya etiquetado antes?",
+  "options": [
+   "El no supervisado",
+   "El supervisado",
+   "El reforzado",
+   "El federado"
+  ],
+  "answer_index": 0,
+  "context": "Busca estructuras ocultas, como grupos de clientes con hábitos parecidos. El supervisado, en cambio, necesita ejemplos con la respuesta correcta ya marcada.",
+  "difficulty": "medium",
+  "question_en": "Which kind of machine learning groups data that nobody has labelled beforehand?",
+  "options_en": [
+   "Unsupervised",
+   "Supervised",
+   "Reinforcement",
+   "Federated"
+  ],
+  "context_en": "It looks for hidden structure, such as groups of customers with similar habits. Supervised learning, by contrast, needs examples with the correct answer already marked."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre se da a una respuesta inventada pero verosímil de un modelo de lenguaje?",
+  "options": [
+   "Una alucinación",
+   "Una excepción",
+   "Un desbordamiento",
+   "Una colisión"
+  ],
+  "answer_index": 0,
+  "context": "Ocurre porque el modelo predice la continuación más plausible, no consulta una base de datos de hechos. Por eso conviene comprobar siempre citas, cifras y referencias.",
+  "difficulty": "medium",
+  "question_en": "What is an invented but plausible answer from a language model called?",
+  "options_en": [
+   "A hallucination",
+   "An exception",
+   "An overflow",
+   "A collision"
+  ],
+  "context_en": "It happens because the model predicts the most plausible continuation rather than consulting a database of facts. That is why quotes, figures and references should always be checked."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿En qué unidades mínimas trocea un modelo de lenguaje el texto que procesa?",
+  "options": [
+   "Tokens",
+   "Píxeles",
+   "Hercios",
+   "Nodos"
+  ],
+  "answer_index": 0,
+  "context": "No coinciden con las palabras: una palabra larga o poco frecuente puede ocupar varios. El precio de estos servicios suele calcularse contando esas unidades.",
+  "difficulty": "medium",
+  "question_en": "Into which minimal units does a language model break the text it processes?",
+  "options_en": [
+   "Tokens",
+   "Pixels",
+   "Hertz",
+   "Nodes"
+  ],
+  "context_en": "They do not match words: a long or rare word can take several. The price of these services is usually worked out by counting those units."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué reglamento europeo protege los datos personales desde 2018?",
+  "options": [
+   "El RGPD",
+   "La DMCA",
+   "La ley Sarbanes-Oxley",
+   "El convenio de Berna"
+  ],
+  "answer_index": 0,
+  "context": "Obliga a pedir consentimiento explícito y permite exigir el borrado de los datos. Sus multas pueden alcanzar el cuatro por ciento de la facturación mundial de una empresa.",
+  "difficulty": "medium",
+  "question_en": "Which European regulation has protected personal data since 2018?",
+  "options_en": [
+   "The GDPR",
+   "The DMCA",
+   "Sarbanes-Oxley",
+   "The Berne Convention"
+  ],
+  "context_en": "It requires explicit consent and allows people to demand deletion of their data. Its fines can reach four per cent of a company's worldwide turnover."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe el programa grabado dentro del propio aparato que controla su hardware?",
+  "options": [
+   "El firmware",
+   "El navegador",
+   "La hoja de cálculo",
+   "El emulador"
+  ],
+  "answer_index": 0,
+  "context": "Está a medio camino entre el hardware y el software, de ahí su nombre. Actualizarlo mal puede dejar el aparato inservible, algo que se conoce como ladrillar.",
+  "difficulty": "medium",
+  "question_en": "What is the program embedded in a device itself that controls its hardware called?",
+  "options_en": [
+   "The firmware",
+   "The browser",
+   "The spreadsheet",
+   "The emulator"
+  ],
+  "context_en": "It sits halfway between hardware and software, hence its name. Updating it badly can leave the device useless, which is known as bricking."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tecnología identifica a una persona comparando rasgos de su cara con una base de datos?",
+  "options": [
+   "El reconocimiento facial",
+   "La biometría de voz",
+   "La firma digital",
+   "El cifrado simétrico"
+  ],
+  "answer_index": 0,
+  "context": "Varias ciudades lo han prohibido en espacios públicos por su impacto en la privacidad. Los estudios han detectado tasas de error mayores con rostros de piel oscura.",
+  "difficulty": "medium",
+  "question_en": "Which technology identifies a person by matching facial features against a database?",
+  "options_en": [
+   "Facial recognition",
+   "Voice biometrics",
+   "The digital signature",
+   "Symmetric encryption"
+  ],
+  "context_en": "Several cities have banned it in public spaces over its impact on privacy. Studies have found higher error rates with darker-skinned faces."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué informático diseñó el lenguaje Smalltalk e imaginó el ordenador personal portátil?",
+  "options": [
+   "Alan Kay",
+   "Niklaus Wirth",
+   "Bjarne Stroustrup",
+   "John McCarthy"
+  ],
+  "answer_index": 0,
+  "context": "Su concepto del Dynabook, de 1972, describía algo muy parecido a una tableta actual. Suya es la frase de que la mejor manera de predecir el futuro es inventarlo.",
+  "difficulty": "hard",
+  "question_en": "Which computer scientist designed Smalltalk and imagined the portable personal computer?",
+  "options_en": [
+   "Alan Kay",
+   "Niklaus Wirth",
+   "Bjarne Stroustrup",
+   "John McCarthy"
+  ],
+  "context_en": "His 1972 Dynabook concept described something very like today's tablet. The line about the best way to predict the future being to invent it is his."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué centro de investigación californiano desarrolló la interfaz gráfica de ventanas y la red Ethernet?",
+  "options": [
+   "Xerox PARC",
+   "SRI International",
+   "MIT Media Lab",
+   "RAND Corporation"
+  ],
+  "answer_index": 0,
+  "context": "Su empresa matriz no supo aprovechar comercialmente aquellos inventos. Una visita de Steve Jobs en 1979 acabó inspirando el Macintosh.",
+  "difficulty": "hard",
+  "question_en": "Which Californian research centre developed the graphical windows interface and Ethernet?",
+  "options_en": [
+   "Xerox PARC",
+   "SRI International",
+   "MIT Media Lab",
+   "RAND Corporation"
+  ],
+  "context_en": "Its parent company failed to exploit those inventions commercially. A 1979 visit by Steve Jobs ended up inspiring the Macintosh."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué ingeniero inventó Ethernet y enunció una ley sobre el valor de las redes?",
+  "options": [
+   "Robert Metcalfe",
+   "Radia Perlman",
+   "Paul Baran",
+   "Leonard Kleinrock"
+  ],
+  "answer_index": 0,
+  "context": "Su ley sostiene que el valor de una red crece con el cuadrado del número de usuarios. Fundó la empresa 3Com para comercializar su invento.",
+  "difficulty": "hard",
+  "question_en": "Which engineer invented Ethernet and stated a law about the value of networks?",
+  "options_en": [
+   "Robert Metcalfe",
+   "Radia Perlman",
+   "Paul Baran",
+   "Leonard Kleinrock"
+  ],
+  "context_en": "His law holds that a network's value grows with the square of its number of users. He founded 3Com to commercialise his invention."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué pareja de ingenieros estadounidenses diseñó el conjunto de protocolos TCP/IP?",
+  "options": [
+   "Vinton Cerf y Bob Kahn",
+   "Larry Roberts y Paul Baran",
+   "Tim Berners-Lee y Robert Cailliau",
+   "Ken Thompson y Brian Kernighan"
+  ],
+  "answer_index": 0,
+  "context": "Su diseño permitió unir redes distintas sin que ninguna mandara sobre las demás. A uno de ellos se le llama a veces padre de internet.",
+  "difficulty": "hard",
+  "question_en": "Which pair of American engineers designed the TCP/IP protocol suite?",
+  "options_en": [
+   "Vinton Cerf and Bob Kahn",
+   "Larry Roberts and Paul Baran",
+   "Tim Berners-Lee and Robert Cailliau",
+   "Ken Thompson and Brian Kernighan"
+  ],
+  "context_en": "Their design let separate networks join without any one ruling the others. One of them is sometimes called the father of the internet."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué palabra quedó a medias en el primer mensaje enviado por ARPANET en 1969?",
+  "options": [
+   "LOGIN",
+   "HELLO",
+   "START",
+   "READY"
+  ],
+  "answer_index": 0,
+  "context": "El sistema se cayó tras las dos primeras letras, así que el mensaje inaugural de la red fue \"LO\". Una hora después consiguieron completarlo.",
+  "difficulty": "hard",
+  "question_en": "Which word was cut short in the first message sent over ARPANET in 1969?",
+  "options_en": [
+   "LOGIN",
+   "HELLO",
+   "START",
+   "READY"
+  ],
+  "context_en": "The system crashed after the first two letters, so the network's inaugural message was \"LO\". An hour later they managed to complete it."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué teorema afirma que un sistema distribuido no puede garantizar a la vez consistencia, disponibilidad y tolerancia a particiones?",
+  "options": [
+   "El teorema CAP",
+   "El teorema de Nyquist",
+   "El teorema de Church",
+   "El teorema de Rice"
+  ],
+  "answer_index": 0,
+  "context": "Se formuló en 2000 y se demostró dos años después. En la práctica obliga a elegir qué sacrificar cuando la red se parte en dos.",
+  "difficulty": "hard",
+  "question_en": "Which theorem states that a distributed system cannot guarantee consistency, availability and partition tolerance at once?",
+  "options_en": [
+   "The CAP theorem",
+   "Nyquist's theorem",
+   "Church's theorem",
+   "Rice's theorem"
+  ],
+  "context_en": "It was proposed in 2000 and proved two years later. In practice it forces a choice about what to sacrifice when the network splits in two."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué notación describe cómo crece el coste de un algoritmo al aumentar los datos?",
+  "options": [
+   "La notación O grande",
+   "La notación científica",
+   "La notación polaca",
+   "La notación húngara"
+  ],
+  "answer_index": 0,
+  "context": "Ignora las constantes y se fija solo en el comportamiento con entradas muy grandes. Un algoritmo cuadrático se vuelve inviable mucho antes que uno logarítmico.",
+  "difficulty": "hard",
+  "question_en": "Which notation describes how an algorithm's cost grows as the data increases?",
+  "options_en": [
+   "Big O notation",
+   "Scientific notation",
+   "Polish notation",
+   "Hungarian notation"
+  ],
+  "context_en": "It ignores constants and looks only at behaviour with very large inputs. A quadratic algorithm becomes unworkable far sooner than a logarithmic one."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué problema abierto pregunta si todo lo que se verifica rápido se puede también resolver rápido?",
+  "options": [
+   "P frente a NP",
+   "La conjetura de Collatz",
+   "La hipótesis de Riemann",
+   "El problema de la parada"
+  ],
+  "answer_index": 0,
+  "context": "Es uno de los siete problemas del milenio, con un millón de dólares de premio. Si la respuesta fuera afirmativa, buena parte de la criptografía actual dejaría de servir.",
+  "difficulty": "hard",
+  "question_en": "Which open problem asks whether everything quickly verified can also be quickly solved?",
+  "options_en": [
+   "P versus NP",
+   "The Collatz conjecture",
+   "The Riemann hypothesis",
+   "The halting problem"
+  ],
+  "context_en": "It is one of the seven millennium problems, with a million-dollar prize. If the answer were yes, much of today's cryptography would stop working."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué propiedad cuántica permite que un cúbit represente varios estados simultáneamente?",
+  "options": [
+   "La superposición",
+   "La conductividad",
+   "La refracción",
+   "La inducción"
+  ],
+  "answer_index": 0,
+  "context": "Al medirlo, esa superposición se pierde y queda un único valor. El entrelazamiento, complementario, correlaciona dos cúbits separados.",
+  "difficulty": "hard",
+  "question_en": "Which quantum property lets a qubit represent several states at once?",
+  "options_en": [
+   "Superposition",
+   "Conductivity",
+   "Refraction",
+   "Induction"
+  ],
+  "context_en": "Measuring it destroys that superposition and leaves a single value. Entanglement, its complement, correlates two separated qubits."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué algoritmo cuántico amenaza al cifrado RSA al factorizar números enormes?",
+  "options": [
+   "El algoritmo de Shor",
+   "El algoritmo de Grover",
+   "El algoritmo de Dijkstra",
+   "El algoritmo de Euclides"
+  ],
+  "answer_index": 0,
+  "context": "Se publicó en 1994 y sigue sin poder ejecutarse a escala útil por falta de cúbits estables. Por eso se trabaja ya en criptografía resistente a ordenadores cuánticos.",
+  "difficulty": "hard",
+  "question_en": "Which quantum algorithm threatens RSA encryption by factoring huge numbers?",
+  "options_en": [
+   "Shor's algorithm",
+   "Grover's algorithm",
+   "Dijkstra's algorithm",
+   "Euclid's algorithm"
+  ],
+  "context_en": "It was published in 1994 and still cannot run at useful scale for want of stable qubits. That is why post-quantum cryptography is already being developed."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué técnica reparte los datos entre varios discos para ganar velocidad o tolerar averías?",
+  "options": [
+   "El RAID",
+   "El particionado",
+   "La desfragmentación",
+   "El formateo"
+  ],
+  "answer_index": 0,
+  "context": "Sus niveles combinan reparto y redundancia de formas distintas. No sustituye a una copia de seguridad: si se borra un archivo, desaparece de todos los discos a la vez.",
+  "difficulty": "hard",
+  "question_en": "Which technique spreads data across several disks to gain speed or tolerate failures?",
+  "options_en": [
+   "RAID",
+   "Partitioning",
+   "Defragmentation",
+   "Formatting"
+  ],
+  "context_en": "Its levels combine striping and redundancy in different ways. It is no substitute for a backup: deleting a file removes it from every disk at once."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué ataque satura un servicio con peticiones lanzadas desde miles de equipos infectados?",
+  "options": [
+   "La denegación de servicio distribuida",
+   "La inyección de código",
+   "El secuestro de DNS",
+   "La escalada de privilegios"
+  ],
+  "answer_index": 0,
+  "context": "La red de aparatos infectados que lo ejecuta se llama botnet. Muchos de esos equipos son cámaras y routers domésticos con contraseñas de fábrica.",
+  "difficulty": "hard",
+  "question_en": "Which attack floods a service with requests launched from thousands of infected machines?",
+  "options_en": [
+   "Distributed denial of service",
+   "Code injection",
+   "DNS hijacking",
+   "Privilege escalation"
+  ],
+  "context_en": "The network of infected devices carrying it out is called a botnet. Many of those machines are home cameras and routers left on factory passwords."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué gusano informático descubierto en 2010 saboteó centrifugadoras nucleares iraníes?",
+  "options": [
+   "Stuxnet",
+   "Conficker",
+   "ILOVEYOU",
+   "Mydoom"
+  ],
+  "answer_index": 0,
+  "context": "Aprovechaba varias vulnerabilidades desconocidas a la vez, algo propio de un estado. Alteraba la velocidad de las máquinas mientras mostraba lecturas normales a los operarios.",
+  "difficulty": "hard",
+  "question_en": "Which computer worm discovered in 2010 sabotaged Iranian nuclear centrifuges?",
+  "options_en": [
+   "Stuxnet",
+   "Conficker",
+   "ILOVEYOU",
+   "Mydoom"
+  ],
+  "context_en": "It exploited several unknown vulnerabilities at once, the mark of a state actor. It altered the machines' speed while showing operators normal readings."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué fallo de 2014 en OpenSSL permitía leer trozos de la memoria de los servidores?",
+  "options": [
+   "Heartbleed",
+   "Shellshock",
+   "Spectre",
+   "Log4Shell"
+  ],
+  "answer_index": 0,
+  "context": "Afectó a cientos de miles de servidores y obligó a cambiar certificados en medio mundo. Lo causaba una comprobación de longitud que faltaba en unas pocas líneas de código.",
+  "difficulty": "hard",
+  "question_en": "Which 2014 OpenSSL flaw allowed chunks of server memory to be read?",
+  "options_en": [
+   "Heartbleed",
+   "Shellshock",
+   "Spectre",
+   "Log4Shell"
+  ],
+  "context_en": "It hit hundreds of thousands of servers and forced certificate changes worldwide. It was caused by a missing length check in a few lines of code."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué mecanismo de consenso exige resolver un problema costoso para añadir un bloque en Bitcoin?",
+  "options": [
+   "La prueba de trabajo",
+   "La prueba de participación",
+   "La prueba de autoridad",
+   "La prueba de espacio"
+  ],
+  "answer_index": 0,
+  "context": "Obliga a gastar electricidad real, lo que encarece cualquier intento de falsificar la cadena. Ethereum lo sustituyó en 2022 por la prueba de participación, mucho menos intensiva.",
+  "difficulty": "hard",
+  "question_en": "Which consensus mechanism requires solving a costly problem to add a block in Bitcoin?",
+  "options_en": [
+   "Proof of work",
+   "Proof of stake",
+   "Proof of authority",
+   "Proof of space"
+  ],
+  "context_en": "It forces real electricity to be spent, which makes forging the chain expensive. Ethereum replaced it in 2022 with proof of stake, far less intensive."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué ingeniera dirigió el equipo que escribió el software de vuelo del programa Apolo?",
+  "options": [
+   "Margaret Hamilton",
+   "Katherine Johnson",
+   "Frances Allen",
+   "Adele Goldberg"
+  ],
+  "answer_index": 0,
+  "context": "Acuñó la expresión ingeniería de software cuando nadie tomaba en serio esa disciplina. Su código impidió que el ordenador del alunizaje se bloqueara por sobrecarga.",
+  "difficulty": "hard",
+  "question_en": "Which engineer led the team that wrote the Apollo programme's flight software?",
+  "options_en": [
+   "Margaret Hamilton",
+   "Katherine Johnson",
+   "Frances Allen",
+   "Adele Goldberg"
+  ],
+  "context_en": "She coined the term software engineering when nobody took the discipline seriously. Her code stopped the landing computer from locking up under overload."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué estructura de datos jerárquica permite buscar un elemento descartando la mitad en cada paso?",
+  "options": [
+   "El árbol binario de búsqueda",
+   "La lista enlazada",
+   "La pila",
+   "La cola"
+  ],
+  "answer_index": 0,
+  "context": "Cada nodo guarda a su izquierda los valores menores y a su derecha los mayores. Si queda desequilibrado degenera en una lista y pierde toda su ventaja.",
+  "difficulty": "hard",
+  "question_en": "Which hierarchical data structure lets you find an element by discarding half at each step?",
+  "options_en": [
+   "The binary search tree",
+   "The linked list",
+   "The stack",
+   "The queue"
+  ],
+  "context_en": "Each node keeps smaller values on its left and larger ones on its right. If it becomes unbalanced it degenerates into a list and loses all its advantage."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué estándar de compresión de vídeo sostiene todavía buena parte del vídeo por internet?",
+  "options": [
+   "H.264",
+   "GIF",
+   "MIDI",
+   "SVG"
+  ],
+  "answer_index": 0,
+  "context": "Se aprobó en 2003 y sigue siendo el más compatible con los aparatos antiguos. Sus sucesores comprimen mejor, pero arrastran conflictos de patentes.",
+  "difficulty": "hard",
+  "question_en": "Which video compression standard still carries much of the video on the internet?",
+  "options_en": [
+   "H.264",
+   "GIF",
+   "MIDI",
+   "SVG"
+  ],
+  "context_en": "It was approved in 2003 and remains the most compatible with older devices. Its successors compress better but drag patent disputes behind them."
+ }
+]

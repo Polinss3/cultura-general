@@ -1,0 +1,1073 @@
+[
+ {
+  "category": "tecnologia",
+  "question": "¿Qué aparato convierte un documento de papel en un archivo digital?",
+  "options": [
+   "El escáner",
+   "La impresora",
+   "El router",
+   "El altavoz"
+  ],
+  "answer_index": 0,
+  "context": "Ilumina la hoja y mide la luz reflejada línea a línea. Muchos equipos de oficina combinan esta función con la de imprimir en un solo aparato.",
+  "difficulty": "easy",
+  "question_en": "Which device turns a paper document into a digital file?",
+  "options_en": [
+   "The scanner",
+   "The printer",
+   "The router",
+   "The speaker"
+  ],
+  "context_en": "It lights the sheet and measures the reflected light line by line. Many office machines combine this with printing in a single device."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre reciben los programas que se instalan en un teléfono móvil?",
+  "options": [
+   "Las aplicaciones",
+   "Los controladores",
+   "Los protocolos",
+   "Los periféricos"
+  ],
+  "answer_index": 0,
+  "context": "Se descargan desde una tienda oficial que revisa, con desigual rigor, lo que publica. Conviene mirar qué permisos piden antes de instalarlas.",
+  "difficulty": "easy",
+  "question_en": "What are the programs installed on a mobile phone called?",
+  "options_en": [
+   "Apps",
+   "Drivers",
+   "Protocols",
+   "Peripherals"
+  ],
+  "context_en": "They are downloaded from an official store that vets, with uneven rigour, what it publishes. It pays to check what permissions they ask for before installing."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tecla se combina con la letra C para copiar en Windows?",
+  "options": [
+   "Control",
+   "Mayúsculas",
+   "Escape",
+   "Tabulador"
+  ],
+  "answer_index": 0,
+  "context": "En los ordenadores de Apple ese papel lo cumple la tecla de comando. Los atajos de cortar, copiar y pegar usan tres letras seguidas del teclado por comodidad.",
+  "difficulty": "easy",
+  "question_en": "Which key is combined with the letter C to copy in Windows?",
+  "options_en": [
+   "Control",
+   "Shift",
+   "Escape",
+   "Tab"
+  ],
+  "context_en": "On Apple computers the command key plays that role. The cut, copy and paste shortcuts use three adjacent letters for convenience."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué se necesita además del nombre de usuario para entrar en una cuenta?",
+  "options": [
+   "La contraseña",
+   "El navegador",
+   "La impresora",
+   "El adjunto"
+  ],
+  "answer_index": 0,
+  "context": "Una larga hecha de varias palabras resiste mucho mejor que una corta con símbolos raros. Repetir la misma en varios servicios es el error más frecuente.",
+  "difficulty": "easy",
+  "question_en": "What is needed besides the user name to get into an account?",
+  "options_en": [
+   "The password",
+   "The browser",
+   "The printer",
+   "The attachment"
+  ],
+  "context_en": "A long one made of several words resists far better than a short one with odd symbols. Reusing the same one across services is the most common mistake."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué formato de archivo conserva el aspecto exacto de un documento en cualquier equipo?",
+  "options": [
+   "PDF",
+   "TXT",
+   "CSV",
+   "RTF"
+  ],
+  "answer_index": 0,
+  "context": "Incrusta las tipografías y la maquetación, de modo que no dependa del programa que lo abra. Por eso se usa para contratos, facturas y formularios oficiales.",
+  "difficulty": "easy",
+  "question_en": "Which file format keeps a document's exact appearance on any machine?",
+  "options_en": [
+   "PDF",
+   "TXT",
+   "CSV",
+   "RTF"
+  ],
+  "context_en": "It embeds fonts and layout so it does not depend on the program opening it. That is why it is used for contracts, invoices and official forms."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿A qué carpeta van a parar los archivos borrados antes de desaparecer del todo?",
+  "options": [
+   "La papelera",
+   "La descarga",
+   "El escritorio",
+   "El portapapeles"
+  ],
+  "answer_index": 0,
+  "context": "Mientras siguen ahí ocupan el mismo espacio en el disco. El portapapeles, en cambio, guarda temporalmente lo último que se ha copiado.",
+  "difficulty": "easy",
+  "question_en": "Which folder do deleted files go to before disappearing for good?",
+  "options_en": [
+   "The recycle bin",
+   "Downloads",
+   "The desktop",
+   "The clipboard"
+  ],
+  "context_en": "While they sit there they still take up the same disk space. The clipboard, by contrast, temporarily holds the last thing copied."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué formato agrupa varios archivos en uno solo y reduce su tamaño?",
+  "options": [
+   "ZIP",
+   "JPEG",
+   "MP4",
+   "EXE"
+  ],
+  "answer_index": 0,
+  "context": "Comprime sin perder nada: al descomprimir se recuperan los archivos idénticos. Puede además protegerse con contraseña, aunque su cifrado antiguo era muy débil.",
+  "difficulty": "easy",
+  "question_en": "Which format bundles several files into one and reduces their size?",
+  "options_en": [
+   "ZIP",
+   "JPEG",
+   "MP4",
+   "EXE"
+  ],
+  "context_en": "It compresses losslessly: unzipping returns the files unchanged. It can also be password protected, though its old encryption was very weak."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué pieza del ordenador ejecuta las instrucciones y se considera su cerebro?",
+  "options": [
+   "El procesador",
+   "La fuente de alimentación",
+   "El ventilador",
+   "La carcasa"
+  ],
+  "answer_index": 0,
+  "context": "Los modelos actuales reparten el trabajo entre varios núcleos que funcionan a la vez. Su velocidad no lo es todo: la memoria y el almacenamiento también marcan el ritmo.",
+  "difficulty": "easy",
+  "question_en": "Which computer part executes the instructions and is considered its brain?",
+  "options_en": [
+   "The processor",
+   "The power supply",
+   "The fan",
+   "The case"
+  ],
+  "context_en": "Current models split the work across several cores running at once. Speed is not everything: memory and storage also set the pace."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe el programa que responde por voz en un altavoz inteligente?",
+  "options": [
+   "El asistente virtual",
+   "El servidor",
+   "El emulador",
+   "El compilador"
+  ],
+  "answer_index": 0,
+  "context": "Espera una palabra de activación y solo entonces envía el audio a los servidores. Varias empresas han admitido que personas escuchaban esas grabaciones para mejorarlo.",
+  "difficulty": "easy",
+  "question_en": "What is the program that answers by voice in a smart speaker called?",
+  "options_en": [
+   "The virtual assistant",
+   "The server",
+   "The emulator",
+   "The compiler"
+  ],
+  "context_en": "It waits for a wake word and only then sends audio to the servers. Several companies have admitted people listened to those recordings to improve it."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué medida indica cuántos puntos de imagen muestra una pantalla?",
+  "options": [
+   "La resolución",
+   "El brillo",
+   "El contraste",
+   "La latencia"
+  ],
+  "answer_index": 0,
+  "context": "Se expresa como el número de puntos a lo ancho por los que hay a lo alto. A igual resolución, una pantalla pequeña se ve más nítida que una grande.",
+  "difficulty": "easy",
+  "question_en": "Which measure states how many picture dots a screen shows?",
+  "options_en": [
+   "The resolution",
+   "The brightness",
+   "The contrast",
+   "The latency"
+  ],
+  "context_en": "It is given as the number of dots across by the number down. At the same resolution, a small screen looks sharper than a large one."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué conexión lleva vídeo y sonido digital en un solo cable hasta el televisor?",
+  "options": [
+   "El HDMI",
+   "El euroconector",
+   "El jack de auriculares",
+   "El cable de red"
+  ],
+  "answer_index": 0,
+  "context": "Sustituyó a las conexiones analógicas por componentes que necesitaban varios cables distintos. Incluye además un canal para controlar los aparatos conectados entre sí.",
+  "difficulty": "medium",
+  "question_en": "Which connection carries digital video and sound to a television in a single cable?",
+  "options_en": [
+   "HDMI",
+   "SCART",
+   "The headphone jack",
+   "The network cable"
+  ],
+  "context_en": "It replaced analogue component connections that needed several separate cables. It also carries a channel for connected devices to control each other."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué pieza metálica con aletas evacua el calor que genera el procesador?",
+  "options": [
+   "El disipador",
+   "La placa base",
+   "El zócalo",
+   "El condensador"
+  ],
+  "answer_index": 0,
+  "context": "Aumenta la superficie en contacto con el aire para que el calor se disipe más rápido. Entre él y el chip se aplica una pasta que rellena los huecos microscópicos.",
+  "difficulty": "medium",
+  "question_en": "Which finned metal part carries away the heat the processor generates?",
+  "options_en": [
+   "The heatsink",
+   "The motherboard",
+   "The socket",
+   "The capacitor"
+  ],
+  "context_en": "It increases the surface in contact with air so heat escapes faster. A paste applied between it and the chip fills the microscopic gaps."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué unidad indica cuántos millones de puntos capta el sensor de una cámara?",
+  "options": [
+   "El megapíxel",
+   "El megahercio",
+   "El megabyte",
+   "El megavatio"
+  ],
+  "answer_index": 0,
+  "context": "Más cantidad no significa mejor imagen: el tamaño del sensor y la óptica pesan bastante más. Los móviles compensan sus sensores diminutos con procesado por software.",
+  "difficulty": "medium",
+  "question_en": "Which unit states how many millions of dots a camera sensor captures?",
+  "options_en": [
+   "The megapixel",
+   "The megahertz",
+   "The megabyte",
+   "The megawatt"
+  ],
+  "context_en": "More does not mean a better image: sensor size and optics matter considerably more. Phones make up for their tiny sensors with software processing."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué sensor detecta que has girado el móvil y rota la pantalla?",
+  "options": [
+   "El acelerómetro",
+   "El barómetro",
+   "El micrófono",
+   "El sensor de huella"
+  ],
+  "answer_index": 0,
+  "context": "Mide la aceleración en tres ejes, incluida la de la gravedad, y de ahí deduce la inclinación. Los podómetros de las pulseras cuentan pasos con el mismo componente.",
+  "difficulty": "medium",
+  "question_en": "Which sensor detects that you have turned the phone and rotates the screen?",
+  "options_en": [
+   "The accelerometer",
+   "The barometer",
+   "The microphone",
+   "The fingerprint sensor"
+  ],
+  "context_en": "It measures acceleration on three axes, gravity included, and infers tilt from that. Wristband pedometers count steps with the same component."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tecnología de pantalla usa cristales que bloquean la luz de una retroiluminación?",
+  "options": [
+   "El LCD",
+   "El OLED",
+   "La tinta electrónica",
+   "El plasma"
+  ],
+  "answer_index": 0,
+  "context": "Como la lámpara de fondo siempre está encendida, los negros se ven algo grises. Los paneles con retroiluminación por zonas mitigan ese problema.",
+  "difficulty": "medium",
+  "question_en": "Which display technology uses crystals that block light from a backlight?",
+  "options_en": [
+   "LCD",
+   "OLED",
+   "Electronic ink",
+   "Plasma"
+  ],
+  "context_en": "Since the backlight is always on, blacks look slightly grey. Panels with zoned backlighting reduce that problem."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué lenguaje se usa para consultar y modificar bases de datos relacionales?",
+  "options": [
+   "SQL",
+   "HTML",
+   "XML",
+   "YAML"
+  ],
+  "answer_index": 0,
+  "context": "Nació en los años setenta y su sintaxis imita frases en inglés. Cada fabricante añade sus propias extensiones, así que la portabilidad nunca es completa.",
+  "difficulty": "medium",
+  "question_en": "Which language is used to query and modify relational databases?",
+  "options_en": [
+   "SQL",
+   "HTML",
+   "XML",
+   "YAML"
+  ],
+  "context_en": "It was born in the seventies and its syntax imitates English sentences. Each vendor adds its own extensions, so portability is never complete."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué formato ligero de texto usan casi todas las interfaces web para intercambiar datos?",
+  "options": [
+   "JSON",
+   "PDF",
+   "DOCX",
+   "WAV"
+  ],
+  "answer_index": 0,
+  "context": "Nació de la sintaxis de objetos de JavaScript, pero hoy lo entiende cualquier lenguaje. Desplazó al XML por ser mucho más breve y fácil de leer.",
+  "difficulty": "medium",
+  "question_en": "Which lightweight text format do almost all web interfaces use to exchange data?",
+  "options_en": [
+   "JSON",
+   "PDF",
+   "DOCX",
+   "WAV"
+  ],
+  "context_en": "It grew out of JavaScript's object syntax, but every language understands it today. It displaced XML by being far shorter and easier to read."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe la versión previa de un programa entregada a usuarios para detectar fallos?",
+  "options": [
+   "La beta",
+   "El parche",
+   "El complemento",
+   "La actualización"
+  ],
+  "answer_index": 0,
+  "context": "Antes de ella suele haber una fase interna, la alfa, más inestable todavía. Algunos servicios llevan años etiquetados así pese a usarlos millones de personas.",
+  "difficulty": "medium",
+  "question_en": "What is the early version of a program given to users to find bugs called?",
+  "options_en": [
+   "The beta",
+   "The patch",
+   "The plugin",
+   "The update"
+  ],
+  "context_en": "Before it there is usually an internal phase, the alpha, more unstable still. Some services stayed labelled that way for years despite millions of users."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué elemento permite que el navegador muestre el candado de conexión segura?",
+  "options": [
+   "El certificado TLS",
+   "La cookie",
+   "El favicon",
+   "El marcador"
+  ],
+  "answer_index": 0,
+  "context": "Lo emite una autoridad que verifica quién controla el dominio, y caduca cada pocos meses. El candado confirma que la conexión va cifrada, no que la web sea de fiar.",
+  "difficulty": "medium",
+  "question_en": "Which element lets the browser show the secure connection padlock?",
+  "options_en": [
+   "The TLS certificate",
+   "The cookie",
+   "The favicon",
+   "The bookmark"
+  ],
+  "context_en": "An authority that verifies who controls the domain issues it, and it expires every few months. The padlock confirms the connection is encrypted, not that the site is trustworthy."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tipo de compresión descarta información que el oído o la vista apenas perciben?",
+  "options": [
+   "La compresión con pérdida",
+   "La compresión sin pérdida",
+   "El cifrado",
+   "La codificación binaria"
+  ],
+  "answer_index": 0,
+  "context": "Es irreversible: lo descartado no se recupera al descomprimir. Reeditar varias veces un archivo así va degradando la calidad en cada paso.",
+  "difficulty": "medium",
+  "question_en": "Which kind of compression discards information the ear or eye barely perceives?",
+  "options_en": [
+   "Lossy compression",
+   "Lossless compression",
+   "Encryption",
+   "Binary encoding"
+  ],
+  "context_en": "It is irreversible: what is discarded never comes back on decompression. Re-editing such a file repeatedly degrades quality at every step."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe la empresa que da acceso a internet a los hogares?",
+  "options": [
+   "El proveedor de acceso",
+   "El registrador",
+   "El alojamiento",
+   "El operador de red móvil"
+  ],
+  "answer_index": 0,
+  "context": "Ve todo el tráfico que no va cifrado y en varios países está obligado a conservar registros. El registrador, en cambio, solo gestiona nombres de dominio.",
+  "difficulty": "medium",
+  "question_en": "What is the company that gives homes internet access called?",
+  "options_en": [
+   "The internet service provider",
+   "The registrar",
+   "The hosting company",
+   "The mobile network operator"
+  ],
+  "context_en": "It sees all unencrypted traffic and in several countries must keep logs. A registrar, by contrast, only manages domain names."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué número identifica a cada dispositivo conectado dentro de una red?",
+  "options": [
+   "La dirección IP",
+   "El número de serie",
+   "El código postal",
+   "El identificador de sesión"
+  ],
+  "answer_index": 0,
+  "context": "En casa el router reparte unas privadas y presenta una sola pública hacia fuera. Los servicios web la usan para estimar desde qué país se conecta alguien.",
+  "difficulty": "medium",
+  "question_en": "Which number identifies each device connected within a network?",
+  "options_en": [
+   "The IP address",
+   "The serial number",
+   "The postcode",
+   "The session identifier"
+  ],
+  "context_en": "At home the router hands out private ones and presents a single public one outwards. Web services use it to estimate which country someone connects from."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué se alquila por periodos para reservar el nombre de una página web?",
+  "options": [
+   "El dominio",
+   "El certificado",
+   "El servidor de correo",
+   "El ancho de banda"
+  ],
+  "answer_index": 0,
+  "context": "Se paga por años y quien no lo renueva puede perderlo a manos de terceros. Su gestión mundial depende de una organización sin ánimo de lucro llamada ICANN.",
+  "difficulty": "medium",
+  "question_en": "What is rented in fixed periods to reserve a website's name?",
+  "options_en": [
+   "The domain",
+   "The certificate",
+   "The mail server",
+   "The bandwidth"
+  ],
+  "context_en": "It is paid for by the year and whoever fails to renew can lose it to third parties. Its worldwide management rests with a non-profit called ICANN."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué ataque se coloca entre dos interlocutores y lee o altera lo que se envían?",
+  "options": [
+   "El ataque de intermediario",
+   "El ataque de diccionario",
+   "La suplantación de correo",
+   "El registro de teclas"
+  ],
+  "answer_index": 0,
+  "context": "Las redes wifi públicas abiertas son su escenario clásico. El cifrado de extremo a extremo lo neutraliza, siempre que se verifiquen las claves.",
+  "difficulty": "medium",
+  "question_en": "Which attack sits between two parties and reads or alters what they send?",
+  "options_en": [
+   "The man-in-the-middle attack",
+   "The dictionary attack",
+   "Email spoofing",
+   "Keylogging"
+  ],
+  "context_en": "Open public Wi-Fi networks are its classic setting. End-to-end encryption neutralises it, provided the keys are verified."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué programa guarda contraseñas cifradas para no tener que memorizarlas?",
+  "options": [
+   "El gestor de contraseñas",
+   "El cortafuegos",
+   "El depurador",
+   "El indexador"
+  ],
+  "answer_index": 0,
+  "context": "Permite usar una distinta y larguísima en cada servicio, recordando solo la maestra. Su punto débil evidente es esa clave maestra, que conviene reforzar con un segundo factor.",
+  "difficulty": "medium",
+  "question_en": "Which program stores encrypted passwords so you need not memorise them?",
+  "options_en": [
+   "The password manager",
+   "The firewall",
+   "The debugger",
+   "The indexer"
+  ],
+  "context_en": "It lets you use a different, very long one per service while remembering only the master key. Its obvious weak point is that master key, best reinforced with a second factor."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tecnología sumerge a la persona en un entorno simulado mediante unas gafas cerradas?",
+  "options": [
+   "La realidad virtual",
+   "La holografía",
+   "La estereoscopia impresa",
+   "La proyección cartográfica"
+  ],
+  "answer_index": 0,
+  "context": "Necesita refrescar la imagen muchas veces por segundo, o aparecen mareos. Se usa ya para formar a cirujanos y a personal de mantenimiento industrial.",
+  "difficulty": "medium",
+  "question_en": "Which technology immerses a person in a simulated environment through enclosed goggles?",
+  "options_en": [
+   "Virtual reality",
+   "Holography",
+   "Printed stereoscopy",
+   "Map projection"
+  ],
+  "context_en": "It must refresh the image many times per second or motion sickness appears. It is already used to train surgeons and industrial maintenance staff."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tecnología superpone información digital sobre la imagen real del entorno?",
+  "options": [
+   "La realidad aumentada",
+   "La realidad virtual",
+   "La telepresencia",
+   "La simulación numérica"
+  ],
+  "answer_index": 0,
+  "context": "No sustituye el mundo, lo anota: indicaciones sobre la calle, medidas sobre un mueble. Los filtros de las redes sociales son su aplicación más masiva.",
+  "difficulty": "medium",
+  "question_en": "Which technology overlays digital information on the real view of the surroundings?",
+  "options_en": [
+   "Augmented reality",
+   "Virtual reality",
+   "Telepresence",
+   "Numerical simulation"
+  ],
+  "context_en": "It does not replace the world, it annotates it: directions on the street, measurements on furniture. Social media filters are its most widespread use."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tipo de vehículo combina un motor de combustión con otro eléctrico?",
+  "options": [
+   "El híbrido",
+   "El de pila de combustible",
+   "El de gas licuado",
+   "El diésel común"
+  ],
+  "answer_index": 0,
+  "context": "Aprovecha el frenado para recargar la batería, algo imposible en un coche convencional. Los enchufables añaden la posibilidad de cargar desde la red eléctrica.",
+  "difficulty": "medium",
+  "question_en": "Which kind of vehicle combines a combustion engine with an electric one?",
+  "options_en": [
+   "The hybrid",
+   "The fuel cell car",
+   "The LPG car",
+   "The ordinary diesel"
+  ],
+  "context_en": "It uses braking to recharge the battery, impossible in a conventional car. Plug-in versions add the option of charging from the mains."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué ordenador del tamaño de una tarjeta popularizó la informática en las aulas británicas?",
+  "options": [
+   "La Raspberry Pi",
+   "El Commodore 64",
+   "La Game Boy",
+   "El Amstrad CPC"
+  ],
+  "answer_index": 0,
+  "context": "Lo lanzó una fundación en 2012 para recuperar el hábito de programar en la escuela. Se han vendido decenas de millones de unidades, muchas en proyectos de aficionados.",
+  "difficulty": "medium",
+  "question_en": "Which card-sized computer popularised computing in British classrooms?",
+  "options_en": [
+   "The Raspberry Pi",
+   "The Commodore 64",
+   "The Game Boy",
+   "The Amstrad CPC"
+  ],
+  "context_en": "A foundation launched it in 2012 to revive the habit of programming at school. Tens of millions have been sold, many into hobbyist projects."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué plataforma libre de microcontroladores usan los aficionados para montar circuitos programables?",
+  "options": [
+   "Arduino",
+   "Linux",
+   "Android",
+   "Firefox"
+  ],
+  "answer_index": 0,
+  "context": "Nació en un instituto de diseño italiano para que estudiantes sin formación técnica pudieran prototipar. Su nombre viene del bar donde se reunían sus creadores.",
+  "difficulty": "medium",
+  "question_en": "Which open microcontroller platform do hobbyists use to build programmable circuits?",
+  "options_en": [
+   "Arduino",
+   "Linux",
+   "Android",
+   "Firefox"
+  ],
+  "context_en": "It was born at an Italian design institute so students without technical training could prototype. Its name comes from the bar where its creators met."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre reciben los datos que acompañan a un archivo indicando fecha, autor o lugar?",
+  "options": [
+   "Los metadatos",
+   "Los píxeles",
+   "Los sectores",
+   "Los complementos"
+  ],
+  "answer_index": 0,
+  "context": "Una foto puede llevar las coordenadas exactas donde se tomó sin que nadie lo advierta. Compartir imágenes sin limpiarlos ha delatado más de una ubicación secreta.",
+  "difficulty": "medium",
+  "question_en": "What is the data accompanying a file that records date, author or place called?",
+  "options_en": [
+   "Metadata",
+   "Pixels",
+   "Sectors",
+   "Plugins"
+  ],
+  "context_en": "A photo can carry the exact coordinates where it was taken without anyone noticing. Sharing images without stripping it has exposed more than one secret location."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué tipo de licencia obliga a que las obras derivadas se publiquen también con permisos libres?",
+  "options": [
+   "El copyleft",
+   "El dominio público",
+   "La licencia permisiva",
+   "El secreto industrial"
+  ],
+  "answer_index": 0,
+  "context": "Usa el propio derecho de autor para garantizar la libertad en lugar de restringirla. Las licencias permisivas, en cambio, permiten cerrar el código de lo derivado.",
+  "difficulty": "medium",
+  "question_en": "Which kind of licence requires derivative works to be published with free permissions too?",
+  "options_en": [
+   "Copyleft",
+   "The public domain",
+   "The permissive licence",
+   "The trade secret"
+  ],
+  "context_en": "It uses copyright itself to guarantee freedom instead of restricting it. Permissive licences, by contrast, allow derivative code to be closed."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué informático estadounidense propuso el término \"inteligencia artificial\" en 1955?",
+  "options": [
+   "John McCarthy",
+   "Marvin Minsky",
+   "Herbert Simon",
+   "Allen Newell"
+  ],
+  "answer_index": 0,
+  "context": "Lo escribió en la propuesta de financiación de un seminario académico de verano. Creó además el lenguaje Lisp, todavía influyente en la programación funcional.",
+  "difficulty": "hard",
+  "question_en": "Which American computer scientist proposed the term \"artificial intelligence\" in 1955?",
+  "options_en": [
+   "John McCarthy",
+   "Marvin Minsky",
+   "Herbert Simon",
+   "Allen Newell"
+  ],
+  "context_en": "He wrote it in the funding proposal for an academic summer workshop. He also created the Lisp language, still influential in functional programming."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿En qué universidad se celebró el seminario de 1956 que fundó la inteligencia artificial como disciplina?",
+  "options": [
+   "Dartmouth",
+   "Stanford",
+   "Princeton",
+   "Carnegie Mellon"
+  ],
+  "answer_index": 0,
+  "context": "Duró dos meses y reunió a una decena de investigadores que creían resolver el problema aquel verano. Sus previsiones resultaron optimistas por varias décadas.",
+  "difficulty": "hard",
+  "question_en": "At which college was the 1956 workshop that founded artificial intelligence as a discipline held?",
+  "options_en": [
+   "Dartmouth",
+   "Stanford",
+   "Princeton",
+   "Carnegie Mellon"
+  ],
+  "context_en": "It lasted two months and gathered a dozen researchers who believed they would crack the problem that summer. Their forecasts proved optimistic by several decades."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué modelo de neurona artificial presentó Frank Rosenblatt a finales de los cincuenta?",
+  "options": [
+   "El perceptrón",
+   "La máquina de Boltzmann",
+   "El autocodificador",
+   "El mapa autoorganizado"
+  ],
+  "answer_index": 0,
+  "context": "Un libro de Minsky y Papert demostró sus límites y frenó la investigación durante años. Esos límites se superaron apilando capas y entrenándolas a la vez.",
+  "difficulty": "hard",
+  "question_en": "Which artificial neuron model did Frank Rosenblatt present in the late fifties?",
+  "options_en": [
+   "The perceptron",
+   "The Boltzmann machine",
+   "The autoencoder",
+   "The self-organising map"
+  ],
+  "context_en": "A book by Minsky and Papert proved its limits and stalled research for years. Those limits were overcome by stacking layers and training them together."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué lenguaje creó Bjarne Stroustrup añadiendo orientación a objetos al lenguaje C?",
+  "options": [
+   "C++",
+   "Perl",
+   "Ada",
+   "Rust"
+  ],
+  "answer_index": 0,
+  "context": "Se llamó al principio \"C con clases\" y su nombre definitivo juega con el operador de incremento. Sigue siendo la base de motores de videojuegos y navegadores.",
+  "difficulty": "hard",
+  "question_en": "Which language did Bjarne Stroustrup create by adding object orientation to C?",
+  "options_en": [
+   "C++",
+   "Perl",
+   "Ada",
+   "Rust"
+  ],
+  "context_en": "It was first called \"C with classes\" and its final name plays on the increment operator. It still underpins game engines and browsers."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué lenguaje diseñó Niklaus Wirth con la enseñanza de la programación como objetivo?",
+  "options": [
+   "Pascal",
+   "Fortran",
+   "Lisp",
+   "Prolog"
+  ],
+  "answer_index": 0,
+  "context": "Su nombre homenajea al matemático francés que construyó una calculadora mecánica. Fue el lenguaje de los primeros programas comerciales del Macintosh.",
+  "difficulty": "hard",
+  "question_en": "Which language did Niklaus Wirth design with teaching programming as its goal?",
+  "options_en": [
+   "Pascal",
+   "Fortran",
+   "Lisp",
+   "Prolog"
+  ],
+  "context_en": "Its name honours the French mathematician who built a mechanical calculator. It was the language of the Macintosh's first commercial programs."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué informático neerlandés dio nombre al algoritmo del camino más corto en un grafo?",
+  "options": [
+   "Edsger Dijkstra",
+   "Andrew Tanenbaum",
+   "Guido van Rossum",
+   "Gerard Holzmann"
+  ],
+  "answer_index": 0,
+  "context": "Dijo haberlo pensado en veinte minutos en una terraza, sin papel ni lápiz. Escribía sus artículos a mano y los numeraba, y defendió que la instrucción goto era dañina.",
+  "difficulty": "hard",
+  "question_en": "Which Dutch computer scientist gave his name to the shortest path algorithm in a graph?",
+  "options_en": [
+   "Edsger Dijkstra",
+   "Andrew Tanenbaum",
+   "Guido van Rossum",
+   "Gerard Holzmann"
+  ],
+  "context_en": "He said he thought of it in twenty minutes on a café terrace, without pen or paper. He wrote his papers by hand and numbered them, and argued that the goto statement was harmful."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué galardón se considera el equivalente al Nobel en informática?",
+  "options": [
+   "El premio Turing",
+   "La medalla Fields",
+   "El premio Abel",
+   "El premio Shaw"
+  ],
+  "answer_index": 0,
+  "context": "Lo concede desde 1966 la asociación estadounidense de maquinaria computacional. La medalla Fields y el Abel corresponden a las matemáticas.",
+  "difficulty": "hard",
+  "question_en": "Which award is considered computing's equivalent of the Nobel?",
+  "options_en": [
+   "The Turing Award",
+   "The Fields Medal",
+   "The Abel Prize",
+   "The Shaw Prize"
+  ],
+  "context_en": "The American computing machinery association has awarded it since 1966. The Fields Medal and the Abel Prize belong to mathematics."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué conjunto de propiedades garantiza que una transacción de base de datos se ejecute entera o nada?",
+  "options": [
+   "Las propiedades ACID",
+   "El teorema CAP",
+   "La forma normal",
+   "El bloqueo optimista"
+  ],
+  "answer_index": 0,
+  "context": "Sus siglas reúnen atomicidad, consistencia, aislamiento y durabilidad. Muchas bases distribuidas las relajan a cambio de escalar mejor.",
+  "difficulty": "hard",
+  "question_en": "Which set of properties guarantees a database transaction runs entirely or not at all?",
+  "options_en": [
+   "The ACID properties",
+   "The CAP theorem",
+   "Normal form",
+   "Optimistic locking"
+  ],
+  "context_en": "Its initials cover atomicity, consistency, isolation and durability. Many distributed databases relax them in exchange for better scaling."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué modelo teórico divide las comunicaciones de red en siete capas?",
+  "options": [
+   "El modelo OSI",
+   "El modelo relacional",
+   "El modelo entidad-relación",
+   "El modelo cliente-servidor"
+  ],
+  "answer_index": 0,
+  "context": "Va desde el cable físico hasta la aplicación que usa la persona. La pila que realmente se usa, la de internet, agrupa esas capas en cuatro o cinco.",
+  "difficulty": "hard",
+  "question_en": "Which theoretical model divides network communication into seven layers?",
+  "options_en": [
+   "The OSI model",
+   "The relational model",
+   "The entity-relationship model",
+   "The client-server model"
+  ],
+  "context_en": "It runs from the physical cable up to the application a person uses. The stack actually in use, the internet one, groups those layers into four or five."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué protocolo reparte automáticamente direcciones a los equipos que se conectan a una red?",
+  "options": [
+   "DHCP",
+   "SMTP",
+   "SSH",
+   "NTP"
+  ],
+  "answer_index": 0,
+  "context": "Evita tener que configurar a mano cada aparato que entra en la red. El NTP, en cambio, sincroniza los relojes, y el SSH abre sesiones remotas cifradas.",
+  "difficulty": "hard",
+  "question_en": "Which protocol automatically hands out addresses to devices joining a network?",
+  "options_en": [
+   "DHCP",
+   "SMTP",
+   "SSH",
+   "NTP"
+  ],
+  "context_en": "It avoids configuring every device joining the network by hand. NTP, by contrast, synchronises clocks, and SSH opens encrypted remote sessions."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué versión del protocolo de internet amplió las direcciones a ciento veintiocho bits?",
+  "options": [
+   "IPv6",
+   "IPv4",
+   "IPX",
+   "AppleTalk"
+  ],
+  "answer_index": 0,
+  "context": "Su antecesor solo permitía unos cuatro mil millones de direcciones, que se agotaron. Pese a llevar décadas disponible, su adopción avanza muy despacio.",
+  "difficulty": "hard",
+  "question_en": "Which version of the internet protocol expanded addresses to one hundred and twenty-eight bits?",
+  "options_en": [
+   "IPv6",
+   "IPv4",
+   "IPX",
+   "AppleTalk"
+  ],
+  "context_en": "Its predecessor allowed only about four billion addresses, which ran out. Despite being available for decades, its adoption advances very slowly."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué técnica permite a un modelo de lenguaje consultar documentos externos antes de responder?",
+  "options": [
+   "La recuperación aumentada",
+   "La cuantización",
+   "La destilación",
+   "La poda de pesos"
+  ],
+  "answer_index": 0,
+  "context": "Busca fragmentos relevantes en una base propia y se los pasa al modelo como contexto. Reduce las respuestas inventadas y permite citar la fuente concreta.",
+  "difficulty": "hard",
+  "question_en": "Which technique lets a language model consult external documents before answering?",
+  "options_en": [
+   "Retrieval-augmented generation",
+   "Quantisation",
+   "Distillation",
+   "Weight pruning"
+  ],
+  "context_en": "It finds relevant fragments in its own base and passes them to the model as context. It cuts invented answers and allows the specific source to be cited."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué método adapta un modelo ya entrenado a una tarea concreta con pocos ejemplos?",
+  "options": [
+   "El ajuste fino",
+   "El preentrenamiento",
+   "La normalización",
+   "La validación cruzada"
+  ],
+  "answer_index": 0,
+  "context": "Reaprovecha lo que el modelo sabe y solo ajusta parte de sus parámetros. Sale mucho más barato que entrenar desde cero, que exige meses de cálculo.",
+  "difficulty": "hard",
+  "question_en": "Which method adapts an already trained model to a specific task with few examples?",
+  "options_en": [
+   "Fine-tuning",
+   "Pre-training",
+   "Normalisation",
+   "Cross-validation"
+  ],
+  "context_en": "It reuses what the model knows and adjusts only part of its parameters. It is far cheaper than training from scratch, which takes months of computation."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿En qué unidad se expresa hoy la finura de los procesos de fabricación de chips?",
+  "options": [
+   "El nanómetro",
+   "El micrómetro",
+   "El angstrom",
+   "El milímetro"
+  ],
+  "answer_index": 0,
+  "context": "La cifra que anuncian los fabricantes ya no mide ninguna distancia real del transistor: funciona como nombre comercial de cada generación.",
+  "difficulty": "hard",
+  "question_en": "In which unit is the fineness of chip manufacturing processes expressed today?",
+  "options_en": [
+   "The nanometre",
+   "The micrometre",
+   "The angstrom",
+   "The millimetre"
+  ],
+  "context_en": "The figure manufacturers announce no longer measures any real transistor distance: it works as a commercial name for each generation."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué fenómeno cuántico limita la miniaturización al dejar escapar electrones a través de barreras finas?",
+  "options": [
+   "El efecto túnel",
+   "El efecto Hall",
+   "El efecto Joule",
+   "El efecto fotoeléctrico"
+  ],
+  "answer_index": 0,
+  "context": "Cuando el aislante mide pocos átomos, la corriente se fuga aunque el transistor esté cerrado. Los diseños en tres dimensiones buscan precisamente esquivar ese problema.",
+  "difficulty": "hard",
+  "question_en": "Which quantum phenomenon limits miniaturisation by letting electrons escape through thin barriers?",
+  "options_en": [
+   "Quantum tunnelling",
+   "The Hall effect",
+   "The Joule effect",
+   "The photoelectric effect"
+  ],
+  "context_en": "When the insulator is a few atoms thick, current leaks even with the transistor closed. Three-dimensional designs aim precisely at dodging that problem."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué compañía neerlandesa fabrica en exclusiva las máquinas de litografía ultravioleta extrema?",
+  "options": [
+   "ASML",
+   "Philips",
+   "NXP",
+   "Zeiss"
+  ],
+  "answer_index": 0,
+  "context": "Sin sus equipos nadie puede producir los chips más avanzados, lo que la ha colocado en el centro de la disputa comercial entre Estados Unidos y China. Zeiss le fabrica las ópticas.",
+  "difficulty": "hard",
+  "question_en": "Which Dutch company exclusively builds extreme ultraviolet lithography machines?",
+  "options_en": [
+   "ASML",
+   "Philips",
+   "NXP",
+   "Zeiss"
+  ],
+  "context_en": "Without its equipment nobody can make the most advanced chips, which has placed it at the centre of the US-China trade dispute. Zeiss makes its optics."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué algoritmo de compresión sin pérdida asigna códigos más cortos a los símbolos más frecuentes?",
+  "options": [
+   "El código de Huffman",
+   "El cifrado César",
+   "La suma de comprobación",
+   "El relleno de bits"
+  ],
+  "answer_index": 0,
+  "context": "Su autor lo ideó siendo estudiante para no tener que presentarse a un examen final. Está dentro de formatos tan usados como el ZIP y el JPEG.",
+  "difficulty": "hard",
+  "question_en": "Which lossless compression algorithm assigns shorter codes to the most frequent symbols?",
+  "options_en": [
+   "Huffman coding",
+   "The Caesar cipher",
+   "The checksum",
+   "Bit stuffing"
+  ],
+  "context_en": "Its author devised it as a student to avoid sitting a final exam. It sits inside formats as widely used as ZIP and JPEG."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué norma europea aprobada en 2024 clasifica los sistemas de inteligencia artificial por niveles de riesgo?",
+  "options": [
+   "El Reglamento de IA",
+   "La directiva de comercio electrónico",
+   "La ley de mercados digitales",
+   "El convenio de Budapest"
+  ],
+  "answer_index": 0,
+  "context": "Prohíbe usos como la puntuación social y exige controles estrictos a los sistemas de alto riesgo. Es la primera regulación general del mundo sobre esta materia.",
+  "difficulty": "hard",
+  "question_en": "Which European rule approved in 2024 classifies artificial intelligence systems by risk level?",
+  "options_en": [
+   "The AI Act",
+   "The e-commerce directive",
+   "The Digital Markets Act",
+   "The Budapest Convention"
+  ],
+  "context_en": "It bans uses such as social scoring and imposes strict controls on high-risk systems. It is the world's first general regulation on the subject."
+ },
+ {
+  "category": "tecnologia",
+  "question": "¿Qué nombre recibe el pequeño programa que corrige un fallo concreto de una aplicación ya publicada?",
+  "options": [
+   "El parche",
+   "El emulador",
+   "El instalador",
+   "El controlador"
+  ],
+  "answer_index": 0,
+  "context": "El nombre viene de los remiendos que se pegaban sobre las tarjetas perforadas para corregirlas. Cuando además amplía funciones se habla ya de actualización.",
+  "difficulty": "medium",
+  "question_en": "What is the small program that fixes one specific fault in a released application called?",
+  "options_en": [
+   "The patch",
+   "The emulator",
+   "The installer",
+   "The driver"
+  ],
+  "context_en": "The name comes from the tape patches stuck over punched cards to correct them. When it also adds features it is called an update instead."
+ }
+]
