@@ -21,6 +21,7 @@ import { DailyChest } from '@/components/DailyChest';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
 import { StreakRecoveryCard } from '@/components/StreakRecoveryCard';
 import { LeagueBadge } from '@/components/LeagueBadge';
+import { LeagueCard } from '@/components/LeagueCard';
 import { ProBadge } from '@/components/ProBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { useIsPro } from '@/hooks/usePremium';
@@ -333,27 +334,7 @@ export default function HomeScreen() {
           <View style={{ paddingHorizontal: Space.screen, marginTop: 10 }}>
             <DailyChest available={chestAvailable} onClaim={handleChest} onClaimed={refresh} />
 
-            <Pressable onPress={() => router.push('/leagues' as any)}>
-              <View style={{
-                backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 12,
-                borderWidth: 1, borderColor: C.border,
-                flexDirection: 'row', alignItems: 'center', gap: 12,
-              }}>
-                <View style={{
-                  width: 40, height: 40, borderRadius: 13,
-                  backgroundColor: C.coinTint, alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <Text style={{ fontSize: 19 }}>🏆</Text>
-                </View>
-                <View style={{ flex: 1, gap: 1 }}>
-                  <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.black }}>{t('leagues.cardTitle')}</Text>
-                  <Text numberOfLines={1} style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular }}>
-                    {t('leagues.cardDesc')}
-                  </Text>
-                </View>
-                <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>
-              </View>
-            </Pressable>
+            <LeagueCard live={!!user && !guest && !offline} />
           </View>
         )}
 
