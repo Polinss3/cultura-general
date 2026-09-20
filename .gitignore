@@ -36,3 +36,5 @@ scripts/mined.json
 
 expo-env.d.ts
 # @end expo-cli
+# Grabaciones intermedias de vídeo
+marketing/videos/promocionales/*/raw/

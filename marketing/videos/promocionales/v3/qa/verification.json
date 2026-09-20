@@ -1,0 +1,119 @@
+[
+  {
+    "file": "social/01_te_la_sabes.mp4",
+    "duration": 20.0,
+    "sizeBytes": 1939677,
+    "sha256": "ec3d9d79b6dc26d3a22a4404a5849c877e6977974dbaa2b71b643dc34f13974b",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "social/02_una_pregunta_un_viaje.mp4",
+    "duration": 19.0,
+    "sizeBytes": 1862961,
+    "sha256": "e0478fcef6a311186abc8e009980075b523c6cd6363b9e31019ed097f805184e",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "social/03_banderas_y_fechas.mp4",
+    "duration": 18.0,
+    "sizeBytes": 1779402,
+    "sha256": "9bf321670f138a0d7a687d53bf3cee1b02216c782949b6183754fc06a4c338f5",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "social/04_el_pique_del_grupo.mp4",
+    "duration": 19.0,
+    "sizeBytes": 1982248,
+    "sha256": "3ac1203348fc0f71e5db8374cd1de259742f7adf555c20afc7858f745faa7045",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "social/05_que_tu_pausa_cuente.mp4",
+    "duration": 20.0,
+    "sizeBytes": 2243407,
+    "sha256": "2c2edbe16457c32201d093ce9adab39378ffd6a4629b2fd5010b21122286e7a0",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "social/06_aprende_de_tus_fallos.mp4",
+    "duration": 20.0,
+    "sizeBytes": 1986182,
+    "sha256": "e1e2000c152d4d12c545509fcc52ef41151a12611193139f60c4d7e9d94a3245",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "social/07_descubre_cg_completo.mp4",
+    "duration": 55.0,
+    "sizeBytes": 4024903,
+    "sha256": "a1aba8114fc318f721397e69e894934dfaae8e0cad35f5e6a5df07bea355745c",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "inhouse/01_te_la_sabes.mp4",
+    "duration": 20.01,
+    "sizeBytes": 1295283,
+    "sha256": "bbb4646c0953447dfc472ee9220584127e29486f5a878f01d1208b02550e7a1b",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "inhouse/02_una_pregunta_un_viaje.mp4",
+    "duration": 19.008,
+    "sizeBytes": 1268499,
+    "sha256": "3ddc89c280a1d24c2753ef054f6bfa5141b7eb71095ee94f19016489593bdc10",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "inhouse/03_banderas_y_fechas.mp4",
+    "duration": 18.005,
+    "sizeBytes": 1189636,
+    "sha256": "fc5514bdb19df2e8c27954bd6b73b0c5929d8b3e23e7b1c3ff13d4b0845f0dfe",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "inhouse/04_el_pique_del_grupo.mp4",
+    "duration": 19.008,
+    "sizeBytes": 1346512,
+    "sha256": "0e5da9ca0bb2c9fedd21feb52ff63cb826ce5c7ca8c0049d04342b0e5cff66a8",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "inhouse/05_que_tu_pausa_cuente.mp4",
+    "duration": 20.01,
+    "sizeBytes": 1511609,
+    "sha256": "3a1d9d9f0ea2883dbcb278f994765b3d8c20d8ca4d553db86aac195de4a2d311",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  },
+  {
+    "file": "inhouse/06_aprende_de_tus_fallos.mp4",
+    "duration": 20.01,
+    "sizeBytes": 1352805,
+    "sha256": "a6a79d8954b115beeb7480059524aa0b183542e925eb6c6da4e2c891a4edadc2",
+    "decode": "ok",
+    "video": "H.264 / 1080x1920 / 30 fps / yuv420p",
+    "audio": "AAC / 48 kHz / stereo"
+  }
+]

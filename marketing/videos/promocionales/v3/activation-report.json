@@ -1,0 +1,271 @@
+{
+  "activatedAt": "2026-09-20T21:32:32.859726+00:00",
+  "globalEnabled": true,
+  "receivingApps": [
+    "101 Juegos Offline",
+    "Miko"
+  ],
+  "excludedApp": "Cultura General",
+  "promotedAppId": "485e0aab-572e-4051-879a-85a60ef978da",
+  "campaigns": [
+    {
+      "id": "9cda5225-85b4-4b91-90be-c0d33096f21e",
+      "name": "CG V3 — Aprende de tus fallos — captación ES",
+      "notes": "Concepto: Aprende de tus fallos. Gancho: Esa pregunta que siempre fallas… Objetivo: descargas de CG. Las funciones de pago se identifican como PRO. | Grabación real del simulador iOS, 20/09/2026. ES, 1080×1920. Música original generada para esta campaña. Destino: App Store. Exclusión de autopromoción por promotedAppId. Activación autorizada por el usuario; Cultura General excluida de receptores y por promotedAppId. SHA256: a6a79d8954b115beeb7480059524aa0b183542e925eb6c6da4e2c891a4edadc2",
+      "appIds": [
+        "3fb0bf43-fc55-4565-ad4c-007d690deec1",
+        "b3a8c430-f0b0-4ad8-958a-6bf62aa0a546"
+      ],
+      "status": "active",
+      "weight": 0.15,
+      "enabled": true,
+      "priority": 100,
+      "creativeIds": [
+        "027136e6-affb-4de9-ba80-a1ab92afaa3c",
+        "385b9148-687c-4cd5-9788-8012a06d4dd9"
+      ],
+      "advertiserId": "1c452a92-bd45-4e8a-83c0-8a3453275835",
+      "placementIds": [
+        "6e571e95-52f8-42fc-accc-c8701cb5afb7",
+        "1d5ebcc8-0b75-478b-b47e-99077af65704",
+        "01f1d1b2-48c5-40d4-9f73-6cc826f87c58",
+        "ca492c87-8551-4349-9514-5d412c2652d0",
+        "a31eab57-c96e-44fe-9312-0c62d2bd033b",
+        "bcb2be68-98f6-4f8f-b0ea-7510655ef5ac",
+        "52958487-e146-429b-ac95-6e62f3a527f1"
+      ]
+    },
+    {
+      "id": "ed664311-f97c-465d-9447-76aa20b5575d",
+      "name": "CG V3 — Que tu pausa cuente — captación ES",
+      "notes": "Concepto: Que tu pausa cuente. Gancho: Haz que tu pausa cuente. Objetivo: descargas de CG. Las funciones de pago se identifican como PRO. | Grabación real del simulador iOS, 20/09/2026. ES, 1080×1920. Música original generada para esta campaña. Destino: App Store. Exclusión de autopromoción por promotedAppId. Activación autorizada por el usuario; Cultura General excluida de receptores y por promotedAppId. SHA256: 3a1d9d9f0ea2883dbcb278f994765b3d8c20d8ca4d553db86aac195de4a2d311",
+      "appIds": [
+        "3fb0bf43-fc55-4565-ad4c-007d690deec1",
+        "b3a8c430-f0b0-4ad8-958a-6bf62aa0a546"
+      ],
+      "status": "active",
+      "weight": 0.15,
+      "enabled": true,
+      "priority": 100,
+      "creativeIds": [
+        "637402e2-a831-4879-b55d-c0bed35b884f",
+        "d82a054f-d4f0-420f-a576-df32e15f5698"
+      ],
+      "advertiserId": "1c452a92-bd45-4e8a-83c0-8a3453275835",
+      "placementIds": [
+        "6e571e95-52f8-42fc-accc-c8701cb5afb7",
+        "1d5ebcc8-0b75-478b-b47e-99077af65704",
+        "01f1d1b2-48c5-40d4-9f73-6cc826f87c58",
+        "ca492c87-8551-4349-9514-5d412c2652d0",
+        "a31eab57-c96e-44fe-9312-0c62d2bd033b",
+        "bcb2be68-98f6-4f8f-b0ea-7510655ef5ac",
+        "52958487-e146-429b-ac95-6e62f3a527f1"
+      ]
+    },
+    {
+      "id": "519ff37c-b54a-48a4-a2e2-5b6c6256d280",
+      "name": "CG V3 — El pique del grupo — captación ES",
+      "notes": "Concepto: El pique del grupo. Gancho: En tu grupo… ¿quién sabe más? Objetivo: descargas de CG. Las funciones de pago se identifican como PRO. | Grabación real del simulador iOS, 20/09/2026. ES, 1080×1920. Música original generada para esta campaña. Destino: App Store. Exclusión de autopromoción por promotedAppId. Activación autorizada por el usuario; Cultura General excluida de receptores y por promotedAppId. SHA256: 0e5da9ca0bb2c9fedd21feb52ff63cb826ce5c7ca8c0049d04342b0e5cff66a8",
+      "appIds": [
+        "3fb0bf43-fc55-4565-ad4c-007d690deec1",
+        "b3a8c430-f0b0-4ad8-958a-6bf62aa0a546"
+      ],
+      "status": "active",
+      "weight": 0.15,
+      "enabled": true,
+      "priority": 100,
+      "creativeIds": [
+        "c6df2088-4960-49e6-8c00-b9052498c8dc",
+        "622654e2-b465-4d43-a427-04ab044a7fcc"
+      ],
+      "advertiserId": "1c452a92-bd45-4e8a-83c0-8a3453275835",
+      "placementIds": [
+        "6e571e95-52f8-42fc-accc-c8701cb5afb7",
+        "1d5ebcc8-0b75-478b-b47e-99077af65704",
+        "01f1d1b2-48c5-40d4-9f73-6cc826f87c58",
+        "ca492c87-8551-4349-9514-5d412c2652d0",
+        "a31eab57-c96e-44fe-9312-0c62d2bd033b",
+        "bcb2be68-98f6-4f8f-b0ea-7510655ef5ac",
+        "52958487-e146-429b-ac95-6e62f3a527f1"
+      ]
+    },
+    {
+      "id": "63751a6c-a7d3-42a8-b427-54de74eec668",
+      "name": "CG V3 — Banderas y fechas — captación ES",
+      "notes": "Concepto: Banderas y fechas. Gancho: ¿Reconoces esta bandera? Objetivo: descargas de CG. Las funciones de pago se identifican como PRO. | Grabación real del simulador iOS, 20/09/2026. ES, 1080×1920. Música original generada para esta campaña. Destino: App Store. Exclusión de autopromoción por promotedAppId. Activación autorizada por el usuario; Cultura General excluida de receptores y por promotedAppId. SHA256: fc5514bdb19df2e8c27954bd6b73b0c5929d8b3e23e7b1c3ff13d4b0845f0dfe",
+      "appIds": [
+        "3fb0bf43-fc55-4565-ad4c-007d690deec1",
+        "b3a8c430-f0b0-4ad8-958a-6bf62aa0a546"
+      ],
+      "status": "active",
+      "weight": 0.15,
+      "enabled": true,
+      "priority": 100,
+      "creativeIds": [
+        "28e7d1b1-183e-40c3-b71c-1b932bb87e14",
+        "f8c3a840-4a58-41f1-b9be-611bbc993b9e"
+      ],
+      "advertiserId": "1c452a92-bd45-4e8a-83c0-8a3453275835",
+      "placementIds": [
+        "6e571e95-52f8-42fc-accc-c8701cb5afb7",
+        "1d5ebcc8-0b75-478b-b47e-99077af65704",
+        "01f1d1b2-48c5-40d4-9f73-6cc826f87c58",
+        "ca492c87-8551-4349-9514-5d412c2652d0",
+        "a31eab57-c96e-44fe-9312-0c62d2bd033b",
+        "bcb2be68-98f6-4f8f-b0ea-7510655ef5ac",
+        "52958487-e146-429b-ac95-6e62f3a527f1"
+      ]
+    },
+    {
+      "id": "289a2544-4136-460c-ae8e-975ed191c953",
+      "name": "CG V3 — Una pregunta, todo un viaje — captación ES",
+      "notes": "Concepto: Una pregunta, todo un viaje. Gancho: Una pregunta. Todo un viaje. Objetivo: descargas de CG. Las funciones de pago se identifican como PRO. | Grabación real del simulador iOS, 20/09/2026. ES, 1080×1920. Música original generada para esta campaña. Destino: App Store. Exclusión de autopromoción por promotedAppId. Activación autorizada por el usuario; Cultura General excluida de receptores y por promotedAppId. SHA256: 3ddc89c280a1d24c2753ef054f6bfa5141b7eb71095ee94f19016489593bdc10",
+      "appIds": [
+        "3fb0bf43-fc55-4565-ad4c-007d690deec1",
+        "b3a8c430-f0b0-4ad8-958a-6bf62aa0a546"
+      ],
+      "status": "active",
+      "weight": 0.15,
+      "enabled": true,
+      "priority": 100,
+      "creativeIds": [
+        "dfb6a1fc-399e-4ad7-ac52-dc67d73e9873",
+        "c5a52f2a-6cbd-45ed-8119-d653d0ab243a"
+      ],
+      "advertiserId": "1c452a92-bd45-4e8a-83c0-8a3453275835",
+      "placementIds": [
+        "6e571e95-52f8-42fc-accc-c8701cb5afb7",
+        "1d5ebcc8-0b75-478b-b47e-99077af65704",
+        "01f1d1b2-48c5-40d4-9f73-6cc826f87c58",
+        "ca492c87-8551-4349-9514-5d412c2652d0",
+        "a31eab57-c96e-44fe-9312-0c62d2bd033b",
+        "bcb2be68-98f6-4f8f-b0ea-7510655ef5ac",
+        "52958487-e146-429b-ac95-6e62f3a527f1"
+      ]
+    },
+    {
+      "id": "cb3a36df-81df-406a-9baa-073f48f6aecb",
+      "name": "CG V3 — ¿Te la sabes? — captación ES",
+      "notes": "Concepto: ¿Te la sabes?. Gancho: ¿Te la sabes? No vale buscar. Objetivo: descargas de CG. Las funciones de pago se identifican como PRO. | Grabación real del simulador iOS, 20/09/2026. ES, 1080×1920. Música original generada para esta campaña. Destino: App Store. Exclusión de autopromoción por promotedAppId. Activación autorizada por el usuario; Cultura General excluida de receptores y por promotedAppId. SHA256: bbb4646c0953447dfc472ee9220584127e29486f5a878f01d1208b02550e7a1b",
+      "appIds": [
+        "3fb0bf43-fc55-4565-ad4c-007d690deec1",
+        "b3a8c430-f0b0-4ad8-958a-6bf62aa0a546"
+      ],
+      "status": "active",
+      "weight": 0.15,
+      "enabled": true,
+      "priority": 100,
+      "creativeIds": [
+        "8edb38a3-6656-43f3-ab93-26070c79a0af",
+        "bc030e34-5f2b-4499-9763-9d5919f534de"
+      ],
+      "advertiserId": "1c452a92-bd45-4e8a-83c0-8a3453275835",
+      "placementIds": [
+        "6e571e95-52f8-42fc-accc-c8701cb5afb7",
+        "1d5ebcc8-0b75-478b-b47e-99077af65704",
+        "01f1d1b2-48c5-40d4-9f73-6cc826f87c58",
+        "ca492c87-8551-4349-9514-5d412c2652d0",
+        "a31eab57-c96e-44fe-9312-0c62d2bd033b",
+        "bcb2be68-98f6-4f8f-b0ea-7510655ef5ac",
+        "52958487-e146-429b-ac95-6e62f3a527f1"
+      ]
+    }
+  ],
+  "manifestChecks": [
+    {
+      "app": "Miko",
+      "placement": "energy_rewarded",
+      "format": "rewarded",
+      "cgCampaignsAvailable": 6
+    },
+    {
+      "app": "Miko",
+      "placement": "shop_coins_rewarded",
+      "format": "rewarded",
+      "cgCampaignsAvailable": 6
+    },
+    {
+      "app": "Cultura General",
+      "placement": "game_banner",
+      "format": "banner",
+      "cgCampaignsAvailable": 0
+    },
+    {
+      "app": "Cultura General",
+      "placement": "ladder_revive_rewarded",
+      "format": "rewarded",
+      "cgCampaignsAvailable": 0
+    },
+    {
+      "app": "Cultura General",
+      "placement": "shop_coins_rewarded",
+      "format": "rewarded",
+      "cgCampaignsAvailable": 0
+    },
+    {
+      "app": "Cultura General",
+      "placement": "years_result_interstitial",
+      "format": "interstitial",
+      "cgCampaignsAvailable": 0
+    },
+    {
+      "app": "Cultura General",
+      "placement": "flags_result_interstitial",
+      "format": "interstitial",
+      "cgCampaignsAvailable": 0
+    },
+    {
+      "app": "Cultura General",
+      "placement": "ladder_result_interstitial",
+      "format": "interstitial",
+      "cgCampaignsAvailable": 0
+    },
+    {
+      "app": "Cultura General",
+      "placement": "speed_result_interstitial",
+      "format": "interstitial",
+      "cgCampaignsAvailable": 0
+    },
+    {
+      "app": "Cultura General",
+      "placement": "daily_result_interstitial",
+      "format": "interstitial",
+      "cgCampaignsAvailable": 0
+    },
+    {
+      "app": "Miko",
+      "placement": "session_bonus_rewarded",
+      "format": "rewarded",
+      "cgCampaignsAvailable": 6
+    },
+    {
+      "app": "Miko",
+      "placement": "session_complete_interstitial",
+      "format": "interstitial",
+      "cgCampaignsAvailable": 6
+    },
+    {
+      "app": "101 Juegos Offline",
+      "placement": "rewarded_continue",
+      "format": "rewarded",
+      "cgCampaignsAvailable": 6
+    },
+    {
+      "app": "101 Juegos Offline",
+      "placement": "rewarded_hint",
+      "format": "rewarded",
+      "cgCampaignsAvailable": 6
+    },
+    {
+      "app": "101 Juegos Offline",
+      "placement": "game_over_interstitial",
+      "format": "interstitial",
+      "cgCampaignsAvailable": 6
+    }
+  ],
+  "publicHttps": {
+    "status": 200,
+    "url": "https://inhouseads.pablobrasero.com",
+    "scope": "panel accessibility"
+  }
+}

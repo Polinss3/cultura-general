@@ -1,0 +1,511 @@
+[
+  {
+    "key": "01_te_la_sabes",
+    "title": "¿Te la sabes?",
+    "hook": [
+      "¿Te la sabes?",
+      "No vale buscar."
+    ],
+    "tag": "Pon a prueba tu cultura general",
+    "sub": "Elige antes de que aparezca la respuesta.",
+    "symbol": "?",
+    "cta": [
+      "Ahora te toca",
+      "a ti."
+    ],
+    "scenes": [
+      [
+        "learn_play",
+        0,
+        7,
+        [
+          "Mira la pregunta.",
+          "Elige tu respuesta."
+        ],
+        "SIN BUSCAR",
+        ""
+      ],
+      [
+        "learn_catalog",
+        0,
+        3,
+        [
+          "Tu tema.",
+          "Tu siguiente reto."
+        ],
+        "13 CATEGORÍAS",
+        "Catálogo completo de 4.000 preguntas con CG PRO."
+      ],
+      [
+        "speed_play",
+        3,
+        4,
+        [
+          "¿Y con solo",
+          "30 segundos?"
+        ],
+        "CONTRARRELOJ",
+        "Responde. Suma aciertos. Supera tu récord."
+      ]
+    ]
+  },
+  {
+    "key": "02_una_pregunta_un_viaje",
+    "title": "Una pregunta, todo un viaje",
+    "hook": [
+      "Una pregunta.",
+      "Todo un viaje."
+    ],
+    "tag": "Modo Aventura",
+    "sub": "40 niveles gratis. Aventura completa con PRO.",
+    "symbol": "400",
+    "accent": "#70B8F2",
+    "cta": [
+      "Tu aventura",
+      "empieza aquí."
+    ],
+    "scenes": [
+      [
+        "adventure_map",
+        0,
+        4,
+        [
+          "Un mapa.",
+          "Mucho por descubrir."
+        ],
+        "AVENTURA",
+        "40 niveles iniciales gratis · 400 en total con PRO."
+      ],
+      [
+        "adventure_play",
+        3,
+        5,
+        [
+          "Responde.",
+          "Ve a por las estrellas."
+        ],
+        "NIVELES Y CAPÍTULOS",
+        ""
+      ],
+      [
+        "ladder_play",
+        3,
+        4,
+        [
+          "O sube de piso.",
+          "Sin perder tus vidas."
+        ],
+        "MODO ASCENSO",
+        "Dificultad creciente. ¿Aseguras o arriesgas?"
+      ]
+    ]
+  },
+  {
+    "key": "03_banderas_y_fechas",
+    "title": "Banderas y fechas",
+    "hook": [
+      "¿Reconoces",
+      "esta bandera?"
+    ],
+    "tag": "El mundo te pone a prueba",
+    "sub": "Piensa tu respuesta. Luego compruébala.",
+    "symbol": "FLAG",
+    "accent": "#70D5BA",
+    "cta": [
+      "El mundo cabe",
+      "en tu bolsillo."
+    ],
+    "scenes": [
+      [
+        "flags_play",
+        0,
+        6,
+        [
+          "Mírala bien.",
+          "¿De qué país es?"
+        ],
+        "196 BANDERAS",
+        ""
+      ],
+      [
+        "years_play",
+        0,
+        6,
+        [
+          "¿Y qué tal",
+          "se te dan las fechas?"
+        ],
+        "98 HECHOS HISTÓRICOS",
+        "Banderas y Años: elige tu siguiente reto."
+      ]
+    ]
+  },
+  {
+    "key": "04_el_pique_del_grupo",
+    "title": "El pique del grupo",
+    "hook": [
+      "En tu grupo…",
+      "¿quién sabe más?"
+    ],
+    "tag": "Convierte la quedada en un juego",
+    "sub": "Un móvil. Varias personas. Mucho pique.",
+    "symbol": "1vs1",
+    "accent": "#FF7CA1",
+    "cta": [
+      "Llévalo a",
+      "tu próxima quedada."
+    ],
+    "scenes": [
+      [
+        "friends_modes",
+        0,
+        4,
+        [
+          "Cinco formas",
+          "de picaros."
+        ],
+        "MULTIJUGADOR LOCAL",
+        "Pasa el Móvil · Marcador · Duelo · Superviviente · Trivia Night"
+      ],
+      [
+        "duel_buzz",
+        0,
+        5,
+        [
+          "Dos jugadores.",
+          "El primero, responde."
+        ],
+        "DUELO 1vs1",
+        "Cada persona juega desde un extremo del móvil."
+      ],
+      [
+        "duel_answer",
+        0,
+        4,
+        [
+          "¿Quién se lleva",
+          "el punto?"
+        ],
+        "QUE HABLE EL MARCADOR",
+        ""
+      ]
+    ]
+  },
+  {
+    "key": "05_que_tu_pausa_cuente",
+    "title": "Que tu pausa cuente",
+    "hook": [
+      "Haz que",
+      "tu pausa cuente."
+    ],
+    "tag": "Tu momento de cultura general",
+    "sub": "Una pregunta hoy. Otra mañana.",
+    "symbol": "HOY",
+    "cta": [
+      "Empieza hoy.",
+      "Vuelve por curiosidad."
+    ],
+    "scenes": [
+      [
+        "daily",
+        0,
+        4,
+        [
+          "La misma pregunta.",
+          "Un reto para todos."
+        ],
+        "PREGUNTA DEL DÍA",
+        ""
+      ],
+      [
+        "home",
+        0,
+        4,
+        [
+          "Mantén la racha.",
+          "Completa tu ruta."
+        ],
+        "UN POCO CADA DÍA",
+        "Misiones, XP, niveles y cofre diario."
+      ],
+      [
+        "leagues",
+        0,
+        3,
+        [
+          "Suma XP.",
+          "Sube en tu liga."
+        ],
+        "LIGAS SEMANALES",
+        "Compite por el ascenso y las recompensas."
+      ],
+      [
+        "shop",
+        0,
+        3,
+        [
+          "Dale tu toque.",
+          "Prepara tus ayudas."
+        ],
+        "TIENDA Y RECOMPENSAS",
+        "Power-ups, marcos y colores para tu perfil."
+      ]
+    ]
+  },
+  {
+    "key": "06_aprende_de_tus_fallos",
+    "title": "Aprende de tus fallos",
+    "hook": [
+      "Esa pregunta",
+      "que siempre fallas…"
+    ],
+    "tag": "Vuelve a por ella con CG PRO",
+    "sub": "Repasa. Ponte a prueba. Sigue tu evolución.",
+    "symbol": "PRO",
+    "accent": "#B59BFF",
+    "cta": [
+      "Haz sitio",
+      "a lo que no sabías."
+    ],
+    "ctaSub": "Descubre CG y sus funciones PRO opcionales.",
+    "scenes": [
+      [
+        "review_play",
+        2,
+        4,
+        [
+          "Tus fallos vuelven.",
+          "Tú vienes preparado."
+        ],
+        "REPASO INTELIGENTE · PRO",
+        "Repasos espaciados para volver a practicar."
+      ],
+      [
+        "exam_action",
+        3,
+        4,
+        [
+          "40 preguntas.",
+          "20 minutos."
+        ],
+        "MODO EXAMEN · PRO",
+        "Tu nota, al terminar."
+      ],
+      [
+        "stats",
+        0,
+        3,
+        [
+          "Conoce tus fuertes.",
+          "Trabaja lo que falta."
+        ],
+        "ESTADÍSTICAS · PRO",
+        ""
+      ],
+      [
+        "pro_room",
+        0,
+        3,
+        [
+          "Más preguntas.",
+          "Más posibilidades."
+        ],
+        "CG PRO · SUSCRIPCIÓN OPCIONAL",
+        "Catálogo ampliado, sin anuncios y racha protegida."
+      ]
+    ]
+  },
+  {
+    "key": "07_descubre_cg_completo",
+    "title": "Descubre Cultura General",
+    "hook": [
+      "Tu móvil tiene",
+      "otro plan para ti."
+    ],
+    "tag": "Mucho más que acertar preguntas",
+    "sub": "Juega, aprende y reta a tus amigos.",
+    "symbol": "CG",
+    "cta": [
+      "¿Tu próxima",
+      "respuesta? En CG."
+    ],
+    "scenes": [
+      [
+        "learn_play",
+        0,
+        4,
+        [
+          "Empieza con",
+          "una pregunta."
+        ],
+        "PONTE A PRUEBA",
+        ""
+      ],
+      [
+        "learn_catalog",
+        0,
+        3,
+        [
+          "Elige entre",
+          "13 categorías."
+        ],
+        "APRENDE A TU RITMO",
+        "2.000 preguntas base + 2.000 adicionales con PRO."
+      ],
+      [
+        "flags_play",
+        0,
+        3,
+        [
+          "Reconoce",
+          "196 banderas."
+        ],
+        "EXPLORA EL MUNDO",
+        ""
+      ],
+      [
+        "years_play",
+        0,
+        3,
+        [
+          "Pon fecha",
+          "a la historia."
+        ],
+        "RETOS DE AÑOS",
+        ""
+      ],
+      [
+        "adventure_map",
+        0,
+        3,
+        [
+          "Recorre",
+          "tu propia aventura."
+        ],
+        "NIVELES, ESTRELLAS Y RELIQUIAS",
+        "40 niveles iniciales gratis · 400 en total con PRO."
+      ],
+      [
+        "speed_play",
+        3,
+        3,
+        [
+          "Corre contra",
+          "el reloj."
+        ],
+        "30 SEGUNDOS PARA SUMAR ACIERTOS",
+        ""
+      ],
+      [
+        "ladder_play",
+        3,
+        3,
+        [
+          "Sube de piso.",
+          "Arriesga o asegura."
+        ],
+        "MODO ASCENSO",
+        ""
+      ],
+      [
+        "duel_buzz",
+        0,
+        3,
+        [
+          "Reta a los tuyos.",
+          "En el mismo móvil."
+        ],
+        "CINCO MODOS LOCALES",
+        ""
+      ],
+      [
+        "daily",
+        0,
+        3,
+        [
+          "Vuelve por",
+          "la pregunta del día."
+        ],
+        "RETO DIARIO Y RANKINGS",
+        ""
+      ],
+      [
+        "home",
+        0,
+        3,
+        [
+          "Racha, misiones",
+          "y recompensas."
+        ],
+        "TU PROGRESO CUENTA",
+        "Misiones, XP, logros y cofre diario."
+      ],
+      [
+        "leagues",
+        0,
+        3,
+        [
+          "Ve a por",
+          "el ascenso."
+        ],
+        "LIGAS SEMANALES",
+        ""
+      ],
+      [
+        "shop",
+        0,
+        3,
+        [
+          "Ayudas y un perfil",
+          "con tu estilo."
+        ],
+        "TIENDA Y PERSONALIZACIÓN",
+        ""
+      ],
+      [
+        "review_play",
+        0,
+        3,
+        [
+          "Vuelve a tus fallos.",
+          "Aprende de ellos."
+        ],
+        "REPASO INTELIGENTE · PRO",
+        ""
+      ],
+      [
+        "exam_action",
+        3,
+        3,
+        [
+          "Ponte a prueba.",
+          "Mide lo que sabes."
+        ],
+        "EXAMEN · CG PRO OPCIONAL",
+        "Más preguntas, sin anuncios y racha protegida."
+      ],
+      [
+        "stats",
+        0,
+        3,
+        [
+          "Comprueba",
+          "tu evolución."
+        ],
+        "ESTADÍSTICAS · PRO",
+        "Aciertos, categorías y dificultad."
+      ],
+      [
+        "learn_light_en",
+        0,
+        3,
+        [
+          "Tu idioma.",
+          "Tu estilo."
+        ],
+        "ESPAÑOL / INGLÉS · CLARO / OSCURO",
+        "También puedes empezar como invitado."
+      ]
+    ]
+  }
+]

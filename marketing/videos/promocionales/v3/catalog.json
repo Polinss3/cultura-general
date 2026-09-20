@@ -1,0 +1,66 @@
+{
+  "version": 3,
+  "createdAt": "2026-09-20",
+  "videos": [
+    {
+      "key": "01_te_la_sabes",
+      "title": "¿Te la sabes?",
+      "filename": "inhouse/01_te_la_sabes.mp4",
+      "posterFilename": "posters/01_te_la_sabes.jpg",
+      "sha256": "bbb4646c0953447dfc472ee9220584127e29486f5a878f01d1208b02550e7a1b",
+      "posterSha256": "3af51df5a337309254a63eecc3c94b4d590cf05ea791a14b7217550aa4a50b36",
+      "altText": "¿Te la sabes?. Anuncio vertical de Cultura General con grabaciones reales de sin buscar, 13 categorías, contrarreloj. Incluye texto en español, música instrumental y llamada a descargar en App Store.",
+      "notes": "Concepto: ¿Te la sabes?. Gancho: ¿Te la sabes? No vale buscar. Objetivo: descargas de CG. Las funciones de pago se identifican como PRO."
+    },
+    {
+      "key": "02_una_pregunta_un_viaje",
+      "title": "Una pregunta, todo un viaje",
+      "filename": "inhouse/02_una_pregunta_un_viaje.mp4",
+      "posterFilename": "posters/02_una_pregunta_un_viaje.jpg",
+      "sha256": "3ddc89c280a1d24c2753ef054f6bfa5141b7eb71095ee94f19016489593bdc10",
+      "posterSha256": "4f2c36e7c85a35842d18e4a7e2db009bcdad13338f0ca591d60755ba0d7795bc",
+      "altText": "Una pregunta, todo un viaje. Anuncio vertical de Cultura General con grabaciones reales de aventura, niveles y capítulos, modo ascenso. Incluye texto en español, música instrumental y llamada a descargar en App Store.",
+      "notes": "Concepto: Una pregunta, todo un viaje. Gancho: Una pregunta. Todo un viaje. Objetivo: descargas de CG. Las funciones de pago se identifican como PRO."
+    },
+    {
+      "key": "03_banderas_y_fechas",
+      "title": "Banderas y fechas",
+      "filename": "inhouse/03_banderas_y_fechas.mp4",
+      "posterFilename": "posters/03_banderas_y_fechas.jpg",
+      "sha256": "fc5514bdb19df2e8c27954bd6b73b0c5929d8b3e23e7b1c3ff13d4b0845f0dfe",
+      "posterSha256": "01d81a3fbc6ca56869a8838e8e487e3ca764dedd20870c440d2443d09b320066",
+      "altText": "Banderas y fechas. Anuncio vertical de Cultura General con grabaciones reales de 196 banderas, 98 hechos históricos. Incluye texto en español, música instrumental y llamada a descargar en App Store.",
+      "notes": "Concepto: Banderas y fechas. Gancho: ¿Reconoces esta bandera? Objetivo: descargas de CG. Las funciones de pago se identifican como PRO."
+    },
+    {
+      "key": "04_el_pique_del_grupo",
+      "title": "El pique del grupo",
+      "filename": "inhouse/04_el_pique_del_grupo.mp4",
+      "posterFilename": "posters/04_el_pique_del_grupo.jpg",
+      "sha256": "0e5da9ca0bb2c9fedd21feb52ff63cb826ce5c7ca8c0049d04342b0e5cff66a8",
+      "posterSha256": "b43c4ab5e6561992072cdefc828fe5866a1980ac4f312c793803bb146851ad24",
+      "altText": "El pique del grupo. Anuncio vertical de Cultura General con grabaciones reales de multijugador local, duelo 1vs1, que hable el marcador. Incluye texto en español, música instrumental y llamada a descargar en App Store.",
+      "notes": "Concepto: El pique del grupo. Gancho: En tu grupo… ¿quién sabe más? Objetivo: descargas de CG. Las funciones de pago se identifican como PRO."
+    },
+    {
+      "key": "05_que_tu_pausa_cuente",
+      "title": "Que tu pausa cuente",
+      "filename": "inhouse/05_que_tu_pausa_cuente.mp4",
+      "posterFilename": "posters/05_que_tu_pausa_cuente.jpg",
+      "sha256": "3a1d9d9f0ea2883dbcb278f994765b3d8c20d8ca4d553db86aac195de4a2d311",
+      "posterSha256": "6ea16ef15039d89be3a91c6351bf7f0b99335258aa18075742bebd127d8b1c20",
+      "altText": "Que tu pausa cuente. Anuncio vertical de Cultura General con grabaciones reales de pregunta del día, un poco cada día, ligas semanales, tienda y recompensas. Incluye texto en español, música instrumental y llamada a descargar en App Store.",
+      "notes": "Concepto: Que tu pausa cuente. Gancho: Haz que tu pausa cuente. Objetivo: descargas de CG. Las funciones de pago se identifican como PRO."
+    },
+    {
+      "key": "06_aprende_de_tus_fallos",
+      "title": "Aprende de tus fallos",
+      "filename": "inhouse/06_aprende_de_tus_fallos.mp4",
+      "posterFilename": "posters/06_aprende_de_tus_fallos.jpg",
+      "sha256": "a6a79d8954b115beeb7480059524aa0b183542e925eb6c6da4e2c891a4edadc2",
+      "posterSha256": "47c337e4c2f604c852fc91021d9de100e9f04d568a53ad76ff3b8a4ca969cbfb",
+      "altText": "Aprende de tus fallos. Anuncio vertical de Cultura General con grabaciones reales de repaso inteligente · pro, modo examen · pro, estadísticas · pro, cg pro · suscripción opcional. Incluye texto en español, música instrumental y llamada a descargar en App Store.",
+      "notes": "Concepto: Aprende de tus fallos. Gancho: Esa pregunta que siempre fallas… Objetivo: descargas de CG. Las funciones de pago se identifican como PRO."
+    }
+  ]
+}
