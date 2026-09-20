@@ -19,6 +19,7 @@ import { CoinPill } from '@/components/CoinPill';
 import { DailyRouteBanner } from '@/components/DailyRouteBanner';
 import { DailyChest } from '@/components/DailyChest';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
+import { StreakRecoveryCard } from '@/components/StreakRecoveryCard';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { ProBadge } from '@/components/ProBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
@@ -249,7 +250,10 @@ export default function HomeScreen() {
               </View>
             </Pressable>
           ) : user ? (
-            <StreakHeatmap userId={user.id} streak={profile?.streak ?? 0} bestStreak={profile?.best_streak ?? 0} />
+            <>
+              <StreakHeatmap userId={user.id} streak={profile?.streak ?? 0} bestStreak={profile?.best_streak ?? 0} />
+              {!offline && <StreakRecoveryCard userId={user.id} profile={profile} refresh={refresh} />}
+            </>
           ) : (
             <View style={{
               marginTop: 14, backgroundColor: C.surface, borderRadius: Radius.cardLg,

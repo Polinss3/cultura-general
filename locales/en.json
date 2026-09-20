@@ -202,7 +202,9 @@
     "appleLoginFailed": "Couldn't complete Apple sign-in.",
     "insufficientCoins": "You don't have enough coins.",
     "alreadyOwned": "You already own this item.",
-    "purchaseFailed": "Couldn't complete the purchase."
+    "purchaseFailed": "Couldn't complete the purchase.",
+    "streakRecoveryExpired": "That streak can no longer be recovered.",
+    "streakRecoveryFailed": "Couldn't recover the streak."
   },
   "validation": {
     "usernameRequired": "You need a username.",
@@ -444,7 +446,21 @@
     "previousMonth": "Previous month",
     "nextMonth": "Next month",
     "playedThisMonth_one": "{{count}} day played this month",
-    "playedThisMonth_other": "{{count}} days played this month"
+    "playedThisMonth_other": "{{count}} days played this month",
+    "recovery": {
+      "brokenTitle_one": "You lost your {{count}}-day streak",
+      "brokenTitle_other": "You lost your {{count}}-day streak",
+      "brokenSub": "Get it back and pick up where you left off: you'd be back at {{streak}} 🔥.",
+      "brokenExpires": "Only until {{time}}",
+      "cta": "Recover for {{price}} 🪙",
+      "ctaPoor": "{{missing}} 🪙 short",
+      "recovering": "Recovering…",
+      "success": "Streak recovered! You're on {{streak}} 🔥",
+      "atRiskTitle_one": "Your {{count}}-day streak is at risk",
+      "atRiskTitle_other": "Your {{count}}-day streak is at risk",
+      "atRiskSub": "You haven't answered for days. Answer today's question and you can recover it for {{price}} 🪙.",
+      "atRiskCta": "Answer now"
+    }
   },
   "mastery": {
     "level": "Level {{level}}",

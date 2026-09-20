@@ -18,7 +18,8 @@
     "test:ad-rewards": "tsx --test lib/adRewards.test.ts",
     "test:exam": "tsx --test lib/exam.test.ts",
     "test:review": "tsx --test lib/review.test.ts",
-    "test:stats": "tsx --test lib/stats.test.ts"
+    "test:stats": "tsx --test lib/stats.test.ts",
+    "test:streak": "tsx --test lib/streakRecovery.test.ts"
   },
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.4.2",

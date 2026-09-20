@@ -202,7 +202,9 @@
     "appleLoginFailed": "No se pudo completar el login con Apple.",
     "insufficientCoins": "No tienes monedas suficientes.",
     "alreadyOwned": "Ya tienes este objeto.",
-    "purchaseFailed": "No se pudo completar la compra."
+    "purchaseFailed": "No se pudo completar la compra.",
+    "streakRecoveryExpired": "Esa racha ya no se puede recuperar.",
+    "streakRecoveryFailed": "No se pudo recuperar la racha."
   },
   "validation": {
     "usernameRequired": "Necesitas un nombre de usuario.",
@@ -444,7 +446,21 @@
     "previousMonth": "Mes anterior",
     "nextMonth": "Mes siguiente",
     "playedThisMonth_one": "{{count}} día jugado este mes",
-    "playedThisMonth_other": "{{count}} días jugados este mes"
+    "playedThisMonth_other": "{{count}} días jugados este mes",
+    "recovery": {
+      "brokenTitle_one": "Has perdido tu racha de {{count}} día",
+      "brokenTitle_other": "Has perdido tu racha de {{count}} días",
+      "brokenSub": "Recupérala y sigue donde lo dejaste: volverías a {{streak}} 🔥.",
+      "brokenExpires": "Solo hasta {{time}}",
+      "cta": "Recuperar por {{price}} 🪙",
+      "ctaPoor": "Te faltan {{missing}} 🪙",
+      "recovering": "Recuperando…",
+      "success": "¡Racha recuperada! Vas por {{streak}} 🔥",
+      "atRiskTitle_one": "Tu racha de {{count}} día está en peligro",
+      "atRiskTitle_other": "Tu racha de {{count}} días está en peligro",
+      "atRiskSub": "Llevas días sin responder. Contesta la pregunta de hoy y podrás recuperarla por {{price}} 🪙.",
+      "atRiskCta": "Responder ahora"
+    }
   },
   "mastery": {
     "level": "Nivel {{level}}",

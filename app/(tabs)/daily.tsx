@@ -25,6 +25,7 @@ import { useToast } from '@/context/ToastContext';
 import { showResultInterstitial } from '@/lib/ads';
 import { markDailyQuestionCompleted } from '@/lib/notifications';
 import { todayStr } from '@/lib/dailyRoute';
+import { StreakRecoveryCard } from '@/components/StreakRecoveryCard';
 import { planReviewAfterDailyCompletion, REVIEW_PROMPT_DELAY_MS } from '@/lib/appReview';
 import { noteReviewBlocker } from '@/lib/reviewGate';
 import {
@@ -374,6 +375,8 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
           return;
         }
         celebrate(award);
+        // La racha (y una posible racha rota) acaban de cambiar en el servidor.
+        refreshProfile();
       }
       const r = await fetchDailyRanking();
       setDailyRanking(r);
@@ -508,7 +511,12 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
           {/* Ruta de hoy: el resto del ritual diario, bajo el resultado. */}
           {user && (
-            <DailyRoute userId={user.id} profile={profile} refresh={refreshProfile} />
+            <>
+              {/* Si la respuesta de hoy acaba de romper la racha, la oferta de
+                  recuperarla va aquí, justo donde se entera. */}
+              <StreakRecoveryCard userId={user.id} profile={profile} refresh={refreshProfile} />
+              <DailyRoute userId={user.id} profile={profile} refresh={refreshProfile} />
+            </>
           )}
 
           {/* Tab switcher */}
