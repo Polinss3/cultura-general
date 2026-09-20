@@ -23,6 +23,9 @@
         "NSUserNotificationsUsageDescription": "Get a daily reminder to answer the question of the day and keep your streak.",
         "ITSAppUsesNonExemptEncryption": false,
         "CFBundleAllowMixedLocalizations": true
+      },
+      "entitlements": {
+        "aps-environment": "production"
       }
     },
     "android": {

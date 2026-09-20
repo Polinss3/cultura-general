@@ -36,6 +36,7 @@ import { applyPersistedLanguage, getCurrentLang } from '@/lib/i18n';
 import { loadThemePreference } from '@/lib/appearance';
 import { checkDailyAnswered, purgeLegacyQuestionCache } from '@/lib/db';
 import { getNotificationRoute, syncNotificationSchedule } from '@/lib/notifications';
+import { syncPushRegistration, unregisterPush } from '@/lib/push';
 import { localDayKey } from '@/lib/notificationPlan';
 import {
   createAdventureProgressRepository,
@@ -293,6 +294,16 @@ function RootLayout() {
         profilePromise,
         dailyPromise,
       ]);
+      if (cancelled) return;
+
+      // Push reales: con sesión y red se registra el token (o se refresca
+      // idioma/zona horaria); sin sesión se retira. Va antes del plan local
+      // porque este se salta si el push queda activo.
+      if (session?.user && !guest && !offline) {
+        await syncPushRegistration(session.user.id);
+      } else if (!session?.user) {
+        await unregisterPush();
+      }
       if (cancelled) return;
 
       await syncNotificationSchedule({

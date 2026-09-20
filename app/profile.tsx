@@ -36,6 +36,7 @@ import {
 import { setAppLanguage, getLanguagePreference, LangPreference } from '@/lib/i18n';
 import { useThemePreference, setThemePreference, type ThemePreference } from '@/lib/appearance';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
+import { syncPushRegistration, unregisterPush } from '@/lib/push';
 import { CAT_ICONS, CAT_COLORS, ALL_CATEGORIES } from '@/constants/questions';
 import { getInterests, setInterests } from '@/lib/onboarding';
 import { AvatarFrame } from '@/components/AvatarFrame';
@@ -205,13 +206,16 @@ export default function ProfileScreen() {
         Alert.alert(t('profile.dialogs.notifPermTitle'), t('profile.dialogs.notifPermBody'));
         return;
       }
+      // Primero el push (si queda activo, el plan local no se monta).
+      await syncPushRegistration(user?.id);
       await scheduleDailyReminder({ streak: profile?.streak ?? 0 });
       setNotificationsOn(true);
     } else {
+      await unregisterPush();
       await cancelDailyReminder();
       setNotificationsOn(false);
     }
-  }, [profile?.streak, t]);
+  }, [profile?.streak, user?.id, t]);
 
   const handleSaveUsername = useCallback(async () => {
     if (!user || !newUsername.trim()) return;
@@ -229,7 +233,7 @@ export default function ProfileScreen() {
   const handleSignOut = () => {
     Alert.alert(t('profile.dialogs.signOutTitle'), t('profile.dialogs.signOutBody'), [
       { text: t('common.cancel'), style: 'cancel' },
-      { text: t('profile.dialogs.signOutConfirm'), style: 'destructive', onPress: () => supabase.auth.signOut() },
+      { text: t('profile.dialogs.signOutConfirm'), style: 'destructive', onPress: async () => { await unregisterPush(); await supabase.auth.signOut(); } },
     ]);
   };
 

@@ -6,6 +6,7 @@ import { awardProgress, bumpMissions, AwardResult } from './gamification';
 import { REWARDS } from './economy';
 import i18n, { getCurrentLang, AppLang } from './i18n';
 import { isProTier } from './pro';
+import { unregisterPush } from './push';
 
 // ─── Error handling ───────────────────────────────────────────
 
@@ -917,6 +918,7 @@ export async function incrementProfileStats(
 export async function pauseAccount(): Promise<{ error: string | null }> {
   const { error } = await supabase.rpc('pause_account');
   if (error) return { error: error.message };
+  await unregisterPush();
   await supabase.auth.signOut();
   return { error: null };
 }
@@ -933,6 +935,7 @@ export async function deleteAccount(): Promise<{ error: string | null }> {
     headers: { Authorization: `Bearer ${session.access_token}` },
   });
   if (error) return { error: error.message ?? i18n.t('errors.deleteAccountFailed') };
+  await unregisterPush();
   await supabase.auth.signOut();
   return { error: null };
 }

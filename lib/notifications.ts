@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 import i18n from './i18n';
+import { isPushActive } from './push';
 import {
   MORNING_NOTIFICATION_ID,
   NOTIFICATION_OWNER,
@@ -15,6 +16,7 @@ const NOTIFICATIONS_ENABLED_KEY = 'notifications_enabled_v2';
 const NOTIFICATION_CONTEXT_KEY = 'notification_schedule_context_v2';
 const DAILY_ROUTE = '/(tabs)/daily';
 const ADVENTURE_ROUTE = '/(tabs)/adventure';
+const LEAGUES_ROUTE = '/leagues';
 
 export interface NotificationScheduleContext {
   scope?: string;
@@ -23,7 +25,7 @@ export interface NotificationScheduleContext {
   completedDayKey?: string | null;
 }
 
-export type NotificationRoute = typeof DAILY_ROUTE | typeof ADVENTURE_ROUTE;
+export type NotificationRoute = typeof DAILY_ROUTE | typeof ADVENTURE_ROUTE | typeof LEAGUES_ROUTE;
 
 let operationQueue: Promise<void> = Promise.resolve();
 
@@ -227,6 +229,20 @@ async function canSchedule(): Promise<boolean> {
   return status === 'granted' && enabled;
 }
 
+// Con push activo el servidor manda los avisos de 9:00 y 20:00 (con hora
+// local y sabiendo si ya has respondido), así que el plan local se retira
+// para no avisar dos veces. Si el push cae, la siguiente sincronización lo
+// vuelve a montar.
+async function applyPushOverride(): Promise<boolean> {
+  if (!(await isPushActive())) return false;
+  try {
+    await cancelManagedNotifications(true);
+  } catch {
+    // ignore
+  }
+  return true;
+}
+
 /** Enables notifications and creates the complete 09:00/20:00 local plan. */
 export function scheduleDailyReminder(
   context?: NotificationScheduleContext,
@@ -234,6 +250,7 @@ export function scheduleDailyReminder(
   return enqueue(async () => {
     await AsyncStorage.setItem(NOTIFICATIONS_ENABLED_KEY, 'true');
     const merged = await mergeAndSaveContext(context);
+    if (await applyPushOverride()) return;
     try {
       await rebuildSchedule(merged);
     } catch {
@@ -250,6 +267,7 @@ export function syncNotificationSchedule(
   return enqueue(async () => {
     if (!await canSchedule()) return;
     const merged = await mergeAndSaveContext(context);
+    if (await applyPushOverride()) return;
     try {
       await rebuildSchedule(merged);
     } catch {
@@ -304,6 +322,6 @@ export function getNotificationRoute(
 ): NotificationRoute | null {
   const data = response?.notification.request.content.data as Record<string, unknown> | undefined;
   if (data?.owner !== NOTIFICATION_OWNER) return null;
-  if (data.route === DAILY_ROUTE || data.route === ADVENTURE_ROUTE) return data.route;
+  if (data.route === DAILY_ROUTE || data.route === ADVENTURE_ROUTE || data.route === LEAGUES_ROUTE) return data.route;
   return null;
 }
