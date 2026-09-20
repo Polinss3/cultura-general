@@ -1,0 +1,7 @@
+{
+  "sample": "social/01_te_la_sabes.mp4",
+  "integratedLUFS": -16.46,
+  "truePeakDBTP": -0.79,
+  "clipping": false,
+  "note": "Measured after AAC encoding with FFmpeg loudnorm analysis."
+}

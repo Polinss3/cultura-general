@@ -1,0 +1,103 @@
+{
+  "originApi": "verified",
+  "publicHttps": "not_verified_connection_timeout",
+  "note": "Public Cloudflare endpoint timed out from the Mac and from bellum during final verification. All 12 assets returned HTTP 200 from the origin API. Campaigns are stored as disabled drafts.",
+  "assets": [
+    {
+      "campaignId": "cb3a36df-81df-406a-9baa-073f48f6aecb",
+      "name": "CG V3 — ¿Te la sabes? — captación ES",
+      "mediaUrl": {
+        "status": 200,
+        "mime": "video/mp4",
+        "bytes": 1295283,
+        "sha256": "bbb4646c0953447dfc472ee9220584127e29486f5a878f01d1208b02550e7a1b"
+      },
+      "posterUrl": {
+        "status": 200,
+        "mime": "image/jpeg",
+        "bytes": 88255,
+        "sha256": "4a38b8b0536eb4e66edfc71d7c848314283dce7b3113dafe7a4a8ce3e4364592"
+      }
+    },
+    {
+      "campaignId": "289a2544-4136-460c-ae8e-975ed191c953",
+      "name": "CG V3 — Una pregunta, todo un viaje — captación ES",
+      "mediaUrl": {
+        "status": 200,
+        "mime": "video/mp4",
+        "bytes": 1268499,
+        "sha256": "3ddc89c280a1d24c2753ef054f6bfa5141b7eb71095ee94f19016489593bdc10"
+      },
+      "posterUrl": {
+        "status": 200,
+        "mime": "image/jpeg",
+        "bytes": 86454,
+        "sha256": "247fdf12917b4ff5b9649ae9a5307878c863942a9bf54ce1f0b34433e58edc84"
+      }
+    },
+    {
+      "campaignId": "63751a6c-a7d3-42a8-b427-54de74eec668",
+      "name": "CG V3 — Banderas y fechas — captación ES",
+      "mediaUrl": {
+        "status": 200,
+        "mime": "video/mp4",
+        "bytes": 1189636,
+        "sha256": "fc5514bdb19df2e8c27954bd6b73b0c5929d8b3e23e7b1c3ff13d4b0845f0dfe"
+      },
+      "posterUrl": {
+        "status": 200,
+        "mime": "image/jpeg",
+        "bytes": 84067,
+        "sha256": "87db0f6aec66f8bd19ec3e5a9805e9c367b3f4cea19fa3fc482404714d81ed97"
+      }
+    },
+    {
+      "campaignId": "519ff37c-b54a-48a4-a2e2-5b6c6256d280",
+      "name": "CG V3 — El pique del grupo — captación ES",
+      "mediaUrl": {
+        "status": 200,
+        "mime": "video/mp4",
+        "bytes": 1346512,
+        "sha256": "0e5da9ca0bb2c9fedd21feb52ff63cb826ce5c7ca8c0049d04342b0e5cff66a8"
+      },
+      "posterUrl": {
+        "status": 200,
+        "mime": "image/jpeg",
+        "bytes": 88224,
+        "sha256": "637e3a5a2830f3c37f98cf9e9609b6f3dd098539235397c0ac61d2a513926a4b"
+      }
+    },
+    {
+      "campaignId": "ed664311-f97c-465d-9447-76aa20b5575d",
+      "name": "CG V3 — Que tu pausa cuente — captación ES",
+      "mediaUrl": {
+        "status": 200,
+        "mime": "video/mp4",
+        "bytes": 1511609,
+        "sha256": "3a1d9d9f0ea2883dbcb278f994765b3d8c20d8ca4d553db86aac195de4a2d311"
+      },
+      "posterUrl": {
+        "status": 200,
+        "mime": "image/jpeg",
+        "bytes": 85863,
+        "sha256": "fb0614b8ffa1e8389d8be718f5483b7ad546e210143b77708c09d9f833d9f951"
+      }
+    },
+    {
+      "campaignId": "9cda5225-85b4-4b91-90be-c0d33096f21e",
+      "name": "CG V3 — Aprende de tus fallos — captación ES",
+      "mediaUrl": {
+        "status": 200,
+        "mime": "video/mp4",
+        "bytes": 1352805,
+        "sha256": "a6a79d8954b115beeb7480059524aa0b183542e925eb6c6da4e2c891a4edadc2"
+      },
+      "posterUrl": {
+        "status": 200,
+        "mime": "image/jpeg",
+        "bytes": 88004,
+        "sha256": "6e45f7ae7ce71bfd2f6cacef7e4b7845ffe069e2a3188f802d60a560c266650e"
+      }
+    }
+  ]
+}
