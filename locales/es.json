@@ -283,7 +283,9 @@
       "languageEs": "Español",
       "languageEn": "English",
       "adsPrivacy": "Privacidad y anuncios",
-      "adsPrivacySub": "Revisa tu tramo de edad"
+      "adsPrivacySub": "Revisa tu tramo de edad",
+      "interestsTitle": "Tus temas favoritos",
+      "interestsSub": "Salen más a menudo en Aleatorio y Contrarreloj. El resto sigue apareciendo."
     },
     "openStats": "Ver todas mis estadísticas"
   },

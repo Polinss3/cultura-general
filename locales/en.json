@@ -283,7 +283,9 @@
       "languageEs": "Español",
       "languageEn": "English",
       "adsPrivacy": "Privacy and ads",
-      "adsPrivacySub": "Review your age bracket"
+      "adsPrivacySub": "Review your age bracket",
+      "interestsTitle": "Your favourite topics",
+      "interestsSub": "They come up more often in Random and Time Trial. The rest still appear."
     },
     "openStats": "See all my statistics"
   },

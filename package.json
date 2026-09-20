@@ -19,7 +19,8 @@
     "test:exam": "tsx --test lib/exam.test.ts",
     "test:review": "tsx --test lib/review.test.ts",
     "test:stats": "tsx --test lib/stats.test.ts",
-    "test:streak": "tsx --test lib/streakRecovery.test.ts"
+    "test:streak": "tsx --test lib/streakRecovery.test.ts",
+    "test:interests": "tsx --test lib/interests.test.ts"
   },
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.4.2",

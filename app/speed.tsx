@@ -21,6 +21,8 @@ import { markDailyPlayed } from '@/lib/dailyRoute';
 import { getLocalQuestions } from '@/constants/questions';
 import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion } from '@/lib/utils';
+import { getInterests } from '@/lib/onboarding';
+import { interestWeight } from '@/lib/interests';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Question } from '@/types';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
@@ -100,7 +102,9 @@ export default function SpeedScreen() {
       }
       const source = remote.length > 0 ? remote : buildLocal();
       const recent = await getRecentIds('speed');
-      setAllQ(pickRandomFresh(source, recent, q => q.id, source.length));
+      // Temas favoritos con el doble de peso; el resto sigue saliendo.
+      const weight = interestWeight(await getInterests());
+      setAllQ(pickRandomFresh(source, recent, q => q.id, source.length, weight));
       setPhase('intro');
     })();
   }, []);

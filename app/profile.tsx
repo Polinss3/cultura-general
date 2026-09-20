@@ -36,7 +36,8 @@ import {
 import { setAppLanguage, getLanguagePreference, LangPreference } from '@/lib/i18n';
 import { useThemePreference, setThemePreference, type ThemePreference } from '@/lib/appearance';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
-import { CAT_ICONS } from '@/constants/questions';
+import { CAT_ICONS, CAT_COLORS, ALL_CATEGORIES } from '@/constants/questions';
+import { getInterests, setInterests } from '@/lib/onboarding';
 import { masteryFor } from '@/lib/mastery';
 import {
   computeTitles, findTitle, getEquippedTitle,
@@ -99,6 +100,23 @@ export default function ProfileScreen() {
   const themePref = useThemePreference();
 
   const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled());
+
+  // Temas favoritos (del onboarding), editables aquí. Se guardan al tocar.
+  const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
+  useEffect(() => {
+    let cancelled = false;
+    getInterests().then(saved => { if (!cancelled) setInterestsSel(new Set(saved)); });
+    return () => { cancelled = true; };
+  }, []);
+  const toggleInterest = useCallback((c: Category) => {
+    feedback.select();
+    setInterestsSel(prev => {
+      const next = new Set(prev);
+      if (next.has(c)) next.delete(c); else next.add(c);
+      void setInterests(Array.from(next));
+      return next;
+    });
+  }, []);
 
   const [equippedTitle, setEquippedTitle] = useState<string | null>(null);
 
@@ -648,6 +666,41 @@ export default function ProfileScreen() {
               trackColor={{ false: C.track, true: C.streak }}
               thumbColor={C.onBrand}
             />
+          </View>
+
+          {/* Temas favoritos */}
+          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border, marginBottom: 10 }}>
+            <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
+              {t('profile.settings.interestsTitle')}
+            </Text>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2, marginBottom: 12 }}>
+              {t('profile.settings.interestsSub')}
+            </Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+              {ALL_CATEGORIES.map(c => {
+                const active = interests.has(c);
+                const col = CAT_COLORS[c];
+                return (
+                  <Pressable
+                    key={c}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: active }}
+                    onPress={() => toggleInterest(c)}
+                    style={{
+                      flexDirection: 'row', alignItems: 'center', gap: 6,
+                      paddingVertical: 7, paddingHorizontal: 11, borderRadius: Radius.pill,
+                      backgroundColor: active ? col.bg : C.surfaceSunk,
+                      borderWidth: 1.5, borderColor: active ? col.accent : C.border,
+                    }}
+                  >
+                    <Text style={{ fontSize: 15 }}>{CAT_ICONS[c]}</Text>
+                    <Text style={{ color: active ? col.text : C.textBody, fontSize: 13, fontFamily: active ? Font.bold : Font.semi }}>
+                      {t(`categories.${c}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
           </View>
 
           {/* Apariencia */}
