@@ -22,6 +22,7 @@ import { StreakHeatmap } from '@/components/StreakHeatmap';
 import { StreakRecoveryCard } from '@/components/StreakRecoveryCard';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { LeagueCard } from '@/components/LeagueCard';
+import { AvatarFrame } from '@/components/AvatarFrame';
 import { ProBadge } from '@/components/ProBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { useIsPro } from '@/hooks/usePremium';
@@ -167,6 +168,8 @@ export default function HomeScreen() {
 
   const initial = guest ? '?' : (profile?.username?.[0] ?? '?').toUpperCase();
   const displayName = guest ? t('common.guest') : (profile?.username ?? '…');
+  // Trozos del saludo alrededor del nombre, para poder estilizar solo el nombre.
+  const greetingParts = t('home.greeting', { name: '\u0000' }).split('\u0000');
   const achievementCount = unlockedCount(profile, adventureProgress);
   const speedRecord = guest ? guestSpeedRecord : (profile?.speed_record ?? 0);
   const ladderRecord = profile?.ladder_best ?? 0;
@@ -186,8 +189,13 @@ export default function HomeScreen() {
               <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.bold, textTransform: 'capitalize' }}>
                 {today}
               </Text>
-              <Text style={{ color: cosmetics.nameColor ?? C.text, ...Type.screenTitle, marginTop: 3 }}>
-                {t('home.greeting', { name: displayName })}
+              {/* El saludo es una frase: el icono va delante y el color y el
+                  estilo del cosmético se aplican solo al nombre. */}
+              <Text style={{ color: C.text, ...Type.screenTitle, marginTop: 3 }}>
+                {cosmetics.nameIcon ? `${cosmetics.nameIcon} ` : ''}
+                {greetingParts[0]}
+                <Text style={[{ color: cosmetics.nameColor ?? C.text }, cosmetics.nameStyle]}>{displayName}</Text>
+                {greetingParts[1]}
               </Text>
               {!guest && profile && (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6, alignSelf: 'flex-start' }}>
@@ -217,7 +225,7 @@ export default function HomeScreen() {
                   <Text style={{ color: C.textMuted, fontSize: 21, fontFamily: Font.black }}>?</Text>
                 </View>
               ) : (
-                <View style={cosmetics.frameColor ? { borderWidth: 2, borderColor: cosmetics.frameColor, borderRadius: 20, padding: 2 } : undefined}>
+                <AvatarFrame cosmetics={cosmetics} radius={18}>
                   <LinearGradient
                     colors={[C.streak, C.brand]}
                     start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -225,7 +233,7 @@ export default function HomeScreen() {
                   >
                     <Text style={{ color: C.onBrand, fontSize: 21, fontFamily: Font.black }}>{initial}</Text>
                   </LinearGradient>
-                </View>
+                </AvatarFrame>
               )}
             </Pressable>
           </View>

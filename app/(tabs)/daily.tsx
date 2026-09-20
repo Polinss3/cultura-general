@@ -26,6 +26,7 @@ import { showResultInterstitial } from '@/lib/ads';
 import { markDailyQuestionCompleted } from '@/lib/notifications';
 import { todayStr } from '@/lib/dailyRoute';
 import { StreakRecoveryCard } from '@/components/StreakRecoveryCard';
+import { AvatarFrame } from '@/components/AvatarFrame';
 import { planReviewAfterDailyCompletion, REVIEW_PROMPT_DELAY_MS } from '@/lib/appReview';
 import { noteReviewBlocker } from '@/lib/reviewGate';
 import {
@@ -102,7 +103,7 @@ function RankRowView({
       }}>
         {position < 3 ? MEDALS[position] : `${position + 1}`}
       </Text>
-      <View style={cos.frameColor ? { borderWidth: 2, borderColor: cos.frameColor, borderRadius: 15, padding: 1.5 } : undefined}>
+      <AvatarFrame cosmetics={cos} radius={13}>
         {isMe ? (
           <LinearGradient
             colors={[C.streak, C.brand]}
@@ -123,7 +124,7 @@ function RankRowView({
             </Text>
           </View>
         )}
-      </View>
+      </AvatarFrame>
       <View style={{ flex: 1 }}>
         <UserName
           name={name}

@@ -38,6 +38,7 @@ import { useThemePreference, setThemePreference, type ThemePreference } from '@/
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
 import { CAT_ICONS, CAT_COLORS, ALL_CATEGORIES } from '@/constants/questions';
 import { getInterests, setInterests } from '@/lib/onboarding';
+import { AvatarFrame } from '@/components/AvatarFrame';
 import { masteryFor } from '@/lib/mastery';
 import {
   computeTitles, findTitle, getEquippedTitle,
@@ -318,9 +319,7 @@ export default function ProfileScreen() {
             borderWidth: 1.5, borderColor: C.borderWarm,
           }}
         >
-          <View style={cosmetics.frameColor
-            ? { borderWidth: 3, borderColor: cosmetics.frameColor, borderRadius: 31, padding: 3, marginBottom: 12 }
-            : { marginBottom: 12 }}>
+          <AvatarFrame cosmetics={cosmetics} radius={28} width={3} style={{ marginBottom: 12 }}>
             <LinearGradient
               colors={[C.streak, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -328,7 +327,7 @@ export default function ProfileScreen() {
             >
               <Text style={{ color: C.onBrand, fontSize: 32, fontFamily: Font.black }}>{initial}</Text>
             </LinearGradient>
-          </View>
+          </AvatarFrame>
 
           {editingUsername ? (
             <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>

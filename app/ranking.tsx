@@ -10,6 +10,7 @@ import { useOffline } from '@/hooks/useOffline';
 import { setGuestMode } from '@/lib/guest';
 import { fetchAllTimeRanking, fetchMyGlobalRank, type GlobalRow, type GlobalSort, type MyGlobalRank } from '@/lib/db';
 import { resolveCosmetics } from '@/lib/cosmetics';
+import { AvatarFrame } from '@/components/AvatarFrame';
 import { UserName } from '@/components/UserName';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { useTheme, type Palette } from '@/constants/colors';
@@ -232,7 +233,7 @@ function RankingRow({ C, row, rank, sort, isMe }: {
         {rank <= 3 ? MEDALS[rank - 1] : rank}
       </Text>
 
-      <View style={cos.frameColor ? { borderWidth: 2, borderColor: cos.frameColor, borderRadius: 14, padding: 1.5 } : undefined}>
+      <AvatarFrame cosmetics={cos} radius={12}>
         {isMe ? (
           <LinearGradient
             colors={[C.streak, C.brand]}
@@ -253,7 +254,7 @@ function RankingRow({ C, row, rank, sort, isMe }: {
             </Text>
           </View>
         )}
-      </View>
+      </AvatarFrame>
 
       <View style={{ flex: 1, gap: 1 }}>
         <UserName
