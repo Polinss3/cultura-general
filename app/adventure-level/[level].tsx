@@ -56,6 +56,8 @@ import { REWARDS } from '@/lib/economy';
 import { feedback } from '@/lib/feedback';
 import { createAsyncGate } from '@/lib/async-gate';
 import { captureSentryException } from '@/lib/sentry';
+import { planReviewAfterMilestone } from '@/lib/appReview';
+import { useReviewPrompt } from '@/hooks/useReviewPrompt';
 import { alpha, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, inkButton, warmGradient } from '@/constants/theme';
 import type { AnswerState, Question } from '@/types';
@@ -139,6 +141,7 @@ export default function AdventureLevelScreen() {
   const [attemptNumber, setAttemptNumber] = useState(0);
   const [mistakes, setMistakes] = useState<AdventureMistake[]>([]);
   const mountedRef = useRef(true);
+  const review = useReviewPrompt();
   const activeTimeMsRef = useRef(0);
   const questionStartedAtRef = useRef<number | null>(null);
   const attemptNumberRef = useRef(0);
@@ -409,6 +412,13 @@ export default function AdventureLevelScreen() {
           setStarCoinsGranted(0);
           if (bestStars > result.previousStars) feedback.reward();
           setStage('result');
+
+          // Valoración en tienda: un nivel perfecto por primera vez (o un
+          // guardián vencido) es el momento de más orgullo de la Aventura.
+          if (result.perfect && bestStars > result.previousStars) {
+            void planReviewAfterMilestone('adventure', { qualifies: true })
+              .then(trigger => { if (mountedRef.current) review.schedule(trigger); });
+          }
         }
 
         const bestStars = result.progress.stars[String(level)] ?? result.stars;
@@ -458,6 +468,8 @@ export default function AdventureLevelScreen() {
                   captureSentryException(error, { feature: 'adventure_finish', phase: 'save_level_reward_marker', level });
                 }
                 if (!award.alreadyClaimed) celebrate(award);
+                // El modal de subida de nivel taparía el diálogo de valoración.
+                if (award.leveledUp) review.cancel();
                 if (award.gainedCoins) {
                   void bumpMissions('coins_earned', award.gainedCoins).catch(error => {
                     captureSentryException(error, { feature: 'adventure_finish', phase: 'level_reward_missions', level });

@@ -16,6 +16,8 @@ import { awardProgress } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { markDailyPlayed } from '@/lib/dailyRoute';
 import { showResultInterstitial } from '@/lib/ads';
+import { planReviewAfterMilestone } from '@/lib/appReview';
+import { useReviewPrompt } from '@/hooks/useReviewPrompt';
 import { CONTINENTS, flagEmoji, type Continent } from '@/constants/flags';
 import {
   buildRound, countryName, poolFor, getFlagRecords, saveFlagRecord,
@@ -67,6 +69,7 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
   const [newRecord, setNewRecord] = useState(false);
   const [confetti, setConfetti] = useState(false);
   const finishedRef = useRef(false);
+  const review = useReviewPrompt();
 
   // El catálogo va empaquetado, así que Banderas funciona sin conexión y como
   // invitado. Solo las recompensas necesitan sesión.
@@ -97,10 +100,15 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
     // El intersticial va ANTES del resultado: con el marcador en pantalla el
     // usuario podía arrancar otra ronda y recibir el anuncio en medio. La
     // última pregunta se queda respondida y quieta mientras se espera.
-    await showResultInterstitial('flags_complete');
+    // Valoración en tienda: una ronda casi perfecta o un récord es buen
+    // momento. Se decide antes del intersticial para no encadenar los dos.
+    const isRecord = await saveFlagRecord(scope, finalCorrect);
+    const askReview = await planReviewAfterMilestone('challenge', {
+      qualifies: isRecord || finalCorrect >= Math.ceil(round.length * 0.8),
+    });
+    await showResultInterstitial('flags_complete', !askReview);
     setPhase('done');
     markDailyPlayed(); // cuenta como "practica hoy" en la ruta diaria
-    const isRecord = await saveFlagRecord(scope, finalCorrect);
     setNewRecord(isRecord);
     loadRecords();
     onRoundFinished?.();
@@ -113,7 +121,10 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
         'flags',
       );
       celebrate(award);
+      // La subida de nivel abre su propio modal; el diálogo no se apilaría.
+      if (award?.leveledUp) return;
     }
+    review.schedule(askReview);
   };
 
   const handleAnswer = (cc: string) => {
