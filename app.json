@@ -14,7 +14,7 @@
       "en": "./locales/native/en.json"
     },
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
       "buildNumber": "94",
       "usesAppleSignIn": true,
@@ -22,11 +22,18 @@
         "NSCameraUsageDescription": "The app does not use the camera.",
         "NSUserNotificationsUsageDescription": "Get a daily reminder to answer the question of the day and keep your streak.",
         "ITSAppUsesNonExemptEncryption": false,
-        "CFBundleAllowMixedLocalizations": true
+        "CFBundleAllowMixedLocalizations": true,
+        "UISupportedInterfaceOrientations~ipad": [
+          "UIInterfaceOrientationPortrait",
+          "UIInterfaceOrientationPortraitUpsideDown",
+          "UIInterfaceOrientationLandscapeLeft",
+          "UIInterfaceOrientationLandscapeRight"
+        ]
       },
       "entitlements": {
         "aps-environment": "production"
-      }
+      },
+      "requireFullScreen": true
     },
     "android": {
       "adaptiveIcon": {

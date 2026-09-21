@@ -1,12 +1,12 @@
 import '@/lib/i18n'; // debe ir primero: init i18n antes de que renderice cualquier componente
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Linking from 'expo-linking';
 import * as Notifications from 'expo-notifications';
-import { Alert, AppState } from 'react-native';
+import { Alert, AppState, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import {
@@ -48,7 +48,8 @@ import { setSentryUser } from '@/lib/sentry';
 import { clearGuestData } from '@/lib/guest';
 import { handleIncomingAuthUrl } from '@/lib/auth';
 import { requiresProfileCompletion } from '@/lib/authValidation';
-import { useIsDark } from '@/constants/colors';
+import { useIsDark, useColors } from '@/constants/colors';
+import { MAX_CONTENT_WIDTH } from '@/constants/layout';
 import {
   type AdsConsentDecision,
   hydrateAdsConsent,
@@ -86,6 +87,19 @@ const BOOT_HARD_DEADLINE_MS = 10000;
 function AppStatusBar() {
   const isDark = useIsDark();
   return <StatusBar style={isDark ? 'light' : 'dark'} />;
+}
+
+// Columna de contenido (ver constants/layout.ts). Componente aparte por lo
+// mismo que AppStatusBar: el tema se lee dentro del árbol.
+function ContentColumn({ children }: { children: ReactNode }) {
+  const C = useColors();
+  return (
+    <View style={{ flex: 1, backgroundColor: C.bg }}>
+      <View style={{ flex: 1, width: '100%', maxWidth: MAX_CONTENT_WIDTH, alignSelf: 'center' }}>
+        {children}
+      </View>
+    </View>
+  );
 }
 
 function RootLayout() {
@@ -501,13 +515,17 @@ function RootLayout() {
       <ToastProvider>
         <ProgressProvider>
           <AppStatusBar />
-          <Stack
-            screenOptions={{
-              headerShown: false,
-              animation: 'slide_from_right',
-              animationDuration: 250,
-            }}
-          />
+          {/* Columna de contenido: en móvil ocupa todo; en iPad se centra a
+              MAX_CONTENT_WIDTH y los laterales quedan del color de fondo. */}
+          <ContentColumn>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                animation: 'slide_from_right',
+                animationDuration: 250,
+              }}
+            />
+          </ContentColumn>
           <AdsConsentModal
             visible={Boolean(
               adsConfigured() && onboarded && adsConsentHydrated &&

@@ -1,4 +1,5 @@
 import { Modal, View } from 'react-native';
+import { sheetWidth } from '@/constants/layout';
 import type { AdsConsentDecision } from '@/stores/adsConsentStore';
 import { AdsConsentForm, type AdsConsentInput } from '@/components/AdsConsentForm';
 import { useTheme } from '@/constants/colors';
@@ -30,12 +31,14 @@ export function AdsConsentModal({ visible, initialDecision, dismissible, onDismi
       onRequestClose={dismissible ? onDismiss : undefined}
     >
       <View style={{ flex: 1, backgroundColor: C.bg }}>
+       <View style={{ flex: 1, ...sheetWidth }}>
         <AdsConsentForm
           initialDecision={initialDecision}
           onSave={onSave}
           onCancel={dismissible ? onDismiss : undefined}
           resetKey={visible}
         />
+       </View>
       </View>
     </Modal>
   );
