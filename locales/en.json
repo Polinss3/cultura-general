@@ -1568,5 +1568,12 @@
       "flat": "You've held steady this past month",
       "unknown": "Play a bit more to see your trend"
     }
+  },
+  "reviewNudge": {
+    "title": "Enjoying CG Trivia?",
+    "body": "A 30-second review goes a long way in helping more people find it.",
+    "love": "Love it! Leave a review",
+    "feedback": "I have suggestions",
+    "later": "Not now"
   }
 }

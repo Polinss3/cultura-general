@@ -50,6 +50,7 @@ import { handleIncomingAuthUrl } from '@/lib/auth';
 import { requiresProfileCompletion } from '@/lib/authValidation';
 import { useIsDark, useColors } from '@/constants/colors';
 import { MAX_CONTENT_WIDTH } from '@/constants/layout';
+import { ReviewNudgeSheet } from '@/components/ReviewNudgeSheet';
 import {
   type AdsConsentDecision,
   hydrateAdsConsent,
@@ -548,6 +549,8 @@ function RootLayout() {
               el visor es un modal y no puede depender de la pantalla que lo
               pidió, que muchas veces está navegando justo en ese momento. */}
           <AdFullscreenHost />
+          {/* Hoja propia de valoración; la dispara lib/reviewGate. */}
+          <ReviewNudgeSheet />
         </ProgressProvider>
       </ToastProvider>
     </ErrorBoundary>

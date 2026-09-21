@@ -1568,5 +1568,12 @@
       "flat": "Te mantienes estable en el último mes",
       "unknown": "Juega un poco más para ver tu tendencia"
     }
+  },
+  "reviewNudge": {
+    "title": "¿Te está gustando Cultura General?",
+    "body": "Una reseña de 30 segundos ayuda muchísimo a que más gente la descubra.",
+    "love": "¡Me encanta! Dejar reseña",
+    "feedback": "Tengo sugerencias",
+    "later": "Ahora no"
   }
 }
