@@ -2,8 +2,9 @@
 -- BLINDAJE 2a: el servidor deja de fiarse del móvil en misiones y logros
 -- ═══════════════════════════════════════════════════════════════════════════
 --
--- ⚠️  NO APLICAR HASTA QUE LA 2.2.0 ESTÉ PUBLICADA (decisión de Pablo, 09-21).
---     Vive fuera de migrations/ a propósito; se aplica a mano, con
+-- APLICADO EN PRODUCCIÓN el 2026-09-21 (Pablo decidió no esperar a publicar la
+-- 2.2.0: es compatible con todas las versiones). Vive fuera de migrations/ a
+-- propósito; se aplicó a mano con
 --     `supabase db query --linked -f supabase/anti_cheat_2a.sql`.
 --
 -- Compatible con TODAS las versiones publicadas (1.3.0 → 2.3.0): no cambia
