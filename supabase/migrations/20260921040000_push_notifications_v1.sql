@@ -16,6 +16,23 @@
 begin;
 
 -- ─── 1. Tokens ───────────────────────────────────────────────────────────────
+-- La rama abandonada wip/push-notifications (mayo 2026) dejó en producción una
+-- push_tokens con otro formato (PK user_id+token, sin idioma ni zona horaria),
+-- vacía y sin usos. Se retira solo si sigue así; con filas, la migración se
+-- detiene para no perder nada.
+do $$ begin
+  if exists (select 1 from information_schema.tables
+              where table_schema = 'public' and table_name = 'push_tokens')
+     and not exists (select 1 from information_schema.columns
+                      where table_schema = 'public' and table_name = 'push_tokens'
+                        and column_name = 'locale') then
+    if exists (select 1 from public.push_tokens) then
+      raise exception 'push_tokens antigua con filas: revisar a mano';
+    end if;
+    drop table public.push_tokens;
+  end if;
+end $$;
+
 create table if not exists public.push_tokens (
   token       text primary key,
   user_id     uuid not null references auth.users(id) on delete cascade,
@@ -344,6 +361,9 @@ begin
      and not exists (select 1 from public.push_queue q
                       where q.user_id = f.friend and q.kind = 'friend_overtaken'
                         and q.sent_at is null);
+  return new;
+exception when others then
+  -- Un aviso nunca puede impedir guardar la respuesta del día.
   return new;
 end;
 $$;
