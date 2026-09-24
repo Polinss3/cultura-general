@@ -45,11 +45,21 @@ import {
   Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton,
 } from '@/constants/theme';
 
-type Phase = 'loading' | 'question' | 'ranking';
+type Phase = 'loading' | 'intro' | 'question' | 'ranking';
 type RankingTab = 'daily' | 'league' | 'global' | 'friends';
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const MEDALS = ['🥇', '🥈', '🥉'];
+const INTRO_DECORATIONS = [
+  { symbol: '✦', top: '7%', left: '9%', size: 37, rotation: '-15deg' },
+  { symbol: '📚', top: '13%', right: '8%', size: 39, rotation: '12deg' },
+  { symbol: '✧', top: '27%', left: '4%', size: 29, rotation: '18deg' },
+  { symbol: '⭐', top: '32%', right: '5%', size: 30, rotation: '-16deg' },
+  { symbol: '💡', bottom: '24%', left: '7%', size: 34, rotation: '-13deg' },
+  { symbol: '✦', bottom: '20%', right: '10%', size: 38, rotation: '15deg' },
+  { symbol: '🏆', bottom: '7%', right: '7%', size: 36, rotation: '12deg' },
+  { symbol: '✧', bottom: '9%', left: '12%', size: 33, rotation: '-11deg' },
+] as const;
 
 const getRankingTabs = (t: TFunction): { key: RankingTab; label: string }[] => [
   { key: 'daily',   label: t('daily.tabToday') },
@@ -134,6 +144,7 @@ function RankRowView({
           color={isMe ? C.brandDeep : C.text}
           fontFamily={isMe ? Font.black : Font.bold}
           fontSize={15}
+          style={cosmetics?.name_style === 'style_pro' ? { textShadowColor: 'transparent', textShadowRadius: 0 } : undefined}
         />
         <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>{sub}</Text>
       </View>
@@ -206,8 +217,12 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const { profile, refresh: refreshProfile } = useProfile();
   const { C, isDark } = useTheme();
   const [phase, setPhase] = useState<Phase>('loading');
+  const phaseRef = useRef<Phase>('loading');
+  phaseRef.current = phase;
   const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
+  const selectedRef = useRef<number | null>(null);
+  selectedRef.current = selected;
   const [isCorrect, setIsCorrect] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const reported = useRef(false);
@@ -255,6 +270,16 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   }, [user?.id]);
 
   useFocusEffect(reinitIfNewDay);
+
+  // Una nueva entrada desde la pestaña o una notificación vuelve a la pantalla
+  // de preparación si todavía no se ha respondido. El cronómetro comienza solo
+  // cuando el usuario pulsa «Continuar».
+  useFocusEffect(useCallback(() => {
+    if (phaseRef.current === 'question' && selectedRef.current === null) {
+      questionStartAt.current = 0;
+      setPhase('intro');
+    }
+  }, []));
 
   useEffect(() => {
     const sub = AppState.addEventListener('change', state => {
@@ -328,9 +353,14 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
       loadedTabs.current.add('daily');
       setPhase('ranking');
     } else {
-      questionStartAt.current = Date.now();
-      setPhase('question');
+      questionStartAt.current = 0;
+      setPhase('intro');
     }
+  };
+
+  const startQuestion = () => {
+    questionStartAt.current = Date.now();
+    setPhase('question');
   };
 
   const usePowerUp = (id: string) => {
@@ -616,6 +646,63 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
           <Text style={{ color: C.textMuted, fontSize: 15, textAlign: 'center', fontFamily: Font.regular, lineHeight: 24 }}>
             {t('daily.noQuestion')}
           </Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  // ─ Preparación: la pregunta permanece oculta hasta pulsar Continuar.
+  if (phase === 'intro') {
+    const ink = inkButton(isDark);
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+        <View style={{ flex: 1, justifyContent: 'center', padding: Space.screen, overflow: 'hidden' }}>
+          {INTRO_DECORATIONS.map((decoration, index) => (
+            <Text
+              key={index}
+              accessible={false}
+              importantForAccessibility="no-hide-descendants"
+              pointerEvents="none"
+              style={{
+                position: 'absolute', top: 'top' in decoration ? decoration.top : undefined,
+                bottom: 'bottom' in decoration ? decoration.bottom : undefined,
+                left: 'left' in decoration ? decoration.left : undefined,
+                right: 'right' in decoration ? decoration.right : undefined,
+                fontSize: decoration.size, color: C.streak,
+                opacity: isDark ? 0.25 : 0.35,
+                transform: [{ rotate: decoration.rotation }],
+              }}
+            >
+              {decoration.symbol}
+            </Text>
+          ))}
+          <LinearGradient
+            colors={highlightGradient(isDark)}
+            start={{ x: 0, y: 0 }} end={{ x: 0.8, y: 1 }}
+            style={{ borderColor: C.borderWarm, borderWidth: 1.5, borderRadius: Radius.cardLg, padding: 28, alignItems: 'center', ...cardShadow(isDark) }}
+          >
+            <View style={{ width: 94, height: 94, borderRadius: 47, backgroundColor: C.brandTint, borderWidth: 1.5, borderColor: C.borderWarm, alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+              <Text style={{ fontSize: 48 }}>🧠</Text>
+            </View>
+            <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 28, textAlign: 'center', marginBottom: 12 }}>
+              {t('daily.introTitle')}
+            </Text>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 16, lineHeight: 24, textAlign: 'center' }}>
+              {t('daily.introDescription')}
+            </Text>
+          </LinearGradient>
+          <Pressable
+            onPress={startQuestion}
+            accessibilityRole="button"
+            style={{
+              backgroundColor: ink.backgroundColor, borderRadius: Radius.pill,
+              alignItems: 'center', paddingVertical: 17, marginTop: 24,
+            }}
+          >
+            <Text style={{ color: ink.color, fontFamily: Font.black, fontSize: 17 }}>
+              {t('daily.introContinue')}
+            </Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     );

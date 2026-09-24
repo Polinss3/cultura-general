@@ -57,11 +57,13 @@
       "extends": "preview",
       "distribution": "store",
       "autoIncrement": true,
+      "environment": "production",
       "env": {
         "SENTRY_ALLOW_FAILURE": "true"
       },
       "ios": {
-        "credentialsSource": "remote"
+        "credentialsSource": "remote",
+        "image": "macos-tahoe-26.4-xcode-26.4"
       }
     },
     "production": {
