@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+
+# En este Mac, /usr/bin/python3 puede pedir aceptar la licencia de Xcode.
+if [ -x /opt/homebrew/bin/python3 ]; then
+  PYTHON=/opt/homebrew/bin/python3
+elif [ -x /usr/local/bin/python3 ]; then
+  PYTHON=/usr/local/bin/python3
+else
+  PYTHON=python3
+fi
+
+exec "$PYTHON" "$SCRIPT_DIR/metricas-supabase.py" "$@"
