@@ -454,7 +454,7 @@ export default function HomeScreen() {
               title={t('home.modes.friends')}
               meta={t('home.modes.friendsModes', { count: LOCAL_MODES })}
               disabled={offline}
-              onPress={() => offline ? lockedTap() : router.push('/(tabs)/friends')}
+              onPress={() => offline ? lockedTap() : router.push('/friends')}
             />
           </View>
         </View>

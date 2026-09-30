@@ -6,7 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Linking from 'expo-linking';
 import * as Notifications from 'expo-notifications';
-import { Alert, AppState, View } from 'react-native';
+import { Alert, AppState, Platform, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import {
@@ -48,9 +48,12 @@ import { setSentryUser } from '@/lib/sentry';
 import { clearGuestData } from '@/lib/guest';
 import { handleIncomingAuthUrl } from '@/lib/auth';
 import { requiresProfileCompletion } from '@/lib/authValidation';
-import { useIsDark, useColors } from '@/constants/colors';
+import { useIsDark, useTheme } from '@/constants/colors';
 import { MAX_CONTENT_WIDTH } from '@/constants/layout';
+import { PRO_ROOM_BACKGROUND } from '@/lib/pro';
+import { TabletGutterDecorations, type TabletDecoratedSection } from '@/components/TabletGutterDecorations';
 import { ReviewNudgeSheet } from '@/components/ReviewNudgeSheet';
+import { AppIconGuard } from '@/components/AppIconGuard';
 import {
   type AdsConsentDecision,
   hydrateAdsConsent,
@@ -92,10 +95,26 @@ function AppStatusBar() {
 
 // Columna de contenido (ver constants/layout.ts). Componente aparte por lo
 // mismo que AppStatusBar: el tema se lee dentro del árbol.
-function ContentColumn({ children }: { children: ReactNode }) {
-  const C = useColors();
+function ContentColumn({ children, segments }: { children: ReactNode; segments: readonly string[] }) {
+  const { C, isDark } = useTheme();
+  const onIPad = Platform.OS === 'ios' && Platform.isPad;
+  const screen = segments[0] === '(tabs)' ? segments[1] : segments[0];
+  let decoratedSection: TabletDecoratedSection = 'general';
+  if (!screen || screen === 'index') decoratedSection = 'home';
+  else if (screen === 'daily' || screen === 'exam' || screen === 'speed' ||
+    screen === 'ladder' || screen === 'adventure' || screen === 'learn' ||
+    screen === 'challenges' || screen === 'premium' || screen === 'shop') {
+    decoratedSection = screen;
+  } else if (screen === 'adventure-level') decoratedSection = 'adventure';
+  else if (screen === 'review' || screen === 'stats' || screen === 'paywall') decoratedSection = 'premium';
+  else if (screen === 'leagues' || screen === 'ranking') decoratedSection = 'challenges';
+  const backgroundColor = onIPad && screen === 'premium'
+    ? (isDark ? PRO_ROOM_BACKGROUND.dark : PRO_ROOM_BACKGROUND.light)
+    : C.bg;
+
   return (
-    <View style={{ flex: 1, backgroundColor: C.bg }}>
+    <View style={{ flex: 1, backgroundColor }}>
+      <TabletGutterDecorations section={decoratedSection} />
       <View style={{ flex: 1, width: '100%', maxWidth: MAX_CONTENT_WIDTH, alignSelf: 'center' }}>
         {children}
       </View>
@@ -516,9 +535,9 @@ function RootLayout() {
       <ToastProvider>
         <ProgressProvider>
           <AppStatusBar />
-          {/* Columna de contenido: en móvil ocupa todo; en iPad se centra a
-              MAX_CONTENT_WIDTH y los laterales quedan del color de fondo. */}
-          <ContentColumn>
+          {/* El contenido conserva su ancho; los márgenes del iPad comparten
+              el fondo de la pantalla y pueden llevar decoración propia. */}
+          <ContentColumn segments={segments as readonly string[]}>
             <Stack
               screenOptions={{
                 headerShown: false,
@@ -551,6 +570,8 @@ function RootLayout() {
           <AdFullscreenHost />
           {/* Hoja propia de valoración; la dispara lib/reviewGate. */}
           <ReviewNudgeSheet />
+          {/* Quita el icono PRO si ya no hay PRO activo. */}
+          <AppIconGuard />
         </ProgressProvider>
       </ToastProvider>
     </ErrorBoundary>

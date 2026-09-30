@@ -4,6 +4,7 @@ import { ScrollView, View, Text, Pressable, ActivityIndicator } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
+import { PreparationScreen } from '@/components/PreparationScreen';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { Confetti } from '@/components/Confetti';
@@ -31,7 +32,7 @@ import { getCurrentLang } from '@/lib/i18n';
 import { pickRandomFresh, shuffleQuestion, ShuffledQuestion } from '@/lib/utils';
 import { AnswerState, Question } from '@/types';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
-import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
+import { Font, Radius, Space, Type, tint } from '@/constants/theme';
 
 type Phase = 'loading' | 'intro' | 'playing' | 'checkpoint' | 'gameover' | 'done';
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
@@ -280,59 +281,21 @@ export default function LadderScreen() {
   // ─ Intro
   if (phase === 'intro') {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingTop: 12 }}>
-          <Pressable onPress={() => router.back()} style={{ padding: 4 }}>
-            <Text style={{ color: C.textMuted, fontSize: 22 }}>←</Text>
-          </Pressable>
-        </View>
-        <View style={{ flex: 1, padding: 20, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 64, marginBottom: 16 }}>🪜</Text>
-          <Text style={{ color: C.text, fontSize: 26, fontFamily: Font.black, marginBottom: 8 }}>
-            {t('ladder.title')}
-          </Text>
-          <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, lineHeight: 24, textAlign: 'center', maxWidth: 280, marginBottom: 14 }}>
-            {t('ladder.introA')}
-            <Text style={{ color: C.wrong, fontFamily: Font.bold }}>{t('ladder.introLives', { lives: LADDER_LIVES })}</Text>
-            {t('ladder.introB')}
-            <Text style={{ color: C.brandDeep, fontFamily: Font.bold }}>{t('ladder.introRetire')}</Text>
-            {t('ladder.introC')}
-          </Text>
-          {/* Viaje por las zonas */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 4, marginBottom: 20, maxWidth: 300 }}>
-            {[1, 6, 11, 16, 21, 26, 31].map((f, i, arr) => {
-              const z = ladderZone(f);
-              const reached = recordBest >= z.startFloor;
-              return (
-                <View key={z.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-                  <Text style={{ fontSize: 18, opacity: reached ? 1 : 0.35 }}>{z.emoji}</Text>
-                  {i < arr.length - 1 && (
-                    <Text style={{ color: C.textFaint, fontSize: 12 }}>→</Text>
-                  )}
-                </View>
-              );
-            })}
-          </View>
-
-          <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 20, marginBottom: 32, width: '100%', alignItems: 'center', borderWidth: 1, borderColor: C.border }}>
-            <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginBottom: 4 }}>
-              {t('ladder.bestClimb')}
-            </Text>
-            <Text style={{ color: C.streak, fontSize: 32, fontFamily: Font.black }}>
-              {t('profile.stats.floor', { n: recordBest })}
-            </Text>
-          </View>
-          <Pressable onPress={start} style={{ width: '100%' }}>
-            <LinearGradient
-              colors={[C.brand, C.brand]}
-              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: 18, padding: 16, alignItems: 'center' }}
-            >
-              <Text style={{ color: C.onBrand, fontSize: 17, fontFamily: Font.bold }}>{t('ladder.startClimb')}</Text>
-            </LinearGradient>
-          </Pressable>
-        </View>
-      </SafeAreaView>
+      <PreparationScreen
+        variant="ladder"
+        icon="🪜"
+        title={t('ladder.title')}
+        description={t('ladder.prepDescription')}
+        rules={[
+          { icon: '❤️', text: t('ladder.prepRuleLives', { lives: LADDER_LIVES }) },
+          { icon: '🪙', text: t('ladder.prepRulePot') },
+          { icon: '🛡️', text: t('ladder.prepRuleCheckpoint') },
+          { icon: '🏆', text: `${t('ladder.bestClimb')}: ${t('profile.stats.floor', { n: recordBest })}`, highlight: true },
+        ]}
+        buttonLabel={t('ladder.startClimb')}
+        onStart={start}
+        onBack={() => router.back()}
+      />
     );
   }
 

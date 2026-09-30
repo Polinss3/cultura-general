@@ -9,6 +9,12 @@
  */
 export const PRO_ACCENT = '#6D3FC4';
 
+/** Fondo de la Sala PRO, también usado fuera de la columna central en iPad. */
+export const PRO_ROOM_BACKGROUND = {
+  light: '#F8F4FD',
+  dark: '#191424',
+} as const;
+
 export const PRO_ENTITLEMENT_LABEL = 'PRO';
 
 /** Capítulos de Aventura jugables sin pagar. Niveles 1-40. */

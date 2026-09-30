@@ -6,6 +6,7 @@ import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { CategoryBadge } from '@/components/CategoryBadge';
+import { PreparationScreen } from '@/components/PreparationScreen';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
@@ -124,29 +125,41 @@ export default function ReviewScreen() {
     );
   }
 
-  if (phase === 'empty' || phase === 'done') {
-    const finished = phase === 'done';
+  if (phase === 'empty') {
+    return (
+      <PreparationScreen
+        variant="pro"
+        icon="✅"
+        title={t('review.emptyTitle')}
+        description={offline || guest || !user ? t('review.needsAccount') : t('review.emptyIntro')}
+        rules={[
+          { icon: '🔁', text: t('review.emptyRuleMissed') },
+          { icon: '📅', text: t('review.emptyRuleSchedule') },
+        ]}
+        buttonLabel={t('common.close')}
+        onStart={() => router.back()}
+      />
+    );
+  }
+
+  if (phase === 'done') {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
         <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: Space.screen, gap: 16 }}>
           <View style={{ alignItems: 'center', gap: 10 }}>
-            <Text style={{ fontSize: 56 }}>{finished ? '🎉' : '✅'}</Text>
+            <Text style={{ fontSize: 56 }}>🎉</Text>
             <Text style={{ color: C.text, ...Type.screenTitle, textAlign: 'center' }}>
-              {t(finished ? 'review.doneTitle' : 'review.emptyTitle')}
+              {t('review.doneTitle')}
             </Text>
             <Text style={{ color: C.textMuted, ...Type.bodyRegular, textAlign: 'center', maxWidth: 320 }}>
-              {finished
-                ? t('review.doneBody', { correct: correctCount, total: queue.length })
-                : offline || guest || !user
-                  ? t('review.needsAccount')
-                  : t('review.emptyBody')}
+              {t('review.doneBody', { correct: correctCount, total: queue.length })}
             </Text>
-            {finished && mastered > 0 && (
+            {mastered > 0 && (
               <Text style={{ color: PRO_ACCENT, fontFamily: Font.bold, fontSize: 15 }}>
                 {t('review.mastered', { count: mastered })}
               </Text>
             )}
-            {finished && dueTotal > queue.length && (
+            {dueTotal > queue.length && (
               <Text style={{ color: C.textFaint, ...Type.small }}>
                 {t('review.remaining', { count: dueTotal - queue.length })}
               </Text>

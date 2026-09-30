@@ -1,80 +1,63 @@
-# Fichas de tienda ES/EN — v2.1.0
+# Material de tienda — versión 2.3.0
 
-La app usa marca localizada: dispositivos en español ven **"Cultura General"**,
-el resto **"CG Trivia"**. Estas fichas hay que crearlas/actualizarlas a mano en las
-consolas (EAS solo sube los binarios, no gestiona metadatos).
+La app muestra «Cultura General» en español y «CG Trivia» en inglés. Los
+textos de este directorio son borradores para App Store Connect y Google Play;
+subir un binario con EAS no actualiza las fichas ni la declaración de privacidad.
+El IPA local `build-testflight.ipa` contiene la versión 2.3.0 (110), generada el
+28-09-2026 con el SDK de In-House Ads 1.1.4. Es una compilación local de
+TestFlight; antes de App Review hay que probarla en dispositivo y generar la
+compilación definitiva con el perfil `production` (`EXPO_PUBLIC_ADS_MODE=live`).
 
-| Fichero | Para |
+| Material | Archivos |
 |---|---|
-| [`app-store-es.md`](app-store-es.md) · [`app-store-en.md`](app-store-en.md) | App Store Connect, un idioma por fichero |
-| [`google-play-es.md`](google-play-es.md) · [`google-play-en.md`](google-play-en.md) | Play Console, un idioma por fichero |
-| [`app-review-notes.md`](app-review-notes.md) | Notas para el revisor y respuestas de App Privacy |
+| App Store ES/EN | [app-store-es.md](app-store-es.md), [app-store-en.md](app-store-en.md) |
+| Google Play ES/EN | [google-play-es.md](google-play-es.md), [google-play-en.md](google-play-en.md) |
+| Novedades y notas de revisión | [release-2.3.0.md](release-2.3.0.md), [app-review-notes.md](app-review-notes.md) |
+| Política publicada | `https://cg-trivia.pablobrasero.com/privacy` y `/en/privacy` |
 
-## App Store Connect (iOS)
+## Privacidad que debe revisarse antes de enviar la 2.3.0
 
-1. App → **General → App Information**: el nombre por defecto NO cambia el binario;
-   el nombre bajo el icono lo controla `CFBundleDisplayName` (ya localizado vía
-   `expo.locales`, se genera en el build).
-2. App → pestaña de la versión → **⊕ junto a "App Store Localizations"**:
-   - **Spanish (Mexico/Spain)**: pega `app-store-es.md`.
-   - **English (U.S.)**: pega `app-store-en.md`.
-3. Campos por idioma: Name, Subtitle, Promotional Text, Description, Keywords, What's New.
-4. **Privacy Policy URL** ✅ ya cambiada: EN → `https://cg-trivia.pablobrasero.com/en/privacy`;
-   ES → `https://cg-trivia.pablobrasero.com/privacy`.
-5. **App Privacy** y las notas para el revisor: en `app-review-notes.md`.
-6. Capturas: un set por idioma, ver más abajo.
+La 2.3.0 introduce notificaciones remotas. Con permiso, el servidor guarda un
+token de Expo asociado a la cuenta, más plataforma, idioma, zona horaria y
+versión de la app. Expo retransmite los avisos a Apple o Google. Es un cambio
+respecto al texto anterior que describía las notificaciones como solo locales.
+La política de `website/build.mjs` y la política dentro de la app ya se han
+corregido; publicar la web y revisar **App Privacy** en App Store Connect antes
+de enviar la versión a revisión. El token es un identificador del dispositivo
+usado para la funcionalidad de la app, no para seguimiento publicitario. La
+categoría concreta de Apple y su estado publicado se deben confirmar en la
+ficha antes de cambiarla. La 2.2.0 publicada debe seguir descrita con sus
+prácticas reales hasta que la 2.3.0 esté disponible.
 
-> Nota: cambiar el nombre visible puede generar preguntas en revisión. Si
-> "CG Trivia: General Knowledge" estuviera cogido en ASC, usar una de las variantes
-> fallback listadas en `app-store-en.md`.
-
-## Google Play Console (Android)
-
-1. **Store presence → Main store listing → Manage translations → Add translations**:
-   añade **English (United States)** y **Spanish (Spain)**.
-2. Por idioma: App name, Short description, Full description → `google-play-*.md`.
-3. El nombre bajo el icono en Android lo da `app_name` (localizado vía `expo.locales`
-   → `values-b+es/strings.xml`), verificado por prebuild.
-4. Gráficos/capturas por idioma: pendiente (tarea manual).
+La elección de edad para anuncios se guarda en el dispositivo. Si el usuario
+es elegible, una solicitud al servicio publicitario propio envía un indicador
+de mayoría de edad, idioma, plataforma, versión y un identificador temporal de
+sesión. La política anterior decía que nada de esto salía del dispositivo.
 
 ## Capturas
 
-Se montan con [`scripts/generar-capturas-store.py`](../scripts/generar-capturas-store.py),
-que es lo único versionado: los materiales (cientos de MB) viven en
-`Capturas App Store/2.0.0/`, fuera de git.
+Las capturas de `Capturas App Store/2.2.0/` son de una interfaz anterior y no
+sirven como set definitivo para la 2.3.0. Hay 36 capturas reales y verificadas
+de la nueva app, en español e inglés, para iPhone de 6,9 y 6,3 pulgadas e iPad
+de 13 pulgadas. El set de 6,9 pulgadas y el de iPad cubren los tamaños
+requeridos por Apple; el de 6,3 pulgadas es adicional. Los PNG son RGB sin
+alfa, de tamaño nativo y sin datos personales. Las de iPad muestran el menú
+inferior y la decoración de los márgenes. No reutilizar la composición de la
+2.2.0 que superpone una barra de pestañas antigua sobre la pantalla.
 
-```bash
-python3 scripts/generar-capturas-store.py            # usa Capturas App Store/2.0.0
-python3 scripts/generar-capturas-store.py <carpeta>  # o la que le pases
-```
+Material previo: [README de capturas 2.2.0](../Capturas%20App%20Store/2.2.0/README.md).
+Preparación actual: [capturas 2.3.0](../Capturas%20App%20Store/2.3.0/README.md).
 
-Comprueba que están todos los materiales antes de empezar y, si falta alguno, dice
-cuál. Las capturas crudas que espera están listadas en la cabecera del script.
+## Antes de publicar
 
-**Pendiente para la 2.1.0**: las tres capturas de la pestaña Retos. Las que hay son
-de cuando se llamaba "Mundo" —se ve el nombre viejo en la barra de pestañas— y las
-rondas estrenan la barra superior de `components/RoundHud.tsx`:
-
-- `03-retos-menu.png` — el selector con las dos tarjetas héroe.
-- `04-banderas-pais.png` — rehacer: la pregunta de bandera, ya con `RoundHud`.
-- `10-anos-pregunta.png` — nueva: una pregunta del modo Años.
-
-## Checklist de la 2.2.0
-
-- [x] `supabase/i18n_en.sql` aplicado.
-- [x] `supabase/questions_en.sql` aplicado, cobertura EN al 100 %.
-- [x] Web legal publicada en `https://cg-trivia.pablobrasero.com`.
-- [x] Privacy Policy URL apuntando al dominio propio en ASC.
-- [x] Borradores ES/EN alineados con la 2.2.0: ocho modos, Aventura de 400
-      niveles, catálogo base de 2.000 preguntas y catálogo total PRO de 4.000.
-- [x] Ninguna ficha presenta la ausencia o retirada de anuncios como beneficio.
-- [ ] **Capturas de Retos** (las tres de arriba), un set por idioma.
-- [ ] Pegar los textos en App Store Connect y en Google Play Console.
-- [ ] Rellenar App Privacy y las notas del revisor (`app-review-notes.md`).
-
-> Los recuentos nuevos de la 2.2.0 distinguen siempre 2.000 preguntas base y 2.000
-> preguntas PRO. No publicar la cifra total de 4.000 hasta haber completado y revisado
-> `data/questions-pro-v1-2000.json` y generado su seed.
->
-> La propuesta de valor de CG PRO se basa en contenido y herramientas de estudio.
-> Publicidad no forma parte de la ficha ni de sus beneficios.
+- [x] Borradores ES/EN de las fichas actualizados a 2.3.0.
+- [x] Política web y política incluida en la app alineadas con notificaciones y anuncios propios.
+- [x] Publicar la web actualizada y verificar los dos idiomas en el dominio (28-09-2026).
+- [x] Generar una compilación local con los cambios y el SDK In-House Ads 1.1.4: 2.3.0 (110).
+- [ ] Probar la 110 en dispositivo físico y generar/subir la compilación definitiva con el perfil `production`.
+- [ ] Confirmar campañas reales en In-House Ads; el inventario documentado sigue siendo de prueba.
+- [ ] Activar los tres cosméticos PRO nuevos en `shop_items` al publicar la 2.3.0 (la migración los crea ocultos para proteger a los clientes 2.2.0).
+- [ ] Revisar y actualizar App Privacy en App Store Connect para la 2.3.0.
+- [x] Crear y revisar visualmente el nuevo set de capturas de iPhone y iPad en ES/EN.
+- [ ] Cargar los textos y las capturas en las consolas correspondientes (lo hará el propietario).
+- [ ] Comprobar que el número de build de la nota de revisión es el de la compilación elegida.

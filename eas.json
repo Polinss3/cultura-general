@@ -20,6 +20,7 @@
         "EXPO_PUBLIC_INHOUSE_PLACEMENT_LADDER_REVIVE": "a9dbc3d6-bee7-4a08-bc0a-fa1b2c5d24af",
         "EXPO_PUBLIC_INHOUSE_PLACEMENT_BANNER": "348a3903-529b-478f-9ac1-d88e58906bd8",
         "EXPO_PUBLIC_REWARDED_ADS": "true",
+        "EXPO_PUBLIC_PRO_REWARDED_ADS": "false",
         "EXPO_PUBLIC_BANNER_ADS": "false"
       },
       "ios": {
@@ -44,6 +45,7 @@
         "EXPO_PUBLIC_INHOUSE_PLACEMENT_LADDER_REVIVE": "a9dbc3d6-bee7-4a08-bc0a-fa1b2c5d24af",
         "EXPO_PUBLIC_INHOUSE_PLACEMENT_BANNER": "348a3903-529b-478f-9ac1-d88e58906bd8",
         "EXPO_PUBLIC_REWARDED_ADS": "true",
+        "EXPO_PUBLIC_PRO_REWARDED_ADS": "false",
         "EXPO_PUBLIC_BANNER_ADS": "false"
       },
       "ios": {
@@ -82,6 +84,7 @@
         "EXPO_PUBLIC_INHOUSE_PLACEMENT_LADDER_REVIVE": "a9dbc3d6-bee7-4a08-bc0a-fa1b2c5d24af",
         "EXPO_PUBLIC_INHOUSE_PLACEMENT_BANNER": "348a3903-529b-478f-9ac1-d88e58906bd8",
         "EXPO_PUBLIC_REWARDED_ADS": "true",
+        "EXPO_PUBLIC_PRO_REWARDED_ADS": "false",
         "EXPO_PUBLIC_BANNER_ADS": "false"
       },
       "ios": {

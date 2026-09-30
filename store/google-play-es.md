@@ -1,7 +1,6 @@
 # Google Play — Español (España)
 
-> Borrador de ficha para la **2.2.0**, con modelo freemium y CG PRO.
-> No se comunica ningún beneficio relacionado con publicidad.
+> Borrador de ficha para la **2.3.0**, con modelo freemium y CG PRO.
 
 ## Nombre de la app (máx 30)
 Cultura General: Trivia

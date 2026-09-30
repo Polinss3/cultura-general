@@ -52,8 +52,9 @@ CG PRO remains optional. The monthly and annual subscriptions and lifetime
 purchase are unchanged from 2.2.0; TestFlight purchases use Apple's sandbox.
 The app does not track users across other companies' apps or websites, does
 not use IDFA, and does not request App Tracking Transparency permission. The
-App Privacy information no longer includes Device ID. The in-app account
-deletion path is Profile → Danger zone → Delete account.
+Expo push token is used only to deliver enabled notifications; review the
+Device ID category in App Privacy before submitting this version. The in-app
+account deletion path is Profile → Danger zone → Delete account.
 
 ## Antes de enviarla a revisión
 

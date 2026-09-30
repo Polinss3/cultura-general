@@ -4,6 +4,7 @@ import { ScrollView, View, Text, Pressable, ActivityIndicator } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
+import { GlassView } from 'expo-glass-effect';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
@@ -12,6 +13,7 @@ import { useToast } from '@/context/ToastContext';
 import { CoinPill } from '@/components/CoinPill';
 import { ProBadge } from '@/components/ProBadge';
 import { useIsPro } from '@/hooks/usePremium';
+import { useAppleLiquidGlass } from '@/hooks/use-apple-liquid-glass';
 import { PRO_ACCENT } from '@/lib/pro';
 import {
   fetchShopItems, fetchInventory, buyItem, equipItem, ShopItem,
@@ -45,6 +47,7 @@ export default function ShopScreen() {
   const offline = useOffline();
   const { showToast } = useToast();
   const isPro = useIsPro();
+  const glassTabs = useAppleLiquidGlass();
 
   const [items, setItems] = useState<ShopItem[]>([]);
   const [inventory, setInventory] = useState<Record<string, number>>({});
@@ -156,7 +159,25 @@ export default function ShopScreen() {
         </View>
       ) : (
         <>
-        <View style={{ flexDirection: 'row', gap: 6, marginHorizontal: 20, marginTop: 8, marginBottom: 8, padding: 5, borderRadius: Radius.row, backgroundColor: C.surfaceSunk }}>
+        <View style={{
+          flexDirection: 'row', gap: 6, marginHorizontal: 20, marginTop: 8, marginBottom: 8,
+          padding: 5, borderRadius: Radius.row, position: 'relative',
+          backgroundColor: glassTabs ? 'transparent' : alpha(C.text, isDark ? 0.16 : 0.075),
+          borderWidth: 1, borderColor: C.borderStrong,
+        }}>
+          {glassTabs && (
+            <GlassView
+              pointerEvents="none"
+              glassEffectStyle="regular"
+              tintColor={alpha(C.brand, 0.1)}
+              colorScheme={isDark ? 'dark' : 'light'}
+              style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, borderRadius: Radius.row }}
+            />
+          )}
+          <View pointerEvents="none" style={{
+            position: 'absolute', left: '50%', top: 13, bottom: 13, width: 1,
+            backgroundColor: alpha(C.text, isDark ? 0.23 : 0.14),
+          }} />
           {(['powerups', 'cosmetics'] as const).map(tab => (
             <Pressable
               key={tab}
@@ -165,7 +186,10 @@ export default function ShopScreen() {
               accessibilityState={{ selected: category === tab }}
               style={{
                 flex: 1, minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7,
-                borderRadius: 12, backgroundColor: category === tab ? C.surface : 'transparent',
+                borderRadius: 12,
+                backgroundColor: category === tab
+                  ? (glassTabs ? alpha(C.surface, 0.8) : C.surface)
+                  : (glassTabs ? alpha(C.brand, 0.035) : 'transparent'),
                 borderWidth: 1, borderColor: category === tab ? C.borderWarm : 'transparent',
                 ...(category === tab ? cardShadow(isDark) : {}),
               }}

@@ -1,20 +1,22 @@
 # Notas para App Review y App Privacy
 
-## Estado actual — 24 de septiembre de 2026
+## Estado actual — 25 de septiembre de 2026
 
-La versión **2.2.0 (94) ya está publicada**. Pablo ha retirado **ID del
-dispositivo** de App Privacy; su captura muestra que en Identificadores solo
-queda **ID de usuario**. Las funciones anunciadas para 2.2.0 —400 niveles,
-CG PRO, preguntas adicionales, Examen, Repaso inteligente y estadísticas— son
-la base publicada, no novedades pendientes de 2.3.0.
+La 2.2.0 (94) está publicada. La 2.3.0 se ha probado en iPhone con iOS 26 y
+27 y en iPad; aún hay que elegir la compilación definitiva para App Review.
+Las novedades preparadas están en [release-2.3.0.md](release-2.3.0.md).
 
-La compilación **2.3.0 (102)** está en proceso de subida a TestFlight, según
-Pablo. Antes de enviarla a App Review, comprobar el estado procesado de esa
-compilación, probarla instalada y redactar notas de revisión que distingan las
-novedades de 2.3.0 de las funciones ya anunciadas en 2.2.0.
-El texto propuesto para la próxima revisión está en
-[`store/release-2.3.0.md`](release-2.3.0.md); el borrador de más abajo se conserva
-como referencia histórica de 2.2.0.
+**Revisión de privacidad para 2.3.0:** la app registra un token de Expo
+vinculado a la cuenta cuando se activan notificaciones remotas. Ese token
+identifica el dispositivo destinatario y se usa para funcionalidad, no para
+seguimiento publicitario. La 2.2.0 había eliminado «ID del dispositivo» de
+App Privacy; antes de enviar 2.3.0 hay que revisar la clasificación de este
+token en App Store Connect y actualizar las respuestas si corresponde. La
+política web y la incluida en la app ya describen el flujo remoto. No afirmar
+en las notas de 2.3.0 que la app carece de cualquier ID de dispositivo.
+
+El texto siguiente conserva el historial de 2.2.0 como referencia y no debe
+copiarse sin revisión a la ficha de 2.3.0.
 
 ## Historial del rechazo de 2.2.0 (94) — resuelto
 

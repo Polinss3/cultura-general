@@ -1,6 +1,7 @@
 {
   "ios": {
     "CFBundleDisplayName": "Cultura General",
+    "CFBundleName": "Cultura General",
     "NSUserNotificationsUsageDescription": "Recibe un recordatorio diario para responder la pregunta del día y mantener tu racha."
   },
   "android": {

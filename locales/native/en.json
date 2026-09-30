@@ -1,6 +1,7 @@
 {
   "ios": {
     "CFBundleDisplayName": "CG Trivia",
+    "CFBundleName": "CG Trivia",
     "NSUserNotificationsUsageDescription": "Get a daily reminder to answer the question of the day and keep your streak."
   },
   "android": {

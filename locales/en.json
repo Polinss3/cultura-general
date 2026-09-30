@@ -291,6 +291,10 @@
   },
   "ladder": {
     "title": "Climb Mode",
+    "prepDescription": "Climb increasingly difficult floors and decide how far to risk your pot.",
+    "prepRuleLives": "You start with {{lives}} lives to keep climbing",
+    "prepRulePot": "Each cleared floor adds coins to your pot",
+    "prepRuleCheckpoint": "At each checkpoint, bank your pot or keep climbing",
     "introA": "Climb floors of rising difficulty. You have ",
     "introLives": "{{lives}} lives",
     "introB": ". Each floor grows the pot 🪙. At each checkpoint you decide: ",
@@ -451,6 +455,9 @@
   },
   "speed": {
     "title": "Time Attack",
+    "prepDescription": "Answer as many questions as you can before time runs out.",
+    "prepRuleTime": "You have {{seconds}} seconds to answer",
+    "prepRuleScore": "Each correct answer earns one point and coins",
     "introDescPre": "Answer as many questions as you can in ",
     "seconds": "30 seconds",
     "introDescPost": ". Each correct answer is worth 1 point and coins.",
@@ -1096,7 +1103,10 @@
     "noQuestion": "No question available today.\nCome back later.",
     "badge": "🏆 QUESTION OF THE DAY",
     "introTitle": "Question of the day",
-    "introDescription": "One question, one chance. The timer starts when you tap Continue.",
+    "introDescription": "Get ready for today's question. Start whenever you like.",
+    "introRuleQuestion": "The same question for every player",
+    "introRuleTimer": "The timer starts when you tap Continue",
+    "introRuleChance": "One chance to answer and climb the leaderboard",
     "introContinue": "Continue",
     "subtitle": "Will you be the first to answer today?",
     "correct": "Nice one! That's +100 points",
@@ -1148,7 +1158,7 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "updatedAt": "Last updated: September 11, 2026",
+    "updatedAt": "Last updated: September 28, 2026",
     "intro": "Here we explain what information {{appName}} handles, what it is used for and how you can exercise your rights.",
     "sections": {
       "s1": {
@@ -1157,7 +1167,7 @@
       },
       "s2": {
         "title": "2. Information we process",
-        "body": "To create an account we handle your email address, the username you choose and an internal identifier. If you sign in with Apple or Google, the identity provider supplies the data needed to authenticate you according to the permissions you accept.\n\nWe also store answers, progress, streaks, scores, records, level, achievements, coins, shop items, friendships and reports needed to run the game features.\n\n• Technical app and device data, such as version, operating system, language and error logs.\n• Purchase and subscription status needed to activate CG PRO; we do not receive your full card or payment-method details.\n• We do not request precise location, contacts, photos, camera, microphone or calendar."
+        "body": "To create an account we handle your email address, the username you choose and an internal identifier. If you sign in with Apple or Google, the identity provider supplies the data needed to authenticate you according to the permissions you accept.\n\nWe also store answers, progress, streaks, scores, records, level, achievements, coins, shop items, friendships and reports needed to run the game features.\n\n• Technical app and device data, such as version, operating system, language and error logs.\n• Purchase and subscription status needed to activate CG PRO; we do not receive your full card or payment-method details.\n• We do not request precise location, contacts, photos, camera, microphone or calendar.\n• If you enable remote notifications, we register a push token linked to your account, together with platform, language, time zone and app version."
       },
       "s3": {
         "title": "3. How we use data",
@@ -1173,7 +1183,7 @@
       },
       "s6": {
         "title": "6. Providers",
-        "body": "We use Supabase for authentication, database and server functions; Sentry for error diagnostics; RevenueCat to verify purchases and maintain CG PRO status; and In-House Ads, a service run by the same controller, to serve our first-party advertising. Apple and Google may also process information when distributing the app, authenticating you or processing a purchase.\n\nYou can review each provider's policy at cg-trivia.pablobrasero.com/en/privacy."
+        "body": "We use Supabase for authentication, database and server functions; Sentry for error diagnostics; RevenueCat to verify purchases and maintain CG PRO status; Expo to deliver remote notifications when enabled; and In-House Ads, a service run by the same controller, to serve our first-party advertising. Apple and Google may also process information when distributing the app, authenticating you or processing a purchase.\n\nYou can review each provider's policy at cg-trivia.pablobrasero.com/en/privacy."
       },
       "s7": {
         "title": "7. Purchases and subscriptions",
@@ -1181,11 +1191,11 @@
       },
       "s8": {
         "title": "8. Advertising and age",
-        "body": "{{appName}}'s advertising is first-party: it only promotes apps and sites run by the same controller, it uses no advertising identifiers, profiles or third-party networks, and it writes no cookies or persistent storage on your device. Ads appear at natural breaks in play — the result of the daily question or the end of a Time Attack, Climb Mode, World or Years run — or when you voluntarily choose to watch one in exchange for a reward. With CG PRO no ad is ever requested or shown.\n\nBefore showing the first one we ask for your age bracket. If you indicate you are under 16, no advertising is shown. We use no attribution or campaign-measurement SDKs, and the app never requests iOS App Tracking Transparency permission.\n\nYou can review or change your answer at any time under Profile > Settings > Privacy and ads."
+        "body": "{{appName}}'s advertising is first-party: it only promotes apps and sites run by the same controller, it uses no advertising identifiers, profiles or third-party networks, and it writes no cookies or persistent storage on your device. Ads appear at natural breaks in play — the result of the daily question or the end of a Time Attack, Climb Mode, Flags or Years run — or when you voluntarily choose to watch one in exchange for a reward. With CG PRO no ad is ever requested or shown.\n\nBefore showing the first one we ask for your age bracket. Your choice is stored on the device. If you indicate you are under 16, no advertising is shown. Otherwise, a request to our own ad service may include an eligibility flag, language, platform, app version and a temporary session identifier. We also record impressions and clicks on our own ads under that temporary session. We use no attribution or campaign-measurement SDKs, and the app never requests iOS App Tracking Transparency permission.\n\nYou can review or change your answer at any time under Profile > Settings > Privacy and ads."
       },
       "s9": {
         "title": "9. Notifications",
-        "body": "If you turn them on, {{appName}} sends you a daily reminder at 9:00 so you do not lose your streak. They are local notifications: your own device schedules them and their content never travels through a server. You can turn them off whenever you want under Profile > Settings or in your system settings."
+        "body": "If you enable notifications, {{appName}} may send daily-question reminders, league updates and an alert when a friend passes you in the ranking. On a supported device, we register a push token linked to your account on our server, together with platform, language, time zone and app version. To deliver each notice, we send Expo the token, title, message and data needed to open the relevant screen; Expo relays it to Apple or Google. If remote registration fails, your device may schedule local reminders. Turn them off under Profile > Settings or in your system settings."
       },
       "s10": {
         "title": "10. Diagnostics and security",
@@ -1488,6 +1498,8 @@
       "stipendTitle": "Coins of the month",
       "stipendBody": "300 coins every month, for power-ups and cosmetics.",
       "stipendClaim": "Collect the coins",
+      "stipendCountdown_one": "Coins in {{count}} day",
+      "stipendCountdown_other": "Coins in {{count}} days",
       "stipendClaimed": "+{{coins}} 🪙 for this month",
       "stipendAlready": "You've already collected this month's coins.",
       "stipendFailed": "Couldn't collect them. Please try again later.",
@@ -1500,6 +1512,7 @@
       "renews": "Renews on {{date}}",
       "homeSubtitleFree": "See what the subscription includes",
       "homeSubtitlePro": "Your exclusive modes and perks",
+      "heroTitle": "Your extraordinary space",
       "statsDescription": "Your progress, accuracy by difficulty and your exams.",
       "noAdsTitle": "No ads",
       "noAdsBody": "With PRO the app never requests or shows an ad.",
@@ -1541,6 +1554,9 @@
     "title": "Review",
     "emptyTitle": "Nothing to review",
     "emptyBody": "You have no questions pending. Come back when you get one wrong: it'll show up here after 1, 3, 7, 21 and 60 days.",
+    "emptyIntro": "All caught up! You have no questions pending.",
+    "emptyRuleMissed": "Questions you miss will appear in your review.",
+    "emptyRuleSchedule": "They'll return after 1, 3, 7, 21 and 60 days to help you remember them.",
     "needsAccount": "Review needs an account and a connection to know what you've got wrong.",
     "doneTitle": "Review complete",
     "doneBody": "{{correct}} of {{total}} correct. The ones you missed will be back tomorrow.",
@@ -1583,5 +1599,29 @@
     "love": "Love it! Leave a review",
     "feedback": "I have suggestions",
     "later": "Not now"
+  },
+  "appIcon": {
+    "title": "App icon",
+    "rowSub": "Choose how CG Trivia looks on your home screen",
+    "subtitle": "Choose how CG Trivia looks on your home screen. The classic icon is for everyone; the rest come with CG PRO.",
+    "unsupported": "This device doesn't support changing the app icon.",
+    "classic": "Classic",
+    "error": "Couldn't change the icon. Please try again.",
+    "iosNotice": "iOS shows a confirmation message when the icon changes. That's expected.",
+    "resetTitle": "Back to the classic icon",
+    "resetBody": "Alternate icons are part of CG PRO and your PRO isn't active right now. If you come back to PRO, you can pick it again from your profile.",
+    "resetConfirm": "Got it",
+    "names": {
+      "default": "Classic",
+      "oro": "Gold",
+      "crema": "Cream",
+      "medianoche": "Midnight",
+      "contrarreloj": "Time Trial",
+      "pergamino": "Parchment",
+      "neon": "Neon",
+      "acierto": "Correct",
+      "tinta": "Ink",
+      "pixel": "Pixel"
+    }
   }
 }

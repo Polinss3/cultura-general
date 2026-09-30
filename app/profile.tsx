@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   View, Text, ScrollView, Pressable, TextInput,
-  ActivityIndicator, Alert, Switch, RefreshControl,
+  ActivityIndicator, Alert, Switch, RefreshControl, Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import Constants from 'expo-constants';
-import { useRouter, Link } from 'expo-router';
+import { useRouter, Link, useFocusEffect } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useIsPro } from '@/hooks/usePremium';
@@ -50,6 +50,7 @@ import { UserName } from '@/components/UserName';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { feedback, isHapticsEnabled, setHapticsEnabled } from '@/lib/feedback';
 import { PRO_ACCENT } from '@/lib/pro';
+import { APP_ICONS, getCurrentAppIcon } from '@/lib/appIcon';
 import { Category } from '@/types';
 import { alpha, readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
@@ -100,6 +101,10 @@ export default function ProfileScreen() {
 
   const [langPref, setLangPref] = useState<LangPreference>('auto');
   const themePref = useThemePreference();
+  // Se relee al volver de la pantalla de iconos, que es donde cambia.
+  const [appIconId, setAppIconId] = useState(getCurrentAppIcon);
+  useFocusEffect(useCallback(() => { setAppIconId(getCurrentAppIcon()); }, []));
+  const currentIconPreview = (APP_ICONS.find(i => i.id === appIconId) ?? APP_ICONS[0]).preview;
 
   const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled());
 
@@ -750,6 +755,30 @@ export default function ProfileScreen() {
               })}
             </View>
           </View>
+
+          {/* Icono de la app (cosmético PRO) */}
+          <Pressable
+            onPress={() => { feedback.tap(); router.push('/app-icon' as any); }}
+            accessibilityRole="button"
+            style={{
+              backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border,
+              marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 12,
+            }}
+          >
+            <Image source={currentIconPreview} style={{ width: 40, height: 40, borderRadius: 9 }} />
+            <View style={{ flex: 1 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
+                  {t('appIcon.title')}
+                </Text>
+                <ProBadge />
+              </View>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
+                {t('appIcon.rowSub')}
+              </Text>
+            </View>
+            <Text style={{ color: C.textMuted, fontSize: 18 }}>›</Text>
+          </Pressable>
 
           {/* Idioma */}
           <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border, marginBottom: 10 }}>

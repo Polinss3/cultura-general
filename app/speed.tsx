@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
+import { PreparationScreen } from '@/components/PreparationScreen';
 import { OptionBtn } from '@/components/OptionBtn';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { AdBannerSlot } from '@/components/AdBannerSlot';
@@ -26,7 +26,7 @@ import { interestWeight } from '@/lib/interests';
 import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { AnswerState, Question } from '@/types';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
-import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
+import { Font, Radius, Space, Type, cardShadow, tint } from '@/constants/theme';
 
 // `ending`: el tiempo se acabó y estamos esperando al intersticial. Se pinta
 // como `playing` congelado y no admite respuestas.
@@ -217,43 +217,20 @@ export default function SpeedScreen() {
   if (phase === 'intro') {
     const record = currentRecord;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingTop: 12 }}>
-          <Pressable onPress={() => router.back()} style={{ padding: 4 }}>
-            <Text style={{ color: C.textMuted, fontSize: 22 }}>←</Text>
-          </Pressable>
-        </View>
-        <View style={{ flex: 1, padding: 20 }}>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ fontSize: 64, marginBottom: 16 }}>⚡</Text>
-            <Text style={{ color: C.text, fontSize: 26, fontFamily: Font.black, marginBottom: 8 }}>
-              {t('speed.title')}
-            </Text>
-            <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, lineHeight: 24, textAlign: 'center', maxWidth: 260, marginBottom: 12 }}>
-              {t('speed.introDescPre')}
-              <Text style={{ color: C.speed, fontFamily: Font.bold }}>{t('speed.seconds')}</Text>
-              {t('speed.introDescPost')}
-            </Text>
-            <View style={{
-              backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 20,
-              marginBottom: 30, width: '100%', alignItems: 'center',
-              borderWidth: 1, borderColor: C.border, ...cardShadow(isDark),
-            }}>
-              <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, marginBottom: 4 }}>
-                {t('speed.recordLabel')}
-              </Text>
-              <Text style={{ color: C.speedText, fontSize: 32, fontFamily: Font.black }}>
-                {t('speed.questions', { count: record })}
-              </Text>
-            </View>
-            <Pressable onPress={() => setPhase('playing')} style={{ width: '100%' }}>
-              <View style={{ backgroundColor: C.speed, borderRadius: 18, padding: 16, alignItems: 'center' }}>
-                <Text style={{ color: C.onBrand, fontSize: 17, fontFamily: Font.extra }}>{t('speed.start')}</Text>
-              </View>
-            </Pressable>
-          </View>
-        </View>
-      </SafeAreaView>
+      <PreparationScreen
+        variant="speed"
+        icon="⚡"
+        title={t('speed.title')}
+        description={t('speed.prepDescription')}
+        rules={[
+          { icon: '⏱️', text: t('speed.prepRuleTime', { seconds: DURATION }) },
+          { icon: '🎯', text: t('speed.prepRuleScore') },
+          { icon: '🏆', text: `${t('speed.recordLabel')}: ${t('speed.questions', { count: record })}`, highlight: true },
+        ]}
+        buttonLabel={t('speed.start')}
+        onStart={() => setPhase('playing')}
+        onBack={() => router.back()}
+      />
     );
   }
 

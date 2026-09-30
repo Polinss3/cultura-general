@@ -51,8 +51,8 @@ test("app-ads.txt is served and only ever lists authorized entries", async () =>
 
 test("modes and categories on the landing match what the app ships", async () => {
   for (const [page, modes, topics] of [
-    ["index.html", ["Pregunta del día", "Contrarreloj", "Modo Ascenso", "Mundo", "Aprender", "Con amigos"], "13 categorías"],
-    ["en/index.html", ["Daily question", "Time Attack", "Climb Mode", "World", "Learn", "With friends"], "13 categories"],
+    ["index.html", ["Pregunta del día", "Contrarreloj", "Modo Ascenso", "Banderas", "Aprender", "Años", "Aventura", "Con amigos"], "13 categorías"],
+    ["en/index.html", ["Daily question", "Time Attack", "Climb Mode", "Flags", "Learn", "Years", "Adventure", "With friends"], "13 categories"],
   ]) {
     const html = await text(page);
     for (const mode of modes) assert.ok(html.includes(`<h3>${mode}</h3>`), `falta el modo ${mode} en ${page}`);
@@ -77,6 +77,17 @@ test("the published privacy policy matches the one shipped inside the app", asyn
       inApp,
       `las secciones de ${locale} no coinciden entre la web y la app`,
     );
+  }
+});
+
+test("web and in-app privacy texts disclose remote notifications", async () => {
+  for (const [locale, page] of [["es", "privacy/index.html"], ["en", "en/privacy/index.html"]]) {
+    const strings = JSON.parse(await readFile(new URL(`../../locales/${locale}.json`, import.meta.url), "utf8"));
+    const html = await text(page);
+    assert.match(html, /Expo/);
+    assert.match(html, /token/i);
+    assert.match(strings.privacy.sections.s9.body, /Expo/);
+    assert.match(strings.privacy.sections.s9.body, /token/i);
   }
 });
 

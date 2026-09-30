@@ -285,7 +285,7 @@ export default function LearnScreen() {
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-        <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+        <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
           <Text style={{ color: C.text, ...Type.screenTitle, marginBottom: 4 }}>
             {t('learn.pickerTitle')}
           </Text>
@@ -427,7 +427,9 @@ export default function LearnScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }}>
+      {/* `automatic`: la barra de pestañas de iOS 26 flota encima del
+          contenido; sin este ajuste el botón Siguiente queda debajo de ella. */}
+      <ScrollView style={{ flex: 1 }} contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={{ padding: Space.screen }}>
           {/* Nav */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>

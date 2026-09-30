@@ -11,6 +11,7 @@ import { LeagueBadge } from '@/components/LeagueBadge';
 import { UserName } from '@/components/UserName';
 import { Pop } from '@/components/Pop';
 import { DailyRoute } from '@/components/DailyRoute';
+import { PreparationScreen } from '@/components/PreparationScreen';
 import { usePowerups } from '@/hooks/usePowerups';
 import { resolveCosmetics } from '@/lib/cosmetics';
 import { Confetti } from '@/components/Confetti';
@@ -50,17 +51,6 @@ type RankingTab = 'daily' | 'league' | 'global' | 'friends';
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const MEDALS = ['🥇', '🥈', '🥉'];
-const INTRO_DECORATIONS = [
-  { symbol: '✦', top: '7%', left: '9%', size: 37, rotation: '-15deg' },
-  { symbol: '📚', top: '13%', right: '8%', size: 39, rotation: '12deg' },
-  { symbol: '✧', top: '27%', left: '4%', size: 29, rotation: '18deg' },
-  { symbol: '⭐', top: '32%', right: '5%', size: 30, rotation: '-16deg' },
-  { symbol: '💡', bottom: '24%', left: '7%', size: 34, rotation: '-13deg' },
-  { symbol: '✦', bottom: '20%', right: '10%', size: 38, rotation: '15deg' },
-  { symbol: '🏆', bottom: '7%', right: '7%', size: 36, rotation: '12deg' },
-  { symbol: '✧', bottom: '9%', left: '12%', size: 33, rotation: '-11deg' },
-] as const;
-
 const getRankingTabs = (t: TFunction): { key: RankingTab; label: string }[] => [
   { key: 'daily',   label: t('daily.tabToday') },
   { key: 'league',  label: t('daily.tabLeague') },
@@ -653,58 +643,20 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
   // ─ Preparación: la pregunta permanece oculta hasta pulsar Continuar.
   if (phase === 'intro') {
-    const ink = inkButton(isDark);
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-        <View style={{ flex: 1, justifyContent: 'center', padding: Space.screen, overflow: 'hidden' }}>
-          {INTRO_DECORATIONS.map((decoration, index) => (
-            <Text
-              key={index}
-              accessible={false}
-              importantForAccessibility="no-hide-descendants"
-              pointerEvents="none"
-              style={{
-                position: 'absolute', top: 'top' in decoration ? decoration.top : undefined,
-                bottom: 'bottom' in decoration ? decoration.bottom : undefined,
-                left: 'left' in decoration ? decoration.left : undefined,
-                right: 'right' in decoration ? decoration.right : undefined,
-                fontSize: decoration.size, color: C.streak,
-                opacity: isDark ? 0.25 : 0.35,
-                transform: [{ rotate: decoration.rotation }],
-              }}
-            >
-              {decoration.symbol}
-            </Text>
-          ))}
-          <LinearGradient
-            colors={highlightGradient(isDark)}
-            start={{ x: 0, y: 0 }} end={{ x: 0.8, y: 1 }}
-            style={{ borderColor: C.borderWarm, borderWidth: 1.5, borderRadius: Radius.cardLg, padding: 28, alignItems: 'center', ...cardShadow(isDark) }}
-          >
-            <View style={{ width: 94, height: 94, borderRadius: 47, backgroundColor: C.brandTint, borderWidth: 1.5, borderColor: C.borderWarm, alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
-              <Text style={{ fontSize: 48 }}>🧠</Text>
-            </View>
-            <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 28, textAlign: 'center', marginBottom: 12 }}>
-              {t('daily.introTitle')}
-            </Text>
-            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 16, lineHeight: 24, textAlign: 'center' }}>
-              {t('daily.introDescription')}
-            </Text>
-          </LinearGradient>
-          <Pressable
-            onPress={startQuestion}
-            accessibilityRole="button"
-            style={{
-              backgroundColor: ink.backgroundColor, borderRadius: Radius.pill,
-              alignItems: 'center', paddingVertical: 17, marginTop: 24,
-            }}
-          >
-            <Text style={{ color: ink.color, fontFamily: Font.black, fontSize: 17 }}>
-              {t('daily.introContinue')}
-            </Text>
-          </Pressable>
-        </View>
-      </SafeAreaView>
+      <PreparationScreen
+        variant="daily"
+        icon="🧠"
+        title={t('daily.introTitle')}
+        description={t('daily.introDescription')}
+        rules={[
+          { icon: '🏆', text: t('daily.introRuleQuestion') },
+          { icon: '⏱️', text: t('daily.introRuleTimer') },
+          { icon: '🎯', text: t('daily.introRuleChance') },
+        ]}
+        buttonLabel={t('daily.introContinue')}
+        onStart={startQuestion}
+      />
     );
   }
 

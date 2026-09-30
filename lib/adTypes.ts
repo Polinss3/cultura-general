@@ -48,6 +48,8 @@ export type AdsDiagnostics = {
   mode: AdsMode;
   initialized: boolean;
   requestsEnabled: boolean;
+  /** PRO con el recompensado voluntario abierto (`EXPO_PUBLIC_PRO_REWARDED_ADS`). */
+  proRewardedEnabled: boolean;
   testMode: boolean;
   ageBracket: 'adult' | 'minor' | 'unknown';
   isPremium: boolean;

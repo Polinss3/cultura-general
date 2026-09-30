@@ -38,11 +38,11 @@ const RAIL_WIDTH = 46;
 const NODE_SIZE = 38;
 
 /**
- * El mapa del viaje: los diez capítulos como un solo recorrido.
+ * El mapa del viaje: los veinte capítulos como un solo recorrido.
  *
  * Sustituye a la rejilla de dos columnas que había antes. El mapa de juego solo
  * enseña un capítulo cada vez, así que no existía ninguna vista donde se viera
- * la escala del asunto —doscientos niveles— ni lo lejos que has llegado. Un
+ * la escala del asunto —cuatrocientos niveles— ni lo lejos que has llegado. Un
  * riel vertical que une los capítulos lo cuenta de un vistazo, y de paso es la
  * superficie natural donde enseñar qué hay detrás del muro de pago.
  */
@@ -148,7 +148,7 @@ export function JourneyModal({
               {proLocked ? <ProBadge /> : <RelicBadge relic={relic} size={34} />}
             </View>
 
-            <Text numberOfLines={2} style={{ color: C.textMuted, ...Type.small, lineHeight: 18 }}>
+            <Text style={{ color: C.textMuted, ...Type.small, lineHeight: 18 }}>
               {t(`adventure.lore.${item.theme}.intro`)}
             </Text>
 

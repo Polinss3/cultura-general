@@ -16,6 +16,7 @@ export interface Profile {
   coins: number;
   ladder_best: number;
   last_chest_at: string | null;
+  pro_stipend_at?: string | null;
   league_division: number;
   // Racha rota pendiente de recuperar (ver lib/streakRecovery.ts).
   lost_streak?: number | null;

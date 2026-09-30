@@ -1,7 +1,6 @@
 # App Store — Español (España)
 
-> Borrador de ficha para la **2.2.0**, con modelo freemium y CG PRO.
-> No se comunica ningún beneficio relacionado con publicidad.
+> Borrador de ficha para la **2.3.0**, con modelo freemium y CG PRO.
 
 ## Nombre (máx 30)
 Cultura General: Trivia
@@ -10,7 +9,7 @@ Cultura General: Trivia
 Quiz diario, banderas y años
 
 ## Texto promocional (máx 170)
-Nueva Aventura de 400 niveles y 20 capítulos. Juega gratis los dos primeros y desbloquea el viaje completo con CG PRO.
+Pregunta diaria a tu ritmo, ligas semanales y una experiencia renovada en iPad. Descubre nuevos estilos para personalizar tu perfil.
 
 ## Palabras clave (máx 100)
 trivia,cultura general,preguntas,quiz,banderas,paises,años,fechas,diaria,historia,ciencia,aprender
@@ -45,9 +44,10 @@ Tema claro, oscuro o el del sistema. Disponible en español e inglés, con el id
 
 Puedes descargar y jugar gratis. CG PRO es una compra opcional.
 
-## Novedades (2.2.0)
-• AVENTURA MÁS GRANDE: 400 niveles repartidos en 20 capítulos, con nuevos temas, guardianes, historias y reliquias.
-• CG PRO: sin anuncios, el viaje completo, un catálogo de 4.000 preguntas en Aprender y herramientas avanzadas de estudio.
-• MÁS CONTENIDO GRATIS: los dos primeros capítulos de Aventura y 2.000 preguntas siguen disponibles para todos.
+## Novedades (2.3.0)
+• La pregunta del día ahora tiene una pantalla de preparación: empieza cuando estés listo.
+• Ligas semanales en grupos de unos 30 jugadores y opción de recuperar una racha perdida durante un plazo limitado.
+• Tienda reorganizada en potenciadores y cosméticos, con nuevos estilos PRO.
+• Mejoras visuales en iPhone y iPad y correcciones de estabilidad.
 
 ¡Gracias por jugar! Cuéntanos qué te parece en pablobrasero@gmail.com
