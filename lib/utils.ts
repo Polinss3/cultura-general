@@ -107,6 +107,7 @@ export function pickRandomFresh<T>(
   recentIds: string[],
   getId: (t: T) => string | undefined,
   n: number,
+  weightOf?: (t: T) => number,
 ): T[] {
   if (pool.length === 0 || n <= 0) return [];
   const recent = new Set(recentIds);
@@ -117,7 +118,24 @@ export function pickRandomFresh<T>(
     if (id && recent.has(id)) stale.push(item);
     else fresh.push(item);
   }
-  const result = shuffle(fresh);
-  if (result.length < n) result.push(...shuffle(stale));
+  const order = weightOf ? (items: T[]) => weightedShuffle(items, weightOf) : shuffle;
+  const result = order(fresh);
+  if (result.length < n) result.push(...order(stale));
   return result.slice(0, n);
+}
+
+/**
+ * Barajado ponderado (Efraimidis-Spirakis): cada elemento recibe la clave
+ * u^(1/peso) con u uniforme y se ordena de mayor a menor. Un peso 2 dobla las
+ * opciones de salir antes; peso 1 es un barajado normal. Todos los elementos
+ * siguen presentes: solo cambia el orden, no el conjunto.
+ */
+export function weightedShuffle<T>(items: T[], weightOf: (t: T) => number): T[] {
+  return items
+    .map(item => {
+      const w = Math.max(weightOf(item), Number.EPSILON);
+      return { item, key: Math.pow(Math.random(), 1 / w) };
+    })
+    .sort((a, b) => b.key - a.key)
+    .map(({ item }) => item);
 }

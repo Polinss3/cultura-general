@@ -6,6 +6,7 @@ import { awardProgress, bumpMissions, AwardResult } from './gamification';
 import { REWARDS } from './economy';
 import i18n, { getCurrentLang, AppLang } from './i18n';
 import { isProTier } from './pro';
+import { unregisterPush } from './push';
 
 // ─── Error handling ───────────────────────────────────────────
 
@@ -689,6 +690,8 @@ export interface FriendProfile {
   totalCorrect: number;
   friendshipId?: string;
   status?: 'pending_sent' | 'pending_received' | 'accepted';
+  cosmetics?: Record<string, string> | null;
+  isPro?: boolean;
 }
 
 export async function searchUsers(query: string, currentUserId: string): Promise<FriendProfile[]> {
@@ -716,7 +719,7 @@ export async function searchUsers(query: string, currentUserId: string): Promise
 export async function fetchFriends(userId: string): Promise<FriendProfile[]> {
   const { data } = await supabase
     .from('friendships')
-    .select('id, user_id, friend_id, status, profiles!friendships_friend_id_fkey(id, username, streak, total_correct), sender:profiles!friendships_user_id_fkey(id, username, streak, total_correct)')
+    .select('id, user_id, friend_id, status, profiles!friendships_friend_id_fkey(id, username, streak, total_correct, cosmetics, premium_tier), sender:profiles!friendships_user_id_fkey(id, username, streak, total_correct, cosmetics, premium_tier)')
     .or(`user_id.eq.${userId},friend_id.eq.${userId}`)
     .eq('status', 'accepted');
 
@@ -730,6 +733,8 @@ export async function fetchFriends(userId: string): Promise<FriendProfile[]> {
       totalCorrect: other?.total_correct ?? 0,
       friendshipId: r.id,
       status: 'accepted' as const,
+      cosmetics: other?.cosmetics ?? null,
+      isPro: isProTier(other?.premium_tier),
     };
   });
 }
@@ -738,7 +743,7 @@ export async function fetchPendingRequests(userId: string): Promise<FriendProfil
   // Requests sent TO me (I am friend_id)
   const { data } = await supabase
     .from('friendships')
-    .select('id, user_id, sender:profiles!friendships_user_id_fkey(id, username, streak, total_correct)')
+    .select('id, user_id, sender:profiles!friendships_user_id_fkey(id, username, streak, total_correct, cosmetics, premium_tier)')
     .eq('friend_id', userId)
     .eq('status', 'pending');
 
@@ -749,6 +754,8 @@ export async function fetchPendingRequests(userId: string): Promise<FriendProfil
     totalCorrect: r.sender?.total_correct ?? 0,
     friendshipId: r.id,
     status: 'pending_received' as const,
+    cosmetics: r.sender?.cosmetics ?? null,
+    isPro: isProTier(r.sender?.premium_tier),
   }));
 }
 
@@ -911,6 +918,7 @@ export async function incrementProfileStats(
 export async function pauseAccount(): Promise<{ error: string | null }> {
   const { error } = await supabase.rpc('pause_account');
   if (error) return { error: error.message };
+  await unregisterPush();
   await supabase.auth.signOut();
   return { error: null };
 }
@@ -927,6 +935,7 @@ export async function deleteAccount(): Promise<{ error: string | null }> {
     headers: { Authorization: `Bearer ${session.access_token}` },
   });
   if (error) return { error: error.message ?? i18n.t('errors.deleteAccountFailed') };
+  await unregisterPush();
   await supabase.auth.signOut();
   return { error: null };
 }

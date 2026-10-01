@@ -12,6 +12,7 @@ export type CosmeticSlot = 'frame' | 'name_color' | 'name_icon' | 'name_style';
 interface CosmeticMeta {
   slot: CosmeticSlot;
   color?: string;      // frame / name_color
+  glow?: boolean;      // frame: halo del color del marco
   emoji?: string;      // name_icon
   textStyle?: TextStyle; // name_style
 }
@@ -22,16 +23,19 @@ export const COSMETICS: Record<string, CosmeticMeta> = {
   frame_silver: { slot: 'frame', color: '#c0c8d0' },
   frame_gold:   { slot: 'frame', color: '#e8c030' },
   frame_pro:    { slot: 'frame', color: PRO_ACCENT },
+  frame_pro_glow: { slot: 'frame', color: PRO_ACCENT, glow: true },
   // Color de nombre
   name_neon:    { slot: 'name_color', color: '#b14dff' },
   name_gold:    { slot: 'name_color', color: '#e8c030' },
   name_pro:     { slot: 'name_color', color: PRO_ACCENT },
+  name_pro_ember: { slot: 'name_color', color: '#F0A93B' },
   // Icono/emoji antes del nombre
   icon_fire:    { slot: 'name_icon', emoji: '🔥' },
   icon_star:    { slot: 'name_icon', emoji: '⭐' },
   icon_crown:   { slot: 'name_icon', emoji: '👑' },
   icon_rocket:  { slot: 'name_icon', emoji: '🚀' },
   icon_gem:     { slot: 'name_icon', emoji: '💎' },
+  icon_pro_owl: { slot: 'name_icon', emoji: '🦉' },
   // Estilo del nombre
   style_italic: { slot: 'name_style', textStyle: { fontStyle: 'italic' } },
   style_upper:  { slot: 'name_style', textStyle: { textTransform: 'uppercase', letterSpacing: 0.5 } },
@@ -41,6 +45,7 @@ export const COSMETICS: Record<string, CosmeticMeta> = {
 
 export interface ResolvedCosmetics {
   frameColor?: string;
+  frameGlow?: boolean;
   nameColor?: string;
   nameIcon?: string;
   nameStyle?: TextStyle;
@@ -52,6 +57,7 @@ export function resolveCosmetics(map?: Record<string, string> | null): ResolvedC
   if (!map) return r;
   const frame = COSMETICS[map['frame']];
   if (frame?.color) r.frameColor = frame.color;
+  if (frame?.glow) r.frameGlow = true;
   const nc = COSMETICS[map['name_color']];
   if (nc?.color) r.nameColor = nc.color;
   const ic = COSMETICS[map['name_icon']];

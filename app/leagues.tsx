@@ -9,11 +9,12 @@ import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setGuestMode } from '@/lib/guest';
 import {
-  fetchLeague, divisionMeta, daysUntilReset, leaguePlacementReward, TOP_DIVISION, LeagueState,
+  fetchLeague, divisionMeta, daysUntilReset, leaguePlacementReward, leagueGroupName, TOP_DIVISION, LeagueState,
 } from '@/lib/leagues';
 import { UserName } from '@/components/UserName';
 import { resolveCosmetics } from '@/lib/cosmetics';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { sheetWidth } from '@/constants/layout';
 import { Font, Radius, Space, Type, cardShadow, glow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 /** A qué escalón de premio corresponde un puesto. */
@@ -140,6 +141,7 @@ export default function LeaguesScreen() {
   const div = divisionMeta(state.division);
   const nextDiv = divisionMeta(state.division + 1);
   const days = daysUntilReset(state.weekStart);
+  const groupName = leagueGroupName(state);
 
   const canPromote = state.division < TOP_DIVISION;
   const canRelegate = state.division > 0;
@@ -191,11 +193,24 @@ export default function LeaguesScreen() {
             >
               <Text style={{ fontSize: 36 }}>{div.emoji}</Text>
               <View style={{ flex: 1, gap: 1 }}>
-                <Text style={{ color: div.color, fontFamily: Font.black, fontSize: 20 }}>
-                  {t(`leagues.divisions.${div.id}`)}
-                </Text>
+                {groupName ? (
+                  <>
+                    <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 20 }}>
+                      {t('leagues.groupLabel', { name: groupName })}
+                    </Text>
+                    <Text style={{ color: div.color, fontFamily: Font.bold, fontSize: 13 }}>
+                      {t(`leagues.divisions.${div.id}`)}
+                    </Text>
+                  </>
+                ) : (
+                  <Text style={{ color: div.color, fontFamily: Font.black, fontSize: 20 }}>
+                    {t(`leagues.divisions.${div.id}`)}
+                  </Text>
+                )}
                 <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 12 }}>
-                  {t('leagues.endsIn', { count: days })} · {t('leagues.members', { count: state.memberCount })}
+                  {t('leagues.endsIn', { count: days })} · {groupName
+                    ? t('leagues.membersOf', { count: state.memberCount, size: state.groupSize })
+                    : t('leagues.members', { count: state.memberCount })}
                 </Text>
               </View>
             </LinearGradient>
@@ -332,7 +347,7 @@ export default function LeaguesScreen() {
       {/* Sheet: cómo funcionan las ligas */}
       <Modal visible={showInfo} transparent animationType="slide" onRequestClose={() => setShowInfo(false)}>
         <Pressable onPress={() => setShowInfo(false)} style={{ flex: 1, backgroundColor: 'rgba(43,38,33,0.55)' /* velo en tinta cálida */, justifyContent: 'flex-end' }}>
-          <Pressable onPress={() => {}} style={{ backgroundColor: C.surface, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 36, borderWidth: 1, borderColor: C.border }}>
+          <Pressable onPress={() => {}} style={{ ...sheetWidth, backgroundColor: C.surface, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 36, borderWidth: 1, borderColor: C.border }}>
             <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: C.textFaint, alignSelf: 'center', marginBottom: 18 }} />
             <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 20, marginBottom: 16 }}>
               {t('leagues.how.title')}
@@ -353,6 +368,7 @@ export default function LeaguesScreen() {
 
             {[
               { icon: '🎮', text: t('leagues.how.compete') },
+              { icon: '👥', text: t('leagues.how.groups', { size: state.groupSize }) },
               { icon: '⬆️', text: t('leagues.how.promote', { n: state.promoteZone }) },
               { icon: '⬇️', text: t('leagues.how.relegate', { n: state.relegateZone }) },
               { icon: '🪙', text: t('leagues.how.rewards') },

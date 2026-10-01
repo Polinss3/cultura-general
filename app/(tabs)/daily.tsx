@@ -11,6 +11,7 @@ import { LeagueBadge } from '@/components/LeagueBadge';
 import { UserName } from '@/components/UserName';
 import { Pop } from '@/components/Pop';
 import { DailyRoute } from '@/components/DailyRoute';
+import { PreparationScreen } from '@/components/PreparationScreen';
 import { usePowerups } from '@/hooks/usePowerups';
 import { resolveCosmetics } from '@/lib/cosmetics';
 import { Confetti } from '@/components/Confetti';
@@ -25,6 +26,8 @@ import { useToast } from '@/context/ToastContext';
 import { showResultInterstitial } from '@/lib/ads';
 import { markDailyQuestionCompleted } from '@/lib/notifications';
 import { todayStr } from '@/lib/dailyRoute';
+import { StreakRecoveryCard } from '@/components/StreakRecoveryCard';
+import { AvatarFrame } from '@/components/AvatarFrame';
 import { planReviewAfterDailyCompletion, REVIEW_PROMPT_DELAY_MS } from '@/lib/appReview';
 import { noteReviewBlocker } from '@/lib/reviewGate';
 import {
@@ -43,12 +46,11 @@ import {
   Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton,
 } from '@/constants/theme';
 
-type Phase = 'loading' | 'question' | 'ranking';
+type Phase = 'loading' | 'intro' | 'question' | 'ranking';
 type RankingTab = 'daily' | 'league' | 'global' | 'friends';
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 const MEDALS = ['🥇', '🥈', '🥉'];
-
 const getRankingTabs = (t: TFunction): { key: RankingTab; label: string }[] => [
   { key: 'daily',   label: t('daily.tabToday') },
   { key: 'league',  label: t('daily.tabLeague') },
@@ -101,7 +103,7 @@ function RankRowView({
       }}>
         {position < 3 ? MEDALS[position] : `${position + 1}`}
       </Text>
-      <View style={cos.frameColor ? { borderWidth: 2, borderColor: cos.frameColor, borderRadius: 15, padding: 1.5 } : undefined}>
+      <AvatarFrame cosmetics={cos} radius={13}>
         {isMe ? (
           <LinearGradient
             colors={[C.streak, C.brand]}
@@ -122,7 +124,7 @@ function RankRowView({
             </Text>
           </View>
         )}
-      </View>
+      </AvatarFrame>
       <View style={{ flex: 1 }}>
         <UserName
           name={name}
@@ -132,6 +134,7 @@ function RankRowView({
           color={isMe ? C.brandDeep : C.text}
           fontFamily={isMe ? Font.black : Font.bold}
           fontSize={15}
+          style={cosmetics?.name_style === 'style_pro' ? { textShadowColor: 'transparent', textShadowRadius: 0 } : undefined}
         />
         <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>{sub}</Text>
       </View>
@@ -204,8 +207,12 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const { profile, refresh: refreshProfile } = useProfile();
   const { C, isDark } = useTheme();
   const [phase, setPhase] = useState<Phase>('loading');
+  const phaseRef = useRef<Phase>('loading');
+  phaseRef.current = phase;
   const [question, setQuestion] = useState<ShuffledQuestion | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
+  const selectedRef = useRef<number | null>(null);
+  selectedRef.current = selected;
   const [isCorrect, setIsCorrect] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const reported = useRef(false);
@@ -253,6 +260,16 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   }, [user?.id]);
 
   useFocusEffect(reinitIfNewDay);
+
+  // Una nueva entrada desde la pestaña o una notificación vuelve a la pantalla
+  // de preparación si todavía no se ha respondido. El cronómetro comienza solo
+  // cuando el usuario pulsa «Continuar».
+  useFocusEffect(useCallback(() => {
+    if (phaseRef.current === 'question' && selectedRef.current === null) {
+      questionStartAt.current = 0;
+      setPhase('intro');
+    }
+  }, []));
 
   useEffect(() => {
     const sub = AppState.addEventListener('change', state => {
@@ -326,9 +343,14 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
       loadedTabs.current.add('daily');
       setPhase('ranking');
     } else {
-      questionStartAt.current = Date.now();
-      setPhase('question');
+      questionStartAt.current = 0;
+      setPhase('intro');
     }
+  };
+
+  const startQuestion = () => {
+    questionStartAt.current = Date.now();
+    setPhase('question');
   };
 
   const usePowerUp = (id: string) => {
@@ -374,6 +396,8 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
           return;
         }
         celebrate(award);
+        // La racha (y una posible racha rota) acaban de cambiar en el servidor.
+        refreshProfile();
       }
       const r = await fetchDailyRanking();
       setDailyRanking(r);
@@ -508,7 +532,12 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
 
           {/* Ruta de hoy: el resto del ritual diario, bajo el resultado. */}
           {user && (
-            <DailyRoute userId={user.id} profile={profile} refresh={refreshProfile} />
+            <>
+              {/* Si la respuesta de hoy acaba de romper la racha, la oferta de
+                  recuperarla va aquí, justo donde se entera. */}
+              <StreakRecoveryCard userId={user.id} profile={profile} refresh={refreshProfile} />
+              <DailyRoute userId={user.id} profile={profile} refresh={refreshProfile} />
+            </>
           )}
 
           {/* Tab switcher */}
@@ -609,6 +638,25 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
           </Text>
         </View>
       </SafeAreaView>
+    );
+  }
+
+  // ─ Preparación: la pregunta permanece oculta hasta pulsar Continuar.
+  if (phase === 'intro') {
+    return (
+      <PreparationScreen
+        variant="daily"
+        icon="🧠"
+        title={t('daily.introTitle')}
+        description={t('daily.introDescription')}
+        rules={[
+          { icon: '🏆', text: t('daily.introRuleQuestion') },
+          { icon: '⏱️', text: t('daily.introRuleTimer') },
+          { icon: '🎯', text: t('daily.introRuleChance') },
+        ]}
+        buttonLabel={t('daily.introContinue')}
+        onStart={startQuestion}
+      />
     );
   }
 

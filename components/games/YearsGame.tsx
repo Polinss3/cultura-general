@@ -16,6 +16,8 @@ import { awardProgress } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { markDailyPlayed } from '@/lib/dailyRoute';
 import { showResultInterstitial } from '@/lib/ads';
+import { planReviewAfterMilestone } from '@/lib/appReview';
+import { useReviewPrompt } from '@/hooks/useReviewPrompt';
 import {
   ERAS, buildRound, eventText, formatYear, poolFor, getYearRecords, saveYearRecord,
   type Scope, type YearDifficulty, type YearQuestion, type YearRecords,
@@ -59,6 +61,7 @@ export function YearsGame({ header, onRoundFinished }: Props) {
   const [newRecord, setNewRecord] = useState(false);
   const [confetti, setConfetti] = useState(false);
   const finishedRef = useRef(false);
+  const review = useReviewPrompt();
 
   // Igual que Banderas: el catálogo va empaquetado, así que se juega sin
   // conexión y como invitado. Solo las recompensas necesitan sesión.
@@ -89,10 +92,15 @@ export function YearsGame({ header, onRoundFinished }: Props) {
     // El intersticial va ANTES del resultado: con el marcador en pantalla el
     // usuario podía arrancar otra ronda y recibir el anuncio en medio. La
     // última pregunta se queda respondida y quieta mientras se espera.
-    await showResultInterstitial('years_complete');
+    // Valoración en tienda: una ronda casi perfecta o un récord es buen
+    // momento. Se decide antes del intersticial para no encadenar los dos.
+    const isRecord = await saveYearRecord(scope, finalCorrect);
+    const askReview = await planReviewAfterMilestone('challenge', {
+      qualifies: isRecord || finalCorrect >= Math.ceil(round.length * 0.8),
+    });
+    await showResultInterstitial('years_complete', !askReview);
     setPhase('done');
     markDailyPlayed(); // cuenta como "practica hoy" en la ruta diaria
-    const isRecord = await saveYearRecord(scope, finalCorrect);
     setNewRecord(isRecord);
     loadRecords();
     onRoundFinished?.();
@@ -105,7 +113,10 @@ export function YearsGame({ header, onRoundFinished }: Props) {
         'years',
       );
       celebrate(award);
+      // La subida de nivel abre su propio modal; el diálogo no se apilaría.
+      if (award?.leveledUp) return;
     }
+    review.schedule(askReview);
   };
 
   /** `idx` es la posición de la opción pulsada; `isCorrect`, si era la buena. */

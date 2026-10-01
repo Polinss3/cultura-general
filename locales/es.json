@@ -202,7 +202,9 @@
     "appleLoginFailed": "No se pudo completar el login con Apple.",
     "insufficientCoins": "No tienes monedas suficientes.",
     "alreadyOwned": "Ya tienes este objeto.",
-    "purchaseFailed": "No se pudo completar la compra."
+    "purchaseFailed": "No se pudo completar la compra.",
+    "streakRecoveryExpired": "Esa racha ya no se puede recuperar.",
+    "streakRecoveryFailed": "No se pudo recuperar la racha."
   },
   "validation": {
     "usernameRequired": "Necesitas un nombre de usuario.",
@@ -281,12 +283,18 @@
       "languageEs": "Español",
       "languageEn": "English",
       "adsPrivacy": "Privacidad y anuncios",
-      "adsPrivacySub": "Revisa tu tramo de edad"
+      "adsPrivacySub": "Revisa tu tramo de edad",
+      "interestsTitle": "Tus temas favoritos",
+      "interestsSub": "Salen más a menudo en Aleatorio y Contrarreloj. El resto sigue apareciendo."
     },
     "openStats": "Ver todas mis estadísticas"
   },
   "ladder": {
     "title": "Modo Ascenso",
+    "prepDescription": "Sube pisos cada vez más difíciles y decide hasta dónde quieres arriesgar tu bote.",
+    "prepRuleLives": "Empiezas con {{lives}} vidas para seguir escalando",
+    "prepRulePot": "Cada piso superado añade monedas al bote",
+    "prepRuleCheckpoint": "En cada checkpoint puedes asegurar el bote o seguir subiendo",
     "introA": "Sube pisos de dificultad creciente. Tienes ",
     "introLives": "{{lives}} vidas",
     "introB": ". Cada piso engorda el bote 🪙. En cada checkpoint decides: ",
@@ -373,11 +381,12 @@
     "how": {
       "title": "Cómo funcionan las Ligas",
       "compete": "Cada semana compites en tu división ganando XP al jugar: pregunta diaria, Contrarreloj, Aprender, Ascenso…",
-      "promote": "Los {{n}} primeros de la división ascienden a la superior.",
-      "relegate": "Los {{n}} últimos descienden a la inferior.",
+      "promote": "Los {{n}} primeros del grupo ascienden a la división superior.",
+      "relegate": "Los {{n}} últimos del grupo descienden a la inferior.",
       "rewards": "Al cerrar la semana ganas monedas según tu puesto final. En divisiones superiores los premios son mayores.",
       "badge": "Tu división se muestra como insignia en tu perfil y en los rankings.",
-      "close": "Entendido"
+      "close": "Entendido",
+      "groups": "Compites en un grupo de hasta {{size}} jugadores de tu división, con nombre propio. Cada lunes se forman grupos nuevos."
     },
     "currentPrize": "Premio si acaba ahora",
     "prizesTitle": "Premios por puesto",
@@ -396,10 +405,59 @@
     "prizeShort1": "1.º",
     "prizeShort2": "2.º",
     "prizeShort3": "3.º",
-    "prizeShortRest": "Resto"
+    "prizeShortRest": "Resto",
+    "groups": {
+      "owls": "los Búhos",
+      "foxes": "los Zorros",
+      "wolves": "los Lobos",
+      "falcons": "los Halcones",
+      "otters": "las Nutrias",
+      "lynxes": "los Linces",
+      "bears": "los Osos",
+      "hares": "las Liebres",
+      "ravens": "los Cuervos",
+      "dolphins": "los Delfines",
+      "tigers": "los Tigres",
+      "eagles": "las Águilas",
+      "badgers": "los Tejones",
+      "herons": "las Garzas",
+      "panthers": "las Panteras",
+      "stags": "los Ciervos",
+      "bison": "los Bisontes",
+      "cranes": "las Grullas",
+      "jaguars": "los Jaguares",
+      "ibex": "las Cabras",
+      "condors": "los Cóndores",
+      "seals": "las Focas",
+      "cobras": "las Cobras",
+      "moose": "los Alces",
+      "orcas": "las Orcas",
+      "hawks": "los Gavilanes",
+      "pumas": "los Pumas",
+      "storks": "las Cigüeñas",
+      "rhinos": "los Rinocerontes",
+      "swifts": "los Vencejos",
+      "gazelles": "las Gacelas",
+      "turtles": "las Tortugas"
+    },
+    "groupLabel": "Liga de {{name}}",
+    "membersOf": "{{count}} de {{size}} jugadores",
+    "card": {
+      "inPromo": "En zona de ascenso ⬆️",
+      "promoNeedsXp": "En zona de ascenso: te faltan {{xp}} XP de actividad",
+      "inRelegation": "En zona de descenso ⬇️",
+      "gapToPromo": "A {{xp}} XP de la zona de ascenso",
+      "closesIn_one": "cierra en {{count}} día",
+      "closesIn_other": "cierra en {{count}} días",
+      "closesToday": "cierra hoy",
+      "ofMembers": "de {{count}}"
+    }
   },
   "speed": {
     "title": "Contrarreloj",
+    "prepDescription": "Responde tantas preguntas como puedas antes de que se agote el tiempo.",
+    "prepRuleTime": "Tienes {{seconds}} segundos para responder",
+    "prepRuleScore": "Cada acierto suma un punto y monedas",
     "introDescPre": "Responde el máximo de preguntas posible en ",
     "seconds": "30 segundos",
     "introDescPost": ". Cada acierto suma 1 punto y monedas.",
@@ -444,7 +502,21 @@
     "previousMonth": "Mes anterior",
     "nextMonth": "Mes siguiente",
     "playedThisMonth_one": "{{count}} día jugado este mes",
-    "playedThisMonth_other": "{{count}} días jugados este mes"
+    "playedThisMonth_other": "{{count}} días jugados este mes",
+    "recovery": {
+      "brokenTitle_one": "Has perdido tu racha de {{count}} día",
+      "brokenTitle_other": "Has perdido tu racha de {{count}} días",
+      "brokenSub": "Recupérala y sigue donde lo dejaste: volverías a {{streak}} 🔥.",
+      "brokenExpires": "Solo hasta {{time}}",
+      "cta": "Recuperar por {{price}} 🪙",
+      "ctaPoor": "Te faltan {{missing}} 🪙",
+      "recovering": "Recuperando…",
+      "success": "¡Racha recuperada! Vas por {{streak}} 🔥",
+      "atRiskTitle_one": "Tu racha de {{count}} día está en peligro",
+      "atRiskTitle_other": "Tu racha de {{count}} días está en peligro",
+      "atRiskSub": "Llevas días sin responder. Contesta la pregunta de hoy y podrás recuperarla por {{price}} 🪙.",
+      "atRiskCta": "Responder ahora"
+    }
   },
   "mastery": {
     "level": "Nivel {{level}}",
@@ -1030,6 +1102,12 @@
     "newQuestionIn": "Nueva pregunta en {{time}}",
     "noQuestion": "No hay pregunta disponible hoy.\nVuelve más tarde.",
     "badge": "🏆 PREGUNTA DEL DÍA",
+    "introTitle": "Pregunta del día",
+    "introDescription": "Prepárate para la pregunta de hoy. Cuando quieras, empieza.",
+    "introRuleQuestion": "La misma pregunta para todos los jugadores",
+    "introRuleTimer": "El tiempo empieza al pulsar Continuar",
+    "introRuleChance": "Una oportunidad para responder y subir en el ranking",
+    "introContinue": "Continuar",
     "subtitle": "¿Serás el primero en responder hoy?",
     "correct": "¡Muy bien! Sumas +100 puntos",
     "incorrect": "✗ Incorrecto",
@@ -1080,7 +1158,7 @@
   },
   "privacy": {
     "title": "Política de privacidad",
-    "updatedAt": "Última actualización: 11 de septiembre de 2026",
+    "updatedAt": "Última actualización: 28 de septiembre de 2026",
     "intro": "Aquí explicamos qué información trata {{appName}}, para qué se utiliza y cómo puedes ejercer tus derechos.",
     "sections": {
       "s1": {
@@ -1089,7 +1167,7 @@
       },
       "s2": {
         "title": "2. Información que tratamos",
-        "body": "Para crear una cuenta tratamos tu correo electrónico, el nombre de usuario que eliges y un identificador interno. Si accedes con Apple o Google, el proveedor de identidad facilita los datos necesarios para autenticarte según los permisos que aceptes.\n\nTambién guardamos respuestas, progreso, rachas, puntuaciones, récords, nivel, logros, monedas, artículos de la tienda, relaciones de amistad y reportes necesarios para prestar las funciones del juego.\n\n• Datos técnicos de la app y del dispositivo, como versión, sistema operativo, idioma y registros de errores.\n• Estado de compra y suscripción necesario para activar CG PRO; no recibimos los datos completos de tu tarjeta ni de tu método de pago.\n• No solicitamos geolocalización precisa, contactos, fotos, cámara, micrófono ni calendario."
+        "body": "Para crear una cuenta tratamos tu correo electrónico, el nombre de usuario que eliges y un identificador interno. Si accedes con Apple o Google, el proveedor de identidad facilita los datos necesarios para autenticarte según los permisos que aceptes.\n\nTambién guardamos respuestas, progreso, rachas, puntuaciones, récords, nivel, logros, monedas, artículos de la tienda, relaciones de amistad y reportes necesarios para prestar las funciones del juego.\n\n• Datos técnicos de la app y del dispositivo, como versión, sistema operativo, idioma y registros de errores.\n• Estado de compra y suscripción necesario para activar CG PRO; no recibimos los datos completos de tu tarjeta ni de tu método de pago.\n• No solicitamos geolocalización precisa, contactos, fotos, cámara, micrófono ni calendario.\n• Si activas las notificaciones remotas, registramos un token de notificaciones vinculado a tu cuenta, junto con plataforma, idioma, zona horaria y versión de la app."
       },
       "s3": {
         "title": "3. Para qué usamos los datos",
@@ -1105,7 +1183,7 @@
       },
       "s6": {
         "title": "6. Proveedores",
-        "body": "Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; RevenueCat para verificar compras y mantener el estado de CG PRO; e In-House Ads, un servicio del mismo responsable, para servir la publicidad propia. Apple y Google también pueden tratar información al distribuir la app, autenticarte o procesar una compra.\n\nPuedes consultar las políticas de cada proveedor desde cg-trivia.pablobrasero.com/privacy."
+        "body": "Usamos Supabase para autenticación, base de datos y funciones de servidor; Sentry para diagnosticar errores; RevenueCat para verificar compras y mantener el estado de CG PRO; Expo para entregar notificaciones remotas cuando las activas; e In-House Ads, un servicio del mismo responsable, para servir la publicidad propia. Apple y Google también pueden tratar información al distribuir la app, autenticarte o procesar una compra.\n\nPuedes consultar las políticas de cada proveedor desde cg-trivia.pablobrasero.com/privacy."
       },
       "s7": {
         "title": "7. Compras y suscripciones",
@@ -1113,11 +1191,11 @@
       },
       "s8": {
         "title": "8. Publicidad y edad",
-        "body": "La publicidad de {{appName}} es propia: solo promociona aplicaciones y webs del mismo responsable, no usa identificadores publicitarios, perfiles ni redes de terceros, y no escribe cookies ni almacenamiento persistente en tu dispositivo. Los anuncios aparecen en pausas naturales del juego —el resultado de la pregunta del día o el final de una partida de Contrarreloj, Ascenso, Mundo o Años— o cuando eliges voluntariamente ver uno a cambio de una recompensa. Con CG PRO no se solicita ni se muestra ningún anuncio.\n\nAntes de mostrar el primero te preguntamos tu tramo de edad. Si indicas ser menor de 16 años no se muestra publicidad. No usamos SDKs de atribución ni de medición de campañas, y la app no solicita el permiso App Tracking Transparency de iOS.\n\nPuedes revisar o cambiar tu respuesta cuando quieras desde Perfil > Ajustes > Privacidad y anuncios."
+        "body": "La publicidad de {{appName}} es propia: solo promociona aplicaciones y webs del mismo responsable, no usa identificadores publicitarios, perfiles ni redes de terceros, y no escribe cookies ni almacenamiento persistente en tu dispositivo. Los anuncios aparecen en pausas naturales del juego —el resultado de la pregunta del día o el final de una partida de Contrarreloj, Ascenso, Banderas o Años— o cuando eliges voluntariamente ver uno a cambio de una recompensa. Con CG PRO no se solicita ni se muestra ningún anuncio.\n\nAntes de mostrar el primero te preguntamos tu tramo de edad. Tu elección se guarda en el dispositivo. Si indicas ser menor de 16 años no se muestra publicidad. Para los demás, la solicitud al servicio propio puede incluir un indicador de elegibilidad, idioma, plataforma, versión de la app y un identificador temporal de sesión. También registramos impresiones y clics de anuncios propios asociados a esa sesión temporal. No usamos SDKs de atribución ni de medición de campañas, y la app no solicita el permiso App Tracking Transparency de iOS.\n\nPuedes revisar o cambiar tu respuesta cuando quieras desde Perfil > Ajustes > Privacidad y anuncios."
       },
       "s9": {
         "title": "9. Notificaciones",
-        "body": "Si las activas, {{appName}} te envía un recordatorio diario a las 9:00 para que no pierdas tu racha. Son notificaciones locales: las programa tu propio dispositivo y su contenido no pasa por ningún servidor. Puedes desactivarlas cuando quieras desde Perfil > Ajustes o desde los ajustes de tu sistema."
+        "body": "Si las activas, {{appName}} puede enviarte recordatorios de la pregunta diaria, avisos de tu liga y avisos cuando un amigo te supere en el ranking. En un dispositivo compatible registramos en nuestro servidor un token de notificaciones vinculado a tu cuenta, con plataforma, idioma, zona horaria y versión de la app. Para entregar cada aviso enviamos a Expo el token, el título, el texto y los datos necesarios para abrir la pantalla correspondiente; Expo lo transmite a Apple o Google. Si falla el registro remoto, el dispositivo puede programar recordatorios locales. Puedes desactivarlas desde Perfil > Ajustes o desde los ajustes del sistema."
       },
       "s10": {
         "title": "10. Diagnóstico y seguridad",
@@ -1153,12 +1231,17 @@
     "inventoryTitle": "Tus objetos",
     "inventoryEmpty": "Aún no tienes power-ups. Cómpralos abajo y úsalos durante las preguntas: Aprender, Diario, Contrarreloj y Ascenso.",
     "powerups": "Power-ups",
+    "powerupsDescription": "Ventajas para tus próximas partidas.",
+    "powerupsAvailable": "Para tus partidas",
     "cosmetics": "Cosméticos",
+    "cosmeticsDescription": "Personaliza tu perfil y destaca en los rankings.",
     "cosmeticsFrames": "Marcos de avatar",
     "cosmeticsColor": "Color de nombre",
     "cosmeticsStyle": "Estilo de nombre",
     "cosmeticsIcons": "Iconos de nombre",
     "equip": "Equipar",
+    "buy": "Comprar",
+    "coins": "monedas",
     "equipped": "Equipado",
     "proOnly": "Solo CG PRO"
   },
@@ -1415,6 +1498,8 @@
       "stipendTitle": "Monedas del mes",
       "stipendBody": "300 monedas cada mes, para power-ups y cosméticos.",
       "stipendClaim": "Recoger las monedas",
+      "stipendCountdown_one": "Monedas en {{count}} día",
+      "stipendCountdown_other": "Monedas en {{count}} días",
       "stipendClaimed": "+{{coins}} 🪙 para este mes",
       "stipendAlready": "Ya recogiste las monedas de este mes.",
       "stipendFailed": "No se han podido recoger. Inténtalo más tarde.",
@@ -1427,6 +1512,7 @@
       "renews": "Se renueva el {{date}}",
       "homeSubtitleFree": "Descubre lo que trae la suscripción",
       "homeSubtitlePro": "Tus modos exclusivos y tus ventajas",
+      "heroTitle": "Tu rincón extraordinario",
       "statsDescription": "Tu evolución, la precisión por dificultad y tus exámenes.",
       "noAdsTitle": "Sin anuncios",
       "noAdsBody": "Con PRO la app no pide ni muestra ningún anuncio.",
@@ -1468,6 +1554,9 @@
     "title": "Repaso",
     "emptyTitle": "Nada que repasar",
     "emptyBody": "No tienes preguntas pendientes. Vuelve cuando falles alguna: aparecerán aquí a los 1, 3, 7, 21 y 60 días.",
+    "emptyIntro": "¡Todo al día! No tienes preguntas pendientes.",
+    "emptyRuleMissed": "Las preguntas que falles aparecerán en tu repaso.",
+    "emptyRuleSchedule": "Volverán a los 1, 3, 7, 21 y 60 días para ayudarte a recordarlas.",
     "needsAccount": "El repaso necesita cuenta y conexión para saber qué has fallado.",
     "doneTitle": "Repaso terminado",
     "doneBody": "{{correct}} de {{total}} correctas. Las que has fallado volverán mañana.",
@@ -1502,6 +1591,37 @@
       "down": "Has bajado {{delta}} puntos en el último mes",
       "flat": "Te mantienes estable en el último mes",
       "unknown": "Juega un poco más para ver tu tendencia"
+    }
+  },
+  "reviewNudge": {
+    "title": "¿Te está gustando Cultura General?",
+    "body": "Una reseña de 30 segundos ayuda muchísimo a que más gente la descubra.",
+    "love": "¡Me encanta! Dejar reseña",
+    "feedback": "Tengo sugerencias",
+    "later": "Ahora no"
+  },
+  "appIcon": {
+    "title": "Icono de la app",
+    "rowSub": "Elige cómo se ve CG Trivia en tu pantalla de inicio",
+    "subtitle": "Elige cómo se ve CG Trivia en tu pantalla de inicio. El clásico es para todos; el resto, para CG PRO.",
+    "unsupported": "Este dispositivo no permite cambiar el icono de la app.",
+    "classic": "Clásico",
+    "error": "No se ha podido cambiar el icono. Inténtalo de nuevo.",
+    "iosNotice": "Al cambiarlo, iOS muestra un aviso de confirmación. Es normal.",
+    "resetTitle": "Volvemos al icono clásico",
+    "resetBody": "Los iconos alternativos son de CG PRO y ahora no tienes PRO activo. Si vuelves a PRO, podrás elegirlo otra vez desde tu perfil.",
+    "resetConfirm": "Entendido",
+    "names": {
+      "default": "Clásico",
+      "oro": "Oro",
+      "crema": "Crema",
+      "medianoche": "Medianoche",
+      "contrarreloj": "Contrarreloj",
+      "pergamino": "Pergamino",
+      "neon": "Neón",
+      "acierto": "Acierto",
+      "tinta": "Tinta",
+      "pixel": "Píxel"
     }
   }
 }

@@ -21,14 +21,46 @@ export type LeagueResult = 'promoted' | 'relegated' | 'stayed';
 export interface LeagueState {
   division: number;                 // 0=Bronce..3=Diamante
   weekStart: string;                // 'YYYY-MM-DD' (lunes ISO)
+  // Grupo de ~30 dentro de la división (v3). null con el servidor v2, donde
+  // la "liga" era la división entera.
+  groupNameKey: string | null;      // clave i18n: leagues.groups.<key>
+  groupSeq: number | null;          // 1, 2, 3… por si dos grupos comparten nombre
+  groupSize: number;                // tamaño máximo del grupo (30)
   myXp: number;
   myRank: number | null;
-  memberCount: number;              // jugadores en tu división esta semana
+  memberCount: number;              // jugadores en tu grupo esta semana
   promoteZone: number;              // nº de puestos que ascienden (top N)
   relegateZone: number;             // nº de puestos que descienden (bottom N)
+  promoteMin: number | null;        // XP semanal mínimo para poder ascender
   lastResult: LeagueResult | null;  // resultado de la semana pasada (para banner)
   lastReward: number;               // monedas ganadas por el puesto de la semana pasada
   leaderboard: LeagueEntry[];
+}
+
+/** Nombre del grupo para mostrar ("Búhos", "Búhos II"…); '' si no hay grupo. */
+export function leagueGroupName(state: Pick<LeagueState, 'groupNameKey' | 'groupSeq'>): string {
+  if (!state.groupNameKey) return '';
+  const name = i18n.t(`leagues.groups.${state.groupNameKey}`, { defaultValue: state.groupNameKey });
+  // Con 32 nombres, el 33.º grupo repite nombre: se distingue con un ordinal.
+  const repeat = state.groupSeq ? Math.floor((state.groupSeq - 1) / 32) : 0;
+  return repeat > 0 ? `${name} ${['II', 'III', 'IV', 'V'][repeat - 1] ?? repeat + 1}` : name;
+}
+
+/**
+ * Cuántos XP le faltan al usuario para entrar en la zona de ascenso (0 si ya
+ * está dentro o no aplica). Se calcula contra el último de la zona: hay que
+ * superarle, no igualarle.
+ */
+export function xpToPromotionZone(state: LeagueState): number {
+  if (state.division >= TOP_DIVISION || state.myRank == null) return 0;
+  if (state.myRank <= state.promoteZone) {
+    // Ya en zona: solo puede faltar la actividad mínima.
+    return Math.max(0, (state.promoteMin ?? 0) - state.myXp);
+  }
+  const last = state.leaderboard.find(e => e.rank === state.promoteZone);
+  if (!last) return 0;
+  const gap = last.xp - state.myXp + 1;
+  return Math.max(gap, (state.promoteMin ?? 0) - state.myXp, 0);
 }
 
 export const DIVISIONS = [
@@ -69,18 +101,25 @@ export async function fetchLeague(): Promise<LeagueState | null> {
   // veces, y cada re-aplicación es un build que se rompe si se olvida. Una
   // lectura de `profiles` acotada a los ids que ya devuelve el ranking sale
   // más barata que ese riesgo. Si falla, simplemente no se pinta el sello.
-  const proIds = await fetchProUserIds(
-    ((data.leaderboard ?? []) as any[]).map(e => e.user_id).filter(Boolean),
-  );
+  // El servidor v3 ya incluye `is_pro` en cada fila; con v2 se resuelve aparte.
+  const rows = (data.leaderboard ?? []) as any[];
+  const serverHasPro = rows.length > 0 && rows.every(e => typeof e.is_pro === 'boolean');
+  const proIds = serverHasPro
+    ? new Set<string>(rows.filter(e => e.is_pro).map(e => e.user_id))
+    : await fetchProUserIds(rows.map(e => e.user_id).filter(Boolean));
 
   return {
     division: data.division ?? 0,
     weekStart: data.week_start,
+    groupNameKey: data.group_name_key ?? null,
+    groupSeq: data.group_seq ?? null,
+    groupSize: data.group_size ?? 30,
     myXp: data.my_xp ?? 0,
     myRank: data.my_rank ?? null,
     memberCount: data.member_count ?? 0,
     promoteZone: data.promote_zone ?? 5,
     relegateZone: data.relegate_zone ?? 5,
+    promoteMin: data.promote_min ?? null,
     lastResult: (data.last_result as LeagueResult) ?? null,
     lastReward: data.last_reward ?? 0,
     leaderboard: (data.leaderboard ?? []).map((e: any) => ({

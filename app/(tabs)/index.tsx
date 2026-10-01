@@ -19,7 +19,10 @@ import { CoinPill } from '@/components/CoinPill';
 import { DailyRouteBanner } from '@/components/DailyRouteBanner';
 import { DailyChest } from '@/components/DailyChest';
 import { StreakHeatmap } from '@/components/StreakHeatmap';
+import { StreakRecoveryCard } from '@/components/StreakRecoveryCard';
 import { LeagueBadge } from '@/components/LeagueBadge';
+import { LeagueCard } from '@/components/LeagueCard';
+import { AvatarFrame } from '@/components/AvatarFrame';
 import { ProBadge } from '@/components/ProBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { useIsPro } from '@/hooks/usePremium';
@@ -165,6 +168,8 @@ export default function HomeScreen() {
 
   const initial = guest ? '?' : (profile?.username?.[0] ?? '?').toUpperCase();
   const displayName = guest ? t('common.guest') : (profile?.username ?? '…');
+  // Trozos del saludo alrededor del nombre, para poder estilizar solo el nombre.
+  const greetingParts = t('home.greeting', { name: '\u0000' }).split('\u0000');
   const achievementCount = unlockedCount(profile, adventureProgress);
   const speedRecord = guest ? guestSpeedRecord : (profile?.speed_record ?? 0);
   const ladderRecord = profile?.ladder_best ?? 0;
@@ -184,8 +189,13 @@ export default function HomeScreen() {
               <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.bold, textTransform: 'capitalize' }}>
                 {today}
               </Text>
-              <Text style={{ color: cosmetics.nameColor ?? C.text, ...Type.screenTitle, marginTop: 3 }}>
-                {t('home.greeting', { name: displayName })}
+              {/* El saludo es una frase: el icono va delante y el color y el
+                  estilo del cosmético se aplican solo al nombre. */}
+              <Text style={{ color: C.text, ...Type.screenTitle, marginTop: 3 }}>
+                {cosmetics.nameIcon ? `${cosmetics.nameIcon} ` : ''}
+                {greetingParts[0]}
+                <Text style={[{ color: cosmetics.nameColor ?? C.text }, cosmetics.nameStyle]}>{displayName}</Text>
+                {greetingParts[1]}
               </Text>
               {!guest && profile && (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 6, alignSelf: 'flex-start' }}>
@@ -215,7 +225,7 @@ export default function HomeScreen() {
                   <Text style={{ color: C.textMuted, fontSize: 21, fontFamily: Font.black }}>?</Text>
                 </View>
               ) : (
-                <View style={cosmetics.frameColor ? { borderWidth: 2, borderColor: cosmetics.frameColor, borderRadius: 20, padding: 2 } : undefined}>
+                <AvatarFrame cosmetics={cosmetics} radius={18}>
                   <LinearGradient
                     colors={[C.streak, C.brand]}
                     start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -223,7 +233,7 @@ export default function HomeScreen() {
                   >
                     <Text style={{ color: C.onBrand, fontSize: 21, fontFamily: Font.black }}>{initial}</Text>
                   </LinearGradient>
-                </View>
+                </AvatarFrame>
               )}
             </Pressable>
           </View>
@@ -249,7 +259,10 @@ export default function HomeScreen() {
               </View>
             </Pressable>
           ) : user ? (
-            <StreakHeatmap userId={user.id} streak={profile?.streak ?? 0} bestStreak={profile?.best_streak ?? 0} />
+            <>
+              <StreakHeatmap userId={user.id} streak={profile?.streak ?? 0} bestStreak={profile?.best_streak ?? 0} />
+              {!offline && <StreakRecoveryCard userId={user.id} profile={profile} refresh={refresh} />}
+            </>
           ) : (
             <View style={{
               marginTop: 14, backgroundColor: C.surface, borderRadius: Radius.cardLg,
@@ -329,27 +342,7 @@ export default function HomeScreen() {
           <View style={{ paddingHorizontal: Space.screen, marginTop: 10 }}>
             <DailyChest available={chestAvailable} onClaim={handleChest} onClaimed={refresh} />
 
-            <Pressable onPress={() => router.push('/leagues' as any)}>
-              <View style={{
-                backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 12,
-                borderWidth: 1, borderColor: C.border,
-                flexDirection: 'row', alignItems: 'center', gap: 12,
-              }}>
-                <View style={{
-                  width: 40, height: 40, borderRadius: 13,
-                  backgroundColor: C.coinTint, alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <Text style={{ fontSize: 19 }}>🏆</Text>
-                </View>
-                <View style={{ flex: 1, gap: 1 }}>
-                  <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.black }}>{t('leagues.cardTitle')}</Text>
-                  <Text numberOfLines={1} style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular }}>
-                    {t('leagues.cardDesc')}
-                  </Text>
-                </View>
-                <Text style={{ color: C.textFaint, fontSize: 20 }}>›</Text>
-              </View>
-            </Pressable>
+            <LeagueCard live={!!user && !guest && !offline} />
           </View>
         )}
 
@@ -461,7 +454,7 @@ export default function HomeScreen() {
               title={t('home.modes.friends')}
               meta={t('home.modes.friendsModes', { count: LOCAL_MODES })}
               disabled={offline}
-              onPress={() => offline ? lockedTap() : router.push('/(tabs)/friends')}
+              onPress={() => offline ? lockedTap() : router.push('/friends')}
             />
           </View>
         </View>

@@ -103,6 +103,23 @@ export async function claimDailyChest(): Promise<{ reward?: number; error?: stri
   return { reward: (data as any)?.reward };
 }
 
+// ─── Recuperar racha ──────────────────────────────────────────
+// El precio y la ventana los fija el servidor (recover_streak); la app solo
+// los espeja en lib/streakRecovery.ts para enseñarlos antes de pulsar.
+export async function recoverStreak(): Promise<
+  { streak: number; price: number; coins: number } | { error: string }
+> {
+  const { data, error } = await supabase.rpc('recover_streak');
+  if (error) {
+    const msg = error.message || '';
+    if (msg.includes('insufficient coins')) return { error: i18n.t('errors.insufficientCoins') };
+    if (msg.includes('nothing to recover')) return { error: i18n.t('errors.streakRecoveryExpired') };
+    return { error: i18n.t('errors.streakRecoveryFailed') };
+  }
+  const d = data as { streak?: number; price?: number; coins?: number } | null;
+  return { streak: d?.streak ?? 0, price: d?.price ?? 0, coins: d?.coins ?? 0 };
+}
+
 // ─── Logros ───────────────────────────────────────────────────
 export async function fetchClaimedAchievements(userId: string): Promise<Set<string>> {
   const { data } = await supabase

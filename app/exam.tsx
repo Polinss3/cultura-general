@@ -6,6 +6,7 @@ import { useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { CategoryBadge } from '@/components/CategoryBadge';
+import { PreparationScreen } from '@/components/PreparationScreen';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
@@ -30,7 +31,7 @@ import {
 import { PRO_ACCENT } from '@/lib/pro';
 import type { Question } from '@/types';
 import { alpha, useTheme } from '@/constants/colors';
-import { Font, Radius, Space, Type, cardShadow } from '@/constants/theme';
+import { Font, Radius, Space, Type } from '@/constants/theme';
 
 type Phase = 'loading' | 'intro' | 'playing' | 'result';
 
@@ -176,41 +177,22 @@ export default function ExamScreen() {
 
   if (phase === 'intro') {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
-        <ScrollView contentContainerStyle={{ padding: Space.screen, gap: 18 }}>
-          <Pressable onPress={() => router.back()} hitSlop={8} style={{ alignSelf: 'flex-start', minHeight: 44, justifyContent: 'center' }}>
-            <Text style={{ color: C.textMuted, fontSize: 21 }}>←</Text>
-          </Pressable>
-
-          <View style={{ alignItems: 'center', gap: 8 }}>
-            <Text style={{ fontSize: 52 }}>📝</Text>
-            <Text style={{ color: C.text, ...Type.screenTitle, textAlign: 'center' }}>{t('exam.title')}</Text>
-            <Text style={{ color: C.textMuted, ...Type.bodyRegular, textAlign: 'center', maxWidth: 320 }}>
-              {t('exam.intro')}
-            </Text>
-          </View>
-
-          <View style={{
-            backgroundColor: C.surface, borderRadius: Radius.cardLg, borderWidth: 1,
-            borderColor: C.border, padding: 18, gap: 12, ...cardShadow(isDark),
-          }}>
-            <Rule icon="🧠" text={t('exam.ruleQuestions', { count: questions.length || EXAM_QUESTIONS })} />
-            <Rule icon="⏱️" text={t('exam.ruleTime')} />
-            <Rule icon="🙈" text={t('exam.ruleNoFeedback')} />
-            <Rule icon="🎓" text={t('exam.ruleGrade')} />
-          </View>
-
-          <Pressable onPress={start} disabled={questions.length === 0}>
-            <LinearGradient
-              colors={[PRO_ACCENT, alpha(PRO_ACCENT, 0.82)]}
-              start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={{ borderRadius: Radius.card, padding: 17, alignItems: 'center', opacity: questions.length === 0 ? 0.5 : 1 }}
-            >
-              <Text style={{ color: '#FFFFFF', fontFamily: Font.bold, fontSize: 17 }}>{t('exam.start')}</Text>
-            </LinearGradient>
-          </Pressable>
-        </ScrollView>
-      </SafeAreaView>
+      <PreparationScreen
+        variant="pro"
+        icon="📝"
+        title={t('exam.title')}
+        description={t('exam.intro')}
+        rules={[
+          { icon: '🧠', text: t('exam.ruleQuestions', { count: questions.length || EXAM_QUESTIONS }) },
+          { icon: '⏱️', text: t('exam.ruleTime') },
+          { icon: '🙈', text: t('exam.ruleNoFeedback') },
+          { icon: '🎓', text: t('exam.ruleGrade') },
+        ]}
+        buttonLabel={t('exam.start')}
+        onStart={start}
+        onBack={() => router.back()}
+        disabled={questions.length === 0}
+      />
     );
   }
 
@@ -350,15 +332,5 @@ export default function ExamScreen() {
         </Pressable>
       </ScrollView>
     </SafeAreaView>
-  );
-}
-
-function Rule({ icon, text }: { icon: string; text: string }) {
-  const { C } = useTheme();
-  return (
-    <View style={{ flexDirection: 'row', gap: 12, alignItems: 'center' }}>
-      <Text style={{ fontSize: 19, width: 26, textAlign: 'center' }}>{icon}</Text>
-      <Text style={{ color: C.textBody, ...Type.body, flex: 1 }}>{text}</Text>
-    </View>
   );
 }

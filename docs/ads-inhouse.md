@@ -19,6 +19,7 @@ vive en memoria y muere con el proceso.
 | Campañas | solo las internas de prueba (`Prueba — …`); **faltan las reales antes de publicar** | panel de In-House Ads |
 | `EXPO_PUBLIC_REWARDED_ADS` | `true` en todos los perfiles | [eas.json](../eas.json) |
 | `EXPO_PUBLIC_BANNER_ADS` | `false` a propósito, ver más abajo | [eas.json](../eas.json) |
+| `EXPO_PUBLIC_PRO_REWARDED_ADS` | `false` en todos los perfiles: PRO sigue sin anuncios | [eas.json](../eas.json) |
 
 El sistema es *fail-closed*: cualquier valor de `EXPO_PUBLIC_ADS_MODE` ausente o
 distinto de `off`/`test`/`live` se interpreta como `off`, y sin URL, sin app ID o
@@ -35,8 +36,10 @@ autorizaciones de evento, redirección y recompensa. No hay ninguna clave
 secreta que guardar en la app.
 
 - **Aplicación** `cultura-general` → `485e0aab-572e-4051-879a-85a60ef978da`
-- **SDK** `@inhouse/mobile-sdk` 1.1.3, empaquetado en
-  [`vendor/inhouse-mobile-sdk-1.1.3.tgz`](../vendor). La cuenta atrás de vídeo
+- **SDK** `@inhouse/mobile-sdk` 1.1.4, empaquetado en
+  [`vendor/inhouse-mobile-sdk-1.1.4.tgz`](../vendor). La 1.1.4 permite a un
+  adulto Premium pedir un recompensado voluntario (`client.canRequest(format)`);
+  en CG queda detrás de `EXPO_PUBLIC_PRO_REWARDED_ADS`, ver la regla 2. La cuenta atrás de vídeo
   usa su duración completa y el visor ya no duplica el estado de recompensa en
   una franja inferior. El vídeo comienza silenciado sin detener audio externo,
   y toda la creatividad abre el destino del anuncio. Visor con Liquid Glass en
@@ -74,6 +77,12 @@ vuelve a comprobar por su cuenta.
    emitir una sola petición. Desde 2026-09-12 es un beneficio anunciado en el
    paywall y en la Sala PRO ("Sin anuncios"), así que es un compromiso con el
    usuario, no solo una cortesía.
+
+   Excepción preparada, **apagada**: con `EXPO_PUBLIC_PRO_REWARDED_ADS=true` un
+   PRO adulto vería el botón de los recompensados (monedas de la Tienda,
+   revivir en Ascenso), que solo salen si él lo pide. Banner e intersticial
+   siguen cerrados para PRO pase lo que pase. Encenderlo exige build nueva y,
+   antes, revisar los textos "Sin anuncios" del paywall y la Sala PRO.
 3. **Pausas naturales.** [`utils/adPolicy.ts`](../utils/adPolicy.ts): un
    intersticial al acabar cada partida, nunca sin resultado, con 30 s de
    enfriamiento (para no encadenar dos en partidas de diez segundos), 20 por
@@ -116,10 +125,14 @@ pantalla completa.
 ## El aviso pregunta solo la edad
 
 Con AppLovin, «anuncios personalizados» significaba a la vez *ads* y *tracking*,
-y el aviso pedía consentimiento. Con publicidad propia no hay nada que consentir:
-el SDK no trata identificadores ni datos personales, así que ni el RGPD ni ATT
-entran en juego. Lo único que se pregunta es el **tramo de edad**, y solo porque
-el SDK exige `adult` y deja al host determinarlo.
+y el aviso pedía consentimiento. La publicidad propia no usa identificadores
+publicitarios ni seguimiento entre apps, por lo que la app no solicita ATT. Se
+pregunta el **tramo de edad** porque el SDK exige `adult` y deja al host
+determinarlo. La respuesta se guarda en el dispositivo; si la persona puede ver
+anuncios, la petición al servicio propio incluye un indicador de elegibilidad,
+idioma, plataforma, versión de la app y un identificador temporal de sesión.
+Estos datos y los eventos de impresión o clic deben describirse en la política
+y revisarse en App Privacy.
 
 AppsFlyer, el SDK de Meta y `expo-tracking-transparency` se retiraron en el
 mismo cambio: no hay campañas de captación que atribuir, y eran lo único que

@@ -1,12 +1,12 @@
 import '@/lib/i18n'; // debe ir primero: init i18n antes de que renderice cualquier componente
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Linking from 'expo-linking';
 import * as Notifications from 'expo-notifications';
-import { Alert, AppState } from 'react-native';
+import { Alert, AppState, Platform, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import {
@@ -36,6 +36,7 @@ import { applyPersistedLanguage, getCurrentLang } from '@/lib/i18n';
 import { loadThemePreference } from '@/lib/appearance';
 import { checkDailyAnswered, purgeLegacyQuestionCache } from '@/lib/db';
 import { getNotificationRoute, syncNotificationSchedule } from '@/lib/notifications';
+import { syncPushRegistration, unregisterPush } from '@/lib/push';
 import { localDayKey } from '@/lib/notificationPlan';
 import {
   createAdventureProgressRepository,
@@ -47,7 +48,12 @@ import { setSentryUser } from '@/lib/sentry';
 import { clearGuestData } from '@/lib/guest';
 import { handleIncomingAuthUrl } from '@/lib/auth';
 import { requiresProfileCompletion } from '@/lib/authValidation';
-import { useIsDark } from '@/constants/colors';
+import { useIsDark, useTheme } from '@/constants/colors';
+import { MAX_CONTENT_WIDTH } from '@/constants/layout';
+import { PRO_ROOM_BACKGROUND } from '@/lib/pro';
+import { TabletGutterDecorations, type TabletDecoratedSection } from '@/components/TabletGutterDecorations';
+import { ReviewNudgeSheet } from '@/components/ReviewNudgeSheet';
+import { AppIconGuard } from '@/components/AppIconGuard';
 import {
   type AdsConsentDecision,
   hydrateAdsConsent,
@@ -85,6 +91,35 @@ const BOOT_HARD_DEADLINE_MS = 10000;
 function AppStatusBar() {
   const isDark = useIsDark();
   return <StatusBar style={isDark ? 'light' : 'dark'} />;
+}
+
+// Columna de contenido (ver constants/layout.ts). Componente aparte por lo
+// mismo que AppStatusBar: el tema se lee dentro del árbol.
+function ContentColumn({ children, segments }: { children: ReactNode; segments: readonly string[] }) {
+  const { C, isDark } = useTheme();
+  const onIPad = Platform.OS === 'ios' && Platform.isPad;
+  const screen = segments[0] === '(tabs)' ? segments[1] : segments[0];
+  let decoratedSection: TabletDecoratedSection = 'general';
+  if (!screen || screen === 'index') decoratedSection = 'home';
+  else if (screen === 'daily' || screen === 'exam' || screen === 'speed' ||
+    screen === 'ladder' || screen === 'adventure' || screen === 'learn' ||
+    screen === 'challenges' || screen === 'premium' || screen === 'shop') {
+    decoratedSection = screen;
+  } else if (screen === 'adventure-level') decoratedSection = 'adventure';
+  else if (screen === 'review' || screen === 'stats' || screen === 'paywall') decoratedSection = 'premium';
+  else if (screen === 'leagues' || screen === 'ranking') decoratedSection = 'challenges';
+  const backgroundColor = onIPad && screen === 'premium'
+    ? (isDark ? PRO_ROOM_BACKGROUND.dark : PRO_ROOM_BACKGROUND.light)
+    : C.bg;
+
+  return (
+    <View style={{ flex: 1, backgroundColor }}>
+      <TabletGutterDecorations section={decoratedSection} />
+      <View style={{ flex: 1, width: '100%', maxWidth: MAX_CONTENT_WIDTH, alignSelf: 'center' }}>
+        {children}
+      </View>
+    </View>
+  );
 }
 
 function RootLayout() {
@@ -295,6 +330,16 @@ function RootLayout() {
       ]);
       if (cancelled) return;
 
+      // Push reales: con sesión y red se registra el token (o se refresca
+      // idioma/zona horaria); sin sesión se retira. Va antes del plan local
+      // porque este se salta si el push queda activo.
+      if (session?.user && !guest && !offline) {
+        await syncPushRegistration(session.user.id);
+      } else if (!session?.user) {
+        await unregisterPush();
+      }
+      if (cancelled) return;
+
       await syncNotificationSchedule({
         scope,
         adventureLevel: adventureProgress.unlockedLevel,
@@ -490,13 +535,17 @@ function RootLayout() {
       <ToastProvider>
         <ProgressProvider>
           <AppStatusBar />
-          <Stack
-            screenOptions={{
-              headerShown: false,
-              animation: 'slide_from_right',
-              animationDuration: 250,
-            }}
-          />
+          {/* El contenido conserva su ancho; los márgenes del iPad comparten
+              el fondo de la pantalla y pueden llevar decoración propia. */}
+          <ContentColumn segments={segments as readonly string[]}>
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                animation: 'slide_from_right',
+                animationDuration: 250,
+              }}
+            />
+          </ContentColumn>
           <AdsConsentModal
             visible={Boolean(
               adsConfigured() && onboarded && adsConsentHydrated &&
@@ -519,6 +568,10 @@ function RootLayout() {
               el visor es un modal y no puede depender de la pantalla que lo
               pidió, que muchas veces está navegando justo en ese momento. */}
           <AdFullscreenHost />
+          {/* Hoja propia de valoración; la dispara lib/reviewGate. */}
+          <ReviewNudgeSheet />
+          {/* Quita el icono PRO si ya no hay PRO activo. */}
+          <AppIconGuard />
         </ProgressProvider>
       </ToastProvider>
     </ErrorBoundary>

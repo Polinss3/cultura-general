@@ -20,6 +20,8 @@ import {
   type CategoryCounts,
 } from '@/lib/db';
 import { noteReviewBlocker } from '@/lib/reviewGate';
+import { getInterests } from '@/lib/onboarding';
+import { interestWeight } from '@/lib/interests';
 import { awardProgress, bumpMissions } from '@/lib/gamification';
 import { REWARDS } from '@/lib/economy';
 import { getLocalQuestions, CAT_COLORS, CAT_ICONS, ALL_CATEGORIES, catTint } from '@/constants/questions';
@@ -152,7 +154,10 @@ export default function LearnScreen() {
         : localBank[cat];
       const source = remote.length > 0 ? remote : fallback;
       const recent = await getRecentIds('learn', cat);
-      const ordered = pickRandomFresh(source, recent, q => q.id, Math.min(source.length, SESSION_SIZE));
+      // En "Aleatorio" los temas favoritos salen con el doble de probabilidad;
+      // dentro de un tema no hay nada que ponderar.
+      const weight = cat === 'random' ? interestWeight(await getInterests()) : undefined;
+      const ordered = pickRandomFresh(source, recent, q => q.id, Math.min(source.length, SESSION_SIZE), weight);
       // Aprender es el modo "todo": la trivia del banco más las banderas y los
       // años que le tocan al tema, ya intercalados.
       const mixed = buildLearnFeed(ordered, cat);
@@ -280,7 +285,7 @@ export default function LearnScreen() {
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-        <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+        <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
           <Text style={{ color: C.text, ...Type.screenTitle, marginBottom: 4 }}>
             {t('learn.pickerTitle')}
           </Text>
@@ -422,7 +427,9 @@ export default function LearnScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 40 }}>
+      {/* `automatic`: la barra de pestañas de iOS 26 flota encima del
+          contenido; sin este ajuste el botón Siguiente queda debajo de ella. */}
+      <ScrollView style={{ flex: 1 }} contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={{ padding: Space.screen }}>
           {/* Nav */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>

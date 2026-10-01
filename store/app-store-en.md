@@ -1,7 +1,6 @@
 # App Store — English (U.S.)
 
-> Draft listing for **2.2.0**, with the freemium model and CG PRO.
-> No advertising-related benefit is communicated.
+> Draft listing for **2.3.0**, with the freemium model and CG PRO.
 
 ## Name (max 30)
 CG Trivia: General Knowledge
@@ -15,7 +14,7 @@ CG Trivia: General Knowledge
 Daily quiz, flags and years
 
 ## Promotional Text (max 170)
-A new Adventure with 400 levels and 20 chapters. Play the first two for free and unlock the full journey with CG PRO.
+Start the daily question when you are ready, join weekly leagues, and enjoy a refreshed iPad experience and new profile styles.
 
 ## Keywords (max 100)
 trivia,quiz,general knowledge,flags,countries,years,dates,daily,questions,history,science,learn
@@ -50,9 +49,10 @@ Light theme, dark theme or whatever your system uses. Available in English and S
 
 Free to download and play. CG PRO is an optional purchase.
 
-## What's New (2.2.0)
-• A BIGGER ADVENTURE: 400 levels across 20 chapters, with new themes, guardians, stories and relics.
-• CG PRO: no ads, the full journey, a 4,000-question catalogue in Learn and advanced study tools.
-• MORE FREE CONTENT: the first two Adventure chapters and 2,000 questions remain available to everyone.
+## What's New (2.3.0)
+• The daily question now has a preparation screen: start when you are ready.
+• Weekly leagues of around 30 players and a limited-time option to recover a lost streak.
+• A shop organized into power-ups and cosmetics, with new PRO styles.
+• Visual improvements on iPhone and iPad and stability fixes.
 
 Thanks for playing! Tell us what you think at pablobrasero@gmail.com

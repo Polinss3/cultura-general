@@ -1,4 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
+import { AvatarFrame } from '@/components/AvatarFrame';
+import { UserName } from '@/components/UserName';
+import { resolveCosmetics } from '@/lib/cosmetics';
 import { useTranslation } from 'react-i18next';
 import {
   View, Text, ScrollView, Pressable, TextInput,
@@ -280,18 +283,21 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 function UserRow({ profile, right }: { profile: FriendProfile; right: React.ReactNode }) {
   const { C, isDark } = useTheme();
   const initial = (profile.username?.[0] ?? '?').toUpperCase();
+  const cos = resolveCosmetics(profile.cosmetics);
   return (
     <View style={{
       flexDirection: 'row', alignItems: 'center', gap: 12,
       backgroundColor: C.surface, borderRadius: 18, padding: 12, borderWidth: 1, borderColor: C.border }}>
-      <View style={{
-        width: 40, height: 40, borderRadius: Radius.row,
-        backgroundColor: C.social, alignItems: 'center', justifyContent: 'center',
-      }}>
-        <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 16 }}>{initial}</Text>
-      </View>
+      <AvatarFrame cosmetics={cos} radius={Radius.row}>
+        <View style={{
+          width: 40, height: 40, borderRadius: Radius.row,
+          backgroundColor: C.social, alignItems: 'center', justifyContent: 'center',
+        }}>
+          <Text style={{ color: C.text, fontFamily: Font.bold, fontSize: 16 }}>{initial}</Text>
+        </View>
+      </AvatarFrame>
       <View style={{ flex: 1 }}>
-        <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>{profile.username}</Text>
+        <UserName name={profile.username} cosmetics={cos} isPro={profile.isPro} fontSize={15} />
         <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
           🔥 {profile.streak} · ✓ {profile.totalCorrect}
         </Text>

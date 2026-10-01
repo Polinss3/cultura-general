@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { GlassView } from 'expo-glass-effect';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
@@ -30,6 +31,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { useProfile } from '@/hooks/useProfile';
+import { useAppleLiquidGlass } from '@/hooks/use-apple-liquid-glass';
 import {
   ADVENTURE_LEVELS_PER_REGION,
   ADVENTURE_MAX_LEVELS,
@@ -59,6 +61,7 @@ export default function AdventureScreen() {
   const router = useRouter();
   const { width } = useWindowDimensions();
   const { C, isDark } = useTheme();
+  const glassHeader = useAppleLiquidGlass();
   const { user, loading: authLoading } = useAuth();
   const { guest, loading: guestLoading } = useGuest();
   const offline = useOffline();
@@ -82,6 +85,7 @@ export default function AdventureScreen() {
   const [initialPositioned, setInitialPositioned] = useState(false);
   const [chapterPickerOpen, setChapterPickerOpen] = useState(false);
   const [relicCaseOpen, setRelicCaseOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(220);
   const scrollRef = useRef<ScrollView>(null);
   const translateX = useSharedValue(0);
   const reducedMotion = useSystemReducedMotion();
@@ -200,12 +204,12 @@ export default function AdventureScreen() {
       const visibleFromBottom = Math.max(0, offsetInRegion - 2) * 96;
       scrollRef.current?.scrollToEnd({ animated: false });
       if (visibleFromBottom > 0) {
-        setTimeout(() => scrollRef.current?.scrollTo({ y: Math.max(0, 1900 - visibleFromBottom), animated: false }), 0);
+        setTimeout(() => scrollRef.current?.scrollTo({ y: headerHeight + Math.max(0, 1900 - visibleFromBottom), animated: false }), 0);
       }
       setInitialPositioned(true);
     }, 0);
     return () => clearTimeout(timer);
-  }, [initialPositioned, progress, region.startLevel]);
+  }, [headerHeight, initialPositioned, progress, region.startLevel]);
 
   if (!progress) {
     return (
@@ -231,18 +235,42 @@ export default function AdventureScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       <GestureDetector gesture={swipeGesture}>
         <Animated.View style={[{ flex: 1 }, swipeStyle]}>
-          <View style={{ paddingHorizontal: Space.screen, paddingTop: 10, paddingBottom: 10, gap: 12 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
-          <View style={{ flex: 1, gap: 2 }}>
+          <View
+            pointerEvents="box-none"
+            onLayout={event => {
+              const height = Math.ceil(event.nativeEvent.layout.height);
+              setHeaderHeight(previous => previous === height ? previous : height);
+            }}
+            style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 2, paddingTop: 6, paddingHorizontal: 8 }}
+          >
+            <View style={{
+              borderRadius: Radius.cardLg,
+              borderCurve: 'continuous',
+              borderWidth: 1,
+              borderColor: alpha(region.accent, isDark ? 0.3 : 0.2),
+              ...cardShadow(isDark),
+            }}>
+              <View style={{ borderRadius: Radius.cardLg, borderCurve: 'continuous', overflow: 'hidden' }}>
+                {glassHeader && (
+                  <GlassView
+                    pointerEvents="none"
+                    glassEffectStyle="clear"
+                    colorScheme={isDark ? 'dark' : 'light'}
+                    style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, borderRadius: Radius.cardLg, borderCurve: 'continuous' }}
+                  />
+                )}
+                <View style={{
+                  paddingHorizontal: 12, paddingTop: 8, paddingBottom: 4, gap: 6,
+                  backgroundColor: glassHeader ? 'transparent' : alpha(C.bg, isDark ? 0.86 : 0.78),
+                }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          <View style={{ flex: 1 }}>
             {/* Quien paga la Aventura completa lo ve junto al título: es el
                 beneficio principal de PRO y aquí es donde se disfruta. */}
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <Text style={{ color: C.text, ...Type.screenTitle }}>{t('adventure.title')}</Text>
               {access.isPro && <ProBadge />}
             </View>
-            <Text style={{ color: C.textMuted, ...Type.secondary }}>
-              {t('adventure.progressSummaryStars', { completed, total: ADVENTURE_MAX_LEVELS, stars: totalStars, maxStars: ADVENTURE_MAX_LEVELS * 3 })}
-            </Text>
           </View>
           <Pressable
             accessibilityRole="button"
@@ -267,6 +295,10 @@ export default function AdventureScreen() {
           )}
         </View>
 
+        <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.9} style={{ color: C.textMuted, ...Type.secondary }}>
+          {t('adventure.progressSummaryStars', { completed, total: ADVENTURE_MAX_LEVELS, stars: totalStars, maxStars: ADVENTURE_MAX_LEVELS * 3 })}
+        </Text>
+
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={t('adventure.openChapterPicker')}
@@ -288,14 +320,14 @@ export default function AdventureScreen() {
               borderCurve: 'continuous',
               borderWidth: 1.5,
               borderColor: alpha(region.accent, isDark ? 0.56 : 0.36),
-              padding: 14,
+              padding: 11,
               flexDirection: 'row',
               alignItems: 'center',
-              gap: 12,
+              gap: 10,
               ...cardShadow(isDark),
             }}
           >
-            <RelicBadge relic={chapterRelic} size={48} />
+            <RelicBadge relic={chapterRelic} size={40} />
             <View style={{ flex: 1, gap: 2 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                 <Text style={{ color: readableOn(region.accent, isDark), ...Type.sectionLabel }}>
@@ -307,9 +339,6 @@ export default function AdventureScreen() {
               <Text style={{ color: C.text, ...Type.cardTitle }}>{regionTitle}</Text>
               <Text style={{ color: C.textMuted, ...Type.small }}>
                 {t('adventure.levelRange', { start: region.startLevel, end: region.endLevel })} · {regionStars}/{regionMaxStars} ⭐
-              </Text>
-              <Text numberOfLines={3} style={{ color: C.textFaint, ...Type.small, lineHeight: 18, marginTop: 4 }}>
-                {t(`adventure.lore.${region.theme}.intro`)}
               </Text>
             </View>
             <View style={{ alignItems: 'center', gap: 2 }}>
@@ -346,7 +375,7 @@ export default function AdventureScreen() {
             disabled={regionNumber === 1}
             hitSlop={8}
             onPress={() => goToRegion(regionNumber - 1)}
-            style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center', opacity: regionNumber === 1 ? 0.35 : 1 }}
+            style={{ minWidth: 44, minHeight: 40, alignItems: 'center', justifyContent: 'center', opacity: regionNumber === 1 ? 0.35 : 1 }}
           >
             <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>‹</Text>
           </Pressable>
@@ -355,13 +384,13 @@ export default function AdventureScreen() {
             accessibilityLabel={t('adventure.openChapterPicker')}
             onPress={openChapterPicker}
             style={({ pressed }) => ({
-              minWidth: 96,
-              minHeight: 44,
+              minWidth: 88,
+              minHeight: 38,
               backgroundColor: C.surface,
               borderRadius: Radius.pill,
               borderWidth: 1,
               borderColor: C.border,
-              paddingHorizontal: 16,
+              paddingHorizontal: 14,
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center',
@@ -390,15 +419,18 @@ export default function AdventureScreen() {
             disabled={regionNumber === maxRegion}
             hitSlop={8}
             onPress={() => goToRegion(regionNumber + 1)}
-            style={{ minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center', opacity: regionNumber === maxRegion ? 0.35 : 1 }}
+            style={{ minWidth: 44, minHeight: 40, alignItems: 'center', justifyContent: 'center', opacity: regionNumber === maxRegion ? 0.35 : 1 }}
           >
             <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 22 }}>›</Text>
           </Pressable>
         </View>
+                </View>
+              </View>
+            </View>
           </View>
 
           {chapterLocked ? (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 32 }}>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: headerHeight, paddingBottom: 32 }}>
               <ProGate
                 unlocked={false}
                 title={t('adventure.locked.title', { number: region.number })}
@@ -414,7 +446,7 @@ export default function AdventureScreen() {
               ref={scrollRef}
               contentInsetAdjustmentBehavior="automatic"
               showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ alignItems: 'center', paddingBottom: 32 }}
+              contentContainerStyle={{ alignItems: 'center', paddingTop: headerHeight, paddingBottom: 32 }}
             >
               <AdventureMap
                 width={mapWidth}

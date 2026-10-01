@@ -42,6 +42,7 @@ export function getAdsDiagnostics(): AdsDiagnostics {
     mode: 'off',
     initialized: false,
     requestsEnabled: false,
+    proRewardedEnabled: false,
     testMode: false,
     ageBracket: 'unknown',
     isPremium: false,

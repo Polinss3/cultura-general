@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { Animated, Dimensions, StyleSheet, View } from 'react-native';
+import { Animated, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { MAX_CONTENT_WIDTH } from '@/constants/layout';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
-const { width: W, height: H } = Dimensions.get('window');
 
 // Colores de las partículas: los acentos de la marca, válidos en claro y
 // oscuro (van sobre el contenido, no sobre el fondo).
@@ -19,7 +19,9 @@ interface Particle {
   startX: number;
 }
 
-function makeParticle(): Particle {
+// `width` es el de la columna de contenido, no el de la ventana: en iPad las
+// partículas deben caer sobre lo que se ve, no en los márgenes.
+function makeParticle(width: number): Particle {
   return {
     x: new Animated.Value(0),
     y: new Animated.Value(0),
@@ -27,7 +29,7 @@ function makeParticle(): Particle {
     scale: new Animated.Value(1),
     color: COLORS[Math.floor(Math.random() * COLORS.length)],
     size: 6 + Math.random() * 6,
-    startX: Math.random() * W,
+    startX: Math.random() * width,
   };
 }
 
@@ -37,8 +39,10 @@ interface ConfettiProps {
 
 export function Confetti({ active }: ConfettiProps) {
   const reducedMotion = useReducedMotion();
+  const { width: windowWidth, height: H } = useWindowDimensions();
+  const W = Math.min(windowWidth, MAX_CONTENT_WIDTH);
   const particles = useRef<Particle[]>(
-    Array.from({ length: COUNT }, makeParticle),
+    Array.from({ length: COUNT }, () => makeParticle(W)),
   ).current;
 
   useEffect(() => {

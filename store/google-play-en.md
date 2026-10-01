@@ -1,7 +1,6 @@
 # Google Play — English (United States)
 
-> Draft listing for **2.2.0**, with the freemium model and CG PRO.
-> No advertising-related benefit is communicated.
+> Draft listing for **2.3.0**, with the freemium model and CG PRO.
 
 ## App name (max 30)
 CG Trivia: General Knowledge

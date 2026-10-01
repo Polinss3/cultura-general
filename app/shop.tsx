@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View, Text, Pressable, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
+import { GlassView } from 'expo-glass-effect';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useGuest } from '@/hooks/useGuest';
@@ -11,6 +13,7 @@ import { useToast } from '@/context/ToastContext';
 import { CoinPill } from '@/components/CoinPill';
 import { ProBadge } from '@/components/ProBadge';
 import { useIsPro } from '@/hooks/usePremium';
+import { useAppleLiquidGlass } from '@/hooks/use-apple-liquid-glass';
 import { PRO_ACCENT } from '@/lib/pro';
 import {
   fetchShopItems, fetchInventory, buyItem, equipItem, ShopItem,
@@ -44,12 +47,14 @@ export default function ShopScreen() {
   const offline = useOffline();
   const { showToast } = useToast();
   const isPro = useIsPro();
+  const glassTabs = useAppleLiquidGlass();
 
   const [items, setItems] = useState<ShopItem[]>([]);
   const [inventory, setInventory] = useState<Record<string, number>>({});
   const [equipped, setEquipped] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState<string | null>(null);
+  const [category, setCategory] = useState<'powerups' | 'cosmetics'>('powerups');
 
   const available = !!user && !guest && !offline;
 
@@ -153,7 +158,57 @@ export default function ShopScreen() {
           <ActivityIndicator color={C.brand} size="large" />
         </View>
       ) : (
-        <ScrollView contentContainerStyle={{ padding: 20, paddingTop: 4, paddingBottom: 32 }} showsVerticalScrollIndicator={false}>
+        <>
+        <View style={{
+          flexDirection: 'row', gap: 6, marginHorizontal: 20, marginTop: 8, marginBottom: 8,
+          padding: 5, borderRadius: Radius.row, position: 'relative',
+          backgroundColor: glassTabs ? 'transparent' : alpha(C.text, isDark ? 0.16 : 0.075),
+          borderWidth: 1, borderColor: C.borderStrong,
+        }}>
+          {glassTabs && (
+            <GlassView
+              pointerEvents="none"
+              glassEffectStyle="regular"
+              tintColor={alpha(C.brand, 0.1)}
+              colorScheme={isDark ? 'dark' : 'light'}
+              style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, borderRadius: Radius.row }}
+            />
+          )}
+          <View pointerEvents="none" style={{
+            position: 'absolute', left: '50%', top: 13, bottom: 13, width: 1,
+            backgroundColor: alpha(C.text, isDark ? 0.23 : 0.14),
+          }} />
+          {(['powerups', 'cosmetics'] as const).map(tab => (
+            <Pressable
+              key={tab}
+              onPress={() => setCategory(tab)}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: category === tab }}
+              style={{
+                flex: 1, minHeight: 48, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 7,
+                borderRadius: 12,
+                backgroundColor: category === tab
+                  ? (glassTabs ? alpha(C.surface, 0.8) : C.surface)
+                  : (glassTabs ? alpha(C.brand, 0.035) : 'transparent'),
+                borderWidth: 1, borderColor: category === tab ? C.borderWarm : 'transparent',
+                ...(category === tab ? cardShadow(isDark) : {}),
+              }}
+            >
+              <Text style={{ fontSize: 18 }}>{tab === 'powerups' ? '⚡' : '✨'}</Text>
+              <Text style={{ color: category === tab ? C.text : C.textMuted, fontFamily: category === tab ? Font.black : Font.bold, fontSize: 15 }}>
+                {t(`shop.${tab}`)}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+        <ScrollView key={category} contentContainerStyle={{ padding: 20, paddingTop: 12, paddingBottom: 48 }} showsVerticalScrollIndicator={false}>
+
+          <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 25, marginBottom: 4 }}>
+            {category === 'powerups' ? `⚡ ${t('shop.powerups')}` : `✨ ${t('shop.cosmetics')}`}
+          </Text>
+          <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 14, lineHeight: 21, marginBottom: 14 }}>
+            {t(category === 'powerups' ? 'shop.powerupsDescription' : 'shop.cosmeticsDescription')}
+          </Text>
 
           {/* Anuncio recompensado */}
           {isRewardedReady() && (
@@ -175,6 +230,8 @@ export default function ShopScreen() {
             </Pressable>
           )}
 
+          {category === 'powerups' && (
+            <>
           {/* Inventario: tus objetos */}
           <SectionTitle>{t('shop.inventoryTitle')}</SectionTitle>
           {ownedPowerups.length === 0 ? (
@@ -196,8 +253,8 @@ export default function ShopScreen() {
           )}
 
           {/* Power-ups (2 columnas) */}
-          <SectionTitle>{t('shop.powerups')}</SectionTitle>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 12 }}>
+          <SectionTitle>{t('shop.powerupsAvailable')}</SectionTitle>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 16 }}>
             {powerups.map(item => (
               <ShopCard
                 key={item.itemId}
@@ -211,15 +268,17 @@ export default function ShopScreen() {
               />
             ))}
           </View>
+            </>
+          )}
 
           {/* Cosméticos, separados por subsecciones (2 columnas) */}
-          {COSMETIC_SECTIONS.map(({ slot, title }) => {
+          {category === 'cosmetics' && COSMETIC_SECTIONS.map(({ slot, title }) => {
             const list = cosmetics.filter(c => c.slot === slot);
             if (list.length === 0) return null;
             return (
               <View key={slot}>
                 <SectionTitle>{t(title)}</SectionTitle>
-                <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 12 }}>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 18 }}>
                   {list.map(item => (
                     <ShopCard
                       key={item.itemId}
@@ -240,6 +299,7 @@ export default function ShopScreen() {
             );
           })}
         </ScrollView>
+        </>
       )}
     </SafeAreaView>
   );
@@ -267,7 +327,7 @@ function ShopCard({
   // acceso, no el precio. Para eso está el estipendio mensual.
   const proLocked = item.proOnly && !isPro && owned === 0;
   return (
-    <View style={{ width: '48%', backgroundColor: C.surface, borderRadius: 18, padding: 12, marginBottom: 10, borderWidth: 1, borderColor: equipped ? C.correct : 'transparent' }}>
+    <View style={{ width: '48%', backgroundColor: C.surface, borderRadius: 18, padding: 12, marginBottom: 14, borderWidth: 1, borderColor: equipped ? C.correct : C.border }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
         <View style={{ width: 40, height: 40, borderRadius: 11, backgroundColor: C.surfaceSunk, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 20 }}>{item.icon}</Text>
@@ -280,8 +340,8 @@ function ShopCard({
         )}
       </View>
 
-      <Text numberOfLines={1} style={{ color: C.text, fontFamily: Font.bold, fontSize: 13 }}>{item.name}</Text>
-      <Text numberOfLines={2} style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2, marginBottom: 10, minHeight: 28 }}>
+      <Text numberOfLines={2} style={{ color: C.text, fontFamily: Font.bold, fontSize: 15, minHeight: 37 }}>{item.name}</Text>
+      <Text numberOfLines={2} style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 13, marginTop: 3, marginBottom: 14, minHeight: 36 }}>
         {item.description}
       </Text>
 
@@ -310,16 +370,25 @@ function ShopCard({
           </View>
         </Pressable>
       ) : (
-        <Pressable onPress={onBuy} disabled={busy || !affordable}>
-          <View style={{
-            borderRadius: 10, paddingVertical: 8, alignItems: 'center',
-            backgroundColor: affordable ? C.streak : C.surfaceSunk,
-            opacity: affordable ? 1 : 0.6,
-          }}>
-            <Text style={{ color: affordable ? C.text : C.textMuted, fontFamily: Font.bold, fontSize: 12 }}>
+        <Pressable onPress={onBuy} disabled={busy || !affordable} accessibilityRole="button" accessibilityLabel={`${t('shop.buy')} ${item.name}, ${item.price} ${t('shop.coins')}`}>
+          <LinearGradient
+            colors={affordable ? ['#FFE2A5', '#F7B650', '#E7932D'] : [C.surfaceSunk, C.surfaceSunk, C.surfaceSunk]}
+            locations={[0, 0.5, 1]}
+            start={{ x: 0, y: 0 }} end={{ x: 0.8, y: 1 }}
+            style={{
+              borderRadius: 12, minHeight: 54, alignItems: 'center', justifyContent: 'center',
+              borderWidth: 1, borderColor: affordable ? '#D88E2F' : C.border,
+              shadowColor: '#A9621C', shadowOpacity: affordable && !isDark ? 0.16 : 0,
+              shadowRadius: 5, shadowOffset: { width: 0, height: 3 },
+            }}
+          >
+            <Text style={{ color: affordable ? '#493019' : C.textMuted, fontFamily: Font.bold, fontSize: 11, lineHeight: 15, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+              {t('shop.buy')}
+            </Text>
+            <Text style={{ color: affordable ? '#352416' : C.textMuted, fontFamily: Font.black, fontSize: 16, lineHeight: 20 }}>
               {busy ? '…' : `${item.price} 🪙`}
             </Text>
-          </View>
+          </LinearGradient>
         </Pressable>
       )}
     </View>
@@ -327,9 +396,9 @@ function ShopCard({
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
-  const { C, isDark } = useTheme();
+  const { C } = useTheme();
   return (
-    <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra, letterSpacing: 1.3, textTransform: 'uppercase', marginBottom: 12 }}>
+    <Text style={{ color: C.text, fontSize: 18, fontFamily: Font.black, letterSpacing: 0.2, marginTop: 28, marginBottom: 16 }}>
       {children}
     </Text>
   );

@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   View, Text, ScrollView, Pressable, TextInput,
-  ActivityIndicator, Alert, Switch, RefreshControl,
+  ActivityIndicator, Alert, Switch, RefreshControl, Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import Constants from 'expo-constants';
-import { useRouter, Link } from 'expo-router';
+import { useRouter, Link, useFocusEffect } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
 import { useIsPro } from '@/hooks/usePremium';
@@ -36,7 +36,10 @@ import {
 import { setAppLanguage, getLanguagePreference, LangPreference } from '@/lib/i18n';
 import { useThemePreference, setThemePreference, type ThemePreference } from '@/lib/appearance';
 import { rescheduleDailyReminderIfActive } from '@/lib/notifications';
-import { CAT_ICONS } from '@/constants/questions';
+import { syncPushRegistration, unregisterPush } from '@/lib/push';
+import { CAT_ICONS, CAT_COLORS, ALL_CATEGORIES } from '@/constants/questions';
+import { getInterests, setInterests } from '@/lib/onboarding';
+import { AvatarFrame } from '@/components/AvatarFrame';
 import { masteryFor } from '@/lib/mastery';
 import {
   computeTitles, findTitle, getEquippedTitle,
@@ -47,6 +50,7 @@ import { UserName } from '@/components/UserName';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { feedback, isHapticsEnabled, setHapticsEnabled } from '@/lib/feedback';
 import { PRO_ACCENT } from '@/lib/pro';
+import { APP_ICONS, getCurrentAppIcon } from '@/lib/appIcon';
 import { Category } from '@/types';
 import { alpha, readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
@@ -97,8 +101,29 @@ export default function ProfileScreen() {
 
   const [langPref, setLangPref] = useState<LangPreference>('auto');
   const themePref = useThemePreference();
+  // Se relee al volver de la pantalla de iconos, que es donde cambia.
+  const [appIconId, setAppIconId] = useState(getCurrentAppIcon);
+  useFocusEffect(useCallback(() => { setAppIconId(getCurrentAppIcon()); }, []));
+  const currentIconPreview = (APP_ICONS.find(i => i.id === appIconId) ?? APP_ICONS[0]).preview;
 
   const [hapticsOn, setHapticsOn] = useState(isHapticsEnabled());
+
+  // Temas favoritos (del onboarding), editables aquí. Se guardan al tocar.
+  const [interests, setInterestsSel] = useState<Set<Category>>(new Set());
+  useEffect(() => {
+    let cancelled = false;
+    getInterests().then(saved => { if (!cancelled) setInterestsSel(new Set(saved)); });
+    return () => { cancelled = true; };
+  }, []);
+  const toggleInterest = useCallback((c: Category) => {
+    feedback.select();
+    setInterestsSel(prev => {
+      const next = new Set(prev);
+      if (next.has(c)) next.delete(c); else next.add(c);
+      void setInterests(Array.from(next));
+      return next;
+    });
+  }, []);
 
   const [equippedTitle, setEquippedTitle] = useState<string | null>(null);
 
@@ -186,13 +211,16 @@ export default function ProfileScreen() {
         Alert.alert(t('profile.dialogs.notifPermTitle'), t('profile.dialogs.notifPermBody'));
         return;
       }
+      // Primero el push (si queda activo, el plan local no se monta).
+      await syncPushRegistration(user?.id);
       await scheduleDailyReminder({ streak: profile?.streak ?? 0 });
       setNotificationsOn(true);
     } else {
+      await unregisterPush();
       await cancelDailyReminder();
       setNotificationsOn(false);
     }
-  }, [profile?.streak, t]);
+  }, [profile?.streak, user?.id, t]);
 
   const handleSaveUsername = useCallback(async () => {
     if (!user || !newUsername.trim()) return;
@@ -210,7 +238,7 @@ export default function ProfileScreen() {
   const handleSignOut = () => {
     Alert.alert(t('profile.dialogs.signOutTitle'), t('profile.dialogs.signOutBody'), [
       { text: t('common.cancel'), style: 'cancel' },
-      { text: t('profile.dialogs.signOutConfirm'), style: 'destructive', onPress: () => supabase.auth.signOut() },
+      { text: t('profile.dialogs.signOutConfirm'), style: 'destructive', onPress: async () => { await unregisterPush(); await supabase.auth.signOut(); } },
     ]);
   };
 
@@ -300,9 +328,7 @@ export default function ProfileScreen() {
             borderWidth: 1.5, borderColor: C.borderWarm,
           }}
         >
-          <View style={cosmetics.frameColor
-            ? { borderWidth: 3, borderColor: cosmetics.frameColor, borderRadius: 31, padding: 3, marginBottom: 12 }
-            : { marginBottom: 12 }}>
+          <AvatarFrame cosmetics={cosmetics} radius={28} width={3} style={{ marginBottom: 12 }}>
             <LinearGradient
               colors={[C.streak, C.brand]}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
@@ -310,7 +336,7 @@ export default function ProfileScreen() {
             >
               <Text style={{ color: C.onBrand, fontSize: 32, fontFamily: Font.black }}>{initial}</Text>
             </LinearGradient>
-          </View>
+          </AvatarFrame>
 
           {editingUsername ? (
             <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
@@ -650,6 +676,41 @@ export default function ProfileScreen() {
             />
           </View>
 
+          {/* Temas favoritos */}
+          <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border, marginBottom: 10 }}>
+            <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
+              {t('profile.settings.interestsTitle')}
+            </Text>
+            <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2, marginBottom: 12 }}>
+              {t('profile.settings.interestsSub')}
+            </Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+              {ALL_CATEGORIES.map(c => {
+                const active = interests.has(c);
+                const col = CAT_COLORS[c];
+                return (
+                  <Pressable
+                    key={c}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: active }}
+                    onPress={() => toggleInterest(c)}
+                    style={{
+                      flexDirection: 'row', alignItems: 'center', gap: 6,
+                      paddingVertical: 7, paddingHorizontal: 11, borderRadius: Radius.pill,
+                      backgroundColor: active ? col.bg : C.surfaceSunk,
+                      borderWidth: 1.5, borderColor: active ? col.accent : C.border,
+                    }}
+                  >
+                    <Text style={{ fontSize: 15 }}>{CAT_ICONS[c]}</Text>
+                    <Text style={{ color: active ? col.text : C.textBody, fontSize: 13, fontFamily: active ? Font.bold : Font.semi }}>
+                      {t(`categories.${c}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+
           {/* Apariencia */}
           <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border, marginBottom: 10 }}>
             <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
@@ -694,6 +755,30 @@ export default function ProfileScreen() {
               })}
             </View>
           </View>
+
+          {/* Icono de la app (cosmético PRO) */}
+          <Pressable
+            onPress={() => { feedback.tap(); router.push('/app-icon' as any); }}
+            accessibilityRole="button"
+            style={{
+              backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border,
+              marginBottom: 10, flexDirection: 'row', alignItems: 'center', gap: 12,
+            }}
+          >
+            <Image source={currentIconPreview} style={{ width: 40, height: 40, borderRadius: 9 }} />
+            <View style={{ flex: 1 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <Text style={{ color: C.text, fontFamily: Font.semi, fontSize: 15 }}>
+                  {t('appIcon.title')}
+                </Text>
+                <ProBadge />
+              </View>
+              <Text style={{ color: C.textMuted, fontFamily: Font.regular, fontSize: 12, marginTop: 2 }}>
+                {t('appIcon.rowSub')}
+              </Text>
+            </View>
+            <Text style={{ color: C.textMuted, fontSize: 18 }}>›</Text>
+          </Pressable>
 
           {/* Idioma */}
           <View style={{ backgroundColor: C.surface, borderRadius: 18, padding: 16, borderWidth: 1, borderColor: C.border, marginBottom: 10 }}>

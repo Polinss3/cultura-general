@@ -13,6 +13,9 @@
 //     tienda no acredita la edad de nadie.
 //  2. **PRO no pide anuncios.** El estado de suscripción se sincroniza con el
 //     contexto del SDK, que además invalida al instante lo que hubiera cargado.
+//     Desde el SDK 1.1.4 un PRO adulto *podría* pedir un recompensado
+//     voluntario; aquí sigue cerrado salvo que se active
+//     `EXPO_PUBLIC_PRO_REWARDED_ADS` (apagado en todas las builds).
 //  3. **Intersticiales solo en pausas naturales.** La política de
 //     `utils/adPolicy` es anterior a este proveedor y se conserva entera: es
 //     nuestra, no suya.
@@ -24,7 +27,7 @@
 
 import { AppState, Platform } from 'react-native';
 import { createNativeAdsClient } from '@inhouse/mobile-sdk/react-native';
-import type { AdPresentation, AdsClient } from '@inhouse/mobile-sdk';
+import type { AdFormat, AdPresentation, AdsClient } from '@inhouse/mobile-sdk';
 import type { AdsConsentDecision } from '@/stores/adsConsentStore';
 import type {
   AdPlacement,
@@ -216,9 +219,28 @@ function ensureClient(): AdsClient | null {
   return client;
 }
 
-/** Único punto que decide si sale una petición a la red. */
-function requestsEnabled() {
-  return adsConfigured() && ageBracket === 'adult' && !isPremium() && Boolean(ensureClient());
+/**
+ * PRO es «sin anuncios»: ni banner ni intersticial, nunca. El recompensado lo
+ * pide el propio usuario y el SDK 1.1.4 ya lo admite con `isPremium: true`,
+ * pero ofrecérselo a PRO es una decisión de producto que sigue sin tomarse:
+ * queda detrás de este interruptor, apagado en `eas.json`.
+ */
+function proRewardedEnabled() {
+  return parseBoolean(process.env.EXPO_PUBLIC_PRO_REWARDED_ADS);
+}
+
+function formatAllowedForPlan(format: AdFormat) {
+  if (!isPremium()) return true;
+  return format === 'rewarded' && proRewardedEnabled();
+}
+
+/**
+ * Único punto que decide si sale una petición a la red. Nuestra política va
+ * primero; `canRequest` es la del SDK y solo puede restringir más.
+ */
+function requestsEnabled(format: AdFormat) {
+  if (!adsConfigured() || ageBracket !== 'adult' || !formatAllowedForPlan(format)) return false;
+  return ensureClient()?.canRequest(format) ?? false;
 }
 
 // ─── Contexto: PRO e idioma ──────────────────────────────────────────────────
@@ -345,7 +367,7 @@ export async function showResultInterstitial(
   const placementId = interstitialPlacementId(placement);
   if (
     !allowShow || !placementId || fullscreen || AppState.currentState !== 'active' ||
-    !requestsEnabled() || !canShowAutomaticInterstitial(policyState)
+    !requestsEnabled('interstitial') || !canShowAutomaticInterstitial(policyState)
   ) return false;
 
   releaseBanners();
@@ -404,7 +426,7 @@ async function requestAd(placementId: string, format: 'interstitial' | 'rewarded
  * sentido ofrecer el botón?", no a "¿hay un anuncio esperando?".
  */
 export function isRewardedReady() {
-  return requestsEnabled() && rewardedEnabled() && !fullscreen;
+  return requestsEnabled('rewarded') && rewardedEnabled() && !fullscreen;
 }
 
 function rewardedEnabled() {
@@ -425,7 +447,7 @@ export async function showRewardedAd(
   applyReward: ApplyReward,
 ): Promise<RewardedOutcome> {
   const placementId = rewardedPlacementId(placement);
-  if (!placementId || fullscreen || !requestsEnabled() || !rewardedEnabled()) return 'unavailable';
+  if (!placementId || fullscreen || !requestsEnabled('rewarded') || !rewardedEnabled()) return 'unavailable';
 
   releaseBanners();
   const presentation = await requestAd(placementId, 'rewarded');
@@ -456,7 +478,7 @@ export async function showRewardedAd(
 
 export function isBannerEnabled() {
   return (
-    requestsEnabled() &&
+    requestsEnabled('banner') &&
     parseBoolean(process.env.EXPO_PUBLIC_BANNER_ADS) &&
     Boolean(getBannerPlacementId())
   );
@@ -478,7 +500,8 @@ export function getAdsDiagnostics(): AdsDiagnostics {
   return {
     mode: currentMode(),
     initialized: Boolean(client),
-    requestsEnabled: requestsEnabled(),
+    requestsEnabled: requestsEnabled('interstitial'),
+    proRewardedEnabled: isPremium() && requestsEnabled('rewarded'),
     testMode: testMode(),
     ageBracket,
     isPremium: isPremium(),

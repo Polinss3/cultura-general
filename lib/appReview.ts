@@ -139,3 +139,93 @@ export async function planReviewAfterDailyCompletion(
     return null;
   }
 }
+
+// ─── Otros momentos: Aventura y Retos ────────────────────────────────────────
+//
+// La pregunta del día es el mejor momento, pero mucha gente vive en Aventura o
+// en los Retos. Cada hito pasa por el mismo `reviewGate`, así que entre los
+// tres nunca se piden más de lo que iOS permite; lo único que cambia es la
+// cadencia local de cada uno (cuántos hitos "buenos" seguidos hacen falta).
+
+export type ReviewMilestone = 'adventure' | 'challenge';
+
+const MILESTONE_KEY_PREFIX = 'store_review_milestone_v1_';
+
+// Hitos que cualifican (3 estrellas, guardián vencido, ronda casi perfecta o
+// récord) antes de preguntar. Aleatorio dentro del rango para que no se sienta
+// mecánico.
+const MILESTONE_CADENCE: Record<ReviewMilestone, [number, number]> = {
+  adventure: [2, 3],
+  challenge: [3, 4],
+};
+
+interface MilestoneState {
+  count: number;
+  nextAfter: number;
+}
+
+function randomBetween(min: number, max: number): number {
+  return min + Math.floor(Math.random() * (max - min + 1));
+}
+
+function parseMilestoneState(raw: string | null, kind: ReviewMilestone): MilestoneState {
+  const [min, max] = MILESTONE_CADENCE[kind];
+  const fallback = { count: 0, nextAfter: randomBetween(min, max) };
+  if (!raw) return fallback;
+  try {
+    const parsed = JSON.parse(raw) as Partial<MilestoneState>;
+    const count = Number.isInteger(parsed.count) && (parsed.count ?? 0) >= 0 ? parsed.count as number : 0;
+    const nextAfter = Number.isInteger(parsed.nextAfter) && (parsed.nextAfter ?? 0) >= min
+      ? parsed.nextAfter as number
+      : fallback.nextAfter;
+    return { count, nextAfter };
+  } catch {
+    return fallback;
+  }
+}
+
+interface MilestoneSignals {
+  /** El hito ha sido de los buenos (3 estrellas, guardián, ronda ≥ 80 %, récord). */
+  qualifies: boolean;
+  /** Algo va a tapar la pantalla (subida de nivel, modal de capítulo). */
+  blocked?: boolean;
+}
+
+/**
+ * Cuenta un hito bueno de Aventura o Retos y devuelve el disparador si toca
+ * pedir valoración (o null). Mismo contrato que
+ * `planReviewAfterDailyCompletion`: se decide antes de lanzar un intersticial
+ * y se dispara con la pantalla de resultado quieta (REVIEW_PROMPT_DELAY_MS).
+ * El contador es por dispositivo, como el portero.
+ */
+export async function planReviewAfterMilestone(
+  kind: ReviewMilestone,
+  signals: MilestoneSignals,
+): Promise<(() => Promise<void>) | null> {
+  if (!signals.qualifies) return null;
+  const storageKey = MILESTONE_KEY_PREFIX + kind;
+
+  try {
+    const state = parseMilestoneState(await AsyncStorage.getItem(storageKey), kind);
+    const counted: MilestoneState = { ...state, count: state.count + 1 };
+    await AsyncStorage.setItem(storageKey, JSON.stringify(counted));
+
+    if (counted.count < counted.nextAfter || signals.blocked) return null;
+    if (!(await isReviewGateOpen())) return null;
+
+    return async () => {
+      try {
+        if (!(await requestReviewIfAllowed())) return;
+        const [min, max] = MILESTONE_CADENCE[kind];
+        await AsyncStorage.setItem(storageKey, JSON.stringify({
+          count: 0,
+          nextAfter: randomBetween(min, max),
+        } satisfies MilestoneState));
+      } catch {
+        // Best-effort: nunca interrumpe el juego.
+      }
+    };
+  } catch {
+    return null;
+  }
+}

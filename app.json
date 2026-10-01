@@ -2,7 +2,7 @@
   "expo": {
     "name": "CG Trivia",
     "slug": "cultura-general",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "culturalgeneral",
@@ -14,21 +14,126 @@
       "en": "./locales/native/en.json"
     },
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "94",
+      "buildNumber": "113",
       "usesAppleSignIn": true,
+      "privacyManifests": {
+        "NSPrivacyTracking": false,
+        "NSPrivacyCollectedDataTypes": [
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeEmailAddress",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeGameplayContent",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeUserID",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality",
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeDeviceID",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePurchaseHistory",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeProductInteraction",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality",
+              "NSPrivacyCollectedDataTypePurposeAnalytics"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeAdvertisingData",
+            "NSPrivacyCollectedDataTypeLinked": false,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCoarseLocation",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCrashData",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePerformanceData",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          },
+          {
+            "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeOtherDiagnosticData",
+            "NSPrivacyCollectedDataTypeLinked": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
+            "NSPrivacyCollectedDataTypePurposes": [
+              "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+            ]
+          }
+        ]
+      },
       "infoPlist": {
         "NSCameraUsageDescription": "The app does not use the camera.",
         "NSUserNotificationsUsageDescription": "Get a daily reminder to answer the question of the day and keep your streak.",
         "ITSAppUsesNonExemptEncryption": false,
-        "CFBundleAllowMixedLocalizations": true
-      }
+        "CFBundleAllowMixedLocalizations": true,
+        "UISupportedInterfaceOrientations~ipad": [
+          "UIInterfaceOrientationPortrait",
+          "UIInterfaceOrientationPortraitUpsideDown",
+          "UIInterfaceOrientationLandscapeLeft",
+          "UIInterfaceOrientationLandscapeRight"
+        ]
+      },
+      "entitlements": {
+        "aps-environment": "production"
+      },
+      "requireFullScreen": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#0a0a0a"
+        "backgroundColor": "#120D0A"
       },
       "package": "com.polinss3.culturalgeneral",
       "versionCode": 6,
@@ -50,11 +155,14 @@
         "expo-build-properties",
         {
           "ios": {
-            "buildReactNativeFromSource": true
+            "buildReactNativeFromSource": true,
+            "deploymentTarget": "15.1"
           }
         }
       ],
       "./plugins/withFmtConstevalFix",
+      "./plugins/withPodDeploymentTarget",
+      "./plugins/withRevenueCatXcode27Fix",
       [
         "expo-splash-screen",
         {
@@ -91,7 +199,95 @@
       ],
       "expo-apple-authentication",
       "expo-web-browser",
-      "expo-localization"
+      [
+        "expo-localization",
+        {
+          "allowDynamicLocaleChangesAndroid": true,
+          "supportedLocales": {
+            "ios": [
+              "es",
+              "en"
+            ]
+          }
+        }
+      ],
+      [
+        "expo-alternate-app-icons",
+        [
+          {
+            "name": "Oro",
+            "ios": "./assets/app-icons/oro.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/oro-fg.png",
+              "backgroundColor": "#0F0B06"
+            }
+          },
+          {
+            "name": "Crema",
+            "ios": "./assets/app-icons/crema.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/crema-fg.png",
+              "backgroundColor": "#F7F2EA"
+            }
+          },
+          {
+            "name": "Medianoche",
+            "ios": "./assets/app-icons/medianoche.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/medianoche-fg.png",
+              "backgroundColor": "#0F1A33"
+            }
+          },
+          {
+            "name": "Contrarreloj",
+            "ios": "./assets/app-icons/contrarreloj.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/contrarreloj-fg.png",
+              "backgroundColor": "#170F2A"
+            }
+          },
+          {
+            "name": "Pergamino",
+            "ios": "./assets/app-icons/pergamino.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/pergamino-fg.png",
+              "backgroundColor": "#E6D3A8"
+            }
+          },
+          {
+            "name": "Neon",
+            "ios": "./assets/app-icons/neon.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/neon-fg.png",
+              "backgroundColor": "#0B0812"
+            }
+          },
+          {
+            "name": "Acierto",
+            "ios": "./assets/app-icons/acierto.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/acierto-fg.png",
+              "backgroundColor": "#0A1F16"
+            }
+          },
+          {
+            "name": "Tinta",
+            "ios": "./assets/app-icons/tinta.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/tinta-fg.png",
+              "backgroundColor": "#FFFFFF"
+            }
+          },
+          {
+            "name": "Pixel",
+            "ios": "./assets/app-icons/pixel.png",
+            "android": {
+              "foregroundImage": "./assets/app-icons/pixel-fg.png",
+              "backgroundColor": "#1B1030"
+            }
+          }
+        ]
+      ]
     ],
     "experiments": {
       "typedRoutes": true
