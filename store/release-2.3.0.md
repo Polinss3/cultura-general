@@ -30,7 +30,7 @@ visual details and stability.
 
 ## App Review Information → Notes (English)
 
-VERSION 2.3.0 — replace BUILD NUMBER with the build selected for review.
+VERSION 2.3.0 (BUILD 113)
 
 WHAT CHANGED SINCE 2.2.0
 The daily question presents a preparation screen before showing the question
@@ -38,7 +38,9 @@ or its answers. Tap Continue to start; the response timer starts then. The
 shop separates power-ups and cosmetic items. Weekly leagues use groups of
 about 30. A lost daily streak can be recovered with coins for a limited
 period. We also added cosmetic styles, weighted favourite topics in Random
-and Time Attack, and improved the iPad interface.
+and Time Attack, and improved the iPad interface. CG PRO subscribers can
+choose an alternate app icon in Profile → Settings → App icon; without an
+active subscription the app keeps the default icon.
 
 HOW TO REVIEW
 An account is optional for Adventure, Time Attack, Climb Mode, Flags, Years
@@ -52,15 +54,13 @@ CG PRO remains optional. The monthly and annual subscriptions and lifetime
 purchase are unchanged from 2.2.0; TestFlight purchases use Apple's sandbox.
 The app does not track users across other companies' apps or websites, does
 not use IDFA, and does not request App Tracking Transparency permission. The
-Expo push token is used only to deliver enabled notifications; review the
-Device ID category in App Privacy before submitting this version. The in-app
+Expo push token is used only to deliver enabled notifications. The in-app
 account deletion path is Profile → Danger zone → Delete account.
 
 ## Antes de enviarla a revisión
 
-- Sustituir `BUILD NUMBER` por la compilación efectivamente probada.
-- Comprobar en TestFlight apertura, pregunta diaria, tienda, compra y restauración,
-  liga, iPad y notificaciones push en un dispositivo físico.
+- [x] Compilación probada y seleccionada: **113** (2026-10-01). Las notas ya la llevan.
+- [x] Probada en dispositivo por Pablo (2026-10-01), capturas rehechas.
 - Comprobar que App Privacy publicada no indica datos usados para seguimiento.
 - Confirmar qué funciones de notificación están activas en producción antes de
   mencionarlas en las notas públicas.
