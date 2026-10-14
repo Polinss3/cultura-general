@@ -1,0 +1,874 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Plan editorial; no es catálogo aprobado ni módulo de runtime.",
+  "baseCommit": "4cabf66be5062e1d0385237362584f7663d17e9c",
+  "cities": [
+    {
+      "id": "madrid",
+      "name": {
+        "es": "Madrid",
+        "en": "Madrid"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "batch": 1,
+      "status": "concept-needs-review",
+      "landmarks": [
+        "Oso y madroño",
+        "Puerta del Sol y Real Casa de Correos",
+        "Cuatro Torres",
+        "Estación de Atocha",
+        "Puerta de Alcalá"
+      ],
+      "conceptImage": "piloto/madrid-v1.png"
+    },
+    {
+      "id": "barcelona",
+      "name": {
+        "es": "Barcelona",
+        "en": "Barcelona"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Sagrada Familia",
+        "Park Güell",
+        "Casa Batlló",
+        "Torre Glòries",
+        "Arco de Triunfo"
+      ]
+    },
+    {
+      "id": "roma",
+      "name": {
+        "es": "Roma",
+        "en": "Rome"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Coliseo",
+        "Panteón",
+        "Fontana di Trevi",
+        "Foro Romano",
+        "Castel Sant'Angelo"
+      ]
+    },
+    {
+      "id": "paris",
+      "name": {
+        "es": "París",
+        "en": "Paris"
+      },
+      "continent": "europa",
+      "countryCode": "FR",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Torre Eiffel",
+        "Arco de Triunfo",
+        "Louvre y pirámide",
+        "Notre-Dame",
+        "Sacré-Cœur"
+      ]
+    },
+    {
+      "id": "londres",
+      "name": {
+        "es": "Londres",
+        "en": "London"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Big Ben y Palacio de Westminster",
+        "Tower Bridge",
+        "London Eye",
+        "Catedral de San Pablo",
+        "The Shard"
+      ]
+    },
+    {
+      "id": "berlin",
+      "name": {
+        "es": "Berlín",
+        "en": "Berlin"
+      },
+      "continent": "europa",
+      "countryCode": "DE",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Puerta de Brandeburgo",
+        "Reichstag",
+        "Fernsehturm",
+        "Catedral de Berlín",
+        "Isla de los Museos"
+      ]
+    },
+    {
+      "id": "lisboa",
+      "name": {
+        "es": "Lisboa",
+        "en": "Lisbon"
+      },
+      "continent": "europa",
+      "countryCode": "PT",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Torre de Belém",
+        "Monasterio de los Jerónimos",
+        "Puente 25 de Abril",
+        "Castillo de São Jorge",
+        "Tranvía y calle de Alfama"
+      ]
+    },
+    {
+      "id": "amsterdam",
+      "name": {
+        "es": "Ámsterdam",
+        "en": "Amsterdam"
+      },
+      "continent": "europa",
+      "countryCode": "NL",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Canales y casas estrechas",
+        "Rijksmuseum",
+        "Palacio Real",
+        "Westerkerk",
+        "Estación Central"
+      ]
+    },
+    {
+      "id": "viena",
+      "name": {
+        "es": "Viena",
+        "en": "Vienna"
+      },
+      "continent": "europa",
+      "countryCode": "AT",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Catedral de San Esteban",
+        "Schönbrunn",
+        "Hofburg",
+        "Belvedere",
+        "Noria del Prater"
+      ]
+    },
+    {
+      "id": "praga",
+      "name": {
+        "es": "Praga",
+        "en": "Prague"
+      },
+      "continent": "europa",
+      "countryCode": "CZ",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Puente de Carlos",
+        "Castillo de Praga",
+        "Catedral de San Vito",
+        "Reloj Astronómico",
+        "Iglesia de Týn"
+      ]
+    },
+    {
+      "id": "atenas",
+      "name": {
+        "es": "Atenas",
+        "en": "Athens"
+      },
+      "continent": "europa",
+      "countryCode": "GR",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Partenón",
+        "Erecteion",
+        "Templo de Zeus Olímpico",
+        "Estadio Panathinaikó",
+        "Plaza Sintagma"
+      ]
+    },
+    {
+      "id": "estambul",
+      "name": {
+        "es": "Estambul",
+        "en": "Istanbul"
+      },
+      "continent": "europa",
+      "countryCode": "TR",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Santa Sofía",
+        "Mezquita Azul",
+        "Torre de Gálata",
+        "Palacio Topkapi",
+        "Bósforo"
+      ]
+    },
+    {
+      "id": "budapest",
+      "name": {
+        "es": "Budapest",
+        "en": "Budapest"
+      },
+      "continent": "europa",
+      "countryCode": "HU",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Parlamento",
+        "Puente de las Cadenas",
+        "Castillo de Buda",
+        "Bastión de los Pescadores",
+        "Basílica de San Esteban"
+      ]
+    },
+    {
+      "id": "florencia",
+      "name": {
+        "es": "Florencia",
+        "en": "Florence"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Duomo y cúpula de Brunelleschi",
+        "Ponte Vecchio",
+        "Palazzo Vecchio",
+        "Campanile de Giotto",
+        "Santa Croce"
+      ]
+    },
+    {
+      "id": "venecia",
+      "name": {
+        "es": "Venecia",
+        "en": "Venice"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Basílica de San Marcos",
+        "Campanile",
+        "Palacio Ducal",
+        "Puente de Rialto",
+        "Gran Canal"
+      ]
+    },
+    {
+      "id": "zurich",
+      "name": {
+        "es": "Zúrich",
+        "en": "Zurich"
+      },
+      "continent": "europa",
+      "countryCode": "CH",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Grossmünster",
+        "Fraumünster",
+        "Iglesia de San Pedro",
+        "Río Limmat",
+        "Casco histórico y tranvía"
+      ]
+    },
+    {
+      "id": "estocolmo",
+      "name": {
+        "es": "Estocolmo",
+        "en": "Stockholm"
+      },
+      "continent": "europa",
+      "countryCode": "SE",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Ayuntamiento",
+        "Palacio Real",
+        "Gamla Stan",
+        "Riddarholmskyrkan",
+        "Museo Vasa"
+      ]
+    },
+    {
+      "id": "copenhague",
+      "name": {
+        "es": "Copenhague",
+        "en": "Copenhagen"
+      },
+      "continent": "europa",
+      "countryCode": "DK",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Nyhavn",
+        "La Sirenita",
+        "Rosenborg",
+        "Amalienborg",
+        "Iglesia de Nuestro Salvador"
+      ]
+    },
+    {
+      "id": "nueva-york",
+      "name": {
+        "es": "Nueva York",
+        "en": "New York"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 1,
+      "status": "concept-needs-review",
+      "landmarks": [
+        "Estatua de la Libertad",
+        "Central Park",
+        "Empire State Building",
+        "Chrysler Building",
+        "Puente de Brooklyn",
+        "Grand Central"
+      ],
+      "conceptImage": "piloto/nueva-york-v1.png"
+    },
+    {
+      "id": "san-francisco",
+      "name": {
+        "es": "San Francisco",
+        "en": "San Francisco"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Golden Gate",
+        "Transamerica Pyramid",
+        "Painted Ladies",
+        "Coit Tower",
+        "Tranvía y calles en pendiente"
+      ]
+    },
+    {
+      "id": "washington",
+      "name": {
+        "es": "Washington D. C.",
+        "en": "Washington, D.C."
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Capitolio",
+        "Casa Blanca",
+        "Monumento a Washington",
+        "Lincoln Memorial",
+        "National Mall"
+      ]
+    },
+    {
+      "id": "los-angeles",
+      "name": {
+        "es": "Los Ángeles",
+        "en": "Los Angeles"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Observatorio Griffith",
+        "Walt Disney Concert Hall",
+        "Ayuntamiento",
+        "Hollywood Bowl",
+        "Santa Monica Pier (revisar alcance metropolitano)"
+      ]
+    },
+    {
+      "id": "chicago",
+      "name": {
+        "es": "Chicago",
+        "en": "Chicago"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Willis Tower",
+        "Cloud Gate",
+        "John Hancock Center",
+        "Wrigley Building",
+        "Río Chicago y puentes"
+      ]
+    },
+    {
+      "id": "ciudad-de-mexico",
+      "name": {
+        "es": "Ciudad de México",
+        "en": "Mexico City"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Ángel de la Independencia",
+        "Palacio de Bellas Artes",
+        "Catedral Metropolitana",
+        "Zócalo",
+        "Monumento a la Revolución"
+      ]
+    },
+    {
+      "id": "rio-de-janeiro",
+      "name": {
+        "es": "Río de Janeiro",
+        "en": "Rio de Janeiro"
+      },
+      "continent": "america",
+      "countryCode": "BR",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Cristo Redentor",
+        "Pan de Azúcar",
+        "Copacabana y su paseo",
+        "Maracaná",
+        "Arcos de Lapa"
+      ]
+    },
+    {
+      "id": "buenos-aires",
+      "name": {
+        "es": "Buenos Aires",
+        "en": "Buenos Aires"
+      },
+      "continent": "america",
+      "countryCode": "AR",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Obelisco",
+        "Casa Rosada",
+        "Teatro Colón",
+        "Caminito",
+        "Puente de la Mujer"
+      ]
+    },
+    {
+      "id": "toronto",
+      "name": {
+        "es": "Toronto",
+        "en": "Toronto"
+      },
+      "continent": "america",
+      "countryCode": "CA",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "CN Tower",
+        "Rogers Centre",
+        "Nathan Phillips Square y Ayuntamiento",
+        "Royal Ontario Museum",
+        "Casa Loma"
+      ]
+    },
+    {
+      "id": "la-habana",
+      "name": {
+        "es": "La Habana",
+        "en": "Havana"
+      },
+      "continent": "america",
+      "countryCode": "CU",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Capitolio",
+        "Malecón",
+        "Castillo del Morro",
+        "Catedral",
+        "Gran Teatro"
+      ]
+    },
+    {
+      "id": "tokio",
+      "name": {
+        "es": "Tokio",
+        "en": "Tokyo"
+      },
+      "continent": "asia",
+      "countryCode": "JP",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Tokyo Tower",
+        "Tokyo Skytree",
+        "Sensō-ji y Kaminarimon",
+        "Cruce de Shibuya",
+        "Palacio Imperial"
+      ]
+    },
+    {
+      "id": "singapur",
+      "name": {
+        "es": "Singapur",
+        "en": "Singapore"
+      },
+      "continent": "asia",
+      "countryCode": "SG",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Marina Bay Sands",
+        "Supertrees de Gardens by the Bay",
+        "Merlion",
+        "ArtScience Museum",
+        "Esplanade"
+      ]
+    },
+    {
+      "id": "pekin",
+      "name": {
+        "es": "Pekín",
+        "en": "Beijing"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Ciudad Prohibida",
+        "Templo del Cielo",
+        "Puerta de Tiananmén",
+        "Estadio Nido de Pájaro",
+        "Palacio de Verano"
+      ]
+    },
+    {
+      "id": "shanghai",
+      "name": {
+        "es": "Shanghái",
+        "en": "Shanghai"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Torre Perla Oriental",
+        "Shanghai Tower",
+        "Shanghai World Financial Center",
+        "Bund",
+        "Jardín Yuyuan"
+      ]
+    },
+    {
+      "id": "hong-kong",
+      "name": {
+        "es": "Hong Kong",
+        "en": "Hong Kong"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Bank of China Tower",
+        "International Commerce Centre",
+        "Two International Finance Centre",
+        "Victoria Harbour",
+        "Star Ferry"
+      ]
+    },
+    {
+      "id": "seul",
+      "name": {
+        "es": "Seúl",
+        "en": "Seoul"
+      },
+      "continent": "asia",
+      "countryCode": "KR",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Gyeongbokgung",
+        "N Seoul Tower",
+        "Lotte World Tower",
+        "Dongdaemun Design Plaza",
+        "Bukchon Hanok Village"
+      ]
+    },
+    {
+      "id": "bangkok",
+      "name": {
+        "es": "Bangkok",
+        "en": "Bangkok"
+      },
+      "continent": "asia",
+      "countryCode": "TH",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Gran Palacio",
+        "Wat Arun",
+        "Wat Phra Kaew",
+        "Giant Swing",
+        "Río Chao Phraya"
+      ]
+    },
+    {
+      "id": "dubai",
+      "name": {
+        "es": "Dubái",
+        "en": "Dubai"
+      },
+      "continent": "asia",
+      "countryCode": "AE",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Burj Khalifa",
+        "Burj Al Arab",
+        "Dubai Frame",
+        "Museum of the Future",
+        "Palm Jumeirah"
+      ]
+    },
+    {
+      "id": "delhi",
+      "name": {
+        "es": "Delhi",
+        "en": "Delhi"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Fuerte Rojo",
+        "Qutub Minar",
+        "Templo del Loto",
+        "India Gate",
+        "Jama Masjid"
+      ]
+    },
+    {
+      "id": "mumbai",
+      "name": {
+        "es": "Bombay",
+        "en": "Mumbai"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Gateway of India",
+        "Chhatrapati Shivaji Terminus",
+        "Taj Mahal Palace",
+        "Bandra-Worli Sea Link",
+        "Marine Drive"
+      ]
+    },
+    {
+      "id": "el-cairo",
+      "name": {
+        "es": "El Cairo",
+        "en": "Cairo"
+      },
+      "continent": "africa",
+      "countryCode": "EG",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Ciudadela de Saladino",
+        "Mezquita de Muhammad Alí",
+        "Torre de El Cairo",
+        "Nilo",
+        "Museo Egipcio"
+      ]
+    },
+    {
+      "id": "marrakech",
+      "name": {
+        "es": "Marrakech",
+        "en": "Marrakesh"
+      },
+      "continent": "africa",
+      "countryCode": "MA",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Mezquita Kutubía",
+        "Jemaa el-Fna",
+        "Palacio de la Bahía",
+        "Murallas y Bab Agnaou",
+        "Jardín Majorelle"
+      ]
+    },
+    {
+      "id": "ciudad-del-cabo",
+      "name": {
+        "es": "Ciudad del Cabo",
+        "en": "Cape Town"
+      },
+      "continent": "africa",
+      "countryCode": "ZA",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Table Mountain",
+        "V&A Waterfront",
+        "Bo-Kaap",
+        "Cape Town Stadium",
+        "Castillo de Buena Esperanza"
+      ]
+    },
+    {
+      "id": "nairobi",
+      "name": {
+        "es": "Nairobi",
+        "en": "Nairobi"
+      },
+      "continent": "africa",
+      "countryCode": "KE",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Kenyatta International Convention Centre",
+        "Times Tower",
+        "Uhuru Park",
+        "Jamia Mosque",
+        "Nairobi Railway Museum"
+      ]
+    },
+    {
+      "id": "tunez",
+      "name": {
+        "es": "Túnez",
+        "en": "Tunis"
+      },
+      "continent": "africa",
+      "countryCode": "TN",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Mezquita Zitouna",
+        "Medina",
+        "Bab el Bhar",
+        "Catedral de San Vicente de Paúl",
+        "Avenida Habib Bourguiba"
+      ]
+    },
+    {
+      "id": "dakar",
+      "name": {
+        "es": "Dakar",
+        "en": "Dakar"
+      },
+      "continent": "africa",
+      "countryCode": "SN",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Monumento al Renacimiento Africano",
+        "Gran Mezquita",
+        "Faro de Les Mamelles",
+        "Museo de las Civilizaciones Negras",
+        "Isla de Gorée"
+      ]
+    },
+    {
+      "id": "sidney",
+      "name": {
+        "es": "Sídney",
+        "en": "Sydney"
+      },
+      "continent": "oceania",
+      "countryCode": "AU",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Ópera de Sídney",
+        "Harbour Bridge",
+        "Sydney Tower",
+        "Royal Botanic Garden",
+        "The Rocks"
+      ]
+    },
+    {
+      "id": "melbourne",
+      "name": {
+        "es": "Melbourne",
+        "en": "Melbourne"
+      },
+      "continent": "oceania",
+      "countryCode": "AU",
+      "batch": 1,
+      "status": "planned",
+      "landmarks": [
+        "Flinders Street Station",
+        "Federation Square",
+        "Royal Exhibition Building",
+        "Eureka Tower",
+        "Tranvía"
+      ]
+    },
+    {
+      "id": "auckland",
+      "name": {
+        "es": "Auckland",
+        "en": "Auckland"
+      },
+      "continent": "oceania",
+      "countryCode": "NZ",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Sky Tower",
+        "Auckland Harbour Bridge",
+        "Auckland War Memorial Museum",
+        "Viaduct Harbour",
+        "One Tree Hill"
+      ]
+    },
+    {
+      "id": "wellington",
+      "name": {
+        "es": "Wellington",
+        "en": "Wellington"
+      },
+      "continent": "oceania",
+      "countryCode": "NZ",
+      "batch": 2,
+      "status": "planned",
+      "landmarks": [
+        "Beehive y Parlamento",
+        "Wellington Cable Car",
+        "Te Papa",
+        "Old St Paul's",
+        "Waterfront"
+      ]
+    }
+  ]
+}
