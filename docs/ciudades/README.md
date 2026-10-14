@@ -6,12 +6,16 @@ Base: `origin/main`, commit `4cabf66be5062e1d0385237362584f7663d17e9c`, «Merge:
 
 ## Resultado de la investigación
 
-Es viable producir una colección amplia de imágenes de dioramas. Las dos muestras demuestran una dirección artística comparable; todavía no demuestran calidad editorial, legibilidad en dispositivos ni consistencia de un catálogo completo. La parte que más trabajo requiere es seleccionar y revisar los hitos de cada ciudad, corregir errores de generación y mantener la composición entre lotes.
+Es viable producir una colección amplia de imágenes de dioramas. Las seis muestras demuestran una dirección artística comparable; todavía no demuestran calidad editorial, legibilidad en dispositivos ni consistencia de un catálogo completo. La parte que más trabajo requiere es seleccionar y revisar los hitos de cada ciudad, corregir errores de generación y mantener la composición entre lotes. Se pueden comparar juntas en la [galería del piloto](galeria.md).
 
 Se han generado mediante la herramienta integrada de ImageGen:
 
 - [Madrid](piloto/madrid-v1.png): oso y madroño, Real Casa de Correos en Sol, Cuatro Torres, Atocha y Puerta de Alcalá. La primera generación tenía cinco rascacielos; se corrigió a cuatro. La fidelidad de fachadas, coronaciones y monumentos sigue pendiente de revisión con referencias arquitectónicas.
 - [Nueva York](piloto/nueva-york-v1.png): Estatua de la Libertad, Empire State, Chrysler, Central Park, puente de Brooklyn y Grand Central. La base ha adquirido un contorno irregular junto al agua; debe volver a ser un cuadrado de esquinas redondeadas antes de aprobarla para el catálogo.
+- [Barcelona](piloto/barcelona-v1.png): Sagrada Familia, Park Güell, Casa Batlló, Torre Glòries y Arco de Triunfo.
+- [Roma](piloto/roma-v1.png): Coliseo, Panteón, Fontana di Trevi, Foro Romano y Castel Sant'Angelo.
+- [París](piloto/paris-v1.png): Torre Eiffel, Notre-Dame, Louvre, Arco de Triunfo y Sacré-Cœur.
+- [Tokio](piloto/tokio-v1.png): Tokyo Tower, Skytree, Sensō-ji, Kaminarimon y cruce de Shibuya con tren elevado.
 
 Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D editables. Sus proporciones y ubicaciones forman un collage reconocible, no un mapa exacto. No se han conectado a las pantallas del juego.
 
@@ -28,7 +32,7 @@ Las muestras aún incumplen algunos de estos criterios: Madrid tiene márgenes l
 
 ## Producción por lotes
 
-- Piloto artístico: Madrid, Nueva York, Barcelona, Roma, París y Tokio. Las dos primeras tienen concepto generado; las otras cuatro están pendientes. Son casos distintos de skyline, escultura, arquitectura histórica y parques.
+- Piloto artístico: Madrid, Nueva York, Barcelona, Roma, París y Tokio. Las seis tienen concepto generado, pendiente de revisión editorial y ajuste de encuadre. Son casos distintos de skyline, escultura, arquitectura histórica y parques.
 - Primer catálogo jugable: 24 ciudades de los cinco continentes, a partir de las candidatas de `catalogo-propuesto.json`. No seleccionar por cantidad: aceptar solo imágenes reconocibles y revisadas.
 - Ampliación: 48 candidatas en el manifiesto inicial; después 100 o más si cada nueva ciudad aporta hitos distintivos. No generar todo antes de estabilizar el piloto.
 
@@ -42,7 +46,7 @@ Los originales del piloto miden 1254 × 1254 px: Madrid pesa 2.270.022 bytes y N
 
 No se ha medido el consumo de memoria, el tiempo de carga ni el peso de una compilación. Cargar únicamente la pregunta actual y, como máximo, preparar la siguiente. No generar imágenes durante la partida. Para el primer catálogo, empaquetar los recursos facilita el juego offline como Banderas y Años; evaluar descargas de paquetes solo si el peso medido de futuras ampliaciones lo justifica.
 
-No hay una estimación económica o de calendario fiable a partir de dos muestras. Registrar tiempo de revisión, número de generaciones/correcciones y bytes finales del lote de seis; usar esos datos para presupuestar 24, 48 y 100 ciudades. Madrid ya requirió una corrección, por lo que no debe suponerse una generación final por ciudad.
+No hay una estimación económica o de calendario fiable mientras el piloto siga sin aprobar. Registrar tiempo de revisión, número de generaciones/correcciones y bytes finales del lote de seis; usar esos datos para presupuestar 24, 48 y 100 ciudades. Madrid ya requirió una corrección, por lo que no debe suponerse una generación final por ciudad.
 
 ## Encaje con la app existente
 
@@ -55,7 +59,7 @@ La copia revisada usa Expo SDK 54 y ya incluye `expo-image`. No hace falta un vi
 - Récords propios: `city_records_v1`; no mezclar con Banderas o Años. Mantener reglas de invitado/offline, ruta diaria y cierre único de ronda.
 - Revisar `lib/economy.ts`, `lib/gamification.ts`, `lib/ads.ts`, política de anuncios, puntos de entrada de Inicio y traducciones ES/EN para registrar el nuevo modo sin reutilizar identificadores de Banderas.
 
-No ofrecer filtros continentales o de dificultad hasta tener un mínimo de cuatro ciudades aprobadas en cada pool habilitado. Con solo dos conceptos no existe todavía un catálogo jugable validado.
+No ofrecer filtros continentales o de dificultad hasta tener un mínimo de cuatro ciudades aprobadas en cada pool habilitado. Los seis conceptos siguen sin aprobar, por lo que no existe todavía un catálogo jugable validado.
 
 ## Criterios para pasar a implementación
 

@@ -1,0 +1,54 @@
+{
+  "format": "PNG masters",
+  "images": [
+    {
+      "id": "madrid",
+      "file": "piloto/madrid-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2270022,
+      "status": "concept-needs-review"
+    },
+    {
+      "id": "barcelona",
+      "file": "piloto/barcelona-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2478228,
+      "status": "concept-needs-review"
+    },
+    {
+      "id": "roma",
+      "file": "piloto/roma-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2601521,
+      "status": "concept-needs-review"
+    },
+    {
+      "id": "paris",
+      "file": "piloto/paris-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2443051,
+      "status": "concept-needs-review"
+    },
+    {
+      "id": "nueva-york",
+      "file": "piloto/nueva-york-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2412721,
+      "status": "concept-needs-review"
+    },
+    {
+      "id": "tokio",
+      "file": "piloto/tokio-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2391646,
+      "status": "concept-needs-review"
+    }
+  ],
+  "totalBytes": 14597189
+}

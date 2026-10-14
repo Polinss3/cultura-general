@@ -31,14 +31,15 @@
       "continent": "europa",
       "countryCode": "ES",
       "batch": 1,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Sagrada Familia",
         "Park Güell",
         "Casa Batlló",
         "Torre Glòries",
         "Arco de Triunfo"
-      ]
+      ],
+      "conceptImage": "piloto/barcelona-v1.png"
     },
     {
       "id": "roma",
@@ -49,14 +50,15 @@
       "continent": "europa",
       "countryCode": "IT",
       "batch": 1,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Coliseo",
         "Panteón",
         "Fontana di Trevi",
         "Foro Romano",
         "Castel Sant'Angelo"
-      ]
+      ],
+      "conceptImage": "piloto/roma-v1.png"
     },
     {
       "id": "paris",
@@ -67,14 +69,15 @@
       "continent": "europa",
       "countryCode": "FR",
       "batch": 1,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Torre Eiffel",
         "Arco de Triunfo",
         "Louvre y pirámide",
         "Notre-Dame",
         "Sacré-Cœur"
-      ]
+      ],
+      "conceptImage": "piloto/paris-v1.png"
     },
     {
       "id": "londres",
@@ -519,14 +522,15 @@
       "continent": "asia",
       "countryCode": "JP",
       "batch": 1,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Tokyo Tower",
         "Tokyo Skytree",
         "Sensō-ji y Kaminarimon",
         "Cruce de Shibuya",
         "Palacio Imperial"
-      ]
+      ],
+      "conceptImage": "piloto/tokio-v1.png"
     },
     {
       "id": "singapur",
