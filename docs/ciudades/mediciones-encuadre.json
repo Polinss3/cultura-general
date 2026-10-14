@@ -1,0 +1,83 @@
+{
+  "version": 2,
+  "images": [
+    {
+      "id": "madrid",
+      "file": "normalizadas/madrid-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2190295,
+      "baseLeft": 32,
+      "baseRight": 1225,
+      "baseBottom": 1022,
+      "registeredLeft": 0.08000000000000006,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "barcelona",
+      "file": "normalizadas/barcelona-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2216411,
+      "baseLeft": 32,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08000000000000003,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "roma",
+      "file": "normalizadas/roma-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2198368,
+      "baseLeft": 32,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08000000000000003,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "paris",
+      "file": "normalizadas/paris-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2198184,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "nueva-york",
+      "file": "normalizadas/nueva-york-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2205161,
+      "baseLeft": 33,
+      "baseRight": 1223,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08000000000000004,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "tokio",
+      "file": "normalizadas/tokio-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2261777,
+      "baseLeft": 33,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    }
+  ]
+}

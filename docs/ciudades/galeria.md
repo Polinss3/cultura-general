@@ -1,6 +1,6 @@
 # Galería del piloto de Ciudades
 
-Seis imágenes fijas con aspecto de maqueta 3D. Las cuatro nuevas se han generado con Madrid como referencia de estilo. Los nombres de esta galería sirven para revisión; no están incrustados en las imágenes del juego.
+Seis imágenes fijas con aspecto de maqueta 3D. Esta tabla conserva las fuentes originales v1. Para revisar las nuevas bases irregulares y su presentación alineada, abrir el [comparador de encuadre](encuadre.html). Los nombres de esta galería sirven para revisión; no están incrustados en las imágenes del juego.
 
 | Madrid | Nueva York |
 | --- | --- |

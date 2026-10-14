@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "frame": {
+    "aspectRatio": 1,
+    "background": "#fef0d9",
+    "baseCenterX": 0.5,
+    "baseWidth": 0.84,
+    "baseBottom": 0.92
+  },
+  "measurement": {
+    "method": "Warm-sandstone RGB edge gradients near lateral extrema and maximum lower boundary gradient within 70 px of image center; registration anchors checked visually.",
+    "sourcePixels": 1254,
+    "sourceBaselineSpread": 19,
+    "edgeToleranceSourcePixels": 2
+  },
+  "images": {
+    "madrid": {
+      "file": "normalizadas/madrid-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 32,
+      "baseRight": 1225,
+      "baseBottom": 1022,
+      "normalized": {
+        "left": 0.05746856663872596,
+        "top": 0.2004023470243086,
+        "width": 0.8829505448449286,
+        "height": 0.8829505448449286
+      }
+    },
+    "barcelona": {
+      "file": "normalizadas/barcelona-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 32,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.057411764705882384,
+        "top": 0.1851764705882354,
+        "width": 0.8851764705882352,
+        "height": 0.8851764705882352
+      }
+    },
+    "roma": {
+      "file": "normalizadas/roma-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 32,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.057411764705882384,
+        "top": 0.1851764705882354,
+        "width": 0.8851764705882352,
+        "height": 0.8851764705882352
+      }
+    },
+    "paris": {
+      "file": "normalizadas/paris-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "nueva-york": {
+      "file": "normalizadas/nueva-york-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1223,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.05670588235294122,
+        "top": 0.1851764705882354,
+        "width": 0.8851764705882352,
+        "height": 0.8851764705882352
+      }
+    },
+    "tokio": {
+      "file": "normalizadas/tokio-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.05668629100084105,
+        "top": 0.18455845248107672,
+        "width": 0.8859209419680403,
+        "height": 0.8859209419680403
+      }
+    }
+  }
+}

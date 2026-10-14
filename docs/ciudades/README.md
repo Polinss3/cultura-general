@@ -21,14 +21,14 @@ Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D ed
 
 ## Pauta artística común
 
-1. Una sola base cuadrada de esquinas redondeadas, grosor uniforme y material beige mate; los ríos y costas permanecen dentro de ese contorno.
-2. Imagen cuadrada. Vista isométrica de tres cuartos, cámara ortográfica elevada aproximadamente 35°. No cambiar orientación, distancia ni encuadre entre ciudades. Margen libre objetivo: 8–10 % en todo el perímetro, con todas las esquinas y agujas dentro de la imagen.
+1. Una sola base de **contorno orgánico irregular**, según la preferencia del usuario, con borde y material beige mate comunes. Usar `normalizadas/base-comun-v2.png` como única plantilla de suelo, perspectiva y grosor; los ríos y costas permanecen dentro de ese contorno. No convertirla en un cuadrado perfecto.
+2. Imagen fuente cuadrada de 1254 × 1254 px y vista isométrica de tres cuartos. La presentación usa siempre una tarjeta cuadrada y el [registro común](encuadre.md): centro al 50 %, base con anchura del 84 %, márgenes laterales del 8 % y borde inferior al 92 % del alto. No cambiar el tamaño de la tarjeta según el skyline.
 3. Piedra clara, ladrillo coral apagado, vidrio azul pizarra y vegetación verde salvia. Conservar los colores característicos de los hitos. Bordes suavizados, detalle arquitectónico suficiente para reconocerlos y acabado de maqueta.
 4. Fondo marfil uniforme, luz suave desde arriba a la izquierda y sombras discretas. Una única estación y hora; sin clima, nieve, nubes ni efectos diferentes por ciudad.
 5. Entre cuatro y seis hitos principales; al menos dos deben identificarse sin ampliar la imagen. Eliminar edificios de relleno cuando compitan con los monumentos. Exagerar moderadamente el tamaño de esculturas pequeñas.
 6. Nunca incluir nombres de ciudades, rótulos, letras, leyendas, logos ni marcas de agua. Tampoco banderas que conviertan el país en una pista innecesaria. Usar el mismo fondo en modos claro y oscuro inicialmente.
 
-Las muestras aún incumplen algunos de estos criterios: Madrid tiene márgenes laterales escasos y una pequeña bandera en Sol; Nueva York tiene márgenes escasos, una base irregular y más edificios de relleno. Corregir esos puntos y comparar ambas a tamaño real antes de adoptarlas como imágenes maestras del catálogo.
+Los originales v1 se conservan como referencia. Las versiones v2 están en `normalizadas/` y se han generado sobre la misma plantilla irregular; el [comparador](encuadre.html) aplica las correcciones de escala y posición que usará el componente `CityDiorama`. La forma irregular está aceptada y no es un defecto. La revisión arquitectónica y las exportaciones optimizadas siguen pendientes.
 
 ## Producción por lotes
 
@@ -36,7 +36,7 @@ Las muestras aún incumplen algunos de estos criterios: Madrid tiene márgenes l
 - Primer catálogo jugable: 24 ciudades de los cinco continentes, a partir de las candidatas de `catalogo-propuesto.json`. No seleccionar por cantidad: aceptar solo imágenes reconocibles y revisadas.
 - Ampliación: 48 candidatas en el manifiesto inicial; después 100 o más si cada nueva ciudad aporta hitos distintivos. No generar todo antes de estabilizar el piloto.
 
-Para cada ciudad: fijar 4–6 hitos y referencias → generar con el mismo prompt base y la misma imagen maestra → comprobar siluetas, número de elementos y ausencia de texto → corregir un defecto por edición → revisar a tamaño de móvil y junto a las demás ciudades → exportar el recurso optimizado → marcarlo como aprobado. Guardar versión, prompt, fuentes y estado editorial. La imagen de referencia del usuario guía el estilo; no debe redistribuirse como recurso del juego.
+Para cada ciudad: fijar 4–6 hitos y referencias → añadir la ciudad usando la plantilla irregular como única imagen de referencia → comprobar siluetas, número de elementos y ausencia de texto → medir extremos y anclaje de la base y registrar el perfil de presentación → revisar a tamaño de móvil y junto a las demás ciudades → exportar el recurso optimizado → marcarlo como aprobado. Los [prompts de v2](prompts-encuadre.md) documentan el procedimiento. Guardar versión, prompt, fuentes y estado editorial. La imagen de referencia del usuario guía el estilo; no debe redistribuirse como recurso del juego.
 
 Las listas de hitos del manifiesto son candidatas editoriales, no contenido ya verificado. Aún hay que confirmar las referencias, las siluetas y los límites del municipio cuando un monumento cercano pueda inducir a error. Cada imagen debe representar una sola ciudad de manera inequívoca.
 

@@ -20,7 +20,9 @@
         "Estación de Atocha",
         "Puerta de Alcalá"
       ],
-      "conceptImage": "piloto/madrid-v1.png"
+      "conceptImage": "normalizadas/madrid-v2.png",
+      "originalConceptImage": "piloto/madrid-v1.png",
+      "framingProfile": "madrid"
     },
     {
       "id": "barcelona",
@@ -39,7 +41,9 @@
         "Torre Glòries",
         "Arco de Triunfo"
       ],
-      "conceptImage": "piloto/barcelona-v1.png"
+      "conceptImage": "normalizadas/barcelona-v2.png",
+      "originalConceptImage": "piloto/barcelona-v1.png",
+      "framingProfile": "barcelona"
     },
     {
       "id": "roma",
@@ -58,7 +62,9 @@
         "Foro Romano",
         "Castel Sant'Angelo"
       ],
-      "conceptImage": "piloto/roma-v1.png"
+      "conceptImage": "normalizadas/roma-v2.png",
+      "originalConceptImage": "piloto/roma-v1.png",
+      "framingProfile": "roma"
     },
     {
       "id": "paris",
@@ -77,7 +83,9 @@
         "Notre-Dame",
         "Sacré-Cœur"
       ],
-      "conceptImage": "piloto/paris-v1.png"
+      "conceptImage": "normalizadas/paris-v2.png",
+      "originalConceptImage": "piloto/paris-v1.png",
+      "framingProfile": "paris"
     },
     {
       "id": "londres",
@@ -349,7 +357,9 @@
         "Puente de Brooklyn",
         "Grand Central"
       ],
-      "conceptImage": "piloto/nueva-york-v1.png"
+      "conceptImage": "normalizadas/nueva-york-v2.png",
+      "originalConceptImage": "piloto/nueva-york-v1.png",
+      "framingProfile": "nueva-york"
     },
     {
       "id": "san-francisco",
@@ -530,7 +540,9 @@
         "Cruce de Shibuya",
         "Palacio Imperial"
       ],
-      "conceptImage": "piloto/tokio-v1.png"
+      "conceptImage": "normalizadas/tokio-v2.png",
+      "originalConceptImage": "piloto/tokio-v1.png",
+      "framingProfile": "tokio"
     },
     {
       "id": "singapur",

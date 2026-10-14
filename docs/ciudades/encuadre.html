@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ciudades · Encuadre común</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f8f5ef;color:#292c39;font:16px/1.5 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:28px 20px 48px}h1{font-size:clamp(25px,5vw,38px);line-height:1.15;margin:0 0 10px}p{margin:0 0 18px;color:#65646b}button{font:inherit;color:inherit;border:1px solid #d8d1c6;border-radius:10px;background:white;padding:9px 14px;cursor:pointer}button:focus-visible{outline:3px solid #6979c0;outline-offset:3px}button[aria-pressed=true]{background:#303f78;color:white;border-color:#303f78}.controls{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.panel{display:grid;grid-template-columns:minmax(0,520px) 1fr;gap:30px;align-items:start}.viewer,.tile{margin:0;background:white;border:1px solid #e6ded1;border-radius:18px;overflow:hidden}.stage{position:relative;width:100%;aspect-ratio:1;background:#fdebd3;overflow:hidden}.stage img{position:absolute;display:block;max-width:none;object-fit:contain}.caption{padding:14px 18px;font-weight:650}.facts{padding:20px;background:white;border:1px solid #e6ded1;border-radius:18px}.facts p:last-child{margin-bottom:0}.facts strong{color:#303f78}.guide{position:absolute;z-index:2;pointer-events:none}.vertical{top:0;bottom:0;border-left:1px dashed #5c65b8}.horizontal{left:0;right:0;border-top:1px dashed #5c65b8}.guide-label{position:absolute;z-index:3;right:10px;font-size:11px;color:#404891;background:#fff9;padding:2px 5px}.hide-guides .guide,.hide-guides .guide-label{display:none}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px}.tile .caption{font-size:15px}.warning{font-size:13px;margin:24px 0 0}#metrics{font-size:13px;font-variant-numeric:tabular-nums}@media(max-width:720px){.panel{grid-template-columns:1fr;gap:16px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}main{padding:22px 14px}.caption{padding:10px 12px}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Ciudades · Un mismo encuadre</h1>
+  <p>Base irregular compartida, misma anchura y misma línea inferior al cambiar de ciudad.</p>
+  <nav class="controls" id="cities" aria-label="Elegir ciudad"></nav>
+  <div class="controls" aria-label="Presentación">
+    <button id="aligned" aria-pressed="true">Vista alineada</button>
+    <button id="original" aria-pressed="false">Piloto original</button>
+    <button id="guides" aria-pressed="true">Ocultar guías</button>
+  </div>
+  <section class="panel">
+    <figure class="viewer"><div class="stage" id="main-stage"></div><figcaption class="caption" id="caption" aria-live="polite"></figcaption></figure>
+    <aside class="facts">
+      <p><strong>Márgenes laterales: 8 %</strong><br>La base ocupa el 84 % del ancho.</p>
+      <p><strong>Base anclada al 92 % del alto</strong><br>El centro horizontal permanece al 50 %.</p>
+      <p>Los edificios conservan sus proporciones. El marco no cambia de tamaño según la ciudad.</p>
+      <p id="metrics"></p>
+    </aside>
+  </section>
+  <section class="grid" id="grid" aria-label="Comparación de las seis ciudades"></section>
+  <p class="warning">Vista de revisión. Los nombres y las guías se muestran aquí para comparar; no forman parte de las imágenes de pregunta. Fuentes y coordenadas: <a href="../../constants/cityDioramaFraming.json">calibración compartida</a>. El modo jugable aún no está integrado.</p>
+</main>
+<script>
+  const framing = {
+  "schemaVersion": 2,
+  "frame": {
+    "aspectRatio": 1,
+    "background": "#fef0d9",
+    "baseCenterX": 0.5,
+    "baseWidth": 0.84,
+    "baseBottom": 0.92
+  },
+  "measurement": {
+    "method": "Warm-sandstone RGB edge gradients near lateral extrema and maximum lower boundary gradient within 70 px of image center; registration anchors checked visually.",
+    "sourcePixels": 1254,
+    "sourceBaselineSpread": 19,
+    "edgeToleranceSourcePixels": 2
+  },
+  "images": {
+    "madrid": {
+      "file": "normalizadas/madrid-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 32,
+      "baseRight": 1225,
+      "baseBottom": 1022,
+      "normalized": {
+        "left": 0.05746856663872596,
+        "top": 0.2004023470243086,
+        "width": 0.8829505448449286,
+        "height": 0.8829505448449286
+      }
+    },
+    "barcelona": {
+      "file": "normalizadas/barcelona-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 32,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.057411764705882384,
+        "top": 0.1851764705882354,
+        "width": 0.8851764705882352,
+        "height": 0.8851764705882352
+      }
+    },
+    "roma": {
+      "file": "normalizadas/roma-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 32,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.057411764705882384,
+        "top": 0.1851764705882354,
+        "width": 0.8851764705882352,
+        "height": 0.8851764705882352
+      }
+    },
+    "paris": {
+      "file": "normalizadas/paris-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "nueva-york": {
+      "file": "normalizadas/nueva-york-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1223,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.05670588235294122,
+        "top": 0.1851764705882354,
+        "width": 0.8851764705882352,
+        "height": 0.8851764705882352
+      }
+    },
+    "tokio": {
+      "file": "normalizadas/tokio-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1222,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.05668629100084105,
+        "top": 0.18455845248107672,
+        "width": 0.8859209419680403,
+        "height": 0.8859209419680403
+      }
+    }
+  }
+};
+  const labels = {madrid:'Madrid',barcelona:'Barcelona',roma:'Roma',paris:'París','nueva-york':'Nueva York',tokio:'Tokio'};
+  let selected='madrid', mode='aligned', guides=true;
+  const cityButtons=document.getElementById('cities');
+  function populate(stage,id){
+    stage.replaceChildren();
+    stage.style.background=framing.frame.background;
+    stage.classList.toggle('hide-guides',!guides);
+    const profile=framing.images[id];
+    const img=new Image();
+    img.alt='Diorama de '+labels[id];
+    img.src=mode==='aligned'?profile.file:'piloto/'+id+'-v1.png';
+    const layout=mode==='aligned'?profile.normalized:{left:0,top:0,width:1,height:1};
+    for(const key of ['left','top','width','height']) img.style[key]=layout[key]*100+'%';
+    if(mode==='aligned'){
+      img.style.maskImage='linear-gradient(to right, transparent, black 2%, black 98%, transparent), linear-gradient(to bottom, transparent, black 2%, black 98%, transparent)';
+      img.style.maskComposite='intersect';
+    }
+    stage.append(img);
+    for(const x of [.08,.5,.92]){const guide=document.createElement('span');guide.className='guide vertical';guide.style.left=x*100+'%';stage.append(guide);}
+    const guide=document.createElement('span');guide.className='guide horizontal';guide.style.top='92%';stage.append(guide);
+    const label=document.createElement('span');label.className='guide-label';label.style.top='92%';label.textContent='BASE · 92 %';stage.append(label);
+  }
+  function render(){
+    populate(document.getElementById('main-stage'),selected);
+    document.getElementById('caption').textContent=labels[selected];
+    cityButtons.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.id===selected)));
+    document.getElementById('aligned').setAttribute('aria-pressed',String(mode==='aligned'));
+    document.getElementById('original').setAttribute('aria-pressed',String(mode==='original'));
+    document.getElementById('guides').setAttribute('aria-pressed',String(guides));
+    document.getElementById('guides').textContent=guides?'Ocultar guías':'Mostrar guías';
+    document.getElementById('metrics').textContent=mode==='aligned'?'Versión con base común y registro individual.':'Vista original: sin corrección de encuadre.';
+    const grid=document.getElementById('grid');grid.replaceChildren();
+    for(const [id,name] of Object.entries(labels)){const figure=document.createElement('figure');figure.className='tile';const stage=document.createElement('div');stage.className='stage';populate(stage,id);const caption=document.createElement('figcaption');caption.className='caption';caption.textContent=name;figure.append(stage,caption);grid.append(figure);}
+  }
+  for(const [id,name] of Object.entries(labels)){const b=document.createElement('button');b.textContent=name;b.dataset.id=id;b.onclick=()=>{selected=id;render();};cityButtons.append(b);}
+  document.getElementById('aligned').onclick=()=>{mode='aligned';render();};
+  document.getElementById('original').onclick=()=>{mode='original';render();};
+  document.getElementById('guides').onclick=()=>{guides=!guides;render();};
+  render();
+</script>
+</body>
+</html>
