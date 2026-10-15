@@ -8,6 +8,7 @@ export const REWARDS = {
   dailyWrong:     { xp: 15, coins: 5 },
   speedPerCorrect:{ xp: 6,  coins: 2 },   // al terminar, ∝ aciertos
   flagPerCorrect: { xp: 5,  coins: 2 },   // Banderas: al terminar, ∝ aciertos
+  cityPerCorrect: { xp: 5, coins: 2 },
   yearPerCorrect: { xp: 5,  coins: 2 },   // Años: mismo esfuerzo, misma paga
   adventureLevel:{ xp: 80, coins: 20 },   // una vez por nivel perfecto de 10 preguntas
   adventureStar2:{ xp: 0, coins: 5 },

@@ -21,7 +21,7 @@ La primera ampliación añade [Venecia](normalizadas/venecia-v1.png), [Ámsterda
 
 La segunda ampliación incorpora [Dublín](normalizadas/dublin-v1.png), [Edimburgo](normalizadas/edimburgo-v1.png), [Moscú](normalizadas/moscu-v1.png) y [San Petersburgo](normalizadas/san-petersburgo-v1.png). [Prompts y corrección de San Petersburgo](prompts-ampliacion-02.md).
 
-Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D editables. Sus proporciones y ubicaciones forman un collage reconocible, no un mapa exacto. No se han conectado a las pantallas del juego.
+Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D editables. Sus proporciones y ubicaciones forman un collage reconocible, no un mapa exacto. La integración jugable en Retos y la publicación del catálogo remoto se documentan en [Integración en la app](integracion-app.md).
 
 ## Pauta artística común
 

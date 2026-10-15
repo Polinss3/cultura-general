@@ -12,7 +12,8 @@ export type AdPlacement =
   | 'speed_complete'
   | 'ladder_complete'
   | 'flags_complete'
-  | 'years_complete';
+  | 'years_complete'
+  | 'cities_complete';
 
 /** Acciones voluntarias que pueden ofrecer un recompensado. */
 export type RewardedPlacement = 'shop_coins' | 'ladder_revive';

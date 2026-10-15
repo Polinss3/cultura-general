@@ -125,6 +125,7 @@ async function mergeAndSaveContext(
 }
 
 async function readEnabledPreference(): Promise<boolean> {
+  if (Platform.OS === 'web') return false;
   const stored = await AsyncStorage.getItem(NOTIFICATIONS_ENABLED_KEY);
   if (stored === 'true') return true;
   if (stored === 'false') return false;

@@ -540,7 +540,8 @@
   },
   "challenges": {
     "flags": "Banderas",
-    "years": "Años"
+    "years": "Años",
+    "cities": "Ciudades"
   },
   "years": {
     "pickerSub": "Elige una época y a ver si clavas los años.",
@@ -1623,5 +1624,26 @@
       "tinta": "Tinta",
       "pixel": "Píxel"
     }
+  },
+  "cities": {
+    "pickerSub": "Reconoce la ciudad por sus monumentos. Las otras opciones tienen una arquitectura parecida.",
+    "cardSub": "Dioramas 3D",
+    "count_one": "{{count}} ciudad",
+    "count_other": "{{count}} ciudades",
+    "roundSize_one": "Ronda de {{count}} pregunta",
+    "roundSize_other": "Rondas de {{count}} preguntas",
+    "whichCity": "¿Qué ciudad es?",
+    "imageDescription": "Diorama de una ciudad con sus edificios y monumentos característicos.",
+    "loadingImage": "Cargando diorama",
+    "imageError": "No se ha podido cargar el diorama.",
+    "loading": "Cargando ciudades…",
+    "loadError": "No se han podido cargar las ciudades. Conéctate y vuelve a intentarlo.",
+    "cachedNotice": "No se han podido buscar novedades. Puedes jugar con el catálogo guardado; las imágenes necesitan haberse descargado antes.",
+    "retry": "Reintentar",
+    "refresh": "Actualizar ciudades",
+    "empty": "Pronto habrá ciudades para descubrir.",
+    "emptyFilter": "Todavía no hay ciudades disponibles para esta dificultad. Prueba con todas.",
+    "comingSoon": "Próximamente",
+    "answer": "Es {{name}}."
   }
 }

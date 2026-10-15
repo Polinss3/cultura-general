@@ -4,18 +4,19 @@ import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ModeSwitch, type ModeCard } from '@/components/ModeSwitch';
 import { FlagsGame } from '@/components/games/FlagsGame';
+import { CitiesGame } from '@/components/games/CitiesGame';
 import { YearsGame } from '@/components/games/YearsGame';
 import { COUNTRIES } from '@/constants/flags';
 import { YEAR_EVENTS } from '@/constants/years';
 import { getFlagRecords } from '@/lib/flags';
 import { getYearRecords } from '@/lib/years';
 
-type Mode = 'flags' | 'years';
+type Mode = 'flags' | 'years' | 'cities';
 
 const MODE_KEY = 'challenges_mode_v1';
 
 /**
- * Pestaña de Retos: aloja Banderas y Años. Los dos modos comparten barra, para
+ * Pestaña de Retos: aloja Banderas, Años y Ciudades. Los modos comparten barra, para
  * no meter un sexto icono abajo, pero no comparten estado: cada juego lleva su
  * propio selector, su ronda y sus récords. El conmutador solo se ve en el
  * selector — durante una ronda la pantalla es del juego entera.
@@ -30,9 +31,10 @@ export default function ChallengesScreen() {
   const paramAppliedRef = useRef(false);
 
   const selectMode = useCallback((id: string) => {
-    const next = id as Mode;
+    if (id !== 'flags' && id !== 'years' && id !== 'cities') return;
+    const next = id;
     setMode(next);
-    AsyncStorage.setItem(MODE_KEY, next);
+    void AsyncStorage.setItem(MODE_KEY, next).catch(() => {});
   }, []);
 
   // Se recuerda el último modo usado: quien entra a por banderas no debería
@@ -43,8 +45,8 @@ export default function ChallengesScreen() {
       // disco se resuelve más tarde que el efecto de foco y, sin esta guarda,
       // restauraría el modo anterior justo después de aplicar el parámetro.
       if (paramAppliedRef.current) return;
-      if (saved === 'flags' || saved === 'years') setMode(saved);
-    });
+      if (saved === 'flags' || saved === 'years' || saved === 'cities') setMode(saved);
+    }).catch(() => {});
   }, []);
 
   // Los tiles de Inicio abren la pestaña ya en su modo. El parámetro se limpia
@@ -54,7 +56,7 @@ export default function ChallengesScreen() {
   useFocusEffect(
     useCallback(() => {
       const wanted = params.mode;
-      if (wanted !== 'flags' && wanted !== 'years') return;
+      if (wanted !== 'flags' && wanted !== 'years' && wanted !== 'cities') return;
       paramAppliedRef.current = true;
       selectMode(wanted);
       router.setParams({ mode: undefined });
@@ -86,7 +88,11 @@ export default function ChallengesScreen() {
     },
   ];
 
+  cards.push({ id: 'cities', icon: '🏙️', title: t('challenges.cities'), meta: t('cities.cardSub') });
+
   const header = <ModeSwitch cards={cards} activeId={mode} onSelect={selectMode} />;
+
+  if (mode === 'cities') return <CitiesGame header={header} onRoundFinished={loadRecords} />;
 
   return mode === 'flags'
     ? <FlagsGame header={header} onRoundFinished={loadRecords} />

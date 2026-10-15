@@ -1,0 +1,330 @@
+{
+  "description": "Editorial similarity groups. Shared visual traits outrank geographic proximity. Entries without artwork can still be distractors.",
+  "groups": [
+    {
+      "tag": "iberian-historic",
+      "ids": [
+        "madrid",
+        "barcelona",
+        "lisboa",
+        "sevilla",
+        "valencia",
+        "granada"
+      ]
+    },
+    {
+      "tag": "roman-renaissance",
+      "ids": [
+        "roma",
+        "florencia",
+        "venecia",
+        "atenas"
+      ]
+    },
+    {
+      "tag": "imperial-boulevards",
+      "ids": [
+        "paris",
+        "viena",
+        "budapest",
+        "san-petersburgo",
+        "madrid"
+      ]
+    },
+    {
+      "tag": "canals-historic",
+      "ids": [
+        "venecia",
+        "amsterdam",
+        "copenhague",
+        "estocolmo"
+      ]
+    },
+    {
+      "tag": "north-europe-classical",
+      "ids": [
+        "berlin",
+        "viena",
+        "budapest",
+        "copenhague",
+        "estocolmo"
+      ]
+    },
+    {
+      "tag": "british-georgian-gothic",
+      "ids": [
+        "londres",
+        "dublin",
+        "edimburgo",
+        "boston"
+      ]
+    },
+    {
+      "tag": "ornate-domes-palaces",
+      "ids": [
+        "moscu",
+        "san-petersburgo",
+        "budapest",
+        "praga"
+      ]
+    },
+    {
+      "tag": "american-skyscrapers",
+      "ids": [
+        "nueva-york",
+        "chicago",
+        "toronto",
+        "filadelfia"
+      ]
+    },
+    {
+      "tag": "japanese-temples-modern",
+      "ids": [
+        "tokio",
+        "osaka",
+        "yokohama",
+        "kioto",
+        "hiroshima"
+      ]
+    },
+    {
+      "tag": "east-asian-skyline-harbour",
+      "ids": [
+        "hong-kong",
+        "shanghai",
+        "singapur",
+        "seul",
+        "tokio"
+      ]
+    },
+    {
+      "tag": "australasian-waterfront",
+      "ids": [
+        "sidney",
+        "melbourne",
+        "brisbane",
+        "auckland",
+        "wellington"
+      ]
+    },
+    {
+      "tag": "civic-neoclassical",
+      "ids": [
+        "washington",
+        "filadelfia",
+        "boston",
+        "atenas"
+      ]
+    },
+    {
+      "tag": "hispanic-colonial",
+      "ids": [
+        "ciudad-de-mexico",
+        "buenos-aires",
+        "la-habana",
+        "madrid",
+        "sevilla"
+      ]
+    }
+  ],
+  "overrides": {
+    "madrid": {
+      "difficulty": 2,
+      "similar": [
+        "barcelona",
+        "lisboa",
+        "valencia",
+        "sevilla"
+      ]
+    },
+    "barcelona": {
+      "difficulty": 1,
+      "similar": [
+        "valencia",
+        "madrid",
+        "lisboa",
+        "sevilla"
+      ]
+    },
+    "roma": {
+      "difficulty": 1,
+      "similar": [
+        "florencia",
+        "atenas",
+        "venecia"
+      ]
+    },
+    "paris": {
+      "difficulty": 1,
+      "similar": [
+        "viena",
+        "budapest",
+        "san-petersburgo"
+      ]
+    },
+    "nueva-york": {
+      "difficulty": 1,
+      "similar": [
+        "chicago",
+        "toronto",
+        "filadelfia"
+      ]
+    },
+    "tokio": {
+      "difficulty": 2,
+      "similar": [
+        "osaka",
+        "yokohama",
+        "hiroshima"
+      ]
+    },
+    "venecia": {
+      "difficulty": 1,
+      "similar": [
+        "amsterdam",
+        "copenhague",
+        "estocolmo"
+      ]
+    },
+    "amsterdam": {
+      "difficulty": 2,
+      "similar": [
+        "copenhague",
+        "estocolmo",
+        "venecia"
+      ]
+    },
+    "londres": {
+      "difficulty": 1,
+      "similar": [
+        "dublin",
+        "edimburgo",
+        "boston"
+      ]
+    },
+    "berlin": {
+      "difficulty": 2,
+      "similar": [
+        "viena",
+        "budapest",
+        "copenhague"
+      ]
+    },
+    "dublin": {
+      "difficulty": 3,
+      "similar": [
+        "londres",
+        "edimburgo",
+        "boston"
+      ]
+    },
+    "edimburgo": {
+      "difficulty": 2,
+      "similar": [
+        "dublin",
+        "londres",
+        "boston"
+      ]
+    },
+    "moscu": {
+      "difficulty": 2,
+      "similar": [
+        "san-petersburgo",
+        "praga",
+        "budapest"
+      ]
+    },
+    "san-petersburgo": {
+      "difficulty": 3,
+      "similar": [
+        "moscu",
+        "budapest",
+        "praga",
+        "viena"
+      ]
+    },
+    "hong-kong": {
+      "difficulty": 2,
+      "similar": [
+        "shanghai",
+        "singapur",
+        "seul"
+      ]
+    },
+    "sidney": {
+      "difficulty": 1,
+      "similar": [
+        "melbourne",
+        "auckland",
+        "brisbane"
+      ]
+    },
+    "washington": {
+      "difficulty": 2,
+      "similar": [
+        "filadelfia",
+        "boston",
+        "atenas"
+      ]
+    },
+    "ciudad-de-mexico": {
+      "difficulty": 2,
+      "similar": [
+        "buenos-aires",
+        "la-habana",
+        "madrid",
+        "sevilla"
+      ]
+    },
+    "brisbane": {
+      "name": {
+        "en": "Brisbane"
+      }
+    },
+    "boston": {
+      "name": {
+        "en": "Boston"
+      }
+    },
+    "kioto": {
+      "name": {
+        "en": "Kyoto"
+      }
+    },
+    "sevilla": {
+      "name": {
+        "en": "Seville"
+      }
+    },
+    "osaka": {
+      "name": {
+        "en": "Osaka"
+      }
+    },
+    "valencia": {
+      "name": {
+        "en": "Valencia"
+      }
+    },
+    "hiroshima": {
+      "name": {
+        "en": "Hiroshima"
+      }
+    },
+    "granada": {
+      "name": {
+        "en": "Granada"
+      }
+    },
+    "filadelfia": {
+      "name": {
+        "en": "Philadelphia"
+      }
+    },
+    "yokohama": {
+      "name": {
+        "en": "Yokohama"
+      }
+    }
+  }
+}

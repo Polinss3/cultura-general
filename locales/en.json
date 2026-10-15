@@ -540,7 +540,8 @@
   },
   "challenges": {
     "flags": "Flags",
-    "years": "Years"
+    "years": "Years",
+    "cities": "Cities"
   },
   "years": {
     "pickerSub": "Pick an era and see how many years you can nail.",
@@ -1623,5 +1624,26 @@
       "tinta": "Ink",
       "pixel": "Pixel"
     }
+  },
+  "cities": {
+    "pickerSub": "Recognize the city by its landmarks. The other options have similar architecture.",
+    "cardSub": "3D dioramas",
+    "count_one": "{{count}} city",
+    "count_other": "{{count}} cities",
+    "roundSize_one": "{{count}}-question round",
+    "roundSize_other": "{{count}}-question rounds",
+    "whichCity": "Which city is this?",
+    "imageDescription": "A city diorama showing its distinctive buildings and landmarks.",
+    "loadingImage": "Loading diorama",
+    "imageError": "The diorama could not be loaded.",
+    "loading": "Loading cities…",
+    "loadError": "Cities could not be loaded. Connect to the internet and try again.",
+    "cachedNotice": "Could not check for updates. You can use the saved catalog; images must have been downloaded before.",
+    "retry": "Try again",
+    "refresh": "Refresh cities",
+    "empty": "Cities to discover are coming soon.",
+    "emptyFilter": "No cities are available at this difficulty yet. Try all difficulties.",
+    "comingSoon": "Coming soon",
+    "answer": "This is {{name}}."
   }
 }
