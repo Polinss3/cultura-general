@@ -631,7 +631,7 @@
       "continent": "europa",
       "countryCode": "AT",
       "batch": 6,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Catedral de San Esteban",
         "Schönbrunn",
@@ -641,7 +641,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 23
+      "productionOrder": 23,
+      "conceptImage": "normalizadas/viena-v1.png",
+      "originalConceptImage": "normalizadas/viena-v1.png",
+      "framingProfile": "viena",
+      "sources": [
+        "https://government.wien/en/discover/",
+        "https://www.wien.info/en/",
+        "https://www.viennatourism.org/vienna-attractions/",
+        "https://www.wien.info/en/see-do/sights-from-a-to-z",
+        "https://www.wien.info/de/sehen-erleben/sehenswuerdigkeiten-a-z"
+      ]
     },
     {
       "id": "san-francisco",
@@ -652,7 +662,7 @@
       "continent": "america",
       "countryCode": "US",
       "batch": 6,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Golden Gate",
         "Transamerica Pyramid",
@@ -662,7 +672,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 24
+      "productionOrder": 24,
+      "conceptImage": "normalizadas/san-francisco-v1.png",
+      "originalConceptImage": "normalizadas/san-francisco-v1.png",
+      "framingProfile": "san-francisco",
+      "sources": [
+        "https://www.sftravel.com/things-to-do/attractions/iconic-san-francisco",
+        "https://www.sftravel.com/things-to-do",
+        "https://presidio.gov/explore/attractions/golden-gate-bridge",
+        "https://www.sftravel.com/things-to-do/attractions?convention=true",
+        "https://www.sftravel.com/?nid=2024"
+      ]
     },
     {
       "id": "singapur",
@@ -673,7 +693,7 @@
       "continent": "asia",
       "countryCode": "SG",
       "batch": 6,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Marina Bay Sands",
         "Supertrees de Gardens by the Bay",
@@ -683,7 +703,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 25
+      "productionOrder": 25,
+      "conceptImage": "normalizadas/singapur-v1.png",
+      "originalConceptImage": "normalizadas/singapur-v1.png",
+      "framingProfile": "singapur",
+      "sources": [
+        "https://www.visitsingapore.com/see-do-singapore/nature-wildlife/parks-gardens/gardens-by-the-bay/",
+        "https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/marina-bay/",
+        "https://www.gardensbythebay.com.sg/en/things-to-do/attractions.html",
+        "https://www.gardensbythebay.com.sg/en/things-to-do/attractions/supertree-grove.html",
+        "https://www.gardensbythebay.com.sg/en.html"
+      ]
     },
     {
       "id": "marrakech",
@@ -694,7 +724,7 @@
       "continent": "africa",
       "countryCode": "MA",
       "batch": 6,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Mezquita Kutubía",
         "Jemaa el-Fna",
@@ -704,7 +734,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 26
+      "productionOrder": 26,
+      "conceptImage": "normalizadas/marrakech-v1.png",
+      "originalConceptImage": "normalizadas/marrakech-v1.png",
+      "framingProfile": "marrakech",
+      "sources": [
+        "https://www.visitmarrakech.com/en/listing/koutoubia-mosque/",
+        "https://www.visitmorocco.com/en/travel/marrakesh",
+        "https://www.visitmorocco.com/en/travel/marrakech/medina",
+        "https://visitmarrakech.com/en/listing/la-medina-de-marrakech/",
+        "https://www.visitmarrakech.com/en/"
+      ]
     },
     {
       "id": "melbourne",
@@ -715,7 +755,7 @@
       "continent": "oceania",
       "countryCode": "AU",
       "batch": 7,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Flinders Street Station",
         "Federation Square",
@@ -725,7 +765,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 27
+      "productionOrder": 27,
+      "conceptImage": "normalizadas/melbourne-v1.png",
+      "originalConceptImage": "normalizadas/melbourne-v1.png",
+      "framingProfile": "melbourne",
+      "sources": [
+        "https://www.visitmelbourne.com/regions/melbourne/see-and-do/history-and-heritage/heritage-buildings/vv-flinders-street-station",
+        "https://www.visitmelbourne.com/regions/melbourne/see-and-do/art-and-culture/architecture-and-design/fed-square",
+        "https://www.visitvictoria.com/regions/melbourne/see-and-do/art-and-culture/architecture-and-design/federation-square",
+        "https://whatson.melbourne.vic.gov.au/things-to-do/flinders-street-railway-station",
+        "https://whatson.melbourne.vic.gov.au/things-to-do/fed-square"
+      ]
     },
     {
       "id": "praga",
@@ -736,7 +786,7 @@
       "continent": "europa",
       "countryCode": "CZ",
       "batch": 7,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Puente de Carlos",
         "Castillo de Praga",
@@ -746,7 +796,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 28
+      "productionOrder": 28,
+      "conceptImage": "normalizadas/praga-v1.png",
+      "originalConceptImage": "normalizadas/praga-v1.png",
+      "framingProfile": "praga",
+      "sources": [
+        "https://www.visitczechia.com/es-es/things-to-do/places/landmarks/urban-architecture/c-prague-charles-bridge-and-bridge-towers",
+        "https://www.visitczechia.com/es-es/things-to-do/places/landmarks/cities/a-prague-beauty",
+        "https://www.visitczechia.com/es-es/destinations/prague",
+        "https://www.visitczechia.com/es-es/things-to-do/places/landmarks/castles-and-ruins/c-prague-castle",
+        "https://www.visitczechia.com/es-es/news/2026/07/n-charles-bridge-660-years"
+      ]
     },
     {
       "id": "los-angeles",
@@ -757,17 +817,26 @@
       "continent": "america",
       "countryCode": "US",
       "batch": 7,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Observatorio Griffith",
         "Walt Disney Concert Hall",
         "Ayuntamiento",
-        "Hollywood Bowl",
-        "Santa Monica Pier (revisar alcance metropolitano)"
+        "Hollywood Bowl"
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 29
+      "productionOrder": 29,
+      "conceptImage": "normalizadas/los-angeles-v1.png",
+      "originalConceptImage": "normalizadas/los-angeles-v1.png",
+      "framingProfile": "los-angeles",
+      "sources": [
+        "https://griffithobservatory.lacity.gov/visit/",
+        "https://griffithobservatory.lacity.gov/visit/getting-here/",
+        "https://griffithobservatory.lacity.gov/",
+        "https://griffithobservatory.lacity.gov/explore/",
+        "https://griffithobservatory.lacity.gov/about/"
+      ]
     },
     {
       "id": "pekin",
@@ -778,7 +847,7 @@
       "continent": "asia",
       "countryCode": "CN",
       "batch": 7,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Ciudad Prohibida",
         "Templo del Cielo",
@@ -788,7 +857,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 30
+      "productionOrder": 30,
+      "conceptImage": "normalizadas/pekin-v1.png",
+      "originalConceptImage": "normalizadas/pekin-v1.png",
+      "framingProfile": "pekin",
+      "sources": [
+        "https://spanish.beijing.gov.cn/travellinginbeijing/mustvisitsites/202306/t20230607_3125341.html",
+        "https://e.visitbeijing.com.cn/attraction/8",
+        "https://spanish.beijing.gov.cn/beijinginfo/culture/beijingtownscape/parks/202401/t20240110_3531900.html",
+        "https://spanish.beijing.gov.cn/specials/parktours/guidevisitors/templeofheaven/index.html",
+        "https://english.visitbeijing.com.cn/attraction"
+      ]
     },
     {
       "id": "ciudad-del-cabo",
@@ -799,7 +878,7 @@
       "continent": "africa",
       "countryCode": "ZA",
       "batch": 8,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Table Mountain",
         "V&A Waterfront",
@@ -809,7 +888,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 31
+      "productionOrder": 31,
+      "conceptImage": "normalizadas/ciudad-del-cabo-v1.png",
+      "originalConceptImage": "normalizadas/ciudad-del-cabo-v1.png",
+      "framingProfile": "ciudad-del-cabo",
+      "sources": [
+        "https://www.capetown.travel/neighbourhood/the-va-waterfront/",
+        "https://www.capetown.travel/listing/e_va-waterfront/",
+        "https://www.gov.za/about-sa/tourism",
+        "https://www.southafrica.net/na/en/travel/article/whatever-you-want-to-discover-in-cape-town-start-at-the-va-waterfront",
+        "https://www.cityofcapetown.com/attractions"
+      ]
     },
     {
       "id": "auckland",
@@ -820,17 +909,26 @@
       "continent": "oceania",
       "countryCode": "NZ",
       "batch": 8,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Sky Tower",
-        "Auckland Harbour Bridge",
         "Auckland War Memorial Museum",
-        "Viaduct Harbour",
-        "One Tree Hill"
+        "Viaduct Harbour marina",
+        "One Tree Hill with its obelisk"
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 32
+      "productionOrder": 32,
+      "conceptImage": "normalizadas/auckland-v1.png",
+      "originalConceptImage": "normalizadas/auckland-v1.png",
+      "framingProfile": "auckland",
+      "sources": [
+        "https://www.aucklandnz.com/explore/auckland-harbour-bridge",
+        "https://app.aucklandtourism.co.nz/see-%26-do/attractions/sky-tower",
+        "https://www.aucklandnz.com/explore/skywalk",
+        "https://www.aucklandnz.com/inspire/10-most-spectacular-sights-and-landmarks-in-auckland",
+        "https://www.aucklandtourism.org/viaduct-harbour-auckland-guide/"
+      ]
     },
     {
       "id": "atenas",
@@ -841,7 +939,7 @@
       "continent": "europa",
       "countryCode": "GR",
       "batch": 8,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Partenón",
         "Erecteion",
@@ -851,7 +949,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 33
+      "productionOrder": 33,
+      "conceptImage": "normalizadas/atenas-v1.png",
+      "originalConceptImage": "normalizadas/atenas-v1.png",
+      "framingProfile": "atenas",
+      "sources": [
+        "https://www.visitgreece.gr/en/mainland/Attique/athens",
+        "https://www.visitgreece.gr/en/islands/athens",
+        "https://www.acropolisofathens.net/es/guides/what-to-see-on-the-acropolis/",
+        "https://www.hh.gr/en/",
+        "https://www.discovergreece.com/es/experiences/acropolis-athens"
+      ]
     },
     {
       "id": "chicago",
@@ -862,7 +970,7 @@
       "continent": "america",
       "countryCode": "US",
       "batch": 8,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Willis Tower",
         "Cloud Gate",
@@ -872,7 +980,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 34
+      "productionOrder": 34,
+      "conceptImage": "normalizadas/chicago-v1.png",
+      "originalConceptImage": "normalizadas/chicago-v1.png",
+      "framingProfile": "chicago",
+      "sources": [
+        "https://chicago.gov/city/en/depts/dca/supp_info/chicago_s_publicartcloudgateinmillenniumpark.html",
+        "https://www.visittheusa.com/destinations/illinois/chicago/",
+        "https://www.choosechicago.com/articles/tours-and-attractions/the-bean-chicago/?open=true",
+        "https://www.choosechicago.com/articles/tours-and-attractions/chicagos-observation-decks/",
+        "https://www.enjoyillinois.com/places-to-go/chicago-and-beyond/chicago/"
+      ]
     },
     {
       "id": "shanghai",
@@ -883,7 +1001,7 @@
       "continent": "asia",
       "countryCode": "CN",
       "batch": 9,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Torre Perla Oriental",
         "Shanghai Tower",
@@ -893,7 +1011,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 35
+      "productionOrder": 35,
+      "conceptImage": "normalizadas/shanghai-v1.png",
+      "originalConceptImage": "normalizadas/shanghai-v1.png",
+      "framingProfile": "shanghai",
+      "sources": [
+        "https://visitcn.com.cn/en/attractions/oriental-pearl-tower",
+        "https://visitcn.com.cn/en/attractions/shanghai-tower",
+        "https://english.shanghai.gov.cn/en-ScenicSpots/20231205/19a5f5184eca45728fd57a4d4c8efc61.html",
+        "https://english.shanghai.gov.cn/en-ScenicSpots/20240507/f3ce9cade30f4ff2a0bad6293626a232.html",
+        "https://www.meet-in-shanghai.net/en/pudong-new-area/the-oriental-pearl-tv-tower-341119/"
+      ]
     },
     {
       "id": "nairobi",
@@ -904,7 +1032,7 @@
       "continent": "africa",
       "countryCode": "KE",
       "batch": 9,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Kenyatta International Convention Centre",
         "Times Tower",
@@ -914,7 +1042,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 36
+      "productionOrder": 36,
+      "conceptImage": "normalizadas/nairobi-v1.png",
+      "originalConceptImage": "normalizadas/nairobi-v1.png",
+      "framingProfile": "nairobi",
+      "sources": [
+        "https://kicc.co.ke/",
+        "https://kicc.ecitizen.go.ke/",
+        "https://tourkenya.go.ke/tourism/circuits/nairobi-city-circuit/",
+        "https://billing.ecitizen.go.ke/client/kicc",
+        "https://www.iekenya.org/sites/default/files/iek-documents/2025-02/Engineering%20in%20Kenya%20Magazine%20Issue%201_0.pdf"
+      ]
     },
     {
       "id": "wellington",
@@ -925,7 +1063,7 @@
       "continent": "oceania",
       "countryCode": "NZ",
       "batch": 9,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Beehive y Parlamento",
         "Wellington Cable Car",
@@ -935,7 +1073,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 37
+      "productionOrder": 37,
+      "conceptImage": "normalizadas/wellington-v1.png",
+      "originalConceptImage": "normalizadas/wellington-v1.png",
+      "framingProfile": "wellington",
+      "sources": [
+        "https://www.wellingtonnz.com/visit/see-and-do/wellington-cable-car",
+        "https://www.wellingtonnz.com/visit/trails/city-to-sea-walkway",
+        "https://www3.parliament.nz/en/visit-and-learn/history-and-buildings/buildings-and-grounds/",
+        "https://www3.parliament.nz/en/visit-and-learn/history-and-buildings/buildings-and-grounds/the-beehive-executive-wing/",
+        "https://www.wellingtoncablecar.co.nz/"
+      ]
     },
     {
       "id": "estambul",
@@ -946,7 +1094,7 @@
       "continent": "europa",
       "countryCode": "TR",
       "batch": 9,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Santa Sofía",
         "Mezquita Azul",
@@ -956,7 +1104,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 38
+      "productionOrder": 38,
+      "conceptImage": "normalizadas/estambul-v1.png",
+      "originalConceptImage": "normalizadas/estambul-v1.png",
+      "framingProfile": "estambul",
+      "sources": [
+        "https://visit.istanbul/en/the-blue-mosque",
+        "https://visitistanbulofficial.com/es/things-to-do/attractions/",
+        "https://istanbul.com/es/blue-mosque",
+        "https://istanbul.com/es/blog/mosques/blue-mosque-or-hagia-sophia",
+        "https://www.visit.istanbul/"
+      ]
     },
     {
       "id": "rio-de-janeiro",
@@ -2178,8 +2336,14 @@
       "countryCode": "CN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Puente Anshun",
+        "Templo Wuhou",
+        "Calle Jinli",
+        "Torre West Pearl",
+        "Pabellón de pandas de Chengdú"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 100,
       "batch": 25
     },
@@ -2192,8 +2356,13 @@
       "countryCode": "ET",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral de la Santísima Trinidad",
+        "Catedral de San Jorge",
+        "Sede de la Unión Africana",
+        "Museo Nacional de Etiopía"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 101,
       "batch": 25
     },
@@ -2206,8 +2375,13 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Acueducto romano",
+        "Alcázar",
+        "Catedral",
+        "Iglesia de la Vera Cruz"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 102,
       "batch": 25
     },
@@ -2220,8 +2394,14 @@
       "countryCode": "CA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Basílica de Notre-Dame",
+        "Oratorio de San José",
+        "Estadio Olímpico y torre inclinada",
+        "Habitat 67",
+        "Biosphère"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 103,
       "batch": 26
     },
@@ -2234,8 +2414,14 @@
       "countryCode": "CN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Hongya Cave",
+        "Raffles City",
+        "Monorraíl de Liziba",
+        "Puente Qiansimen",
+        "Monumento de la Liberación"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 104,
       "batch": 26
     },
@@ -2248,8 +2434,13 @@
       "countryCode": "NG",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "National Theatre",
+        "Tafawa Balewa Square",
+        "Cathedral Church of Christ",
+        "Third Mainland Bridge"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 105,
       "batch": 26
     },
@@ -2262,8 +2453,14 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Basílica del Pilar",
+        "Aljafería",
+        "Puente de Piedra",
+        "La Seo",
+        "Torre del Agua"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 106,
       "batch": 26
     },
@@ -2276,8 +2473,13 @@
       "countryCode": "CA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Château Frontenac",
+        "Petit-Champlain",
+        "Ciudadela",
+        "Parlamento de Quebec"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 107,
       "batch": 27
     },
@@ -2290,8 +2492,13 @@
       "countryCode": "CN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Elephant Trunk Hill",
+        "Pagodas del Sol y la Luna",
+        "Río Li y montañas kársticas",
+        "Palacio de los Príncipes de Jingjiang"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 108,
       "batch": 27
     },
@@ -2304,8 +2511,13 @@
       "countryCode": "GH",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Arco de la Independencia",
+        "Mausoleo de Kwame Nkrumah",
+        "Faro de Jamestown",
+        "Fuerte Ussher"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 109,
       "batch": 27
     },
@@ -2318,8 +2530,14 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Bahía y paseo de La Concha",
+        "Palacio de Miramar",
+        "Peine del Viento",
+        "Catedral del Buen Pastor",
+        "Hotel María Cristina"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 110,
       "batch": 27
     },
@@ -2332,8 +2550,14 @@
       "countryCode": "CA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Canada Place",
+        "Science World",
+        "Harbour Centre",
+        "Tótems de Stanley Park",
+        "Lions Gate Bridge"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 111,
       "batch": 28
     },
@@ -2346,8 +2570,13 @@
       "countryCode": "CN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Canton Tower",
+        "Ópera de Guangzhou",
+        "Academia del Clan Chen",
+        "Catedral del Sagrado Corazón"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 112,
       "batch": 28
     },
@@ -2360,10 +2589,16 @@
       "countryCode": "CI",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral de San Pablo de Abiyán",
+        "Hôtel Ivoire",
+        "Estadio Félix Houphouët-Boigny",
+        "Puente Henri Konan Bédié"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 113,
-      "batch": 28
+      "batch": 28,
+      "generationInstructions": "Do not include the Basilica of Our Lady of Peace at Yamoussoukro; this scene is Abidjan, with Saint Paul Cathedral and its distinctive sloping roof."
     },
     {
       "id": "salamanca",
@@ -2374,8 +2609,13 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Plaza Mayor",
+        "Catedrales Vieja y Nueva",
+        "Fachada de la Universidad",
+        "Casa de las Conchas"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 114,
       "batch": 28
     },
@@ -2388,8 +2628,13 @@
       "countryCode": "CA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Parlamento y Peace Tower",
+        "National Gallery of Canada",
+        "Château Laurier",
+        "Canal Rideau"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 115,
       "batch": 29
     },
@@ -2402,8 +2647,14 @@
       "countryCode": "CN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Lago del Oeste",
+        "Pagoda Leifeng",
+        "Tres Estanques que Reflejan la Luna",
+        "Templo Yue Fei",
+        "Pabellón Chenghuang"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 116,
       "batch": 29
     },
@@ -2416,8 +2667,13 @@
       "countryCode": "NA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Christuskirche",
+        "Tintenpalast",
+        "Alte Feste",
+        "Independence Memorial Museum"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 117,
       "batch": 29
     },
@@ -2430,8 +2686,14 @@
       "countryCode": "GB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ayuntamiento de Manchester",
+        "Beetham Tower",
+        "Biblioteca John Rylands",
+        "Catedral",
+        "Etihad Stadium"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 118,
       "batch": 29
     },
@@ -2444,8 +2706,13 @@
       "countryCode": "MX",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral",
+        "Teatro Degollado",
+        "Templo Expiatorio",
+        "Hospicio Cabañas"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 119,
       "batch": 30
     },
@@ -2458,8 +2725,13 @@
       "countryCode": "CN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Jardín del Administrador Humilde",
+        "Pagoda de la Colina del Tigre",
+        "Puerta Panmen",
+        "Museo de Suzhou"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 120,
       "batch": 30
     },
@@ -2472,8 +2744,13 @@
       "countryCode": "MU",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Aapravasi Ghat",
+        "Fort Adelaide",
+        "Champ de Mars",
+        "Caudan Waterfront"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 121,
       "batch": 30
     },
@@ -2486,8 +2763,13 @@
       "countryCode": "GB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Royal Liver Building",
+        "Catedral anglicana",
+        "Catedral Metropolitana",
+        "Royal Albert Dock"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 122,
       "batch": 30
     },
@@ -2500,8 +2782,13 @@
       "countryCode": "MX",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral",
+        "Iglesia de Santo Domingo",
+        "Estrella de Puebla",
+        "Mercado El Parián"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 123,
       "batch": 31
     },
@@ -2514,8 +2801,14 @@
       "countryCode": "TW",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Taipei 101",
+        "Memorial de Chiang Kai-shek",
+        "Templo Longshan",
+        "Memorial de Sun Yat-sen",
+        "Museo Nacional del Palacio"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 124,
       "batch": 31
     },
@@ -2528,8 +2821,14 @@
       "countryCode": "GB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Radcliffe Camera",
+        "Bodleian Library",
+        "Bridge of Sighs",
+        "Tom Tower de Christ Church",
+        "Sheldonian Theatre"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 125,
       "batch": 31
     },
@@ -2542,8 +2841,13 @@
       "countryCode": "MX",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Templo de Santo Domingo",
+        "Catedral",
+        "Teatro Macedonio Alcalá",
+        "Andador y casas históricas"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 126,
       "batch": 31
     },
@@ -2556,8 +2860,14 @@
       "countryCode": "KR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Puente Gwangan",
+        "Busan Tower",
+        "Gamcheon Culture Village",
+        "Templo Haedong Yonggungsa",
+        "Haeundae"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 127,
       "batch": 32
     },
@@ -2570,8 +2880,13 @@
       "countryCode": "GB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "King’s College Chapel",
+        "Fitzwilliam Museum",
+        "Mathematical Bridge",
+        "Bridge of Sighs"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 128,
       "batch": 32
     },
@@ -2584,8 +2899,14 @@
       "countryCode": "MX",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Teatro Juárez",
+        "Alhóndiga de Granaditas",
+        "Universidad y escalinata",
+        "Callejón del Beso",
+        "Basílica de Nuestra Señora"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 129,
       "batch": 32
     },
@@ -2598,8 +2919,14 @@
       "countryCode": "VN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Torre de la Tortuga",
+        "Templo de la Literatura",
+        "Mausoleo de Ho Chi Minh",
+        "Catedral de San José",
+        "Pagoda del Pilar Único"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 130,
       "batch": 32
     },
@@ -2612,8 +2939,13 @@
       "countryCode": "GB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Royal Crescent",
+        "Termas Romanas",
+        "Bath Abbey",
+        "Pulteney Bridge"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 131,
       "batch": 33
     },
@@ -2626,8 +2958,13 @@
       "countryCode": "MX",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral de San Ildefonso",
+        "Palacio de Gobierno",
+        "Monumento a la Patria",
+        "Palacio Cantón"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 132,
       "batch": 33
     },
@@ -2640,8 +2977,14 @@
       "countryCode": "VN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Oficina Central de Correos",
+        "Basílica de Notre-Dame de Saigón",
+        "Palacio de la Reunificación",
+        "Bitexco Tower",
+        "Landmark 81"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 133,
       "batch": 33
     },
@@ -2654,8 +2997,13 @@
       "countryCode": "GB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "York Minster",
+        "Clifford’s Tower",
+        "The Shambles",
+        "Murallas y Micklegate Bar"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 134,
       "batch": 33
     },
@@ -2668,8 +3016,14 @@
       "countryCode": "CO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Monserrate",
+        "Catedral Primada",
+        "Capitolio Nacional",
+        "La Candelaria",
+        "Torres del Parque"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 135,
       "batch": 34
     },
@@ -2682,8 +3036,13 @@
       "countryCode": "VN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Puente Cubierto Japonés",
+        "Casas amarillas del casco antiguo",
+        "Asamblea Phuc Kien",
+        "Canal y farolillos sin letras"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 136,
       "batch": 34
     },
@@ -2696,8 +3055,14 @@
       "countryCode": "GB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral",
+        "Universidad de Glasgow",
+        "Kelvingrove",
+        "Finnieston Crane",
+        "Clyde Arc"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 137,
       "batch": 34
     },
@@ -2710,8 +3075,13 @@
       "countryCode": "CO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Castillo de San Felipe",
+        "Torre del Reloj",
+        "Catedral de Santa Catalina",
+        "Murallas y casas coloniales"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 138,
       "batch": 34
     },
@@ -2724,10 +3094,16 @@
       "countryCode": "KH",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Angkor Wat",
+        "Templo Bayon",
+        "Ta Prohm",
+        "Residencia Real de Siem Reap"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 139,
-      "batch": 35
+      "batch": 35,
+      "notes": "Alcance cultural de Siem Reap y Angkor; revisar la selección de respuesta para evitar ambigüedad con el sitio histórico."
     },
     {
       "id": "belfast",
@@ -2738,8 +3114,14 @@
       "countryCode": "GB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ayuntamiento",
+        "Titanic Belfast sin rótulos",
+        "Grúas de Harland and Wolff",
+        "Castillo de Belfast",
+        "Albert Memorial Clock"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 140,
       "batch": 35
     },
@@ -2752,8 +3134,14 @@
       "countryCode": "CO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Plaza Botero",
+        "Palacio de la Cultura Rafael Uribe",
+        "Metrocable",
+        "Comuna 13",
+        "Edificio Coltejer"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 141,
       "batch": 35
     },
@@ -2766,8 +3154,14 @@
       "countryCode": "KH",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Palacio Real",
+        "Pagoda de Plata",
+        "Monumento de la Independencia",
+        "Wat Phnom",
+        "Mercado Central"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 142,
       "batch": 35
     },
@@ -2780,8 +3174,13 @@
       "countryCode": "PT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Puente de Dom Luís I",
+        "Ribeira",
+        "Torre de los Clérigos",
+        "Estación São Bento"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 143,
       "batch": 36
     },
@@ -2794,8 +3193,14 @@
       "countryCode": "PE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral y Plaza Mayor",
+        "Palacio de Gobierno",
+        "Convento de San Francisco",
+        "Huaca Pucllana",
+        "Acantilados de Miraflores"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 144,
       "batch": 36
     },
@@ -2808,8 +3213,14 @@
       "countryCode": "MY",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Torres Petronas",
+        "Merdeka 118",
+        "Menara KL",
+        "Edificio Sultan Abdul Samad",
+        "Batu Caves"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 145,
       "batch": 36
     },
@@ -2822,8 +3233,13 @@
       "countryCode": "BE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Atomium",
+        "Grand-Place y Ayuntamiento",
+        "Manneken Pis",
+        "Palacio Real"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 146,
       "batch": 36
     },
@@ -2836,8 +3252,13 @@
       "countryCode": "PE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Coricancha",
+        "Catedral y Plaza de Armas",
+        "Sacsayhuamán",
+        "Barrio y templo de San Blas"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 147,
       "batch": 37
     },
@@ -2850,8 +3271,14 @@
       "countryCode": "MY",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Templo Kek Lok Si",
+        "Khoo Kongsi",
+        "Fort Cornwallis",
+        "Cheong Fatt Tze Mansion",
+        "Clan Jetties"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 148,
       "batch": 37
     },
@@ -2864,8 +3291,13 @@
       "countryCode": "BE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Belfort",
+        "Markt y casas gremiales",
+        "Canal de Rozenhoedkaai",
+        "Iglesia de Nuestra Señora"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 149,
       "batch": 37
     },
@@ -2878,8 +3310,13 @@
       "countryCode": "PE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Monasterio de Santa Catalina",
+        "Catedral y Plaza de Armas",
+        "Volcán Misti",
+        "Mirador de Yanahuara"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 150,
       "batch": 37
     },
@@ -2892,8 +3329,14 @@
       "countryCode": "ID",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Monas",
+        "Mezquita Istiqlal",
+        "Catedral de Yakarta",
+        "Museo Fatahillah",
+        "Wisma 46"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 151,
       "batch": 38
     },
@@ -2906,8 +3349,13 @@
       "countryCode": "BE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Castillo de los Condes",
+        "Belfort",
+        "Catedral de San Bavón",
+        "Graslei y Korenlei"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 152,
       "batch": 38
     },
@@ -2920,8 +3368,14 @@
       "countryCode": "EC",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Basílica del Voto Nacional",
+        "Virgen del Panecillo",
+        "Iglesia y plaza de San Francisco",
+        "Iglesia de la Compañía",
+        "Plaza de la Independencia"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 153,
       "batch": 38
     },
@@ -2934,8 +3388,13 @@
       "countryCode": "ID",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Kraton",
+        "Taman Sari",
+        "Tugu Yogyakarta",
+        "Fort Vredeburg"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 154,
       "batch": 38
     },
@@ -2948,8 +3407,14 @@
       "countryCode": "NL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Puente Erasmus",
+        "Casas Cubo",
+        "Markthal",
+        "Euromast",
+        "De Rotterdam"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 155,
       "batch": 39
     },
@@ -2962,8 +3427,13 @@
       "countryCode": "BO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Iglesia de San Francisco",
+        "Mi Teleférico",
+        "Plaza Murillo",
+        "Valle de la Luna"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 156,
       "batch": 39
     },
@@ -2976,8 +3446,14 @@
       "countryCode": "PH",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Fort Santiago",
+        "Catedral de Manila",
+        "Monumento a Rizal",
+        "Iglesia de San Agustín",
+        "Bahía de Manila"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 157,
       "batch": 39
     },
@@ -2990,8 +3466,14 @@
       "countryCode": "NL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Binnenhof y Ridderzaal",
+        "Palacio de la Paz",
+        "Mauritshuis",
+        "Noordeinde",
+        "Kurhaus de Scheveningen"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 158,
       "batch": 39
     },
@@ -3004,8 +3486,13 @@
       "countryCode": "BO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Casa de la Libertad",
+        "Catedral",
+        "La Recoleta",
+        "San Felipe Neri"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 159,
       "batch": 40
     },
@@ -3018,8 +3505,13 @@
       "countryCode": "NP",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Boudhanath",
+        "Swayambhunath",
+        "Durbar Square",
+        "Pashupatinath"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 160,
       "batch": 40
     },
@@ -3032,8 +3524,14 @@
       "countryCode": "FR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Basílica de Fourvière",
+        "Plaza Bellecour",
+        "Ópera",
+        "Vieux Lyon junto al Saona",
+        "Musée des Confluences"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 161,
       "batch": 40
     },
@@ -3046,8 +3544,14 @@
       "countryCode": "CL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Gran Torre Santiago",
+        "Palacio de La Moneda",
+        "Cerro San Cristóbal",
+        "Cerro Santa Lucía",
+        "Catedral Metropolitana"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 162,
       "batch": 40
     },
@@ -3060,8 +3564,13 @@
       "countryCode": "IN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Taj Mahal",
+        "Fuerte de Agra",
+        "Tumba de Itimad-ud-Daulah",
+        "Jardines Mehtab Bagh y Yamuna"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 163,
       "batch": 41
     },
@@ -3074,8 +3583,13 @@
       "countryCode": "FR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Notre-Dame de la Garde",
+        "Puerto Viejo",
+        "MuCEM y Fort Saint-Jean",
+        "Catedral de la Major"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 164,
       "batch": 41
     },
@@ -3088,8 +3602,14 @@
       "countryCode": "CL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "La Sebastiana",
+        "Ascensor Artillería",
+        "Cerros de casas de colores",
+        "Edificio Turri",
+        "Palacio Baburizza"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 165,
       "batch": 41
     },
@@ -3102,8 +3622,14 @@
       "countryCode": "IN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Hawa Mahal",
+        "Fuerte Amber",
+        "Jal Mahal",
+        "City Palace",
+        "Jantar Mantar"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 166,
       "batch": 41
     },
@@ -3116,8 +3642,13 @@
       "countryCode": "FR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Promenade des Anglais",
+        "Hotel Negresco",
+        "Place Masséna",
+        "Catedral de San Nicolás"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 167,
       "batch": 42
     },
@@ -3130,8 +3661,14 @@
       "countryCode": "UY",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Palacio Salvo",
+        "Teatro Solís",
+        "Puerta de la Ciudadela",
+        "Palacio Legislativo",
+        "Rambla"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 168,
       "batch": 42
     },
@@ -3144,8 +3681,14 @@
       "countryCode": "IN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ghats del Ganges",
+        "Templo Kashi Vishwanath",
+        "Fuerte Ramnagar",
+        "Dashashwamedh Ghat",
+        "Nuevo Templo Vishwanath de BHU"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 169,
       "batch": 42
     },
@@ -3158,8 +3701,14 @@
       "countryCode": "FR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Place de la Bourse y Miroir d’Eau",
+        "Cité du Vin",
+        "Pont de Pierre",
+        "Catedral y torre Pey-Berland",
+        "Grosse Cloche"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 170,
       "batch": 42
     },
@@ -3172,8 +3721,14 @@
       "countryCode": "BR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Congreso Nacional",
+        "Catedral",
+        "Palacio da Alvorada",
+        "Memorial JK",
+        "Puente Juscelino Kubitschek"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 171,
       "batch": 43
     },
@@ -3186,8 +3741,14 @@
       "countryCode": "IN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Victoria Memorial",
+        "Howrah Bridge",
+        "Templo Dakshineswar",
+        "Catedral de San Pablo",
+        "Writers’ Building"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 172,
       "batch": 43
     },
@@ -3200,8 +3761,14 @@
       "countryCode": "FR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral",
+        "Petite France",
+        "Ponts Couverts",
+        "Parlamento Europeo",
+        "Palais Rohan"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 173,
       "batch": 43
     },
@@ -3214,8 +3781,14 @@
       "countryCode": "BR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "MASP",
+        "Theatro Municipal",
+        "Catedral da Sé",
+        "Edificio Altino Arantes",
+        "Edificio Copan"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 174,
       "batch": 43
     },
@@ -3228,8 +3801,13 @@
       "countryCode": "IN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Templo Dorado",
+        "Jallianwala Bagh",
+        "Hall Gate",
+        "Fuerte Gobindgarh"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 175,
       "batch": 44
     },
@@ -3242,8 +3820,13 @@
       "countryCode": "FR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Palacio de los Papas",
+        "Puente Saint-Bénézet",
+        "Catedral de Notre-Dame des Doms",
+        "Murallas"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 176,
       "batch": 44
     },
@@ -3256,8 +3839,14 @@
       "countryCode": "BR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Elevador Lacerda",
+        "Pelourinho",
+        "Iglesia de São Francisco",
+        "Farol da Barra",
+        "Mercado Modelo"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 177,
       "batch": 44
     },
@@ -3270,8 +3859,14 @@
       "countryCode": "AE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Mezquita Sheikh Zayed",
+        "Louvre Abu Dhabi",
+        "Qasr Al Watan",
+        "Etihad Towers",
+        "Capital Gate"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 178,
       "batch": 44
     },
@@ -3284,8 +3879,13 @@
       "countryCode": "IT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Duomo",
+        "Galería Vittorio Emanuele II",
+        "Castello Sforzesco",
+        "Teatro alla Scala"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 179,
       "batch": 45
     },
@@ -3298,8 +3898,13 @@
       "countryCode": "BR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Praça do Marco Zero",
+        "Instituto Ricardo Brennand",
+        "Puente Maurício de Nassau",
+        "Casas de Recife Antigo"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 180,
       "batch": 45
     },
@@ -3312,8 +3917,14 @@
       "countryCode": "QA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Museo de Arte Islámico",
+        "Museo Nacional de Qatar",
+        "Aspire Tower",
+        "Katara Towers",
+        "The Pearl"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 181,
       "batch": 45
     },
@@ -3326,8 +3937,13 @@
       "countryCode": "IT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Castel Nuovo",
+        "Castel dell’Ovo",
+        "Basílica de San Francesco di Paola",
+        "Palacio Real y Piazza del Plebiscito"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 182,
       "batch": 45
     },
@@ -3340,8 +3956,14 @@
       "countryCode": "PA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Puente de las Américas",
+        "F&F Tower",
+        "Catedral del Casco Viejo",
+        "Biomuseo",
+        "Esclusas de Miraflores"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 183,
       "batch": 46
     },
@@ -3354,8 +3976,13 @@
       "countryCode": "OM",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Gran Mezquita del Sultán Qaboos",
+        "Palacio Al Alam",
+        "Corniche de Muttrah",
+        "Fuertes Al Jalali y Al Mirani"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 184,
       "batch": 46
     },
@@ -3368,8 +3995,13 @@
       "countryCode": "IT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Torre inclinada",
+        "Duomo",
+        "Baptisterio",
+        "Ponte di Mezzo"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 185,
       "batch": 46
     },
@@ -3382,8 +4014,14 @@
       "countryCode": "GT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Arco de Santa Catalina",
+        "Iglesia de La Merced",
+        "Catedral",
+        "Palacio de los Capitanes Generales",
+        "Volcán de Agua"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 186,
       "batch": 46
     },
@@ -3396,8 +4034,13 @@
       "countryCode": "SA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Kingdom Centre",
+        "Al Faisaliah Tower",
+        "Fuerte Masmak",
+        "At-Turaif de Diriyah"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 187,
       "batch": 47
     },
@@ -3410,8 +4053,13 @@
       "countryCode": "IT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Arena",
+        "Castelvecchio y puente",
+        "Torre dei Lamberti",
+        "Ponte Pietra"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 188,
       "batch": 47
     },
@@ -3424,8 +4072,14 @@
       "countryCode": "PR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Castillo San Felipe del Morro",
+        "Castillo San Cristóbal",
+        "La Fortaleza",
+        "Catedral de San Juan Bautista",
+        "Casas del Viejo San Juan"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 189,
       "batch": 47
     },
@@ -3438,8 +4092,14 @@
       "countryCode": "SA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Fuente del Rey Fahd",
+        "Casas de Al-Balad",
+        "Mezquita Al Rahma",
+        "Faro de Yeda",
+        "Globe Roundabout"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 190,
       "batch": 47
     },
@@ -3452,8 +4112,13 @@
       "countryCode": "IT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Mole Antonelliana",
+        "Palazzo Madama",
+        "Palacio Real",
+        "Basílica de Superga"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 191,
       "batch": 48
     },
@@ -3466,8 +4131,13 @@
       "countryCode": "DO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Alcázar de Colón",
+        "Catedral Primada de América",
+        "Fortaleza Ozama",
+        "Faro a Colón"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 192,
       "batch": 48
     },
@@ -3480,8 +4150,13 @@
       "countryCode": "JO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Teatro Romano",
+        "Templo de Hércules de la Ciudadela",
+        "Palacio Omeya",
+        "Mezquita del Rey Abdullah I"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 193,
       "batch": 48
     },
@@ -3494,8 +4169,14 @@
       "countryCode": "IT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Las Dos Torres",
+        "Basílica de San Petronio",
+        "Fuente de Neptuno",
+        "Santuario de San Luca",
+        "Pórticos"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 194,
       "batch": 48
     },
@@ -3508,8 +4189,14 @@
       "countryCode": "CR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Teatro Nacional",
+        "Catedral Metropolitana",
+        "Templo de la Música",
+        "Museo Nacional y Cuartel Bellavista",
+        "Correo Central"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 195,
       "batch": 49
     },
@@ -3522,8 +4209,14 @@
       "countryCode": "LB",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Mezquita Mohammad Al-Amin",
+        "Rocas de Raouché",
+        "Torre del Reloj de la Place de l’Étoile",
+        "Museo Nacional",
+        "Grand Serail"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 196,
       "batch": 49
     },
@@ -3536,8 +4229,14 @@
       "countryCode": "IT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral",
+        "Palacio de los Normandos",
+        "La Martorana",
+        "Teatro Massimo",
+        "Fuente Pretoria"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 197,
       "batch": 49
     },
@@ -3550,8 +4249,13 @@
       "countryCode": "JM",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Devon House",
+        "Fort Charles de Port Royal",
+        "Bob Marley Museum sin rótulos",
+        "Ward Theatre"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 198,
       "batch": 49
     },
@@ -3564,10 +4268,16 @@
       "countryCode": "IL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Cúpula de la Roca",
+        "Muro Occidental",
+        "Iglesia del Santo Sepulcro",
+        "Torre de David y murallas"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 199,
-      "batch": 50
+      "batch": 50,
+      "generationInstructions": "Historic architecture only. No flags, territorial maps, political emblems or military objects."
     },
     {
       "id": "munich",
@@ -3578,8 +4288,14 @@
       "countryCode": "DE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Frauenkirche",
+        "Nuevo Ayuntamiento",
+        "Palacio de Nymphenburg",
+        "Museo BMW y BMW Welt sin logos",
+        "Estadio Olímpico"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 200,
       "batch": 50
     },
@@ -3592,8 +4308,14 @@
       "countryCode": "IL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Azrieli Center",
+        "Torre del Reloj de Jaffa",
+        "Casas Bauhaus de la Ciudad Blanca",
+        "Teatro Habima",
+        "Museo de Arte"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 201,
       "batch": 50
     },
@@ -3606,8 +4328,14 @@
       "countryCode": "DE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Elbphilharmonie",
+        "Speicherstadt",
+        "Iglesia de San Miguel",
+        "Ayuntamiento",
+        "Grúas del puerto"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 202,
       "batch": 50
     },
@@ -3620,8 +4348,13 @@
       "countryCode": "UZ",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Registán",
+        "Shah-i-Zinda",
+        "Gur-e Amir",
+        "Mezquita Bibi-Khanym"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 203,
       "batch": 51
     },
@@ -3634,8 +4367,13 @@
       "countryCode": "DE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral",
+        "Puente Hohenzollern",
+        "Kranhäuser",
+        "Iglesia de Gross St Martin"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 204,
       "batch": 51
     },
@@ -3648,8 +4386,13 @@
       "countryCode": "UZ",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Minarete y mezquita Kalyan",
+        "Fortaleza Ark",
+        "Chor Minor",
+        "Lyab-i Hauz"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 205,
       "batch": 51
     },
@@ -3662,8 +4405,14 @@
       "countryCode": "DE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Frauenkirche",
+        "Semperoper",
+        "Zwinger",
+        "Castillo de Dresde",
+        "Puente de Augusto"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 206,
       "batch": 51
     },
@@ -3676,8 +4425,14 @@
       "countryCode": "DE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Römer",
+        "Main Tower",
+        "Commerzbank Tower",
+        "Puente Eiserner Steg",
+        "Catedral de San Bartolomé"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 207,
       "batch": 52
     },
@@ -3690,8 +4445,13 @@
       "countryCode": "DE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Castillo",
+        "Puente de Karl Theodor",
+        "Iglesia del Espíritu Santo",
+        "Casco antiguo junto al Neckar"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 208,
       "batch": 52
     },
@@ -3704,8 +4464,14 @@
       "countryCode": "CH",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Jet d’Eau",
+        "Catedral de San Pedro",
+        "Palais des Nations sin banderas",
+        "Broken Chair",
+        "Reloj de Flores"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 209,
       "batch": 52
     },
@@ -3718,8 +4484,14 @@
       "countryCode": "CH",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Kapellbrücke y Torre del Agua",
+        "Monumento al León",
+        "Iglesia Jesuita",
+        "Muralla Musegg",
+        "KKL"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 210,
       "batch": 52
     },
@@ -3732,8 +4504,14 @@
       "countryCode": "CH",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Zytglogge",
+        "Catedral",
+        "Palacio Federal",
+        "Puente Nydegg",
+        "Arcadas del casco antiguo y Aar"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 211,
       "batch": 53
     },
@@ -3746,8 +4524,14 @@
       "countryCode": "NO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ópera",
+        "Museo Munch",
+        "Ayuntamiento",
+        "Fortaleza Akershus",
+        "Parque Vigeland"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 212,
       "batch": 53
     },
@@ -3760,8 +4544,14 @@
       "countryCode": "NO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Bryggen",
+        "Funicular Fløibanen",
+        "Håkonshallen",
+        "Torre Rosenkrantz",
+        "Catedral"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 213,
       "batch": 53
     },
@@ -3774,8 +4564,13 @@
       "countryCode": "FI",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral luterana",
+        "Catedral Uspenski",
+        "Monumento a Sibelius",
+        "Estación Central"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 214,
       "batch": 53
     },
@@ -3788,8 +4583,13 @@
       "countryCode": "IS",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Hallgrímskirkja",
+        "Harpa",
+        "Sun Voyager",
+        "Perlan"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 215,
       "batch": 54
     },
@@ -3802,8 +4602,14 @@
       "countryCode": "EE",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ayuntamiento",
+        "Catedral Alexander Nevsky",
+        "Castillo de Toompea y Pikk Hermann",
+        "Iglesia de San Olaf",
+        "Murallas"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 216,
       "batch": 54
     },
@@ -3816,8 +4622,14 @@
       "countryCode": "LV",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Casa de los Cabezas Negras",
+        "Catedral",
+        "Iglesia de San Pedro",
+        "Monumento a la Libertad",
+        "Biblioteca Nacional"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 217,
       "batch": 54
     },
@@ -3830,8 +4642,13 @@
       "countryCode": "LT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Torre de Gediminas",
+        "Catedral y campanario",
+        "Iglesia de Santa Ana",
+        "Puerta de la Aurora"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 218,
       "batch": 54
     },
@@ -3844,8 +4661,13 @@
       "countryCode": "PL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Palacio de la Cultura y la Ciencia",
+        "Castillo Real y columna de Segismundo",
+        "Plaza del Mercado",
+        "Palacio Łazienki"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 219,
       "batch": 55
     },
@@ -3858,8 +4680,13 @@
       "countryCode": "PL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Wawel",
+        "Basílica de Santa María",
+        "Lonja de los Paños",
+        "Barbacana"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 220,
       "batch": 55
     },
@@ -3872,8 +4699,14 @@
       "countryCode": "PL",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Fuente de Neptuno",
+        "Grúa del puerto",
+        "Basílica de Santa María",
+        "Długi Targ",
+        "Puerta Dorada"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 221,
       "batch": 55
     },
@@ -3886,8 +4719,13 @@
       "countryCode": "RO",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Palacio del Parlamento",
+        "Ateneo Rumano",
+        "Arco del Triunfo",
+        "Monasterio Stavropoleos"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 222,
       "batch": 55
     },
@@ -3900,8 +4738,13 @@
       "countryCode": "BG",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral Alexander Nevsky",
+        "Rotonda de San Jorge",
+        "Teatro Nacional Ivan Vazov",
+        "Basílica de Santa Sofía"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 223,
       "batch": 56
     },
@@ -3914,8 +4757,13 @@
       "countryCode": "RS",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Fortaleza Kalemegdan",
+        "Templo de San Sava",
+        "Asamblea Nacional",
+        "Torre Avala"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 224,
       "batch": 56
     },
@@ -3928,8 +4776,13 @@
       "countryCode": "BA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Sebilj y Baščaršija",
+        "Puente Latino",
+        "Ayuntamiento Vijećnica",
+        "Mezquita Gazi Husrev-beg"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 225,
       "batch": 56
     },
@@ -3942,8 +4795,14 @@
       "countryCode": "HR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Murallas y puerto",
+        "Fortaleza Lovrijenac",
+        "Stradun y torre del reloj",
+        "Palacio Sponza",
+        "Catedral"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 226,
       "batch": 56
     },
@@ -3956,8 +4815,13 @@
       "countryCode": "HR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Palacio de Diocleciano y Peristilo",
+        "Campanile de San Duje",
+        "Puerta Dorada",
+        "Riva"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 227,
       "batch": 57
     },
@@ -3970,8 +4834,13 @@
       "countryCode": "HR",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral",
+        "Iglesia de San Marcos",
+        "Torre Lotrščak",
+        "Mercado Dolac"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 228,
       "batch": 57
     },
@@ -3984,8 +4853,13 @@
       "countryCode": "SI",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Triple Puente",
+        "Puente de los Dragones",
+        "Castillo",
+        "Iglesia Franciscana"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 229,
       "batch": 57
     },
@@ -3998,8 +4872,14 @@
       "countryCode": "SK",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Castillo",
+        "Puente SNP y mirador UFO",
+        "Catedral de San Martín",
+        "Puerta de San Miguel",
+        "Iglesia Azul"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 230,
       "batch": 57
     },
@@ -4012,8 +4892,13 @@
       "countryCode": "AT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Fortaleza Hohensalzburg",
+        "Catedral",
+        "Palacio Mirabell y jardines",
+        "Getreidegasse sin rótulos"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 231,
       "batch": 58
     },
@@ -4026,8 +4911,13 @@
       "countryCode": "LU",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Puente Adolphe",
+        "Casamatas del Bock",
+        "Palacio Gran Ducal",
+        "Catedral de Notre-Dame"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 232,
       "batch": 58
     },
@@ -4040,8 +4930,14 @@
       "countryCode": "MC",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Casino de Montecarlo",
+        "Palacio del Príncipe",
+        "Catedral de San Nicolás",
+        "Museo Oceanográfico",
+        "Port Hercule"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 233,
       "batch": 58
     },
@@ -4054,8 +4950,14 @@
       "countryCode": "MT",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Concatedral de San Juan",
+        "Fort Saint Elmo",
+        "Cúpula de los Carmelitas y aguja de San Pablo",
+        "Upper Barrakka Gardens",
+        "Parlamento"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 234,
       "batch": 58
     },
@@ -4068,8 +4970,13 @@
       "countryCode": "UA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral de Santa Sofía",
+        "Monasterio de San Miguel",
+        "Puerta Dorada",
+        "Lavra de Kyiv-Pechersk"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 235,
       "batch": 59
     }

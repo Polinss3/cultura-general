@@ -1,0 +1,18 @@
+{
+  "id": "nairobi",
+  "batch": 9,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/nairobi-v1.png",
+  "generatedFile": "exec-f4163955-f34b-4aa8-8618-32d7d12bc38b.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nCity/site: Nairobi (KE). Main landmarks: Kenyatta International Convention Centre; Times Tower; Uhuru Park; Jamia Mosque; Nairobi Railway Museum.   Represent these as dominant recognizable features. Every building is complete and wholly within the common floor. Keep only a few low local filler blocks and greenery. No detached islands, land beyond the original outline or additional platform.",
+  "sources": [
+    "https://kicc.co.ke/",
+    "https://kicc.ecitizen.go.ke/",
+    "https://tourkenya.go.ke/tourism/circuits/nairobi-city-circuit/",
+    "https://billing.ecitizen.go.ke/client/kicc",
+    "https://www.iekenya.org/sites/default/files/iek-documents/2025-02/Engineering%20in%20Kenya%20Magazine%20Issue%201_0.pdf"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "marrakech",
+  "batch": 6,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/marrakech-v1.png",
+  "generatedFile": "exec-166f413a-7e25-40e4-b06d-79903ba9fcdd.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nCity/site: Marrakesh (MA). Main landmarks: Mezquita Kutubía; Jemaa el-Fna; Palacio de la Bahía; Murallas y Bab Agnaou; Jardín Majorelle.   Represent these as dominant recognizable features. Every building is complete and wholly within the common floor. Keep only a few low local filler blocks and greenery. No detached islands, land beyond the original outline or additional platform.",
+  "sources": [
+    "https://www.visitmarrakech.com/en/listing/koutoubia-mosque/",
+    "https://www.visitmorocco.com/en/travel/marrakesh",
+    "https://www.visitmorocco.com/en/travel/marrakech/medina",
+    "https://visitmarrakech.com/en/listing/la-medina-de-marrakech/",
+    "https://www.visitmarrakech.com/en/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

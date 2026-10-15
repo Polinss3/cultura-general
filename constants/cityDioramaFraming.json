@@ -10,7 +10,7 @@
   "measurement": {
     "method": "Warm-sandstone RGB edge gradients near lateral extrema and maximum lower boundary gradient within 70 px of image center; registration anchors checked visually.",
     "sourcePixels": 1254,
-    "sourceBaselineSpread": 1,
+    "sourceBaselineSpread": 10,
     "edgeToleranceSourcePixels": 2
   },
   "images": {
@@ -318,6 +318,230 @@
       "normalized": {
         "left": 0.056744966442953126,
         "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "viena": {
+      "file": "normalizadas/viena-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "san-francisco": {
+      "file": "normalizadas/san-francisco-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "singapur": {
+      "file": "normalizadas/singapur-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "marrakech": {
+      "file": "normalizadas/marrakech-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1035,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.19063758389261753,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "melbourne": {
+      "file": "normalizadas/melbourne-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "praga": {
+      "file": "normalizadas/praga-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "los-angeles": {
+      "file": "normalizadas/los-angeles-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "pekin": {
+      "file": "normalizadas/pekin-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "ciudad-del-cabo": {
+      "file": "normalizadas/ciudad-del-cabo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1032,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.19275167785234903,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "chicago": {
+      "file": "normalizadas/chicago-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "shanghai": {
+      "file": "normalizadas/shanghai-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "nairobi": {
+      "file": "normalizadas/nairobi-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "wellington": {
+      "file": "normalizadas/wellington-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "estambul": {
+      "file": "normalizadas/estambul-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "atenas": {
+      "file": "normalizadas/atenas-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "auckland": {
+      "file": "normalizadas/auckland-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
         "width": 0.8836912751677851,
         "height": 0.8836912751677851
       }

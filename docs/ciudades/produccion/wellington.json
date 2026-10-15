@@ -1,0 +1,18 @@
+{
+  "id": "wellington",
+  "batch": 9,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/wellington-v1.png",
+  "generatedFile": "exec-109b2349-07d6-4a80-8882-71afa21d2fbe.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nCity/site: Wellington (NZ). Main landmarks: Beehive y Parlamento; Wellington Cable Car; Te Papa; Old St Paul's; Waterfront.   Represent these as dominant recognizable features. Every building is complete and wholly within the common floor. Keep only a few low local filler blocks and greenery. No detached islands, land beyond the original outline or additional platform.",
+  "sources": [
+    "https://www.wellingtonnz.com/visit/see-and-do/wellington-cable-car",
+    "https://www.wellingtonnz.com/visit/trails/city-to-sea-walkway",
+    "https://www3.parliament.nz/en/visit-and-learn/history-and-buildings/buildings-and-grounds/",
+    "https://www3.parliament.nz/en/visit-and-learn/history-and-buildings/buildings-and-grounds/the-beehive-executive-wing/",
+    "https://www.wellingtoncablecar.co.nz/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

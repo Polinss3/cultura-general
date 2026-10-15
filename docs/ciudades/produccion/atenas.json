@@ -1,0 +1,18 @@
+{
+  "id": "atenas",
+  "batch": 8,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/atenas-v1.png",
+  "generatedFile": "exec-5816f268-9a4c-4de0-bcdf-276c69df1181.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity: atenas. Landmarks: Partenón; Erecteion; Templo de Zeus Olímpico; Estadio Panathinaikó; Plaza Sintagma. The Acropolis sits on a SMALL low raised rock WITHIN the existing floor, never extend the base for this rock. Clear Parthenon with Doric columns, Erechtheion porch with six caryatids, Panathenaic marble U-shaped stadium, Olympian Zeus columns, pale neoclassical Syntagma building.",
+  "sources": [
+    "https://www.visitgreece.gr/en/mainland/Attique/athens",
+    "https://www.visitgreece.gr/en/islands/athens",
+    "https://www.acropolisofathens.net/es/guides/what-to-see-on-the-acropolis/",
+    "https://www.hh.gr/en/",
+    "https://www.discovergreece.com/es/experiences/acropolis-athens"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

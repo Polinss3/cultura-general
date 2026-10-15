@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-235 destinos: 234 ciudades y 1 lugar histórico. 22 dioramas con imagen y 213 pendientes.
+235 destinos: 234 ciudades y 1 lugar histórico. 38 dioramas con imagen y 197 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -10,9 +10,9 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 
 | Tanda | Destinos pendientes |
 | --- | --- |
-| 6 | Viena, San Francisco, Singapur, Marrakech |
-| 7 | Melbourne, Praga, Los Ángeles, Pekín |
-| 8 | Ciudad del Cabo, Auckland, Atenas, Chicago |
+| 10 | Río de Janeiro, Seúl, Túnez, Brisbane |
+| 11 | Budapest, Toronto, Bangkok, Dakar |
+| 12 | Perth, Florencia, La Habana, Dubái |
 
 Machu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.
 
@@ -33,10 +33,10 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Moscú | Con imagen · por revisar | 3 | Catedral de San Basilio; Murallas del Kremlin y torre Spásskaya; Teatro Bolshói; Catedral de Cristo Salvador; Rascacielos de Moscow-City |
 | San Petersburgo | Con imagen · por revisar | 3 | Palacio de Invierno / Hermitage; Catedral de San Isaac; Iglesia del Salvador sobre la Sangre Derramada; Almirantazgo y aguja dorada; Puente del Palacio y río Nevá |
 | Lisboa | Con imagen · por revisar | 5 | Torre de Belém; Monasterio de los Jerónimos; Puente 25 de Abril; Castillo de São Jorge; Tranvía y calle de Alfama |
-| Viena | Pendiente de imagen | 6 | Catedral de San Esteban; Schönbrunn; Hofburg; Belvedere; Noria del Prater |
-| Praga | Pendiente de imagen | 7 | Puente de Carlos; Castillo de Praga; Catedral de San Vito; Reloj Astronómico; Iglesia de Týn |
-| Atenas | Pendiente de imagen | 8 | Partenón; Erecteion; Templo de Zeus Olímpico; Estadio Panathinaikó; Plaza Sintagma |
-| Estambul | Pendiente de imagen | 9 | Santa Sofía; Mezquita Azul; Torre de Gálata; Palacio Topkapi; Bósforo |
+| Viena | Con imagen · por revisar | 6 | Catedral de San Esteban; Schönbrunn; Hofburg; Belvedere; Noria del Prater |
+| Praga | Con imagen · por revisar | 7 | Puente de Carlos; Castillo de Praga; Catedral de San Vito; Reloj Astronómico; Iglesia de Týn |
+| Atenas | Con imagen · por revisar | 8 | Partenón; Erecteion; Templo de Zeus Olímpico; Estadio Panathinaikó; Plaza Sintagma |
+| Estambul | Con imagen · por revisar | 9 | Santa Sofía; Mezquita Azul; Torre de Gálata; Palacio Topkapi; Bósforo |
 | Budapest | Pendiente de imagen | 11 | Parlamento; Puente de las Cadenas; Castillo de Buda; Bastión de los Pescadores; Basílica de San Esteban |
 | Florencia | Pendiente de imagen | 12 | Duomo y cúpula de Brunelleschi; Ponte Vecchio; Palazzo Vecchio; Campanile de Giotto; Santa Croce |
 | Zúrich | Pendiente de imagen | 13 | Grossmünster; Fraumünster; Iglesia de San Pedro; Río Limmat; Casco histórico y tranvía |
@@ -50,70 +50,70 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Santiago de Compostela | Pendiente de imagen | 22 | Catedral y Obradoiro; Hostal de los Reyes Católicos; Monasterio de San Martín Pinario; Cidade da Cultura |
 | Málaga | Pendiente de imagen | 23 | Alcazaba y Teatro Romano; Catedral; Cubo del Centre Pompidou; Castillo de Gibralfaro; La Farola |
 | Toledo | Pendiente de imagen | 24 | Alcázar; Catedral; Puente de San Martín; Puente de Alcántara; San Juan de los Reyes |
-| Segovia | Por definir hitos | 25 | Pendientes de investigar |
-| Zaragoza | Por definir hitos | 26 | Pendientes de investigar |
-| San Sebastián | Por definir hitos | 27 | Pendientes de investigar |
-| Salamanca | Por definir hitos | 28 | Pendientes de investigar |
-| Manchester | Por definir hitos | 29 | Pendientes de investigar |
-| Liverpool | Por definir hitos | 30 | Pendientes de investigar |
-| Oxford | Por definir hitos | 31 | Pendientes de investigar |
-| Cambridge | Por definir hitos | 32 | Pendientes de investigar |
-| Bath | Por definir hitos | 33 | Pendientes de investigar |
-| York | Por definir hitos | 33 | Pendientes de investigar |
-| Glasgow | Por definir hitos | 34 | Pendientes de investigar |
-| Belfast | Por definir hitos | 35 | Pendientes de investigar |
-| Oporto | Por definir hitos | 36 | Pendientes de investigar |
-| Bruselas | Por definir hitos | 36 | Pendientes de investigar |
-| Brujas | Por definir hitos | 37 | Pendientes de investigar |
-| Gante | Por definir hitos | 38 | Pendientes de investigar |
-| Róterdam | Por definir hitos | 39 | Pendientes de investigar |
-| La Haya | Por definir hitos | 39 | Pendientes de investigar |
-| Lyon | Por definir hitos | 40 | Pendientes de investigar |
-| Marsella | Por definir hitos | 41 | Pendientes de investigar |
-| Niza | Por definir hitos | 42 | Pendientes de investigar |
-| Burdeos | Por definir hitos | 42 | Pendientes de investigar |
-| Estrasburgo | Por definir hitos | 43 | Pendientes de investigar |
-| Aviñón | Por definir hitos | 44 | Pendientes de investigar |
-| Milán | Por definir hitos | 45 | Pendientes de investigar |
-| Nápoles | Por definir hitos | 45 | Pendientes de investigar |
-| Pisa | Por definir hitos | 46 | Pendientes de investigar |
-| Verona | Por definir hitos | 47 | Pendientes de investigar |
-| Turín | Por definir hitos | 48 | Pendientes de investigar |
-| Bolonia | Por definir hitos | 48 | Pendientes de investigar |
-| Palermo | Por definir hitos | 49 | Pendientes de investigar |
-| Múnich | Por definir hitos | 50 | Pendientes de investigar |
-| Hamburgo | Por definir hitos | 50 | Pendientes de investigar |
-| Colonia | Por definir hitos | 51 | Pendientes de investigar |
-| Dresde | Por definir hitos | 51 | Pendientes de investigar |
-| Fráncfort | Por definir hitos | 52 | Pendientes de investigar |
-| Heidelberg | Por definir hitos | 52 | Pendientes de investigar |
-| Ginebra | Por definir hitos | 52 | Pendientes de investigar |
-| Lucerna | Por definir hitos | 52 | Pendientes de investigar |
-| Berna | Por definir hitos | 53 | Pendientes de investigar |
-| Oslo | Por definir hitos | 53 | Pendientes de investigar |
-| Bergen | Por definir hitos | 53 | Pendientes de investigar |
-| Helsinki | Por definir hitos | 53 | Pendientes de investigar |
-| Reikiavik | Por definir hitos | 54 | Pendientes de investigar |
-| Tallin | Por definir hitos | 54 | Pendientes de investigar |
-| Riga | Por definir hitos | 54 | Pendientes de investigar |
-| Vilna | Por definir hitos | 54 | Pendientes de investigar |
-| Varsovia | Por definir hitos | 55 | Pendientes de investigar |
-| Cracovia | Por definir hitos | 55 | Pendientes de investigar |
-| Gdansk | Por definir hitos | 55 | Pendientes de investigar |
-| Bucarest | Por definir hitos | 55 | Pendientes de investigar |
-| Sofía | Por definir hitos | 56 | Pendientes de investigar |
-| Belgrado | Por definir hitos | 56 | Pendientes de investigar |
-| Sarajevo | Por definir hitos | 56 | Pendientes de investigar |
-| Dubrovnik | Por definir hitos | 56 | Pendientes de investigar |
-| Split | Por definir hitos | 57 | Pendientes de investigar |
-| Zagreb | Por definir hitos | 57 | Pendientes de investigar |
-| Liubliana | Por definir hitos | 57 | Pendientes de investigar |
-| Bratislava | Por definir hitos | 57 | Pendientes de investigar |
-| Salzburgo | Por definir hitos | 58 | Pendientes de investigar |
-| Luxemburgo | Por definir hitos | 58 | Pendientes de investigar |
-| Mónaco | Por definir hitos | 58 | Pendientes de investigar |
-| La Valeta | Por definir hitos | 58 | Pendientes de investigar |
-| Kyiv | Por definir hitos | 59 | Pendientes de investigar |
+| Segovia | Pendiente de imagen | 25 | Acueducto romano; Alcázar; Catedral; Iglesia de la Vera Cruz |
+| Zaragoza | Pendiente de imagen | 26 | Basílica del Pilar; Aljafería; Puente de Piedra; La Seo; Torre del Agua |
+| San Sebastián | Pendiente de imagen | 27 | Bahía y paseo de La Concha; Palacio de Miramar; Peine del Viento; Catedral del Buen Pastor; Hotel María Cristina |
+| Salamanca | Pendiente de imagen | 28 | Plaza Mayor; Catedrales Vieja y Nueva; Fachada de la Universidad; Casa de las Conchas |
+| Manchester | Pendiente de imagen | 29 | Ayuntamiento de Manchester; Beetham Tower; Biblioteca John Rylands; Catedral; Etihad Stadium |
+| Liverpool | Pendiente de imagen | 30 | Royal Liver Building; Catedral anglicana; Catedral Metropolitana; Royal Albert Dock |
+| Oxford | Pendiente de imagen | 31 | Radcliffe Camera; Bodleian Library; Bridge of Sighs; Tom Tower de Christ Church; Sheldonian Theatre |
+| Cambridge | Pendiente de imagen | 32 | King’s College Chapel; Fitzwilliam Museum; Mathematical Bridge; Bridge of Sighs |
+| Bath | Pendiente de imagen | 33 | Royal Crescent; Termas Romanas; Bath Abbey; Pulteney Bridge |
+| York | Pendiente de imagen | 33 | York Minster; Clifford’s Tower; The Shambles; Murallas y Micklegate Bar |
+| Glasgow | Pendiente de imagen | 34 | Catedral; Universidad de Glasgow; Kelvingrove; Finnieston Crane; Clyde Arc |
+| Belfast | Pendiente de imagen | 35 | Ayuntamiento; Titanic Belfast sin rótulos; Grúas de Harland and Wolff; Castillo de Belfast; Albert Memorial Clock |
+| Oporto | Pendiente de imagen | 36 | Puente de Dom Luís I; Ribeira; Torre de los Clérigos; Estación São Bento |
+| Bruselas | Pendiente de imagen | 36 | Atomium; Grand-Place y Ayuntamiento; Manneken Pis; Palacio Real |
+| Brujas | Pendiente de imagen | 37 | Belfort; Markt y casas gremiales; Canal de Rozenhoedkaai; Iglesia de Nuestra Señora |
+| Gante | Pendiente de imagen | 38 | Castillo de los Condes; Belfort; Catedral de San Bavón; Graslei y Korenlei |
+| Róterdam | Pendiente de imagen | 39 | Puente Erasmus; Casas Cubo; Markthal; Euromast; De Rotterdam |
+| La Haya | Pendiente de imagen | 39 | Binnenhof y Ridderzaal; Palacio de la Paz; Mauritshuis; Noordeinde; Kurhaus de Scheveningen |
+| Lyon | Pendiente de imagen | 40 | Basílica de Fourvière; Plaza Bellecour; Ópera; Vieux Lyon junto al Saona; Musée des Confluences |
+| Marsella | Pendiente de imagen | 41 | Notre-Dame de la Garde; Puerto Viejo; MuCEM y Fort Saint-Jean; Catedral de la Major |
+| Niza | Pendiente de imagen | 42 | Promenade des Anglais; Hotel Negresco; Place Masséna; Catedral de San Nicolás |
+| Burdeos | Pendiente de imagen | 42 | Place de la Bourse y Miroir d’Eau; Cité du Vin; Pont de Pierre; Catedral y torre Pey-Berland; Grosse Cloche |
+| Estrasburgo | Pendiente de imagen | 43 | Catedral; Petite France; Ponts Couverts; Parlamento Europeo; Palais Rohan |
+| Aviñón | Pendiente de imagen | 44 | Palacio de los Papas; Puente Saint-Bénézet; Catedral de Notre-Dame des Doms; Murallas |
+| Milán | Pendiente de imagen | 45 | Duomo; Galería Vittorio Emanuele II; Castello Sforzesco; Teatro alla Scala |
+| Nápoles | Pendiente de imagen | 45 | Castel Nuovo; Castel dell’Ovo; Basílica de San Francesco di Paola; Palacio Real y Piazza del Plebiscito |
+| Pisa | Pendiente de imagen | 46 | Torre inclinada; Duomo; Baptisterio; Ponte di Mezzo |
+| Verona | Pendiente de imagen | 47 | Arena; Castelvecchio y puente; Torre dei Lamberti; Ponte Pietra |
+| Turín | Pendiente de imagen | 48 | Mole Antonelliana; Palazzo Madama; Palacio Real; Basílica de Superga |
+| Bolonia | Pendiente de imagen | 48 | Las Dos Torres; Basílica de San Petronio; Fuente de Neptuno; Santuario de San Luca; Pórticos |
+| Palermo | Pendiente de imagen | 49 | Catedral; Palacio de los Normandos; La Martorana; Teatro Massimo; Fuente Pretoria |
+| Múnich | Pendiente de imagen | 50 | Frauenkirche; Nuevo Ayuntamiento; Palacio de Nymphenburg; Museo BMW y BMW Welt sin logos; Estadio Olímpico |
+| Hamburgo | Pendiente de imagen | 50 | Elbphilharmonie; Speicherstadt; Iglesia de San Miguel; Ayuntamiento; Grúas del puerto |
+| Colonia | Pendiente de imagen | 51 | Catedral; Puente Hohenzollern; Kranhäuser; Iglesia de Gross St Martin |
+| Dresde | Pendiente de imagen | 51 | Frauenkirche; Semperoper; Zwinger; Castillo de Dresde; Puente de Augusto |
+| Fráncfort | Pendiente de imagen | 52 | Römer; Main Tower; Commerzbank Tower; Puente Eiserner Steg; Catedral de San Bartolomé |
+| Heidelberg | Pendiente de imagen | 52 | Castillo; Puente de Karl Theodor; Iglesia del Espíritu Santo; Casco antiguo junto al Neckar |
+| Ginebra | Pendiente de imagen | 52 | Jet d’Eau; Catedral de San Pedro; Palais des Nations sin banderas; Broken Chair; Reloj de Flores |
+| Lucerna | Pendiente de imagen | 52 | Kapellbrücke y Torre del Agua; Monumento al León; Iglesia Jesuita; Muralla Musegg; KKL |
+| Berna | Pendiente de imagen | 53 | Zytglogge; Catedral; Palacio Federal; Puente Nydegg; Arcadas del casco antiguo y Aar |
+| Oslo | Pendiente de imagen | 53 | Ópera; Museo Munch; Ayuntamiento; Fortaleza Akershus; Parque Vigeland |
+| Bergen | Pendiente de imagen | 53 | Bryggen; Funicular Fløibanen; Håkonshallen; Torre Rosenkrantz; Catedral |
+| Helsinki | Pendiente de imagen | 53 | Catedral luterana; Catedral Uspenski; Monumento a Sibelius; Estación Central |
+| Reikiavik | Pendiente de imagen | 54 | Hallgrímskirkja; Harpa; Sun Voyager; Perlan |
+| Tallin | Pendiente de imagen | 54 | Ayuntamiento; Catedral Alexander Nevsky; Castillo de Toompea y Pikk Hermann; Iglesia de San Olaf; Murallas |
+| Riga | Pendiente de imagen | 54 | Casa de los Cabezas Negras; Catedral; Iglesia de San Pedro; Monumento a la Libertad; Biblioteca Nacional |
+| Vilna | Pendiente de imagen | 54 | Torre de Gediminas; Catedral y campanario; Iglesia de Santa Ana; Puerta de la Aurora |
+| Varsovia | Pendiente de imagen | 55 | Palacio de la Cultura y la Ciencia; Castillo Real y columna de Segismundo; Plaza del Mercado; Palacio Łazienki |
+| Cracovia | Pendiente de imagen | 55 | Wawel; Basílica de Santa María; Lonja de los Paños; Barbacana |
+| Gdansk | Pendiente de imagen | 55 | Fuente de Neptuno; Grúa del puerto; Basílica de Santa María; Długi Targ; Puerta Dorada |
+| Bucarest | Pendiente de imagen | 55 | Palacio del Parlamento; Ateneo Rumano; Arco del Triunfo; Monasterio Stavropoleos |
+| Sofía | Pendiente de imagen | 56 | Catedral Alexander Nevsky; Rotonda de San Jorge; Teatro Nacional Ivan Vazov; Basílica de Santa Sofía |
+| Belgrado | Pendiente de imagen | 56 | Fortaleza Kalemegdan; Templo de San Sava; Asamblea Nacional; Torre Avala |
+| Sarajevo | Pendiente de imagen | 56 | Sebilj y Baščaršija; Puente Latino; Ayuntamiento Vijećnica; Mezquita Gazi Husrev-beg |
+| Dubrovnik | Pendiente de imagen | 56 | Murallas y puerto; Fortaleza Lovrijenac; Stradun y torre del reloj; Palacio Sponza; Catedral |
+| Split | Pendiente de imagen | 57 | Palacio de Diocleciano y Peristilo; Campanile de San Duje; Puerta Dorada; Riva |
+| Zagreb | Pendiente de imagen | 57 | Catedral; Iglesia de San Marcos; Torre Lotrščak; Mercado Dolac |
+| Liubliana | Pendiente de imagen | 57 | Triple Puente; Puente de los Dragones; Castillo; Iglesia Franciscana |
+| Bratislava | Pendiente de imagen | 57 | Castillo; Puente SNP y mirador UFO; Catedral de San Martín; Puerta de San Miguel; Iglesia Azul |
+| Salzburgo | Pendiente de imagen | 58 | Fortaleza Hohensalzburg; Catedral; Palacio Mirabell y jardines; Getreidegasse sin rótulos |
+| Luxemburgo | Pendiente de imagen | 58 | Puente Adolphe; Casamatas del Bock; Palacio Gran Ducal; Catedral de Notre-Dame |
+| Mónaco | Pendiente de imagen | 58 | Casino de Montecarlo; Palacio del Príncipe; Catedral de San Nicolás; Museo Oceanográfico; Port Hercule |
+| La Valeta | Pendiente de imagen | 58 | Concatedral de San Juan; Fort Saint Elmo; Cúpula de los Carmelitas y aguja de San Pablo; Upper Barrakka Gardens; Parlamento |
+| Kyiv | Pendiente de imagen | 59 | Catedral de Santa Sofía; Monasterio de San Miguel; Puerta Dorada; Lavra de Kyiv-Pechersk |
 
 ## América · 53
 
@@ -124,9 +124,9 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Ciudad de México | Con imagen · por revisar | 4 | Ángel de la Independencia; Palacio de Bellas Artes; Catedral Metropolitana; Zócalo; Monumento a la Revolución |
 | Buenos Aires | Con imagen · por revisar | 5 | Obelisco; Casa Rosada; Teatro Colón; Caminito; Puente de la Mujer |
 | Machu Picchu | Con imagen · por revisar | 5 | Terrazas agrícolas; Recintos de piedra; Plaza principal; Huayna Picchu al fondo |
-| San Francisco | Pendiente de imagen | 6 | Golden Gate; Transamerica Pyramid; Painted Ladies; Coit Tower; Tranvía y calles en pendiente |
-| Los Ángeles | Pendiente de imagen | 7 | Observatorio Griffith; Walt Disney Concert Hall; Ayuntamiento; Hollywood Bowl; Santa Monica Pier (revisar alcance metropolitano) |
-| Chicago | Pendiente de imagen | 8 | Willis Tower; Cloud Gate; John Hancock Center; Wrigley Building; Río Chicago y puentes |
+| San Francisco | Con imagen · por revisar | 6 | Golden Gate; Transamerica Pyramid; Painted Ladies; Coit Tower; Tranvía y calles en pendiente |
+| Los Ángeles | Con imagen · por revisar | 7 | Observatorio Griffith; Walt Disney Concert Hall; Ayuntamiento; Hollywood Bowl |
+| Chicago | Con imagen · por revisar | 8 | Willis Tower; Cloud Gate; John Hancock Center; Wrigley Building; Río Chicago y puentes |
 | Río de Janeiro | Pendiente de imagen | 10 | Cristo Redentor; Pan de Azúcar; Copacabana y su paseo; Maracaná; Arcos de Lapa |
 | Toronto | Pendiente de imagen | 11 | CN Tower; Rogers Centre; Nathan Phillips Square y Ayuntamiento; Royal Ontario Museum; Casa Loma |
 | La Habana | Pendiente de imagen | 12 | Capitolio; Malecón; Castillo del Morro; Catedral; Gran Teatro |
@@ -141,37 +141,37 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Atlanta | Pendiente de imagen | 23 | Bank of America Plaza; Capitolio de Georgia; SkyView; Centennial Olympic Park; Fox Theatre |
 | Houston | Pendiente de imagen | 24 | Johnson Space Center y cohete de Rocket Park sin texto; JPMorgan Chase Tower; Williams Tower y Waterwall; Buffalo Bayou Park |
 | San Antonio | Pendiente de imagen | 25 | El Álamo; River Walk; Tower of the Americas; Catedral de San Fernando |
-| Montreal | Por definir hitos | 26 | Pendientes de investigar |
-| Quebec | Por definir hitos | 27 | Pendientes de investigar |
-| Vancouver | Por definir hitos | 28 | Pendientes de investigar |
-| Ottawa | Por definir hitos | 29 | Pendientes de investigar |
-| Guadalajara | Por definir hitos | 30 | Pendientes de investigar |
-| Puebla | Por definir hitos | 31 | Pendientes de investigar |
-| Oaxaca | Por definir hitos | 31 | Pendientes de investigar |
-| Guanajuato | Por definir hitos | 32 | Pendientes de investigar |
-| Mérida | Por definir hitos | 33 | Pendientes de investigar |
-| Bogotá | Por definir hitos | 34 | Pendientes de investigar |
-| Cartagena de Indias | Por definir hitos | 34 | Pendientes de investigar |
-| Medellín | Por definir hitos | 35 | Pendientes de investigar |
-| Lima | Por definir hitos | 36 | Pendientes de investigar |
-| Cusco | Por definir hitos | 37 | Pendientes de investigar |
-| Arequipa | Por definir hitos | 37 | Pendientes de investigar |
-| Quito | Por definir hitos | 38 | Pendientes de investigar |
-| La Paz | Por definir hitos | 39 | Pendientes de investigar |
-| Sucre | Por definir hitos | 40 | Pendientes de investigar |
-| Santiago de Chile | Por definir hitos | 40 | Pendientes de investigar |
-| Valparaíso | Por definir hitos | 41 | Pendientes de investigar |
-| Montevideo | Por definir hitos | 42 | Pendientes de investigar |
-| Brasilia | Por definir hitos | 43 | Pendientes de investigar |
-| São Paulo | Por definir hitos | 43 | Pendientes de investigar |
-| Salvador de Bahía | Por definir hitos | 44 | Pendientes de investigar |
-| Recife | Por definir hitos | 45 | Pendientes de investigar |
-| Ciudad de Panamá | Por definir hitos | 46 | Pendientes de investigar |
-| Antigua Guatemala | Por definir hitos | 46 | Pendientes de investigar |
-| San Juan | Por definir hitos | 47 | Pendientes de investigar |
-| Santo Domingo | Por definir hitos | 48 | Pendientes de investigar |
-| San José | Por definir hitos | 49 | Pendientes de investigar |
-| Kingston | Por definir hitos | 49 | Pendientes de investigar |
+| Montreal | Pendiente de imagen | 26 | Basílica de Notre-Dame; Oratorio de San José; Estadio Olímpico y torre inclinada; Habitat 67; Biosphère |
+| Quebec | Pendiente de imagen | 27 | Château Frontenac; Petit-Champlain; Ciudadela; Parlamento de Quebec |
+| Vancouver | Pendiente de imagen | 28 | Canada Place; Science World; Harbour Centre; Tótems de Stanley Park; Lions Gate Bridge |
+| Ottawa | Pendiente de imagen | 29 | Parlamento y Peace Tower; National Gallery of Canada; Château Laurier; Canal Rideau |
+| Guadalajara | Pendiente de imagen | 30 | Catedral; Teatro Degollado; Templo Expiatorio; Hospicio Cabañas |
+| Puebla | Pendiente de imagen | 31 | Catedral; Iglesia de Santo Domingo; Estrella de Puebla; Mercado El Parián |
+| Oaxaca | Pendiente de imagen | 31 | Templo de Santo Domingo; Catedral; Teatro Macedonio Alcalá; Andador y casas históricas |
+| Guanajuato | Pendiente de imagen | 32 | Teatro Juárez; Alhóndiga de Granaditas; Universidad y escalinata; Callejón del Beso; Basílica de Nuestra Señora |
+| Mérida | Pendiente de imagen | 33 | Catedral de San Ildefonso; Palacio de Gobierno; Monumento a la Patria; Palacio Cantón |
+| Bogotá | Pendiente de imagen | 34 | Monserrate; Catedral Primada; Capitolio Nacional; La Candelaria; Torres del Parque |
+| Cartagena de Indias | Pendiente de imagen | 34 | Castillo de San Felipe; Torre del Reloj; Catedral de Santa Catalina; Murallas y casas coloniales |
+| Medellín | Pendiente de imagen | 35 | Plaza Botero; Palacio de la Cultura Rafael Uribe; Metrocable; Comuna 13; Edificio Coltejer |
+| Lima | Pendiente de imagen | 36 | Catedral y Plaza Mayor; Palacio de Gobierno; Convento de San Francisco; Huaca Pucllana; Acantilados de Miraflores |
+| Cusco | Pendiente de imagen | 37 | Coricancha; Catedral y Plaza de Armas; Sacsayhuamán; Barrio y templo de San Blas |
+| Arequipa | Pendiente de imagen | 37 | Monasterio de Santa Catalina; Catedral y Plaza de Armas; Volcán Misti; Mirador de Yanahuara |
+| Quito | Pendiente de imagen | 38 | Basílica del Voto Nacional; Virgen del Panecillo; Iglesia y plaza de San Francisco; Iglesia de la Compañía; Plaza de la Independencia |
+| La Paz | Pendiente de imagen | 39 | Iglesia de San Francisco; Mi Teleférico; Plaza Murillo; Valle de la Luna |
+| Sucre | Pendiente de imagen | 40 | Casa de la Libertad; Catedral; La Recoleta; San Felipe Neri |
+| Santiago de Chile | Pendiente de imagen | 40 | Gran Torre Santiago; Palacio de La Moneda; Cerro San Cristóbal; Cerro Santa Lucía; Catedral Metropolitana |
+| Valparaíso | Pendiente de imagen | 41 | La Sebastiana; Ascensor Artillería; Cerros de casas de colores; Edificio Turri; Palacio Baburizza |
+| Montevideo | Pendiente de imagen | 42 | Palacio Salvo; Teatro Solís; Puerta de la Ciudadela; Palacio Legislativo; Rambla |
+| Brasilia | Pendiente de imagen | 43 | Congreso Nacional; Catedral; Palacio da Alvorada; Memorial JK; Puente Juscelino Kubitschek |
+| São Paulo | Pendiente de imagen | 43 | MASP; Theatro Municipal; Catedral da Sé; Edificio Altino Arantes; Edificio Copan |
+| Salvador de Bahía | Pendiente de imagen | 44 | Elevador Lacerda; Pelourinho; Iglesia de São Francisco; Farol da Barra; Mercado Modelo |
+| Recife | Pendiente de imagen | 45 | Praça do Marco Zero; Instituto Ricardo Brennand; Puente Maurício de Nassau; Casas de Recife Antigo |
+| Ciudad de Panamá | Pendiente de imagen | 46 | Puente de las Américas; F&F Tower; Catedral del Casco Viejo; Biomuseo; Esclusas de Miraflores |
+| Antigua Guatemala | Pendiente de imagen | 46 | Arco de Santa Catalina; Iglesia de La Merced; Catedral; Palacio de los Capitanes Generales; Volcán de Agua |
+| San Juan | Pendiente de imagen | 47 | Castillo San Felipe del Morro; Castillo San Cristóbal; La Fortaleza; Catedral de San Juan Bautista; Casas del Viejo San Juan |
+| Santo Domingo | Pendiente de imagen | 48 | Alcázar de Colón; Catedral Primada de América; Fortaleza Ozama; Faro a Colón |
+| San José | Pendiente de imagen | 49 | Teatro Nacional; Catedral Metropolitana; Templo de la Música; Museo Nacional y Cuartel Bellavista; Correo Central |
+| Kingston | Pendiente de imagen | 49 | Devon House; Fort Charles de Port Royal; Bob Marley Museum sin rótulos; Ward Theatre |
 
 ## Asia · 53
 
@@ -179,9 +179,9 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | --- | --- | --- | --- |
 | Tokio | Con imagen · por revisar | 1 | Tokyo Tower; Tokyo Skytree; Sensō-ji y Kaminarimon; Cruce de Shibuya; Palacio Imperial |
 | Hong Kong | Con imagen · por revisar | 4 | Bank of China Tower; International Commerce Centre; Two International Finance Centre; Centro de Convenciones y Exposiciones; Victoria Harbour y Star Ferry |
-| Singapur | Pendiente de imagen | 6 | Marina Bay Sands; Supertrees de Gardens by the Bay; Merlion; ArtScience Museum; Esplanade |
-| Pekín | Pendiente de imagen | 7 | Ciudad Prohibida; Templo del Cielo; Puerta de Tiananmén; Estadio Nido de Pájaro; Palacio de Verano |
-| Shanghái | Pendiente de imagen | 9 | Torre Perla Oriental; Shanghai Tower; Shanghai World Financial Center; Bund; Jardín Yuyuan |
+| Singapur | Con imagen · por revisar | 6 | Marina Bay Sands; Supertrees de Gardens by the Bay; Merlion; ArtScience Museum; Esplanade |
+| Pekín | Con imagen · por revisar | 7 | Ciudad Prohibida; Templo del Cielo; Puerta de Tiananmén; Estadio Nido de Pájaro; Palacio de Verano |
+| Shanghái | Con imagen · por revisar | 9 | Torre Perla Oriental; Shanghai Tower; Shanghai World Financial Center; Bund; Jardín Yuyuan |
 | Seúl | Pendiente de imagen | 10 | Gyeongbokgung; N Seoul Tower; Lotte World Tower; Dongdaemun Design Plaza; Bukchon Hanok Village |
 | Bangkok | Pendiente de imagen | 11 | Gran Palacio; Wat Arun; Wat Phra Kaew; Giant Swing; Río Chao Phraya |
 | Dubái | Pendiente de imagen | 12 | Burj Khalifa; Burj Al Arab; Dubai Frame; Museum of the Future; Palm Jumeirah |
@@ -195,50 +195,50 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Nagasaki | Pendiente de imagen | 22 | Estatua de la Paz; Catedral de Urakami; Iglesia de Ōura; Glover Garden; Puente Megane |
 | Macao | Pendiente de imagen | 23 | Ruinas de San Pablo; Grand Lisboa; Largo do Senado; Templo A-Má; Macao Tower |
 | Xi’an | Pendiente de imagen | 24 | Guerreros de terracota; Gran Pagoda del Ganso Salvaje; Torre de la Campana; Torre del Tambor; Muralla y puerta de la ciudad |
-| Chengdú | Por definir hitos | 25 | Pendientes de investigar |
-| Chongqing | Por definir hitos | 26 | Pendientes de investigar |
-| Guilin | Por definir hitos | 27 | Pendientes de investigar |
-| Cantón | Por definir hitos | 28 | Pendientes de investigar |
-| Hangzhou | Por definir hitos | 29 | Pendientes de investigar |
-| Suzhou | Por definir hitos | 30 | Pendientes de investigar |
-| Taipéi | Por definir hitos | 31 | Pendientes de investigar |
-| Busan | Por definir hitos | 32 | Pendientes de investigar |
-| Hanói | Por definir hitos | 32 | Pendientes de investigar |
-| Ciudad Ho Chi Minh | Por definir hitos | 33 | Pendientes de investigar |
-| Hoi An | Por definir hitos | 34 | Pendientes de investigar |
-| Siem Reap | Por definir hitos | 35 | Pendientes de investigar |
-| Nom Pen | Por definir hitos | 35 | Pendientes de investigar |
-| Kuala Lumpur | Por definir hitos | 36 | Pendientes de investigar |
-| George Town | Por definir hitos | 37 | Pendientes de investigar |
-| Yakarta | Por definir hitos | 38 | Pendientes de investigar |
-| Yogyakarta | Por definir hitos | 38 | Pendientes de investigar |
-| Manila | Por definir hitos | 39 | Pendientes de investigar |
-| Katmandú | Por definir hitos | 40 | Pendientes de investigar |
-| Agra | Por definir hitos | 41 | Pendientes de investigar |
-| Jaipur | Por definir hitos | 41 | Pendientes de investigar |
-| Varanasi | Por definir hitos | 42 | Pendientes de investigar |
-| Calcuta | Por definir hitos | 43 | Pendientes de investigar |
-| Amritsar | Por definir hitos | 44 | Pendientes de investigar |
-| Abu Dabi | Por definir hitos | 44 | Pendientes de investigar |
-| Doha | Por definir hitos | 45 | Pendientes de investigar |
-| Mascate | Por definir hitos | 46 | Pendientes de investigar |
-| Riad | Por definir hitos | 47 | Pendientes de investigar |
-| Yeda | Por definir hitos | 47 | Pendientes de investigar |
-| Amán | Por definir hitos | 48 | Pendientes de investigar |
-| Beirut | Por definir hitos | 49 | Pendientes de investigar |
-| Jerusalén | Por definir hitos | 50 | Pendientes de investigar |
-| Tel Aviv | Por definir hitos | 50 | Pendientes de investigar |
-| Samarcanda | Por definir hitos | 51 | Pendientes de investigar |
-| Bujará | Por definir hitos | 51 | Pendientes de investigar |
+| Chengdú | Pendiente de imagen | 25 | Puente Anshun; Templo Wuhou; Calle Jinli; Torre West Pearl; Pabellón de pandas de Chengdú |
+| Chongqing | Pendiente de imagen | 26 | Hongya Cave; Raffles City; Monorraíl de Liziba; Puente Qiansimen; Monumento de la Liberación |
+| Guilin | Pendiente de imagen | 27 | Elephant Trunk Hill; Pagodas del Sol y la Luna; Río Li y montañas kársticas; Palacio de los Príncipes de Jingjiang |
+| Cantón | Pendiente de imagen | 28 | Canton Tower; Ópera de Guangzhou; Academia del Clan Chen; Catedral del Sagrado Corazón |
+| Hangzhou | Pendiente de imagen | 29 | Lago del Oeste; Pagoda Leifeng; Tres Estanques que Reflejan la Luna; Templo Yue Fei; Pabellón Chenghuang |
+| Suzhou | Pendiente de imagen | 30 | Jardín del Administrador Humilde; Pagoda de la Colina del Tigre; Puerta Panmen; Museo de Suzhou |
+| Taipéi | Pendiente de imagen | 31 | Taipei 101; Memorial de Chiang Kai-shek; Templo Longshan; Memorial de Sun Yat-sen; Museo Nacional del Palacio |
+| Busan | Pendiente de imagen | 32 | Puente Gwangan; Busan Tower; Gamcheon Culture Village; Templo Haedong Yonggungsa; Haeundae |
+| Hanói | Pendiente de imagen | 32 | Torre de la Tortuga; Templo de la Literatura; Mausoleo de Ho Chi Minh; Catedral de San José; Pagoda del Pilar Único |
+| Ciudad Ho Chi Minh | Pendiente de imagen | 33 | Oficina Central de Correos; Basílica de Notre-Dame de Saigón; Palacio de la Reunificación; Bitexco Tower; Landmark 81 |
+| Hoi An | Pendiente de imagen | 34 | Puente Cubierto Japonés; Casas amarillas del casco antiguo; Asamblea Phuc Kien; Canal y farolillos sin letras |
+| Siem Reap | Pendiente de imagen | 35 | Angkor Wat; Templo Bayon; Ta Prohm; Residencia Real de Siem Reap |
+| Nom Pen | Pendiente de imagen | 35 | Palacio Real; Pagoda de Plata; Monumento de la Independencia; Wat Phnom; Mercado Central |
+| Kuala Lumpur | Pendiente de imagen | 36 | Torres Petronas; Merdeka 118; Menara KL; Edificio Sultan Abdul Samad; Batu Caves |
+| George Town | Pendiente de imagen | 37 | Templo Kek Lok Si; Khoo Kongsi; Fort Cornwallis; Cheong Fatt Tze Mansion; Clan Jetties |
+| Yakarta | Pendiente de imagen | 38 | Monas; Mezquita Istiqlal; Catedral de Yakarta; Museo Fatahillah; Wisma 46 |
+| Yogyakarta | Pendiente de imagen | 38 | Kraton; Taman Sari; Tugu Yogyakarta; Fort Vredeburg |
+| Manila | Pendiente de imagen | 39 | Fort Santiago; Catedral de Manila; Monumento a Rizal; Iglesia de San Agustín; Bahía de Manila |
+| Katmandú | Pendiente de imagen | 40 | Boudhanath; Swayambhunath; Durbar Square; Pashupatinath |
+| Agra | Pendiente de imagen | 41 | Taj Mahal; Fuerte de Agra; Tumba de Itimad-ud-Daulah; Jardines Mehtab Bagh y Yamuna |
+| Jaipur | Pendiente de imagen | 41 | Hawa Mahal; Fuerte Amber; Jal Mahal; City Palace; Jantar Mantar |
+| Varanasi | Pendiente de imagen | 42 | Ghats del Ganges; Templo Kashi Vishwanath; Fuerte Ramnagar; Dashashwamedh Ghat; Nuevo Templo Vishwanath de BHU |
+| Calcuta | Pendiente de imagen | 43 | Victoria Memorial; Howrah Bridge; Templo Dakshineswar; Catedral de San Pablo; Writers’ Building |
+| Amritsar | Pendiente de imagen | 44 | Templo Dorado; Jallianwala Bagh; Hall Gate; Fuerte Gobindgarh |
+| Abu Dabi | Pendiente de imagen | 44 | Mezquita Sheikh Zayed; Louvre Abu Dhabi; Qasr Al Watan; Etihad Towers; Capital Gate |
+| Doha | Pendiente de imagen | 45 | Museo de Arte Islámico; Museo Nacional de Qatar; Aspire Tower; Katara Towers; The Pearl |
+| Mascate | Pendiente de imagen | 46 | Gran Mezquita del Sultán Qaboos; Palacio Al Alam; Corniche de Muttrah; Fuertes Al Jalali y Al Mirani |
+| Riad | Pendiente de imagen | 47 | Kingdom Centre; Al Faisaliah Tower; Fuerte Masmak; At-Turaif de Diriyah |
+| Yeda | Pendiente de imagen | 47 | Fuente del Rey Fahd; Casas de Al-Balad; Mezquita Al Rahma; Faro de Yeda; Globe Roundabout |
+| Amán | Pendiente de imagen | 48 | Teatro Romano; Templo de Hércules de la Ciudadela; Palacio Omeya; Mezquita del Rey Abdullah I |
+| Beirut | Pendiente de imagen | 49 | Mezquita Mohammad Al-Amin; Rocas de Raouché; Torre del Reloj de la Place de l’Étoile; Museo Nacional; Grand Serail |
+| Jerusalén | Pendiente de imagen | 50 | Cúpula de la Roca; Muro Occidental; Iglesia del Santo Sepulcro; Torre de David y murallas |
+| Tel Aviv | Pendiente de imagen | 50 | Azrieli Center; Torre del Reloj de Jaffa; Casas Bauhaus de la Ciudad Blanca; Teatro Habima; Museo de Arte |
+| Samarcanda | Pendiente de imagen | 51 | Registán; Shah-i-Zinda; Gur-e Amir; Mezquita Bibi-Khanym |
+| Bujará | Pendiente de imagen | 51 | Minarete y mezquita Kalyan; Fortaleza Ark; Chor Minor; Lyab-i Hauz |
 
 ## África · 23
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
 | El Cairo | Con imagen · por revisar | 5 | Ciudadela de Saladino; Mezquita de Muhammad Alí; Torre de El Cairo; Nilo; Museo Egipcio |
-| Marrakech | Pendiente de imagen | 6 | Mezquita Kutubía; Jemaa el-Fna; Palacio de la Bahía; Murallas y Bab Agnaou; Jardín Majorelle |
-| Ciudad del Cabo | Pendiente de imagen | 8 | Table Mountain; V&A Waterfront; Bo-Kaap; Cape Town Stadium; Castillo de Buena Esperanza |
-| Nairobi | Pendiente de imagen | 9 | Kenyatta International Convention Centre; Times Tower; Uhuru Park; Jamia Mosque; Nairobi Railway Museum |
+| Marrakech | Con imagen · por revisar | 6 | Mezquita Kutubía; Jemaa el-Fna; Palacio de la Bahía; Murallas y Bab Agnaou; Jardín Majorelle |
+| Ciudad del Cabo | Con imagen · por revisar | 8 | Table Mountain; V&A Waterfront; Bo-Kaap; Cape Town Stadium; Castillo de Buena Esperanza |
+| Nairobi | Con imagen · por revisar | 9 | Kenyatta International Convention Centre; Times Tower; Uhuru Park; Jamia Mosque; Nairobi Railway Museum |
 | Túnez | Pendiente de imagen | 10 | Mezquita Zitouna; Medina; Bab el Bhar; Catedral de San Vicente de Paúl; Avenida Habib Bourguiba |
 | Dakar | Pendiente de imagen | 11 | Monumento al Renacimiento Africano; Gran Mezquita; Faro de Les Mamelles; Museo de las Civilizaciones Negras; Isla de Gorée |
 | Casablanca | Pendiente de imagen | 13 | Mezquita Hassan II; Barrio Habous; Plaza Mohammed V; Catedral del Sagrado Corazón |
@@ -252,21 +252,21 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Guiza | Pendiente de imagen | 22 | Pirámide de Keops; Pirámide de Kefrén; Pirámide de Micerino; Gran Esfinge |
 | Johannesburgo | Pendiente de imagen | 23 | Ponte City; Hillbrow Tower; Constitution Hill; Gold Reef City; Puente Nelson Mandela |
 | Durban | Pendiente de imagen | 24 | Moses Mabhida Stadium; Golden Mile; Ayuntamiento; uShaka Marine World |
-| Adís Abeba | Por definir hitos | 25 | Pendientes de investigar |
-| Lagos | Por definir hitos | 26 | Pendientes de investigar |
-| Acra | Por definir hitos | 27 | Pendientes de investigar |
-| Abiyán | Por definir hitos | 28 | Pendientes de investigar |
-| Windhoek | Por definir hitos | 29 | Pendientes de investigar |
-| Port Louis | Por definir hitos | 30 | Pendientes de investigar |
+| Adís Abeba | Pendiente de imagen | 25 | Catedral de la Santísima Trinidad; Catedral de San Jorge; Sede de la Unión Africana; Museo Nacional de Etiopía |
+| Lagos | Pendiente de imagen | 26 | National Theatre; Tafawa Balewa Square; Cathedral Church of Christ; Third Mainland Bridge |
+| Acra | Pendiente de imagen | 27 | Arco de la Independencia; Mausoleo de Kwame Nkrumah; Faro de Jamestown; Fuerte Ussher |
+| Abiyán | Pendiente de imagen | 28 | Catedral de San Pablo de Abiyán; Hôtel Ivoire; Estadio Félix Houphouët-Boigny; Puente Henri Konan Bédié |
+| Windhoek | Pendiente de imagen | 29 | Christuskirche; Tintenpalast; Alte Feste; Independence Memorial Museum |
+| Port Louis | Pendiente de imagen | 30 | Aapravasi Ghat; Fort Adelaide; Champ de Mars; Caudan Waterfront |
 
 ## Oceanía · 12
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
 | Sídney | Con imagen · por revisar | 4 | Ópera de Sídney; Harbour Bridge; Sydney Tower; Royal Botanic Garden; The Rocks |
-| Melbourne | Pendiente de imagen | 7 | Flinders Street Station; Federation Square; Royal Exhibition Building; Eureka Tower; Tranvía |
-| Auckland | Pendiente de imagen | 8 | Sky Tower; Auckland Harbour Bridge; Auckland War Memorial Museum; Viaduct Harbour; One Tree Hill |
-| Wellington | Pendiente de imagen | 9 | Beehive y Parlamento; Wellington Cable Car; Te Papa; Old St Paul's; Waterfront |
+| Melbourne | Con imagen · por revisar | 7 | Flinders Street Station; Federation Square; Royal Exhibition Building; Eureka Tower; Tranvía |
+| Auckland | Con imagen · por revisar | 8 | Sky Tower; Auckland War Memorial Museum; Viaduct Harbour marina; One Tree Hill with its obelisk |
+| Wellington | Con imagen · por revisar | 9 | Beehive y Parlamento; Wellington Cable Car; Te Papa; Old St Paul's; Waterfront |
 | Brisbane | Pendiente de imagen | 10 | Story Bridge; Ayuntamiento de Brisbane y torre del reloj; Wheel of Brisbane; Parlamento de Queensland |
 | Perth | Pendiente de imagen | 12 | Bell Tower; Puente de Elizabeth Quay; Optus Stadium; Ayuntamiento de Perth |
 | Adelaida | Pendiente de imagen | 13 | Catedral de San Pedro; Adelaide Oval; Ayuntamiento de Adelaida; Museo de Australia Meridional |
@@ -294,6 +294,22 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 - Buenos Aires: [Referencia 1](https://turismo.buenosaires.gob.ar/en/atractivo/obelisco-obelisk), [Referencia 2](https://turismo.buenosaires.gob.ar/es/otros-establecimientos/casa-de-gobierno-casa-rosada), [Referencia 3](https://turismo.buenosaires.gob.ar/en/recorrido/must-see-attractions), [Referencia 4](https://buenosaires.gob.ar/gcaba_historico/piramide-de-mayo/el-obelisco), [Referencia 5](https://turismo.buenosaires.gob.ar/es/recorrido/imperdibles).
 - Machu Picchu: [Referencia 1](https://whc.unesco.org/en/list/274/).
 - Lisboa: [Referencia 1](https://www.visitlisboa.com/en/places/torre-de-belem), [Referencia 2](https://www.visitlisboa.com/en/places/25-de-abril-bridge).
+- Viena: [Referencia 1](https://government.wien/en/discover/), [Referencia 2](https://www.wien.info/en/), [Referencia 3](https://www.viennatourism.org/vienna-attractions/), [Referencia 4](https://www.wien.info/en/see-do/sights-from-a-to-z), [Referencia 5](https://www.wien.info/de/sehen-erleben/sehenswuerdigkeiten-a-z).
+- San Francisco: [Referencia 1](https://www.sftravel.com/things-to-do/attractions/iconic-san-francisco), [Referencia 2](https://www.sftravel.com/things-to-do), [Referencia 3](https://presidio.gov/explore/attractions/golden-gate-bridge), [Referencia 4](https://www.sftravel.com/things-to-do/attractions?convention=true), [Referencia 5](https://www.sftravel.com/?nid=2024).
+- Singapur: [Referencia 1](https://www.visitsingapore.com/see-do-singapore/nature-wildlife/parks-gardens/gardens-by-the-bay/), [Referencia 2](https://www.visitsingapore.com/neighbourhood/featured-neighbourhood/marina-bay/), [Referencia 3](https://www.gardensbythebay.com.sg/en/things-to-do/attractions.html), [Referencia 4](https://www.gardensbythebay.com.sg/en/things-to-do/attractions/supertree-grove.html), [Referencia 5](https://www.gardensbythebay.com.sg/en.html).
+- Marrakech: [Referencia 1](https://www.visitmarrakech.com/en/listing/koutoubia-mosque/), [Referencia 2](https://www.visitmorocco.com/en/travel/marrakesh), [Referencia 3](https://www.visitmorocco.com/en/travel/marrakech/medina), [Referencia 4](https://visitmarrakech.com/en/listing/la-medina-de-marrakech/), [Referencia 5](https://www.visitmarrakech.com/en/).
+- Melbourne: [Referencia 1](https://www.visitmelbourne.com/regions/melbourne/see-and-do/history-and-heritage/heritage-buildings/vv-flinders-street-station), [Referencia 2](https://www.visitmelbourne.com/regions/melbourne/see-and-do/art-and-culture/architecture-and-design/fed-square), [Referencia 3](https://www.visitvictoria.com/regions/melbourne/see-and-do/art-and-culture/architecture-and-design/federation-square), [Referencia 4](https://whatson.melbourne.vic.gov.au/things-to-do/flinders-street-railway-station), [Referencia 5](https://whatson.melbourne.vic.gov.au/things-to-do/fed-square).
+- Praga: [Referencia 1](https://www.visitczechia.com/es-es/things-to-do/places/landmarks/urban-architecture/c-prague-charles-bridge-and-bridge-towers), [Referencia 2](https://www.visitczechia.com/es-es/things-to-do/places/landmarks/cities/a-prague-beauty), [Referencia 3](https://www.visitczechia.com/es-es/destinations/prague), [Referencia 4](https://www.visitczechia.com/es-es/things-to-do/places/landmarks/castles-and-ruins/c-prague-castle), [Referencia 5](https://www.visitczechia.com/es-es/news/2026/07/n-charles-bridge-660-years).
+- Los Ángeles: [Referencia 1](https://griffithobservatory.lacity.gov/visit/), [Referencia 2](https://griffithobservatory.lacity.gov/visit/getting-here/), [Referencia 3](https://griffithobservatory.lacity.gov/), [Referencia 4](https://griffithobservatory.lacity.gov/explore/), [Referencia 5](https://griffithobservatory.lacity.gov/about/).
+- Pekín: [Referencia 1](https://spanish.beijing.gov.cn/travellinginbeijing/mustvisitsites/202306/t20230607_3125341.html), [Referencia 2](https://e.visitbeijing.com.cn/attraction/8), [Referencia 3](https://spanish.beijing.gov.cn/beijinginfo/culture/beijingtownscape/parks/202401/t20240110_3531900.html), [Referencia 4](https://spanish.beijing.gov.cn/specials/parktours/guidevisitors/templeofheaven/index.html), [Referencia 5](https://english.visitbeijing.com.cn/attraction).
+- Ciudad del Cabo: [Referencia 1](https://www.capetown.travel/neighbourhood/the-va-waterfront/), [Referencia 2](https://www.capetown.travel/listing/e_va-waterfront/), [Referencia 3](https://www.gov.za/about-sa/tourism), [Referencia 4](https://www.southafrica.net/na/en/travel/article/whatever-you-want-to-discover-in-cape-town-start-at-the-va-waterfront), [Referencia 5](https://www.cityofcapetown.com/attractions).
+- Auckland: [Referencia 1](https://www.aucklandnz.com/explore/auckland-harbour-bridge), [Referencia 2](https://app.aucklandtourism.co.nz/see-%26-do/attractions/sky-tower), [Referencia 3](https://www.aucklandnz.com/explore/skywalk), [Referencia 4](https://www.aucklandnz.com/inspire/10-most-spectacular-sights-and-landmarks-in-auckland), [Referencia 5](https://www.aucklandtourism.org/viaduct-harbour-auckland-guide/).
+- Atenas: [Referencia 1](https://www.visitgreece.gr/en/mainland/Attique/athens), [Referencia 2](https://www.visitgreece.gr/en/islands/athens), [Referencia 3](https://www.acropolisofathens.net/es/guides/what-to-see-on-the-acropolis/), [Referencia 4](https://www.hh.gr/en/), [Referencia 5](https://www.discovergreece.com/es/experiences/acropolis-athens).
+- Chicago: [Referencia 1](https://chicago.gov/city/en/depts/dca/supp_info/chicago_s_publicartcloudgateinmillenniumpark.html), [Referencia 2](https://www.visittheusa.com/destinations/illinois/chicago/), [Referencia 3](https://www.choosechicago.com/articles/tours-and-attractions/the-bean-chicago/?open=true), [Referencia 4](https://www.choosechicago.com/articles/tours-and-attractions/chicagos-observation-decks/), [Referencia 5](https://www.enjoyillinois.com/places-to-go/chicago-and-beyond/chicago/).
+- Shanghái: [Referencia 1](https://visitcn.com.cn/en/attractions/oriental-pearl-tower), [Referencia 2](https://visitcn.com.cn/en/attractions/shanghai-tower), [Referencia 3](https://english.shanghai.gov.cn/en-ScenicSpots/20231205/19a5f5184eca45728fd57a4d4c8efc61.html), [Referencia 4](https://english.shanghai.gov.cn/en-ScenicSpots/20240507/f3ce9cade30f4ff2a0bad6293626a232.html), [Referencia 5](https://www.meet-in-shanghai.net/en/pudong-new-area/the-oriental-pearl-tv-tower-341119/).
+- Nairobi: [Referencia 1](https://kicc.co.ke/), [Referencia 2](https://kicc.ecitizen.go.ke/), [Referencia 3](https://tourkenya.go.ke/tourism/circuits/nairobi-city-circuit/), [Referencia 4](https://billing.ecitizen.go.ke/client/kicc), [Referencia 5](https://www.iekenya.org/sites/default/files/iek-documents/2025-02/Engineering%20in%20Kenya%20Magazine%20Issue%201_0.pdf).
+- Wellington: [Referencia 1](https://www.wellingtonnz.com/visit/see-and-do/wellington-cable-car), [Referencia 2](https://www.wellingtonnz.com/visit/trails/city-to-sea-walkway), [Referencia 3](https://www3.parliament.nz/en/visit-and-learn/history-and-buildings/buildings-and-grounds/), [Referencia 4](https://www3.parliament.nz/en/visit-and-learn/history-and-buildings/buildings-and-grounds/the-beehive-executive-wing/), [Referencia 5](https://www.wellingtoncablecar.co.nz/).
+- Estambul: [Referencia 1](https://visit.istanbul/en/the-blue-mosque), [Referencia 2](https://visitistanbulofficial.com/es/things-to-do/attractions/), [Referencia 3](https://istanbul.com/es/blue-mosque), [Referencia 4](https://istanbul.com/es/blog/mosques/blue-mosque-or-hagia-sophia), [Referencia 5](https://www.visit.istanbul/).
 - Guiza: [Referencia 1](https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/).
 
 Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; el modo jugable todavía está pendiente de integración.
