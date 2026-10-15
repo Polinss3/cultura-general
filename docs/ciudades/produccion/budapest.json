@@ -1,0 +1,22 @@
+{
+  "id": "budapest",
+  "batch": 11,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/budapest-v1.png",
+  "generatedFile": "exec-a2c847a0-4a3c-4c30-91f3-492430ce3481.png",
+  "prompt": "Use case: precise-object-edit. Input image 1 is the Budapest diorama to correct; image 2 is the exact standard empty sandstone plinth. Keep the Budapest landmarks recognizable, with Parliament, Buda Castle, St Stephen's Basilica, Fisherman's Bastion and the Chain Bridge. Correct only the slab geometry and its framing to match image 2, including original notches, floor depth, rim and full outer shape. The bottom of the front wall must be y1041 on the 1254-square output, the rear floor tip y400, the outermost left x33 and right x1225. The current slab is slightly too shallow in depth. Add the few missing pixels of slab depth, maintaining the city contents above its floor and the full warm ivory background. No text, names, flags, guides, people or additional platforms. Exact reference camera, colors, lighting.",
+  "sources": [
+    "https://www.budapest.es/puente-cadenas",
+    "https://www.budapest.es/monumentos-atracciones",
+    "https://visithungary.com/es/destination/budapest",
+    "https://www.budapest.org/es/que-ver-budapest/puente-de-las-cadenas/",
+    "https://www.budapestinfo.hu/es/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review",
+  "inputReferences": [
+    "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-aeec8e00-4731-4646-a668-a7237ce84b6a.png",
+    "normalizadas/base-comun-v2.png"
+  ]
+}

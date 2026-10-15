@@ -1,0 +1,18 @@
+{
+  "id": "rabat",
+  "batch": 14,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/rabat-v1.png",
+  "generatedFile": "exec-c2abfb92-d32a-4b87-a703-5d32cee737e8.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity Rabat Morocco. Four landmarks only: Hassan Tower as a square unfinished red sandstone minaret surrounded by low column stumps, white Mausoleum of Mohammed V with pyramidal green roof, compact white-and-blue Kasbah of the Udayas with ochre battlements, Chellah stone gateway. Very few trees and low filler houses. NO ocean or coastline outside or behind the slab. No cliffs extending beyond the slab. Keep the whole kasbah on the existing floor, with blank ivory background beyond the original rim. Floor rear tip remains y400. Every existing sandstone wall, notch and edge must stay identical to the supplied empty base.",
+  "sources": [
+    "https://www.visitrabat.com/en/lieux/the-mausoleum-of-mohammed-v/",
+    "https://www.visitrabat.com/lieux/le-mausolee-mohammed-v/",
+    "https://www.visitrabat.com/es/lieux/el-mausoleo-de-mohammed-v/",
+    "https://www.visitrabat.com/en/lieux/the-hassan-tower/",
+    "https://www.visitrabat.com/en/points-of-interest/monumentsv-en/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "la-habana",
+  "batch": 12,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/la-habana-v1.png",
+  "generatedFile": "exec-1ff30b3a-9568-42a2-b180-2a84cb4d3c6f.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Havana (CU). Main landmarks: Capitolio; Malecón; Castillo del Morro; Catedral; Gran Teatro.   Represent these as dominant recognizable features. Every building is complete and wholly within the common floor. Keep only a few low local filler blocks and greenery. No detached islands, land beyond the original outline or additional platform.",
+  "sources": [
+    "https://www.cuba.travel/destinos/lahabana/quehacer/ciudad",
+    "https://www.cuba.travel/Portals/0/Publicaciones/Destinations/Habana/Gu%C3%ADa%20gratis%20para%20viajar%20a%20La%20Habana%202020.pdf?ver=VRkIdZnzlvq-tZ-VIEacUw%3D%3D",
+    "https://www.cuba.travel/destinos/lahabana/quehacer/excursiones",
+    "https://www.cuba.travel/en/destinations/havana-cuba",
+    "https://www.cuba.travel/destinos/la-habana"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

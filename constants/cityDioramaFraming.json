@@ -10,7 +10,7 @@
   "measurement": {
     "method": "Warm-sandstone RGB edge gradients near lateral extrema and maximum lower boundary gradient within 70 px of image center; registration anchors checked visually.",
     "sourcePixels": 1254,
-    "sourceBaselineSpread": 10,
+    "sourceBaselineSpread": 18,
     "edgeToleranceSourcePixels": 2
   },
   "images": {
@@ -598,6 +598,230 @@
       "normalized": {
         "left": 0.056744966442953126,
         "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "budapest": {
+      "file": "normalizadas/budapest-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1034,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.19134228187919478,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "toronto": {
+      "file": "normalizadas/toronto-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "bangkok": {
+      "file": "normalizadas/bangkok-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "dakar": {
+      "file": "normalizadas/dakar-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "perth": {
+      "file": "normalizadas/perth-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "florencia": {
+      "file": "normalizadas/florencia-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "la-habana": {
+      "file": "normalizadas/la-habana-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "dubai": {
+      "file": "normalizadas/dubai-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "casablanca": {
+      "file": "normalizadas/casablanca-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "zurich": {
+      "file": "normalizadas/zurich-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1050,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1800671140939598,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "boston": {
+      "file": "normalizadas/boston-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "adelaida": {
+      "file": "normalizadas/adelaida-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "delhi": {
+      "file": "normalizadas/delhi-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "canberra": {
+      "file": "normalizadas/canberra-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "estocolmo": {
+      "file": "normalizadas/estocolmo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "rabat": {
+      "file": "normalizadas/rabat-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
         "width": 0.8836912751677851,
         "height": 0.8836912751677851
       }

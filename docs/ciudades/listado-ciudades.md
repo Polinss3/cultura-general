@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-235 destinos: 234 ciudades y 1 lugar histórico. 42 dioramas con imagen y 193 pendientes.
+235 destinos: 234 ciudades y 1 lugar histórico. 58 dioramas con imagen y 177 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -10,9 +10,9 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 
 | Tanda | Destinos pendientes |
 | --- | --- |
-| 11 | Budapest, Toronto, Bangkok, Dakar |
-| 12 | Perth, Florencia, La Habana, Dubái |
-| 13 | Casablanca, Adelaida, Zúrich, Boston |
+| 15 | Miami, Bombay, Fez, Christchurch |
+| 16 | Copenhague, Las Vegas, Kioto, Chefchaouen |
+| 17 | Queenstown, Sevilla, Nueva Orleans, Osaka |
 
 Machu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.
 
@@ -37,10 +37,10 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Praga | Con imagen · por revisar | 7 | Puente de Carlos; Castillo de Praga; Catedral de San Vito; Reloj Astronómico; Iglesia de Týn |
 | Atenas | Con imagen · por revisar | 8 | Partenón; Erecteion; Templo de Zeus Olímpico; Estadio Panathinaikó; Plaza Sintagma |
 | Estambul | Con imagen · por revisar | 9 | Santa Sofía; Mezquita Azul; Torre de Gálata; Palacio Topkapi; Bósforo |
-| Budapest | Pendiente de imagen | 11 | Parlamento; Puente de las Cadenas; Castillo de Buda; Bastión de los Pescadores; Basílica de San Esteban |
-| Florencia | Pendiente de imagen | 12 | Duomo y cúpula de Brunelleschi; Ponte Vecchio; Palazzo Vecchio; Campanile de Giotto; Santa Croce |
-| Zúrich | Pendiente de imagen | 13 | Grossmünster; Fraumünster; Iglesia de San Pedro; Río Limmat; Casco histórico y tranvía |
-| Estocolmo | Pendiente de imagen | 14 | Ayuntamiento; Palacio Real; Gamla Stan; Riddarholmskyrkan; Museo Vasa |
+| Budapest | Con imagen · por revisar | 11 | Parlamento; Puente de las Cadenas; Castillo de Buda; Bastión de los Pescadores; Basílica de San Esteban |
+| Florencia | Con imagen · por revisar | 12 | Duomo y cúpula de Brunelleschi; Ponte Vecchio; Palazzo Vecchio; Campanile de Giotto; Santa Croce |
+| Zúrich | Con imagen · por revisar | 13 | Grossmünster; Fraumünster; Iglesia de San Pedro; Río Limmat; Casco histórico y tranvía |
+| Estocolmo | Con imagen · por revisar | 14 | Ayuntamiento; Palacio Real; Gamla Stan; Riddarholmskyrkan; Museo Vasa |
 | Copenhague | Pendiente de imagen | 16 | Nyhavn; La Sirenita; Rosenborg; Amalienborg; Iglesia de Nuestro Salvador |
 | Sevilla | Pendiente de imagen | 17 | Giralda y Catedral; Plaza de España; Metropol Parasol; Torre del Oro; Real Alcázar |
 | Valencia | Pendiente de imagen | 18 | Ciudad de las Artes y las Ciencias; Catedral y Miguelete; Torres de Serranos; Mercado Central; Lonja de la Seda |
@@ -128,9 +128,9 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Los Ángeles | Con imagen · por revisar | 7 | Observatorio Griffith; Walt Disney Concert Hall; Ayuntamiento; Hollywood Bowl |
 | Chicago | Con imagen · por revisar | 8 | Willis Tower; Cloud Gate; John Hancock Center; Wrigley Building; Río Chicago y puentes |
 | Río de Janeiro | Con imagen · por revisar | 10 | Cristo Redentor; Pan de Azúcar; Copacabana y su paseo; Maracaná; Arcos de Lapa |
-| Toronto | Pendiente de imagen | 11 | CN Tower; Rogers Centre; Nathan Phillips Square y Ayuntamiento; Royal Ontario Museum; Casa Loma |
-| La Habana | Pendiente de imagen | 12 | Capitolio; Malecón; Castillo del Morro; Catedral; Gran Teatro |
-| Boston | Pendiente de imagen | 13 | Massachusetts State House y cúpula dorada; Custom House Tower; Trinity Church; Old State House; Puente Zakim |
+| Toronto | Con imagen · por revisar | 11 | CN Tower; Rogers Centre; Nathan Phillips Square y Ayuntamiento; Royal Ontario Museum; Casa Loma |
+| La Habana | Con imagen · por revisar | 12 | Capitolio; Malecón; Castillo del Morro; Catedral; Gran Teatro |
+| Boston | Con imagen · por revisar | 13 | Massachusetts State House y cúpula dorada; Custom House Tower; Trinity Church; Old State House; Puente Zakim |
 | Miami | Pendiente de imagen | 15 | Freedom Tower; Pérez Art Museum Miami; Miami Marine Stadium; Skyline de Brickell y palmeras costeras |
 | Las Vegas | Pendiente de imagen | 16 | Hoteles del Strip: pirámide y esfinge del Luxor; Fuentes del Bellagio; Torre Eiffel del Paris Las Vegas; Sphere |
 | Nueva Orleans | Pendiente de imagen | 17 | Catedral de San Luis; Jackson Square; Balcones del French Quarter; Puente Crescent City Connection; Tranvía histórico |
@@ -183,9 +183,9 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Pekín | Con imagen · por revisar | 7 | Ciudad Prohibida; Templo del Cielo; Puerta de Tiananmén; Estadio Nido de Pájaro; Palacio de Verano |
 | Shanghái | Con imagen · por revisar | 9 | Torre Perla Oriental; Shanghai Tower; Shanghai World Financial Center; Bund; Jardín Yuyuan |
 | Seúl | Con imagen · por revisar | 10 | Gyeongbokgung; N Seoul Tower; Lotte World Tower; Dongdaemun Design Plaza; Bukchon Hanok Village |
-| Bangkok | Pendiente de imagen | 11 | Gran Palacio; Wat Arun; Wat Phra Kaew; Giant Swing; Río Chao Phraya |
-| Dubái | Pendiente de imagen | 12 | Burj Khalifa; Burj Al Arab; Dubai Frame; Museum of the Future; Palm Jumeirah |
-| Delhi | Pendiente de imagen | 14 | Fuerte Rojo; Qutub Minar; Templo del Loto; India Gate; Jama Masjid |
+| Bangkok | Con imagen · por revisar | 11 | Gran Palacio; Wat Arun; Wat Phra Kaew; Giant Swing; Río Chao Phraya |
+| Dubái | Con imagen · por revisar | 12 | Burj Khalifa; Burj Al Arab; Dubai Frame; Museum of the Future; Palm Jumeirah |
+| Delhi | Con imagen · por revisar | 14 | Fuerte Rojo; Qutub Minar; Templo del Loto; India Gate; Jama Masjid |
 | Bombay | Pendiente de imagen | 15 | Gateway of India; Chhatrapati Shivaji Terminus; Taj Mahal Palace; Bandra-Worli Sea Link; Marine Drive |
 | Kioto | Pendiente de imagen | 16 | Kinkaku-ji; Kiyomizu-dera; Torii de Fushimi Inari; Castillo de Nijō |
 | Osaka | Pendiente de imagen | 17 | Castillo de Osaka; Umeda Sky Building; Tsūtenkaku; Canal Dōtonbori y puente Ebisu sin rótulos |
@@ -240,9 +240,9 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Ciudad del Cabo | Con imagen · por revisar | 8 | Table Mountain; V&A Waterfront; Bo-Kaap; Cape Town Stadium; Castillo de Buena Esperanza |
 | Nairobi | Con imagen · por revisar | 9 | Kenyatta International Convention Centre; Times Tower; Uhuru Park; Jamia Mosque; Nairobi Railway Museum |
 | Túnez | Con imagen · por revisar | 10 | Mezquita Zitouna; Medina; Bab el Bhar; Catedral de San Vicente de Paúl; Avenida Habib Bourguiba |
-| Dakar | Pendiente de imagen | 11 | Monumento al Renacimiento Africano; Gran Mezquita; Faro de Les Mamelles; Museo de las Civilizaciones Negras; Isla de Gorée |
-| Casablanca | Pendiente de imagen | 13 | Mezquita Hassan II; Barrio Habous; Plaza Mohammed V; Catedral del Sagrado Corazón |
-| Rabat | Pendiente de imagen | 14 | Torre Hassan; Mausoleo de Mohammed V; Kasbah de los Udayas; Bab Rouah |
+| Dakar | Con imagen · por revisar | 11 | Monumento al Renacimiento Africano; Gran Mezquita; Faro de Les Mamelles; Museo de las Civilizaciones Negras; Isla de Gorée |
+| Casablanca | Con imagen · por revisar | 13 | Mezquita Hassan II; Barrio Habous; Plaza Mohammed V; Catedral del Sagrado Corazón |
+| Rabat | Con imagen · por revisar | 14 | Torre Hasán; Mausoleo de Mohamed V; Kasbah de los Udayas; Chellah |
 | Fez | Pendiente de imagen | 15 | Bab Boujloud; Mezquita Al Qarawiyyin; Curtiduría Chouara; Madrasa Bou Inania |
 | Chefchaouen | Pendiente de imagen | 16 | Casas azules de la medina; Kasbah; Plaza Uta el-Hammam; Gran Mezquita y minarete octogonal |
 | Argel | Pendiente de imagen | 18 | Maqam Echahid; Notre-Dame d’Afrique; Djamaa el Djazaïr; Casbah blanca junto al puerto |
@@ -268,9 +268,9 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Auckland | Con imagen · por revisar | 8 | Sky Tower; Auckland War Memorial Museum; Viaduct Harbour marina; One Tree Hill with its obelisk |
 | Wellington | Con imagen · por revisar | 9 | Beehive y Parlamento; Wellington Cable Car; Te Papa; Old St Paul's; Waterfront |
 | Brisbane | Con imagen · por revisar | 10 | Story Bridge; Ayuntamiento de Brisbane y torre del reloj; Wheel of Brisbane; Parlamento de Queensland |
-| Perth | Pendiente de imagen | 12 | Bell Tower; Puente de Elizabeth Quay; Optus Stadium; Ayuntamiento de Perth |
-| Adelaida | Pendiente de imagen | 13 | Catedral de San Pedro; Adelaide Oval; Ayuntamiento de Adelaida; Museo de Australia Meridional |
-| Canberra | Pendiente de imagen | 14 | Parliament House sin banderas; Australian War Memorial; National Museum of Australia; Telstra Tower; Lago Burley Griffin |
+| Perth | Con imagen · por revisar | 12 | Bell Tower; Puente de Elizabeth Quay; Optus Stadium; Ayuntamiento de Perth |
+| Adelaida | Con imagen · por revisar | 13 | Adelaide Oval; St Peter's Cathedral; Adelaide Town Hall; Art Gallery of South Australia |
+| Canberra | Con imagen · por revisar | 14 | Parliament House sin banderas; Australian War Memorial; National Museum of Australia; Telstra Tower; Lago Burley Griffin |
 | Christchurch | Pendiente de imagen | 15 | Transitional Cardboard Cathedral; New Regent Street; Arts Centre; Jardín Botánico y tranvía histórico |
 | Queenstown | Pendiente de imagen | 17 | Lago Wakatipu; Montañas Remarkables; Skyline Gondola; Vapor TSS Earnslaw |
 | Suva | Pendiente de imagen | 18 | Grand Pacific Hotel; Parlamento de Fiyi; Catedral del Sagrado Corazón; Fiji Museum y jardines Thurston |
@@ -314,6 +314,22 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 - Seúl: [Referencia 1](https://english.visitseoul.net/attractions/Gyeongbokgung%20Palace/ENP000072), [Referencia 2](https://english.visitseoul.net/attractions/gyeongbokgung%20palace/ENP000072), [Referencia 3](https://english.visitseoul.net/attractions/Changgyeonggung-Palace/ENP000072), [Referencia 4](https://english.seoul.go.kr/symbol-seoul-n-seoul-tower/), [Referencia 5](https://english.seoul.go.kr/wp-content/uploads/2026/03/guidebook_en.pdf).
 - Túnez: [Referencia 1](https://www.commune-tunis.gov.tn/VisVir.aspx), [Referencia 2](https://www.commune-tunis.gov.tn/visvir_En.aspx), [Referencia 3](https://www.culture.gov.tn/?p=159787), [Referencia 4](https://www.commune-tunis.gov.tn/medina.aspx), [Referencia 5](https://www.tunisiatourism.org/tunis-medina/).
 - Brisbane: [Referencia 1](https://www.brisbane.qld.gov.au/transport-and-parking/transport-projects/story-bridge-renewal), [Referencia 2](https://www.brisbane.qld.gov.au/content/dam/brisbanecitycouncil/corpwebsite/projects/documents/story-bridge-restoration-preserving-a-national-icon-committee-report.pdf.coredownload.pdf), [Referencia 3](https://visit.brisbane.qld.au/en/things-to-do/tourist-attractions), [Referencia 4](https://heritage.brisbane.qld.gov.au/heritage-places/949), [Referencia 5](https://heritage.brisbane.qld.gov.au/heritage-places/2054).
+- Budapest: [Referencia 1](https://www.budapest.es/puente-cadenas), [Referencia 2](https://www.budapest.es/monumentos-atracciones), [Referencia 3](https://visithungary.com/es/destination/budapest), [Referencia 4](https://www.budapest.org/es/que-ver-budapest/puente-de-las-cadenas/), [Referencia 5](https://www.budapestinfo.hu/es/).
+- Toronto: [Referencia 1](https://www.toronto.ca/explore-enjoy/visitor-toronto/things-to-do/), [Referencia 2](https://www.destinationtoronto.com/things-to-do/attractions/must-see-attractions/cn-tower/), [Referencia 3](https://www.toronto.ca/explore-enjoy/visitor-toronto/), [Referencia 4](https://www.cntower.ca/), [Referencia 5](https://www.cntower.ca/plan-your-visit/at-the-tower/whats-nearby).
+- Bangkok: [Referencia 1](https://www.tourismthailand.org/Attraction/the-grand-palace), [Referencia 2](https://www.tourismthailand.org/Destinations/Provinces/Bangkok/219), [Referencia 3](https://www.tourismthailand.org/Attraction/wat-arun-ratchawararam-ratchawaramahawihan), [Referencia 4](https://www.tourismthailand.org/Attraction/phraprang-wat-arun-ratchawararam-ratchawora-mahawi), [Referencia 5](https://thailandfoundation.or.th/wp-content/uploads/2025/05/1-Geography-of-Thailand.pdf).
+- Dakar: [Referencia 1](https://www.culture.gouv.sn/index.php/monument-de-la-renaissance/), [Referencia 2](https://www.culture.gouv.sn/index.php/le-monument-de-la-renaissance-africaine/), [Referencia 3](https://mjsc.gouv.sn/node/114), [Referencia 4](https://monumentrenaissanceafricaine.com/decouvrir/), [Referencia 5](https://mcat.gouv.sn/service/dakar/).
+- Perth: [Referencia 1](https://www.visitperth.com/see-and-do/public-spaces/Venues/elizabeth-quay), [Referencia 2](https://visitperth.com/en/see-and-do/architecture-and-historic-buildings/Venues/the-bell-tower), [Referencia 3](https://www.visitperth.com/see-and-do), [Referencia 4](https://visitperth.com/en/see-and-do/entertainment/venues/elizabeth-quay-carousel), [Referencia 5](https://www.thebelltower.com.au/).
+- Florencia: [Referencia 1](https://tour.florence.it/florence/what-to-see/details/cupola-del-brunelleschi-duomo), [Referencia 2](https://duomo.firenze.it/en/visit), [Referencia 3](https://tour.firenze.it/it/firenze/cosa-vedere/dettagli/piazza-del-duomo), [Referencia 4](https://duomo.firenze.it/it/scopri/cupola-di-brunelleschi), [Referencia 5](https://www.feelflorence.it/en/points-interest/brunelleschis-dome).
+- La Habana: [Referencia 1](https://www.cuba.travel/destinos/lahabana/quehacer/ciudad), [Referencia 2](https://www.cuba.travel/Portals/0/Publicaciones/Destinations/Habana/Gu%C3%ADa%20gratis%20para%20viajar%20a%20La%20Habana%202020.pdf?ver=VRkIdZnzlvq-tZ-VIEacUw%3D%3D), [Referencia 3](https://www.cuba.travel/destinos/lahabana/quehacer/excursiones), [Referencia 4](https://www.cuba.travel/en/destinations/havana-cuba), [Referencia 5](https://www.cuba.travel/destinos/la-habana).
+- Dubái: [Referencia 1](https://www.visitdubai.com/en/places-to-visit/burj-khalifa), [Referencia 2](https://www.dubai.ae/web/dubai.ae/visit/staying-in-dubai/sights-and-attractions), [Referencia 3](https://www.visitdubai.com/en/articles/a-to-z-of-dubai), [Referencia 4](https://www.moet.gov.ae/en/tourist-attractions?delta=40&emirate=101581), [Referencia 5](https://www.moet.gov.ae/en/tourist-attractions?delta=4&emirate=101581).
+- Casablanca: [Referencia 1](https://visitcasablanca.ma/en/pois/quartier-habous/), [Referencia 2](https://visitcasablanca.ma/en/pois/mosquee-hassan-2/), [Referencia 3](https://visitcasablanca.ma/en/), [Referencia 4](https://www.visitmorocco.com/en/travel/casablanca/medina), [Referencia 5](https://visitcasablanca.ma/en/ou-aller/casablanca/).
+- Adelaida: [Referencia 1](https://tourism.sa.gov.au/media/sokeroxu/48-hours-in-adelaide.pdf), [Referencia 2](https://www.environment.sa.gov.au/topics/heritage/visiting-heritage-places), [Referencia 3](https://www.australia.com/en-us/places/adelaide-and-surrounds/guide-to-adelaide.html), [Referencia 4](https://tourism.sa.gov.au/media/rsegzfgy/top-10-unique-things-in-adelaide.pdf), [Referencia 5](https://tourism.sa.gov.au/media/xr3bsuay/satc_dd_cruise-brochure_2025_web_2up.pdf).
+- Zúrich: [Referencia 1](https://www.zuerich.com/en/visit/attractions/fraumunster-art-history-and-divine-stained-glass-windows), [Referencia 2](https://www.zuerich.com/de/besuchen/sehenswuerdigkeiten/grossmuenster), [Referencia 3](https://www.zuerich.com/de/besuchen/sehenswuerdigkeiten/fraumuenster-kunst-geschichte-und-himmlische-glasfenster), [Referencia 4](https://www.zuerich.com/de/sightseeing-aktivitaeten/sehenswuerdigkeiten/zuerichs-altstadt), [Referencia 5](https://www.zuerich.com/en/sightseeing-activities/places-to-visit).
+- Boston: [Referencia 1](https://malegislature.gov/StateHouse/Visit), [Referencia 2](https://www.nps.gov/places/massachusetts-state-house.htm), [Referencia 3](https://home.nps.gov/places/massachusetts-state-house.htm), [Referencia 4](https://www.mass.gov/orgs/bureau-of-the-state-house), [Referencia 5](https://www.boston.gov/departments/tourism-sports-and-entertainment/things-do-around-boston).
+- Delhi: [Referencia 1](https://delhitourism.gov.in/tourist_place/qutab_minar.html), [Referencia 2](https://www.delhitourism.gov.in/), [Referencia 3](https://delhitourism.gov.in/), [Referencia 4](https://delhitourism.gov.in/heritage/world_heritage_monuments.html), [Referencia 5](https://culture.gov.in/qutb-minar-and-its-monuments).
+- Rabat: [Referencia 1](https://www.visitrabat.com/en/lieux/the-mausoleum-of-mohammed-v/), [Referencia 2](https://www.visitrabat.com/lieux/le-mausolee-mohammed-v/), [Referencia 3](https://www.visitrabat.com/es/lieux/el-mausoleo-de-mohammed-v/), [Referencia 4](https://www.visitrabat.com/en/lieux/the-hassan-tower/), [Referencia 5](https://www.visitrabat.com/en/points-of-interest/monumentsv-en/).
+- Canberra: [Referencia 1](https://visitcanberra.com.au/attractions/9000739/australian-war-memorial), [Referencia 2](https://visitcanberra.com.au/attractions/56b23ad6266140594567db22/australian-war-memorial), [Referencia 3](https://visitcanberra.com.au/articles/100-things-to-do-in-canberra), [Referencia 4](https://www.dcceew.gov.au/parks-heritage/heritage/places/national/war-memorial), [Referencia 5](https://www.australia.com/en/things-to-do/arts-and-culture/cultural-attractions-of-australia.html).
+- Estocolmo: [Referencia 1](https://www.visitstockholm.com/see-do/attractions/stockholm-highlights/), [Referencia 2](https://www.visitstockholm.com/o/the-royal-palace/), [Referencia 3](https://www.visitstockholm.com/), [Referencia 4](https://www.visitstockholm.com/see-do/), [Referencia 5](https://visitsweden.com/where-to-go/middle-sweden/stockholm/stockholm-old-town/).
 - Guiza: [Referencia 1](https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/).
 
 Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; el modo jugable todavía está pendiente de integración.

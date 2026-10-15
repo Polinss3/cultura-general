@@ -1247,7 +1247,7 @@
       "continent": "europa",
       "countryCode": "HU",
       "batch": 11,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Parlamento",
         "Puente de las Cadenas",
@@ -1257,7 +1257,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 43
+      "productionOrder": 43,
+      "conceptImage": "normalizadas/budapest-v1.png",
+      "originalConceptImage": "normalizadas/budapest-v1.png",
+      "framingProfile": "budapest",
+      "sources": [
+        "https://www.budapest.es/puente-cadenas",
+        "https://www.budapest.es/monumentos-atracciones",
+        "https://visithungary.com/es/destination/budapest",
+        "https://www.budapest.org/es/que-ver-budapest/puente-de-las-cadenas/",
+        "https://www.budapestinfo.hu/es/"
+      ]
     },
     {
       "id": "toronto",
@@ -1268,7 +1278,7 @@
       "continent": "america",
       "countryCode": "CA",
       "batch": 11,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "CN Tower",
         "Rogers Centre",
@@ -1278,7 +1288,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 44
+      "productionOrder": 44,
+      "conceptImage": "normalizadas/toronto-v1.png",
+      "originalConceptImage": "normalizadas/toronto-v1.png",
+      "framingProfile": "toronto",
+      "sources": [
+        "https://www.toronto.ca/explore-enjoy/visitor-toronto/things-to-do/",
+        "https://www.destinationtoronto.com/things-to-do/attractions/must-see-attractions/cn-tower/",
+        "https://www.toronto.ca/explore-enjoy/visitor-toronto/",
+        "https://www.cntower.ca/",
+        "https://www.cntower.ca/plan-your-visit/at-the-tower/whats-nearby"
+      ]
     },
     {
       "id": "bangkok",
@@ -1289,7 +1309,7 @@
       "continent": "asia",
       "countryCode": "TH",
       "batch": 11,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Gran Palacio",
         "Wat Arun",
@@ -1299,7 +1319,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 45
+      "productionOrder": 45,
+      "conceptImage": "normalizadas/bangkok-v1.png",
+      "originalConceptImage": "normalizadas/bangkok-v1.png",
+      "framingProfile": "bangkok",
+      "sources": [
+        "https://www.tourismthailand.org/Attraction/the-grand-palace",
+        "https://www.tourismthailand.org/Destinations/Provinces/Bangkok/219",
+        "https://www.tourismthailand.org/Attraction/wat-arun-ratchawararam-ratchawaramahawihan",
+        "https://www.tourismthailand.org/Attraction/phraprang-wat-arun-ratchawararam-ratchawora-mahawi",
+        "https://thailandfoundation.or.th/wp-content/uploads/2025/05/1-Geography-of-Thailand.pdf"
+      ]
     },
     {
       "id": "dakar",
@@ -1310,7 +1340,7 @@
       "continent": "africa",
       "countryCode": "SN",
       "batch": 11,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Monumento al Renacimiento Africano",
         "Gran Mezquita",
@@ -1320,7 +1350,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 46
+      "productionOrder": 46,
+      "conceptImage": "normalizadas/dakar-v1.png",
+      "originalConceptImage": "normalizadas/dakar-v1.png",
+      "framingProfile": "dakar",
+      "sources": [
+        "https://www.culture.gouv.sn/index.php/monument-de-la-renaissance/",
+        "https://www.culture.gouv.sn/index.php/le-monument-de-la-renaissance-africaine/",
+        "https://mjsc.gouv.sn/node/114",
+        "https://monumentrenaissanceafricaine.com/decouvrir/",
+        "https://mcat.gouv.sn/service/dakar/"
+      ]
     },
     {
       "id": "perth",
@@ -1329,7 +1369,7 @@
       },
       "continent": "oceania",
       "countryCode": "AU",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Bell Tower",
@@ -1337,9 +1377,19 @@
         "Optus Stadium",
         "Ayuntamiento de Perth"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 47,
-      "batch": 12
+      "batch": 12,
+      "conceptImage": "normalizadas/perth-v1.png",
+      "originalConceptImage": "normalizadas/perth-v1.png",
+      "framingProfile": "perth",
+      "sources": [
+        "https://www.visitperth.com/see-and-do/public-spaces/Venues/elizabeth-quay",
+        "https://visitperth.com/en/see-and-do/architecture-and-historic-buildings/Venues/the-bell-tower",
+        "https://www.visitperth.com/see-and-do",
+        "https://visitperth.com/en/see-and-do/entertainment/venues/elizabeth-quay-carousel",
+        "https://www.thebelltower.com.au/"
+      ]
     },
     {
       "id": "florencia",
@@ -1350,7 +1400,7 @@
       "continent": "europa",
       "countryCode": "IT",
       "batch": 12,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Duomo y cúpula de Brunelleschi",
         "Ponte Vecchio",
@@ -1360,7 +1410,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 48
+      "productionOrder": 48,
+      "conceptImage": "normalizadas/florencia-v1.png",
+      "originalConceptImage": "normalizadas/florencia-v1.png",
+      "framingProfile": "florencia",
+      "sources": [
+        "https://tour.florence.it/florence/what-to-see/details/cupola-del-brunelleschi-duomo",
+        "https://duomo.firenze.it/en/visit",
+        "https://tour.firenze.it/it/firenze/cosa-vedere/dettagli/piazza-del-duomo",
+        "https://duomo.firenze.it/it/scopri/cupola-di-brunelleschi",
+        "https://www.feelflorence.it/en/points-interest/brunelleschis-dome"
+      ]
     },
     {
       "id": "la-habana",
@@ -1371,7 +1431,7 @@
       "continent": "america",
       "countryCode": "CU",
       "batch": 12,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Capitolio",
         "Malecón",
@@ -1381,7 +1441,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 49
+      "productionOrder": 49,
+      "conceptImage": "normalizadas/la-habana-v1.png",
+      "originalConceptImage": "normalizadas/la-habana-v1.png",
+      "framingProfile": "la-habana",
+      "sources": [
+        "https://www.cuba.travel/destinos/lahabana/quehacer/ciudad",
+        "https://www.cuba.travel/Portals/0/Publicaciones/Destinations/Habana/Gu%C3%ADa%20gratis%20para%20viajar%20a%20La%20Habana%202020.pdf?ver=VRkIdZnzlvq-tZ-VIEacUw%3D%3D",
+        "https://www.cuba.travel/destinos/lahabana/quehacer/excursiones",
+        "https://www.cuba.travel/en/destinations/havana-cuba",
+        "https://www.cuba.travel/destinos/la-habana"
+      ]
     },
     {
       "id": "dubai",
@@ -1392,7 +1462,7 @@
       "continent": "asia",
       "countryCode": "AE",
       "batch": 12,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Burj Khalifa",
         "Burj Al Arab",
@@ -1402,7 +1472,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 50
+      "productionOrder": 50,
+      "conceptImage": "normalizadas/dubai-v1.png",
+      "originalConceptImage": "normalizadas/dubai-v1.png",
+      "framingProfile": "dubai",
+      "sources": [
+        "https://www.visitdubai.com/en/places-to-visit/burj-khalifa",
+        "https://www.dubai.ae/web/dubai.ae/visit/staying-in-dubai/sights-and-attractions",
+        "https://www.visitdubai.com/en/articles/a-to-z-of-dubai",
+        "https://www.moet.gov.ae/en/tourist-attractions?delta=40&emirate=101581",
+        "https://www.moet.gov.ae/en/tourist-attractions?delta=4&emirate=101581"
+      ]
     },
     {
       "id": "casablanca",
@@ -1411,7 +1491,7 @@
       },
       "continent": "africa",
       "countryCode": "MA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Mezquita Hassan II",
@@ -1419,9 +1499,19 @@
         "Plaza Mohammed V",
         "Catedral del Sagrado Corazón"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 51,
-      "batch": 13
+      "batch": 13,
+      "conceptImage": "normalizadas/casablanca-v1.png",
+      "originalConceptImage": "normalizadas/casablanca-v1.png",
+      "framingProfile": "casablanca",
+      "sources": [
+        "https://visitcasablanca.ma/en/pois/quartier-habous/",
+        "https://visitcasablanca.ma/en/pois/mosquee-hassan-2/",
+        "https://visitcasablanca.ma/en/",
+        "https://www.visitmorocco.com/en/travel/casablanca/medina",
+        "https://visitcasablanca.ma/en/ou-aller/casablanca/"
+      ]
     },
     {
       "id": "adelaida",
@@ -1430,17 +1520,27 @@
       },
       "continent": "oceania",
       "countryCode": "AU",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Catedral de San Pedro",
         "Adelaide Oval",
-        "Ayuntamiento de Adelaida",
-        "Museo de Australia Meridional"
+        "St Peter's Cathedral",
+        "Adelaide Town Hall",
+        "Art Gallery of South Australia"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 52,
-      "batch": 13
+      "batch": 13,
+      "conceptImage": "normalizadas/adelaida-v1.png",
+      "originalConceptImage": "normalizadas/adelaida-v1.png",
+      "framingProfile": "adelaida",
+      "sources": [
+        "https://tourism.sa.gov.au/media/sokeroxu/48-hours-in-adelaide.pdf",
+        "https://www.environment.sa.gov.au/topics/heritage/visiting-heritage-places",
+        "https://www.australia.com/en-us/places/adelaide-and-surrounds/guide-to-adelaide.html",
+        "https://tourism.sa.gov.au/media/rsegzfgy/top-10-unique-things-in-adelaide.pdf",
+        "https://tourism.sa.gov.au/media/xr3bsuay/satc_dd_cruise-brochure_2025_web_2up.pdf"
+      ]
     },
     {
       "id": "zurich",
@@ -1451,7 +1551,7 @@
       "continent": "europa",
       "countryCode": "CH",
       "batch": 13,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Grossmünster",
         "Fraumünster",
@@ -1461,7 +1561,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 53
+      "productionOrder": 53,
+      "conceptImage": "normalizadas/zurich-v1.png",
+      "originalConceptImage": "normalizadas/zurich-v1.png",
+      "framingProfile": "zurich",
+      "sources": [
+        "https://www.zuerich.com/en/visit/attractions/fraumunster-art-history-and-divine-stained-glass-windows",
+        "https://www.zuerich.com/de/besuchen/sehenswuerdigkeiten/grossmuenster",
+        "https://www.zuerich.com/de/besuchen/sehenswuerdigkeiten/fraumuenster-kunst-geschichte-und-himmlische-glasfenster",
+        "https://www.zuerich.com/de/sightseeing-aktivitaeten/sehenswuerdigkeiten/zuerichs-altstadt",
+        "https://www.zuerich.com/en/sightseeing-activities/places-to-visit"
+      ]
     },
     {
       "id": "boston",
@@ -1470,7 +1580,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Massachusetts State House y cúpula dorada",
@@ -1479,9 +1589,19 @@
         "Old State House",
         "Puente Zakim"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 54,
-      "batch": 13
+      "batch": 13,
+      "conceptImage": "normalizadas/boston-v1.png",
+      "originalConceptImage": "normalizadas/boston-v1.png",
+      "framingProfile": "boston",
+      "sources": [
+        "https://malegislature.gov/StateHouse/Visit",
+        "https://www.nps.gov/places/massachusetts-state-house.htm",
+        "https://home.nps.gov/places/massachusetts-state-house.htm",
+        "https://www.mass.gov/orgs/bureau-of-the-state-house",
+        "https://www.boston.gov/departments/tourism-sports-and-entertainment/things-do-around-boston"
+      ]
     },
     {
       "id": "delhi",
@@ -1492,7 +1612,7 @@
       "continent": "asia",
       "countryCode": "IN",
       "batch": 14,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Fuerte Rojo",
         "Qutub Minar",
@@ -1502,7 +1622,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 55
+      "productionOrder": 55,
+      "conceptImage": "normalizadas/delhi-v1.png",
+      "originalConceptImage": "normalizadas/delhi-v1.png",
+      "framingProfile": "delhi",
+      "sources": [
+        "https://delhitourism.gov.in/tourist_place/qutab_minar.html",
+        "https://www.delhitourism.gov.in/",
+        "https://delhitourism.gov.in/",
+        "https://delhitourism.gov.in/heritage/world_heritage_monuments.html",
+        "https://culture.gov.in/qutb-minar-and-its-monuments"
+      ]
     },
     {
       "id": "rabat",
@@ -1511,17 +1641,27 @@
       },
       "continent": "africa",
       "countryCode": "MA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Torre Hassan",
-        "Mausoleo de Mohammed V",
+        "Torre Hasán",
+        "Mausoleo de Mohamed V",
         "Kasbah de los Udayas",
-        "Bab Rouah"
+        "Chellah"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 56,
-      "batch": 14
+      "batch": 14,
+      "conceptImage": "normalizadas/rabat-v1.png",
+      "originalConceptImage": "normalizadas/rabat-v1.png",
+      "framingProfile": "rabat",
+      "sources": [
+        "https://www.visitrabat.com/en/lieux/the-mausoleum-of-mohammed-v/",
+        "https://www.visitrabat.com/lieux/le-mausolee-mohammed-v/",
+        "https://www.visitrabat.com/es/lieux/el-mausoleo-de-mohammed-v/",
+        "https://www.visitrabat.com/en/lieux/the-hassan-tower/",
+        "https://www.visitrabat.com/en/points-of-interest/monumentsv-en/"
+      ]
     },
     {
       "id": "canberra",
@@ -1530,7 +1670,7 @@
       },
       "continent": "oceania",
       "countryCode": "AU",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Parliament House sin banderas",
@@ -1539,9 +1679,19 @@
         "Telstra Tower",
         "Lago Burley Griffin"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 57,
-      "batch": 14
+      "batch": 14,
+      "conceptImage": "normalizadas/canberra-v1.png",
+      "originalConceptImage": "normalizadas/canberra-v1.png",
+      "framingProfile": "canberra",
+      "sources": [
+        "https://visitcanberra.com.au/attractions/9000739/australian-war-memorial",
+        "https://visitcanberra.com.au/attractions/56b23ad6266140594567db22/australian-war-memorial",
+        "https://visitcanberra.com.au/articles/100-things-to-do-in-canberra",
+        "https://www.dcceew.gov.au/parks-heritage/heritage/places/national/war-memorial",
+        "https://www.australia.com/en/things-to-do/arts-and-culture/cultural-attractions-of-australia.html"
+      ]
     },
     {
       "id": "estocolmo",
@@ -1552,7 +1702,7 @@
       "continent": "europa",
       "countryCode": "SE",
       "batch": 14,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Ayuntamiento",
         "Palacio Real",
@@ -1562,7 +1712,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 58
+      "productionOrder": 58,
+      "conceptImage": "normalizadas/estocolmo-v1.png",
+      "originalConceptImage": "normalizadas/estocolmo-v1.png",
+      "framingProfile": "estocolmo",
+      "sources": [
+        "https://www.visitstockholm.com/see-do/attractions/stockholm-highlights/",
+        "https://www.visitstockholm.com/o/the-royal-palace/",
+        "https://www.visitstockholm.com/",
+        "https://www.visitstockholm.com/see-do/",
+        "https://visitsweden.com/where-to-go/middle-sweden/stockholm/stockholm-old-town/"
+      ]
     },
     {
       "id": "miami",
