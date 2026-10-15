@@ -1,0 +1,15 @@
+{
+  "id": "el-cairo",
+  "batch": 5,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/el-cairo-v1.png",
+  "generatedFile": "exec-539e4c03-6e50-44b7-90e7-e111e5f7fa97.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nCity/site: Cairo (EG). Main landmarks: Ciudadela de Saladino; Mezquita de Muhammad Alí; Torre de El Cairo; Nilo; Museo Egipcio.   Represent these as the dominant recognizable features and make every building complete and wholly inside the common floor. Keep only a few low local filler buildings and greenery; no extraneous detached buildings or platforms.",
+  "sources": [
+    "https://www.experienceegypt.eg/en/attraction-details/292/historic-cairo",
+    "https://www.experienceegypt.eg/en/Attraction-Details/336/the-egyptian-museum"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

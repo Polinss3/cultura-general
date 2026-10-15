@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 8,
   "images": [
     {
       "id": "madrid",
@@ -228,6 +228,58 @@
       "width": 1254,
       "height": 1254,
       "bytes": 2203967,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "el-cairo",
+      "file": "normalizadas/el-cairo-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2246444,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "machu-picchu",
+      "file": "normalizadas/machu-picchu-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2251715,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "lisboa",
+      "file": "normalizadas/lisboa-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2314526,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "buenos-aires",
+      "file": "normalizadas/buenos-aires-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2171242,
       "baseLeft": 33,
       "baseRight": 1225,
       "baseBottom": 1041,

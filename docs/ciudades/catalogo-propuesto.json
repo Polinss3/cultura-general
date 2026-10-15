@@ -511,7 +511,7 @@
       "continent": "africa",
       "countryCode": "EG",
       "batch": 5,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Ciudadela de Saladino",
         "Mezquita de Muhammad Alí",
@@ -523,7 +523,14 @@
       "landmarkStatus": "candidate",
       "notes": "Hitos urbanos de El Cairo. Las pirámides y la Esfinge se registran en Guiza; evitar mezclarlas como respuestas intercambiables.",
       "productionOrder": 19,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "conceptImage": "normalizadas/el-cairo-v1.png",
+      "originalConceptImage": "normalizadas/el-cairo-v1.png",
+      "framingProfile": "el-cairo",
+      "sources": [
+        "https://www.experienceegypt.eg/en/attraction-details/292/historic-cairo",
+        "https://www.experienceegypt.eg/en/Attraction-Details/336/the-egyptian-museum"
+      ]
     },
     {
       "id": "buenos-aires",
@@ -534,7 +541,7 @@
       "continent": "america",
       "countryCode": "AR",
       "batch": 5,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Obelisco",
         "Casa Rosada",
@@ -545,7 +552,18 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 20,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "generationInstructions": "The rear tip of the ORIGINAL plinth is at y400 in the 1254px canvas, not y290. Keep it there. Do not extend the floor backwards to fit more houses. The rear-most buildings must fit inside that rear edge; the sky above it remains ivory. The Obelisk rises above the floor, but no rear paving or housing district beyond the input floor. Use only compact landmarks and a contained foreground bridge/channel.",
+      "conceptImage": "normalizadas/buenos-aires-v1.png",
+      "originalConceptImage": "normalizadas/buenos-aires-v1.png",
+      "framingProfile": "buenos-aires",
+      "sources": [
+        "https://turismo.buenosaires.gob.ar/en/atractivo/obelisco-obelisk",
+        "https://turismo.buenosaires.gob.ar/es/otros-establecimientos/casa-de-gobierno-casa-rosada",
+        "https://turismo.buenosaires.gob.ar/en/recorrido/must-see-attractions",
+        "https://buenosaires.gob.ar/gcaba_historico/piramide-de-mayo/el-obelisco",
+        "https://turismo.buenosaires.gob.ar/es/recorrido/imperdibles"
+      ]
     },
     {
       "id": "machu-picchu",
@@ -555,7 +573,7 @@
       },
       "continent": "america",
       "countryCode": "PE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "historic-site",
       "landmarks": [
         "Terrazas agrícolas",
@@ -570,7 +588,10 @@
       "notes": "Excepción al nombre del modo autorizada por el usuario: la respuesta será Machu Picchu, no Cusco ni una ciudad moderna.",
       "productionOrder": 21,
       "batch": 5,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "conceptImage": "normalizadas/machu-picchu-v1.png",
+      "originalConceptImage": "normalizadas/machu-picchu-v1.png",
+      "framingProfile": "machu-picchu"
     },
     {
       "id": "lisboa",
@@ -581,7 +602,7 @@
       "continent": "europa",
       "countryCode": "PT",
       "batch": 5,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Torre de Belém",
         "Monasterio de los Jerónimos",
@@ -592,7 +613,14 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 22,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "conceptImage": "normalizadas/lisboa-v1.png",
+      "originalConceptImage": "normalizadas/lisboa-v1.png",
+      "framingProfile": "lisboa",
+      "sources": [
+        "https://www.visitlisboa.com/en/places/torre-de-belem",
+        "https://www.visitlisboa.com/en/places/25-de-abril-bridge"
+      ]
     },
     {
       "id": "viena",
@@ -1002,8 +1030,13 @@
       "countryCode": "AU",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Story Bridge",
+        "Ayuntamiento de Brisbane y torre del reloj",
+        "Wheel of Brisbane",
+        "Parlamento de Queensland"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 42,
       "batch": 10
     },
@@ -1100,8 +1133,13 @@
       "countryCode": "AU",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Bell Tower",
+        "Puente de Elizabeth Quay",
+        "Optus Stadium",
+        "Ayuntamiento de Perth"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 47,
       "batch": 12
     },
@@ -1177,8 +1215,13 @@
       "countryCode": "MA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Mezquita Hassan II",
+        "Barrio Habous",
+        "Plaza Mohammed V",
+        "Catedral del Sagrado Corazón"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 51,
       "batch": 13
     },
@@ -1191,8 +1234,13 @@
       "countryCode": "AU",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral de San Pedro",
+        "Adelaide Oval",
+        "Ayuntamiento de Adelaida",
+        "Museo de Australia Meridional"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 52,
       "batch": 13
     },
@@ -1226,8 +1274,14 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Massachusetts State House y cúpula dorada",
+        "Custom House Tower",
+        "Trinity Church",
+        "Old State House",
+        "Puente Zakim"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 54,
       "batch": 13
     },
@@ -1261,8 +1315,13 @@
       "countryCode": "MA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Torre Hassan",
+        "Mausoleo de Mohammed V",
+        "Kasbah de los Udayas",
+        "Bab Rouah"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 56,
       "batch": 14
     },
@@ -1275,8 +1334,14 @@
       "countryCode": "AU",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Parliament House sin banderas",
+        "Australian War Memorial",
+        "National Museum of Australia",
+        "Telstra Tower",
+        "Lago Burley Griffin"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 57,
       "batch": 14
     },
@@ -1310,8 +1375,13 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Freedom Tower",
+        "Pérez Art Museum Miami",
+        "Miami Marine Stadium",
+        "Skyline de Brickell y palmeras costeras"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 59,
       "batch": 15
     },
@@ -1345,8 +1415,13 @@
       "countryCode": "MA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Bab Boujloud",
+        "Mezquita Al Qarawiyyin",
+        "Curtiduría Chouara",
+        "Madrasa Bou Inania"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 61,
       "batch": 15
     },
@@ -1359,8 +1434,13 @@
       "countryCode": "NZ",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Transitional Cardboard Cathedral",
+        "New Regent Street",
+        "Arts Centre",
+        "Jardín Botánico y tranvía histórico"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 62,
       "batch": 15
     },
@@ -1394,10 +1474,16 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Hoteles del Strip: pirámide y esfinge del Luxor",
+        "Fuentes del Bellagio",
+        "Torre Eiffel del Paris Las Vegas",
+        "Sphere"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 64,
-      "batch": 16
+      "batch": 16,
+      "notes": "Concepto del área turística metropolitana del Strip, no un plano de límites municipales."
     },
     {
       "id": "kioto",
@@ -1408,8 +1494,13 @@
       "countryCode": "JP",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Kinkaku-ji",
+        "Kiyomizu-dera",
+        "Torii de Fushimi Inari",
+        "Castillo de Nijō"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 65,
       "batch": 16
     },
@@ -1422,8 +1513,13 @@
       "countryCode": "MA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Casas azules de la medina",
+        "Kasbah",
+        "Plaza Uta el-Hammam",
+        "Gran Mezquita y minarete octogonal"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 66,
       "batch": 16
     },
@@ -1436,8 +1532,13 @@
       "countryCode": "NZ",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Lago Wakatipu",
+        "Montañas Remarkables",
+        "Skyline Gondola",
+        "Vapor TSS Earnslaw"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 67,
       "batch": 17
     },
@@ -1450,8 +1551,14 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Giralda y Catedral",
+        "Plaza de España",
+        "Metropol Parasol",
+        "Torre del Oro",
+        "Real Alcázar"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 68,
       "batch": 17
     },
@@ -1464,8 +1571,14 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral de San Luis",
+        "Jackson Square",
+        "Balcones del French Quarter",
+        "Puente Crescent City Connection",
+        "Tranvía histórico"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 69,
       "batch": 17
     },
@@ -1478,8 +1591,13 @@
       "countryCode": "JP",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Castillo de Osaka",
+        "Umeda Sky Building",
+        "Tsūtenkaku",
+        "Canal Dōtonbori y puente Ebisu sin rótulos"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 70,
       "batch": 17
     },
@@ -1492,8 +1610,13 @@
       "countryCode": "DZ",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Maqam Echahid",
+        "Notre-Dame d’Afrique",
+        "Djamaa el Djazaïr",
+        "Casbah blanca junto al puerto"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 71,
       "batch": 18
     },
@@ -1506,8 +1629,13 @@
       "countryCode": "FJ",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Grand Pacific Hotel",
+        "Parlamento de Fiyi",
+        "Catedral del Sagrado Corazón",
+        "Fiji Museum y jardines Thurston"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 72,
       "batch": 18
     },
@@ -1520,8 +1648,14 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ciudad de las Artes y las Ciencias",
+        "Catedral y Miguelete",
+        "Torres de Serranos",
+        "Mercado Central",
+        "Lonja de la Seda"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 73,
       "batch": 18
     },
@@ -1534,8 +1668,14 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Space Needle",
+        "Museum of Pop Culture",
+        "Columbia Center",
+        "Seattle Great Wheel",
+        "Pike Place Market sin letras"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 74,
       "batch": 18
     },
@@ -1548,8 +1688,14 @@
       "countryCode": "JP",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Cúpula de la Bomba Atómica",
+        "Cenotafio del Parque de la Paz",
+        "Museo Memorial de la Paz",
+        "Castillo de Hiroshima",
+        "Jardín Shukkeien"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 75,
       "batch": 19
     },
@@ -1562,8 +1708,13 @@
       "countryCode": "EG",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ciudadela de Qaitbay",
+        "Bibliotheca Alexandrina",
+        "Palacio de Montazah",
+        "Corniche y Mediterráneo contenido"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 76,
       "batch": 19
     },
@@ -1576,8 +1727,13 @@
       "countryCode": "PF",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral de Notre-Dame",
+        "Mercado de Papeete",
+        "Jardines Paofai",
+        "Palacio presidencial de la Polinesia Francesa"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 77,
       "batch": 19
     },
@@ -1590,8 +1746,13 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Alhambra",
+        "Generalife",
+        "Catedral",
+        "Mirador de San Nicolás y casas del Albaicín"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 78,
       "batch": 19
     },
@@ -1604,8 +1765,14 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Independence Hall",
+        "Liberty Bell",
+        "Ayuntamiento",
+        "Philadelphia Museum of Art",
+        "One Liberty Place"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 79,
       "batch": 20
     },
@@ -1618,8 +1785,13 @@
       "countryCode": "JP",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Tōdai-ji",
+        "Kasuga Taisha",
+        "Pagoda de cinco pisos de Kōfuku-ji",
+        "Parque de Nara con ciervos"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 80,
       "batch": 20
     },
@@ -1632,8 +1804,14 @@
       "countryCode": "EG",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Templo de Karnak",
+        "Templo de Luxor",
+        "Avenida de las Esfinges",
+        "Templo de Hatshepsut",
+        "Nilo con faluca"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 81,
       "batch": 20
     },
@@ -1646,8 +1824,13 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Mezquita-Catedral",
+        "Puente Romano",
+        "Alcázar y jardines",
+        "Torre de la Calahorra"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 82,
       "batch": 20
     },
@@ -1660,8 +1843,13 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "California Tower de Balboa Park",
+        "USS Midway",
+        "Puente de Coronado",
+        "Edificios victorianos del Gaslamp Quarter"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 83,
       "batch": 21
     },
@@ -1674,8 +1862,14 @@
       "countryCode": "JP",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Landmark Tower",
+        "Noria Cosmo Clock 21",
+        "Red Brick Warehouse",
+        "Terminal Ōsanbashi",
+        "Marine Tower"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 84,
       "batch": 21
     },
@@ -1688,8 +1882,13 @@
       "countryCode": "EG",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Templo de Filae",
+        "Obelisco inacabado",
+        "Presa de Asuán",
+        "Nilo con falucas"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 85,
       "batch": 21
     },
@@ -1702,8 +1901,14 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Museo Guggenheim",
+        "Escultura Maman",
+        "Puente Zubizuri",
+        "San Mamés",
+        "Teatro Arriaga"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 86,
       "batch": 21
     },
@@ -1716,8 +1921,13 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Diamond Head",
+        "Palacio Iolani",
+        "Aloha Tower",
+        "Hotel Royal Hawaiian y Waikiki"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 87,
       "batch": 22
     },
@@ -1730,8 +1940,14 @@
       "countryCode": "JP",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Estatua de la Paz",
+        "Catedral de Urakami",
+        "Iglesia de Ōura",
+        "Glover Garden",
+        "Puente Megane"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 88,
       "batch": 22
     },
@@ -1766,8 +1982,13 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral y Obradoiro",
+        "Hostal de los Reyes Católicos",
+        "Monasterio de San Martín Pinario",
+        "Cidade da Cultura"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 90,
       "batch": 22
     },
@@ -1780,8 +2001,14 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Bank of America Plaza",
+        "Capitolio de Georgia",
+        "SkyView",
+        "Centennial Olympic Park",
+        "Fox Theatre"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 91,
       "batch": 23
     },
@@ -1794,8 +2021,14 @@
       "countryCode": "CN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ruinas de San Pablo",
+        "Grand Lisboa",
+        "Largo do Senado",
+        "Templo A-Má",
+        "Macao Tower"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 92,
       "batch": 23
     },
@@ -1808,8 +2041,14 @@
       "countryCode": "ZA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Ponte City",
+        "Hillbrow Tower",
+        "Constitution Hill",
+        "Gold Reef City",
+        "Puente Nelson Mandela"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 93,
       "batch": 23
     },
@@ -1822,8 +2061,14 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Alcazaba y Teatro Romano",
+        "Catedral",
+        "Cubo del Centre Pompidou",
+        "Castillo de Gibralfaro",
+        "La Farola"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 94,
       "batch": 23
     },
@@ -1836,8 +2081,13 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Johnson Space Center y cohete de Rocket Park sin texto",
+        "JPMorgan Chase Tower",
+        "Williams Tower y Waterwall",
+        "Buffalo Bayou Park"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 95,
       "batch": 24
     },
@@ -1850,8 +2100,14 @@
       "countryCode": "CN",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Guerreros de terracota",
+        "Gran Pagoda del Ganso Salvaje",
+        "Torre de la Campana",
+        "Torre del Tambor",
+        "Muralla y puerta de la ciudad"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 96,
       "batch": 24
     },
@@ -1864,8 +2120,13 @@
       "countryCode": "ZA",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Moses Mabhida Stadium",
+        "Golden Mile",
+        "Ayuntamiento",
+        "uShaka Marine World"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 97,
       "batch": 24
     },
@@ -1878,8 +2139,14 @@
       "countryCode": "ES",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Alcázar",
+        "Catedral",
+        "Puente de San Martín",
+        "Puente de Alcántara",
+        "San Juan de los Reyes"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 98,
       "batch": 24
     },
@@ -1892,8 +2159,13 @@
       "countryCode": "US",
       "status": "planned",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "El Álamo",
+        "River Walk",
+        "Tower of the Americas",
+        "Catedral de San Fernando"
+      ],
+      "landmarkStatus": "candidate-to-research",
       "productionOrder": 99,
       "batch": 25
     },

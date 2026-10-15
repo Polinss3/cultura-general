@@ -94,7 +94,8 @@ for city_id, profile in framing["images"].items():
     measurements["images"].append({"id": city_id, "file": profile["file"], "width": 1254, "height": 1254, "bytes": (ART / profile["file"]).stat().st_size, "baseLeft": profile["baseLeft"], "baseRight": profile["baseRight"], "baseBottom": profile["baseBottom"], **anchors})
 write(measurement_path, measurements)
 names = {city_id: city["name"]["es"] for city_id, city in cities.items()}
-sheet([item["id"] for item, _ in prepared], framing, names, ART / "verificacion" / f"tanda-{batch['batch']:02d}.png", 2)
+batch_ids = [city["id"] for city in catalog["cities"] if city["batch"] == batch["batch"] and city.get("conceptImage")]
+sheet(batch_ids, framing, names, ART / "verificacion" / f"tanda-{batch['batch']:02d}.png", 2)
 sheet(list(framing["images"]), framing, names, ART / "verificacion/coleccion-actual.png", 3)
 subprocess.run([os.environ.get("CITY_NODE", "node"), str(ROOT / "scripts/build-city-framing-preview.mjs")], cwd=ROOT, check=True)
 print(f"Tanda {batch['batch']}: {len(prepared)} ciudades registradas; {len(framing['images'])} imágenes en el visor.")
