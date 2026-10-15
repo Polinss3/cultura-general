@@ -188,6 +188,62 @@
         "width": 0.8851764705882352,
         "height": 0.8851764705882352
       }
+    },
+    "dublin": {
+      "file": "normalizadas/dublin-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "edimburgo": {
+      "file": "normalizadas/edimburgo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 32,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.05746856663872596,
+        "top": 0.1870243084660521,
+        "width": 0.8829505448449286,
+        "height": 0.8829505448449286
+      }
+    },
+    "moscu": {
+      "file": "normalizadas/moscu-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "san-petersburgo": {
+      "file": "normalizadas/san-petersburgo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 32,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.05746856663872596,
+        "top": 0.1870243084660521,
+        "width": 0.8829505448449286,
+        "height": 0.8829505448449286
+      }
     }
   }
 };
@@ -201,7 +257,11 @@
   "venecia": "Venecia",
   "amsterdam": "Ámsterdam",
   "londres": "Londres",
-  "berlin": "Berlín"
+  "berlin": "Berlín",
+  "dublin": "Dublín",
+  "edimburgo": "Edimburgo",
+  "moscu": "Moscú",
+  "san-petersburgo": "San Petersburgo"
 };
   const originals = {
   "madrid": "piloto/madrid-v1.png",
@@ -213,7 +273,11 @@
   "venecia": "normalizadas/venecia-v1.png",
   "amsterdam": "normalizadas/amsterdam-v1.png",
   "londres": "normalizadas/londres-v1.png",
-  "berlin": "normalizadas/berlin-v1.png"
+  "berlin": "normalizadas/berlin-v1.png",
+  "dublin": "normalizadas/dublin-v1.png",
+  "edimburgo": "normalizadas/edimburgo-v1.png",
+  "moscu": "normalizadas/moscu-v1.png",
+  "san-petersburgo": "normalizadas/san-petersburgo-v1.png"
 };
   let selected=new URLSearchParams(location.search).get('ciudad'), mode='aligned', guides=true;
   if(!labels[selected]) selected=Object.keys(labels)[0];

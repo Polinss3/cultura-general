@@ -2,7 +2,7 @@
 
 La preferencia del usuario es conservar bases de contorno irregular. No hay que convertirlas en cuadrados perfectos. Se registra su presentación para que el tamaño y la posición no cambien al pasar de una pregunta a otra.
 
-El visor contiene diez fuentes de 1254 × 1254 px: seis del piloto y cuatro de la primera ampliación (Venecia, Ámsterdam, Londres y Berlín). Madrid v3 conserva los edificios aprobados mediante composición sobre la base común. Las líneas inferiores actuales están en y=1041, salvo Venecia, en y=1042; el registro compensa esa diferencia. La presentación utiliza una tarjeta cuadrada de tamaño fijo y:
+El visor contiene catorce fuentes de 1254 × 1254 px: seis del piloto y dos ampliaciones de cuatro ciudades. Madrid v3 conserva los edificios aprobados mediante composición sobre la base común. Las líneas inferiores actuales están en y=1041, salvo Venecia, en y=1042; el registro compensa esa diferencia. La presentación utiliza una tarjeta cuadrada de tamaño fijo y:
 
 - Centro horizontal de la base: 50 % del ancho de la tarjeta.
 - Anchura visible del diorama: 84 %; márgenes laterales: 8 %.
@@ -35,3 +35,7 @@ Se conservan v2, la máscara editable y `scripts/compose-madrid-base.py` (requie
 ## Primera ampliación
 
 Venecia, Ámsterdam, Londres y Berlín añaden cuatro fuentes `normalizadas/*-v1.png`, ya registradas en la calibración y en el visor. Se revisaron las diez imágenes y sus anclajes numéricos (8 %, 92 %, 92 %), con tolerancia de unos 2 px en la medición de bordes. Láminas de revisión: `verificacion/ampliacion-01.png` y `verificacion/ciudades-v4.png`. Las pruebas de scripts comprueban también el selector, la cuadrícula, los enlaces por ciudad y los filtros del catálogo sin acceder al navegador del usuario. Los nuevos conceptos requieren revisión editorial.
+
+## Segunda ampliación · tanda 3
+
+Dublín, Edimburgo, Moscú y San Petersburgo añaden cuatro fuentes `normalizadas/*-v1.png`, con línea inferior en y=1041 y perfiles propios de bordes laterales. La primera variante de San Petersburgo se descartó porque añadía una plataforma exterior; la seleccionada mantiene cinco hitos sobre una sola base. Las catorce imágenes comparten los anclajes del marco. Láminas: `verificacion/ampliacion-02.png` y `verificacion/ciudades-v5.png`. Las nuevas imágenes siguen pendientes de revisión editorial, no están integradas en el modo jugable.

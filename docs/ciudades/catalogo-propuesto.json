@@ -271,13 +271,28 @@
       },
       "continent": "europa",
       "countryCode": "IE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Trinity College y campanile",
+        "Catedral de San Patricio",
+        "Custom House",
+        "Spire",
+        "Puente Ha’penny y río Liffey"
+      ],
+      "landmarkStatus": "candidate",
       "productionOrder": 11,
       "batch": 3,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "sources": [
+        "https://www.visitdublin.com/trinity-college",
+        "https://www.visitdublin.com/guides/seven-dublin-bridges",
+        "https://www.visitdublin.com//guides/dublin-city-landmarks",
+        "https://www.visitdublin.com//james-joyce-s-ulysses-walking-tour"
+      ],
+      "conceptImage": "normalizadas/dublin-v1.png",
+      "originalConceptImage": "normalizadas/dublin-v1.png",
+      "framingProfile": "dublin"
     },
     {
       "id": "edimburgo",
@@ -287,13 +302,28 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Castillo de Edimburgo sobre Castle Rock",
+        "St Giles y su torre de corona",
+        "Scott Monument",
+        "Calton Hill: monumentos Dugald Stewart y Nacional",
+        "Palacio de Holyroodhouse",
+        "Royal Mile"
+      ],
+      "landmarkStatus": "candidate",
       "productionOrder": 12,
       "batch": 3,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "sources": [
+        "https://edinburgh.org/inspire/edinburgh-city-guides/heritage/",
+        "https://edinburgh.org/point-of-interest/scott-monument/",
+        "https://edinburgh.org/things-to-do/itineraries/two-day-tour-of-edinburgh/"
+      ],
+      "conceptImage": "normalizadas/edimburgo-v1.png",
+      "originalConceptImage": "normalizadas/edimburgo-v1.png",
+      "framingProfile": "edimburgo"
     },
     {
       "id": "moscu",
@@ -303,13 +333,27 @@
       },
       "continent": "europa",
       "countryCode": "RU",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Catedral de San Basilio",
+        "Murallas del Kremlin y torre Spásskaya",
+        "Teatro Bolshói",
+        "Catedral de Cristo Salvador",
+        "Rascacielos de Moscow-City"
+      ],
+      "landmarkStatus": "candidate",
       "productionOrder": 13,
       "batch": 3,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "sources": [
+        "https://www.mos.ru/upload/documents/files/4814/Skladnayaz-kartanaanglyazike.pdf",
+        "https://www.mos.ru/upload/documents/files/bbbe5cdf989015adf1172b035c8363e6/KartaMoskvinaanglyazike2025.pdf",
+        "https://www.mos.ru/upload/documents/files/940/welcome_small_block_en%282%29.pdf"
+      ],
+      "conceptImage": "normalizadas/moscu-v1.png",
+      "originalConceptImage": "normalizadas/moscu-v1.png",
+      "framingProfile": "moscu"
     },
     {
       "id": "san-petersburgo",
@@ -319,13 +363,28 @@
       },
       "continent": "europa",
       "countryCode": "RU",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
-      "landmarks": [],
-      "landmarkStatus": "to-research",
+      "landmarks": [
+        "Palacio de Invierno / Hermitage",
+        "Catedral de San Isaac",
+        "Iglesia del Salvador sobre la Sangre Derramada",
+        "Almirantazgo y aguja dorada",
+        "Puente del Palacio y río Nevá"
+      ],
+      "landmarkStatus": "candidate",
       "productionOrder": 14,
       "batch": 3,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "sources": [
+        "https://visit-petersburg.ru/en/route/tp-48-ansambl-tsentralnykh-ploshchadey/",
+        "https://visit-petersburg.ru/en/leisure/places/isaakievskiy-sobor/",
+        "https://visit-petersburg.ru/en/leisure/places/muzey-pamyatnik-spas-na-krovi/",
+        "https://visit-petersburg.ru/en/route/vtoroy-marshrut-novogodnee-puteshestvie-po-peterburgu/"
+      ],
+      "conceptImage": "normalizadas/san-petersburgo-v1.png",
+      "originalConceptImage": "normalizadas/san-petersburgo-v1.png",
+      "framingProfile": "san-petersburgo"
     },
     {
       "id": "hong-kong",

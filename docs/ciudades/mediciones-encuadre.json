@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "images": [
     {
       "id": "madrid",
@@ -128,6 +128,58 @@
       "baseRight": 1223,
       "baseBottom": 1041,
       "registeredLeft": 0.08000000000000004,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "dublin",
+      "file": "normalizadas/dublin-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2301353,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "edimburgo",
+      "file": "normalizadas/edimburgo-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2353200,
+      "baseLeft": 32,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08000000000000006,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "moscu",
+      "file": "normalizadas/moscu-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2350624,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "san-petersburgo",
+      "file": "normalizadas/san-petersburgo-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2231142,
+      "baseLeft": 32,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08000000000000006,
       "registeredRight": 0.9199999999999999,
       "registeredBottom": 0.92
     }

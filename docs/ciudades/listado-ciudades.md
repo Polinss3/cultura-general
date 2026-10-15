@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-235 destinos: 234 ciudades y 1 lugar histórico. 10 dioramas con imagen y 225 pendientes.
+235 destinos: 234 ciudades y 1 lugar histórico. 14 dioramas con imagen y 221 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -10,9 +10,9 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 
 | Tanda | Destinos pendientes |
 | --- | --- |
-| 3 | Dublín, Edimburgo, Moscú, San Petersburgo |
 | 4 | Hong Kong, Sídney, Washington D. C., Ciudad de México |
 | 5 | El Cairo, Buenos Aires, Machu Picchu, Lisboa |
+| 6 | Viena, San Francisco, Singapur, Marrakech |
 
 Machu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.
 
@@ -28,10 +28,10 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Ámsterdam | Con imagen · por revisar | 2 | Canales y casas de hastiales; Rijksmuseum; Palacio Real; Westerkerk; Puente de arcos sobre el canal |
 | Londres | Con imagen · por revisar | 2 | Big Ben y Palacio de Westminster; Tower Bridge; London Eye; Catedral de San Pablo; The Shard; Torre de Londres (elemento adicional del concepto) |
 | Berlín | Con imagen · por revisar | 2 | Puerta de Brandeburgo; Reichstag y cúpula de vidrio; Fernsehturm; Catedral de Berlín; Altes Museum y Spree |
-| Dublín | Por definir hitos | 3 | Pendientes de investigar |
-| Edimburgo | Por definir hitos | 3 | Pendientes de investigar |
-| Moscú | Por definir hitos | 3 | Pendientes de investigar |
-| San Petersburgo | Por definir hitos | 3 | Pendientes de investigar |
+| Dublín | Con imagen · por revisar | 3 | Trinity College y campanile; Catedral de San Patricio; Custom House; Spire; Puente Ha’penny y río Liffey |
+| Edimburgo | Con imagen · por revisar | 3 | Castillo de Edimburgo sobre Castle Rock; St Giles y su torre de corona; Scott Monument; Calton Hill: monumentos Dugald Stewart y Nacional; Palacio de Holyroodhouse; Royal Mile |
+| Moscú | Con imagen · por revisar | 3 | Catedral de San Basilio; Murallas del Kremlin y torre Spásskaya; Teatro Bolshói; Catedral de Cristo Salvador; Rascacielos de Moscow-City |
+| San Petersburgo | Con imagen · por revisar | 3 | Palacio de Invierno / Hermitage; Catedral de San Isaac; Iglesia del Salvador sobre la Sangre Derramada; Almirantazgo y aguja dorada; Puente del Palacio y río Nevá |
 | Lisboa | Pendiente de imagen | 5 | Torre de Belém; Monasterio de los Jerónimos; Puente 25 de Abril; Castillo de São Jorge; Tranvía y calle de Alfama |
 | Viena | Pendiente de imagen | 6 | Catedral de San Esteban; Schönbrunn; Hofburg; Belvedere; Noria del Prater |
 | Praga | Pendiente de imagen | 7 | Puente de Carlos; Castillo de Praga; Catedral de San Vito; Reloj Astronómico; Iglesia de Týn |
@@ -282,6 +282,10 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 - Ámsterdam: [Referencia 1](https://www.iamsterdam.com/en/whats-on/calendar/attractions-and-sights/canal-cruises/canal-cruise-amsterdam-highlights).
 - Londres: [Referencia 1](https://www.visitlondon.com/things-to-do/sightseeing/famous-landmarks-london).
 - Berlín: [Referencia 1](https://www.visitberlin.de/en/berlins-top-10-attractions).
+- Dublín: [Referencia 1](https://www.visitdublin.com/trinity-college), [Referencia 2](https://www.visitdublin.com/guides/seven-dublin-bridges), [Referencia 3](https://www.visitdublin.com//guides/dublin-city-landmarks), [Referencia 4](https://www.visitdublin.com//james-joyce-s-ulysses-walking-tour).
+- Edimburgo: [Referencia 1](https://edinburgh.org/inspire/edinburgh-city-guides/heritage/), [Referencia 2](https://edinburgh.org/point-of-interest/scott-monument/), [Referencia 3](https://edinburgh.org/things-to-do/itineraries/two-day-tour-of-edinburgh/).
+- Moscú: [Referencia 1](https://www.mos.ru/upload/documents/files/4814/Skladnayaz-kartanaanglyazike.pdf), [Referencia 2](https://www.mos.ru/upload/documents/files/bbbe5cdf989015adf1172b035c8363e6/KartaMoskvinaanglyazike2025.pdf), [Referencia 3](https://www.mos.ru/upload/documents/files/940/welcome_small_block_en%282%29.pdf).
+- San Petersburgo: [Referencia 1](https://visit-petersburg.ru/en/route/tp-48-ansambl-tsentralnykh-ploshchadey/), [Referencia 2](https://visit-petersburg.ru/en/leisure/places/isaakievskiy-sobor/), [Referencia 3](https://visit-petersburg.ru/en/leisure/places/muzey-pamyatnik-spas-na-krovi/), [Referencia 4](https://visit-petersburg.ru/en/route/vtoroy-marshrut-novogodnee-puteshestvie-po-peterburgu/).
 - Machu Picchu: [Referencia 1](https://whc.unesco.org/en/list/274/).
 - Guiza: [Referencia 1](https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/).
 
