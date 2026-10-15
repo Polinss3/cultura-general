@@ -1,0 +1,18 @@
+{
+  "id": "chefchaouen",
+  "batch": 16,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/chefchaouen-v1.png",
+  "generatedFile": "exec-177d6950-1c04-4d30-bab5-9d01b5fffaef.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity chefchaouen. Main elements: Medina azul; Plaza Uta el-Hammam; Kasbah; Gran Mezquita. A SMALL cluster of blue-painted medina houses with steps, Uta el-Hammam square with a fountain, ochre kasbah walls and tower, and the Great Mosque with its OCTAGONAL minaret. No more than twelve small blue houses. No distant landscape, no extra large hill or background terrain. CRITICAL: original floor tip y400, front base bottom y1041. Do not move or reshape any original plinth edge. Blank ivory background outside the existing base; every terrain element and water strip stays inside it. Keep filler minimal and use only the listed major landmarks.",
+  "sources": [
+    "https://www.visitmorocco.com/en/travel/chefchaouen/medina",
+    "https://www.visitmorocco.com/es/viaje/chefchaouen/medina",
+    "https://www.visitmorocco.com/en/travel/chefchaouen",
+    "https://www.visitmorocco.com/es/destinos/chefchaouen",
+    "https://www.visitmorocco.com/fr/voyage/chefchaouen%2C-la-belle-bleue/medina"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

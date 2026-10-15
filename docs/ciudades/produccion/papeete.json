@@ -1,0 +1,18 @@
+{
+  "id": "papeete",
+  "batch": 19,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/papeete-v1.png",
+  "generatedFile": "exec-65c1835f-f45b-40a2-8329-fd2f17fae0b9.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Papeete (PF). Main landmarks: Catedral de Notre-Dame; Mercado de Papeete; Jardines Paofai; Palacio presidencial de la Polinesia Francesa.   Represent these as dominant recognizable features. Every building is complete and wholly within the common floor. Keep only a few low local filler blocks and greenery. No detached islands, land beyond the original outline or additional platform.",
+  "sources": [
+    "https://tahititourisme.pf/en-pf/activities/points-of-interest/cathedrale-notre-dame-de-papeete-papeete-en-en-pf-3322035/",
+    "https://tahititourisme.pf/experiences/les-spots-a-ne-pas-manquer/cathedrale-notre-dame-de-papeete-papeete-fr-3322035/",
+    "https://tahititourisme.pf/en-pf/islands-and-archipelagos/the-society-islands/papeete-the-capital-of-tahiti/?ya_src=serp300",
+    "https://tahititourisme.pf/iles-et-archipels/iles-de-la-societe/papeete-capitale-de-tahiti/",
+    "https://www.papeete.pf/a-visiter-sites-historiques/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

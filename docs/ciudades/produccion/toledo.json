@@ -1,0 +1,18 @@
+{
+  "id": "toledo",
+  "batch": 24,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/toledo-v1.png",
+  "generatedFile": "exec-78f8f7e1-5409-4530-853a-360b9327ec6c.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Toledo (ES). Main landmarks: Alcázar; Catedral; Puente de San Martín; Puente de Alcántara; San Juan de los Reyes.  Make these distinctive and readable. Very few low filler houses; avoid dense blocks covering the entire slab. Every object, all terrain, cliffs, water and coastlines must be supported by the existing floor; no ocean bleeding into the blank ivory background. Preserve the exact original base rear tip y400 and bottom y1041.",
+  "sources": [
+    "https://www.turismocastillalamancha.es/es/destinos/toledo/lugares-que-visitar",
+    "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/monumentos/toledo",
+    "https://www.turismotoledo.com/es/barrio-catedral",
+    "https://www.turismocastillalamancha.es/es/destinos/toledo",
+    "https://www.turismotoledo.com/es/que-ver-en-toledo"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

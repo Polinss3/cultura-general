@@ -1,0 +1,18 @@
+{
+  "id": "chongqing",
+  "batch": 26,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/chongqing-v1.png",
+  "generatedFile": "exec-e0764bfc-6d33-47d0-a359-a47879a86e2a.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Chongqing (CN). Main landmarks: Hongya Cave; Raffles City; Monorraíl de Liziba; Puente Qiansimen; Monumento de la Liberación.  Make these distinctive and readable. Very few low filler houses; avoid dense blocks covering the entire slab. Every object, all terrain, cliffs, water and coastlines must be supported by the existing floor; no ocean bleeding into the blank ivory background. Preserve the exact original base rear tip y400 and bottom y1041.",
+  "sources": [
+    "https://whlyw.cq.gov.cn/zjwl/yzq/jqjd_1/202203/t20220304_10463056.html",
+    "https://english.cq.gov.cn/specials/explore/PhotoPerfectSpots/202608/t20260810_15912600.html",
+    "https://whlyw.cq.gov.cn/zjwl/yzq/jqjd_1/",
+    "https://english.cq.gov.cn/specials/Eat/NightMarkets/202608/t20260813_15930087.html",
+    "https://dfz.cq.gov.cn/zqlswh/fjms_417821/202311/t20231102_12510878.html"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-235 destinos: 234 ciudades y 1 lugar histórico. 58 dioramas con imagen y 177 pendientes.
+235 destinos: 234 ciudades y 1 lugar histórico. 120 dioramas con imagen y 115 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -10,9 +10,11 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 
 | Tanda | Destinos pendientes |
 | --- | --- |
-| 15 | Miami, Bombay, Fez, Christchurch |
-| 16 | Copenhague, Las Vegas, Kioto, Chefchaouen |
-| 17 | Queenstown, Sevilla, Nueva Orleans, Osaka |
+| 19 | Granada |
+| 20 | Córdoba |
+| 31 | Puebla, Taipéi, Oxford, Oaxaca |
+| 32 | Busan, Cambridge, Guanajuato, Hanói |
+| 33 | Bath, Mérida |
 
 Machu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.
 
@@ -41,21 +43,21 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Florencia | Con imagen · por revisar | 12 | Duomo y cúpula de Brunelleschi; Ponte Vecchio; Palazzo Vecchio; Campanile de Giotto; Santa Croce |
 | Zúrich | Con imagen · por revisar | 13 | Grossmünster; Fraumünster; Iglesia de San Pedro; Río Limmat; Casco histórico y tranvía |
 | Estocolmo | Con imagen · por revisar | 14 | Ayuntamiento; Palacio Real; Gamla Stan; Riddarholmskyrkan; Museo Vasa |
-| Copenhague | Pendiente de imagen | 16 | Nyhavn; La Sirenita; Rosenborg; Amalienborg; Iglesia de Nuestro Salvador |
-| Sevilla | Pendiente de imagen | 17 | Giralda y Catedral; Plaza de España; Metropol Parasol; Torre del Oro; Real Alcázar |
-| Valencia | Pendiente de imagen | 18 | Ciudad de las Artes y las Ciencias; Catedral y Miguelete; Torres de Serranos; Mercado Central; Lonja de la Seda |
+| Copenhague | Con imagen · por revisar | 16 | Nyhavn; Castillo de Rosenborg; Amalienborg; La Sirenita |
+| Sevilla | Con imagen · por revisar | 17 | Giralda y Catedral; Plaza de España; Metropol Parasol; Torre del Oro; Real Alcázar |
+| Valencia | Con imagen · por revisar | 18 | Ciudad de las Artes y las Ciencias; Torres de Serranos; Mercado Central; Miguelete |
 | Granada | Pendiente de imagen | 19 | Alhambra; Generalife; Catedral; Mirador de San Nicolás y casas del Albaicín |
 | Córdoba | Pendiente de imagen | 20 | Mezquita-Catedral; Puente Romano; Alcázar y jardines; Torre de la Calahorra |
-| Bilbao | Pendiente de imagen | 21 | Museo Guggenheim; Escultura Maman; Puente Zubizuri; San Mamés; Teatro Arriaga |
-| Santiago de Compostela | Pendiente de imagen | 22 | Catedral y Obradoiro; Hostal de los Reyes Católicos; Monasterio de San Martín Pinario; Cidade da Cultura |
-| Málaga | Pendiente de imagen | 23 | Alcazaba y Teatro Romano; Catedral; Cubo del Centre Pompidou; Castillo de Gibralfaro; La Farola |
-| Toledo | Pendiente de imagen | 24 | Alcázar; Catedral; Puente de San Martín; Puente de Alcántara; San Juan de los Reyes |
-| Segovia | Pendiente de imagen | 25 | Acueducto romano; Alcázar; Catedral; Iglesia de la Vera Cruz |
-| Zaragoza | Pendiente de imagen | 26 | Basílica del Pilar; Aljafería; Puente de Piedra; La Seo; Torre del Agua |
-| San Sebastián | Pendiente de imagen | 27 | Bahía y paseo de La Concha; Palacio de Miramar; Peine del Viento; Catedral del Buen Pastor; Hotel María Cristina |
-| Salamanca | Pendiente de imagen | 28 | Plaza Mayor; Catedrales Vieja y Nueva; Fachada de la Universidad; Casa de las Conchas |
-| Manchester | Pendiente de imagen | 29 | Ayuntamiento de Manchester; Beetham Tower; Biblioteca John Rylands; Catedral; Etihad Stadium |
-| Liverpool | Pendiente de imagen | 30 | Royal Liver Building; Catedral anglicana; Catedral Metropolitana; Royal Albert Dock |
+| Bilbao | Con imagen · por revisar | 21 | Museo Guggenheim; Escultura Maman; Puente Zubizuri; San Mamés; Teatro Arriaga |
+| Santiago de Compostela | Con imagen · por revisar | 22 | Catedral de Santiago; San Martín Pinario; Pazo de Raxoi; Cidade da Cultura |
+| Málaga | Con imagen · por revisar | 23 | Catedral de Málaga; Alcazaba; Teatro Romano; Centre Pompidou Málaga |
+| Toledo | Con imagen · por revisar | 24 | Alcázar; Catedral; Puente de San Martín; Puente de Alcántara; San Juan de los Reyes |
+| Segovia | Con imagen · por revisar | 25 | Acueducto romano; Alcázar; Catedral; Iglesia de la Vera Cruz |
+| Zaragoza | Con imagen · por revisar | 26 | Basílica del Pilar; Aljafería; Puente de Piedra; La Seo; Torre del Agua |
+| San Sebastián | Con imagen · por revisar | 27 | Bahía y paseo de La Concha; Palacio de Miramar; Peine del Viento; Catedral del Buen Pastor; Hotel María Cristina |
+| Salamanca | Con imagen · por revisar | 28 | Plaza Mayor; Catedrales Vieja y Nueva; Fachada de la Universidad; Casa de las Conchas |
+| Manchester | Con imagen · por revisar | 29 | Ayuntamiento de Manchester; Beetham Tower; Biblioteca John Rylands; Catedral; Etihad Stadium |
+| Liverpool | Con imagen · por revisar | 30 | Royal Liver Building; Catedral anglicana; Catedral Metropolitana; Royal Albert Dock |
 | Oxford | Pendiente de imagen | 31 | Radcliffe Camera; Bodleian Library; Bridge of Sighs; Tom Tower de Christ Church; Sheldonian Theatre |
 | Cambridge | Pendiente de imagen | 32 | King’s College Chapel; Fitzwilliam Museum; Mathematical Bridge; Bridge of Sighs |
 | Bath | Pendiente de imagen | 33 | Royal Crescent; Termas Romanas; Bath Abbey; Pulteney Bridge |
@@ -131,21 +133,21 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Toronto | Con imagen · por revisar | 11 | CN Tower; Rogers Centre; Nathan Phillips Square y Ayuntamiento; Royal Ontario Museum; Casa Loma |
 | La Habana | Con imagen · por revisar | 12 | Capitolio; Malecón; Castillo del Morro; Catedral; Gran Teatro |
 | Boston | Con imagen · por revisar | 13 | Massachusetts State House y cúpula dorada; Custom House Tower; Trinity Church; Old State House; Puente Zakim |
-| Miami | Pendiente de imagen | 15 | Freedom Tower; Pérez Art Museum Miami; Miami Marine Stadium; Skyline de Brickell y palmeras costeras |
-| Las Vegas | Pendiente de imagen | 16 | Hoteles del Strip: pirámide y esfinge del Luxor; Fuentes del Bellagio; Torre Eiffel del Paris Las Vegas; Sphere |
-| Nueva Orleans | Pendiente de imagen | 17 | Catedral de San Luis; Jackson Square; Balcones del French Quarter; Puente Crescent City Connection; Tranvía histórico |
-| Seattle | Pendiente de imagen | 18 | Space Needle; Museum of Pop Culture; Columbia Center; Seattle Great Wheel; Pike Place Market sin letras |
-| Filadelfia | Pendiente de imagen | 20 | Independence Hall; Liberty Bell; Ayuntamiento; Philadelphia Museum of Art; One Liberty Place |
-| San Diego | Pendiente de imagen | 21 | California Tower de Balboa Park; USS Midway; Puente de Coronado; Edificios victorianos del Gaslamp Quarter |
-| Honolulu | Pendiente de imagen | 22 | Diamond Head; Palacio Iolani; Aloha Tower; Hotel Royal Hawaiian y Waikiki |
-| Atlanta | Pendiente de imagen | 23 | Bank of America Plaza; Capitolio de Georgia; SkyView; Centennial Olympic Park; Fox Theatre |
-| Houston | Pendiente de imagen | 24 | Johnson Space Center y cohete de Rocket Park sin texto; JPMorgan Chase Tower; Williams Tower y Waterwall; Buffalo Bayou Park |
-| San Antonio | Pendiente de imagen | 25 | El Álamo; River Walk; Tower of the Americas; Catedral de San Fernando |
-| Montreal | Pendiente de imagen | 26 | Basílica de Notre-Dame; Oratorio de San José; Estadio Olímpico y torre inclinada; Habitat 67; Biosphère |
-| Quebec | Pendiente de imagen | 27 | Château Frontenac; Petit-Champlain; Ciudadela; Parlamento de Quebec |
-| Vancouver | Pendiente de imagen | 28 | Canada Place; Science World; Harbour Centre; Tótems de Stanley Park; Lions Gate Bridge |
-| Ottawa | Pendiente de imagen | 29 | Parlamento y Peace Tower; National Gallery of Canada; Château Laurier; Canal Rideau |
-| Guadalajara | Pendiente de imagen | 30 | Catedral; Teatro Degollado; Templo Expiatorio; Hospicio Cabañas |
+| Miami | Con imagen · por revisar | 15 | Freedom Tower; Pérez Art Museum Miami; Miami Marine Stadium; Skyline de Brickell y palmeras costeras |
+| Las Vegas | Con imagen · por revisar | 16 | Hoteles del Strip: pirámide y esfinge del Luxor; Fuentes del Bellagio; Torre Eiffel del Paris Las Vegas; Sphere |
+| Nueva Orleans | Con imagen · por revisar | 17 | Catedral de San Luis; Jackson Square; Barrio Francés; Tranvía de St. Charles; Vapor del Misisipi |
+| Seattle | Con imagen · por revisar | 18 | Space Needle; Museum of Pop Culture; Columbia Center; Seattle Great Wheel; Pike Place Market sin letras |
+| Filadelfia | Con imagen · por revisar | 20 | Independence Hall; Liberty Bell; Ayuntamiento; Philadelphia Museum of Art; One Liberty Place |
+| San Diego | Con imagen · por revisar | 21 | California Tower de Balboa Park; USS Midway; Puente de Coronado; Edificios victorianos del Gaslamp Quarter |
+| Honolulu | Con imagen · por revisar | 22 | Diamond Head; Palacio Iolani; Aloha Tower; Hotel Royal Hawaiian y Waikiki |
+| Atlanta | Con imagen · por revisar | 23 | Bank of America Plaza; Capitolio de Georgia; SkyView; Centennial Olympic Park; Fox Theatre |
+| Houston | Con imagen · por revisar | 24 | Johnson Space Center y cohete de Rocket Park sin texto; JPMorgan Chase Tower; Williams Tower y Waterwall; Buffalo Bayou Park |
+| San Antonio | Con imagen · por revisar | 25 | El Álamo; River Walk; Tower of the Americas; Catedral de San Fernando |
+| Montreal | Con imagen · por revisar | 26 | Basílica de Notre-Dame; Oratorio de San José; Estadio Olímpico y torre inclinada; Habitat 67; Biosphère |
+| Quebec | Con imagen · por revisar | 27 | Château Frontenac; Petit-Champlain; Ciudadela; Parlamento de Quebec |
+| Vancouver | Con imagen · por revisar | 28 | Canada Place; Science World; Harbour Centre; Tótems de Stanley Park; Lions Gate Bridge |
+| Ottawa | Con imagen · por revisar | 29 | Parlamento y Peace Tower; National Gallery of Canada; Château Laurier; Canal Rideau |
+| Guadalajara | Con imagen · por revisar | 30 | Catedral; Teatro Degollado; Templo Expiatorio; Hospicio Cabañas |
 | Puebla | Pendiente de imagen | 31 | Catedral; Iglesia de Santo Domingo; Estrella de Puebla; Mercado El Parián |
 | Oaxaca | Pendiente de imagen | 31 | Templo de Santo Domingo; Catedral; Teatro Macedonio Alcalá; Andador y casas históricas |
 | Guanajuato | Pendiente de imagen | 32 | Teatro Juárez; Alhóndiga de Granaditas; Universidad y escalinata; Callejón del Beso; Basílica de Nuestra Señora |
@@ -186,21 +188,21 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Bangkok | Con imagen · por revisar | 11 | Gran Palacio; Wat Arun; Wat Phra Kaew; Giant Swing; Río Chao Phraya |
 | Dubái | Con imagen · por revisar | 12 | Burj Khalifa; Burj Al Arab; Dubai Frame; Museum of the Future; Palm Jumeirah |
 | Delhi | Con imagen · por revisar | 14 | Fuerte Rojo; Qutub Minar; Templo del Loto; India Gate; Jama Masjid |
-| Bombay | Pendiente de imagen | 15 | Gateway of India; Chhatrapati Shivaji Terminus; Taj Mahal Palace; Bandra-Worli Sea Link; Marine Drive |
-| Kioto | Pendiente de imagen | 16 | Kinkaku-ji; Kiyomizu-dera; Torii de Fushimi Inari; Castillo de Nijō |
-| Osaka | Pendiente de imagen | 17 | Castillo de Osaka; Umeda Sky Building; Tsūtenkaku; Canal Dōtonbori y puente Ebisu sin rótulos |
-| Hiroshima | Pendiente de imagen | 19 | Cúpula de la Bomba Atómica; Cenotafio del Parque de la Paz; Museo Memorial de la Paz; Castillo de Hiroshima; Jardín Shukkeien |
-| Nara | Pendiente de imagen | 20 | Tōdai-ji; Kasuga Taisha; Pagoda de cinco pisos de Kōfuku-ji; Parque de Nara con ciervos |
-| Yokohama | Pendiente de imagen | 21 | Landmark Tower; Noria Cosmo Clock 21; Red Brick Warehouse; Terminal Ōsanbashi; Marine Tower |
-| Nagasaki | Pendiente de imagen | 22 | Estatua de la Paz; Catedral de Urakami; Iglesia de Ōura; Glover Garden; Puente Megane |
-| Macao | Pendiente de imagen | 23 | Ruinas de San Pablo; Grand Lisboa; Largo do Senado; Templo A-Má; Macao Tower |
-| Xi’an | Pendiente de imagen | 24 | Guerreros de terracota; Gran Pagoda del Ganso Salvaje; Torre de la Campana; Torre del Tambor; Muralla y puerta de la ciudad |
-| Chengdú | Pendiente de imagen | 25 | Puente Anshun; Templo Wuhou; Calle Jinli; Torre West Pearl; Pabellón de pandas de Chengdú |
-| Chongqing | Pendiente de imagen | 26 | Hongya Cave; Raffles City; Monorraíl de Liziba; Puente Qiansimen; Monumento de la Liberación |
-| Guilin | Pendiente de imagen | 27 | Elephant Trunk Hill; Pagodas del Sol y la Luna; Río Li y montañas kársticas; Palacio de los Príncipes de Jingjiang |
-| Cantón | Pendiente de imagen | 28 | Canton Tower; Ópera de Guangzhou; Academia del Clan Chen; Catedral del Sagrado Corazón |
-| Hangzhou | Pendiente de imagen | 29 | Lago del Oeste; Pagoda Leifeng; Tres Estanques que Reflejan la Luna; Templo Yue Fei; Pabellón Chenghuang |
-| Suzhou | Pendiente de imagen | 30 | Jardín del Administrador Humilde; Pagoda de la Colina del Tigre; Puerta Panmen; Museo de Suzhou |
+| Bombay | Con imagen · por revisar | 15 | Gateway of India; Chhatrapati Shivaji Terminus; Taj Mahal Palace; Bandra-Worli Sea Link; Marine Drive |
+| Kioto | Con imagen · por revisar | 16 | Kinkaku-ji; Kiyomizu-dera; Torii de Fushimi Inari; Castillo de Nijō |
+| Osaka | Con imagen · por revisar | 17 | Castillo de Osaka; Umeda Sky Building; Tsūtenkaku; Canal Dōtonbori y puente Ebisu sin rótulos |
+| Hiroshima | Con imagen · por revisar | 19 | Cúpula de la Bomba Atómica; Cenotafio del Parque de la Paz; Museo Memorial de la Paz; Castillo de Hiroshima; Jardín Shukkeien |
+| Nara | Con imagen · por revisar | 20 | Tōdai-ji; Kasuga Taisha; Pagoda de cinco pisos de Kōfuku-ji; Parque de Nara con ciervos |
+| Yokohama | Con imagen · por revisar | 21 | Landmark Tower; Noria Cosmo Clock 21; Red Brick Warehouse; Terminal Ōsanbashi; Marine Tower |
+| Nagasaki | Con imagen · por revisar | 22 | Estatua de la Paz; Catedral de Urakami; Iglesia de Ōura; Glover Garden; Puente Megane |
+| Macao | Con imagen · por revisar | 23 | Ruinas de San Pablo; Grand Lisboa; Largo do Senado; Templo A-Má; Macao Tower |
+| Xi’an | Con imagen · por revisar | 24 | Guerreros de terracota; Gran Pagoda del Ganso Salvaje; Torre de la Campana; Torre del Tambor; Muralla y puerta de la ciudad |
+| Chengdú | Con imagen · por revisar | 25 | Puente Anshun; Templo Wuhou; Calle Jinli; Torre West Pearl; Pabellón de pandas de Chengdú |
+| Chongqing | Con imagen · por revisar | 26 | Hongya Cave; Raffles City; Monorraíl de Liziba; Puente Qiansimen; Monumento de la Liberación |
+| Guilin | Con imagen · por revisar | 27 | Colina de la Trompa de Elefante; Pagodas del Sol y la Luna; Río Li; Palacio Jingjiang |
+| Cantón | Con imagen · por revisar | 28 | Canton Tower; Ópera de Guangzhou; Academia del Clan Chen; Catedral del Sagrado Corazón |
+| Hangzhou | Con imagen · por revisar | 29 | Lago del Oeste; Pagoda Leifeng; Tres Estanques que Reflejan la Luna; Templo Yue Fei; Pabellón Chenghuang |
+| Suzhou | Con imagen · por revisar | 30 | Jardín del Administrador Humilde; Pagoda de la Colina del Tigre; Puerta Panmen; Museo de Suzhou |
 | Taipéi | Pendiente de imagen | 31 | Taipei 101; Memorial de Chiang Kai-shek; Templo Longshan; Memorial de Sun Yat-sen; Museo Nacional del Palacio |
 | Busan | Pendiente de imagen | 32 | Puente Gwangan; Busan Tower; Gamcheon Culture Village; Templo Haedong Yonggungsa; Haeundae |
 | Hanói | Pendiente de imagen | 32 | Torre de la Tortuga; Templo de la Literatura; Mausoleo de Ho Chi Minh; Catedral de San José; Pagoda del Pilar Único |
@@ -243,21 +245,21 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Dakar | Con imagen · por revisar | 11 | Monumento al Renacimiento Africano; Gran Mezquita; Faro de Les Mamelles; Museo de las Civilizaciones Negras; Isla de Gorée |
 | Casablanca | Con imagen · por revisar | 13 | Mezquita Hassan II; Barrio Habous; Plaza Mohammed V; Catedral del Sagrado Corazón |
 | Rabat | Con imagen · por revisar | 14 | Torre Hasán; Mausoleo de Mohamed V; Kasbah de los Udayas; Chellah |
-| Fez | Pendiente de imagen | 15 | Bab Boujloud; Mezquita Al Qarawiyyin; Curtiduría Chouara; Madrasa Bou Inania |
-| Chefchaouen | Pendiente de imagen | 16 | Casas azules de la medina; Kasbah; Plaza Uta el-Hammam; Gran Mezquita y minarete octogonal |
-| Argel | Pendiente de imagen | 18 | Maqam Echahid; Notre-Dame d’Afrique; Djamaa el Djazaïr; Casbah blanca junto al puerto |
-| Alejandría | Pendiente de imagen | 19 | Ciudadela de Qaitbay; Bibliotheca Alexandrina; Palacio de Montazah; Corniche y Mediterráneo contenido |
-| Luxor | Pendiente de imagen | 20 | Templo de Karnak; Templo de Luxor; Avenida de las Esfinges; Templo de Hatshepsut; Nilo con faluca |
-| Asuán | Pendiente de imagen | 21 | Templo de Filae; Obelisco inacabado; Presa de Asuán; Nilo con falucas |
-| Guiza | Pendiente de imagen | 22 | Pirámide de Keops; Pirámide de Kefrén; Pirámide de Micerino; Gran Esfinge |
-| Johannesburgo | Pendiente de imagen | 23 | Ponte City; Hillbrow Tower; Constitution Hill; Gold Reef City; Puente Nelson Mandela |
-| Durban | Pendiente de imagen | 24 | Moses Mabhida Stadium; Golden Mile; Ayuntamiento; uShaka Marine World |
-| Adís Abeba | Pendiente de imagen | 25 | Catedral de la Santísima Trinidad; Catedral de San Jorge; Sede de la Unión Africana; Museo Nacional de Etiopía |
-| Lagos | Pendiente de imagen | 26 | National Theatre; Tafawa Balewa Square; Cathedral Church of Christ; Third Mainland Bridge |
-| Acra | Pendiente de imagen | 27 | Arco de la Independencia; Mausoleo de Kwame Nkrumah; Faro de Jamestown; Fuerte Ussher |
-| Abiyán | Pendiente de imagen | 28 | Catedral de San Pablo de Abiyán; Hôtel Ivoire; Estadio Félix Houphouët-Boigny; Puente Henri Konan Bédié |
-| Windhoek | Pendiente de imagen | 29 | Christuskirche; Tintenpalast; Alte Feste; Independence Memorial Museum |
-| Port Louis | Pendiente de imagen | 30 | Aapravasi Ghat; Fort Adelaide; Champ de Mars; Caudan Waterfront |
+| Fez | Con imagen · por revisar | 15 | Bab Boujloud; Mezquita Al Qarawiyyin; Curtiduría Chouara; Madrasa Bou Inania |
+| Chefchaouen | Con imagen · por revisar | 16 | Medina azul; Plaza Uta el-Hammam; Kasbah; Gran Mezquita |
+| Argel | Con imagen · por revisar | 18 | Maqam Echahid; Notre-Dame d’Afrique; Djamaa el Djazaïr; Casbah blanca junto al puerto |
+| Alejandría | Con imagen · por revisar | 19 | Ciudadela de Qaitbay; Bibliotheca Alexandrina; Palacio de Montaza; Corniche |
+| Luxor | Con imagen · por revisar | 20 | Templo de Karnak; Templo de Luxor; Avenida de las Esfinges; Templo de Hatshepsut; Nilo con faluca |
+| Asuán | Con imagen · por revisar | 21 | Templo de Filae; Obelisco inacabado; Presa de Asuán; Nilo con falucas |
+| Guiza | Con imagen · por revisar | 22 | Pirámide de Keops; Pirámide de Kefrén; Pirámide de Micerino; Gran Esfinge |
+| Johannesburgo | Con imagen · por revisar | 23 | Ponte City; Hillbrow Tower; Constitution Hill; Gold Reef City; Puente Nelson Mandela |
+| Durban | Con imagen · por revisar | 24 | Moses Mabhida Stadium; Durban City Hall; Golden Mile; uShaka Marine World |
+| Adís Abeba | Con imagen · por revisar | 25 | Catedral de la Santísima Trinidad; Catedral de San Jorge; Sede de la Unión Africana; Museo Nacional de Etiopía |
+| Lagos | Con imagen · por revisar | 26 | National Theatre; Tafawa Balewa Square; Cathedral Church of Christ; Third Mainland Bridge |
+| Acra | Con imagen · por revisar | 27 | Arco de la Independencia; Mausoleo de Kwame Nkrumah; Faro de Jamestown; Fuerte Ussher |
+| Abiyán | Con imagen · por revisar | 28 | Catedral de San Pablo de Abiyán; Hôtel Ivoire; Estadio Félix Houphouët-Boigny; Puente Henri Konan Bédié |
+| Windhoek | Con imagen · por revisar | 29 | Christuskirche; Tintenpalast; Alte Feste; Independence Memorial Museum |
+| Port Louis | Con imagen · por revisar | 30 | Aapravasi Ghat; Fort Adelaide; Champ de Mars; Caudan Waterfront |
 
 ## Oceanía · 12
 
@@ -271,10 +273,10 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Perth | Con imagen · por revisar | 12 | Bell Tower; Puente de Elizabeth Quay; Optus Stadium; Ayuntamiento de Perth |
 | Adelaida | Con imagen · por revisar | 13 | Adelaide Oval; St Peter's Cathedral; Adelaide Town Hall; Art Gallery of South Australia |
 | Canberra | Con imagen · por revisar | 14 | Parliament House sin banderas; Australian War Memorial; National Museum of Australia; Telstra Tower; Lago Burley Griffin |
-| Christchurch | Pendiente de imagen | 15 | Transitional Cardboard Cathedral; New Regent Street; Arts Centre; Jardín Botánico y tranvía histórico |
-| Queenstown | Pendiente de imagen | 17 | Lago Wakatipu; Montañas Remarkables; Skyline Gondola; Vapor TSS Earnslaw |
-| Suva | Pendiente de imagen | 18 | Grand Pacific Hotel; Parlamento de Fiyi; Catedral del Sagrado Corazón; Fiji Museum y jardines Thurston |
-| Papeete | Pendiente de imagen | 19 | Catedral de Notre-Dame; Mercado de Papeete; Jardines Paofai; Palacio presidencial de la Polinesia Francesa |
+| Christchurch | Con imagen · por revisar | 15 | Transitional Cardboard Cathedral; New Regent Street; Arts Centre; Jardín Botánico y tranvía histórico |
+| Queenstown | Con imagen · por revisar | 17 | Lago Wakatipu; Skyline Gondola; TSS Earnslaw; The Remarkables |
+| Suva | Con imagen · por revisar | 18 | Government Buildings; Grand Pacific Hotel; Catedral del Sagrado Corazón; Fiji Museum |
+| Papeete | Con imagen · por revisar | 19 | Catedral de Notre-Dame; Mercado de Papeete; Jardines Paofai; Palacio presidencial de la Polinesia Francesa |
 
 ## Referencias editoriales registradas
 
@@ -330,6 +332,67 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 - Rabat: [Referencia 1](https://www.visitrabat.com/en/lieux/the-mausoleum-of-mohammed-v/), [Referencia 2](https://www.visitrabat.com/lieux/le-mausolee-mohammed-v/), [Referencia 3](https://www.visitrabat.com/es/lieux/el-mausoleo-de-mohammed-v/), [Referencia 4](https://www.visitrabat.com/en/lieux/the-hassan-tower/), [Referencia 5](https://www.visitrabat.com/en/points-of-interest/monumentsv-en/).
 - Canberra: [Referencia 1](https://visitcanberra.com.au/attractions/9000739/australian-war-memorial), [Referencia 2](https://visitcanberra.com.au/attractions/56b23ad6266140594567db22/australian-war-memorial), [Referencia 3](https://visitcanberra.com.au/articles/100-things-to-do-in-canberra), [Referencia 4](https://www.dcceew.gov.au/parks-heritage/heritage/places/national/war-memorial), [Referencia 5](https://www.australia.com/en/things-to-do/arts-and-culture/cultural-attractions-of-australia.html).
 - Estocolmo: [Referencia 1](https://www.visitstockholm.com/see-do/attractions/stockholm-highlights/), [Referencia 2](https://www.visitstockholm.com/o/the-royal-palace/), [Referencia 3](https://www.visitstockholm.com/), [Referencia 4](https://www.visitstockholm.com/see-do/), [Referencia 5](https://visitsweden.com/where-to-go/middle-sweden/stockholm/stockholm-old-town/).
-- Guiza: [Referencia 1](https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/).
+- Miami: [Referencia 1](https://www.miamitourism.org/pamm/), [Referencia 2](https://freedomtower.mdc.edu/visit/plan-your-visit/), [Referencia 3](https://freedomtower.mdc.edu/), [Referencia 4](https://freedomtower.mdc.edu/visit/tickets/), [Referencia 5](https://www.nps.gov/places/freedom-tower.htm).
+- Bombay: [Referencia 1](https://mumbaicity.gov.in/en/tourist-place/gateway-of-india/), [Referencia 2](https://maharashtratourism.gov.in/districts/mumbai-city/), [Referencia 3](https://aai-portal.maharashtratourism.gov.in/?p=666), [Referencia 4](https://culture.gov.in/chhatrapati-shivaji-terminus-formerly-victoria-terminus), [Referencia 5](https://www.incredibleindia.gov.in/en/maharashtra/mumbai/chhatrapati-shivaji-terminus).
+- Fez: [Referencia 1](https://www.visitmorocco.com/en/travel/fez/medina), [Referencia 2](https://www.visitmorocco.com/en/travel/fez), [Referencia 3](https://visitmorocco.com/en/travel/fez), [Referencia 4](https://www.fes.fr/plan), [Referencia 5](https://www.fes.fr/monuments-attractions).
+- Christchurch: [Referencia 1](https://www.christchurchnz.com/visit/things-to-do/listing/christchurch-transitional-cardboard-cathedral-7299846), [Referencia 2](https://www.cardboardcathedral.org.nz/), [Referencia 3](https://www.cardboardcathedral.org.nz/pages/about), [Referencia 4](https://uat.ccc.govt.nz/culture-and-community/heritage/heritage-in-the-city/heritage-buildings), [Referencia 5](https://www.christchurchnz.com/visit/things-to-do/get-inspired/christchurch-heritage-buildings).
+- Copenhague: [Referencia 1](https://www.visitcopenhagen.com/copenhagen/planning/nyhavn-gdk474735), [Referencia 2](https://www.visitdenmark.com/denmark/destinations/copenhagen), [Referencia 3](https://www.visitdenmark.dk/danmark/explore/nyhavn-gdk474735), [Referencia 4](https://www.visitdenmark.com/denmark/highlights/copenhagen/must-sees-copenhagen), [Referencia 5](https://www.visitcopenhagen.com/copenhagen/things-to-do/museums-and-attractions/hans-christian-andersens-copenhagen).
+- Las Vegas: [Referencia 1](https://www.visitlasvegas.com/es/), [Referencia 2](https://travelnevada.com/es/espectaculos/fuentes-del-bellagio/), [Referencia 3](https://travelnevada.com/es/atracciones-iconicas/atracciones-de-las-vegas/), [Referencia 4](https://www.visitlasvegas.com/hotels-casinos/hotels/on-the-strip/), [Referencia 5](https://travelnevada.com/es/ciudades/las-vegas/).
+- Kioto: [Referencia 1](https://www.japan.travel/en/spot/1152/), [Referencia 2](https://www.japan.travel/en/spot/2199/), [Referencia 3](https://www.kiyomizudera.or.jp/en/visit/), [Referencia 4](https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=490), [Referencia 5](https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=267).
+- Chefchaouen: [Referencia 1](https://www.visitmorocco.com/en/travel/chefchaouen/medina), [Referencia 2](https://www.visitmorocco.com/es/viaje/chefchaouen/medina), [Referencia 3](https://www.visitmorocco.com/en/travel/chefchaouen), [Referencia 4](https://www.visitmorocco.com/es/destinos/chefchaouen), [Referencia 5](https://www.visitmorocco.com/fr/voyage/chefchaouen%2C-la-belle-bleue/medina).
+- Queenstown: [Referencia 1](https://www.tourism.org.nz/regions/queenstown.html), [Referencia 2](https://www.queenstownnz.co.nz/things-to-do/sightseeing/scenic-attractions/), [Referencia 3](https://www.queenstownnz.co.nz/), [Referencia 4](https://nzvisit.com/queenstown), [Referencia 5](https://experiencequeenstown.com/info/places/mountains/the-remarkables), [Referencia 6](https://www.realnz.com/en/experiences/boat-cruises/tss-earnslaw-lake-cruises/).
+- Sevilla: [Referencia 1](https://www.spain.info/es/destino/sevilla/), [Referencia 2](https://www.turismosevilla.org/es/que-ver-y-hacer/patrimonio/monuments/la-catedral-y-la-giralda), [Referencia 3](https://visitasevilla.es/wp-content/uploads/2025/04/ESP_MONUMENTOS_2025.pptx.pdf), [Referencia 4](https://www.juntadeandalucia.es/turismoydeporte/ctrjal/destinosturisticosaccesibles/es/sevilla/plaza-de-espana), [Referencia 5](https://www.spain.info/es/lugares-interes/plaza-espana-sevilla/).
+- Nueva Orleans: [Referencia 1](https://nola.gov/next/parks-parkways/topics/parks-squares/jackson-square/), [Referencia 2](https://www.neworleans.com/things-to-do/attractions/new-orleans-attractions/), [Referencia 3](https://www.stlouiscathedral.org/visit), [Referencia 4](https://www.neworleans.com/attractions-activities-search/), [Referencia 5](https://www.neworleans.com/).
+- Osaka: [Referencia 1](https://www.japan.travel/en/spot/1092/), [Referencia 2](https://discover.osaka-info.jp/en/spots/skybldg), [Referencia 3](https://www.osaka-info.jp/en/spot/osaka-castle-main-keep/), [Referencia 4](https://www.japan.travel/es/spot/1087/), [Referencia 5](https://www.skybldg.co.jp/en/).
+- Argel: [Referencia 1](https://www.algdz.com/fr/tourisme/destinations/alger/que-visiter), [Referencia 2](https://notre-dame-afrique.org/), [Referencia 3](https://ont.dz/ar/explore/), [Referencia 4](https://cartes.patrimoineculturelalgerien.org/fr/node/994), [Referencia 5](https://www.ont.dz/es/).
+- Suva: [Referencia 1](https://grandpacifichotel.com.fj/hotel/suva-city/), [Referencia 2](https://grandpacifichotel.com.fj/hotel/), [Referencia 3](https://www.fiji.travel/places-to-go/suva/locations/suva-the-heartbeat-of-the-pacific), [Referencia 4](https://grandpacifichotel.com.fj/), [Referencia 5](https://www.fiji.travel/places-to-go/suva-and-surrounds/locations/top-things-to-do-in-suva).
+- Valencia: [Referencia 1](https://www.visitvalencia.com/que-hacer-valencia/cultura-valenciana/monumentos-en-valencia/miguelete), [Referencia 2](https://www.visitvalencia.com/en/what-to-do-valencia/valencian-culture/monuments-in-valencia/miguelete), [Referencia 3](https://www.visitvalencia.com/que-hacer-valencia/cultura-valenciana/monumentos-en-valencia), [Referencia 4](https://www.visitvalencia.com/en/what-to-do-valencia/valencian-culture/monuments-in-valencia), [Referencia 5](https://www.visitvalencia.com/que-ver-valencia/centro-historico).
+- Seattle: [Referencia 1](https://www.visitseattle.org/things-to-do/arts-culture/visual-arts/architecture/), [Referencia 2](https://visitseattle.org/explore/visitor-information/ovg/), [Referencia 3](https://www.visitseattle.org/explore/visitor-information/ovg/), [Referencia 4](https://visitseattle.org/things-to-do/sightseeing/modern-wonders/), [Referencia 5](https://www.visitseattle.org/things-to-do/sightseeing/).
+- Hiroshima: [Referencia 1](https://www.japan.travel/es/spot/2202/), [Referencia 2](https://www.japan.travel/en/spot/2202/), [Referencia 3](https://www.japan.travel/es/world-heritage/hiroshima-peace-memorial/), [Referencia 4](https://www.city.hiroshima.lg.jp/english/tourism/1029842/1009899.html), [Referencia 5](https://www.japan.travel/es/spot/161/).
+- Alejandría: [Referencia 1](https://mota.gov.eg/ar/%D8%A7%D9%84%D8%A2%D8%AB%D8%A7%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AD%D9%81/%D8%A7%D9%84%D9%85%D8%AC%D9%84%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%84%D9%89-%D9%84%D9%84%D8%A2%D8%AB%D8%A7%D8%B1/%D8%AF%D9%84%D9%8A%D9%84-%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9-%D8%A7%D9%84%D8%A3%D8%AB%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D9%81%D8%AA%D9%88%D8%AD%D8%A9-%D9%84%D9%84%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9-%D8%AC%D8%AF%D9%8A%D8%AF/%D9%82%D9%84%D8%B9%D8%A9-%D9%82%D8%A7%D9%8A%D8%AA%D8%A8%D8%A7%D9%8A/), [Referencia 2](https://sis.gov.eg/es/centro-de-informacion/noticias-exclusivas/el-ministerio-de-turismo-inaugura-un-nuevo-centro-de-visitantes-en-la-ciudadela-qaitbay-de-alejandr%C3%ADa/), [Referencia 3](https://www.experienceegypt.eg/es/attraction-details/141/antig%C3%BCedades-grecorromanas-y-yacimientos-arqueol%C3%B3gicos), [Referencia 4](https://www.experienceegypt.eg/es/city/27/alexandria), [Referencia 5](https://www.experienceegypt.eg/es/attraction-details/142/biblioteca-de-alejandr%C3%ADa).
+- Papeete: [Referencia 1](https://tahititourisme.pf/en-pf/activities/points-of-interest/cathedrale-notre-dame-de-papeete-papeete-en-en-pf-3322035/), [Referencia 2](https://tahititourisme.pf/experiences/les-spots-a-ne-pas-manquer/cathedrale-notre-dame-de-papeete-papeete-fr-3322035/), [Referencia 3](https://tahititourisme.pf/en-pf/islands-and-archipelagos/the-society-islands/papeete-the-capital-of-tahiti/?ya_src=serp300), [Referencia 4](https://tahititourisme.pf/iles-et-archipels/iles-de-la-societe/papeete-capitale-de-tahiti/), [Referencia 5](https://www.papeete.pf/a-visiter-sites-historiques/).
+- Filadelfia: [Referencia 1](https://www.visitphilly.com/things-to-do/attractions/independence-hall/), [Referencia 2](https://www.visitphilly.com/things-to-do/attractions/the-liberty-bell-center/), [Referencia 3](https://www.visitphilly.com/things-to-do/attractions/independence-national-historical-park/), [Referencia 4](https://www.visitphilly.com/history-in-philadelphia/), [Referencia 5](https://home.nps.gov/inde/planyourvisit/independencehall.htm/index.htm).
+- Nara: [Referencia 1](https://www.visitnara.jp/venues/A00487/), [Referencia 2](https://www.visitnara.jp/lists-and-stories/story/explore-naras-world-heritage-sites/), [Referencia 3](https://www.visitnara.jp/lists-and-stories/list/first-time-in-nara-the-essential-dont-miss-list/), [Referencia 4](https://www.visitnara.jp/), [Referencia 5](https://www.visitnara.jp/lists-and-stories/story/world-heritage/).
+- Luxor: [Referencia 1](https://egymonuments.gov.eg/monuments/luxor-temple/), [Referencia 2](https://egymonuments.gov.eg/archaeological-sites/karnak/), [Referencia 3](https://egymonuments.gov.eg/ar/monuments/luxor-temple/), [Referencia 4](https://egymonuments.gov.eg/en/monuments/khonsu-temple), [Referencia 5](https://egymonuments.gov.eg/en/monuments).
+- San Diego: [Referencia 1](https://www.visitcalifornia.com/things-to-do/balboa-park/), [Referencia 2](https://www.visitcalifornia.com/places-to-visit/san-diego/), [Referencia 3](https://www.visitcalifornia.com/experience/uss-midway-waterfront/), [Referencia 4](https://www.sandiego.gov/park-and-recreation/parks/regional/balboa), [Referencia 5](https://www.visitcalifornia.com/experience/san-diego-must-see-attractions/).
+- Yokohama: [Referencia 1](https://cosmoworld.jp/cosmoclock21/?lang=en), [Referencia 2](https://cosmoworld.jp/cosmoclock21/), [Referencia 3](https://yokohama-landmark.jp/), [Referencia 4](https://www.welcome.city.yokohama.jp/spot/details.php?bbid=195), [Referencia 5](https://www.welcome.city.yokohama.jp/spot/).
+- Asuán: [Referencia 1](https://egymonuments.gov.eg/en/monuments/the-unfinished-obelisk), [Referencia 2](https://egymonuments.gov.eg/archaeological-sites/aswan/), [Referencia 3](https://www.experienceegypt.eg/es/attraction-details/210/la-antigua-asu%C3%A1n), [Referencia 4](https://egymonuments.gov.eg/en/archaeological-sites/philae/), [Referencia 5](https://egymonuments.gov.eg/en/archaeological-sites/elephantine-1/).
+- Bilbao: [Referencia 1](https://www.guggenheim-bilbao.eus/en/the-collection/works/maman), [Referencia 2](https://www.guggenheim-bilbao.eus/la-coleccion/obras/mama), [Referencia 3](https://turismo.euskadi.eus/en/museums/guggenheim-museum-bilbao/webtur00-exptop/en/), [Referencia 4](https://www.guggenheim-bilbao.eus/fr/la-collection/oeuvres/maman), [Referencia 5](https://www.spain.info/en/destination/bilbao/).
+- Honolulu: [Referencia 1](https://www.nps.gov/places/iolanipalace.htm), [Referencia 2](https://www.iolanipalace.org/), [Referencia 3](https://www.gohawaii.com/islands/oahu/regions/honolulu/iolani-palace), [Referencia 4](https://www.honolulutourism.org/things-to-do-in-honolulu/), [Referencia 5](https://dlnr.hawaii.gov/dsp/parks/Oahu/iolani-palace-state-monument/).
+- Nagasaki: [Referencia 1](https://www.japan.travel/es/spot/742/), [Referencia 2](https://www.japan.travel/es/spot/734/), [Referencia 3](https://www.japan.travel/en/spot/734/), [Referencia 4](https://www.japan.travel/es/spot/349/), [Referencia 5](https://en.at-nagasaki.jp/cultural-properties/102).
+- Guiza: [Referencia 1](https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/), [Referencia 2](https://egymonuments.gov.eg/monuments/pyramid-complex-of-khafre-khefren/), [Referencia 3](https://egymonuments.gov.eg/monuments/the-great-pyramid/), [Referencia 4](https://sis.gov.eg/es/egipto/turismo/turismo-cultural/monumentos/las-zonas-arqueol%C3%B3gicas-m%C3%A1s-importantes-de-el-cairo-y-guiza/), [Referencia 5](https://egymonuments.gov.eg/monuments/the-great-sphinx/).
+- Santiago de Compostela: [Referencia 1](https://santiago.es/en/what-to-see), [Referencia 2](https://www.spain.info/es/destino/santiago-compostela/), [Referencia 3](https://www.santiagoturismo.com/monumentos), [Referencia 4](https://www.turismo.gal/que-visitar/cidades/santiago-de-compostela?langId=es_ES), [Referencia 5](https://santiago.es/que-ver).
+- Atlanta: [Referencia 1](https://www.bankofamericaplaza.com/), [Referencia 2](https://www.bankofamericaplaza.com/homepage/), [Referencia 3](https://info.bankofamerica.com/content/dam/consumer-info/en/consumer/cra/2024-fc-Listing_ada.pdf), [Referencia 4](https://locators.bankofamerica.com/ga/atlanta/), [Referencia 5](https://www.bankofamericaplaza.com/wp-content/uploads/2023/12/CPGroup-BankofAmericaPlaza-Atlanta-Brochure.pdf).
+- Macao: [Referencia 1](https://content.macaotourism.gov.mo/uploads/mgto_brochures/160510999555f5480436036b5d860e91a65ac962.pdf), [Referencia 2](https://visitcn.com.cn/en/attractions/historic-centre-of-macao), [Referencia 3](https://content.macaotourism.gov.mo/uploads/mgto_brochures/d540a9a9e1c116c4212e1c52939876345c6e3b43.pdf), [Referencia 4](https://content.macaotourism.gov.mo/uploads/mgto_brochures/e22db0dfa800dca23a547b354c9f552b2be6faa8.pdf), [Referencia 5](https://content.macaotourism.gov.mo/uploads/mgto_brochures/1fc4deada16c963a3e5af06b04cfb2ef2e747646.pdf).
+- Johannesburgo: [Referencia 1](https://joburg.org.za/play_/OutandAbout/Pages/Landmarks/landmarks.aspx), [Referencia 2](https://dirco.gov.za/wp-content/uploads/2023/01/ubuntu_issue15_compressed.pdf), [Referencia 3](https://www.jda.org.za/inner-city-regeneration-brings-new-life-to-ponte-city/), [Referencia 4](https://www.southafrica.net/bw/en/travel/event/ponte-experience), [Referencia 5](https://www.jda.org.za/hillbrow-tower-precinct/).
+- Málaga: [Referencia 1](https://www.spain.info/en/places-of-interest/roman-theatre-malaga/), [Referencia 2](https://www.spain.info/es/lugares-interes/teatro-romano-malaga/), [Referencia 3](https://www.malaga.eu/la-ciudad/instalaciones-y-espacios/detalle-de-la-instalacion/?id=130), [Referencia 4](https://www.andalucia.org/lugares-para-visitar/malaga/malaga/), [Referencia 5](https://www.spain.info/es/destino/malaga/).
+- Houston: [Referencia 1](https://houston.com/science-technology/nasa-johnson-space-center-guide), [Referencia 2](https://houston.com/science-technology/space-center-houston-visitor-guide), [Referencia 3](https://jpmctowerhouston.com/), [Referencia 4](https://www.nasa.gov/johnson/about-johnson/), [Referencia 5](https://spacecenter.org/).
+- Xi’an: [Referencia 1](https://visitcn.com.cn/en/attractions/xi-an-giant-wild-goose-pagoda), [Referencia 2](https://visitxian.cn/es/places/big-wild-goose-pagoda), [Referencia 3](https://visitxian.cn/es/places/small-wild-goose-pagoda), [Referencia 4](https://visitxian.cn/es/places/big-wild-goose-pagoda-fountain-show), [Referencia 5](https://en.xa.gov.cn/CultureTravel/Attractions/1691691504798126082.html).
+- Durban: [Referencia 1](https://visitdurban.travel/page/durban-visitor-guide), [Referencia 2](https://visitdurban.travel/), [Referencia 3](https://visitdurban.travel/space/moses-mabhida-stadium), [Referencia 4](https://legacy.visitdurban.travel/destination/moses-mabhida-stadium/), [Referencia 5](https://visitdurban.travel/storage/Durban%20Central%20Tourism%20Guide%202025web_comp.pdf).
+- Toledo: [Referencia 1](https://www.turismocastillalamancha.es/es/destinos/toledo/lugares-que-visitar), [Referencia 2](https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/monumentos/toledo), [Referencia 3](https://www.turismotoledo.com/es/barrio-catedral), [Referencia 4](https://www.turismocastillalamancha.es/es/destinos/toledo), [Referencia 5](https://www.turismotoledo.com/es/que-ver-en-toledo).
+- San Antonio: [Referencia 1](https://www.visitsanantonio.com/things-to-do/alamo/), [Referencia 2](https://www.sa.gov/Directory/Departments/DTOPS/Parks-Facilities/River-Walk), [Referencia 3](https://www.thealamo.org/visit/whats-at-the-alamo/paseo-del-alamo), [Referencia 4](https://www.visitsanantonio.com/plan-your-trip/neighborhood-guide/downtown/), [Referencia 5](https://www.sanantoniotourism.org/san-antonio-river-walk/).
+- Chengdú: [Referencia 1](https://en.wuhouci.net.cn/visit-ticket), [Referencia 2](https://cqfd.gov.cn/zjfd/fdly/202301/t20230111_11488232.html), [Referencia 3](https://www.wuhouci.net.cn/), [Referencia 4](https://en.wuhouci.net.cn/visit-traffic), [Referencia 5](https://wuhouci.net.cn/).
+- Adís Abeba: [Referencia 1](https://aatc.gov.et/), [Referencia 2](https://visitaddisababa.et/things-to-do/holy-trinity-cathedral-museum), [Referencia 3](https://visitethiopia.et/space/holy-trinity-cathedral), [Referencia 4](https://www.cuba.travel/destinos/trinidad/ciudad), [Referencia 5](https://www.cuba.travel/destinos/trinidad).
+- Segovia: [Referencia 1](https://www.turismodesegovia.com/es/segovia-patrimonio-de-la-humanidad-0), [Referencia 2](https://www.turismodesegovia.com/en/node/19253), [Referencia 3](https://www.turismodesegovia.com/es/acueducto/museos/centro-de-interpretacion-del-acueducto), [Referencia 4](https://www.turismodesegovia.com/es/acueducto/arquitectura-civil/obras-de-ingenieria/acueducto), [Referencia 5](https://www.turismodesegovia.com/en/aqueduct/museums/aqueduct-interpretation-centre).
+- Montreal: [Referencia 1](https://www.mtl.org/en/what-to-do/culture-arts-heritage/notre-dame-basilica), [Referencia 2](https://www.basiliquenotredame.ca/en/events/sightseeing-visit), [Referencia 3](https://www.mtl.org/en/experience/stunning-historic-churches), [Referencia 4](https://visita.mtl.org/es/experience/iglesias-lugares-sagrados), [Referencia 5](https://www.mtl.org//en/what-to-do/culture-arts-heritage/notre-dame-basilica).
+- Chongqing: [Referencia 1](https://whlyw.cq.gov.cn/zjwl/yzq/jqjd_1/202203/t20220304_10463056.html), [Referencia 2](https://english.cq.gov.cn/specials/explore/PhotoPerfectSpots/202608/t20260810_15912600.html), [Referencia 3](https://whlyw.cq.gov.cn/zjwl/yzq/jqjd_1/), [Referencia 4](https://english.cq.gov.cn/specials/Eat/NightMarkets/202608/t20260813_15930087.html), [Referencia 5](https://dfz.cq.gov.cn/zqlswh/fjms_417821/202311/t20231102_12510878.html).
+- Lagos: [Referencia 1](https://nationaltheatre.gov.ng/index), [Referencia 2](https://www.nationaltheatre.gov.ng/index.php), [Referencia 3](https://tournigeria.gov.ng/lagos-2/), [Referencia 4](https://www.nationaltheatre.gov.ng/about), [Referencia 5](https://www.nationaltheatre.gov.ng/contacts).
+- Zaragoza: [Referencia 1](https://www.zaragoza.es/sede/portal/turismo/post/el-pilar), [Referencia 2](https://www.zaragoza.es/sede/portal/turismo/planifica-tu-viaje/la-esencia-de-la-ciudad-en-un-dia?locale=es), [Referencia 3](https://zaragoza.es/sede/portal/turismo/ver-y-hacer/top-monumentos), [Referencia 4](https://www.zaragoza.es/sede/portal/turismo/ver-hacer/servicio/monumento/32?locale=es), [Referencia 5](https://zaragoza.es/sede/portal/turismo/ver-y-hacer/las-dos-Catedrales).
+- Quebec: [Referencia 1](https://visitquebec.com/), [Referencia 2](https://www.ville.quebec.qc.ca/en/citoyens/patrimoine/quartiers/vieux_quebec/interet/hotel_chateau_frontenac.aspx), [Referencia 3](https://visitquebec.com/blog/quebec-city-bucket-list/), [Referencia 4](https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?i=48857&id=676), [Referencia 5](https://visitquebec.com/home/).
+- Guilin: [Referencia 1](https://www.glljsh.com/en/), [Referencia 2](https://myguilin.com/attractions/elephant.html), [Referencia 3](https://www.glljsh.com/en/page/vrdh.html), [Referencia 4](https://www.glljsh.com/en/category/237.html), [Referencia 5](https://glljsh.com/en).
+- Acra: [Referencia 1](https://visitghana.com/independence-square/), [Referencia 2](https://knmp.gov.gh/new/visiting-hours-rates/), [Referencia 3](https://ghana.travel/wp-content/uploads/2025/07/FINAL-2024-tourism-report-final.pdf), [Referencia 4](https://ama.gov.gh/index.php), [Referencia 5](https://visitghana.com/kwame-nkrumah-memorial-park-2/).
+- San Sebastián: [Referencia 1](https://sansebastianturismoa.eus/en/parks-and-gardens/miramar-palace/), [Referencia 2](https://sansebastianturismoa.eus/parques-y-jardines/palacio-de-miramar/), [Referencia 3](https://www.sansebastianturismoa.eus/es/hacer/ciudad-verde/parques-y-jardines), [Referencia 4](https://www.euskadi.eus/gobierno-vasco/-/es/patrimonio-cultural/paseo-de-la-concha/), [Referencia 5](https://turismo.euskadi.eus/es/patrimonio-cultural/paseo-de-la-concha/webtur00-content/es/).
+- Vancouver: [Referencia 1](https://www.scienceworld.ca/your-visit/), [Referencia 2](https://www.gobc.ca/attractions/vancouver), [Referencia 3](https://www.vancouvertourism.org/science-world-vancouver/), [Referencia 4](https://vancouver.ca/parks-recreation-culture/attractions-and-leisure.aspx), [Referencia 5](https://www.destinationvancouver.com/things-to-do/listings/canada-place).
+- Cantón: [Referencia 1](https://www.eguangzhou.gov.cn/globalgzpastandpresence/content/post_31123.html), [Referencia 2](https://www.haizhu.gov.cn/hzdt/ztlm/tzhz/rjhj/lyjd/csmp/content/post_9190964.html), [Referencia 3](https://cantontravelguide.com/en/places/guangzhou/attractions/canton-tower), [Referencia 4](https://www.cantontower.com/sightseeing/visit/), [Referencia 5](https://wglj.gz.gov.cn/ztmb/gzhyn/ajjq/4a/content/post_8928935.html).
+- Abiyán: [Referencia 1](https://www.tourisme.ci/destinations-touristiques/la-cathedrale-saint-paul-au-plateau/), [Referencia 2](https://sofitel.accor.com/es/hotels/8844.html), [Referencia 3](https://tourismecotedivoire.ci/wp-content/uploads/2023/12/Travel-Guide.pdf), [Referencia 4](https://www.visagov.com/es/blog/costa-de-marfil/que-ver-en-costa-marfil), [Referencia 5](https://all.accor.com/hotel/0732/index.es.shtml).
+- Salamanca: [Referencia 1](https://salamanca.es/que-ver/monumentos/plaza-mayor), [Referencia 2](https://salamanca.es/en/see/monuments/plaza-mayor), [Referencia 3](https://salamanca.es/que-ver/monumentos), [Referencia 4](https://salamanca.es/que-ver/monumentos/catedral-de-salamanca), [Referencia 5](https://www.spain.info/es/lugares-interes/plaza-mayor-salamanca/).
+- Ottawa: [Referencia 1](https://ottawatourism.ca/en/ottawa-insider/top-10-things-to-do-in-ottawa), [Referencia 2](https://visit-ottawa.ca/parliament/peace-tower.html), [Referencia 3](https://ottawatourism.ca/en/see-and-do), [Referencia 4](https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=471), [Referencia 5](https://www.canada.ca/en/public-services-procurement/services/infrastructure-buildings/parliamentary-precinct/discover/peace-tower.html).
+- Hangzhou: [Referencia 1](https://ehangzhou.gov.cn/2026-09/28/c_299204.htm), [Referencia 2](https://visithangzhou.com/what-to-see/leifeng-pagoda/), [Referencia 3](https://ehangzhou.gov.cn/hz_attractions.html), [Referencia 4](https://wgly.hangzhou.gov.cn/fr/Visitesetintineraires/PatrimoinemondialLacdeOuest/index.html), [Referencia 5](https://visithangzhou.com/what-to-see/).
+- Windhoek: [Referencia 1](https://www.windhoekcc.org.na/christus-kirche/), [Referencia 2](https://archive.ph/jy1O3), [Referencia 3](https://stwetuproduction.blob.core.windows.net/azure-blob-resources-wetu-production/Resources/Operators/1909/windhoek_experiences.pdf), [Referencia 4](https://www.kln.gov.my/documents/34020/0/POST%2BREPORT%2BNAMIBIA%2B2024/efdb8c77-fbd5-4274-ae0c-d7cc8d178874?version=1.0), [Referencia 5](https://www.windhoekcc.org.na/wp-content/uploads/2026/02/Baseline-Study-Windhoek-Tourism-Strategy-Bremen-report.pdf).
+- Manchester: [Referencia 1](https://www.visitmanchester.com/things-to-see-and-do/attractions/), [Referencia 2](https://www.manchester.gov.uk/the-council-and-democracy/town-hall-complex/our-town-hall/heritage-and-art/the-clock-tower), [Referencia 3](https://www.visitmanchester.com/things-to-see-and-do/attractions/heritage-and-history/), [Referencia 4](https://www.visitmanchester.com/things-to-see-and-do/), [Referencia 5](https://www.visitmanchester.com/).
+- Guadalajara: [Referencia 1](https://visitmexico.com/en/destino/2572/el-teatro-degollado-en-guadalajara), [Referencia 2](https://tequiero.guadalajara.gob.mx/planea-tu-viaje/explora/centro-historico), [Referencia 3](https://tequiero.guadalajara.gob.mx/lugares/teatro-degollado), [Referencia 4](https://visitmexico.com/es/recomendacion/destino/111/2572/el-teatro-degollado-en-guadalajara), [Referencia 5](https://turismo.guadalajara.es/es/organiza-tu-viaje/monumentos/concatedral-de-santa-maria/).
+- Suzhou: [Referencia 1](https://visitsz.wglj.suzhou.com.cn/en/world-heritage-detail.aspx?id=1), [Referencia 2](https://english.suzhou.gov.cn/szsenglish/sjwhyclm/201611/0e774293426145f6b4b00d3a5717c6df.shtml), [Referencia 3](https://english.suzhou.gov.cn/szsenglish/sz5ajjq/201611/43680636abee46f3a7220ce37ec064cb.shtml), [Referencia 4](https://www.turismochina.es/es/suzhou/jardin/jardin-del-administrador-humilde-en-suzhou), [Referencia 5](https://www.turismochina.es/es/suzhou/torre/pagoda-de-la-colina-del-tigre-en-suzhou).
+- Port Louis: [Referencia 1](https://aapravasi.govmu.org/aapravasi/?page_id=816), [Referencia 2](https://tourism.govmu.org/Pages/Services/Tourist-Sites.aspx), [Referencia 3](https://www.aapravasighat.org/English/Our%20Heritage/Pages/Tangible-Heritage.aspx), [Referencia 4](https://aapravasi.govmu.org/aapravasi/?page_id=821), [Referencia 5](https://aapravasi.govmu.org/aapravasi/?page_id=3497).
+- Liverpool: [Referencia 1](https://www.visitliverpool.com/), [Referencia 2](https://www.visitliverpool.com/things-to-do-in-liverpool/attractions-in-liverpool/top-attractions/), [Referencia 3](https://www.visitliverpool.com/blog/post/the-official-visitliverpool-bucket-list-101-things-to-do-in-liverpool/), [Referencia 4](https://www.visitliverpool.com/things-to-do-in-liverpool/), [Referencia 5](https://www.liverpooltourism.org/three-graces/).
 
 Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; el modo jugable todavía está pendiente de integración.

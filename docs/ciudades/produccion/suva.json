@@ -1,0 +1,18 @@
+{
+  "id": "suva",
+  "batch": 18,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/suva-v1.png",
+  "generatedFile": "exec-02a053e5-3269-4280-b5f8-36f8a2c7d9c1.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity suva. ONLY FOUR compact landmark groups: Government Buildings; Grand Pacific Hotel; Catedral del Sagrado Corazón; Fiji Museum. Four compact buildings: pale Art Deco Government Buildings with central clock tower, long low white colonial Grand Pacific Hotel with red roof and verandas, Sacred Heart Cathedral with twin square towers, and the small low Fiji Museum in a tropical garden. Short waterfront strip only at front. No sprawling city blocks. The common empty plinth is the editing target. Keep its original organic outline, sandstone sidewall, rear tip y400, left x33/right x1225 and front bottom y1041. All terrain must fit inside the unchanged original floor. Shrink the city rather than grow that floor. Retain blank background margins exactly.",
+  "sources": [
+    "https://grandpacifichotel.com.fj/hotel/suva-city/",
+    "https://grandpacifichotel.com.fj/hotel/",
+    "https://www.fiji.travel/places-to-go/suva/locations/suva-the-heartbeat-of-the-pacific",
+    "https://grandpacifichotel.com.fj/",
+    "https://www.fiji.travel/places-to-go/suva-and-surrounds/locations/top-things-to-do-in-suva"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

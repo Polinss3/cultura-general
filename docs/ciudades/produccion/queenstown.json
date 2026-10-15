@@ -1,0 +1,20 @@
+{
+  "id": "queenstown",
+  "batch": 17,
+  "tool": "ImageGen integrada",
+  "reference": "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-5e6b201e-384a-45bf-9879-7d4cf75b8431.png",
+  "output": "normalizadas/queenstown-v1.png",
+  "generatedFile": "exec-67a0ab7e-96cb-4983-81ed-79a7486781b0.png",
+  "prompt": "Use case: precise-object-edit. Correct ONLY the steamship in this existing Queenstown miniature. The TSS Earnslaw is a twin-SCREW steamship, not a twin-funnel ship. Remove one of the two red-and-black funnels so the vessel has ONE central red funnel with black top. Keep the boat's white vintage decks and hull, its scale, position and direction, and preserve every other pixel and landmark as closely as possible: lake, houses, gondola, mountains, exact organic sandstone base, canvas framing, lighting, colors and background. No lettering, flags, people, labels or other changes.",
+  "sources": [
+    "https://www.tourism.org.nz/regions/queenstown.html",
+    "https://www.queenstownnz.co.nz/things-to-do/sightseeing/scenic-attractions/",
+    "https://www.queenstownnz.co.nz/",
+    "https://nzvisit.com/queenstown",
+    "https://experiencequeenstown.com/info/places/mountains/the-remarkables",
+    "https://www.realnz.com/en/experiences/boat-cruises/tss-earnslaw-lake-cruises/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review",
+  "referenceRole": "Edit target: previous generated concept"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "nueva-orleans",
+  "batch": 17,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/nueva-orleans-v1.png",
+  "generatedFile": "exec-e5f50da6-d405-443f-af42-535bbedeb2cd.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity nueva-orleans. Main elements: Catedral de San Luis; Jackson Square; Barrio Francés; Tranvía de St. Charles; Vapor del Misisipi. St Louis Cathedral with its three spires and Jackson Square with a small equestrian monument, a few French Quarter blocks with wrought iron balconies, a green St Charles streetcar, and a tiny Mississippi paddle steamer on a SHORT bounded river strip INSIDE the front half of the original floor. Do NOT include a bridge. No water behind the original rear rim or outside the slab. CRITICAL: original floor tip y400, front base bottom y1041. Do not move or reshape any original plinth edge. Blank ivory background outside the existing base; every terrain element and water strip stays inside it. Keep filler minimal and use only the listed major landmarks.",
+  "sources": [
+    "https://nola.gov/next/parks-parkways/topics/parks-squares/jackson-square/",
+    "https://www.neworleans.com/things-to-do/attractions/new-orleans-attractions/",
+    "https://www.stlouiscathedral.org/visit",
+    "https://www.neworleans.com/attractions-activities-search/",
+    "https://www.neworleans.com/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

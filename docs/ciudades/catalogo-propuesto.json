@@ -1731,7 +1731,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Freedom Tower",
@@ -1739,9 +1739,19 @@
         "Miami Marine Stadium",
         "Skyline de Brickell y palmeras costeras"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 59,
-      "batch": 15
+      "batch": 15,
+      "conceptImage": "normalizadas/miami-v1.png",
+      "originalConceptImage": "normalizadas/miami-v1.png",
+      "framingProfile": "miami",
+      "sources": [
+        "https://www.miamitourism.org/pamm/",
+        "https://freedomtower.mdc.edu/visit/plan-your-visit/",
+        "https://freedomtower.mdc.edu/",
+        "https://freedomtower.mdc.edu/visit/tickets/",
+        "https://www.nps.gov/places/freedom-tower.htm"
+      ]
     },
     {
       "id": "mumbai",
@@ -1752,7 +1762,7 @@
       "continent": "asia",
       "countryCode": "IN",
       "batch": 15,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Gateway of India",
         "Chhatrapati Shivaji Terminus",
@@ -1762,7 +1772,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 60
+      "productionOrder": 60,
+      "conceptImage": "normalizadas/mumbai-v1.png",
+      "originalConceptImage": "normalizadas/mumbai-v1.png",
+      "framingProfile": "mumbai",
+      "sources": [
+        "https://mumbaicity.gov.in/en/tourist-place/gateway-of-india/",
+        "https://maharashtratourism.gov.in/districts/mumbai-city/",
+        "https://aai-portal.maharashtratourism.gov.in/?p=666",
+        "https://culture.gov.in/chhatrapati-shivaji-terminus-formerly-victoria-terminus",
+        "https://www.incredibleindia.gov.in/en/maharashtra/mumbai/chhatrapati-shivaji-terminus"
+      ]
     },
     {
       "id": "fez",
@@ -1771,7 +1791,7 @@
       },
       "continent": "africa",
       "countryCode": "MA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Bab Boujloud",
@@ -1779,9 +1799,19 @@
         "Curtiduría Chouara",
         "Madrasa Bou Inania"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 61,
-      "batch": 15
+      "batch": 15,
+      "conceptImage": "normalizadas/fez-v1.png",
+      "originalConceptImage": "normalizadas/fez-v1.png",
+      "framingProfile": "fez",
+      "sources": [
+        "https://www.visitmorocco.com/en/travel/fez/medina",
+        "https://www.visitmorocco.com/en/travel/fez",
+        "https://visitmorocco.com/en/travel/fez",
+        "https://www.fes.fr/plan",
+        "https://www.fes.fr/monuments-attractions"
+      ]
     },
     {
       "id": "christchurch",
@@ -1790,7 +1820,7 @@
       },
       "continent": "oceania",
       "countryCode": "NZ",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Transitional Cardboard Cathedral",
@@ -1798,9 +1828,19 @@
         "Arts Centre",
         "Jardín Botánico y tranvía histórico"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 62,
-      "batch": 15
+      "batch": 15,
+      "conceptImage": "normalizadas/christchurch-v1.png",
+      "originalConceptImage": "normalizadas/christchurch-v1.png",
+      "framingProfile": "christchurch",
+      "sources": [
+        "https://www.christchurchnz.com/visit/things-to-do/listing/christchurch-transitional-cardboard-cathedral-7299846",
+        "https://www.cardboardcathedral.org.nz/",
+        "https://www.cardboardcathedral.org.nz/pages/about",
+        "https://uat.ccc.govt.nz/culture-and-community/heritage/heritage-in-the-city/heritage-buildings",
+        "https://www.christchurchnz.com/visit/things-to-do/get-inspired/christchurch-heritage-buildings"
+      ]
     },
     {
       "id": "copenhague",
@@ -1811,17 +1851,26 @@
       "continent": "europa",
       "countryCode": "DK",
       "batch": 16,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Nyhavn",
-        "La Sirenita",
-        "Rosenborg",
+        "Castillo de Rosenborg",
         "Amalienborg",
-        "Iglesia de Nuestro Salvador"
+        "La Sirenita"
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 63
+      "productionOrder": 63,
+      "conceptImage": "normalizadas/copenhague-v1.png",
+      "originalConceptImage": "normalizadas/copenhague-v1.png",
+      "framingProfile": "copenhague",
+      "sources": [
+        "https://www.visitcopenhagen.com/copenhagen/planning/nyhavn-gdk474735",
+        "https://www.visitdenmark.com/denmark/destinations/copenhagen",
+        "https://www.visitdenmark.dk/danmark/explore/nyhavn-gdk474735",
+        "https://www.visitdenmark.com/denmark/highlights/copenhagen/must-sees-copenhagen",
+        "https://www.visitcopenhagen.com/copenhagen/things-to-do/museums-and-attractions/hans-christian-andersens-copenhagen"
+      ]
     },
     {
       "id": "las-vegas",
@@ -1830,7 +1879,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Hoteles del Strip: pirámide y esfinge del Luxor",
@@ -1838,10 +1887,20 @@
         "Torre Eiffel del Paris Las Vegas",
         "Sphere"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 64,
       "batch": 16,
-      "notes": "Concepto del área turística metropolitana del Strip, no un plano de límites municipales."
+      "notes": "Concepto del área turística metropolitana del Strip, no un plano de límites municipales.",
+      "conceptImage": "normalizadas/las-vegas-v1.png",
+      "originalConceptImage": "normalizadas/las-vegas-v1.png",
+      "framingProfile": "las-vegas",
+      "sources": [
+        "https://www.visitlasvegas.com/es/",
+        "https://travelnevada.com/es/espectaculos/fuentes-del-bellagio/",
+        "https://travelnevada.com/es/atracciones-iconicas/atracciones-de-las-vegas/",
+        "https://www.visitlasvegas.com/hotels-casinos/hotels/on-the-strip/",
+        "https://travelnevada.com/es/ciudades/las-vegas/"
+      ]
     },
     {
       "id": "kioto",
@@ -1850,7 +1909,7 @@
       },
       "continent": "asia",
       "countryCode": "JP",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Kinkaku-ji",
@@ -1858,9 +1917,19 @@
         "Torii de Fushimi Inari",
         "Castillo de Nijō"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 65,
-      "batch": 16
+      "batch": 16,
+      "conceptImage": "normalizadas/kioto-v1.png",
+      "originalConceptImage": "normalizadas/kioto-v1.png",
+      "framingProfile": "kioto",
+      "sources": [
+        "https://www.japan.travel/en/spot/1152/",
+        "https://www.japan.travel/en/spot/2199/",
+        "https://www.kiyomizudera.or.jp/en/visit/",
+        "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=490",
+        "https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=267"
+      ]
     },
     {
       "id": "chefchaouen",
@@ -1869,17 +1938,27 @@
       },
       "continent": "africa",
       "countryCode": "MA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Casas azules de la medina",
-        "Kasbah",
+        "Medina azul",
         "Plaza Uta el-Hammam",
-        "Gran Mezquita y minarete octogonal"
+        "Kasbah",
+        "Gran Mezquita"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 66,
-      "batch": 16
+      "batch": 16,
+      "conceptImage": "normalizadas/chefchaouen-v1.png",
+      "originalConceptImage": "normalizadas/chefchaouen-v1.png",
+      "framingProfile": "chefchaouen",
+      "sources": [
+        "https://www.visitmorocco.com/en/travel/chefchaouen/medina",
+        "https://www.visitmorocco.com/es/viaje/chefchaouen/medina",
+        "https://www.visitmorocco.com/en/travel/chefchaouen",
+        "https://www.visitmorocco.com/es/destinos/chefchaouen",
+        "https://www.visitmorocco.com/fr/voyage/chefchaouen%2C-la-belle-bleue/medina"
+      ]
     },
     {
       "id": "queenstown",
@@ -1888,17 +1967,28 @@
       },
       "continent": "oceania",
       "countryCode": "NZ",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Lago Wakatipu",
-        "Montañas Remarkables",
         "Skyline Gondola",
-        "Vapor TSS Earnslaw"
+        "TSS Earnslaw",
+        "The Remarkables"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 67,
-      "batch": 17
+      "batch": 17,
+      "conceptImage": "normalizadas/queenstown-v1.png",
+      "originalConceptImage": "normalizadas/queenstown-v1.png",
+      "framingProfile": "queenstown",
+      "sources": [
+        "https://www.tourism.org.nz/regions/queenstown.html",
+        "https://www.queenstownnz.co.nz/things-to-do/sightseeing/scenic-attractions/",
+        "https://www.queenstownnz.co.nz/",
+        "https://nzvisit.com/queenstown",
+        "https://experiencequeenstown.com/info/places/mountains/the-remarkables",
+        "https://www.realnz.com/en/experiences/boat-cruises/tss-earnslaw-lake-cruises/"
+      ]
     },
     {
       "id": "sevilla",
@@ -1907,7 +1997,7 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Giralda y Catedral",
@@ -1916,9 +2006,19 @@
         "Torre del Oro",
         "Real Alcázar"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 68,
-      "batch": 17
+      "batch": 17,
+      "conceptImage": "normalizadas/sevilla-v1.png",
+      "originalConceptImage": "normalizadas/sevilla-v1.png",
+      "framingProfile": "sevilla",
+      "sources": [
+        "https://www.spain.info/es/destino/sevilla/",
+        "https://www.turismosevilla.org/es/que-ver-y-hacer/patrimonio/monuments/la-catedral-y-la-giralda",
+        "https://visitasevilla.es/wp-content/uploads/2025/04/ESP_MONUMENTOS_2025.pptx.pdf",
+        "https://www.juntadeandalucia.es/turismoydeporte/ctrjal/destinosturisticosaccesibles/es/sevilla/plaza-de-espana",
+        "https://www.spain.info/es/lugares-interes/plaza-espana-sevilla/"
+      ]
     },
     {
       "id": "nueva-orleans",
@@ -1927,18 +2027,28 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral de San Luis",
         "Jackson Square",
-        "Balcones del French Quarter",
-        "Puente Crescent City Connection",
-        "Tranvía histórico"
+        "Barrio Francés",
+        "Tranvía de St. Charles",
+        "Vapor del Misisipi"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 69,
-      "batch": 17
+      "batch": 17,
+      "conceptImage": "normalizadas/nueva-orleans-v1.png",
+      "originalConceptImage": "normalizadas/nueva-orleans-v1.png",
+      "framingProfile": "nueva-orleans",
+      "sources": [
+        "https://nola.gov/next/parks-parkways/topics/parks-squares/jackson-square/",
+        "https://www.neworleans.com/things-to-do/attractions/new-orleans-attractions/",
+        "https://www.stlouiscathedral.org/visit",
+        "https://www.neworleans.com/attractions-activities-search/",
+        "https://www.neworleans.com/"
+      ]
     },
     {
       "id": "osaka",
@@ -1947,7 +2057,7 @@
       },
       "continent": "asia",
       "countryCode": "JP",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Castillo de Osaka",
@@ -1955,9 +2065,19 @@
         "Tsūtenkaku",
         "Canal Dōtonbori y puente Ebisu sin rótulos"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 70,
-      "batch": 17
+      "batch": 17,
+      "conceptImage": "normalizadas/osaka-v1.png",
+      "originalConceptImage": "normalizadas/osaka-v1.png",
+      "framingProfile": "osaka",
+      "sources": [
+        "https://www.japan.travel/en/spot/1092/",
+        "https://discover.osaka-info.jp/en/spots/skybldg",
+        "https://www.osaka-info.jp/en/spot/osaka-castle-main-keep/",
+        "https://www.japan.travel/es/spot/1087/",
+        "https://www.skybldg.co.jp/en/"
+      ]
     },
     {
       "id": "argel",
@@ -1966,7 +2086,7 @@
       },
       "continent": "africa",
       "countryCode": "DZ",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Maqam Echahid",
@@ -1974,9 +2094,19 @@
         "Djamaa el Djazaïr",
         "Casbah blanca junto al puerto"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 71,
-      "batch": 18
+      "batch": 18,
+      "conceptImage": "normalizadas/argel-v1.png",
+      "originalConceptImage": "normalizadas/argel-v1.png",
+      "framingProfile": "argel",
+      "sources": [
+        "https://www.algdz.com/fr/tourisme/destinations/alger/que-visiter",
+        "https://notre-dame-afrique.org/",
+        "https://ont.dz/ar/explore/",
+        "https://cartes.patrimoineculturelalgerien.org/fr/node/994",
+        "https://www.ont.dz/es/"
+      ]
     },
     {
       "id": "suva",
@@ -1985,17 +2115,27 @@
       },
       "continent": "oceania",
       "countryCode": "FJ",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
+        "Government Buildings",
         "Grand Pacific Hotel",
-        "Parlamento de Fiyi",
         "Catedral del Sagrado Corazón",
-        "Fiji Museum y jardines Thurston"
+        "Fiji Museum"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 72,
-      "batch": 18
+      "batch": 18,
+      "conceptImage": "normalizadas/suva-v1.png",
+      "originalConceptImage": "normalizadas/suva-v1.png",
+      "framingProfile": "suva",
+      "sources": [
+        "https://grandpacifichotel.com.fj/hotel/suva-city/",
+        "https://grandpacifichotel.com.fj/hotel/",
+        "https://www.fiji.travel/places-to-go/suva/locations/suva-the-heartbeat-of-the-pacific",
+        "https://grandpacifichotel.com.fj/",
+        "https://www.fiji.travel/places-to-go/suva-and-surrounds/locations/top-things-to-do-in-suva"
+      ]
     },
     {
       "id": "valencia",
@@ -2004,18 +2144,27 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Ciudad de las Artes y las Ciencias",
-        "Catedral y Miguelete",
         "Torres de Serranos",
         "Mercado Central",
-        "Lonja de la Seda"
+        "Miguelete"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 73,
-      "batch": 18
+      "batch": 18,
+      "conceptImage": "normalizadas/valencia-v1.png",
+      "originalConceptImage": "normalizadas/valencia-v1.png",
+      "framingProfile": "valencia",
+      "sources": [
+        "https://www.visitvalencia.com/que-hacer-valencia/cultura-valenciana/monumentos-en-valencia/miguelete",
+        "https://www.visitvalencia.com/en/what-to-do-valencia/valencian-culture/monuments-in-valencia/miguelete",
+        "https://www.visitvalencia.com/que-hacer-valencia/cultura-valenciana/monumentos-en-valencia",
+        "https://www.visitvalencia.com/en/what-to-do-valencia/valencian-culture/monuments-in-valencia",
+        "https://www.visitvalencia.com/que-ver-valencia/centro-historico"
+      ]
     },
     {
       "id": "seattle",
@@ -2024,7 +2173,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Space Needle",
@@ -2033,9 +2182,19 @@
         "Seattle Great Wheel",
         "Pike Place Market sin letras"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 74,
-      "batch": 18
+      "batch": 18,
+      "conceptImage": "normalizadas/seattle-v1.png",
+      "originalConceptImage": "normalizadas/seattle-v1.png",
+      "framingProfile": "seattle",
+      "sources": [
+        "https://www.visitseattle.org/things-to-do/arts-culture/visual-arts/architecture/",
+        "https://visitseattle.org/explore/visitor-information/ovg/",
+        "https://www.visitseattle.org/explore/visitor-information/ovg/",
+        "https://visitseattle.org/things-to-do/sightseeing/modern-wonders/",
+        "https://www.visitseattle.org/things-to-do/sightseeing/"
+      ]
     },
     {
       "id": "hiroshima",
@@ -2044,7 +2203,7 @@
       },
       "continent": "asia",
       "countryCode": "JP",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Cúpula de la Bomba Atómica",
@@ -2053,9 +2212,19 @@
         "Castillo de Hiroshima",
         "Jardín Shukkeien"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 75,
-      "batch": 19
+      "batch": 19,
+      "conceptImage": "normalizadas/hiroshima-v1.png",
+      "originalConceptImage": "normalizadas/hiroshima-v1.png",
+      "framingProfile": "hiroshima",
+      "sources": [
+        "https://www.japan.travel/es/spot/2202/",
+        "https://www.japan.travel/en/spot/2202/",
+        "https://www.japan.travel/es/world-heritage/hiroshima-peace-memorial/",
+        "https://www.city.hiroshima.lg.jp/english/tourism/1029842/1009899.html",
+        "https://www.japan.travel/es/spot/161/"
+      ]
     },
     {
       "id": "alejandria",
@@ -2064,17 +2233,27 @@
       },
       "continent": "africa",
       "countryCode": "EG",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Ciudadela de Qaitbay",
         "Bibliotheca Alexandrina",
-        "Palacio de Montazah",
-        "Corniche y Mediterráneo contenido"
+        "Palacio de Montaza",
+        "Corniche"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 76,
-      "batch": 19
+      "batch": 19,
+      "conceptImage": "normalizadas/alejandria-v1.png",
+      "originalConceptImage": "normalizadas/alejandria-v1.png",
+      "framingProfile": "alejandria",
+      "sources": [
+        "https://mota.gov.eg/ar/%D8%A7%D9%84%D8%A2%D8%AB%D8%A7%D8%B1-%D9%88%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AD%D9%81/%D8%A7%D9%84%D9%85%D8%AC%D9%84%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%84%D9%89-%D9%84%D9%84%D8%A2%D8%AB%D8%A7%D8%B1/%D8%AF%D9%84%D9%8A%D9%84-%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9-%D8%A7%D9%84%D8%A3%D8%AB%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D9%81%D8%AA%D9%88%D8%AD%D8%A9-%D9%84%D9%84%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9-%D8%AC%D8%AF%D9%8A%D8%AF/%D9%82%D9%84%D8%B9%D8%A9-%D9%82%D8%A7%D9%8A%D8%AA%D8%A8%D8%A7%D9%8A/",
+        "https://sis.gov.eg/es/centro-de-informacion/noticias-exclusivas/el-ministerio-de-turismo-inaugura-un-nuevo-centro-de-visitantes-en-la-ciudadela-qaitbay-de-alejandr%C3%ADa/",
+        "https://www.experienceegypt.eg/es/attraction-details/141/antig%C3%BCedades-grecorromanas-y-yacimientos-arqueol%C3%B3gicos",
+        "https://www.experienceegypt.eg/es/city/27/alexandria",
+        "https://www.experienceegypt.eg/es/attraction-details/142/biblioteca-de-alejandr%C3%ADa"
+      ]
     },
     {
       "id": "papeete",
@@ -2083,7 +2262,7 @@
       },
       "continent": "oceania",
       "countryCode": "PF",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral de Notre-Dame",
@@ -2091,9 +2270,19 @@
         "Jardines Paofai",
         "Palacio presidencial de la Polinesia Francesa"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 77,
-      "batch": 19
+      "batch": 19,
+      "conceptImage": "normalizadas/papeete-v1.png",
+      "originalConceptImage": "normalizadas/papeete-v1.png",
+      "framingProfile": "papeete",
+      "sources": [
+        "https://tahititourisme.pf/en-pf/activities/points-of-interest/cathedrale-notre-dame-de-papeete-papeete-en-en-pf-3322035/",
+        "https://tahititourisme.pf/experiences/les-spots-a-ne-pas-manquer/cathedrale-notre-dame-de-papeete-papeete-fr-3322035/",
+        "https://tahititourisme.pf/en-pf/islands-and-archipelagos/the-society-islands/papeete-the-capital-of-tahiti/?ya_src=serp300",
+        "https://tahititourisme.pf/iles-et-archipels/iles-de-la-societe/papeete-capitale-de-tahiti/",
+        "https://www.papeete.pf/a-visiter-sites-historiques/"
+      ]
     },
     {
       "id": "granada",
@@ -2121,7 +2310,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Independence Hall",
@@ -2130,9 +2319,19 @@
         "Philadelphia Museum of Art",
         "One Liberty Place"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 79,
-      "batch": 20
+      "batch": 20,
+      "conceptImage": "normalizadas/filadelfia-v1.png",
+      "originalConceptImage": "normalizadas/filadelfia-v1.png",
+      "framingProfile": "filadelfia",
+      "sources": [
+        "https://www.visitphilly.com/things-to-do/attractions/independence-hall/",
+        "https://www.visitphilly.com/things-to-do/attractions/the-liberty-bell-center/",
+        "https://www.visitphilly.com/things-to-do/attractions/independence-national-historical-park/",
+        "https://www.visitphilly.com/history-in-philadelphia/",
+        "https://home.nps.gov/inde/planyourvisit/independencehall.htm/index.htm"
+      ]
     },
     {
       "id": "nara",
@@ -2141,7 +2340,7 @@
       },
       "continent": "asia",
       "countryCode": "JP",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Tōdai-ji",
@@ -2149,9 +2348,19 @@
         "Pagoda de cinco pisos de Kōfuku-ji",
         "Parque de Nara con ciervos"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 80,
-      "batch": 20
+      "batch": 20,
+      "conceptImage": "normalizadas/nara-v1.png",
+      "originalConceptImage": "normalizadas/nara-v1.png",
+      "framingProfile": "nara",
+      "sources": [
+        "https://www.visitnara.jp/venues/A00487/",
+        "https://www.visitnara.jp/lists-and-stories/story/explore-naras-world-heritage-sites/",
+        "https://www.visitnara.jp/lists-and-stories/list/first-time-in-nara-the-essential-dont-miss-list/",
+        "https://www.visitnara.jp/",
+        "https://www.visitnara.jp/lists-and-stories/story/world-heritage/"
+      ]
     },
     {
       "id": "luxor",
@@ -2160,7 +2369,7 @@
       },
       "continent": "africa",
       "countryCode": "EG",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Templo de Karnak",
@@ -2169,9 +2378,19 @@
         "Templo de Hatshepsut",
         "Nilo con faluca"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 81,
-      "batch": 20
+      "batch": 20,
+      "conceptImage": "normalizadas/luxor-v1.png",
+      "originalConceptImage": "normalizadas/luxor-v1.png",
+      "framingProfile": "luxor",
+      "sources": [
+        "https://egymonuments.gov.eg/monuments/luxor-temple/",
+        "https://egymonuments.gov.eg/archaeological-sites/karnak/",
+        "https://egymonuments.gov.eg/ar/monuments/luxor-temple/",
+        "https://egymonuments.gov.eg/en/monuments/khonsu-temple",
+        "https://egymonuments.gov.eg/en/monuments"
+      ]
     },
     {
       "id": "cordoba",
@@ -2199,7 +2418,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "California Tower de Balboa Park",
@@ -2207,9 +2426,19 @@
         "Puente de Coronado",
         "Edificios victorianos del Gaslamp Quarter"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 83,
-      "batch": 21
+      "batch": 21,
+      "conceptImage": "normalizadas/san-diego-v1.png",
+      "originalConceptImage": "normalizadas/san-diego-v1.png",
+      "framingProfile": "san-diego",
+      "sources": [
+        "https://www.visitcalifornia.com/things-to-do/balboa-park/",
+        "https://www.visitcalifornia.com/places-to-visit/san-diego/",
+        "https://www.visitcalifornia.com/experience/uss-midway-waterfront/",
+        "https://www.sandiego.gov/park-and-recreation/parks/regional/balboa",
+        "https://www.visitcalifornia.com/experience/san-diego-must-see-attractions/"
+      ]
     },
     {
       "id": "yokohama",
@@ -2218,7 +2447,7 @@
       },
       "continent": "asia",
       "countryCode": "JP",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Landmark Tower",
@@ -2227,9 +2456,19 @@
         "Terminal Ōsanbashi",
         "Marine Tower"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 84,
-      "batch": 21
+      "batch": 21,
+      "conceptImage": "normalizadas/yokohama-v1.png",
+      "originalConceptImage": "normalizadas/yokohama-v1.png",
+      "framingProfile": "yokohama",
+      "sources": [
+        "https://cosmoworld.jp/cosmoclock21/?lang=en",
+        "https://cosmoworld.jp/cosmoclock21/",
+        "https://yokohama-landmark.jp/",
+        "https://www.welcome.city.yokohama.jp/spot/details.php?bbid=195",
+        "https://www.welcome.city.yokohama.jp/spot/"
+      ]
     },
     {
       "id": "asuan",
@@ -2238,7 +2477,7 @@
       },
       "continent": "africa",
       "countryCode": "EG",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Templo de Filae",
@@ -2246,9 +2485,19 @@
         "Presa de Asuán",
         "Nilo con falucas"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 85,
-      "batch": 21
+      "batch": 21,
+      "conceptImage": "normalizadas/asuan-v1.png",
+      "originalConceptImage": "normalizadas/asuan-v1.png",
+      "framingProfile": "asuan",
+      "sources": [
+        "https://egymonuments.gov.eg/en/monuments/the-unfinished-obelisk",
+        "https://egymonuments.gov.eg/archaeological-sites/aswan/",
+        "https://www.experienceegypt.eg/es/attraction-details/210/la-antigua-asu%C3%A1n",
+        "https://egymonuments.gov.eg/en/archaeological-sites/philae/",
+        "https://egymonuments.gov.eg/en/archaeological-sites/elephantine-1/"
+      ]
     },
     {
       "id": "bilbao",
@@ -2257,7 +2506,7 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Museo Guggenheim",
@@ -2266,9 +2515,19 @@
         "San Mamés",
         "Teatro Arriaga"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 86,
-      "batch": 21
+      "batch": 21,
+      "conceptImage": "normalizadas/bilbao-v1.png",
+      "originalConceptImage": "normalizadas/bilbao-v1.png",
+      "framingProfile": "bilbao",
+      "sources": [
+        "https://www.guggenheim-bilbao.eus/en/the-collection/works/maman",
+        "https://www.guggenheim-bilbao.eus/la-coleccion/obras/mama",
+        "https://turismo.euskadi.eus/en/museums/guggenheim-museum-bilbao/webtur00-exptop/en/",
+        "https://www.guggenheim-bilbao.eus/fr/la-collection/oeuvres/maman",
+        "https://www.spain.info/en/destination/bilbao/"
+      ]
     },
     {
       "id": "honolulu",
@@ -2277,7 +2536,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Diamond Head",
@@ -2285,9 +2544,19 @@
         "Aloha Tower",
         "Hotel Royal Hawaiian y Waikiki"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 87,
-      "batch": 22
+      "batch": 22,
+      "conceptImage": "normalizadas/honolulu-v1.png",
+      "originalConceptImage": "normalizadas/honolulu-v1.png",
+      "framingProfile": "honolulu",
+      "sources": [
+        "https://www.nps.gov/places/iolanipalace.htm",
+        "https://www.iolanipalace.org/",
+        "https://www.gohawaii.com/islands/oahu/regions/honolulu/iolani-palace",
+        "https://www.honolulutourism.org/things-to-do-in-honolulu/",
+        "https://dlnr.hawaii.gov/dsp/parks/Oahu/iolani-palace-state-monument/"
+      ]
     },
     {
       "id": "nagasaki",
@@ -2296,7 +2565,7 @@
       },
       "continent": "asia",
       "countryCode": "JP",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Estatua de la Paz",
@@ -2305,9 +2574,19 @@
         "Glover Garden",
         "Puente Megane"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 88,
-      "batch": 22
+      "batch": 22,
+      "conceptImage": "normalizadas/nagasaki-v1.png",
+      "originalConceptImage": "normalizadas/nagasaki-v1.png",
+      "framingProfile": "nagasaki",
+      "sources": [
+        "https://www.japan.travel/es/spot/742/",
+        "https://www.japan.travel/es/spot/734/",
+        "https://www.japan.travel/en/spot/734/",
+        "https://www.japan.travel/es/spot/349/",
+        "https://en.at-nagasaki.jp/cultural-properties/102"
+      ]
     },
     {
       "id": "guiza",
@@ -2316,7 +2595,7 @@
       },
       "continent": "africa",
       "countryCode": "EG",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Pirámide de Keops",
@@ -2326,10 +2605,17 @@
       ],
       "landmarkStatus": "candidate",
       "sources": [
-        "https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/"
+        "https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/",
+        "https://egymonuments.gov.eg/monuments/pyramid-complex-of-khafre-khefren/",
+        "https://egymonuments.gov.eg/monuments/the-great-pyramid/",
+        "https://sis.gov.eg/es/egipto/turismo/turismo-cultural/monumentos/las-zonas-arqueol%C3%B3gicas-m%C3%A1s-importantes-de-el-cairo-y-guiza/",
+        "https://egymonuments.gov.eg/monuments/the-great-sphinx/"
       ],
       "productionOrder": 89,
-      "batch": 22
+      "batch": 22,
+      "conceptImage": "normalizadas/guiza-v1.png",
+      "originalConceptImage": "normalizadas/guiza-v1.png",
+      "framingProfile": "guiza"
     },
     {
       "id": "santiago-de-compostela",
@@ -2338,17 +2624,27 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Catedral y Obradoiro",
-        "Hostal de los Reyes Católicos",
-        "Monasterio de San Martín Pinario",
+        "Catedral de Santiago",
+        "San Martín Pinario",
+        "Pazo de Raxoi",
         "Cidade da Cultura"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 90,
-      "batch": 22
+      "batch": 22,
+      "conceptImage": "normalizadas/santiago-de-compostela-v1.png",
+      "originalConceptImage": "normalizadas/santiago-de-compostela-v1.png",
+      "framingProfile": "santiago-de-compostela",
+      "sources": [
+        "https://santiago.es/en/what-to-see",
+        "https://www.spain.info/es/destino/santiago-compostela/",
+        "https://www.santiagoturismo.com/monumentos",
+        "https://www.turismo.gal/que-visitar/cidades/santiago-de-compostela?langId=es_ES",
+        "https://santiago.es/que-ver"
+      ]
     },
     {
       "id": "atlanta",
@@ -2357,7 +2653,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Bank of America Plaza",
@@ -2366,9 +2662,19 @@
         "Centennial Olympic Park",
         "Fox Theatre"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 91,
-      "batch": 23
+      "batch": 23,
+      "conceptImage": "normalizadas/atlanta-v1.png",
+      "originalConceptImage": "normalizadas/atlanta-v1.png",
+      "framingProfile": "atlanta",
+      "sources": [
+        "https://www.bankofamericaplaza.com/",
+        "https://www.bankofamericaplaza.com/homepage/",
+        "https://info.bankofamerica.com/content/dam/consumer-info/en/consumer/cra/2024-fc-Listing_ada.pdf",
+        "https://locators.bankofamerica.com/ga/atlanta/",
+        "https://www.bankofamericaplaza.com/wp-content/uploads/2023/12/CPGroup-BankofAmericaPlaza-Atlanta-Brochure.pdf"
+      ]
     },
     {
       "id": "macao",
@@ -2377,7 +2683,7 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Ruinas de San Pablo",
@@ -2386,9 +2692,19 @@
         "Templo A-Má",
         "Macao Tower"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 92,
-      "batch": 23
+      "batch": 23,
+      "conceptImage": "normalizadas/macao-v1.png",
+      "originalConceptImage": "normalizadas/macao-v1.png",
+      "framingProfile": "macao",
+      "sources": [
+        "https://content.macaotourism.gov.mo/uploads/mgto_brochures/160510999555f5480436036b5d860e91a65ac962.pdf",
+        "https://visitcn.com.cn/en/attractions/historic-centre-of-macao",
+        "https://content.macaotourism.gov.mo/uploads/mgto_brochures/d540a9a9e1c116c4212e1c52939876345c6e3b43.pdf",
+        "https://content.macaotourism.gov.mo/uploads/mgto_brochures/e22db0dfa800dca23a547b354c9f552b2be6faa8.pdf",
+        "https://content.macaotourism.gov.mo/uploads/mgto_brochures/1fc4deada16c963a3e5af06b04cfb2ef2e747646.pdf"
+      ]
     },
     {
       "id": "johannesburgo",
@@ -2397,7 +2713,7 @@
       },
       "continent": "africa",
       "countryCode": "ZA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Ponte City",
@@ -2406,9 +2722,19 @@
         "Gold Reef City",
         "Puente Nelson Mandela"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 93,
-      "batch": 23
+      "batch": 23,
+      "conceptImage": "normalizadas/johannesburgo-v1.png",
+      "originalConceptImage": "normalizadas/johannesburgo-v1.png",
+      "framingProfile": "johannesburgo",
+      "sources": [
+        "https://joburg.org.za/play_/OutandAbout/Pages/Landmarks/landmarks.aspx",
+        "https://dirco.gov.za/wp-content/uploads/2023/01/ubuntu_issue15_compressed.pdf",
+        "https://www.jda.org.za/inner-city-regeneration-brings-new-life-to-ponte-city/",
+        "https://www.southafrica.net/bw/en/travel/event/ponte-experience",
+        "https://www.jda.org.za/hillbrow-tower-precinct/"
+      ]
     },
     {
       "id": "malaga",
@@ -2417,18 +2743,27 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Alcazaba y Teatro Romano",
-        "Catedral",
-        "Cubo del Centre Pompidou",
-        "Castillo de Gibralfaro",
-        "La Farola"
+        "Catedral de Málaga",
+        "Alcazaba",
+        "Teatro Romano",
+        "Centre Pompidou Málaga"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 94,
-      "batch": 23
+      "batch": 23,
+      "conceptImage": "normalizadas/malaga-v1.png",
+      "originalConceptImage": "normalizadas/malaga-v1.png",
+      "framingProfile": "malaga",
+      "sources": [
+        "https://www.spain.info/en/places-of-interest/roman-theatre-malaga/",
+        "https://www.spain.info/es/lugares-interes/teatro-romano-malaga/",
+        "https://www.malaga.eu/la-ciudad/instalaciones-y-espacios/detalle-de-la-instalacion/?id=130",
+        "https://www.andalucia.org/lugares-para-visitar/malaga/malaga/",
+        "https://www.spain.info/es/destino/malaga/"
+      ]
     },
     {
       "id": "houston",
@@ -2437,7 +2772,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Johnson Space Center y cohete de Rocket Park sin texto",
@@ -2445,9 +2780,19 @@
         "Williams Tower y Waterwall",
         "Buffalo Bayou Park"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 95,
-      "batch": 24
+      "batch": 24,
+      "conceptImage": "normalizadas/houston-v1.png",
+      "originalConceptImage": "normalizadas/houston-v1.png",
+      "framingProfile": "houston",
+      "sources": [
+        "https://houston.com/science-technology/nasa-johnson-space-center-guide",
+        "https://houston.com/science-technology/space-center-houston-visitor-guide",
+        "https://jpmctowerhouston.com/",
+        "https://www.nasa.gov/johnson/about-johnson/",
+        "https://spacecenter.org/"
+      ]
     },
     {
       "id": "xian",
@@ -2456,7 +2801,7 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Guerreros de terracota",
@@ -2465,9 +2810,19 @@
         "Torre del Tambor",
         "Muralla y puerta de la ciudad"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 96,
-      "batch": 24
+      "batch": 24,
+      "conceptImage": "normalizadas/xian-v1.png",
+      "originalConceptImage": "normalizadas/xian-v1.png",
+      "framingProfile": "xian",
+      "sources": [
+        "https://visitcn.com.cn/en/attractions/xi-an-giant-wild-goose-pagoda",
+        "https://visitxian.cn/es/places/big-wild-goose-pagoda",
+        "https://visitxian.cn/es/places/small-wild-goose-pagoda",
+        "https://visitxian.cn/es/places/big-wild-goose-pagoda-fountain-show",
+        "https://en.xa.gov.cn/CultureTravel/Attractions/1691691504798126082.html"
+      ]
     },
     {
       "id": "durban",
@@ -2476,17 +2831,27 @@
       },
       "continent": "africa",
       "countryCode": "ZA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Moses Mabhida Stadium",
+        "Durban City Hall",
         "Golden Mile",
-        "Ayuntamiento",
         "uShaka Marine World"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 97,
-      "batch": 24
+      "batch": 24,
+      "conceptImage": "normalizadas/durban-v1.png",
+      "originalConceptImage": "normalizadas/durban-v1.png",
+      "framingProfile": "durban",
+      "sources": [
+        "https://visitdurban.travel/page/durban-visitor-guide",
+        "https://visitdurban.travel/",
+        "https://visitdurban.travel/space/moses-mabhida-stadium",
+        "https://legacy.visitdurban.travel/destination/moses-mabhida-stadium/",
+        "https://visitdurban.travel/storage/Durban%20Central%20Tourism%20Guide%202025web_comp.pdf"
+      ]
     },
     {
       "id": "toledo",
@@ -2495,7 +2860,7 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Alcázar",
@@ -2504,9 +2869,19 @@
         "Puente de Alcántara",
         "San Juan de los Reyes"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 98,
-      "batch": 24
+      "batch": 24,
+      "conceptImage": "normalizadas/toledo-v1.png",
+      "originalConceptImage": "normalizadas/toledo-v1.png",
+      "framingProfile": "toledo",
+      "sources": [
+        "https://www.turismocastillalamancha.es/es/destinos/toledo/lugares-que-visitar",
+        "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/monumentos/toledo",
+        "https://www.turismotoledo.com/es/barrio-catedral",
+        "https://www.turismocastillalamancha.es/es/destinos/toledo",
+        "https://www.turismotoledo.com/es/que-ver-en-toledo"
+      ]
     },
     {
       "id": "san-antonio",
@@ -2515,7 +2890,7 @@
       },
       "continent": "america",
       "countryCode": "US",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "El Álamo",
@@ -2523,9 +2898,19 @@
         "Tower of the Americas",
         "Catedral de San Fernando"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 99,
-      "batch": 25
+      "batch": 25,
+      "conceptImage": "normalizadas/san-antonio-v1.png",
+      "originalConceptImage": "normalizadas/san-antonio-v1.png",
+      "framingProfile": "san-antonio",
+      "sources": [
+        "https://www.visitsanantonio.com/things-to-do/alamo/",
+        "https://www.sa.gov/Directory/Departments/DTOPS/Parks-Facilities/River-Walk",
+        "https://www.thealamo.org/visit/whats-at-the-alamo/paseo-del-alamo",
+        "https://www.visitsanantonio.com/plan-your-trip/neighborhood-guide/downtown/",
+        "https://www.sanantoniotourism.org/san-antonio-river-walk/"
+      ]
     },
     {
       "id": "chengdu",
@@ -2534,7 +2919,7 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Puente Anshun",
@@ -2543,9 +2928,19 @@
         "Torre West Pearl",
         "Pabellón de pandas de Chengdú"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 100,
-      "batch": 25
+      "batch": 25,
+      "conceptImage": "normalizadas/chengdu-v1.png",
+      "originalConceptImage": "normalizadas/chengdu-v1.png",
+      "framingProfile": "chengdu",
+      "sources": [
+        "https://en.wuhouci.net.cn/visit-ticket",
+        "https://cqfd.gov.cn/zjfd/fdly/202301/t20230111_11488232.html",
+        "https://www.wuhouci.net.cn/",
+        "https://en.wuhouci.net.cn/visit-traffic",
+        "https://wuhouci.net.cn/"
+      ]
     },
     {
       "id": "adis-abeba",
@@ -2554,7 +2949,7 @@
       },
       "continent": "africa",
       "countryCode": "ET",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral de la Santísima Trinidad",
@@ -2562,9 +2957,19 @@
         "Sede de la Unión Africana",
         "Museo Nacional de Etiopía"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 101,
-      "batch": 25
+      "batch": 25,
+      "conceptImage": "normalizadas/adis-abeba-v1.png",
+      "originalConceptImage": "normalizadas/adis-abeba-v1.png",
+      "framingProfile": "adis-abeba",
+      "sources": [
+        "https://aatc.gov.et/",
+        "https://visitaddisababa.et/things-to-do/holy-trinity-cathedral-museum",
+        "https://visitethiopia.et/space/holy-trinity-cathedral",
+        "https://www.cuba.travel/destinos/trinidad/ciudad",
+        "https://www.cuba.travel/destinos/trinidad"
+      ]
     },
     {
       "id": "segovia",
@@ -2573,7 +2978,7 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Acueducto romano",
@@ -2581,9 +2986,19 @@
         "Catedral",
         "Iglesia de la Vera Cruz"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 102,
-      "batch": 25
+      "batch": 25,
+      "conceptImage": "normalizadas/segovia-v1.png",
+      "originalConceptImage": "normalizadas/segovia-v1.png",
+      "framingProfile": "segovia",
+      "sources": [
+        "https://www.turismodesegovia.com/es/segovia-patrimonio-de-la-humanidad-0",
+        "https://www.turismodesegovia.com/en/node/19253",
+        "https://www.turismodesegovia.com/es/acueducto/museos/centro-de-interpretacion-del-acueducto",
+        "https://www.turismodesegovia.com/es/acueducto/arquitectura-civil/obras-de-ingenieria/acueducto",
+        "https://www.turismodesegovia.com/en/aqueduct/museums/aqueduct-interpretation-centre"
+      ]
     },
     {
       "id": "montreal",
@@ -2592,7 +3007,7 @@
       },
       "continent": "america",
       "countryCode": "CA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Basílica de Notre-Dame",
@@ -2601,9 +3016,19 @@
         "Habitat 67",
         "Biosphère"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 103,
-      "batch": 26
+      "batch": 26,
+      "conceptImage": "normalizadas/montreal-v1.png",
+      "originalConceptImage": "normalizadas/montreal-v1.png",
+      "framingProfile": "montreal",
+      "sources": [
+        "https://www.mtl.org/en/what-to-do/culture-arts-heritage/notre-dame-basilica",
+        "https://www.basiliquenotredame.ca/en/events/sightseeing-visit",
+        "https://www.mtl.org/en/experience/stunning-historic-churches",
+        "https://visita.mtl.org/es/experience/iglesias-lugares-sagrados",
+        "https://www.mtl.org//en/what-to-do/culture-arts-heritage/notre-dame-basilica"
+      ]
     },
     {
       "id": "chongqing",
@@ -2612,7 +3037,7 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Hongya Cave",
@@ -2621,9 +3046,19 @@
         "Puente Qiansimen",
         "Monumento de la Liberación"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 104,
-      "batch": 26
+      "batch": 26,
+      "conceptImage": "normalizadas/chongqing-v1.png",
+      "originalConceptImage": "normalizadas/chongqing-v1.png",
+      "framingProfile": "chongqing",
+      "sources": [
+        "https://whlyw.cq.gov.cn/zjwl/yzq/jqjd_1/202203/t20220304_10463056.html",
+        "https://english.cq.gov.cn/specials/explore/PhotoPerfectSpots/202608/t20260810_15912600.html",
+        "https://whlyw.cq.gov.cn/zjwl/yzq/jqjd_1/",
+        "https://english.cq.gov.cn/specials/Eat/NightMarkets/202608/t20260813_15930087.html",
+        "https://dfz.cq.gov.cn/zqlswh/fjms_417821/202311/t20231102_12510878.html"
+      ]
     },
     {
       "id": "lagos",
@@ -2632,7 +3067,7 @@
       },
       "continent": "africa",
       "countryCode": "NG",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "National Theatre",
@@ -2640,9 +3075,19 @@
         "Cathedral Church of Christ",
         "Third Mainland Bridge"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 105,
-      "batch": 26
+      "batch": 26,
+      "conceptImage": "normalizadas/lagos-v1.png",
+      "originalConceptImage": "normalizadas/lagos-v1.png",
+      "framingProfile": "lagos",
+      "sources": [
+        "https://nationaltheatre.gov.ng/index",
+        "https://www.nationaltheatre.gov.ng/index.php",
+        "https://tournigeria.gov.ng/lagos-2/",
+        "https://www.nationaltheatre.gov.ng/about",
+        "https://www.nationaltheatre.gov.ng/contacts"
+      ]
     },
     {
       "id": "zaragoza",
@@ -2651,7 +3096,7 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Basílica del Pilar",
@@ -2660,9 +3105,19 @@
         "La Seo",
         "Torre del Agua"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 106,
-      "batch": 26
+      "batch": 26,
+      "conceptImage": "normalizadas/zaragoza-v1.png",
+      "originalConceptImage": "normalizadas/zaragoza-v1.png",
+      "framingProfile": "zaragoza",
+      "sources": [
+        "https://www.zaragoza.es/sede/portal/turismo/post/el-pilar",
+        "https://www.zaragoza.es/sede/portal/turismo/planifica-tu-viaje/la-esencia-de-la-ciudad-en-un-dia?locale=es",
+        "https://zaragoza.es/sede/portal/turismo/ver-y-hacer/top-monumentos",
+        "https://www.zaragoza.es/sede/portal/turismo/ver-hacer/servicio/monumento/32?locale=es",
+        "https://zaragoza.es/sede/portal/turismo/ver-y-hacer/las-dos-Catedrales"
+      ]
     },
     {
       "id": "quebec",
@@ -2671,7 +3126,7 @@
       },
       "continent": "america",
       "countryCode": "CA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Château Frontenac",
@@ -2679,9 +3134,19 @@
         "Ciudadela",
         "Parlamento de Quebec"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 107,
-      "batch": 27
+      "batch": 27,
+      "conceptImage": "normalizadas/quebec-v1.png",
+      "originalConceptImage": "normalizadas/quebec-v1.png",
+      "framingProfile": "quebec",
+      "sources": [
+        "https://visitquebec.com/",
+        "https://www.ville.quebec.qc.ca/en/citoyens/patrimoine/quartiers/vieux_quebec/interet/hotel_chateau_frontenac.aspx",
+        "https://visitquebec.com/blog/quebec-city-bucket-list/",
+        "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?i=48857&id=676",
+        "https://visitquebec.com/home/"
+      ]
     },
     {
       "id": "guilin",
@@ -2690,17 +3155,27 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Elephant Trunk Hill",
+        "Colina de la Trompa de Elefante",
         "Pagodas del Sol y la Luna",
-        "Río Li y montañas kársticas",
-        "Palacio de los Príncipes de Jingjiang"
+        "Río Li",
+        "Palacio Jingjiang"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 108,
-      "batch": 27
+      "batch": 27,
+      "conceptImage": "normalizadas/guilin-v1.png",
+      "originalConceptImage": "normalizadas/guilin-v1.png",
+      "framingProfile": "guilin",
+      "sources": [
+        "https://www.glljsh.com/en/",
+        "https://myguilin.com/attractions/elephant.html",
+        "https://www.glljsh.com/en/page/vrdh.html",
+        "https://www.glljsh.com/en/category/237.html",
+        "https://glljsh.com/en"
+      ]
     },
     {
       "id": "acra",
@@ -2709,7 +3184,7 @@
       },
       "continent": "africa",
       "countryCode": "GH",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Arco de la Independencia",
@@ -2717,9 +3192,19 @@
         "Faro de Jamestown",
         "Fuerte Ussher"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 109,
-      "batch": 27
+      "batch": 27,
+      "conceptImage": "normalizadas/acra-v1.png",
+      "originalConceptImage": "normalizadas/acra-v1.png",
+      "framingProfile": "acra",
+      "sources": [
+        "https://visitghana.com/independence-square/",
+        "https://knmp.gov.gh/new/visiting-hours-rates/",
+        "https://ghana.travel/wp-content/uploads/2025/07/FINAL-2024-tourism-report-final.pdf",
+        "https://ama.gov.gh/index.php",
+        "https://visitghana.com/kwame-nkrumah-memorial-park-2/"
+      ]
     },
     {
       "id": "san-sebastian",
@@ -2728,7 +3213,7 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Bahía y paseo de La Concha",
@@ -2737,9 +3222,19 @@
         "Catedral del Buen Pastor",
         "Hotel María Cristina"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 110,
-      "batch": 27
+      "batch": 27,
+      "conceptImage": "normalizadas/san-sebastian-v1.png",
+      "originalConceptImage": "normalizadas/san-sebastian-v1.png",
+      "framingProfile": "san-sebastian",
+      "sources": [
+        "https://sansebastianturismoa.eus/en/parks-and-gardens/miramar-palace/",
+        "https://sansebastianturismoa.eus/parques-y-jardines/palacio-de-miramar/",
+        "https://www.sansebastianturismoa.eus/es/hacer/ciudad-verde/parques-y-jardines",
+        "https://www.euskadi.eus/gobierno-vasco/-/es/patrimonio-cultural/paseo-de-la-concha/",
+        "https://turismo.euskadi.eus/es/patrimonio-cultural/paseo-de-la-concha/webtur00-content/es/"
+      ]
     },
     {
       "id": "vancouver",
@@ -2748,7 +3243,7 @@
       },
       "continent": "america",
       "countryCode": "CA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Canada Place",
@@ -2757,9 +3252,19 @@
         "Tótems de Stanley Park",
         "Lions Gate Bridge"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 111,
-      "batch": 28
+      "batch": 28,
+      "conceptImage": "normalizadas/vancouver-v1.png",
+      "originalConceptImage": "normalizadas/vancouver-v1.png",
+      "framingProfile": "vancouver",
+      "sources": [
+        "https://www.scienceworld.ca/your-visit/",
+        "https://www.gobc.ca/attractions/vancouver",
+        "https://www.vancouvertourism.org/science-world-vancouver/",
+        "https://vancouver.ca/parks-recreation-culture/attractions-and-leisure.aspx",
+        "https://www.destinationvancouver.com/things-to-do/listings/canada-place"
+      ]
     },
     {
       "id": "canton",
@@ -2768,7 +3273,7 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Canton Tower",
@@ -2776,9 +3281,19 @@
         "Academia del Clan Chen",
         "Catedral del Sagrado Corazón"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 112,
-      "batch": 28
+      "batch": 28,
+      "conceptImage": "normalizadas/canton-v1.png",
+      "originalConceptImage": "normalizadas/canton-v1.png",
+      "framingProfile": "canton",
+      "sources": [
+        "https://www.eguangzhou.gov.cn/globalgzpastandpresence/content/post_31123.html",
+        "https://www.haizhu.gov.cn/hzdt/ztlm/tzhz/rjhj/lyjd/csmp/content/post_9190964.html",
+        "https://cantontravelguide.com/en/places/guangzhou/attractions/canton-tower",
+        "https://www.cantontower.com/sightseeing/visit/",
+        "https://wglj.gz.gov.cn/ztmb/gzhyn/ajjq/4a/content/post_8928935.html"
+      ]
     },
     {
       "id": "abiyan",
@@ -2787,7 +3302,7 @@
       },
       "continent": "africa",
       "countryCode": "CI",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral de San Pablo de Abiyán",
@@ -2795,10 +3310,20 @@
         "Estadio Félix Houphouët-Boigny",
         "Puente Henri Konan Bédié"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 113,
       "batch": 28,
-      "generationInstructions": "Do not include the Basilica of Our Lady of Peace at Yamoussoukro; this scene is Abidjan, with Saint Paul Cathedral and its distinctive sloping roof."
+      "generationInstructions": "Do not include the Basilica of Our Lady of Peace at Yamoussoukro; this scene is Abidjan, with Saint Paul Cathedral and its distinctive sloping roof.",
+      "conceptImage": "normalizadas/abiyan-v1.png",
+      "originalConceptImage": "normalizadas/abiyan-v1.png",
+      "framingProfile": "abiyan",
+      "sources": [
+        "https://www.tourisme.ci/destinations-touristiques/la-cathedrale-saint-paul-au-plateau/",
+        "https://sofitel.accor.com/es/hotels/8844.html",
+        "https://tourismecotedivoire.ci/wp-content/uploads/2023/12/Travel-Guide.pdf",
+        "https://www.visagov.com/es/blog/costa-de-marfil/que-ver-en-costa-marfil",
+        "https://all.accor.com/hotel/0732/index.es.shtml"
+      ]
     },
     {
       "id": "salamanca",
@@ -2807,7 +3332,7 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Plaza Mayor",
@@ -2815,9 +3340,19 @@
         "Fachada de la Universidad",
         "Casa de las Conchas"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 114,
-      "batch": 28
+      "batch": 28,
+      "conceptImage": "normalizadas/salamanca-v1.png",
+      "originalConceptImage": "normalizadas/salamanca-v1.png",
+      "framingProfile": "salamanca",
+      "sources": [
+        "https://salamanca.es/que-ver/monumentos/plaza-mayor",
+        "https://salamanca.es/en/see/monuments/plaza-mayor",
+        "https://salamanca.es/que-ver/monumentos",
+        "https://salamanca.es/que-ver/monumentos/catedral-de-salamanca",
+        "https://www.spain.info/es/lugares-interes/plaza-mayor-salamanca/"
+      ]
     },
     {
       "id": "ottawa",
@@ -2826,7 +3361,7 @@
       },
       "continent": "america",
       "countryCode": "CA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Parlamento y Peace Tower",
@@ -2834,9 +3369,19 @@
         "Château Laurier",
         "Canal Rideau"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 115,
-      "batch": 29
+      "batch": 29,
+      "conceptImage": "normalizadas/ottawa-v1.png",
+      "originalConceptImage": "normalizadas/ottawa-v1.png",
+      "framingProfile": "ottawa",
+      "sources": [
+        "https://ottawatourism.ca/en/ottawa-insider/top-10-things-to-do-in-ottawa",
+        "https://visit-ottawa.ca/parliament/peace-tower.html",
+        "https://ottawatourism.ca/en/see-and-do",
+        "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=471",
+        "https://www.canada.ca/en/public-services-procurement/services/infrastructure-buildings/parliamentary-precinct/discover/peace-tower.html"
+      ]
     },
     {
       "id": "hangzhou",
@@ -2845,7 +3390,7 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Lago del Oeste",
@@ -2854,9 +3399,19 @@
         "Templo Yue Fei",
         "Pabellón Chenghuang"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 116,
-      "batch": 29
+      "batch": 29,
+      "conceptImage": "normalizadas/hangzhou-v1.png",
+      "originalConceptImage": "normalizadas/hangzhou-v1.png",
+      "framingProfile": "hangzhou",
+      "sources": [
+        "https://ehangzhou.gov.cn/2026-09/28/c_299204.htm",
+        "https://visithangzhou.com/what-to-see/leifeng-pagoda/",
+        "https://ehangzhou.gov.cn/hz_attractions.html",
+        "https://wgly.hangzhou.gov.cn/fr/Visitesetintineraires/PatrimoinemondialLacdeOuest/index.html",
+        "https://visithangzhou.com/what-to-see/"
+      ]
     },
     {
       "id": "windhoek",
@@ -2865,7 +3420,7 @@
       },
       "continent": "africa",
       "countryCode": "NA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Christuskirche",
@@ -2873,9 +3428,19 @@
         "Alte Feste",
         "Independence Memorial Museum"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 117,
-      "batch": 29
+      "batch": 29,
+      "conceptImage": "normalizadas/windhoek-v1.png",
+      "originalConceptImage": "normalizadas/windhoek-v1.png",
+      "framingProfile": "windhoek",
+      "sources": [
+        "https://www.windhoekcc.org.na/christus-kirche/",
+        "https://archive.ph/jy1O3",
+        "https://stwetuproduction.blob.core.windows.net/azure-blob-resources-wetu-production/Resources/Operators/1909/windhoek_experiences.pdf",
+        "https://www.kln.gov.my/documents/34020/0/POST%2BREPORT%2BNAMIBIA%2B2024/efdb8c77-fbd5-4274-ae0c-d7cc8d178874?version=1.0",
+        "https://www.windhoekcc.org.na/wp-content/uploads/2026/02/Baseline-Study-Windhoek-Tourism-Strategy-Bremen-report.pdf"
+      ]
     },
     {
       "id": "manchester",
@@ -2884,7 +3449,7 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Ayuntamiento de Manchester",
@@ -2893,9 +3458,19 @@
         "Catedral",
         "Etihad Stadium"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 118,
-      "batch": 29
+      "batch": 29,
+      "conceptImage": "normalizadas/manchester-v1.png",
+      "originalConceptImage": "normalizadas/manchester-v1.png",
+      "framingProfile": "manchester",
+      "sources": [
+        "https://www.visitmanchester.com/things-to-see-and-do/attractions/",
+        "https://www.manchester.gov.uk/the-council-and-democracy/town-hall-complex/our-town-hall/heritage-and-art/the-clock-tower",
+        "https://www.visitmanchester.com/things-to-see-and-do/attractions/heritage-and-history/",
+        "https://www.visitmanchester.com/things-to-see-and-do/",
+        "https://www.visitmanchester.com/"
+      ]
     },
     {
       "id": "guadalajara",
@@ -2904,7 +3479,7 @@
       },
       "continent": "america",
       "countryCode": "MX",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral",
@@ -2912,9 +3487,19 @@
         "Templo Expiatorio",
         "Hospicio Cabañas"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 119,
-      "batch": 30
+      "batch": 30,
+      "conceptImage": "normalizadas/guadalajara-v1.png",
+      "originalConceptImage": "normalizadas/guadalajara-v1.png",
+      "framingProfile": "guadalajara",
+      "sources": [
+        "https://visitmexico.com/en/destino/2572/el-teatro-degollado-en-guadalajara",
+        "https://tequiero.guadalajara.gob.mx/planea-tu-viaje/explora/centro-historico",
+        "https://tequiero.guadalajara.gob.mx/lugares/teatro-degollado",
+        "https://visitmexico.com/es/recomendacion/destino/111/2572/el-teatro-degollado-en-guadalajara",
+        "https://turismo.guadalajara.es/es/organiza-tu-viaje/monumentos/concatedral-de-santa-maria/"
+      ]
     },
     {
       "id": "suzhou",
@@ -2923,7 +3508,7 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Jardín del Administrador Humilde",
@@ -2931,9 +3516,19 @@
         "Puerta Panmen",
         "Museo de Suzhou"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 120,
-      "batch": 30
+      "batch": 30,
+      "conceptImage": "normalizadas/suzhou-v1.png",
+      "originalConceptImage": "normalizadas/suzhou-v1.png",
+      "framingProfile": "suzhou",
+      "sources": [
+        "https://visitsz.wglj.suzhou.com.cn/en/world-heritage-detail.aspx?id=1",
+        "https://english.suzhou.gov.cn/szsenglish/sjwhyclm/201611/0e774293426145f6b4b00d3a5717c6df.shtml",
+        "https://english.suzhou.gov.cn/szsenglish/sz5ajjq/201611/43680636abee46f3a7220ce37ec064cb.shtml",
+        "https://www.turismochina.es/es/suzhou/jardin/jardin-del-administrador-humilde-en-suzhou",
+        "https://www.turismochina.es/es/suzhou/torre/pagoda-de-la-colina-del-tigre-en-suzhou"
+      ]
     },
     {
       "id": "port-louis",
@@ -2942,7 +3537,7 @@
       },
       "continent": "africa",
       "countryCode": "MU",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Aapravasi Ghat",
@@ -2950,9 +3545,19 @@
         "Champ de Mars",
         "Caudan Waterfront"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 121,
-      "batch": 30
+      "batch": 30,
+      "conceptImage": "normalizadas/port-louis-v1.png",
+      "originalConceptImage": "normalizadas/port-louis-v1.png",
+      "framingProfile": "port-louis",
+      "sources": [
+        "https://aapravasi.govmu.org/aapravasi/?page_id=816",
+        "https://tourism.govmu.org/Pages/Services/Tourist-Sites.aspx",
+        "https://www.aapravasighat.org/English/Our%20Heritage/Pages/Tangible-Heritage.aspx",
+        "https://aapravasi.govmu.org/aapravasi/?page_id=821",
+        "https://aapravasi.govmu.org/aapravasi/?page_id=3497"
+      ]
     },
     {
       "id": "liverpool",
@@ -2961,7 +3566,7 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Royal Liver Building",
@@ -2969,9 +3574,19 @@
         "Catedral Metropolitana",
         "Royal Albert Dock"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 122,
-      "batch": 30
+      "batch": 30,
+      "conceptImage": "normalizadas/liverpool-v1.png",
+      "originalConceptImage": "normalizadas/liverpool-v1.png",
+      "framingProfile": "liverpool",
+      "sources": [
+        "https://www.visitliverpool.com/",
+        "https://www.visitliverpool.com/things-to-do-in-liverpool/attractions-in-liverpool/top-attractions/",
+        "https://www.visitliverpool.com/blog/post/the-official-visitliverpool-bucket-list-101-things-to-do-in-liverpool/",
+        "https://www.visitliverpool.com/things-to-do-in-liverpool/",
+        "https://www.liverpooltourism.org/three-graces/"
+      ]
     },
     {
       "id": "puebla",
