@@ -274,7 +274,9 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
     </View>;
   }
   if (phase === 'done') return <RoundResult embedded playAgainPending={preparing} correct={correctCount} total={round.length} scopeLabel={`${t('challenges.cities')} · ${scopeLabel(scope)}`}
-    newRecord={newRecord} confetti={correctCount === round.length} onChangeScope={exit} onPlayAgain={() => start(scope)} />;
+    playAgainError={imageError ? t('cities.imageError') : undefined}
+    newRecord={newRecord} confetti={correctCount === round.length} onChangeScope={exit}
+    onPlayAgain={() => imageError ? retryImage.current() : void start(scope)} />;
   const question = round[index];
   if (!question || !image) return null;
   const stateFor = (id: string): AnswerState => selected === null ? null : id === question.answer.id ? 'correct' : id === selected ? 'wrong' : null;

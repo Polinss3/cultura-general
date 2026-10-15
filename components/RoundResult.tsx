@@ -10,6 +10,7 @@ import { Font, Space, cardShadow, highlightGradient } from '@/constants/theme';
 interface Props {
   embedded?: boolean;
   playAgainPending?: boolean;
+  playAgainError?: string;
   correct: number;
   total: number;
   /** Nombre del ámbito jugado, bajo el marcador. */
@@ -22,7 +23,7 @@ interface Props {
 
 /** Pantalla de resultado de una ronda. Compartida por Banderas y Años. */
 export function RoundResult({
-  playAgainPending = false, embedded = false, correct, total, scopeLabel, newRecord, confetti, onChangeScope, onPlayAgain,
+  playAgainPending = false, playAgainError, embedded = false, correct, total, scopeLabel, newRecord, confetti, onChangeScope, onPlayAgain,
 }: Props) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
@@ -60,6 +61,9 @@ export function RoundResult({
           </LinearGradient>
         </Pop>
 
+        {playAgainError && <Text accessibilityRole="alert" style={{ color: C.textBody, fontFamily: Font.regular, textAlign: 'center', marginTop: 16 }}>
+          {playAgainError}
+        </Text>}
         <View style={{ flexDirection: 'row', gap: 10, width: '100%', marginTop: 24 }}>
           <Pressable onPress={onChangeScope} style={{ flex: 1 }}>
             <View style={{
@@ -75,7 +79,7 @@ export function RoundResult({
             <View style={{ backgroundColor: C.brand, borderRadius: 18, padding: 15, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 }}>
               {playAgainPending && <ActivityIndicator size="small" color={C.onBrand} />}
               <Text style={{ color: C.onBrand, fontSize: 15, fontFamily: Font.extra }}>
-                {t('round.playAgain')}
+                {t(playAgainError ? 'common.retry' : 'round.playAgain')}
               </Text>
             </View>
           </Pressable>
