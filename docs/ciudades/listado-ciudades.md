@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-235 destinos: 234 ciudades y 1 lugar histórico. 38 dioramas con imagen y 197 pendientes.
+235 destinos: 234 ciudades y 1 lugar histórico. 42 dioramas con imagen y 193 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -10,9 +10,9 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 
 | Tanda | Destinos pendientes |
 | --- | --- |
-| 10 | Río de Janeiro, Seúl, Túnez, Brisbane |
 | 11 | Budapest, Toronto, Bangkok, Dakar |
 | 12 | Perth, Florencia, La Habana, Dubái |
+| 13 | Casablanca, Adelaida, Zúrich, Boston |
 
 Machu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.
 
@@ -127,7 +127,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | San Francisco | Con imagen · por revisar | 6 | Golden Gate; Transamerica Pyramid; Painted Ladies; Coit Tower; Tranvía y calles en pendiente |
 | Los Ángeles | Con imagen · por revisar | 7 | Observatorio Griffith; Walt Disney Concert Hall; Ayuntamiento; Hollywood Bowl |
 | Chicago | Con imagen · por revisar | 8 | Willis Tower; Cloud Gate; John Hancock Center; Wrigley Building; Río Chicago y puentes |
-| Río de Janeiro | Pendiente de imagen | 10 | Cristo Redentor; Pan de Azúcar; Copacabana y su paseo; Maracaná; Arcos de Lapa |
+| Río de Janeiro | Con imagen · por revisar | 10 | Cristo Redentor; Pan de Azúcar; Copacabana y su paseo; Maracaná; Arcos de Lapa |
 | Toronto | Pendiente de imagen | 11 | CN Tower; Rogers Centre; Nathan Phillips Square y Ayuntamiento; Royal Ontario Museum; Casa Loma |
 | La Habana | Pendiente de imagen | 12 | Capitolio; Malecón; Castillo del Morro; Catedral; Gran Teatro |
 | Boston | Pendiente de imagen | 13 | Massachusetts State House y cúpula dorada; Custom House Tower; Trinity Church; Old State House; Puente Zakim |
@@ -182,7 +182,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Singapur | Con imagen · por revisar | 6 | Marina Bay Sands; Supertrees de Gardens by the Bay; Merlion; ArtScience Museum; Esplanade |
 | Pekín | Con imagen · por revisar | 7 | Ciudad Prohibida; Templo del Cielo; Puerta de Tiananmén; Estadio Nido de Pájaro; Palacio de Verano |
 | Shanghái | Con imagen · por revisar | 9 | Torre Perla Oriental; Shanghai Tower; Shanghai World Financial Center; Bund; Jardín Yuyuan |
-| Seúl | Pendiente de imagen | 10 | Gyeongbokgung; N Seoul Tower; Lotte World Tower; Dongdaemun Design Plaza; Bukchon Hanok Village |
+| Seúl | Con imagen · por revisar | 10 | Gyeongbokgung; N Seoul Tower; Lotte World Tower; Dongdaemun Design Plaza; Bukchon Hanok Village |
 | Bangkok | Pendiente de imagen | 11 | Gran Palacio; Wat Arun; Wat Phra Kaew; Giant Swing; Río Chao Phraya |
 | Dubái | Pendiente de imagen | 12 | Burj Khalifa; Burj Al Arab; Dubai Frame; Museum of the Future; Palm Jumeirah |
 | Delhi | Pendiente de imagen | 14 | Fuerte Rojo; Qutub Minar; Templo del Loto; India Gate; Jama Masjid |
@@ -239,7 +239,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Marrakech | Con imagen · por revisar | 6 | Mezquita Kutubía; Jemaa el-Fna; Palacio de la Bahía; Murallas y Bab Agnaou; Jardín Majorelle |
 | Ciudad del Cabo | Con imagen · por revisar | 8 | Table Mountain; V&A Waterfront; Bo-Kaap; Cape Town Stadium; Castillo de Buena Esperanza |
 | Nairobi | Con imagen · por revisar | 9 | Kenyatta International Convention Centre; Times Tower; Uhuru Park; Jamia Mosque; Nairobi Railway Museum |
-| Túnez | Pendiente de imagen | 10 | Mezquita Zitouna; Medina; Bab el Bhar; Catedral de San Vicente de Paúl; Avenida Habib Bourguiba |
+| Túnez | Con imagen · por revisar | 10 | Mezquita Zitouna; Medina; Bab el Bhar; Catedral de San Vicente de Paúl; Avenida Habib Bourguiba |
 | Dakar | Pendiente de imagen | 11 | Monumento al Renacimiento Africano; Gran Mezquita; Faro de Les Mamelles; Museo de las Civilizaciones Negras; Isla de Gorée |
 | Casablanca | Pendiente de imagen | 13 | Mezquita Hassan II; Barrio Habous; Plaza Mohammed V; Catedral del Sagrado Corazón |
 | Rabat | Pendiente de imagen | 14 | Torre Hassan; Mausoleo de Mohammed V; Kasbah de los Udayas; Bab Rouah |
@@ -267,7 +267,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Melbourne | Con imagen · por revisar | 7 | Flinders Street Station; Federation Square; Royal Exhibition Building; Eureka Tower; Tranvía |
 | Auckland | Con imagen · por revisar | 8 | Sky Tower; Auckland War Memorial Museum; Viaduct Harbour marina; One Tree Hill with its obelisk |
 | Wellington | Con imagen · por revisar | 9 | Beehive y Parlamento; Wellington Cable Car; Te Papa; Old St Paul's; Waterfront |
-| Brisbane | Pendiente de imagen | 10 | Story Bridge; Ayuntamiento de Brisbane y torre del reloj; Wheel of Brisbane; Parlamento de Queensland |
+| Brisbane | Con imagen · por revisar | 10 | Story Bridge; Ayuntamiento de Brisbane y torre del reloj; Wheel of Brisbane; Parlamento de Queensland |
 | Perth | Pendiente de imagen | 12 | Bell Tower; Puente de Elizabeth Quay; Optus Stadium; Ayuntamiento de Perth |
 | Adelaida | Pendiente de imagen | 13 | Catedral de San Pedro; Adelaide Oval; Ayuntamiento de Adelaida; Museo de Australia Meridional |
 | Canberra | Pendiente de imagen | 14 | Parliament House sin banderas; Australian War Memorial; National Museum of Australia; Telstra Tower; Lago Burley Griffin |
@@ -310,6 +310,10 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 - Nairobi: [Referencia 1](https://kicc.co.ke/), [Referencia 2](https://kicc.ecitizen.go.ke/), [Referencia 3](https://tourkenya.go.ke/tourism/circuits/nairobi-city-circuit/), [Referencia 4](https://billing.ecitizen.go.ke/client/kicc), [Referencia 5](https://www.iekenya.org/sites/default/files/iek-documents/2025-02/Engineering%20in%20Kenya%20Magazine%20Issue%201_0.pdf).
 - Wellington: [Referencia 1](https://www.wellingtonnz.com/visit/see-and-do/wellington-cable-car), [Referencia 2](https://www.wellingtonnz.com/visit/trails/city-to-sea-walkway), [Referencia 3](https://www3.parliament.nz/en/visit-and-learn/history-and-buildings/buildings-and-grounds/), [Referencia 4](https://www3.parliament.nz/en/visit-and-learn/history-and-buildings/buildings-and-grounds/the-beehive-executive-wing/), [Referencia 5](https://www.wellingtoncablecar.co.nz/).
 - Estambul: [Referencia 1](https://visit.istanbul/en/the-blue-mosque), [Referencia 2](https://visitistanbulofficial.com/es/things-to-do/attractions/), [Referencia 3](https://istanbul.com/es/blue-mosque), [Referencia 4](https://istanbul.com/es/blog/mosques/blue-mosque-or-hagia-sophia), [Referencia 5](https://www.visit.istanbul/).
+- Río de Janeiro: [Referencia 1](https://www.turismo.rj.gov.br/cidades/rio-de-janeiro/), [Referencia 2](https://www.turismo.rj.gov.br/cidades/petropolis/), [Referencia 3](https://www.gov.br/turismo/pt-br/assuntos/noticias/paisagens-cariocas-entre-a-montanha-e-o-mar-a-beleza-natural-e-o-desenho-urbano-do-rio-de-janeiro-reconhecidos-pela-unesco/), [Referencia 4](https://riotur.rio/en/que_fazer/christtheredeemer/), [Referencia 5](https://www.turismo.rj.gov.br/motivos/95/).
+- Seúl: [Referencia 1](https://english.visitseoul.net/attractions/Gyeongbokgung%20Palace/ENP000072), [Referencia 2](https://english.visitseoul.net/attractions/gyeongbokgung%20palace/ENP000072), [Referencia 3](https://english.visitseoul.net/attractions/Changgyeonggung-Palace/ENP000072), [Referencia 4](https://english.seoul.go.kr/symbol-seoul-n-seoul-tower/), [Referencia 5](https://english.seoul.go.kr/wp-content/uploads/2026/03/guidebook_en.pdf).
+- Túnez: [Referencia 1](https://www.commune-tunis.gov.tn/VisVir.aspx), [Referencia 2](https://www.commune-tunis.gov.tn/visvir_En.aspx), [Referencia 3](https://www.culture.gov.tn/?p=159787), [Referencia 4](https://www.commune-tunis.gov.tn/medina.aspx), [Referencia 5](https://www.tunisiatourism.org/tunis-medina/).
+- Brisbane: [Referencia 1](https://www.brisbane.qld.gov.au/transport-and-parking/transport-projects/story-bridge-renewal), [Referencia 2](https://www.brisbane.qld.gov.au/content/dam/brisbanecitycouncil/corpwebsite/projects/documents/story-bridge-restoration-preserving-a-national-icon-committee-report.pdf.coredownload.pdf), [Referencia 3](https://visit.brisbane.qld.au/en/things-to-do/tourist-attractions), [Referencia 4](https://heritage.brisbane.qld.gov.au/heritage-places/949), [Referencia 5](https://heritage.brisbane.qld.gov.au/heritage-places/2054).
 - Guiza: [Referencia 1](https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/).
 
 Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; el modo jugable todavía está pendiente de integración.

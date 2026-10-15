@@ -1,0 +1,18 @@
+{
+  "id": "seul",
+  "batch": 10,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/seul-v1.png",
+  "generatedFile": "exec-bb0ba645-d8c2-4c84-b19d-078a534bd0cf.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nCity/site: Seoul (KR). Main landmarks: Gyeongbokgung; N Seoul Tower; Lotte World Tower; Dongdaemun Design Plaza; Bukchon Hanok Village.   Represent these as dominant recognizable features. Every building is complete and wholly within the common floor. Keep only a few low local filler blocks and greenery. No detached islands, land beyond the original outline or additional platform.",
+  "sources": [
+    "https://english.visitseoul.net/attractions/Gyeongbokgung%20Palace/ENP000072",
+    "https://english.visitseoul.net/attractions/gyeongbokgung%20palace/ENP000072",
+    "https://english.visitseoul.net/attractions/Changgyeonggung-Palace/ENP000072",
+    "https://english.seoul.go.kr/symbol-seoul-n-seoul-tower/",
+    "https://english.seoul.go.kr/wp-content/uploads/2026/03/guidebook_en.pdf"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

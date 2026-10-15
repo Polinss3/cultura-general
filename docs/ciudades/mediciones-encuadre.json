@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 16,
   "images": [
     {
       "id": "madrid",
@@ -488,6 +488,58 @@
       "width": 1254,
       "height": 1254,
       "bytes": 2209178,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "rio-de-janeiro",
+      "file": "normalizadas/rio-de-janeiro-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2288420,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "seul",
+      "file": "normalizadas/seul-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2214044,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "brisbane",
+      "file": "normalizadas/brisbane-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2262638,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "tunez",
+      "file": "normalizadas/tunez-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2115657,
       "baseLeft": 33,
       "baseRight": 1225,
       "baseBottom": 1042,

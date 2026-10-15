@@ -1125,7 +1125,7 @@
       "continent": "america",
       "countryCode": "BR",
       "batch": 10,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Cristo Redentor",
         "Pan de Azúcar",
@@ -1135,7 +1135,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 39
+      "productionOrder": 39,
+      "conceptImage": "normalizadas/rio-de-janeiro-v1.png",
+      "originalConceptImage": "normalizadas/rio-de-janeiro-v1.png",
+      "framingProfile": "rio-de-janeiro",
+      "sources": [
+        "https://www.turismo.rj.gov.br/cidades/rio-de-janeiro/",
+        "https://www.turismo.rj.gov.br/cidades/petropolis/",
+        "https://www.gov.br/turismo/pt-br/assuntos/noticias/paisagens-cariocas-entre-a-montanha-e-o-mar-a-beleza-natural-e-o-desenho-urbano-do-rio-de-janeiro-reconhecidos-pela-unesco/",
+        "https://riotur.rio/en/que_fazer/christtheredeemer/",
+        "https://www.turismo.rj.gov.br/motivos/95/"
+      ]
     },
     {
       "id": "seul",
@@ -1146,7 +1156,7 @@
       "continent": "asia",
       "countryCode": "KR",
       "batch": 10,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Gyeongbokgung",
         "N Seoul Tower",
@@ -1156,7 +1166,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 40
+      "productionOrder": 40,
+      "conceptImage": "normalizadas/seul-v1.png",
+      "originalConceptImage": "normalizadas/seul-v1.png",
+      "framingProfile": "seul",
+      "sources": [
+        "https://english.visitseoul.net/attractions/Gyeongbokgung%20Palace/ENP000072",
+        "https://english.visitseoul.net/attractions/gyeongbokgung%20palace/ENP000072",
+        "https://english.visitseoul.net/attractions/Changgyeonggung-Palace/ENP000072",
+        "https://english.seoul.go.kr/symbol-seoul-n-seoul-tower/",
+        "https://english.seoul.go.kr/wp-content/uploads/2026/03/guidebook_en.pdf"
+      ]
     },
     {
       "id": "tunez",
@@ -1167,7 +1187,7 @@
       "continent": "africa",
       "countryCode": "TN",
       "batch": 10,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Mezquita Zitouna",
         "Medina",
@@ -1177,7 +1197,17 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "productionOrder": 41
+      "productionOrder": 41,
+      "conceptImage": "normalizadas/tunez-v1.png",
+      "originalConceptImage": "normalizadas/tunez-v1.png",
+      "framingProfile": "tunez",
+      "sources": [
+        "https://www.commune-tunis.gov.tn/VisVir.aspx",
+        "https://www.commune-tunis.gov.tn/visvir_En.aspx",
+        "https://www.culture.gov.tn/?p=159787",
+        "https://www.commune-tunis.gov.tn/medina.aspx",
+        "https://www.tunisiatourism.org/tunis-medina/"
+      ]
     },
     {
       "id": "brisbane",
@@ -1186,7 +1216,7 @@
       },
       "continent": "oceania",
       "countryCode": "AU",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Story Bridge",
@@ -1194,9 +1224,19 @@
         "Wheel of Brisbane",
         "Parlamento de Queensland"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 42,
-      "batch": 10
+      "batch": 10,
+      "conceptImage": "normalizadas/brisbane-v1.png",
+      "originalConceptImage": "normalizadas/brisbane-v1.png",
+      "framingProfile": "brisbane",
+      "sources": [
+        "https://www.brisbane.qld.gov.au/transport-and-parking/transport-projects/story-bridge-renewal",
+        "https://www.brisbane.qld.gov.au/content/dam/brisbanecitycouncil/corpwebsite/projects/documents/story-bridge-restoration-preserving-a-national-icon-committee-report.pdf.coredownload.pdf",
+        "https://visit.brisbane.qld.au/en/things-to-do/tourist-attractions",
+        "https://heritage.brisbane.qld.gov.au/heritage-places/949",
+        "https://heritage.brisbane.qld.gov.au/heritage-places/2054"
+      ]
     },
     {
       "id": "budapest",
