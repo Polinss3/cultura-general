@@ -2,7 +2,7 @@
   "expo": {
     "name": "CG Trivia",
     "slug": "cultura-general",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "culturalgeneral",
@@ -16,7 +16,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "113",
+      "buildNumber": "115",
       "usesAppleSignIn": true,
       "privacyManifests": {
         "NSPrivacyTracking": false,
