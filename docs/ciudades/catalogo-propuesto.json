@@ -395,18 +395,25 @@
       "continent": "asia",
       "countryCode": "CN",
       "batch": 4,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Bank of China Tower",
         "International Commerce Centre",
         "Two International Finance Centre",
-        "Victoria Harbour",
-        "Star Ferry"
+        "Centro de Convenciones y Exposiciones",
+        "Victoria Harbour y Star Ferry"
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 15,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "conceptImage": "normalizadas/hong-kong-v1.png",
+      "originalConceptImage": "normalizadas/hong-kong-v1.png",
+      "framingProfile": "hong-kong",
+      "sources": [
+        "https://www.discoverhongkong.com/eng/attractions/iconic-architectural-landmarks-in-hong-kong.html",
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-victoria-harbour.html"
+      ]
     },
     {
       "id": "sidney",
@@ -417,7 +424,7 @@
       "continent": "oceania",
       "countryCode": "AU",
       "batch": 4,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Ópera de Sídney",
         "Harbour Bridge",
@@ -428,7 +435,13 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 16,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "conceptImage": "normalizadas/sidney-v1.png",
+      "originalConceptImage": "normalizadas/sidney-v1.png",
+      "framingProfile": "sidney",
+      "sources": [
+        "https://www.sydney.com/articles/top-attractions-in-sydney"
+      ]
     },
     {
       "id": "washington",
@@ -439,7 +452,7 @@
       "continent": "america",
       "countryCode": "US",
       "batch": 4,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Capitolio",
         "Casa Blanca",
@@ -450,7 +463,14 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 17,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "conceptImage": "normalizadas/washington-v1.png",
+      "originalConceptImage": "normalizadas/washington-v1.png",
+      "framingProfile": "washington",
+      "sources": [
+        "https://washington.org/dc-neighborhoods/national-mall",
+        "https://washington.org/DC-guide-to/lincoln-memorial"
+      ]
     },
     {
       "id": "ciudad-de-mexico",
@@ -461,7 +481,7 @@
       "continent": "america",
       "countryCode": "MX",
       "batch": 4,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
         "Ángel de la Independencia",
         "Palacio de Bellas Artes",
@@ -472,7 +492,15 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 18,
-      "requestedPriority": true
+      "requestedPriority": true,
+      "conceptImage": "normalizadas/ciudad-de-mexico-v1.png",
+      "originalConceptImage": "normalizadas/ciudad-de-mexico-v1.png",
+      "framingProfile": "ciudad-de-mexico",
+      "sources": [
+        "https://mexicocity.cdmx.gob.mx/category/imperdibles/centro-historico-imperdibles/",
+        "https://mexicocity.cdmx.gob.mx/category/imperdibles/chapultepec-imperdibles/",
+        "https://mexicocity.cdmx.gob.mx/venues/bellas-artes/"
+      ]
     },
     {
       "id": "el-cairo",

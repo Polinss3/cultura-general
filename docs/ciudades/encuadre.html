@@ -244,6 +244,62 @@
         "width": 0.8829505448449286,
         "height": 0.8829505448449286
       }
+    },
+    "hong-kong": {
+      "file": "normalizadas/hong-kong-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "sidney": {
+      "file": "normalizadas/sidney-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "washington": {
+      "file": "normalizadas/washington-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "ciudad-de-mexico": {
+      "file": "normalizadas/ciudad-de-mexico-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
     }
   }
 };
@@ -261,7 +317,11 @@
   "dublin": "Dublín",
   "edimburgo": "Edimburgo",
   "moscu": "Moscú",
-  "san-petersburgo": "San Petersburgo"
+  "san-petersburgo": "San Petersburgo",
+  "hong-kong": "Hong Kong",
+  "sidney": "Sídney",
+  "washington": "Washington D. C.",
+  "ciudad-de-mexico": "Ciudad de México"
 };
   const originals = {
   "madrid": "piloto/madrid-v1.png",
@@ -277,7 +337,11 @@
   "dublin": "normalizadas/dublin-v1.png",
   "edimburgo": "normalizadas/edimburgo-v1.png",
   "moscu": "normalizadas/moscu-v1.png",
-  "san-petersburgo": "normalizadas/san-petersburgo-v1.png"
+  "san-petersburgo": "normalizadas/san-petersburgo-v1.png",
+  "hong-kong": "normalizadas/hong-kong-v1.png",
+  "sidney": "normalizadas/sidney-v1.png",
+  "washington": "normalizadas/washington-v1.png",
+  "ciudad-de-mexico": "normalizadas/ciudad-de-mexico-v1.png"
 };
   let selected=new URLSearchParams(location.search).get('ciudad'), mode='aligned', guides=true;
   if(!labels[selected]) selected=Object.keys(labels)[0];

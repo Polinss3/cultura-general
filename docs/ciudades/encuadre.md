@@ -2,7 +2,7 @@
 
 La preferencia del usuario es conservar bases de contorno irregular. No hay que convertirlas en cuadrados perfectos. Se registra su presentación para que el tamaño y la posición no cambien al pasar de una pregunta a otra.
 
-El visor contiene catorce fuentes de 1254 × 1254 px: seis del piloto y dos ampliaciones de cuatro ciudades. Madrid v3 conserva los edificios aprobados mediante composición sobre la base común. Las líneas inferiores actuales están en y=1041, salvo Venecia, en y=1042; el registro compensa esa diferencia. La presentación utiliza una tarjeta cuadrada de tamaño fijo y:
+El visor contiene las fuentes vigentes de 1254 × 1254 px registradas en la calibración. El recuento actual y la cola de producción aparecen en el catálogo. Madrid v3 conserva los edificios aprobados mediante composición sobre la base común. Las líneas inferiores actuales están en y=1041, salvo Venecia, en y=1042; el registro compensa esa diferencia. La presentación utiliza una tarjeta cuadrada de tamaño fijo y:
 
 - Centro horizontal de la base: 50 % del ancho de la tarjeta.
 - Anchura visible del diorama: 84 %; márgenes laterales: 8 %.

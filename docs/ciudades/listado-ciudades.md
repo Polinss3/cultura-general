@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-235 destinos: 234 ciudades y 1 lugar histórico. 14 dioramas con imagen y 221 pendientes.
+235 destinos: 234 ciudades y 1 lugar histórico. 18 dioramas con imagen y 217 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -10,9 +10,9 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 
 | Tanda | Destinos pendientes |
 | --- | --- |
-| 4 | Hong Kong, Sídney, Washington D. C., Ciudad de México |
 | 5 | El Cairo, Buenos Aires, Machu Picchu, Lisboa |
 | 6 | Viena, San Francisco, Singapur, Marrakech |
+| 7 | Melbourne, Praga, Los Ángeles, Pekín |
 
 Machu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.
 
@@ -120,8 +120,8 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
 | Nueva York | Con imagen · por revisar | 1 | Estatua de la Libertad; Central Park; Empire State Building; Chrysler Building; Puente de Brooklyn; Grand Central |
-| Washington D. C. | Pendiente de imagen | 4 | Capitolio; Casa Blanca; Monumento a Washington; Lincoln Memorial; National Mall |
-| Ciudad de México | Pendiente de imagen | 4 | Ángel de la Independencia; Palacio de Bellas Artes; Catedral Metropolitana; Zócalo; Monumento a la Revolución |
+| Washington D. C. | Con imagen · por revisar | 4 | Capitolio; Casa Blanca; Monumento a Washington; Lincoln Memorial; National Mall |
+| Ciudad de México | Con imagen · por revisar | 4 | Ángel de la Independencia; Palacio de Bellas Artes; Catedral Metropolitana; Zócalo; Monumento a la Revolución |
 | Buenos Aires | Pendiente de imagen | 5 | Obelisco; Casa Rosada; Teatro Colón; Caminito; Puente de la Mujer |
 | Machu Picchu | Pendiente de imagen | 5 | Terrazas agrícolas; Recintos de piedra; Plaza principal; Huayna Picchu al fondo |
 | San Francisco | Pendiente de imagen | 6 | Golden Gate; Transamerica Pyramid; Painted Ladies; Coit Tower; Tranvía y calles en pendiente |
@@ -178,7 +178,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
 | Tokio | Con imagen · por revisar | 1 | Tokyo Tower; Tokyo Skytree; Sensō-ji y Kaminarimon; Cruce de Shibuya; Palacio Imperial |
-| Hong Kong | Pendiente de imagen | 4 | Bank of China Tower; International Commerce Centre; Two International Finance Centre; Victoria Harbour; Star Ferry |
+| Hong Kong | Con imagen · por revisar | 4 | Bank of China Tower; International Commerce Centre; Two International Finance Centre; Centro de Convenciones y Exposiciones; Victoria Harbour y Star Ferry |
 | Singapur | Pendiente de imagen | 6 | Marina Bay Sands; Supertrees de Gardens by the Bay; Merlion; ArtScience Museum; Esplanade |
 | Pekín | Pendiente de imagen | 7 | Ciudad Prohibida; Templo del Cielo; Puerta de Tiananmén; Estadio Nido de Pájaro; Palacio de Verano |
 | Shanghái | Pendiente de imagen | 9 | Torre Perla Oriental; Shanghai Tower; Shanghai World Financial Center; Bund; Jardín Yuyuan |
@@ -263,7 +263,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
-| Sídney | Pendiente de imagen | 4 | Ópera de Sídney; Harbour Bridge; Sydney Tower; Royal Botanic Garden; The Rocks |
+| Sídney | Con imagen · por revisar | 4 | Ópera de Sídney; Harbour Bridge; Sydney Tower; Royal Botanic Garden; The Rocks |
 | Melbourne | Pendiente de imagen | 7 | Flinders Street Station; Federation Square; Royal Exhibition Building; Eureka Tower; Tranvía |
 | Auckland | Pendiente de imagen | 8 | Sky Tower; Auckland Harbour Bridge; Auckland War Memorial Museum; Viaduct Harbour; One Tree Hill |
 | Wellington | Pendiente de imagen | 9 | Beehive y Parlamento; Wellington Cable Car; Te Papa; Old St Paul's; Waterfront |
@@ -286,6 +286,10 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 - Edimburgo: [Referencia 1](https://edinburgh.org/inspire/edinburgh-city-guides/heritage/), [Referencia 2](https://edinburgh.org/point-of-interest/scott-monument/), [Referencia 3](https://edinburgh.org/things-to-do/itineraries/two-day-tour-of-edinburgh/).
 - Moscú: [Referencia 1](https://www.mos.ru/upload/documents/files/4814/Skladnayaz-kartanaanglyazike.pdf), [Referencia 2](https://www.mos.ru/upload/documents/files/bbbe5cdf989015adf1172b035c8363e6/KartaMoskvinaanglyazike2025.pdf), [Referencia 3](https://www.mos.ru/upload/documents/files/940/welcome_small_block_en%282%29.pdf).
 - San Petersburgo: [Referencia 1](https://visit-petersburg.ru/en/route/tp-48-ansambl-tsentralnykh-ploshchadey/), [Referencia 2](https://visit-petersburg.ru/en/leisure/places/isaakievskiy-sobor/), [Referencia 3](https://visit-petersburg.ru/en/leisure/places/muzey-pamyatnik-spas-na-krovi/), [Referencia 4](https://visit-petersburg.ru/en/route/vtoroy-marshrut-novogodnee-puteshestvie-po-peterburgu/).
+- Hong Kong: [Referencia 1](https://www.discoverhongkong.com/eng/attractions/iconic-architectural-landmarks-in-hong-kong.html), [Referencia 2](https://www.discoverhongkong.com/eng/place-to-go/travel.guide-victoria-harbour.html).
+- Sídney: [Referencia 1](https://www.sydney.com/articles/top-attractions-in-sydney).
+- Washington D. C.: [Referencia 1](https://washington.org/dc-neighborhoods/national-mall), [Referencia 2](https://washington.org/DC-guide-to/lincoln-memorial).
+- Ciudad de México: [Referencia 1](https://mexicocity.cdmx.gob.mx/category/imperdibles/centro-historico-imperdibles/), [Referencia 2](https://mexicocity.cdmx.gob.mx/category/imperdibles/chapultepec-imperdibles/), [Referencia 3](https://mexicocity.cdmx.gob.mx/venues/bellas-artes/).
 - Machu Picchu: [Referencia 1](https://whc.unesco.org/en/list/274/).
 - Guiza: [Referencia 1](https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/).
 

@@ -1,0 +1,14 @@
+{
+  "id": "sidney",
+  "batch": 4,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/sidney-v1.png",
+  "generatedFile": "exec-4c09bdc5-fff7-4906-a89e-f3339d28cbd8.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nCity content: SYDNEY: Sydney Opera House prominently at foreground right with overlapping WHITE SAIL SHELLS; Sydney Harbour Bridge as one large dark steel arch crossing a contained narrow harbour channel at foreground left, with four compact stone pylons, entirely within base; Sydney Tower Eye as a single slender golden shaft with broad round gold observation pod and antenna at rear; low sandstone The Rocks terrace buildings near water; a small lush Royal Botanic Garden. A few muted city blocks. All bridge ends, opera shells and water sit inside this same floor. No lettering, no flags.",
+  "sources": [
+    "https://www.sydney.com/articles/top-attractions-in-sydney"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

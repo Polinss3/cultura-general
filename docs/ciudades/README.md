@@ -6,7 +6,7 @@ Base: `origin/main`, commit `4cabf66be5062e1d0385237362584f7663d17e9c`, «Merge:
 
 ## Resultado de la investigación
 
-Es viable producir una colección amplia de imágenes de dioramas. Las catorce muestras actuales demuestran una dirección artística comparable; todavía no demuestran calidad editorial, legibilidad en dispositivos ni consistencia de un catálogo completo. La parte que más trabajo requiere es seleccionar y revisar los hitos de cada ciudad, corregir errores de generación y mantener la composición entre lotes. Se pueden comparar juntas en la [galería del piloto](galeria.md).
+Es viable producir una colección amplia de imágenes de dioramas. Las muestras actuales demuestran una dirección artística comparable; todavía no demuestran calidad editorial, legibilidad en dispositivos ni consistencia de un catálogo completo. La parte que más trabajo requiere es seleccionar y revisar los hitos de cada ciudad, corregir errores de generación y mantener la composición entre lotes. Se pueden comparar juntas en la [galería del piloto](galeria.md).
 
 Se han generado mediante la herramienta integrada de ImageGen:
 
@@ -39,8 +39,8 @@ Los originales v1 se conservan como referencia. Las versiones v2 están en `norm
 El [encuadre común](encuadre.html) es el visor de referencia del usuario. Debe actualizarse en cada alta o modificación de una ciudad, en el mismo cambio que sus imágenes y datos. Ejecutar `node scripts/build-city-framing-preview.mjs`: incorpora automáticamente al selector y a la cuadrícula todas las ciudades con perfil de encuadre, obtiene sus nombres del catálogo y comprueba que las imágenes existen. No mantener una lista manual de ciudades en el HTML. Si una ciudad aún no tiene imagen anterior, la vista original utiliza su fuente actual sin calibrar.
 
 - Catálogo inicial ampliable: **235 destinos**, con 234 ciudades y Machu Picchu como lugar histórico autorizado. [Listado completo](listado-ciudades.md) y [vista con filtros](catalogo.html).
-- Catorce conceptos visibles: los seis del piloto más Venecia, Ámsterdam, Londres, Berlín, Dublín, Edimburgo, Moscú y San Petersburgo. La revisión editorial y la integración en el juego siguen pendientes.
-- Próxima tanda: Hong Kong, Sídney, Washington D. C. y Ciudad de México. Después: El Cairo, Buenos Aires, Machu Picchu y Lisboa.
+- El [catálogo con filtros](catalogo.html) muestra el recuento vigente de imágenes, estados y próximas tandas. Todos los conceptos disponibles aparecen en el [encuadre común](encuadre.html).
+- Se ha autorizado avanzar con todo el catálogo pendiente por tandas. Cada tanda conserva prompts, referencias y mediciones; se incorpora al visor tras revisar su composición y mantiene pendiente la aprobación editorial para el juego.
 - El resto se reparte en tandas de cuatro con variedad regional. El orden y los estados se guardan en el catálogo; no hay límite máximo fijado para futuras incorporaciones. Las candidatas sin hitos se investigarán antes de generarse.
 
 Para cada ciudad: fijar 4–6 hitos y referencias → añadir la ciudad usando la plantilla irregular como única imagen de referencia → comprobar siluetas, número de elementos y ausencia de texto → medir extremos y anclaje de la base y registrar el perfil de presentación → revisar a tamaño de móvil y junto a las demás ciudades → exportar el recurso optimizado → marcarlo como aprobado. Los [prompts de v2](prompts-encuadre.md) y la [primera ampliación](prompts-ampliacion-01.md) documentan el procedimiento. Guardar versión, prompt, fuentes y estado editorial. La imagen de referencia del usuario guía el estilo; no debe redistribuirse como recurso del juego.
@@ -76,3 +76,7 @@ No ofrecer filtros continentales o de dificultad hasta tener un mínimo de cuatr
 4. Al implementar: comprobar que todas las preguntas contienen imagen y cuatro nombres únicos, que el acierto aparece exactamente una vez, que no se repiten preguntas y que filtros insuficientes quedan deshabilitados. Verificar offline y que una ronda no concede dos recompensas ni dos anuncios.
 
 Esta rama prepara la investigación y los recursos del piloto. La integración jugable, el resto de imágenes y las pruebas en iOS/Android están pendientes.
+
+## Registro de nuevas tandas
+
+`python3 scripts/register-city-dioramas.py /ruta/al/lote.json` registra únicamente imágenes ya revisadas visualmente para la galería. Conserva el prompt y las referencias por ciudad en `produccion/`, verifica dimensiones y anclajes, actualiza mediciones y regenera el visor y el listado. Requiere Pillow y Node. No sustituye la revisión editorial o la integración en el modo de juego.

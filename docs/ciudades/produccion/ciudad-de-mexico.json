@@ -1,0 +1,16 @@
+{
+  "id": "ciudad-de-mexico",
+  "batch": 4,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/ciudad-de-mexico-v1.png",
+  "generatedFile": "exec-a4f352e5-d80c-49fe-b7b4-b46ad654e78d.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer 4–5 distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nCity content: MEXICO CITY: Palacio de Bellas Artes at foreground left, ornate white marble Art Nouveau facade with distinctive orange-and-gold tiled central dome; Metropolitan Cathedral at rear center with TWO tall stone bell towers, elaborate baroque facade and broad stone body; Ángel de la Independencia column at right middle with a GOLD winged victory statue; Monumento a la Revolución at foreground right, broad monumental four-legged arch supporting a large bronze-green copper dome; an open Zócalo-like paved square and a few cream/coral historic buildings, small trees. NO flags, banners, lettering, pyramids or out-of-city monuments.",
+  "sources": [
+    "https://mexicocity.cdmx.gob.mx/category/imperdibles/centro-historico-imperdibles/",
+    "https://mexicocity.cdmx.gob.mx/category/imperdibles/chapultepec-imperdibles/",
+    "https://mexicocity.cdmx.gob.mx/venues/bellas-artes/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

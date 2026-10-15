@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "images": [
     {
       "id": "madrid",
@@ -181,6 +181,58 @@
       "baseBottom": 1041,
       "registeredLeft": 0.08000000000000006,
       "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "hong-kong",
+      "file": "normalizadas/hong-kong-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2097976,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "sidney",
+      "file": "normalizadas/sidney-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2144293,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "washington",
+      "file": "normalizadas/washington-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2089596,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "ciudad-de-mexico",
+      "file": "normalizadas/ciudad-de-mexico-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2203967,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
       "registeredBottom": 0.92
     }
   ]
