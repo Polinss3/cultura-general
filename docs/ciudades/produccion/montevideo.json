@@ -1,0 +1,21 @@
+{
+  "id": "montevideo",
+  "batch": 42,
+  "tool": "ImageGen integrada",
+  "reference": "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-dec7c5b8-226d-4ea6-a900-3660344262cf.png",
+  "output": "normalizadas/montevideo-v1.png",
+  "generatedFile": "exec-5bbc10af-63e4-4635-906f-d3a19543c55e.png",
+  "prompt": "Use case: precise-object-edit. Correct ONLY the Palacio Legislativo building at the rear of this Montevideo diorama. Remove its incorrect green Capitol-style dome. The real Uruguayan legislative palace is a broad rectangular neoclassical white stone building with a raised flat-roofed RECTANGULAR colonnaded central block above its wide columned facade. NO dome or curved central roof. Keep Palacio Salvo, Teatro Solis, Puerta de la Ciudadela and all remaining content exactly unchanged. Preserve organic scalloped base shape, floor, wall, background, margins, size, camera, lighting and colors. No text.",
+  "sources": [
+    "https://montevideo.gub.uy/areas-tematicas/turismo/teatro-solis",
+    "https://montevideo.gub.uy/areas-tematicas/cultura-y-tiempo-libre/teatro-solis",
+    "https://www.montevideo.gub.uy/institucional/dependencias/teatro-solis",
+    "https://montevideo.gub.uy/tipo/area-tematica/cultura/teatros-salas-y-centros-culturales",
+    "https://www.gub.uy/ministerio-educacion-cultura/academia-letras/teatro-solis"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review",
+  "inputReferences": [
+    "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-dec7c5b8-226d-4ea6-a900-3660344262cf.png"
+  ]
+}

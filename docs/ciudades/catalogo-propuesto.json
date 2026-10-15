@@ -2291,17 +2291,26 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Alhambra",
+        "Alhambra: Torre de Comares y Patio de los Leones",
         "Generalife",
-        "Catedral",
-        "Mirador de San Nicolás y casas del Albaicín"
+        "Catedral de Granada"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 78,
-      "batch": 19
+      "batch": 19,
+      "conceptImage": "normalizadas/granada-v1.png",
+      "originalConceptImage": "normalizadas/granada-v1.png",
+      "framingProfile": "granada",
+      "sources": [
+        "https://turismo.granada.org/es/zonas-y-puntos-interes-alhambra-granada",
+        "https://turismo.granada.org/en/barrio-turistico/alhambra-and-surrounding-area",
+        "https://turismo.granada.org/es/barrio-turistico/alhambra-y-su-entorno",
+        "https://turismo.granada.org/es/alhambra-granada",
+        "https://www.alhambra-patronato.es/en/discover/alhambra-y-generalife/buildings-and-places"
+      ]
     },
     {
       "id": "filadelfia",
@@ -2399,17 +2408,26 @@
       },
       "continent": "europa",
       "countryCode": "ES",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Mezquita-Catedral",
-        "Puente Romano",
-        "Alcázar y jardines",
-        "Torre de la Calahorra"
+        "Alcázar de los Reyes Cristianos",
+        "Puente Romano"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 82,
-      "batch": 20
+      "batch": 20,
+      "conceptImage": "normalizadas/cordoba-v1.png",
+      "originalConceptImage": "normalizadas/cordoba-v1.png",
+      "framingProfile": "cordoba",
+      "sources": [
+        "https://www.turismodecordoba.org/puente-romano",
+        "https://www.turismodecordoba.org/monumentos",
+        "https://turismo.cordoba.gob.ar/iglesia-catedral/",
+        "https://www.mezquita-catedraldecordoba.es/",
+        "https://www.mezquita-catedraldecordoba.es/en/"
+      ]
     },
     {
       "id": "san-diego",
@@ -3595,7 +3613,7 @@
       },
       "continent": "america",
       "countryCode": "MX",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral",
@@ -3603,9 +3621,19 @@
         "Estrella de Puebla",
         "Mercado El Parián"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 123,
-      "batch": 31
+      "batch": 31,
+      "conceptImage": "normalizadas/puebla-v1.png",
+      "originalConceptImage": "normalizadas/puebla-v1.png",
+      "framingProfile": "puebla",
+      "sources": [
+        "https://www.visitpuebla.mx/acerca-de",
+        "https://www.visitpuebla.mx/patrimonio",
+        "https://www.visitpuebla.mx/es",
+        "https://www.visitpuebla.mx/",
+        "https://visita.pueblacapital.gob.mx/atractivos/los-imperdibles-de-puebla?start=0"
+      ]
     },
     {
       "id": "taipei",
@@ -3614,18 +3642,27 @@
       },
       "continent": "asia",
       "countryCode": "TW",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Taipei 101",
         "Memorial de Chiang Kai-shek",
         "Templo Longshan",
-        "Memorial de Sun Yat-sen",
-        "Museo Nacional del Palacio"
+        "Memorial de Sun Yat-sen"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 124,
-      "batch": 31
+      "batch": 31,
+      "conceptImage": "normalizadas/taipei-v1.png",
+      "originalConceptImage": "normalizadas/taipei-v1.png",
+      "framingProfile": "taipei",
+      "sources": [
+        "https://www.taipeitourism.org/chiang-kai-shek-memorial-hall/",
+        "https://eng.taiwan.net.tw/m1.aspx?id=73&sno=0002016",
+        "https://www.taipeitourism.org/taipei-travel-guide/",
+        "https://taipei2026.post.gov.tw/taipei2026/en/index.jsp?ID=1465097103099",
+        "https://english.gov.taipei/cp.aspx?n=E128A35874141DEE&s=4245113C4FD3E316"
+      ]
     },
     {
       "id": "oxford",
@@ -3634,18 +3671,27 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Radcliffe Camera",
         "Bodleian Library",
         "Bridge of Sighs",
-        "Tom Tower de Christ Church",
-        "Sheldonian Theatre"
+        "Tom Tower de Christ Church"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 125,
-      "batch": 31
+      "batch": 31,
+      "conceptImage": "normalizadas/oxford-v1.png",
+      "originalConceptImage": "normalizadas/oxford-v1.png",
+      "framingProfile": "oxford",
+      "sources": [
+        "https://www.visitoxford.org/guides/radcliffe-camera-bodleian-library/",
+        "https://visit.bodleian.ox.ac.uk/plan-your-visit/how-to-get-here",
+        "https://bodreader.web.ox.ac.uk/libraries/radcliffe-camera",
+        "https://visit.bodleian.ox.ac.uk/plan-your-visit/our-spaces",
+        "https://visit.bodleian.ox.ac.uk/plan-your-visit?a=114821"
+      ]
     },
     {
       "id": "oaxaca",
@@ -3654,7 +3700,7 @@
       },
       "continent": "america",
       "countryCode": "MX",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Templo de Santo Domingo",
@@ -3662,9 +3708,19 @@
         "Teatro Macedonio Alcalá",
         "Andador y casas históricas"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 126,
-      "batch": 31
+      "batch": 31,
+      "conceptImage": "normalizadas/oaxaca-v1.png",
+      "originalConceptImage": "normalizadas/oaxaca-v1.png",
+      "framingProfile": "oaxaca",
+      "sources": [
+        "https://www.oaxaca.travel/index.php/es/all-destinations-es/santo-domingo-yanhuitlan",
+        "https://www.mexicocity.cdmx.gob.mx/venues/temple-of-santo-domingo/",
+        "https://www.oaxaca.travel/index.php/es/sitios-de-interes-es/rutas-tursiticas-es/rutas-e-itinerarios/rutas-e-itinerarios/ruta-de-los-siete-templos",
+        "https://www.cultura.gob.mx/turismocultural/sitios_mex.php",
+        "https://www.oaxaca.gob.mx/sectur/wp-content/uploads/sites/65/2024/08/Guia-Ruta-Juquila.pdf"
+      ]
     },
     {
       "id": "busan",
@@ -3673,18 +3729,27 @@
       },
       "continent": "asia",
       "countryCode": "KR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Puente Gwangan",
         "Busan Tower",
         "Gamcheon Culture Village",
-        "Templo Haedong Yonggungsa",
-        "Haeundae"
+        "Templo Haedong Yonggungsa"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 127,
-      "batch": 32
+      "batch": 32,
+      "conceptImage": "normalizadas/busan-v1.png",
+      "originalConceptImage": "normalizadas/busan-v1.png",
+      "framingProfile": "busan",
+      "sources": [
+        "https://www.visitbusan.net/en/index.do?lang_cd=en&menuCd=DOM_000000301001001000&uc_seq=550",
+        "https://www.visitbusan.net/kr/index.do?lang_cd=ko&menuCd=DOM_000000201001001000&pagingParms=4ca15f3a76a21f554a6e515f5344f50c4f734814d27260977c0eb574b1e0019a33f5a8e2dd587a9efb82cc91cf112987488312a3bc08c3054da8c190c930f6592e7894a7ed3cf42438e40b16135015920aa608ee54ad79feb8b43e0becf2aedf306446a26175f37928b2e64d297ab48f8acfae3743ce2794ef15d99eb793341329c53a76d24a81ef72a11ca917970aac34400ec0365d93e364d7a859d58178e212648c28901350cb20330ec09b4e8c7ee5e2b8287a2a6536a889e832bf7d31f811c87cdb08416c849549c03d819d8091f8865d8cbe9170e711a8d44eef418bbbef6953db2681dc67b4702b9d3e0fb9d787d01c209bd09b6fd75537b39410af399cbcba9ee6702cb39537bf709fc893f16242d2505ff463a634757c4ad1fb5316c17e3c6c881b1202936a9591f574a9b458fe7ada378c8e24a939d38009efceb2f1d2f3d9fb0a84335999d70d74a175a02229fcd269f25ecae09cba47d7fa5b4ca79471889a1020e6226a199377b97ead69d777bcce27c101be7225c1ffeb0036367494277c22e6ec9cff0114e7cadf3a2d867367262d1b5f6a717ace24b4cae0734d3410c3de7cbbe8e8e2de4a08c9f7f2d71419b760deedc85bfd092d20cf83296e62049d974032c50fee7f8aa0e20719104acb04653baae653f6241ef307d9e996ca01c0f8bd824354a4dca0b19c946587c06d230f6482256a9de72a9fa24ba129cf0fb738ea3fb9bc9747e7df4474be7818bb7eff756374cc00db8a2d8b44f509535c41fad3fd4288800883cc7cbbbe7818bb7eff7563a936e57548c825077929f3c756fd8041ba732cd0daec82e68e859c05897252c8aa747148d31e45a90f5448acec23da847546871a3c07abe6850ec01726f2489af2d4f1a47503d65ea503fda4abaf60ed0eb378581e31c4e3e058ae94d1bf012f2da798f6e895cd3e3d9c91e87cfa3f6d3763afb5fdd47c1311bde3c3c21e9dee02285b93c32c79f5927147ff3182019c3e04478993fce7c5026e1da8dd6198d26f2925566617460c3fc8b7cdb757a415fe7ce97b54f75919fdff5d4c4a3e7efa45398350aa4f1eb141c6cc9f0a4006fc653d59e2abbee799&uc_seq=550",
+        "https://english.visitkorea.or.kr/svc/contents/rmsCsulView.do?menuSn=958&vcontsId=219689",
+        "https://www.busan.go.kr/eng/the-seven-bridges-of-busan",
+        "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=84864"
+      ]
     },
     {
       "id": "cambridge",
@@ -3693,7 +3758,7 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "King’s College Chapel",
@@ -3701,9 +3766,19 @@
         "Mathematical Bridge",
         "Bridge of Sighs"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 128,
-      "batch": 32
+      "batch": 32,
+      "conceptImage": "normalizadas/cambridge-v1.png",
+      "originalConceptImage": "normalizadas/cambridge-v1.png",
+      "framingProfile": "cambridge",
+      "sources": [
+        "https://www.kings.cam.ac.uk/kings-college-chapel",
+        "https://www.kings.cam.ac.uk/your-visit-kings",
+        "https://fitzmuseum.cam.ac.uk/plan-your-visit",
+        "https://www.visitcambridge.org/place-categories/things-to-see-and-do/?theme=157",
+        "https://fitzmuseum.cam.ac.uk/"
+      ]
     },
     {
       "id": "guanajuato",
@@ -3712,18 +3787,27 @@
       },
       "continent": "america",
       "countryCode": "MX",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Teatro Juárez",
         "Alhóndiga de Granaditas",
         "Universidad y escalinata",
-        "Callejón del Beso",
-        "Basílica de Nuestra Señora"
+        "Callejón del Beso"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 129,
-      "batch": 32
+      "batch": 32,
+      "conceptImage": "normalizadas/guanajuato-v1.png",
+      "originalConceptImage": "normalizadas/guanajuato-v1.png",
+      "framingProfile": "guanajuato",
+      "sources": [
+        "https://www.cultura.gob.mx/turismocultural/destino_mes/guanajuato/guanajuato.html",
+        "https://cultura.guanajuato.gob.mx/index.php/teatro-juarez/",
+        "https://www.cultura.gob.mx/turismocultural/monumentos_historicos.php?estado=12",
+        "https://visitmexico.com/en/itinerario/13/un-dia-entre-historia-arte-y-leyenda-en-guanajuato-capital",
+        "https://sectur.guanajuato.gob.mx/documentos/biblioteca/Folletos-Asi-es-Guanajuato-y-su-gente/03_Turistear_digital-PARA_TURISTEAR_QUE_HACER_Y_ADONDE_IR.pdf"
+      ]
     },
     {
       "id": "hanoi",
@@ -3732,18 +3816,27 @@
       },
       "continent": "asia",
       "countryCode": "VN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Torre de la Tortuga",
         "Templo de la Literatura",
         "Mausoleo de Ho Chi Minh",
-        "Catedral de San José",
-        "Pagoda del Pilar Único"
+        "Catedral de San José"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 130,
-      "batch": 32
+      "batch": 32,
+      "conceptImage": "normalizadas/hanoi-v1.png",
+      "originalConceptImage": "normalizadas/hanoi-v1.png",
+      "framingProfile": "hanoi",
+      "sources": [
+        "https://vietnam.travel/es/things-to-do/hanoi-six-heritage-sites",
+        "https://vietnam.travel/es/things-to-do/11-must-see-attractions-ha-noi",
+        "https://2025.vietnam.travel/en/must-visited-attractions-in-ha-noi/",
+        "https://image.vietnam.travel/es/things-to-do/11-must-see-attractions-ha-noi",
+        "https://image.vietnam.travel/things-to-do/11-must-see-attractions-ha-noi"
+      ]
     },
     {
       "id": "bath",
@@ -3752,17 +3845,26 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Royal Crescent",
-        "Termas Romanas",
-        "Bath Abbey",
-        "Pulteney Bridge"
+        "Abadía de Bath",
+        "Baños Romanos"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 131,
-      "batch": 33
+      "batch": 33,
+      "conceptImage": "normalizadas/bath-v1.png",
+      "originalConceptImage": "normalizadas/bath-v1.png",
+      "framingProfile": "bath",
+      "sources": [
+        "https://www.visitbath.co.uk/things-to-do/tours-and-sightseeing/landmarks",
+        "https://www.visitbath.co.uk/",
+        "https://visitbath.co.uk/bath-bristol/",
+        "https://visitbath.co.uk/listings/single/theatre-royal-bath/www.theatreroyal.org.uk/",
+        "https://www.visitbath.co.uk/things-to-do/tours-and-sightseeing/landmarks?p=1"
+      ]
     },
     {
       "id": "merida",
@@ -3771,7 +3873,7 @@
       },
       "continent": "america",
       "countryCode": "MX",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral de San Ildefonso",
@@ -3779,9 +3881,19 @@
         "Monumento a la Patria",
         "Palacio Cantón"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 132,
-      "batch": 33
+      "batch": 33,
+      "conceptImage": "normalizadas/merida-v1.png",
+      "originalConceptImage": "normalizadas/merida-v1.png",
+      "framingProfile": "merida",
+      "sources": [
+        "https://visitmerida.mx/",
+        "https://www.visitmerida.mx/inicio",
+        "https://visitmerida.mx/que-hacer/8/que-hacer/c683",
+        "https://turismomerida.org/que-ver/",
+        "https://turismomerida.org/what-to-see/"
+      ]
     },
     {
       "id": "ciudad-ho-chi-minh",
@@ -3790,18 +3902,27 @@
       },
       "continent": "asia",
       "countryCode": "VN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Oficina Central de Correos",
         "Basílica de Notre-Dame de Saigón",
         "Palacio de la Reunificación",
-        "Bitexco Tower",
-        "Landmark 81"
+        "Bitexco Tower"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 133,
-      "batch": 33
+      "batch": 33,
+      "conceptImage": "normalizadas/ciudad-ho-chi-minh-v1.png",
+      "originalConceptImage": "normalizadas/ciudad-ho-chi-minh-v1.png",
+      "framingProfile": "ciudad-ho-chi-minh",
+      "sources": [
+        "https://vietnam.travel/es/places-to-go/southern-vietnam/ho-chi-minh-city",
+        "https://www.vietnam.travel/es/things-to-do/7-must-see-attractions-hcmc",
+        "https://vietnam.travel/es/things-to-do/10-tourist-spots-not-be-missed-ho-chi-minh-city",
+        "https://vietnam.travel/places-to-go/southern-vietnam/ho-chi-minh-city/",
+        "https://vietnam.travel/things-to-do/7-must-see-attractions-hcmc"
+      ]
     },
     {
       "id": "york",
@@ -3810,7 +3931,7 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "York Minster",
@@ -3818,9 +3939,19 @@
         "The Shambles",
         "Murallas y Micklegate Bar"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 134,
-      "batch": 33
+      "batch": 33,
+      "conceptImage": "normalizadas/york-v1.png",
+      "originalConceptImage": "normalizadas/york-v1.png",
+      "framingProfile": "york",
+      "sources": [
+        "https://yorkminster.org/visit/",
+        "https://yorkminster.org/visit/plan-your-visit/",
+        "https://production.english-heritage.org.uk/visit/places/cliffords-tower-york/things-to-do/",
+        "https://www.english-heritage.org.uk/visit/places/cliffords-tower-york/history-and-stories/",
+        "https://www.visityorkshire.co.uk/york/attractions/"
+      ]
     },
     {
       "id": "bogota",
@@ -3829,18 +3960,27 @@
       },
       "continent": "america",
       "countryCode": "CO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Monserrate",
         "Catedral Primada",
         "Capitolio Nacional",
-        "La Candelaria",
-        "Torres del Parque"
+        "La Candelaria"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 135,
-      "batch": 34
+      "batch": 34,
+      "conceptImage": "normalizadas/bogota-v1.png",
+      "originalConceptImage": "normalizadas/bogota-v1.png",
+      "framingProfile": "bogota",
+      "sources": [
+        "https://visitbogota.co/en/what-to-do-in-bogota/culture-entertainment-and-nightlife/monserrate",
+        "https://visitbogota.co/es/que-hacer-en-bogota/cultura/catedral-primada-de-colombia",
+        "https://www.turismobogota.com/es/que-ver-en-bogota",
+        "https://bogota.gov.co/en/international/most-visited-attractions-bogota-discover-them-2025",
+        "https://www.turismobogota.com/en/things-to-see-in-bogota/monuments"
+      ]
     },
     {
       "id": "hoi-an",
@@ -3849,7 +3989,7 @@
       },
       "continent": "asia",
       "countryCode": "VN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Puente Cubierto Japonés",
@@ -3857,9 +3997,19 @@
         "Asamblea Phuc Kien",
         "Canal y farolillos sin letras"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 136,
-      "batch": 34
+      "batch": 34,
+      "conceptImage": "normalizadas/hoi-an-v1.png",
+      "originalConceptImage": "normalizadas/hoi-an-v1.png",
+      "framingProfile": "hoi-an",
+      "sources": [
+        "https://www.vietnamtourism.com/es/mapas/hoi-an-casco-antiguo",
+        "https://vietnam.travel/es/things-to-do/the-best-ways-to-explore-the-ancient-town-of-hoi-an",
+        "https://govietnam.travel/en/destination/cau-pagoda-en/",
+        "https://vietnam.travel/es/things-to-do/hoi-an-world%E2%80%99s-top-%E2%80%9Chidden-gem%E2%80%9D-city",
+        "https://vietnam.travel/things-to-do/the-best-ways-to-explore-the-ancient-town-of-hoi-an"
+      ]
     },
     {
       "id": "glasgow",
@@ -3868,18 +4018,27 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral",
         "Universidad de Glasgow",
         "Kelvingrove",
-        "Finnieston Crane",
-        "Clyde Arc"
+        "Finnieston Crane"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 137,
-      "batch": 34
+      "batch": 34,
+      "conceptImage": "normalizadas/glasgow-v1.png",
+      "originalConceptImage": "normalizadas/glasgow-v1.png",
+      "framingProfile": "glasgow",
+      "sources": [
+        "https://www.visitglasgow.com/explore-by-interest/historic-glasgow/glasgow-s-history-and-heritage",
+        "https://www.visitglasgow.com/plan-your-trip/glasgow-for-first-time-visitors/visitor-experiences",
+        "https://www.visitglasgow.com/",
+        "https://www.visitglasgow.com/plan-your-trip/itineraries/cathedral-precinct-self-guided-walking-trail",
+        "https://www.visitglasgow.com/?epslanguage=en"
+      ]
     },
     {
       "id": "cartagena-de-indias",
@@ -3888,7 +4047,7 @@
       },
       "continent": "america",
       "countryCode": "CO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Castillo de San Felipe",
@@ -3896,9 +4055,19 @@
         "Catedral de Santa Catalina",
         "Murallas y casas coloniales"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 138,
-      "batch": 34
+      "batch": 34,
+      "conceptImage": "normalizadas/cartagena-de-indias-v1.png",
+      "originalConceptImage": "normalizadas/cartagena-de-indias-v1.png",
+      "framingProfile": "cartagena-de-indias",
+      "sources": [
+        "https://www.visitcartagena.com.co/sites/torre-del-reloj",
+        "https://www.visitcartagena.com.co/sites/castillo-de-san-felipe-de-barajas",
+        "https://www.visitcartagena.com.co/explore?lang=es",
+        "https://www.visitcartagena.com.co/sites?lang=es",
+        "https://colombia.travel/es/cartagena/visita-la-puerta-y-la-torre-del-reloj"
+      ]
     },
     {
       "id": "siem-reap",
@@ -3907,7 +4076,7 @@
       },
       "continent": "asia",
       "countryCode": "KH",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Angkor Wat",
@@ -3915,10 +4084,20 @@
         "Ta Prohm",
         "Residencia Real de Siem Reap"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 139,
       "batch": 35,
-      "notes": "Alcance cultural de Siem Reap y Angkor; revisar la selección de respuesta para evitar ambigüedad con el sitio histórico."
+      "notes": "Alcance cultural de Siem Reap y Angkor; revisar la selección de respuesta para evitar ambigüedad con el sitio histórico.",
+      "conceptImage": "normalizadas/siem-reap-v1.png",
+      "originalConceptImage": "normalizadas/siem-reap-v1.png",
+      "framingProfile": "siem-reap",
+      "sources": [
+        "https://www.angkorenterprise.gov.kh/en/explore/685a0ec29b66c0d6db9be544",
+        "https://visitsiemreap.com.kh/wp-content/uploads/2018/01/2-BTT-Siem-Map-B2-NR.26.01.2018-NR-JS-Final-Press-Ready.pdf",
+        "https://tourismcambodia.org/public/provinces/47/siem-reap",
+        "https://tourismcambodia.org/provinces/search/detail/247/bayon-temple",
+        "https://www.tourismcambodia.org/public/provinces/search/detail/247/bayon-temple"
+      ]
     },
     {
       "id": "belfast",
@@ -3927,18 +4106,27 @@
       },
       "continent": "europa",
       "countryCode": "GB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Ayuntamiento",
-        "Titanic Belfast sin rótulos",
-        "Grúas de Harland and Wolff",
-        "Castillo de Belfast",
-        "Albert Memorial Clock"
+        "Titanic Belfast",
+        "Grúas de Harland & Wolff",
+        "Belfast City Hall",
+        "Belfast Castle"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 140,
-      "batch": 35
+      "batch": 35,
+      "conceptImage": "normalizadas/belfast-v1.png",
+      "originalConceptImage": "normalizadas/belfast-v1.png",
+      "framingProfile": "belfast",
+      "sources": [
+        "https://visitbelfast.com/see-do/attractions/titanic-belfast/",
+        "https://www.belfastcity.gov.uk/Things-to-Do/City-Hall/Memorials-and-statues",
+        "https://visitbelfast.com/explore/city-areas/titanic-quarter/",
+        "https://visitbelfast.com/",
+        "https://visitbelfast.com/browse/visitor/categories/attractions/"
+      ]
     },
     {
       "id": "medellin",
@@ -3947,18 +4135,27 @@
       },
       "continent": "america",
       "countryCode": "CO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Plaza Botero",
         "Palacio de la Cultura Rafael Uribe",
         "Metrocable",
-        "Comuna 13",
-        "Edificio Coltejer"
+        "Comuna 13"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 141,
-      "batch": 35
+      "batch": 35,
+      "conceptImage": "normalizadas/medellin-v1.png",
+      "originalConceptImage": "normalizadas/medellin-v1.png",
+      "framingProfile": "medellin",
+      "sources": [
+        "https://colombia.travel/es/medellin/conoce-el-palacio-de-la-cultura-rafael-uribe-uribe",
+        "https://visitmedellin.co/medellin/",
+        "https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=navurl%3A%2F%2Fe5f77b5504be06e01ef779aadc833fbe",
+        "https://colombia.travel/en/medellin/rafael-uribe-uribe-palace-culture",
+        "https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=navurl%3A%2F%2Fa82343783f27337849a7e2cd977846d3"
+      ]
     },
     {
       "id": "nom-pen",
@@ -3967,18 +4164,27 @@
       },
       "continent": "asia",
       "countryCode": "KH",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Palacio Real",
         "Pagoda de Plata",
         "Monumento de la Independencia",
-        "Wat Phnom",
-        "Mercado Central"
+        "Wat Phnom"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 142,
-      "batch": 35
+      "batch": 35,
+      "conceptImage": "normalizadas/nom-pen-v1.png",
+      "originalConceptImage": "normalizadas/nom-pen-v1.png",
+      "framingProfile": "nom-pen",
+      "sources": [
+        "https://www.gob.pe/institucion/presidencia/informes-publicaciones/3922937-guia-turistica-en-espanol-ingles-y-quechua",
+        "https://www.gob.pe/institucion/rree/noticias/951006-torre-tagle-para-ti-el-palacio-sera-abierto-para-la-visita-del-publico-durante-los-sabados-y-domingos",
+        "https://www.mexicocity.cdmx.gob.mx/category/centro-historico-imperdibles/?lang=en",
+        "https://www.peru.travel/es/atractivos/centro-historico-lima",
+        "https://tripomatic.com/es/destinations/phnom-penh/printable-map"
+      ]
     },
     {
       "id": "oporto",
@@ -3987,7 +4193,7 @@
       },
       "continent": "europa",
       "countryCode": "PT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Puente de Dom Luís I",
@@ -3995,9 +4201,19 @@
         "Torre de los Clérigos",
         "Estación São Bento"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 143,
-      "batch": 36
+      "batch": 36,
+      "conceptImage": "normalizadas/oporto-v1.png",
+      "originalConceptImage": "normalizadas/oporto-v1.png",
+      "framingProfile": "oporto",
+      "sources": [
+        "https://visitporto.travel/pt-PT/poi/5cd04b46f979e00001234af3",
+        "https://www.turismooporto.com/es/ribeira/monumento/puente-luis-i-en-oporto",
+        "https://www.turismooporto.com/en/ribeira/monument/puente-luis-i",
+        "https://www.visitportugal.com/es/destinos/porto-e-norte/315797",
+        "https://visitporto.travel/en-GB/districts/historic"
+      ]
     },
     {
       "id": "lima",
@@ -4006,18 +4222,26 @@
       },
       "continent": "america",
       "countryCode": "PE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
-        "Catedral y Plaza Mayor",
-        "Palacio de Gobierno",
-        "Convento de San Francisco",
-        "Huaca Pucllana",
-        "Acantilados de Miraflores"
+        "Catedral de Lima y Plaza Mayor",
+        "Monasterio de San Francisco",
+        "Huaca Pucllana"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 144,
-      "batch": 36
+      "batch": 36,
+      "conceptImage": "normalizadas/lima-v1.png",
+      "originalConceptImage": "normalizadas/lima-v1.png",
+      "framingProfile": "lima",
+      "sources": [
+        "https://www.peru.travel/es/experiencias/recorrido-centro-historico-de-lima",
+        "https://www.gob.pe/institucion/mincetur/noticias/1333632-aniversario-de-lima-2026-mincetur-invita-al-publico-a-visitar-el-centro-historico-este-18-de-enero-y-disfrutar-de-sus-diversos-atractivos",
+        "https://www.peru.travel/lafinalenlima/conoce-lima/imperdibles.html",
+        "https://www.gob.pe/29307-informacion-para-disfrutar-de-lima",
+        "https://www.peru.travel/es/atractivos/centro-historico-lima"
+      ]
     },
     {
       "id": "kuala-lumpur",
@@ -4026,18 +4250,27 @@
       },
       "continent": "asia",
       "countryCode": "MY",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Torres Petronas",
         "Merdeka 118",
         "Menara KL",
-        "Edificio Sultan Abdul Samad",
-        "Batu Caves"
+        "Edificio Sultan Abdul Samad"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 145,
-      "batch": 36
+      "batch": 36,
+      "conceptImage": "normalizadas/kuala-lumpur-v1.png",
+      "originalConceptImage": "normalizadas/kuala-lumpur-v1.png",
+      "framingProfile": "kuala-lumpur",
+      "sources": [
+        "https://merdeka118.com/",
+        "https://www.visitkualalumpur.my/kuala-lumpur/attractions",
+        "https://www.visitkualalumpur.my/kuala-lumpur/things-to-do/best-things-to-do",
+        "https://merdeka118.com/attractions/118-mall/",
+        "https://storage.ebrochures.malaysia.travel/storage/IDB_PDF_KLD_EN.pdf"
+      ]
     },
     {
       "id": "bruselas",
@@ -4046,7 +4279,7 @@
       },
       "continent": "europa",
       "countryCode": "BE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Atomium",
@@ -4054,9 +4287,19 @@
         "Manneken Pis",
         "Palacio Real"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 146,
-      "batch": 36
+      "batch": 36,
+      "conceptImage": "normalizadas/bruselas-v1.png",
+      "originalConceptImage": "normalizadas/bruselas-v1.png",
+      "framingProfile": "bruselas",
+      "sources": [
+        "https://www.visit.brussels/en/visitors/what-to-do/must-see-attractions",
+        "https://www.visit.brussels/en/visitors/what-to-do",
+        "https://www.visit.brussels/en/visitors/what-to-do/attractions-and-monuments",
+        "https://www.visit.brussels/en/visitors/what-to-do.Flagey.237158",
+        "https://www.visit.brussels/es/visitantes/que-hacer"
+      ]
     },
     {
       "id": "cusco",
@@ -4065,17 +4308,26 @@
       },
       "continent": "america",
       "countryCode": "PE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
+        "Catedral del Cusco",
         "Coricancha",
-        "Catedral y Plaza de Armas",
-        "Sacsayhuamán",
-        "Barrio y templo de San Blas"
+        "Sacsayhuamán"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 147,
-      "batch": 37
+      "batch": 37,
+      "conceptImage": "normalizadas/cusco-v1.png",
+      "originalConceptImage": "normalizadas/cusco-v1.png",
+      "framingProfile": "cusco",
+      "sources": [
+        "https://target2.promperu.gob.pe/destinos/cusco/ciudad-de-cusco",
+        "https://consultasenlinea.mincetur.gob.pe/fichaInventario/index.aspx?cod_Ficha=1790",
+        "https://www.peru.travel/es/atractivos/centro-historico-de-cusco",
+        "https://consultasenlinea.mincetur.gob.pe/fichaInventario/index.aspx?cod_Ficha=2600",
+        "https://consultasenlinea.mincetur.gob.pe/fichaInventario/index.aspx?cod_Ficha=896"
+      ]
     },
     {
       "id": "george-town",
@@ -4084,18 +4336,27 @@
       },
       "continent": "asia",
       "countryCode": "MY",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Templo Kek Lok Si",
         "Khoo Kongsi",
         "Fort Cornwallis",
-        "Cheong Fatt Tze Mansion",
-        "Clan Jetties"
+        "Cheong Fatt Tze Mansion"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 148,
-      "batch": 37
+      "batch": 37,
+      "conceptImage": "normalizadas/george-town-v1.png",
+      "originalConceptImage": "normalizadas/george-town-v1.png",
+      "framingProfile": "george-town",
+      "sources": [
+        "https://mypenang.gov.my/uploads/downloads/PTM-ENG2026-1.pdf",
+        "https://mypenang.gov.my/view_directory.php?id=THVMRHBRb2V2ODlQc3hRTEkvalB4QT09",
+        "https://www.visitpenang.com/attractions/heritage",
+        "https://www.visitpenang.com/best/attractions/in/george-town",
+        "https://mail.mypenang.gov.my/uploads/downloads/PG-Tourist-Map_ENG_.pdf"
+      ]
     },
     {
       "id": "brujas",
@@ -4104,7 +4365,7 @@
       },
       "continent": "europa",
       "countryCode": "BE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Belfort",
@@ -4112,9 +4373,19 @@
         "Canal de Rozenhoedkaai",
         "Iglesia de Nuestra Señora"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 149,
-      "batch": 37
+      "batch": 37,
+      "conceptImage": "normalizadas/brujas-v1.png",
+      "originalConceptImage": "normalizadas/brujas-v1.png",
+      "framingProfile": "brujas",
+      "sources": [
+        "https://www.belfort-tourisme.com/es/Visita-Belfort/",
+        "https://www.belfort-tourisme.com/es/",
+        "https://www.belfort-tourisme.com/marches-terroir/",
+        "https://www.belfort-tourisme.com/en/calendar/flea-market-fmabfc000v51fgk1/",
+        "https://www.visitbruges.be/es/que-hacer/cultura-y-patrimonio/belfort-campanario"
+      ]
     },
     {
       "id": "arequipa",
@@ -4123,7 +4394,7 @@
       },
       "continent": "america",
       "countryCode": "PE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Monasterio de Santa Catalina",
@@ -4131,9 +4402,19 @@
         "Volcán Misti",
         "Mirador de Yanahuara"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 150,
-      "batch": 37
+      "batch": 37,
+      "conceptImage": "normalizadas/arequipa-v1.png",
+      "originalConceptImage": "normalizadas/arequipa-v1.png",
+      "framingProfile": "arequipa",
+      "sources": [
+        "https://www.muniarequipa.gob.pe/arequipa/turismo/",
+        "https://santacatalina.org.pe/en/visit/",
+        "https://santacatalina.org.pe/en/",
+        "https://cdn.www.gob.pe/uploads/document/file/5565159/4950525-arequipa-gppv_espanol_web_2023.pdf",
+        "https://target2.promperu.gob.pe/destinos/arequipa/centro-historico-de-arequipa/plaza-de-armas"
+      ]
     },
     {
       "id": "yakarta",
@@ -4142,18 +4423,27 @@
       },
       "continent": "asia",
       "countryCode": "ID",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Monas",
         "Mezquita Istiqlal",
         "Catedral de Yakarta",
-        "Museo Fatahillah",
-        "Wisma 46"
+        "Museo Fatahillah"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 151,
-      "batch": 38
+      "batch": 38,
+      "conceptImage": "normalizadas/yakarta-v1.png",
+      "originalConceptImage": "normalizadas/yakarta-v1.png",
+      "framingProfile": "yakarta",
+      "sources": [
+        "https://www.indonesia.travel/id/id/muslim-friendly-travel/attraction/masjid-istiqlal",
+        "https://www.jakarta.go.id/wisata-bersejarah",
+        "https://www.jakarta.go.id/index.php/landmark-jakarta",
+        "https://www.indonesia.travel/us/en/destination/java/jakarta/dki-jakarta---national-monument",
+        "https://www.jakarta.go.id/landmark-jakarta"
+      ]
     },
     {
       "id": "gante",
@@ -4162,7 +4452,7 @@
       },
       "continent": "europa",
       "countryCode": "BE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Castillo de los Condes",
@@ -4170,9 +4460,19 @@
         "Catedral de San Bavón",
         "Graslei y Korenlei"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 152,
-      "batch": 38
+      "batch": 38,
+      "conceptImage": "normalizadas/gante-v1.png",
+      "originalConceptImage": "normalizadas/gante-v1.png",
+      "framingProfile": "gante",
+      "sources": [
+        "https://visit.gent.be/es/poi-index?page=0",
+        "https://visit.gent.be/es/cultura-y-patrimonio-en-gante",
+        "https://visit.gent.be/es/ver-y-hacer/puntos-de-interes?oh_day=&origin=app&page=0",
+        "https://visit.gent.be/sites/default/files/media/doc/2025-11/Visitgent-cityguide-2025-ES-Digitaal.pdf",
+        "https://visit.gent.be/es/ver-y-hacer/puntos-de-interes?context=press&oh_day=today"
+      ]
     },
     {
       "id": "quito",
@@ -4181,18 +4481,27 @@
       },
       "continent": "america",
       "countryCode": "EC",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Basílica del Voto Nacional",
         "Virgen del Panecillo",
         "Iglesia y plaza de San Francisco",
-        "Iglesia de la Compañía",
-        "Plaza de la Independencia"
+        "Iglesia de la Compañía"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 153,
-      "batch": 38
+      "batch": 38,
+      "conceptImage": "normalizadas/quito-v1.png",
+      "originalConceptImage": "normalizadas/quito-v1.png",
+      "framingProfile": "quito",
+      "sources": [
+        "https://visitquito.ec/es/las-7-maravillas-del-mundo-de-quito-guia-para-tu-proxima-visita/",
+        "https://www.quito-turismo.gob.ec/news/quito-patrimonio-cultural-de-la-humanidad/",
+        "https://turismo.quito.gob.ec/quito-un-destino-ideal-para-visitar-durante-el-feriado/",
+        "https://visitquito.ec/es/lugares-top-para-visitar-en-quito-historia-naturaleza-y-cultura/",
+        "https://visitquito.ec/es/cultura/"
+      ]
     },
     {
       "id": "yogyakarta",
@@ -4201,17 +4510,26 @@
       },
       "continent": "asia",
       "countryCode": "ID",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Kraton",
         "Taman Sari",
-        "Tugu Yogyakarta",
-        "Fort Vredeburg"
+        "Tugu Yogyakarta"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 154,
-      "batch": 38
+      "batch": 38,
+      "conceptImage": "normalizadas/yogyakarta-v1.png",
+      "originalConceptImage": "normalizadas/yogyakarta-v1.png",
+      "framingProfile": "yogyakarta",
+      "sources": [
+        "https://tourism.kratonjogja.id/en-US/",
+        "https://tourism.kratonjogja.id/en-US/destination/5-kagungan-dalem-tamansari/",
+        "https://tourism.kratonjogja.id/id-ID/",
+        "https://www.kratonjogja.id/en/",
+        "https://www.indonesia.travel/id/en/destination/java/yogyakarta/yogyakarta---the-kraton"
+      ]
     },
     {
       "id": "roterdam",
@@ -4220,18 +4538,27 @@
       },
       "continent": "europa",
       "countryCode": "NL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Puente Erasmus",
         "Casas Cubo",
         "Markthal",
-        "Euromast",
-        "De Rotterdam"
+        "Euromast"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 155,
-      "batch": 39
+      "batch": 39,
+      "conceptImage": "normalizadas/roterdam-v1.png",
+      "originalConceptImage": "normalizadas/roterdam-v1.png",
+      "framingProfile": "roterdam",
+      "sources": [
+        "https://visitrotterdam.com/things-to-do-in-rotterdam.html",
+        "https://visitrotterdam.com/cube-houses-rotterdam.html",
+        "https://www.rotterdam.info/en/visit/finder-locations/erasmusbrug",
+        "https://visitrotterdam.com/tours-and-activities.html",
+        "https://www.rotterdam.info/en/visit/guide/top-10-architecture-rotterdam"
+      ]
     },
     {
       "id": "la-paz",
@@ -4240,7 +4567,7 @@
       },
       "continent": "america",
       "countryCode": "BO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Iglesia de San Francisco",
@@ -4248,9 +4575,19 @@
         "Plaza Murillo",
         "Valle de la Luna"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 156,
-      "batch": 39
+      "batch": 39,
+      "conceptImage": "normalizadas/la-paz-v1.png",
+      "originalConceptImage": "normalizadas/la-paz-v1.png",
+      "framingProfile": "la-paz",
+      "sources": [
+        "https://lapaz.bo/turismo/centro/",
+        "https://lapaz.bo/turismo/centro-basilica-menor-de-san-francisco/",
+        "https://sitservicios.lapaz.bo/cartillas/otraspublicaciones/Oferta%20y%20demanda%20turistica_11_1.pdf",
+        "https://conocebolivia.turismoyculturas.gob.bo/wp-content/uploads/2025/11/P-BoliviaTeEspera.pdf",
+        "https://lapaz.bo/turismo/download/inventario-de-atractivos-turisticos/"
+      ]
     },
     {
       "id": "manila",
@@ -4259,18 +4596,27 @@
       },
       "continent": "asia",
       "countryCode": "PH",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Fort Santiago",
         "Catedral de Manila",
         "Monumento a Rizal",
-        "Iglesia de San Agustín",
-        "Bahía de Manila"
+        "Iglesia de San Agustín"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 157,
-      "batch": 39
+      "batch": 39,
+      "conceptImage": "normalizadas/manila-v1.png",
+      "originalConceptImage": "normalizadas/manila-v1.png",
+      "framingProfile": "manila",
+      "sources": [
+        "https://intramuros.gov.ph/2020/07/12/virtual-tour-fort-santiago/",
+        "https://intramuros.gov.ph/fs/",
+        "https://intramuros.gov.ph/sites/",
+        "https://intramuros.gov.ph/faq/",
+        "https://pia.gov.ph/press-release/dot-intramuros-honor-ofws-with-free-heritage-access-and-guided-tours/"
+      ]
     },
     {
       "id": "la-haya",
@@ -4279,18 +4625,27 @@
       },
       "continent": "europa",
       "countryCode": "NL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Binnenhof y Ridderzaal",
         "Palacio de la Paz",
         "Mauritshuis",
-        "Noordeinde",
-        "Kurhaus de Scheveningen"
+        "Noordeinde"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 158,
-      "batch": 39
+      "batch": 39,
+      "conceptImage": "normalizadas/la-haya-v1.png",
+      "originalConceptImage": "normalizadas/la-haya-v1.png",
+      "framingProfile": "la-haya",
+      "sources": [
+        "https://www.denhaag.nl/nl/stadsdelen/centrum/wijken/binnenstad/",
+        "https://denhaag.com/nl/binnenhof",
+        "https://takethehague.nl/nl/location/ridderzaal",
+        "https://www.visitholland.nl/index.php/component/content/article/51-the-hague-den-haag/277-binnenhof",
+        "https://takethehague.nl/en/location/ridderzaal"
+      ]
     },
     {
       "id": "sucre",
@@ -4299,7 +4654,7 @@
       },
       "continent": "america",
       "countryCode": "BO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Casa de la Libertad",
@@ -4307,9 +4662,19 @@
         "La Recoleta",
         "San Felipe Neri"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 159,
-      "batch": 40
+      "batch": 40,
+      "conceptImage": "normalizadas/sucre-v1.png",
+      "originalConceptImage": "normalizadas/sucre-v1.png",
+      "framingProfile": "sucre",
+      "sources": [
+        "https://sucre.bo/",
+        "https://sucre.bo/wp-content/uploads/2024/04/GUIA-TURISTICA.pdf",
+        "https://conocebolivia.turismoyculturas.gob.bo/wp-content/uploads/2025/11/P-BoliviaTeEspera.pdf",
+        "https://casadelalibertad.org.bo/historia/",
+        "https://hidalgocorp.bo/operadora-de-turismo/ciudades-coloniales/sucre/"
+      ]
     },
     {
       "id": "katmandu",
@@ -4318,7 +4683,7 @@
       },
       "continent": "asia",
       "countryCode": "NP",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Boudhanath",
@@ -4326,9 +4691,19 @@
         "Durbar Square",
         "Pashupatinath"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 160,
-      "batch": 40
+      "batch": 40,
+      "conceptImage": "normalizadas/katmandu-v1.png",
+      "originalConceptImage": "normalizadas/katmandu-v1.png",
+      "framingProfile": "katmandu",
+      "sources": [
+        "https://tourismnpl.gov.np/",
+        "https://www.tourismnpl.gov.np/LandmarkDetail/226/Bouddhanath%20Stupa",
+        "https://trade.ntb.gov.np/tourist-destination/pilgrimage-sites-2/",
+        "https://kathmandu.gov.np/en/heritages",
+        "https://www.tourismnpl.gov.np/LandmarkDetail/226/report"
+      ]
     },
     {
       "id": "lyon",
@@ -4337,18 +4712,27 @@
       },
       "continent": "europa",
       "countryCode": "FR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Basílica de Fourvière",
-        "Plaza Bellecour",
-        "Ópera",
-        "Vieux Lyon junto al Saona",
-        "Musée des Confluences"
+        "Teatros romanos de Fourvière",
+        "Vieux Lyon",
+        "Place Bellecour"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 161,
-      "batch": 40
+      "batch": 40,
+      "conceptImage": "normalizadas/lyon-v1.png",
+      "originalConceptImage": "normalizadas/lyon-v1.png",
+      "framingProfile": "lyon",
+      "sources": [
+        "https://www.visiterlyon.com/decouvrir/sites-et-monuments/sites-et-monuments-remarquables/basilique-notre-dame-de-fourviere",
+        "https://www.visiterlyon.com/decouvrir/sites-et-monuments/patrimoine-religieux/basilique-notre-dame-de-fourviere",
+        "https://en.visiterlyon.com/discover/heritage-unesco/remarkable-sites-and-monuments/basilica-of-fourviere",
+        "https://www.lyon.fr/lieu/eglises-catholiques/basilique-de-fourviere",
+        "https://www.fourviere.org/fr/visiter-notre-dame-de-fourviere/"
+      ]
     },
     {
       "id": "santiago-de-chile",
@@ -4357,18 +4741,27 @@
       },
       "continent": "america",
       "countryCode": "CL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Gran Torre Santiago",
         "Palacio de La Moneda",
         "Cerro San Cristóbal",
-        "Cerro Santa Lucía",
-        "Catedral Metropolitana"
+        "Cerro Santa Lucía"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 162,
-      "batch": 40
+      "batch": 40,
+      "conceptImage": "normalizadas/santiago-de-chile-v1.png",
+      "originalConceptImage": "normalizadas/santiago-de-chile-v1.png",
+      "framingProfile": "santiago-de-chile",
+      "sources": [
+        "https://www.santiagoturismo.cl/es/palacio-de-la-moneda/",
+        "https://www.santiagoturismo.cl/en/palacio-de-la-moneda-2/",
+        "https://visitsantiago.travel/en/espacios_culturales/palacio-de-la-moneda/",
+        "https://visitsantiago.travel/espacios_culturales/palacio-de-la-moneda/",
+        "https://site.visitsantiago.org/imperdibles/casco-historico/palacio-de-la-moneda/"
+      ]
     },
     {
       "id": "agra",
@@ -4377,7 +4770,7 @@
       },
       "continent": "asia",
       "countryCode": "IN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Taj Mahal",
@@ -4385,9 +4778,19 @@
         "Tumba de Itimad-ud-Daulah",
         "Jardines Mehtab Bagh y Yamuna"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 163,
-      "batch": 41
+      "batch": 41,
+      "conceptImage": "normalizadas/agra-v1.png",
+      "originalConceptImage": "normalizadas/agra-v1.png",
+      "framingProfile": "agra",
+      "sources": [
+        "https://agra.nic.in/tourist-place/tajmahal/",
+        "https://agra.nic.in/tourist-place/agra-fort/",
+        "https://agra.nic.in/tourist-places/",
+        "https://tajmahal.gov.in/",
+        "https://culture.gov.in/taj-mahal"
+      ]
     },
     {
       "id": "marsella",
@@ -4396,7 +4799,7 @@
       },
       "continent": "europa",
       "countryCode": "FR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Notre-Dame de la Garde",
@@ -4404,9 +4807,19 @@
         "MuCEM y Fort Saint-Jean",
         "Catedral de la Major"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 164,
-      "batch": 41
+      "batch": 41,
+      "conceptImage": "normalizadas/marsella-v1.png",
+      "originalConceptImage": "normalizadas/marsella-v1.png",
+      "framingProfile": "marsella",
+      "sources": [
+        "https://www.marseille-tourisme.com/en/discover-marseille/culture-heritage/discover-the-sites-and-monuments-in-marseille/notre-dame-de-la-garde-basilica/",
+        "https://www.marseille.fr/culture/patrimoine-culturel/notre-dame-de-la-garde",
+        "https://www.marseille-tourisme.com/decouvrez-marseille/culture-et-patrimoine/basilique-notre-dame-de-la-garde-marseille-7eme-fr-2799547/",
+        "https://www.marseille-tourisme.com/es/descubrir-marsella/cultura-y-patrimonio/descubrir-los-monumentos-de-marsella/basilica-de-notre-dame-de-la-garde/",
+        "https://www.marseille-tourisme.com/en/discover-marseille/places-not-to-be-missed-in-marseille/"
+      ]
     },
     {
       "id": "valparaiso",
@@ -4415,18 +4828,27 @@
       },
       "continent": "america",
       "countryCode": "CL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "La Sebastiana",
         "Ascensor Artillería",
         "Cerros de casas de colores",
-        "Edificio Turri",
-        "Palacio Baburizza"
+        "Edificio Turri"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 165,
-      "batch": 41
+      "batch": 41,
+      "conceptImage": "normalizadas/valparaiso-v1.png",
+      "originalConceptImage": "normalizadas/valparaiso-v1.png",
+      "framingProfile": "valparaiso",
+      "sources": [
+        "https://www.monumentos.gob.cl/monumentos/monumentos-historicos/ascensor-artilleria",
+        "https://chile.travel/atractivos/ruta-ascensores/",
+        "https://chile.travel/en/attractions/elevator-route/",
+        "https://chile.travel/en/attractions/la-sebastiana-pablo-nerudas-house-museum/",
+        "https://valparaiso.com/que-visitar-en-valparaiso/ascensores/"
+      ]
     },
     {
       "id": "jaipur",
@@ -4435,18 +4857,27 @@
       },
       "continent": "asia",
       "countryCode": "IN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Hawa Mahal",
         "Fuerte Amber",
         "Jal Mahal",
-        "City Palace",
-        "Jantar Mantar"
+        "City Palace"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 166,
-      "batch": 41
+      "batch": 41,
+      "conceptImage": "normalizadas/jaipur-v1.png",
+      "originalConceptImage": "normalizadas/jaipur-v1.png",
+      "framingProfile": "jaipur",
+      "sources": [
+        "https://www.tourism.rajasthan.gov.in/hawa-mahal.html",
+        "https://www.tourism.rajasthan.gov.in/jaipur.html",
+        "https://www.incredibleindia.gov.in/en/rajasthan/jaipur.html",
+        "https://www.tourism.rajasthan.gov.in/amber-palace.html",
+        "https://www.incredibleindia.gov.in/en/rajasthan/jaipur/hawa-mahal"
+      ]
     },
     {
       "id": "niza",
@@ -4455,7 +4886,7 @@
       },
       "continent": "europa",
       "countryCode": "FR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Promenade des Anglais",
@@ -4463,9 +4894,19 @@
         "Place Masséna",
         "Catedral de San Nicolás"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 167,
-      "batch": 42
+      "batch": 42,
+      "conceptImage": "normalizadas/niza-v1.png",
+      "originalConceptImage": "normalizadas/niza-v1.png",
+      "framingProfile": "niza",
+      "sources": [
+        "https://www.culture.gouv.fr/regions/drac-provence-alpes-cote-d-azur/politique-et-actions-culturelles/architecture-contemporaine-remarquable-en-provence-alpes-cote-d-azur/le-label-architecture-contemporaine-remarquable-en-provence-alpes-cote-d-azur/label-acr-alpes-maritimes/nice/nice-hotel-negresco?switchTo=esl-ES",
+        "https://www.lenegresco.com/en/5-star-luxury-hotel-nice-france",
+        "https://cotedazurfrance.fr/offres/le-negresco-nice-fr-3032052/",
+        "https://patrimoinemondial.nice.fr/en/panorama",
+        "https://www.explorenicecotedazur.com/en/your-stay/the-luxury-hotels-collection/the-luxury-hotels-collection-nice/"
+      ]
     },
     {
       "id": "montevideo",
@@ -4474,18 +4915,27 @@
       },
       "continent": "america",
       "countryCode": "UY",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Palacio Salvo",
         "Teatro Solís",
         "Puerta de la Ciudadela",
-        "Palacio Legislativo",
-        "Rambla"
+        "Palacio Legislativo"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 168,
-      "batch": 42
+      "batch": 42,
+      "conceptImage": "normalizadas/montevideo-v1.png",
+      "originalConceptImage": "normalizadas/montevideo-v1.png",
+      "framingProfile": "montevideo",
+      "sources": [
+        "https://montevideo.gub.uy/areas-tematicas/turismo/teatro-solis",
+        "https://montevideo.gub.uy/areas-tematicas/cultura-y-tiempo-libre/teatro-solis",
+        "https://www.montevideo.gub.uy/institucional/dependencias/teatro-solis",
+        "https://montevideo.gub.uy/tipo/area-tematica/cultura/teatros-salas-y-centros-culturales",
+        "https://www.gub.uy/ministerio-educacion-cultura/academia-letras/teatro-solis"
+      ]
     },
     {
       "id": "varanasi",
@@ -4494,18 +4944,27 @@
       },
       "continent": "asia",
       "countryCode": "IN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Ghats del Ganges",
         "Templo Kashi Vishwanath",
         "Fuerte Ramnagar",
-        "Dashashwamedh Ghat",
-        "Nuevo Templo Vishwanath de BHU"
+        "Dashashwamedh Ghat"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 169,
-      "batch": 42
+      "batch": 42,
+      "conceptImage": "normalizadas/varanasi-v1.png",
+      "originalConceptImage": "normalizadas/varanasi-v1.png",
+      "framingProfile": "varanasi",
+      "sources": [
+        "https://varanasi.nic.in/tourist-place/shri-kashi-vishwanath-temple/",
+        "https://varanasi.nic.in/tourist-places/",
+        "https://varanasi.nic.in/tourist-place/ganga-ghat/",
+        "https://www.incredibleindia.gov.in/en/uttar-pradesh/varanasi",
+        "https://varanasi.nic.in/tourism/"
+      ]
     },
     {
       "id": "burdeos",
@@ -4514,18 +4973,27 @@
       },
       "continent": "europa",
       "countryCode": "FR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Place de la Bourse y Miroir d’Eau",
         "Cité du Vin",
         "Pont de Pierre",
-        "Catedral y torre Pey-Berland",
-        "Grosse Cloche"
+        "Catedral y torre Pey-Berland"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 170,
-      "batch": 42
+      "batch": 42,
+      "conceptImage": "normalizadas/burdeos-v1.png",
+      "originalConceptImage": "normalizadas/burdeos-v1.png",
+      "framingProfile": "burdeos",
+      "sources": [
+        "https://www.bordeaux-tourisme.com/sites-monuments/miroir-eau-place-bourse",
+        "https://www.bordeaux-tourisme.com/patrimoine-culturel/place-bourse.html",
+        "https://www.france.fr/fr/destination/bordeaux/",
+        "https://www.laciteduvin.com/fr/info/tourism",
+        "https://www.bordeaux.travel/fr-FR/destinations/1/bordeaux"
+      ]
     },
     {
       "id": "brasilia",
@@ -4534,18 +5002,27 @@
       },
       "continent": "america",
       "countryCode": "BR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Congreso Nacional",
         "Catedral",
         "Palacio da Alvorada",
-        "Memorial JK",
-        "Puente Juscelino Kubitschek"
+        "Memorial JK"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 171,
-      "batch": 43
+      "batch": 43,
+      "conceptImage": "normalizadas/brasilia-v1.png",
+      "originalConceptImage": "normalizadas/brasilia-v1.png",
+      "framingProfile": "brasilia",
+      "sources": [
+        "https://www.visitbrasil.com/location/brasilia",
+        "https://www.gov.br/turismo/pt-br/assuntos/noticias/brasilia-unica-cidade-moderna-reconhecida-como-patrimonio-mundial-da-unesco/",
+        "https://g20.gov.br/pt-br/sobre-o-g20/cidades-sede/brasilia-df",
+        "https://www.gov.br/turismo/pt-br/centrais-de-conteudo/04-08-2016-guia-cidades-bsb-pdf",
+        "https://cbdeh.abdeh.org.br/informacoes-turisticas"
+      ]
     },
     {
       "id": "calcuta",
@@ -4554,18 +5031,27 @@
       },
       "continent": "asia",
       "countryCode": "IN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Victoria Memorial",
         "Howrah Bridge",
         "Templo Dakshineswar",
-        "Catedral de San Pablo",
-        "Writers’ Building"
+        "Catedral de San Pablo"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 172,
-      "batch": 43
+      "batch": 43,
+      "conceptImage": "normalizadas/calcuta-v1.png",
+      "originalConceptImage": "normalizadas/calcuta-v1.png",
+      "framingProfile": "calcuta",
+      "sources": [
+        "https://howrah.gov.in/tourist-place/howrah-bridge/",
+        "https://howrah.gov.in/tourism/",
+        "https://www.wbtourism.gov.in/detalil-description/victoria_memorial_kolkata",
+        "https://www.wbtourism.gov.in/topDestination/details1?id=63e0f9bde1e96d5daf0e5c4c&template_id=1",
+        "https://victoriamemorial-cal.org/visit-us/"
+      ]
     },
     {
       "id": "estrasburgo",
@@ -4574,18 +5060,27 @@
       },
       "continent": "europa",
       "countryCode": "FR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral",
         "Petite France",
         "Ponts Couverts",
-        "Parlamento Europeo",
-        "Palais Rohan"
+        "Parlamento Europeo"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 173,
-      "batch": 43
+      "batch": 43,
+      "conceptImage": "normalizadas/estrasburgo-v1.png",
+      "originalConceptImage": "normalizadas/estrasburgo-v1.png",
+      "framingProfile": "estrasburgo",
+      "sources": [
+        "https://www.visitstrasbourg.fr/en/discover/must-see-attractions/",
+        "https://www.visitstrasbourg.fr/en/discover/strasbourg-and-its-surrounding-area/petite-france/",
+        "https://www.visitstrasbourg.fr/decouvrir-strasbourg/les-incontournables/",
+        "https://www.visitstrasbourg.fr/en/things-to-see-and-do/visiting/places-to-visit/historical-sites-and-monuments/",
+        "https://www.france.fr/en/article/que-faire-que-voir-strasbourg/"
+      ]
     },
     {
       "id": "sao-paulo",
@@ -4594,18 +5089,27 @@
       },
       "continent": "america",
       "countryCode": "BR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "MASP",
         "Theatro Municipal",
         "Catedral da Sé",
-        "Edificio Altino Arantes",
-        "Edificio Copan"
+        "Edificio Altino Arantes"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 174,
-      "batch": 43
+      "batch": 43,
+      "conceptImage": "normalizadas/sao-paulo-v1.png",
+      "originalConceptImage": "normalizadas/sao-paulo-v1.png",
+      "framingProfile": "sao-paulo",
+      "sources": [
+        "https://www.masp.org.br/en/visit",
+        "https://www.prefeitura.sp.gov.br/web/fundacao_theatro_municipal/",
+        "https://theatromunicipal.org.br/pagina-inicial-01/",
+        "https://www.masp.org.br/en",
+        "https://prefeitura.sp.gov.br/web/cultura/w/museus-casas-hist%C3%B3ricas"
+      ]
     },
     {
       "id": "amritsar",
@@ -4614,7 +5118,7 @@
       },
       "continent": "asia",
       "countryCode": "IN",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Templo Dorado",
@@ -4622,9 +5126,19 @@
         "Hall Gate",
         "Fuerte Gobindgarh"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 175,
-      "batch": 44
+      "batch": 44,
+      "conceptImage": "normalizadas/amritsar-v1.png",
+      "originalConceptImage": "normalizadas/amritsar-v1.png",
+      "framingProfile": "amritsar",
+      "sources": [
+        "https://amritsar.nic.in/tourist-places/",
+        "https://amritsar.nic.in/places-of-interest/",
+        "https://amritsar.nic.in/tourist-place/jallian-wala-bagh/",
+        "https://amritsar.nic.in/culture-heritage/",
+        "https://www.incredibleindia.gov.in/en/punjab/amritsar"
+      ]
     },
     {
       "id": "avinon",
@@ -4633,7 +5147,7 @@
       },
       "continent": "europa",
       "countryCode": "FR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Palacio de los Papas",
@@ -4641,9 +5155,19 @@
         "Catedral de Notre-Dame des Doms",
         "Murallas"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 176,
-      "batch": 44
+      "batch": 44,
+      "conceptImage": "normalizadas/avinon-v1.png",
+      "originalConceptImage": "normalizadas/avinon-v1.png",
+      "framingProfile": "avinon",
+      "sources": [
+        "https://avignon-tourisme.com/es/avignon-tiene-1000-caras/avinon-ciudad-de-los-papas/puente-de-avignon/",
+        "https://avignon-tourisme.com/es/avignon-tiene-1000-caras/avinon-ciudad-de-los-papas/",
+        "https://avignon-tourisme.com/es/avignon-tiene-1000-caras/avinon-ciudad-de-los-papas/el-palacio-de-los-papas-un-edificio-insolito/",
+        "https://avignon-tourisme.com/es/",
+        "https://avignon-tourisme.com/es/lo-mas-destacado-de-avignon/el-palacio-de-los-papas-el-puente-de-avinon-el-jardin-mediterraneo-los-10-mejores-lugares-instagrameables-de-avinon/"
+      ]
     },
     {
       "id": "salvador-de-bahia",
@@ -4652,18 +5176,27 @@
       },
       "continent": "america",
       "countryCode": "BR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Elevador Lacerda",
         "Pelourinho",
         "Iglesia de São Francisco",
-        "Farol da Barra",
-        "Mercado Modelo"
+        "Farol da Barra"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 177,
-      "batch": 44
+      "batch": 44,
+      "conceptImage": "normalizadas/salvador-de-bahia-v1.png",
+      "originalConceptImage": "normalizadas/salvador-de-bahia-v1.png",
+      "framingProfile": "salvador-de-bahia",
+      "sources": [
+        "https://www.salvadordabahia.com/como-chegar-no-centro-historico/",
+        "https://www.visiteelevadorlacerda.com/pelourinho/",
+        "https://www.ba.gov.br/turismo/noticia/2024-07/3218/centro-historico-de-salvador-investimentos-na-preservacao-geram-emprego-e",
+        "https://www.gov.br/turismo/pt-br/centrais-de-conteudo-/publicacoes/copy_of_CidadesCriativas.pdf",
+        "https://www.salvadordabahia.com/experiencias/elevador-lacerda/"
+      ]
     },
     {
       "id": "abu-dabi",
@@ -4672,18 +5205,27 @@
       },
       "continent": "asia",
       "countryCode": "AE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Mezquita Sheikh Zayed",
         "Louvre Abu Dhabi",
         "Qasr Al Watan",
-        "Etihad Towers",
-        "Capital Gate"
+        "Etihad Towers"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 178,
-      "batch": 44
+      "batch": 44,
+      "conceptImage": "normalizadas/abu-dabi-v1.png",
+      "originalConceptImage": "normalizadas/abu-dabi-v1.png",
+      "framingProfile": "abu-dabi",
+      "sources": [
+        "https://www.louvreabudhabi.ae/en/visit-us",
+        "https://visitabudhabi.ae/En",
+        "https://visitabudhabi.ae/en",
+        "https://visitabudhabi.ae/en/things-to-do-home",
+        "https://visitabudhabi.ae/en/things-to-do/itineraries/one-day-abu-dhabi-landmark-architecture-tour"
+      ]
     },
     {
       "id": "milan",
@@ -4692,7 +5234,7 @@
       },
       "continent": "europa",
       "countryCode": "IT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Duomo",
@@ -4700,9 +5242,19 @@
         "Castello Sforzesco",
         "Teatro alla Scala"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 179,
-      "batch": 45
+      "batch": 45,
+      "conceptImage": "normalizadas/milan-v1.png",
+      "originalConceptImage": "normalizadas/milan-v1.png",
+      "framingProfile": "milan",
+      "sources": [
+        "https://www.duomomilano.it/en/",
+        "https://www.italia.it/en/lombardy/milan/vittorio-emanuele-ii-gallery",
+        "https://www.duomomilano.it/en/homepage/",
+        "https://duomo.firenze.it/en/visit",
+        "https://www.duomomilano.it/en/art-and-culture/duomo-museum/"
+      ]
     },
     {
       "id": "recife",
@@ -4711,7 +5263,7 @@
       },
       "continent": "america",
       "countryCode": "BR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Praça do Marco Zero",
@@ -4719,9 +5271,19 @@
         "Puente Maurício de Nassau",
         "Casas de Recife Antigo"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 180,
-      "batch": 45
+      "batch": 45,
+      "conceptImage": "normalizadas/recife-v1.png",
+      "originalConceptImage": "normalizadas/recife-v1.png",
+      "framingProfile": "recife",
+      "sources": [
+        "https://visit.recife.pe.gov.br/lugar/marco-zero/",
+        "https://visite.recife.br/pontos-turisticos-recife/",
+        "https://visite.recife.br/marco-zero-recife/",
+        "https://visit.recife.pe.gov.br/lugar/parque-das-esculturas-francisco-brennand/",
+        "https://visit.recife.pe.gov.br/novo-letreiro-do-recife-e-instalado-no-marco-zero/"
+      ]
     },
     {
       "id": "doha",
@@ -4730,18 +5292,27 @@
       },
       "continent": "asia",
       "countryCode": "QA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Museo de Arte Islámico",
         "Museo Nacional de Qatar",
         "Aspire Tower",
-        "Katara Towers",
-        "The Pearl"
+        "Katara Towers"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 181,
-      "batch": 45
+      "batch": 45,
+      "conceptImage": "normalizadas/doha-v1.png",
+      "originalConceptImage": "normalizadas/doha-v1.png",
+      "framingProfile": "doha",
+      "sources": [
+        "https://visitqatar.com/intl-en/things-to-do/art-culture/museums/museum-of-islamic-art",
+        "https://visitqatar.com/es-es/things-to-do/art-culture/museums/museum-of-islamic-art",
+        "https://visitqatar.com/es-es/things-to-do/art-culture/museums/national-museum",
+        "https://qm.org.qa/en/visit/museums-and-galleries/",
+        "https://qm.org.qa/en/visit/"
+      ]
     },
     {
       "id": "napoles",
@@ -4750,7 +5321,7 @@
       },
       "continent": "europa",
       "countryCode": "IT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Castel Nuovo",
@@ -4758,9 +5329,19 @@
         "Basílica de San Francesco di Paola",
         "Palacio Real y Piazza del Plebiscito"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 182,
-      "batch": 45
+      "batch": 45,
+      "conceptImage": "normalizadas/napoles-v1.png",
+      "originalConceptImage": "normalizadas/napoles-v1.png",
+      "framingProfile": "napoles",
+      "sources": [
+        "https://tour.naples.it/naples/what-to-see/details/castel-dell-ovo",
+        "https://tour.napoli.it/it/napoli/cosa-vedere/dettagli/castel-dell-ovo",
+        "https://cultura.gov.it/luogo/castel-dell-ovo",
+        "https://explore.napoli.it/sight/castel-dell-ovo/",
+        "https://www.italia.it/it/campania/napoli/luoghi-della-cultura/castel-dellovo"
+      ]
     },
     {
       "id": "ciudad-de-panama",
@@ -4769,18 +5350,27 @@
       },
       "continent": "america",
       "countryCode": "PA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Puente de las Américas",
         "F&F Tower",
         "Catedral del Casco Viejo",
-        "Biomuseo",
-        "Esclusas de Miraflores"
+        "Biomuseo"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 183,
-      "batch": 46
+      "batch": 46,
+      "conceptImage": "normalizadas/ciudad-de-panama-v1.png",
+      "originalConceptImage": "normalizadas/ciudad-de-panama-v1.png",
+      "framingProfile": "ciudad-de-panama",
+      "sources": [
+        "https://www.atp.gob.pa/wp-content/uploads/2020/12/PMTSP_2020-2025.pdf",
+        "https://www.atp.gob.pa/wp-content/uploads/2021/09/Plan_Maestro_de_Turismo_Sostenible_2020-2025.pdf",
+        "https://www.atp.gob.pa/wp-content/uploads/2024/06/Manual-de-Estudio-de-Guia-de-Turismo-de-Panama.pdf",
+        "https://es.tourismpanama.com/lugares-para-visitar/ciudad-de-panama/",
+        "https://www.govinfo.gov/content/pkg/GOVPUB-W79-d9e09b34e9aaa7f3d3ba866a3e0cc548/pdf/GOVPUB-W79-d9e09b34e9aaa7f3d3ba866a3e0cc548.pdf"
+      ]
     },
     {
       "id": "mascate",
@@ -4789,7 +5379,7 @@
       },
       "continent": "asia",
       "countryCode": "OM",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Gran Mezquita del Sultán Qaboos",
@@ -4797,9 +5387,19 @@
         "Corniche de Muttrah",
         "Fuertes Al Jalali y Al Mirani"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 184,
-      "batch": 46
+      "batch": 46,
+      "conceptImage": "normalizadas/mascate-v1.png",
+      "originalConceptImage": "normalizadas/mascate-v1.png",
+      "framingProfile": "mascate",
+      "sources": [
+        "https://experienceoman.om/en/destinations/muscat/sultan-qaboos-grand-mosque",
+        "https://experienceoman.om/en/destinations",
+        "https://experienceoman.om/ar/%D9%88%D8%AC%D9%87%D8%A7%D8%AA",
+        "https://ssg.gov.om/public/historicallocations",
+        "https://visitoman.om/partner"
+      ]
     },
     {
       "id": "pisa",
@@ -4808,7 +5408,7 @@
       },
       "continent": "europa",
       "countryCode": "IT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Torre inclinada",
@@ -4816,9 +5416,19 @@
         "Baptisterio",
         "Ponte di Mezzo"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 185,
-      "batch": 46
+      "batch": 46,
+      "conceptImage": "normalizadas/pisa-v1.png",
+      "originalConceptImage": "normalizadas/pisa-v1.png",
+      "framingProfile": "pisa",
+      "sources": [
+        "https://www.turismo.pisa.it/en/place/piazza-del-duomo",
+        "https://turismo.pisa.it/en/world-heritage/piazza-del-duomo/presentation",
+        "https://turismo.pisa.it/cultura/dettaglio/piazza-del-duomo-la-torre-pendente/",
+        "https://turismo.pisa.it/luogo/piazza-del-duomo?context=3913",
+        "https://www.comune.pisa.it/Vivere-il-Comune/Luoghi/Torre-di-Pisa"
+      ]
     },
     {
       "id": "antigua-guatemala",
@@ -4827,18 +5437,27 @@
       },
       "continent": "america",
       "countryCode": "GT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Arco de Santa Catalina",
         "Iglesia de La Merced",
         "Catedral",
-        "Palacio de los Capitanes Generales",
-        "Volcán de Agua"
+        "Palacio de los Capitanes Generales"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 186,
-      "batch": 46
+      "batch": 46,
+      "conceptImage": "normalizadas/antigua-guatemala-v1.png",
+      "originalConceptImage": "normalizadas/antigua-guatemala-v1.png",
+      "framingProfile": "antigua-guatemala",
+      "sources": [
+        "https://inguat.gob.gt/en/descargas-inguat-guatemala/46-guias-turisticas.html?download=1148%3Aguia-turistica-de-sacatepequez-2026&start=20",
+        "https://www.sicultura.gob.gt/directory-directorio_c/listing/arco-de-santa-catalina/",
+        "https://inguat.gob.gt/es/component/phocadownload/category/45-planes-de-segmentos-turisticos?download=532%3Aguia-turistica-para-ninos",
+        "https://www.sicultura.gob.gt/directory-directorio_c/listing/iglesia-de-santa-catalina-guatemala/",
+        "https://www.casaencantada-antigua.com/es/que-hacer/iglesia-de-la-merced"
+      ]
     },
     {
       "id": "riad",
@@ -4847,7 +5466,7 @@
       },
       "continent": "asia",
       "countryCode": "SA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Kingdom Centre",
@@ -4855,9 +5474,19 @@
         "Fuerte Masmak",
         "At-Turaif de Diriyah"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 187,
-      "batch": 47
+      "batch": 47,
+      "conceptImage": "normalizadas/riad-v1.png",
+      "originalConceptImage": "normalizadas/riad-v1.png",
+      "framingProfile": "riad",
+      "sources": [
+        "https://www.visitsaudi.com/en/riyadh/attractions/kingdom-centre",
+        "https://www.kkia.sa/en/attractions/the-kingdom-center",
+        "https://www.visitsaudi.com/en/riyadh/attractions/al-faisaliah-tower-in-riyadh",
+        "https://my.gov.sa/en/content/tourism",
+        "https://alriyadh.gov.sa/en/content/tourism"
+      ]
     },
     {
       "id": "verona",
@@ -4866,7 +5495,7 @@
       },
       "continent": "europa",
       "countryCode": "IT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Arena",
@@ -4874,9 +5503,19 @@
         "Torre dei Lamberti",
         "Ponte Pietra"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 188,
-      "batch": 47
+      "batch": 47,
+      "conceptImage": "normalizadas/verona-v1.png",
+      "originalConceptImage": "normalizadas/verona-v1.png",
+      "framingProfile": "verona",
+      "sources": [
+        "https://www.visitverona.it/en/poi/ponte-di-castelvecchio",
+        "https://www.tourism.verona.it/centro-storico-verona",
+        "https://tourism.verona.it/arena-di-verona",
+        "https://www.visitverona.it/it/luoghi/ponte-di-castelvecchio",
+        "https://www.visitverona.it/en/poi/castelvecchio-museum"
+      ]
     },
     {
       "id": "san-juan",
@@ -4885,18 +5524,26 @@
       },
       "continent": "america",
       "countryCode": "PR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Castillo San Felipe del Morro",
-        "Castillo San Cristóbal",
         "La Fortaleza",
-        "Catedral de San Juan Bautista",
-        "Casas del Viejo San Juan"
+        "Catedral de San Juan Bautista"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 189,
-      "batch": 47
+      "batch": 47,
+      "conceptImage": "normalizadas/san-juan-v1.png",
+      "originalConceptImage": "normalizadas/san-juan-v1.png",
+      "framingProfile": "san-juan",
+      "sources": [
+        "https://www.nps.gov/saju/planyourvisit/index.htm",
+        "https://www.nps.gov/saju/planyourvisit/basicinfo.htm",
+        "https://www.nps.gov/saju/index.htm",
+        "https://home.nps.gov/saju/espanol/index.htm",
+        "https://www.nps.gov/saju/espanol/index.htm"
+      ]
     },
     {
       "id": "yeda",
@@ -4905,18 +5552,27 @@
       },
       "continent": "asia",
       "countryCode": "SA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Fuente del Rey Fahd",
         "Casas de Al-Balad",
         "Mezquita Al Rahma",
-        "Faro de Yeda",
-        "Globe Roundabout"
+        "Faro de Yeda"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 190,
-      "batch": 47
+      "batch": 47,
+      "conceptImage": "normalizadas/yeda-v1.png",
+      "originalConceptImage": "normalizadas/yeda-v1.png",
+      "framingProfile": "yeda",
+      "sources": [
+        "https://adamarabia.sa/es/sites/al-balad",
+        "https://www.visitsaudi.com/content/sauditourism/en/destinations/jeddah/attractions/summer-night-adventures-in-al-balad.html",
+        "https://www.visitalbalad.com/about-us",
+        "https://visitingalbaha.com/es/city/Jeddah",
+        "https://www.visitsaudi.com/ar/jeddah/attractions/al-balad-market"
+      ]
     },
     {
       "id": "turin",
@@ -4925,7 +5581,7 @@
       },
       "continent": "europa",
       "countryCode": "IT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Mole Antonelliana",
@@ -4933,9 +5589,19 @@
         "Palacio Real",
         "Basílica de Superga"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 191,
-      "batch": 48
+      "batch": 48,
+      "conceptImage": "normalizadas/turin-v1.png",
+      "originalConceptImage": "normalizadas/turin-v1.png",
+      "framingProfile": "turin",
+      "sources": [
+        "https://www.turin.de/en/centro-storico/",
+        "https://www.turin.de/en/attractions/",
+        "https://www.italia.it/en/piedmont/turin/palazzo-madama",
+        "https://www.turin.de/en/mole-antonelliana/",
+        "https://www.comune.torino.it/vivere-comune/luoghi/palazzo-madama-museo-civico-darte-antica"
+      ]
     },
     {
       "id": "santo-domingo",
@@ -4944,7 +5610,7 @@
       },
       "continent": "america",
       "countryCode": "DO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Alcázar de Colón",
@@ -4952,9 +5618,19 @@
         "Fortaleza Ozama",
         "Faro a Colón"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 192,
-      "batch": 48
+      "batch": 48,
+      "conceptImage": "normalizadas/santo-domingo-v1.png",
+      "originalConceptImage": "normalizadas/santo-domingo-v1.png",
+      "framingProfile": "santo-domingo",
+      "sources": [
+        "https://www.santodomingotourism.com/sight/cathedral-and-churches/",
+        "https://es.godominicanrepublic.com/que-hacer/basilica-catedral-primada-de-america",
+        "https://www.santodomingotourism.com/santo-domingo/colonial-zone/",
+        "https://www.santodomingotourism.com/sight/museums-and-historic-buildings/",
+        "https://www.santodomingotourism.com/sight/"
+      ]
     },
     {
       "id": "aman",
@@ -4963,7 +5639,7 @@
       },
       "continent": "asia",
       "countryCode": "JO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Teatro Romano",
@@ -4971,9 +5647,19 @@
         "Palacio Omeya",
         "Mezquita del Rey Abdullah I"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 193,
-      "batch": 48
+      "batch": 48,
+      "conceptImage": "normalizadas/aman-v1.png",
+      "originalConceptImage": "normalizadas/aman-v1.png",
+      "framingProfile": "aman",
+      "sources": [
+        "https://sp.visitjordan.com/wheretogo/amman/",
+        "https://doa.gov.jo/EN/ListDetails/Archeological_Sites/1157/2",
+        "https://doa.gov.jo/AR/ListDetails/%D9%85%D9%88%D8%A7%D9%82%D8%B9_%D8%A3%D8%AB%D8%B1%D9%8A%D8%A9/1145/8",
+        "https://www.juntadeandalucia.es/organismos/culturapatrimoniohistoricoydeporte/servicios/directorio-instituciones/detalle/2595.html",
+        "https://www.illesbalears.travel/es/menorca/que-ver-en-la-ciudadela-de-menorca"
+      ]
     },
     {
       "id": "bolonia",
@@ -4982,18 +5668,27 @@
       },
       "continent": "europa",
       "countryCode": "IT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Las Dos Torres",
         "Basílica de San Petronio",
         "Fuente de Neptuno",
-        "Santuario de San Luca",
-        "Pórticos"
+        "Santuario de San Luca"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 194,
-      "batch": 48
+      "batch": 48,
+      "conceptImage": "normalizadas/bolonia-v1.png",
+      "originalConceptImage": "normalizadas/bolonia-v1.png",
+      "framingProfile": "bolonia",
+      "sources": [
+        "https://www.bolognawelcome.com/es/lugares/homepage",
+        "https://www.basilicadisanpetronio.org/en/visits/",
+        "https://www.bolognawelcome.com/es/lugares/torres-edificios-historicos/las-dos-torres-garisenda-y-asinelli",
+        "https://www.bolognawelcome.com/es",
+        "https://turismo.bologna.it/piazza-maggiore-il-cuore-pulsante-della-citta-di-bologna/"
+      ]
     },
     {
       "id": "san-jose",
@@ -5002,18 +5697,27 @@
       },
       "continent": "america",
       "countryCode": "CR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Teatro Nacional",
         "Catedral Metropolitana",
         "Templo de la Música",
-        "Museo Nacional y Cuartel Bellavista",
-        "Correo Central"
+        "Museo Nacional y Cuartel Bellavista"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 195,
-      "batch": 49
+      "batch": 49,
+      "conceptImage": "normalizadas/san-jose-v1.png",
+      "originalConceptImage": "normalizadas/san-jose-v1.png",
+      "framingProfile": "san-jose",
+      "sources": [
+        "https://www.teatronacional.go.cr/Visitenos/turismo",
+        "https://teatronacional.go.cr/Visitenos/planee",
+        "https://centrohistorico.gob.sv/destinos-turisticos/catedral-metropolitana/",
+        "https://centrohistorico.gob.sv/destinos-turisticos/teatro-nacional/",
+        "https://boleteria.teatronacional.go.cr/"
+      ]
     },
     {
       "id": "beirut",
@@ -5022,18 +5726,27 @@
       },
       "continent": "asia",
       "countryCode": "LB",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Mezquita Mohammad Al-Amin",
         "Rocas de Raouché",
         "Torre del Reloj de la Place de l’Étoile",
-        "Museo Nacional",
-        "Grand Serail"
+        "Museo Nacional"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 196,
-      "batch": 49
+      "batch": 49,
+      "conceptImage": "normalizadas/beirut-v1.png",
+      "originalConceptImage": "normalizadas/beirut-v1.png",
+      "framingProfile": "beirut",
+      "sources": [
+        "https://www.beirut.com/en/directory/mohammad-al-amin-mosque/",
+        "https://aminemosque.com/",
+        "https://www.discoverlebanon.com/en/landmarks/map_en_iframe.php",
+        "https://www.beirut.com/en/TouristAttractions/",
+        "https://aminemosque.com/?lang=ar"
+      ]
     },
     {
       "id": "palermo",
@@ -5042,18 +5755,27 @@
       },
       "continent": "europa",
       "countryCode": "IT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral",
         "Palacio de los Normandos",
         "La Martorana",
-        "Teatro Massimo",
-        "Fuente Pretoria"
+        "Teatro Massimo"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 197,
-      "batch": 49
+      "batch": 49,
+      "conceptImage": "normalizadas/palermo-v1.png",
+      "originalConceptImage": "normalizadas/palermo-v1.png",
+      "framingProfile": "palermo",
+      "sources": [
+        "https://tour.palermo.it/palermo/what-to-see/details/palazzo-dei-normanni-cappella-palatina",
+        "https://tour.palermo.it/es/palermo/qu%C3%A9-ver/detalles/palazzo-dei-normanni-cappella-palatina",
+        "https://www.cattedrale.palermo.it/",
+        "https://www.italia.it/en/sicily/palermo/palazzo-dei-normanni",
+        "https://tour.palermo.it/it/palermo/cosa-vedere/dettagli/palazzo-dei-normanni-cappella-palatina"
+      ]
     },
     {
       "id": "kingston",
@@ -5062,7 +5784,7 @@
       },
       "continent": "america",
       "countryCode": "JM",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Devon House",
@@ -5070,9 +5792,19 @@
         "Bob Marley Museum sin rótulos",
         "Ward Theatre"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 198,
-      "batch": 49
+      "batch": 49,
+      "conceptImage": "normalizadas/kingston-v1.png",
+      "originalConceptImage": "normalizadas/kingston-v1.png",
+      "framingProfile": "kingston",
+      "sources": [
+        "https://www.visitjamaica.com/resort-areas/kingston/things-to-do/",
+        "https://www.ksamc.gov.jm/attractions/devon-house",
+        "https://www.ksamc.gov.jm/attractions/port-royal",
+        "https://www.mot.gov.jm/agency/devon-house-development-limited",
+        "https://www.devonhouseja.com/"
+      ]
     },
     {
       "id": "jerusalen",
@@ -5081,7 +5813,7 @@
       },
       "continent": "asia",
       "countryCode": "IL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Cúpula de la Roca",
@@ -5089,10 +5821,20 @@
         "Iglesia del Santo Sepulcro",
         "Torre de David y murallas"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 199,
       "batch": 50,
-      "generationInstructions": "Historic architecture only. No flags, territorial maps, political emblems or military objects."
+      "generationInstructions": "Historic architecture only. No flags, territorial maps, political emblems or military objects.",
+      "conceptImage": "normalizadas/jerusalen-v1.png",
+      "originalConceptImage": "normalizadas/jerusalen-v1.png",
+      "framingProfile": "jerusalen",
+      "sources": [
+        "https://www.jerusalen.com/que-ver",
+        "https://www.jerusalen.com/monumentos-atracciones-turisticas",
+        "https://thekotel.org/es/visitor_information/",
+        "https://www.jerusalen.com/mapa",
+        "https://www.jerusalen.com/muro-lamentaciones"
+      ]
     },
     {
       "id": "munich",
@@ -5101,18 +5843,27 @@
       },
       "continent": "europa",
       "countryCode": "DE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Frauenkirche",
         "Nuevo Ayuntamiento",
         "Palacio de Nymphenburg",
-        "Museo BMW y BMW Welt sin logos",
-        "Estadio Olímpico"
+        "Museo BMW y BMW Welt sin logos"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 200,
-      "batch": 50
+      "batch": 50,
+      "conceptImage": "normalizadas/munich-v1.png",
+      "originalConceptImage": "normalizadas/munich-v1.png",
+      "framingProfile": "munich",
+      "sources": [
+        "https://www.munich.travel/en/topics/urban-districts/munich-sights-at-a-glance",
+        "https://www.munich.travel/es/pois/ciudad-barrios/frauenkirche",
+        "https://www.munich.travel/en/pois/urban-districts/frauenkirche",
+        "https://www.muenchen.de/es/lugares-de-interes/edificios-y-monumentos/nuevo-ayuntamiento-neues-rathaus",
+        "https://www.munich.travel/es/articulos/ciudad-barrios/resumen-de-los-atractivos-turisticos"
+      ]
     },
     {
       "id": "tel-aviv",
@@ -5121,18 +5872,27 @@
       },
       "continent": "asia",
       "countryCode": "IL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Azrieli Center",
         "Torre del Reloj de Jaffa",
         "Casas Bauhaus de la Ciudad Blanca",
-        "Teatro Habima",
-        "Museo de Arte"
+        "Teatro Habima"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 201,
-      "batch": 50
+      "batch": 50,
+      "conceptImage": "normalizadas/tel-aviv-v1.png",
+      "originalConceptImage": "normalizadas/tel-aviv-v1.png",
+      "framingProfile": "tel-aviv",
+      "sources": [
+        "https://www.tel-aviv.gov.il/en/Visit/Pages/visitTelAviv.aspx",
+        "https://www.tel-aviv.gov.il/en/contactus/Pages/TouristInformationCenter.aspx?searchparam=%2C0%2C0%2CUS%2C-116%2C1%2C0.0%2C0.0%2C0.0%2C0.4230769230769231%2C0.5769230769230769%2C0%2C0%2C0%2C1%2C1%2C1%2C30%2C1%2C0%2C0.5%2C16%2C0%2C0%2C-1%2C0.0",
+        "https://www.tel-aviv.gov.il/en/Visit/Top10Places/Pages/default.aspx",
+        "https://www.tel-aviv.gov.il/en/Documents/10498_events.aug.pdf",
+        "https://www.visit-tel-aviv.com/en/tourist-information-centers/"
+      ]
     },
     {
       "id": "hamburgo",
@@ -5141,18 +5901,27 @@
       },
       "continent": "europa",
       "countryCode": "DE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Elbphilharmonie",
         "Speicherstadt",
         "Iglesia de San Miguel",
-        "Ayuntamiento",
-        "Grúas del puerto"
+        "Ayuntamiento"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 202,
-      "batch": 50
+      "batch": 50,
+      "conceptImage": "normalizadas/hamburgo-v1.png",
+      "originalConceptImage": "normalizadas/hamburgo-v1.png",
+      "framingProfile": "hamburgo",
+      "sources": [
+        "https://www.elbphilharmonie.de/en/visit",
+        "https://www.hamburg.de/tourismus/",
+        "https://www.hamburg.de/tourismus/sehenswuerdigkeiten/speicherstadt",
+        "https://www.hamburg.de/tourismus/diese-orte-praegen-hamburg-849104",
+        "https://www.hamburg.de/tourismus/diese-orte-machen-hamburg-aus-931414"
+      ]
     },
     {
       "id": "samarcanda",
@@ -5161,7 +5930,7 @@
       },
       "continent": "asia",
       "countryCode": "UZ",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Registán",
@@ -5169,9 +5938,19 @@
         "Gur-e Amir",
         "Mezquita Bibi-Khanym"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 203,
-      "batch": 51
+      "batch": 51,
+      "conceptImage": "normalizadas/samarcanda-v1.png",
+      "originalConceptImage": "normalizadas/samarcanda-v1.png",
+      "framingProfile": "samarcanda",
+      "sources": [
+        "https://uzbekistan.travel/en/i/samarkand/",
+        "https://app.uzbekistan.travel/en/r/samarkand-region/",
+        "https://www.visituzbekistan.info/en/region/samarkand",
+        "https://www.visituzbekistan.co/samarkand",
+        "https://uzbekistan.travel/es/arquitectura/"
+      ]
     },
     {
       "id": "colonia",
@@ -5180,7 +5959,7 @@
       },
       "continent": "europa",
       "countryCode": "DE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral",
@@ -5188,9 +5967,19 @@
         "Kranhäuser",
         "Iglesia de Gross St Martin"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 204,
-      "batch": 51
+      "batch": 51,
+      "conceptImage": "normalizadas/colonia-v1.png",
+      "originalConceptImage": "normalizadas/colonia-v1.png",
+      "framingProfile": "colonia",
+      "sources": [
+        "https://www.cologne-tourism.com/arts-culture/sights/detail/hohenzollern-bridge",
+        "https://www.germany.travel/es/ciudades-y-cultura/colonia.html",
+        "https://www.cologne-tourism.com/arts-culture/sights",
+        "https://www.turismoalemania.com/es/colonia/monumento/puente-de-hohenzollern-en-colonia",
+        "https://tickets.koelner-dom.de/en"
+      ]
     },
     {
       "id": "bujara",
@@ -5199,7 +5988,7 @@
       },
       "continent": "asia",
       "countryCode": "UZ",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Minarete y mezquita Kalyan",
@@ -5207,9 +5996,19 @@
         "Chor Minor",
         "Lyab-i Hauz"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 205,
-      "batch": 51
+      "batch": 51,
+      "conceptImage": "normalizadas/bujara-v1.png",
+      "originalConceptImage": "normalizadas/bujara-v1.png",
+      "framingProfile": "bujara",
+      "sources": [
+        "https://exploreuzbekistan.uz/es/regions/bukhara/",
+        "https://gov.uz/en/digital/news/view/152918",
+        "https://voyage.uz/es/bukhara/",
+        "https://up-travel.tur.ar/images/los_tesoros_de_la_ruta_del_oriente_6370.pdf",
+        "https://aba.travel/es/uzbekistan/countryinfo/unesco-world-heritage-sites"
+      ]
     },
     {
       "id": "dresde",
@@ -5218,18 +6017,27 @@
       },
       "continent": "europa",
       "countryCode": "DE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Frauenkirche",
         "Semperoper",
         "Zwinger",
-        "Castillo de Dresde",
-        "Puente de Augusto"
+        "Castillo de Dresde"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 206,
-      "batch": 51
+      "batch": 51,
+      "conceptImage": "normalizadas/dresde-v1.png",
+      "originalConceptImage": "normalizadas/dresde-v1.png",
+      "framingProfile": "dresde",
+      "sources": [
+        "https://www.frauenkirche-dresden.de/besucherinformationen",
+        "https://www.frauenkirche.de/sehenswuerdigkeiten.html",
+        "https://www.frauenkirche-dresden.de/welcome",
+        "https://www.frauenkirche-dresden.de/",
+        "https://www.frauenkirche.de/rundgang.html"
+      ]
     },
     {
       "id": "francfort",
@@ -5238,18 +6046,27 @@
       },
       "continent": "europa",
       "countryCode": "DE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Römer",
         "Main Tower",
         "Commerzbank Tower",
-        "Puente Eiserner Steg",
-        "Catedral de San Bartolomé"
+        "Puente Eiserner Steg"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 207,
-      "batch": 52
+      "batch": 52,
+      "conceptImage": "normalizadas/francfort-v1.png",
+      "originalConceptImage": "normalizadas/francfort-v1.png",
+      "framingProfile": "francfort",
+      "sources": [
+        "https://www.visitfrankfurt.travel/en/experience/attractions",
+        "https://www.visitfrankfurt.travel/en/experience/attractions/top-10",
+        "https://www.visitfrankfurt.travel/en/experience/discover/architecture",
+        "https://www.maintower.de/en/",
+        "https://www.visitfrankfurt.travel/fileadmin/Mediendatenbank/Dokumente/Broschueren/FrankfurtRheinMain_Reiseplaner_2026_englisch.pdf"
+      ]
     },
     {
       "id": "heidelberg",
@@ -5258,7 +6075,7 @@
       },
       "continent": "europa",
       "countryCode": "DE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Castillo",
@@ -5266,9 +6083,19 @@
         "Iglesia del Espíritu Santo",
         "Casco antiguo junto al Neckar"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 208,
-      "batch": 52
+      "batch": 52,
+      "conceptImage": "normalizadas/heidelberg-v1.png",
+      "originalConceptImage": "normalizadas/heidelberg-v1.png",
+      "framingProfile": "heidelberg",
+      "sources": [
+        "https://www.tourism-heidelberg.com/explore/historical-sights/altstadt/old-bridge/index_eng.html",
+        "https://www.tourism-heidelberg.com/explore/historical-sights/monuments--landmarks/karls-gate/index_eng.html",
+        "https://www.schloss-heidelberg.de/en/visitor-information",
+        "https://www.heidelberg.de/english%2CLde/Home/Visit/What%2Bto%2Bsee.html",
+        "https://www.tourism-heidelberg.com/explore/historical-sights/schloss-heidelberg/index_eng.html"
+      ]
     },
     {
       "id": "ginebra",
@@ -5277,18 +6104,27 @@
       },
       "continent": "europa",
       "countryCode": "CH",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Jet d’Eau",
         "Catedral de San Pedro",
         "Palais des Nations sin banderas",
-        "Broken Chair",
-        "Reloj de Flores"
+        "Broken Chair"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 209,
-      "batch": 52
+      "batch": 52,
+      "conceptImage": "normalizadas/ginebra-v1.png",
+      "originalConceptImage": "normalizadas/ginebra-v1.png",
+      "framingProfile": "ginebra",
+      "sources": [
+        "https://www.geneve.com/en/see-do/attractions/the-jet-deau",
+        "https://www.geneve.com/en/see-do/attractions",
+        "https://www.geneve.com/en/attractions/detail/the-jet-deau-genevas-icon",
+        "https://www.cultura.gob.es/en/cultura/areas/patrimonio/mc/union-europea/sello/historico/sitios-de-la-categoria-intergubernamental/red-de-sitios-patrimonioeur/suiza/suiza-sanpedro.html",
+        "https://www.geneve.com/fileadmin/user_upload/B2C/Pages/Plan_and_Stay/Tourist_Information/Geneva_Discovery_map_CH-EN.pdf"
+      ]
     },
     {
       "id": "lucerna",
@@ -5297,18 +6133,27 @@
       },
       "continent": "europa",
       "countryCode": "CH",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Kapellbrücke y Torre del Agua",
         "Monumento al León",
         "Iglesia Jesuita",
-        "Muralla Musegg",
-        "KKL"
+        "Muralla Musegg"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 210,
-      "batch": 52
+      "batch": 52,
+      "conceptImage": "normalizadas/lucerna-v1.png",
+      "originalConceptImage": "normalizadas/lucerna-v1.png",
+      "framingProfile": "lucerna",
+      "sources": [
+        "https://visitlucerne.com/lucerne/travel-guides/things-to-do/chapel-bridge-and-water-tower-complete-visitor-guide",
+        "https://www.luzern.com/en/the-city/sights/top-sights/lucernes-landmarks-the-chapel-bridge-and-its-water-tower",
+        "https://www.kapellbruecke.com/en/chapel-bridge/",
+        "https://www.myswitzerland.com/es-es/descubrir-suiza/monumento-al-leon/",
+        "https://www.myswitzerland.com/en-ch/experiences/chapel-bridge-and-water-tower/"
+      ]
     },
     {
       "id": "berna",

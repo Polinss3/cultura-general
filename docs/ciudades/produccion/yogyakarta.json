@@ -1,0 +1,18 @@
+{
+  "id": "yogyakarta",
+  "batch": 38,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/yogyakarta-v1.png",
+  "generatedFile": "exec-80b4626c-0601-40d2-a7bf-cbfbbbed74d6.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity yogyakarta. ONLY THREE compact groups: the Javanese Kraton palace's main pavilion with its distinctive layered dark joglo roof, Taman Sari's small bathing pool and ochre gateways, and the white-and-gold Tugu Yogyakarta column. No surrounding city fortifications or huge palace complex. At most six small red-roofed local houses. Do not fill a bigger floor; preserve the original rear rim y400. Critical: all objects stand on the supplied empty base as-is. Its back floor tip remains y400 and its front bottom remains y1041 on the 1254-square image, with x33/x1225 side extents. No floor behind or beyond the original silhouette. Shrink landmark groups instead of enlarging that floor. Preserve the entire common sidewall, outline, notches, camera, shadow and background.",
+  "sources": [
+    "https://tourism.kratonjogja.id/en-US/",
+    "https://tourism.kratonjogja.id/en-US/destination/5-kagungan-dalem-tamansari/",
+    "https://tourism.kratonjogja.id/id-ID/",
+    "https://www.kratonjogja.id/en/",
+    "https://www.indonesia.travel/id/en/destination/java/yogyakarta/yogyakarta---the-kraton"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

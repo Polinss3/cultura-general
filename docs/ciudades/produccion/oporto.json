@@ -1,0 +1,18 @@
+{
+  "id": "oporto",
+  "batch": 36,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/oporto-v1.png",
+  "generatedFile": "exec-3b20523a-d34d-4fe3-b254-bc629262a6a5.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Oporto (PT). Main landmarks: Puente de Dom Luís I; Ribeira; Torre de los Clérigos; Estación São Bento.  ONLY FOUR compact major landmark groups. Make these distinctive and readable. No more than six low filler houses; avoid dense blocks covering the entire slab. Every object, all terrain, cliffs, water and coastlines must be supported by the existing floor; no ocean bleeding into the blank ivory background. Preserve the exact original base rear tip y400 and bottom y1041.",
+  "sources": [
+    "https://visitporto.travel/pt-PT/poi/5cd04b46f979e00001234af3",
+    "https://www.turismooporto.com/es/ribeira/monumento/puente-luis-i-en-oporto",
+    "https://www.turismooporto.com/en/ribeira/monument/puente-luis-i",
+    "https://www.visitportugal.com/es/destinos/porto-e-norte/315797",
+    "https://visitporto.travel/en-GB/districts/historic"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

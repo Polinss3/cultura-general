@@ -29,7 +29,7 @@ Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D ed
 2. Imagen fuente cuadrada de 1254 × 1254 px y vista isométrica de tres cuartos. La presentación usa siempre una tarjeta cuadrada y el [registro común](encuadre.md): centro al 50 %, base con anchura del 84 %, márgenes laterales del 8 % y borde inferior al 92 % del alto. No cambiar el tamaño de la tarjeta según el skyline.
 3. Piedra clara, ladrillo coral apagado, vidrio azul pizarra y vegetación verde salvia. Conservar los colores característicos de los hitos. Bordes suavizados, detalle arquitectónico suficiente para reconocerlos y acabado de maqueta.
 4. Fondo marfil uniforme, luz suave desde arriba a la izquierda y sombras discretas. Una única estación y hora; sin clima, nieve, nubes ni efectos diferentes por ciudad.
-5. Entre cuatro y seis hitos principales; al menos dos deben identificarse sin ampliar la imagen. Eliminar edificios de relleno cuando compitan con los monumentos. Exagerar moderadamente el tamaño de esculturas pequeñas.
+5. Entre tres y cinco grupos de hitos principales; al menos dos deben identificarse sin ampliar la imagen. Eliminar edificios de relleno cuando compitan con los monumentos. Exagerar moderadamente el tamaño de esculturas pequeñas.
 6. Nunca incluir nombres de ciudades, rótulos, letras, leyendas, logos ni marcas de agua. Tampoco banderas que conviertan el país en una pista innecesaria. Usar el mismo fondo en modos claro y oscuro inicialmente.
 
 Los originales v1 se conservan como referencia. Las versiones v2 están en `normalizadas/` y se han generado sobre la misma plantilla irregular; el [comparador](encuadre.html) aplica las correcciones de escala y posición que usará el componente `CityDiorama`. Madrid v3 conserva los edificios de v2 mediante recorte y composición sobre la plantilla común, con máscara editable y sin regeneración. La forma irregular está aceptada y no es un defecto. La revisión arquitectónica y las exportaciones optimizadas siguen pendientes.
@@ -43,7 +43,7 @@ El [encuadre común](encuadre.html) es el visor de referencia del usuario. Debe 
 - Se ha autorizado avanzar con todo el catálogo pendiente por tandas. Cada tanda conserva prompts, referencias y mediciones; se incorpora al visor tras revisar su composición y mantiene pendiente la aprobación editorial para el juego.
 - El resto se reparte en tandas de cuatro con variedad regional. El orden y los estados se guardan en el catálogo; no hay límite máximo fijado para futuras incorporaciones. Las candidatas sin hitos se investigarán antes de generarse.
 
-Para cada ciudad: fijar 4–6 hitos y referencias → añadir la ciudad usando la plantilla irregular como única imagen de referencia → comprobar siluetas, número de elementos y ausencia de texto → medir extremos y anclaje de la base y registrar el perfil de presentación → revisar a tamaño de móvil y junto a las demás ciudades → exportar el recurso optimizado → marcarlo como aprobado. Los [prompts de v2](prompts-encuadre.md) y la [primera ampliación](prompts-ampliacion-01.md) documentan el procedimiento. Guardar versión, prompt, fuentes y estado editorial. La imagen de referencia del usuario guía el estilo; no debe redistribuirse como recurso del juego.
+Para cada ciudad: fijar 3–5 grupos de hitos y referencias → añadir la ciudad usando la plantilla irregular como única imagen de referencia → comprobar siluetas, número de elementos y ausencia de texto → medir extremos y anclaje de la base y registrar el perfil de presentación → revisar a tamaño de móvil y junto a las demás ciudades → exportar el recurso optimizado → marcarlo como aprobado. Los [prompts de v2](prompts-encuadre.md) y la [primera ampliación](prompts-ampliacion-01.md) documentan el procedimiento. Guardar versión, prompt, fuentes y estado editorial. La imagen de referencia del usuario guía el estilo; no debe redistribuirse como recurso del juego.
 
 Las listas de hitos del manifiesto son candidatas editoriales, no contenido ya verificado. Aún hay que confirmar las referencias, las siluetas y los límites del municipio cuando un monumento cercano pueda inducir a error. Cada imagen debe representar una sola ciudad de manera inequívoca.
 
@@ -75,7 +75,7 @@ No ofrecer filtros continentales o de dificultad hasta tener un mínimo de cuatr
 3. Recursos finales optimizados con pesos medidos, sin nombres incrustados, y cuatro o más ciudades por filtro habilitado.
 4. Al implementar: comprobar que todas las preguntas contienen imagen y cuatro nombres únicos, que el acierto aparece exactamente una vez, que no se repiten preguntas y que filtros insuficientes quedan deshabilitados. Verificar offline y que una ronda no concede dos recompensas ni dos anuncios.
 
-Esta rama prepara la investigación y los recursos del piloto. La integración jugable, el resto de imágenes y las pruebas en iOS/Android están pendientes.
+Esta rama reúne el catálogo visual y la integración jugable documentada en [Integración en la app](integracion-app.md). La aprobación arquitectónica de los conceptos, las exportaciones finales y la validación en iOS/Android tienen su propio seguimiento; una imagen en el visor no implica que esté publicada en el catálogo remoto.
 
 ## Registro de nuevas tandas
 

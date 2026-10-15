@@ -1693,6 +1693,1266 @@
         "width": 0.8836912751677851,
         "height": 0.8836912751677851
       }
+    },
+    "granada": {
+      "file": "normalizadas/granada-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "cordoba": {
+      "file": "normalizadas/cordoba-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "puebla": {
+      "file": "normalizadas/puebla-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "taipei": {
+      "file": "normalizadas/taipei-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "oxford": {
+      "file": "normalizadas/oxford-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "oaxaca": {
+      "file": "normalizadas/oaxaca-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "busan": {
+      "file": "normalizadas/busan-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "cambridge": {
+      "file": "normalizadas/cambridge-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "guanajuato": {
+      "file": "normalizadas/guanajuato-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "hanoi": {
+      "file": "normalizadas/hanoi-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "merida": {
+      "file": "normalizadas/merida-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "ciudad-ho-chi-minh": {
+      "file": "normalizadas/ciudad-ho-chi-minh-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "york": {
+      "file": "normalizadas/york-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "bogota": {
+      "file": "normalizadas/bogota-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "hoi-an": {
+      "file": "normalizadas/hoi-an-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1039,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1878187919463088,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "glasgow": {
+      "file": "normalizadas/glasgow-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "cartagena-de-indias": {
+      "file": "normalizadas/cartagena-de-indias-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "siem-reap": {
+      "file": "normalizadas/siem-reap-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "medellin": {
+      "file": "normalizadas/medellin-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "nom-pen": {
+      "file": "normalizadas/nom-pen-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "oporto": {
+      "file": "normalizadas/oporto-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "kuala-lumpur": {
+      "file": "normalizadas/kuala-lumpur-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "bruselas": {
+      "file": "normalizadas/bruselas-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "george-town": {
+      "file": "normalizadas/george-town-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "brujas": {
+      "file": "normalizadas/brujas-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "arequipa": {
+      "file": "normalizadas/arequipa-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "yakarta": {
+      "file": "normalizadas/yakarta-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "gante": {
+      "file": "normalizadas/gante-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "quito": {
+      "file": "normalizadas/quito-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "roterdam": {
+      "file": "normalizadas/roterdam-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "la-paz": {
+      "file": "normalizadas/la-paz-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "manila": {
+      "file": "normalizadas/manila-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "la-haya": {
+      "file": "normalizadas/la-haya-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "sucre": {
+      "file": "normalizadas/sucre-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "katmandu": {
+      "file": "normalizadas/katmandu-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "santiago-de-chile": {
+      "file": "normalizadas/santiago-de-chile-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "bath": {
+      "file": "normalizadas/bath-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "belfast": {
+      "file": "normalizadas/belfast-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "lima": {
+      "file": "normalizadas/lima-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "cusco": {
+      "file": "normalizadas/cusco-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "yogyakarta": {
+      "file": "normalizadas/yogyakarta-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "lyon": {
+      "file": "normalizadas/lyon-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "marsella": {
+      "file": "normalizadas/marsella-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "valparaiso": {
+      "file": "normalizadas/valparaiso-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "jaipur": {
+      "file": "normalizadas/jaipur-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "niza": {
+      "file": "normalizadas/niza-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "varanasi": {
+      "file": "normalizadas/varanasi-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "burdeos": {
+      "file": "normalizadas/burdeos-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "brasilia": {
+      "file": "normalizadas/brasilia-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "calcuta": {
+      "file": "normalizadas/calcuta-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "estrasburgo": {
+      "file": "normalizadas/estrasburgo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "sao-paulo": {
+      "file": "normalizadas/sao-paulo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "amritsar": {
+      "file": "normalizadas/amritsar-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1039,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1878187919463088,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "avinon": {
+      "file": "normalizadas/avinon-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "salvador-de-bahia": {
+      "file": "normalizadas/salvador-de-bahia-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "abu-dabi": {
+      "file": "normalizadas/abu-dabi-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "milan": {
+      "file": "normalizadas/milan-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "recife": {
+      "file": "normalizadas/recife-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "doha": {
+      "file": "normalizadas/doha-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "napoles": {
+      "file": "normalizadas/napoles-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "ciudad-de-panama": {
+      "file": "normalizadas/ciudad-de-panama-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "mascate": {
+      "file": "normalizadas/mascate-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "pisa": {
+      "file": "normalizadas/pisa-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "antigua-guatemala": {
+      "file": "normalizadas/antigua-guatemala-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "riad": {
+      "file": "normalizadas/riad-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "verona": {
+      "file": "normalizadas/verona-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "yeda": {
+      "file": "normalizadas/yeda-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "agra": {
+      "file": "normalizadas/agra-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "montevideo": {
+      "file": "normalizadas/montevideo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "san-juan": {
+      "file": "normalizadas/san-juan-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "samarcanda": {
+      "file": "normalizadas/samarcanda-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "colonia": {
+      "file": "normalizadas/colonia-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "bujara": {
+      "file": "normalizadas/bujara-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "dresde": {
+      "file": "normalizadas/dresde-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "francfort": {
+      "file": "normalizadas/francfort-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "heidelberg": {
+      "file": "normalizadas/heidelberg-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "ginebra": {
+      "file": "normalizadas/ginebra-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "lucerna": {
+      "file": "normalizadas/lucerna-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "turin": {
+      "file": "normalizadas/turin-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "santo-domingo": {
+      "file": "normalizadas/santo-domingo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "aman": {
+      "file": "normalizadas/aman-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "bolonia": {
+      "file": "normalizadas/bolonia-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "san-jose": {
+      "file": "normalizadas/san-jose-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1044,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18429530201342292,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "beirut": {
+      "file": "normalizadas/beirut-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "palermo": {
+      "file": "normalizadas/palermo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "kingston": {
+      "file": "normalizadas/kingston-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "jerusalen": {
+      "file": "normalizadas/jerusalen-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "munich": {
+      "file": "normalizadas/munich-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "tel-aviv": {
+      "file": "normalizadas/tel-aviv-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "hamburgo": {
+      "file": "normalizadas/hamburgo-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
     }
   }
 }

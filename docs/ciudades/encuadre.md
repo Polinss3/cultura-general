@@ -2,7 +2,7 @@
 
 La preferencia del usuario es conservar bases de contorno irregular. No hay que convertirlas en cuadrados perfectos. Se registra su presentación para que el tamaño y la posición no cambien al pasar de una pregunta a otra.
 
-El visor contiene las fuentes vigentes de 1254 × 1254 px registradas en la calibración. El recuento actual y la cola de producción aparecen en el catálogo. Madrid v3 conserva los edificios aprobados mediante composición sobre la base común. Las líneas inferiores actuales están en y=1041, salvo Venecia, en y=1042; el registro compensa esa diferencia. La presentación utiliza una tarjeta cuadrada de tamaño fijo y:
+El visor contiene las fuentes vigentes de 1254 × 1254 px registradas en la calibración. El recuento actual y la cola de producción aparecen en el catálogo. Madrid v3 conserva los edificios aprobados mediante composición sobre la base común. Las líneas inferiores medidas de cada fuente están en `mediciones-encuadre.json`; el registro compensa sus pequeñas diferencias. La presentación utiliza una tarjeta cuadrada de tamaño fijo y:
 
 - Centro horizontal de la base: 50 % del ancho de la tarjeta.
 - Anchura visible del diorama: 84 %; márgenes laterales: 8 %.
@@ -24,7 +24,7 @@ Después de actualizar la calibración, ejecutar `node scripts/build-city-framin
 
 Verificación de v2: dimensiones de las seis fuentes, cálculo de extremos y anclaje, TypeScript y comparador en navegador de escritorio y móvil; tarjeta estable, botones y guías funcionales, sin desbordamiento horizontal. Para Madrid v3 se han vuelto a comprobar las dimensiones, los anclajes numéricos de las seis fuentes, TypeScript, los píxeles preservados y la lámina `verificacion/ciudades-v3.png`. La recarga automática de la página local queda bloqueada por la política del navegador, por lo que esta revisión no confirma una nueva ejecución del comparador en navegador. Tampoco sustituye la prueba del componente en iOS/Android durante la futura integración del modo.
 
-Los PNG originales se conservan. Las posiciones son porcentajes y se mantienen al cambiar el tamaño de la pantalla. El modo jugable sigue pendiente de integración; esta rama ya proporciona el marco que deberá utilizar para todas sus preguntas.
+Los PNG originales se conservan. Las posiciones son porcentajes y se mantienen al cambiar el tamaño de la pantalla. La integración jugable se documenta en [Integración en la app](integracion-app.md); este registro proporciona el marco común de las preguntas.
 
 ## Corrección de Madrid
 
@@ -38,4 +38,4 @@ Venecia, Ámsterdam, Londres y Berlín añaden cuatro fuentes `normalizadas/*-v1
 
 ## Segunda ampliación · tanda 3
 
-Dublín, Edimburgo, Moscú y San Petersburgo añaden cuatro fuentes `normalizadas/*-v1.png`, con línea inferior en y=1041 y perfiles propios de bordes laterales. La primera variante de San Petersburgo se descartó porque añadía una plataforma exterior; la seleccionada mantiene cinco hitos sobre una sola base. Las catorce imágenes comparten los anclajes del marco. Láminas: `verificacion/ampliacion-02.png` y `verificacion/ciudades-v5.png`. Las nuevas imágenes siguen pendientes de revisión editorial, no están integradas en el modo jugable.
+Dublín, Edimburgo, Moscú y San Petersburgo añaden cuatro fuentes `normalizadas/*-v1.png`, con línea inferior en y=1041 y perfiles propios de bordes laterales. La primera variante de San Petersburgo se descartó porque añadía una plataforma exterior; la seleccionada mantiene cinco hitos sobre una sola base. Las catorce imágenes comparten los anclajes del marco. Láminas: `verificacion/ampliacion-02.png` y `verificacion/ciudades-v5.png`. Las nuevas imágenes siguen pendientes de revisión editorial; su presencia en el visor no implica publicación en el catálogo remoto.

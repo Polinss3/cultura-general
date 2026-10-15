@@ -1,0 +1,18 @@
+{
+  "id": "belfast",
+  "batch": 35,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/belfast-v1.png",
+  "generatedFile": "exec-0fbc89cd-4298-4cbc-95fe-646877de70b4.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity belfast. Four compact objects: angular metal-clad Titanic Belfast museum with four ship-prow-shaped wings, two yellow Harland & Wolff gantry cranes over a SMALL contained dry dock, Belfast City Hall with its green copper dome, and a small Belfast Castle with grey turrets. All supported by the existing floor. Preserve full base depth and front wall bottom y1041; do not flatten or shorten the slab. Critical: all objects stand on the supplied empty base as-is. Its back floor tip remains y400 and its front bottom remains y1041 on the 1254-square image, with x33/x1225 side extents. No floor behind or beyond the original silhouette. Shrink landmark groups instead of enlarging that floor. Preserve the entire common sidewall, outline, notches, camera, shadow and background.",
+  "sources": [
+    "https://visitbelfast.com/see-do/attractions/titanic-belfast/",
+    "https://www.belfastcity.gov.uk/Things-to-Do/City-Hall/Memorials-and-statues",
+    "https://visitbelfast.com/explore/city-areas/titanic-quarter/",
+    "https://visitbelfast.com/",
+    "https://visitbelfast.com/browse/visitor/categories/attractions/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

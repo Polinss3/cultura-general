@@ -1,0 +1,18 @@
+{
+  "id": "medellin",
+  "batch": 35,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/medellin-v1.png",
+  "generatedFile": "exec-6a8984e7-d3a8-4148-9677-26fb1c3784c3.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Medellín (CO). Main landmarks: Plaza Botero; Palacio de la Cultura Rafael Uribe; Metrocable; Comuna 13.  ONLY FOUR compact major landmark groups. Make these distinctive and readable. No more than six low filler houses; avoid dense blocks covering the entire slab. Every object, all terrain, cliffs, water and coastlines must be supported by the existing floor; no ocean bleeding into the blank ivory background. Preserve the exact original base rear tip y400 and bottom y1041.",
+  "sources": [
+    "https://colombia.travel/es/medellin/conoce-el-palacio-de-la-cultura-rafael-uribe-uribe",
+    "https://visitmedellin.co/medellin/",
+    "https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=navurl%3A%2F%2Fe5f77b5504be06e01ef779aadc833fbe",
+    "https://colombia.travel/en/medellin/rafael-uribe-uribe-palace-culture",
+    "https://www.medellin.gov.co/irj/portal/medellin?NavigationTarget=navurl%3A%2F%2Fa82343783f27337849a7e2cd977846d3"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

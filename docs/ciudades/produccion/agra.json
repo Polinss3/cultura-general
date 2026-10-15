@@ -1,0 +1,21 @@
+{
+  "id": "agra",
+  "batch": 41,
+  "tool": "ImageGen integrada",
+  "reference": "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-07cacf64-0fdc-4392-b67d-600764e8d766.png",
+  "output": "normalizadas/agra-v1.png",
+  "generatedFile": "exec-48ae5eba-3f91-438d-8c80-ac5e9fb7816d.png",
+  "prompt": "Use case: precise-object-edit. Correct ONLY the SMALL white Baby Taj pavilion (Itmad-ud-Daulah) in the front-right of this Agra diorama. Replace that small building's oversized central onion dome with the real low rectangular marble mausoleum: a flat parapet roof with a modest central square chhatri, four short octagonal corner towers capped by small open pavilions. Baby Taj must be LOW and rectangular, no big bulbous central dome. Keep the MAIN LARGE Taj Mahal and all its minarets exactly unchanged, also keep the red Agra Fort unchanged. Preserve every other pixel of the city composition, organic scalloped base shape, wall, floor, background, margins, size, angle, lighting and colors. No text.",
+  "sources": [
+    "https://agra.nic.in/tourist-place/tajmahal/",
+    "https://agra.nic.in/tourist-place/agra-fort/",
+    "https://agra.nic.in/tourist-places/",
+    "https://tajmahal.gov.in/",
+    "https://culture.gov.in/taj-mahal"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review",
+  "inputReferences": [
+    "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-07cacf64-0fdc-4392-b67d-600764e8d766.png"
+  ]
+}

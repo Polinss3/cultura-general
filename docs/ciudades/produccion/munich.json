@@ -1,0 +1,18 @@
+{
+  "id": "munich",
+  "batch": 50,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/munich-v1.png",
+  "generatedFile": "exec-149d687e-5621-4cb1-b656-5bf2cba1d390.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Múnich (DE). Main landmarks: Frauenkirche; Nuevo Ayuntamiento; Palacio de Nymphenburg; Museo BMW y BMW Welt sin logos.  ONLY FOUR compact major landmark groups. Make these distinctive and readable. No more than six low filler houses; avoid dense blocks covering the entire slab. Every object, all terrain, cliffs, water and coastlines must be supported by the existing floor; no ocean bleeding into the blank ivory background. Preserve the exact original base rear tip y400 and bottom y1041.",
+  "sources": [
+    "https://www.munich.travel/en/topics/urban-districts/munich-sights-at-a-glance",
+    "https://www.munich.travel/es/pois/ciudad-barrios/frauenkirche",
+    "https://www.munich.travel/en/pois/urban-districts/frauenkirche",
+    "https://www.muenchen.de/es/lugares-de-interes/edificios-y-monumentos/nuevo-ayuntamiento-neues-rathaus",
+    "https://www.munich.travel/es/articulos/ciudad-barrios/resumen-de-los-atractivos-turisticos"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}
