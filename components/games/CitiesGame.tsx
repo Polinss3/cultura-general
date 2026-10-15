@@ -5,7 +5,8 @@ import { useChallengeBottomInset } from '@/hooks/useChallengeBottomInset';
 import type { ImageRef } from 'expo-image';
 import { cityImages, warmCityImages } from '@/lib/cityImages';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useFocusEffect } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { useCityPreview } from '@/context/CityPreviewContext';
 import { OptionBtn } from '@/components/OptionBtn';
 import { RoundHud } from '@/components/RoundHud';
 import { RoundResult } from '@/components/RoundResult';
@@ -40,6 +41,9 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
   const lang: CityLanguage = i18n.language.startsWith('en') ? 'en' : 'es';
   const { C, isDark } = useTheme();
   const { height, width } = useWindowDimensions();
+  const router = useRouter();
+  const { openPreview } = useCityPreview();
+  const previewActive = useRef(false);
   const { user } = useAuth();
   const { guest } = useGuest();
   const offline = useOffline();
@@ -66,23 +70,38 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
   const [imageError, setImageError] = useState(false);
   const retryImage = useRef<() => void>(() => {});
   const { catalog, refreshing, error, retry } = useCities(phase === 'picker');
+  const playable = useMemo(() => cityPool(catalog ?? [], 'all', difficulty), [catalog, difficulty]);
   const [roundSeed, setRoundSeed] = useState(0);
   const preparedRound = useMemo(() => buildCityRound(catalog ?? [], 'all', difficulty), [catalog, difficulty, roundSeed]);
   useEffect(() => {
     if (phase !== 'playing') warmCityImages(preparedRound, 0, 3);
   }, [phase, preparedRound]);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingAnswer = useRef<(() => void) | null>(null);
+  const answerDeadline = useRef(0);
+  const answerRemaining = useRef(1300);
   const locked = useRef(false);
   const finished = useRef(false);
   const generation = useRef(0);
   const clearTimer = useCallback(() => { if (timer.current) clearTimeout(timer.current); timer.current = null; }, []);
+  const scheduleAnswer = useCallback(() => {
+    if (!pendingAnswer.current || previewActive.current) return;
+    answerDeadline.current = Date.now() + answerRemaining.current;
+    timer.current = setTimeout(() => {
+      timer.current = null;
+      const next = pendingAnswer.current;
+      pendingAnswer.current = null;
+      next?.();
+    }, answerRemaining.current);
+  }, []);
   const exit = useCallback(() => {
+    pendingAnswer.current = null;
     clearTimer(); generation.current++; locked.current = true; preparingRef.current = false;
     setPreparing(false); setAdvancePending(false); setImageError(false); setPhase('picker');
   }, [clearTimer, setPhase]);
   const loadRecords = useCallback(() => { getCityRecords().then(setRecords); }, []);
   useEffect(loadRecords, [loadRecords]);
-  useEffect(() => () => { clearTimer(); generation.current++; }, [clearTimer]);
+  useEffect(() => () => { clearTimer(); pendingAnswer.current = null; generation.current++; }, [clearTimer]);
   const phaseRef = useRef(phase);
   phaseRef.current = phase;
   useFocusEffect(useCallback(() => {
@@ -92,7 +111,7 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
     });
     return () => {
       back.remove();
-      exit(); // Leaving the tab also cancels pending answers and rewards.
+      if (!previewActive.current) exit(); // A preview preserves the current round.
     };
   }, [exit]));
 
@@ -162,10 +181,24 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
     locked.current = true;
     const nextCorrect = correctCount + (id === round[index].answer.id ? 1 : 0);
     setSelected(id); setCorrectCount(nextCorrect);
-    timer.current = setTimeout(() => {
+    pendingAnswer.current = () => {
       if (index + 1 === round.length) { void finish(nextCorrect); return; }
       void advance(index + 1);
-    }, 1300);
+    };
+    answerRemaining.current = 1300;
+    scheduleAnswer();
+  };
+  const enlargeImage = () => {
+    if (!image || previewActive.current || advancePending || finished.current) return;
+    const run = generation.current;
+    previewActive.current = true;
+    if (timer.current) answerRemaining.current = Math.max(0, answerDeadline.current - Date.now());
+    clearTimer();
+    openPreview({ city: round[index].answer, image, onDismiss: () => {
+      previewActive.current = false;
+      if (run === generation.current) scheduleAnswer();
+    } });
+    router.push('/city-preview');
   };
   const scopeLabel = (s: CityScope) => s === 'all' ? t('world.allWorld') : t(`world.continents.${s}`);
   const action = (label: string, onPress: () => void) => (
@@ -175,7 +208,7 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
   );
 
   if (phase === 'picker') {
-    const available = cityPool(catalog ?? [], 'all', difficulty).length;
+    const available = playable.length;
     const recordFor = (s: CityScope, n: number) => records[cityRecordKey(s, difficulty, Math.min(CITY_ROUND_SIZE, n))];
     const best = recordFor('all', available);
     return <View style={{ flex: 1, backgroundColor: C.bg }}>
@@ -222,7 +255,7 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
           </View>}
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 10, marginTop: 14 }}>
             {CITY_CONTINENTS.map(cont => {
-              const count = cityPool(catalog, cont, difficulty).length;
+              const count = playable.filter(c => c.continent === cont).length;
               const best = recordFor(cont, count);
               return <Pressable key={cont} disabled={!count || preparing} accessibilityRole="button" accessibilityState={{ disabled: !count || preparing }} onPress={() => start(cont)}
                 style={{ width: '48.5%', opacity: count ? 1 : 0.5 }}>
@@ -249,15 +282,15 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
     <ScrollView contentInsetAdjustmentBehavior="never" automaticallyAdjustContentInsets={false} contentContainerStyle={{ padding: Space.screen, paddingBottom: bottomInset }}>
       <RoundHud compact onExit={exit} scopeIcon={ICONS[scope]} scopeLabel={scopeLabel(scope)} index={index} total={round.length} correctCount={correctCount} />
       <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 18, marginBottom: 8 }}>{t('cities.whichCity')}</Text>
-      <View style={{ alignSelf: 'center', marginBottom: 12 }}>
+      <Pressable onPress={enlargeImage} disabled={advancePending} accessibilityRole="button" accessibilityLabel={t('cities.enlargeImage')} style={{ alignSelf: 'center', marginBottom: 12 }}>
         <CityQuestionImage cropTop={imageCropTop} city={question.answer} image={image} size={Math.min(360, height * 0.34, width - Space.screen * 2)} />
-      </View>
+      </Pressable>
       <View style={{ gap: 8 }}>
         {question.options.map((city, i) => <OptionBtn compact key={`${index}:${city.id}`} text={city.name[lang]} letter={LETTERS[i]}
           state={stateFor(city.id)} disabled={selected !== null} dimmed={selected !== null && stateFor(city.id) === null} onPress={() => answer(city.id)} />)}
       </View>
       <Text accessibilityLiveRegion="polite" style={{ marginTop: 8, minHeight: 22, color: C.textBody, fontFamily: Font.bold, fontSize: 14 }}>
-        {imageError ? t('cities.nextError') : advancePending ? t('cities.nextLoading') : selected !== null ? t('cities.answer', { name: question.answer.name[lang] }) : ' '}
+        {imageError ? t('cities.nextError') : advancePending ? t('cities.nextLoading') : ' '}
       </Text>
       {imageError && action(t('cities.retry'), () => retryImage.current())}
     </ScrollView>

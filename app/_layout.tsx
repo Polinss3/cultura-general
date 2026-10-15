@@ -31,6 +31,7 @@ import { AdFullscreenHost } from '@/components/AdFullscreenHost';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { ProgressProvider } from '@/context/ProgressContext';
+import { CityPreviewProvider } from '@/context/CityPreviewContext';
 import { getOnboardingCompleted } from '@/lib/onboarding';
 import { applyPersistedLanguage, getCurrentLang } from '@/lib/i18n';
 import { loadThemePreference } from '@/lib/appearance';
@@ -107,7 +108,7 @@ function ContentColumn({ children, segments }: { children: ReactNode; segments: 
     decoratedSection = screen;
   } else if (screen === 'adventure-level') decoratedSection = 'adventure';
   else if (screen === 'review' || screen === 'stats' || screen === 'paywall') decoratedSection = 'premium';
-  else if (screen === 'leagues' || screen === 'ranking') decoratedSection = 'challenges';
+  else if (screen === 'leagues' || screen === 'ranking' || screen === 'city-preview') decoratedSection = 'challenges';
   const backgroundColor = onIPad && screen === 'premium'
     ? (isDark ? PRO_ROOM_BACKGROUND.dark : PRO_ROOM_BACKGROUND.light)
     : C.bg;
@@ -457,7 +458,7 @@ function RootLayout() {
           return;
         }
         const isOfflinePlayableRoute =
-          segs[0] === '(tabs)' || segs[0] === 'speed' || segs[0] === 'adventure-level';
+          segs[0] === '(tabs)' || segs[0] === 'speed' || segs[0] === 'adventure-level' || segs[0] === 'city-preview';
         if (!isOfflinePlayableRoute) router.replace('/(tabs)');
         return;
       }
@@ -538,13 +539,24 @@ function RootLayout() {
           {/* El contenido conserva su ancho; los márgenes del iPad comparten
               el fondo de la pantalla y pueden llevar decoración propia. */}
           <ContentColumn segments={segments as readonly string[]}>
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                animation: 'slide_from_right',
-                animationDuration: 250,
-              }}
-            />
+            <CityPreviewProvider>
+              <Stack
+                screenOptions={({ route }) => ({
+                  headerShown: false,
+                  animation: 'slide_from_right',
+                  animationDuration: 250,
+                  ...(route.name === 'city-preview' ? {
+                    presentation: Platform.OS === 'web' ? 'transparentModal' : 'formSheet',
+                    animation: Platform.OS === 'web' ? 'none' : 'slide_from_bottom',
+                    sheetAllowedDetents: 'fitToContents',
+                    sheetGrabberVisible: true,
+                    sheetCornerRadius: 28,
+                    gestureEnabled: true,
+                    contentStyle: { backgroundColor: 'transparent' },
+                  } : {}),
+                })}
+              />
+            </CityPreviewProvider>
           </ContentColumn>
           <AdsConsentModal
             visible={Boolean(

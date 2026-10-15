@@ -125,6 +125,618 @@
         "madrid",
         "sevilla"
       ]
+    },
+    {
+      "tag": "iberian-cathedral-old-town",
+      "ids": [
+        "santiago-de-compostela",
+        "salamanca",
+        "toledo",
+        "segovia",
+        "zaragoza",
+        "granada",
+        "cordoba",
+        "sevilla"
+      ]
+    },
+    {
+      "tag": "iberian-urban-waterfront",
+      "ids": [
+        "bilbao",
+        "san-sebastian",
+        "malaga",
+        "valencia",
+        "barcelona",
+        "lisboa",
+        "oporto"
+      ]
+    },
+    {
+      "tag": "italian-renaissance-campanile",
+      "ids": [
+        "florencia",
+        "pisa",
+        "bolonia",
+        "verona",
+        "venecia",
+        "turin",
+        "milan",
+        "roma"
+      ]
+    },
+    {
+      "tag": "mediterranean-stone-port",
+      "ids": [
+        "napoles",
+        "palermo",
+        "marsella",
+        "la-valeta",
+        "dubrovnik",
+        "split",
+        "niza",
+        "monaco"
+      ]
+    },
+    {
+      "tag": "french-classical-riverfront",
+      "ids": [
+        "paris",
+        "lyon",
+        "burdeos",
+        "estrasburgo",
+        "avinon"
+      ]
+    },
+    {
+      "tag": "low-countries-gabled-canals",
+      "ids": [
+        "amsterdam",
+        "brujas",
+        "gante",
+        "la-haya",
+        "gdansk",
+        "copenhague"
+      ]
+    },
+    {
+      "tag": "gothic-university-stone",
+      "ids": [
+        "oxford",
+        "cambridge",
+        "york",
+        "edimburgo"
+      ]
+    },
+    {
+      "tag": "british-victorian-civic",
+      "ids": [
+        "manchester",
+        "liverpool",
+        "glasgow",
+        "belfast",
+        "londres",
+        "dublin"
+      ]
+    },
+    {
+      "tag": "georgian-neoclassical-civic",
+      "ids": [
+        "bath",
+        "dublin",
+        "edimburgo",
+        "londres"
+      ]
+    },
+    {
+      "tag": "central-europe-medieval-roofs",
+      "ids": [
+        "praga",
+        "heidelberg",
+        "cracovia",
+        "tallin",
+        "riga",
+        "berna"
+      ]
+    },
+    {
+      "tag": "central-europe-baroque",
+      "ids": [
+        "viena",
+        "salzburgo",
+        "munich",
+        "dresde",
+        "bratislava",
+        "liubliana",
+        "zagreb"
+      ]
+    },
+    {
+      "tag": "rhine-river-civic",
+      "ids": [
+        "colonia",
+        "hamburgo",
+        "francfort",
+        "berlin",
+        "roterdam"
+      ]
+    },
+    {
+      "tag": "alpine-lake-old-town",
+      "ids": [
+        "zurich",
+        "ginebra",
+        "lucerna",
+        "berna",
+        "salzburgo"
+      ]
+    },
+    {
+      "tag": "nordic-harbour",
+      "ids": [
+        "oslo",
+        "bergen",
+        "helsinki",
+        "reikiavik",
+        "estocolmo",
+        "copenhague"
+      ]
+    },
+    {
+      "tag": "baltic-hanseatic-old-town",
+      "ids": [
+        "tallin",
+        "riga",
+        "vilna",
+        "gdansk",
+        "varsovia"
+      ]
+    },
+    {
+      "tag": "balkan-orthodox-civic",
+      "ids": [
+        "bucarest",
+        "sofia",
+        "belgrado",
+        "kyiv"
+      ]
+    },
+    {
+      "tag": "ottoman-domes-old-town",
+      "ids": [
+        "estambul",
+        "sarajevo",
+        "aman",
+        "jerusalen"
+      ]
+    },
+    {
+      "tag": "fortified-european-hill-town",
+      "ids": [
+        "luxemburgo",
+        "la-valeta",
+        "dubrovnik",
+        "toledo"
+      ]
+    },
+    {
+      "tag": "north-american-glass-waterfront",
+      "ids": [
+        "toronto",
+        "vancouver",
+        "seattle",
+        "chicago",
+        "nueva-york"
+      ]
+    },
+    {
+      "tag": "north-american-modern-downtown",
+      "ids": [
+        "los-angeles",
+        "san-diego",
+        "atlanta",
+        "houston"
+      ]
+    },
+    {
+      "tag": "north-american-colonial-civic",
+      "ids": [
+        "boston",
+        "filadelfia",
+        "washington",
+        "ottawa",
+        "montreal",
+        "quebec"
+      ]
+    },
+    {
+      "tag": "french-colonial-rooflines",
+      "ids": [
+        "quebec",
+        "montreal",
+        "nueva-orleans",
+        "hanoi",
+        "ciudad-ho-chi-minh"
+      ]
+    },
+    {
+      "tag": "tropical-waterfront-modern",
+      "ids": [
+        "miami",
+        "honolulu",
+        "san-diego",
+        "ciudad-de-panama",
+        "san-juan"
+      ]
+    },
+    {
+      "tag": "illuminated-futuristic-skyline",
+      "ids": [
+        "las-vegas",
+        "dubai",
+        "doha",
+        "abu-dabi"
+      ]
+    },
+    {
+      "tag": "mexican-colonial-plazas",
+      "ids": [
+        "ciudad-de-mexico",
+        "guadalajara",
+        "puebla",
+        "oaxaca",
+        "guanajuato",
+        "merida",
+        "san-antonio"
+      ]
+    },
+    {
+      "tag": "caribbean-colonial-fortifications",
+      "ids": [
+        "la-habana",
+        "cartagena-de-indias",
+        "san-juan",
+        "santo-domingo"
+      ]
+    },
+    {
+      "tag": "colonial-church-plazas",
+      "ids": [
+        "antigua-guatemala",
+        "san-jose",
+        "arequipa",
+        "sucre",
+        "quito"
+      ]
+    },
+    {
+      "tag": "andean-historic-mountain",
+      "ids": [
+        "cusco",
+        "la-paz",
+        "quito",
+        "arequipa",
+        "machu-picchu"
+      ]
+    },
+    {
+      "tag": "south-american-colonial-centre",
+      "ids": [
+        "bogota",
+        "lima",
+        "quito",
+        "sucre"
+      ]
+    },
+    {
+      "tag": "south-american-modern-valley",
+      "ids": [
+        "medellin",
+        "bogota",
+        "santiago-de-chile",
+        "la-paz"
+      ]
+    },
+    {
+      "tag": "atlantic-neoclassical-boulevards",
+      "ids": [
+        "buenos-aires",
+        "montevideo",
+        "madrid",
+        "lisboa"
+      ]
+    },
+    {
+      "tag": "brazilian-portuguese-colonial",
+      "ids": [
+        "salvador-de-bahia",
+        "recife",
+        "rio-de-janeiro",
+        "lisboa"
+      ]
+    },
+    {
+      "tag": "colourful-hillside-port",
+      "ids": [
+        "valparaiso",
+        "san-francisco",
+        "oporto",
+        "rio-de-janeiro"
+      ]
+    },
+    {
+      "tag": "modernist-civic-monuments",
+      "ids": [
+        "brasilia",
+        "canberra",
+        "washington",
+        "berlin"
+      ]
+    },
+    {
+      "tag": "dense-modernist-skyline",
+      "ids": [
+        "sao-paulo",
+        "ciudad-de-panama",
+        "houston",
+        "chongqing"
+      ]
+    },
+    {
+      "tag": "japanese-historic-temples",
+      "ids": [
+        "kioto",
+        "nara",
+        "hiroshima",
+        "nagasaki",
+        "osaka"
+      ]
+    },
+    {
+      "tag": "japanese-port-skyline",
+      "ids": [
+        "tokio",
+        "osaka",
+        "yokohama",
+        "hiroshima",
+        "nagasaki"
+      ]
+    },
+    {
+      "tag": "chinese-imperial-roofs",
+      "ids": [
+        "pekin",
+        "xian",
+        "chengdu",
+        "hangzhou",
+        "suzhou",
+        "guilin"
+      ]
+    },
+    {
+      "tag": "chinese-river-towers",
+      "ids": [
+        "shanghai",
+        "canton",
+        "chongqing",
+        "hong-kong"
+      ]
+    },
+    {
+      "tag": "asian-glass-waterfront",
+      "ids": [
+        "hong-kong",
+        "singapur",
+        "shanghai",
+        "busan",
+        "seul",
+        "taipei"
+      ]
+    },
+    {
+      "tag": "asian-colonial-port",
+      "ids": [
+        "macao",
+        "george-town",
+        "manila",
+        "ciudad-ho-chi-minh",
+        "yakarta"
+      ]
+    },
+    {
+      "tag": "southeast-asian-temple-roofs",
+      "ids": [
+        "bangkok",
+        "nom-pen",
+        "siem-reap",
+        "yogyakarta"
+      ]
+    },
+    {
+      "tag": "southeast-asian-river-old-town",
+      "ids": [
+        "hanoi",
+        "hoi-an",
+        "george-town",
+        "ciudad-ho-chi-minh"
+      ]
+    },
+    {
+      "tag": "southeast-asian-towers-mosques",
+      "ids": [
+        "kuala-lumpur",
+        "yakarta",
+        "singapur",
+        "manila"
+      ]
+    },
+    {
+      "tag": "south-asian-mughal-domes",
+      "ids": [
+        "delhi",
+        "agra",
+        "jaipur",
+        "amritsar"
+      ]
+    },
+    {
+      "tag": "south-asian-dense-sacred-city",
+      "ids": [
+        "varanasi",
+        "katmandu",
+        "jaipur",
+        "amritsar"
+      ]
+    },
+    {
+      "tag": "indo-colonial-monuments",
+      "ids": [
+        "mumbai",
+        "calcuta",
+        "delhi",
+        "ciudad-ho-chi-minh"
+      ]
+    },
+    {
+      "tag": "arabian-modern-towers",
+      "ids": [
+        "dubai",
+        "abu-dabi",
+        "doha",
+        "riad"
+      ]
+    },
+    {
+      "tag": "islamic-fortress-domes",
+      "ids": [
+        "mascate",
+        "yeda",
+        "aman",
+        "marrakech",
+        "fez"
+      ]
+    },
+    {
+      "tag": "levantine-stone-coast",
+      "ids": [
+        "beirut",
+        "tel-aviv",
+        "alejandria",
+        "tunez"
+      ]
+    },
+    {
+      "tag": "historic-islamic-tilework",
+      "ids": [
+        "samarcanda",
+        "bujara",
+        "fez",
+        "estambul"
+      ]
+    },
+    {
+      "tag": "north-african-medina",
+      "ids": [
+        "marrakech",
+        "fez",
+        "rabat",
+        "tunez",
+        "chefchaouen"
+      ]
+    },
+    {
+      "tag": "north-african-coastal-boulevards",
+      "ids": [
+        "casablanca",
+        "argel",
+        "alejandria",
+        "rabat"
+      ]
+    },
+    {
+      "tag": "ancient-river-stone-temples",
+      "ids": [
+        "luxor",
+        "asuan",
+        "guiza",
+        "el-cairo"
+      ]
+    },
+    {
+      "tag": "african-modern-civic-skyline",
+      "ids": [
+        "nairobi",
+        "johannesburgo",
+        "adis-abeba",
+        "lagos",
+        "acra",
+        "abiyan",
+        "dakar"
+      ]
+    },
+    {
+      "tag": "southern-african-colonial-civic",
+      "ids": [
+        "ciudad-del-cabo",
+        "durban",
+        "windhoek",
+        "adelaida"
+      ]
+    },
+    {
+      "tag": "indian-ocean-tropical-port",
+      "ids": [
+        "port-louis",
+        "durban",
+        "papeete",
+        "suva",
+        "honolulu"
+      ]
+    },
+    {
+      "tag": "australian-waterfront-civic",
+      "ids": [
+        "sidney",
+        "melbourne",
+        "brisbane",
+        "perth",
+        "adelaida"
+      ]
+    },
+    {
+      "tag": "new-zealand-colonial-civic",
+      "ids": [
+        "auckland",
+        "wellington",
+        "christchurch",
+        "queenstown"
+      ]
+    },
+    {
+      "tag": "pacific-island-port",
+      "ids": [
+        "suva",
+        "papeete",
+        "honolulu",
+        "port-louis"
+      ]
+    },
+    {
+      "tag": "tropical-colonial-gardens",
+      "ids": [
+        "kingston",
+        "port-louis",
+        "suva",
+        "san-jose"
+      ]
+    },
+    {
+      "tag": "belgian-gothic-civic",
+      "ids": [
+        "bruselas",
+        "brujas",
+        "gante",
+        "la-haya"
+      ]
     }
   ],
   "overrides": {
@@ -314,7 +926,8 @@
     "granada": {
       "name": {
         "en": "Granada"
-      }
+      },
+      "difficulty": 1
     },
     "filadelfia": {
       "name": {
@@ -324,6 +937,974 @@
     "yokohama": {
       "name": {
         "en": "Yokohama"
+      }
+    },
+    "el-cairo": {
+      "difficulty": 1
+    },
+    "buenos-aires": {
+      "difficulty": 1
+    },
+    "machu-picchu": {
+      "difficulty": 1,
+      "similar": [
+        "cusco",
+        "la-paz",
+        "arequipa"
+      ]
+    },
+    "lisboa": {},
+    "viena": {},
+    "san-francisco": {
+      "difficulty": 1
+    },
+    "singapur": {},
+    "marrakech": {},
+    "melbourne": {},
+    "praga": {},
+    "los-angeles": {},
+    "pekin": {
+      "difficulty": 1
+    },
+    "ciudad-del-cabo": {
+      "difficulty": 1
+    },
+    "auckland": {},
+    "atenas": {
+      "difficulty": 1
+    },
+    "chicago": {
+      "difficulty": 1
+    },
+    "shanghai": {},
+    "nairobi": {},
+    "wellington": {},
+    "estambul": {
+      "difficulty": 1
+    },
+    "rio-de-janeiro": {
+      "difficulty": 1
+    },
+    "seul": {},
+    "tunez": {},
+    "budapest": {},
+    "toronto": {},
+    "bangkok": {
+      "difficulty": 1
+    },
+    "dakar": {},
+    "perth": {
+      "name": {
+        "en": "Perth"
+      },
+      "difficulty": 3
+    },
+    "florencia": {},
+    "la-habana": {},
+    "dubai": {
+      "difficulty": 1
+    },
+    "casablanca": {
+      "name": {
+        "en": "Casablanca"
+      }
+    },
+    "adelaida": {
+      "name": {
+        "en": "Adelaide"
+      },
+      "difficulty": 3
+    },
+    "zurich": {},
+    "delhi": {},
+    "rabat": {
+      "name": {
+        "en": "Rabat"
+      },
+      "difficulty": 3
+    },
+    "canberra": {
+      "name": {
+        "en": "Canberra"
+      },
+      "difficulty": 3
+    },
+    "estocolmo": {},
+    "miami": {
+      "name": {
+        "en": "Miami"
+      }
+    },
+    "mumbai": {},
+    "fez": {
+      "name": {
+        "en": "Fez"
+      },
+      "difficulty": 3
+    },
+    "christchurch": {
+      "name": {
+        "en": "Christchurch"
+      },
+      "difficulty": 3
+    },
+    "copenhague": {},
+    "las-vegas": {
+      "name": {
+        "en": "Las Vegas"
+      },
+      "difficulty": 1
+    },
+    "chefchaouen": {
+      "name": {
+        "en": "Chefchaouen"
+      },
+      "difficulty": 3
+    },
+    "queenstown": {
+      "name": {
+        "en": "Queenstown"
+      },
+      "difficulty": 3
+    },
+    "nueva-orleans": {
+      "name": {
+        "en": "New Orleans"
+      }
+    },
+    "argel": {
+      "name": {
+        "en": "Algiers"
+      }
+    },
+    "suva": {
+      "name": {
+        "en": "Suva"
+      },
+      "difficulty": 3
+    },
+    "seattle": {
+      "name": {
+        "en": "Seattle"
+      }
+    },
+    "alejandria": {
+      "name": {
+        "en": "Alexandria"
+      }
+    },
+    "papeete": {
+      "name": {
+        "en": "Papeete"
+      },
+      "difficulty": 3
+    },
+    "nara": {
+      "name": {
+        "en": "Nara"
+      }
+    },
+    "luxor": {
+      "name": {
+        "en": "Luxor"
+      }
+    },
+    "cordoba": {
+      "name": {
+        "en": "Córdoba"
+      }
+    },
+    "san-diego": {
+      "name": {
+        "en": "San Diego"
+      }
+    },
+    "asuan": {
+      "name": {
+        "en": "Aswan"
+      },
+      "difficulty": 3
+    },
+    "bilbao": {
+      "name": {
+        "en": "Bilbao"
+      }
+    },
+    "honolulu": {
+      "name": {
+        "en": "Honolulu"
+      }
+    },
+    "nagasaki": {
+      "name": {
+        "en": "Nagasaki"
+      }
+    },
+    "guiza": {
+      "name": {
+        "en": "Giza"
+      },
+      "difficulty": 1
+    },
+    "santiago-de-compostela": {
+      "name": {
+        "en": "Santiago de Compostela"
+      }
+    },
+    "atlanta": {
+      "name": {
+        "en": "Atlanta"
+      }
+    },
+    "macao": {
+      "name": {
+        "en": "Macau"
+      }
+    },
+    "johannesburgo": {
+      "name": {
+        "en": "Johannesburg"
+      }
+    },
+    "malaga": {
+      "name": {
+        "en": "Málaga"
+      }
+    },
+    "houston": {
+      "name": {
+        "en": "Houston"
+      }
+    },
+    "xian": {
+      "name": {
+        "en": "Xi’an"
+      }
+    },
+    "durban": {
+      "name": {
+        "en": "Durban"
+      }
+    },
+    "toledo": {
+      "name": {
+        "en": "Toledo"
+      }
+    },
+    "san-antonio": {
+      "name": {
+        "en": "San Antonio"
+      }
+    },
+    "chengdu": {
+      "name": {
+        "en": "Chengdu"
+      }
+    },
+    "adis-abeba": {
+      "name": {
+        "en": "Addis Ababa"
+      }
+    },
+    "segovia": {
+      "name": {
+        "en": "Segovia"
+      }
+    },
+    "montreal": {
+      "name": {
+        "en": "Montreal"
+      }
+    },
+    "chongqing": {
+      "name": {
+        "en": "Chongqing"
+      }
+    },
+    "lagos": {
+      "name": {
+        "en": "Lagos"
+      }
+    },
+    "zaragoza": {
+      "name": {
+        "en": "Zaragoza"
+      }
+    },
+    "quebec": {
+      "name": {
+        "en": "Quebec"
+      }
+    },
+    "guilin": {
+      "name": {
+        "en": "Guilin"
+      },
+      "difficulty": 3
+    },
+    "acra": {
+      "name": {
+        "en": "Accra"
+      },
+      "difficulty": 3
+    },
+    "san-sebastian": {
+      "name": {
+        "en": "San Sebastián"
+      }
+    },
+    "vancouver": {
+      "name": {
+        "en": "Vancouver"
+      }
+    },
+    "canton": {
+      "name": {
+        "en": "Guangzhou"
+      }
+    },
+    "abiyan": {
+      "name": {
+        "en": "Abidjan"
+      },
+      "difficulty": 3
+    },
+    "salamanca": {
+      "name": {
+        "en": "Salamanca"
+      }
+    },
+    "ottawa": {
+      "name": {
+        "en": "Ottawa"
+      }
+    },
+    "hangzhou": {
+      "name": {
+        "en": "Hangzhou"
+      },
+      "difficulty": 3
+    },
+    "windhoek": {
+      "name": {
+        "en": "Windhoek"
+      },
+      "difficulty": 3
+    },
+    "manchester": {
+      "name": {
+        "en": "Manchester"
+      }
+    },
+    "guadalajara": {
+      "name": {
+        "en": "Guadalajara"
+      }
+    },
+    "suzhou": {
+      "name": {
+        "en": "Suzhou"
+      },
+      "difficulty": 3
+    },
+    "port-louis": {
+      "name": {
+        "en": "Port Louis"
+      },
+      "difficulty": 3
+    },
+    "liverpool": {
+      "name": {
+        "en": "Liverpool"
+      }
+    },
+    "puebla": {
+      "name": {
+        "en": "Puebla"
+      }
+    },
+    "taipei": {
+      "name": {
+        "en": "Taipei"
+      }
+    },
+    "oxford": {
+      "name": {
+        "en": "Oxford"
+      }
+    },
+    "oaxaca": {
+      "name": {
+        "en": "Oaxaca"
+      },
+      "difficulty": 3
+    },
+    "busan": {
+      "name": {
+        "en": "Busan"
+      }
+    },
+    "cambridge": {
+      "name": {
+        "en": "Cambridge"
+      }
+    },
+    "guanajuato": {
+      "name": {
+        "en": "Guanajuato"
+      },
+      "difficulty": 3
+    },
+    "hanoi": {
+      "name": {
+        "en": "Hanoi"
+      }
+    },
+    "bath": {
+      "name": {
+        "en": "Bath"
+      }
+    },
+    "merida": {
+      "name": {
+        "en": "Mérida"
+      },
+      "difficulty": 3
+    },
+    "ciudad-ho-chi-minh": {
+      "name": {
+        "en": "Ho Chi Minh City"
+      }
+    },
+    "york": {
+      "name": {
+        "en": "York"
+      }
+    },
+    "bogota": {
+      "name": {
+        "en": "Bogotá"
+      }
+    },
+    "hoi-an": {
+      "name": {
+        "en": "Hoi An"
+      },
+      "difficulty": 3
+    },
+    "glasgow": {
+      "name": {
+        "en": "Glasgow"
+      }
+    },
+    "cartagena-de-indias": {
+      "name": {
+        "en": "Cartagena"
+      }
+    },
+    "siem-reap": {
+      "name": {
+        "en": "Siem Reap"
+      }
+    },
+    "belfast": {
+      "name": {
+        "en": "Belfast"
+      }
+    },
+    "medellin": {
+      "name": {
+        "en": "Medellín"
+      }
+    },
+    "nom-pen": {
+      "name": {
+        "en": "Phnom Penh"
+      },
+      "difficulty": 3
+    },
+    "oporto": {
+      "name": {
+        "en": "Porto"
+      }
+    },
+    "lima": {
+      "name": {
+        "en": "Lima"
+      }
+    },
+    "kuala-lumpur": {
+      "name": {
+        "en": "Kuala Lumpur"
+      }
+    },
+    "bruselas": {
+      "name": {
+        "en": "Brussels"
+      }
+    },
+    "cusco": {
+      "name": {
+        "en": "Cusco"
+      }
+    },
+    "george-town": {
+      "name": {
+        "en": "George Town"
+      },
+      "difficulty": 3
+    },
+    "brujas": {
+      "name": {
+        "en": "Bruges"
+      }
+    },
+    "arequipa": {
+      "name": {
+        "en": "Arequipa"
+      },
+      "difficulty": 3
+    },
+    "yakarta": {
+      "name": {
+        "en": "Jakarta"
+      }
+    },
+    "gante": {
+      "name": {
+        "en": "Ghent"
+      }
+    },
+    "quito": {
+      "name": {
+        "en": "Quito"
+      }
+    },
+    "yogyakarta": {
+      "name": {
+        "en": "Yogyakarta"
+      },
+      "difficulty": 3
+    },
+    "roterdam": {
+      "name": {
+        "en": "Rotterdam"
+      }
+    },
+    "la-paz": {
+      "name": {
+        "en": "La Paz"
+      }
+    },
+    "manila": {
+      "name": {
+        "en": "Manila"
+      }
+    },
+    "la-haya": {
+      "name": {
+        "en": "The Hague"
+      }
+    },
+    "sucre": {
+      "name": {
+        "en": "Sucre"
+      },
+      "difficulty": 3
+    },
+    "katmandu": {
+      "name": {
+        "en": "Kathmandu"
+      }
+    },
+    "lyon": {
+      "name": {
+        "en": "Lyon"
+      }
+    },
+    "santiago-de-chile": {
+      "name": {
+        "en": "Santiago"
+      }
+    },
+    "agra": {
+      "name": {
+        "en": "Agra"
+      },
+      "difficulty": 1
+    },
+    "marsella": {
+      "name": {
+        "en": "Marseille"
+      }
+    },
+    "valparaiso": {
+      "name": {
+        "en": "Valparaíso"
+      }
+    },
+    "jaipur": {
+      "name": {
+        "en": "Jaipur"
+      }
+    },
+    "niza": {
+      "name": {
+        "en": "Nice"
+      }
+    },
+    "montevideo": {
+      "name": {
+        "en": "Montevideo"
+      }
+    },
+    "varanasi": {
+      "name": {
+        "en": "Varanasi"
+      }
+    },
+    "burdeos": {
+      "name": {
+        "en": "Bordeaux"
+      }
+    },
+    "brasilia": {
+      "name": {
+        "en": "Brasilia"
+      }
+    },
+    "calcuta": {
+      "name": {
+        "en": "Kolkata"
+      }
+    },
+    "estrasburgo": {
+      "name": {
+        "en": "Strasbourg"
+      }
+    },
+    "sao-paulo": {
+      "name": {
+        "en": "São Paulo"
+      }
+    },
+    "amritsar": {
+      "name": {
+        "en": "Amritsar"
+      }
+    },
+    "avinon": {
+      "name": {
+        "en": "Avignon"
+      }
+    },
+    "salvador-de-bahia": {
+      "name": {
+        "en": "Salvador"
+      }
+    },
+    "abu-dabi": {
+      "name": {
+        "en": "Abu Dhabi"
+      }
+    },
+    "milan": {
+      "name": {
+        "en": "Milan"
+      }
+    },
+    "recife": {
+      "name": {
+        "en": "Recife"
+      },
+      "difficulty": 3
+    },
+    "doha": {
+      "name": {
+        "en": "Doha"
+      }
+    },
+    "napoles": {
+      "name": {
+        "en": "Naples"
+      }
+    },
+    "ciudad-de-panama": {
+      "name": {
+        "en": "Panama City"
+      }
+    },
+    "mascate": {
+      "name": {
+        "en": "Muscat"
+      },
+      "difficulty": 3
+    },
+    "pisa": {
+      "name": {
+        "en": "Pisa"
+      }
+    },
+    "antigua-guatemala": {
+      "name": {
+        "en": "Antigua Guatemala"
+      }
+    },
+    "riad": {
+      "name": {
+        "en": "Riyadh"
+      }
+    },
+    "verona": {
+      "name": {
+        "en": "Verona"
+      }
+    },
+    "san-juan": {
+      "name": {
+        "en": "San Juan"
+      }
+    },
+    "yeda": {
+      "name": {
+        "en": "Jeddah"
+      }
+    },
+    "turin": {
+      "name": {
+        "en": "Turin"
+      }
+    },
+    "santo-domingo": {
+      "name": {
+        "en": "Santo Domingo"
+      }
+    },
+    "aman": {
+      "name": {
+        "en": "Amman"
+      }
+    },
+    "bolonia": {
+      "name": {
+        "en": "Bologna"
+      }
+    },
+    "san-jose": {
+      "name": {
+        "en": "San José"
+      }
+    },
+    "beirut": {
+      "name": {
+        "en": "Beirut"
+      }
+    },
+    "palermo": {
+      "name": {
+        "en": "Palermo"
+      }
+    },
+    "kingston": {
+      "name": {
+        "en": "Kingston"
+      },
+      "difficulty": 3
+    },
+    "jerusalen": {
+      "name": {
+        "en": "Jerusalem"
+      }
+    },
+    "munich": {
+      "name": {
+        "en": "Munich"
+      }
+    },
+    "tel-aviv": {
+      "name": {
+        "en": "Tel Aviv"
+      }
+    },
+    "hamburgo": {
+      "name": {
+        "en": "Hamburg"
+      }
+    },
+    "samarcanda": {
+      "name": {
+        "en": "Samarkand"
+      },
+      "difficulty": 3
+    },
+    "colonia": {
+      "name": {
+        "en": "Cologne"
+      }
+    },
+    "bujara": {
+      "name": {
+        "en": "Bukhara"
+      },
+      "difficulty": 3
+    },
+    "dresde": {
+      "name": {
+        "en": "Dresden"
+      }
+    },
+    "francfort": {
+      "name": {
+        "en": "Frankfurt"
+      }
+    },
+    "heidelberg": {
+      "name": {
+        "en": "Heidelberg"
+      }
+    },
+    "ginebra": {
+      "name": {
+        "en": "Geneva"
+      }
+    },
+    "lucerna": {
+      "name": {
+        "en": "Lucerne"
+      },
+      "difficulty": 3
+    },
+    "berna": {
+      "name": {
+        "en": "Bern"
+      },
+      "difficulty": 3
+    },
+    "oslo": {
+      "name": {
+        "en": "Oslo"
+      }
+    },
+    "bergen": {
+      "name": {
+        "en": "Bergen"
+      },
+      "difficulty": 3
+    },
+    "helsinki": {
+      "name": {
+        "en": "Helsinki"
+      }
+    },
+    "reikiavik": {
+      "name": {
+        "en": "Reykjavik"
+      }
+    },
+    "tallin": {
+      "name": {
+        "en": "Tallinn"
+      }
+    },
+    "riga": {
+      "name": {
+        "en": "Riga"
+      }
+    },
+    "vilna": {
+      "name": {
+        "en": "Vilnius"
+      },
+      "difficulty": 3
+    },
+    "varsovia": {
+      "name": {
+        "en": "Warsaw"
+      }
+    },
+    "cracovia": {
+      "name": {
+        "en": "Kraków"
+      }
+    },
+    "gdansk": {
+      "name": {
+        "en": "Gdansk"
+      },
+      "difficulty": 3
+    },
+    "bucarest": {
+      "name": {
+        "en": "Bucharest"
+      }
+    },
+    "sofia": {
+      "name": {
+        "en": "Sofia"
+      }
+    },
+    "belgrado": {
+      "name": {
+        "en": "Belgrade"
+      }
+    },
+    "sarajevo": {
+      "name": {
+        "en": "Sarajevo"
+      },
+      "difficulty": 3
+    },
+    "dubrovnik": {
+      "name": {
+        "en": "Dubrovnik"
+      }
+    },
+    "split": {
+      "name": {
+        "en": "Split"
+      }
+    },
+    "zagreb": {
+      "name": {
+        "en": "Zagreb"
+      }
+    },
+    "liubliana": {
+      "name": {
+        "en": "Ljubljana"
+      },
+      "difficulty": 3
+    },
+    "bratislava": {
+      "name": {
+        "en": "Bratislava"
+      },
+      "difficulty": 3
+    },
+    "salzburgo": {
+      "name": {
+        "en": "Salzburg"
+      }
+    },
+    "luxemburgo": {
+      "name": {
+        "en": "Luxembourg"
+      },
+      "difficulty": 3
+    },
+    "monaco": {
+      "name": {
+        "en": "Monaco"
+      }
+    },
+    "la-valeta": {
+      "name": {
+        "en": "Valletta"
+      }
+    },
+    "kyiv": {
+      "name": {
+        "en": "Kyiv"
       }
     }
   }

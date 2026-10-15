@@ -1626,7 +1626,7 @@
     }
   },
   "cities": {
-    "pickerSub": "Reconoce la ciudad por sus monumentos. Las otras opciones tienen una arquitectura parecida.",
+    "pickerSub": "Reconoce la ciudad por sus monumentos.",
     "cardSub": "Dioramas 3D",
     "count_one": "{{count}} ciudad",
     "count_other": "{{count}} ciudades",
@@ -1644,7 +1644,8 @@
     "empty": "Pronto habrá ciudades para descubrir.",
     "emptyFilter": "Todavía no hay ciudades disponibles para esta dificultad. Prueba con todas.",
     "comingSoon": "Próximamente",
-    "answer": "Es {{name}}.",
+    "enlargeImage": "Ampliar imagen de la ciudad",
+    "closePreview": "Cerrar imagen ampliada",
     "preparing": "Preparando las primeras ciudades…",
     "nextLoading": "Preparando la siguiente ciudad…",
     "nextError": "No se ha podido preparar la siguiente ciudad."

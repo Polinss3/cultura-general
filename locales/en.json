@@ -1626,7 +1626,7 @@
     }
   },
   "cities": {
-    "pickerSub": "Recognize the city by its landmarks. The other options have similar architecture.",
+    "pickerSub": "Recognize the city by its landmarks.",
     "cardSub": "3D dioramas",
     "count_one": "{{count}} city",
     "count_other": "{{count}} cities",
@@ -1644,7 +1644,8 @@
     "empty": "Cities to discover are coming soon.",
     "emptyFilter": "No cities are available at this difficulty yet. Try all difficulties.",
     "comingSoon": "Coming soon",
-    "answer": "This is {{name}}.",
+    "enlargeImage": "Enlarge city image",
+    "closePreview": "Close enlarged image",
     "preparing": "Preparing the first cities…",
     "nextLoading": "Preparing the next city…",
     "nextError": "Could not prepare the next city."
