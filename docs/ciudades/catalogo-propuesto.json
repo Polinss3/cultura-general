@@ -6162,18 +6162,27 @@
       },
       "continent": "europa",
       "countryCode": "CH",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Zytglogge",
         "Catedral",
         "Palacio Federal",
-        "Puente Nydegg",
-        "Arcadas del casco antiguo y Aar"
+        "Puente Nydegg"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 211,
-      "batch": 53
+      "batch": 53,
+      "conceptImage": "normalizadas/berna-v1.png",
+      "originalConceptImage": "normalizadas/berna-v1.png",
+      "framingProfile": "berna",
+      "sources": [
+        "https://bern.com/en/explore/tourist-attractions/attractions/zytglogge-clock-tower",
+        "https://bern.com/en/erleben/attraktionen/sehenswuerdigkeiten/",
+        "https://bern.com/en/explore/tourist-attractions/attractions/bern-s-old-city",
+        "https://www.myswitzerland.com/en-ch/destinations/bern/",
+        "https://www.bern.ch/en/visiting-bern"
+      ]
     },
     {
       "id": "oslo",
@@ -6182,18 +6191,27 @@
       },
       "continent": "europa",
       "countryCode": "NO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Ópera",
         "Museo Munch",
         "Ayuntamiento",
-        "Fortaleza Akershus",
-        "Parque Vigeland"
+        "Fortaleza Akershus"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 212,
-      "batch": 53
+      "batch": 53,
+      "conceptImage": "normalizadas/oslo-v1.png",
+      "originalConceptImage": "normalizadas/oslo-v1.png",
+      "framingProfile": "oslo",
+      "sources": [
+        "https://www.munch.no/en/visit-us/",
+        "https://www.munch.no/en",
+        "https://www.visitoslo.com/en/activities-and-attractions/10-suggestions/top-attractions/",
+        "https://www.munch.no/en/visit-us/questions-and-answers",
+        "https://www.munch.no/en/about/"
+      ]
     },
     {
       "id": "bergen",
@@ -6202,18 +6220,27 @@
       },
       "continent": "europa",
       "countryCode": "NO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Bryggen",
         "Funicular Fløibanen",
         "Håkonshallen",
-        "Torre Rosenkrantz",
-        "Catedral"
+        "Torre Rosenkrantz"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 213,
-      "batch": 53
+      "batch": 53,
+      "conceptImage": "normalizadas/bergen-v1.png",
+      "originalConceptImage": "normalizadas/bergen-v1.png",
+      "framingProfile": "bergen",
+      "sources": [
+        "https://en.visitbergen.com/things-to-do/attractions",
+        "https://en.visitbergen.com/things-to-do/nordnes-",
+        "https://en.visitbergen.com/things-to-do/museum-of-",
+        "https://www.visitbergen.com/explore/bryggen",
+        "https://www.visitbergen.com/ting-a-gjore"
+      ]
     },
     {
       "id": "helsinki",
@@ -6222,7 +6249,7 @@
       },
       "continent": "europa",
       "countryCode": "FI",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral luterana",
@@ -6230,9 +6257,19 @@
         "Monumento a Sibelius",
         "Estación Central"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 214,
-      "batch": 53
+      "batch": 53,
+      "conceptImage": "normalizadas/helsinki-v1.png",
+      "originalConceptImage": "normalizadas/helsinki-v1.png",
+      "framingProfile": "helsinki",
+      "sources": [
+        "https://www.visitfinland.com/en/product/203b0043-2c47-4532-bb4b-08d385a78198/helsinki-cathedral/",
+        "https://www.myhelsinki.fi/visit-helsinki/things-to-do/attractions/",
+        "https://www.visitfinland.com/en/articles/finnish-architecture-icons-of-helsinki/",
+        "https://www.myhelsinki.fi/en/see-and-do/sights",
+        "https://www.portofhelsinki.fi/en/passengers/information-for-passengers/things-to-do-in-helsinki/"
+      ]
     },
     {
       "id": "reikiavik",
@@ -6241,7 +6278,7 @@
       },
       "continent": "europa",
       "countryCode": "IS",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Hallgrímskirkja",
@@ -6249,9 +6286,19 @@
         "Sun Voyager",
         "Perlan"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 215,
-      "batch": 54
+      "batch": 54,
+      "conceptImage": "normalizadas/reikiavik-v1.png",
+      "originalConceptImage": "normalizadas/reikiavik-v1.png",
+      "framingProfile": "reikiavik",
+      "sources": [
+        "https://visitreykjavik.is/sights-attractions",
+        "https://www.harpa.is/en/welcome",
+        "https://www.visiticeland.com/things-to-do/hallgrimskirkja/",
+        "https://visitreykjavik.is/see-and-do/activities/popular-sights-reykjavik",
+        "https://www.harpa.is/en/guided-tours"
+      ]
     },
     {
       "id": "tallin",
@@ -6260,18 +6307,27 @@
       },
       "continent": "europa",
       "countryCode": "EE",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Ayuntamiento",
         "Catedral Alexander Nevsky",
         "Castillo de Toompea y Pikk Hermann",
-        "Iglesia de San Olaf",
-        "Murallas"
+        "Iglesia de San Olaf"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 216,
-      "batch": 54
+      "batch": 54,
+      "conceptImage": "normalizadas/tallin-v1.png",
+      "originalConceptImage": "normalizadas/tallin-v1.png",
+      "framingProfile": "tallin",
+      "sources": [
+        "https://web.visittallinn.ee/eng/visitor/ideas-tips/tips-and-guides/top-must-see-sights",
+        "https://www.visittallinn.ee/eng/visitor/",
+        "https://www.visittallinn.ee/eng/visitor/ideas-tips/top-guides/best-of-tallinn",
+        "https://web.visittallinn.ee/eng/visitor/see-do/things-to-do/attractions-museums/177138/8-the-cathedral-of-saint-mary-the-virgin-in-tallinn-and-its-bell-tower",
+        "https://visittallinn.ee/eng/visitor"
+      ]
     },
     {
       "id": "riga",
@@ -6280,18 +6336,27 @@
       },
       "continent": "europa",
       "countryCode": "LV",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Casa de los Cabezas Negras",
         "Catedral",
         "Iglesia de San Pedro",
-        "Monumento a la Libertad",
-        "Biblioteca Nacional"
+        "Monumento a la Libertad"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 217,
-      "batch": 54
+      "batch": 54,
+      "conceptImage": "normalizadas/riga-v1.png",
+      "originalConceptImage": "normalizadas/riga-v1.png",
+      "framingProfile": "riga",
+      "sources": [
+        "https://www.liveriga.com/en/visit/what-to-see/top-sights/house-of-the-blackheads",
+        "https://www.liveriga.com/en/visit/what-to-see/sightseeing/churches/riga-dome-cathedral-1",
+        "https://www.riga.lv/en/tourism",
+        "https://www.liveriga.com/en/94-top-sights",
+        "https://www.liveriga.com/userfiles/files/Informativie%20materiali/Sightseeing_20190904_ESP_100x210.pdf"
+      ]
     },
     {
       "id": "vilna",
@@ -6300,7 +6365,7 @@
       },
       "continent": "europa",
       "countryCode": "LT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Torre de Gediminas",
@@ -6308,9 +6373,19 @@
         "Iglesia de Santa Ana",
         "Puerta de la Aurora"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 218,
-      "batch": 54
+      "batch": 54,
+      "conceptImage": "normalizadas/vilna-v1.png",
+      "originalConceptImage": "normalizadas/vilna-v1.png",
+      "framingProfile": "vilna",
+      "sources": [
+        "https://visitvilnius.lt/en/see/gediminas-castle",
+        "https://visitvilnius.lt/en/see/vilnius-cathedral",
+        "https://www.govilnius.lt/visit-vilnius/places/the-gediminas-tower",
+        "https://lithuania.travel/en/why-lithuania/culture-and-heritage/culture-and-art/museums/history-museums/gediminas-castle-tower",
+        "https://visitvilnius.lt/en/see"
+      ]
     },
     {
       "id": "varsovia",
@@ -6319,7 +6394,7 @@
       },
       "continent": "europa",
       "countryCode": "PL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Palacio de la Cultura y la Ciencia",
@@ -6327,9 +6402,19 @@
         "Plaza del Mercado",
         "Palacio Łazienki"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 219,
-      "batch": 55
+      "batch": 55,
+      "conceptImage": "normalizadas/varsovia-v1.png",
+      "originalConceptImage": "normalizadas/varsovia-v1.png",
+      "framingProfile": "varsovia",
+      "sources": [
+        "https://visitpkin.pl/es/",
+        "https://www.polonia.travel/es/wp-content/uploads/sites/18/2025/03/ZAMKI_2024_ES.pdf",
+        "https://visitpkin.pl/en/",
+        "https://pkin.pl/en/tourist-information/",
+        "https://www.polonia.travel/es/wp-content/uploads/sites/18/2024/05/POT_katalog_rozkladowki_ES.pdf"
+      ]
     },
     {
       "id": "cracovia",
@@ -6338,7 +6423,7 @@
       },
       "continent": "europa",
       "countryCode": "PL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Wawel",
@@ -6346,9 +6431,19 @@
         "Lonja de los Paños",
         "Barbacana"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 220,
-      "batch": 55
+      "batch": 55,
+      "conceptImage": "normalizadas/cracovia-v1.png",
+      "originalConceptImage": "normalizadas/cracovia-v1.png",
+      "framingProfile": "cracovia",
+      "sources": [
+        "https://www.cracovia.es/que-ver/basilica-de-santa-maria/",
+        "https://wawel.krakow.pl/en/explore",
+        "https://wawel.krakow.pl/en",
+        "https://visitcracovia.it/en/what-to-see",
+        "https://www.cracovia.net/basilica-santa-maria"
+      ]
     },
     {
       "id": "gdansk",
@@ -6357,18 +6452,27 @@
       },
       "continent": "europa",
       "countryCode": "PL",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Fuente de Neptuno",
         "Grúa del puerto",
         "Basílica de Santa María",
-        "Długi Targ",
-        "Puerta Dorada"
+        "Długi Targ"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 221,
-      "batch": 55
+      "batch": 55,
+      "conceptImage": "normalizadas/gdansk-v1.png",
+      "originalConceptImage": "normalizadas/gdansk-v1.png",
+      "framingProfile": "gdansk",
+      "sources": [
+        "https://gdansk.travel/es/atraccion/la-grua-de-gdansk-una-de-las-puertas-de-agua-de-gdansk-529",
+        "https://gdansk.travel/en/attraction/fountain-of-neptune-371",
+        "https://visitgdansk.com/cmsImages/dokumenty/gdansk-es.pdf",
+        "https://visitgdansk.com/top-10-atrakcji?setLanguage=en",
+        "https://www.gdansk.pl/turystyka-w-gdansku/fontanna-neptuna%2Ca%2C31287"
+      ]
     },
     {
       "id": "bucarest",
@@ -6377,7 +6481,7 @@
       },
       "continent": "europa",
       "countryCode": "RO",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Palacio del Parlamento",
@@ -6385,9 +6489,19 @@
         "Arco del Triunfo",
         "Monasterio Stavropoleos"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 222,
-      "batch": 55
+      "batch": 55,
+      "conceptImage": "normalizadas/bucarest-v1.png",
+      "originalConceptImage": "normalizadas/bucarest-v1.png",
+      "framingProfile": "bucarest",
+      "sources": [
+        "https://visitromania.ro/es/atraccion/bucuresti/palatul-parlamentului",
+        "https://www.bucarest.es/palacio-parlamento",
+        "https://www.turismorumania.com/es/bucarest",
+        "https://www.turismorumania.com/es/bucarest/palacio/palace-of-the-parliament",
+        "https://visitromania.ro/it/attrazione/bucuresti/palatul-parlamentului"
+      ]
     },
     {
       "id": "sofia",
@@ -6396,7 +6510,7 @@
       },
       "continent": "europa",
       "countryCode": "BG",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral Alexander Nevsky",
@@ -6404,9 +6518,19 @@
         "Teatro Nacional Ivan Vazov",
         "Basílica de Santa Sofía"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 223,
-      "batch": 56
+      "batch": 56,
+      "conceptImage": "normalizadas/sofia-v1.png",
+      "originalConceptImage": "normalizadas/sofia-v1.png",
+      "framingProfile": "sofia",
+      "sources": [
+        "https://visitsofia.bg/en/cityinfrastructure/what-to-see/temples/st-alexander-nevsky-cathedral",
+        "https://www.tourism.government.bg/bg/tourist-destinations/2799/5815",
+        "https://www.visitsofia.bg/en/%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80-%D0%BD%D0%B0-%D1%81%D1%8A%D0%B1%D0%B8%D1%82%D0%B8%D1%8F%D1%82%D0%B0/day.listevents/2026/09/14/index.php?Itemid=2021&lang=en&layer=50000&obektid=2118&option=com_cityinfrastructure&view=objectdetails",
+        "https://www.visitsofia.bg/en/cityinfrastructure/what-to-see/temples/st-nedelya-church/index.php?Itemid=2021&lang=en&layer=50000&obektid=2104&option=com_cityinfrastructure&view=objectdetails",
+        "https://www.visitsofia.bg/en/cityinfrastructure/what-to-see/monuments"
+      ]
     },
     {
       "id": "belgrado",
@@ -6415,7 +6539,7 @@
       },
       "continent": "europa",
       "countryCode": "RS",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Fortaleza Kalemegdan",
@@ -6423,9 +6547,19 @@
         "Asamblea Nacional",
         "Torre Avala"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 224,
-      "batch": 56
+      "batch": 56,
+      "conceptImage": "normalizadas/belgrado-v1.png",
+      "originalConceptImage": "normalizadas/belgrado-v1.png",
+      "framingProfile": "belgrado",
+      "sources": [
+        "https://www.beograd.rs/en/discover-belgrade/a80019/Sights.html",
+        "https://www.serbia.travel/en/belgrade-fortress/",
+        "https://travel.rs/en/belgrade",
+        "https://www.serbia.travel/es/stories-items/the-city-in-time-and-space/",
+        "https://www.tob.rs/en/what-to-see/belgrade-attractions/belgrade-fortress"
+      ]
     },
     {
       "id": "sarajevo",
@@ -6434,7 +6568,7 @@
       },
       "continent": "europa",
       "countryCode": "BA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Sebilj y Baščaršija",
@@ -6442,9 +6576,19 @@
         "Ayuntamiento Vijećnica",
         "Mezquita Gazi Husrev-beg"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 225,
-      "batch": 56
+      "batch": 56,
+      "conceptImage": "normalizadas/sarajevo-v1.png",
+      "originalConceptImage": "normalizadas/sarajevo-v1.png",
+      "framingProfile": "sarajevo",
+      "sources": [
+        "https://www.visitsarajevo.ba/",
+        "https://www.visitsarajevo.ba/panorama-360/",
+        "https://www.visitsarajevo.ba/centar/",
+        "https://www.visitsarajevo.ba/bs/top-atrakcije/",
+        "https://preapp.visitsarajevo.ba/"
+      ]
     },
     {
       "id": "dubrovnik",
@@ -6453,18 +6597,27 @@
       },
       "continent": "europa",
       "countryCode": "HR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Murallas y puerto",
         "Fortaleza Lovrijenac",
         "Stradun y torre del reloj",
-        "Palacio Sponza",
-        "Catedral"
+        "Palacio Sponza"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 226,
-      "batch": 56
+      "batch": 56,
+      "conceptImage": "normalizadas/dubrovnik-v1.png",
+      "originalConceptImage": "normalizadas/dubrovnik-v1.png",
+      "framingProfile": "dubrovnik",
+      "sources": [
+        "https://visitdubrovnik.hr/culture/",
+        "https://www.visit-croatia.hr/en/tours/dubrovnik-riviera/walls-of-dubrovnik/HR-TR-1759",
+        "https://portdubrovnik.hr/index.php/en/passenger-information/dubrovnik-attractions",
+        "https://citywallsdubrovnik.hr/",
+        "https://visitdubrovnik.hr/es/cultura/"
+      ]
     },
     {
       "id": "split",
@@ -6473,7 +6626,7 @@
       },
       "continent": "europa",
       "countryCode": "HR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Palacio de Diocleciano y Peristilo",
@@ -6481,9 +6634,19 @@
         "Puerta Dorada",
         "Riva"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 227,
-      "batch": 57
+      "batch": 57,
+      "conceptImage": "normalizadas/split-v1.png",
+      "originalConceptImage": "normalizadas/split-v1.png",
+      "framingProfile": "split",
+      "sources": [
+        "https://visitsplit.com/es/528/el-peristilo",
+        "https://visitsplit.com/en/448/diocletian-palace",
+        "https://visitsplit.com/es/448/el-palacio-del-diocleciano",
+        "https://visit-split.com/things-to-do/diocletians-palace/",
+        "https://visitsplit.com/es/1/bienvenidos-a-split/diocletians-palace"
+      ]
     },
     {
       "id": "zagreb",
@@ -6492,7 +6655,7 @@
       },
       "continent": "europa",
       "countryCode": "HR",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral",
@@ -6500,9 +6663,19 @@
         "Torre Lotrščak",
         "Mercado Dolac"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 228,
-      "batch": 57
+      "batch": 57,
+      "conceptImage": "normalizadas/zagreb-v1.png",
+      "originalConceptImage": "normalizadas/zagreb-v1.png",
+      "framingProfile": "zagreb",
+      "sources": [
+        "https://www.visitzagreb.hr/zagreb/zagreb-cathedral/",
+        "https://www.visit-croatia.hr/en/destinations/inland-croatia/central-croatia/zagreb",
+        "https://www.katedrala.hr/hr/hr/2",
+        "https://www.visitzagreb.hr/zagreb/saint-marks-church/",
+        "https://new.infozagreb.hr/en/explore-zagreb/attractions/architectural-monuments/st-marks-church"
+      ]
     },
     {
       "id": "liubliana",
@@ -6511,7 +6684,7 @@
       },
       "continent": "europa",
       "countryCode": "SI",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Triple Puente",
@@ -6519,9 +6692,19 @@
         "Castillo",
         "Iglesia Franciscana"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 229,
-      "batch": 57
+      "batch": 57,
+      "conceptImage": "normalizadas/liubliana-v1.png",
+      "originalConceptImage": "normalizadas/liubliana-v1.png",
+      "framingProfile": "liubliana",
+      "sources": [
+        "https://www.visitljubljana.com/en/poi/triple-bridge",
+        "https://www.visitljubljana.com/en/poi/triple-bridge/",
+        "https://www.visitljubljana.com/en/visitors/sights-and-activities/ljubljana-city-of-dragons/",
+        "https://www.visitljubljana.com/en/visitors/sights-and-activities/things-to-do-in-ljubljana",
+        "https://www.ap-ljubljana.si/en/tourism/ljubljana/triple-bridge"
+      ]
     },
     {
       "id": "bratislava",
@@ -6530,18 +6713,27 @@
       },
       "continent": "europa",
       "countryCode": "SK",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Castillo",
         "Puente SNP y mirador UFO",
         "Catedral de San Martín",
-        "Puerta de San Miguel",
-        "Iglesia Azul"
+        "Puerta de San Miguel"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 230,
-      "batch": 57
+      "batch": 57,
+      "conceptImage": "normalizadas/bratislava-v1.png",
+      "originalConceptImage": "normalizadas/bratislava-v1.png",
+      "framingProfile": "bratislava",
+      "sources": [
+        "https://www.visitbratislava.com/places/09-ufo/",
+        "https://www.visitbratislava.com/sk/miesta/snp/",
+        "https://www.visitbratislava.com/places/ufo/",
+        "https://www.visitbratislava.com/places/skywalk-ufo/",
+        "https://slovakia.travel/en/the-slovak-national-uprising-bridge-in-bratislava"
+      ]
     },
     {
       "id": "salzburgo",
@@ -6550,7 +6742,7 @@
       },
       "continent": "europa",
       "countryCode": "AT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Fortaleza Hohensalzburg",
@@ -6558,9 +6750,19 @@
         "Palacio Mirabell y jardines",
         "Getreidegasse sin rótulos"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 231,
-      "batch": 58
+      "batch": 58,
+      "conceptImage": "normalizadas/salzburgo-v1.png",
+      "originalConceptImage": "normalizadas/salzburgo-v1.png",
+      "framingProfile": "salzburgo",
+      "sources": [
+        "https://www.salzburg.info/en/travel-info/infos/hohensalzburg-fortress_az_7955",
+        "https://www.salzburg.info/en/hohensalzburg-fortress_az_7955",
+        "https://www.salzburg.info/en/sights/top10/hohensalzburg-fortress",
+        "https://www.salzburg.info/es/guia-de-viaje/salzburg-a-z/fortaleza-hohensalzburg_az_7955",
+        "https://salzburgvisit.at/en/sights/top10/hohensalzburg-fortress"
+      ]
     },
     {
       "id": "luxemburgo",
@@ -6569,7 +6771,7 @@
       },
       "continent": "europa",
       "countryCode": "LU",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Puente Adolphe",
@@ -6577,9 +6779,19 @@
         "Palacio Gran Ducal",
         "Catedral de Notre-Dame"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 232,
-      "batch": 58
+      "batch": 58,
+      "conceptImage": "normalizadas/luxemburgo-v1.png",
+      "originalConceptImage": "normalizadas/luxemburgo-v1.png",
+      "framingProfile": "luxemburgo",
+      "sources": [
+        "https://www.visitluxembourg.com/place/adolphe-bridge",
+        "https://luxembourg.public.lu/en/visit/arts-and-culture/ponts-luxembourg.html",
+        "https://www.visitluxembourg.com/lu/place/adolphe-bruecke",
+        "https://www.luxembourg-city.com/en/place/monument/adolphe-bridge",
+        "https://www.luxembourg-city.com/en/tours-activities/underground/bock-casemates"
+      ]
     },
     {
       "id": "monaco",
@@ -6588,18 +6800,27 @@
       },
       "continent": "europa",
       "countryCode": "MC",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Casino de Montecarlo",
         "Palacio del Príncipe",
         "Catedral de San Nicolás",
-        "Museo Oceanográfico",
-        "Port Hercule"
+        "Museo Oceanográfico"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 233,
-      "batch": 58
+      "batch": 58,
+      "conceptImage": "normalizadas/monaco-v1.png",
+      "originalConceptImage": "normalizadas/monaco-v1.png",
+      "framingProfile": "monaco",
+      "sources": [
+        "https://www.monte-carlo.mc/es/visita/",
+        "https://www.monte-carlo.mc/en/visits/",
+        "https://www.visitmonaco.com/Documents-Site/7495/Plan%20VisitMonaco%20-%202024.pdf",
+        "https://www.monte-carlo.mc/es/general/palais-princier/",
+        "https://www.visitmonaco.com/Documents-Site/Plan%20touristique%20Monaco.pdf"
+      ]
     },
     {
       "id": "la-valeta",
@@ -6608,18 +6829,27 @@
       },
       "continent": "europa",
       "countryCode": "MT",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Concatedral de San Juan",
         "Fort Saint Elmo",
         "Cúpula de los Carmelitas y aguja de San Pablo",
-        "Upper Barrakka Gardens",
-        "Parlamento"
+        "Upper Barrakka Gardens"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 234,
-      "batch": 58
+      "batch": 58,
+      "conceptImage": "normalizadas/la-valeta-v1.png",
+      "originalConceptImage": "normalizadas/la-valeta-v1.png",
+      "framingProfile": "la-valeta",
+      "sources": [
+        "https://welcome.mt/places/valletta",
+        "https://www.explorevalletta.com/es/areas/st-elmo-lower-valletta",
+        "https://www.explorevalletta.com/areas/st-elmo-lower-valletta",
+        "https://www.explorevalletta.com/es/areas/republic-street-city-gate",
+        "https://www.explorevalletta.com/es/city/valletta/articles/how-the-knights-of-st-john-built-valletta-in-seven-years"
+      ]
     },
     {
       "id": "kyiv",
@@ -6628,7 +6858,7 @@
       },
       "continent": "europa",
       "countryCode": "UA",
-      "status": "planned",
+      "status": "concept-needs-review",
       "kind": "city",
       "landmarks": [
         "Catedral de Santa Sofía",
@@ -6636,9 +6866,19 @@
         "Puerta Dorada",
         "Lavra de Kyiv-Pechersk"
       ],
-      "landmarkStatus": "candidate-to-research",
+      "landmarkStatus": "candidate",
       "productionOrder": 235,
-      "batch": 59
+      "batch": 59,
+      "conceptImage": "normalizadas/kyiv-v1.png",
+      "originalConceptImage": "normalizadas/kyiv-v1.png",
+      "framingProfile": "kyiv",
+      "sources": [
+        "https://app.visit.kyiv.ua/en/locations/saint-sophia-cathedral/",
+        "https://app.visit.kyiv.ua/en/locations/sofiiska-square/",
+        "https://app.visit.kyiv.ua/locations/sofiiskyi-sobor-sofiia-kyivska/",
+        "https://visitkyiv.com/sights-and-landmarks/st-sophias-cathedral/",
+        "https://visit.kyiv.ua/en/discover-kyiv/landmarks"
+      ]
     }
   ],
   "productionPolicy": {

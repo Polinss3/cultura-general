@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-235 destinos: 234 ciudades y 1 lugar histórico. 210 dioramas con imagen y 25 pendientes.
+235 destinos: 234 ciudades y 1 lugar histórico. 235 dioramas con imagen y 0 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -10,9 +10,6 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 
 | Tanda | Destinos pendientes |
 | --- | --- |
-| 53 | Berna, Oslo, Bergen, Helsinki |
-| 54 | Reikiavik, Tallin, Riga, Vilna |
-| 55 | Varsovia, Cracovia, Gdansk, Bucarest |
 
 Machu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.
 
@@ -89,31 +86,31 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Heidelberg | Con imagen · por revisar | 52 | Castillo; Puente de Karl Theodor; Iglesia del Espíritu Santo; Casco antiguo junto al Neckar |
 | Ginebra | Con imagen · por revisar | 52 | Jet d’Eau; Catedral de San Pedro; Palais des Nations sin banderas; Broken Chair |
 | Lucerna | Con imagen · por revisar | 52 | Kapellbrücke y Torre del Agua; Monumento al León; Iglesia Jesuita; Muralla Musegg |
-| Berna | Pendiente de imagen | 53 | Zytglogge; Catedral; Palacio Federal; Puente Nydegg; Arcadas del casco antiguo y Aar |
-| Oslo | Pendiente de imagen | 53 | Ópera; Museo Munch; Ayuntamiento; Fortaleza Akershus; Parque Vigeland |
-| Bergen | Pendiente de imagen | 53 | Bryggen; Funicular Fløibanen; Håkonshallen; Torre Rosenkrantz; Catedral |
-| Helsinki | Pendiente de imagen | 53 | Catedral luterana; Catedral Uspenski; Monumento a Sibelius; Estación Central |
-| Reikiavik | Pendiente de imagen | 54 | Hallgrímskirkja; Harpa; Sun Voyager; Perlan |
-| Tallin | Pendiente de imagen | 54 | Ayuntamiento; Catedral Alexander Nevsky; Castillo de Toompea y Pikk Hermann; Iglesia de San Olaf; Murallas |
-| Riga | Pendiente de imagen | 54 | Casa de los Cabezas Negras; Catedral; Iglesia de San Pedro; Monumento a la Libertad; Biblioteca Nacional |
-| Vilna | Pendiente de imagen | 54 | Torre de Gediminas; Catedral y campanario; Iglesia de Santa Ana; Puerta de la Aurora |
-| Varsovia | Pendiente de imagen | 55 | Palacio de la Cultura y la Ciencia; Castillo Real y columna de Segismundo; Plaza del Mercado; Palacio Łazienki |
-| Cracovia | Pendiente de imagen | 55 | Wawel; Basílica de Santa María; Lonja de los Paños; Barbacana |
-| Gdansk | Pendiente de imagen | 55 | Fuente de Neptuno; Grúa del puerto; Basílica de Santa María; Długi Targ; Puerta Dorada |
-| Bucarest | Pendiente de imagen | 55 | Palacio del Parlamento; Ateneo Rumano; Arco del Triunfo; Monasterio Stavropoleos |
-| Sofía | Pendiente de imagen | 56 | Catedral Alexander Nevsky; Rotonda de San Jorge; Teatro Nacional Ivan Vazov; Basílica de Santa Sofía |
-| Belgrado | Pendiente de imagen | 56 | Fortaleza Kalemegdan; Templo de San Sava; Asamblea Nacional; Torre Avala |
-| Sarajevo | Pendiente de imagen | 56 | Sebilj y Baščaršija; Puente Latino; Ayuntamiento Vijećnica; Mezquita Gazi Husrev-beg |
-| Dubrovnik | Pendiente de imagen | 56 | Murallas y puerto; Fortaleza Lovrijenac; Stradun y torre del reloj; Palacio Sponza; Catedral |
-| Split | Pendiente de imagen | 57 | Palacio de Diocleciano y Peristilo; Campanile de San Duje; Puerta Dorada; Riva |
-| Zagreb | Pendiente de imagen | 57 | Catedral; Iglesia de San Marcos; Torre Lotrščak; Mercado Dolac |
-| Liubliana | Pendiente de imagen | 57 | Triple Puente; Puente de los Dragones; Castillo; Iglesia Franciscana |
-| Bratislava | Pendiente de imagen | 57 | Castillo; Puente SNP y mirador UFO; Catedral de San Martín; Puerta de San Miguel; Iglesia Azul |
-| Salzburgo | Pendiente de imagen | 58 | Fortaleza Hohensalzburg; Catedral; Palacio Mirabell y jardines; Getreidegasse sin rótulos |
-| Luxemburgo | Pendiente de imagen | 58 | Puente Adolphe; Casamatas del Bock; Palacio Gran Ducal; Catedral de Notre-Dame |
-| Mónaco | Pendiente de imagen | 58 | Casino de Montecarlo; Palacio del Príncipe; Catedral de San Nicolás; Museo Oceanográfico; Port Hercule |
-| La Valeta | Pendiente de imagen | 58 | Concatedral de San Juan; Fort Saint Elmo; Cúpula de los Carmelitas y aguja de San Pablo; Upper Barrakka Gardens; Parlamento |
-| Kyiv | Pendiente de imagen | 59 | Catedral de Santa Sofía; Monasterio de San Miguel; Puerta Dorada; Lavra de Kyiv-Pechersk |
+| Berna | Con imagen · por revisar | 53 | Zytglogge; Catedral; Palacio Federal; Puente Nydegg |
+| Oslo | Con imagen · por revisar | 53 | Ópera; Museo Munch; Ayuntamiento; Fortaleza Akershus |
+| Bergen | Con imagen · por revisar | 53 | Bryggen; Funicular Fløibanen; Håkonshallen; Torre Rosenkrantz |
+| Helsinki | Con imagen · por revisar | 53 | Catedral luterana; Catedral Uspenski; Monumento a Sibelius; Estación Central |
+| Reikiavik | Con imagen · por revisar | 54 | Hallgrímskirkja; Harpa; Sun Voyager; Perlan |
+| Tallin | Con imagen · por revisar | 54 | Ayuntamiento; Catedral Alexander Nevsky; Castillo de Toompea y Pikk Hermann; Iglesia de San Olaf |
+| Riga | Con imagen · por revisar | 54 | Casa de los Cabezas Negras; Catedral; Iglesia de San Pedro; Monumento a la Libertad |
+| Vilna | Con imagen · por revisar | 54 | Torre de Gediminas; Catedral y campanario; Iglesia de Santa Ana; Puerta de la Aurora |
+| Varsovia | Con imagen · por revisar | 55 | Palacio de la Cultura y la Ciencia; Castillo Real y columna de Segismundo; Plaza del Mercado; Palacio Łazienki |
+| Cracovia | Con imagen · por revisar | 55 | Wawel; Basílica de Santa María; Lonja de los Paños; Barbacana |
+| Gdansk | Con imagen · por revisar | 55 | Fuente de Neptuno; Grúa del puerto; Basílica de Santa María; Długi Targ |
+| Bucarest | Con imagen · por revisar | 55 | Palacio del Parlamento; Ateneo Rumano; Arco del Triunfo; Monasterio Stavropoleos |
+| Sofía | Con imagen · por revisar | 56 | Catedral Alexander Nevsky; Rotonda de San Jorge; Teatro Nacional Ivan Vazov; Basílica de Santa Sofía |
+| Belgrado | Con imagen · por revisar | 56 | Fortaleza Kalemegdan; Templo de San Sava; Asamblea Nacional; Torre Avala |
+| Sarajevo | Con imagen · por revisar | 56 | Sebilj y Baščaršija; Puente Latino; Ayuntamiento Vijećnica; Mezquita Gazi Husrev-beg |
+| Dubrovnik | Con imagen · por revisar | 56 | Murallas y puerto; Fortaleza Lovrijenac; Stradun y torre del reloj; Palacio Sponza |
+| Split | Con imagen · por revisar | 57 | Palacio de Diocleciano y Peristilo; Campanile de San Duje; Puerta Dorada; Riva |
+| Zagreb | Con imagen · por revisar | 57 | Catedral; Iglesia de San Marcos; Torre Lotrščak; Mercado Dolac |
+| Liubliana | Con imagen · por revisar | 57 | Triple Puente; Puente de los Dragones; Castillo; Iglesia Franciscana |
+| Bratislava | Con imagen · por revisar | 57 | Castillo; Puente SNP y mirador UFO; Catedral de San Martín; Puerta de San Miguel |
+| Salzburgo | Con imagen · por revisar | 58 | Fortaleza Hohensalzburg; Catedral; Palacio Mirabell y jardines; Getreidegasse sin rótulos |
+| Luxemburgo | Con imagen · por revisar | 58 | Puente Adolphe; Casamatas del Bock; Palacio Gran Ducal; Catedral de Notre-Dame |
+| Mónaco | Con imagen · por revisar | 58 | Casino de Montecarlo; Palacio del Príncipe; Catedral de San Nicolás; Museo Oceanográfico |
+| La Valeta | Con imagen · por revisar | 58 | Concatedral de San Juan; Fort Saint Elmo; Cúpula de los Carmelitas y aguja de San Pablo; Upper Barrakka Gardens |
+| Kyiv | Con imagen · por revisar | 59 | Catedral de Santa Sofía; Monasterio de San Miguel; Puerta Dorada; Lavra de Kyiv-Pechersk |
 
 ## América · 53
 
@@ -482,5 +479,30 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 - Heidelberg: [Referencia 1](https://www.tourism-heidelberg.com/explore/historical-sights/altstadt/old-bridge/index_eng.html), [Referencia 2](https://www.tourism-heidelberg.com/explore/historical-sights/monuments--landmarks/karls-gate/index_eng.html), [Referencia 3](https://www.schloss-heidelberg.de/en/visitor-information), [Referencia 4](https://www.heidelberg.de/english%2CLde/Home/Visit/What%2Bto%2Bsee.html), [Referencia 5](https://www.tourism-heidelberg.com/explore/historical-sights/schloss-heidelberg/index_eng.html).
 - Ginebra: [Referencia 1](https://www.geneve.com/en/see-do/attractions/the-jet-deau), [Referencia 2](https://www.geneve.com/en/see-do/attractions), [Referencia 3](https://www.geneve.com/en/attractions/detail/the-jet-deau-genevas-icon), [Referencia 4](https://www.cultura.gob.es/en/cultura/areas/patrimonio/mc/union-europea/sello/historico/sitios-de-la-categoria-intergubernamental/red-de-sitios-patrimonioeur/suiza/suiza-sanpedro.html), [Referencia 5](https://www.geneve.com/fileadmin/user_upload/B2C/Pages/Plan_and_Stay/Tourist_Information/Geneva_Discovery_map_CH-EN.pdf).
 - Lucerna: [Referencia 1](https://visitlucerne.com/lucerne/travel-guides/things-to-do/chapel-bridge-and-water-tower-complete-visitor-guide), [Referencia 2](https://www.luzern.com/en/the-city/sights/top-sights/lucernes-landmarks-the-chapel-bridge-and-its-water-tower), [Referencia 3](https://www.kapellbruecke.com/en/chapel-bridge/), [Referencia 4](https://www.myswitzerland.com/es-es/descubrir-suiza/monumento-al-leon/), [Referencia 5](https://www.myswitzerland.com/en-ch/experiences/chapel-bridge-and-water-tower/).
+- Berna: [Referencia 1](https://bern.com/en/explore/tourist-attractions/attractions/zytglogge-clock-tower), [Referencia 2](https://bern.com/en/erleben/attraktionen/sehenswuerdigkeiten/), [Referencia 3](https://bern.com/en/explore/tourist-attractions/attractions/bern-s-old-city), [Referencia 4](https://www.myswitzerland.com/en-ch/destinations/bern/), [Referencia 5](https://www.bern.ch/en/visiting-bern).
+- Oslo: [Referencia 1](https://www.munch.no/en/visit-us/), [Referencia 2](https://www.munch.no/en), [Referencia 3](https://www.visitoslo.com/en/activities-and-attractions/10-suggestions/top-attractions/), [Referencia 4](https://www.munch.no/en/visit-us/questions-and-answers), [Referencia 5](https://www.munch.no/en/about/).
+- Bergen: [Referencia 1](https://en.visitbergen.com/things-to-do/attractions), [Referencia 2](https://en.visitbergen.com/things-to-do/nordnes-), [Referencia 3](https://en.visitbergen.com/things-to-do/museum-of-), [Referencia 4](https://www.visitbergen.com/explore/bryggen), [Referencia 5](https://www.visitbergen.com/ting-a-gjore).
+- Helsinki: [Referencia 1](https://www.visitfinland.com/en/product/203b0043-2c47-4532-bb4b-08d385a78198/helsinki-cathedral/), [Referencia 2](https://www.myhelsinki.fi/visit-helsinki/things-to-do/attractions/), [Referencia 3](https://www.visitfinland.com/en/articles/finnish-architecture-icons-of-helsinki/), [Referencia 4](https://www.myhelsinki.fi/en/see-and-do/sights), [Referencia 5](https://www.portofhelsinki.fi/en/passengers/information-for-passengers/things-to-do-in-helsinki/).
+- Reikiavik: [Referencia 1](https://visitreykjavik.is/sights-attractions), [Referencia 2](https://www.harpa.is/en/welcome), [Referencia 3](https://www.visiticeland.com/things-to-do/hallgrimskirkja/), [Referencia 4](https://visitreykjavik.is/see-and-do/activities/popular-sights-reykjavik), [Referencia 5](https://www.harpa.is/en/guided-tours).
+- Tallin: [Referencia 1](https://web.visittallinn.ee/eng/visitor/ideas-tips/tips-and-guides/top-must-see-sights), [Referencia 2](https://www.visittallinn.ee/eng/visitor/), [Referencia 3](https://www.visittallinn.ee/eng/visitor/ideas-tips/top-guides/best-of-tallinn), [Referencia 4](https://web.visittallinn.ee/eng/visitor/see-do/things-to-do/attractions-museums/177138/8-the-cathedral-of-saint-mary-the-virgin-in-tallinn-and-its-bell-tower), [Referencia 5](https://visittallinn.ee/eng/visitor).
+- Riga: [Referencia 1](https://www.liveriga.com/en/visit/what-to-see/top-sights/house-of-the-blackheads), [Referencia 2](https://www.liveriga.com/en/visit/what-to-see/sightseeing/churches/riga-dome-cathedral-1), [Referencia 3](https://www.riga.lv/en/tourism), [Referencia 4](https://www.liveriga.com/en/94-top-sights), [Referencia 5](https://www.liveriga.com/userfiles/files/Informativie%20materiali/Sightseeing_20190904_ESP_100x210.pdf).
+- Vilna: [Referencia 1](https://visitvilnius.lt/en/see/gediminas-castle), [Referencia 2](https://visitvilnius.lt/en/see/vilnius-cathedral), [Referencia 3](https://www.govilnius.lt/visit-vilnius/places/the-gediminas-tower), [Referencia 4](https://lithuania.travel/en/why-lithuania/culture-and-heritage/culture-and-art/museums/history-museums/gediminas-castle-tower), [Referencia 5](https://visitvilnius.lt/en/see).
+- Varsovia: [Referencia 1](https://visitpkin.pl/es/), [Referencia 2](https://www.polonia.travel/es/wp-content/uploads/sites/18/2025/03/ZAMKI_2024_ES.pdf), [Referencia 3](https://visitpkin.pl/en/), [Referencia 4](https://pkin.pl/en/tourist-information/), [Referencia 5](https://www.polonia.travel/es/wp-content/uploads/sites/18/2024/05/POT_katalog_rozkladowki_ES.pdf).
+- Cracovia: [Referencia 1](https://www.cracovia.es/que-ver/basilica-de-santa-maria/), [Referencia 2](https://wawel.krakow.pl/en/explore), [Referencia 3](https://wawel.krakow.pl/en), [Referencia 4](https://visitcracovia.it/en/what-to-see), [Referencia 5](https://www.cracovia.net/basilica-santa-maria).
+- Gdansk: [Referencia 1](https://gdansk.travel/es/atraccion/la-grua-de-gdansk-una-de-las-puertas-de-agua-de-gdansk-529), [Referencia 2](https://gdansk.travel/en/attraction/fountain-of-neptune-371), [Referencia 3](https://visitgdansk.com/cmsImages/dokumenty/gdansk-es.pdf), [Referencia 4](https://visitgdansk.com/top-10-atrakcji?setLanguage=en), [Referencia 5](https://www.gdansk.pl/turystyka-w-gdansku/fontanna-neptuna%2Ca%2C31287).
+- Bucarest: [Referencia 1](https://visitromania.ro/es/atraccion/bucuresti/palatul-parlamentului), [Referencia 2](https://www.bucarest.es/palacio-parlamento), [Referencia 3](https://www.turismorumania.com/es/bucarest), [Referencia 4](https://www.turismorumania.com/es/bucarest/palacio/palace-of-the-parliament), [Referencia 5](https://visitromania.ro/it/attrazione/bucuresti/palatul-parlamentului).
+- Sofía: [Referencia 1](https://visitsofia.bg/en/cityinfrastructure/what-to-see/temples/st-alexander-nevsky-cathedral), [Referencia 2](https://www.tourism.government.bg/bg/tourist-destinations/2799/5815), [Referencia 3](https://www.visitsofia.bg/en/%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80-%D0%BD%D0%B0-%D1%81%D1%8A%D0%B1%D0%B8%D1%82%D0%B8%D1%8F%D1%82%D0%B0/day.listevents/2026/09/14/index.php?Itemid=2021&lang=en&layer=50000&obektid=2118&option=com_cityinfrastructure&view=objectdetails), [Referencia 4](https://www.visitsofia.bg/en/cityinfrastructure/what-to-see/temples/st-nedelya-church/index.php?Itemid=2021&lang=en&layer=50000&obektid=2104&option=com_cityinfrastructure&view=objectdetails), [Referencia 5](https://www.visitsofia.bg/en/cityinfrastructure/what-to-see/monuments).
+- Belgrado: [Referencia 1](https://www.beograd.rs/en/discover-belgrade/a80019/Sights.html), [Referencia 2](https://www.serbia.travel/en/belgrade-fortress/), [Referencia 3](https://travel.rs/en/belgrade), [Referencia 4](https://www.serbia.travel/es/stories-items/the-city-in-time-and-space/), [Referencia 5](https://www.tob.rs/en/what-to-see/belgrade-attractions/belgrade-fortress).
+- Sarajevo: [Referencia 1](https://www.visitsarajevo.ba/), [Referencia 2](https://www.visitsarajevo.ba/panorama-360/), [Referencia 3](https://www.visitsarajevo.ba/centar/), [Referencia 4](https://www.visitsarajevo.ba/bs/top-atrakcije/), [Referencia 5](https://preapp.visitsarajevo.ba/).
+- Dubrovnik: [Referencia 1](https://visitdubrovnik.hr/culture/), [Referencia 2](https://www.visit-croatia.hr/en/tours/dubrovnik-riviera/walls-of-dubrovnik/HR-TR-1759), [Referencia 3](https://portdubrovnik.hr/index.php/en/passenger-information/dubrovnik-attractions), [Referencia 4](https://citywallsdubrovnik.hr/), [Referencia 5](https://visitdubrovnik.hr/es/cultura/).
+- Split: [Referencia 1](https://visitsplit.com/es/528/el-peristilo), [Referencia 2](https://visitsplit.com/en/448/diocletian-palace), [Referencia 3](https://visitsplit.com/es/448/el-palacio-del-diocleciano), [Referencia 4](https://visit-split.com/things-to-do/diocletians-palace/), [Referencia 5](https://visitsplit.com/es/1/bienvenidos-a-split/diocletians-palace).
+- Zagreb: [Referencia 1](https://www.visitzagreb.hr/zagreb/zagreb-cathedral/), [Referencia 2](https://www.visit-croatia.hr/en/destinations/inland-croatia/central-croatia/zagreb), [Referencia 3](https://www.katedrala.hr/hr/hr/2), [Referencia 4](https://www.visitzagreb.hr/zagreb/saint-marks-church/), [Referencia 5](https://new.infozagreb.hr/en/explore-zagreb/attractions/architectural-monuments/st-marks-church).
+- Liubliana: [Referencia 1](https://www.visitljubljana.com/en/poi/triple-bridge), [Referencia 2](https://www.visitljubljana.com/en/poi/triple-bridge/), [Referencia 3](https://www.visitljubljana.com/en/visitors/sights-and-activities/ljubljana-city-of-dragons/), [Referencia 4](https://www.visitljubljana.com/en/visitors/sights-and-activities/things-to-do-in-ljubljana), [Referencia 5](https://www.ap-ljubljana.si/en/tourism/ljubljana/triple-bridge).
+- Bratislava: [Referencia 1](https://www.visitbratislava.com/places/09-ufo/), [Referencia 2](https://www.visitbratislava.com/sk/miesta/snp/), [Referencia 3](https://www.visitbratislava.com/places/ufo/), [Referencia 4](https://www.visitbratislava.com/places/skywalk-ufo/), [Referencia 5](https://slovakia.travel/en/the-slovak-national-uprising-bridge-in-bratislava).
+- Salzburgo: [Referencia 1](https://www.salzburg.info/en/travel-info/infos/hohensalzburg-fortress_az_7955), [Referencia 2](https://www.salzburg.info/en/hohensalzburg-fortress_az_7955), [Referencia 3](https://www.salzburg.info/en/sights/top10/hohensalzburg-fortress), [Referencia 4](https://www.salzburg.info/es/guia-de-viaje/salzburg-a-z/fortaleza-hohensalzburg_az_7955), [Referencia 5](https://salzburgvisit.at/en/sights/top10/hohensalzburg-fortress).
+- Luxemburgo: [Referencia 1](https://www.visitluxembourg.com/place/adolphe-bridge), [Referencia 2](https://luxembourg.public.lu/en/visit/arts-and-culture/ponts-luxembourg.html), [Referencia 3](https://www.visitluxembourg.com/lu/place/adolphe-bruecke), [Referencia 4](https://www.luxembourg-city.com/en/place/monument/adolphe-bridge), [Referencia 5](https://www.luxembourg-city.com/en/tours-activities/underground/bock-casemates).
+- Mónaco: [Referencia 1](https://www.monte-carlo.mc/es/visita/), [Referencia 2](https://www.monte-carlo.mc/en/visits/), [Referencia 3](https://www.visitmonaco.com/Documents-Site/7495/Plan%20VisitMonaco%20-%202024.pdf), [Referencia 4](https://www.monte-carlo.mc/es/general/palais-princier/), [Referencia 5](https://www.visitmonaco.com/Documents-Site/Plan%20touristique%20Monaco.pdf).
+- La Valeta: [Referencia 1](https://welcome.mt/places/valletta), [Referencia 2](https://www.explorevalletta.com/es/areas/st-elmo-lower-valletta), [Referencia 3](https://www.explorevalletta.com/areas/st-elmo-lower-valletta), [Referencia 4](https://www.explorevalletta.com/es/areas/republic-street-city-gate), [Referencia 5](https://www.explorevalletta.com/es/city/valletta/articles/how-the-knights-of-st-john-built-valletta-in-seven-years).
+- Kyiv: [Referencia 1](https://app.visit.kyiv.ua/en/locations/saint-sophia-cathedral/), [Referencia 2](https://app.visit.kyiv.ua/en/locations/sofiiska-square/), [Referencia 3](https://app.visit.kyiv.ua/locations/sofiiskyi-sobor-sofiia-kyivska/), [Referencia 4](https://visitkyiv.com/sights-and-landmarks/st-sophias-cathedral/), [Referencia 5](https://visit.kyiv.ua/en/discover-kyiv/landmarks).
 
 Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; el modo jugable todavía está pendiente de integración.

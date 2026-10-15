@@ -77,6 +77,10 @@ No ofrecer filtros continentales o de dificultad hasta tener un mínimo de cuatr
 
 Esta rama reúne el catálogo visual y la integración jugable documentada en [Integración en la app](integracion-app.md). La aprobación arquitectónica de los conceptos, las exportaciones finales y la validación en iOS/Android tienen su propio seguimiento; una imagen en el visor no implica que esté publicada en el catálogo remoto.
 
+## Revisión editorial
+
+La [hoja de revisión editorial](revision-editorial.md) reúne los puntos detectados durante la inspección visual y distingue composición revisada de fidelidad arquitectónica aprobada.
+
 ## Registro de nuevas tandas
 
 `python3 scripts/register-city-dioramas.py /ruta/al/lote.json` registra únicamente imágenes ya revisadas visualmente para la galería. Conserva el prompt y las referencias por ciudad en `produccion/`, verifica dimensiones y anclajes, actualiza mediciones y regenera el visor y el listado. Requiere Pillow y Node. No sustituye la revisión editorial o la integración en el modo de juego.

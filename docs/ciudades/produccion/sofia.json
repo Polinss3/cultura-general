@@ -1,0 +1,18 @@
+{
+  "id": "sofia",
+  "batch": 56,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/sofia-v1.png",
+  "generatedFile": "exec-592878eb-b35b-48ca-b874-7acc643a631b.png",
+  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Sofía (BG). Main landmarks: Catedral Alexander Nevsky; Rotonda de San Jorge; Teatro Nacional Ivan Vazov; Basílica de Santa Sofía.  ONLY FOUR compact major landmark groups. Make these distinctive and readable. No more than six low filler houses; avoid dense blocks covering the entire slab. Every object, all terrain, cliffs, water and coastlines must be supported by the existing floor; no ocean bleeding into the blank ivory background. Preserve the exact original base rear tip y400 and bottom y1041.",
+  "sources": [
+    "https://visitsofia.bg/en/cityinfrastructure/what-to-see/temples/st-alexander-nevsky-cathedral",
+    "https://www.tourism.government.bg/bg/tourist-destinations/2799/5815",
+    "https://www.visitsofia.bg/en/%D0%BA%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80-%D0%BD%D0%B0-%D1%81%D1%8A%D0%B1%D0%B8%D1%82%D0%B8%D1%8F%D1%82%D0%B0/day.listevents/2026/09/14/index.php?Itemid=2021&lang=en&layer=50000&obektid=2118&option=com_cityinfrastructure&view=objectdetails",
+    "https://www.visitsofia.bg/en/cityinfrastructure/what-to-see/temples/st-nedelya-church/index.php?Itemid=2021&lang=en&layer=50000&obektid=2104&option=com_cityinfrastructure&view=objectdetails",
+    "https://www.visitsofia.bg/en/cityinfrastructure/what-to-see/monuments"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}
