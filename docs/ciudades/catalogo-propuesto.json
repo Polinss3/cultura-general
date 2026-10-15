@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "purpose": "Plan editorial; no es catálogo aprobado ni módulo de runtime.",
+  "schemaVersion": 2,
+  "purpose": "Catálogo editorial ampliable y cola de producción; tener entrada no implica disponer de imagen ni estar integrado en el juego.",
   "baseCommit": "4cabf66be5062e1d0385237362584f7663d17e9c",
   "cities": [
     {
@@ -22,7 +22,10 @@
       ],
       "conceptImage": "normalizadas/madrid-v3.png",
       "originalConceptImage": "piloto/madrid-v1.png",
-      "framingProfile": "madrid"
+      "framingProfile": "madrid",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 1
     },
     {
       "id": "barcelona",
@@ -43,7 +46,10 @@
       ],
       "conceptImage": "normalizadas/barcelona-v2.png",
       "originalConceptImage": "piloto/barcelona-v1.png",
-      "framingProfile": "barcelona"
+      "framingProfile": "barcelona",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 2
     },
     {
       "id": "roma",
@@ -64,7 +70,10 @@
       ],
       "conceptImage": "normalizadas/roma-v2.png",
       "originalConceptImage": "piloto/roma-v1.png",
-      "framingProfile": "roma"
+      "framingProfile": "roma",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 3
     },
     {
       "id": "paris",
@@ -85,259 +94,10 @@
       ],
       "conceptImage": "normalizadas/paris-v2.png",
       "originalConceptImage": "piloto/paris-v1.png",
-      "framingProfile": "paris"
-    },
-    {
-      "id": "londres",
-      "name": {
-        "es": "Londres",
-        "en": "London"
-      },
-      "continent": "europa",
-      "countryCode": "GB",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Big Ben y Palacio de Westminster",
-        "Tower Bridge",
-        "London Eye",
-        "Catedral de San Pablo",
-        "The Shard"
-      ]
-    },
-    {
-      "id": "berlin",
-      "name": {
-        "es": "Berlín",
-        "en": "Berlin"
-      },
-      "continent": "europa",
-      "countryCode": "DE",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Puerta de Brandeburgo",
-        "Reichstag",
-        "Fernsehturm",
-        "Catedral de Berlín",
-        "Isla de los Museos"
-      ]
-    },
-    {
-      "id": "lisboa",
-      "name": {
-        "es": "Lisboa",
-        "en": "Lisbon"
-      },
-      "continent": "europa",
-      "countryCode": "PT",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Torre de Belém",
-        "Monasterio de los Jerónimos",
-        "Puente 25 de Abril",
-        "Castillo de São Jorge",
-        "Tranvía y calle de Alfama"
-      ]
-    },
-    {
-      "id": "amsterdam",
-      "name": {
-        "es": "Ámsterdam",
-        "en": "Amsterdam"
-      },
-      "continent": "europa",
-      "countryCode": "NL",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Canales y casas estrechas",
-        "Rijksmuseum",
-        "Palacio Real",
-        "Westerkerk",
-        "Estación Central"
-      ]
-    },
-    {
-      "id": "viena",
-      "name": {
-        "es": "Viena",
-        "en": "Vienna"
-      },
-      "continent": "europa",
-      "countryCode": "AT",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Catedral de San Esteban",
-        "Schönbrunn",
-        "Hofburg",
-        "Belvedere",
-        "Noria del Prater"
-      ]
-    },
-    {
-      "id": "praga",
-      "name": {
-        "es": "Praga",
-        "en": "Prague"
-      },
-      "continent": "europa",
-      "countryCode": "CZ",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Puente de Carlos",
-        "Castillo de Praga",
-        "Catedral de San Vito",
-        "Reloj Astronómico",
-        "Iglesia de Týn"
-      ]
-    },
-    {
-      "id": "atenas",
-      "name": {
-        "es": "Atenas",
-        "en": "Athens"
-      },
-      "continent": "europa",
-      "countryCode": "GR",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Partenón",
-        "Erecteion",
-        "Templo de Zeus Olímpico",
-        "Estadio Panathinaikó",
-        "Plaza Sintagma"
-      ]
-    },
-    {
-      "id": "estambul",
-      "name": {
-        "es": "Estambul",
-        "en": "Istanbul"
-      },
-      "continent": "europa",
-      "countryCode": "TR",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Santa Sofía",
-        "Mezquita Azul",
-        "Torre de Gálata",
-        "Palacio Topkapi",
-        "Bósforo"
-      ]
-    },
-    {
-      "id": "budapest",
-      "name": {
-        "es": "Budapest",
-        "en": "Budapest"
-      },
-      "continent": "europa",
-      "countryCode": "HU",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Parlamento",
-        "Puente de las Cadenas",
-        "Castillo de Buda",
-        "Bastión de los Pescadores",
-        "Basílica de San Esteban"
-      ]
-    },
-    {
-      "id": "florencia",
-      "name": {
-        "es": "Florencia",
-        "en": "Florence"
-      },
-      "continent": "europa",
-      "countryCode": "IT",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Duomo y cúpula de Brunelleschi",
-        "Ponte Vecchio",
-        "Palazzo Vecchio",
-        "Campanile de Giotto",
-        "Santa Croce"
-      ]
-    },
-    {
-      "id": "venecia",
-      "name": {
-        "es": "Venecia",
-        "en": "Venice"
-      },
-      "continent": "europa",
-      "countryCode": "IT",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Basílica de San Marcos",
-        "Campanile",
-        "Palacio Ducal",
-        "Puente de Rialto",
-        "Gran Canal"
-      ]
-    },
-    {
-      "id": "zurich",
-      "name": {
-        "es": "Zúrich",
-        "en": "Zurich"
-      },
-      "continent": "europa",
-      "countryCode": "CH",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Grossmünster",
-        "Fraumünster",
-        "Iglesia de San Pedro",
-        "Río Limmat",
-        "Casco histórico y tranvía"
-      ]
-    },
-    {
-      "id": "estocolmo",
-      "name": {
-        "es": "Estocolmo",
-        "en": "Stockholm"
-      },
-      "continent": "europa",
-      "countryCode": "SE",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Ayuntamiento",
-        "Palacio Real",
-        "Gamla Stan",
-        "Riddarholmskyrkan",
-        "Museo Vasa"
-      ]
-    },
-    {
-      "id": "copenhague",
-      "name": {
-        "es": "Copenhague",
-        "en": "Copenhagen"
-      },
-      "continent": "europa",
-      "countryCode": "DK",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Nyhavn",
-        "La Sirenita",
-        "Rosenborg",
-        "Amalienborg",
-        "Iglesia de Nuestro Salvador"
-      ]
+      "framingProfile": "paris",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 4
     },
     {
       "id": "nueva-york",
@@ -359,169 +119,10 @@
       ],
       "conceptImage": "normalizadas/nueva-york-v2.png",
       "originalConceptImage": "piloto/nueva-york-v1.png",
-      "framingProfile": "nueva-york"
-    },
-    {
-      "id": "san-francisco",
-      "name": {
-        "es": "San Francisco",
-        "en": "San Francisco"
-      },
-      "continent": "america",
-      "countryCode": "US",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Golden Gate",
-        "Transamerica Pyramid",
-        "Painted Ladies",
-        "Coit Tower",
-        "Tranvía y calles en pendiente"
-      ]
-    },
-    {
-      "id": "washington",
-      "name": {
-        "es": "Washington D. C.",
-        "en": "Washington, D.C."
-      },
-      "continent": "america",
-      "countryCode": "US",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Capitolio",
-        "Casa Blanca",
-        "Monumento a Washington",
-        "Lincoln Memorial",
-        "National Mall"
-      ]
-    },
-    {
-      "id": "los-angeles",
-      "name": {
-        "es": "Los Ángeles",
-        "en": "Los Angeles"
-      },
-      "continent": "america",
-      "countryCode": "US",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Observatorio Griffith",
-        "Walt Disney Concert Hall",
-        "Ayuntamiento",
-        "Hollywood Bowl",
-        "Santa Monica Pier (revisar alcance metropolitano)"
-      ]
-    },
-    {
-      "id": "chicago",
-      "name": {
-        "es": "Chicago",
-        "en": "Chicago"
-      },
-      "continent": "america",
-      "countryCode": "US",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Willis Tower",
-        "Cloud Gate",
-        "John Hancock Center",
-        "Wrigley Building",
-        "Río Chicago y puentes"
-      ]
-    },
-    {
-      "id": "ciudad-de-mexico",
-      "name": {
-        "es": "Ciudad de México",
-        "en": "Mexico City"
-      },
-      "continent": "america",
-      "countryCode": "MX",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Ángel de la Independencia",
-        "Palacio de Bellas Artes",
-        "Catedral Metropolitana",
-        "Zócalo",
-        "Monumento a la Revolución"
-      ]
-    },
-    {
-      "id": "rio-de-janeiro",
-      "name": {
-        "es": "Río de Janeiro",
-        "en": "Rio de Janeiro"
-      },
-      "continent": "america",
-      "countryCode": "BR",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Cristo Redentor",
-        "Pan de Azúcar",
-        "Copacabana y su paseo",
-        "Maracaná",
-        "Arcos de Lapa"
-      ]
-    },
-    {
-      "id": "buenos-aires",
-      "name": {
-        "es": "Buenos Aires",
-        "en": "Buenos Aires"
-      },
-      "continent": "america",
-      "countryCode": "AR",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Obelisco",
-        "Casa Rosada",
-        "Teatro Colón",
-        "Caminito",
-        "Puente de la Mujer"
-      ]
-    },
-    {
-      "id": "toronto",
-      "name": {
-        "es": "Toronto",
-        "en": "Toronto"
-      },
-      "continent": "america",
-      "countryCode": "CA",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "CN Tower",
-        "Rogers Centre",
-        "Nathan Phillips Square y Ayuntamiento",
-        "Royal Ontario Museum",
-        "Casa Loma"
-      ]
-    },
-    {
-      "id": "la-habana",
-      "name": {
-        "es": "La Habana",
-        "en": "Havana"
-      },
-      "continent": "america",
-      "countryCode": "CU",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Capitolio",
-        "Malecón",
-        "Castillo del Morro",
-        "Catedral",
-        "Gran Teatro"
-      ]
+      "framingProfile": "nueva-york",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 5
     },
     {
       "id": "tokio",
@@ -542,61 +143,189 @@
       ],
       "conceptImage": "normalizadas/tokio-v2.png",
       "originalConceptImage": "piloto/tokio-v1.png",
-      "framingProfile": "tokio"
+      "framingProfile": "tokio",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 6
     },
     {
-      "id": "singapur",
+      "id": "venecia",
       "name": {
-        "es": "Singapur",
-        "en": "Singapore"
+        "es": "Venecia",
+        "en": "Venice"
       },
-      "continent": "asia",
-      "countryCode": "SG",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Marina Bay Sands",
-        "Supertrees de Gardens by the Bay",
-        "Merlion",
-        "ArtScience Museum",
-        "Esplanade"
-      ]
-    },
-    {
-      "id": "pekin",
-      "name": {
-        "es": "Pekín",
-        "en": "Beijing"
-      },
-      "continent": "asia",
-      "countryCode": "CN",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Ciudad Prohibida",
-        "Templo del Cielo",
-        "Puerta de Tiananmén",
-        "Estadio Nido de Pájaro",
-        "Palacio de Verano"
-      ]
-    },
-    {
-      "id": "shanghai",
-      "name": {
-        "es": "Shanghái",
-        "en": "Shanghai"
-      },
-      "continent": "asia",
-      "countryCode": "CN",
+      "continent": "europa",
+      "countryCode": "IT",
       "batch": 2,
-      "status": "planned",
+      "status": "concept-needs-review",
       "landmarks": [
-        "Torre Perla Oriental",
-        "Shanghai Tower",
-        "Shanghai World Financial Center",
-        "Bund",
-        "Jardín Yuyuan"
-      ]
+        "Basílica de San Marcos",
+        "Campanile de San Marcos",
+        "Palacio Ducal",
+        "Puente de Rialto",
+        "Santa Maria della Salute",
+        "Gran Canal"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "conceptImage": "normalizadas/venecia-v1.png",
+      "originalConceptImage": "normalizadas/venecia-v1.png",
+      "framingProfile": "venecia",
+      "sources": [
+        "https://www.veneziaunica.it/en/things-to-do-in-venice/venice-areas/sestieri/san-marco",
+        "https://www.veneziaunica.it/it/cosa-fare-a-venezia/itinerari/dorsoduro-sestiere-d-arte"
+      ],
+      "productionOrder": 7,
+      "requestedPriority": true
+    },
+    {
+      "id": "amsterdam",
+      "name": {
+        "es": "Ámsterdam",
+        "en": "Amsterdam"
+      },
+      "continent": "europa",
+      "countryCode": "NL",
+      "batch": 2,
+      "status": "concept-needs-review",
+      "landmarks": [
+        "Canales y casas de hastiales",
+        "Rijksmuseum",
+        "Palacio Real",
+        "Westerkerk",
+        "Puente de arcos sobre el canal"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "conceptImage": "normalizadas/amsterdam-v1.png",
+      "originalConceptImage": "normalizadas/amsterdam-v1.png",
+      "framingProfile": "amsterdam",
+      "sources": [
+        "https://www.iamsterdam.com/en/whats-on/calendar/attractions-and-sights/canal-cruises/canal-cruise-amsterdam-highlights"
+      ],
+      "productionOrder": 8,
+      "requestedPriority": true
+    },
+    {
+      "id": "londres",
+      "name": {
+        "es": "Londres",
+        "en": "London"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "batch": 2,
+      "status": "concept-needs-review",
+      "landmarks": [
+        "Big Ben y Palacio de Westminster",
+        "Tower Bridge",
+        "London Eye",
+        "Catedral de San Pablo",
+        "The Shard",
+        "Torre de Londres (elemento adicional del concepto)"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "conceptImage": "normalizadas/londres-v1.png",
+      "originalConceptImage": "normalizadas/londres-v1.png",
+      "framingProfile": "londres",
+      "sources": [
+        "https://www.visitlondon.com/things-to-do/sightseeing/famous-landmarks-london"
+      ],
+      "productionOrder": 9,
+      "requestedPriority": true
+    },
+    {
+      "id": "berlin",
+      "name": {
+        "es": "Berlín",
+        "en": "Berlin"
+      },
+      "continent": "europa",
+      "countryCode": "DE",
+      "batch": 2,
+      "status": "concept-needs-review",
+      "landmarks": [
+        "Puerta de Brandeburgo",
+        "Reichstag y cúpula de vidrio",
+        "Fernsehturm",
+        "Catedral de Berlín",
+        "Altes Museum y Spree"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "conceptImage": "normalizadas/berlin-v1.png",
+      "originalConceptImage": "normalizadas/berlin-v1.png",
+      "framingProfile": "berlin",
+      "sources": [
+        "https://www.visitberlin.de/en/berlins-top-10-attractions"
+      ],
+      "productionOrder": 10,
+      "requestedPriority": true
+    },
+    {
+      "id": "dublin",
+      "name": {
+        "es": "Dublín",
+        "en": "Dublin"
+      },
+      "continent": "europa",
+      "countryCode": "IE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 11,
+      "batch": 3,
+      "requestedPriority": true
+    },
+    {
+      "id": "edimburgo",
+      "name": {
+        "es": "Edimburgo",
+        "en": "Edinburgh"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 12,
+      "batch": 3,
+      "requestedPriority": true
+    },
+    {
+      "id": "moscu",
+      "name": {
+        "es": "Moscú",
+        "en": "Moscow"
+      },
+      "continent": "europa",
+      "countryCode": "RU",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 13,
+      "batch": 3,
+      "requestedPriority": true
+    },
+    {
+      "id": "san-petersburgo",
+      "name": {
+        "es": "San Petersburgo",
+        "en": "Saint Petersburg"
+      },
+      "continent": "europa",
+      "countryCode": "RU",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 14,
+      "batch": 3,
+      "requestedPriority": true
     },
     {
       "id": "hong-kong",
@@ -606,7 +335,7 @@
       },
       "continent": "asia",
       "countryCode": "CN",
-      "batch": 2,
+      "batch": 4,
       "status": "planned",
       "landmarks": [
         "Bank of China Tower",
@@ -614,205 +343,11 @@
         "Two International Finance Centre",
         "Victoria Harbour",
         "Star Ferry"
-      ]
-    },
-    {
-      "id": "seul",
-      "name": {
-        "es": "Seúl",
-        "en": "Seoul"
-      },
-      "continent": "asia",
-      "countryCode": "KR",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Gyeongbokgung",
-        "N Seoul Tower",
-        "Lotte World Tower",
-        "Dongdaemun Design Plaza",
-        "Bukchon Hanok Village"
-      ]
-    },
-    {
-      "id": "bangkok",
-      "name": {
-        "es": "Bangkok",
-        "en": "Bangkok"
-      },
-      "continent": "asia",
-      "countryCode": "TH",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Gran Palacio",
-        "Wat Arun",
-        "Wat Phra Kaew",
-        "Giant Swing",
-        "Río Chao Phraya"
-      ]
-    },
-    {
-      "id": "dubai",
-      "name": {
-        "es": "Dubái",
-        "en": "Dubai"
-      },
-      "continent": "asia",
-      "countryCode": "AE",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Burj Khalifa",
-        "Burj Al Arab",
-        "Dubai Frame",
-        "Museum of the Future",
-        "Palm Jumeirah"
-      ]
-    },
-    {
-      "id": "delhi",
-      "name": {
-        "es": "Delhi",
-        "en": "Delhi"
-      },
-      "continent": "asia",
-      "countryCode": "IN",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Fuerte Rojo",
-        "Qutub Minar",
-        "Templo del Loto",
-        "India Gate",
-        "Jama Masjid"
-      ]
-    },
-    {
-      "id": "mumbai",
-      "name": {
-        "es": "Bombay",
-        "en": "Mumbai"
-      },
-      "continent": "asia",
-      "countryCode": "IN",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Gateway of India",
-        "Chhatrapati Shivaji Terminus",
-        "Taj Mahal Palace",
-        "Bandra-Worli Sea Link",
-        "Marine Drive"
-      ]
-    },
-    {
-      "id": "el-cairo",
-      "name": {
-        "es": "El Cairo",
-        "en": "Cairo"
-      },
-      "continent": "africa",
-      "countryCode": "EG",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Ciudadela de Saladino",
-        "Mezquita de Muhammad Alí",
-        "Torre de El Cairo",
-        "Nilo",
-        "Museo Egipcio"
-      ]
-    },
-    {
-      "id": "marrakech",
-      "name": {
-        "es": "Marrakech",
-        "en": "Marrakesh"
-      },
-      "continent": "africa",
-      "countryCode": "MA",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Mezquita Kutubía",
-        "Jemaa el-Fna",
-        "Palacio de la Bahía",
-        "Murallas y Bab Agnaou",
-        "Jardín Majorelle"
-      ]
-    },
-    {
-      "id": "ciudad-del-cabo",
-      "name": {
-        "es": "Ciudad del Cabo",
-        "en": "Cape Town"
-      },
-      "continent": "africa",
-      "countryCode": "ZA",
-      "batch": 1,
-      "status": "planned",
-      "landmarks": [
-        "Table Mountain",
-        "V&A Waterfront",
-        "Bo-Kaap",
-        "Cape Town Stadium",
-        "Castillo de Buena Esperanza"
-      ]
-    },
-    {
-      "id": "nairobi",
-      "name": {
-        "es": "Nairobi",
-        "en": "Nairobi"
-      },
-      "continent": "africa",
-      "countryCode": "KE",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Kenyatta International Convention Centre",
-        "Times Tower",
-        "Uhuru Park",
-        "Jamia Mosque",
-        "Nairobi Railway Museum"
-      ]
-    },
-    {
-      "id": "tunez",
-      "name": {
-        "es": "Túnez",
-        "en": "Tunis"
-      },
-      "continent": "africa",
-      "countryCode": "TN",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Mezquita Zitouna",
-        "Medina",
-        "Bab el Bhar",
-        "Catedral de San Vicente de Paúl",
-        "Avenida Habib Bourguiba"
-      ]
-    },
-    {
-      "id": "dakar",
-      "name": {
-        "es": "Dakar",
-        "en": "Dakar"
-      },
-      "continent": "africa",
-      "countryCode": "SN",
-      "batch": 2,
-      "status": "planned",
-      "landmarks": [
-        "Monumento al Renacimiento Africano",
-        "Gran Mezquita",
-        "Faro de Les Mamelles",
-        "Museo de las Civilizaciones Negras",
-        "Isla de Gorée"
-      ]
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 15,
+      "requestedPriority": true
     },
     {
       "id": "sidney",
@@ -822,7 +357,7 @@
       },
       "continent": "oceania",
       "countryCode": "AU",
-      "batch": 1,
+      "batch": 4,
       "status": "planned",
       "landmarks": [
         "Ópera de Sídney",
@@ -830,7 +365,231 @@
         "Sydney Tower",
         "Royal Botanic Garden",
         "The Rocks"
-      ]
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 16,
+      "requestedPriority": true
+    },
+    {
+      "id": "washington",
+      "name": {
+        "es": "Washington D. C.",
+        "en": "Washington, D.C."
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 4,
+      "status": "planned",
+      "landmarks": [
+        "Capitolio",
+        "Casa Blanca",
+        "Monumento a Washington",
+        "Lincoln Memorial",
+        "National Mall"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 17,
+      "requestedPriority": true
+    },
+    {
+      "id": "ciudad-de-mexico",
+      "name": {
+        "es": "Ciudad de México",
+        "en": "Mexico City"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "batch": 4,
+      "status": "planned",
+      "landmarks": [
+        "Ángel de la Independencia",
+        "Palacio de Bellas Artes",
+        "Catedral Metropolitana",
+        "Zócalo",
+        "Monumento a la Revolución"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 18,
+      "requestedPriority": true
+    },
+    {
+      "id": "el-cairo",
+      "name": {
+        "es": "El Cairo",
+        "en": "Cairo"
+      },
+      "continent": "africa",
+      "countryCode": "EG",
+      "batch": 5,
+      "status": "planned",
+      "landmarks": [
+        "Ciudadela de Saladino",
+        "Mezquita de Muhammad Alí",
+        "Torre de El Cairo",
+        "Nilo",
+        "Museo Egipcio"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "notes": "Hitos urbanos de El Cairo. Las pirámides y la Esfinge se registran en Guiza; evitar mezclarlas como respuestas intercambiables.",
+      "productionOrder": 19,
+      "requestedPriority": true
+    },
+    {
+      "id": "buenos-aires",
+      "name": {
+        "es": "Buenos Aires",
+        "en": "Buenos Aires"
+      },
+      "continent": "america",
+      "countryCode": "AR",
+      "batch": 5,
+      "status": "planned",
+      "landmarks": [
+        "Obelisco",
+        "Casa Rosada",
+        "Teatro Colón",
+        "Caminito",
+        "Puente de la Mujer"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 20,
+      "requestedPriority": true
+    },
+    {
+      "id": "machu-picchu",
+      "name": {
+        "es": "Machu Picchu",
+        "en": "Machu Picchu"
+      },
+      "continent": "america",
+      "countryCode": "PE",
+      "status": "planned",
+      "kind": "historic-site",
+      "landmarks": [
+        "Terrazas agrícolas",
+        "Recintos de piedra",
+        "Plaza principal",
+        "Huayna Picchu al fondo"
+      ],
+      "landmarkStatus": "candidate",
+      "sources": [
+        "https://whc.unesco.org/en/list/274/"
+      ],
+      "notes": "Excepción al nombre del modo autorizada por el usuario: la respuesta será Machu Picchu, no Cusco ni una ciudad moderna.",
+      "productionOrder": 21,
+      "batch": 5,
+      "requestedPriority": true
+    },
+    {
+      "id": "lisboa",
+      "name": {
+        "es": "Lisboa",
+        "en": "Lisbon"
+      },
+      "continent": "europa",
+      "countryCode": "PT",
+      "batch": 5,
+      "status": "planned",
+      "landmarks": [
+        "Torre de Belém",
+        "Monasterio de los Jerónimos",
+        "Puente 25 de Abril",
+        "Castillo de São Jorge",
+        "Tranvía y calle de Alfama"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 22,
+      "requestedPriority": true
+    },
+    {
+      "id": "viena",
+      "name": {
+        "es": "Viena",
+        "en": "Vienna"
+      },
+      "continent": "europa",
+      "countryCode": "AT",
+      "batch": 6,
+      "status": "planned",
+      "landmarks": [
+        "Catedral de San Esteban",
+        "Schönbrunn",
+        "Hofburg",
+        "Belvedere",
+        "Noria del Prater"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 23
+    },
+    {
+      "id": "san-francisco",
+      "name": {
+        "es": "San Francisco",
+        "en": "San Francisco"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 6,
+      "status": "planned",
+      "landmarks": [
+        "Golden Gate",
+        "Transamerica Pyramid",
+        "Painted Ladies",
+        "Coit Tower",
+        "Tranvía y calles en pendiente"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 24
+    },
+    {
+      "id": "singapur",
+      "name": {
+        "es": "Singapur",
+        "en": "Singapore"
+      },
+      "continent": "asia",
+      "countryCode": "SG",
+      "batch": 6,
+      "status": "planned",
+      "landmarks": [
+        "Marina Bay Sands",
+        "Supertrees de Gardens by the Bay",
+        "Merlion",
+        "ArtScience Museum",
+        "Esplanade"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 25
+    },
+    {
+      "id": "marrakech",
+      "name": {
+        "es": "Marrakech",
+        "en": "Marrakesh"
+      },
+      "continent": "africa",
+      "countryCode": "MA",
+      "batch": 6,
+      "status": "planned",
+      "landmarks": [
+        "Mezquita Kutubía",
+        "Jemaa el-Fna",
+        "Palacio de la Bahía",
+        "Murallas y Bab Agnaou",
+        "Jardín Majorelle"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 26
     },
     {
       "id": "melbourne",
@@ -840,7 +599,7 @@
       },
       "continent": "oceania",
       "countryCode": "AU",
-      "batch": 1,
+      "batch": 7,
       "status": "planned",
       "landmarks": [
         "Flinders Street Station",
@@ -848,7 +607,94 @@
         "Royal Exhibition Building",
         "Eureka Tower",
         "Tranvía"
-      ]
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 27
+    },
+    {
+      "id": "praga",
+      "name": {
+        "es": "Praga",
+        "en": "Prague"
+      },
+      "continent": "europa",
+      "countryCode": "CZ",
+      "batch": 7,
+      "status": "planned",
+      "landmarks": [
+        "Puente de Carlos",
+        "Castillo de Praga",
+        "Catedral de San Vito",
+        "Reloj Astronómico",
+        "Iglesia de Týn"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 28
+    },
+    {
+      "id": "los-angeles",
+      "name": {
+        "es": "Los Ángeles",
+        "en": "Los Angeles"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 7,
+      "status": "planned",
+      "landmarks": [
+        "Observatorio Griffith",
+        "Walt Disney Concert Hall",
+        "Ayuntamiento",
+        "Hollywood Bowl",
+        "Santa Monica Pier (revisar alcance metropolitano)"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 29
+    },
+    {
+      "id": "pekin",
+      "name": {
+        "es": "Pekín",
+        "en": "Beijing"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "batch": 7,
+      "status": "planned",
+      "landmarks": [
+        "Ciudad Prohibida",
+        "Templo del Cielo",
+        "Puerta de Tiananmén",
+        "Estadio Nido de Pájaro",
+        "Palacio de Verano"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 30
+    },
+    {
+      "id": "ciudad-del-cabo",
+      "name": {
+        "es": "Ciudad del Cabo",
+        "en": "Cape Town"
+      },
+      "continent": "africa",
+      "countryCode": "ZA",
+      "batch": 8,
+      "status": "planned",
+      "landmarks": [
+        "Table Mountain",
+        "V&A Waterfront",
+        "Bo-Kaap",
+        "Cape Town Stadium",
+        "Castillo de Buena Esperanza"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 31
     },
     {
       "id": "auckland",
@@ -858,7 +704,7 @@
       },
       "continent": "oceania",
       "countryCode": "NZ",
-      "batch": 2,
+      "batch": 8,
       "status": "planned",
       "landmarks": [
         "Sky Tower",
@@ -866,7 +712,94 @@
         "Auckland War Memorial Museum",
         "Viaduct Harbour",
         "One Tree Hill"
-      ]
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 32
+    },
+    {
+      "id": "atenas",
+      "name": {
+        "es": "Atenas",
+        "en": "Athens"
+      },
+      "continent": "europa",
+      "countryCode": "GR",
+      "batch": 8,
+      "status": "planned",
+      "landmarks": [
+        "Partenón",
+        "Erecteion",
+        "Templo de Zeus Olímpico",
+        "Estadio Panathinaikó",
+        "Plaza Sintagma"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 33
+    },
+    {
+      "id": "chicago",
+      "name": {
+        "es": "Chicago",
+        "en": "Chicago"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "batch": 8,
+      "status": "planned",
+      "landmarks": [
+        "Willis Tower",
+        "Cloud Gate",
+        "John Hancock Center",
+        "Wrigley Building",
+        "Río Chicago y puentes"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 34
+    },
+    {
+      "id": "shanghai",
+      "name": {
+        "es": "Shanghái",
+        "en": "Shanghai"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "batch": 9,
+      "status": "planned",
+      "landmarks": [
+        "Torre Perla Oriental",
+        "Shanghai Tower",
+        "Shanghai World Financial Center",
+        "Bund",
+        "Jardín Yuyuan"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 35
+    },
+    {
+      "id": "nairobi",
+      "name": {
+        "es": "Nairobi",
+        "en": "Nairobi"
+      },
+      "continent": "africa",
+      "countryCode": "KE",
+      "batch": 9,
+      "status": "planned",
+      "landmarks": [
+        "Kenyatta International Convention Centre",
+        "Times Tower",
+        "Uhuru Park",
+        "Jamia Mosque",
+        "Nairobi Railway Museum"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 36
     },
     {
       "id": "wellington",
@@ -876,7 +809,7 @@
       },
       "continent": "oceania",
       "countryCode": "NZ",
-      "batch": 2,
+      "batch": 9,
       "status": "planned",
       "landmarks": [
         "Beehive y Parlamento",
@@ -884,7 +817,2917 @@
         "Te Papa",
         "Old St Paul's",
         "Waterfront"
-      ]
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 37
+    },
+    {
+      "id": "estambul",
+      "name": {
+        "es": "Estambul",
+        "en": "Istanbul"
+      },
+      "continent": "europa",
+      "countryCode": "TR",
+      "batch": 9,
+      "status": "planned",
+      "landmarks": [
+        "Santa Sofía",
+        "Mezquita Azul",
+        "Torre de Gálata",
+        "Palacio Topkapi",
+        "Bósforo"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 38
+    },
+    {
+      "id": "rio-de-janeiro",
+      "name": {
+        "es": "Río de Janeiro",
+        "en": "Rio de Janeiro"
+      },
+      "continent": "america",
+      "countryCode": "BR",
+      "batch": 10,
+      "status": "planned",
+      "landmarks": [
+        "Cristo Redentor",
+        "Pan de Azúcar",
+        "Copacabana y su paseo",
+        "Maracaná",
+        "Arcos de Lapa"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 39
+    },
+    {
+      "id": "seul",
+      "name": {
+        "es": "Seúl",
+        "en": "Seoul"
+      },
+      "continent": "asia",
+      "countryCode": "KR",
+      "batch": 10,
+      "status": "planned",
+      "landmarks": [
+        "Gyeongbokgung",
+        "N Seoul Tower",
+        "Lotte World Tower",
+        "Dongdaemun Design Plaza",
+        "Bukchon Hanok Village"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 40
+    },
+    {
+      "id": "tunez",
+      "name": {
+        "es": "Túnez",
+        "en": "Tunis"
+      },
+      "continent": "africa",
+      "countryCode": "TN",
+      "batch": 10,
+      "status": "planned",
+      "landmarks": [
+        "Mezquita Zitouna",
+        "Medina",
+        "Bab el Bhar",
+        "Catedral de San Vicente de Paúl",
+        "Avenida Habib Bourguiba"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 41
+    },
+    {
+      "id": "brisbane",
+      "name": {
+        "es": "Brisbane"
+      },
+      "continent": "oceania",
+      "countryCode": "AU",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 42,
+      "batch": 10
+    },
+    {
+      "id": "budapest",
+      "name": {
+        "es": "Budapest",
+        "en": "Budapest"
+      },
+      "continent": "europa",
+      "countryCode": "HU",
+      "batch": 11,
+      "status": "planned",
+      "landmarks": [
+        "Parlamento",
+        "Puente de las Cadenas",
+        "Castillo de Buda",
+        "Bastión de los Pescadores",
+        "Basílica de San Esteban"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 43
+    },
+    {
+      "id": "toronto",
+      "name": {
+        "es": "Toronto",
+        "en": "Toronto"
+      },
+      "continent": "america",
+      "countryCode": "CA",
+      "batch": 11,
+      "status": "planned",
+      "landmarks": [
+        "CN Tower",
+        "Rogers Centre",
+        "Nathan Phillips Square y Ayuntamiento",
+        "Royal Ontario Museum",
+        "Casa Loma"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 44
+    },
+    {
+      "id": "bangkok",
+      "name": {
+        "es": "Bangkok",
+        "en": "Bangkok"
+      },
+      "continent": "asia",
+      "countryCode": "TH",
+      "batch": 11,
+      "status": "planned",
+      "landmarks": [
+        "Gran Palacio",
+        "Wat Arun",
+        "Wat Phra Kaew",
+        "Giant Swing",
+        "Río Chao Phraya"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 45
+    },
+    {
+      "id": "dakar",
+      "name": {
+        "es": "Dakar",
+        "en": "Dakar"
+      },
+      "continent": "africa",
+      "countryCode": "SN",
+      "batch": 11,
+      "status": "planned",
+      "landmarks": [
+        "Monumento al Renacimiento Africano",
+        "Gran Mezquita",
+        "Faro de Les Mamelles",
+        "Museo de las Civilizaciones Negras",
+        "Isla de Gorée"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 46
+    },
+    {
+      "id": "perth",
+      "name": {
+        "es": "Perth"
+      },
+      "continent": "oceania",
+      "countryCode": "AU",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 47,
+      "batch": 12
+    },
+    {
+      "id": "florencia",
+      "name": {
+        "es": "Florencia",
+        "en": "Florence"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "batch": 12,
+      "status": "planned",
+      "landmarks": [
+        "Duomo y cúpula de Brunelleschi",
+        "Ponte Vecchio",
+        "Palazzo Vecchio",
+        "Campanile de Giotto",
+        "Santa Croce"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 48
+    },
+    {
+      "id": "la-habana",
+      "name": {
+        "es": "La Habana",
+        "en": "Havana"
+      },
+      "continent": "america",
+      "countryCode": "CU",
+      "batch": 12,
+      "status": "planned",
+      "landmarks": [
+        "Capitolio",
+        "Malecón",
+        "Castillo del Morro",
+        "Catedral",
+        "Gran Teatro"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 49
+    },
+    {
+      "id": "dubai",
+      "name": {
+        "es": "Dubái",
+        "en": "Dubai"
+      },
+      "continent": "asia",
+      "countryCode": "AE",
+      "batch": 12,
+      "status": "planned",
+      "landmarks": [
+        "Burj Khalifa",
+        "Burj Al Arab",
+        "Dubai Frame",
+        "Museum of the Future",
+        "Palm Jumeirah"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 50
+    },
+    {
+      "id": "casablanca",
+      "name": {
+        "es": "Casablanca"
+      },
+      "continent": "africa",
+      "countryCode": "MA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 51,
+      "batch": 13
+    },
+    {
+      "id": "adelaida",
+      "name": {
+        "es": "Adelaida"
+      },
+      "continent": "oceania",
+      "countryCode": "AU",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 52,
+      "batch": 13
+    },
+    {
+      "id": "zurich",
+      "name": {
+        "es": "Zúrich",
+        "en": "Zurich"
+      },
+      "continent": "europa",
+      "countryCode": "CH",
+      "batch": 13,
+      "status": "planned",
+      "landmarks": [
+        "Grossmünster",
+        "Fraumünster",
+        "Iglesia de San Pedro",
+        "Río Limmat",
+        "Casco histórico y tranvía"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 53
+    },
+    {
+      "id": "boston",
+      "name": {
+        "es": "Boston"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 54,
+      "batch": 13
+    },
+    {
+      "id": "delhi",
+      "name": {
+        "es": "Delhi",
+        "en": "Delhi"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "batch": 14,
+      "status": "planned",
+      "landmarks": [
+        "Fuerte Rojo",
+        "Qutub Minar",
+        "Templo del Loto",
+        "India Gate",
+        "Jama Masjid"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 55
+    },
+    {
+      "id": "rabat",
+      "name": {
+        "es": "Rabat"
+      },
+      "continent": "africa",
+      "countryCode": "MA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 56,
+      "batch": 14
+    },
+    {
+      "id": "canberra",
+      "name": {
+        "es": "Canberra"
+      },
+      "continent": "oceania",
+      "countryCode": "AU",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 57,
+      "batch": 14
+    },
+    {
+      "id": "estocolmo",
+      "name": {
+        "es": "Estocolmo",
+        "en": "Stockholm"
+      },
+      "continent": "europa",
+      "countryCode": "SE",
+      "batch": 14,
+      "status": "planned",
+      "landmarks": [
+        "Ayuntamiento",
+        "Palacio Real",
+        "Gamla Stan",
+        "Riddarholmskyrkan",
+        "Museo Vasa"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 58
+    },
+    {
+      "id": "miami",
+      "name": {
+        "es": "Miami"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 59,
+      "batch": 15
+    },
+    {
+      "id": "mumbai",
+      "name": {
+        "es": "Bombay",
+        "en": "Mumbai"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "batch": 15,
+      "status": "planned",
+      "landmarks": [
+        "Gateway of India",
+        "Chhatrapati Shivaji Terminus",
+        "Taj Mahal Palace",
+        "Bandra-Worli Sea Link",
+        "Marine Drive"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 60
+    },
+    {
+      "id": "fez",
+      "name": {
+        "es": "Fez"
+      },
+      "continent": "africa",
+      "countryCode": "MA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 61,
+      "batch": 15
+    },
+    {
+      "id": "christchurch",
+      "name": {
+        "es": "Christchurch"
+      },
+      "continent": "oceania",
+      "countryCode": "NZ",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 62,
+      "batch": 15
+    },
+    {
+      "id": "copenhague",
+      "name": {
+        "es": "Copenhague",
+        "en": "Copenhagen"
+      },
+      "continent": "europa",
+      "countryCode": "DK",
+      "batch": 16,
+      "status": "planned",
+      "landmarks": [
+        "Nyhavn",
+        "La Sirenita",
+        "Rosenborg",
+        "Amalienborg",
+        "Iglesia de Nuestro Salvador"
+      ],
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 63
+    },
+    {
+      "id": "las-vegas",
+      "name": {
+        "es": "Las Vegas"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 64,
+      "batch": 16
+    },
+    {
+      "id": "kioto",
+      "name": {
+        "es": "Kioto"
+      },
+      "continent": "asia",
+      "countryCode": "JP",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 65,
+      "batch": 16
+    },
+    {
+      "id": "chefchaouen",
+      "name": {
+        "es": "Chefchaouen"
+      },
+      "continent": "africa",
+      "countryCode": "MA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 66,
+      "batch": 16
+    },
+    {
+      "id": "queenstown",
+      "name": {
+        "es": "Queenstown"
+      },
+      "continent": "oceania",
+      "countryCode": "NZ",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 67,
+      "batch": 17
+    },
+    {
+      "id": "sevilla",
+      "name": {
+        "es": "Sevilla"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 68,
+      "batch": 17
+    },
+    {
+      "id": "nueva-orleans",
+      "name": {
+        "es": "Nueva Orleans"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 69,
+      "batch": 17
+    },
+    {
+      "id": "osaka",
+      "name": {
+        "es": "Osaka"
+      },
+      "continent": "asia",
+      "countryCode": "JP",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 70,
+      "batch": 17
+    },
+    {
+      "id": "argel",
+      "name": {
+        "es": "Argel"
+      },
+      "continent": "africa",
+      "countryCode": "DZ",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 71,
+      "batch": 18
+    },
+    {
+      "id": "suva",
+      "name": {
+        "es": "Suva"
+      },
+      "continent": "oceania",
+      "countryCode": "FJ",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 72,
+      "batch": 18
+    },
+    {
+      "id": "valencia",
+      "name": {
+        "es": "Valencia"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 73,
+      "batch": 18
+    },
+    {
+      "id": "seattle",
+      "name": {
+        "es": "Seattle"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 74,
+      "batch": 18
+    },
+    {
+      "id": "hiroshima",
+      "name": {
+        "es": "Hiroshima"
+      },
+      "continent": "asia",
+      "countryCode": "JP",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 75,
+      "batch": 19
+    },
+    {
+      "id": "alejandria",
+      "name": {
+        "es": "Alejandría"
+      },
+      "continent": "africa",
+      "countryCode": "EG",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 76,
+      "batch": 19
+    },
+    {
+      "id": "papeete",
+      "name": {
+        "es": "Papeete"
+      },
+      "continent": "oceania",
+      "countryCode": "PF",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 77,
+      "batch": 19
+    },
+    {
+      "id": "granada",
+      "name": {
+        "es": "Granada"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 78,
+      "batch": 19
+    },
+    {
+      "id": "filadelfia",
+      "name": {
+        "es": "Filadelfia"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 79,
+      "batch": 20
+    },
+    {
+      "id": "nara",
+      "name": {
+        "es": "Nara"
+      },
+      "continent": "asia",
+      "countryCode": "JP",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 80,
+      "batch": 20
+    },
+    {
+      "id": "luxor",
+      "name": {
+        "es": "Luxor"
+      },
+      "continent": "africa",
+      "countryCode": "EG",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 81,
+      "batch": 20
+    },
+    {
+      "id": "cordoba",
+      "name": {
+        "es": "Córdoba"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 82,
+      "batch": 20
+    },
+    {
+      "id": "san-diego",
+      "name": {
+        "es": "San Diego"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 83,
+      "batch": 21
+    },
+    {
+      "id": "yokohama",
+      "name": {
+        "es": "Yokohama"
+      },
+      "continent": "asia",
+      "countryCode": "JP",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 84,
+      "batch": 21
+    },
+    {
+      "id": "asuan",
+      "name": {
+        "es": "Asuán"
+      },
+      "continent": "africa",
+      "countryCode": "EG",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 85,
+      "batch": 21
+    },
+    {
+      "id": "bilbao",
+      "name": {
+        "es": "Bilbao"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 86,
+      "batch": 21
+    },
+    {
+      "id": "honolulu",
+      "name": {
+        "es": "Honolulu"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 87,
+      "batch": 22
+    },
+    {
+      "id": "nagasaki",
+      "name": {
+        "es": "Nagasaki"
+      },
+      "continent": "asia",
+      "countryCode": "JP",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 88,
+      "batch": 22
+    },
+    {
+      "id": "guiza",
+      "name": {
+        "es": "Guiza"
+      },
+      "continent": "africa",
+      "countryCode": "EG",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [
+        "Pirámide de Keops",
+        "Pirámide de Kefrén",
+        "Pirámide de Micerino",
+        "Gran Esfinge"
+      ],
+      "landmarkStatus": "candidate",
+      "sources": [
+        "https://egymonuments.gov.eg/en/archaeological-sites/giza-plateau/"
+      ],
+      "productionOrder": 89,
+      "batch": 22
+    },
+    {
+      "id": "santiago-de-compostela",
+      "name": {
+        "es": "Santiago de Compostela"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 90,
+      "batch": 22
+    },
+    {
+      "id": "atlanta",
+      "name": {
+        "es": "Atlanta"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 91,
+      "batch": 23
+    },
+    {
+      "id": "macao",
+      "name": {
+        "es": "Macao"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 92,
+      "batch": 23
+    },
+    {
+      "id": "johannesburgo",
+      "name": {
+        "es": "Johannesburgo"
+      },
+      "continent": "africa",
+      "countryCode": "ZA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 93,
+      "batch": 23
+    },
+    {
+      "id": "malaga",
+      "name": {
+        "es": "Málaga"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 94,
+      "batch": 23
+    },
+    {
+      "id": "houston",
+      "name": {
+        "es": "Houston"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 95,
+      "batch": 24
+    },
+    {
+      "id": "xian",
+      "name": {
+        "es": "Xi’an"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 96,
+      "batch": 24
+    },
+    {
+      "id": "durban",
+      "name": {
+        "es": "Durban"
+      },
+      "continent": "africa",
+      "countryCode": "ZA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 97,
+      "batch": 24
+    },
+    {
+      "id": "toledo",
+      "name": {
+        "es": "Toledo"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 98,
+      "batch": 24
+    },
+    {
+      "id": "san-antonio",
+      "name": {
+        "es": "San Antonio"
+      },
+      "continent": "america",
+      "countryCode": "US",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 99,
+      "batch": 25
+    },
+    {
+      "id": "chengdu",
+      "name": {
+        "es": "Chengdú"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 100,
+      "batch": 25
+    },
+    {
+      "id": "adis-abeba",
+      "name": {
+        "es": "Adís Abeba"
+      },
+      "continent": "africa",
+      "countryCode": "ET",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 101,
+      "batch": 25
+    },
+    {
+      "id": "segovia",
+      "name": {
+        "es": "Segovia"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 102,
+      "batch": 25
+    },
+    {
+      "id": "montreal",
+      "name": {
+        "es": "Montreal"
+      },
+      "continent": "america",
+      "countryCode": "CA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 103,
+      "batch": 26
+    },
+    {
+      "id": "chongqing",
+      "name": {
+        "es": "Chongqing"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 104,
+      "batch": 26
+    },
+    {
+      "id": "lagos",
+      "name": {
+        "es": "Lagos"
+      },
+      "continent": "africa",
+      "countryCode": "NG",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 105,
+      "batch": 26
+    },
+    {
+      "id": "zaragoza",
+      "name": {
+        "es": "Zaragoza"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 106,
+      "batch": 26
+    },
+    {
+      "id": "quebec",
+      "name": {
+        "es": "Quebec"
+      },
+      "continent": "america",
+      "countryCode": "CA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 107,
+      "batch": 27
+    },
+    {
+      "id": "guilin",
+      "name": {
+        "es": "Guilin"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 108,
+      "batch": 27
+    },
+    {
+      "id": "acra",
+      "name": {
+        "es": "Acra"
+      },
+      "continent": "africa",
+      "countryCode": "GH",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 109,
+      "batch": 27
+    },
+    {
+      "id": "san-sebastian",
+      "name": {
+        "es": "San Sebastián"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 110,
+      "batch": 27
+    },
+    {
+      "id": "vancouver",
+      "name": {
+        "es": "Vancouver"
+      },
+      "continent": "america",
+      "countryCode": "CA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 111,
+      "batch": 28
+    },
+    {
+      "id": "canton",
+      "name": {
+        "es": "Cantón"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 112,
+      "batch": 28
+    },
+    {
+      "id": "abiyan",
+      "name": {
+        "es": "Abiyán"
+      },
+      "continent": "africa",
+      "countryCode": "CI",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 113,
+      "batch": 28
+    },
+    {
+      "id": "salamanca",
+      "name": {
+        "es": "Salamanca"
+      },
+      "continent": "europa",
+      "countryCode": "ES",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 114,
+      "batch": 28
+    },
+    {
+      "id": "ottawa",
+      "name": {
+        "es": "Ottawa"
+      },
+      "continent": "america",
+      "countryCode": "CA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 115,
+      "batch": 29
+    },
+    {
+      "id": "hangzhou",
+      "name": {
+        "es": "Hangzhou"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 116,
+      "batch": 29
+    },
+    {
+      "id": "windhoek",
+      "name": {
+        "es": "Windhoek"
+      },
+      "continent": "africa",
+      "countryCode": "NA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 117,
+      "batch": 29
+    },
+    {
+      "id": "manchester",
+      "name": {
+        "es": "Manchester"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 118,
+      "batch": 29
+    },
+    {
+      "id": "guadalajara",
+      "name": {
+        "es": "Guadalajara"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 119,
+      "batch": 30
+    },
+    {
+      "id": "suzhou",
+      "name": {
+        "es": "Suzhou"
+      },
+      "continent": "asia",
+      "countryCode": "CN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 120,
+      "batch": 30
+    },
+    {
+      "id": "port-louis",
+      "name": {
+        "es": "Port Louis"
+      },
+      "continent": "africa",
+      "countryCode": "MU",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 121,
+      "batch": 30
+    },
+    {
+      "id": "liverpool",
+      "name": {
+        "es": "Liverpool"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 122,
+      "batch": 30
+    },
+    {
+      "id": "puebla",
+      "name": {
+        "es": "Puebla"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 123,
+      "batch": 31
+    },
+    {
+      "id": "taipei",
+      "name": {
+        "es": "Taipéi"
+      },
+      "continent": "asia",
+      "countryCode": "TW",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 124,
+      "batch": 31
+    },
+    {
+      "id": "oxford",
+      "name": {
+        "es": "Oxford"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 125,
+      "batch": 31
+    },
+    {
+      "id": "oaxaca",
+      "name": {
+        "es": "Oaxaca"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 126,
+      "batch": 31
+    },
+    {
+      "id": "busan",
+      "name": {
+        "es": "Busan"
+      },
+      "continent": "asia",
+      "countryCode": "KR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 127,
+      "batch": 32
+    },
+    {
+      "id": "cambridge",
+      "name": {
+        "es": "Cambridge"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 128,
+      "batch": 32
+    },
+    {
+      "id": "guanajuato",
+      "name": {
+        "es": "Guanajuato"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 129,
+      "batch": 32
+    },
+    {
+      "id": "hanoi",
+      "name": {
+        "es": "Hanói"
+      },
+      "continent": "asia",
+      "countryCode": "VN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 130,
+      "batch": 32
+    },
+    {
+      "id": "bath",
+      "name": {
+        "es": "Bath"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 131,
+      "batch": 33
+    },
+    {
+      "id": "merida",
+      "name": {
+        "es": "Mérida"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 132,
+      "batch": 33
+    },
+    {
+      "id": "ciudad-ho-chi-minh",
+      "name": {
+        "es": "Ciudad Ho Chi Minh"
+      },
+      "continent": "asia",
+      "countryCode": "VN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 133,
+      "batch": 33
+    },
+    {
+      "id": "york",
+      "name": {
+        "es": "York"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 134,
+      "batch": 33
+    },
+    {
+      "id": "bogota",
+      "name": {
+        "es": "Bogotá"
+      },
+      "continent": "america",
+      "countryCode": "CO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 135,
+      "batch": 34
+    },
+    {
+      "id": "hoi-an",
+      "name": {
+        "es": "Hoi An"
+      },
+      "continent": "asia",
+      "countryCode": "VN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 136,
+      "batch": 34
+    },
+    {
+      "id": "glasgow",
+      "name": {
+        "es": "Glasgow"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 137,
+      "batch": 34
+    },
+    {
+      "id": "cartagena-de-indias",
+      "name": {
+        "es": "Cartagena de Indias"
+      },
+      "continent": "america",
+      "countryCode": "CO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 138,
+      "batch": 34
+    },
+    {
+      "id": "siem-reap",
+      "name": {
+        "es": "Siem Reap"
+      },
+      "continent": "asia",
+      "countryCode": "KH",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 139,
+      "batch": 35
+    },
+    {
+      "id": "belfast",
+      "name": {
+        "es": "Belfast"
+      },
+      "continent": "europa",
+      "countryCode": "GB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 140,
+      "batch": 35
+    },
+    {
+      "id": "medellin",
+      "name": {
+        "es": "Medellín"
+      },
+      "continent": "america",
+      "countryCode": "CO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 141,
+      "batch": 35
+    },
+    {
+      "id": "nom-pen",
+      "name": {
+        "es": "Nom Pen"
+      },
+      "continent": "asia",
+      "countryCode": "KH",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 142,
+      "batch": 35
+    },
+    {
+      "id": "oporto",
+      "name": {
+        "es": "Oporto"
+      },
+      "continent": "europa",
+      "countryCode": "PT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 143,
+      "batch": 36
+    },
+    {
+      "id": "lima",
+      "name": {
+        "es": "Lima"
+      },
+      "continent": "america",
+      "countryCode": "PE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 144,
+      "batch": 36
+    },
+    {
+      "id": "kuala-lumpur",
+      "name": {
+        "es": "Kuala Lumpur"
+      },
+      "continent": "asia",
+      "countryCode": "MY",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 145,
+      "batch": 36
+    },
+    {
+      "id": "bruselas",
+      "name": {
+        "es": "Bruselas"
+      },
+      "continent": "europa",
+      "countryCode": "BE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 146,
+      "batch": 36
+    },
+    {
+      "id": "cusco",
+      "name": {
+        "es": "Cusco"
+      },
+      "continent": "america",
+      "countryCode": "PE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 147,
+      "batch": 37
+    },
+    {
+      "id": "george-town",
+      "name": {
+        "es": "George Town"
+      },
+      "continent": "asia",
+      "countryCode": "MY",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 148,
+      "batch": 37
+    },
+    {
+      "id": "brujas",
+      "name": {
+        "es": "Brujas"
+      },
+      "continent": "europa",
+      "countryCode": "BE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 149,
+      "batch": 37
+    },
+    {
+      "id": "arequipa",
+      "name": {
+        "es": "Arequipa"
+      },
+      "continent": "america",
+      "countryCode": "PE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 150,
+      "batch": 37
+    },
+    {
+      "id": "yakarta",
+      "name": {
+        "es": "Yakarta"
+      },
+      "continent": "asia",
+      "countryCode": "ID",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 151,
+      "batch": 38
+    },
+    {
+      "id": "gante",
+      "name": {
+        "es": "Gante"
+      },
+      "continent": "europa",
+      "countryCode": "BE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 152,
+      "batch": 38
+    },
+    {
+      "id": "quito",
+      "name": {
+        "es": "Quito"
+      },
+      "continent": "america",
+      "countryCode": "EC",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 153,
+      "batch": 38
+    },
+    {
+      "id": "yogyakarta",
+      "name": {
+        "es": "Yogyakarta"
+      },
+      "continent": "asia",
+      "countryCode": "ID",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 154,
+      "batch": 38
+    },
+    {
+      "id": "roterdam",
+      "name": {
+        "es": "Róterdam"
+      },
+      "continent": "europa",
+      "countryCode": "NL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 155,
+      "batch": 39
+    },
+    {
+      "id": "la-paz",
+      "name": {
+        "es": "La Paz"
+      },
+      "continent": "america",
+      "countryCode": "BO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 156,
+      "batch": 39
+    },
+    {
+      "id": "manila",
+      "name": {
+        "es": "Manila"
+      },
+      "continent": "asia",
+      "countryCode": "PH",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 157,
+      "batch": 39
+    },
+    {
+      "id": "la-haya",
+      "name": {
+        "es": "La Haya"
+      },
+      "continent": "europa",
+      "countryCode": "NL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 158,
+      "batch": 39
+    },
+    {
+      "id": "sucre",
+      "name": {
+        "es": "Sucre"
+      },
+      "continent": "america",
+      "countryCode": "BO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 159,
+      "batch": 40
+    },
+    {
+      "id": "katmandu",
+      "name": {
+        "es": "Katmandú"
+      },
+      "continent": "asia",
+      "countryCode": "NP",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 160,
+      "batch": 40
+    },
+    {
+      "id": "lyon",
+      "name": {
+        "es": "Lyon"
+      },
+      "continent": "europa",
+      "countryCode": "FR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 161,
+      "batch": 40
+    },
+    {
+      "id": "santiago-de-chile",
+      "name": {
+        "es": "Santiago de Chile"
+      },
+      "continent": "america",
+      "countryCode": "CL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 162,
+      "batch": 40
+    },
+    {
+      "id": "agra",
+      "name": {
+        "es": "Agra"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 163,
+      "batch": 41
+    },
+    {
+      "id": "marsella",
+      "name": {
+        "es": "Marsella"
+      },
+      "continent": "europa",
+      "countryCode": "FR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 164,
+      "batch": 41
+    },
+    {
+      "id": "valparaiso",
+      "name": {
+        "es": "Valparaíso"
+      },
+      "continent": "america",
+      "countryCode": "CL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 165,
+      "batch": 41
+    },
+    {
+      "id": "jaipur",
+      "name": {
+        "es": "Jaipur"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 166,
+      "batch": 41
+    },
+    {
+      "id": "niza",
+      "name": {
+        "es": "Niza"
+      },
+      "continent": "europa",
+      "countryCode": "FR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 167,
+      "batch": 42
+    },
+    {
+      "id": "montevideo",
+      "name": {
+        "es": "Montevideo"
+      },
+      "continent": "america",
+      "countryCode": "UY",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 168,
+      "batch": 42
+    },
+    {
+      "id": "varanasi",
+      "name": {
+        "es": "Varanasi"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 169,
+      "batch": 42
+    },
+    {
+      "id": "burdeos",
+      "name": {
+        "es": "Burdeos"
+      },
+      "continent": "europa",
+      "countryCode": "FR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 170,
+      "batch": 42
+    },
+    {
+      "id": "brasilia",
+      "name": {
+        "es": "Brasilia"
+      },
+      "continent": "america",
+      "countryCode": "BR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 171,
+      "batch": 43
+    },
+    {
+      "id": "calcuta",
+      "name": {
+        "es": "Calcuta"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 172,
+      "batch": 43
+    },
+    {
+      "id": "estrasburgo",
+      "name": {
+        "es": "Estrasburgo"
+      },
+      "continent": "europa",
+      "countryCode": "FR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 173,
+      "batch": 43
+    },
+    {
+      "id": "sao-paulo",
+      "name": {
+        "es": "São Paulo"
+      },
+      "continent": "america",
+      "countryCode": "BR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 174,
+      "batch": 43
+    },
+    {
+      "id": "amritsar",
+      "name": {
+        "es": "Amritsar"
+      },
+      "continent": "asia",
+      "countryCode": "IN",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 175,
+      "batch": 44
+    },
+    {
+      "id": "avinon",
+      "name": {
+        "es": "Aviñón"
+      },
+      "continent": "europa",
+      "countryCode": "FR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 176,
+      "batch": 44
+    },
+    {
+      "id": "salvador-de-bahia",
+      "name": {
+        "es": "Salvador de Bahía"
+      },
+      "continent": "america",
+      "countryCode": "BR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 177,
+      "batch": 44
+    },
+    {
+      "id": "abu-dabi",
+      "name": {
+        "es": "Abu Dabi"
+      },
+      "continent": "asia",
+      "countryCode": "AE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 178,
+      "batch": 44
+    },
+    {
+      "id": "milan",
+      "name": {
+        "es": "Milán"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 179,
+      "batch": 45
+    },
+    {
+      "id": "recife",
+      "name": {
+        "es": "Recife"
+      },
+      "continent": "america",
+      "countryCode": "BR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 180,
+      "batch": 45
+    },
+    {
+      "id": "doha",
+      "name": {
+        "es": "Doha"
+      },
+      "continent": "asia",
+      "countryCode": "QA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 181,
+      "batch": 45
+    },
+    {
+      "id": "napoles",
+      "name": {
+        "es": "Nápoles"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 182,
+      "batch": 45
+    },
+    {
+      "id": "ciudad-de-panama",
+      "name": {
+        "es": "Ciudad de Panamá"
+      },
+      "continent": "america",
+      "countryCode": "PA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 183,
+      "batch": 46
+    },
+    {
+      "id": "mascate",
+      "name": {
+        "es": "Mascate"
+      },
+      "continent": "asia",
+      "countryCode": "OM",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 184,
+      "batch": 46
+    },
+    {
+      "id": "pisa",
+      "name": {
+        "es": "Pisa"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 185,
+      "batch": 46
+    },
+    {
+      "id": "antigua-guatemala",
+      "name": {
+        "es": "Antigua Guatemala"
+      },
+      "continent": "america",
+      "countryCode": "GT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 186,
+      "batch": 46
+    },
+    {
+      "id": "riad",
+      "name": {
+        "es": "Riad"
+      },
+      "continent": "asia",
+      "countryCode": "SA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 187,
+      "batch": 47
+    },
+    {
+      "id": "verona",
+      "name": {
+        "es": "Verona"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 188,
+      "batch": 47
+    },
+    {
+      "id": "san-juan",
+      "name": {
+        "es": "San Juan"
+      },
+      "continent": "america",
+      "countryCode": "PR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 189,
+      "batch": 47
+    },
+    {
+      "id": "yeda",
+      "name": {
+        "es": "Yeda"
+      },
+      "continent": "asia",
+      "countryCode": "SA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 190,
+      "batch": 47
+    },
+    {
+      "id": "turin",
+      "name": {
+        "es": "Turín"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 191,
+      "batch": 48
+    },
+    {
+      "id": "santo-domingo",
+      "name": {
+        "es": "Santo Domingo"
+      },
+      "continent": "america",
+      "countryCode": "DO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 192,
+      "batch": 48
+    },
+    {
+      "id": "aman",
+      "name": {
+        "es": "Amán"
+      },
+      "continent": "asia",
+      "countryCode": "JO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 193,
+      "batch": 48
+    },
+    {
+      "id": "bolonia",
+      "name": {
+        "es": "Bolonia"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 194,
+      "batch": 48
+    },
+    {
+      "id": "san-jose",
+      "name": {
+        "es": "San José"
+      },
+      "continent": "america",
+      "countryCode": "CR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 195,
+      "batch": 49
+    },
+    {
+      "id": "beirut",
+      "name": {
+        "es": "Beirut"
+      },
+      "continent": "asia",
+      "countryCode": "LB",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 196,
+      "batch": 49
+    },
+    {
+      "id": "palermo",
+      "name": {
+        "es": "Palermo"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 197,
+      "batch": 49
+    },
+    {
+      "id": "kingston",
+      "name": {
+        "es": "Kingston"
+      },
+      "continent": "america",
+      "countryCode": "JM",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 198,
+      "batch": 49
+    },
+    {
+      "id": "jerusalen",
+      "name": {
+        "es": "Jerusalén"
+      },
+      "continent": "asia",
+      "countryCode": "IL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 199,
+      "batch": 50
+    },
+    {
+      "id": "munich",
+      "name": {
+        "es": "Múnich"
+      },
+      "continent": "europa",
+      "countryCode": "DE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 200,
+      "batch": 50
+    },
+    {
+      "id": "tel-aviv",
+      "name": {
+        "es": "Tel Aviv"
+      },
+      "continent": "asia",
+      "countryCode": "IL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 201,
+      "batch": 50
+    },
+    {
+      "id": "hamburgo",
+      "name": {
+        "es": "Hamburgo"
+      },
+      "continent": "europa",
+      "countryCode": "DE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 202,
+      "batch": 50
+    },
+    {
+      "id": "samarcanda",
+      "name": {
+        "es": "Samarcanda"
+      },
+      "continent": "asia",
+      "countryCode": "UZ",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 203,
+      "batch": 51
+    },
+    {
+      "id": "colonia",
+      "name": {
+        "es": "Colonia"
+      },
+      "continent": "europa",
+      "countryCode": "DE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 204,
+      "batch": 51
+    },
+    {
+      "id": "bujara",
+      "name": {
+        "es": "Bujará"
+      },
+      "continent": "asia",
+      "countryCode": "UZ",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 205,
+      "batch": 51
+    },
+    {
+      "id": "dresde",
+      "name": {
+        "es": "Dresde"
+      },
+      "continent": "europa",
+      "countryCode": "DE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 206,
+      "batch": 51
+    },
+    {
+      "id": "francfort",
+      "name": {
+        "es": "Fráncfort"
+      },
+      "continent": "europa",
+      "countryCode": "DE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 207,
+      "batch": 52
+    },
+    {
+      "id": "heidelberg",
+      "name": {
+        "es": "Heidelberg"
+      },
+      "continent": "europa",
+      "countryCode": "DE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 208,
+      "batch": 52
+    },
+    {
+      "id": "ginebra",
+      "name": {
+        "es": "Ginebra"
+      },
+      "continent": "europa",
+      "countryCode": "CH",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 209,
+      "batch": 52
+    },
+    {
+      "id": "lucerna",
+      "name": {
+        "es": "Lucerna"
+      },
+      "continent": "europa",
+      "countryCode": "CH",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 210,
+      "batch": 52
+    },
+    {
+      "id": "berna",
+      "name": {
+        "es": "Berna"
+      },
+      "continent": "europa",
+      "countryCode": "CH",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 211,
+      "batch": 53
+    },
+    {
+      "id": "oslo",
+      "name": {
+        "es": "Oslo"
+      },
+      "continent": "europa",
+      "countryCode": "NO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 212,
+      "batch": 53
+    },
+    {
+      "id": "bergen",
+      "name": {
+        "es": "Bergen"
+      },
+      "continent": "europa",
+      "countryCode": "NO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 213,
+      "batch": 53
+    },
+    {
+      "id": "helsinki",
+      "name": {
+        "es": "Helsinki"
+      },
+      "continent": "europa",
+      "countryCode": "FI",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 214,
+      "batch": 53
+    },
+    {
+      "id": "reikiavik",
+      "name": {
+        "es": "Reikiavik"
+      },
+      "continent": "europa",
+      "countryCode": "IS",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 215,
+      "batch": 54
+    },
+    {
+      "id": "tallin",
+      "name": {
+        "es": "Tallin"
+      },
+      "continent": "europa",
+      "countryCode": "EE",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 216,
+      "batch": 54
+    },
+    {
+      "id": "riga",
+      "name": {
+        "es": "Riga"
+      },
+      "continent": "europa",
+      "countryCode": "LV",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 217,
+      "batch": 54
+    },
+    {
+      "id": "vilna",
+      "name": {
+        "es": "Vilna"
+      },
+      "continent": "europa",
+      "countryCode": "LT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 218,
+      "batch": 54
+    },
+    {
+      "id": "varsovia",
+      "name": {
+        "es": "Varsovia"
+      },
+      "continent": "europa",
+      "countryCode": "PL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 219,
+      "batch": 55
+    },
+    {
+      "id": "cracovia",
+      "name": {
+        "es": "Cracovia"
+      },
+      "continent": "europa",
+      "countryCode": "PL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 220,
+      "batch": 55
+    },
+    {
+      "id": "gdansk",
+      "name": {
+        "es": "Gdansk"
+      },
+      "continent": "europa",
+      "countryCode": "PL",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 221,
+      "batch": 55
+    },
+    {
+      "id": "bucarest",
+      "name": {
+        "es": "Bucarest"
+      },
+      "continent": "europa",
+      "countryCode": "RO",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 222,
+      "batch": 55
+    },
+    {
+      "id": "sofia",
+      "name": {
+        "es": "Sofía"
+      },
+      "continent": "europa",
+      "countryCode": "BG",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 223,
+      "batch": 56
+    },
+    {
+      "id": "belgrado",
+      "name": {
+        "es": "Belgrado"
+      },
+      "continent": "europa",
+      "countryCode": "RS",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 224,
+      "batch": 56
+    },
+    {
+      "id": "sarajevo",
+      "name": {
+        "es": "Sarajevo"
+      },
+      "continent": "europa",
+      "countryCode": "BA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 225,
+      "batch": 56
+    },
+    {
+      "id": "dubrovnik",
+      "name": {
+        "es": "Dubrovnik"
+      },
+      "continent": "europa",
+      "countryCode": "HR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 226,
+      "batch": 56
+    },
+    {
+      "id": "split",
+      "name": {
+        "es": "Split"
+      },
+      "continent": "europa",
+      "countryCode": "HR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 227,
+      "batch": 57
+    },
+    {
+      "id": "zagreb",
+      "name": {
+        "es": "Zagreb"
+      },
+      "continent": "europa",
+      "countryCode": "HR",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 228,
+      "batch": 57
+    },
+    {
+      "id": "liubliana",
+      "name": {
+        "es": "Liubliana"
+      },
+      "continent": "europa",
+      "countryCode": "SI",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 229,
+      "batch": 57
+    },
+    {
+      "id": "bratislava",
+      "name": {
+        "es": "Bratislava"
+      },
+      "continent": "europa",
+      "countryCode": "SK",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 230,
+      "batch": 57
+    },
+    {
+      "id": "salzburgo",
+      "name": {
+        "es": "Salzburgo"
+      },
+      "continent": "europa",
+      "countryCode": "AT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 231,
+      "batch": 58
+    },
+    {
+      "id": "luxemburgo",
+      "name": {
+        "es": "Luxemburgo"
+      },
+      "continent": "europa",
+      "countryCode": "LU",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 232,
+      "batch": 58
+    },
+    {
+      "id": "monaco",
+      "name": {
+        "es": "Mónaco"
+      },
+      "continent": "europa",
+      "countryCode": "MC",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 233,
+      "batch": 58
+    },
+    {
+      "id": "la-valeta",
+      "name": {
+        "es": "La Valeta"
+      },
+      "continent": "europa",
+      "countryCode": "MT",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 234,
+      "batch": 58
+    },
+    {
+      "id": "kyiv",
+      "name": {
+        "es": "Kyiv"
+      },
+      "continent": "europa",
+      "countryCode": "UA",
+      "status": "planned",
+      "kind": "city",
+      "landmarks": [],
+      "landmarkStatus": "to-research",
+      "productionOrder": 235,
+      "batch": 59
     }
-  ]
+  ],
+  "productionPolicy": {
+    "batchSize": 4,
+    "scope": "Colección abierta de ciudades reconocibles; incorporar más candidatas cuando aporten hitos y una imagen diferenciable.",
+    "viewer": "encuadre.html",
+    "specialPlaces": "Machu Picchu autorizado como lugar histórico. Otras excepciones se propondrán por separado.",
+    "workflow": [
+      "investigar hitos",
+      "generar sobre base común",
+      "revisar y corregir",
+      "medir encuadre",
+      "actualizar visor",
+      "revisión editorial",
+      "optimizar para el juego"
+    ]
+  }
 }

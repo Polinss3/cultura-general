@@ -1,21 +1,23 @@
 # Ciudades: viabilidad y piloto visual
 
-Decisión del usuario: imágenes fijas con aspecto 3D. La pregunta siempre es el diorama; las cuatro respuestas siempre son nombres de ciudades. No invertir la dirección como hace Banderas.
+Decisión del usuario: imágenes fijas con aspecto 3D. La pregunta siempre es el diorama; las cuatro respuestas son nombres de ciudades o, en la excepción autorizada de Machu Picchu, el nombre del lugar histórico. No invertir la dirección como hace Banderas.
 
 Base: `origin/main`, commit `4cabf66be5062e1d0385237362584f7663d17e9c`, «Merge: versión 2.3.0 (build 113)». Rama de trabajo: `codex/ciudades`. El usuario identifica main con la última versión subida a la App Store; no se ha consultado App Store Connect para verificar su publicación.
 
 ## Resultado de la investigación
 
-Es viable producir una colección amplia de imágenes de dioramas. Las seis muestras demuestran una dirección artística comparable; todavía no demuestran calidad editorial, legibilidad en dispositivos ni consistencia de un catálogo completo. La parte que más trabajo requiere es seleccionar y revisar los hitos de cada ciudad, corregir errores de generación y mantener la composición entre lotes. Se pueden comparar juntas en la [galería del piloto](galeria.md).
+Es viable producir una colección amplia de imágenes de dioramas. Las diez muestras actuales demuestran una dirección artística comparable; todavía no demuestran calidad editorial, legibilidad en dispositivos ni consistencia de un catálogo completo. La parte que más trabajo requiere es seleccionar y revisar los hitos de cada ciudad, corregir errores de generación y mantener la composición entre lotes. Se pueden comparar juntas en la [galería del piloto](galeria.md).
 
 Se han generado mediante la herramienta integrada de ImageGen:
 
 - [Madrid](piloto/madrid-v1.png): oso y madroño, Real Casa de Correos en Sol, Cuatro Torres, Atocha y Puerta de Alcalá. La primera generación tenía cinco rascacielos; se corrigió a cuatro. La fidelidad de fachadas, coronaciones y monumentos sigue pendiente de revisión con referencias arquitectónicas.
-- [Nueva York](piloto/nueva-york-v1.png): Estatua de la Libertad, Empire State, Chrysler, Central Park, puente de Brooklyn y Grand Central. La base ha adquirido un contorno irregular junto al agua; debe volver a ser un cuadrado de esquinas redondeadas antes de aprobarla para el catálogo.
+- [Nueva York](piloto/nueva-york-v1.png): Estatua de la Libertad, Empire State, Chrysler, Central Park, puente de Brooklyn y Grand Central. Su base irregular fue adoptada después como dirección común y normalizada en v2.
 - [Barcelona](piloto/barcelona-v1.png): Sagrada Familia, Park Güell, Casa Batlló, Torre Glòries y Arco de Triunfo.
 - [Roma](piloto/roma-v1.png): Coliseo, Panteón, Fontana di Trevi, Foro Romano y Castel Sant'Angelo.
 - [París](piloto/paris-v1.png): Torre Eiffel, Notre-Dame, Louvre, Arco de Triunfo y Sacré-Cœur.
 - [Tokio](piloto/tokio-v1.png): Tokyo Tower, Skytree, Sensō-ji, Kaminarimon y cruce de Shibuya con tren elevado.
+
+La primera ampliación añade [Venecia](normalizadas/venecia-v1.png), [Ámsterdam](normalizadas/amsterdam-v1.png), [Londres](normalizadas/londres-v1.png) y [Berlín](normalizadas/berlin-v1.png). Se han generado sobre la plantilla común; [prompts y decisiones](prompts-ampliacion-01.md).
 
 Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D editables. Sus proporciones y ubicaciones forman un collage reconocible, no un mapa exacto. No se han conectado a las pantallas del juego.
 
@@ -34,11 +36,12 @@ Los originales v1 se conservan como referencia. Las versiones v2 están en `norm
 
 El [encuadre común](encuadre.html) es el visor de referencia del usuario. Debe actualizarse en cada alta o modificación de una ciudad, en el mismo cambio que sus imágenes y datos. Ejecutar `node scripts/build-city-framing-preview.mjs`: incorpora automáticamente al selector y a la cuadrícula todas las ciudades con perfil de encuadre, obtiene sus nombres del catálogo y comprueba que las imágenes existen. No mantener una lista manual de ciudades en el HTML. Si una ciudad aún no tiene imagen anterior, la vista original utiliza su fuente actual sin calibrar.
 
-- Piloto artístico: Madrid, Nueva York, Barcelona, Roma, París y Tokio. Las seis tienen concepto generado, pendiente de revisión editorial y ajuste de encuadre. Son casos distintos de skyline, escultura, arquitectura histórica y parques.
-- Primer catálogo jugable: 24 ciudades de los cinco continentes, a partir de las candidatas de `catalogo-propuesto.json`. No seleccionar por cantidad: aceptar solo imágenes reconocibles y revisadas.
-- Ampliación: 48 candidatas en el manifiesto inicial; después 100 o más si cada nueva ciudad aporta hitos distintivos. No generar todo antes de estabilizar el piloto.
+- Catálogo inicial ampliable: **235 destinos**, con 234 ciudades y Machu Picchu como lugar histórico autorizado. [Listado completo](listado-ciudades.md) y [vista con filtros](catalogo.html).
+- Diez conceptos visibles: los seis del piloto más Venecia, Ámsterdam, Londres y Berlín. La revisión editorial y la integración en el juego siguen pendientes.
+- Próxima tanda: Dublín, Edimburgo, Moscú y San Petersburgo. Después: Hong Kong, Sídney, Washington D. C. y Ciudad de México; luego El Cairo, Buenos Aires, Machu Picchu y Lisboa.
+- El resto se reparte en tandas de cuatro con variedad regional. El orden y los estados se guardan en el catálogo; no hay límite máximo fijado para futuras incorporaciones. Las candidatas sin hitos se investigarán antes de generarse.
 
-Para cada ciudad: fijar 4–6 hitos y referencias → añadir la ciudad usando la plantilla irregular como única imagen de referencia → comprobar siluetas, número de elementos y ausencia de texto → medir extremos y anclaje de la base y registrar el perfil de presentación → revisar a tamaño de móvil y junto a las demás ciudades → exportar el recurso optimizado → marcarlo como aprobado. Los [prompts de v2](prompts-encuadre.md) documentan el procedimiento. Guardar versión, prompt, fuentes y estado editorial. La imagen de referencia del usuario guía el estilo; no debe redistribuirse como recurso del juego.
+Para cada ciudad: fijar 4–6 hitos y referencias → añadir la ciudad usando la plantilla irregular como única imagen de referencia → comprobar siluetas, número de elementos y ausencia de texto → medir extremos y anclaje de la base y registrar el perfil de presentación → revisar a tamaño de móvil y junto a las demás ciudades → exportar el recurso optimizado → marcarlo como aprobado. Los [prompts de v2](prompts-encuadre.md) y la [primera ampliación](prompts-ampliacion-01.md) documentan el procedimiento. Guardar versión, prompt, fuentes y estado editorial. La imagen de referencia del usuario guía el estilo; no debe redistribuirse como recurso del juego.
 
 Las listas de hitos del manifiesto son candidatas editoriales, no contenido ya verificado. Aún hay que confirmar las referencias, las siluetas y los límites del municipio cuando un monumento cercano pueda inducir a error. Cada imagen debe representar una sola ciudad de manera inequívoca.
 

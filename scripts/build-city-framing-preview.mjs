@@ -1,4 +1,5 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { buildCityCatalog } from './build-city-catalog.mjs';
 
 const root = new URL('../', import.meta.url);
 const framing = JSON.parse(readFileSync(new URL('constants/cityDioramaFraming.json', root), 'utf8'));
@@ -38,3 +39,4 @@ const data = [
 ].join('\n');
 writeFileSync(target, page.replace(registration, () => data));
 console.log(`Comparador actualizado: ${Object.keys(labels).length} ciudades desde encuadre y catálogo.`);
+buildCityCatalog({ catalog, framing, root });

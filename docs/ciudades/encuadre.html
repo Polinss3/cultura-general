@@ -12,10 +12,11 @@
 <main>
   <h1>Ciudades · Un mismo encuadre</h1>
   <p>Base irregular compartida, misma anchura y misma línea inferior al cambiar de ciudad.</p>
+  <p><a href="catalogo.html">Listado completo de destinos y próximas tandas</a></p>
   <nav class="controls" id="cities" aria-label="Elegir ciudad"></nav>
   <div class="controls" aria-label="Presentación">
     <button id="aligned" aria-pressed="true">Vista alineada</button>
-    <button id="original" aria-pressed="false">Piloto original</button>
+    <button id="original" aria-pressed="false">Fuente original</button>
     <button id="guides" aria-pressed="true">Ocultar guías</button>
   </div>
   <section class="panel">
@@ -44,7 +45,7 @@
   "measurement": {
     "method": "Warm-sandstone RGB edge gradients near lateral extrema and maximum lower boundary gradient within 70 px of image center; registration anchors checked visually.",
     "sourcePixels": 1254,
-    "sourceBaselineSpread": 0,
+    "sourceBaselineSpread": 1,
     "edgeToleranceSourcePixels": 2
   },
   "images": {
@@ -131,6 +132,62 @@
         "width": 0.8859209419680403,
         "height": 0.8859209419680403
       }
+    },
+    "venecia": {
+      "file": "normalizadas/venecia-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.1857046979865773,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "amsterdam": {
+      "file": "normalizadas/amsterdam-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "londres": {
+      "file": "normalizadas/londres-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1223,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.05670588235294122,
+        "top": 0.1851764705882354,
+        "width": 0.8851764705882352,
+        "height": 0.8851764705882352
+      }
+    },
+    "berlin": {
+      "file": "normalizadas/berlin-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1223,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.05670588235294122,
+        "top": 0.1851764705882354,
+        "width": 0.8851764705882352,
+        "height": 0.8851764705882352
+      }
     }
   }
 };
@@ -140,7 +197,11 @@
   "roma": "Roma",
   "paris": "París",
   "nueva-york": "Nueva York",
-  "tokio": "Tokio"
+  "tokio": "Tokio",
+  "venecia": "Venecia",
+  "amsterdam": "Ámsterdam",
+  "londres": "Londres",
+  "berlin": "Berlín"
 };
   const originals = {
   "madrid": "piloto/madrid-v1.png",
@@ -148,9 +209,14 @@
   "roma": "piloto/roma-v1.png",
   "paris": "piloto/paris-v1.png",
   "nueva-york": "piloto/nueva-york-v1.png",
-  "tokio": "piloto/tokio-v1.png"
+  "tokio": "piloto/tokio-v1.png",
+  "venecia": "normalizadas/venecia-v1.png",
+  "amsterdam": "normalizadas/amsterdam-v1.png",
+  "londres": "normalizadas/londres-v1.png",
+  "berlin": "normalizadas/berlin-v1.png"
 };
-  let selected=Object.keys(labels)[0], mode='aligned', guides=true;
+  let selected=new URLSearchParams(location.search).get('ciudad'), mode='aligned', guides=true;
+  if(!labels[selected]) selected=Object.keys(labels)[0];
   const cityButtons=document.getElementById('cities');
   function populate(stage,id){
     stage.replaceChildren();

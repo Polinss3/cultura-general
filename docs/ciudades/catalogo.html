@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ciudades · Catálogo y producción</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f8f5ef;color:#292c39;font:16px/1.5 system-ui,sans-serif}main{max-width:1200px;margin:auto;padding:28px 20px}h1{font-size:clamp(26px,5vw,38px);line-height:1.2}a{color:#303f78}p{max-width:950px}.summary,.queue{padding:18px;background:white;border:1px solid #e6ded1;border-radius:14px;margin:18px 0}.controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}input,select{max-width:100%;font:inherit;padding:10px;border:1px solid #b9b2a9;border-radius:8px;background:white;color:inherit}input{flex:1;min-width:190px}.table{overflow:auto;border:1px solid #e6ded1;border-radius:12px;background:white}table{border-collapse:collapse;width:100%;min-width:760px}th,td{text-align:left;padding:12px;border-bottom:1px solid #eee7df;vertical-align:top}th{background:#ede8df}td:first-child{font-weight:650;min-width:170px}td:last-child{font-size:14px;max-width:410px}small{display:block;font-weight:400;color:#666}tr[hidden]{display:none}#count{font-size:14px;color:#65646b}label{display:flex;gap:6px;align-items:center}footer{margin:24px 0;color:#65646b;font-size:14px}</style></head>
+<body><main><p><a href="encuadre.html">← Volver al encuadre común</a></p><h1>Catálogo y cola de Ciudades</h1>
+<div class="summary"><strong>235 destinos: 234 ciudades y 1 lugar histórico. 10 dioramas con imagen y 225 pendientes.</strong><p>Una colección abierta, sin máximo fijado. Las imágenes se producen en tandas de cuatro sobre la misma base. Tener una imagen no implica estar aprobado ni integrado en el juego.</p></div>
+<div class="queue"><strong>Próximas tandas</strong><p>Dublín <small style="display:inline">(tanda 3)</small> · Edimburgo <small style="display:inline">(tanda 3)</small> · Moscú <small style="display:inline">(tanda 3)</small> · San Petersburgo <small style="display:inline">(tanda 3)</small> · Hong Kong <small style="display:inline">(tanda 4)</small> · Sídney <small style="display:inline">(tanda 4)</small> · Washington D. C. <small style="display:inline">(tanda 4)</small> · Ciudad de México <small style="display:inline">(tanda 4)</small> · El Cairo <small style="display:inline">(tanda 5)</small> · Buenos Aires <small style="display:inline">(tanda 5)</small> · Machu Picchu <small style="display:inline">(tanda 5)</small> · Lisboa <small style="display:inline">(tanda 5)</small></p></div>
+<p>Machu Picchu está incluido como lugar histórico, con su propio nombre como respuesta. Los destinos sin hitos definidos se investigarán antes de generarlos.</p>
+<div class="controls"><input id="search" type="search" aria-label="Buscar destino" placeholder="Buscar ciudad o monumento"><label>Región <select id="region"><option value="">Todas</option><option value="europa">Europa</option><option value="america">América</option><option value="asia">Asia</option><option value="africa">África</option><option value="oceania">Oceanía</option></select></label><label>Estado <select id="state"><option value="">Todos</option><option value="image">Con imagen</option><option value="pending">Pendientes</option></select></label></div>
+<p id="count" aria-live="polite"></p><div class="table"><table><thead><tr><th>Destino</th><th>Región</th><th>Estado</th><th>Tanda</th><th>Hitos propuestos</th></tr></thead><tbody><tr data-region="europa" data-state="image"><td><a href="encuadre.html?ciudad=madrid">Madrid</a></td><td>Europa</td><td>Con imagen · por revisar</td><td>1</td><td>Oso y madroño · Puerta del Sol y Real Casa de Correos · Cuatro Torres · Estación de Atocha · Puerta de Alcalá</td></tr>
+<tr data-region="europa" data-state="image"><td><a href="encuadre.html?ciudad=barcelona">Barcelona</a></td><td>Europa</td><td>Con imagen · por revisar</td><td>1</td><td>Sagrada Familia · Park Güell · Casa Batlló · Torre Glòries · Arco de Triunfo</td></tr>
+<tr data-region="europa" data-state="image"><td><a href="encuadre.html?ciudad=roma">Roma</a></td><td>Europa</td><td>Con imagen · por revisar</td><td>1</td><td>Coliseo · Panteón · Fontana di Trevi · Foro Romano · Castel Sant&#39;Angelo</td></tr>
+<tr data-region="europa" data-state="image"><td><a href="encuadre.html?ciudad=paris">París</a></td><td>Europa</td><td>Con imagen · por revisar</td><td>1</td><td>Torre Eiffel · Arco de Triunfo · Louvre y pirámide · Notre-Dame · Sacré-Cœur</td></tr>
+<tr data-region="america" data-state="image"><td><a href="encuadre.html?ciudad=nueva-york">Nueva York</a></td><td>América</td><td>Con imagen · por revisar</td><td>1</td><td>Estatua de la Libertad · Central Park · Empire State Building · Chrysler Building · Puente de Brooklyn · Grand Central</td></tr>
+<tr data-region="asia" data-state="image"><td><a href="encuadre.html?ciudad=tokio">Tokio</a></td><td>Asia</td><td>Con imagen · por revisar</td><td>1</td><td>Tokyo Tower · Tokyo Skytree · Sensō-ji y Kaminarimon · Cruce de Shibuya · Palacio Imperial</td></tr>
+<tr data-region="europa" data-state="image"><td><a href="encuadre.html?ciudad=venecia">Venecia</a></td><td>Europa</td><td>Con imagen · por revisar</td><td>2</td><td>Basílica de San Marcos · Campanile de San Marcos · Palacio Ducal · Puente de Rialto · Santa Maria della Salute · Gran Canal</td></tr>
+<tr data-region="europa" data-state="image"><td><a href="encuadre.html?ciudad=amsterdam">Ámsterdam</a></td><td>Europa</td><td>Con imagen · por revisar</td><td>2</td><td>Canales y casas de hastiales · Rijksmuseum · Palacio Real · Westerkerk · Puente de arcos sobre el canal</td></tr>
+<tr data-region="europa" data-state="image"><td><a href="encuadre.html?ciudad=londres">Londres</a></td><td>Europa</td><td>Con imagen · por revisar</td><td>2</td><td>Big Ben y Palacio de Westminster · Tower Bridge · London Eye · Catedral de San Pablo · The Shard · Torre de Londres (elemento adicional del concepto)</td></tr>
+<tr data-region="europa" data-state="image"><td><a href="encuadre.html?ciudad=berlin">Berlín</a></td><td>Europa</td><td>Con imagen · por revisar</td><td>2</td><td>Puerta de Brandeburgo · Reichstag y cúpula de vidrio · Fernsehturm · Catedral de Berlín · Altes Museum y Spree</td></tr>
+<tr data-region="europa" data-state="pending"><td>Dublín</td><td>Europa</td><td>Por definir hitos</td><td>3</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Edimburgo</td><td>Europa</td><td>Por definir hitos</td><td>3</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Moscú</td><td>Europa</td><td>Por definir hitos</td><td>3</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>San Petersburgo</td><td>Europa</td><td>Por definir hitos</td><td>3</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Hong Kong</td><td>Asia</td><td>Pendiente de imagen</td><td>4</td><td>Bank of China Tower · International Commerce Centre · Two International Finance Centre · Victoria Harbour · Star Ferry</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Sídney</td><td>Oceanía</td><td>Pendiente de imagen</td><td>4</td><td>Ópera de Sídney · Harbour Bridge · Sydney Tower · Royal Botanic Garden · The Rocks</td></tr>
+<tr data-region="america" data-state="pending"><td>Washington D. C.</td><td>América</td><td>Pendiente de imagen</td><td>4</td><td>Capitolio · Casa Blanca · Monumento a Washington · Lincoln Memorial · National Mall</td></tr>
+<tr data-region="america" data-state="pending"><td>Ciudad de México</td><td>América</td><td>Pendiente de imagen</td><td>4</td><td>Ángel de la Independencia · Palacio de Bellas Artes · Catedral Metropolitana · Zócalo · Monumento a la Revolución</td></tr>
+<tr data-region="africa" data-state="pending"><td>El Cairo</td><td>África</td><td>Pendiente de imagen</td><td>5</td><td>Ciudadela de Saladino · Mezquita de Muhammad Alí · Torre de El Cairo · Nilo · Museo Egipcio</td></tr>
+<tr data-region="america" data-state="pending"><td>Buenos Aires</td><td>América</td><td>Pendiente de imagen</td><td>5</td><td>Obelisco · Casa Rosada · Teatro Colón · Caminito · Puente de la Mujer</td></tr>
+<tr data-region="america" data-state="pending"><td>Machu Picchu<small>Lugar histórico</small></td><td>América</td><td>Pendiente de imagen</td><td>5</td><td>Terrazas agrícolas · Recintos de piedra · Plaza principal · Huayna Picchu al fondo</td></tr>
+<tr data-region="europa" data-state="pending"><td>Lisboa</td><td>Europa</td><td>Pendiente de imagen</td><td>5</td><td>Torre de Belém · Monasterio de los Jerónimos · Puente 25 de Abril · Castillo de São Jorge · Tranvía y calle de Alfama</td></tr>
+<tr data-region="europa" data-state="pending"><td>Viena</td><td>Europa</td><td>Pendiente de imagen</td><td>6</td><td>Catedral de San Esteban · Schönbrunn · Hofburg · Belvedere · Noria del Prater</td></tr>
+<tr data-region="america" data-state="pending"><td>San Francisco</td><td>América</td><td>Pendiente de imagen</td><td>6</td><td>Golden Gate · Transamerica Pyramid · Painted Ladies · Coit Tower · Tranvía y calles en pendiente</td></tr>
+<tr data-region="asia" data-state="pending"><td>Singapur</td><td>Asia</td><td>Pendiente de imagen</td><td>6</td><td>Marina Bay Sands · Supertrees de Gardens by the Bay · Merlion · ArtScience Museum · Esplanade</td></tr>
+<tr data-region="africa" data-state="pending"><td>Marrakech</td><td>África</td><td>Pendiente de imagen</td><td>6</td><td>Mezquita Kutubía · Jemaa el-Fna · Palacio de la Bahía · Murallas y Bab Agnaou · Jardín Majorelle</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Melbourne</td><td>Oceanía</td><td>Pendiente de imagen</td><td>7</td><td>Flinders Street Station · Federation Square · Royal Exhibition Building · Eureka Tower · Tranvía</td></tr>
+<tr data-region="europa" data-state="pending"><td>Praga</td><td>Europa</td><td>Pendiente de imagen</td><td>7</td><td>Puente de Carlos · Castillo de Praga · Catedral de San Vito · Reloj Astronómico · Iglesia de Týn</td></tr>
+<tr data-region="america" data-state="pending"><td>Los Ángeles</td><td>América</td><td>Pendiente de imagen</td><td>7</td><td>Observatorio Griffith · Walt Disney Concert Hall · Ayuntamiento · Hollywood Bowl · Santa Monica Pier (revisar alcance metropolitano)</td></tr>
+<tr data-region="asia" data-state="pending"><td>Pekín</td><td>Asia</td><td>Pendiente de imagen</td><td>7</td><td>Ciudad Prohibida · Templo del Cielo · Puerta de Tiananmén · Estadio Nido de Pájaro · Palacio de Verano</td></tr>
+<tr data-region="africa" data-state="pending"><td>Ciudad del Cabo</td><td>África</td><td>Pendiente de imagen</td><td>8</td><td>Table Mountain · V&amp;A Waterfront · Bo-Kaap · Cape Town Stadium · Castillo de Buena Esperanza</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Auckland</td><td>Oceanía</td><td>Pendiente de imagen</td><td>8</td><td>Sky Tower · Auckland Harbour Bridge · Auckland War Memorial Museum · Viaduct Harbour · One Tree Hill</td></tr>
+<tr data-region="europa" data-state="pending"><td>Atenas</td><td>Europa</td><td>Pendiente de imagen</td><td>8</td><td>Partenón · Erecteion · Templo de Zeus Olímpico · Estadio Panathinaikó · Plaza Sintagma</td></tr>
+<tr data-region="america" data-state="pending"><td>Chicago</td><td>América</td><td>Pendiente de imagen</td><td>8</td><td>Willis Tower · Cloud Gate · John Hancock Center · Wrigley Building · Río Chicago y puentes</td></tr>
+<tr data-region="asia" data-state="pending"><td>Shanghái</td><td>Asia</td><td>Pendiente de imagen</td><td>9</td><td>Torre Perla Oriental · Shanghai Tower · Shanghai World Financial Center · Bund · Jardín Yuyuan</td></tr>
+<tr data-region="africa" data-state="pending"><td>Nairobi</td><td>África</td><td>Pendiente de imagen</td><td>9</td><td>Kenyatta International Convention Centre · Times Tower · Uhuru Park · Jamia Mosque · Nairobi Railway Museum</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Wellington</td><td>Oceanía</td><td>Pendiente de imagen</td><td>9</td><td>Beehive y Parlamento · Wellington Cable Car · Te Papa · Old St Paul&#39;s · Waterfront</td></tr>
+<tr data-region="europa" data-state="pending"><td>Estambul</td><td>Europa</td><td>Pendiente de imagen</td><td>9</td><td>Santa Sofía · Mezquita Azul · Torre de Gálata · Palacio Topkapi · Bósforo</td></tr>
+<tr data-region="america" data-state="pending"><td>Río de Janeiro</td><td>América</td><td>Pendiente de imagen</td><td>10</td><td>Cristo Redentor · Pan de Azúcar · Copacabana y su paseo · Maracaná · Arcos de Lapa</td></tr>
+<tr data-region="asia" data-state="pending"><td>Seúl</td><td>Asia</td><td>Pendiente de imagen</td><td>10</td><td>Gyeongbokgung · N Seoul Tower · Lotte World Tower · Dongdaemun Design Plaza · Bukchon Hanok Village</td></tr>
+<tr data-region="africa" data-state="pending"><td>Túnez</td><td>África</td><td>Pendiente de imagen</td><td>10</td><td>Mezquita Zitouna · Medina · Bab el Bhar · Catedral de San Vicente de Paúl · Avenida Habib Bourguiba</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Brisbane</td><td>Oceanía</td><td>Por definir hitos</td><td>10</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Budapest</td><td>Europa</td><td>Pendiente de imagen</td><td>11</td><td>Parlamento · Puente de las Cadenas · Castillo de Buda · Bastión de los Pescadores · Basílica de San Esteban</td></tr>
+<tr data-region="america" data-state="pending"><td>Toronto</td><td>América</td><td>Pendiente de imagen</td><td>11</td><td>CN Tower · Rogers Centre · Nathan Phillips Square y Ayuntamiento · Royal Ontario Museum · Casa Loma</td></tr>
+<tr data-region="asia" data-state="pending"><td>Bangkok</td><td>Asia</td><td>Pendiente de imagen</td><td>11</td><td>Gran Palacio · Wat Arun · Wat Phra Kaew · Giant Swing · Río Chao Phraya</td></tr>
+<tr data-region="africa" data-state="pending"><td>Dakar</td><td>África</td><td>Pendiente de imagen</td><td>11</td><td>Monumento al Renacimiento Africano · Gran Mezquita · Faro de Les Mamelles · Museo de las Civilizaciones Negras · Isla de Gorée</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Perth</td><td>Oceanía</td><td>Por definir hitos</td><td>12</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Florencia</td><td>Europa</td><td>Pendiente de imagen</td><td>12</td><td>Duomo y cúpula de Brunelleschi · Ponte Vecchio · Palazzo Vecchio · Campanile de Giotto · Santa Croce</td></tr>
+<tr data-region="america" data-state="pending"><td>La Habana</td><td>América</td><td>Pendiente de imagen</td><td>12</td><td>Capitolio · Malecón · Castillo del Morro · Catedral · Gran Teatro</td></tr>
+<tr data-region="asia" data-state="pending"><td>Dubái</td><td>Asia</td><td>Pendiente de imagen</td><td>12</td><td>Burj Khalifa · Burj Al Arab · Dubai Frame · Museum of the Future · Palm Jumeirah</td></tr>
+<tr data-region="africa" data-state="pending"><td>Casablanca</td><td>África</td><td>Por definir hitos</td><td>13</td><td>Hitos por investigar</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Adelaida</td><td>Oceanía</td><td>Por definir hitos</td><td>13</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Zúrich</td><td>Europa</td><td>Pendiente de imagen</td><td>13</td><td>Grossmünster · Fraumünster · Iglesia de San Pedro · Río Limmat · Casco histórico y tranvía</td></tr>
+<tr data-region="america" data-state="pending"><td>Boston</td><td>América</td><td>Por definir hitos</td><td>13</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Delhi</td><td>Asia</td><td>Pendiente de imagen</td><td>14</td><td>Fuerte Rojo · Qutub Minar · Templo del Loto · India Gate · Jama Masjid</td></tr>
+<tr data-region="africa" data-state="pending"><td>Rabat</td><td>África</td><td>Por definir hitos</td><td>14</td><td>Hitos por investigar</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Canberra</td><td>Oceanía</td><td>Por definir hitos</td><td>14</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Estocolmo</td><td>Europa</td><td>Pendiente de imagen</td><td>14</td><td>Ayuntamiento · Palacio Real · Gamla Stan · Riddarholmskyrkan · Museo Vasa</td></tr>
+<tr data-region="america" data-state="pending"><td>Miami</td><td>América</td><td>Por definir hitos</td><td>15</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Bombay</td><td>Asia</td><td>Pendiente de imagen</td><td>15</td><td>Gateway of India · Chhatrapati Shivaji Terminus · Taj Mahal Palace · Bandra-Worli Sea Link · Marine Drive</td></tr>
+<tr data-region="africa" data-state="pending"><td>Fez</td><td>África</td><td>Por definir hitos</td><td>15</td><td>Hitos por investigar</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Christchurch</td><td>Oceanía</td><td>Por definir hitos</td><td>15</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Copenhague</td><td>Europa</td><td>Pendiente de imagen</td><td>16</td><td>Nyhavn · La Sirenita · Rosenborg · Amalienborg · Iglesia de Nuestro Salvador</td></tr>
+<tr data-region="america" data-state="pending"><td>Las Vegas</td><td>América</td><td>Por definir hitos</td><td>16</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Kioto</td><td>Asia</td><td>Por definir hitos</td><td>16</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Chefchaouen</td><td>África</td><td>Por definir hitos</td><td>16</td><td>Hitos por investigar</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Queenstown</td><td>Oceanía</td><td>Por definir hitos</td><td>17</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Sevilla</td><td>Europa</td><td>Por definir hitos</td><td>17</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Nueva Orleans</td><td>América</td><td>Por definir hitos</td><td>17</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Osaka</td><td>Asia</td><td>Por definir hitos</td><td>17</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Argel</td><td>África</td><td>Por definir hitos</td><td>18</td><td>Hitos por investigar</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Suva</td><td>Oceanía</td><td>Por definir hitos</td><td>18</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Valencia</td><td>Europa</td><td>Por definir hitos</td><td>18</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Seattle</td><td>América</td><td>Por definir hitos</td><td>18</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Hiroshima</td><td>Asia</td><td>Por definir hitos</td><td>19</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Alejandría</td><td>África</td><td>Por definir hitos</td><td>19</td><td>Hitos por investigar</td></tr>
+<tr data-region="oceania" data-state="pending"><td>Papeete</td><td>Oceanía</td><td>Por definir hitos</td><td>19</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Granada</td><td>Europa</td><td>Por definir hitos</td><td>19</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Filadelfia</td><td>América</td><td>Por definir hitos</td><td>20</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Nara</td><td>Asia</td><td>Por definir hitos</td><td>20</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Luxor</td><td>África</td><td>Por definir hitos</td><td>20</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Córdoba</td><td>Europa</td><td>Por definir hitos</td><td>20</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>San Diego</td><td>América</td><td>Por definir hitos</td><td>21</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Yokohama</td><td>Asia</td><td>Por definir hitos</td><td>21</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Asuán</td><td>África</td><td>Por definir hitos</td><td>21</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Bilbao</td><td>Europa</td><td>Por definir hitos</td><td>21</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Honolulu</td><td>América</td><td>Por definir hitos</td><td>22</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Nagasaki</td><td>Asia</td><td>Por definir hitos</td><td>22</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Guiza</td><td>África</td><td>Pendiente de imagen</td><td>22</td><td>Pirámide de Keops · Pirámide de Kefrén · Pirámide de Micerino · Gran Esfinge</td></tr>
+<tr data-region="europa" data-state="pending"><td>Santiago de Compostela</td><td>Europa</td><td>Por definir hitos</td><td>22</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Atlanta</td><td>América</td><td>Por definir hitos</td><td>23</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Macao</td><td>Asia</td><td>Por definir hitos</td><td>23</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Johannesburgo</td><td>África</td><td>Por definir hitos</td><td>23</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Málaga</td><td>Europa</td><td>Por definir hitos</td><td>23</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Houston</td><td>América</td><td>Por definir hitos</td><td>24</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Xi’an</td><td>Asia</td><td>Por definir hitos</td><td>24</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Durban</td><td>África</td><td>Por definir hitos</td><td>24</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Toledo</td><td>Europa</td><td>Por definir hitos</td><td>24</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>San Antonio</td><td>América</td><td>Por definir hitos</td><td>25</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Chengdú</td><td>Asia</td><td>Por definir hitos</td><td>25</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Adís Abeba</td><td>África</td><td>Por definir hitos</td><td>25</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Segovia</td><td>Europa</td><td>Por definir hitos</td><td>25</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Montreal</td><td>América</td><td>Por definir hitos</td><td>26</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Chongqing</td><td>Asia</td><td>Por definir hitos</td><td>26</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Lagos</td><td>África</td><td>Por definir hitos</td><td>26</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Zaragoza</td><td>Europa</td><td>Por definir hitos</td><td>26</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Quebec</td><td>América</td><td>Por definir hitos</td><td>27</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Guilin</td><td>Asia</td><td>Por definir hitos</td><td>27</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Acra</td><td>África</td><td>Por definir hitos</td><td>27</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>San Sebastián</td><td>Europa</td><td>Por definir hitos</td><td>27</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Vancouver</td><td>América</td><td>Por definir hitos</td><td>28</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Cantón</td><td>Asia</td><td>Por definir hitos</td><td>28</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Abiyán</td><td>África</td><td>Por definir hitos</td><td>28</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Salamanca</td><td>Europa</td><td>Por definir hitos</td><td>28</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Ottawa</td><td>América</td><td>Por definir hitos</td><td>29</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Hangzhou</td><td>Asia</td><td>Por definir hitos</td><td>29</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Windhoek</td><td>África</td><td>Por definir hitos</td><td>29</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Manchester</td><td>Europa</td><td>Por definir hitos</td><td>29</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Guadalajara</td><td>América</td><td>Por definir hitos</td><td>30</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Suzhou</td><td>Asia</td><td>Por definir hitos</td><td>30</td><td>Hitos por investigar</td></tr>
+<tr data-region="africa" data-state="pending"><td>Port Louis</td><td>África</td><td>Por definir hitos</td><td>30</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Liverpool</td><td>Europa</td><td>Por definir hitos</td><td>30</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Puebla</td><td>América</td><td>Por definir hitos</td><td>31</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Taipéi</td><td>Asia</td><td>Por definir hitos</td><td>31</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Oxford</td><td>Europa</td><td>Por definir hitos</td><td>31</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Oaxaca</td><td>América</td><td>Por definir hitos</td><td>31</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Busan</td><td>Asia</td><td>Por definir hitos</td><td>32</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Cambridge</td><td>Europa</td><td>Por definir hitos</td><td>32</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Guanajuato</td><td>América</td><td>Por definir hitos</td><td>32</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Hanói</td><td>Asia</td><td>Por definir hitos</td><td>32</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Bath</td><td>Europa</td><td>Por definir hitos</td><td>33</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Mérida</td><td>América</td><td>Por definir hitos</td><td>33</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Ciudad Ho Chi Minh</td><td>Asia</td><td>Por definir hitos</td><td>33</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>York</td><td>Europa</td><td>Por definir hitos</td><td>33</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Bogotá</td><td>América</td><td>Por definir hitos</td><td>34</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Hoi An</td><td>Asia</td><td>Por definir hitos</td><td>34</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Glasgow</td><td>Europa</td><td>Por definir hitos</td><td>34</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Cartagena de Indias</td><td>América</td><td>Por definir hitos</td><td>34</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Siem Reap</td><td>Asia</td><td>Por definir hitos</td><td>35</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Belfast</td><td>Europa</td><td>Por definir hitos</td><td>35</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Medellín</td><td>América</td><td>Por definir hitos</td><td>35</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Nom Pen</td><td>Asia</td><td>Por definir hitos</td><td>35</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Oporto</td><td>Europa</td><td>Por definir hitos</td><td>36</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Lima</td><td>América</td><td>Por definir hitos</td><td>36</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Kuala Lumpur</td><td>Asia</td><td>Por definir hitos</td><td>36</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Bruselas</td><td>Europa</td><td>Por definir hitos</td><td>36</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Cusco</td><td>América</td><td>Por definir hitos</td><td>37</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>George Town</td><td>Asia</td><td>Por definir hitos</td><td>37</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Brujas</td><td>Europa</td><td>Por definir hitos</td><td>37</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Arequipa</td><td>América</td><td>Por definir hitos</td><td>37</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Yakarta</td><td>Asia</td><td>Por definir hitos</td><td>38</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Gante</td><td>Europa</td><td>Por definir hitos</td><td>38</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Quito</td><td>América</td><td>Por definir hitos</td><td>38</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Yogyakarta</td><td>Asia</td><td>Por definir hitos</td><td>38</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Róterdam</td><td>Europa</td><td>Por definir hitos</td><td>39</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>La Paz</td><td>América</td><td>Por definir hitos</td><td>39</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Manila</td><td>Asia</td><td>Por definir hitos</td><td>39</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>La Haya</td><td>Europa</td><td>Por definir hitos</td><td>39</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Sucre</td><td>América</td><td>Por definir hitos</td><td>40</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Katmandú</td><td>Asia</td><td>Por definir hitos</td><td>40</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Lyon</td><td>Europa</td><td>Por definir hitos</td><td>40</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Santiago de Chile</td><td>América</td><td>Por definir hitos</td><td>40</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Agra</td><td>Asia</td><td>Por definir hitos</td><td>41</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Marsella</td><td>Europa</td><td>Por definir hitos</td><td>41</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Valparaíso</td><td>América</td><td>Por definir hitos</td><td>41</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Jaipur</td><td>Asia</td><td>Por definir hitos</td><td>41</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Niza</td><td>Europa</td><td>Por definir hitos</td><td>42</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Montevideo</td><td>América</td><td>Por definir hitos</td><td>42</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Varanasi</td><td>Asia</td><td>Por definir hitos</td><td>42</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Burdeos</td><td>Europa</td><td>Por definir hitos</td><td>42</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Brasilia</td><td>América</td><td>Por definir hitos</td><td>43</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Calcuta</td><td>Asia</td><td>Por definir hitos</td><td>43</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Estrasburgo</td><td>Europa</td><td>Por definir hitos</td><td>43</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>São Paulo</td><td>América</td><td>Por definir hitos</td><td>43</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Amritsar</td><td>Asia</td><td>Por definir hitos</td><td>44</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Aviñón</td><td>Europa</td><td>Por definir hitos</td><td>44</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Salvador de Bahía</td><td>América</td><td>Por definir hitos</td><td>44</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Abu Dabi</td><td>Asia</td><td>Por definir hitos</td><td>44</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Milán</td><td>Europa</td><td>Por definir hitos</td><td>45</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Recife</td><td>América</td><td>Por definir hitos</td><td>45</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Doha</td><td>Asia</td><td>Por definir hitos</td><td>45</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Nápoles</td><td>Europa</td><td>Por definir hitos</td><td>45</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Ciudad de Panamá</td><td>América</td><td>Por definir hitos</td><td>46</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Mascate</td><td>Asia</td><td>Por definir hitos</td><td>46</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Pisa</td><td>Europa</td><td>Por definir hitos</td><td>46</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Antigua Guatemala</td><td>América</td><td>Por definir hitos</td><td>46</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Riad</td><td>Asia</td><td>Por definir hitos</td><td>47</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Verona</td><td>Europa</td><td>Por definir hitos</td><td>47</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>San Juan</td><td>América</td><td>Por definir hitos</td><td>47</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Yeda</td><td>Asia</td><td>Por definir hitos</td><td>47</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Turín</td><td>Europa</td><td>Por definir hitos</td><td>48</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Santo Domingo</td><td>América</td><td>Por definir hitos</td><td>48</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Amán</td><td>Asia</td><td>Por definir hitos</td><td>48</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Bolonia</td><td>Europa</td><td>Por definir hitos</td><td>48</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>San José</td><td>América</td><td>Por definir hitos</td><td>49</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Beirut</td><td>Asia</td><td>Por definir hitos</td><td>49</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Palermo</td><td>Europa</td><td>Por definir hitos</td><td>49</td><td>Hitos por investigar</td></tr>
+<tr data-region="america" data-state="pending"><td>Kingston</td><td>América</td><td>Por definir hitos</td><td>49</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Jerusalén</td><td>Asia</td><td>Por definir hitos</td><td>50</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Múnich</td><td>Europa</td><td>Por definir hitos</td><td>50</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Tel Aviv</td><td>Asia</td><td>Por definir hitos</td><td>50</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Hamburgo</td><td>Europa</td><td>Por definir hitos</td><td>50</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Samarcanda</td><td>Asia</td><td>Por definir hitos</td><td>51</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Colonia</td><td>Europa</td><td>Por definir hitos</td><td>51</td><td>Hitos por investigar</td></tr>
+<tr data-region="asia" data-state="pending"><td>Bujará</td><td>Asia</td><td>Por definir hitos</td><td>51</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Dresde</td><td>Europa</td><td>Por definir hitos</td><td>51</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Fráncfort</td><td>Europa</td><td>Por definir hitos</td><td>52</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Heidelberg</td><td>Europa</td><td>Por definir hitos</td><td>52</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Ginebra</td><td>Europa</td><td>Por definir hitos</td><td>52</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Lucerna</td><td>Europa</td><td>Por definir hitos</td><td>52</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Berna</td><td>Europa</td><td>Por definir hitos</td><td>53</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Oslo</td><td>Europa</td><td>Por definir hitos</td><td>53</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Bergen</td><td>Europa</td><td>Por definir hitos</td><td>53</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Helsinki</td><td>Europa</td><td>Por definir hitos</td><td>53</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Reikiavik</td><td>Europa</td><td>Por definir hitos</td><td>54</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Tallin</td><td>Europa</td><td>Por definir hitos</td><td>54</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Riga</td><td>Europa</td><td>Por definir hitos</td><td>54</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Vilna</td><td>Europa</td><td>Por definir hitos</td><td>54</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Varsovia</td><td>Europa</td><td>Por definir hitos</td><td>55</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Cracovia</td><td>Europa</td><td>Por definir hitos</td><td>55</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Gdansk</td><td>Europa</td><td>Por definir hitos</td><td>55</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Bucarest</td><td>Europa</td><td>Por definir hitos</td><td>55</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Sofía</td><td>Europa</td><td>Por definir hitos</td><td>56</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Belgrado</td><td>Europa</td><td>Por definir hitos</td><td>56</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Sarajevo</td><td>Europa</td><td>Por definir hitos</td><td>56</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Dubrovnik</td><td>Europa</td><td>Por definir hitos</td><td>56</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Split</td><td>Europa</td><td>Por definir hitos</td><td>57</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Zagreb</td><td>Europa</td><td>Por definir hitos</td><td>57</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Liubliana</td><td>Europa</td><td>Por definir hitos</td><td>57</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Bratislava</td><td>Europa</td><td>Por definir hitos</td><td>57</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Salzburgo</td><td>Europa</td><td>Por definir hitos</td><td>58</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Luxemburgo</td><td>Europa</td><td>Por definir hitos</td><td>58</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Mónaco</td><td>Europa</td><td>Por definir hitos</td><td>58</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>La Valeta</td><td>Europa</td><td>Por definir hitos</td><td>58</td><td>Hitos por investigar</td></tr>
+<tr data-region="europa" data-state="pending"><td>Kyiv</td><td>Europa</td><td>Por definir hitos</td><td>59</td><td>Hitos por investigar</td></tr></tbody></table></div>
+<footer>Listado generado desde el catálogo editorial. <a href="listado-ciudades.md">Versión Markdown</a>. Los dioramas ya disponibles se consultan en el encuadre común.</footer></main>
+<script>
+const search=document.getElementById('search'),region=document.getElementById('region'),state=document.getElementById('state');
+const rows=Array.from(document.querySelectorAll('tbody tr'));
+const normalize=value=>value.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+function filter(){const query=normalize(search.value);let visible=0;for(const row of rows){const match=(!query||normalize(row.textContent).includes(query))&&(!region.value||row.dataset.region===region.value)&&(!state.value||row.dataset.state===state.value);row.hidden=!match;if(match)visible++;}document.getElementById('count').textContent=visible+' de '+rows.length+' destinos';}
+for(const control of [search,region,state])control.addEventListener('input',filter);filter();
+</script></body></html>

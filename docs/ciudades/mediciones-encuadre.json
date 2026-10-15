@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "images": [
     {
       "id": "madrid",
@@ -76,6 +76,58 @@
       "baseRight": 1222,
       "baseBottom": 1041,
       "registeredLeft": 0.08,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "venecia",
+      "file": "normalizadas/venecia-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2208338,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "amsterdam",
+      "file": "normalizadas/amsterdam-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2313233,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "londres",
+      "file": "normalizadas/londres-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2241758,
+      "baseLeft": 33,
+      "baseRight": 1223,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08000000000000004,
+      "registeredRight": 0.9199999999999999,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "berlin",
+      "file": "normalizadas/berlin-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2091228,
+      "baseLeft": 33,
+      "baseRight": 1223,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08000000000000004,
       "registeredRight": 0.9199999999999999,
       "registeredBottom": 0.92
     }
