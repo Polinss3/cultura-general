@@ -32,6 +32,8 @@ Los originales v1 se conservan como referencia. Las versiones v2 están en `norm
 
 ## Producción por lotes
 
+El [encuadre común](encuadre.html) es el visor de referencia del usuario. Debe actualizarse en cada alta o modificación de una ciudad, en el mismo cambio que sus imágenes y datos. Ejecutar `node scripts/build-city-framing-preview.mjs`: incorpora automáticamente al selector y a la cuadrícula todas las ciudades con perfil de encuadre, obtiene sus nombres del catálogo y comprueba que las imágenes existen. No mantener una lista manual de ciudades en el HTML. Si una ciudad aún no tiene imagen anterior, la vista original utiliza su fuente actual sin calibrar.
+
 - Piloto artístico: Madrid, Nueva York, Barcelona, Roma, París y Tokio. Las seis tienen concepto generado, pendiente de revisión editorial y ajuste de encuadre. Son casos distintos de skyline, escultura, arquitectura histórica y parques.
 - Primer catálogo jugable: 24 ciudades de los cinco continentes, a partir de las candidatas de `catalogo-propuesto.json`. No seleccionar por cantidad: aceptar solo imágenes reconocibles y revisadas.
 - Ampliación: 48 candidatas en el manifiesto inicial; después 100 o más si cada nueva ciudad aporta hitos distintivos. No generar todo antes de estabilizar el piloto.

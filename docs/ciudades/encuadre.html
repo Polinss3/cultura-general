@@ -28,7 +28,7 @@
       <p><a href="revision-madrid/index.html">Madrid: antes y después de corregir la base</a></p>
     </aside>
   </section>
-  <section class="grid" id="grid" aria-label="Comparación de las seis ciudades"></section>
+  <section class="grid" id="grid" aria-label="Comparación de ciudades"></section>
   <p class="warning">Vista de revisión. Los nombres y las guías se muestran aquí para comparar; no forman parte de las imágenes de pregunta. Fuentes y coordenadas: <a href="../../constants/cityDioramaFraming.json">calibración compartida</a>. El modo jugable aún no está integrado.</p>
 </main>
 <script>
@@ -134,8 +134,23 @@
     }
   }
 };
-  const labels = {madrid:'Madrid',barcelona:'Barcelona',roma:'Roma',paris:'París','nueva-york':'Nueva York',tokio:'Tokio'};
-  let selected='madrid', mode='aligned', guides=true;
+  const labels = {
+  "madrid": "Madrid",
+  "barcelona": "Barcelona",
+  "roma": "Roma",
+  "paris": "París",
+  "nueva-york": "Nueva York",
+  "tokio": "Tokio"
+};
+  const originals = {
+  "madrid": "piloto/madrid-v1.png",
+  "barcelona": "piloto/barcelona-v1.png",
+  "roma": "piloto/roma-v1.png",
+  "paris": "piloto/paris-v1.png",
+  "nueva-york": "piloto/nueva-york-v1.png",
+  "tokio": "piloto/tokio-v1.png"
+};
+  let selected=Object.keys(labels)[0], mode='aligned', guides=true;
   const cityButtons=document.getElementById('cities');
   function populate(stage,id){
     stage.replaceChildren();
@@ -144,7 +159,7 @@
     const profile=framing.images[id];
     const img=new Image();
     img.alt='Diorama de '+labels[id];
-    img.src=mode==='aligned'?profile.file:'piloto/'+id+'-v1.png';
+    img.src=mode==='aligned'?profile.file:originals[id];
     const layout=mode==='aligned'?profile.normalized:{left:0,top:0,width:1,height:1};
     for(const key of ['left','top','width','height']) img.style[key]=layout[key]*100+'%';
     if(mode==='aligned'){
