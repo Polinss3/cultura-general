@@ -33,7 +33,14 @@ for (const row of rows) {
   if (row._file && compatible.length < 3) throw new Error(`Need three architectural distractors: ${row.id}`);
   if (row._file && !fs.existsSync(row._file)) throw new Error(`Missing artwork: ${row.id}`);
 }
-console.log(`${rows.filter(r => r._file).length} dioramas, ${rows.length} answer names, bilingual and framed.`);
+// Target corrections without republishing unrelated remote rows.
+const selection = process.argv.find(arg => arg.startsWith('--cities='));
+const selectedIds = selection ? new Set(selection.slice('--cities='.length).split(',').filter(Boolean)) : null;
+if (selectedIds && (!selectedIds.size || [...selectedIds].some(id => !rows.some(row => row.id === id)))) {
+  throw new Error('Every --cities id must name a city with architecture metadata.');
+}
+const selectedRows = selectedIds ? rows.filter(row => selectedIds.has(row.id)) : rows;
+console.log(`${selectedRows.filter(r => r._file).length} dioramas, ${selectedRows.length} answer names, bilingual and framed.`);
 const unclassified = catalog.filter(c => c.conceptImage && framing.images[c.id] && !tags.has(c.id));
 if (unclassified.length) console.log(`Add architecture metadata before publishing: ${unclassified.map(c => c.id).join(', ')}`);
 if (!process.argv.includes('--publish')) {
@@ -55,7 +62,7 @@ if (!url || !key) throw new Error('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KE
 const client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'cg-cities-'));
 try {
-  for (const row of rows) {
+  for (const row of selectedRows) {
     if (!row._file) continue;
     const target = path.join(tmp, `${row.id}.webp`);
     // Same square canvas, no cropping or framing changes. ~100–250 KB per city.
@@ -78,7 +85,7 @@ try {
     row.image_url = data.publicUrl;
     console.log(`Artwork ready: ${row.id} (${Math.round(bytes.length / 1024)} KB)`);
   }
-  const payload = rows.map(({ _file, ...row }) => ({ ...row, updated_at: new Date().toISOString() }));
+  const payload = selectedRows.map(({ _file, ...row }) => ({ ...row, updated_at: new Date().toISOString() }));
   const { error } = await client.from('city_catalog').upsert(payload, { onConflict: 'id' });
   if (error) throw new Error(`Catalog publication failed: ${error.message}`);
   console.log(`Published ${payload.length} city rows. The app will refresh on the next visit to Cities.`);

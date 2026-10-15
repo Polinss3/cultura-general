@@ -31,6 +31,19 @@ El modo está integrado en **Retos → Ciudades**, junto a Banderas y Años, en 
 
 El publicador optimiza a WebP de hasta 1024 × 1024, sin recortar ni cambiar proporciones, sube las imágenes, comprueba su disponibilidad y solo después actualiza las filas en una operación. Repetirlo es seguro; se reutilizan los objetos ya existentes. No borra ciudades remotas ajenas al catálogo local. Las imágenes sin metadatos de arquitectura se indican como pendientes y no se publican automáticamente. Publicar un concepto para probarlo en esta rama no equivale a aprobar su fidelidad arquitectónica para lanzamiento.
 
+## Publicar correcciones de ciudades existentes
+
+Usar versiones nuevas de los PNG, conservar los anteriores y recalibrar sus perfiles. Para actualizar únicamente determinadas filas se puede filtrar la publicación; la validación de alternativas sigue usando todo el catálogo:
+
+```sh
+npm run cities:publish -- --cities=abu-dabi,sao-paulo,recife,montevideo,san-juan,santo-domingo,san-jose,la-valeta
+npm run cities:publish -- --publish --cities=abu-dabi,sao-paulo,recife,montevideo,san-juan,santo-domingo,san-jose,la-valeta
+```
+
+La primera orden solo valida. Los ids desconocidos o una selección vacía se rechazan antes de subir archivos. Cada imagen corregida obtiene una nueva URL por hash, por lo que la caché de la versión anterior no sustituye la nueva. La app recoge las URLs al entrar o volver al selector, o al pulsar **Actualizar ciudades**. Las rondas en curso y los dispositivos sin conexión conservan su copia hasta una actualización correcta.
+
+Las ocho correcciones v2 están documentadas en [Revisión editorial](revision-editorial.md), junto con sus fuentes, prompts y comparaciones. La publicación se verificó mediante lectura anónima y descarga de las ocho URLs nuevas: el hash de los bytes servidos coincide con la exportación WebP de cada v2 local, el encuadre coincide y las otras 227 filas permanecen sin cambios. El [registro de publicación](qa-app/correcciones-ocho-publicacion.json) conserva URLs, hashes y fecha de comprobación.
+
 ## Incorporar directamente desde Supabase o una herramienta externa
 
 No es necesario editar código ni los JSON locales para que la app reconozca una nueva ciudad. Subir el recurso a Storage y crear una fila con este contrato:

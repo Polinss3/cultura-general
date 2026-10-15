@@ -1,18 +1,28 @@
 {
   "id": "recife",
   "batch": 45,
+  "revision": 2,
   "tool": "ImageGen integrada",
-  "reference": "normalizadas/base-comun-v2.png",
-  "output": "normalizadas/recife-v1.png",
-  "generatedFile": "exec-c3a721ec-e163-4531-a461-afe17db3b79c.png",
-  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: Recife (BR). Main landmarks: Praça do Marco Zero; Instituto Ricardo Brennand; Puente Maurício de Nassau; Casas de Recife Antigo.  ONLY FOUR compact major landmark groups. Make these distinctive and readable. No more than six low filler houses; avoid dense blocks covering the entire slab. Every object, all terrain, cliffs, water and coastlines must be supported by the existing floor; no ocean bleeding into the blank ivory background. Preserve the exact original base rear tip y400 and bottom y1041.",
+  "reference": "normalizadas/recife-v1.png",
+  "output": "normalizadas/recife-v2.png",
+  "generatedFile": "exec-0dd3089b-c9d1-4884-9140-accb3d54481c.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed 3D-looking city quiz diorama. Input image is the EDIT TARGET. Make only the specified architectural correction. Retain the original 1254x1254 square canvas, exact camera and perspective, object scale, city layout, base outline, floor depth, side notches, rounded peach sandstone wall, its x33..1225 width and bottom about y1041, ivory background, lighting and margins. No moving, enlarging or reshaping the base. Preserve all non-target landmarks. Match original softened miniature bevels, materials, colors and fine detail. No text, labels, flags, logos, watermarks or people. Correct ONLY the Marco Zero circular plaza at the front-left. REMOVE the tall invented obelisk/column standing at the center of the compass rose. The Marco Zero is a FLAT inlaid marker within the large rose-of-the-winds pavement, unobstructed at the center. Keep the colorful compass rose on the ground; make its center a flat small bronze disc, NO text or letters. Off-center near the BACK EDGE of this plaza, add a small bronze BUST on a low rectangular stone pedestal, representing Barao do Rio Branco; it must NOT stand in the center. The plaza center must remain flat. Preserve the bridge, colorful Rua do Bom Jesus buildings, Ricardo Brennand castle, river, trees and all other content unchanged.",
+  "passes": [
+    {
+      "input": "/Users/pablobrasero/.codex/workspaces/cultura-general-ciudades/docs/ciudades/normalizadas/recife-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset: fixed 3D-looking city quiz diorama. Input image is the EDIT TARGET. Make only the specified architectural correction. Retain the original 1254x1254 square canvas, exact camera and perspective, object scale, city layout, base outline, floor depth, side notches, rounded peach sandstone wall, its x33..1225 width and bottom about y1041, ivory background, lighting and margins. No moving, enlarging or reshaping the base. Preserve all non-target landmarks. Match original softened miniature bevels, materials, colors and fine detail. No text, labels, flags, logos, watermarks or people. Correct ONLY the Marco Zero circular plaza at the front-left. REMOVE the tall invented obelisk/column standing at the center of the compass rose. The Marco Zero is a FLAT inlaid marker within the large rose-of-the-winds pavement, unobstructed at the center. Keep the colorful compass rose on the ground; make its center a flat small bronze disc, NO text or letters. Off-center near the BACK EDGE of this plaza, add a small bronze BUST on a low rectangular stone pedestal, representing Barao do Rio Branco; it must NOT stand in the center. The plaza center must remain flat. Preserve the bridge, colorful Rua do Bom Jesus buildings, Ricardo Brennand castle, river, trees and all other content unchanged.",
+      "output": "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-0dd3089b-c9d1-4884-9140-accb3d54481c.png"
+    }
+  ],
   "sources": [
     "https://visit.recife.pe.gov.br/lugar/marco-zero/",
     "https://visite.recife.br/pontos-turisticos-recife/",
     "https://visite.recife.br/marco-zero-recife/",
     "https://visit.recife.pe.gov.br/lugar/parque-das-esculturas-francisco-brennand/",
-    "https://visit.recife.pe.gov.br/novo-letreiro-do-recife-e-instalado-no-marco-zero/"
+    "https://visit.recife.pe.gov.br/novo-letreiro-do-recife-e-instalado-no-marco-zero/",
+    "https://www2.recife.pe.gov.br/noticias/11/01/2013/pcr-realiza-caminhada-cultural-pelo-bairro-do-recife"
   ],
   "galleryCheck": "visually-checked",
-  "editorialStatus": "needs-review"
+  "editorialStatus": "targeted-correction-reviewed",
+  "previousVersionMetadata": "produccion/recife-v1.json"
 }

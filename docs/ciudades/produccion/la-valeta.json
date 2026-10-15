@@ -1,18 +1,30 @@
 {
   "id": "la-valeta",
   "batch": 58,
+  "revision": 2,
   "tool": "ImageGen integrada",
-  "reference": "normalizadas/base-comun-v2.png",
-  "output": "normalizadas/la-valeta-v1.png",
-  "generatedFile": "exec-418c21f8-7d86-439c-9577-2d06efed27aa.png",
-  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity/site: La Valeta (MT). Main landmarks: Concatedral de San Juan; Fort Saint Elmo; Cúpula de los Carmelitas y aguja de San Pablo; Upper Barrakka Gardens.  ONLY FOUR compact major landmark groups. Make these distinctive and readable. No more than six low filler houses; avoid dense blocks covering the entire slab. Every object, all terrain, cliffs, water and coastlines must be supported by the existing floor; no ocean bleeding into the blank ivory background. Preserve the exact original base rear tip y400 and bottom y1041.",
+  "reference": "normalizadas/la-valeta-v1.png",
+  "output": "normalizadas/la-valeta-v2.png",
+  "generatedFile": "exec-07a28e0f-9931-4e74-b53f-7c8308777682.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed 3D-looking city quiz diorama. Input image is the EDIT TARGET. Make only the specified architectural correction. Retain the original 1254x1254 square canvas, exact camera and perspective, object scale, city layout, base outline, floor depth, side notches, rounded peach sandstone wall, its x33..1225 width and bottom about y1041, ivory background, lighting and margins. No moving, enlarging or reshaping the base. Preserve all non-target landmarks. Match original softened miniature bevels, materials, colors and fine detail. No text, labels, flags, logos, watermarks or people. Correct ONLY the LEFT-REAR huge invented Italian cathedral. Replace it with recognizable St John's Co-Cathedral, Valletta: AUSTERE honey-limestone long RECTANGULAR church with restrained Mannerist fortress-like facade, TWO SQUAT SQUARE BELL TOWERS flanking a flat upper parapet, open arched bell apertures, small clock dials on the viewer-right tower, central arched doorway between plain Tuscan/Doric columns, shallow balcony above the doorway. NO large dome anywhere on this church, NO ornate Roman facade, NO tall Baroque domed towers. The remaining FRONT-RIGHT dome belongs to the Basilica of Our Lady of Mount Carmel and the SEPARATE adjacent slender spire belongs to St Paul's Anglican Pro-Cathedral: KEEP that recognisable dome-and-spire group, make sure they read as TWO separate adjacent churches, never attach the spire to St John's. Preserve fort, Barrakka garden arches, all seawater, landscaping, camera, entire base and every margin unchanged.",
+  "passes": [
+    {
+      "input": "/Users/pablobrasero/.codex/workspaces/cultura-general-ciudades/docs/ciudades/normalizadas/la-valeta-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset: fixed 3D-looking city quiz diorama. Input image is the EDIT TARGET. Make only the specified architectural correction. Retain the original 1254x1254 square canvas, exact camera and perspective, object scale, city layout, base outline, floor depth, side notches, rounded peach sandstone wall, its x33..1225 width and bottom about y1041, ivory background, lighting and margins. No moving, enlarging or reshaping the base. Preserve all non-target landmarks. Match original softened miniature bevels, materials, colors and fine detail. No text, labels, flags, logos, watermarks or people. Correct ONLY the LEFT-REAR huge invented Italian cathedral. Replace it with recognizable St John's Co-Cathedral, Valletta: AUSTERE honey-limestone long RECTANGULAR church with restrained Mannerist fortress-like facade, TWO SQUAT SQUARE BELL TOWERS flanking a flat upper parapet, open arched bell apertures, small clock dials on the viewer-right tower, central arched doorway between plain Tuscan/Doric columns, shallow balcony above the doorway. NO large dome anywhere on this church, NO ornate Roman facade, NO tall Baroque domed towers. The remaining FRONT-RIGHT dome belongs to the Basilica of Our Lady of Mount Carmel and the SEPARATE adjacent slender spire belongs to St Paul's Anglican Pro-Cathedral: KEEP that recognisable dome-and-spire group, make sure they read as TWO separate adjacent churches, never attach the spire to St John's. Preserve fort, Barrakka garden arches, all seawater, landscaping, camera, entire base and every margin unchanged.",
+      "output": "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-07a28e0f-9931-4e74-b53f-7c8308777682.png"
+    }
+  ],
   "sources": [
     "https://welcome.mt/places/valletta",
     "https://www.explorevalletta.com/es/areas/st-elmo-lower-valletta",
     "https://www.explorevalletta.com/areas/st-elmo-lower-valletta",
     "https://www.explorevalletta.com/es/areas/republic-street-city-gate",
-    "https://www.explorevalletta.com/es/city/valletta/articles/how-the-knights-of-st-john-built-valletta-in-seven-years"
+    "https://www.explorevalletta.com/es/city/valletta/articles/how-the-knights-of-st-john-built-valletta-in-seven-years",
+    "https://church.mt/photos-restoration-of-st-johns-co-cathedrals-facade-is-now-complete/",
+    "https://www.stpaulspromalta.org/history-heritage/iconicspire/",
+    "https://church.mt/carmelites-decide-to-remain-in-valletta-fgura-and-santa-venera/"
   ],
   "galleryCheck": "visually-checked",
-  "editorialStatus": "needs-review"
+  "editorialStatus": "targeted-correction-reviewed",
+  "previousVersionMetadata": "produccion/la-valeta-v1.json"
 }

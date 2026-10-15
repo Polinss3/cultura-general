@@ -1,18 +1,30 @@
 {
   "id": "san-juan",
   "batch": 47,
+  "revision": 2,
   "tool": "ImageGen integrada",
-  "reference": "normalizadas/base-comun-v2.png",
-  "output": "normalizadas/san-juan-v1.png",
-  "generatedFile": "exec-a4bd7c7e-3604-4f73-b36c-a3ccb6a25b87.png",
-  "prompt": "Use case: precise-object-edit. Fixed city quiz diorama.\nAdd a COMPACT miniature city to this EMPTY BASE. The input sandstone plinth is LOCKED: preserve its exact organic scalloped outline, side notches, width, depth, wall thickness, rounded rim, camera, screen position, ivory background, soft shadow and blank margins. ONE continuous existing plinth only. Never extend land, add platforms, islands or buildings beyond the existing floor. Keep every object and all water well INSIDE that floor; shrink buildings if needed, never enlarge or reshape the base. Prefer FOUR distinct recognizable landmarks, separated and readable, with restrained local buildings and greenery. Fixed orthographic isometric view, refined softened miniature architecture, smooth bevels, fine architectural detail, matte pale stone, muted coral masonry, slate blue glass, sage foliage, warm soft daylight from upper left. Every tower fits comfortably inside the square canvas. No people, lettering, city name, labels, flags, political emblems, logos, weather, watermark, dimensions, guides, frame or second plinth. Collage of landmarks, not an exact map.\n\nBase coordinates on the 1254 square input are locked: left x33, right x1225, rear floor tip y400 and bottom of front wall y1041. Terrain such as hills stands ON the existing slab, and does not move the rear floor boundary. Preserve the source plinth shape and do not add floor behind it.\nCity san-juan. COMPACT three landmark groups only. Small recognizable El Morro coastal fort, small La Fortaleza with blue-white walls, modest San Juan cathedral. Four colorful old town houses. A small turquoise water patch INSIDE front floor, NO coastline outside plinth. Empty clear floor behind all landmarks: rear sandstone tip must remain y400, NOT y300; do not deepen the base. Keep x33..1225 and bottom1041 exactly. Shrink landmark footprints rather than enlarge base. Critical: all objects stand on the supplied empty base as-is. Its back floor tip remains y400 and its front bottom remains y1041 on the 1254-square image, with x33/x1225 side extents. No floor behind or beyond the original silhouette. Shrink landmark groups instead of enlarging that floor. Preserve the entire common sidewall, outline, notches, camera, shadow and background.",
+  "reference": "normalizadas/san-juan-v1.png",
+  "output": "normalizadas/san-juan-v2.png",
+  "generatedFile": "exec-3e33c753-f5ec-4797-8c38-4eacca7c3d2e.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed 3D-looking city quiz diorama. Input image is the EDIT TARGET. Make only the specified architectural correction. Retain the original 1254x1254 square canvas, exact camera and perspective, object scale, city layout, base outline, floor depth, side notches, rounded peach sandstone wall, its x33..1225 width and bottom about y1041, ivory background, lighting and margins. No moving, enlarging or reshaping the base. Preserve all non-target landmarks. Match original softened miniature bevels, materials, colors and fine detail. No text, labels, flags, logos, watermarks or people. Correct ONLY the cathedral building on the RIGHT. Replace the invented ornate Italian twin-tower church with the real Catedral de San Juan Bautista in Old San Juan, Puerto Rico. Its front is a LOW BROAD pale cream/off-white neoclassical colonial facade, three arched dark wooden entrances at ground level, restrained pilasters, horizontal cornice with small statues and a modest CURVED CENTRAL PEDIMENT topped by a cross. NO tall bell towers on the front corners, NO Baroque tower pair. Behind that low facade is a simple long church nave with modest RED-AND-WHITE ribbed domes, the largest dome at the crossing and smaller domes behind; do not turn it into a huge Italian cathedral. Keep the church at its existing right-side location and comparable floor footprint. Preserve El Morro, blue La Fortaleza, the colorful street houses, sea and entire base unchanged.",
+  "passes": [
+    {
+      "input": "/Users/pablobrasero/.codex/workspaces/cultura-general-ciudades/docs/ciudades/normalizadas/san-juan-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset: fixed 3D-looking city quiz diorama. Input image is the EDIT TARGET. Make only the specified architectural correction. Retain the original 1254x1254 square canvas, exact camera and perspective, object scale, city layout, base outline, floor depth, side notches, rounded peach sandstone wall, its x33..1225 width and bottom about y1041, ivory background, lighting and margins. No moving, enlarging or reshaping the base. Preserve all non-target landmarks. Match original softened miniature bevels, materials, colors and fine detail. No text, labels, flags, logos, watermarks or people. Correct ONLY the cathedral building on the RIGHT. Replace the invented ornate Italian twin-tower church with the real Catedral de San Juan Bautista in Old San Juan, Puerto Rico. Its front is a LOW BROAD pale cream/off-white neoclassical colonial facade, three arched dark wooden entrances at ground level, restrained pilasters, horizontal cornice with small statues and a modest CURVED CENTRAL PEDIMENT topped by a cross. NO tall bell towers on the front corners, NO Baroque tower pair. Behind that low facade is a simple long church nave with modest RED-AND-WHITE ribbed domes, the largest dome at the crossing and smaller domes behind; do not turn it into a huge Italian cathedral. Keep the church at its existing right-side location and comparable floor footprint. Preserve El Morro, blue La Fortaleza, the colorful street houses, sea and entire base unchanged.",
+      "output": "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-3e33c753-f5ec-4797-8c38-4eacca7c3d2e.png"
+    }
+  ],
   "sources": [
     "https://www.nps.gov/saju/planyourvisit/index.htm",
     "https://www.nps.gov/saju/planyourvisit/basicinfo.htm",
     "https://www.nps.gov/saju/index.htm",
     "https://home.nps.gov/saju/espanol/index.htm",
-    "https://www.nps.gov/saju/espanol/index.htm"
+    "https://www.nps.gov/saju/espanol/index.htm",
+    "https://www.discoverpuertorico.com/profile/catedral-de-san-juan-bautista/8041",
+    "https://www.catedralsanjuanbautista.org/about-cathedral/la-catedral",
+    "https://catedralsanjuanbautista.org/about-cathedral/galeria"
   ],
   "galleryCheck": "visually-checked",
-  "editorialStatus": "needs-review"
+  "editorialStatus": "targeted-correction-reviewed",
+  "previousVersionMetadata": "produccion/san-juan-v1.json"
 }

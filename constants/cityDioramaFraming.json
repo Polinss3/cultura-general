@@ -2409,15 +2409,15 @@
       }
     },
     "sao-paulo": {
-      "file": "normalizadas/sao-paulo-v1.png",
+      "file": "normalizadas/sao-paulo-v2.png",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "baseLeft": 33,
       "baseRight": 1225,
-      "baseBottom": 1041,
+      "baseBottom": 1042,
       "normalized": {
         "left": 0.056744966442953126,
-        "top": 0.18640939597315442,
+        "top": 0.1857046979865773,
         "width": 0.8836912751677851,
         "height": 0.8836912751677851
       }
@@ -2465,7 +2465,7 @@
       }
     },
     "abu-dabi": {
-      "file": "normalizadas/abu-dabi-v1.png",
+      "file": "normalizadas/abu-dabi-v2.png",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "baseLeft": 33,
@@ -2493,7 +2493,7 @@
       }
     },
     "recife": {
-      "file": "normalizadas/recife-v1.png",
+      "file": "normalizadas/recife-v2.png",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "baseLeft": 33,
@@ -2647,7 +2647,7 @@
       }
     },
     "montevideo": {
-      "file": "normalizadas/montevideo-v1.png",
+      "file": "normalizadas/montevideo-v2.png",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "baseLeft": 33,
@@ -2661,7 +2661,7 @@
       }
     },
     "san-juan": {
-      "file": "normalizadas/san-juan-v1.png",
+      "file": "normalizadas/san-juan-v2.png",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "baseLeft": 33,
@@ -2801,15 +2801,15 @@
       }
     },
     "santo-domingo": {
-      "file": "normalizadas/santo-domingo-v1.png",
+      "file": "normalizadas/santo-domingo-v2.png",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "baseLeft": 33,
       "baseRight": 1225,
-      "baseBottom": 1041,
+      "baseBottom": 1042,
       "normalized": {
         "left": 0.056744966442953126,
-        "top": 0.18640939597315442,
+        "top": 0.1857046979865773,
         "width": 0.8836912751677851,
         "height": 0.8836912751677851
       }
@@ -2843,7 +2843,7 @@
       }
     },
     "san-jose": {
-      "file": "normalizadas/san-jose-v1.png",
+      "file": "normalizadas/san-jose-v2.png",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "baseLeft": 33,
@@ -3277,7 +3277,7 @@
       }
     },
     "la-valeta": {
-      "file": "normalizadas/la-valeta-v1.png",
+      "file": "normalizadas/la-valeta-v2.png",
       "sourceWidth": 1254,
       "sourceHeight": 1254,
       "baseLeft": 33,

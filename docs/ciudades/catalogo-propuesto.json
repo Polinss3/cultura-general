@@ -4926,7 +4926,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 168,
       "batch": 42,
-      "conceptImage": "normalizadas/montevideo-v1.png",
+      "conceptImage": "normalizadas/montevideo-v2.png",
       "originalConceptImage": "normalizadas/montevideo-v1.png",
       "framingProfile": "montevideo",
       "sources": [
@@ -4934,7 +4934,8 @@
         "https://montevideo.gub.uy/areas-tematicas/cultura-y-tiempo-libre/teatro-solis",
         "https://www.montevideo.gub.uy/institucional/dependencias/teatro-solis",
         "https://montevideo.gub.uy/tipo/area-tematica/cultura/teatros-salas-y-centros-culturales",
-        "https://www.gub.uy/ministerio-educacion-cultura/academia-letras/teatro-solis"
+        "https://www.gub.uy/ministerio-educacion-cultura/academia-letras/teatro-solis",
+        "https://www.teatrosolis.org.uy/QUIENES-SOMOS/El-edificio-uc589"
       ]
     },
     {
@@ -5100,7 +5101,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 174,
       "batch": 43,
-      "conceptImage": "normalizadas/sao-paulo-v1.png",
+      "conceptImage": "normalizadas/sao-paulo-v2.png",
       "originalConceptImage": "normalizadas/sao-paulo-v1.png",
       "framingProfile": "sao-paulo",
       "sources": [
@@ -5108,7 +5109,8 @@
         "https://www.prefeitura.sp.gov.br/web/fundacao_theatro_municipal/",
         "https://theatromunicipal.org.br/pagina-inicial-01/",
         "https://www.masp.org.br/en",
-        "https://prefeitura.sp.gov.br/web/cultura/w/museus-casas-hist%C3%B3ricas"
+        "https://prefeitura.sp.gov.br/web/cultura/w/museus-casas-hist%C3%B3ricas",
+        "https://www.teses.usp.br/teses/disponiveis/3/3144/tde-05052025-134128/publico/KarenNiccoliRamirezDISSERT.pdf"
       ]
     },
     {
@@ -5216,7 +5218,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 178,
       "batch": 44,
-      "conceptImage": "normalizadas/abu-dabi-v1.png",
+      "conceptImage": "normalizadas/abu-dabi-v2.png",
       "originalConceptImage": "normalizadas/abu-dabi-v1.png",
       "framingProfile": "abu-dabi",
       "sources": [
@@ -5224,7 +5226,8 @@
         "https://visitabudhabi.ae/En",
         "https://visitabudhabi.ae/en",
         "https://visitabudhabi.ae/en/things-to-do-home",
-        "https://visitabudhabi.ae/en/things-to-do/itineraries/one-day-abu-dhabi-landmark-architecture-tour"
+        "https://visitabudhabi.ae/en/things-to-do/itineraries/one-day-abu-dhabi-landmark-architecture-tour",
+        "https://visitabudhabi.ae/en/things-to-do/culture/landmarks-and-architecture/etihad-towers"
       ]
     },
     {
@@ -5274,7 +5277,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 180,
       "batch": 45,
-      "conceptImage": "normalizadas/recife-v1.png",
+      "conceptImage": "normalizadas/recife-v2.png",
       "originalConceptImage": "normalizadas/recife-v1.png",
       "framingProfile": "recife",
       "sources": [
@@ -5282,7 +5285,8 @@
         "https://visite.recife.br/pontos-turisticos-recife/",
         "https://visite.recife.br/marco-zero-recife/",
         "https://visit.recife.pe.gov.br/lugar/parque-das-esculturas-francisco-brennand/",
-        "https://visit.recife.pe.gov.br/novo-letreiro-do-recife-e-instalado-no-marco-zero/"
+        "https://visit.recife.pe.gov.br/novo-letreiro-do-recife-e-instalado-no-marco-zero/",
+        "https://www2.recife.pe.gov.br/noticias/11/01/2013/pcr-realiza-caminhada-cultural-pelo-bairro-do-recife"
       ]
     },
     {
@@ -5534,7 +5538,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 189,
       "batch": 47,
-      "conceptImage": "normalizadas/san-juan-v1.png",
+      "conceptImage": "normalizadas/san-juan-v2.png",
       "originalConceptImage": "normalizadas/san-juan-v1.png",
       "framingProfile": "san-juan",
       "sources": [
@@ -5542,7 +5546,10 @@
         "https://www.nps.gov/saju/planyourvisit/basicinfo.htm",
         "https://www.nps.gov/saju/index.htm",
         "https://home.nps.gov/saju/espanol/index.htm",
-        "https://www.nps.gov/saju/espanol/index.htm"
+        "https://www.nps.gov/saju/espanol/index.htm",
+        "https://www.discoverpuertorico.com/profile/catedral-de-san-juan-bautista/8041",
+        "https://www.catedralsanjuanbautista.org/about-cathedral/la-catedral",
+        "https://catedralsanjuanbautista.org/about-cathedral/galeria"
       ]
     },
     {
@@ -5621,7 +5628,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 192,
       "batch": 48,
-      "conceptImage": "normalizadas/santo-domingo-v1.png",
+      "conceptImage": "normalizadas/santo-domingo-v2.png",
       "originalConceptImage": "normalizadas/santo-domingo-v1.png",
       "framingProfile": "santo-domingo",
       "sources": [
@@ -5629,7 +5636,11 @@
         "https://es.godominicanrepublic.com/que-hacer/basilica-catedral-primada-de-america",
         "https://www.santodomingotourism.com/santo-domingo/colonial-zone/",
         "https://www.santodomingotourism.com/sight/museums-and-historic-buildings/",
-        "https://www.santodomingotourism.com/sight/"
+        "https://www.santodomingotourism.com/sight/",
+        "https://www.godominicanrepublic.com/things-to-do/primatial-cathedral-basilica-of-america",
+        "https://www.godominicanrepublic.com/destinos/santo-domingo",
+        "https://www.godominicanrepublic.com/things-to-do/museo-faro-a-colon",
+        "https://es.godominicanrepublic.com/que-hacer/museo-alcazar-de-colon"
       ]
     },
     {
@@ -5708,7 +5719,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 195,
       "batch": 49,
-      "conceptImage": "normalizadas/san-jose-v1.png",
+      "conceptImage": "normalizadas/san-jose-v2.png",
       "originalConceptImage": "normalizadas/san-jose-v1.png",
       "framingProfile": "san-jose",
       "sources": [
@@ -5716,7 +5727,12 @@
         "https://teatronacional.go.cr/Visitenos/planee",
         "https://centrohistorico.gob.sv/destinos-turisticos/catedral-metropolitana/",
         "https://centrohistorico.gob.sv/destinos-turisticos/teatro-nacional/",
-        "https://boleteria.teatronacional.go.cr/"
+        "https://boleteria.teatronacional.go.cr/",
+        "https://www.arquisanjose.org/catedralmetropolitana",
+        "https://www.museocostarica.go.cr/museo/arquitectura-bellavista/edificaciones-del-conjunto-arquitectonico/",
+        "https://www.visitcostarica.com/knowing-costa-rica/san-jose",
+        "https://www.museocostarica.go.cr/museo/arquitectura-bellavista/fachada-y-torreones/",
+        "https://www.mep.go.cr/sites/default/files/2025-07/RutaMuroRejas.pdf"
       ]
     },
     {
@@ -6840,7 +6856,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 234,
       "batch": 58,
-      "conceptImage": "normalizadas/la-valeta-v1.png",
+      "conceptImage": "normalizadas/la-valeta-v2.png",
       "originalConceptImage": "normalizadas/la-valeta-v1.png",
       "framingProfile": "la-valeta",
       "sources": [
@@ -6848,7 +6864,10 @@
         "https://www.explorevalletta.com/es/areas/st-elmo-lower-valletta",
         "https://www.explorevalletta.com/areas/st-elmo-lower-valletta",
         "https://www.explorevalletta.com/es/areas/republic-street-city-gate",
-        "https://www.explorevalletta.com/es/city/valletta/articles/how-the-knights-of-st-john-built-valletta-in-seven-years"
+        "https://www.explorevalletta.com/es/city/valletta/articles/how-the-knights-of-st-john-built-valletta-in-seven-years",
+        "https://church.mt/photos-restoration-of-st-johns-co-cathedrals-facade-is-now-complete/",
+        "https://www.stpaulspromalta.org/history-heritage/iconicspire/",
+        "https://church.mt/carmelites-decide-to-remain-in-valletta-fgura-and-santa-venera/"
       ]
     },
     {

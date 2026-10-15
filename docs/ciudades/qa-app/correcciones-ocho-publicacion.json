@@ -1,0 +1,137 @@
+{
+  "checkedAt": "2026-10-15T23:06:21.073Z",
+  "checks": "Anonymous GET; new immutable URL; bytes match optimized local v2; framing matches; 227 unrelated rows unchanged.",
+  "corrected": [
+    {
+      "id": "abu-dabi",
+      "localImage": "normalizadas/abu-dabi-v2.png",
+      "previousUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/abu-dabi/a0788ab75e4c38c78a73.webp",
+      "currentUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/abu-dabi/c54f0ed6010df799fc84.webp",
+      "webpSha256": "c54f0ed6010df799fc84100bc746c91e600ce6782f987fe4bb71690473545ae5",
+      "webpBytes": 121662,
+      "framing": {
+        "top": 0.1857046979865773,
+        "left": 0.056744966442953126,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851,
+        "background": "#fef0d9"
+      },
+      "publishedAt": "2026-10-15T23:04:47.146+00:00"
+    },
+    {
+      "id": "sao-paulo",
+      "localImage": "normalizadas/sao-paulo-v2.png",
+      "previousUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/sao-paulo/faf68ee8c42d470e13d6.webp",
+      "currentUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/sao-paulo/189117a88470104fe41f.webp",
+      "webpSha256": "189117a88470104fe41f6695c6b65c1e886ce5bf0625377b008fe66aefcf78c4",
+      "webpBytes": 139166,
+      "framing": {
+        "top": 0.1857046979865773,
+        "left": 0.056744966442953126,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851,
+        "background": "#fef0d9"
+      },
+      "publishedAt": "2026-10-15T23:04:47.146+00:00"
+    },
+    {
+      "id": "recife",
+      "localImage": "normalizadas/recife-v2.png",
+      "previousUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/recife/b448f59588659673ac9b.webp",
+      "currentUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/recife/838e39184922b797980d.webp",
+      "webpSha256": "838e39184922b797980da3213620e31de8b8cadfc03bf186d381723bfde56cb3",
+      "webpBytes": 132512,
+      "framing": {
+        "top": 0.18640939597315442,
+        "left": 0.056744966442953126,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851,
+        "background": "#fef0d9"
+      },
+      "publishedAt": "2026-10-15T23:04:47.146+00:00"
+    },
+    {
+      "id": "montevideo",
+      "localImage": "normalizadas/montevideo-v2.png",
+      "previousUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/montevideo/b65717d435c90cbca2f0.webp",
+      "currentUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/montevideo/98bb760ea0607f925345.webp",
+      "webpSha256": "98bb760ea0607f925345f3ceac08113a95e5e7f824166d52385900f8284fca1f",
+      "webpBytes": 125114,
+      "framing": {
+        "top": 0.1857046979865773,
+        "left": 0.056744966442953126,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851,
+        "background": "#fef0d9"
+      },
+      "publishedAt": "2026-10-15T23:04:47.144+00:00"
+    },
+    {
+      "id": "san-juan",
+      "localImage": "normalizadas/san-juan-v2.png",
+      "previousUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/san-juan/70209c2fa070211c69c3.webp",
+      "currentUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/san-juan/1d721246feda369a7659.webp",
+      "webpSha256": "1d721246feda369a7659064c0db719ac05de1f406fed30e787d656c1afc677d1",
+      "webpBytes": 126668,
+      "framing": {
+        "top": 0.18640939597315442,
+        "left": 0.056744966442953126,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851,
+        "background": "#fef0d9"
+      },
+      "publishedAt": "2026-10-15T23:04:47.146+00:00"
+    },
+    {
+      "id": "santo-domingo",
+      "localImage": "normalizadas/santo-domingo-v2.png",
+      "previousUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/santo-domingo/09a2cd9f928ecfb46d28.webp",
+      "currentUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/santo-domingo/52017a0e309ae98ea82c.webp",
+      "webpSha256": "52017a0e309ae98ea82cbc9635897697bdba8d31d255af216d2a2ee737ccfef1",
+      "webpBytes": 130954,
+      "framing": {
+        "top": 0.1857046979865773,
+        "left": 0.056744966442953126,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851,
+        "background": "#fef0d9"
+      },
+      "publishedAt": "2026-10-15T23:04:47.146+00:00"
+    },
+    {
+      "id": "san-jose",
+      "localImage": "normalizadas/san-jose-v2.png",
+      "previousUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/san-jose/88b760ec5518927ab143.webp",
+      "currentUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/san-jose/48faf5aa02f1000dff6a.webp",
+      "webpSha256": "48faf5aa02f1000dff6ab4abfa01553d902c268e82cb2ac9e23ab5a3b22234ea",
+      "webpBytes": 148258,
+      "framing": {
+        "top": 0.18429530201342292,
+        "left": 0.056744966442953126,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851,
+        "background": "#fef0d9"
+      },
+      "publishedAt": "2026-10-15T23:04:47.146+00:00"
+    },
+    {
+      "id": "la-valeta",
+      "localImage": "normalizadas/la-valeta-v2.png",
+      "previousUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/la-valeta/3b9e03d89e422e472133.webp",
+      "currentUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/la-valeta/8620ac7aa55d2b2a1057.webp",
+      "webpSha256": "8620ac7aa55d2b2a10573b32122dc3640615c8bcafbce4a6e1c3bb8352a3b831",
+      "webpBytes": 123938,
+      "framing": {
+        "top": 0.18640939597315442,
+        "left": 0.056744966442953126,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851,
+        "background": "#fef0d9"
+      },
+      "publishedAt": "2026-10-15T23:04:47.146+00:00"
+    }
+  ],
+  "catalogCount": 235,
+  "playableCount": 235,
+  "unrelatedRowsUnchanged": 227
+}
