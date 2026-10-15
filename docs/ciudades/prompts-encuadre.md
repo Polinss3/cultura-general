@@ -68,3 +68,7 @@ City and landmarks: Tokyo: add red-and-white Tokyo Tower, slim silver Tokyo Skyt
 Use the EXISTING ground plane's fixed orthographic isometric perspective. Every landmark fits INSIDE the supplied floor boundary and above its rim. Buildings: refined softened miniature architecture with matte pale stone, muted coral brick, slate blue glass, sage foliage, fine detail and smoothly beveled edges. Dominant landmarks recognizable, separated and unoccluded, fewer filler blocks. Sculptures readable in the foreground. All tall towers and spires fit entirely inside the canvas with at least 65 pixels of top margin. Adjust ONLY building size to fit the shared footprint; NEVER move or rescale the base. Match the existing soft upper-left daylight. Water goes on top of the same ground surface and NEVER cuts or changes the base contour.
 No people, lettering, city name, flags, labels, watermarks, guides, weather or extra plinth. ONE city on the SAME EXISTING ORGANIC BASE. Preserve its lower margin and the exact same silhouette and position as the input.
 ```
+
+## Madrid v3: composición autorizada
+
+Tras la revisión del usuario, se sustituye solo el soporte mediante recorte y composición. No se usa un nuevo prompt ni se regeneran edificios. Entradas: Madrid v2, base común v2 y máscara editable en `revision-madrid/mascara-ciudad.png`. Reproducción: `python3 scripts/compose-madrid-base.py`. Resultado: `normalizadas/madrid-v3.png`. Detalles en [la revisión de Madrid](revision-madrid/README.md).

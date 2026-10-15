@@ -28,7 +28,7 @@ Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D ed
 5. Entre cuatro y seis hitos principales; al menos dos deben identificarse sin ampliar la imagen. Eliminar edificios de relleno cuando compitan con los monumentos. Exagerar moderadamente el tamaño de esculturas pequeñas.
 6. Nunca incluir nombres de ciudades, rótulos, letras, leyendas, logos ni marcas de agua. Tampoco banderas que conviertan el país en una pista innecesaria. Usar el mismo fondo en modos claro y oscuro inicialmente.
 
-Los originales v1 se conservan como referencia. Las versiones v2 están en `normalizadas/` y se han generado sobre la misma plantilla irregular; el [comparador](encuadre.html) aplica las correcciones de escala y posición que usará el componente `CityDiorama`. La forma irregular está aceptada y no es un defecto. La revisión arquitectónica y las exportaciones optimizadas siguen pendientes.
+Los originales v1 se conservan como referencia. Las versiones v2 están en `normalizadas/` y se han generado sobre la misma plantilla irregular; el [comparador](encuadre.html) aplica las correcciones de escala y posición que usará el componente `CityDiorama`. Madrid v3 conserva los edificios de v2 mediante recorte y composición sobre la plantilla común, con máscara editable y sin regeneración. La forma irregular está aceptada y no es un defecto. La revisión arquitectónica y las exportaciones optimizadas siguen pendientes.
 
 ## Producción por lotes
 

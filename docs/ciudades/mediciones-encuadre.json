@@ -1,16 +1,16 @@
 {
-  "version": 2,
+  "version": 3,
   "images": [
     {
       "id": "madrid",
-      "file": "normalizadas/madrid-v2.png",
+      "file": "normalizadas/madrid-v3.png",
       "width": 1254,
       "height": 1254,
-      "bytes": 2190295,
+      "bytes": 1949489,
       "baseLeft": 32,
-      "baseRight": 1225,
-      "baseBottom": 1022,
-      "registeredLeft": 0.08000000000000006,
+      "baseRight": 1223,
+      "baseBottom": 1041,
+      "registeredLeft": 0.08000000000000002,
       "registeredRight": 0.9199999999999999,
       "registeredBottom": 0.92
     },
