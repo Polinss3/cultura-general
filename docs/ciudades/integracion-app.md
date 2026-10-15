@@ -1,6 +1,6 @@
 # Ciudades dentro de la app
 
-El modo está integrado en **Retos → Ciudades**, junto a Banderas y Años, en `codex/ciudades`. La pregunta siempre es una imagen fija del diorama con aspecto 3D; las cuatro opciones son nombres. Se conserva el marco cuadrado y la calibración del visor. La incorporación a la versión distribuida requiere una primera actualización de la app; las altas, correcciones, traducciones y retiradas posteriores de contenido no requieren build ni EAS Update.
+El modo está integrado en **Retos → Ciudades**, junto a Banderas y Años, en `codex/ciudades`. La pregunta siempre es una imagen fija del diorama con aspecto 3D; las cuatro opciones son nombres. Se conserva la escala y la calibración del visor sobre un lienzo cuadrado virtual; la tarjeta jugable recorta únicamente el fondo vacío superior e inferior. El encuadre y la altura de tarjeta se fijan para toda la ronda, sin reducir edificios ni la base. La incorporación a la versión distribuida requiere una primera actualización de la app; las altas, correcciones, traducciones y retiradas posteriores de contenido no requieren build ni EAS Update.
 
 ## Contenido remoto
 
@@ -67,3 +67,14 @@ node scripts/check-cities-live.mjs
 La comprobación remota usa acceso anónimo y verifica el contrato, el acceso a todas las imágenes, las combinaciones de zona/dificultad y el rechazo de escritura anónima. Los récords son locales, separados por continente, dificultad y longitud de ronda. Las recompensas usan la fuente `cities`, con los mismos importes por acierto y límites diarios que Banderas y Años.
 
 Revisión realizada en el navegador de la app a 390 × 844: selector, imagen remota, opciones, acierto, resultado, récord y vuelta al selector. También se ha comprobado la interfaz en inglés, la cancelación del avance al salir de la pestaña y un fallo de descarga de imagen seguido de un reintento correcto mediante un servidor temporal de prueba. La prueba nativa en iOS/Android y una ronda con sesión autenticada quedan pendientes; no se han generado ni enviado builds a las tiendas.
+
+
+## Fluidez y espacio en la versión de pruebas
+
+La cabecera de Banderas/Años/Ciudades pertenece a un único contenedor estable. Cambiar de modo no reemplaza su área segura ni sus tarjetas nativas, y los selectores desactivan el ajuste automático de márgenes del ScrollView. Se reserva el espacio de la barra flotante de iOS para que los últimos controles sigan siendo accesibles.
+
+Ciudades prepara tres imágenes al mostrar el selector. Antes de iniciar una ronda prepara las dos primeras y solicita hasta cinco en total; al avanzar mantiene las cuatro siguientes en preparación. Una cola limita el trabajo a tres cargas simultáneas y conserva hasta ocho referencias de imágenes decodificadas, con un máximo de 1024 px. La caché de disco de Expo Image sigue disponible en iOS/Android. No se descargan las 235 imágenes de la colección al abrir la app.
+
+La siguiente pregunta solo se muestra cuando están disponibles sus píxeles. Si la red es lenta, se conserva la ciudad respondida y se indica que se está preparando la siguiente; ante un error se ofrece reintento. Los cambios de opciones y de imagen se realizan juntos, sin fundidos, sin reiniciar la imagen a una tarjeta vacía y sin revelar nombres antes de responder. Salir cancela temporizadores y evita que una respuesta pendiente altere el nuevo modo.
+
+Verificado: pruebas de deduplicación, concurrencia, reintento, caducidad y tamaño de caché; recorte seguro y escala preservada en los 235 perfiles; cabecera en la misma posición al cambiar entre los tres modos; ronda y cuatro opciones en navegador a tamaño de iPhone. La fluidez final y los márgenes de la barra nativa deben comprobarse en la siguiente build de TestFlight, especialmente alternando modos rápidamente y jugando con conexión lenta.

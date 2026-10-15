@@ -22,7 +22,7 @@
     "test:stats": "tsx --test lib/stats.test.ts",
     "test:streak": "tsx --test lib/streakRecovery.test.ts",
     "test:interests": "tsx --test lib/interests.test.ts",
-    "test:cities": "tsx --test lib/cityCatalog.test.ts",
+    "test:cities": "tsx --test lib/cityCatalog.test.ts lib/cityImages.test.ts",
     "cities:publish": "node scripts/publish-cities.mjs"
   },
   "dependencies": {

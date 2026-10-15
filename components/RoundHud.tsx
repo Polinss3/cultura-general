@@ -4,6 +4,7 @@ import { useTheme } from '@/constants/colors';
 import { Font, Radius, tint } from '@/constants/theme';
 
 interface Props {
+  compact?: boolean;
   onExit: () => void;
   /** Emoji y nombre del ámbito elegido (continente, época…). */
   scopeIcon: string;
@@ -20,7 +21,7 @@ interface Props {
  * que va dentro de la pregunta.
  */
 export function RoundHud({
-  onExit, scopeIcon, scopeLabel, index, total, correctCount,
+  compact = false, onExit, scopeIcon, scopeLabel, index, total, correctCount,
 }: Props) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
@@ -29,7 +30,7 @@ export function RoundHud({
     <>
       <View style={{
         flexDirection: 'row', justifyContent: 'space-between',
-        alignItems: 'center', marginBottom: 16,
+        alignItems: 'center', marginBottom: compact ? 8 : 16,
       }}>
         <Pressable
           onPress={onExit}
@@ -55,7 +56,7 @@ export function RoundHud({
         </View>
       </View>
 
-      <View style={{ flexDirection: 'row', gap: 4, marginBottom: 14 }}>
+      <View style={{ flexDirection: 'row', gap: 4, marginBottom: compact ? 8 : 14 }}>
         {Array.from({ length: total }, (_, i) => (
           <View key={i} style={{
             flex: 1, height: 5, borderRadius: Radius.pill,
@@ -66,7 +67,7 @@ export function RoundHud({
 
       <View style={{
         flexDirection: 'row', alignItems: 'center',
-        justifyContent: 'space-between', marginBottom: 16,
+        justifyContent: 'space-between', marginBottom: compact ? 8 : 16,
       }}>
         <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra }}>
           {index + 1} / {total}

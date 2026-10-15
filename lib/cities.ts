@@ -1,13 +1,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from './supabase';
 import { parseCityCatalog, type City } from './cityCatalog';
+let memoryCatalog: City[] | null = null;
+export const getImmediateCities = () => memoryCatalog;
 const CACHE_KEY = 'city_catalog_v1';
 const RECORDS_KEY = 'city_records_v1';
 export type CityRecords = Record<string, number>;
 export async function readCachedCities(): Promise<City[] | null> {
   try {
+    if (memoryCatalog) return memoryCatalog;
     const raw = await AsyncStorage.getItem(CACHE_KEY);
-    return raw ? parseCityCatalog(JSON.parse(raw)) : null;
+    memoryCatalog = raw ? parseCityCatalog(JSON.parse(raw)) : null;
+    return memoryCatalog;
   } catch { return null; }
 }
 /** Paginate so growth past the PostgREST row limit requires no app update. */
@@ -25,6 +29,7 @@ export async function fetchCities(signal: AbortSignal): Promise<City[]> {
   const catalog = parseCityCatalog(rows);
   // Do not replace a good offline copy with a malformed server response.
   if (rows.length && !catalog.length) throw new Error('Invalid city catalog');
+  memoryCatalog = catalog;
   try { await AsyncStorage.setItem(CACHE_KEY, JSON.stringify(catalog)); } catch { /* Storage may be full. */ }
   return catalog;
 }

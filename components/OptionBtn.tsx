@@ -7,6 +7,7 @@ import { Font, Radius } from '@/constants/theme';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 interface Props {
+  compact?: boolean;
   text: string;
   letter: string;
   state: AnswerState;
@@ -30,6 +31,7 @@ export function OptionBtn({
   dimmed,
   accessibilityStatus,
   accessibilitySelected,
+  compact = false,
   feedbackDisabled = false,
   disabled = false,
 }: Props) {
@@ -128,12 +130,12 @@ export function OptionBtn({
           borderColor,
           backgroundColor: bg,
           borderRadius: 18,
-          paddingVertical: 16,
+          paddingVertical: compact ? 10 : 16,
           paddingHorizontal: 16,
           flexDirection: 'row',
           alignItems: 'center',
           gap: 13,
-          minHeight: 60,
+          minHeight: compact ? 54 : 60,
         }}
       >
         <View style={{

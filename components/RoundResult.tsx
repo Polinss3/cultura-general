@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Confetti } from '@/components/Confetti';
@@ -8,6 +8,8 @@ import { useTheme } from '@/constants/colors';
 import { Font, Space, cardShadow, highlightGradient } from '@/constants/theme';
 
 interface Props {
+  embedded?: boolean;
+  playAgainPending?: boolean;
   correct: number;
   total: number;
   /** Nombre del ámbito jugado, bajo el marcador. */
@@ -20,14 +22,14 @@ interface Props {
 
 /** Pantalla de resultado de una ronda. Compartida por Banderas y Años. */
 export function RoundResult({
-  correct, total, scopeLabel, newRecord, confetti, onChangeScope, onPlayAgain,
+  playAgainPending = false, embedded = false, correct, total, scopeLabel, newRecord, confetti, onChangeScope, onPlayAgain,
 }: Props) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
   const perfect = correct === total;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={embedded ? [] : ['top']}>
       <Confetti active={confetti} />
       <View style={{ flex: 1, padding: Space.screen, alignItems: 'center', justifyContent: 'center' }}>
         <Pop>
@@ -69,8 +71,9 @@ export function RoundResult({
               </Text>
             </View>
           </Pressable>
-          <Pressable onPress={onPlayAgain} style={{ flex: 2 }}>
-            <View style={{ backgroundColor: C.brand, borderRadius: 18, padding: 15, alignItems: 'center' }}>
+          <Pressable disabled={playAgainPending} onPress={onPlayAgain} style={{ flex: 2 }}>
+            <View style={{ backgroundColor: C.brand, borderRadius: 18, padding: 15, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 8 }}>
+              {playAgainPending && <ActivityIndicator size="small" color={C.onBrand} />}
               <Text style={{ color: C.onBrand, fontSize: 15, fontFamily: Font.extra }}>
                 {t('round.playAgain')}
               </Text>

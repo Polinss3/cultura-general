@@ -1,7 +1,9 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, BackHandler, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useChallengeBottomInset } from '@/hooks/useChallengeBottomInset';
+import type { ImageRef } from 'expo-image';
+import { cityImages, warmCityImages } from '@/lib/cityImages';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFocusEffect } from 'expo-router';
 import { OptionBtn } from '@/components/OptionBtn';
@@ -31,37 +33,53 @@ const ICONS = { all: '🏙️', europa: '🏰', america: '🗽', africa: '🕌',
 const DIFFICULTIES: CityDifficulty[] = ['all', 1, 2, 3];
 const LETTERS = ['A', 'B', 'C', 'D'];
 type Phase = 'picker' | 'playing' | 'done';
-interface Props { header?: ReactNode; onRoundFinished?: () => void }
+interface Props { header?: ReactNode; onPickerChange?: (visible: boolean) => void; onRoundFinished?: () => void }
 
-export function CitiesGame({ header, onRoundFinished }: Props) {
+export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
   const { t, i18n } = useTranslation();
   const lang: CityLanguage = i18n.language.startsWith('en') ? 'en' : 'es';
   const { C, isDark } = useTheme();
-  const { height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const { user } = useAuth();
   const { guest } = useGuest();
   const offline = useOffline();
   const { celebrate } = useProgress();
   const review = useReviewPrompt();
-  const [phase, setPhase] = useState<Phase>('picker');
+  const [phase, setLocalPhase] = useState<Phase>('picker');
+  const bottomInset = useChallengeBottomInset();
+  const setPhase = useCallback((next: Phase) => {
+    setLocalPhase(next); onPickerChange?.(next === 'picker');
+  }, [onPickerChange]);
   const [scope, setScope] = useState<CityScope>('all');
   const [difficulty, setDifficulty] = useState<CityDifficulty>('all');
   const [records, setRecords] = useState<CityRecords>({});
   const [round, setRound] = useState<CityQuestion[]>([]);
+  const imageCropTop = useMemo(() => Math.max(0, Math.min(0.18, ...round.map(q => q.answer.framing!.top - 0.01))), [round]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [newRecord, setNewRecord] = useState(false);
-  const [imageReady, setImageReady] = useState(false);
+  const [image, setImage] = useState<ImageRef | null>(null);
+  const [preparing, setPreparing] = useState(false);
+  const preparingRef = useRef(false);
+  const [advancePending, setAdvancePending] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const retryImage = useRef<() => void>(() => {});
   const { catalog, refreshing, error, retry } = useCities(phase === 'picker');
+  const [roundSeed, setRoundSeed] = useState(0);
+  const preparedRound = useMemo(() => buildCityRound(catalog ?? [], 'all', difficulty), [catalog, difficulty, roundSeed]);
+  useEffect(() => {
+    if (phase !== 'playing') warmCityImages(preparedRound, 0, 3);
+  }, [phase, preparedRound]);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const locked = useRef(false);
   const finished = useRef(false);
   const generation = useRef(0);
   const clearTimer = useCallback(() => { if (timer.current) clearTimeout(timer.current); timer.current = null; }, []);
   const exit = useCallback(() => {
-    clearTimer(); generation.current++; locked.current = true; setPhase('picker');
-  }, [clearTimer]);
+    clearTimer(); generation.current++; locked.current = true; preparingRef.current = false;
+    setPreparing(false); setAdvancePending(false); setImageError(false); setPhase('picker');
+  }, [clearTimer, setPhase]);
   const loadRecords = useCallback(() => { getCityRecords().then(setRecords); }, []);
   useEffect(loadRecords, [loadRecords]);
   useEffect(() => () => { clearTimer(); generation.current++; }, [clearTimer]);
@@ -78,12 +96,46 @@ export function CitiesGame({ header, onRoundFinished }: Props) {
     };
   }, [exit]));
 
-  const start = (nextScope: CityScope) => {
-    const questions = buildCityRound(catalog ?? [], nextScope, difficulty);
+  const start = async (nextScope: CityScope, retryRound?: CityQuestion[]) => {
+    if (preparingRef.current) return;
+    const questions = retryRound ?? (nextScope === 'all' ? preparedRound : buildCityRound(catalog ?? [], nextScope, difficulty));
     if (!questions.length) return;
-    clearTimer(); generation.current++; locked.current = false; finished.current = false;
-    setScope(nextScope); setRound(questions); setIndex(0); setSelected(null);
-    setCorrectCount(0); setNewRecord(false); setImageReady(false); setPhase('playing');
+    clearTimer(); const run = ++generation.current;
+    preparingRef.current = true; locked.current = true; finished.current = false;
+    setPreparing(true); setImageError(false);
+    retryImage.current = () => { void start(nextScope, questions); };
+    warmCityImages(questions, 0, 5);
+    try {
+      const first = await Promise.all(questions.slice(0, 2).map(q => cityImages.ensure(q.answer.image_url!, true)));
+      if (run !== generation.current) return;
+      setScope(nextScope); setRound(questions); setImage(first[0]); setIndex(0); setSelected(null);
+      setCorrectCount(0); setNewRecord(false); locked.current = false; setPhase('playing');
+      if (nextScope === 'all') setRoundSeed(n => n + 1);
+    } catch {
+      if (run === generation.current) setImageError(true);
+    } finally {
+      if (run === generation.current) { preparingRef.current = false; setPreparing(false); }
+    }
+  };
+  const advance = async (next: number) => {
+    const run = generation.current;
+    const url = round[next].answer.image_url!;
+    setImageError(false);
+    const cached = cityImages.get(url);
+    if (!cached) setAdvancePending(true);
+    retryImage.current = () => { void advance(next); };
+    try {
+      const decoded = cached ?? await cityImages.ensure(url, true);
+      if (run !== generation.current) return;
+      // Pixels and answer options change in the same React commit. The old city
+      // remains visible while a slow network is finishing the next image.
+      setImage(decoded); setIndex(next); setSelected(null); locked.current = false;
+      warmCityImages(round, next + 1, 4);
+    } catch {
+      if (run === generation.current) setImageError(true);
+    } finally {
+      if (run === generation.current) setAdvancePending(false);
+    }
   };
   const finish = async (correct: number) => {
     if (finished.current) return;
@@ -106,13 +158,13 @@ export function CitiesGame({ header, onRoundFinished }: Props) {
     review.schedule(askReview);
   };
   const answer = (id: string) => {
-    if (locked.current || !imageReady) return;
+    if (locked.current || !image) return;
     locked.current = true;
     const nextCorrect = correctCount + (id === round[index].answer.id ? 1 : 0);
     setSelected(id); setCorrectCount(nextCorrect);
     timer.current = setTimeout(() => {
       if (index + 1 === round.length) { void finish(nextCorrect); return; }
-      setIndex(n => n + 1); setSelected(null); setImageReady(false); locked.current = false;
+      void advance(index + 1);
     }, 1300);
   };
   const scopeLabel = (s: CityScope) => s === 'all' ? t('world.allWorld') : t(`world.continents.${s}`);
@@ -126,17 +178,24 @@ export function CitiesGame({ header, onRoundFinished }: Props) {
     const available = cityPool(catalog ?? [], 'all', difficulty).length;
     const recordFor = (s: CityScope, n: number) => records[cityRecordKey(s, difficulty, Math.min(CITY_ROUND_SIZE, n))];
     const best = recordFor('all', available);
-    return <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+    return <View style={{ flex: 1, backgroundColor: C.bg }}>
+      <ScrollView contentInsetAdjustmentBehavior="never" automaticallyAdjustContentInsets={false} contentContainerStyle={{ paddingHorizontal: Space.screen, paddingBottom: bottomInset }}>
         {header}
         <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, marginBottom: 16, lineHeight: 23 }}>{t('cities.pickerSub')}</Text>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 7, marginBottom: 16 }}>
-          {DIFFICULTIES.map(d => <Pressable key={d} onPress={() => setDifficulty(d)} accessibilityRole="button" accessibilityState={{ selected: d === difficulty }}
+          {DIFFICULTIES.map(d => <Pressable key={d} disabled={preparing} onPress={() => setDifficulty(d)} accessibilityRole="button" accessibilityState={{ selected: d === difficulty }}
             style={{ paddingVertical: 9, paddingHorizontal: 14, borderRadius: Radius.pill, borderWidth: 1,
               backgroundColor: d === difficulty ? C.brand : C.surface, borderColor: d === difficulty ? C.brand : C.border }}>
             <Text style={{ color: d === difficulty ? C.onBrand : C.textMuted, fontFamily: Font.bold, fontSize: 13 }}>{t(`world.difficulty.${d}`)}</Text>
           </Pressable>)}
         </View>
+        {preparing && <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center', marginBottom: 14 }}>
+          <ActivityIndicator color={C.brand} /><Text style={{ color: C.textMuted, fontFamily: Font.regular }}>{t('cities.preparing')}</Text>
+        </View>}
+        {imageError && <View style={{ marginBottom: 14 }}>
+          <Text style={{ color: C.textMuted, fontFamily: Font.regular }}>{t('cities.imageError')}</Text>
+          {action(t('cities.retry'), () => retryImage.current())}
+        </View>}
         {catalog === null && refreshing && <View style={{ padding: 24, gap: 12, alignItems: 'center' }}>
           <ActivityIndicator color={C.brand} /><Text style={{ color: C.textMuted, fontFamily: Font.regular }}>{t('cities.loading')}</Text>
         </View>}
@@ -145,7 +204,7 @@ export function CitiesGame({ header, onRoundFinished }: Props) {
           {action(t('cities.retry'), retry)}
         </View>}
         {catalog !== null && <>
-          <Pressable disabled={!available} accessibilityRole="button" accessibilityState={{ disabled: !available }} onPress={() => start('all')}>
+          <Pressable disabled={!available || preparing} accessibilityRole="button" accessibilityState={{ disabled: !available || preparing }} onPress={() => start('all')}>
             <LinearGradient colors={warmGradient(isDark)} start={{ x: 0, y: 0 }} end={{ x: 0.7, y: 1 }}
               style={{ borderRadius: Radius.cardLg, padding: 18, borderWidth: 1.5, borderColor: C.borderWarm, flexDirection: 'row', alignItems: 'center', gap: 14, opacity: available ? 1 : 0.5 }}>
               <Text style={{ fontSize: 32 }}>🏙️</Text>
@@ -165,7 +224,7 @@ export function CitiesGame({ header, onRoundFinished }: Props) {
             {CITY_CONTINENTS.map(cont => {
               const count = cityPool(catalog, cont, difficulty).length;
               const best = recordFor(cont, count);
-              return <Pressable key={cont} disabled={!count} accessibilityRole="button" accessibilityState={{ disabled: !count }} onPress={() => start(cont)}
+              return <Pressable key={cont} disabled={!count || preparing} accessibilityRole="button" accessibilityState={{ disabled: !count || preparing }} onPress={() => start(cont)}
                 style={{ width: '48.5%', opacity: count ? 1 : 0.5 }}>
                 <View style={{ backgroundColor: C.surface, borderWidth: 1, borderColor: C.border, borderRadius: Radius.card, padding: 14, gap: 7, minHeight: 118 }}>
                   <Text style={{ fontSize: 24 }}>{ICONS[cont]}</Text>
@@ -179,28 +238,29 @@ export function CitiesGame({ header, onRoundFinished }: Props) {
           {!refreshing && !error && action(t('cities.refresh'), retry)}
         </>}
       </ScrollView>
-    </SafeAreaView>;
+    </View>;
   }
-  if (phase === 'done') return <RoundResult correct={correctCount} total={round.length} scopeLabel={`${t('challenges.cities')} · ${scopeLabel(scope)}`}
+  if (phase === 'done') return <RoundResult embedded playAgainPending={preparing} correct={correctCount} total={round.length} scopeLabel={`${t('challenges.cities')} · ${scopeLabel(scope)}`}
     newRecord={newRecord} confetti={correctCount === round.length} onChangeScope={exit} onPlayAgain={() => start(scope)} />;
   const question = round[index];
-  if (!question) return null;
+  if (!question || !image) return null;
   const stateFor = (id: string): AnswerState => selected === null ? null : id === question.answer.id ? 'correct' : id === selected ? 'wrong' : null;
-  return <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-    <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
-      <RoundHud onExit={exit} scopeIcon={ICONS[scope]} scopeLabel={scopeLabel(scope)} index={index} total={round.length} correctCount={correctCount} />
-      <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 18, marginBottom: 12 }}>{t('cities.whichCity')}</Text>
-      <View style={{ width: '100%', maxWidth: Math.min(360, height * 0.34), alignSelf: 'center', marginBottom: 16 }}>
-        <CityQuestionImage key={`${generation.current}:${question.answer.id}`} city={question.answer} onReady={() => setImageReady(true)} />
+  return <View style={{ flex: 1, backgroundColor: C.bg }}>
+    <ScrollView contentInsetAdjustmentBehavior="never" automaticallyAdjustContentInsets={false} contentContainerStyle={{ padding: Space.screen, paddingBottom: bottomInset }}>
+      <RoundHud compact onExit={exit} scopeIcon={ICONS[scope]} scopeLabel={scopeLabel(scope)} index={index} total={round.length} correctCount={correctCount} />
+      <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 18, marginBottom: 8 }}>{t('cities.whichCity')}</Text>
+      <View style={{ alignSelf: 'center', marginBottom: 12 }}>
+        <CityQuestionImage cropTop={imageCropTop} city={question.answer} image={image} size={Math.min(360, height * 0.34, width - Space.screen * 2)} />
       </View>
-      <View style={{ gap: 10 }}>
-        {question.options.map((city, i) => <OptionBtn key={`${index}:${city.id}`} text={city.name[lang]} letter={LETTERS[i]}
-          state={stateFor(city.id)} disabled={selected !== null || !imageReady} dimmed={selected !== null && stateFor(city.id) === null} onPress={() => answer(city.id)} />)}
+      <View style={{ gap: 8 }}>
+        {question.options.map((city, i) => <OptionBtn compact key={`${index}:${city.id}`} text={city.name[lang]} letter={LETTERS[i]}
+          state={stateFor(city.id)} disabled={selected !== null} dimmed={selected !== null && stateFor(city.id) === null} onPress={() => answer(city.id)} />)}
       </View>
-      {selected !== null && <Text accessibilityLiveRegion="polite" style={{ marginTop: 14, color: C.textBody, fontFamily: Font.bold, fontSize: 15 }}>
-        {t('cities.answer', { name: question.answer.name[lang] })}
-      </Text>}
+      <Text accessibilityLiveRegion="polite" style={{ marginTop: 8, minHeight: 22, color: C.textBody, fontFamily: Font.bold, fontSize: 14 }}>
+        {imageError ? t('cities.nextError') : advancePending ? t('cities.nextLoading') : selected !== null ? t('cities.answer', { name: question.answer.name[lang] }) : ' '}
+      </Text>
+      {imageError && action(t('cities.retry'), () => retryImage.current())}
     </ScrollView>
     <AdBannerSlot />
-  </SafeAreaView>;
+  </View>;
 }

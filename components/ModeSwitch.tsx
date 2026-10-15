@@ -2,7 +2,7 @@ import { Pressable, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { feedback } from '@/lib/feedback';
 import { useTheme } from '@/constants/colors';
-import { Font, Radius, cardShadow, warmGradient } from '@/constants/theme';
+import { Font, Radius, warmGradient } from '@/constants/theme';
 
 export interface ModeCard {
   id: string;
@@ -64,29 +64,18 @@ export function ModeSwitch({ cards, activeId, onSelect }: Props) {
             accessibilityRole="tab"
             accessibilityState={{ selected: active }}
           >
-            {active ? (
-              <LinearGradient
-                colors={warmGradient(isDark)}
+            <View style={{
+              borderRadius: Radius.cardLg, padding: cards.length > 2 ? 10 : 14,
+              gap: 8, minHeight: 110, justifyContent: 'center',
+              backgroundColor: C.surface, borderWidth: 1.5,
+              borderColor: active ? C.borderWarm : C.border,
+              opacity: active ? 1 : 0.55,
+            }}>
+              <LinearGradient pointerEvents="none" colors={warmGradient(isDark)}
                 start={{ x: 0, y: 0 }} end={{ x: 0.7, y: 1 }}
-                style={{
-                  borderRadius: Radius.cardLg, padding: cards.length > 2 ? 10 : 14, gap: 8, minHeight: 110,
-                  justifyContent: 'center',
-                  borderWidth: 1.5, borderColor: C.borderWarm, ...cardShadow(isDark),
-                }}
-              >
-                {content}
-              </LinearGradient>
-            ) : (
-              // Mismo borde (1,5) que la activa: con 1 pt la inactiva encogía
-              // un pelo y las dos tarjetas dejaban de alinearse.
-              <View style={{
-                borderRadius: Radius.cardLg, padding: cards.length > 2 ? 10 : 14, gap: 8, minHeight: 110,
-                justifyContent: 'center', backgroundColor: C.surface,
-                borderWidth: 1.5, borderColor: C.border, opacity: 0.55,
-              }}>
-                {content}
-              </View>
-            )}
+                style={{ position: 'absolute', inset: 0, borderRadius: Radius.cardLg - 1.5, opacity: active ? 1 : 0 }} />
+              {content}
+            </View>
           </Pressable>
         );
       })}

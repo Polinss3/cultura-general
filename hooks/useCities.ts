@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
-import { fetchCities, readCachedCities } from '@/lib/cities';
+import { fetchCities, getImmediateCities, readCachedCities } from '@/lib/cities';
 import type { City } from '@/lib/cityCatalog';
 
 export function useCities(enabled = true) {
-  const [catalog, setCatalog] = useState<City[] | null>(null);
+  const [catalog, setCatalog] = useState<City[] | null>(getImmediateCities);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState(false);
   const [revision, setRevision] = useState(0);

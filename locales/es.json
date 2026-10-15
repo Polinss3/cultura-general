@@ -1644,6 +1644,9 @@
     "empty": "Pronto habrá ciudades para descubrir.",
     "emptyFilter": "Todavía no hay ciudades disponibles para esta dificultad. Prueba con todas.",
     "comingSoon": "Próximamente",
-    "answer": "Es {{name}}."
+    "answer": "Es {{name}}.",
+    "preparing": "Preparando las primeras ciudades…",
+    "nextLoading": "Preparando la siguiente ciudad…",
+    "nextError": "No se ha podido preparar la siguiente ciudad."
   }
 }

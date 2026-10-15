@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, Text, ScrollView, Pressable } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useChallengeBottomInset } from '@/hooks/useChallengeBottomInset';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { FlagOption } from '@/components/FlagOption';
@@ -43,12 +43,12 @@ export const CONTINENT_ICON: Record<Continent, string> = {
 
 interface Props {
   /** Conmutador de modo; solo se pinta en el selector, no durante la ronda. */
-  header?: ReactNode;
+  header?: ReactNode; onPickerChange?: (visible: boolean) => void;
   /** Avisa al anfitrión de que el récord pudo cambiar, para refrescarlo. */
   onRoundFinished?: () => void;
 }
 
-export function FlagsGame({ header, onRoundFinished }: Props) {
+export function FlagsGame({ header, onRoundFinished, onPickerChange }: Props) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
   const { user } = useAuth();
@@ -56,7 +56,21 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
   const offline = useOffline();
   const { celebrate } = useProgress();
 
-  const [phase, setPhase] = useState<Phase>('picker');
+  const answerTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const generation = useRef(0);
+  useEffect(() => () => {
+    if (answerTimer.current) clearTimeout(answerTimer.current);
+    generation.current++;
+  }, []);
+  const [phase, setLocalPhase] = useState<Phase>('picker');
+  const bottomInset = useChallengeBottomInset();
+  const setPhase = useCallback((next: Phase) => {
+    if (next === 'picker') {
+      if (answerTimer.current) clearTimeout(answerTimer.current);
+      generation.current++;
+    }
+    setLocalPhase(next); onPickerChange?.(next === 'picker');
+  }, [onPickerChange]);
   const [scope, setScope] = useState<Scope>('all');
   const [difficulty, setDifficulty] = useState<FlagDifficulty>('all');
   const [records, setRecords] = useState<FlagRecords>({});
@@ -81,6 +95,8 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
   const start = (nextScope: Scope) => {
     const questions = buildRound(nextScope, difficulty);
     if (questions.length === 0) return;
+    generation.current++;
+    if (answerTimer.current) clearTimeout(answerTimer.current);
     finishedRef.current = false;
     setScope(nextScope);
     setRound(questions);
@@ -97,6 +113,7 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
     // intersticial si `handleAnswer` llegara a reentrar.
     if (finishedRef.current) return;
     finishedRef.current = true;
+    const run = generation.current;
     // El intersticial va ANTES del resultado: con el marcador en pantalla el
     // usuario podía arrancar otra ronda y recibir el anuncio en medio. La
     // última pregunta se queda respondida y quieta mientras se espera.
@@ -106,7 +123,9 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
     const askReview = await planReviewAfterMilestone('challenge', {
       qualifies: isRecord || finalCorrect >= Math.ceil(round.length * 0.8),
     });
+    if (run !== generation.current) return;
     await showResultInterstitial('flags_complete', !askReview);
+    if (run !== generation.current) return;
     setPhase('done');
     markDailyPlayed(); // cuenta como "practica hoy" en la ruta diaria
     setNewRecord(isRecord);
@@ -120,6 +139,7 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
         true,
         'flags',
       );
+      if (run !== generation.current) return;
       celebrate(award);
       // La subida de nivel abre su propio modal; el diálogo no se apilaría.
       if (award?.leveledUp) return;
@@ -136,7 +156,7 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
     const nextCorrect = correctCount + (isCorrect ? 1 : 0);
     if (isCorrect) setCorrectCount(nextCorrect);
 
-    setTimeout(() => {
+    answerTimer.current = setTimeout(() => {
       if (qIdx + 1 >= round.length) {
         if (nextCorrect === round.length) setConfetti(true);
         finish(nextCorrect);
@@ -163,8 +183,8 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
     const worldCount = poolFor('all', difficulty).length;
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-        <ScrollView contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+      <View style={{ flex: 1, backgroundColor: C.bg }}>
+        <ScrollView contentInsetAdjustmentBehavior="never" automaticallyAdjustContentInsets={false} contentContainerStyle={{ paddingHorizontal: Space.screen, paddingBottom: bottomInset }}>
           {header}
 
           <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.regular, marginBottom: 16, lineHeight: 23 }}>
@@ -268,14 +288,14 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
             })}
           </View>
         </ScrollView>
-      </SafeAreaView>
+      </View>
     );
   }
 
   // ─ Resultado
   if (phase === 'done') {
     return (
-      <RoundResult
+      <RoundResult embedded
         correct={correctCount}
         total={round.length}
         scopeLabel={scopeLabel(scope)}
@@ -292,8 +312,8 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
   if (!q) return null;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}>
+    <View style={{ flex: 1, backgroundColor: C.bg }}>
+      <ScrollView contentInsetAdjustmentBehavior="never" automaticallyAdjustContentInsets={false} style={{ flex: 1 }} contentContainerStyle={{ padding: Space.screen, paddingBottom: bottomInset }}>
         <RoundHud
           onExit={() => setPhase('picker')}
           scopeIcon={scope === 'all' ? '🌍' : CONTINENT_ICON[scope]}
@@ -373,6 +393,6 @@ export function FlagsGame({ header, onRoundFinished }: Props) {
         )}
       </ScrollView>
       <AdBannerSlot />
-    </SafeAreaView>
+    </View>
   );
 }

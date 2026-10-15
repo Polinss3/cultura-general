@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
+import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTheme } from '@/constants/colors';
+import { Space } from '@/constants/theme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ModeSwitch, type ModeCard } from '@/components/ModeSwitch';
 import { FlagsGame } from '@/components/games/FlagsGame';
@@ -23,6 +27,8 @@ const MODE_KEY = 'challenges_mode_v1';
  */
 export default function ChallengesScreen() {
   const { t } = useTranslation();
+  const { C } = useTheme();
+  const [pickerVisible, setPickerVisible] = useState(true);
   const router = useRouter();
   const params = useLocalSearchParams<{ mode?: string }>();
   const [mode, setMode] = useState<Mode>('flags');
@@ -33,6 +39,7 @@ export default function ChallengesScreen() {
   const selectMode = useCallback((id: string) => {
     if (id !== 'flags' && id !== 'years' && id !== 'cities') return;
     const next = id;
+    setPickerVisible(true);
     setMode(next);
     void AsyncStorage.setItem(MODE_KEY, next).catch(() => {});
   }, []);
@@ -90,11 +97,14 @@ export default function ChallengesScreen() {
 
   cards.push({ id: 'cities', icon: '🏙️', title: t('challenges.cities'), meta: t('cities.cardSub') });
 
-  const header = <ModeSwitch cards={cards} activeId={mode} onSelect={selectMode} />;
-
-  if (mode === 'cities') return <CitiesGame header={header} onRoundFinished={loadRecords} />;
-
-  return mode === 'flags'
-    ? <FlagsGame header={header} onRoundFinished={loadRecords} />
-    : <YearsGame header={header} onRoundFinished={loadRecords} />;
+  return <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
+    {pickerVisible && <View style={{ paddingHorizontal: Space.screen, paddingTop: Space.screen }}>
+      <ModeSwitch cards={cards} activeId={mode} onSelect={selectMode} />
+    </View>}
+    <View style={{ flex: 1 }}>
+      {mode === 'cities' ? <CitiesGame onPickerChange={setPickerVisible} onRoundFinished={loadRecords} /> :
+        mode === 'flags' ? <FlagsGame onPickerChange={setPickerVisible} onRoundFinished={loadRecords} /> :
+          <YearsGame onPickerChange={setPickerVisible} onRoundFinished={loadRecords} />}
+    </View>
+  </SafeAreaView>;
 }
