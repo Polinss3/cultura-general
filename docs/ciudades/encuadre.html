@@ -3338,6 +3338,34 @@
         "width": 0.8836912751677851,
         "height": 0.8836912751677851
       }
+    },
+    "petra": {
+      "file": "normalizadas/petra-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "chichen-itza": {
+      "file": "normalizadas/chichen-itza-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1049,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18077181208053705,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
     }
   }
 };
@@ -3576,7 +3604,9 @@
   "luxemburgo": "Luxemburgo",
   "monaco": "Mónaco",
   "la-valeta": "La Valeta",
-  "kyiv": "Kyiv"
+  "kyiv": "Kyiv",
+  "petra": "Petra",
+  "chichen-itza": "Chichén Itzá"
 };
   const originals = {
   "madrid": "piloto/madrid-v1.png",
@@ -3813,7 +3843,9 @@
   "luxemburgo": "normalizadas/luxemburgo-v1.png",
   "monaco": "normalizadas/monaco-v1.png",
   "la-valeta": "normalizadas/la-valeta-v1.png",
-  "kyiv": "normalizadas/kyiv-v1.png"
+  "kyiv": "normalizadas/kyiv-v1.png",
+  "petra": "normalizadas/petra-v1.png",
+  "chichen-itza": "normalizadas/chichen-itza-v1.png"
 };
   let selected=new URLSearchParams(location.search).get('ciudad'), mode='aligned', guides=true;
   if(!labels[selected]) selected=Object.keys(labels)[0];

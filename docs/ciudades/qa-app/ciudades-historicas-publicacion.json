@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-16T02:19:02.499Z",
+  "catalogCount": 237,
+  "playableCount": 237,
+  "unchangedExistingRows": 234,
+  "machuPicchuImageUnchanged": true,
+  "reciprocalDistractorRelationshipVerified": true,
+  "images": [
+    {
+      "id": "petra",
+      "localImage": "normalizadas/petra-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/petra/47f524808b7121a17942.webp",
+      "webpSha256": "47f524808b7121a17942daed22704e3d2c67584f3f8b9e310b16cfb26d30f69b",
+      "webpBytes": 150282,
+      "publishedAt": "2026-10-15T23:20:48.087+00:00"
+    },
+    {
+      "id": "chichen-itza",
+      "localImage": "normalizadas/chichen-itza-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/chichen-itza/eb7cfa31b5d66a071843.webp",
+      "webpSha256": "eb7cfa31b5d66a071843cd6a73a9352186762677ec375c0bf044ea0eb27155b3",
+      "webpBytes": 162256,
+      "publishedAt": "2026-10-15T23:20:48.087+00:00"
+    }
+  ]
+}

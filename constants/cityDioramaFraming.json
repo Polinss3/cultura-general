@@ -3303,6 +3303,34 @@
         "width": 0.8836912751677851,
         "height": 0.8836912751677851
       }
+    },
+    "petra": {
+      "file": "normalizadas/petra-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18640939597315442,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
+    },
+    "chichen-itza": {
+      "file": "normalizadas/chichen-itza-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1049,
+      "normalized": {
+        "left": 0.056744966442953126,
+        "top": 0.18077181208053705,
+        "width": 0.8836912751677851,
+        "height": 0.8836912751677851
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-235 destinos: 234 ciudades y 1 lugar histórico. 235 dioramas con imagen y 0 pendientes.
+237 destinos: 234 ciudades y 3 lugares históricos. 237 dioramas con imagen y 0 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -11,7 +11,7 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 | Tanda | Destinos pendientes |
 | --- | --- |
 
-Machu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.
+Los destinos históricos incluidos son Machu Picchu, Petra y Chichén Itzá; sus respuestas usan esos nombres. Se admiten antiguas ciudades y yacimientos urbanos, evitando respuestas ambiguas con ciudades o monumentos ya representados. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de publicarlas.
 
 ## Europa · 94
 
@@ -112,7 +112,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | La Valeta | Con imagen · por revisar | 58 | Concatedral de San Juan; Fort Saint Elmo; Cúpula de los Carmelitas y aguja de San Pablo; Upper Barrakka Gardens |
 | Kyiv | Con imagen · por revisar | 59 | Catedral de Santa Sofía; Monasterio de San Miguel; Puerta Dorada; Lavra de Kyiv-Pechersk |
 
-## América · 53
+## América · 54
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -169,8 +169,9 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Santo Domingo | Con imagen · por revisar | 48 | Alcázar de Colón; Catedral Primada de América; Fortaleza Ozama; Faro a Colón |
 | San José | Con imagen · por revisar | 49 | Teatro Nacional; Catedral Metropolitana; Templo de la Música; Museo Nacional y Cuartel Bellavista |
 | Kingston | Con imagen · por revisar | 49 | Devon House; Fort Charles de Port Royal; Bob Marley Museum sin rótulos; Ward Theatre |
+| Chichén Itzá | Con imagen · por revisar | 60 | El Castillo o templo de Kukulcán; Templo de los Guerreros y columnata; El Caracol; Gran Juego de Pelota |
 
-## Asia · 53
+## Asia · 54
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -227,6 +228,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 | Tel Aviv | Con imagen · por revisar | 50 | Azrieli Center; Torre del Reloj de Jaffa; Casas Bauhaus de la Ciudad Blanca; Teatro Habima |
 | Samarcanda | Con imagen · por revisar | 51 | Registán; Shah-i-Zinda; Gur-e Amir; Mezquita Bibi-Khanym |
 | Bujará | Con imagen · por revisar | 51 | Minarete y mezquita Kalyan; Fortaleza Ark; Chor Minor; Lyab-i Hauz |
+| Petra | Con imagen · por revisar | 60 | El Tesoro (Al-Khazneh) tallado en la roca; El Monasterio (Ad-Deir); Teatro nabateo; Calle de las Columnas |
 
 ## África · 23
 
@@ -504,5 +506,7 @@ Machu Picchu se incluye como lugar histórico por petición del usuario y tendr�
 - Mónaco: [Referencia 1](https://www.monte-carlo.mc/es/visita/), [Referencia 2](https://www.monte-carlo.mc/en/visits/), [Referencia 3](https://www.visitmonaco.com/Documents-Site/7495/Plan%20VisitMonaco%20-%202024.pdf), [Referencia 4](https://www.monte-carlo.mc/es/general/palais-princier/), [Referencia 5](https://www.visitmonaco.com/Documents-Site/Plan%20touristique%20Monaco.pdf).
 - La Valeta: [Referencia 1](https://welcome.mt/places/valletta), [Referencia 2](https://www.explorevalletta.com/es/areas/st-elmo-lower-valletta), [Referencia 3](https://www.explorevalletta.com/areas/st-elmo-lower-valletta), [Referencia 4](https://www.explorevalletta.com/es/areas/republic-street-city-gate), [Referencia 5](https://www.explorevalletta.com/es/city/valletta/articles/how-the-knights-of-st-john-built-valletta-in-seven-years), [Referencia 6](https://church.mt/photos-restoration-of-st-johns-co-cathedrals-facade-is-now-complete/), [Referencia 7](https://www.stpaulspromalta.org/history-heritage/iconicspire/), [Referencia 8](https://church.mt/carmelites-decide-to-remain-in-valletta-fgura-and-santa-venera/).
 - Kyiv: [Referencia 1](https://app.visit.kyiv.ua/en/locations/saint-sophia-cathedral/), [Referencia 2](https://app.visit.kyiv.ua/en/locations/sofiiska-square/), [Referencia 3](https://app.visit.kyiv.ua/locations/sofiiskyi-sobor-sofiia-kyivska/), [Referencia 4](https://visitkyiv.com/sights-and-landmarks/st-sophias-cathedral/), [Referencia 5](https://visit.kyiv.ua/en/discover-kyiv/landmarks).
+- Petra: [Referencia 1](https://whc.unesco.org/en/list/326/), [Referencia 2](https://visitpetra.jo/en/Location/107), [Referencia 3](https://www.visitpetra.jo/PDF/Petra%20Trails.pdf).
+- Chichén Itzá: [Referencia 1](https://whc.unesco.org/en/list/483/), [Referencia 2](https://lugares.inah.gob.mx/es/node/4335), [Referencia 3](https://lugares.inah.gob.mx/es/node/6131).
 
-Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; el modo jugable todavía está pendiente de integración.
+Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; su disponibilidad en la app depende de la publicación del catálogo remoto.

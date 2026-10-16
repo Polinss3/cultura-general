@@ -1,5 +1,5 @@
 {
-  "version": 89,
+  "version": 90,
   "images": [
     {
       "id": "madrid",
@@ -3052,6 +3052,32 @@
       "baseLeft": 33,
       "baseRight": 1225,
       "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "petra",
+      "file": "normalizadas/petra-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2286674,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "chichen-itza",
+      "file": "normalizadas/chichen-itza-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2351771,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1049,
       "registeredLeft": 0.0800000000000001,
       "registeredRight": 0.92,
       "registeredBottom": 0.92

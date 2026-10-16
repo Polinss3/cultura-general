@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
+import { URL } from 'node:url';
 import { buildCityRound, cityDistractors, cityPool, cityRecordKey, isCity, parseCityCatalog,
   type City } from './cityCatalog';
 const frame = { left: 0.05, top: 0.18, width: 0.88, height: 0.88, background: '#fef0d9' };
@@ -70,4 +72,30 @@ test('records do not mix shortened rounds, difficulties or scopes', () => {
 test('question profiles require an image and bilingual names', () => {
   assert(isCity(cities[0]));
   assert(!isCity({ ...cities[0], image_url: null }));
+});
+
+test('configured historic cities are playable and Chichen Itza can accompany Machu Picchu', () => {
+  const proposed = JSON.parse(readFileSync(new URL('../docs/ciudades/catalogo-propuesto.json', import.meta.url), 'utf8'));
+  const editorial = JSON.parse(readFileSync(new URL('../data/city-architecture.json', import.meta.url), 'utf8'));
+  const tags = new Map<string, string[]>();
+  for (const group of editorial.groups) for (const id of group.ids) {
+    tags.set(id, [...(tags.get(id) ?? []), group.tag]);
+  }
+  const catalog = parseCityCatalog(proposed.cities.map((entry: { id: string; name: City['name']; continent: string; conceptImage?: string }) => {
+    const override = editorial.overrides[entry.id] ?? {};
+    return { id: entry.id, name: { ...entry.name, ...override.name }, continent: entry.continent,
+      difficulty: override.difficulty ?? 2, architecture_tags: tags.get(entry.id) ?? [],
+      similar_city_ids: override.similar ?? [], image_url: entry.conceptImage ? `https://example.com/${entry.id}.webp` : null,
+      framing: entry.conceptImage ? frame : null };
+  }));
+  const machu = catalog.find(c => c.id === 'machu-picchu')!;
+  const chichen = catalog.find(c => c.id === 'chichen-itza')!;
+  assert(machu && chichen);
+  const playable = cityPool(catalog, 'all', 'all');
+  for (const id of ['machu-picchu', 'chichen-itza', 'petra']) assert(playable.some(c => c.id === id), id);
+  assert(cityDistractors(chichen, catalog).some(c => c.id === machu.id));
+  let seed = 17;
+  const random = () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 2 ** 32; };
+  const alternatives = new Set(Array.from({ length: 20 }, () => cityDistractors(machu, catalog, random)).flat().map(c => c.id));
+  assert(alternatives.has(chichen.id), 'Chichen Itza must not be permanently outranked by the existing Andean alternatives');
 });

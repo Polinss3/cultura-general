@@ -1,6 +1,6 @@
 # Ciudades: viabilidad y piloto visual
 
-Decisión del usuario: imágenes fijas con aspecto 3D. La pregunta siempre es el diorama; las cuatro respuestas son nombres de ciudades o, en la excepción autorizada de Machu Picchu, el nombre del lugar histórico. No invertir la dirección como hace Banderas.
+Decisión del usuario: imágenes fijas con aspecto 3D. La pregunta siempre es el diorama; las cuatro respuestas son nombres de ciudades actuales o antiguas, o de yacimientos urbanos autorizados, como Machu Picchu, Petra y Chichén Itzá. No invertir la dirección como hace Banderas.
 
 Base: `origin/main`, commit `4cabf66be5062e1d0385237362584f7663d17e9c`, «Merge: versión 2.3.0 (build 113)». Rama de trabajo: `codex/ciudades`. El usuario identifica main con la última versión subida a la App Store; no se ha consultado App Store Connect para verificar su publicación.
 
@@ -34,11 +34,15 @@ Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D ed
 
 Los originales v1 se conservan como referencia. Las versiones v2 están en `normalizadas/` y se han generado sobre la misma plantilla irregular; el [comparador](encuadre.html) aplica las correcciones de escala y posición que usará el componente `CityDiorama`. Madrid v3 conserva los edificios de v2 mediante recorte y composición sobre la plantilla común, con máscara editable y sin regeneración. La forma irregular está aceptada y no es un defecto. La revisión arquitectónica y las exportaciones optimizadas siguen pendientes.
 
+## Ciudades históricas
+
+Se admiten antiguas ciudades y yacimientos urbanos como Petra y Chichén Itzá, además de Machu Picchu. El [criterio editorial](criterio-ciudades-historicas.md) recoge los límites, las nuevas alternativas y las candidatas para próximas tandas.
+
 ## Producción por lotes
 
 El [encuadre común](encuadre.html) es el visor de referencia del usuario. Debe actualizarse en cada alta o modificación de una ciudad, en el mismo cambio que sus imágenes y datos. Ejecutar `node scripts/build-city-framing-preview.mjs`: incorpora automáticamente al selector y a la cuadrícula todas las ciudades con perfil de encuadre, obtiene sus nombres del catálogo y comprueba que las imágenes existen. No mantener una lista manual de ciudades en el HTML. Si una ciudad aún no tiene imagen anterior, la vista original utiliza su fuente actual sin calibrar.
 
-- Catálogo inicial ampliable: **235 destinos**, con 234 ciudades y Machu Picchu como lugar histórico autorizado. [Listado completo](listado-ciudades.md) y [vista con filtros](catalogo.html).
+- Catálogo ampliable de ciudades actuales, ciudades antiguas y yacimientos urbanos reconocibles. El recuento vigente se genera desde los datos del catálogo. [Listado completo](listado-ciudades.md) y [vista con filtros](catalogo.html).
 - El [catálogo con filtros](catalogo.html) muestra el recuento vigente de imágenes, estados y próximas tandas. Todos los conceptos disponibles aparecen en el [encuadre común](encuadre.html).
 - Se ha autorizado avanzar con todo el catálogo pendiente por tandas. Cada tanda conserva prompts, referencias y mediciones; se incorpora al visor tras revisar su composición y mantiene pendiente la aprobación editorial para el juego.
 - El resto se reparte en tandas de cuatro con variedad regional. El orden y los estados se guardan en el catálogo; no hay límite máximo fijado para futuras incorporaciones. Las candidatas sin hitos se investigarán antes de generarse.

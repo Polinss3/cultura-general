@@ -6898,13 +6898,73 @@
         "https://visitkyiv.com/sights-and-landmarks/st-sophias-cathedral/",
         "https://visit.kyiv.ua/en/discover-kyiv/landmarks"
       ]
+    },
+    {
+      "id": "petra",
+      "name": {
+        "es": "Petra",
+        "en": "Petra"
+      },
+      "continent": "asia",
+      "countryCode": "JO",
+      "landmarks": [
+        "El Tesoro (Al-Khazneh) tallado en la roca",
+        "El Monasterio (Ad-Deir)",
+        "Teatro nabateo",
+        "Calle de las Columnas"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/326/",
+        "https://visitpetra.jo/en/Location/107",
+        "https://www.visitpetra.jo/PDF/Petra%20Trails.pdf"
+      ],
+      "status": "concept-needs-review",
+      "kind": "historic-site",
+      "landmarkStatus": "candidate",
+      "productionOrder": 236,
+      "batch": 60,
+      "requestedPriority": true,
+      "notes": "Ciudad histórica autorizada por el usuario; la respuesta usa el nombre del yacimiento, sin sustituirlo por la localidad moderna cercana.",
+      "conceptImage": "normalizadas/petra-v1.png",
+      "originalConceptImage": "normalizadas/petra-v1.png",
+      "framingProfile": "petra"
+    },
+    {
+      "id": "chichen-itza",
+      "name": {
+        "es": "Chichén Itzá",
+        "en": "Chichén Itzá"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "landmarks": [
+        "El Castillo o templo de Kukulcán",
+        "Templo de los Guerreros y columnata",
+        "El Caracol",
+        "Gran Juego de Pelota"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/483/",
+        "https://lugares.inah.gob.mx/es/node/4335",
+        "https://lugares.inah.gob.mx/es/node/6131"
+      ],
+      "status": "concept-needs-review",
+      "kind": "historic-site",
+      "landmarkStatus": "candidate",
+      "productionOrder": 237,
+      "batch": 60,
+      "requestedPriority": true,
+      "notes": "Ciudad histórica autorizada por el usuario; la respuesta usa el nombre del yacimiento, sin sustituirlo por la localidad moderna cercana.",
+      "conceptImage": "normalizadas/chichen-itza-v1.png",
+      "originalConceptImage": "normalizadas/chichen-itza-v1.png",
+      "framingProfile": "chichen-itza"
     }
   ],
   "productionPolicy": {
     "batchSize": 4,
-    "scope": "Colección abierta de ciudades reconocibles; incorporar más candidatas cuando aporten hitos y una imagen diferenciable.",
+    "scope": "Colección abierta de ciudades actuales y antiguas reconocibles; incorporar candidatas cuando aporten hitos y una imagen diferenciable.",
     "viewer": "encuadre.html",
-    "specialPlaces": "Machu Picchu autorizado como lugar histórico. Otras excepciones se propondrán por separado.",
+    "specialPlaces": "El usuario autoriza ciudades históricas y yacimientos con carácter urbano, incluidos Machu Picchu, Petra y Chichén Itzá. Mantener respuestas inequívocas; no duplicar un monumento aislado y su ciudad como respuestas posibles al mismo diorama.",
     "workflow": [
       "investigar hitos",
       "generar sobre base común",

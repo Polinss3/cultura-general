@@ -1,0 +1,16 @@
+{
+  "id": "chichen-itza",
+  "batch": 60,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/chichen-itza-v1.png",
+  "generatedFile": "exec-aa31ae06-0b6e-482d-bb15-99c7c1e6de09.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET: an empty common base. Add only the requested archaeological city ON its floor. LOCK the exact organic scalloped sandstone base outline, rounded peach-beige side wall, depth, width, notches, camera, lighting, ivory background, blank margins and screen position. Square 1254x1254, base x33..1225, REAR FLOOR TIP y400, lowest wall edge y1041. Never expand floor, reshape base or add detached platforms. Keep every rock, tree and structure WELL INSIDE the existing rim. Use FOUR compact groups, separated and readable, with few filler ruins. Orthographic isometric miniature, softened edges, refined recognizable stone architecture, matte materials, warm soft upper-left daylight, muted beige/coral stone and sage greens. No people, text, names, flags, labels, letters, logos, weather, watermark or guides. CHICHEN ITZA, Yucatan, Mexico, Maya archaeological city. Four compact recognizable groups: ONE dominant El Castillo / Temple of Kukulcan at rear-left, its square truncated stepped pyramid has NINE receding terraces, broad steep central stairways on all four sides and a LOW RECTANGULAR temple on its flat summit; Temple of the Warriors at rear-right, a smaller stepped platform with ruined temple columns and adjacent regular rows of short stone columns; El Caracol at front-left, recognizable partly ruined ROUND observatory tower on rectangular terraces; Great Ball Court at front-right, LONG rectangular open court between two PARALLEL stone walls, one small vertical stone ring high on each inward-facing wall. Weathered pale warm limestone, restrained green grass and a few low tropical trees inside the existing slab. NOT Egyptian smooth pyramids, NOT Teotihuacan's flat Sun Pyramid, NOT a tall Mayan roof comb as in Tikal. Only ONE main large pyramid. No mountains, no extra temples or city blocks.",
+  "sources": [
+    "https://whc.unesco.org/en/list/483/",
+    "https://lugares.inah.gob.mx/es/node/4335",
+    "https://lugares.inah.gob.mx/es/node/6131"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

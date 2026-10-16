@@ -1,0 +1,16 @@
+{
+  "id": "petra",
+  "batch": 60,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/petra-v1.png",
+  "generatedFile": "exec-46e1b8ec-a14d-4f7c-8f52-eca333167b73.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET: an empty common base. Add only the requested archaeological city ON its floor. LOCK the exact organic scalloped sandstone base outline, rounded peach-beige side wall, depth, width, notches, camera, lighting, ivory background, blank margins and screen position. Square 1254x1254, base x33..1225, REAR FLOOR TIP y400, lowest wall edge y1041. Never expand floor, reshape base or add detached platforms. Keep every rock, tree and structure WELL INSIDE the existing rim. Use FOUR compact groups, separated and readable, with few filler ruins. Orthographic isometric miniature, softened edges, refined recognizable stone architecture, matte materials, warm soft upper-left daylight, muted beige/coral stone and sage greens. No people, text, names, flags, labels, letters, logos, weather, watermark or guides. PETRA, Jordan, a Nabataean rock-cut ancient city. Four compact recognizable groups: the Treasury (Al-Khazneh) with its ornate TWO-STOREY classical facade CARVED INTO a rose-red sandstone CLIFF at rear-left, six columns on its lower facade, broken pediment and central tholos/urn above; the broad Monastery (Ad-Deir) facade with its huge central urn carved into a second smaller rose-sandstone cliff at rear-right; a small semicircular Nabataean rock-cut theatre with tiered seating at front-left; restrained ruins of the colonnaded street at front-right, a few standing columns and low stone walls. Treasury and Monastery MUST be attached to rock, not freestanding temple buildings. Pink sandstone, arid sandy paths, sparse low desert shrubs. Fit compact rock forms INSIDE the existing floor. Do NOT add a canyon extending outside the plinth, background cliffs or floating rocks.",
+  "sources": [
+    "https://whc.unesco.org/en/list/326/",
+    "https://visitpetra.jo/en/Location/107",
+    "https://www.visitpetra.jo/PDF/Petra%20Trails.pdf"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

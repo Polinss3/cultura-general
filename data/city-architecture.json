@@ -737,6 +737,19 @@
         "gante",
         "la-haya"
       ]
+    },
+    {
+      "tag": "precolumbian-stone-ruins",
+      "ids": [
+        "machu-picchu",
+        "chichen-itza"
+      ]
+    },
+    {
+      "tag": "nabataean-rock-cut",
+      "ids": [
+        "petra"
+      ]
     }
   ],
   "overrides": {
@@ -950,7 +963,8 @@
       "similar": [
         "cusco",
         "la-paz",
-        "arequipa"
+        "arequipa",
+        "chichen-itza"
       ]
     },
     "lisboa": {},
@@ -1906,6 +1920,22 @@
       "name": {
         "en": "Kyiv"
       }
+    },
+    "chichen-itza": {
+      "difficulty": 1,
+      "similar": [
+        "machu-picchu",
+        "guiza",
+        "siem-reap"
+      ]
+    },
+    "petra": {
+      "difficulty": 1,
+      "similar": [
+        "aman",
+        "luxor",
+        "atenas"
+      ]
     }
   }
 }

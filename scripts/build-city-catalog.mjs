@@ -15,14 +15,16 @@ export function buildCityCatalog({ catalog, framing, root }) {
   const illustrated = cities.filter((city) => city.conceptImage).length;
   const special = cities.filter((city) => city.kind === 'historic-site').length;
   const pending = cities.filter((city) => !city.conceptImage);
-  const summary = `${cities.length} destinos: ${cities.length - special} ciudades y ${special} lugar histórico. ${illustrated} dioramas con imagen y ${pending.length} pendientes.`;
+  const historicNames = new Intl.ListFormat('es', { type: 'conjunction' }).format(cities.filter(city => city.kind === 'historic-site').map(city => city.name.es));
+  const historicNote = `Los destinos históricos incluidos son ${historicNames}; sus respuestas usan esos nombres. Se admiten antiguas ciudades y yacimientos urbanos, evitando respuestas ambiguas con ciudades o monumentos ya representados.`;
+  const summary = `${cities.length} destinos: ${cities.length - special} ciudades y ${special} ${special === 1 ? 'lugar histórico' : 'lugares históricos'}. ${illustrated} dioramas con imagen y ${pending.length} pendientes.`;
   const next = pending.slice(0, 12);
   let markdown = `# Catálogo y cola de Ciudades\n\n${summary}\n\nColección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.\n\n[Ver dioramas](encuadre.html) · [Abrir listado con filtros](catalogo.html)\n\n`;
   markdown += `## Próximas tandas\n\n| Tanda | Destinos pendientes |\n| --- | --- |\n`;
   for (const batch of [...new Set(next.map((city) => city.batch))]) {
     markdown += `| ${batch} | ${next.filter((city) => city.batch === batch).map((city) => city.name.es).join(', ')} |\n`;
   }
-  markdown += '\nMachu Picchu se incluye como lugar histórico por petición del usuario y tendrá ese nombre como respuesta. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de integrarlas en el juego.\n';
+  markdown += `\n${historicNote} Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de publicarlas.\n`;
   for (const [id, label] of Object.entries(regions)) {
     const group = cities.filter((city) => city.continent === id);
     markdown += `\n## ${label} · ${group.length}\n\n| Destino | Estado | Tanda | Hitos propuestos |\n| --- | --- | --- | --- |\n`;
@@ -34,7 +36,7 @@ export function buildCityCatalog({ catalog, framing, root }) {
   for (const city of cities.filter((city) => city.sources?.length)) {
     markdown += `- ${city.name.es}: ${city.sources.map((url, i) => `[Referencia ${i + 1}](${url})`).join(', ')}.\n`;
   }
-  markdown += '\nGenerado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; el modo jugable todavía está pendiente de integración.\n';
+  markdown += '\nGenerado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; su disponibilidad en la app depende de la publicación del catálogo remoto.\n';
   writeFileSync(new URL('docs/ciudades/listado-ciudades.md', root), markdown);
 
   const rows = cities.map((city) => `<tr data-region="${escape(city.continent)}" data-state="${city.conceptImage ? 'image' : 'pending'}"><td>${city.conceptImage ? `<a href="encuadre.html?ciudad=${encodeURIComponent(city.id)}">${escape(city.name.es)}</a>` : escape(city.name.es)}${city.kind === 'historic-site' ? '<small>Lugar histórico</small>' : ''}</td><td>${escape(regions[city.continent])}</td><td>${state(city)}</td><td>${city.batch}</td><td>${escape(city.landmarks.join(' · ') || 'Hitos por investigar')}</td></tr>`).join('\n');
@@ -44,8 +46,8 @@ export function buildCityCatalog({ catalog, framing, root }) {
 <body><main><p><a href="encuadre.html">← Volver al encuadre común</a></p><h1>Catálogo y cola de Ciudades</h1>
 <div class="summary"><strong>${summary}</strong><p>Una colección abierta, sin máximo fijado. Las imágenes se producen en tandas de cuatro sobre la misma base. Tener una imagen no implica estar aprobado ni integrado en el juego.</p></div>
 <div class="queue"><strong>Próximas tandas</strong><p>${next.map((city) => `${escape(city.name.es)} <small style="display:inline">(tanda ${city.batch})</small>`).join(' · ')}</p></div>
-<p>Machu Picchu está incluido como lugar histórico, con su propio nombre como respuesta. Los destinos sin hitos definidos se investigarán antes de generarlos.</p>
-<div class="controls"><input id="search" type="search" aria-label="Buscar destino" placeholder="Buscar ciudad o monumento"><label>Región <select id="region"><option value="">Todas</option>${Object.entries(regions).map(([id, label]) => `<option value="${id}">${label}</option>`).join('')}</select></label><label>Estado <select id="state"><option value="">Todos</option><option value="image">Con imagen</option><option value="pending">Pendientes</option></select></label></div>
+<p>${escape(historicNote)} Los destinos sin hitos definidos se investigarán antes de generarlos.</p>
+<div class="controls"><input id="search" type="search" aria-label="Buscar destino" placeholder="Buscar ciudad o lugar histórico"><label>Región <select id="region"><option value="">Todas</option>${Object.entries(regions).map(([id, label]) => `<option value="${id}">${label}</option>`).join('')}</select></label><label>Estado <select id="state"><option value="">Todos</option><option value="image">Con imagen</option><option value="pending">Pendientes</option></select></label></div>
 <p id="count" aria-live="polite"></p><div class="table"><table><thead><tr><th>Destino</th><th>Región</th><th>Estado</th><th>Tanda</th><th>Hitos propuestos</th></tr></thead><tbody>${rows}</tbody></table></div>
 <footer>Listado generado desde el catálogo editorial. <a href="listado-ciudades.md">Versión Markdown</a>. Los dioramas ya disponibles se consultan en el encuadre común.</footer></main>
 <script>
