@@ -1,0 +1,17 @@
+{
+  "id": "sintra",
+  "batch": 63,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/sintra-v1.png",
+  "generatedFile": "exec-ce5e068e-8d89-48b1-a22c-0dc7dcbe968c.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET, the exact empty common base. Add the requested city ON its existing floor. LOCK the organic scalloped sandstone outline, peach-beige wall, rounded bevel, side notches, width, depth, camera, lighting, ivory background, blank margins and position. Square 1254x1254. Base x33..1225, rear floor tip y400, lowest wall edge y1041. Do not stretch the slab or alter its silhouette. Keep all terrain, water and objects INSIDE its rim. Leave a visible clear strip along the rear rim. FOUR COMPACT landmark groups, separated and readable, restrained filler. Shorten roads and shrink hills to fit; never enlarge the platform. Orthographic isometric miniature, softened edges, fine recognizable architecture, matte stone/plaster, warm soft upper-left light, muted coral/slate/sage palette. No people, vehicles with text, names, labels, lettering, flags, logos, watermarks, weather or guides. SINTRA, Portugal. Four compact landmark groups: Pena Palace at mid-rear-left, its distinctive red clock-tower volume and mustard-yellow round crenellated tower, cream decorative arches and small blue tiled areas on ONE low rocky mound; Moorish Castle at mid-rear-right, a SHORT winding granite battlement wall with only a few square towers along a small green ridge; National Palace of Sintra at front-left, low WHITE walls and terracotta roofs dominated by EXACTLY TWO very large WHITE CONICAL kitchen chimneys rising side-by-side, not bell towers; Quinta da Regaleira at front-right, a small ornate grey neo-Manueline mansion with a slender turret and a visible ROUND SUNKEN initiation well beside it with inward spiral arcade, well opens DOWN into the floor, NOT an aboveground tower. A few compact sage trees and low villa roofs connect the groups. Keep every hill's footprint near the center, leave the rear rim unchanged at y400. No giant mountain, no extra castle, no floating well or cliff outside the slab.",
+  "sources": [
+    "https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/",
+    "https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/history/",
+    "https://www.parquesdesintra.pt/en/parks-monuments/the-moorish-castle/",
+    "https://www.regaleira.pt/media/1004/folhetoen.pdf"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

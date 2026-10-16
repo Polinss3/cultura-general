@@ -1,19 +1,20 @@
-# Catálogo y cola de Ciudades
+# Catálogo de Ciudades
 
-242 destinos: 234 ciudades y 8 lugares históricos. 242 dioramas con imagen y 0 pendientes.
+250 destinos: 241 ciudades y 9 lugares históricos. 250 dioramas con imagen y 0 pendientes.
 
-Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
+Catálogo de la versión 2.4.0 cerrado en 250 destinos por decisión del usuario. Se mantienen las correcciones de los destinos existentes; las nuevas incorporaciones se reservan para otra versión.
+
+Las imágenes se producen en tandas de cuatro sobre la misma base. El estado editorial de cada imagen se conserva; su disponibilidad en la app depende de la publicación del catálogo remoto.
 
 [Ver dioramas](encuadre.html) · [Abrir listado con filtros](catalogo.html)
 
-## Próximas tandas
+## Estado de la versión
 
-| Tanda | Destinos pendientes |
-| --- | --- |
+Sin nuevas incorporaciones para esta versión.
 
-Los destinos históricos incluidos son Machu Picchu, Petra, Chichén Itzá, Pompeya, Teotihuacán, Tikal, Éfeso y Persépolis; sus respuestas usan esos nombres. Se admiten antiguas ciudades y yacimientos urbanos, evitando respuestas ambiguas con ciudades o monumentos ya representados. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de publicarlas.
+Los destinos históricos incluidos son Machu Picchu, Petra, Chichén Itzá, Pompeya, Teotihuacán, Tikal, Éfeso, Persépolis y Bagan; sus respuestas usan esos nombres. Se admiten antiguas ciudades y yacimientos urbanos, evitando respuestas ambiguas con ciudades o monumentos ya representados. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de publicarlas.
 
-## Europa · 95
+## Europa · 97
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -112,8 +113,10 @@ Los destinos históricos incluidos son Machu Picchu, Petra, Chichén Itzá, Pomp
 | La Valeta | Con imagen · por revisar | 58 | Concatedral de San Juan; Fort Saint Elmo; Cúpula de los Carmelitas y aguja de San Pablo; Upper Barrakka Gardens |
 | Kyiv | Con imagen · por revisar | 59 | Catedral de Santa Sofía; Monasterio de San Miguel; Puerta Dorada; Lavra de Kyiv-Pechersk |
 | Pompeya | Con imagen · por revisar | 61 | Foro y ruinas del templo de Júpiter; Anfiteatro de Pompeya; Casa del Fauno y calles empedradas; Vesubio como contexto paisajístico |
+| Sintra | Con imagen · por revisar | 63 | Palacio de Pena; Palacio Nacional de Sintra y sus dos chimeneas; Castelo dos Mouros; Quinta da Regaleira y pozo iniciático |
+| Carcasona | Con imagen · por revisar | 64 | Doble recinto de murallas; Puerta Narbonnaise; Château Comtal; Basílica de Saint-Nazaire |
 
-## América · 56
+## América · 57
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -173,8 +176,9 @@ Los destinos históricos incluidos son Machu Picchu, Petra, Chichén Itzá, Pomp
 | Chichén Itzá | Con imagen · por revisar | 60 | El Castillo o templo de Kukulcán; Templo de los Guerreros y columnata; El Caracol; Gran Juego de Pelota |
 | Teotihuacán | Con imagen · por revisar | 61 | Pirámide del Sol; Pirámide de la Luna; Calzada de los Muertos; Templo de la Serpiente Emplumada |
 | Tikal | Con imagen · por revisar | 61 | Templo I o del Gran Jaguar; Templo II o de las Máscaras; Templo IV; Gran Plaza y Acrópolis Norte |
+| San Miguel de Allende | Con imagen · por revisar | 63 | Parroquia de San Miguel Arcángel; Templo de San Francisco; Templo de la Inmaculada Concepción (Las Monjas); Casa de Allende y Jardín Allende |
 
-## Asia · 56
+## Asia · 59
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -234,8 +238,11 @@ Los destinos históricos incluidos son Machu Picchu, Petra, Chichén Itzá, Pomp
 | Petra | Con imagen · por revisar | 60 | El Tesoro (Al-Khazneh) tallado en la roca; El Monasterio (Ad-Deir); Teatro nabateo; Calle de las Columnas |
 | Éfeso | Con imagen · por revisar | 61 | Biblioteca de Celso; Gran Teatro; Templo de Adriano; Calle de los Curetes |
 | Persépolis | Con imagen · por revisar | 62 | Puerta de Todas las Naciones; Columnas de la Apadana; Escalinata con relieves procesionales; Ruinas del palacio de Tachara |
+| Bagan | Con imagen · por revisar | 63 | Templo de Ananda; Templo de Thatbyinnyu; Templo de Dhammayangyi; Pagoda Shwezigon |
+| Luang Prabang | Con imagen · por revisar | 64 | Wat Xieng Thong; Antiguo Palacio Real; Haw Pha Bang; That Chomsi en la colina Phousi |
+| Jiva | Con imagen · por revisar | 64 | Minarete Kalta Minor; Minarete Islam Khodja; Ciudadela Kunya-Ark y murallas de Itchan Kala; Madraza de Muhammad Amin Khan |
 
-## África · 23
+## África · 25
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -262,6 +269,8 @@ Los destinos históricos incluidos son Machu Picchu, Petra, Chichén Itzá, Pomp
 | Abiyán | Con imagen · por revisar | 28 | Catedral de San Pablo de Abiyán; Hôtel Ivoire; Estadio Félix Houphouët-Boigny; Puente Henri Konan Bédié |
 | Windhoek | Con imagen · por revisar | 29 | Christuskirche; Tintenpalast; Alte Feste; Independence Memorial Museum |
 | Port Louis | Con imagen · por revisar | 30 | Aapravasi Ghat; Fort Adelaide; Champ de Mars; Caudan Waterfront |
+| Zanzíbar | Con imagen · por revisar | 63 | Old Fort; Antiguo Dispensario; Palacio del Sultán (Palace Museum); Catedral anglicana Christ Church |
+| Lalibela | Con imagen · por revisar | 64 | Biete Giyorgis (San Jorge); Biete Medhane Alem; Biete Amanuel; Biete Mariam y pasajes excavados |
 
 ## Oceanía · 12
 
@@ -518,5 +527,13 @@ Los destinos históricos incluidos son Machu Picchu, Petra, Chichén Itzá, Pomp
 - Tikal: [Referencia 1](https://whc.unesco.org/en/list/64), [Referencia 2](https://inguat.gob.gt/descargas-inguat-guatemala/41-mapas.html?download=1058%3Amapa-tikal-en), [Referencia 3](https://noticias.mcd.gob.gt/2026/05/26/tikal-celebra-71-anos-como-parque-nacional-y-patrimonio-de-la-humanidad/).
 - Éfeso: [Referencia 1](https://whc.unesco.org/en/list/1018/), [Referencia 2](https://izmir.ktb.gov.tr/EN-110170/selcuk.html), [Referencia 3](https://www.ktb.gov.tr/EN-36251/where-to-visit.html), [Referencia 4](https://www.oeaw.ac.at/en/oeai/media/news-archive/news-detail/preserving-world-cultural-heritage).
 - Persépolis: [Referencia 1](https://whc.unesco.org/en/list/114), [Referencia 2](https://whc.unesco.org/en/documents/7120/), [Referencia 3](https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/saoc72.pdf).
+- Sintra: [Referencia 1](https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/), [Referencia 2](https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/history/), [Referencia 3](https://www.parquesdesintra.pt/en/parks-monuments/the-moorish-castle/), [Referencia 4](https://www.regaleira.pt/media/1004/folhetoen.pdf).
+- Bagan: [Referencia 1](https://whc.unesco.org/en/list/1588/), [Referencia 2](https://whc.unesco.org/document/166328), [Referencia 3](https://whc.unesco.org/en/soc/4865).
+- San Miguel de Allende: [Referencia 1](https://lugares.inah.gob.mx/es/node/4794), [Referencia 2](https://www.inah.gob.mx/museos/historico-casa-de-allende), [Referencia 3](https://guanajuato.mx/romance/templos/templo-de-san-francisco/), [Referencia 4](https://revistas.inah.gob.mx/index.php/boletinmonumentos/article/download/17403/18658/37196).
+- Zanzíbar: [Referencia 1](https://whc.unesco.org/en/list/173/), [Referencia 2](https://www.zanzibartourism.go.tz/things-to-do), [Referencia 3](https://whc.unesco.org/fr/urban-heritage-atlas/stone-town/), [Referencia 4](https://www.archnet.org/sites/9214), [Referencia 5](https://whc.unesco.org/uploads/nominations/173rev.pdf).
+- Carcasona: [Referencia 1](https://whc.unesco.org/en/list/345/), [Referencia 2](https://www.monuments-nationaux.fr/content/download/9894694/file_fr/DP%20Carcassonne%20VF%20BD.pdf?inLanguage=fre-FR&version=5), [Referencia 3](https://www.carcassonne.fr/article-page/basilique-saint-nazaire).
+- Luang Prabang: [Referencia 1](https://tourismluangprabang.org/things-to-do/buddhism/wat-xiengthong/), [Referencia 2](https://tourismluangprabang.org/things-to-do/culture-history/national-museum/), [Referencia 3](https://tourismluangprabang.org/things-to-do/nature/phou-si-mountain/).
+- Jiva: [Referencia 1](https://whc.unesco.org/en/list/543/), [Referencia 2](https://uzbekistan.travel/en/i/khiva/), [Referencia 3](https://uzbekistan.travel/uz/o/xivadagi-kalta-minor-minorasi/), [Referencia 4](https://uzbekistan.travel/en/vt/uzbekistan-historical-tour/).
+- Lalibela: [Referencia 1](https://whc.unesco.org/en/list/18/), [Referencia 2](https://whc.unesco.org/en/activities/160/), [Referencia 3](https://whc.unesco.org/document/192759).
 
 Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; su disponibilidad en la app depende de la publicación del catálogo remoto.

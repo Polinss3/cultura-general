@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-10-16T08:49:48.711Z",
+  "catalogCount": 250,
+  "playableCount": 250,
+  "unchangedExistingRows": 242,
+  "reciprocalMachuChichenAlternativesVerified": true,
+  "allScopeDifficultyRoundsVerified": true,
+  "continents": {
+    "europa": 97,
+    "america": 57,
+    "africa": 25,
+    "asia": 59,
+    "oceania": 12
+  },
+  "releaseScopeClosed": true,
+  "images": [
+    {
+      "id": "sintra",
+      "localImage": "normalizadas/sintra-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/sintra/f3465be2be7999cbb970.webp",
+      "webpSha256": "f3465be2be7999cbb97097423ba3631c5b00838f3cde2e1bdad7898e5252d1d3",
+      "webpBytes": 158586,
+      "publishedAt": "2026-10-16T08:48:54.165+00:00"
+    },
+    {
+      "id": "bagan",
+      "localImage": "normalizadas/bagan-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/bagan/9bf8051097bbe0c63fa6.webp",
+      "webpSha256": "9bf8051097bbe0c63fa6d7f0a3cef050159b171876f2635e283344f7b9d80f25",
+      "webpBytes": 145420,
+      "publishedAt": "2026-10-16T08:48:54.171+00:00"
+    },
+    {
+      "id": "san-miguel-de-allende",
+      "localImage": "normalizadas/san-miguel-de-allende-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/san-miguel-de-allende/c86a57f4e9f7d4d95555.webp",
+      "webpSha256": "c86a57f4e9f7d4d955552d9bb838d77c9d84776e8b0aff80cf9e7d7caa181072",
+      "webpBytes": 149554,
+      "publishedAt": "2026-10-16T08:48:54.171+00:00"
+    },
+    {
+      "id": "zanzibar",
+      "localImage": "normalizadas/zanzibar-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/zanzibar/f07f363d500b13587126.webp",
+      "webpSha256": "f07f363d500b13587126e76a579c40055b7ecae5e82740bac0469d47e012163e",
+      "webpBytes": 130466,
+      "publishedAt": "2026-10-16T08:48:54.171+00:00"
+    },
+    {
+      "id": "carcasona",
+      "localImage": "normalizadas/carcasona-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/carcasona/1f8d54ab9da01402c89f.webp",
+      "webpSha256": "1f8d54ab9da01402c89f7614e1eb8587687b2b95698be30aed3e3235668a3ffe",
+      "webpBytes": 138506,
+      "publishedAt": "2026-10-16T08:48:54.171+00:00"
+    },
+    {
+      "id": "luang-prabang",
+      "localImage": "normalizadas/luang-prabang-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/luang-prabang/fb4816d17962c70c882e.webp",
+      "webpSha256": "fb4816d17962c70c882ed041368306bbe225c824f7673df9431b863c4b742ea7",
+      "webpBytes": 152436,
+      "publishedAt": "2026-10-16T08:48:54.171+00:00"
+    },
+    {
+      "id": "jiva",
+      "localImage": "normalizadas/jiva-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/jiva/327e32a5afcf7783178f.webp",
+      "webpSha256": "327e32a5afcf7783178fcb21e0af201d675630f9da773310cb2bac4c06bcdf1d",
+      "webpBytes": 125632,
+      "publishedAt": "2026-10-16T08:48:54.171+00:00"
+    },
+    {
+      "id": "lalibela",
+      "localImage": "normalizadas/lalibela-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/lalibela/13c2db05eab668f36350.webp",
+      "webpSha256": "13c2db05eab668f363508130babd7ddf6c2182e6e71f2e7bb49e81a9affcd5c8",
+      "webpBytes": 62782,
+      "publishedAt": "2026-10-16T08:48:54.171+00:00"
+    }
+  ]
+}

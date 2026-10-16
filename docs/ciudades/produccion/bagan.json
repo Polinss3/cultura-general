@@ -1,0 +1,16 @@
+{
+  "id": "bagan",
+  "batch": 63,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/bagan-v1.png",
+  "generatedFile": "exec-c34fe684-7617-49dc-8dab-ced37e8c32f9.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET, the exact empty common base. Add the requested city ON its existing floor. LOCK the organic scalloped sandstone outline, peach-beige wall, rounded bevel, side notches, width, depth, camera, lighting, ivory background, blank margins and position. Square 1254x1254. Base x33..1225, rear floor tip y400, lowest wall edge y1041. Do not stretch the slab or alter its silhouette. Keep all terrain, water and objects INSIDE its rim. Leave a visible clear strip along the rear rim. FOUR COMPACT landmark groups, separated and readable, restrained filler. Shorten roads and shrink hills to fit; never enlarge the platform. Orthographic isometric miniature, softened edges, fine recognizable architecture, matte stone/plaster, warm soft upper-left light, muted coral/slate/sage palette. No people, vehicles with text, names, labels, lettering, flags, logos, watermarks, weather or guides. BAGAN, Myanmar, a compact ensemble of its recognizable Buddhist monuments. Four DISTINCT groups: Ananda Temple at rear-left, ivory cruciform building with four projecting entrance halls, receding square terraces and one slender golden central sikhara/spire; Thatbyinnyu at rear-right, a TALL WHITE multi-storey cubical temple with stacked terraces, small arched openings and a pointed central summit, taller than Ananda; Dhammayangyi at front-left, a massive BROAD red-brick stepped pyramidal TEMPLE with many arched openings and a low incomplete summit, no smooth golden dome; Shwezigon at front-right, ONE GOLDEN BELL-SHAPED stupa on three square receding terraces crowned by a slim umbrella finial, with only a few tiny shrines. Dry warm sandy plain, sparse sage shrubs, short paths, very few small brick stupas. Keep four compact models with clear breathing room. Iconic architectural forms, not a live condition survey. No Yangon Shwedagon replica, no Thai multi-tier sweeping temple roofs, no hot-air balloons, no giant forest of repetitive pagodas, no mountains or river outside the base.",
+  "sources": [
+    "https://whc.unesco.org/en/list/1588/",
+    "https://whc.unesco.org/document/166328",
+    "https://whc.unesco.org/en/soc/4865"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

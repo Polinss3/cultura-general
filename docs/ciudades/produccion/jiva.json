@@ -1,0 +1,17 @@
+{
+  "id": "jiva",
+  "batch": 64,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/jiva-v1.png",
+  "generatedFile": "exec-2e4d2215-8fbf-4e10-a33a-80811fa4136c.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET, the exact empty common base. Add the requested city ON its existing floor. LOCK the organic scalloped sandstone outline, peach-beige wall, rounded bevel, side notches, width, depth, camera, lighting, ivory background, blank margins and position. Square 1254x1254. Base x33..1225, rear floor tip y400, lowest wall edge y1041. Do not stretch the slab or alter its silhouette. Keep all terrain, water and objects INSIDE its rim. Leave a visible clear strip along the rear rim. FOUR COMPACT landmark groups, separated and readable, restrained filler. Shorten roads and shrink hills to fit; never enlarge the platform. Orthographic isometric miniature, softened edges, fine recognizable architecture, matte stone/plaster, warm soft upper-left light, muted coral/slate/sage palette. No people, vehicles with text, names, labels, lettering, flags, logos, watermarks, weather or guides. KHIVA / JIVA, Uzbekistan. Four compact groups: Kalta Minor at front-left, the city's unmistakable VERY FAT SHORT UNFINISHED cylindrical minaret completely covered in vivid muted turquoise and blue glazed horizontal tile bands, FLAT OPEN truncated top, no spire and no dome; Islam Khodja minaret at rear-right, one very TALL THIN tapered tan brick tower with turquoise horizontal bands, small lantern and tiny pointed top, clearly far taller and thinner than Kalta Minor; Muhammad Amin Khan madrasa at rear-left, a low TWO-STOREY tan brick rectangular courtyard complex with a deep pointed blue-tiled portal and small corner turrets, not Samarkand's Registan triple facades; Kunya-Ark and Itchan Kala's mudbrick fortifications at front-right, a short organically curved tan crenellated wall with stout half-round buttress towers and an open low citadel courtyard. Few flat-roof adobe houses, sparse sage shrubs, sandy paths. Strong silhouette contrast between the TWO minarets; no giant turquoise onion domes, no pyramids, no fantasy palace, no desert extending beyond the exact slab.",
+  "sources": [
+    "https://whc.unesco.org/en/list/543/",
+    "https://uzbekistan.travel/en/i/khiva/",
+    "https://uzbekistan.travel/uz/o/xivadagi-kalta-minor-minorasi/",
+    "https://uzbekistan.travel/en/vt/uzbekistan-historical-tour/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

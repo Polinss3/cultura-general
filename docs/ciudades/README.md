@@ -1,4 +1,8 @@
-# Ciudades: viabilidad y piloto visual
+# Ciudades: catálogo visual e integración
+
+## Alcance de esta versión
+
+El usuario ha fijado el cierre en **250 destinos**, tras las tandas 63 y 64. No incorporar más destinos para esta versión; se mantiene el mantenimiento de imágenes, encuadres y metadatos. El [documento de cierre](cierre-catalogo-250.md) recoge las últimas incorporaciones, la verificación de publicación y los textos propuestos para promociones.
 
 Decisión del usuario: imágenes fijas con aspecto 3D. La pregunta siempre es el diorama; las cuatro respuestas son nombres de ciudades actuales o antiguas, o de yacimientos urbanos autorizados, como Machu Picchu, Petra y Chichén Itzá. No invertir la dirección como hace Banderas.
 
@@ -6,7 +10,7 @@ Base: `origin/main`, commit `4cabf66be5062e1d0385237362584f7663d17e9c`, «Merge:
 
 ## Resultado de la investigación
 
-Es viable producir una colección amplia de imágenes de dioramas. Las muestras actuales demuestran una dirección artística comparable; todavía no demuestran calidad editorial, legibilidad en dispositivos ni consistencia de un catálogo completo. La parte que más trabajo requiere es seleccionar y revisar los hitos de cada ciudad, corregir errores de generación y mantener la composición entre lotes. Se pueden comparar juntas en la [galería del piloto](galeria.md).
+El piloto permitió fijar una dirección artística común y producir el catálogo integrado en Retos. La selección y revisión de los hitos, las correcciones de generación y el registro del encuadre se documentan por destino. La revisión visual y técnica no equivale a una aprobación de todos los detalles arquitectónicos. La [galería del piloto](galeria.md) conserva las primeras pruebas; el [encuadre común](encuadre.html) muestra la colección vigente.
 
 Se han generado mediante la herramienta integrada de ImageGen:
 
@@ -32,20 +36,20 @@ Son conceptos, no recursos aprobados para producción. Tampoco son modelos 3D ed
 5. Entre tres y cinco grupos de hitos principales; al menos dos deben identificarse sin ampliar la imagen. Eliminar edificios de relleno cuando compitan con los monumentos. Exagerar moderadamente el tamaño de esculturas pequeñas.
 6. Nunca incluir nombres de ciudades, rótulos, letras, leyendas, logos ni marcas de agua. Tampoco banderas que conviertan el país en una pista innecesaria. Usar el mismo fondo en modos claro y oscuro inicialmente.
 
-Los originales v1 se conservan como referencia. Las versiones v2 están en `normalizadas/` y se han generado sobre la misma plantilla irregular; el [comparador](encuadre.html) aplica las correcciones de escala y posición que usará el componente `CityDiorama`. Madrid v3 conserva los edificios de v2 mediante recorte y composición sobre la plantilla común, con máscara editable y sin regeneración. La forma irregular está aceptada y no es un defecto. La revisión arquitectónica y las exportaciones optimizadas siguen pendientes.
+Los originales se conservan como referencia. Las versiones vigentes están en `normalizadas/`; el [comparador](encuadre.html) aplica las correcciones de escala y posición del componente `CityDiorama`. Madrid v3 conserva los edificios de v2 mediante recorte y composición sobre la plantilla común, con máscara editable y sin regeneración. La forma irregular está aceptada y no es un defecto. La publicación genera las exportaciones WebP optimizadas; el estado de revisión arquitectónica se conserva por recurso.
 
 ## Ciudades históricas
 
-Se admiten antiguas ciudades y yacimientos urbanos como Petra y Chichén Itzá, además de Machu Picchu. El [criterio editorial](criterio-ciudades-historicas.md) recoge los límites, las nuevas alternativas y las candidatas para próximas tandas.
+Se admiten antiguas ciudades y yacimientos urbanos como Petra y Chichén Itzá, además de Machu Picchu. El [criterio editorial](criterio-ciudades-historicas.md) recoge los límites y las alternativas. El [cierre de esta versión](cierre-catalogo-250.md) incluye las últimas tandas autorizadas.
 
 ## Producción por lotes
 
 El [encuadre común](encuadre.html) es el visor de referencia del usuario. Debe actualizarse en cada alta o modificación de una ciudad, en el mismo cambio que sus imágenes y datos. Ejecutar `node scripts/build-city-framing-preview.mjs`: incorpora automáticamente al selector y a la cuadrícula todas las ciudades con perfil de encuadre, obtiene sus nombres del catálogo y comprueba que las imágenes existen. No mantener una lista manual de ciudades en el HTML. Si una ciudad aún no tiene imagen anterior, la vista original utiliza su fuente actual sin calibrar.
 
-- Catálogo ampliable de ciudades actuales, ciudades antiguas y yacimientos urbanos reconocibles. El recuento vigente se genera desde los datos del catálogo. [Listado completo](listado-ciudades.md) y [vista con filtros](catalogo.html).
+- Catálogo de ciudades actuales, ciudades antiguas y yacimientos urbanos reconocibles, cerrado en 250 destinos para esta versión. El recuento vigente se genera desde los datos del catálogo. [Listado completo](listado-ciudades.md) y [vista con filtros](catalogo.html).
 - El [catálogo con filtros](catalogo.html) muestra el recuento vigente de imágenes, estados y próximas tandas. Todos los conceptos disponibles aparecen en el [encuadre común](encuadre.html).
-- Se ha autorizado avanzar con todo el catálogo pendiente por tandas. Cada tanda conserva prompts, referencias y mediciones; se incorpora al visor tras revisar su composición y mantiene pendiente la aprobación editorial para el juego.
-- El resto se reparte en tandas de cuatro con variedad regional. El orden y los estados se guardan en el catálogo; no hay límite máximo fijado para futuras incorporaciones. Las candidatas sin hitos se investigarán antes de generarse.
+- Las tandas autorizadas conservan prompts, referencias y mediciones; se incorporan al visor tras revisar su composición y mantienen su estado editorial. La autorización de ampliar este catálogo termina al alcanzar los 250 destinos.
+- El orden y los estados se guardan en el catálogo. Las nuevas propuestas se reservan para otra versión y requieren una nueva petición del usuario.
 
 Para cada ciudad: fijar 3–5 grupos de hitos y referencias → añadir la ciudad usando la plantilla irregular como única imagen de referencia → comprobar siluetas, número de elementos y ausencia de texto → medir extremos y anclaje de la base y registrar el perfil de presentación → revisar a tamaño de móvil y junto a las demás ciudades → exportar el recurso optimizado → marcarlo como aprobado. Los [prompts de v2](prompts-encuadre.md) y la [primera ampliación](prompts-ampliacion-01.md) documentan el procedimiento. Guardar versión, prompt, fuentes y estado editorial. La imagen de referencia del usuario guía el estilo; no debe redistribuirse como recurso del juego.
 
@@ -53,13 +57,15 @@ Las listas de hitos del manifiesto son candidatas editoriales, no contenido ya v
 
 ## Peso y coste
 
-Los originales del piloto miden 1254 × 1254 px: Madrid pesa 2.270.022 bytes y Nueva York 2.412.721 bytes. Conservarlos como archivos maestros. Para el juego, medir exportaciones de 768 y 1024 px y comparar WebP/JPEG en dispositivos. Objetivo inicial de peso: 150–350 KB por ciudad, sujeto a la calidad visual; no es una medición de exportaciones de estas muestras. Con ese objetivo, 24 imágenes sumarían 3,6–8,4 MB y 100 sumarían 15–35 MB. Los PNG maestros no deben empaquetarse como recursos finales de la app.
+Los PNG maestros miden 1254 × 1254 px y se conservan en el repositorio. El publicador los exporta a WebP de hasta 1024 × 1024, con calidad 88 y método 6, sin recortar ni alterar proporciones. Las imágenes se sirven desde Storage con una URL por hash; los registros de publicación en `qa-app/` contienen los bytes medidos de cada incorporación. Los PNG maestros no se empaquetan como recursos finales de la app.
 
-No se ha medido el consumo de memoria, el tiempo de carga ni el peso de una compilación. Cargar únicamente la pregunta actual y, como máximo, preparar la siguiente. No generar imágenes durante la partida. Para el primer catálogo, empaquetar los recursos facilita el juego offline como Banderas y Años; evaluar descargas de paquetes solo si el peso medido de futuras ampliaciones lo justifica.
+La app consulta el catálogo remoto, prepara imágenes para la ronda y limita la concurrencia y la caché decodificada; no descarga toda la colección al abrir el modo. El comportamiento de precarga, reintentos y uso sin conexión se documenta en [Integración en la app](integracion-app.md). La fluidez final en dispositivo mantiene su seguimiento en TestFlight; los dioramas no se generan durante la partida.
 
-No hay una estimación económica o de calendario fiable mientras el piloto siga sin aprobar. Registrar tiempo de revisión, número de generaciones/correcciones y bytes finales del lote de seis; usar esos datos para presupuestar 24, 48 y 100 ciudades. Madrid ya requirió una corrección, por lo que no debe suponerse una generación final por ciudad.
+No se presupone una única generación por ciudad: los archivos de producción conservan los prompts y las correcciones necesarias. Las futuras ampliaciones quedan fuera del alcance cerrado de esta versión.
 
-## Encaje con la app existente
+## Plan inicial de integración (histórico)
+
+La siguiente propuesta corresponde al piloto. La implementación vigente, sus rutas, el catálogo remoto, los filtros y las verificaciones se describen en [Integración en la app](integracion-app.md).
 
 La copia revisada usa Expo SDK 54 y ya incluye `expo-image`. No hace falta un visor 3D. Para conservar el diorama completo, usar una tarjeta cuadrada con `contentFit="contain"`; [documentación oficial de Expo Image para SDK 54](https://docs.expo.dev/versions/v54.0.0/sdk/image/) explica el ajuste y los formatos disponibles.
 
@@ -70,7 +76,7 @@ La copia revisada usa Expo SDK 54 y ya incluye `expo-image`. No hace falta un vi
 - Récords propios: `city_records_v1`; no mezclar con Banderas o Años. Mantener reglas de invitado/offline, ruta diaria y cierre único de ronda.
 - Revisar `lib/economy.ts`, `lib/gamification.ts`, `lib/ads.ts`, política de anuncios, puntos de entrada de Inicio y traducciones ES/EN para registrar el nuevo modo sin reutilizar identificadores de Banderas.
 
-No ofrecer filtros continentales o de dificultad hasta tener un mínimo de cuatro ciudades aprobadas en cada pool habilitado. Los seis conceptos siguen sin aprobar, por lo que no existe todavía un catálogo jugable validado.
+El plan inicial condicionaba los filtros a disponer de suficientes alternativas. La implementación actual calcula las preguntas jugables de cada filtro y genera rondas con cuatro nombres distintos; el contrato remoto se comprueba antes de cerrar la publicación.
 
 ## Criterios para pasar a implementación
 
@@ -79,7 +85,7 @@ No ofrecer filtros continentales o de dificultad hasta tener un mínimo de cuatr
 3. Recursos finales optimizados con pesos medidos, sin nombres incrustados, y cuatro o más ciudades por filtro habilitado.
 4. Al implementar: comprobar que todas las preguntas contienen imagen y cuatro nombres únicos, que el acierto aparece exactamente una vez, que no se repiten preguntas y que filtros insuficientes quedan deshabilitados. Verificar offline y que una ronda no concede dos recompensas ni dos anuncios.
 
-Esta rama reúne el catálogo visual y la integración jugable documentada en [Integración en la app](integracion-app.md). La aprobación arquitectónica de los conceptos, las exportaciones finales y la validación en iOS/Android tienen su propio seguimiento; una imagen en el visor no implica que esté publicada en el catálogo remoto.
+Esta rama reúne el catálogo visual y la integración jugable documentada en [Integración en la app](integracion-app.md). La aprobación arquitectónica y la validación en iOS/Android tienen su propio seguimiento. La disponibilidad remota se acredita en los registros de publicación, además de la presencia de la imagen en el visor.
 
 ## Revisión editorial
 

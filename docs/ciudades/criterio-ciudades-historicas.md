@@ -31,4 +31,8 @@ Las cinco tienen dificultad inicial 2. Teotihuacán y Tikal comparten el grupo d
 
 Las cinco imágenes están creadas y publicadas. El catálogo alcanza 242 destinos jugables; las 237 filas anteriores permanecen sin cambios y la relación entre Machu Picchu y Chichén Itzá sigue verificada. Véase el [registro de publicación](qa-app/ciudades-historicas-tandas-61-62.json). La revisión visual para el visor no equivale a una aprobación arquitectónica final.
 
+## Cierre en 250 destinos
+
+Las últimas ocho incorporaciones están documentadas en el [cierre del catálogo](cierre-catalogo-250.md). Bagan se incorpora como conjunto histórico urbano; Lalibela y Stone Town se representan por sus conjuntos de edificios dentro de sus respectivas ciudades. El catálogo conserva una única respuesta por destino y alcanza nueve entradas de tipo `historic-site`. No añadir más lugares ni ciudades para esta versión por petición del usuario.
+
 Los prompts y referencias de cada destino se conservan en `produccion/<id>.json`, incluidos los ajustes de base. Las láminas de estas incorporaciones están en `verificacion/tanda-60.png`, `verificacion/tanda-61.png` y `verificacion/tanda-62.png`; todas las imágenes vigentes aparecen en el encuadre común.

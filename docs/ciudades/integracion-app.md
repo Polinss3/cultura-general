@@ -121,3 +121,15 @@ Los cinco originales seleccionados están guardados en `normalizadas/`, con sus 
 La publicación se limitó a estas cinco filas. La comprobación con lectura anónima confirma 242 destinos jugables, las cinco imágenes servidas idénticas byte a byte a las exportaciones WebP locales y las **237 filas anteriores sin cambios**. La relación de alternativas entre Machu Picchu y Chichén Itzá sigue funcionando. El [registro de verificación](qa-app/ciudades-historicas-tandas-61-62.json) conserva URLs, hashes y fecha.
 
 Superadas las 18 pruebas de Ciudades, la comprobación de tipos y la validación del visor con sus 242 entradas, selector, cuadrícula, controles y rutas de imágenes. La app instalada recibe el contenido al volver al selector o pulsar **Actualizar ciudades** con conexión, sin nueva build. Una ronda ya iniciada conserva su instantánea.
+
+## Cierre de esta versión en 250 destinos
+
+Publicadas las ocho incorporaciones finales: **Sintra, Bagan, San Miguel de Allende, Zanzíbar (Stone Town), Carcasona, Luang Prabang, Jiva y Lalibela**. El catálogo contiene 250 destinos jugables: Europa 97, América 57, Asia 59, África 25 y Oceanía 12. La publicación se limitó a estas ocho filas; las 242 anteriores permanecen sin cambios.
+
+La lectura anónima y la descarga de los ocho WebP confirman nombres ES/EN, encuadres y hashes idénticos a las exportaciones locales. Todos los filtros de continente y dificultad generan rondas válidas y la relación entre Machu Picchu y Chichén Itzá sigue funcionando. El [registro de publicación](qa-app/catalogo-250-publicacion.json) contiene el resultado verificable.
+
+Las tandas 63 y 64 están en el visor con las mediciones comunes y sus láminas de comprobación. Se retiraron las cúpulas inventadas del Old Fort de Stone Town. Lalibela utiliza cuatro excavaciones compactas para conservar la base y se corrigió la columnata de Medhane Alem. Los prompts de ImageGen integrada y las correcciones están guardados por destino en `produccion/`; el estado editorial de los recursos se conserva.
+
+Por petición del usuario, no se producirán ni publicarán más destinos para esta versión. `releaseCatalog` fija el cierre en 250 y el generador del catálogo rechaza un cierre con un recuento distinto o imágenes pendientes. Las correcciones de los destinos existentes siguen autorizadas; la capacidad del catálogo remoto para futuras versiones se conserva. El [documento de cierre](cierre-catalogo-250.md) incluye los textos propuestos para promociones en español e inglés.
+
+Superadas las 18 pruebas de Ciudades, la comprobación de tipos y la validación del visor con sus 250 entradas. La app recibe este contenido al volver al selector o pulsar **Actualizar ciudades** con conexión, sin nueva build; las rondas en curso conservan su catálogo.

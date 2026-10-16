@@ -765,6 +765,49 @@
       "ids": [
         "persepolis"
       ]
+    },
+    {
+      "tag": "romantic-palace-landmarks",
+      "ids": [
+        "sintra"
+      ]
+    },
+    {
+      "tag": "medieval-double-walled-town",
+      "ids": [
+        "carcasona"
+      ]
+    },
+    {
+      "tag": "mainland-southeast-asian-temples",
+      "ids": [
+        "bagan",
+        "luang-prabang"
+      ]
+    },
+    {
+      "tag": "mexican-colonial-landmarks",
+      "ids": [
+        "san-miguel-de-allende"
+      ]
+    },
+    {
+      "tag": "swahili-coastal-town",
+      "ids": [
+        "zanzibar"
+      ]
+    },
+    {
+      "tag": "khorezm-walled-oasis",
+      "ids": [
+        "jiva"
+      ]
+    },
+    {
+      "tag": "ethiopian-rock-hewn-churches",
+      "ids": [
+        "lalibela"
+      ]
     }
   ],
   "overrides": {
@@ -1990,6 +2033,70 @@
         "petra",
         "luxor",
         "efeso"
+      ]
+    },
+    "sintra": {
+      "difficulty": 2,
+      "similar": [
+        "lisboa",
+        "oporto",
+        "heidelberg"
+      ]
+    },
+    "bagan": {
+      "difficulty": 2,
+      "similar": [
+        "luang-prabang",
+        "bangkok",
+        "siem-reap"
+      ]
+    },
+    "san-miguel-de-allende": {
+      "difficulty": 2,
+      "similar": [
+        "guanajuato",
+        "puebla",
+        "oaxaca"
+      ]
+    },
+    "zanzibar": {
+      "difficulty": 3,
+      "similar": [
+        "port-louis",
+        "la-habana",
+        "dakar"
+      ]
+    },
+    "carcasona": {
+      "difficulty": 2,
+      "similar": [
+        "heidelberg",
+        "york",
+        "toledo"
+      ]
+    },
+    "luang-prabang": {
+      "difficulty": 3,
+      "similar": [
+        "bagan",
+        "bangkok",
+        "hoi-an"
+      ]
+    },
+    "jiva": {
+      "difficulty": 3,
+      "similar": [
+        "bujara",
+        "samarcanda",
+        "mascate"
+      ]
+    },
+    "lalibela": {
+      "difficulty": 3,
+      "similar": [
+        "petra",
+        "luxor",
+        "adis-abeba"
       ]
     }
   }

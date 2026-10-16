@@ -95,6 +95,9 @@ test('configured historic cities are playable and Chichen Itza can accompany Mac
   for (const id of ['machu-picchu', 'chichen-itza', 'petra', 'pompeya', 'teotihuacan', 'tikal', 'efeso', 'persepolis']) {
     assert(playable.some(c => c.id === id), id);
   }
+  for (const id of ['sintra', 'bagan', 'san-miguel-de-allende', 'zanzibar', 'carcasona', 'luang-prabang', 'jiva', 'lalibela']) {
+    assert(playable.some(c => c.id === id), id);
+  }
   assert(cityDistractors(chichen, catalog).some(c => c.id === machu.id));
   let seed = 17;
   const random = () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 2 ** 32; };

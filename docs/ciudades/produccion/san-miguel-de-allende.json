@@ -1,0 +1,17 @@
+{
+  "id": "san-miguel-de-allende",
+  "batch": 63,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/san-miguel-de-allende-v1.png",
+  "generatedFile": "exec-e2fc8c0c-d722-4cb1-850f-c0894838000a.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET, the exact empty common base. Add the requested city ON its existing floor. LOCK the organic scalloped sandstone outline, peach-beige wall, rounded bevel, side notches, width, depth, camera, lighting, ivory background, blank margins and position. Square 1254x1254. Base x33..1225, rear floor tip y400, lowest wall edge y1041. Do not stretch the slab or alter its silhouette. Keep all terrain, water and objects INSIDE its rim. Leave a visible clear strip along the rear rim. FOUR COMPACT landmark groups, separated and readable, restrained filler. Shorten roads and shrink hills to fit; never enlarge the platform. Orthographic isometric miniature, softened edges, fine recognizable architecture, matte stone/plaster, warm soft upper-left light, muted coral/slate/sage palette. No people, vehicles with text, names, labels, lettering, flags, logos, watermarks, weather or guides. SAN MIGUEL DE ALLENDE, Mexico. Four compact groups: the unmistakable PINK QUARRY-STONE neo-Gothic Parroquia de San Miguel Arcangel at rear-left, its clustered pointed pinnacles, narrow pointed openings and stepped rose-pink spires dominating the skyline, attached to its lower traditional church body, not two generic identical cathedral towers; Temple of San Francisco at rear-right, an ochre church with a rich carved churrigueresque stone entrance facade, ONE tall tiered bell tower and a modest dome behind; Las Monjas / Immaculate Conception at front-right, warm cream church with its broad prominent ribbed dome on a high drum and lantern, dome in pale warm stone, NOT metallic gold; Casa de Allende at front-left, a LOW TWO-STOREY ochre colonial corner mansion with carved stone doorway and dark wrought-iron balconies adjoining a compact Jardin Allende square with clipped trees and small paths. A few ochre/coral low colonial street facades and terracotta roofs only. Streets should feel Mexican, no cactus stereotypes, no pyramid, no giant modern skyline, no mistaken Guadalajara yellow twin spires.",
+  "sources": [
+    "https://lugares.inah.gob.mx/es/node/4794",
+    "https://www.inah.gob.mx/museos/historico-casa-de-allende",
+    "https://guanajuato.mx/romance/templos/templo-de-san-francisco/",
+    "https://revistas.inah.gob.mx/index.php/boletinmonumentos/article/download/17403/18658/37196"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

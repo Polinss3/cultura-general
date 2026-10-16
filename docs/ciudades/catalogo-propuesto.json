@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "purpose": "Catálogo editorial ampliable y cola de producción; tener entrada no implica disponer de imagen ni estar integrado en el juego.",
+  "purpose": "Catálogo editorial de 250 destinos, cerrado para esta versión; mantener las correcciones de los recursos existentes.",
   "baseCommit": "4cabf66be5062e1d0385237362584f7663d17e9c",
   "cities": [
     {
@@ -7110,11 +7110,256 @@
       "conceptImage": "normalizadas/persepolis-v1.png",
       "originalConceptImage": "normalizadas/persepolis-v1.png",
       "framingProfile": "persepolis"
+    },
+    {
+      "id": "sintra",
+      "name": {
+        "es": "Sintra",
+        "en": "Sintra"
+      },
+      "continent": "europa",
+      "countryCode": "PT",
+      "landmarks": [
+        "Palacio de Pena",
+        "Palacio Nacional de Sintra y sus dos chimeneas",
+        "Castelo dos Mouros",
+        "Quinta da Regaleira y pozo iniciático"
+      ],
+      "sources": [
+        "https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/",
+        "https://www.parquesdesintra.pt/en/parks-monuments/national-palace-of-sintra/history/",
+        "https://www.parquesdesintra.pt/en/parks-monuments/the-moorish-castle/",
+        "https://www.regaleira.pt/media/1004/folhetoen.pdf"
+      ],
+      "status": "concept-needs-review",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 243,
+      "batch": 63,
+      "requestedPriority": true,
+      "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
+      "conceptImage": "normalizadas/sintra-v1.png",
+      "originalConceptImage": "normalizadas/sintra-v1.png",
+      "framingProfile": "sintra"
+    },
+    {
+      "id": "bagan",
+      "name": {
+        "es": "Bagan",
+        "en": "Bagan"
+      },
+      "continent": "asia",
+      "countryCode": "MM",
+      "landmarks": [
+        "Templo de Ananda",
+        "Templo de Thatbyinnyu",
+        "Templo de Dhammayangyi",
+        "Pagoda Shwezigon"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/1588/",
+        "https://whc.unesco.org/document/166328",
+        "https://whc.unesco.org/en/soc/4865"
+      ],
+      "status": "concept-needs-review",
+      "kind": "historic-site",
+      "landmarkStatus": "candidate",
+      "productionOrder": 244,
+      "batch": 63,
+      "requestedPriority": true,
+      "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
+      "conceptImage": "normalizadas/bagan-v1.png",
+      "originalConceptImage": "normalizadas/bagan-v1.png",
+      "framingProfile": "bagan"
+    },
+    {
+      "id": "san-miguel-de-allende",
+      "name": {
+        "es": "San Miguel de Allende",
+        "en": "San Miguel de Allende"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "landmarks": [
+        "Parroquia de San Miguel Arcángel",
+        "Templo de San Francisco",
+        "Templo de la Inmaculada Concepción (Las Monjas)",
+        "Casa de Allende y Jardín Allende"
+      ],
+      "sources": [
+        "https://lugares.inah.gob.mx/es/node/4794",
+        "https://www.inah.gob.mx/museos/historico-casa-de-allende",
+        "https://guanajuato.mx/romance/templos/templo-de-san-francisco/",
+        "https://revistas.inah.gob.mx/index.php/boletinmonumentos/article/download/17403/18658/37196"
+      ],
+      "status": "concept-needs-review",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 245,
+      "batch": 63,
+      "requestedPriority": true,
+      "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
+      "conceptImage": "normalizadas/san-miguel-de-allende-v1.png",
+      "originalConceptImage": "normalizadas/san-miguel-de-allende-v1.png",
+      "framingProfile": "san-miguel-de-allende"
+    },
+    {
+      "id": "zanzibar",
+      "name": {
+        "es": "Zanzíbar",
+        "en": "Zanzibar"
+      },
+      "continent": "africa",
+      "countryCode": "TZ",
+      "landmarks": [
+        "Old Fort",
+        "Antiguo Dispensario",
+        "Palacio del Sultán (Palace Museum)",
+        "Catedral anglicana Christ Church"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/173/",
+        "https://www.zanzibartourism.go.tz/things-to-do",
+        "https://whc.unesco.org/fr/urban-heritage-atlas/stone-town/",
+        "https://www.archnet.org/sites/9214",
+        "https://whc.unesco.org/uploads/nominations/173rev.pdf"
+      ],
+      "status": "concept-needs-review",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 246,
+      "batch": 63,
+      "requestedPriority": true,
+      "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos. La imagen representa el casco histórico de Stone Town; la respuesta usa Zanzíbar, no la isla como conjunto.",
+      "conceptImage": "normalizadas/zanzibar-v1.png",
+      "originalConceptImage": "normalizadas/zanzibar-v1.png",
+      "framingProfile": "zanzibar"
+    },
+    {
+      "id": "carcasona",
+      "name": {
+        "es": "Carcasona",
+        "en": "Carcassonne"
+      },
+      "continent": "europa",
+      "countryCode": "FR",
+      "landmarks": [
+        "Doble recinto de murallas",
+        "Puerta Narbonnaise",
+        "Château Comtal",
+        "Basílica de Saint-Nazaire"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/345/",
+        "https://www.monuments-nationaux.fr/content/download/9894694/file_fr/DP%20Carcassonne%20VF%20BD.pdf?inLanguage=fre-FR&version=5",
+        "https://www.carcassonne.fr/article-page/basilique-saint-nazaire"
+      ],
+      "status": "concept-needs-review",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 247,
+      "batch": 64,
+      "requestedPriority": true,
+      "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
+      "conceptImage": "normalizadas/carcasona-v1.png",
+      "originalConceptImage": "normalizadas/carcasona-v1.png",
+      "framingProfile": "carcasona"
+    },
+    {
+      "id": "luang-prabang",
+      "name": {
+        "es": "Luang Prabang",
+        "en": "Luang Prabang"
+      },
+      "continent": "asia",
+      "countryCode": "LA",
+      "landmarks": [
+        "Wat Xieng Thong",
+        "Antiguo Palacio Real",
+        "Haw Pha Bang",
+        "That Chomsi en la colina Phousi"
+      ],
+      "sources": [
+        "https://tourismluangprabang.org/things-to-do/buddhism/wat-xiengthong/",
+        "https://tourismluangprabang.org/things-to-do/culture-history/national-museum/",
+        "https://tourismluangprabang.org/things-to-do/nature/phou-si-mountain/"
+      ],
+      "status": "concept-needs-review",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 248,
+      "batch": 64,
+      "requestedPriority": true,
+      "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
+      "conceptImage": "normalizadas/luang-prabang-v1.png",
+      "originalConceptImage": "normalizadas/luang-prabang-v1.png",
+      "framingProfile": "luang-prabang"
+    },
+    {
+      "id": "jiva",
+      "name": {
+        "es": "Jiva",
+        "en": "Khiva"
+      },
+      "continent": "asia",
+      "countryCode": "UZ",
+      "landmarks": [
+        "Minarete Kalta Minor",
+        "Minarete Islam Khodja",
+        "Ciudadela Kunya-Ark y murallas de Itchan Kala",
+        "Madraza de Muhammad Amin Khan"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/543/",
+        "https://uzbekistan.travel/en/i/khiva/",
+        "https://uzbekistan.travel/uz/o/xivadagi-kalta-minor-minorasi/",
+        "https://uzbekistan.travel/en/vt/uzbekistan-historical-tour/"
+      ],
+      "status": "concept-needs-review",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 249,
+      "batch": 64,
+      "requestedPriority": true,
+      "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
+      "conceptImage": "normalizadas/jiva-v1.png",
+      "originalConceptImage": "normalizadas/jiva-v1.png",
+      "framingProfile": "jiva"
+    },
+    {
+      "id": "lalibela",
+      "name": {
+        "es": "Lalibela",
+        "en": "Lalibela"
+      },
+      "continent": "africa",
+      "countryCode": "ET",
+      "landmarks": [
+        "Biete Giyorgis (San Jorge)",
+        "Biete Medhane Alem",
+        "Biete Amanuel",
+        "Biete Mariam y pasajes excavados"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/18/",
+        "https://whc.unesco.org/en/activities/160/",
+        "https://whc.unesco.org/document/192759"
+      ],
+      "status": "concept-needs-review",
+      "kind": "city",
+      "landmarkStatus": "candidate",
+      "productionOrder": 250,
+      "batch": 64,
+      "requestedPriority": true,
+      "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
+      "conceptImage": "normalizadas/lalibela-v1.png",
+      "originalConceptImage": "normalizadas/lalibela-v1.png",
+      "framingProfile": "lalibela"
     }
   ],
   "productionPolicy": {
     "batchSize": 4,
-    "scope": "Colección abierta de ciudades actuales y antiguas reconocibles; incorporar candidatas cuando aporten hitos y una imagen diferenciable.",
+    "scope": "Última ampliación autorizada para esta versión: cerrar el catálogo en 250 destinos. No añadir más destinos para esta versión; conservar el mantenimiento de imágenes y metadatos.",
     "viewer": "encuadre.html",
     "specialPlaces": "El usuario autoriza ciudades históricas y yacimientos con carácter urbano, incluidos Machu Picchu, Petra y Chichén Itzá. Mantener respuestas inequívocas; no duplicar un monumento aislado y su ciudad como respuestas posibles al mismo diorama.",
     "workflow": [
@@ -7125,6 +7370,16 @@
       "actualizar visor",
       "revisión editorial",
       "optimizar para el juego"
+    ]
+  },
+  "releaseCatalog": {
+    "version": "2.4.0",
+    "targetCount": 250,
+    "status": "closed",
+    "scope": "No añadir destinos para esta versión. Se mantienen correcciones de imágenes, encuadres y metadatos; futuras incorporaciones requieren una nueva petición del usuario para otra versión.",
+    "finalBatches": [
+      63,
+      64
     ]
   }
 }

@@ -1,0 +1,16 @@
+{
+  "id": "carcasona",
+  "batch": 64,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/carcasona-v1.png",
+  "generatedFile": "exec-8678a0cf-8520-4bc0-9961-22e348d5d903.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET, the exact empty common base. Add the requested city ON its existing floor. LOCK the organic scalloped sandstone outline, peach-beige wall, rounded bevel, side notches, width, depth, camera, lighting, ivory background, blank margins and position. Square 1254x1254. Base x33..1225, rear floor tip y400, lowest wall edge y1041. Do not stretch the slab or alter its silhouette. Keep all terrain, water and objects INSIDE its rim. Leave a visible clear strip along the rear rim. FOUR COMPACT landmark groups, separated and readable, restrained filler. Shorten roads and shrink hills to fit; never enlarge the platform. Orthographic isometric miniature, softened edges, fine recognizable architecture, matte stone/plaster, warm soft upper-left light, muted coral/slate/sage palette. No people, vehicles with text, names, labels, lettering, flags, logos, watermarks, weather or guides. CARCASSONNE, France. A compact medieval fortified town INSIDE the existing organic base. FOUR clear landmark elements: a SHORT DOUBLE RING of warm stone crenellated ramparts around a small town, separated by a visible narrow grassy lane, with restrained round towers capped by slate-grey conical roofs; the Narbonnaise Gate at front-left, TWO massive matching round towers flanking the arched entrance, pointed slate roofs and simple stone bridge/ramp; Chateau Comtal at rear-left, a distinct inner rectangular fortress with an open courtyard, round corner towers and timber/stone covered galleries, not a royal fantasy palace; Basilica of Saint Nazaire at mid-right, grey limestone Gothic church with large traceried stained-glass/rose windows, reddish terracotta pitched roofs and a squat square Romanesque bell tower, NOT twin needle spires and NOT a dome. Only a few low medieval red-roof houses in the center. Compress the wall circuit well inside the rim and leave the reference rear contour visible. No gigantic circular island, no new castle-shaped base, no modern city, no fantasy Disney turrets.",
+  "sources": [
+    "https://whc.unesco.org/en/list/345/",
+    "https://www.monuments-nationaux.fr/content/download/9894694/file_fr/DP%20Carcassonne%20VF%20BD.pdf?inLanguage=fre-FR&version=5",
+    "https://www.carcassonne.fr/article-page/basilique-saint-nazaire"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}
