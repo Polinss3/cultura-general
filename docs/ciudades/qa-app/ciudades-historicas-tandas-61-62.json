@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-16T07:57:31.451Z",
+  "catalogCount": 242,
+  "playableCount": 242,
+  "unchangedExistingRows": 237,
+  "reciprocalMachuChichenAlternativesVerified": true,
+  "images": [
+    {
+      "id": "pompeya",
+      "localImage": "normalizadas/pompeya-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/pompeya/8d199aeab7492f9292e9.webp",
+      "webpSha256": "8d199aeab7492f9292e914c1b9f87d7f5281517340bf60c1a68b8d8dd13957bf",
+      "webpBytes": 142234,
+      "publishedAt": "2026-10-16T07:56:52.36+00:00"
+    },
+    {
+      "id": "teotihuacan",
+      "localImage": "normalizadas/teotihuacan-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/teotihuacan/7bf55fe354bbf6a8d9ba.webp",
+      "webpSha256": "7bf55fe354bbf6a8d9ba3165e82b6e0ed998c44d0271bc42686f7f7e33444c51",
+      "webpBytes": 110366,
+      "publishedAt": "2026-10-16T07:56:52.363+00:00"
+    },
+    {
+      "id": "tikal",
+      "localImage": "normalizadas/tikal-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/tikal/6589b85a4097833b61cd.webp",
+      "webpSha256": "6589b85a4097833b61cd23df46f2d5a35198be5f4fb13e1a9751e5bf1fa50a8b",
+      "webpBytes": 165350,
+      "publishedAt": "2026-10-16T07:56:52.363+00:00"
+    },
+    {
+      "id": "efeso",
+      "localImage": "normalizadas/efeso-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/efeso/41aa8681b6b819d796e3.webp",
+      "webpSha256": "41aa8681b6b819d796e3832c0050fea45df6ecd683bba7c9fe6e8c3800e261a3",
+      "webpBytes": 144208,
+      "publishedAt": "2026-10-16T07:56:52.363+00:00"
+    },
+    {
+      "id": "persepolis",
+      "localImage": "normalizadas/persepolis-v1.png",
+      "imageUrl": "https://xjzsrbcmldbgwwabnmug.supabase.co/storage/v1/object/public/city-dioramas/persepolis/5936ff6758260d4fcc5c.webp",
+      "webpSha256": "5936ff6758260d4fcc5c423e7339e92342e674fef680cc1e2b83ada932442525",
+      "webpBytes": 132862,
+      "publishedAt": "2026-10-16T07:56:52.363+00:00"
+    }
+  ]
+}

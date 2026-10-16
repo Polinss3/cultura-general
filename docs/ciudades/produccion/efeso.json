@@ -1,0 +1,26 @@
+{
+  "id": "efeso",
+  "batch": 61,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/efeso-v1.png",
+  "generatedFile": "exec-034b397c-88e4-4729-8e7d-bffba4f033c1.png",
+  "prompt": "Use case: precise-object-edit. Input 1 is EDIT TARGET, the Ephesus diorama. Input 2 is the exact empty common base. Change ONLY the base silhouette and position to match input 2 exactly. The rear rim of input 1 is too high in the canvas, making its plinth too deep. Restore the REAR CENTER FLOOR TIP to y400 instead of y346, and bottom wall edge to y1041 instead of y1055, on the same 1254x1254 square canvas. Match the organic scalloped outline, peach-beige wall depth, left/right notches and x33..1225 width of input 2. Compress or move the small grassy slope behind the theatre forward enough to stay within that exact contour. Preserve the recognizable TWO STOREY Library of Celsus facade, semicircular Great Theatre, curved arch portico of Hadrian and stone Curetes Street; do not redesign or add any monuments. Keep the camera, warm soft light, ivory backdrop, palette and generous upper blank margin. Do not enlarge floor, add a second slab, extend landscape beyond the rim or crop the image. No text, guides, labels or watermark. Output only one corrected city image.",
+  "sources": [
+    "https://whc.unesco.org/en/list/1018/",
+    "https://izmir.ktb.gov.tr/EN-110170/selcuk.html",
+    "https://www.ktb.gov.tr/EN-36251/where-to-visit.html",
+    "https://www.oeaw.ac.at/en/oeai/media/news-archive/news-detail/preserving-world-cultural-heritage"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review",
+  "initialPrompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET: an empty common base. Add only the requested archaeological city ON its floor. LOCK the exact organic scalloped sandstone base outline, rounded peach-beige side wall, depth, width, notches, camera, lighting, ivory background, blank margins and screen position. Square 1254x1254, base x33..1225, REAR FLOOR TIP y400, lowest wall edge y1041. Never expand floor, reshape base or add detached platforms. Keep all terrain, vegetation and structures WELL INSIDE the existing rim. Use FOUR compact groups, separated and readable, with few filler ruins. Orthographic isometric miniature, softened edges, refined recognizable stone architecture, matte materials, warm soft upper-left daylight, muted beige/coral stone and sage greens. Show recognizable PRESENT-DAY archaeological remains, with surviving/reassembled architecture, not imaginary complete ancient reconstructions. No people, text, names, flags, labels, letters, logos, weather, watermark or guides. EPHESUS, Turkey. Four recognizable elements: the Library of Celsus at mid-left as its surviving/restored freestanding TWO-STOREY marble facade, three rectangular lower doorways, paired ornate columns, niches, alternating curved and triangular pediments above, NO complete building or roof behind it; the huge SEMICIRCULAR Great Theatre at rear-right, nested fan-shaped stone seating tiers against a compact green earthen slope, open stage and low ruined stage wall, NOT an oval amphitheatre; the Temple of Hadrian at front-right as a small surviving ornate front portico with four slender columns and one distinctive CURVED central arch, low roofless ruin behind; a short broad pale stone Curetes Street leading diagonally to the library with a few columns, low ruined walls and small mosaic remnants, at front-left. Warm ivory marble, sparse sage cypresses/shrubs inside floor. No sea, modern buildings, giant complete Temple of Artemis or Parthenon, no imaginary reconstructed roofs. Keep Library facade visually prominent and all four elements readable.",
+  "editHistory": [
+    {
+      "source": "/Users/pablobrasero/.codex/generated_images/01a1399b-2ea2-7eb2-8e42-5702fed0f8e1/exec-42fc184b-564c-4b5d-85f4-f4af40be20f0.png",
+      "prompt": "Use case: precise-object-edit. Input 1 is EDIT TARGET, the Ephesus diorama. Input 2 is the exact empty common base. Change ONLY the base silhouette and position to match input 2 exactly. The rear rim of input 1 is too high in the canvas, making its plinth too deep. Restore the REAR CENTER FLOOR TIP to y400 instead of y346, and bottom wall edge to y1041 instead of y1055, on the same 1254x1254 square canvas. Match the organic scalloped outline, peach-beige wall depth, left/right notches and x33..1225 width of input 2. Compress or move the small grassy slope behind the theatre forward enough to stay within that exact contour. Preserve the recognizable TWO STOREY Library of Celsus facade, semicircular Great Theatre, curved arch portico of Hadrian and stone Curetes Street; do not redesign or add any monuments. Keep the camera, warm soft light, ivory backdrop, palette and generous upper blank margin. Do not enlarge floor, add a second slab, extend landscape beyond the rim or crop the image. No text, guides, labels or watermark. Output only one corrected city image.",
+      "reference": "normalizadas/base-comun-v2.png",
+      "reason": "Acortar el borde trasero de la base y restaurar la profundidad de la plantilla común."
+    }
+  ]
+}

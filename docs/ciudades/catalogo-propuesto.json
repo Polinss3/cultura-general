@@ -6958,6 +6958,158 @@
       "conceptImage": "normalizadas/chichen-itza-v1.png",
       "originalConceptImage": "normalizadas/chichen-itza-v1.png",
       "framingProfile": "chichen-itza"
+    },
+    {
+      "id": "pompeya",
+      "name": {
+        "es": "Pompeya",
+        "en": "Pompeii"
+      },
+      "continent": "europa",
+      "countryCode": "IT",
+      "landmarks": [
+        "Foro y ruinas del templo de Júpiter",
+        "Anfiteatro de Pompeya",
+        "Casa del Fauno y calles empedradas",
+        "Vesubio como contexto paisajístico"
+      ],
+      "sources": [
+        "https://pompeiisites.org/wp-content/uploads/A-Guide-to-the-Pompeii-Excavations-2.pdf",
+        "https://pompeiisites.org/en/gallery-pompei-en/restoration-columns-house-of-faun/",
+        "https://pompeiisites.org/en/pompeii-map/antiquarium/"
+      ],
+      "status": "concept-needs-review",
+      "kind": "historic-site",
+      "landmarkStatus": "candidate",
+      "productionOrder": 238,
+      "batch": 61,
+      "requestedPriority": true,
+      "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
+      "conceptImage": "normalizadas/pompeya-v1.png",
+      "originalConceptImage": "normalizadas/pompeya-v1.png",
+      "framingProfile": "pompeya"
+    },
+    {
+      "id": "teotihuacan",
+      "name": {
+        "es": "Teotihuacán",
+        "en": "Teotihuacán"
+      },
+      "continent": "america",
+      "countryCode": "MX",
+      "landmarks": [
+        "Pirámide del Sol",
+        "Pirámide de la Luna",
+        "Calzada de los Muertos",
+        "Templo de la Serpiente Emplumada"
+      ],
+      "sources": [
+        "https://www.teotihuacan.inah.gob.mx/",
+        "https://visitateotihuacan.inah.gob.mx/explora/calzada-de-los-muertos/",
+        "https://visitateotihuacan.inah.gob.mx/explora/piramide-del-sol/",
+        "https://lugares.inah.gob.mx/es/node/6130"
+      ],
+      "status": "concept-needs-review",
+      "kind": "historic-site",
+      "landmarkStatus": "candidate",
+      "productionOrder": 239,
+      "batch": 61,
+      "requestedPriority": true,
+      "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
+      "conceptImage": "normalizadas/teotihuacan-v1.png",
+      "originalConceptImage": "normalizadas/teotihuacan-v1.png",
+      "framingProfile": "teotihuacan"
+    },
+    {
+      "id": "tikal",
+      "name": {
+        "es": "Tikal",
+        "en": "Tikal"
+      },
+      "continent": "america",
+      "countryCode": "GT",
+      "landmarks": [
+        "Templo I o del Gran Jaguar",
+        "Templo II o de las Máscaras",
+        "Templo IV",
+        "Gran Plaza y Acrópolis Norte"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/64",
+        "https://inguat.gob.gt/descargas-inguat-guatemala/41-mapas.html?download=1058%3Amapa-tikal-en",
+        "https://noticias.mcd.gob.gt/2026/05/26/tikal-celebra-71-anos-como-parque-nacional-y-patrimonio-de-la-humanidad/"
+      ],
+      "status": "concept-needs-review",
+      "kind": "historic-site",
+      "landmarkStatus": "candidate",
+      "productionOrder": 240,
+      "batch": 61,
+      "requestedPriority": true,
+      "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
+      "conceptImage": "normalizadas/tikal-v1.png",
+      "originalConceptImage": "normalizadas/tikal-v1.png",
+      "framingProfile": "tikal"
+    },
+    {
+      "id": "efeso",
+      "name": {
+        "es": "Éfeso",
+        "en": "Ephesus"
+      },
+      "continent": "asia",
+      "countryCode": "TR",
+      "landmarks": [
+        "Biblioteca de Celso",
+        "Gran Teatro",
+        "Templo de Adriano",
+        "Calle de los Curetes"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/1018/",
+        "https://izmir.ktb.gov.tr/EN-110170/selcuk.html",
+        "https://www.ktb.gov.tr/EN-36251/where-to-visit.html",
+        "https://www.oeaw.ac.at/en/oeai/media/news-archive/news-detail/preserving-world-cultural-heritage"
+      ],
+      "status": "concept-needs-review",
+      "kind": "historic-site",
+      "landmarkStatus": "candidate",
+      "productionOrder": 241,
+      "batch": 61,
+      "requestedPriority": true,
+      "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
+      "conceptImage": "normalizadas/efeso-v1.png",
+      "originalConceptImage": "normalizadas/efeso-v1.png",
+      "framingProfile": "efeso"
+    },
+    {
+      "id": "persepolis",
+      "name": {
+        "es": "Persépolis",
+        "en": "Persepolis"
+      },
+      "continent": "asia",
+      "countryCode": "IR",
+      "landmarks": [
+        "Puerta de Todas las Naciones",
+        "Columnas de la Apadana",
+        "Escalinata con relieves procesionales",
+        "Ruinas del palacio de Tachara"
+      ],
+      "sources": [
+        "https://whc.unesco.org/en/list/114",
+        "https://whc.unesco.org/en/documents/7120/",
+        "https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/saoc72.pdf"
+      ],
+      "status": "concept-needs-review",
+      "kind": "historic-site",
+      "landmarkStatus": "candidate",
+      "productionOrder": 242,
+      "batch": 62,
+      "requestedPriority": true,
+      "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
+      "conceptImage": "normalizadas/persepolis-v1.png",
+      "originalConceptImage": "normalizadas/persepolis-v1.png",
+      "framingProfile": "persepolis"
     }
   ],
   "productionPolicy": {

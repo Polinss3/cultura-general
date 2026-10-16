@@ -1,5 +1,5 @@
 {
-  "version": 90,
+  "version": 93,
   "images": [
     {
       "id": "madrid",
@@ -3078,6 +3078,71 @@
       "baseLeft": 33,
       "baseRight": 1225,
       "baseBottom": 1049,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "pompeya",
+      "file": "normalizadas/pompeya-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2240787,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "tikal",
+      "file": "normalizadas/tikal-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2358546,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "efeso",
+      "file": "normalizadas/efeso-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2198774,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1051,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "persepolis",
+      "file": "normalizadas/persepolis-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2195216,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1041,
+      "registeredLeft": 0.0800000000000001,
+      "registeredRight": 0.92,
+      "registeredBottom": 0.92
+    },
+    {
+      "id": "teotihuacan",
+      "file": "normalizadas/teotihuacan-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2107903,
+      "baseLeft": 33,
+      "baseRight": 1225,
+      "baseBottom": 1042,
       "registeredLeft": 0.0800000000000001,
       "registeredRight": 0.92,
       "registeredBottom": 0.92

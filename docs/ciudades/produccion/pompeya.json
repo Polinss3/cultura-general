@@ -1,0 +1,16 @@
+{
+  "id": "pompeya",
+  "batch": 61,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/pompeya-v1.png",
+  "generatedFile": "exec-9dd8f807-b131-4a02-8b32-88214f6283f4.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET: an empty common base. Add only the requested archaeological city ON its floor. LOCK the exact organic scalloped sandstone base outline, rounded peach-beige side wall, depth, width, notches, camera, lighting, ivory background, blank margins and screen position. Square 1254x1254, base x33..1225, REAR FLOOR TIP y400, lowest wall edge y1041. Never expand floor, reshape base or add detached platforms. Keep all terrain, vegetation and structures WELL INSIDE the existing rim. Use FOUR compact groups, separated and readable, with few filler ruins. Orthographic isometric miniature, softened edges, refined recognizable stone architecture, matte materials, warm soft upper-left daylight, muted beige/coral stone and sage greens. Show recognizable PRESENT-DAY archaeological remains, with surviving/reassembled architecture, not imaginary complete ancient reconstructions. No people, text, names, flags, labels, letters, logos, weather, watermark or guides. POMPEII, Italy. Four compact groups: a modest DORMANT Vesuvius cone, grey-green flanks and shallow crater, at the back INSIDE the slab, as compressed landscape context; the rectangular open Roman Forum at center-left with ruined colonnades and a raised roofless Temple of Jupiter podium with a few surviving stone columns aligned toward Vesuvius; the unmistakable LOW OVAL amphitheatre at front-right, continuous oval tiered seating around an empty arena, low outer masonry and exterior stairs, NOT the tall multi-storey Colosseum; an open-roof excavated Roman domus inspired by the House of the Faun at front-left, two small colonnaded courtyards, low terracotta and ochre walls, joined by a dark basalt paved street with raised pedestrian stepping stones. Low excavated walls, only small remnants of terracotta roofing. No eruption, smoke, lava or victims. No modern Naples city, no Vesuvius off the base, no fully rebuilt temple roof.",
+  "sources": [
+    "https://pompeiisites.org/wp-content/uploads/A-Guide-to-the-Pompeii-Excavations-2.pdf",
+    "https://pompeiisites.org/en/gallery-pompei-en/restoration-columns-house-of-faun/",
+    "https://pompeiisites.org/en/pompeii-map/antiquarium/"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

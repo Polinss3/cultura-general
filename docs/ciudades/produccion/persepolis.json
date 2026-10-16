@@ -1,0 +1,16 @@
+{
+  "id": "persepolis",
+  "batch": 62,
+  "tool": "ImageGen integrada",
+  "reference": "normalizadas/base-comun-v2.png",
+  "output": "normalizadas/persepolis-v1.png",
+  "generatedFile": "exec-7baaba72-82c0-4eff-8187-554d2703abfd.png",
+  "prompt": "Use case: precise-object-edit. Asset: fixed city-quiz miniature diorama. Input image is the EDIT TARGET: an empty common base. Add only the requested archaeological city ON its floor. LOCK the exact organic scalloped sandstone base outline, rounded peach-beige side wall, depth, width, notches, camera, lighting, ivory background, blank margins and screen position. Square 1254x1254, base x33..1225, REAR FLOOR TIP y400, lowest wall edge y1041. Never expand floor, reshape base or add detached platforms. Keep all terrain, vegetation and structures WELL INSIDE the existing rim. Use FOUR compact groups, separated and readable, with few filler ruins. Orthographic isometric miniature, softened edges, refined recognizable stone architecture, matte materials, warm soft upper-left daylight, muted beige/coral stone and sage greens. Show recognizable PRESENT-DAY archaeological remains, with surviving/reassembled architecture, not imaginary complete ancient reconstructions. No people, text, names, flags, labels, letters, logos, weather, watermark or guides. PERSEPOLIS, Iran, Achaemenid royal city ruins. FOUR compact elements: Gate of All Nations at rear-left, two thick surviving monumental squared stone portals guarded by sculpted WINGED HUMAN-HEADED BULLS and a pair of tall slender fluted columns, incomplete ruin with no invented giant roof; the Apadana at rear-right represented by an open stone platform with a restrained group of very TALL SLENDER FLUTED columns topped by BACK-TO-BACK DOUBLE-BULL capitals, columns stand without a roof; a broad compact DOUBLE RETURN staircase at front-center with shallow carved procession reliefs in its retaining walls, muted stone relief silhouettes not living people; Tachara / Palace of Darius at front-left as a rectangular group of surviving thick dark grey carved DOORFRAMES and low walls, roofless. Dry pale sandy courtyard, warm grey limestone and sparse sage desert shrubs. Small internal level changes only, no extra giant terrace or separate slab that changes the common plinth. No complete reconstructed palace, Greek pediments, Roman arches, pyramids, modern buildings or isolated cliff tombs. Clear air, no mountains outside slab.",
+  "sources": [
+    "https://whc.unesco.org/en/list/114",
+    "https://whc.unesco.org/en/documents/7120/",
+    "https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/saoc72.pdf"
+  ],
+  "galleryCheck": "visually-checked",
+  "editorialStatus": "needs-review"
+}

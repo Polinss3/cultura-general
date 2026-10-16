@@ -1,6 +1,6 @@
 # Catálogo y cola de Ciudades
 
-237 destinos: 234 ciudades y 3 lugares históricos. 237 dioramas con imagen y 0 pendientes.
+242 destinos: 234 ciudades y 8 lugares históricos. 242 dioramas con imagen y 0 pendientes.
 
 Colección abierta: este listado inicial no fija un máximo. Una entrada es una candidata editorial, no una imagen terminada ni una pregunta integrada en la app. Se avanza en tandas de cuatro, revisando hitos, legibilidad y base común antes de continuar.
 
@@ -11,9 +11,9 @@ Colección abierta: este listado inicial no fija un máximo. Una entrada es una 
 | Tanda | Destinos pendientes |
 | --- | --- |
 
-Los destinos históricos incluidos son Machu Picchu, Petra y Chichén Itzá; sus respuestas usan esos nombres. Se admiten antiguas ciudades y yacimientos urbanos, evitando respuestas ambiguas con ciudades o monumentos ya representados. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de publicarlas.
+Los destinos históricos incluidos son Machu Picchu, Petra, Chichén Itzá, Pompeya, Teotihuacán, Tikal, Éfeso y Persépolis; sus respuestas usan esos nombres. Se admiten antiguas ciudades y yacimientos urbanos, evitando respuestas ambiguas con ciudades o monumentos ya representados. Los nuevos candidatos sin hitos requieren investigación antes de generar. Las traducciones de las nuevas entradas se completarán antes de publicarlas.
 
-## Europa · 94
+## Europa · 95
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -111,8 +111,9 @@ Los destinos históricos incluidos son Machu Picchu, Petra y Chichén Itzá; sus
 | Mónaco | Con imagen · por revisar | 58 | Casino de Montecarlo; Palacio del Príncipe; Catedral de San Nicolás; Museo Oceanográfico |
 | La Valeta | Con imagen · por revisar | 58 | Concatedral de San Juan; Fort Saint Elmo; Cúpula de los Carmelitas y aguja de San Pablo; Upper Barrakka Gardens |
 | Kyiv | Con imagen · por revisar | 59 | Catedral de Santa Sofía; Monasterio de San Miguel; Puerta Dorada; Lavra de Kyiv-Pechersk |
+| Pompeya | Con imagen · por revisar | 61 | Foro y ruinas del templo de Júpiter; Anfiteatro de Pompeya; Casa del Fauno y calles empedradas; Vesubio como contexto paisajístico |
 
-## América · 54
+## América · 56
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -170,8 +171,10 @@ Los destinos históricos incluidos son Machu Picchu, Petra y Chichén Itzá; sus
 | San José | Con imagen · por revisar | 49 | Teatro Nacional; Catedral Metropolitana; Templo de la Música; Museo Nacional y Cuartel Bellavista |
 | Kingston | Con imagen · por revisar | 49 | Devon House; Fort Charles de Port Royal; Bob Marley Museum sin rótulos; Ward Theatre |
 | Chichén Itzá | Con imagen · por revisar | 60 | El Castillo o templo de Kukulcán; Templo de los Guerreros y columnata; El Caracol; Gran Juego de Pelota |
+| Teotihuacán | Con imagen · por revisar | 61 | Pirámide del Sol; Pirámide de la Luna; Calzada de los Muertos; Templo de la Serpiente Emplumada |
+| Tikal | Con imagen · por revisar | 61 | Templo I o del Gran Jaguar; Templo II o de las Máscaras; Templo IV; Gran Plaza y Acrópolis Norte |
 
-## Asia · 54
+## Asia · 56
 
 | Destino | Estado | Tanda | Hitos propuestos |
 | --- | --- | --- | --- |
@@ -229,6 +232,8 @@ Los destinos históricos incluidos son Machu Picchu, Petra y Chichén Itzá; sus
 | Samarcanda | Con imagen · por revisar | 51 | Registán; Shah-i-Zinda; Gur-e Amir; Mezquita Bibi-Khanym |
 | Bujará | Con imagen · por revisar | 51 | Minarete y mezquita Kalyan; Fortaleza Ark; Chor Minor; Lyab-i Hauz |
 | Petra | Con imagen · por revisar | 60 | El Tesoro (Al-Khazneh) tallado en la roca; El Monasterio (Ad-Deir); Teatro nabateo; Calle de las Columnas |
+| Éfeso | Con imagen · por revisar | 61 | Biblioteca de Celso; Gran Teatro; Templo de Adriano; Calle de los Curetes |
+| Persépolis | Con imagen · por revisar | 62 | Puerta de Todas las Naciones; Columnas de la Apadana; Escalinata con relieves procesionales; Ruinas del palacio de Tachara |
 
 ## África · 23
 
@@ -508,5 +513,10 @@ Los destinos históricos incluidos son Machu Picchu, Petra y Chichén Itzá; sus
 - Kyiv: [Referencia 1](https://app.visit.kyiv.ua/en/locations/saint-sophia-cathedral/), [Referencia 2](https://app.visit.kyiv.ua/en/locations/sofiiska-square/), [Referencia 3](https://app.visit.kyiv.ua/locations/sofiiskyi-sobor-sofiia-kyivska/), [Referencia 4](https://visitkyiv.com/sights-and-landmarks/st-sophias-cathedral/), [Referencia 5](https://visit.kyiv.ua/en/discover-kyiv/landmarks).
 - Petra: [Referencia 1](https://whc.unesco.org/en/list/326/), [Referencia 2](https://visitpetra.jo/en/Location/107), [Referencia 3](https://www.visitpetra.jo/PDF/Petra%20Trails.pdf).
 - Chichén Itzá: [Referencia 1](https://whc.unesco.org/en/list/483/), [Referencia 2](https://lugares.inah.gob.mx/es/node/4335), [Referencia 3](https://lugares.inah.gob.mx/es/node/6131).
+- Pompeya: [Referencia 1](https://pompeiisites.org/wp-content/uploads/A-Guide-to-the-Pompeii-Excavations-2.pdf), [Referencia 2](https://pompeiisites.org/en/gallery-pompei-en/restoration-columns-house-of-faun/), [Referencia 3](https://pompeiisites.org/en/pompeii-map/antiquarium/).
+- Teotihuacán: [Referencia 1](https://www.teotihuacan.inah.gob.mx/), [Referencia 2](https://visitateotihuacan.inah.gob.mx/explora/calzada-de-los-muertos/), [Referencia 3](https://visitateotihuacan.inah.gob.mx/explora/piramide-del-sol/), [Referencia 4](https://lugares.inah.gob.mx/es/node/6130).
+- Tikal: [Referencia 1](https://whc.unesco.org/en/list/64), [Referencia 2](https://inguat.gob.gt/descargas-inguat-guatemala/41-mapas.html?download=1058%3Amapa-tikal-en), [Referencia 3](https://noticias.mcd.gob.gt/2026/05/26/tikal-celebra-71-anos-como-parque-nacional-y-patrimonio-de-la-humanidad/).
+- Éfeso: [Referencia 1](https://whc.unesco.org/en/list/1018/), [Referencia 2](https://izmir.ktb.gov.tr/EN-110170/selcuk.html), [Referencia 3](https://www.ktb.gov.tr/EN-36251/where-to-visit.html), [Referencia 4](https://www.oeaw.ac.at/en/oeai/media/news-archive/news-detail/preserving-world-cultural-heritage).
+- Persépolis: [Referencia 1](https://whc.unesco.org/en/list/114), [Referencia 2](https://whc.unesco.org/en/documents/7120/), [Referencia 3](https://isac.uchicago.edu/sites/default/files/uploads/shared/docs/saoc72.pdf).
 
 Generado desde `catalogo-propuesto.json` al ejecutar `node scripts/build-city-framing-preview.mjs`. Las imágenes mantienen su estado de revisión editorial; su disponibilidad en la app depende de la publicación del catálogo remoto.

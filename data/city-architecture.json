@@ -742,13 +742,28 @@
       "tag": "precolumbian-stone-ruins",
       "ids": [
         "machu-picchu",
-        "chichen-itza"
+        "chichen-itza",
+        "teotihuacan",
+        "tikal"
       ]
     },
     {
       "tag": "nabataean-rock-cut",
       "ids": [
         "petra"
+      ]
+    },
+    {
+      "tag": "classical-urban-ruins",
+      "ids": [
+        "pompeya",
+        "efeso"
+      ]
+    },
+    {
+      "tag": "achaemenid-columned-palaces",
+      "ids": [
+        "persepolis"
       ]
     }
   ],
@@ -1935,6 +1950,46 @@
         "aman",
         "luxor",
         "atenas"
+      ]
+    },
+    "pompeya": {
+      "difficulty": 2,
+      "similar": [
+        "efeso",
+        "roma",
+        "atenas"
+      ]
+    },
+    "teotihuacan": {
+      "difficulty": 2,
+      "similar": [
+        "chichen-itza",
+        "tikal",
+        "machu-picchu"
+      ]
+    },
+    "tikal": {
+      "difficulty": 2,
+      "similar": [
+        "chichen-itza",
+        "teotihuacan",
+        "machu-picchu"
+      ]
+    },
+    "efeso": {
+      "difficulty": 2,
+      "similar": [
+        "pompeya",
+        "atenas",
+        "petra"
+      ]
+    },
+    "persepolis": {
+      "difficulty": 2,
+      "similar": [
+        "petra",
+        "luxor",
+        "efeso"
       ]
     }
   }

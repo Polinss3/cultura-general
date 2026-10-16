@@ -111,3 +111,13 @@ Publicados los dos nuevos dioramas, sus encuadres y nombres ES/EN: el catálogo 
 Chichén Itzá y Machu Picchu pueden aparecer como alternativas entre sí. Se actualizaron los metadatos de Machu Picchu conservando su imagen y URL. La lectura anónima del catálogo publicado confirma los 237 destinos jugables, la relación de alternativas y que las otras 234 filas no cambiaron. Las imágenes descargadas de Petra y Chichén Itzá coinciden byte a byte con sus exportaciones locales; el [registro de publicación](qa-app/ciudades-historicas-publicacion.json) conserva las URLs y los hashes.
 
 La app recibe esta ampliación al entrar o volver al selector, o al pulsar **Actualizar ciudades** con conexión. No requiere una nueva build; una ronda ya iniciada conserva su catálogo hasta terminar. Las comprobaciones locales de tipos, las 18 pruebas de Ciudades y el visor con sus 237 entradas han superado la validación. Los nuevos dioramas conservan su estado de concepto pendiente de revisión editorial.
+
+## Pompeya, Teotihuacán, Tikal, Éfeso y Persépolis (16 de octubre de 2026)
+
+Publicadas las cinco incorporaciones de las tandas 61 y 62: **242 destinos jugables**, con 234 ciudades actuales y ocho destinos históricos. Distribución: Europa 95, América 56, Asia 56, África 23 y Oceanía 12. Las nuevas entradas tienen nombres ES/EN y dificultad inicial 2; los grupos y alternativas curatoriales están documentados en el [criterio de ciudades históricas](criterio-ciudades-historicas.md).
+
+Los cinco originales seleccionados están guardados en `normalizadas/`, con sus prompts y fuentes en `produccion/`. Se corrigió la profundidad de la base de Éfeso y se eligió una composición más compacta de Teotihuacán para conservar la plantilla común. Los perfiles registrados mantienen los límites horizontales del 8 % y 92 %, y el borde inferior al 92 %. El visor, el catálogo, las mediciones y las láminas de ambas tandas están actualizados. Se conserva el estado editorial de concepto pendiente de revisión.
+
+La publicación se limitó a estas cinco filas. La comprobación con lectura anónima confirma 242 destinos jugables, las cinco imágenes servidas idénticas byte a byte a las exportaciones WebP locales y las **237 filas anteriores sin cambios**. La relación de alternativas entre Machu Picchu y Chichén Itzá sigue funcionando. El [registro de verificación](qa-app/ciudades-historicas-tandas-61-62.json) conserva URLs, hashes y fecha.
+
+Superadas las 18 pruebas de Ciudades, la comprobación de tipos y la validación del visor con sus 242 entradas, selector, cuadrícula, controles y rutas de imágenes. La app instalada recibe el contenido al volver al selector o pulsar **Actualizar ciudades** con conexión, sin nueva build. Una ronda ya iniciada conserva su instantánea.
