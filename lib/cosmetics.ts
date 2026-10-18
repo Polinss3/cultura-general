@@ -12,10 +12,17 @@ export type CosmeticSlot = 'frame' | 'name_color' | 'name_icon' | 'name_style';
 interface CosmeticMeta {
   slot: CosmeticSlot;
   color?: string;      // frame / name_color
+  /** name_color sobre fondo claro, si `color` no se lee (los dorados). */
+  colorLight?: string;
   glow?: boolean;      // frame: halo del color del marco
   emoji?: string;      // name_icon
   textStyle?: TextStyle; // name_style
+  /** name_style sobre fondo claro: halo más suave para no empastar el nombre. */
+  textStyleLight?: TextStyle;
 }
+
+const halo = (color: string, radius: number): TextStyle =>
+  ({ textShadowColor: color, textShadowRadius: radius, textShadowOffset: { width: 0, height: 0 } });
 
 export const COSMETICS: Record<string, CosmeticMeta> = {
   // Marcos de avatar
@@ -26,9 +33,11 @@ export const COSMETICS: Record<string, CosmeticMeta> = {
   frame_pro_glow: { slot: 'frame', color: PRO_ACCENT, glow: true },
   // Color de nombre
   name_neon:    { slot: 'name_color', color: '#b14dff' },
-  name_gold:    { slot: 'name_color', color: '#e8c030' },
+  // Los dorados brillantes no se leen sobre crema ni sobre las filas
+  // resaltadas: en claro van tostados, que siguen leyéndose como oro.
+  name_gold:    { slot: 'name_color', color: '#e8c030', colorLight: '#8F6400' },
   name_pro:     { slot: 'name_color', color: PRO_ACCENT },
-  name_pro_ember: { slot: 'name_color', color: '#F0A93B' },
+  name_pro_ember: { slot: 'name_color', color: '#F0A93B', colorLight: '#A3520A' },
   // Icono/emoji antes del nombre
   icon_fire:    { slot: 'name_icon', emoji: '🔥' },
   icon_star:    { slot: 'name_icon', emoji: '⭐' },
@@ -39,16 +48,33 @@ export const COSMETICS: Record<string, CosmeticMeta> = {
   // Estilo del nombre
   style_italic: { slot: 'name_style', textStyle: { fontStyle: 'italic' } },
   style_upper:  { slot: 'name_style', textStyle: { textTransform: 'uppercase', letterSpacing: 0.5 } },
-  style_glow:   { slot: 'name_style', textStyle: { textShadowColor: '#e8a030', textShadowRadius: 8, textShadowOffset: { width: 0, height: 0 } } },
-  style_pro:    { slot: 'name_style', textStyle: { textShadowColor: PRO_ACCENT, textShadowRadius: 10, textShadowOffset: { width: 0, height: 0 } } },
+  style_glow:   { slot: 'name_style', textStyle: halo('#e8a030', 8), textStyleLight: halo('#e8a03080', 7) },
+  style_pro:    { slot: 'name_style', textStyle: halo(PRO_ACCENT, 10), textStyleLight: halo(`${PRO_ACCENT}66`, 8) },
 };
 
 export interface ResolvedCosmetics {
   frameColor?: string;
   frameGlow?: boolean;
   nameColor?: string;
+  nameColorLight?: string;
   nameIcon?: string;
   nameStyle?: TextStyle;
+  nameStyleLight?: TextStyle;
+}
+
+/**
+ * Color y estilo del nombre para el tema actual. Con halo, el texto lleva
+ * relleno del tamaño del halo (compensado con margen negativo, así no mueve
+ * nada): iOS recorta la sombra en el borde del propio texto y sin ese hueco el
+ * resplandor acababa en un corte recto.
+ */
+export function themedName(c: ResolvedCosmetics, isDark: boolean, { inline = false } = {}): { color?: string; style?: TextStyle } {
+  const color = (!isDark && c.nameColorLight) || c.nameColor;
+  const style = (!isDark && c.nameStyleLight) || c.nameStyle;
+  const r = style?.textShadowRadius;
+  // Un <Text> anidado no admite relleno ni márgenes.
+  if (!r || inline) return { color, style };
+  return { color, style: { ...style, paddingHorizontal: r, paddingVertical: r, marginHorizontal: -r, marginVertical: -r } };
 }
 
 // `map` = slot → item_id (formato de profiles.cosmetics). Devuelve los efectos.
@@ -60,10 +86,12 @@ export function resolveCosmetics(map?: Record<string, string> | null): ResolvedC
   if (frame?.glow) r.frameGlow = true;
   const nc = COSMETICS[map['name_color']];
   if (nc?.color) r.nameColor = nc.color;
+  if (nc?.colorLight) r.nameColorLight = nc.colorLight;
   const ic = COSMETICS[map['name_icon']];
   if (ic?.emoji) r.nameIcon = ic.emoji;
   const st = COSMETICS[map['name_style']];
   if (st?.textStyle) r.nameStyle = st.textStyle;
+  if (st?.textStyleLight) r.nameStyleLight = st.textStyleLight;
   return r;
 }
 

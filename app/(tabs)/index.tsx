@@ -22,6 +22,7 @@ import { LeagueCard } from '@/components/LeagueCard';
 import { AvatarFrame } from '@/components/AvatarFrame';
 import { ProBadge } from '@/components/ProBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
+import { themedName } from '@/lib/cosmetics';
 import { useIsPro } from '@/hooks/usePremium';
 import { PRO_ACCENT } from '@/lib/pro';
 import { REWARDS } from '@/lib/economy';
@@ -62,6 +63,7 @@ export default function HomeScreen() {
   const { C, isDark } = useTheme();
   const isPro = useIsPro();
   const cosmetics = useCosmetics(!guest && !!user, user?.id);
+  const nameLook = themedName(cosmetics, isDark, { inline: true });
   const [guestSpeedRecord, setGuestSpeedRecordState] = useState(0);
   // Jugadores de hoy. `null` mientras no se sepa. La cifra solo se enseña
   // cuando es lo bastante grande para decir algo; por debajo va una frase sin
@@ -187,7 +189,7 @@ export default function HomeScreen() {
               <Text style={{ color: C.text, ...Type.screenTitle, marginTop: 3 }}>
                 {cosmetics.nameIcon ? `${cosmetics.nameIcon} ` : ''}
                 {greetingParts[0]}
-                <Text style={[{ color: cosmetics.nameColor ?? C.text }, cosmetics.nameStyle]}>{displayName}</Text>
+                <Text style={[{ color: nameLook.color ?? C.text }, nameLook.style]}>{displayName}</Text>
                 {greetingParts[1]}
               </Text>
               {!guest && profile && (
