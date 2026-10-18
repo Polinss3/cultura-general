@@ -53,6 +53,7 @@ secreta que guardar en la app.
 | `EXPO_PUBLIC_INHOUSE_PLACEMENT_LADDER_RESULT` | Fin de escalada de Ascenso | intersticial | `acdc4aa7-2e95-4c09-bd6a-c8e91d3d715d` |
 | `EXPO_PUBLIC_INHOUSE_PLACEMENT_FLAGS_RESULT` | Fin de ronda de Mundo | intersticial | `00f7e7e9-32a4-48a9-b6fc-be93751e5fdf` |
 | `EXPO_PUBLIC_INHOUSE_PLACEMENT_YEARS_RESULT` | Fin de ronda de Años | intersticial | `58a2d748-9ca2-4f5b-aeb3-579ab5a10da0` |
+| `EXPO_PUBLIC_INHOUSE_PLACEMENT_CITIES_RESULT` | Fin de ronda de Ciudades | intersticial | `d4206b19-8968-49b5-9e98-d797684e0a61` |
 | `EXPO_PUBLIC_INHOUSE_PLACEMENT_SHOP_COINS` | Monedas por anuncio en la Tienda | recompensado | `8bd87ce0-3407-4fc9-b732-48539589e3ef` |
 | `EXPO_PUBLIC_INHOUSE_PLACEMENT_LADDER_REVIVE` | Revivir en Ascenso | recompensado | `a9dbc3d6-bee7-4a08-bc0a-fa1b2c5d24af` |
 | `EXPO_PUBLIC_INHOUSE_PLACEMENT_BANNER` | Pie de las pantallas de juego | banner | `348a3903-529b-478f-9ac1-d88e58906bd8` |
