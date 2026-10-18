@@ -16822,7 +16822,7 @@
  },
  {
   "category": "deportes",
-  "question": "¿Cuántos Mundiales jugó Lionel Messi?",
+  "question": "¿Cuántos Mundiales había jugado Messi cuando ganó el de 2022?",
   "options": [
    "3",
    "4",
@@ -16830,16 +16830,16 @@
    "6"
   ],
   "answer_index": 2,
-  "context": "Messi jugó 5 Mundiales con Argentina (2006, 2010, 2014, 2018, 2022). Ganó el de 2022 en Qatar.",
+  "context": "Messi disputó con Argentina los Mundiales de 2006, 2010, 2014, 2018 y 2022. En el quinto, en Qatar, por fin levantó la copa.",
   "difficulty": "medium",
-  "question_en": "How many World Cups did Lionel Messi play?",
+  "question_en": "How many World Cups had Messi played by the time he won the 2022 one?",
   "options_en": [
    "3",
    "4",
    "5",
    "6"
   ],
-  "context_en": "Messi played 5 World Cups with Argentina (2006, 2010, 2014, 2018, 2022). He won the 2022 one in Qatar."
+  "context_en": "Messi played the 2006, 2010, 2014, 2018 and 2022 World Cups with Argentina. In his fifth, in Qatar, he finally lifted the trophy."
  },
  {
   "category": "deportes",

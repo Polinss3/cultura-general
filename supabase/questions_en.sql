@@ -5280,10 +5280,10 @@ update public.questions set
 where category = 'deportes' and question = $q$¿En qué deporte destacó Pelé?$q$;
 
 update public.questions set
-  question_en = $t$How many World Cups did Lionel Messi play?$t$,
+  question_en = $t$How many World Cups had Messi played by the time he won the 2022 one?$t$,
   options_en  = $t$["3","4","5","6"]$t$::jsonb,
-  context_en  = $t$Messi played 5 World Cups with Argentina (2006, 2010, 2014, 2018, 2022). He won the 2022 one in Qatar.$t$
-where category = 'deportes' and question = $q$¿Cuántos Mundiales jugó Lionel Messi?$q$;
+  context_en  = $t$Messi played the 2006, 2010, 2014, 2018 and 2022 World Cups with Argentina. In his fifth, in Qatar, he finally lifted the trophy.$t$
+where category = 'deportes' and question = $q$¿Cuántos Mundiales había jugado Messi cuando ganó el de 2022?$q$;
 
 update public.questions set
   question_en = $t$In what year was FIFA founded?$t$,

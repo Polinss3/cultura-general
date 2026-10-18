@@ -2854,9 +2854,9 @@ insert into public.questions (category, question, options, answer_index, context
  'Pelé (Edson Arantes do Nascimento, 1940-2022) ganó 3 Mundiales con Brasil (1958, 1962, 1970), récord único.',
  'easy'),
 
-('deportes', '¿Cuántos Mundiales jugó Lionel Messi?',
+('deportes', '¿Cuántos Mundiales había jugado Messi cuando ganó el de 2022?',
  '["3","4","5","6"]', 2,
- 'Messi jugó 5 Mundiales con Argentina (2006, 2010, 2014, 2018, 2022). Ganó el de 2022 en Qatar.',
+ 'Messi disputó con Argentina los Mundiales de 2006, 2010, 2014, 2018 y 2022. En el quinto, en Qatar, por fin levantó la copa.',
  'medium'),
 
 ('deportes', '¿En qué año se fundó la FIFA?',
