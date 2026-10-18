@@ -16,7 +16,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.polinss3.culturalgeneral",
-      "buildNumber": "124",
+      "buildNumber": "128",
       "usesAppleSignIn": true,
       "privacyManifests": {
         "NSPrivacyTracking": false,
