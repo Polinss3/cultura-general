@@ -41,6 +41,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { createAdventureProgressRepository } from '@/lib/adventure-progress';
 import type { AdventureProgress } from '@/lib/adventure';
+import { logFunnelEventOnce } from '@/lib/funnel';
 
 // Modos locales que ofrece la pestaña de Amigos (pasa el móvil, marcador,
 // duelo, superviviente y trivia por equipos).
@@ -128,6 +129,8 @@ export default function HomeScreen() {
     refresh();
     loadMissions();
   };
+
+  useEffect(() => { logFunnelEventOnce('home_first_view'); }, []);
 
   // Recompensa de bienvenida: se concede la primera vez que se entra a la home
   // ya con sesión (el onboarding la deja "pendiente"). Para invitados no aplica

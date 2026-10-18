@@ -1096,6 +1096,20 @@
     }
   },
   "daily": {
+    "continue": {
+      "title": "¿Otra ronda?",
+      "speed": "Contrarreloj: ¿cuántas aciertas en 30 segundos?",
+      "ladder": "Ascenso: sube pisos hasta que falles.",
+      "years": "Años: ¿en qué año pasó?",
+      "cta": "Jugar"
+    },
+    "notifyAsk": {
+      "title": "¿Te aviso mañana?",
+      "body": "Cada día hay una pregunta nueva. Te aviso para que no se te pase ni se rompa tu racha.",
+      "cta": "Avísame",
+      "later": "Ahora no",
+      "done": "Hecho: mañana te avisamos."
+    },
     "cityHint": "Esta ciudad está en {{continent}}.",
     "offlineTitle": "Pregunta del día sin conexión",
     "offlineDesc": "La pregunta diaria y los rankings necesitan conexión. Mientras tanto puedes jugar a Contrarreloj y Aprender.",

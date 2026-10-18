@@ -41,12 +41,14 @@ import type {
 import {
   canShowAutomaticInterstitial,
   createAdPolicyState,
+  interstitialLimitsForInstallAge,
   recordCompletedResult,
   recordFullscreenClosed,
 } from '@/utils/adPolicy';
 import Constants from 'expo-constants';
 import i18n, { getCurrentLang } from '@/lib/i18n';
 import { getPremiumState, subscribeToPremium } from '@/lib/premium';
+import { getInstallAgeMs, logFunnelEventOnce } from '@/lib/funnel';
 
 export type {
   AdPlacement,
@@ -384,10 +386,14 @@ export async function showResultInterstitial(
   allowShow = true,
 ): Promise<boolean> {
   policyState = recordCompletedResult(policyState);
+  // Todas las pantallas de resultado pasan por aquí: es el punto natural para
+  // medir el primer resultado de una instalación.
+  logFunnelEventOnce('first_result', placement);
   const placementId = interstitialPlacementId(placement);
   if (
     !allowShow || !placementId || fullscreen || AppState.currentState !== 'active' ||
-    !requestsEnabled('interstitial') || !canShowAutomaticInterstitial(policyState)
+    !requestsEnabled('interstitial') ||
+    !canShowAutomaticInterstitial(policyState, Date.now(), interstitialLimitsForInstallAge(getInstallAgeMs()))
   ) return false;
 
   releaseBanners();

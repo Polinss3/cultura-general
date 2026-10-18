@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   View, Text, TextInput, Pressable,
@@ -10,6 +10,7 @@ import { supabase } from '@/lib/supabase';
 import { SocialButton } from '@/components/SocialButton';
 import { reactivateAccount } from '@/lib/db';
 import { setGuestMode } from '@/lib/guest';
+import { logFunnelEvent, logFunnelEventOnce } from '@/lib/funnel';
 import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 import {
@@ -48,6 +49,9 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  // Primera pantalla de una instalación nueva: el arranque del embudo.
+  useEffect(() => { logFunnelEventOnce('login_view'); }, []);
   const [loading, setLoading] = useState(false);
 
   // Traduce errores de Supabase a mensajes claros para el usuario.
@@ -258,6 +262,7 @@ export default function LoginScreen() {
   };
 
   const handleGuest = async () => {
+    logFunnelEvent('guest_start');
     await setGuestMode(true);
   };
 

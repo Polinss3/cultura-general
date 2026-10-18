@@ -1096,6 +1096,20 @@
     }
   },
   "daily": {
+    "continue": {
+      "title": "One more round?",
+      "speed": "Speed round: how many can you get in 30 seconds?",
+      "ladder": "Ladder: climb floors until you miss.",
+      "years": "Years: when did it happen?",
+      "cta": "Play"
+    },
+    "notifyAsk": {
+      "title": "Want a reminder tomorrow?",
+      "body": "There's a new question every day. We'll remind you so you don't miss it or lose your streak.",
+      "cta": "Remind me",
+      "later": "Not now",
+      "done": "Done: we'll remind you tomorrow."
+    },
     "cityHint": "This city is in {{continent}}.",
     "offlineTitle": "Daily question offline",
     "offlineDesc": "The daily question and rankings need a connection. In the meantime you can play Time Attack and Learn.",

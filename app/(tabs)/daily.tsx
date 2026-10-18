@@ -14,6 +14,8 @@ import { LeagueBadge } from '@/components/LeagueBadge';
 import { UserName } from '@/components/UserName';
 import { Pop } from '@/components/Pop';
 import { DailyRoute } from '@/components/DailyRoute';
+import { DailyContinueCard } from '@/components/DailyContinueCard';
+import { NotificationAskCard } from '@/components/NotificationAskCard';
 import { PreparationScreen } from '@/components/PreparationScreen';
 import { usePowerups } from '@/hooks/usePowerups';
 import { resolveCosmetics } from '@/lib/cosmetics';
@@ -558,6 +560,10 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               {/* Si la respuesta de hoy acaba de romper la racha, la oferta de
                   recuperarla va aquí, justo donde se entera. */}
               <StreakRecoveryCard userId={user.id} profile={profile} refresh={refreshProfile} />
+              {/* La diaria es una sola pregunta: se encadena otra partida y,
+                  la primera vez, se piden los avisos para mañana. */}
+              <DailyContinueCard />
+              <NotificationAskCard userId={user.id} />
               <DailyRoute userId={user.id} profile={profile} refresh={refreshProfile} />
             </>
           )}

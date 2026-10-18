@@ -5,10 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import {
-  requestNotificationPermission,
-  scheduleDailyReminder,
-} from '@/lib/notifications';
-import {
   setOnboardingCompleted,
   setInterests,
   getInterests,
@@ -19,6 +15,7 @@ import { AdsConsentForm, type AdsConsentInput } from '@/components/AdsConsentFor
 import { saveAdsConsentDecision } from '@/stores/adsConsentStore';
 import { adsConfigured, initializeAds } from '@/lib/ads';
 import { getPremiumState } from '@/lib/premium';
+import { logFunnelEvent } from '@/lib/funnel';
 import { setAppLanguage, AppLang, getCurrentLang } from '@/lib/i18n';
 import { useThemePreference, setThemePreference } from '@/lib/appearance';
 import { ThemePreview } from '@/components/ThemePreview';
@@ -31,10 +28,12 @@ import { readableOn, useTheme, type Palette } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
 
 // Iconos y flag skip por paso; el texto vive en i18n (`onboarding.stepN`).
+// Desde la 2.4.0 ya no hay paso de avisos (`step2`): el permiso se pide
+// después de la primera pregunta del día, cuando "te aviso mañana para la
+// siguiente" tiene sentido (components/NotificationAskCard.tsx).
 const STEP_META = [
   { icon: '🧠', key: 'step0', skip: false },
   { icon: '🏆', key: 'step1', skip: false },
-  { icon: '🔔', key: 'step2', skip: true },
 ] as const;
 
 function getSteps(t: TFunction) {
@@ -78,6 +77,7 @@ export default function OnboardingScreen() {
     let cancelled = false;
     getCompletedOnboardingVersion()
       .then(async version => {
+        logFunnelEvent('onboarding_start', version > 0 ? 'returning' : 'new');
         if (cancelled || version <= 0) return;
         setReturning(true);
         // Repetir el flujo no debe borrarle los intereses que ya tenía.
@@ -112,6 +112,7 @@ export default function OnboardingScreen() {
     // El regalo de bienvenida es solo para instalaciones nuevas: repetir el
     // onboarding en 2.0.0 no puede volver a concederlo.
     if (!returning) await markWelcomeRewardPending();
+    logFunnelEvent('onboarding_interests', String(interests.size));
     setInterestsChosen(true);
   };
 
@@ -124,9 +125,11 @@ export default function OnboardingScreen() {
     // cambio de versión no lo ve.
     const premium = getPremiumState();
     if (!returning && !premium.isPro && !premium.unavailable) {
+      logFunnelEvent('onboarding_done', 'paywall');
       router.replace('/paywall?source=onboarding' as any);
       return;
     }
+    logFunnelEvent('onboarding_done', 'home');
     router.replace('/(tabs)');
   };
 
@@ -139,20 +142,21 @@ export default function OnboardingScreen() {
   };
 
   const handleCta = async () => {
+    logFunnelEvent('onboarding_step', String(step));
     if (isLast) {
-      const granted = await requestNotificationPermission();
-      if (granted) await scheduleDailyReminder();
       // Sin anuncios posibles no hay nada que elegir: se entra directo.
       if (!adsConfigured()) return finish();
+      logFunnelEvent('onboarding_privacy');
       setPrivacyPending(true);
     } else {
       setStep(s => s + 1);
     }
   };
 
-  // "Ahora no" salta las notificaciones, nunca el aviso de publicidad.
+  // "Ahora no" salta un paso opcional, nunca el aviso de publicidad.
   const handleSkip = async () => {
     if (!adsConfigured()) return finish();
+    logFunnelEvent('onboarding_privacy');
     setPrivacyPending(true);
   };
 
@@ -258,7 +262,7 @@ export default function OnboardingScreen() {
           paddingHorizontal: 24, paddingTop: 12, paddingBottom: 24,
           backgroundColor: C.bg, borderTopWidth: 1, borderTopColor: C.border,
         }}>
-          <Pressable onPress={() => setLangChosen(true)}>
+          <Pressable onPress={() => { logFunnelEvent('onboarding_language', pendingLang); setLangChosen(true); }}>
             <View style={{
               borderRadius: 18, paddingVertical: 16, alignItems: 'center',
               backgroundColor: C.brand,

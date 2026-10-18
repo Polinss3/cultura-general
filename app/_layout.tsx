@@ -56,6 +56,7 @@ import { PRO_ROOM_BACKGROUND } from '@/lib/pro';
 import { TabletGutterDecorations, type TabletDecoratedSection } from '@/components/TabletGutterDecorations';
 import { ReviewNudgeSheet } from '@/components/ReviewNudgeSheet';
 import { AppIconGuard } from '@/components/AppIconGuard';
+import { loadInstallInfo } from '@/lib/funnel';
 import {
   type AdsConsentDecision,
   hydrateAdsConsent,
@@ -78,6 +79,9 @@ Sentry.init({
 });
 
 SplashScreen.preventAutoHideAsync();
+// Lo antes posible: la fecha de primera apertura tiene que quedar guardada
+// antes de que termine el onboarding, o la instalación pasaría por antigua.
+void loadInstallInfo();
 
 // Plazos del arranque. Ninguna promesa puede dejar la app clavada en la
 // BootScreen: a los 5s ofrecemos el modo sin conexión y a los 10s entramos
