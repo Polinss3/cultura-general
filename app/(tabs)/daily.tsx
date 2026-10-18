@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
-import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share, RefreshControl, AppState } from 'react-native';
+import { ScrollView, View, Text, ActivityIndicator, Pressable, Alert, Share, RefreshControl, AppState, useWindowDimensions } from 'react-native';
+import type { ImageRef } from 'expo-image';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useFocusEffect } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
+import { CityQuestionImage } from '@/components/city-question-image';
+import { cityImages } from '@/lib/cityImages';
 import { PowerUpBar, PowerUpButton } from '@/components/PowerUpBar';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { UserName } from '@/components/UserName';
@@ -216,6 +219,19 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
   const [isCorrect, setIsCorrect] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const reported = useRef(false);
+  // Diaria de Ciudades: el diorama ya decodificado. Se carga antes de la
+  // preparación para que el cronómetro no corra mientras se descarga.
+  const { width } = useWindowDimensions();
+  const [cityImage, setCityImage] = useState<ImageRef | null>(null);
+  const [cityImageError, setCityImageError] = useState(false);
+  const loadCityImage = async (url: string) => {
+    setCityImageError(false);
+    try {
+      setCityImage(await cityImages.ensure(url, true));
+    } catch {
+      setCityImageError(true);
+    }
+  };
 
   // Power-ups usables antes de responder (50/50 y pista).
   const { inventory, consume } = usePowerups(!!user, user?.id);
@@ -321,6 +337,8 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     setSelected(null);
     setFiftyHidden([]);
     setHintShown(false);
+    setCityImage(null);
+    setCityImageError(false);
     setDailyRanking([]);
     setFriendRanking([]);
     loadedTabs.current = new Set();
@@ -334,6 +352,8 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     } else {
       setQuestion(null);
     }
+
+    if (q?.city?.image_url && !already.answered) await loadCityImage(q.city.image_url);
 
     if (already.answered) {
       void markDailyQuestionCompleted();
@@ -377,7 +397,9 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
     setTimeout(async () => {
       setPhase('loading');
       let award = null;
-      if (question.id) {
+      // La ciudad del domingo no tiene `id` (no vive en `questions`), pero es
+      // la diaria igual: cuenta para racha, ranking y premios.
+      if (question.id || question.city) {
         // Translate display-index back to original (DB) index for consistency
         const originalIdx = question.originalIndexMap[i] ?? i;
         try {
@@ -680,18 +702,41 @@ function DailyContent({ user }: { user: ReturnType<typeof useAuth>['user'] }) {
               {t('daily.badge')}
             </Text>
           </View>
-          <Pressable onPress={handleReport} style={{ padding: 8 }} hitSlop={8}>
-            <Text style={{ color: C.textFaint, fontSize: 18 }}>⚑</Text>
-          </Pressable>
+          {question.id && (
+            <Pressable onPress={handleReport} style={{ padding: 8 }} hitSlop={8}>
+              <Text style={{ color: C.textFaint, fontSize: 18 }}>⚑</Text>
+            </Pressable>
+          )}
         </View>
 
         <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 10, lineHeight: 21 }}>
           {t('daily.subtitle')}
         </Text>
 
-        <Text style={{ color: C.text, ...Type.questionLg, marginBottom: 22 }}>
+        <Text style={{ color: C.text, ...Type.questionLg, marginBottom: question.city ? 14 : 22 }}>
           {question.q}
         </Text>
+
+        {question.city && (
+          <View style={{ alignItems: 'center', marginBottom: 18 }}>
+            {cityImage ? (
+              <CityQuestionImage city={question.city} image={cityImage} size={Math.min(360, width - Space.screen * 2)} />
+            ) : (
+              <View style={{ height: 220, alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+                {cityImageError ? (
+                  <>
+                    <Text style={{ color: C.textBody, ...Type.bodyRegular, textAlign: 'center' }}>{t('cities.imageError')}</Text>
+                    <Pressable accessibilityRole="button" onPress={() => loadCityImage(question.city!.image_url!)} style={{ padding: 10 }}>
+                      <Text style={{ color: C.brandDeep, fontFamily: Font.extra }}>{t('cities.retry')}</Text>
+                    </Pressable>
+                  </>
+                ) : (
+                  <ActivityIndicator color={C.brand} />
+                )}
+              </View>
+            )}
+          </View>
+        )}
 
         <View style={{ gap: 11 }}>
           {question.opts.map((opt, i) =>

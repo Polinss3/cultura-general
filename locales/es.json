@@ -1096,6 +1096,7 @@
     }
   },
   "daily": {
+    "cityHint": "Esta ciudad está en {{continent}}.",
     "offlineTitle": "Pregunta del día sin conexión",
     "offlineDesc": "La pregunta diaria y los rankings necesitan conexión. Mientras tanto puedes jugar a Contrarreloj y Aprender.",
     "gateTitle": "Pregunta del día y rankings",

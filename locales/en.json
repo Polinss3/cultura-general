@@ -1096,6 +1096,7 @@
     }
   },
   "daily": {
+    "cityHint": "This city is in {{continent}}.",
     "offlineTitle": "Daily question offline",
     "offlineDesc": "The daily question and rankings need a connection. In the meantime you can play Time Attack and Learn.",
     "gateTitle": "Daily question & rankings",

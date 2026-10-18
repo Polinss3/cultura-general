@@ -7,6 +7,8 @@ import { REWARDS } from './economy';
 import i18n, { getCurrentLang, AppLang } from './i18n';
 import { isProTier } from './pro';
 import { unregisterPush } from './push';
+import { fetchCities, readCachedCities } from './cities';
+import { dailyCityQuestion, isCityDay, utcDayIndex } from './dailyCity';
 
 // ─── Error handling ───────────────────────────────────────────
 
@@ -304,6 +306,13 @@ export async function fetchOrAssignDailyQuestion(): Promise<Question | null> {
 
   if (existing?.questions) return mapQuestion(existing.questions as unknown as QuestionRow);
 
+  // Los domingos toca ciudad (ver lib/dailyCity). Si el catálogo no llega, el
+  // día no se queda sin diaria: sigue con la pregunta normal.
+  if (isCityDay(utcDayIndex())) {
+    const city = await fetchDailyCityQuestion().catch(() => null);
+    if (city) return city;
+  }
+
   // Sin pregunta asignada por administración, se elige de forma determinista por
   // fecha. (El cliente no puede INSERT en `daily_questions` por RLS, así que no
   // se intenta guardar la elección.)
@@ -321,7 +330,7 @@ export async function fetchOrAssignDailyQuestion(): Promise<Question | null> {
 
   if (countError || !count) return null;
 
-  const dayIdx = Math.floor(Date.now() / 86400000) % count;
+  const dayIdx = utcDayIndex() % count;
   const { data: picked } = await supabase
     .from('questions')
     .select('*')
@@ -387,7 +396,8 @@ export async function fetchDailyPlayerCount(): Promise<number> {
 
 export async function saveDailyAnswer(
   userId: string,
-  questionId: string,
+  /** Ausente en la diaria de Ciudades, que no tiene fila en `questions`. */
+  questionId: string | undefined,
   selectedIdx: number,
   isCorrect: boolean,
   timeMs: number,
@@ -397,14 +407,17 @@ export async function saveDailyAnswer(
 
   const [, ranking] = await Promise.all([
     // El historial es información de apoyo: si se pierde una fila, el día sigue
-    // contando. No bloquea.
-    supabase.from('user_answers').insert({
-      user_id: userId,
-      question_id: questionId,
-      selected_index: selectedIdx,
-      is_correct: isCorrect,
-      mode: 'daily',
-    }),
+    // contando. No bloquea. `question_id` apunta a `questions`, así que la
+    // ciudad del domingo no deja historial.
+    questionId
+      ? supabase.from('user_answers').insert({
+        user_id: userId,
+        question_id: questionId,
+        selected_index: selectedIdx,
+        is_correct: isCorrect,
+        mode: 'daily',
+      })
+      : Promise.resolve(null),
     supabase.from('daily_rankings').upsert(
       {
         user_id: userId,
@@ -434,6 +447,26 @@ export async function saveDailyAnswer(
   await bumpMissions('daily_play', 1);
   if (award?.gainedCoins) await bumpMissions('coins_earned', award.gainedCoins);
   return award;
+}
+
+async function fetchDailyCityQuestion(): Promise<Question | null> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  const catalog = await fetchCities(controller.signal)
+    .catch(() => readCachedCities())
+    .finally(() => clearTimeout(timeout));
+  const pick = dailyCityQuestion(catalog ?? [], utcDayIndex());
+  if (!pick) return null;
+  const lang = getCurrentLang();
+  return {
+    q: i18n.t('cities.whichCity'),
+    opts: pick.options.map(c => c.name[lang]),
+    ans: 0,
+    ctx: i18n.t('daily.cityHint', { continent: i18n.t(`world.continents.${pick.answer.continent}`) }),
+    category: 'geografia',
+    city: pick.answer,
+    localId: `city:${pick.answer.id}`,
+  };
 }
 
 // ─── Rankings ─────────────────────────────────────────────────

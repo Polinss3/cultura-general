@@ -1,3 +1,5 @@
+import type { City } from '@/lib/cityCatalog';
+
 export type Category =
   | 'historia'
   | 'geografia'
@@ -36,6 +38,8 @@ export interface Question {
   layout?: 'flags' | 'years';
   /** Id estable para el historial de "ya vistas" cuando no hay `id` de BD. */
   localId?: string;
+  /** Diaria de Ciudades: el diorama a reconocer. Sin `id`, no vive en `questions`. */
+  city?: City;
 }
 
 export interface RankingEntry {
