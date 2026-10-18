@@ -2701,7 +2701,7 @@ insert into public.questions (category, question, options, answer_index, context
 
 ('deportes', '¿Qué deporte practica Marc Márquez?',
  '["F1","MotoGP","Rally","Ciclismo"]', 1,
- 'Marc Márquez es 6 veces campeón del mundo de MotoGP (2013-2014, 2016-2019). Uno de los grandes pilotos de la historia.',
+ 'Marc Márquez ganó seis títulos de MotoGP entre 2013 y 2019 y, tras varios años marcados por las lesiones, volvió a ser campeón en 2025. Uno de los grandes pilotos de la historia.',
  'easy'),
 
 ('deportes', '¿Quién es Valentino Rossi?',

@@ -18300,7 +18300,7 @@
    "Ciclismo"
   ],
   "answer_index": 1,
-  "context": "Marc Márquez es 6 veces campeón del mundo de MotoGP (2013-2014, 2016-2019). Uno de los grandes pilotos de la historia.",
+  "context": "Marc Márquez ganó seis títulos de MotoGP entre 2013 y 2019 y, tras varios años marcados por las lesiones, volvió a ser campeón en 2025. Uno de los grandes pilotos de la historia.",
   "difficulty": "easy",
   "question_en": "Which sport does Marc Márquez practice?",
   "options_en": [
@@ -18309,7 +18309,7 @@
    "Rally",
    "Cycling"
   ],
-  "context_en": "Marc Márquez is a 6-time MotoGP world champion (2013-2014, 2016-2019). One of the great riders in history."
+  "context_en": "Marc Márquez won six MotoGP titles between 2013 and 2019 and, after several injury-hit years, became champion again in 2025. One of the great riders in history."
  },
  {
   "category": "deportes",

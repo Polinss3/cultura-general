@@ -5096,7 +5096,7 @@ where category = 'deportes' and question = $q$¿Qué piloto brasileño murió en
 update public.questions set
   question_en = $t$Which sport does Marc Márquez practice?$t$,
   options_en  = $t$["F1","MotoGP","Rally","Cycling"]$t$::jsonb,
-  context_en  = $t$Marc Márquez is a 6-time MotoGP world champion (2013-2014, 2016-2019). One of the great riders in history.$t$
+  context_en  = $t$Marc Márquez won six MotoGP titles between 2013 and 2019 and, after several injury-hit years, became champion again in 2025. One of the great riders in history.$t$
 where category = 'deportes' and question = $q$¿Qué deporte practica Marc Márquez?$q$;
 
 update public.questions set
