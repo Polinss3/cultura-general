@@ -1411,6 +1411,11 @@
     }
   },
   "pro": {
+    "removeAds": {
+      "title": "Tired of ads?",
+      "body": "With CG PRO you'll never see another one.",
+      "cta": "Remove"
+    },
     "badge": "PRO",
     "gate": {
       "cta": "Discover CG PRO"

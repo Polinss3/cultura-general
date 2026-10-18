@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   ScrollView, View, Text, Pressable, ActivityIndicator, Linking,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
@@ -15,6 +15,7 @@ import {
   annualSavingsPercent, fetchPremiumPackages, purchasePremium, restorePremium,
   type PremiumPackage, type PremiumTier,
 } from '@/lib/premium';
+import { logPaywallEvent, newPaywallViewId } from '@/lib/paywallEvents';
 import {
   PRO_BENEFITS, PRO_BENEFIT_ICONS, PRO_ACCENT,
 } from '@/lib/pro';
@@ -31,6 +32,8 @@ export default function PaywallScreen() {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
   const router = useRouter();
+  const params = useLocalSearchParams<{ source?: string }>();
+  const source = typeof params.source === 'string' && params.source ? params.source : 'unknown';
   const { user } = useAuth();
   const { guest } = useGuest();
   const { isPro, unavailable } = usePremium();
@@ -40,12 +43,27 @@ export default function PaywallScreen() {
   const [selected, setSelected] = useState<PremiumTier>('annual');
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
+  const viewId = useRef(newPaywallViewId()).current;
+  const log = useCallback(
+    (event: Parameters<typeof logPaywallEvent>[1], tier?: PremiumTier | null) =>
+      logPaywallEvent(viewId, event, source, tier),
+    [viewId, source],
+  );
+
+  // Se abre como pantalla normal o como primera ruta (tras el onboarding se
+  // entra con `replace`): en ese caso no hay a dónde volver y se va a Inicio.
+  const leave = useCallback(() => {
+    if (router.canGoBack()) router.back();
+    else router.replace('/(tabs)');
+  }, [router]);
 
   useEffect(() => {
+    log('view');
     let cancelled = false;
     fetchPremiumPackages().then(list => {
       if (cancelled) return;
       setPackages(list);
+      if (list.length === 0) log('no_plans');
       // El anual es el producto que queremos vender: preseleccionado siempre
       // que exista, y si no, lo primero que haya.
       if (!list.some(p => p.tier === 'annual') && list[0]) setSelected(list[0].tier);
@@ -56,21 +74,23 @@ export default function PaywallScreen() {
 
   // Si ya es PRO (o acaba de comprar), esta pantalla no pinta nada.
   useEffect(() => {
-    if (isPro) router.back();
-  }, [isPro, router]);
+    if (isPro) leave();
+  }, [isPro, leave]);
 
   const requireAccount = useCallback(async () => {
     // La compra vive en el Apple ID, no en la cuenta. Exigir cuenta evita el
     // "compré como invitado, reinstalé y lo perdí", que es un 1★ seguro.
+    log('login_required', selected);
     await setGuestMode(false);
     router.replace('/(auth)/login');
-  }, [router]);
+  }, [router, log, selected]);
 
   const selectedPackage = packages.find(pkg => pkg.tier === selected) ?? null;
   const savings = annualSavingsPercent(packages);
 
   const handlePurchase = async () => {
     if (busy) return;
+    log('purchase_tap', selected);
     if (!user || guest) { await requireAccount(); return; }
 
     const pkg = selectedPackage;
@@ -79,10 +99,11 @@ export default function PaywallScreen() {
     setBusy(true);
     const outcome = await purchasePremium(pkg);
     setBusy(false);
+    log(outcome === 'purchased' ? 'purchased' : outcome === 'cancelled' ? 'cancelled' : 'failed', pkg.tier);
 
     if (outcome === 'purchased') {
       showToast({ type: 'success', message: t('pro.paywall.welcome') });
-      router.back();
+      leave();
     } else if (outcome === 'error') {
       showToast({ type: 'info', message: t('pro.paywall.purchaseFailed') });
     }
@@ -90,6 +111,7 @@ export default function PaywallScreen() {
 
   const handleRestore = async () => {
     if (busy) return;
+    log('restore');
     setBusy(true);
     const restored = await restorePremium();
     setBusy(false);
@@ -102,7 +124,12 @@ export default function PaywallScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
       <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 20, paddingTop: 16 }}>
-        <Pressable onPress={() => router.back()} accessibilityRole="button" hitSlop={12}>
+        <Pressable
+          onPress={() => { log('close', selected); leave(); }}
+          accessibilityRole="button"
+          accessibilityLabel={t('common.close')}
+          hitSlop={12}
+        >
           <Text style={{ color: C.textMuted, fontSize: 22 }}>✕</Text>
         </Pressable>
       </View>
@@ -176,7 +203,10 @@ export default function PaywallScreen() {
                 pkg={pkg}
                 selected={selected === pkg.tier}
                 savings={pkg.tier === 'annual' ? savings : null}
-                onSelect={() => setSelected(pkg.tier)}
+                onSelect={() => {
+                  if (selected !== pkg.tier) log('select_plan', pkg.tier);
+                  setSelected(pkg.tier);
+                }}
               />
             ))}
           </View>

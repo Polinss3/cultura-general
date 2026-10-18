@@ -317,9 +317,26 @@ export function subscribeFullscreenAd(listener: () => void) {
   return subscribeAdsState(listener);
 }
 
+const interstitialClosedListeners = new Set<() => void>();
+
+/**
+ * Avisa cuando el usuario cierra un intersticial que ha llegado a ver. Es el
+ * momento en que más le pesa la publicidad, y ahí `RemoveAdsNudge` le ofrece
+ * quitarla con CG PRO. No salta si el anuncio lo retira la propia app (paso a
+ * PRO, desactivación por edad).
+ */
+export function subscribeInterstitialClosed(listener: () => void) {
+  interstitialClosedListeners.add(listener);
+  return () => { interstitialClosedListeners.delete(listener); };
+}
+
 /** Lo llama el host cuando `AdView` se cierra, por la razón que sea. */
 export function closeFullscreenAd() {
-  fullscreen?.close();
+  const slot = fullscreen;
+  slot?.close();
+  if (slot?.format === 'interstitial') {
+    for (const listener of interstitialClosedListeners) listener();
+  }
 }
 
 function closeFullscreen() {

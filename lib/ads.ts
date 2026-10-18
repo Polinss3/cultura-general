@@ -33,6 +33,7 @@ export function subscribeAdsState(_listener: () => void) { return () => {}; }
 export function subscribeFullscreenAd(_listener: () => void) { return () => {}; }
 export function getFullscreenAd(): FullscreenAdSlot | null { return null; }
 export function closeFullscreenAd() {}
+export function subscribeInterstitialClosed(_listener: () => void) { return () => {}; }
 export function getBannerPlacementId(): string | null { return null; }
 export async function requestBannerAd(): Promise<AdPresentation | null> { return null; }
 export function registerBannerPresentation(_presentation: AdPresentation) { return () => {}; }

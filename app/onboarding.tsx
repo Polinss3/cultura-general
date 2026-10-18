@@ -18,6 +18,7 @@ import {
 import { AdsConsentForm, type AdsConsentInput } from '@/components/AdsConsentForm';
 import { saveAdsConsentDecision } from '@/stores/adsConsentStore';
 import { adsConfigured, initializeAds } from '@/lib/ads';
+import { getPremiumState } from '@/lib/premium';
 import { setAppLanguage, AppLang, getCurrentLang } from '@/lib/i18n';
 import { useThemePreference, setThemePreference } from '@/lib/appearance';
 import { ThemePreview } from '@/components/ThemePreview';
@@ -116,6 +117,16 @@ export default function OnboardingScreen() {
 
   const finish = async () => {
     await setOnboardingCompleted(true);
+    // Instalación nueva: se enseña CG PRO una vez, al terminar, con la prueba
+    // gratuita delante. Hasta la 2.4.0 el paywall solo salía al topar con algo
+    // de pago (sobre todo el nivel 41 de Aventura) y casi nadie llegaba a verlo.
+    // Se cierra con la ✕ y entra a Inicio; quien repite el onboarding por un
+    // cambio de versión no lo ve.
+    const premium = getPremiumState();
+    if (!returning && !premium.isPro && !premium.unavailable) {
+      router.replace('/paywall?source=onboarding' as any);
+      return;
+    }
     router.replace('/(tabs)');
   };
 

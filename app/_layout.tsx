@@ -28,6 +28,7 @@ import { noteAppOpen } from '@/lib/reviewGate';
 import { BootScreen } from '@/components/BootScreen';
 import { AdsConsentModal } from '@/components/AdsConsentModal';
 import { AdFullscreenHost } from '@/components/AdFullscreenHost';
+import { RemoveAdsNudge } from '@/components/RemoveAdsNudge';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ToastProvider } from '@/context/ToastContext';
 import { ProgressProvider } from '@/context/ProgressContext';
@@ -603,6 +604,8 @@ function RootLayout() {
               el visor es un modal y no puede depender de la pantalla que lo
               pidió, que muchas veces está navegando justo en ese momento. */}
           <AdFullscreenHost />
+          {/* "Quitar anuncios" al cerrar un intersticial, una vez al día. */}
+          <RemoveAdsNudge />
           {/* Hoja propia de valoración; la dispara lib/reviewGate. */}
           <ReviewNudgeSheet />
           {/* Quita el icono PRO si ya no hay PRO activo. */}
