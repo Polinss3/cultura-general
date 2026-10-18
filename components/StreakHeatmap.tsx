@@ -13,6 +13,7 @@ interface Props {
   userId: string;
   streak: number;
   bestStreak: number;
+  compact?: boolean;
 }
 
 const DAYS = 14;
@@ -27,7 +28,7 @@ function squareColor(intensity: number, C: Palette, isDark: boolean): string {
   return steps[Math.min(intensity, steps.length) - 1];
 }
 
-export function StreakHeatmap({ userId, streak, bestStreak }: Props) {
+export function StreakHeatmap({ userId, streak, bestStreak, compact = false }: Props) {
   const { t } = useTranslation();
   const { C, isDark } = useTheme();
   const [intensities, setIntensities] = useState<number[]>(() => new Array(DAYS).fill(0));
@@ -69,7 +70,10 @@ export function StreakHeatmap({ userId, streak, bestStreak }: Props) {
       accessibilityLabel={t('streak.openCalendar')}
       onPress={() => { feedback.tap(); setSheetOpen(true); }}
       style={({ pressed }) => ({
-        marginTop: 12,
+        marginTop: compact ? 0 : 12,
+        flex: compact ? 1 : undefined,
+        minHeight: compact ? 70 : undefined,
+        justifyContent: compact ? 'space-between' : undefined,
         backgroundColor: C.surface,
         borderRadius: Radius.cardLg,
         borderWidth: 1,
@@ -80,28 +84,28 @@ export function StreakHeatmap({ userId, streak, bestStreak }: Props) {
       })}
     >
       {/* Racha */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11, marginBottom: 8 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: compact ? 6 : 11, marginBottom: 8 }}>
         <View style={{
-          width: 36, height: 36, borderRadius: 12,
+          width: compact ? 24 : 36, height: compact ? 30 : 36, borderRadius: 12,
           backgroundColor: C.brandTint, alignItems: 'center', justifyContent: 'center',
         }}>
           <Text style={{ fontSize: 18 }}>🔥</Text>
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.extra }}>
+          <Text style={{ color: C.text, fontSize: compact ? 14 : 16, lineHeight: compact ? 18 : undefined, fontFamily: Font.extra }}>
             {t('home.streakDays', { count: streak })}
           </Text>
-          <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, marginTop: 2 }}>
+          {!compact && <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, marginTop: 2 }}>
             {streak > 0 ? t('home.streakKeep') : t('home.streakStart')}
-          </Text>
+          </Text>}
         </View>
-        <Text style={{ color: C.streakText, fontSize: 26, fontFamily: Font.black, lineHeight: 30 }}>
+        {!compact && <Text style={{ color: C.streakText, fontSize: 26, fontFamily: Font.black, lineHeight: 30 }}>
           {streak}
-        </Text>
+        </Text>}
       </View>
 
       {/* Heatmap últimas 2 semanas */}
-      <View style={{ flexDirection: 'row', gap: 4 }}>
+      <View style={{ flexDirection: 'row', gap: compact ? 3 : 4 }}>
         {intensities.map((intensity, i) => {
           const isToday = i === DAYS - 1;
           return (
@@ -109,8 +113,8 @@ export function StreakHeatmap({ userId, streak, bestStreak }: Props) {
               key={days[i]}
               style={{
                 flex: 1,
-                height: 14,
-                borderRadius: 4,
+                height: compact ? 9 : 14,
+                borderRadius: compact ? 3 : 4,
                 backgroundColor: squareColor(intensity, C, isDark),
                 borderWidth: isToday ? 2 : 0,
                 borderColor: isToday ? C.brand : 'transparent',

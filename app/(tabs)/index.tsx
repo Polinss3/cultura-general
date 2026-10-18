@@ -13,12 +13,9 @@ import { unlockedCount, totalAchievements } from '@/lib/achievements';
 import { grantWelcomeRewardIfPending } from '@/lib/onboarding';
 import { fetchDailyPlayerCount } from '@/lib/db';
 import { setGuestMode, getGuestSpeedRecord } from '@/lib/guest';
-import { LevelBadge } from '@/components/LevelBadge';
-import { XpBar } from '@/components/XpBar';
-import { CoinPill } from '@/components/CoinPill';
 import { DailyRouteBanner } from '@/components/DailyRouteBanner';
 import { DailyChest } from '@/components/DailyChest';
-import { StreakHeatmap } from '@/components/StreakHeatmap';
+import { HomeProgressRow } from '@/components/home-progress-row';
 import { StreakRecoveryCard } from '@/components/StreakRecoveryCard';
 import { LeagueBadge } from '@/components/LeagueBadge';
 import { LeagueCard } from '@/components/LeagueCard';
@@ -27,8 +24,7 @@ import { ProBadge } from '@/components/ProBadge';
 import { useCosmetics } from '@/hooks/useCosmetics';
 import { useIsPro } from '@/hooks/usePremium';
 import { PRO_ACCENT } from '@/lib/pro';
-import { rankForLevel, progressToNext } from '@/lib/leveling';
-import { formatMultiplier, REWARDS } from '@/lib/economy';
+import { REWARDS } from '@/lib/economy';
 import {
   fetchMissionState, claimMission, claimDailyChest, bumpMissions, MissionState,
 } from '@/lib/gamification';
@@ -36,7 +32,7 @@ import { getLocaleTag } from '@/lib/i18n';
 import { ALL_CATEGORIES } from '@/constants/questions';
 import { COUNTRIES } from '@/constants/flags';
 import { YEAR_EVENTS } from '@/constants/years';
-import { alpha, readableOn, useTheme, type Palette } from '@/constants/colors';
+import { alpha, useTheme, type Palette } from '@/constants/colors';
 import {
   Font, Radius, Space, Type, cardShadow, inkButton, tint, warmGradient,
 } from '@/constants/theme';
@@ -173,9 +169,6 @@ export default function HomeScreen() {
   const achievementCount = unlockedCount(profile, adventureProgress);
   const speedRecord = guest ? guestSpeedRecord : (profile?.speed_record ?? 0);
   const ladderRecord = profile?.ladder_best ?? 0;
-  const rank = rankForLevel(profile?.level ?? 1);
-  const mult = formatMultiplier(profile?.streak ?? 0);
-  const xpProgress = progressToNext(profile?.xp ?? 0);
   const ink = inkButton(isDark);
 
   return (
@@ -258,75 +251,14 @@ export default function HomeScreen() {
                 <Text style={{ color: C.brandDeep, fontSize: 20 }}>›</Text>
               </View>
             </Pressable>
-          ) : user ? (
-            <>
-              <StreakHeatmap userId={user.id} streak={profile?.streak ?? 0} bestStreak={profile?.best_streak ?? 0} />
-              {!offline && <StreakRecoveryCard userId={user.id} profile={profile} refresh={refresh} />}
-            </>
           ) : (
-            <View style={{
-              marginTop: 14, backgroundColor: C.surface, borderRadius: Radius.cardLg,
-              padding: 16, flexDirection: 'row', alignItems: 'center', gap: 12,
-              borderWidth: 1, borderColor: C.border, ...cardShadow(isDark),
-            }}>
-              <View style={{
-                width: 44, height: 44, borderRadius: Radius.icon,
-                backgroundColor: C.brandTint, alignItems: 'center', justifyContent: 'center',
-              }}>
-                <Text style={{ fontSize: 22 }}>🔥</Text>
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text style={{ color: C.text, fontSize: 16, fontFamily: Font.extra }}>
-                  {t('home.streakDays', { count: profile?.streak ?? 0 })}
-                </Text>
-                <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular, marginTop: 2 }}>
-                  {(profile?.streak ?? 0) > 0 ? t('home.streakKeep') : t('home.streakStart')}
-                </Text>
-              </View>
-              <Text style={{ color: C.streakText, fontSize: 30, fontFamily: Font.black, lineHeight: 34 }}>
-                {profile?.streak ?? 0}
-              </Text>
-            </View>
-          )}
-
-          {/* Progreso (nivel + XP + monedas) → Arena */}
-          {!guest && (
-            <Pressable onPress={() => offline ? lockedTap() : router.push('/profile')} style={{ marginTop: 10 }}>
-              <View style={{
-                backgroundColor: C.surface, borderRadius: Radius.cardLg, padding: 12,
-                borderWidth: 1, borderColor: C.border, gap: 10, ...cardShadow(isDark),
-              }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 11 }}>
-                  <LevelBadge level={profile?.level ?? 1} size={40} />
-                  <View style={{ flex: 1 }}>
-                    <Text style={{ color: C.text, fontFamily: Font.extra, fontSize: 16 }}>
-                      {t('components.levelUp.level', { level: profile?.level ?? 1 })}
-                    </Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 1 }}>
-                      <Text style={{ color: readableOn(rank.color, isDark), fontFamily: Font.bold, fontSize: 13 }}>
-                        {t(`ranks.${rank.id}`)}
-                      </Text>
-                      {mult && (
-                        <View style={{ backgroundColor: C.brandTint, borderRadius: Radius.pill, paddingHorizontal: 9, paddingVertical: 2 }}>
-                          <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>{mult} XP</Text>
-                        </View>
-                      )}
-                    </View>
-                  </View>
-                  <CoinPill coins={profile?.coins ?? 0} small />
-                </View>
-                {/* Barra y "faltan X XP" en la misma fila: la etiqueta debajo
-                    costaba una línea entera de alto. */}
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                  <View style={{ flex: 1 }}>
-                    <XpBar xp={profile?.xp ?? 0} showLabel={false} height={8} />
-                  </View>
-                  <Text numberOfLines={1} style={{ color: C.textFaint, fontFamily: Font.bold, fontSize: 12 }}>
-                    {t('components.xpBar.toNext', { xp: xpProgress.toNext, level: xpProgress.level + 1 })}
-                  </Text>
-                </View>
-              </View>
-            </Pressable>
+            <>
+              <HomeProgressRow userId={user?.id ?? null}
+                streak={profile?.streak ?? 0} bestStreak={profile?.best_streak ?? 0}
+                level={profile?.level ?? 1} xp={profile?.xp ?? 0} coins={profile?.coins ?? 0}
+                onLevelPress={() => offline ? lockedTap() : router.push('/profile')} />
+              {user && !offline && <StreakRecoveryCard userId={user.id} profile={profile} refresh={refresh} />}
+            </>
           )}
         </View>
 

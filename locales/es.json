@@ -451,6 +451,19 @@
       "closesIn_other": "cierra en {{count}} días",
       "closesToday": "cierra hoy",
       "ofMembers": "de {{count}}"
+    },
+    "browse": {
+      "title": "Explorar ligas",
+      "subtitle": "Elige una liga para ver su clasificación esta semana.",
+      "open": "Elegir otra liga",
+      "mine": "Tu liga",
+      "back": "Volver a mi liga",
+      "viewing": "Estás viendo otra liga",
+      "empty": "Todavía no hay grupos en esta división.",
+      "error": "No se han podido cargar las ligas. Inténtalo de nuevo.",
+      "retry": "Reintentar",
+      "members_one": "{{count}} jugador",
+      "members_other": "{{count}} jugadores"
     }
   },
   "speed": {
@@ -1648,6 +1661,11 @@
     "closePreview": "Cerrar imagen ampliada",
     "preparing": "Preparando las primeras ciudades…",
     "nextLoading": "Preparando la siguiente ciudad…",
-    "nextError": "No se ha podido preparar la siguiente ciudad."
+    "nextError": "No se ha podido preparar la siguiente ciudad.",
+    "previewTitle": "Imagen ampliada",
+    "zoomHint": "Pellizca o toca dos veces para ampliar. Arrastra para explorar.",
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "resetZoom": "Ajustar"
   }
 }

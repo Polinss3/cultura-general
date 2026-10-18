@@ -10,7 +10,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { GlassView } from 'expo-glass-effect';
-import { useFocusEffect, useRouter } from 'expo-router';
+import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
@@ -22,7 +22,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
 import { AdventureMap } from '@/components/adventure/adventure-map';
-import { JourneyModal } from '@/components/adventure/journey-modal';
 import { RelicBadge } from '@/components/adventure/relic-badge';
 import { RelicCaseModal } from '@/components/adventure/relic-case';
 import { adventureRelicFor, adventureRelicsEarned, ADVENTURE_TOTAL_RELICS } from '@/lib/adventure-relics';
@@ -59,6 +58,7 @@ import { Font, Radius, Space, Type, cardShadow } from '@/constants/theme';
 export default function AdventureScreen() {
   const { t } = useTranslation();
   const router = useRouter();
+  const { chapter, selection } = useLocalSearchParams<{ chapter?: string; selection?: string }>();
   const { width } = useWindowDimensions();
   const { C, isDark } = useTheme();
   const glassHeader = useAppleLiquidGlass();
@@ -83,7 +83,7 @@ export default function AdventureScreen() {
   const access = useAdventureAccess(progress, scope ?? 'guest', !!user && !guest && !offline);
   const [regionNumber, setRegionNumber] = useState(1);
   const [initialPositioned, setInitialPositioned] = useState(false);
-  const [chapterPickerOpen, setChapterPickerOpen] = useState(false);
+  const lastUnlocked = useRef<number | null>(null);
   const [relicCaseOpen, setRelicCaseOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(220);
   const scrollRef = useRef<ScrollView>(null);
@@ -105,14 +105,28 @@ export default function AdventureScreen() {
       }
     }
     setProgress(stored);
-    setRegionNumber(adventureRegionForLevel(stored.unlockedLevel).number);
-    setInitialPositioned(false);
+    if (lastUnlocked.current !== stored.unlockedLevel) {
+      setRegionNumber(adventureRegionForLevel(stored.unlockedLevel).number);
+      setInitialPositioned(false);
+      lastUnlocked.current = stored.unlockedLevel;
+    }
     if (user) refresh();
   }, [guest, offline, repository, refresh, user?.id]);
 
   useFocusEffect(useCallback(() => {
     load();
   }, [load]));
+
+  useEffect(() => {
+    if (!progress || !chapter) return;
+    const requested = Number(chapter);
+    const max = Math.ceil(ADVENTURE_MAX_LEVELS / ADVENTURE_LEVELS_PER_REGION);
+    if (Number.isInteger(requested) && requested >= 1 && requested <= max) {
+      setRegionNumber(requested);
+      setInitialPositioned(true);
+    }
+    router.setParams({ chapter: undefined, selection: undefined });
+  }, [chapter, selection, progress, router]);
 
   useEffect(() => {
     if (offline) return;
@@ -188,14 +202,8 @@ export default function AdventureScreen() {
 
   const openChapterPicker = useCallback(() => {
     feedback.tap();
-    setChapterPickerOpen(true);
-  }, []);
-
-  const selectChapter = useCallback((nextRegion: number) => {
-    if (nextRegion === regionNumber) feedback.select();
-    else goToRegion(nextRegion);
-    setChapterPickerOpen(false);
-  }, [goToRegion, regionNumber]);
+    router.push({ pathname: '/adventure-chapters', params: { current: String(regionNumber) } });
+  }, [router, regionNumber]);
 
   useEffect(() => {
     if (!progress || initialPositioned) return;
@@ -463,15 +471,6 @@ export default function AdventureScreen() {
         progress={progress}
         access={access}
         onClose={() => setRelicCaseOpen(false)}
-      />
-      <JourneyModal
-        visible={chapterPickerOpen}
-        currentRegion={regionNumber}
-        totalRegions={maxRegion}
-        progress={progress}
-        access={access}
-        onClose={() => setChapterPickerOpen(false)}
-        onSelect={selectChapter}
       />
     </SafeAreaView>
   );

@@ -19,6 +19,7 @@ export interface LeagueEntry {
 export type LeagueResult = 'promoted' | 'relegated' | 'stayed';
 
 export interface LeagueState {
+  groupId: string | null;
   division: number;                 // 0=Bronce..3=Diamante
   weekStart: string;                // 'YYYY-MM-DD' (lunes ISO)
   // Grupo de ~30 dentro de la división (v3). null con el servidor v2, donde
@@ -95,6 +96,35 @@ export function daysUntilReset(weekStart: string): number {
 export async function fetchLeague(): Promise<LeagueState | null> {
   const { data, error } = await supabase.rpc('get_league');
   if (error || !data) return null;
+  return mapLeague(data);
+}
+
+export interface LeagueGroup {
+  groupId: string;
+  division: number;
+  groupNameKey: string;
+  groupSeq: number;
+  memberCount: number;
+  isMine: boolean;
+}
+
+/** Lecturas sin altas de participantes, cambios de división ni recompensas. */
+export async function fetchLeagueGroups(): Promise<LeagueGroup[]> {
+  const { data, error } = await supabase.rpc('get_league_groups');
+  if (error || !Array.isArray(data)) throw error ?? new Error('Invalid league groups');
+  return data.map(g => ({
+    groupId: g.group_id, division: g.division, groupNameKey: g.group_name_key,
+    groupSeq: g.group_seq, memberCount: g.member_count, isMine: g.is_mine,
+  }));
+}
+
+export async function fetchLeagueGroup(groupId: string): Promise<LeagueState> {
+  const { data, error } = await supabase.rpc('get_league_group', { p_group_id: groupId });
+  if (error || !data) throw error ?? new Error('League group unavailable');
+  return mapLeague(data);
+}
+
+async function mapLeague(data: any): Promise<LeagueState> {
 
   // El sello PRO se resuelve con una consulta aparte en vez de añadiendo la
   // columna al RPC: `get_league` ya ha obligado a re-aplicar leagues.sql dos
@@ -109,6 +139,7 @@ export async function fetchLeague(): Promise<LeagueState | null> {
     : await fetchProUserIds(rows.map(e => e.user_id).filter(Boolean));
 
   return {
+    groupId: data.group_id ?? null,
     division: data.division ?? 0,
     weekStart: data.week_start,
     groupNameKey: data.group_name_key ?? null,

@@ -1,21 +1,20 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View, Text, Pressable, ActivityIndicator, Modal, RefreshControl } from 'react-native';
+import { ScrollView, View, Text, Pressable, ActivityIndicator, RefreshControl } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter, useFocusEffect } from 'expo-router';
+import { useRouter, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuth } from '@/hooks/useAuth';
 import { useGuest } from '@/hooks/useGuest';
 import { useOffline } from '@/hooks/useOffline';
 import { setGuestMode } from '@/lib/guest';
 import {
-  fetchLeague, divisionMeta, daysUntilReset, leaguePlacementReward, leagueGroupName, TOP_DIVISION, LeagueState,
+  fetchLeague, fetchLeagueGroup, divisionMeta, daysUntilReset, leaguePlacementReward, leagueGroupName, TOP_DIVISION, LeagueState,
 } from '@/lib/leagues';
 import { UserName } from '@/components/UserName';
 import { resolveCosmetics } from '@/lib/cosmetics';
-import { readableOn, useTheme, type Palette } from '@/constants/colors';
-import { sheetWidth } from '@/constants/layout';
-import { Font, Radius, Space, Type, cardShadow, glow, highlightGradient, inkButton, tint, warmGradient } from '@/constants/theme';
+import { useTheme, type Palette } from '@/constants/colors';
+import { Font, Radius, Type, glow, tint } from '@/constants/theme';
 
 /** A qué escalón de premio corresponde un puesto. */
 function rankBucket(rank: number): number {
@@ -48,28 +47,75 @@ export default function LeaguesScreen() {
   const offline = useOffline();
 
   // undefined = cargando; null = no disponible (RPC sin aplicar/offline); objeto = ok.
-  const [state, setState] = useState<LeagueState | null | undefined>(undefined);
-  const [showInfo, setShowInfo] = useState(false);
+  const [ownLeague, setOwnLeague] = useState<LeagueState | null | undefined>(undefined);
+  const [viewed, setViewed] = useState<LeagueState | null>(null);
+  const { group } = useLocalSearchParams<{ group?: string }>();
+  const [browseLoading, setBrowseLoading] = useState(false);
+  const [browseError, setBrowseError] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+  const loadId = useRef(0);
+  const [browseRevision, setBrowseRevision] = useState(0);
+  const state = viewed ?? ownLeague;
+  const viewingOwn = !viewed;
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback(() => {
-    if (guest || offline || !user) { setState(null); return; }
-    setState(undefined);
-    fetchLeague().then(setState);
+    const request = ++loadId.current;
+    if (guest || offline || !user) { setOwnLeague(null); setViewed(null); return; }
+    fetchLeague().then(next => {
+      if (request !== loadId.current) return;
+      setOwnLeague(previous => next ?? previous ?? null);
+      setLoadError(!next);
+    }).catch(() => {
+      if (request !== loadId.current) return;
+      setOwnLeague(previous => previous ?? null);
+      setLoadError(true);
+    });
   }, [guest, offline, user?.id]);
 
-  useFocusEffect(useCallback(() => { load(); }, [load]));
+  useFocusEffect(useCallback(() => {
+    load();
+    return () => { loadId.current += 1; };
+  }, [load]));
 
-  // Recarga al tirar hacia abajo. No pasa por `load` a propósito: ese vacía el
-  // estado y dejaría la pantalla en el spinner de página entera, tapando el
-  // propio indicador del gesto.
+  // Las recargas conservan la clasificación anterior si falla la red.
   const onRefresh = useCallback(async () => {
     if (guest || offline || !user) return;
     setRefreshing(true);
-    const next = await fetchLeague();
-    setState(next);
-    setRefreshing(false);
+    const request = ++loadId.current;
+    try {
+      const next = await fetchLeague();
+      if (request === loadId.current) {
+        if (next) setOwnLeague(next);
+        setLoadError(!next);
+      }
+    } catch {
+      if (request === loadId.current) setLoadError(true);
+    } finally {
+      setRefreshing(false);
+    }
   }, [guest, offline, user?.id]);
+
+  useEffect(() => {
+    if (!ownLeague || guest || offline || !user) return;
+    if (!group || group === ownLeague.groupId) {
+      setViewed(null);
+      setBrowseLoading(false);
+      setBrowseError(false);
+      return;
+    }
+    let cancelled = false;
+    setBrowseLoading(true);
+    setBrowseError(false);
+    fetchLeagueGroup(group).then(next => {
+      if (!cancelled) setViewed(next);
+    }).catch(() => {
+      if (!cancelled) setBrowseError(true);
+    }).finally(() => {
+      if (!cancelled) setBrowseLoading(false);
+    });
+    return () => { cancelled = true; };
+  }, [group, ownLeague, guest, offline, user?.id, browseRevision]);
 
   const goToAuth = async () => {
     await setGuestMode(false);
@@ -82,7 +128,7 @@ export default function LeaguesScreen() {
         <Text style={{ color: C.textMuted, fontSize: 22 }}>←</Text>
       </Pressable>
       <Text style={{ flex: 1, color: C.text, fontSize: 20, fontFamily: Font.black }}>{t('leagues.title')}</Text>
-      <Pressable onPress={() => setShowInfo(true)} style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: C.surface, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: C.border }}>
+      <Pressable accessibilityRole="button" accessibilityLabel={t('leagues.how.title')} onPress={() => router.push({ pathname: '/league-info', params: { size: state?.groupSize ?? 30, promote: state?.promoteZone ?? 7, relegate: state?.relegateZone ?? 5 } })} style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: C.surface, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: C.border }}>
         <Text style={{ color: C.textBody, fontFamily: Font.black, fontSize: 15 }}>?</Text>
       </Pressable>
     </View>
@@ -133,6 +179,9 @@ export default function LeaguesScreen() {
           <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 15, textAlign: 'center', maxWidth: 280 }}>
             {t('leagues.unavailable')}
           </Text>
+          <Pressable accessibilityRole="button" onPress={load} style={{ minHeight: 44, padding: 12 }}>
+            <Text style={{ color: C.brandDeep, fontFamily: Font.extra }}>{t('leagues.browse.retry')}</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     );
@@ -163,6 +212,29 @@ export default function LeaguesScreen() {
         }
       >
 
+        {browseLoading && <ActivityIndicator color={C.brand} style={{ marginBottom: 12 }} />}
+        {(browseError || loadError) && (
+          <View style={{ backgroundColor: C.surface, borderRadius: Radius.row, padding: 12, marginBottom: 12, gap: 8 }}>
+            <Text style={{ color: C.textBody, ...Type.secondary }}>{t('leagues.browse.error')}</Text>
+            <View style={{ flexDirection: 'row', gap: 16 }}>
+              <Pressable accessibilityRole="button" onPress={() => { load(); setBrowseRevision(n => n + 1); }} style={{ minHeight: 44, justifyContent: 'center' }}>
+                <Text style={{ color: C.brandDeep, fontFamily: Font.extra }}>{t('leagues.browse.retry')}</Text>
+              </Pressable>
+              <Pressable accessibilityRole="button" onPress={() => router.setParams({ group: '' })} style={{ minHeight: 44, justifyContent: 'center' }}>
+                <Text style={{ color: C.brandDeep, fontFamily: Font.extra }}>{t('leagues.browse.back')}</Text>
+              </Pressable>
+            </View>
+          </View>
+        )}
+        {!viewingOwn && (
+          <View style={{ marginBottom: 12, gap: 4 }}>
+            <Text style={{ color: C.textMuted, ...Type.small }}>{t('leagues.browse.viewing')}</Text>
+            <Pressable accessibilityRole="button" onPress={() => router.setParams({ group: '' })} style={{ minHeight: 44, justifyContent: 'center' }}>
+              <Text style={{ color: C.brandDeep, fontFamily: Font.extra }}>{t('leagues.browse.back')}</Text>
+            </Pressable>
+          </View>
+        )}
+
         {/* Resultado de la semana pasada */}
         {state.lastResult && (
           <View style={{
@@ -181,10 +253,12 @@ export default function LeaguesScreen() {
         {/* División actual. La envoltura existe solo para el halo: la sombra y
             el `overflow: 'hidden'` que clipa el degradado no pueden ir en la
             misma vista o iOS no pinta el brillo. */}
-        <View style={{
-          borderRadius: Radius.cardLg, backgroundColor: C.surface,
-          marginBottom: 12, ...glow(div.color, isDark),
-        }}>
+        <Pressable accessibilityRole="button" accessibilityLabel={t('leagues.browse.open')}
+          onPress={() => router.push({ pathname: '/league-picker', params: { selected: state.groupId ?? '' } })}
+          style={{
+            borderRadius: Radius.cardLg, backgroundColor: C.surface,
+            marginBottom: 12, ...glow(div.color, isDark),
+          }}>
           <View style={{ borderRadius: Radius.cardLg, overflow: 'hidden', borderWidth: 1.5, borderColor: div.color + '66' }}>
             <LinearGradient
               colors={[div.color + '3d', div.color + '12', C.surface]}
@@ -213,50 +287,57 @@ export default function LeaguesScreen() {
                     : t('leagues.members', { count: state.memberCount })}
                 </Text>
               </View>
+              <View accessibilityElementsHidden importantForAccessibility="no" style={{
+                width: 9, height: 9, marginRight: 4,
+                borderRightWidth: 2.25, borderBottomWidth: 2.25, borderColor: C.textMuted,
+                transform: [{ rotate: '45deg' }, { translateX: -1.5 }, { translateY: -1.5 }],
+              }} />
             </LinearGradient>
           </View>
-        </View>
+        </Pressable>
 
         {/* Mi posición: las tres cifras en una fila, y el estado como una línea
             debajo. Antes eran cuatro bloques apilados y se comían la pantalla
             antes de llegar a la clasificación. */}
-        <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 12, marginBottom: 12, borderWidth: 1, borderColor: C.border }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <MiniStat C={C} label={t('leagues.yourPosition')} value={state.myRank ? `#${state.myRank}` : '—'} color={C.text} />
-            <View style={{ width: 1, alignSelf: 'stretch', backgroundColor: C.border }} />
-            <MiniStat C={C} label={t('leagues.xpThisWeek')} value={`${state.myXp} XP`} color={C.social} />
-            {state.myRank != null && (
-              <>
-                <View style={{ width: 1, alignSelf: 'stretch', backgroundColor: C.border }} />
-                <MiniStat
-                  C={C}
-                  label={t('leagues.currentPrize')}
-                  value={`+${leaguePlacementReward(state.division, state.myRank)} 🪙`}
-                  color={C.brandDeep}
-                />
-              </>
-            )}
+        {viewingOwn && (
+          <View style={{ backgroundColor: C.surface, borderRadius: Radius.card, padding: 12, marginBottom: 12, borderWidth: 1, borderColor: C.border }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <MiniStat C={C} label={t('leagues.yourPosition')} value={state.myRank ? `#${state.myRank}` : '—'} color={C.text} />
+              <View style={{ width: 1, alignSelf: 'stretch', backgroundColor: C.border }} />
+              <MiniStat C={C} label={t('leagues.xpThisWeek')} value={`${state.myXp} XP`} color={C.social} />
+              {state.myRank != null && (
+                <>
+                  <View style={{ width: 1, alignSelf: 'stretch', backgroundColor: C.border }} />
+                  <MiniStat
+                    C={C}
+                    label={t('leagues.currentPrize')}
+                    value={`+${leaguePlacementReward(state.division, state.myRank)} 🪙`}
+                    color={C.brandDeep}
+                  />
+                </>
+              )}
+            </View>
+            <View style={{ marginTop: 10, paddingTop: 9, borderTopWidth: 1, borderTopColor: C.border }}>
+              {inPromo ? (
+                <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 12.5 }}>
+                  ⬆️ {t('leagues.inPromo', { division: t(`leagues.divisions.${nextDiv.id}`) })}
+                </Text>
+              ) : inRelegation ? (
+                <Text style={{ color: C.wrong, fontFamily: Font.bold, fontSize: 12.5 }}>
+                  ⬇️ {t('leagues.inRelegation')}
+                </Text>
+              ) : canPromote ? (
+                <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 12.5 }}>
+                  {t('leagues.safeHint', { n: state.promoteZone })}
+                </Text>
+              ) : (
+                <Text style={{ color: div.color, fontFamily: Font.bold, fontSize: 12.5 }}>
+                  {t('leagues.topDivisionShort')}
+                </Text>
+              )}
+            </View>
           </View>
-          <View style={{ marginTop: 10, paddingTop: 9, borderTopWidth: 1, borderTopColor: C.border }}>
-            {inPromo ? (
-              <Text style={{ color: C.correct, fontFamily: Font.bold, fontSize: 12.5 }}>
-                ⬆️ {t('leagues.inPromo', { division: t(`leagues.divisions.${nextDiv.id}`) })}
-              </Text>
-            ) : inRelegation ? (
-              <Text style={{ color: C.wrong, fontFamily: Font.bold, fontSize: 12.5 }}>
-                ⬇️ {t('leagues.inRelegation')}
-              </Text>
-            ) : canPromote ? (
-              <Text style={{ color: C.textMuted, fontFamily: Font.semi, fontSize: 12.5 }}>
-                {t('leagues.safeHint', { n: state.promoteZone })}
-              </Text>
-            ) : (
-              <Text style={{ color: div.color, fontFamily: Font.bold, fontSize: 12.5 }}>
-                {t('leagues.topDivisionShort')}
-              </Text>
-            )}
-          </View>
-        </View>
+        )}
 
         {/* Premios por puesto, en fila de izquierda a derecha. Como listado
             ocupaban cinco filas; el dato útil de cada uno son dos cifras y
@@ -344,52 +425,6 @@ export default function LeaguesScreen() {
         )}
       </ScrollView>
 
-      {/* Sheet: cómo funcionan las ligas */}
-      <Modal visible={showInfo} transparent animationType="slide" onRequestClose={() => setShowInfo(false)}>
-        <Pressable onPress={() => setShowInfo(false)} style={{ flex: 1, backgroundColor: 'rgba(43,38,33,0.55)' /* velo en tinta cálida */, justifyContent: 'flex-end' }}>
-          <Pressable onPress={() => {}} style={{ ...sheetWidth, backgroundColor: C.surface, borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 36, borderWidth: 1, borderColor: C.border }}>
-            <View style={{ width: 40, height: 4, borderRadius: 2, backgroundColor: C.textFaint, alignSelf: 'center', marginBottom: 18 }} />
-            <Text style={{ color: C.text, fontFamily: Font.black, fontSize: 20, marginBottom: 16 }}>
-              {t('leagues.how.title')}
-            </Text>
-
-            {/* Divisiones */}
-            <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, marginBottom: 18 }}>
-              {[0, 1, 2, 3].map(d => {
-                const m = divisionMeta(d);
-                return (
-                  <View key={d} style={{ alignItems: 'center', gap: 3 }}>
-                    <Text style={{ fontSize: 26 }}>{m.emoji}</Text>
-                    <Text style={{ color: m.color, fontFamily: Font.semi, fontSize: 12 }}>{t(`leagues.divisions.${m.id}`)}</Text>
-                  </View>
-                );
-              })}
-            </View>
-
-            {[
-              { icon: '🎮', text: t('leagues.how.compete') },
-              { icon: '👥', text: t('leagues.how.groups', { size: state.groupSize }) },
-              { icon: '⬆️', text: t('leagues.how.promote', { n: state.promoteZone }) },
-              { icon: '⬇️', text: t('leagues.how.relegate', { n: state.relegateZone }) },
-              { icon: '🪙', text: t('leagues.how.rewards') },
-              { icon: '🏅', text: t('leagues.how.badge') },
-            ].map((item, i) => (
-              <View key={i} style={{ flexDirection: 'row', gap: 12, marginBottom: 12, alignItems: 'flex-start' }}>
-                <Text style={{ fontSize: 18 }}>{item.icon}</Text>
-                <Text style={{ flex: 1, color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 21 }}>
-                  {item.text}
-                </Text>
-              </View>
-            ))}
-
-            <Pressable onPress={() => setShowInfo(false)} style={{ marginTop: 12 }}>
-              <LinearGradient colors={[C.brand, C.brand]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 18, padding: 15, alignItems: 'center' }}>
-                <Text style={{ color: C.onBrand, fontFamily: Font.extra, fontSize: 15 }}>{t('leagues.how.close')}</Text>
-              </LinearGradient>
-            </Pressable>
-          </Pressable>
-        </Pressable>
-      </Modal>
     </SafeAreaView>
   );
 }

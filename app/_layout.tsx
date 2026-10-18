@@ -1,5 +1,5 @@
 import '@/lib/i18n'; // debe ir primero: init i18n antes de que renderice cualquier componente
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -124,6 +124,7 @@ function ContentColumn({ children, segments }: { children: ReactNode; segments: 
 }
 
 function RootLayout() {
+  const { C } = useTheme();
   const [fontsLoaded, fontError] = useFonts({
     Nunito_400Regular,
     Nunito_600SemiBold,
@@ -142,6 +143,7 @@ function RootLayout() {
   const [langReady, setLangReady] = useState(false);
   const [authLinkReady, setAuthLinkReady] = useState(false);
   const [profileReady, setProfileReady] = useState(false);
+  const profileCheckedFor = useRef<string | null>(null); // usuario cuyo perfil ya se comprobó
   const [profileNeedsCompletion, setProfileNeedsCompletion] = useState(false);
   // Arranque sin conexión.
   const [probeDone, setProbeDone] = useState(false);   // sonda de red resuelta
@@ -256,7 +258,11 @@ function RootLayout() {
         return;
       }
 
-      setProfileReady(false);
+      // Solo la primera comprobación de cada usuario tapa la app con la splash.
+      // Al volver del segundo plano Supabase renueva la sesión y puede cambiar
+      // `updated_at`: volver a montar BootScreen desmontaría el Stack entero y
+      // la navegación arrancaría de cero.
+      if (profileCheckedFor.current !== session.user.id) setProfileReady(false);
 
       // La consulta no debe poder bloquear la splash indefinidamente (p. ej.
       // sin red): si tarda demasiado, desbloqueamos sin forzar complete-profile.
@@ -281,6 +287,7 @@ function RootLayout() {
       setProfileNeedsCompletion(
         error ? false : requiresProfileCompletion(data?.username, session.user.user_metadata),
       );
+      profileCheckedFor.current = session.user.id;
       setProfileReady(true);
     };
 
@@ -458,7 +465,7 @@ function RootLayout() {
           return;
         }
         const isOfflinePlayableRoute =
-          segs[0] === '(tabs)' || segs[0] === 'speed' || segs[0] === 'adventure-level' || segs[0] === 'city-preview';
+          segs[0] === '(tabs)' || segs[0] === 'speed' || segs[0] === 'adventure-level' || segs[0] === 'adventure-chapters' || segs[0] === 'city-preview';
         if (!isOfflinePlayableRoute) router.replace('/(tabs)');
         return;
       }
@@ -541,21 +548,37 @@ function RootLayout() {
           <ContentColumn segments={segments as readonly string[]}>
             <CityPreviewProvider>
               <Stack
-                screenOptions={({ route }) => ({
+                screenOptions={{
                   headerShown: false,
                   animation: 'slide_from_right',
                   animationDuration: 250,
-                  ...(route.name === 'city-preview' ? {
-                    presentation: Platform.OS === 'web' ? 'transparentModal' : 'formSheet',
-                    animation: Platform.OS === 'web' ? 'none' : 'slide_from_bottom',
-                    sheetAllowedDetents: 'fitToContents',
+                }}
+              >
+                {/* Declarar pantallas aquí las pone delante en la lista de rutas, y
+                    la primera es la que se usa si el Stack arranca sin estado.
+                    `(tabs)` tiene que ir siempre la primera. */}
+                <Stack.Screen name="(tabs)" />
+                {/* Una sola altura a propósito: en iOS 26 la hoja flota con márgenes
+                    por debajo del tope y se pega a los bordes al llegar arriba, y ese
+                    cambio de ancho el contenido de RN lo recoloca tarde y a saltos.
+                    Sin barra nativa por lo mismo: la cabecera va en SheetHeader. */}
+                {['league-info', 'league-picker', 'adventure-chapters'].map(name => (
+                  <Stack.Screen key={name} name={name} options={{
+                    presentation: Platform.OS === 'ios' ? 'formSheet' : 'modal',
+                    sheetAllowedDetents: [0.7],
                     sheetGrabberVisible: true,
-                    sheetCornerRadius: 28,
                     gestureEnabled: true,
-                    contentStyle: { backgroundColor: 'transparent' },
-                  } : {}),
-                })}
-              />
+                    animation: 'default',
+                    headerShown: false,
+                    contentStyle: { backgroundColor: C.bg },
+                  }} />
+                ))}
+                <Stack.Screen name="city-preview" options={{
+                  presentation: Platform.OS === 'ios' ? 'fullScreenModal' : 'modal',
+                  animation: 'default',
+                  gestureEnabled: false,
+                }} />
+              </Stack>
             </CityPreviewProvider>
           </ContentColumn>
           <AdsConsentModal

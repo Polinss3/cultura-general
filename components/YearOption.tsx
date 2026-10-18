@@ -13,6 +13,7 @@ interface Props {
   /** Apaga los que no son ni el elegido ni el correcto, tras responder. */
   dimmed?: boolean;
   disabled?: boolean;
+  compact?: boolean;
 }
 
 /**
@@ -20,7 +21,7 @@ interface Props {
  * FlagOption: una cifra sola se compara de un vistazo, igual que una bandera,
  * y por eso puede ir en rejilla en vez de en columna.
  */
-export function YearOption({ year, state, onPress, dimmed, disabled = false }: Props) {
+export function YearOption({ year, state, onPress, dimmed, disabled = false, compact = false }: Props) {
   const C = useColors();
   const scale = useRef(new Animated.Value(1)).current;
   const pressLocked = useRef(false);
@@ -78,11 +79,11 @@ export function YearOption({ year, state, onPress, dimmed, disabled = false }: P
           borderColor,
           backgroundColor: bg,
           borderRadius: 18,
-          paddingVertical: 14,
+          paddingVertical: compact ? 8 : 14,
           paddingHorizontal: 8,
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: 104,
+          minHeight: compact ? 80 : 104,
           gap: 4,
         }}
       >
@@ -91,7 +92,7 @@ export function YearOption({ year, state, onPress, dimmed, disabled = false }: P
         <Text
           numberOfLines={1}
           adjustsFontSizeToFit
-          style={{ color, fontSize: 34, fontFamily: Font.black, letterSpacing: -0.5 }}
+          style={{ color, fontSize: compact ? 28 : 34, fontFamily: Font.black, letterSpacing: -0.5 }}
         >
           {year}
         </Text>

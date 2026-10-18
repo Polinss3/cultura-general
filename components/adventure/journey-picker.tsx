@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
-import { FlatList, Modal, Pressable, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { FlatList, Pressable, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import {
@@ -19,21 +18,19 @@ import {
 } from '@/lib/adventure-relics';
 import type { AdventureAccess } from '@/lib/pro';
 import { ProBadge } from '@/components/ProBadge';
+import { SheetHeader } from '@/components/SheetHeader';
 import { RelicBadge } from './relic-badge';
 import { alpha, readableOn, useTheme } from '@/constants/colors';
-import { Font, HIT_MIN, Radius, Space, Type } from '@/constants/theme';
+import { Font, Radius, Space, Type } from '@/constants/theme';
 
 interface Props {
-  visible: boolean;
   currentRegion: number;
   totalRegions: number;
   progress: AdventureProgress;
   access: AdventureAccess;
-  onClose: () => void;
   onSelect: (regionNumber: number) => void;
 }
 
-const SHEET_CONTENT_INSET = Radius.cardLg;
 const RAIL_WIDTH = 46;
 const NODE_SIZE = 38;
 
@@ -46,13 +43,11 @@ const NODE_SIZE = 38;
  * riel vertical que une los capítulos lo cuenta de un vistazo, y de paso es la
  * superficie natural donde enseñar qué hay detrás del muro de pago.
  */
-export function JourneyModal({
-  visible,
+export function JourneyPicker({
   currentRegion,
   totalRegions,
   progress,
   access,
-  onClose,
   onSelect,
 }: Props) {
   const { t } = useTranslation();
@@ -179,67 +174,29 @@ export function JourneyModal({
   };
 
   return (
-    <Modal
-      animationType="slide"
-      presentationStyle="pageSheet"
-      allowSwipeDismissal
-      visible={visible}
-      onRequestClose={onClose}
-    >
-      <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top', 'bottom']}>
-        <View style={{
-          paddingTop: SHEET_CONTENT_INSET,
-          paddingBottom: 16,
-          paddingHorizontal: SHEET_CONTENT_INSET,
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 12,
-          borderBottomWidth: 1,
-          borderBottomColor: C.border,
-        }}>
-          <View style={{ flex: 1, gap: 2 }}>
-            <Text style={{ color: C.text, ...Type.navTitle }}>{t('adventure.journeyTitle')}</Text>
-            <Text style={{ color: C.textMuted, ...Type.secondary }}>
-              {t('adventure.journeySummary', {
-                completed: completedTotal,
-                total: ADVENTURE_MAX_LEVELS,
-                stars: starsTotal,
-                relics: relicsEarned,
-                maxRelics: ADVENTURE_TOTAL_RELICS,
-              })}
-            </Text>
-          </View>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={t('adventure.closeChapterPicker')}
-            hitSlop={8}
-            onPress={onClose}
-            style={({ pressed }) => ({
-              minWidth: HIT_MIN,
-              minHeight: HIT_MIN,
-              paddingHorizontal: 10,
-              borderRadius: Radius.pill,
-              backgroundColor: C.surfaceSunk,
-              alignItems: 'center',
-              justifyContent: 'center',
-              opacity: pressed ? 0.65 : 1,
+    <FlatList
+      style={{ flex: 1, backgroundColor: C.bg }}
+      data={regions}
+      keyExtractor={item => String(item.number)}
+      renderItem={renderRegion}
+      contentInsetAdjustmentBehavior="automatic"
+      showsVerticalScrollIndicator={false}
+      stickyHeaderIndices={[0]}
+      ListHeaderComponent={
+        <View style={{ marginBottom: 6 }}>
+          <SheetHeader
+            title={t('adventure.journeyTitle')}
+            subtitle={t('adventure.journeySummary', {
+              completed: completedTotal,
+              total: ADVENTURE_MAX_LEVELS,
+              stars: starsTotal,
+              relics: relicsEarned,
+              maxRelics: ADVENTURE_TOTAL_RELICS,
             })}
-          >
-            <Text style={{ color: C.textBody, fontFamily: Font.bold, fontSize: 14 }}>
-              {t('common.close')}
-            </Text>
-          </Pressable>
+          />
         </View>
-
-        <FlatList
-          data={regions}
-          keyExtractor={item => String(item.number)}
-          renderItem={renderRegion}
-          contentInsetAdjustmentBehavior="automatic"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ padding: Space.screen, paddingBottom: 40 }}
-        />
-      </SafeAreaView>
-    </Modal>
+      }
+      contentContainerStyle={{ paddingHorizontal: Space.screen, paddingBottom: 40 }}
+    />
   );
 }

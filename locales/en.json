@@ -451,6 +451,19 @@
       "closesIn_other": "closes in {{count}} days",
       "closesToday": "closes today",
       "ofMembers": "of {{count}}"
+    },
+    "browse": {
+      "title": "Explore leagues",
+      "subtitle": "Choose a league to see this week’s standings.",
+      "open": "Choose another league",
+      "mine": "Your league",
+      "back": "Back to my league",
+      "viewing": "You’re viewing another league",
+      "empty": "There are no groups in this division yet.",
+      "error": "Couldn’t load leagues. Try again.",
+      "retry": "Try again",
+      "members_one": "{{count}} player",
+      "members_other": "{{count}} players"
     }
   },
   "speed": {
@@ -1648,6 +1661,11 @@
     "closePreview": "Close enlarged image",
     "preparing": "Preparing the first cities…",
     "nextLoading": "Preparing the next city…",
-    "nextError": "Could not prepare the next city."
+    "nextError": "Could not prepare the next city.",
+    "previewTitle": "Enlarged image",
+    "zoomHint": "Pinch or double-tap to zoom. Drag to explore.",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "resetZoom": "Fit image"
   }
 }

@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert, Animated } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, ScrollView, Pressable, ActivityIndicator, Alert, Animated, Platform } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OptionBtn } from '@/components/OptionBtn';
 import { FlagOption } from '@/components/FlagOption';
@@ -32,7 +32,7 @@ import { getRecentIds, pushSeen } from '@/lib/questionHistory';
 import { markDailyPlayed } from '@/lib/dailyRoute';
 import { feedback } from '@/lib/feedback';
 import { AnswerState, Category, Question } from '@/types';
-import { readableOn, useTheme, type Palette } from '@/constants/colors';
+import { readableOn, useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, warmGradient } from '@/constants/theme';
 import { PRO_ACCENT } from '@/lib/pro';
 
@@ -54,6 +54,20 @@ const SESSION_SIZE = 60;
 // Por encima de este número de preguntas los segmentos quedan por debajo de
 // 1 px y no se ven: a partir de ahí se muestra una barra continua.
 const SEGMENTED_UP_TO = 14;
+
+const iosVersion = Platform.OS === 'ios' ? Number.parseInt(String(Platform.Version), 10) : 0;
+const usesNativeTabs = Platform.OS === 'ios' && iosVersion >= 26 && !(Platform.isPad && iosVersion === 26);
+
+function QuestionLayout({ children, backgroundColor }: { children: ReactNode; backgroundColor: string }) {
+  const content = (
+    <SafeAreaView style={{ flex: 1, backgroundColor }} edges={usesNativeTabs ? ['top', 'bottom'] : ['top']}>
+      {children}
+    </SafeAreaView>
+  );
+  // El proveedor local mide el área segura del controlador de esta pestaña,
+  // incluida su barra nativa. El proveedor raíz solo conoce el indicador de inicio.
+  return usesNativeTabs ? <SafeAreaProvider>{content}</SafeAreaProvider> : content;
+}
 
 /**
  * Redondea a la baja para que el "+" siga siendo cierto: 182 → 180, 106 → 100,
@@ -107,6 +121,13 @@ export default function LearnScreen() {
   const { inventory, consume } = usePowerups(canUsePowerups, user?.id);
   const [fiftyHidden, setFiftyHidden] = useState<number[]>([]);
   const [hintShown, setHintShown] = useState(false);
+  const scrollRef = useRef<ScrollView>(null);
+  const [availableHeight, setAvailableHeight] = useState(0);
+  const compact = availableHeight > 0 && availableHeight < 650;
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ y: 0, animated: false });
+  }, [qIdx, difficulty, cat]);
 
   // Color de acento de la pantalla: el de la categoría, o la marca en aleatorio.
   const accent = cat && cat !== 'random' ? readableOn(CAT_COLORS[cat].accent, isDark) : C.brand;
@@ -426,256 +447,261 @@ export default function LearnScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['top']}>
-      {/* `automatic`: la barra de pestañas de iOS 26 flota encima del
-          contenido; sin este ajuste el botón Siguiente queda debajo de ella. */}
-      <ScrollView style={{ flex: 1 }} contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{ paddingBottom: 40 }}>
-        <View style={{ padding: Space.screen }}>
-          {/* Nav */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-            <Pressable onPress={goBack} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }} hitSlop={8}>
-              <Text style={{ color: C.textMuted, fontSize: 20 }}>←</Text>
-              <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.bold }}>{t('learn.topics')}</Text>
-            </Pressable>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              {/* Solo las del banco se pueden reportar: las de bandera y año
-                  salen del catálogo local y no tienen fila que señalar. */}
-              {q.id && (
-                <Pressable onPress={handleReport} style={{ padding: 6 }} hitSlop={8}>
-                  <Text style={{ color: C.textFaint, fontSize: 18 }}>⚑</Text>
-                </Pressable>
-              )}
-              {cat === 'random' && q.category ? (
-                <CategoryBadge cat={q.category} small />
-              ) : cat === 'random' ? (
-                <View style={{
-                  flexDirection: 'row', alignItems: 'center', gap: 6,
-                  backgroundColor: C.brandTint, paddingVertical: 6, paddingHorizontal: 12,
-                  borderRadius: Radius.pill,
-                }}>
-                  <Text style={{ fontSize: 12 }}>{RANDOM_ICON}</Text>
-                  <Text style={{ color: C.brandDeep, fontSize: 12, fontFamily: Font.extra }}>{t('learn.randomName')}</Text>
-                </View>
-              ) : (
-                <CategoryBadge cat={cat} small />
-              )}
-            </View>
-          </View>
-
-          {/* Difficulty filter */}
-          <View style={{ flexDirection: 'row', gap: 7, marginBottom: 18 }}>
-            {DIFFICULTIES.map(d => {
-              const active = difficulty === d;
-              return (
-                <Pressable
-                  key={d}
-                  onPress={() => setDifficulty(d)}
-                  style={{
-                    paddingVertical: 7,
-                    paddingHorizontal: 14,
+    <QuestionLayout backgroundColor={C.bg}>
+      <View style={{ flex: 1 }} onLayout={event => setAvailableHeight(event.nativeEvent.layout.height)}>
+        {/* El pie tiene su propio hueco: nunca se desplaza ni tapa el contenido.
+            Solo los textos que realmente no caben necesitan scroll. */}
+        <ScrollView ref={scrollRef} style={{ flex: 1 }} contentInsetAdjustmentBehavior="never" contentContainerStyle={{ paddingBottom: 12 }}>
+          <View style={{ paddingHorizontal: Space.screen, paddingTop: compact ? 4 : 8 }}>
+            {/* Nav */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+              <Pressable onPress={goBack} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }} hitSlop={8}>
+                <Text style={{ color: C.textMuted, fontSize: 20 }}>←</Text>
+                <Text style={{ color: C.textMuted, fontSize: 15, fontFamily: Font.bold }}>{t('learn.topics')}</Text>
+              </Pressable>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                {/* Solo las del banco se pueden reportar: las de bandera y año
+                    salen del catálogo local y no tienen fila que señalar. */}
+                {q.id && (
+                  <Pressable onPress={handleReport} style={{ padding: 6 }} hitSlop={8}>
+                    <Text style={{ color: C.textFaint, fontSize: 18 }}>⚑</Text>
+                  </Pressable>
+                )}
+                {cat === 'random' && q.category ? (
+                  <CategoryBadge cat={q.category} small />
+                ) : cat === 'random' ? (
+                  <View style={{
+                    flexDirection: 'row', alignItems: 'center', gap: 6,
+                    backgroundColor: C.brandTint, paddingVertical: 6, paddingHorizontal: 12,
                     borderRadius: Radius.pill,
-                    backgroundColor: active ? C.brand : C.surface,
-                    borderWidth: 1,
-                    borderColor: active ? C.brand : C.border,
-                  }}
-                >
-                  <Text style={{
-                    color: active ? C.onBrand : C.textMuted,
-                    fontFamily: active ? Font.extra : Font.bold,
-                    fontSize: 13,
                   }}>
-                    {t(`learn.diff.${d}`)}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-
-          {/* Progreso: segmentos si el tema es corto; barra continua si no.
-              Con bancos de 100+ preguntas los segmentos no caben y la fila se
-              quedaba en blanco. */}
-          {questions.length <= SEGMENTED_UP_TO ? (
-            <View style={{ flexDirection: 'row', gap: 4, marginBottom: 14 }}>
-              {questions.map((_, i) => (
-                <View key={i} style={{
-                  flex: 1, height: 5, borderRadius: Radius.pill,
-                  backgroundColor: i <= qIdx % questions.length ? C.brand : C.track,
-                }} />
-              ))}
+                    <Text style={{ fontSize: 12 }}>{RANDOM_ICON}</Text>
+                    <Text style={{ color: C.brandDeep, fontSize: 12, fontFamily: Font.extra }}>{t('learn.randomName')}</Text>
+                  </View>
+                ) : (
+                  <CategoryBadge cat={cat} small />
+                )}
+              </View>
             </View>
-          ) : (
-            <View style={{ height: 5, borderRadius: Radius.pill, backgroundColor: C.track, marginBottom: 14, overflow: 'hidden' }}>
-              <View style={{
-                height: '100%', borderRadius: Radius.pill, backgroundColor: C.brand,
-                width: `${(((qIdx % questions.length) + 1) / questions.length) * 100}%`,
-              }} />
-            </View>
-          )}
 
-          {/* Question counter + combo */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-            <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra }}>
-              {(qIdx % questions.length) + 1} / {questions.length}
-            </Text>
-            {combo >= 2 && (
-              <Animated.View style={{ transform: [{ scale: comboScale }] }}>
+            {/* Difficulty filter */}
+            <View style={{ flexDirection: 'row', gap: 7, marginBottom: compact ? 8 : 12 }}>
+              {DIFFICULTIES.map(d => {
+                const active = difficulty === d;
+                return (
+                  <Pressable
+                    key={d}
+                    onPress={() => setDifficulty(d)}
+                    style={{
+                      paddingVertical: 7,
+                      paddingHorizontal: 14,
+                      borderRadius: Radius.pill,
+                      backgroundColor: active ? C.brand : C.surface,
+                      borderWidth: 1,
+                      borderColor: active ? C.brand : C.border,
+                    }}
+                  >
+                    <Text style={{
+                      color: active ? C.onBrand : C.textMuted,
+                      fontFamily: active ? Font.extra : Font.bold,
+                      fontSize: 13,
+                    }}>
+                      {t(`learn.diff.${d}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            {/* Progreso: segmentos si el tema es corto; barra continua si no.
+                Con bancos de 100+ preguntas los segmentos no caben y la fila se
+                quedaba en blanco. */}
+            {questions.length <= SEGMENTED_UP_TO ? (
+              <View style={{ flexDirection: 'row', gap: 4, marginBottom: 8 }}>
+                {questions.map((_, i) => (
+                  <View key={i} style={{
+                    flex: 1, height: 5, borderRadius: Radius.pill,
+                    backgroundColor: i <= qIdx % questions.length ? C.brand : C.track,
+                  }} />
+                ))}
+              </View>
+            ) : (
+              <View style={{ height: 5, borderRadius: Radius.pill, backgroundColor: C.track, marginBottom: 8, overflow: 'hidden' }}>
                 <View style={{
-                  flexDirection: 'row', alignItems: 'center', gap: 6,
-                  backgroundColor: C.brandTint, borderWidth: 1, borderColor: C.borderWarm,
-                  borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 12,
-                }}>
-                  <Text style={{ fontSize: 13 }}>🔥</Text>
-                  <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>
-                    {t('learn.combo', { count: combo })}
+                  height: '100%', borderRadius: Radius.pill, backgroundColor: C.brand,
+                  width: `${(((qIdx % questions.length) + 1) / questions.length) * 100}%`,
+                }} />
+              </View>
+            )}
+
+            {/* Question counter + combo */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+              <Text style={{ color: C.textFaint, fontSize: 13, fontFamily: Font.extra }}>
+                {(qIdx % questions.length) + 1} / {questions.length}
+              </Text>
+              {combo >= 2 && (
+                <Animated.View style={{ transform: [{ scale: comboScale }] }}>
+                  <View style={{
+                    flexDirection: 'row', alignItems: 'center', gap: 6,
+                    backgroundColor: C.brandTint, borderWidth: 1, borderColor: C.borderWarm,
+                    borderRadius: Radius.pill, paddingVertical: 5, paddingHorizontal: 12,
+                  }}>
+                    <Text style={{ fontSize: 13 }}>🔥</Text>
+                    <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 12 }}>
+                      {t('learn.combo', { count: combo })}
+                    </Text>
+                  </View>
+                </Animated.View>
+              )}
+            </View>
+
+            {/* Token grande de las preguntas de bandera y de año: la bandera a
+                reconocer, o el año del que hay que decir qué pasó. */}
+            {q.media && (
+              <View style={{
+                backgroundColor: C.surface, borderRadius: 24,
+                paddingVertical: compact ? 8 : 12,
+                alignItems: 'center', borderWidth: 1, borderColor: C.border,
+                marginBottom: 12,
+              }}>
+                {q.media.kind === 'flag' ? (
+                  <Text style={{ fontSize: compact ? 64 : 80 }}>{q.media.value}</Text>
+                ) : (
+                  <Text
+                    numberOfLines={1}
+                    adjustsFontSizeToFit
+                    style={{ color: C.text, fontSize: compact ? 48 : 56, fontFamily: Font.black, letterSpacing: -1 }}
+                  >
+                    {q.media.value}
                   </Text>
-                </View>
-              </Animated.View>
+                )}
+              </View>
+            )}
+
+            {/* Question */}
+            {q.lead && (
+              <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 6 }}>
+                {q.lead}
+              </Text>
+            )}
+            <Text style={{ color: C.text, ...Type.question, ...(compact ? { fontSize: 21, lineHeight: 28 } : {}), marginBottom: compact ? 8 : 12 }}>
+              {q.q}
+            </Text>
+
+            {/* Options */}
+            {q.layout ? (
+              // Banderas y años en rejilla 2×2: son opciones cortas y se comparan
+              // de un vistazo, igual que en sus modos de la pestaña de Retos.
+              <View style={{
+                flexDirection: 'row', flexWrap: 'wrap',
+                justifyContent: 'space-between', rowGap: 8,
+              }}>
+                {q.opts.map((opt, i) =>
+                  fiftyHidden.includes(i) ? (
+                    <View key={i} style={{
+                      width: '48.5%', borderWidth: 1.5, borderColor: C.border,
+                      backgroundColor: C.surfaceSunk, borderRadius: 18, opacity: 0.5,
+                      minHeight: compact ? 80 : 104, alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
+                    </View>
+                  ) : q.layout === 'flags' ? (
+                    <FlagOption
+                      key={i}
+                      compact={compact}
+                      flag={opt}
+                      state={getState(i)}
+                      disabled={answered}
+                      dimmed={answered && getState(i) === null}
+                      onPress={() => handle(i)}
+                    />
+                  ) : (
+                    <YearOption
+                      key={i}
+                      compact={compact}
+                      year={opt}
+                      state={getState(i)}
+                      disabled={answered}
+                      dimmed={answered && getState(i) === null}
+                      onPress={() => handle(i)}
+                    />
+                  ),
+                )}
+              </View>
+            ) : (
+              <View style={{ gap: compact ? 6 : 8 }}>
+                {q.opts.map((opt, i) =>
+                  fiftyHidden.includes(i) ? (
+                    <View key={i} style={{
+                      borderWidth: 1.5, borderColor: C.border, backgroundColor: C.surfaceSunk,
+                      borderRadius: 18, paddingVertical: 8, paddingHorizontal: 12, opacity: 0.5,
+                      minHeight: 48, justifyContent: 'center',
+                    }}>
+                      <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
+                    </View>
+                  ) : (
+                    <OptionBtn
+                      key={i}
+                      compact
+                      text={opt}
+                      letter={LETTERS[i]}
+                      state={getState(i)}
+                      disabled={answered}
+                      dimmed={answered && getState(i) === null}
+                      onPress={() => handle(i)}
+                    />
+                  ),
+                )}
+              </View>
+            )}
+
+            {/* Pista (power-up) */}
+            {hintShown && !answered && q.ctx && (
+              <View style={{
+                marginTop: 12, padding: 12, backgroundColor: C.surface, borderRadius: Radius.card,
+                borderWidth: 1.5, borderColor: C.borderWarm,
+              }}>
+                <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 15, marginBottom: 6 }}>
+                  {t('ladder.hint')}
+                </Text>
+                <Text style={{ color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 20 }}>{q.ctx}</Text>
+              </View>
+            )}
+
+            {/* Power-ups */}
+            {canUsePowerups && !answered && powerUps.some(p => p.count > 0) && (
+              <View style={{ marginTop: 18, gap: 9 }}>
+                <Text style={{ color: C.textFaint, ...Type.sectionLabel, fontSize: 12 }}>
+                  {t('common.yourHelpers')}
+                </Text>
+                <PowerUpBar items={powerUps} onUse={usePowerUp} />
+              </View>
             )}
           </View>
 
-          {/* Token grande de las preguntas de bandera y de año: la bandera a
-              reconocer, o el año del que hay que decir qué pasó. */}
-          {q.media && (
+          {/* Context */}
+          {showCtx && q.ctx && (
             <View style={{
-              backgroundColor: C.surface, borderRadius: 24,
-              paddingVertical: q.media.kind === 'flag' ? 24 : 28,
-              alignItems: 'center', borderWidth: 1, borderColor: C.border,
-              marginBottom: 18,
-            }}>
-              {q.media.kind === 'flag' ? (
-                <Text style={{ fontSize: 96 }}>{q.media.value}</Text>
-              ) : (
-                <Text
-                  numberOfLines={1}
-                  adjustsFontSizeToFit
-                  style={{ color: C.text, fontSize: 64, fontFamily: Font.black, letterSpacing: -1 }}
-                >
-                  {q.media.value}
-                </Text>
-              )}
-            </View>
-          )}
-
-          {/* Question */}
-          {q.lead && (
-            <Text style={{ color: C.textMuted, fontSize: 14, fontFamily: Font.regular, marginBottom: 6 }}>
-              {q.lead}
-            </Text>
-          )}
-          <Text style={{ color: C.text, ...Type.question, marginBottom: 20 }}>
-            {q.q}
-          </Text>
-
-          {/* Options */}
-          {q.layout ? (
-            // Banderas y años en rejilla 2×2: son opciones cortas y se comparan
-            // de un vistazo, igual que en sus modos de la pestaña de Retos.
-            <View style={{
-              flexDirection: 'row', flexWrap: 'wrap',
-              justifyContent: 'space-between', rowGap: 11,
-            }}>
-              {q.opts.map((opt, i) =>
-                fiftyHidden.includes(i) ? (
-                  <View key={i} style={{
-                    width: '48.5%', borderWidth: 1.5, borderColor: C.border,
-                    backgroundColor: C.surfaceSunk, borderRadius: 18, opacity: 0.5,
-                    minHeight: 104, alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
-                  </View>
-                ) : q.layout === 'flags' ? (
-                  <FlagOption
-                    key={i}
-                    flag={opt}
-                    state={getState(i)}
-                    disabled={answered}
-                    dimmed={answered && getState(i) === null}
-                    onPress={() => handle(i)}
-                  />
-                ) : (
-                  <YearOption
-                    key={i}
-                    year={opt}
-                    state={getState(i)}
-                    disabled={answered}
-                    dimmed={answered && getState(i) === null}
-                    onPress={() => handle(i)}
-                  />
-                ),
-              )}
-            </View>
-          ) : (
-            <View style={{ gap: 11 }}>
-              {q.opts.map((opt, i) =>
-                fiftyHidden.includes(i) ? (
-                  <View key={i} style={{
-                    borderWidth: 1.5, borderColor: C.border, backgroundColor: C.surfaceSunk,
-                    borderRadius: 18, paddingVertical: 16, paddingHorizontal: 16, opacity: 0.5,
-                    minHeight: 60, justifyContent: 'center',
-                  }}>
-                    <Text style={{ color: C.textFaint, fontSize: 16, fontFamily: Font.semi }}>—</Text>
-                  </View>
-                ) : (
-                  <OptionBtn
-                    key={i}
-                    text={opt}
-                    letter={LETTERS[i]}
-                    state={getState(i)}
-                    disabled={answered}
-                    dimmed={answered && getState(i) === null}
-                    onPress={() => handle(i)}
-                  />
-                ),
-              )}
-            </View>
-          )}
-
-          {/* Pista (power-up) */}
-          {hintShown && !answered && q.ctx && (
-            <View style={{
-              marginTop: 16, padding: 16, backgroundColor: C.surface, borderRadius: Radius.card,
+              marginHorizontal: Space.screen, marginTop: 12, padding: 12,
+              backgroundColor: C.surface, borderRadius: Radius.card,
               borderWidth: 1.5, borderColor: C.borderWarm,
             }}>
-              <Text style={{ color: C.brandDeep, fontFamily: Font.black, fontSize: 15, marginBottom: 6 }}>
-                {t('ladder.hint')}
+              <Text style={{ color: C.brandDeep, fontFamily: Font.black, marginBottom: 4, fontSize: 15 }}>
+                {t('learn.context')}
               </Text>
-              <Text style={{ color: C.textBody, fontFamily: Font.regular, fontSize: 14, lineHeight: 22 }}>{q.ctx}</Text>
+              <Text style={{ color: C.textBody, fontSize: 14, fontFamily: Font.regular, lineHeight: 20 }}>
+                {q.ctx}
+              </Text>
             </View>
           )}
-
-          {/* Power-ups */}
-          {canUsePowerups && !answered && powerUps.some(p => p.count > 0) && (
-            <View style={{ marginTop: 18, gap: 9 }}>
-              <Text style={{ color: C.textFaint, ...Type.sectionLabel, fontSize: 12 }}>
-                {t('common.yourHelpers')}
-              </Text>
-              <PowerUpBar items={powerUps} onUse={usePowerUp} />
-            </View>
-          )}
-        </View>
-
-        {/* Context */}
-        {showCtx && q.ctx && (
-          <View style={{
-            marginHorizontal: Space.screen, marginBottom: 16, padding: 16,
-            backgroundColor: C.surface, borderRadius: Radius.card,
-            borderWidth: 1.5, borderColor: C.borderWarm,
-          }}>
-            <Text style={{ color: C.brandDeep, fontFamily: Font.black, marginBottom: 6, fontSize: 15 }}>
-              {t('learn.context')}
-            </Text>
-            <Text style={{ color: C.textBody, fontSize: 14, fontFamily: Font.regular, lineHeight: 22 }}>
-              {q.ctx}
-            </Text>
-          </View>
-        )}
+        </ScrollView>
 
         {/* Next button */}
         {answered && (
-          <View style={{ paddingHorizontal: Space.screen }}>
-            <Pressable onPress={isLast ? finishTopic : next}>
+          <View style={{ paddingHorizontal: Space.screen, paddingTop: 4, paddingBottom: 8, backgroundColor: C.bg }}>
+            <Pressable accessibilityRole="button" onPress={isLast ? finishTopic : next}>
               <View style={{
-                borderRadius: 18, padding: 16, alignItems: 'center',
+                borderRadius: 18, paddingHorizontal: 16, paddingVertical: 12, minHeight: 48, alignItems: 'center', justifyContent: 'center',
                 backgroundColor: correct ? C.correct : C.brand,
               }}>
                 <Text style={{ color: C.onBrand, fontSize: 16, fontFamily: Font.extra }}>
@@ -685,8 +711,8 @@ export default function LearnScreen() {
             </Pressable>
           </View>
         )}
-      </ScrollView>
+      </View>
       <AdBannerSlot />
-    </SafeAreaView>
+    </QuestionLayout>
   );
 }

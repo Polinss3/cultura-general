@@ -13,6 +13,7 @@ interface Props {
   /** Apaga las que no son ni la elegida ni la correcta, tras responder. */
   dimmed?: boolean;
   disabled?: boolean;
+  compact?: boolean;
 }
 
 /**
@@ -20,7 +21,7 @@ interface Props {
  * va grande y sin texto, que es justo lo que hace que la rejilla funcione: las
  * banderas ocupan poco y se comparan de un vistazo.
  */
-export function FlagOption({ flag, state, onPress, dimmed, disabled = false }: Props) {
+export function FlagOption({ flag, state, onPress, dimmed, disabled = false, compact = false }: Props) {
   const C = useColors();
   const scale = useRef(new Animated.Value(1)).current;
   const pressLocked = useRef(false);
@@ -76,14 +77,14 @@ export function FlagOption({ flag, state, onPress, dimmed, disabled = false }: P
           borderColor,
           backgroundColor: bg,
           borderRadius: 18,
-          paddingVertical: 14,
+          paddingVertical: compact ? 8 : 14,
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: 104,
+          minHeight: compact ? 80 : 104,
           gap: 4,
         }}
       >
-        <Text style={{ fontSize: 54 }}>{flag}</Text>
+        <Text style={{ fontSize: compact ? 40 : 54 }}>{flag}</Text>
         {/* La marca se pinta siempre y solo se hace visible al revelar: si se
             montara al responder, la tarjeta crecería y recolocaría la rejilla
             entera justo cuando el usuario está mirando el resultado. */}

@@ -7,7 +7,6 @@ import { Font, Radius } from '@/constants/theme';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 interface Props {
-  compact?: boolean;
   text: string;
   letter: string;
   state: AnswerState;
@@ -21,6 +20,8 @@ interface Props {
   feedbackDisabled?: boolean;
   /** Bloquea por completo nuevos toques tras cerrar una respuesta. */
   disabled?: boolean;
+  /** Reduce el relleno, conservando el texto completo y un área táctil de 48 pt. */
+  compact?: boolean;
 }
 
 export function OptionBtn({
@@ -31,9 +32,9 @@ export function OptionBtn({
   dimmed,
   accessibilityStatus,
   accessibilitySelected,
-  compact = false,
   feedbackDisabled = false,
   disabled = false,
+  compact = false,
 }: Props) {
   const C = useColors();
   const reducedMotion = useReducedMotion();
@@ -130,16 +131,16 @@ export function OptionBtn({
           borderColor,
           backgroundColor: bg,
           borderRadius: 18,
-          paddingVertical: compact ? 10 : 16,
-          paddingHorizontal: 16,
+          paddingVertical: compact ? 8 : 16,
+          paddingHorizontal: compact ? 12 : 16,
           flexDirection: 'row',
           alignItems: 'center',
-          gap: 13,
-          minHeight: compact ? 54 : 60,
+          gap: compact ? 10 : 13,
+          minHeight: compact ? 48 : 60,
         }}
       >
         <View style={{
-          width: 30, height: 30, borderRadius: 10,
+          width: compact ? 26 : 30, height: compact ? 26 : 30, borderRadius: compact ? 8 : 10,
           backgroundColor: badgeBg,
           alignItems: 'center', justifyContent: 'center',
         }}>
