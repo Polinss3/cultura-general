@@ -1189,7 +1189,7 @@
   },
   "privacy": {
     "title": "Política de privacidad",
-    "updatedAt": "Última actualización: 28 de septiembre de 2026",
+    "updatedAt": "Última actualización: 18 de octubre de 2026",
     "intro": "Aquí explicamos qué información trata {{appName}}, para qué se utiliza y cómo puedes ejercer tus derechos.",
     "sections": {
       "s1": {
@@ -1198,11 +1198,11 @@
       },
       "s2": {
         "title": "2. Información que tratamos",
-        "body": "Para crear una cuenta tratamos tu correo electrónico, el nombre de usuario que eliges y un identificador interno. Si accedes con Apple o Google, el proveedor de identidad facilita los datos necesarios para autenticarte según los permisos que aceptes.\n\nTambién guardamos respuestas, progreso, rachas, puntuaciones, récords, nivel, logros, monedas, artículos de la tienda, relaciones de amistad y reportes necesarios para prestar las funciones del juego.\n\n• Datos técnicos de la app y del dispositivo, como versión, sistema operativo, idioma y registros de errores.\n• Estado de compra y suscripción necesario para activar CG PRO; no recibimos los datos completos de tu tarjeta ni de tu método de pago.\n• No solicitamos geolocalización precisa, contactos, fotos, cámara, micrófono ni calendario.\n• Si activas las notificaciones remotas, registramos un token de notificaciones vinculado a tu cuenta, junto con plataforma, idioma, zona horaria y versión de la app."
+        "body": "Para crear una cuenta tratamos tu correo electrónico, el nombre de usuario que eliges y un identificador interno. Si accedes con Apple o Google, el proveedor de identidad facilita los datos necesarios para autenticarte según los permisos que aceptes.\n\nTambién guardamos respuestas, progreso, rachas, puntuaciones, récords, nivel, logros, monedas, artículos de la tienda, relaciones de amistad y reportes necesarios para prestar las funciones del juego.\n\n• Datos técnicos de la app y del dispositivo, como versión, sistema operativo, idioma y registros de errores.\n• Eventos de uso de la propia app, guardados en nuestro servidor (Supabase): qué pasos del primer arranque completas, tu primer resultado, si aceptas los avisos y cómo usas la pantalla de CG PRO (abrirla, elegir plan, comprar o cerrarla). Van con un identificador aleatorio de instalación que genera la app y, si has iniciado sesión, con tu cuenta. No se usan para publicidad ni se comparten con terceros.\n• Estado de compra y suscripción necesario para activar CG PRO; no recibimos los datos completos de tu tarjeta ni de tu método de pago.\n• No solicitamos geolocalización precisa, contactos, fotos, cámara, micrófono ni calendario.\n• Si activas las notificaciones remotas, registramos un token de notificaciones vinculado a tu cuenta, junto con plataforma, idioma, zona horaria y versión de la app."
       },
       "s3": {
         "title": "3. Para qué usamos los datos",
-        "body": "• Crear, autenticar, proteger y recuperar tu cuenta.\n• Mostrar tu perfil, progreso, estadísticas, logros y contenido desbloqueado.\n• Calcular rankings, rachas y resultados, y habilitar amistades y funciones sociales.\n• Verificar compras, restaurar tu acceso a CG PRO y sincronizarlo entre dispositivos.\n• Prevenir abuso, investigar reportes y mantener el servicio seguro.\n• Diagnosticar fallos y mejorar el funcionamiento de la app.\n\nNo vendemos ni alquilamos tus datos personales."
+        "body": "• Crear, autenticar, proteger y recuperar tu cuenta.\n• Mostrar tu perfil, progreso, estadísticas, logros y contenido desbloqueado.\n• Calcular rankings, rachas y resultados, y habilitar amistades y funciones sociales.\n• Verificar compras, restaurar tu acceso a CG PRO y sincronizarlo entre dispositivos.\n• Prevenir abuso, investigar reportes y mantener el servicio seguro.\n• Diagnosticar fallos y mejorar el funcionamiento de la app.\n• Medir de forma agregada qué partes de la app funcionan y dónde se atasca la gente, para mejorarla.\n\nNo vendemos ni alquilamos tus datos personales."
       },
       "s4": {
         "title": "4. Datos visibles para otros jugadores",
