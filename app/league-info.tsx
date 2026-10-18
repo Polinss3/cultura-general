@@ -32,8 +32,8 @@ export default function LeagueInfoSheet() {
       {[
         { icon: '🎮', text: t('leagues.how.compete') },
         { icon: '👥', text: t('leagues.how.groups', { size }) },
-        { icon: '⬆️', text: t('leagues.how.promote', { n: promote }) },
-        ...(relegate > 0 ? [{ icon: '⬇️', text: t('leagues.how.relegate', { n: relegate }) }] : []),
+        { icon: '⬆️', text: t('leagues.how.promote', { count: promote }) },
+        ...(relegate > 0 ? [{ icon: '⬇️', text: t('leagues.how.relegate', { count: relegate }) }] : []),
         { icon: '🪙', text: t('leagues.how.rewards') },
         { icon: '🏅', text: t('leagues.how.badge') },
       ].map(item => (

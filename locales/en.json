@@ -381,8 +381,10 @@
     "how": {
       "title": "How Leagues work",
       "compete": "Each week you compete in your division by earning XP: daily question, Time Attack, Learn, Climb…",
-      "promote": "The top {{n}} of the group move up a division.",
-      "relegate": "The bottom {{n}} of the group move down.",
+      "promote_one": "The top player in the group moves up a division.",
+      "promote_other": "The top {{count}} of the group move up a division.",
+      "relegate_one": "The bottom player in the group moves down.",
+      "relegate_other": "The bottom {{count}} of the group move down.",
       "rewards": "When the week ends you earn coins based on your final rank. Higher divisions give bigger prizes.",
       "badge": "Your division is shown as a badge on your profile and in the rankings.",
       "close": "Got it",

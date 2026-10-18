@@ -381,8 +381,10 @@
     "how": {
       "title": "Cómo funcionan las Ligas",
       "compete": "Cada semana compites en tu división ganando XP al jugar: pregunta diaria, Contrarreloj, Aprender, Ascenso…",
-      "promote": "Los {{n}} primeros del grupo ascienden a la división superior.",
-      "relegate": "Los {{n}} últimos del grupo descienden a la inferior.",
+      "promote_one": "El primero del grupo asciende a la división superior.",
+      "promote_other": "Los {{count}} primeros del grupo ascienden a la división superior.",
+      "relegate_one": "El último del grupo desciende a la inferior.",
+      "relegate_other": "Los {{count}} últimos del grupo descienden a la inferior.",
       "rewards": "Al cerrar la semana ganas monedas según tu puesto final. En divisiones superiores los premios son mayores.",
       "badge": "Tu división se muestra como insignia en tu perfil y en los rankings.",
       "close": "Entendido",
