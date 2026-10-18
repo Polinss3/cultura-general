@@ -25,6 +25,7 @@ import {
 import { AnswerState } from '@/types';
 import { useTheme } from '@/constants/colors';
 import { Font, Radius, Space, Type, cardShadow, tint, warmGradient } from '@/constants/theme';
+import { RecordChip } from '@/components/RecordChip';
 
 type Phase = 'picker' | 'playing' | 'done';
 
@@ -256,12 +257,15 @@ export function YearsGame({ header, onRoundFinished, onPickerChange }: Props) {
                     backgroundColor: C.surface, borderWidth: 1, borderColor: C.border,
                     borderRadius: Radius.card, padding: 14, gap: 7, minHeight: 118,
                   }}>
-                    <View style={{
-                      width: 40, height: 40, borderRadius: 13,
-                      backgroundColor: tint(C.streak, isDark),
-                      alignItems: 'center', justifyContent: 'center',
-                    }}>
-                      <Text style={{ fontSize: 20 }}>{era.icon}</Text>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 6 }}>
+                      <View style={{
+                        width: 40, height: 40, borderRadius: 13,
+                        backgroundColor: tint(C.streak, isDark),
+                        alignItems: 'center', justifyContent: 'center',
+                      }}>
+                        <Text style={{ fontSize: 20 }}>{era.icon}</Text>
+                      </View>
+                      {record != null && <RecordChip n={record} />}
                     </View>
                     <View>
                       <Text style={{ color: C.text, fontSize: 15, fontFamily: Font.extra }}>
@@ -270,11 +274,6 @@ export function YearsGame({ header, onRoundFinished, onPickerChange }: Props) {
                       <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular, marginTop: 2 }}>
                         {t('years.countEvents', { count })}
                       </Text>
-                      {record != null && (
-                        <Text style={{ color: C.brandDeep, fontSize: 12, fontFamily: Font.bold, marginTop: 2 }}>
-                          {t('round.best', { n: record })}
-                        </Text>
-                      )}
                     </View>
                   </View>
                 </Pressable>
