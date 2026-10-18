@@ -5004,10 +5004,10 @@ update public.questions set
 where category = 'deportes' and question = $q$¿En qué año se introdujo el VAR en la Liga española?$q$;
 
 update public.questions set
-  question_en = $t$In what year did Spain win its only men's football World Cup?$t$,
+  question_en = $t$In what year did Spain win its first men's football World Cup?$t$,
   options_en  = $t$["2008","2010","2012","2014"]$t$::jsonb,
   context_en  = $t$Spain won the 2010 World Cup in South Africa, beating the Netherlands 1-0 in the final with a goal from Andrés Iniesta.$t$
-where category = 'deportes' and question = $q$¿En qué año ganó España su único Mundial de fútbol masculino?$q$;
+where category = 'deportes' and question = $q$¿En qué año ganó España su primer Mundial de fútbol masculino?$q$;
 
 update public.questions set
   question_en = $t$Who scored the decisive goal in the 2010 World Cup final?$t$,

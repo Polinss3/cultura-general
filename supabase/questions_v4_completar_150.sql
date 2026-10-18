@@ -2624,7 +2624,7 @@ insert into public.questions (category, question, options, answer_index, context
  'El VAR (Video Assistant Referee) se implementó en LaLiga en la temporada 2018-2019.',
  'hard'),
 
-('deportes', '¿En qué año ganó España su único Mundial de fútbol masculino?',
+('deportes', '¿En qué año ganó España su primer Mundial de fútbol masculino?',
  '["2008","2010","2012","2014"]', 1,
  'España ganó el Mundial 2010 en Sudáfrica, venciendo a Países Bajos 1-0 en la final con gol de Andrés Iniesta.',
  'easy'),

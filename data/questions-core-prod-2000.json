@@ -17263,7 +17263,7 @@
  },
  {
   "category": "deportes",
-  "question": "¿En qué año ganó España su único Mundial de fútbol masculino?",
+  "question": "¿En qué año ganó España su primer Mundial de fútbol masculino?",
   "options": [
    "2008",
    "2010",
@@ -17273,7 +17273,7 @@
   "answer_index": 1,
   "context": "España ganó el Mundial 2010 en Sudáfrica, venciendo a Países Bajos 1-0 en la final con gol de Andrés Iniesta.",
   "difficulty": "easy",
-  "question_en": "In what year did Spain win its only men's football World Cup?",
+  "question_en": "In what year did Spain win its first men's football World Cup?",
   "options_en": [
    "2008",
    "2010",
