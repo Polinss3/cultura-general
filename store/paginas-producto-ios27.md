@@ -4,6 +4,10 @@
 > resultados de búsqueda), la **Biblioteca de componentes** y la vista previa de la página.
 > Solo se ven en iOS 27 / iPadOS 27 o posterior. Son opcionales y conviven con las capturas.
 
+## Nuevo lote visual 2.4.0
+
+El material actualizado está en `Capturas App Store/2.4.0/Creativos/`: 42 PNG, siete temas (incluida una variante adicional de Ciudades), dos formatos y tres mercados. Véase [el registro de producción](2.4.0/creativos.md). La generación es local y no cambia asignaciones, pruebas ni publicaciones en ASC. El material y los estados de 2.3.0 que siguen se conservan como referencia histórica.
+
 ## Material generado
 
 Generador: `Capturas App Store/2.3.0/source` (fuera de git). Código en `src/app/Creative.tsx`.
