@@ -1,4 +1,19 @@
-# Material de tienda — versión 2.3.0
+# Material de tienda
+
+## Próximo despliegue: 2.4.0 — ASO
+
+El despliegue de la **2.4.0** debe incluir una revisión de descubrimiento en App Store, además del binario. Conservar **«Cultura General» en el título español** y partir de los snippets ES/EN acordados en el chat «Comparar modelos de decisiones».
+
+- [Conclusiones originales y textos exactos](aso-conclusiones-chatgpt-2026-10-14.md).
+- [Análisis y plan ASO de la 2.4.0](aso-2.4.0.md).
+- [Metadatos base ES-ES, ES-MX y EN-US](2.4.0/metadata-aso.json): archivo de referencia local, no configuración automática de EAS.
+- [Textos completos guardados en el borrador de ASC](2.4.0/metadata-filled-2026-10-16.json): nombres, subtítulos, promoción, descripción, keywords y enlaces en los tres idiomas; novedades aplazadas por el usuario.
+- [Datos de referencia leídos en ASC](2.4.0/baseline-asc-2026-10-16.json): mismo periodo de 28 días para Cultura General y 101 Juegos.
+- [Lista de comprobación para publicar y medir](release-2.4.0-aso.md).
+
+Los documentos siguientes de la 2.3.0 son históricos. Antes de copiar sus metadatos a ASC, consultar el material de la 2.4.0.
+
+## Material de tienda — versión 2.3.0
 
 La app muestra «Cultura General» en español y «CG Trivia» en inglés. Los
 textos de este directorio son borradores para App Store Connect y Google Play;

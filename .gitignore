@@ -38,3 +38,6 @@ expo-env.d.ts
 # @end expo-cli
 # Grabaciones intermedias de vídeo
 marketing/videos/promocionales/*/raw/
+
+# Vídeos promocionales: finales y producción, fuera de git (como en 101 Juegos)
+/Videos Promocionales/

@@ -1,0 +1,23 @@
+{
+  "appVersion": "2.4.0",
+  "status": "prepared_not_published",
+  "purpose": "Referencia de los snippets acordados; no es un archivo de configuración de EAS Metadata.",
+  "source": "https://chatgpt.com/c/6acf37ff-a928-83ed-8c84-7913d88194e5",
+  "localizations": {
+    "es-ES": {
+      "name": "Cultura General: Trivia Quiz",
+      "subtitle": "Preguntas, retos y banderas",
+      "keywords": "test,conocimiento,saber,aprender,historia,geografia,ciencia,capitales,paises,educativo,adivinar"
+    },
+    "es-MX": {
+      "name": "Cultura General: Trivia Quiz",
+      "subtitle": "Preguntas, retos y banderas",
+      "keywords": "test,conocimiento,saber,aprender,historia,geografia,ciencia,capitales,paises,educativo,adivinar"
+    },
+    "en-US": {
+      "name": "CG: Trivia & General Knowledge",
+      "subtitle": "Fun Quiz Games & Challenges",
+      "keywords": "questions,answers,brain,training,geography,history,science,flags,countries,learning,education"
+    }
+  }
+}
