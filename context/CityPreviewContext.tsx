@@ -13,7 +13,7 @@ const CityPreviewContext = createContext<{
   endPreview: () => void;
 } | null>(null);
 
-/** Retain the decoded image while the native sheet is presented. No second fetch. */
+/** Retain the decoded image while the image viewer is presented. No second fetch. */
 export function CityPreviewProvider({ children }: { children: ReactNode }) {
   const [preview, setPreview] = useState<CityPreview | null>(null);
   const current = useRef<CityPreview | null>(null);

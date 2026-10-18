@@ -133,3 +133,23 @@ Las tandas 63 y 64 están en el visor con las mediciones comunes y sus láminas 
 Por petición del usuario, no se producirán ni publicarán más destinos para esta versión. `releaseCatalog` fija el cierre en 250 y el generador del catálogo rechaza un cierre con un recuento distinto o imágenes pendientes. Las correcciones de los destinos existentes siguen autorizadas; la capacidad del catálogo remoto para futuras versiones se conserva. El [documento de cierre](cierre-catalogo-250.md) incluye los textos propuestos para promociones en español e inglés.
 
 Superadas las 18 pruebas de Ciudades, la comprobación de tipos y la validación del visor con sus 250 entradas. La app recibe este contenido al volver al selector o pulsar **Actualizar ciudades** con conexión, sin nueva build; las rondas en curso conservan su catálogo.
+
+## Revisión de Ciudades y consolidación · 16 de octubre de 2026
+
+La tarjeta Todo el mundo mantiene el número de ciudades y el récord, sin el
+subtítulo Rondas de 10 preguntas. Las 250 imágenes pasan a PNG con alfa en la
+fuente local y WebP con alfa en Storage, conservando lienzo, edificios y perfiles.
+Se elimina el fondo hexadecimal y sus degradados de los dos renderizadores.
+El límite de decodificación sube a 1536 px para conservar los 1254 px de la fuente.
+
+El visor `/city-preview` sustituye la hoja descrita en la revisión anterior por
+una presentación a pantalla completa, con cabecera opaca, Cerrar, pellizco hasta
+4×, doble toque a 2,5×, arrastre limitado y controles accesibles de zoom/Ajustar.
+Se conserva el contexto de la ronda y la pausa de sus temporizadores. La ayuda de
+Ligas, el selector de otras ligas y el selector de capítulos sí siguen siendo
+hojas nativas de iOS, independientes del visor de imágenes.
+
+Esta copia de `codex/ciudades` reúne también los ajustes de Aprender (respuestas
+compactas y Siguiente fijo), las hojas nativas, la consulta de otras ligas y la
+fila compacta de racha/nivel de Inicio. La migración de consulta de ligas está
+incluida y ya aplicada al proyecto vinculado. No se ha solicitado una build EAS.

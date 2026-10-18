@@ -1,17 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useCallback, useEffect } from 'react';
+import { Pressable, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useCityPreview } from '@/context/CityPreviewContext';
-import { CityQuestionImage } from '@/components/city-question-image';
-import { CityPreviewWebSheet } from '@/components/CityPreviewWebSheet';
+import { ZoomableCityImage } from '@/components/zoomable-city-image';
 import { useTheme } from '@/constants/colors';
-import { cityImageLayout } from '@/lib/cityImageLayout';
+import { Font } from '@/constants/theme';
 
 export default function CityPreviewScreen() {
   const { preview, endPreview } = useCityPreview();
-  const { width, height } = useWindowDimensions();
-  const [sheetWidth, setSheetWidth] = useState(Math.min(width, 540));
   const { C } = useTheme();
   const { t } = useTranslation();
   const router = useRouter();
@@ -22,21 +20,22 @@ export default function CityPreviewScreen() {
   useEffect(() => () => endPreview(), [endPreview]);
   useEffect(() => { if (!preview) close(); }, [preview, close]);
   if (!preview) return null;
-  // SDK 54 form sheets need explicit content height. The same decoded pixels
-  // are displayed at a larger scale without revealing the city's name.
-  const ratio = cityImageLayout(preview.city.framing!, 1).height;
-  const side = Math.max(100, Math.min(sheetWidth - 24, 700, (height * 0.82 - 106) / ratio));
-  const content = <View onLayout={e => setSheetWidth(e.nativeEvent.layout.width)} style={{ backgroundColor: C.bg, paddingTop: Platform.OS === 'web' ? 12 : 26, paddingBottom: 28, alignItems: 'center' }}>
-    {Platform.OS === 'web' && <View style={{ width: 36, height: 4, borderRadius: 2, backgroundColor: C.textFaint, marginBottom: 8 }} />}
-    <View style={{ width: '100%', alignItems: 'flex-end', paddingHorizontal: 12, marginBottom: 8 }}>
-      <Pressable onPress={close} accessibilityRole="button" accessibilityLabel={t('common.close')}
-        hitSlop={4} style={{ width: 44, height: 44, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={{ fontSize: 26, color: C.textMuted }}>×</Text>
-      </Pressable>
-    </View>
-    <CityQuestionImage city={preview.city} image={preview.image} size={side} />
-  </View>;
-  return Platform.OS === 'web'
-    ? <CityPreviewWebSheet onClose={close} style={{ backgroundColor: C.bg }}>{content}</CityPreviewWebSheet>
-    : content;
+
+  return <SafeAreaView style={{ flex: 1, backgroundColor: C.bg }} edges={['bottom']}>
+    <Stack.Screen options={{
+      headerShown: true,
+      headerBackVisible: false,
+      headerLeft: () => null,
+      headerShadowVisible: false,
+      headerStyle: { backgroundColor: C.bg },
+      headerTintColor: C.text,
+      headerTitleStyle: { fontFamily: Font.black },
+      title: t('cities.previewTitle'),
+      headerRight: () => <Pressable onPress={close} accessibilityRole="button" accessibilityLabel={t('cities.closePreview')}
+        style={{ minWidth: 44, minHeight: 44, paddingHorizontal: 6, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ color: C.brandDeep, fontSize: 15, fontFamily: Font.bold }}>{t('common.close')}</Text>
+      </Pressable>,
+    }} />
+    <ZoomableCityImage city={preview.city} image={preview.image} />
+  </SafeAreaView>;
 }

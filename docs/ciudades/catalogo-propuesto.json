@@ -20,7 +20,7 @@
         "Estación de Atocha",
         "Puerta de Alcalá"
       ],
-      "conceptImage": "normalizadas/madrid-v3.png",
+      "conceptImage": "transparentes/madrid-v1.png",
       "originalConceptImage": "piloto/madrid-v1.png",
       "framingProfile": "madrid",
       "kind": "city",
@@ -44,7 +44,7 @@
         "Torre Glòries",
         "Arco de Triunfo"
       ],
-      "conceptImage": "normalizadas/barcelona-v2.png",
+      "conceptImage": "transparentes/barcelona-v1.png",
       "originalConceptImage": "piloto/barcelona-v1.png",
       "framingProfile": "barcelona",
       "kind": "city",
@@ -68,7 +68,7 @@
         "Foro Romano",
         "Castel Sant'Angelo"
       ],
-      "conceptImage": "normalizadas/roma-v2.png",
+      "conceptImage": "transparentes/roma-v1.png",
       "originalConceptImage": "piloto/roma-v1.png",
       "framingProfile": "roma",
       "kind": "city",
@@ -92,7 +92,7 @@
         "Notre-Dame",
         "Sacré-Cœur"
       ],
-      "conceptImage": "normalizadas/paris-v2.png",
+      "conceptImage": "transparentes/paris-v1.png",
       "originalConceptImage": "piloto/paris-v1.png",
       "framingProfile": "paris",
       "kind": "city",
@@ -117,7 +117,7 @@
         "Puente de Brooklyn",
         "Grand Central"
       ],
-      "conceptImage": "normalizadas/nueva-york-v2.png",
+      "conceptImage": "transparentes/nueva-york-v1.png",
       "originalConceptImage": "piloto/nueva-york-v1.png",
       "framingProfile": "nueva-york",
       "kind": "city",
@@ -141,7 +141,7 @@
         "Cruce de Shibuya",
         "Palacio Imperial"
       ],
-      "conceptImage": "normalizadas/tokio-v2.png",
+      "conceptImage": "transparentes/tokio-v1.png",
       "originalConceptImage": "piloto/tokio-v1.png",
       "framingProfile": "tokio",
       "kind": "city",
@@ -168,7 +168,7 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "conceptImage": "normalizadas/venecia-v1.png",
+      "conceptImage": "transparentes/venecia-v1.png",
       "originalConceptImage": "normalizadas/venecia-v1.png",
       "framingProfile": "venecia",
       "sources": [
@@ -197,7 +197,7 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "conceptImage": "normalizadas/amsterdam-v1.png",
+      "conceptImage": "transparentes/amsterdam-v1.png",
       "originalConceptImage": "normalizadas/amsterdam-v1.png",
       "framingProfile": "amsterdam",
       "sources": [
@@ -226,7 +226,7 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "conceptImage": "normalizadas/londres-v1.png",
+      "conceptImage": "transparentes/londres-v1.png",
       "originalConceptImage": "normalizadas/londres-v1.png",
       "framingProfile": "londres",
       "sources": [
@@ -254,7 +254,7 @@
       ],
       "kind": "city",
       "landmarkStatus": "candidate",
-      "conceptImage": "normalizadas/berlin-v1.png",
+      "conceptImage": "transparentes/berlin-v1.png",
       "originalConceptImage": "normalizadas/berlin-v1.png",
       "framingProfile": "berlin",
       "sources": [
@@ -290,7 +290,7 @@
         "https://www.visitdublin.com//guides/dublin-city-landmarks",
         "https://www.visitdublin.com//james-joyce-s-ulysses-walking-tour"
       ],
-      "conceptImage": "normalizadas/dublin-v1.png",
+      "conceptImage": "transparentes/dublin-v1.png",
       "originalConceptImage": "normalizadas/dublin-v1.png",
       "framingProfile": "dublin"
     },
@@ -321,7 +321,7 @@
         "https://edinburgh.org/point-of-interest/scott-monument/",
         "https://edinburgh.org/things-to-do/itineraries/two-day-tour-of-edinburgh/"
       ],
-      "conceptImage": "normalizadas/edimburgo-v1.png",
+      "conceptImage": "transparentes/edimburgo-v1.png",
       "originalConceptImage": "normalizadas/edimburgo-v1.png",
       "framingProfile": "edimburgo"
     },
@@ -351,7 +351,7 @@
         "https://www.mos.ru/upload/documents/files/bbbe5cdf989015adf1172b035c8363e6/KartaMoskvinaanglyazike2025.pdf",
         "https://www.mos.ru/upload/documents/files/940/welcome_small_block_en%282%29.pdf"
       ],
-      "conceptImage": "normalizadas/moscu-v1.png",
+      "conceptImage": "transparentes/moscu-v1.png",
       "originalConceptImage": "normalizadas/moscu-v1.png",
       "framingProfile": "moscu"
     },
@@ -382,7 +382,7 @@
         "https://visit-petersburg.ru/en/leisure/places/muzey-pamyatnik-spas-na-krovi/",
         "https://visit-petersburg.ru/en/route/vtoroy-marshrut-novogodnee-puteshestvie-po-peterburgu/"
       ],
-      "conceptImage": "normalizadas/san-petersburgo-v1.png",
+      "conceptImage": "transparentes/san-petersburgo-v1.png",
       "originalConceptImage": "normalizadas/san-petersburgo-v1.png",
       "framingProfile": "san-petersburgo"
     },
@@ -407,7 +407,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 15,
       "requestedPriority": true,
-      "conceptImage": "normalizadas/hong-kong-v1.png",
+      "conceptImage": "transparentes/hong-kong-v1.png",
       "originalConceptImage": "normalizadas/hong-kong-v1.png",
       "framingProfile": "hong-kong",
       "sources": [
@@ -436,7 +436,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 16,
       "requestedPriority": true,
-      "conceptImage": "normalizadas/sidney-v1.png",
+      "conceptImage": "transparentes/sidney-v1.png",
       "originalConceptImage": "normalizadas/sidney-v1.png",
       "framingProfile": "sidney",
       "sources": [
@@ -464,7 +464,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 17,
       "requestedPriority": true,
-      "conceptImage": "normalizadas/washington-v1.png",
+      "conceptImage": "transparentes/washington-v1.png",
       "originalConceptImage": "normalizadas/washington-v1.png",
       "framingProfile": "washington",
       "sources": [
@@ -493,7 +493,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 18,
       "requestedPriority": true,
-      "conceptImage": "normalizadas/ciudad-de-mexico-v1.png",
+      "conceptImage": "transparentes/ciudad-de-mexico-v1.png",
       "originalConceptImage": "normalizadas/ciudad-de-mexico-v1.png",
       "framingProfile": "ciudad-de-mexico",
       "sources": [
@@ -524,7 +524,7 @@
       "notes": "Hitos urbanos de El Cairo. Las pirámides y la Esfinge se registran en Guiza; evitar mezclarlas como respuestas intercambiables.",
       "productionOrder": 19,
       "requestedPriority": true,
-      "conceptImage": "normalizadas/el-cairo-v1.png",
+      "conceptImage": "transparentes/el-cairo-v1.png",
       "originalConceptImage": "normalizadas/el-cairo-v1.png",
       "framingProfile": "el-cairo",
       "sources": [
@@ -554,7 +554,7 @@
       "productionOrder": 20,
       "requestedPriority": true,
       "generationInstructions": "The rear tip of the ORIGINAL plinth is at y400 in the 1254px canvas, not y290. Keep it there. Do not extend the floor backwards to fit more houses. The rear-most buildings must fit inside that rear edge; the sky above it remains ivory. The Obelisk rises above the floor, but no rear paving or housing district beyond the input floor. Use only compact landmarks and a contained foreground bridge/channel.",
-      "conceptImage": "normalizadas/buenos-aires-v1.png",
+      "conceptImage": "transparentes/buenos-aires-v1.png",
       "originalConceptImage": "normalizadas/buenos-aires-v1.png",
       "framingProfile": "buenos-aires",
       "sources": [
@@ -589,7 +589,7 @@
       "productionOrder": 21,
       "batch": 5,
       "requestedPriority": true,
-      "conceptImage": "normalizadas/machu-picchu-v1.png",
+      "conceptImage": "transparentes/machu-picchu-v1.png",
       "originalConceptImage": "normalizadas/machu-picchu-v1.png",
       "framingProfile": "machu-picchu"
     },
@@ -614,7 +614,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 22,
       "requestedPriority": true,
-      "conceptImage": "normalizadas/lisboa-v1.png",
+      "conceptImage": "transparentes/lisboa-v1.png",
       "originalConceptImage": "normalizadas/lisboa-v1.png",
       "framingProfile": "lisboa",
       "sources": [
@@ -642,7 +642,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 23,
-      "conceptImage": "normalizadas/viena-v1.png",
+      "conceptImage": "transparentes/viena-v1.png",
       "originalConceptImage": "normalizadas/viena-v1.png",
       "framingProfile": "viena",
       "sources": [
@@ -673,7 +673,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 24,
-      "conceptImage": "normalizadas/san-francisco-v1.png",
+      "conceptImage": "transparentes/san-francisco-v1.png",
       "originalConceptImage": "normalizadas/san-francisco-v1.png",
       "framingProfile": "san-francisco",
       "sources": [
@@ -704,7 +704,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 25,
-      "conceptImage": "normalizadas/singapur-v1.png",
+      "conceptImage": "transparentes/singapur-v1.png",
       "originalConceptImage": "normalizadas/singapur-v1.png",
       "framingProfile": "singapur",
       "sources": [
@@ -735,7 +735,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 26,
-      "conceptImage": "normalizadas/marrakech-v1.png",
+      "conceptImage": "transparentes/marrakech-v1.png",
       "originalConceptImage": "normalizadas/marrakech-v1.png",
       "framingProfile": "marrakech",
       "sources": [
@@ -766,7 +766,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 27,
-      "conceptImage": "normalizadas/melbourne-v1.png",
+      "conceptImage": "transparentes/melbourne-v1.png",
       "originalConceptImage": "normalizadas/melbourne-v1.png",
       "framingProfile": "melbourne",
       "sources": [
@@ -797,7 +797,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 28,
-      "conceptImage": "normalizadas/praga-v1.png",
+      "conceptImage": "transparentes/praga-v1.png",
       "originalConceptImage": "normalizadas/praga-v1.png",
       "framingProfile": "praga",
       "sources": [
@@ -827,7 +827,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 29,
-      "conceptImage": "normalizadas/los-angeles-v1.png",
+      "conceptImage": "transparentes/los-angeles-v1.png",
       "originalConceptImage": "normalizadas/los-angeles-v1.png",
       "framingProfile": "los-angeles",
       "sources": [
@@ -858,7 +858,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 30,
-      "conceptImage": "normalizadas/pekin-v1.png",
+      "conceptImage": "transparentes/pekin-v1.png",
       "originalConceptImage": "normalizadas/pekin-v1.png",
       "framingProfile": "pekin",
       "sources": [
@@ -889,7 +889,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 31,
-      "conceptImage": "normalizadas/ciudad-del-cabo-v1.png",
+      "conceptImage": "transparentes/ciudad-del-cabo-v1.png",
       "originalConceptImage": "normalizadas/ciudad-del-cabo-v1.png",
       "framingProfile": "ciudad-del-cabo",
       "sources": [
@@ -919,7 +919,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 32,
-      "conceptImage": "normalizadas/auckland-v1.png",
+      "conceptImage": "transparentes/auckland-v1.png",
       "originalConceptImage": "normalizadas/auckland-v1.png",
       "framingProfile": "auckland",
       "sources": [
@@ -950,7 +950,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 33,
-      "conceptImage": "normalizadas/atenas-v1.png",
+      "conceptImage": "transparentes/atenas-v1.png",
       "originalConceptImage": "normalizadas/atenas-v1.png",
       "framingProfile": "atenas",
       "sources": [
@@ -981,7 +981,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 34,
-      "conceptImage": "normalizadas/chicago-v1.png",
+      "conceptImage": "transparentes/chicago-v1.png",
       "originalConceptImage": "normalizadas/chicago-v1.png",
       "framingProfile": "chicago",
       "sources": [
@@ -1012,7 +1012,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 35,
-      "conceptImage": "normalizadas/shanghai-v1.png",
+      "conceptImage": "transparentes/shanghai-v1.png",
       "originalConceptImage": "normalizadas/shanghai-v1.png",
       "framingProfile": "shanghai",
       "sources": [
@@ -1043,7 +1043,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 36,
-      "conceptImage": "normalizadas/nairobi-v1.png",
+      "conceptImage": "transparentes/nairobi-v1.png",
       "originalConceptImage": "normalizadas/nairobi-v1.png",
       "framingProfile": "nairobi",
       "sources": [
@@ -1074,7 +1074,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 37,
-      "conceptImage": "normalizadas/wellington-v1.png",
+      "conceptImage": "transparentes/wellington-v1.png",
       "originalConceptImage": "normalizadas/wellington-v1.png",
       "framingProfile": "wellington",
       "sources": [
@@ -1105,7 +1105,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 38,
-      "conceptImage": "normalizadas/estambul-v1.png",
+      "conceptImage": "transparentes/estambul-v1.png",
       "originalConceptImage": "normalizadas/estambul-v1.png",
       "framingProfile": "estambul",
       "sources": [
@@ -1136,7 +1136,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 39,
-      "conceptImage": "normalizadas/rio-de-janeiro-v1.png",
+      "conceptImage": "transparentes/rio-de-janeiro-v1.png",
       "originalConceptImage": "normalizadas/rio-de-janeiro-v1.png",
       "framingProfile": "rio-de-janeiro",
       "sources": [
@@ -1167,7 +1167,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 40,
-      "conceptImage": "normalizadas/seul-v1.png",
+      "conceptImage": "transparentes/seul-v1.png",
       "originalConceptImage": "normalizadas/seul-v1.png",
       "framingProfile": "seul",
       "sources": [
@@ -1198,7 +1198,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 41,
-      "conceptImage": "normalizadas/tunez-v1.png",
+      "conceptImage": "transparentes/tunez-v1.png",
       "originalConceptImage": "normalizadas/tunez-v1.png",
       "framingProfile": "tunez",
       "sources": [
@@ -1227,7 +1227,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 42,
       "batch": 10,
-      "conceptImage": "normalizadas/brisbane-v1.png",
+      "conceptImage": "transparentes/brisbane-v1.png",
       "originalConceptImage": "normalizadas/brisbane-v1.png",
       "framingProfile": "brisbane",
       "sources": [
@@ -1258,7 +1258,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 43,
-      "conceptImage": "normalizadas/budapest-v1.png",
+      "conceptImage": "transparentes/budapest-v1.png",
       "originalConceptImage": "normalizadas/budapest-v1.png",
       "framingProfile": "budapest",
       "sources": [
@@ -1289,7 +1289,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 44,
-      "conceptImage": "normalizadas/toronto-v1.png",
+      "conceptImage": "transparentes/toronto-v1.png",
       "originalConceptImage": "normalizadas/toronto-v1.png",
       "framingProfile": "toronto",
       "sources": [
@@ -1320,7 +1320,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 45,
-      "conceptImage": "normalizadas/bangkok-v1.png",
+      "conceptImage": "transparentes/bangkok-v1.png",
       "originalConceptImage": "normalizadas/bangkok-v1.png",
       "framingProfile": "bangkok",
       "sources": [
@@ -1351,7 +1351,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 46,
-      "conceptImage": "normalizadas/dakar-v1.png",
+      "conceptImage": "transparentes/dakar-v1.png",
       "originalConceptImage": "normalizadas/dakar-v1.png",
       "framingProfile": "dakar",
       "sources": [
@@ -1380,7 +1380,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 47,
       "batch": 12,
-      "conceptImage": "normalizadas/perth-v1.png",
+      "conceptImage": "transparentes/perth-v1.png",
       "originalConceptImage": "normalizadas/perth-v1.png",
       "framingProfile": "perth",
       "sources": [
@@ -1411,7 +1411,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 48,
-      "conceptImage": "normalizadas/florencia-v1.png",
+      "conceptImage": "transparentes/florencia-v1.png",
       "originalConceptImage": "normalizadas/florencia-v1.png",
       "framingProfile": "florencia",
       "sources": [
@@ -1442,7 +1442,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 49,
-      "conceptImage": "normalizadas/la-habana-v1.png",
+      "conceptImage": "transparentes/la-habana-v1.png",
       "originalConceptImage": "normalizadas/la-habana-v1.png",
       "framingProfile": "la-habana",
       "sources": [
@@ -1473,7 +1473,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 50,
-      "conceptImage": "normalizadas/dubai-v1.png",
+      "conceptImage": "transparentes/dubai-v1.png",
       "originalConceptImage": "normalizadas/dubai-v1.png",
       "framingProfile": "dubai",
       "sources": [
@@ -1502,7 +1502,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 51,
       "batch": 13,
-      "conceptImage": "normalizadas/casablanca-v1.png",
+      "conceptImage": "transparentes/casablanca-v1.png",
       "originalConceptImage": "normalizadas/casablanca-v1.png",
       "framingProfile": "casablanca",
       "sources": [
@@ -1531,7 +1531,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 52,
       "batch": 13,
-      "conceptImage": "normalizadas/adelaida-v1.png",
+      "conceptImage": "transparentes/adelaida-v1.png",
       "originalConceptImage": "normalizadas/adelaida-v1.png",
       "framingProfile": "adelaida",
       "sources": [
@@ -1562,7 +1562,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 53,
-      "conceptImage": "normalizadas/zurich-v1.png",
+      "conceptImage": "transparentes/zurich-v1.png",
       "originalConceptImage": "normalizadas/zurich-v1.png",
       "framingProfile": "zurich",
       "sources": [
@@ -1592,7 +1592,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 54,
       "batch": 13,
-      "conceptImage": "normalizadas/boston-v1.png",
+      "conceptImage": "transparentes/boston-v1.png",
       "originalConceptImage": "normalizadas/boston-v1.png",
       "framingProfile": "boston",
       "sources": [
@@ -1623,7 +1623,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 55,
-      "conceptImage": "normalizadas/delhi-v1.png",
+      "conceptImage": "transparentes/delhi-v1.png",
       "originalConceptImage": "normalizadas/delhi-v1.png",
       "framingProfile": "delhi",
       "sources": [
@@ -1652,7 +1652,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 56,
       "batch": 14,
-      "conceptImage": "normalizadas/rabat-v1.png",
+      "conceptImage": "transparentes/rabat-v1.png",
       "originalConceptImage": "normalizadas/rabat-v1.png",
       "framingProfile": "rabat",
       "sources": [
@@ -1682,7 +1682,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 57,
       "batch": 14,
-      "conceptImage": "normalizadas/canberra-v1.png",
+      "conceptImage": "transparentes/canberra-v1.png",
       "originalConceptImage": "normalizadas/canberra-v1.png",
       "framingProfile": "canberra",
       "sources": [
@@ -1713,7 +1713,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 58,
-      "conceptImage": "normalizadas/estocolmo-v1.png",
+      "conceptImage": "transparentes/estocolmo-v1.png",
       "originalConceptImage": "normalizadas/estocolmo-v1.png",
       "framingProfile": "estocolmo",
       "sources": [
@@ -1742,7 +1742,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 59,
       "batch": 15,
-      "conceptImage": "normalizadas/miami-v1.png",
+      "conceptImage": "transparentes/miami-v1.png",
       "originalConceptImage": "normalizadas/miami-v1.png",
       "framingProfile": "miami",
       "sources": [
@@ -1773,7 +1773,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 60,
-      "conceptImage": "normalizadas/mumbai-v1.png",
+      "conceptImage": "transparentes/mumbai-v1.png",
       "originalConceptImage": "normalizadas/mumbai-v1.png",
       "framingProfile": "mumbai",
       "sources": [
@@ -1802,7 +1802,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 61,
       "batch": 15,
-      "conceptImage": "normalizadas/fez-v1.png",
+      "conceptImage": "transparentes/fez-v1.png",
       "originalConceptImage": "normalizadas/fez-v1.png",
       "framingProfile": "fez",
       "sources": [
@@ -1831,7 +1831,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 62,
       "batch": 15,
-      "conceptImage": "normalizadas/christchurch-v1.png",
+      "conceptImage": "transparentes/christchurch-v1.png",
       "originalConceptImage": "normalizadas/christchurch-v1.png",
       "framingProfile": "christchurch",
       "sources": [
@@ -1861,7 +1861,7 @@
       "kind": "city",
       "landmarkStatus": "candidate",
       "productionOrder": 63,
-      "conceptImage": "normalizadas/copenhague-v1.png",
+      "conceptImage": "transparentes/copenhague-v1.png",
       "originalConceptImage": "normalizadas/copenhague-v1.png",
       "framingProfile": "copenhague",
       "sources": [
@@ -1891,7 +1891,7 @@
       "productionOrder": 64,
       "batch": 16,
       "notes": "Concepto del área turística metropolitana del Strip, no un plano de límites municipales.",
-      "conceptImage": "normalizadas/las-vegas-v1.png",
+      "conceptImage": "transparentes/las-vegas-v1.png",
       "originalConceptImage": "normalizadas/las-vegas-v1.png",
       "framingProfile": "las-vegas",
       "sources": [
@@ -1920,7 +1920,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 65,
       "batch": 16,
-      "conceptImage": "normalizadas/kioto-v1.png",
+      "conceptImage": "transparentes/kioto-v1.png",
       "originalConceptImage": "normalizadas/kioto-v1.png",
       "framingProfile": "kioto",
       "sources": [
@@ -1949,7 +1949,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 66,
       "batch": 16,
-      "conceptImage": "normalizadas/chefchaouen-v1.png",
+      "conceptImage": "transparentes/chefchaouen-v1.png",
       "originalConceptImage": "normalizadas/chefchaouen-v1.png",
       "framingProfile": "chefchaouen",
       "sources": [
@@ -1978,7 +1978,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 67,
       "batch": 17,
-      "conceptImage": "normalizadas/queenstown-v1.png",
+      "conceptImage": "transparentes/queenstown-v1.png",
       "originalConceptImage": "normalizadas/queenstown-v1.png",
       "framingProfile": "queenstown",
       "sources": [
@@ -2009,7 +2009,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 68,
       "batch": 17,
-      "conceptImage": "normalizadas/sevilla-v1.png",
+      "conceptImage": "transparentes/sevilla-v1.png",
       "originalConceptImage": "normalizadas/sevilla-v1.png",
       "framingProfile": "sevilla",
       "sources": [
@@ -2039,7 +2039,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 69,
       "batch": 17,
-      "conceptImage": "normalizadas/nueva-orleans-v1.png",
+      "conceptImage": "transparentes/nueva-orleans-v1.png",
       "originalConceptImage": "normalizadas/nueva-orleans-v1.png",
       "framingProfile": "nueva-orleans",
       "sources": [
@@ -2068,7 +2068,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 70,
       "batch": 17,
-      "conceptImage": "normalizadas/osaka-v1.png",
+      "conceptImage": "transparentes/osaka-v1.png",
       "originalConceptImage": "normalizadas/osaka-v1.png",
       "framingProfile": "osaka",
       "sources": [
@@ -2097,7 +2097,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 71,
       "batch": 18,
-      "conceptImage": "normalizadas/argel-v1.png",
+      "conceptImage": "transparentes/argel-v1.png",
       "originalConceptImage": "normalizadas/argel-v1.png",
       "framingProfile": "argel",
       "sources": [
@@ -2126,7 +2126,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 72,
       "batch": 18,
-      "conceptImage": "normalizadas/suva-v1.png",
+      "conceptImage": "transparentes/suva-v1.png",
       "originalConceptImage": "normalizadas/suva-v1.png",
       "framingProfile": "suva",
       "sources": [
@@ -2155,7 +2155,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 73,
       "batch": 18,
-      "conceptImage": "normalizadas/valencia-v1.png",
+      "conceptImage": "transparentes/valencia-v1.png",
       "originalConceptImage": "normalizadas/valencia-v1.png",
       "framingProfile": "valencia",
       "sources": [
@@ -2185,7 +2185,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 74,
       "batch": 18,
-      "conceptImage": "normalizadas/seattle-v1.png",
+      "conceptImage": "transparentes/seattle-v1.png",
       "originalConceptImage": "normalizadas/seattle-v1.png",
       "framingProfile": "seattle",
       "sources": [
@@ -2215,7 +2215,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 75,
       "batch": 19,
-      "conceptImage": "normalizadas/hiroshima-v1.png",
+      "conceptImage": "transparentes/hiroshima-v1.png",
       "originalConceptImage": "normalizadas/hiroshima-v1.png",
       "framingProfile": "hiroshima",
       "sources": [
@@ -2244,7 +2244,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 76,
       "batch": 19,
-      "conceptImage": "normalizadas/alejandria-v1.png",
+      "conceptImage": "transparentes/alejandria-v1.png",
       "originalConceptImage": "normalizadas/alejandria-v1.png",
       "framingProfile": "alejandria",
       "sources": [
@@ -2273,7 +2273,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 77,
       "batch": 19,
-      "conceptImage": "normalizadas/papeete-v1.png",
+      "conceptImage": "transparentes/papeete-v1.png",
       "originalConceptImage": "normalizadas/papeete-v1.png",
       "framingProfile": "papeete",
       "sources": [
@@ -2301,7 +2301,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 78,
       "batch": 19,
-      "conceptImage": "normalizadas/granada-v1.png",
+      "conceptImage": "transparentes/granada-v1.png",
       "originalConceptImage": "normalizadas/granada-v1.png",
       "framingProfile": "granada",
       "sources": [
@@ -2331,7 +2331,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 79,
       "batch": 20,
-      "conceptImage": "normalizadas/filadelfia-v1.png",
+      "conceptImage": "transparentes/filadelfia-v1.png",
       "originalConceptImage": "normalizadas/filadelfia-v1.png",
       "framingProfile": "filadelfia",
       "sources": [
@@ -2360,7 +2360,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 80,
       "batch": 20,
-      "conceptImage": "normalizadas/nara-v1.png",
+      "conceptImage": "transparentes/nara-v1.png",
       "originalConceptImage": "normalizadas/nara-v1.png",
       "framingProfile": "nara",
       "sources": [
@@ -2390,7 +2390,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 81,
       "batch": 20,
-      "conceptImage": "normalizadas/luxor-v1.png",
+      "conceptImage": "transparentes/luxor-v1.png",
       "originalConceptImage": "normalizadas/luxor-v1.png",
       "framingProfile": "luxor",
       "sources": [
@@ -2418,7 +2418,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 82,
       "batch": 20,
-      "conceptImage": "normalizadas/cordoba-v1.png",
+      "conceptImage": "transparentes/cordoba-v1.png",
       "originalConceptImage": "normalizadas/cordoba-v1.png",
       "framingProfile": "cordoba",
       "sources": [
@@ -2447,7 +2447,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 83,
       "batch": 21,
-      "conceptImage": "normalizadas/san-diego-v1.png",
+      "conceptImage": "transparentes/san-diego-v1.png",
       "originalConceptImage": "normalizadas/san-diego-v1.png",
       "framingProfile": "san-diego",
       "sources": [
@@ -2477,7 +2477,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 84,
       "batch": 21,
-      "conceptImage": "normalizadas/yokohama-v1.png",
+      "conceptImage": "transparentes/yokohama-v1.png",
       "originalConceptImage": "normalizadas/yokohama-v1.png",
       "framingProfile": "yokohama",
       "sources": [
@@ -2506,7 +2506,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 85,
       "batch": 21,
-      "conceptImage": "normalizadas/asuan-v1.png",
+      "conceptImage": "transparentes/asuan-v1.png",
       "originalConceptImage": "normalizadas/asuan-v1.png",
       "framingProfile": "asuan",
       "sources": [
@@ -2536,7 +2536,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 86,
       "batch": 21,
-      "conceptImage": "normalizadas/bilbao-v1.png",
+      "conceptImage": "transparentes/bilbao-v1.png",
       "originalConceptImage": "normalizadas/bilbao-v1.png",
       "framingProfile": "bilbao",
       "sources": [
@@ -2565,7 +2565,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 87,
       "batch": 22,
-      "conceptImage": "normalizadas/honolulu-v1.png",
+      "conceptImage": "transparentes/honolulu-v1.png",
       "originalConceptImage": "normalizadas/honolulu-v1.png",
       "framingProfile": "honolulu",
       "sources": [
@@ -2595,7 +2595,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 88,
       "batch": 22,
-      "conceptImage": "normalizadas/nagasaki-v1.png",
+      "conceptImage": "transparentes/nagasaki-v1.png",
       "originalConceptImage": "normalizadas/nagasaki-v1.png",
       "framingProfile": "nagasaki",
       "sources": [
@@ -2631,7 +2631,7 @@
       ],
       "productionOrder": 89,
       "batch": 22,
-      "conceptImage": "normalizadas/guiza-v1.png",
+      "conceptImage": "transparentes/guiza-v1.png",
       "originalConceptImage": "normalizadas/guiza-v1.png",
       "framingProfile": "guiza"
     },
@@ -2653,7 +2653,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 90,
       "batch": 22,
-      "conceptImage": "normalizadas/santiago-de-compostela-v1.png",
+      "conceptImage": "transparentes/santiago-de-compostela-v1.png",
       "originalConceptImage": "normalizadas/santiago-de-compostela-v1.png",
       "framingProfile": "santiago-de-compostela",
       "sources": [
@@ -2683,7 +2683,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 91,
       "batch": 23,
-      "conceptImage": "normalizadas/atlanta-v1.png",
+      "conceptImage": "transparentes/atlanta-v1.png",
       "originalConceptImage": "normalizadas/atlanta-v1.png",
       "framingProfile": "atlanta",
       "sources": [
@@ -2713,7 +2713,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 92,
       "batch": 23,
-      "conceptImage": "normalizadas/macao-v1.png",
+      "conceptImage": "transparentes/macao-v1.png",
       "originalConceptImage": "normalizadas/macao-v1.png",
       "framingProfile": "macao",
       "sources": [
@@ -2743,7 +2743,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 93,
       "batch": 23,
-      "conceptImage": "normalizadas/johannesburgo-v1.png",
+      "conceptImage": "transparentes/johannesburgo-v1.png",
       "originalConceptImage": "normalizadas/johannesburgo-v1.png",
       "framingProfile": "johannesburgo",
       "sources": [
@@ -2772,7 +2772,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 94,
       "batch": 23,
-      "conceptImage": "normalizadas/malaga-v1.png",
+      "conceptImage": "transparentes/malaga-v1.png",
       "originalConceptImage": "normalizadas/malaga-v1.png",
       "framingProfile": "malaga",
       "sources": [
@@ -2801,7 +2801,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 95,
       "batch": 24,
-      "conceptImage": "normalizadas/houston-v1.png",
+      "conceptImage": "transparentes/houston-v1.png",
       "originalConceptImage": "normalizadas/houston-v1.png",
       "framingProfile": "houston",
       "sources": [
@@ -2831,7 +2831,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 96,
       "batch": 24,
-      "conceptImage": "normalizadas/xian-v1.png",
+      "conceptImage": "transparentes/xian-v1.png",
       "originalConceptImage": "normalizadas/xian-v1.png",
       "framingProfile": "xian",
       "sources": [
@@ -2860,7 +2860,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 97,
       "batch": 24,
-      "conceptImage": "normalizadas/durban-v1.png",
+      "conceptImage": "transparentes/durban-v1.png",
       "originalConceptImage": "normalizadas/durban-v1.png",
       "framingProfile": "durban",
       "sources": [
@@ -2890,7 +2890,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 98,
       "batch": 24,
-      "conceptImage": "normalizadas/toledo-v1.png",
+      "conceptImage": "transparentes/toledo-v1.png",
       "originalConceptImage": "normalizadas/toledo-v1.png",
       "framingProfile": "toledo",
       "sources": [
@@ -2919,7 +2919,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 99,
       "batch": 25,
-      "conceptImage": "normalizadas/san-antonio-v1.png",
+      "conceptImage": "transparentes/san-antonio-v1.png",
       "originalConceptImage": "normalizadas/san-antonio-v1.png",
       "framingProfile": "san-antonio",
       "sources": [
@@ -2949,7 +2949,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 100,
       "batch": 25,
-      "conceptImage": "normalizadas/chengdu-v1.png",
+      "conceptImage": "transparentes/chengdu-v1.png",
       "originalConceptImage": "normalizadas/chengdu-v1.png",
       "framingProfile": "chengdu",
       "sources": [
@@ -2978,7 +2978,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 101,
       "batch": 25,
-      "conceptImage": "normalizadas/adis-abeba-v1.png",
+      "conceptImage": "transparentes/adis-abeba-v1.png",
       "originalConceptImage": "normalizadas/adis-abeba-v1.png",
       "framingProfile": "adis-abeba",
       "sources": [
@@ -3007,7 +3007,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 102,
       "batch": 25,
-      "conceptImage": "normalizadas/segovia-v1.png",
+      "conceptImage": "transparentes/segovia-v1.png",
       "originalConceptImage": "normalizadas/segovia-v1.png",
       "framingProfile": "segovia",
       "sources": [
@@ -3037,7 +3037,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 103,
       "batch": 26,
-      "conceptImage": "normalizadas/montreal-v1.png",
+      "conceptImage": "transparentes/montreal-v1.png",
       "originalConceptImage": "normalizadas/montreal-v1.png",
       "framingProfile": "montreal",
       "sources": [
@@ -3067,7 +3067,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 104,
       "batch": 26,
-      "conceptImage": "normalizadas/chongqing-v1.png",
+      "conceptImage": "transparentes/chongqing-v1.png",
       "originalConceptImage": "normalizadas/chongqing-v1.png",
       "framingProfile": "chongqing",
       "sources": [
@@ -3096,7 +3096,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 105,
       "batch": 26,
-      "conceptImage": "normalizadas/lagos-v1.png",
+      "conceptImage": "transparentes/lagos-v1.png",
       "originalConceptImage": "normalizadas/lagos-v1.png",
       "framingProfile": "lagos",
       "sources": [
@@ -3126,7 +3126,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 106,
       "batch": 26,
-      "conceptImage": "normalizadas/zaragoza-v1.png",
+      "conceptImage": "transparentes/zaragoza-v1.png",
       "originalConceptImage": "normalizadas/zaragoza-v1.png",
       "framingProfile": "zaragoza",
       "sources": [
@@ -3155,7 +3155,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 107,
       "batch": 27,
-      "conceptImage": "normalizadas/quebec-v1.png",
+      "conceptImage": "transparentes/quebec-v1.png",
       "originalConceptImage": "normalizadas/quebec-v1.png",
       "framingProfile": "quebec",
       "sources": [
@@ -3184,7 +3184,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 108,
       "batch": 27,
-      "conceptImage": "normalizadas/guilin-v1.png",
+      "conceptImage": "transparentes/guilin-v1.png",
       "originalConceptImage": "normalizadas/guilin-v1.png",
       "framingProfile": "guilin",
       "sources": [
@@ -3213,7 +3213,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 109,
       "batch": 27,
-      "conceptImage": "normalizadas/acra-v1.png",
+      "conceptImage": "transparentes/acra-v1.png",
       "originalConceptImage": "normalizadas/acra-v1.png",
       "framingProfile": "acra",
       "sources": [
@@ -3243,7 +3243,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 110,
       "batch": 27,
-      "conceptImage": "normalizadas/san-sebastian-v1.png",
+      "conceptImage": "transparentes/san-sebastian-v1.png",
       "originalConceptImage": "normalizadas/san-sebastian-v1.png",
       "framingProfile": "san-sebastian",
       "sources": [
@@ -3273,7 +3273,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 111,
       "batch": 28,
-      "conceptImage": "normalizadas/vancouver-v1.png",
+      "conceptImage": "transparentes/vancouver-v1.png",
       "originalConceptImage": "normalizadas/vancouver-v1.png",
       "framingProfile": "vancouver",
       "sources": [
@@ -3302,7 +3302,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 112,
       "batch": 28,
-      "conceptImage": "normalizadas/canton-v1.png",
+      "conceptImage": "transparentes/canton-v1.png",
       "originalConceptImage": "normalizadas/canton-v1.png",
       "framingProfile": "canton",
       "sources": [
@@ -3332,7 +3332,7 @@
       "productionOrder": 113,
       "batch": 28,
       "generationInstructions": "Do not include the Basilica of Our Lady of Peace at Yamoussoukro; this scene is Abidjan, with Saint Paul Cathedral and its distinctive sloping roof.",
-      "conceptImage": "normalizadas/abiyan-v1.png",
+      "conceptImage": "transparentes/abiyan-v1.png",
       "originalConceptImage": "normalizadas/abiyan-v1.png",
       "framingProfile": "abiyan",
       "sources": [
@@ -3361,7 +3361,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 114,
       "batch": 28,
-      "conceptImage": "normalizadas/salamanca-v1.png",
+      "conceptImage": "transparentes/salamanca-v1.png",
       "originalConceptImage": "normalizadas/salamanca-v1.png",
       "framingProfile": "salamanca",
       "sources": [
@@ -3390,7 +3390,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 115,
       "batch": 29,
-      "conceptImage": "normalizadas/ottawa-v1.png",
+      "conceptImage": "transparentes/ottawa-v1.png",
       "originalConceptImage": "normalizadas/ottawa-v1.png",
       "framingProfile": "ottawa",
       "sources": [
@@ -3420,7 +3420,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 116,
       "batch": 29,
-      "conceptImage": "normalizadas/hangzhou-v1.png",
+      "conceptImage": "transparentes/hangzhou-v1.png",
       "originalConceptImage": "normalizadas/hangzhou-v1.png",
       "framingProfile": "hangzhou",
       "sources": [
@@ -3449,7 +3449,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 117,
       "batch": 29,
-      "conceptImage": "normalizadas/windhoek-v1.png",
+      "conceptImage": "transparentes/windhoek-v1.png",
       "originalConceptImage": "normalizadas/windhoek-v1.png",
       "framingProfile": "windhoek",
       "sources": [
@@ -3479,7 +3479,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 118,
       "batch": 29,
-      "conceptImage": "normalizadas/manchester-v1.png",
+      "conceptImage": "transparentes/manchester-v1.png",
       "originalConceptImage": "normalizadas/manchester-v1.png",
       "framingProfile": "manchester",
       "sources": [
@@ -3508,7 +3508,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 119,
       "batch": 30,
-      "conceptImage": "normalizadas/guadalajara-v1.png",
+      "conceptImage": "transparentes/guadalajara-v1.png",
       "originalConceptImage": "normalizadas/guadalajara-v1.png",
       "framingProfile": "guadalajara",
       "sources": [
@@ -3537,7 +3537,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 120,
       "batch": 30,
-      "conceptImage": "normalizadas/suzhou-v1.png",
+      "conceptImage": "transparentes/suzhou-v1.png",
       "originalConceptImage": "normalizadas/suzhou-v1.png",
       "framingProfile": "suzhou",
       "sources": [
@@ -3566,7 +3566,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 121,
       "batch": 30,
-      "conceptImage": "normalizadas/port-louis-v1.png",
+      "conceptImage": "transparentes/port-louis-v1.png",
       "originalConceptImage": "normalizadas/port-louis-v1.png",
       "framingProfile": "port-louis",
       "sources": [
@@ -3595,7 +3595,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 122,
       "batch": 30,
-      "conceptImage": "normalizadas/liverpool-v1.png",
+      "conceptImage": "transparentes/liverpool-v1.png",
       "originalConceptImage": "normalizadas/liverpool-v1.png",
       "framingProfile": "liverpool",
       "sources": [
@@ -3624,7 +3624,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 123,
       "batch": 31,
-      "conceptImage": "normalizadas/puebla-v1.png",
+      "conceptImage": "transparentes/puebla-v1.png",
       "originalConceptImage": "normalizadas/puebla-v1.png",
       "framingProfile": "puebla",
       "sources": [
@@ -3653,7 +3653,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 124,
       "batch": 31,
-      "conceptImage": "normalizadas/taipei-v1.png",
+      "conceptImage": "transparentes/taipei-v1.png",
       "originalConceptImage": "normalizadas/taipei-v1.png",
       "framingProfile": "taipei",
       "sources": [
@@ -3682,7 +3682,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 125,
       "batch": 31,
-      "conceptImage": "normalizadas/oxford-v1.png",
+      "conceptImage": "transparentes/oxford-v1.png",
       "originalConceptImage": "normalizadas/oxford-v1.png",
       "framingProfile": "oxford",
       "sources": [
@@ -3711,7 +3711,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 126,
       "batch": 31,
-      "conceptImage": "normalizadas/oaxaca-v1.png",
+      "conceptImage": "transparentes/oaxaca-v1.png",
       "originalConceptImage": "normalizadas/oaxaca-v1.png",
       "framingProfile": "oaxaca",
       "sources": [
@@ -3740,7 +3740,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 127,
       "batch": 32,
-      "conceptImage": "normalizadas/busan-v1.png",
+      "conceptImage": "transparentes/busan-v1.png",
       "originalConceptImage": "normalizadas/busan-v1.png",
       "framingProfile": "busan",
       "sources": [
@@ -3769,7 +3769,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 128,
       "batch": 32,
-      "conceptImage": "normalizadas/cambridge-v1.png",
+      "conceptImage": "transparentes/cambridge-v1.png",
       "originalConceptImage": "normalizadas/cambridge-v1.png",
       "framingProfile": "cambridge",
       "sources": [
@@ -3798,7 +3798,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 129,
       "batch": 32,
-      "conceptImage": "normalizadas/guanajuato-v1.png",
+      "conceptImage": "transparentes/guanajuato-v1.png",
       "originalConceptImage": "normalizadas/guanajuato-v1.png",
       "framingProfile": "guanajuato",
       "sources": [
@@ -3827,7 +3827,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 130,
       "batch": 32,
-      "conceptImage": "normalizadas/hanoi-v1.png",
+      "conceptImage": "transparentes/hanoi-v1.png",
       "originalConceptImage": "normalizadas/hanoi-v1.png",
       "framingProfile": "hanoi",
       "sources": [
@@ -3855,7 +3855,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 131,
       "batch": 33,
-      "conceptImage": "normalizadas/bath-v1.png",
+      "conceptImage": "transparentes/bath-v1.png",
       "originalConceptImage": "normalizadas/bath-v1.png",
       "framingProfile": "bath",
       "sources": [
@@ -3884,7 +3884,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 132,
       "batch": 33,
-      "conceptImage": "normalizadas/merida-v1.png",
+      "conceptImage": "transparentes/merida-v1.png",
       "originalConceptImage": "normalizadas/merida-v1.png",
       "framingProfile": "merida",
       "sources": [
@@ -3913,7 +3913,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 133,
       "batch": 33,
-      "conceptImage": "normalizadas/ciudad-ho-chi-minh-v1.png",
+      "conceptImage": "transparentes/ciudad-ho-chi-minh-v1.png",
       "originalConceptImage": "normalizadas/ciudad-ho-chi-minh-v1.png",
       "framingProfile": "ciudad-ho-chi-minh",
       "sources": [
@@ -3942,7 +3942,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 134,
       "batch": 33,
-      "conceptImage": "normalizadas/york-v1.png",
+      "conceptImage": "transparentes/york-v1.png",
       "originalConceptImage": "normalizadas/york-v1.png",
       "framingProfile": "york",
       "sources": [
@@ -3971,7 +3971,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 135,
       "batch": 34,
-      "conceptImage": "normalizadas/bogota-v1.png",
+      "conceptImage": "transparentes/bogota-v1.png",
       "originalConceptImage": "normalizadas/bogota-v1.png",
       "framingProfile": "bogota",
       "sources": [
@@ -4000,7 +4000,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 136,
       "batch": 34,
-      "conceptImage": "normalizadas/hoi-an-v1.png",
+      "conceptImage": "transparentes/hoi-an-v1.png",
       "originalConceptImage": "normalizadas/hoi-an-v1.png",
       "framingProfile": "hoi-an",
       "sources": [
@@ -4029,7 +4029,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 137,
       "batch": 34,
-      "conceptImage": "normalizadas/glasgow-v1.png",
+      "conceptImage": "transparentes/glasgow-v1.png",
       "originalConceptImage": "normalizadas/glasgow-v1.png",
       "framingProfile": "glasgow",
       "sources": [
@@ -4058,7 +4058,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 138,
       "batch": 34,
-      "conceptImage": "normalizadas/cartagena-de-indias-v1.png",
+      "conceptImage": "transparentes/cartagena-de-indias-v1.png",
       "originalConceptImage": "normalizadas/cartagena-de-indias-v1.png",
       "framingProfile": "cartagena-de-indias",
       "sources": [
@@ -4088,7 +4088,7 @@
       "productionOrder": 139,
       "batch": 35,
       "notes": "Alcance cultural de Siem Reap y Angkor; revisar la selección de respuesta para evitar ambigüedad con el sitio histórico.",
-      "conceptImage": "normalizadas/siem-reap-v1.png",
+      "conceptImage": "transparentes/siem-reap-v1.png",
       "originalConceptImage": "normalizadas/siem-reap-v1.png",
       "framingProfile": "siem-reap",
       "sources": [
@@ -4117,7 +4117,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 140,
       "batch": 35,
-      "conceptImage": "normalizadas/belfast-v1.png",
+      "conceptImage": "transparentes/belfast-v1.png",
       "originalConceptImage": "normalizadas/belfast-v1.png",
       "framingProfile": "belfast",
       "sources": [
@@ -4146,7 +4146,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 141,
       "batch": 35,
-      "conceptImage": "normalizadas/medellin-v1.png",
+      "conceptImage": "transparentes/medellin-v1.png",
       "originalConceptImage": "normalizadas/medellin-v1.png",
       "framingProfile": "medellin",
       "sources": [
@@ -4175,7 +4175,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 142,
       "batch": 35,
-      "conceptImage": "normalizadas/nom-pen-v1.png",
+      "conceptImage": "transparentes/nom-pen-v1.png",
       "originalConceptImage": "normalizadas/nom-pen-v1.png",
       "framingProfile": "nom-pen",
       "sources": [
@@ -4204,7 +4204,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 143,
       "batch": 36,
-      "conceptImage": "normalizadas/oporto-v1.png",
+      "conceptImage": "transparentes/oporto-v1.png",
       "originalConceptImage": "normalizadas/oporto-v1.png",
       "framingProfile": "oporto",
       "sources": [
@@ -4232,7 +4232,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 144,
       "batch": 36,
-      "conceptImage": "normalizadas/lima-v1.png",
+      "conceptImage": "transparentes/lima-v1.png",
       "originalConceptImage": "normalizadas/lima-v1.png",
       "framingProfile": "lima",
       "sources": [
@@ -4261,7 +4261,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 145,
       "batch": 36,
-      "conceptImage": "normalizadas/kuala-lumpur-v1.png",
+      "conceptImage": "transparentes/kuala-lumpur-v1.png",
       "originalConceptImage": "normalizadas/kuala-lumpur-v1.png",
       "framingProfile": "kuala-lumpur",
       "sources": [
@@ -4290,7 +4290,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 146,
       "batch": 36,
-      "conceptImage": "normalizadas/bruselas-v1.png",
+      "conceptImage": "transparentes/bruselas-v1.png",
       "originalConceptImage": "normalizadas/bruselas-v1.png",
       "framingProfile": "bruselas",
       "sources": [
@@ -4318,7 +4318,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 147,
       "batch": 37,
-      "conceptImage": "normalizadas/cusco-v1.png",
+      "conceptImage": "transparentes/cusco-v1.png",
       "originalConceptImage": "normalizadas/cusco-v1.png",
       "framingProfile": "cusco",
       "sources": [
@@ -4347,7 +4347,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 148,
       "batch": 37,
-      "conceptImage": "normalizadas/george-town-v1.png",
+      "conceptImage": "transparentes/george-town-v1.png",
       "originalConceptImage": "normalizadas/george-town-v1.png",
       "framingProfile": "george-town",
       "sources": [
@@ -4376,7 +4376,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 149,
       "batch": 37,
-      "conceptImage": "normalizadas/brujas-v1.png",
+      "conceptImage": "transparentes/brujas-v1.png",
       "originalConceptImage": "normalizadas/brujas-v1.png",
       "framingProfile": "brujas",
       "sources": [
@@ -4405,7 +4405,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 150,
       "batch": 37,
-      "conceptImage": "normalizadas/arequipa-v1.png",
+      "conceptImage": "transparentes/arequipa-v1.png",
       "originalConceptImage": "normalizadas/arequipa-v1.png",
       "framingProfile": "arequipa",
       "sources": [
@@ -4434,7 +4434,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 151,
       "batch": 38,
-      "conceptImage": "normalizadas/yakarta-v1.png",
+      "conceptImage": "transparentes/yakarta-v1.png",
       "originalConceptImage": "normalizadas/yakarta-v1.png",
       "framingProfile": "yakarta",
       "sources": [
@@ -4463,7 +4463,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 152,
       "batch": 38,
-      "conceptImage": "normalizadas/gante-v1.png",
+      "conceptImage": "transparentes/gante-v1.png",
       "originalConceptImage": "normalizadas/gante-v1.png",
       "framingProfile": "gante",
       "sources": [
@@ -4492,7 +4492,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 153,
       "batch": 38,
-      "conceptImage": "normalizadas/quito-v1.png",
+      "conceptImage": "transparentes/quito-v1.png",
       "originalConceptImage": "normalizadas/quito-v1.png",
       "framingProfile": "quito",
       "sources": [
@@ -4520,7 +4520,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 154,
       "batch": 38,
-      "conceptImage": "normalizadas/yogyakarta-v1.png",
+      "conceptImage": "transparentes/yogyakarta-v1.png",
       "originalConceptImage": "normalizadas/yogyakarta-v1.png",
       "framingProfile": "yogyakarta",
       "sources": [
@@ -4549,7 +4549,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 155,
       "batch": 39,
-      "conceptImage": "normalizadas/roterdam-v1.png",
+      "conceptImage": "transparentes/roterdam-v1.png",
       "originalConceptImage": "normalizadas/roterdam-v1.png",
       "framingProfile": "roterdam",
       "sources": [
@@ -4578,7 +4578,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 156,
       "batch": 39,
-      "conceptImage": "normalizadas/la-paz-v1.png",
+      "conceptImage": "transparentes/la-paz-v1.png",
       "originalConceptImage": "normalizadas/la-paz-v1.png",
       "framingProfile": "la-paz",
       "sources": [
@@ -4607,7 +4607,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 157,
       "batch": 39,
-      "conceptImage": "normalizadas/manila-v1.png",
+      "conceptImage": "transparentes/manila-v1.png",
       "originalConceptImage": "normalizadas/manila-v1.png",
       "framingProfile": "manila",
       "sources": [
@@ -4636,7 +4636,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 158,
       "batch": 39,
-      "conceptImage": "normalizadas/la-haya-v1.png",
+      "conceptImage": "transparentes/la-haya-v1.png",
       "originalConceptImage": "normalizadas/la-haya-v1.png",
       "framingProfile": "la-haya",
       "sources": [
@@ -4665,7 +4665,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 159,
       "batch": 40,
-      "conceptImage": "normalizadas/sucre-v1.png",
+      "conceptImage": "transparentes/sucre-v1.png",
       "originalConceptImage": "normalizadas/sucre-v1.png",
       "framingProfile": "sucre",
       "sources": [
@@ -4694,7 +4694,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 160,
       "batch": 40,
-      "conceptImage": "normalizadas/katmandu-v1.png",
+      "conceptImage": "transparentes/katmandu-v1.png",
       "originalConceptImage": "normalizadas/katmandu-v1.png",
       "framingProfile": "katmandu",
       "sources": [
@@ -4723,7 +4723,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 161,
       "batch": 40,
-      "conceptImage": "normalizadas/lyon-v1.png",
+      "conceptImage": "transparentes/lyon-v1.png",
       "originalConceptImage": "normalizadas/lyon-v1.png",
       "framingProfile": "lyon",
       "sources": [
@@ -4752,7 +4752,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 162,
       "batch": 40,
-      "conceptImage": "normalizadas/santiago-de-chile-v1.png",
+      "conceptImage": "transparentes/santiago-de-chile-v1.png",
       "originalConceptImage": "normalizadas/santiago-de-chile-v1.png",
       "framingProfile": "santiago-de-chile",
       "sources": [
@@ -4781,7 +4781,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 163,
       "batch": 41,
-      "conceptImage": "normalizadas/agra-v1.png",
+      "conceptImage": "transparentes/agra-v1.png",
       "originalConceptImage": "normalizadas/agra-v1.png",
       "framingProfile": "agra",
       "sources": [
@@ -4810,7 +4810,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 164,
       "batch": 41,
-      "conceptImage": "normalizadas/marsella-v1.png",
+      "conceptImage": "transparentes/marsella-v1.png",
       "originalConceptImage": "normalizadas/marsella-v1.png",
       "framingProfile": "marsella",
       "sources": [
@@ -4839,7 +4839,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 165,
       "batch": 41,
-      "conceptImage": "normalizadas/valparaiso-v1.png",
+      "conceptImage": "transparentes/valparaiso-v1.png",
       "originalConceptImage": "normalizadas/valparaiso-v1.png",
       "framingProfile": "valparaiso",
       "sources": [
@@ -4868,7 +4868,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 166,
       "batch": 41,
-      "conceptImage": "normalizadas/jaipur-v1.png",
+      "conceptImage": "transparentes/jaipur-v1.png",
       "originalConceptImage": "normalizadas/jaipur-v1.png",
       "framingProfile": "jaipur",
       "sources": [
@@ -4897,7 +4897,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 167,
       "batch": 42,
-      "conceptImage": "normalizadas/niza-v1.png",
+      "conceptImage": "transparentes/niza-v1.png",
       "originalConceptImage": "normalizadas/niza-v1.png",
       "framingProfile": "niza",
       "sources": [
@@ -4926,7 +4926,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 168,
       "batch": 42,
-      "conceptImage": "normalizadas/montevideo-v2.png",
+      "conceptImage": "transparentes/montevideo-v1.png",
       "originalConceptImage": "normalizadas/montevideo-v1.png",
       "framingProfile": "montevideo",
       "sources": [
@@ -4956,7 +4956,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 169,
       "batch": 42,
-      "conceptImage": "normalizadas/varanasi-v1.png",
+      "conceptImage": "transparentes/varanasi-v1.png",
       "originalConceptImage": "normalizadas/varanasi-v1.png",
       "framingProfile": "varanasi",
       "sources": [
@@ -4985,7 +4985,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 170,
       "batch": 42,
-      "conceptImage": "normalizadas/burdeos-v1.png",
+      "conceptImage": "transparentes/burdeos-v1.png",
       "originalConceptImage": "normalizadas/burdeos-v1.png",
       "framingProfile": "burdeos",
       "sources": [
@@ -5014,7 +5014,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 171,
       "batch": 43,
-      "conceptImage": "normalizadas/brasilia-v1.png",
+      "conceptImage": "transparentes/brasilia-v1.png",
       "originalConceptImage": "normalizadas/brasilia-v1.png",
       "framingProfile": "brasilia",
       "sources": [
@@ -5043,7 +5043,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 172,
       "batch": 43,
-      "conceptImage": "normalizadas/calcuta-v1.png",
+      "conceptImage": "transparentes/calcuta-v1.png",
       "originalConceptImage": "normalizadas/calcuta-v1.png",
       "framingProfile": "calcuta",
       "sources": [
@@ -5072,7 +5072,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 173,
       "batch": 43,
-      "conceptImage": "normalizadas/estrasburgo-v1.png",
+      "conceptImage": "transparentes/estrasburgo-v1.png",
       "originalConceptImage": "normalizadas/estrasburgo-v1.png",
       "framingProfile": "estrasburgo",
       "sources": [
@@ -5101,7 +5101,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 174,
       "batch": 43,
-      "conceptImage": "normalizadas/sao-paulo-v2.png",
+      "conceptImage": "transparentes/sao-paulo-v1.png",
       "originalConceptImage": "normalizadas/sao-paulo-v1.png",
       "framingProfile": "sao-paulo",
       "sources": [
@@ -5131,7 +5131,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 175,
       "batch": 44,
-      "conceptImage": "normalizadas/amritsar-v1.png",
+      "conceptImage": "transparentes/amritsar-v1.png",
       "originalConceptImage": "normalizadas/amritsar-v1.png",
       "framingProfile": "amritsar",
       "sources": [
@@ -5160,7 +5160,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 176,
       "batch": 44,
-      "conceptImage": "normalizadas/avinon-v1.png",
+      "conceptImage": "transparentes/avinon-v1.png",
       "originalConceptImage": "normalizadas/avinon-v1.png",
       "framingProfile": "avinon",
       "sources": [
@@ -5189,7 +5189,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 177,
       "batch": 44,
-      "conceptImage": "normalizadas/salvador-de-bahia-v1.png",
+      "conceptImage": "transparentes/salvador-de-bahia-v1.png",
       "originalConceptImage": "normalizadas/salvador-de-bahia-v1.png",
       "framingProfile": "salvador-de-bahia",
       "sources": [
@@ -5218,7 +5218,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 178,
       "batch": 44,
-      "conceptImage": "normalizadas/abu-dabi-v2.png",
+      "conceptImage": "transparentes/abu-dabi-v1.png",
       "originalConceptImage": "normalizadas/abu-dabi-v1.png",
       "framingProfile": "abu-dabi",
       "sources": [
@@ -5248,7 +5248,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 179,
       "batch": 45,
-      "conceptImage": "normalizadas/milan-v1.png",
+      "conceptImage": "transparentes/milan-v1.png",
       "originalConceptImage": "normalizadas/milan-v1.png",
       "framingProfile": "milan",
       "sources": [
@@ -5277,7 +5277,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 180,
       "batch": 45,
-      "conceptImage": "normalizadas/recife-v2.png",
+      "conceptImage": "transparentes/recife-v1.png",
       "originalConceptImage": "normalizadas/recife-v1.png",
       "framingProfile": "recife",
       "sources": [
@@ -5307,7 +5307,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 181,
       "batch": 45,
-      "conceptImage": "normalizadas/doha-v1.png",
+      "conceptImage": "transparentes/doha-v1.png",
       "originalConceptImage": "normalizadas/doha-v1.png",
       "framingProfile": "doha",
       "sources": [
@@ -5336,7 +5336,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 182,
       "batch": 45,
-      "conceptImage": "normalizadas/napoles-v1.png",
+      "conceptImage": "transparentes/napoles-v1.png",
       "originalConceptImage": "normalizadas/napoles-v1.png",
       "framingProfile": "napoles",
       "sources": [
@@ -5365,7 +5365,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 183,
       "batch": 46,
-      "conceptImage": "normalizadas/ciudad-de-panama-v1.png",
+      "conceptImage": "transparentes/ciudad-de-panama-v1.png",
       "originalConceptImage": "normalizadas/ciudad-de-panama-v1.png",
       "framingProfile": "ciudad-de-panama",
       "sources": [
@@ -5394,7 +5394,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 184,
       "batch": 46,
-      "conceptImage": "normalizadas/mascate-v1.png",
+      "conceptImage": "transparentes/mascate-v1.png",
       "originalConceptImage": "normalizadas/mascate-v1.png",
       "framingProfile": "mascate",
       "sources": [
@@ -5423,7 +5423,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 185,
       "batch": 46,
-      "conceptImage": "normalizadas/pisa-v1.png",
+      "conceptImage": "transparentes/pisa-v1.png",
       "originalConceptImage": "normalizadas/pisa-v1.png",
       "framingProfile": "pisa",
       "sources": [
@@ -5452,7 +5452,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 186,
       "batch": 46,
-      "conceptImage": "normalizadas/antigua-guatemala-v1.png",
+      "conceptImage": "transparentes/antigua-guatemala-v1.png",
       "originalConceptImage": "normalizadas/antigua-guatemala-v1.png",
       "framingProfile": "antigua-guatemala",
       "sources": [
@@ -5481,7 +5481,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 187,
       "batch": 47,
-      "conceptImage": "normalizadas/riad-v1.png",
+      "conceptImage": "transparentes/riad-v1.png",
       "originalConceptImage": "normalizadas/riad-v1.png",
       "framingProfile": "riad",
       "sources": [
@@ -5510,7 +5510,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 188,
       "batch": 47,
-      "conceptImage": "normalizadas/verona-v1.png",
+      "conceptImage": "transparentes/verona-v1.png",
       "originalConceptImage": "normalizadas/verona-v1.png",
       "framingProfile": "verona",
       "sources": [
@@ -5538,7 +5538,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 189,
       "batch": 47,
-      "conceptImage": "normalizadas/san-juan-v2.png",
+      "conceptImage": "transparentes/san-juan-v1.png",
       "originalConceptImage": "normalizadas/san-juan-v1.png",
       "framingProfile": "san-juan",
       "sources": [
@@ -5570,7 +5570,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 190,
       "batch": 47,
-      "conceptImage": "normalizadas/yeda-v1.png",
+      "conceptImage": "transparentes/yeda-v1.png",
       "originalConceptImage": "normalizadas/yeda-v1.png",
       "framingProfile": "yeda",
       "sources": [
@@ -5599,7 +5599,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 191,
       "batch": 48,
-      "conceptImage": "normalizadas/turin-v1.png",
+      "conceptImage": "transparentes/turin-v1.png",
       "originalConceptImage": "normalizadas/turin-v1.png",
       "framingProfile": "turin",
       "sources": [
@@ -5628,7 +5628,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 192,
       "batch": 48,
-      "conceptImage": "normalizadas/santo-domingo-v2.png",
+      "conceptImage": "transparentes/santo-domingo-v1.png",
       "originalConceptImage": "normalizadas/santo-domingo-v1.png",
       "framingProfile": "santo-domingo",
       "sources": [
@@ -5661,7 +5661,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 193,
       "batch": 48,
-      "conceptImage": "normalizadas/aman-v1.png",
+      "conceptImage": "transparentes/aman-v1.png",
       "originalConceptImage": "normalizadas/aman-v1.png",
       "framingProfile": "aman",
       "sources": [
@@ -5690,7 +5690,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 194,
       "batch": 48,
-      "conceptImage": "normalizadas/bolonia-v1.png",
+      "conceptImage": "transparentes/bolonia-v1.png",
       "originalConceptImage": "normalizadas/bolonia-v1.png",
       "framingProfile": "bolonia",
       "sources": [
@@ -5719,7 +5719,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 195,
       "batch": 49,
-      "conceptImage": "normalizadas/san-jose-v2.png",
+      "conceptImage": "transparentes/san-jose-v1.png",
       "originalConceptImage": "normalizadas/san-jose-v1.png",
       "framingProfile": "san-jose",
       "sources": [
@@ -5753,7 +5753,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 196,
       "batch": 49,
-      "conceptImage": "normalizadas/beirut-v1.png",
+      "conceptImage": "transparentes/beirut-v1.png",
       "originalConceptImage": "normalizadas/beirut-v1.png",
       "framingProfile": "beirut",
       "sources": [
@@ -5782,7 +5782,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 197,
       "batch": 49,
-      "conceptImage": "normalizadas/palermo-v1.png",
+      "conceptImage": "transparentes/palermo-v1.png",
       "originalConceptImage": "normalizadas/palermo-v1.png",
       "framingProfile": "palermo",
       "sources": [
@@ -5811,7 +5811,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 198,
       "batch": 49,
-      "conceptImage": "normalizadas/kingston-v1.png",
+      "conceptImage": "transparentes/kingston-v1.png",
       "originalConceptImage": "normalizadas/kingston-v1.png",
       "framingProfile": "kingston",
       "sources": [
@@ -5841,7 +5841,7 @@
       "productionOrder": 199,
       "batch": 50,
       "generationInstructions": "Historic architecture only. No flags, territorial maps, political emblems or military objects.",
-      "conceptImage": "normalizadas/jerusalen-v1.png",
+      "conceptImage": "transparentes/jerusalen-v1.png",
       "originalConceptImage": "normalizadas/jerusalen-v1.png",
       "framingProfile": "jerusalen",
       "sources": [
@@ -5870,7 +5870,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 200,
       "batch": 50,
-      "conceptImage": "normalizadas/munich-v1.png",
+      "conceptImage": "transparentes/munich-v1.png",
       "originalConceptImage": "normalizadas/munich-v1.png",
       "framingProfile": "munich",
       "sources": [
@@ -5899,7 +5899,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 201,
       "batch": 50,
-      "conceptImage": "normalizadas/tel-aviv-v1.png",
+      "conceptImage": "transparentes/tel-aviv-v1.png",
       "originalConceptImage": "normalizadas/tel-aviv-v1.png",
       "framingProfile": "tel-aviv",
       "sources": [
@@ -5928,7 +5928,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 202,
       "batch": 50,
-      "conceptImage": "normalizadas/hamburgo-v1.png",
+      "conceptImage": "transparentes/hamburgo-v1.png",
       "originalConceptImage": "normalizadas/hamburgo-v1.png",
       "framingProfile": "hamburgo",
       "sources": [
@@ -5957,7 +5957,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 203,
       "batch": 51,
-      "conceptImage": "normalizadas/samarcanda-v1.png",
+      "conceptImage": "transparentes/samarcanda-v1.png",
       "originalConceptImage": "normalizadas/samarcanda-v1.png",
       "framingProfile": "samarcanda",
       "sources": [
@@ -5986,7 +5986,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 204,
       "batch": 51,
-      "conceptImage": "normalizadas/colonia-v1.png",
+      "conceptImage": "transparentes/colonia-v1.png",
       "originalConceptImage": "normalizadas/colonia-v1.png",
       "framingProfile": "colonia",
       "sources": [
@@ -6015,7 +6015,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 205,
       "batch": 51,
-      "conceptImage": "normalizadas/bujara-v1.png",
+      "conceptImage": "transparentes/bujara-v1.png",
       "originalConceptImage": "normalizadas/bujara-v1.png",
       "framingProfile": "bujara",
       "sources": [
@@ -6044,7 +6044,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 206,
       "batch": 51,
-      "conceptImage": "normalizadas/dresde-v1.png",
+      "conceptImage": "transparentes/dresde-v1.png",
       "originalConceptImage": "normalizadas/dresde-v1.png",
       "framingProfile": "dresde",
       "sources": [
@@ -6073,7 +6073,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 207,
       "batch": 52,
-      "conceptImage": "normalizadas/francfort-v1.png",
+      "conceptImage": "transparentes/francfort-v1.png",
       "originalConceptImage": "normalizadas/francfort-v1.png",
       "framingProfile": "francfort",
       "sources": [
@@ -6102,7 +6102,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 208,
       "batch": 52,
-      "conceptImage": "normalizadas/heidelberg-v1.png",
+      "conceptImage": "transparentes/heidelberg-v1.png",
       "originalConceptImage": "normalizadas/heidelberg-v1.png",
       "framingProfile": "heidelberg",
       "sources": [
@@ -6131,7 +6131,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 209,
       "batch": 52,
-      "conceptImage": "normalizadas/ginebra-v1.png",
+      "conceptImage": "transparentes/ginebra-v1.png",
       "originalConceptImage": "normalizadas/ginebra-v1.png",
       "framingProfile": "ginebra",
       "sources": [
@@ -6160,7 +6160,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 210,
       "batch": 52,
-      "conceptImage": "normalizadas/lucerna-v1.png",
+      "conceptImage": "transparentes/lucerna-v1.png",
       "originalConceptImage": "normalizadas/lucerna-v1.png",
       "framingProfile": "lucerna",
       "sources": [
@@ -6189,7 +6189,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 211,
       "batch": 53,
-      "conceptImage": "normalizadas/berna-v1.png",
+      "conceptImage": "transparentes/berna-v1.png",
       "originalConceptImage": "normalizadas/berna-v1.png",
       "framingProfile": "berna",
       "sources": [
@@ -6218,7 +6218,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 212,
       "batch": 53,
-      "conceptImage": "normalizadas/oslo-v1.png",
+      "conceptImage": "transparentes/oslo-v1.png",
       "originalConceptImage": "normalizadas/oslo-v1.png",
       "framingProfile": "oslo",
       "sources": [
@@ -6247,7 +6247,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 213,
       "batch": 53,
-      "conceptImage": "normalizadas/bergen-v1.png",
+      "conceptImage": "transparentes/bergen-v1.png",
       "originalConceptImage": "normalizadas/bergen-v1.png",
       "framingProfile": "bergen",
       "sources": [
@@ -6276,7 +6276,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 214,
       "batch": 53,
-      "conceptImage": "normalizadas/helsinki-v1.png",
+      "conceptImage": "transparentes/helsinki-v1.png",
       "originalConceptImage": "normalizadas/helsinki-v1.png",
       "framingProfile": "helsinki",
       "sources": [
@@ -6305,7 +6305,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 215,
       "batch": 54,
-      "conceptImage": "normalizadas/reikiavik-v1.png",
+      "conceptImage": "transparentes/reikiavik-v1.png",
       "originalConceptImage": "normalizadas/reikiavik-v1.png",
       "framingProfile": "reikiavik",
       "sources": [
@@ -6334,7 +6334,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 216,
       "batch": 54,
-      "conceptImage": "normalizadas/tallin-v1.png",
+      "conceptImage": "transparentes/tallin-v1.png",
       "originalConceptImage": "normalizadas/tallin-v1.png",
       "framingProfile": "tallin",
       "sources": [
@@ -6363,7 +6363,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 217,
       "batch": 54,
-      "conceptImage": "normalizadas/riga-v1.png",
+      "conceptImage": "transparentes/riga-v1.png",
       "originalConceptImage": "normalizadas/riga-v1.png",
       "framingProfile": "riga",
       "sources": [
@@ -6392,7 +6392,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 218,
       "batch": 54,
-      "conceptImage": "normalizadas/vilna-v1.png",
+      "conceptImage": "transparentes/vilna-v1.png",
       "originalConceptImage": "normalizadas/vilna-v1.png",
       "framingProfile": "vilna",
       "sources": [
@@ -6421,7 +6421,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 219,
       "batch": 55,
-      "conceptImage": "normalizadas/varsovia-v1.png",
+      "conceptImage": "transparentes/varsovia-v1.png",
       "originalConceptImage": "normalizadas/varsovia-v1.png",
       "framingProfile": "varsovia",
       "sources": [
@@ -6450,7 +6450,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 220,
       "batch": 55,
-      "conceptImage": "normalizadas/cracovia-v1.png",
+      "conceptImage": "transparentes/cracovia-v1.png",
       "originalConceptImage": "normalizadas/cracovia-v1.png",
       "framingProfile": "cracovia",
       "sources": [
@@ -6479,7 +6479,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 221,
       "batch": 55,
-      "conceptImage": "normalizadas/gdansk-v1.png",
+      "conceptImage": "transparentes/gdansk-v1.png",
       "originalConceptImage": "normalizadas/gdansk-v1.png",
       "framingProfile": "gdansk",
       "sources": [
@@ -6508,7 +6508,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 222,
       "batch": 55,
-      "conceptImage": "normalizadas/bucarest-v1.png",
+      "conceptImage": "transparentes/bucarest-v1.png",
       "originalConceptImage": "normalizadas/bucarest-v1.png",
       "framingProfile": "bucarest",
       "sources": [
@@ -6537,7 +6537,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 223,
       "batch": 56,
-      "conceptImage": "normalizadas/sofia-v1.png",
+      "conceptImage": "transparentes/sofia-v1.png",
       "originalConceptImage": "normalizadas/sofia-v1.png",
       "framingProfile": "sofia",
       "sources": [
@@ -6566,7 +6566,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 224,
       "batch": 56,
-      "conceptImage": "normalizadas/belgrado-v1.png",
+      "conceptImage": "transparentes/belgrado-v1.png",
       "originalConceptImage": "normalizadas/belgrado-v1.png",
       "framingProfile": "belgrado",
       "sources": [
@@ -6595,7 +6595,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 225,
       "batch": 56,
-      "conceptImage": "normalizadas/sarajevo-v1.png",
+      "conceptImage": "transparentes/sarajevo-v1.png",
       "originalConceptImage": "normalizadas/sarajevo-v1.png",
       "framingProfile": "sarajevo",
       "sources": [
@@ -6624,7 +6624,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 226,
       "batch": 56,
-      "conceptImage": "normalizadas/dubrovnik-v1.png",
+      "conceptImage": "transparentes/dubrovnik-v1.png",
       "originalConceptImage": "normalizadas/dubrovnik-v1.png",
       "framingProfile": "dubrovnik",
       "sources": [
@@ -6653,7 +6653,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 227,
       "batch": 57,
-      "conceptImage": "normalizadas/split-v1.png",
+      "conceptImage": "transparentes/split-v1.png",
       "originalConceptImage": "normalizadas/split-v1.png",
       "framingProfile": "split",
       "sources": [
@@ -6682,7 +6682,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 228,
       "batch": 57,
-      "conceptImage": "normalizadas/zagreb-v1.png",
+      "conceptImage": "transparentes/zagreb-v1.png",
       "originalConceptImage": "normalizadas/zagreb-v1.png",
       "framingProfile": "zagreb",
       "sources": [
@@ -6711,7 +6711,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 229,
       "batch": 57,
-      "conceptImage": "normalizadas/liubliana-v1.png",
+      "conceptImage": "transparentes/liubliana-v1.png",
       "originalConceptImage": "normalizadas/liubliana-v1.png",
       "framingProfile": "liubliana",
       "sources": [
@@ -6740,7 +6740,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 230,
       "batch": 57,
-      "conceptImage": "normalizadas/bratislava-v1.png",
+      "conceptImage": "transparentes/bratislava-v1.png",
       "originalConceptImage": "normalizadas/bratislava-v1.png",
       "framingProfile": "bratislava",
       "sources": [
@@ -6769,7 +6769,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 231,
       "batch": 58,
-      "conceptImage": "normalizadas/salzburgo-v1.png",
+      "conceptImage": "transparentes/salzburgo-v1.png",
       "originalConceptImage": "normalizadas/salzburgo-v1.png",
       "framingProfile": "salzburgo",
       "sources": [
@@ -6798,7 +6798,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 232,
       "batch": 58,
-      "conceptImage": "normalizadas/luxemburgo-v1.png",
+      "conceptImage": "transparentes/luxemburgo-v1.png",
       "originalConceptImage": "normalizadas/luxemburgo-v1.png",
       "framingProfile": "luxemburgo",
       "sources": [
@@ -6827,7 +6827,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 233,
       "batch": 58,
-      "conceptImage": "normalizadas/monaco-v1.png",
+      "conceptImage": "transparentes/monaco-v1.png",
       "originalConceptImage": "normalizadas/monaco-v1.png",
       "framingProfile": "monaco",
       "sources": [
@@ -6856,7 +6856,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 234,
       "batch": 58,
-      "conceptImage": "normalizadas/la-valeta-v2.png",
+      "conceptImage": "transparentes/la-valeta-v1.png",
       "originalConceptImage": "normalizadas/la-valeta-v1.png",
       "framingProfile": "la-valeta",
       "sources": [
@@ -6888,7 +6888,7 @@
       "landmarkStatus": "candidate",
       "productionOrder": 235,
       "batch": 59,
-      "conceptImage": "normalizadas/kyiv-v1.png",
+      "conceptImage": "transparentes/kyiv-v1.png",
       "originalConceptImage": "normalizadas/kyiv-v1.png",
       "framingProfile": "kyiv",
       "sources": [
@@ -6925,7 +6925,7 @@
       "batch": 60,
       "requestedPriority": true,
       "notes": "Ciudad histórica autorizada por el usuario; la respuesta usa el nombre del yacimiento, sin sustituirlo por la localidad moderna cercana.",
-      "conceptImage": "normalizadas/petra-v1.png",
+      "conceptImage": "transparentes/petra-v1.png",
       "originalConceptImage": "normalizadas/petra-v1.png",
       "framingProfile": "petra"
     },
@@ -6955,7 +6955,7 @@
       "batch": 60,
       "requestedPriority": true,
       "notes": "Ciudad histórica autorizada por el usuario; la respuesta usa el nombre del yacimiento, sin sustituirlo por la localidad moderna cercana.",
-      "conceptImage": "normalizadas/chichen-itza-v1.png",
+      "conceptImage": "transparentes/chichen-itza-v1.png",
       "originalConceptImage": "normalizadas/chichen-itza-v1.png",
       "framingProfile": "chichen-itza"
     },
@@ -6985,7 +6985,7 @@
       "batch": 61,
       "requestedPriority": true,
       "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
-      "conceptImage": "normalizadas/pompeya-v1.png",
+      "conceptImage": "transparentes/pompeya-v1.png",
       "originalConceptImage": "normalizadas/pompeya-v1.png",
       "framingProfile": "pompeya"
     },
@@ -7016,7 +7016,7 @@
       "batch": 61,
       "requestedPriority": true,
       "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
-      "conceptImage": "normalizadas/teotihuacan-v1.png",
+      "conceptImage": "transparentes/teotihuacan-v1.png",
       "originalConceptImage": "normalizadas/teotihuacan-v1.png",
       "framingProfile": "teotihuacan"
     },
@@ -7046,7 +7046,7 @@
       "batch": 61,
       "requestedPriority": true,
       "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
-      "conceptImage": "normalizadas/tikal-v1.png",
+      "conceptImage": "transparentes/tikal-v1.png",
       "originalConceptImage": "normalizadas/tikal-v1.png",
       "framingProfile": "tikal"
     },
@@ -7077,7 +7077,7 @@
       "batch": 61,
       "requestedPriority": true,
       "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
-      "conceptImage": "normalizadas/efeso-v1.png",
+      "conceptImage": "transparentes/efeso-v1.png",
       "originalConceptImage": "normalizadas/efeso-v1.png",
       "framingProfile": "efeso"
     },
@@ -7107,7 +7107,7 @@
       "batch": 62,
       "requestedPriority": true,
       "notes": "Antigua ciudad autorizada por el usuario; usar el nombre del yacimiento y mantener sus rasgos reconocibles, sin duplicar la localidad moderna cercana.",
-      "conceptImage": "normalizadas/persepolis-v1.png",
+      "conceptImage": "transparentes/persepolis-v1.png",
       "originalConceptImage": "normalizadas/persepolis-v1.png",
       "framingProfile": "persepolis"
     },
@@ -7138,7 +7138,7 @@
       "batch": 63,
       "requestedPriority": true,
       "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
-      "conceptImage": "normalizadas/sintra-v1.png",
+      "conceptImage": "transparentes/sintra-v1.png",
       "originalConceptImage": "normalizadas/sintra-v1.png",
       "framingProfile": "sintra"
     },
@@ -7168,7 +7168,7 @@
       "batch": 63,
       "requestedPriority": true,
       "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
-      "conceptImage": "normalizadas/bagan-v1.png",
+      "conceptImage": "transparentes/bagan-v1.png",
       "originalConceptImage": "normalizadas/bagan-v1.png",
       "framingProfile": "bagan"
     },
@@ -7199,7 +7199,7 @@
       "batch": 63,
       "requestedPriority": true,
       "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
-      "conceptImage": "normalizadas/san-miguel-de-allende-v1.png",
+      "conceptImage": "transparentes/san-miguel-de-allende-v1.png",
       "originalConceptImage": "normalizadas/san-miguel-de-allende-v1.png",
       "framingProfile": "san-miguel-de-allende"
     },
@@ -7231,7 +7231,7 @@
       "batch": 63,
       "requestedPriority": true,
       "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos. La imagen representa el casco histórico de Stone Town; la respuesta usa Zanzíbar, no la isla como conjunto.",
-      "conceptImage": "normalizadas/zanzibar-v1.png",
+      "conceptImage": "transparentes/zanzibar-v1.png",
       "originalConceptImage": "normalizadas/zanzibar-v1.png",
       "framingProfile": "zanzibar"
     },
@@ -7261,7 +7261,7 @@
       "batch": 64,
       "requestedPriority": true,
       "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
-      "conceptImage": "normalizadas/carcasona-v1.png",
+      "conceptImage": "transparentes/carcasona-v1.png",
       "originalConceptImage": "normalizadas/carcasona-v1.png",
       "framingProfile": "carcasona"
     },
@@ -7291,7 +7291,7 @@
       "batch": 64,
       "requestedPriority": true,
       "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
-      "conceptImage": "normalizadas/luang-prabang-v1.png",
+      "conceptImage": "transparentes/luang-prabang-v1.png",
       "originalConceptImage": "normalizadas/luang-prabang-v1.png",
       "framingProfile": "luang-prabang"
     },
@@ -7322,7 +7322,7 @@
       "batch": 64,
       "requestedPriority": true,
       "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
-      "conceptImage": "normalizadas/jiva-v1.png",
+      "conceptImage": "transparentes/jiva-v1.png",
       "originalConceptImage": "normalizadas/jiva-v1.png",
       "framingProfile": "jiva"
     },
@@ -7352,7 +7352,7 @@
       "batch": 64,
       "requestedPriority": true,
       "notes": "Incorporación autorizada para cerrar el catálogo de esta versión en 250 destinos.",
-      "conceptImage": "normalizadas/lalibela-v1.png",
+      "conceptImage": "transparentes/lalibela-v1.png",
       "originalConceptImage": "normalizadas/lalibela-v1.png",
       "framingProfile": "lalibela"
     }

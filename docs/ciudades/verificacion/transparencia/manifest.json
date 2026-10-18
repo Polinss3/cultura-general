@@ -1,0 +1,3255 @@
+{
+  "version": 1,
+  "images": [
+    {
+      "id": "madrid",
+      "source": "normalizadas/madrid-v3.png",
+      "file": "transparentes/madrid-v1.png",
+      "sourceSha256": "239d62120e987424b3e8e2dd925ac41c5e0fd4383694c0249cbb252e2564abdd",
+      "coverage": 0.38651,
+      "bounds": [
+        31,
+        222,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "barcelona",
+      "source": "normalizadas/barcelona-v2.png",
+      "file": "transparentes/barcelona-v1.png",
+      "sourceSha256": "df32ea99534e80a174417fbecb7c397a34ce24dcc6ac65de5c403e0fd6dfac20",
+      "coverage": 0.37592,
+      "bounds": [
+        31,
+        198,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "roma",
+      "source": "normalizadas/roma-v2.png",
+      "file": "transparentes/roma-v1.png",
+      "sourceSha256": "9e103e0cd1cb1456dce831324b173964d3dc65debf39c8027ef36c2d6967f739",
+      "coverage": 0.3826,
+      "bounds": [
+        31,
+        336,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "paris",
+      "source": "normalizadas/paris-v2.png",
+      "file": "transparentes/paris-v1.png",
+      "sourceSha256": "0617794639142153033111d65cb848d4a52412ad423addd360b424864d82cd66",
+      "coverage": 0.35392,
+      "bounds": [
+        32,
+        291,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "nueva-york",
+      "source": "normalizadas/nueva-york-v2.png",
+      "file": "transparentes/nueva-york-v1.png",
+      "sourceSha256": "e3aff808d91139187b9918bd9cb8c7cff6bf0e3526cb3f6ef144ae84170e4f11",
+      "coverage": 0.37743,
+      "bounds": [
+        32,
+        161,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "tokio",
+      "source": "normalizadas/tokio-v2.png",
+      "file": "transparentes/tokio-v1.png",
+      "sourceSha256": "1b2713cfab865b3988560a27db27df93155f0ce3e616f8aca768241287a8478e",
+      "coverage": 0.36194,
+      "bounds": [
+        31,
+        76,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "venecia",
+      "source": "normalizadas/venecia-v1.png",
+      "file": "transparentes/venecia-v1.png",
+      "sourceSha256": "b257a264482dac452337e238225f360525bad237dee856c047b75f0bb9facff0",
+      "coverage": 0.39083,
+      "bounds": [
+        32,
+        159,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "amsterdam",
+      "source": "normalizadas/amsterdam-v1.png",
+      "file": "transparentes/amsterdam-v1.png",
+      "sourceSha256": "98c0afe4b1a7109a20f75e0e8d012a98ad1c7560ad803781dd741eb870617ffe",
+      "coverage": 0.39762,
+      "bounds": [
+        32,
+        155,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "londres",
+      "source": "normalizadas/londres-v1.png",
+      "file": "transparentes/londres-v1.png",
+      "sourceSha256": "11c6f991cf3bbba10dc88531f1cb6a8f84eb77477963b7107b548da74fa4d74e",
+      "coverage": 0.39126,
+      "bounds": [
+        32,
+        162,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "berlin",
+      "source": "normalizadas/berlin-v1.png",
+      "file": "transparentes/berlin-v1.png",
+      "sourceSha256": "68b4fda8833d36abf0ffe8ff659f504df13c21dbe0e7806a4c1e5d2c65bf4ef7",
+      "coverage": 0.34858,
+      "bounds": [
+        32,
+        110,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "dublin",
+      "source": "normalizadas/dublin-v1.png",
+      "file": "transparentes/dublin-v1.png",
+      "sourceSha256": "886ab0097338ef967a2375041527646b222baff5aea916f686e9f01344ff8cd7",
+      "coverage": 0.39265,
+      "bounds": [
+        32,
+        86,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "edimburgo",
+      "source": "normalizadas/edimburgo-v1.png",
+      "file": "transparentes/edimburgo-v1.png",
+      "sourceSha256": "cbb3dab9b196b2ff97e331cd762799062f2ed05ca6e51b0715ca2e7721313e98",
+      "coverage": 0.39834,
+      "bounds": [
+        31,
+        327,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "moscu",
+      "source": "normalizadas/moscu-v1.png",
+      "file": "transparentes/moscu-v1.png",
+      "sourceSha256": "204931e9fe23ef8c076f0402e1f6520a5dcd6c9a9c4c225e543a37962fe9e51f",
+      "coverage": 0.42497,
+      "bounds": [
+        32,
+        191,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "san-petersburgo",
+      "source": "normalizadas/san-petersburgo-v1.png",
+      "file": "transparentes/san-petersburgo-v1.png",
+      "sourceSha256": "5f3169a299ae811de7a26087945e8b6acbbfaea059b6ee5be823fa6ab205c64c",
+      "coverage": 0.36988,
+      "bounds": [
+        31,
+        199,
+        1224,
+        1040
+      ]
+    },
+    {
+      "id": "hong-kong",
+      "source": "normalizadas/hong-kong-v1.png",
+      "file": "transparentes/hong-kong-v1.png",
+      "sourceSha256": "de87561488f03a6b2567688b41f10aab37672681a90122ca60c4695e1292db92",
+      "coverage": 0.37055,
+      "bounds": [
+        32,
+        202,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "sidney",
+      "source": "normalizadas/sidney-v1.png",
+      "file": "transparentes/sidney-v1.png",
+      "sourceSha256": "5760ffa5454cd4ffce1bcf0771178fc3cdba083bcd1cab394d4c9220b1133f0d",
+      "coverage": 0.37434,
+      "bounds": [
+        32,
+        148,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "washington",
+      "source": "normalizadas/washington-v1.png",
+      "file": "transparentes/washington-v1.png",
+      "sourceSha256": "f910b84c64277b84c2845b614aeab75dcec6affc99097c92c9c87b8d75aad2bc",
+      "coverage": 0.33937,
+      "bounds": [
+        32,
+        288,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "ciudad-de-mexico",
+      "source": "normalizadas/ciudad-de-mexico-v1.png",
+      "file": "transparentes/ciudad-de-mexico-v1.png",
+      "sourceSha256": "67b3a5c27287012943fa2d91001abb8421b4ee2fe120fcb8171385702efbde72",
+      "coverage": 0.37909,
+      "bounds": [
+        31,
+        243,
+        1224,
+        1040
+      ]
+    },
+    {
+      "id": "el-cairo",
+      "source": "normalizadas/el-cairo-v1.png",
+      "file": "transparentes/el-cairo-v1.png",
+      "sourceSha256": "a6ba89e673b2f0dfeacc0133e5377f45da5e20bc4774a5e55c51484587157c00",
+      "coverage": 0.38874,
+      "bounds": [
+        32,
+        177,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "machu-picchu",
+      "source": "normalizadas/machu-picchu-v1.png",
+      "file": "transparentes/machu-picchu-v1.png",
+      "sourceSha256": "f03cdb55ea582f462cabb608f7bf9a996ff8e2f1798b62ca3297cc2fa6cd6eea",
+      "coverage": 0.38945,
+      "bounds": [
+        31,
+        217,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "lisboa",
+      "source": "normalizadas/lisboa-v1.png",
+      "file": "transparentes/lisboa-v1.png",
+      "sourceSha256": "43078a519ecd442e481e40761ac27733489bac7ed208b30fcf86cc8467c2b2b1",
+      "coverage": 0.43959,
+      "bounds": [
+        32,
+        224,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "buenos-aires",
+      "source": "normalizadas/buenos-aires-v1.png",
+      "file": "transparentes/buenos-aires-v1.png",
+      "sourceSha256": "42d5b81befc298917a805a6b8391a94537688578b869d7bb0efea61e54173d14",
+      "coverage": 0.37435,
+      "bounds": [
+        31,
+        214,
+        1224,
+        1040
+      ]
+    },
+    {
+      "id": "viena",
+      "source": "normalizadas/viena-v1.png",
+      "file": "transparentes/viena-v1.png",
+      "sourceSha256": "0c031f8b9cba13c2a07a490f39688b72f6fc59a904303fad100167ec47d6cf5d",
+      "coverage": 0.34922,
+      "bounds": [
+        32,
+        367,
+        1223,
+        1043
+      ]
+    },
+    {
+      "id": "san-francisco",
+      "source": "normalizadas/san-francisco-v1.png",
+      "file": "transparentes/san-francisco-v1.png",
+      "sourceSha256": "a2cbe9b1c527b43b91b54e57c9e88550e4d7795beb802ce45bb917c52d0e162e",
+      "coverage": 0.37572,
+      "bounds": [
+        32,
+        323,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "singapur",
+      "source": "normalizadas/singapur-v1.png",
+      "file": "transparentes/singapur-v1.png",
+      "sourceSha256": "9bc52b981a022b6583a3e004bf0dcae32345a9e6d6ca815f216cb6f6ee0d2f96",
+      "coverage": 0.38927,
+      "bounds": [
+        32,
+        252,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "marrakech",
+      "source": "normalizadas/marrakech-v1.png",
+      "file": "transparentes/marrakech-v1.png",
+      "sourceSha256": "bb46fee632986019dbc24cb8cda6383e8dbf041bb130a241ea74c316aaa8010a",
+      "coverage": 0.37421,
+      "bounds": [
+        30,
+        273,
+        1224,
+        1036
+      ]
+    },
+    {
+      "id": "melbourne",
+      "source": "normalizadas/melbourne-v1.png",
+      "file": "transparentes/melbourne-v1.png",
+      "sourceSha256": "ca8cd3a56359cdf6b510deb961f5e1f0a424aa3e381dd57f438bbe2e3f914008",
+      "coverage": 0.35964,
+      "bounds": [
+        32,
+        161,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "praga",
+      "source": "normalizadas/praga-v1.png",
+      "file": "transparentes/praga-v1.png",
+      "sourceSha256": "d19f7c3e58ecdf56be9c3a473f9ec4f3da237e37c6203e384b8a9660fb840a7f",
+      "coverage": 0.44066,
+      "bounds": [
+        31,
+        126,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "los-angeles",
+      "source": "normalizadas/los-angeles-v1.png",
+      "file": "transparentes/los-angeles-v1.png",
+      "sourceSha256": "9923124e93e5688256a226b4d4e64837b4dd7d132d19415a7a054f44bac29b1a",
+      "coverage": 0.35204,
+      "bounds": [
+        32,
+        334,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "pekin",
+      "source": "normalizadas/pekin-v1.png",
+      "file": "transparentes/pekin-v1.png",
+      "sourceSha256": "ead5b45fb2596ca64f52099544597f74a4ba4c1bc20596b832681081918e6a3d",
+      "coverage": 0.34305,
+      "bounds": [
+        31,
+        399,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "ciudad-del-cabo",
+      "source": "normalizadas/ciudad-del-cabo-v1.png",
+      "file": "transparentes/ciudad-del-cabo-v1.png",
+      "sourceSha256": "3d4518954d1183ddfca779afb27884a022a401226e02fbe1f87d9cb8dbe1c73f",
+      "coverage": 0.41563,
+      "bounds": [
+        31,
+        273,
+        1225,
+        1031
+      ]
+    },
+    {
+      "id": "chicago",
+      "source": "normalizadas/chicago-v1.png",
+      "file": "transparentes/chicago-v1.png",
+      "sourceSha256": "44f64e08163031785eed84857f7039c6a1403238670ee27e677e799cac0e5f89",
+      "coverage": 0.38291,
+      "bounds": [
+        32,
+        107,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "shanghai",
+      "source": "normalizadas/shanghai-v1.png",
+      "file": "transparentes/shanghai-v1.png",
+      "sourceSha256": "25bca99d57e5183b82767cf6c4a7e36c828b300a9b737e99686559f0a6e32296",
+      "coverage": 0.35866,
+      "bounds": [
+        32,
+        145,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "nairobi",
+      "source": "normalizadas/nairobi-v1.png",
+      "file": "transparentes/nairobi-v1.png",
+      "sourceSha256": "043a8f69edab9cb6023d15962f35d568adfb6885f2346fd32054f047038d1d1b",
+      "coverage": 0.3864,
+      "bounds": [
+        31,
+        201,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "wellington",
+      "source": "normalizadas/wellington-v1.png",
+      "file": "transparentes/wellington-v1.png",
+      "sourceSha256": "bb7369511922fcb6f81f6ca7fca1aefe44bc1ee20efd12e0be8bdc5cd6b283a1",
+      "coverage": 0.40731,
+      "bounds": [
+        32,
+        274,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "estambul",
+      "source": "normalizadas/estambul-v1.png",
+      "file": "transparentes/estambul-v1.png",
+      "sourceSha256": "2c2d4d9f0faf9fe505c9afa66552b7bdf4b31b3d4ae10e2091f4c8bb76ba09f5",
+      "coverage": 0.37182,
+      "bounds": [
+        32,
+        281,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "atenas",
+      "source": "normalizadas/atenas-v1.png",
+      "file": "transparentes/atenas-v1.png",
+      "sourceSha256": "e381868576ea9e0f6442fd0867d608dd6b3b5cb6057be002c763ee9964728a1e",
+      "coverage": 0.35005,
+      "bounds": [
+        32,
+        352,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "auckland",
+      "source": "normalizadas/auckland-v1.png",
+      "file": "transparentes/auckland-v1.png",
+      "sourceSha256": "4d443c29e592c3838d6ec6b1dfbaf1a4e780ab51af4de5f54b239611cc29ce75",
+      "coverage": 0.36159,
+      "bounds": [
+        32,
+        139,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "rio-de-janeiro",
+      "source": "normalizadas/rio-de-janeiro-v1.png",
+      "file": "transparentes/rio-de-janeiro-v1.png",
+      "sourceSha256": "e365b0b0a3826f2f0baea13d64ccbb8fb32ee61a86d2b8ffd75db040a2413f15",
+      "coverage": 0.37706,
+      "bounds": [
+        32,
+        270,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "seul",
+      "source": "normalizadas/seul-v1.png",
+      "file": "transparentes/seul-v1.png",
+      "sourceSha256": "228de9fe850c3ced04538819750d1dfd39d63c5f8fef4d29fe0db013ca15d3c6",
+      "coverage": 0.35294,
+      "bounds": [
+        32,
+        180,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "brisbane",
+      "source": "normalizadas/brisbane-v1.png",
+      "file": "transparentes/brisbane-v1.png",
+      "sourceSha256": "6cdbfb87a87ec446d68f894d521f5deea4461ab6b316c70aa95355448628a8ec",
+      "coverage": 0.37721,
+      "bounds": [
+        32,
+        290,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "tunez",
+      "source": "normalizadas/tunez-v1.png",
+      "file": "transparentes/tunez-v1.png",
+      "sourceSha256": "a537e4ae0462bd02a3aace3022b4114b620180678f76f55992a5d4f1cc5089ca",
+      "coverage": 0.34524,
+      "bounds": [
+        32,
+        349,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "budapest",
+      "source": "normalizadas/budapest-v1.png",
+      "file": "transparentes/budapest-v1.png",
+      "sourceSha256": "722b21cda3953ae2a181f1c6a370e5eb2ee9c5d4afedeb4c3f9c32b0d934c5aa",
+      "coverage": 0.37798,
+      "bounds": [
+        31,
+        264,
+        1223,
+        1034
+      ]
+    },
+    {
+      "id": "toronto",
+      "source": "normalizadas/toronto-v1.png",
+      "file": "transparentes/toronto-v1.png",
+      "sourceSha256": "301fc28981bff020a48af3b54a10f7b8194a2c16fcac5c3fa0ca18ca18f16f75",
+      "coverage": 0.35408,
+      "bounds": [
+        31,
+        136,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "bangkok",
+      "source": "normalizadas/bangkok-v1.png",
+      "file": "transparentes/bangkok-v1.png",
+      "sourceSha256": "3219c1163e06e0a00760be92cfe8cc52a2c93b1d9cbdd0746e638c6651c9da5b",
+      "coverage": 0.34098,
+      "bounds": [
+        31,
+        346,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "dakar",
+      "source": "normalizadas/dakar-v1.png",
+      "file": "transparentes/dakar-v1.png",
+      "sourceSha256": "f64583a6b5aab2fdbe6481deb28c5b90c0ffeb6a85fca00d945ac2e438bfcbd1",
+      "coverage": 0.3697,
+      "bounds": [
+        32,
+        207,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "perth",
+      "source": "normalizadas/perth-v1.png",
+      "file": "transparentes/perth-v1.png",
+      "sourceSha256": "2624a8daf18c62296b1e3459dc9b66492fcf06e053300441203a53fa3a87bb95",
+      "coverage": 0.34411,
+      "bounds": [
+        31,
+        282,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "florencia",
+      "source": "normalizadas/florencia-v1.png",
+      "file": "transparentes/florencia-v1.png",
+      "sourceSha256": "7b42af393e790ec6c53ec5eb23b962ba9f629f12fbede5801641823b3400a128",
+      "coverage": 0.36965,
+      "bounds": [
+        32,
+        223,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "la-habana",
+      "source": "normalizadas/la-habana-v1.png",
+      "file": "transparentes/la-habana-v1.png",
+      "sourceSha256": "6e7ea9682ff3a0c9064915a25c8b997c8645407a9e7b952f1810639d957cc81c",
+      "coverage": 0.3513,
+      "bounds": [
+        32,
+        332,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "dubai",
+      "source": "normalizadas/dubai-v1.png",
+      "file": "transparentes/dubai-v1.png",
+      "sourceSha256": "bad10c38c4c1bd0e07336179b4ae23ef91cff0037f99dd9b49e409f9e715c10e",
+      "coverage": 0.36108,
+      "bounds": [
+        32,
+        113,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "casablanca",
+      "source": "normalizadas/casablanca-v1.png",
+      "file": "transparentes/casablanca-v1.png",
+      "sourceSha256": "e7aa972e26cbafa88b52b7ff77b44986a0e5360ecae9108a0c3e9438080a3f47",
+      "coverage": 0.35589,
+      "bounds": [
+        31,
+        168,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "zurich",
+      "source": "normalizadas/zurich-v1.png",
+      "file": "transparentes/zurich-v1.png",
+      "sourceSha256": "6bfebc91f28fdacb1bf18bab23263eb3b6a36e82b6a1e2d251e18b704411d167",
+      "coverage": 0.38299,
+      "bounds": [
+        36,
+        214,
+        1224,
+        1049
+      ]
+    },
+    {
+      "id": "boston",
+      "source": "normalizadas/boston-v1.png",
+      "file": "transparentes/boston-v1.png",
+      "sourceSha256": "b72b17f662d2df6cf6e7d2c6e56a6cda9bd1703fb8749c15198e294a4b2ea6ff",
+      "coverage": 0.39017,
+      "bounds": [
+        32,
+        216,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "adelaida",
+      "source": "normalizadas/adelaida-v1.png",
+      "file": "transparentes/adelaida-v1.png",
+      "sourceSha256": "204de19ac013c48511f4c254f0e3d721ec811039a0762ecd122304b257fce55b",
+      "coverage": 0.33972,
+      "bounds": [
+        32,
+        400,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "delhi",
+      "source": "normalizadas/delhi-v1.png",
+      "file": "transparentes/delhi-v1.png",
+      "sourceSha256": "8c8858badf3543a6c616728b5133b216decd1869f8bc97f237b0d97c69fea023",
+      "coverage": 0.38012,
+      "bounds": [
+        31,
+        324,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "canberra",
+      "source": "normalizadas/canberra-v1.png",
+      "file": "transparentes/canberra-v1.png",
+      "sourceSha256": "7b2d3f38f678abdb69ee37c7567fd786e68051a3fe6fd26f46c0f376ddd02ec9",
+      "coverage": 0.3588,
+      "bounds": [
+        32,
+        214,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "estocolmo",
+      "source": "normalizadas/estocolmo-v1.png",
+      "file": "transparentes/estocolmo-v1.png",
+      "sourceSha256": "35de55c1ddba6a76d614542443a9750f9e57344a2a8e6fc1e34fec0890eae5e4",
+      "coverage": 0.33928,
+      "bounds": [
+        31,
+        400,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "rabat",
+      "source": "normalizadas/rabat-v1.png",
+      "file": "transparentes/rabat-v1.png",
+      "sourceSha256": "144d10f2ade978e1eaddddd97904f2289bce9b6b03c9df8cf8e061c53c60980c",
+      "coverage": 0.34807,
+      "bounds": [
+        32,
+        335,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "miami",
+      "source": "normalizadas/miami-v1.png",
+      "file": "transparentes/miami-v1.png",
+      "sourceSha256": "ad5857b5c06ebd7a8b533b708c0c3e64f6e94d862621c5bdc94ae604d10a8076",
+      "coverage": 0.363,
+      "bounds": [
+        32,
+        260,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "mumbai",
+      "source": "normalizadas/mumbai-v1.png",
+      "file": "transparentes/mumbai-v1.png",
+      "sourceSha256": "4d8ffc6d0c9a5f7ef89d5b8d016424db4209e43cf361fe05ced0c15e92964181",
+      "coverage": 0.359,
+      "bounds": [
+        31,
+        311,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "fez",
+      "source": "normalizadas/fez-v1.png",
+      "file": "transparentes/fez-v1.png",
+      "sourceSha256": "01ee700b18f17c1cb036df1042ac1924923266cd55b097593c90fe4de80651ca",
+      "coverage": 0.37897,
+      "bounds": [
+        32,
+        307,
+        1224,
+        1045
+      ]
+    },
+    {
+      "id": "christchurch",
+      "source": "normalizadas/christchurch-v1.png",
+      "file": "transparentes/christchurch-v1.png",
+      "sourceSha256": "ff3f1a1a1dfad0362c34dd5bf4833008d8d44e4cfabfbf0efb820ae2e2c880c7",
+      "coverage": 0.3835,
+      "bounds": [
+        32,
+        273,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "las-vegas",
+      "source": "normalizadas/las-vegas-v1.png",
+      "file": "transparentes/las-vegas-v1.png",
+      "sourceSha256": "86aa8be740a79c757a04b5626e475a5ee4094daf28a18ee1cd2e63517cfca231",
+      "coverage": 0.41115,
+      "bounds": [
+        32,
+        190,
+        1223,
+        1043
+      ]
+    },
+    {
+      "id": "kioto",
+      "source": "normalizadas/kioto-v1.png",
+      "file": "transparentes/kioto-v1.png",
+      "sourceSha256": "7789dd5964ed4c73f06d92271516a17d2593978881440a9751141aff2b715763",
+      "coverage": 0.38172,
+      "bounds": [
+        31,
+        341,
+        1223,
+        1052
+      ]
+    },
+    {
+      "id": "sevilla",
+      "source": "normalizadas/sevilla-v1.png",
+      "file": "transparentes/sevilla-v1.png",
+      "sourceSha256": "816bff758151531da5e7d3adf4f6773113098d1120539e4edca681f96c00d513",
+      "coverage": 0.37783,
+      "bounds": [
+        32,
+        182,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "osaka",
+      "source": "normalizadas/osaka-v1.png",
+      "file": "transparentes/osaka-v1.png",
+      "sourceSha256": "d2c27402fece2701bf2681d7aeb5051f273eb2351045d6a4c6bcce60c526972f",
+      "coverage": 0.39193,
+      "bounds": [
+        32,
+        265,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "san-diego",
+      "source": "normalizadas/san-diego-v1.png",
+      "file": "transparentes/san-diego-v1.png",
+      "sourceSha256": "ce3d7c4bc59611b8fa7922886df5abb5d65d7d6e7c0d51992c77f590be33a087",
+      "coverage": 0.34555,
+      "bounds": [
+        31,
+        290,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "yokohama",
+      "source": "normalizadas/yokohama-v1.png",
+      "file": "transparentes/yokohama-v1.png",
+      "sourceSha256": "33f92f8b8b45961c66f296175783a06472e385c32551da1313aa1def43cffba6",
+      "coverage": 0.36137,
+      "bounds": [
+        32,
+        220,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "asuan",
+      "source": "normalizadas/asuan-v1.png",
+      "file": "transparentes/asuan-v1.png",
+      "sourceSha256": "e214fcdb1dfc686636d3da16e491ab647e10c7ce5af4e04bf26332a74cb0e501",
+      "coverage": 0.34269,
+      "bounds": [
+        31,
+        399,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "bilbao",
+      "source": "normalizadas/bilbao-v1.png",
+      "file": "transparentes/bilbao-v1.png",
+      "sourceSha256": "a4bc547562ce661e50c7aca56cfcd06d14ff62586a14d0002a7fad160ac55430",
+      "coverage": 0.35329,
+      "bounds": [
+        31,
+        385,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "honolulu",
+      "source": "normalizadas/honolulu-v1.png",
+      "file": "transparentes/honolulu-v1.png",
+      "sourceSha256": "7fac2ccc69d64b42ba7580efcf5da3d7d6d2ad8fe9e27f78b936021e62251fca",
+      "coverage": 0.36077,
+      "bounds": [
+        31,
+        371,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "nagasaki",
+      "source": "normalizadas/nagasaki-v1.png",
+      "file": "transparentes/nagasaki-v1.png",
+      "sourceSha256": "8dd43ec2522a7a66e6198d2a49838b3d33352b77ebae5a2ee9c901a1f218deb4",
+      "coverage": 0.36769,
+      "bounds": [
+        31,
+        266,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "guiza",
+      "source": "normalizadas/guiza-v1.png",
+      "file": "transparentes/guiza-v1.png",
+      "sourceSha256": "fdcd5e8a752ea050ae908da45088609c4fdb62afe7be5a5222c0bfaf2174a1dc",
+      "coverage": 0.34037,
+      "bounds": [
+        32,
+        354,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "atlanta",
+      "source": "normalizadas/atlanta-v1.png",
+      "file": "transparentes/atlanta-v1.png",
+      "sourceSha256": "c0a19ba33df54d1424c2344f387e29ed9f687afee35f52365cc0c0aa98aca0d9",
+      "coverage": 0.37094,
+      "bounds": [
+        31,
+        110,
+        1224,
+        1040
+      ]
+    },
+    {
+      "id": "macao",
+      "source": "normalizadas/macao-v1.png",
+      "file": "transparentes/macao-v1.png",
+      "sourceSha256": "4280075ac016d1eff40188f779bc565ebe8a05bcc0801333f131e9fdec2f50fb",
+      "coverage": 0.368,
+      "bounds": [
+        32,
+        183,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "johannesburgo",
+      "source": "normalizadas/johannesburgo-v1.png",
+      "file": "transparentes/johannesburgo-v1.png",
+      "sourceSha256": "10cd6473804c39a89a4a51b7c4f97640015258213605afadf22e457b3f74bf64",
+      "coverage": 0.34443,
+      "bounds": [
+        32,
+        199,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "copenhague",
+      "source": "normalizadas/copenhague-v1.png",
+      "file": "transparentes/copenhague-v1.png",
+      "sourceSha256": "ff099218f1dcfdbba3ce13acb601282327de0157b7be67604412af285119734d",
+      "coverage": 0.35532,
+      "bounds": [
+        32,
+        245,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "chefchaouen",
+      "source": "normalizadas/chefchaouen-v1.png",
+      "file": "transparentes/chefchaouen-v1.png",
+      "sourceSha256": "d6af0b32216fb448bffa3844174f44233bb8c3767faaf12468842f0dfd6c2775",
+      "coverage": 0.36863,
+      "bounds": [
+        32,
+        307,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "nueva-orleans",
+      "source": "normalizadas/nueva-orleans-v1.png",
+      "file": "transparentes/nueva-orleans-v1.png",
+      "sourceSha256": "f65de3db4f61f13413e7c28fdf7f755f735c327ac5f3576670f33e50bb508f08",
+      "coverage": 0.3723,
+      "bounds": [
+        32,
+        211,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "argel",
+      "source": "normalizadas/argel-v1.png",
+      "file": "transparentes/argel-v1.png",
+      "sourceSha256": "e2737d72ef05de1ea730639d6fe66793e9aae4c93c6e37f5ad754d45be312699",
+      "coverage": 0.3621,
+      "bounds": [
+        32,
+        246,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "seattle",
+      "source": "normalizadas/seattle-v1.png",
+      "file": "transparentes/seattle-v1.png",
+      "sourceSha256": "b7a9af5bb53335d54e46df585441afd8c460dcf6760d714b3dabef37fed7a86c",
+      "coverage": 0.36992,
+      "bounds": [
+        32,
+        166,
+        1222,
+        1041
+      ]
+    },
+    {
+      "id": "hiroshima",
+      "source": "normalizadas/hiroshima-v1.png",
+      "file": "transparentes/hiroshima-v1.png",
+      "sourceSha256": "8f7ebb7bcc7ab93a9e84a6af877b8ed66ac514ad4738e063bfd904acd0a1e007",
+      "coverage": 0.36903,
+      "bounds": [
+        31,
+        301,
+        1224,
+        1045
+      ]
+    },
+    {
+      "id": "papeete",
+      "source": "normalizadas/papeete-v1.png",
+      "file": "transparentes/papeete-v1.png",
+      "sourceSha256": "8f1f5fac9dd7e158099bcec9b5f0d7b2de66328b3dbe724493724c17475405fb",
+      "coverage": 0.34554,
+      "bounds": [
+        32,
+        348,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "filadelfia",
+      "source": "normalizadas/filadelfia-v1.png",
+      "file": "transparentes/filadelfia-v1.png",
+      "sourceSha256": "a281c50948ee86fcd540cbb3fb940b6ae08bf591e0e1964689a6d3b9a2b622c0",
+      "coverage": 0.38098,
+      "bounds": [
+        32,
+        163,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "nara",
+      "source": "normalizadas/nara-v1.png",
+      "file": "transparentes/nara-v1.png",
+      "sourceSha256": "353b220cb61c83593f4cb09f653ef1d01b639c8ab20b348bfcdfbf0f59555491",
+      "coverage": 0.3889,
+      "bounds": [
+        31,
+        315,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "luxor",
+      "source": "normalizadas/luxor-v1.png",
+      "file": "transparentes/luxor-v1.png",
+      "sourceSha256": "7c7682c9ec34d59370da367988ad6f0ca5feaf45920aa791c35cb496199b5a64",
+      "coverage": 0.37374,
+      "bounds": [
+        32,
+        348,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "houston",
+      "source": "normalizadas/houston-v1.png",
+      "file": "transparentes/houston-v1.png",
+      "sourceSha256": "75a99b9689c80a5e72e8c0a87a9678bd07041c6fb39a40686940e2fecc620e6c",
+      "coverage": 0.36476,
+      "bounds": [
+        32,
+        242,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "xian",
+      "source": "normalizadas/xian-v1.png",
+      "file": "transparentes/xian-v1.png",
+      "sourceSha256": "1c3f96bdc1047c2de9b4279dfb9db3c1ee6ceb274472da94dc55ffde53be0a47",
+      "coverage": 0.37724,
+      "bounds": [
+        33,
+        275,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "toledo",
+      "source": "normalizadas/toledo-v1.png",
+      "file": "transparentes/toledo-v1.png",
+      "sourceSha256": "a8cb225763bef41770eb103962d28a18070b1dcf6100d4a4a4b0df474e3d6417",
+      "coverage": 0.35673,
+      "bounds": [
+        32,
+        295,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "san-antonio",
+      "source": "normalizadas/san-antonio-v1.png",
+      "file": "transparentes/san-antonio-v1.png",
+      "sourceSha256": "d106fd607feef39584448e0b289ff8beb61b709bee337cdec69b31a503df8f99",
+      "coverage": 0.35997,
+      "bounds": [
+        32,
+        125,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "chengdu",
+      "source": "normalizadas/chengdu-v1.png",
+      "file": "transparentes/chengdu-v1.png",
+      "sourceSha256": "794ebc4df19d1660eac6c4af064c9f3ca1b745e8130bdb838bd5f6591aba7f23",
+      "coverage": 0.34623,
+      "bounds": [
+        32,
+        151,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "adis-abeba",
+      "source": "normalizadas/adis-abeba-v1.png",
+      "file": "transparentes/adis-abeba-v1.png",
+      "sourceSha256": "2e03bc2ef5bc2b0435f593b4c875077021297bafa54900d65af7eae7fbb8b762",
+      "coverage": 0.36739,
+      "bounds": [
+        32,
+        265,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "segovia",
+      "source": "normalizadas/segovia-v1.png",
+      "file": "transparentes/segovia-v1.png",
+      "sourceSha256": "4497f7f23908c0f270faa8ec408e46087d36883d8dc3155df51b8466829cbd54",
+      "coverage": 0.39802,
+      "bounds": [
+        32,
+        219,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "montreal",
+      "source": "normalizadas/montreal-v1.png",
+      "file": "transparentes/montreal-v1.png",
+      "sourceSha256": "ed4c3d49c1ed59f37f546435c1139addb8460dc4e31d66f27003918f4dc882e1",
+      "coverage": 0.36283,
+      "bounds": [
+        32,
+        302,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "chongqing",
+      "source": "normalizadas/chongqing-v1.png",
+      "file": "transparentes/chongqing-v1.png",
+      "sourceSha256": "24deb566e617fbb9c475989ed6535e6b87d9757e9056fb8902f285c71ee25e07",
+      "coverage": 0.39952,
+      "bounds": [
+        32,
+        199,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "lagos",
+      "source": "normalizadas/lagos-v1.png",
+      "file": "transparentes/lagos-v1.png",
+      "sourceSha256": "1831bbd65461f234a82867d8f74d4d673a7da81e81ef9e33832d5a450fadaa24",
+      "coverage": 0.34814,
+      "bounds": [
+        32,
+        318,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "zaragoza",
+      "source": "normalizadas/zaragoza-v1.png",
+      "file": "transparentes/zaragoza-v1.png",
+      "sourceSha256": "ca6549decec37897cd35e50bea6c375b5c8eb7f736991d3322b305bcc9da4756",
+      "coverage": 0.34217,
+      "bounds": [
+        32,
+        356,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "quebec",
+      "source": "normalizadas/quebec-v1.png",
+      "file": "transparentes/quebec-v1.png",
+      "sourceSha256": "f30afb2fc34984835ad07f2026dc01fd8242a14d40bdf4ed44651a765b4d80c5",
+      "coverage": 0.3955,
+      "bounds": [
+        34,
+        216,
+        1224,
+        1048
+      ]
+    },
+    {
+      "id": "acra",
+      "source": "normalizadas/acra-v1.png",
+      "file": "transparentes/acra-v1.png",
+      "sourceSha256": "78eb59d6839cafd3741deec7787d7589f5481ed0ba835be7034c283e65bdc48e",
+      "coverage": 0.36928,
+      "bounds": [
+        32,
+        316,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "san-sebastian",
+      "source": "normalizadas/san-sebastian-v1.png",
+      "file": "transparentes/san-sebastian-v1.png",
+      "sourceSha256": "dfe6e1aec81ee6c5e6acb58a71f9073a81e3a3d16f13890c5ec2917b9dfb0e2a",
+      "coverage": 0.36059,
+      "bounds": [
+        31,
+        324,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "vancouver",
+      "source": "normalizadas/vancouver-v1.png",
+      "file": "transparentes/vancouver-v1.png",
+      "sourceSha256": "bc6c9e37dd76d13a2e1dc9f4b5b248e07ccb0adfe6b7c3a77d0ff5b995c78f4b",
+      "coverage": 0.34176,
+      "bounds": [
+        32,
+        358,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "canton",
+      "source": "normalizadas/canton-v1.png",
+      "file": "transparentes/canton-v1.png",
+      "sourceSha256": "1053f64f0184e18c3fb18a3276cb2cedfe19a3497376183fd504dbc6748f7a12",
+      "coverage": 0.35258,
+      "bounds": [
+        32,
+        116,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "abiyan",
+      "source": "normalizadas/abiyan-v1.png",
+      "file": "transparentes/abiyan-v1.png",
+      "sourceSha256": "89fe4570ea2ad9409f77be8e13948bdeb6cfba7645996c9d6c23841b806c6f3c",
+      "coverage": 0.3444,
+      "bounds": [
+        31,
+        338,
+        1223,
+        1040
+      ]
+    },
+    {
+      "id": "salamanca",
+      "source": "normalizadas/salamanca-v1.png",
+      "file": "transparentes/salamanca-v1.png",
+      "sourceSha256": "74e147b22a5763710176d646d9e9cbcb3e768a3f71d11dd40ce8002110a9eb5a",
+      "coverage": 0.3849,
+      "bounds": [
+        32,
+        206,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "ottawa",
+      "source": "normalizadas/ottawa-v1.png",
+      "file": "transparentes/ottawa-v1.png",
+      "sourceSha256": "d5e63d15824851794eb37e8b1869625672a983a09d83d1f16c26c66f0b9981fe",
+      "coverage": 0.35068,
+      "bounds": [
+        32,
+        263,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "hangzhou",
+      "source": "normalizadas/hangzhou-v1.png",
+      "file": "transparentes/hangzhou-v1.png",
+      "sourceSha256": "2ddf662f4fd58b3c837599eff9428a21e5b363e80d07f3980b7dd05340c9eca1",
+      "coverage": 0.38182,
+      "bounds": [
+        31,
+        271,
+        1223,
+        1047
+      ]
+    },
+    {
+      "id": "windhoek",
+      "source": "normalizadas/windhoek-v1.png",
+      "file": "transparentes/windhoek-v1.png",
+      "sourceSha256": "405890e40803632986356d5a0cdf060923899c48a0c970fa78c75176475ebde1",
+      "coverage": 0.34601,
+      "bounds": [
+        32,
+        396,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "manchester",
+      "source": "normalizadas/manchester-v1.png",
+      "file": "transparentes/manchester-v1.png",
+      "sourceSha256": "309fc6ae2456b4560fbeb42c210fd94812db0b101bc21fd52aa02796215be3be",
+      "coverage": 0.38277,
+      "bounds": [
+        32,
+        289,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "guadalajara",
+      "source": "normalizadas/guadalajara-v1.png",
+      "file": "transparentes/guadalajara-v1.png",
+      "sourceSha256": "a9856cffa0c078a3bfb65dc5803eb7e725e3a27f207cf626e66c716a59c05631",
+      "coverage": 0.36402,
+      "bounds": [
+        31,
+        214,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "suzhou",
+      "source": "normalizadas/suzhou-v1.png",
+      "file": "transparentes/suzhou-v1.png",
+      "sourceSha256": "67bc684c38817378a57a033ab4f658a5a6cd8cebdb0e8acc975655515c0a7489",
+      "coverage": 0.37859,
+      "bounds": [
+        33,
+        239,
+        1223,
+        1043
+      ]
+    },
+    {
+      "id": "port-louis",
+      "source": "normalizadas/port-louis-v1.png",
+      "file": "transparentes/port-louis-v1.png",
+      "sourceSha256": "ac821270c5f4dc9cedf3f02cfc6bd0ba3e47d49a044e86e669c44dbd8183f748",
+      "coverage": 0.33905,
+      "bounds": [
+        32,
+        374,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "liverpool",
+      "source": "normalizadas/liverpool-v1.png",
+      "file": "transparentes/liverpool-v1.png",
+      "sourceSha256": "0854631d216c7213aa7025f9f9317a59d4f092e82a0a6cbb86bf74397fcbc234",
+      "coverage": 0.35608,
+      "bounds": [
+        32,
+        291,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "queenstown",
+      "source": "normalizadas/queenstown-v1.png",
+      "file": "transparentes/queenstown-v1.png",
+      "sourceSha256": "bd51b2613a500c73c5fce41dcb44fbf3291ca84106f914e5eac743785af5c632",
+      "coverage": 0.3786,
+      "bounds": [
+        31,
+        315,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "valencia",
+      "source": "normalizadas/valencia-v1.png",
+      "file": "transparentes/valencia-v1.png",
+      "sourceSha256": "ef3ba3cf80bc95af08ac65eb2c2414a086d20c947b3a6699b3f9355ffcb1cb07",
+      "coverage": 0.36551,
+      "bounds": [
+        32,
+        340,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "suva",
+      "source": "normalizadas/suva-v1.png",
+      "file": "transparentes/suva-v1.png",
+      "sourceSha256": "a3ddbebf4546e02bbdac0b765f79b64c5178597e17c99f6439c627a9bebbdf72",
+      "coverage": 0.36112,
+      "bounds": [
+        32,
+        325,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "alejandria",
+      "source": "normalizadas/alejandria-v1.png",
+      "file": "transparentes/alejandria-v1.png",
+      "sourceSha256": "392661f14ccd5dd7f3f0a105af2da65a1a4333324813d4ffd5a109bca879f711",
+      "coverage": 0.35034,
+      "bounds": [
+        32,
+        353,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "santiago-de-compostela",
+      "source": "normalizadas/santiago-de-compostela-v1.png",
+      "file": "transparentes/santiago-de-compostela-v1.png",
+      "sourceSha256": "4850e7bd49cbbb646e8eb0f236ca04b822269a7abe882cccbca6d01b314df8a6",
+      "coverage": 0.35065,
+      "bounds": [
+        32,
+        226,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "malaga",
+      "source": "normalizadas/malaga-v1.png",
+      "file": "transparentes/malaga-v1.png",
+      "sourceSha256": "b271ff142282fdde9362e281a36fdc00895b56e30af10551577a4278d58b43c8",
+      "coverage": 0.34224,
+      "bounds": [
+        32,
+        360,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "durban",
+      "source": "normalizadas/durban-v1.png",
+      "file": "transparentes/durban-v1.png",
+      "sourceSha256": "c12144d147520881d5ba5038f0b648e98dcc63fd2c4e58cb52758dd152993731",
+      "coverage": 0.33825,
+      "bounds": [
+        32,
+        397,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "guilin",
+      "source": "normalizadas/guilin-v1.png",
+      "file": "transparentes/guilin-v1.png",
+      "sourceSha256": "d59b16f36bfa1b014c1f42ec4200112c81a068d1808249cbe09e3ee52c64fb72",
+      "coverage": 0.34921,
+      "bounds": [
+        32,
+        379,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "granada",
+      "source": "normalizadas/granada-v1.png",
+      "file": "transparentes/granada-v1.png",
+      "sourceSha256": "e3ef130160dcc4c056655b44b5fdeda8f15ad35f12f8dc533d2178200a2f3b01",
+      "coverage": 0.34096,
+      "bounds": [
+        31,
+        398,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "cordoba",
+      "source": "normalizadas/cordoba-v1.png",
+      "file": "transparentes/cordoba-v1.png",
+      "sourceSha256": "976aab50b3abe1d4f69ed2bf5597c2d1954b0d7195318f1c8f9f2d1cde9f7dbe",
+      "coverage": 0.34785,
+      "bounds": [
+        32,
+        336,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "puebla",
+      "source": "normalizadas/puebla-v1.png",
+      "file": "transparentes/puebla-v1.png",
+      "sourceSha256": "dac8a2022789a913d22779df984e4c2de95a40839e28fd20178e7714c0caccad",
+      "coverage": 0.38499,
+      "bounds": [
+        32,
+        218,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "taipei",
+      "source": "normalizadas/taipei-v1.png",
+      "file": "transparentes/taipei-v1.png",
+      "sourceSha256": "07654fd994ace86ea6134a14d6370b8a7676979b1af803727e5a9d0598c11f62",
+      "coverage": 0.3482,
+      "bounds": [
+        32,
+        150,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "oxford",
+      "source": "normalizadas/oxford-v1.png",
+      "file": "transparentes/oxford-v1.png",
+      "sourceSha256": "8df7b1dd568b10551ac20ce082785316ce4246e7ea2f31d8d57db004987703be",
+      "coverage": 0.35888,
+      "bounds": [
+        32,
+        314,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "oaxaca",
+      "source": "normalizadas/oaxaca-v1.png",
+      "file": "transparentes/oaxaca-v1.png",
+      "sourceSha256": "fb62b2660e212c023705976b83e38d7c8b6e993996a618824d0bb2c63896990e",
+      "coverage": 0.38844,
+      "bounds": [
+        31,
+        230,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "busan",
+      "source": "normalizadas/busan-v1.png",
+      "file": "transparentes/busan-v1.png",
+      "sourceSha256": "cc22c104cf38ed30ece9d3edb1eb928bf9d0bc25fce1ed2ff91616869f77495d",
+      "coverage": 0.36822,
+      "bounds": [
+        32,
+        227,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "cambridge",
+      "source": "normalizadas/cambridge-v1.png",
+      "file": "transparentes/cambridge-v1.png",
+      "sourceSha256": "3de2fbbd756f1c157507b74b86fcd2617f4a683afcd7ec96037b3b4fafb98774",
+      "coverage": 0.35808,
+      "bounds": [
+        32,
+        281,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "guanajuato",
+      "source": "normalizadas/guanajuato-v1.png",
+      "file": "transparentes/guanajuato-v1.png",
+      "sourceSha256": "e89ccf44e9e359877b6c91c2a1d15b947bb5f64bbb0576e6d02705ce06a46871",
+      "coverage": 0.37893,
+      "bounds": [
+        32,
+        308,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "hanoi",
+      "source": "normalizadas/hanoi-v1.png",
+      "file": "transparentes/hanoi-v1.png",
+      "sourceSha256": "e60d82899d9936f6215bb96cf67daaaab56f210f88e30464499fae03725001ea",
+      "coverage": 0.39973,
+      "bounds": [
+        32,
+        296,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "merida",
+      "source": "normalizadas/merida-v1.png",
+      "file": "transparentes/merida-v1.png",
+      "sourceSha256": "9599ceb638b625c0fbb2759e38a579e0b14f86a99c4945c0742e50f8c8f38ffa",
+      "coverage": 0.41214,
+      "bounds": [
+        32,
+        234,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "ciudad-ho-chi-minh",
+      "source": "normalizadas/ciudad-ho-chi-minh-v1.png",
+      "file": "transparentes/ciudad-ho-chi-minh-v1.png",
+      "sourceSha256": "4e6fbc5bde72684d1a1ba420643a1d086ebbf4612b977d78255badcc65fb570c",
+      "coverage": 0.34907,
+      "bounds": [
+        32,
+        302,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "york",
+      "source": "normalizadas/york-v1.png",
+      "file": "transparentes/york-v1.png",
+      "sourceSha256": "7f8602965e4dcf36b5ae96e646e44f9b28a6f0fba66bad2f6a392fee772169c7",
+      "coverage": 0.42428,
+      "bounds": [
+        32,
+        183,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "bogota",
+      "source": "normalizadas/bogota-v1.png",
+      "file": "transparentes/bogota-v1.png",
+      "sourceSha256": "f31890b4e7b902716753486ae4cd08deba90c5af0cf12c77f6464f28035748e1",
+      "coverage": 0.36496,
+      "bounds": [
+        32,
+        218,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "hoi-an",
+      "source": "normalizadas/hoi-an-v1.png",
+      "file": "transparentes/hoi-an-v1.png",
+      "sourceSha256": "079d2ef05d5e578171695bc5fe506d4c394f6e2171c61f22a4c2177bafd5a338",
+      "coverage": 0.37969,
+      "bounds": [
+        32,
+        349,
+        1225,
+        1039
+      ]
+    },
+    {
+      "id": "glasgow",
+      "source": "normalizadas/glasgow-v1.png",
+      "file": "transparentes/glasgow-v1.png",
+      "sourceSha256": "65c066508c7f1f866c1ed8d1867d1b7f04a24e45c7c3d6115660dd1799f4ab2f",
+      "coverage": 0.35311,
+      "bounds": [
+        31,
+        227,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "cartagena-de-indias",
+      "source": "normalizadas/cartagena-de-indias-v1.png",
+      "file": "transparentes/cartagena-de-indias-v1.png",
+      "sourceSha256": "569b9c269fd09ae9dd21a0772c7ce505fe101b374bc75505c03647ec12e68a12",
+      "coverage": 0.359,
+      "bounds": [
+        31,
+        286,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "siem-reap",
+      "source": "normalizadas/siem-reap-v1.png",
+      "file": "transparentes/siem-reap-v1.png",
+      "sourceSha256": "f2ae27c3e84b0dcf0de0bf3d610a734372390a06c9b0160e10c5f6da452ac712",
+      "coverage": 0.38003,
+      "bounds": [
+        32,
+        273,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "medellin",
+      "source": "normalizadas/medellin-v1.png",
+      "file": "transparentes/medellin-v1.png",
+      "sourceSha256": "3dc69136035402bafb03bb0507ea618ac95d4f984073a0c88b7b55a51407df32",
+      "coverage": 0.39986,
+      "bounds": [
+        32,
+        268,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "nom-pen",
+      "source": "normalizadas/nom-pen-v1.png",
+      "file": "transparentes/nom-pen-v1.png",
+      "sourceSha256": "3383819125f1aa3607785d477bd25913096859bbe3167e3688049202e9b37e64",
+      "coverage": 0.3676,
+      "bounds": [
+        31,
+        255,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "oporto",
+      "source": "normalizadas/oporto-v1.png",
+      "file": "transparentes/oporto-v1.png",
+      "sourceSha256": "e37e6d04989d826b6126ea210299b2ea8a611f0e7d85687a44688411f3043c02",
+      "coverage": 0.38872,
+      "bounds": [
+        32,
+        187,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "kuala-lumpur",
+      "source": "normalizadas/kuala-lumpur-v1.png",
+      "file": "transparentes/kuala-lumpur-v1.png",
+      "sourceSha256": "bfcc35c5033b3237a33d5c5331f036b2c51a8fb767d099f376b0ae48bad01825",
+      "coverage": 0.37709,
+      "bounds": [
+        32,
+        99,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "bruselas",
+      "source": "normalizadas/bruselas-v1.png",
+      "file": "transparentes/bruselas-v1.png",
+      "sourceSha256": "c0c14b12586ac78ce49269fbca77fbaf6784518c7fc3855b1e97ec64d6f9edb8",
+      "coverage": 0.36155,
+      "bounds": [
+        32,
+        217,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "george-town",
+      "source": "normalizadas/george-town-v1.png",
+      "file": "transparentes/george-town-v1.png",
+      "sourceSha256": "69b04395ae7d5bff9007a1300be1234eaa43f05604cf31ae0b7b032cb66ad02e",
+      "coverage": 0.37163,
+      "bounds": [
+        32,
+        200,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "brujas",
+      "source": "normalizadas/brujas-v1.png",
+      "file": "transparentes/brujas-v1.png",
+      "sourceSha256": "bb988eabc15c88064623e4a03d27ec578061bfec79ac7b2da34bd8d6f6426ddf",
+      "coverage": 0.35932,
+      "bounds": [
+        31,
+        159,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "arequipa",
+      "source": "normalizadas/arequipa-v1.png",
+      "file": "transparentes/arequipa-v1.png",
+      "sourceSha256": "ef2e05aea91bfd8319e03361c28d9201505fd6eeccf757f02ee27fb93e72caaa",
+      "coverage": 0.34421,
+      "bounds": [
+        32,
+        357,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "yakarta",
+      "source": "normalizadas/yakarta-v1.png",
+      "file": "transparentes/yakarta-v1.png",
+      "sourceSha256": "ab7c17a41ff01afb7d4ccded7401cc8af98b7298696e0e5f279efbc163abd971",
+      "coverage": 0.35306,
+      "bounds": [
+        31,
+        206,
+        1224,
+        1040
+      ]
+    },
+    {
+      "id": "gante",
+      "source": "normalizadas/gante-v1.png",
+      "file": "transparentes/gante-v1.png",
+      "sourceSha256": "3d430fbc756591bd4da35a3e8d65791d16959b4108c74b174249cec73a7dfc42",
+      "coverage": 0.38205,
+      "bounds": [
+        32,
+        138,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "quito",
+      "source": "normalizadas/quito-v1.png",
+      "file": "transparentes/quito-v1.png",
+      "sourceSha256": "8f8806442f62dfdafe8181a606a69dfb1f477ccb5b4887a0082f0b4c44d1ea9f",
+      "coverage": 0.36657,
+      "bounds": [
+        32,
+        259,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "roterdam",
+      "source": "normalizadas/roterdam-v1.png",
+      "file": "transparentes/roterdam-v1.png",
+      "sourceSha256": "1d0d99ed4f2666f80f6bbea305e53c8be00e94d6f347758d087639741f555fa0",
+      "coverage": 0.34934,
+      "bounds": [
+        31,
+        121,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "la-paz",
+      "source": "normalizadas/la-paz-v1.png",
+      "file": "transparentes/la-paz-v1.png",
+      "sourceSha256": "e28aeb1c09dab1b806a1c224b79754c9e2103ec5c7a5fc2bcc901a574a9cb1fc",
+      "coverage": 0.36797,
+      "bounds": [
+        31,
+        295,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "manila",
+      "source": "normalizadas/manila-v1.png",
+      "file": "transparentes/manila-v1.png",
+      "sourceSha256": "7a31cffa288dd3850f3dae07789615d9fa8ebd28b921eb1f0b90b223b17668fe",
+      "coverage": 0.35775,
+      "bounds": [
+        32,
+        280,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "la-haya",
+      "source": "normalizadas/la-haya-v1.png",
+      "file": "transparentes/la-haya-v1.png",
+      "sourceSha256": "80d402edf995dd0446e6e0d9d72780e67dfb781b74cca430afb1b190076136e5",
+      "coverage": 0.36591,
+      "bounds": [
+        32,
+        204,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "sucre",
+      "source": "normalizadas/sucre-v1.png",
+      "file": "transparentes/sucre-v1.png",
+      "sourceSha256": "b8bee0dbc8bc3b433ee4cae62f6833cc2926b399d9672f1aa415aeadd2ef72a5",
+      "coverage": 0.40503,
+      "bounds": [
+        31,
+        190,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "katmandu",
+      "source": "normalizadas/katmandu-v1.png",
+      "file": "transparentes/katmandu-v1.png",
+      "sourceSha256": "c67fd8fbc6338958e6e901b5af0ca674e92633ee0e2fd3003dbb2142efba75c0",
+      "coverage": 0.37739,
+      "bounds": [
+        32,
+        262,
+        1223,
+        1043
+      ]
+    },
+    {
+      "id": "santiago-de-chile",
+      "source": "normalizadas/santiago-de-chile-v1.png",
+      "file": "transparentes/santiago-de-chile-v1.png",
+      "sourceSha256": "5370ac61b8d143f9028211b26cd0afcedc9676784f655a11214166a5d917b7e1",
+      "coverage": 0.36975,
+      "bounds": [
+        32,
+        253,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "bath",
+      "source": "normalizadas/bath-v1.png",
+      "file": "transparentes/bath-v1.png",
+      "sourceSha256": "24b9412cd887934e30a0cabbd209a4b0cf912792eebb64917d56dee4d93015c7",
+      "coverage": 0.34833,
+      "bounds": [
+        32,
+        323,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "belfast",
+      "source": "normalizadas/belfast-v1.png",
+      "file": "transparentes/belfast-v1.png",
+      "sourceSha256": "081356202e806df57369dd297848e710f209f798776e230b03b7cbb6dae9cf5a",
+      "coverage": 0.35503,
+      "bounds": [
+        32,
+        377,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "lima",
+      "source": "normalizadas/lima-v1.png",
+      "file": "transparentes/lima-v1.png",
+      "sourceSha256": "33a2f4b2eeee1f810a584201300ff80fb9ac6c25dbdd0b463d0f2fa9f129e7c5",
+      "coverage": 0.33996,
+      "bounds": [
+        32,
+        399,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "cusco",
+      "source": "normalizadas/cusco-v1.png",
+      "file": "transparentes/cusco-v1.png",
+      "sourceSha256": "01259b9f6c550d9df38b051e6e68731bdfa81410a97dca3912b63577c60089e7",
+      "coverage": 0.34828,
+      "bounds": [
+        32,
+        396,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "yogyakarta",
+      "source": "normalizadas/yogyakarta-v1.png",
+      "file": "transparentes/yogyakarta-v1.png",
+      "sourceSha256": "4c110f9d92593bb0135ef39133f8599c964ae460d67a359ae8199c150c6536f0",
+      "coverage": 0.33887,
+      "bounds": [
+        31,
+        399,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "lyon",
+      "source": "normalizadas/lyon-v1.png",
+      "file": "transparentes/lyon-v1.png",
+      "sourceSha256": "03d01747d36299902be1a49fe521220b232e3d6b59b5aa1b4d2d2eb923e34a3f",
+      "coverage": 0.38644,
+      "bounds": [
+        32,
+        209,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "marsella",
+      "source": "normalizadas/marsella-v1.png",
+      "file": "transparentes/marsella-v1.png",
+      "sourceSha256": "4aa61329fbb8cf36906351a0c0320adfa3add433749b74ede5b6013d2990915d",
+      "coverage": 0.38685,
+      "bounds": [
+        32,
+        156,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "valparaiso",
+      "source": "normalizadas/valparaiso-v1.png",
+      "file": "transparentes/valparaiso-v1.png",
+      "sourceSha256": "3d8d54d28e05b6fa61a133dcb63369dc0022722fab468ab7d0624d7b211e4018",
+      "coverage": 0.36646,
+      "bounds": [
+        32,
+        353,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "jaipur",
+      "source": "normalizadas/jaipur-v1.png",
+      "file": "transparentes/jaipur-v1.png",
+      "sourceSha256": "c44b48048e6f516fc5c21dff6a2f3a8705a152589e502e4ec9f399041e8cf19c",
+      "coverage": 0.35117,
+      "bounds": [
+        32,
+        343,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "niza",
+      "source": "normalizadas/niza-v1.png",
+      "file": "transparentes/niza-v1.png",
+      "sourceSha256": "2a9fa822f0f2d662f0cfb0d9282ddc6e0dcaabd16f0f586980b7fd2f30e7db20",
+      "coverage": 0.38343,
+      "bounds": [
+        32,
+        208,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "varanasi",
+      "source": "normalizadas/varanasi-v1.png",
+      "file": "transparentes/varanasi-v1.png",
+      "sourceSha256": "26ab376f6994410b7b66473adb9e8fcb754100f78f7fb6a645516ba81a18d760",
+      "coverage": 0.35351,
+      "bounds": [
+        32,
+        346,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "burdeos",
+      "source": "normalizadas/burdeos-v1.png",
+      "file": "transparentes/burdeos-v1.png",
+      "sourceSha256": "59cdb9c0b6293edd9e62b13f0f6076abc0c6246dd09a6672f1d678074d9781f6",
+      "coverage": 0.35331,
+      "bounds": [
+        32,
+        316,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "brasilia",
+      "source": "normalizadas/brasilia-v1.png",
+      "file": "transparentes/brasilia-v1.png",
+      "sourceSha256": "dd61ded1b2d3a1058c5a386705684c01b9d035fc06954e49131abe9ad9e2fd0a",
+      "coverage": 0.34196,
+      "bounds": [
+        32,
+        399,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "calcuta",
+      "source": "normalizadas/calcuta-v1.png",
+      "file": "transparentes/calcuta-v1.png",
+      "sourceSha256": "57eb4176cc404b01a384ee28144cd2ade42832d28f41b41540ccfd1b04812bfa",
+      "coverage": 0.37705,
+      "bounds": [
+        32,
+        265,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "estrasburgo",
+      "source": "normalizadas/estrasburgo-v1.png",
+      "file": "transparentes/estrasburgo-v1.png",
+      "sourceSha256": "38d7ddfd2e1db0bbf5ecd837e14c7d7cd2d975a38894ee797ffc483f70e7347b",
+      "coverage": 0.3507,
+      "bounds": [
+        32,
+        213,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "sao-paulo",
+      "source": "normalizadas/sao-paulo-v2.png",
+      "file": "transparentes/sao-paulo-v1.png",
+      "sourceSha256": "8b47ea691372d10b3396dbd6e73e0f2a59790c51c1ea1346d2564d0edf83433f",
+      "coverage": 0.38544,
+      "bounds": [
+        32,
+        118,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "amritsar",
+      "source": "normalizadas/amritsar-v1.png",
+      "file": "transparentes/amritsar-v1.png",
+      "sourceSha256": "fec0c95260f2319d1309584c4809f7f1d4e860edd3299a60f0256050f0049820",
+      "coverage": 0.36079,
+      "bounds": [
+        31,
+        357,
+        1223,
+        1039
+      ]
+    },
+    {
+      "id": "avinon",
+      "source": "normalizadas/avinon-v1.png",
+      "file": "transparentes/avinon-v1.png",
+      "sourceSha256": "a512d9d5895847c4655e5eb9b9fa0d76594003252b8126fcb1afee973b47cc18",
+      "coverage": 0.38762,
+      "bounds": [
+        32,
+        294,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "salvador-de-bahia",
+      "source": "normalizadas/salvador-de-bahia-v1.png",
+      "file": "transparentes/salvador-de-bahia-v1.png",
+      "sourceSha256": "a4f2db0c6e395a51706e0729d73ac5e1b9756d51f206ca2e99715761621ec6bb",
+      "coverage": 0.38025,
+      "bounds": [
+        31,
+        268,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "abu-dabi",
+      "source": "normalizadas/abu-dabi-v2.png",
+      "file": "transparentes/abu-dabi-v1.png",
+      "sourceSha256": "ddc31c3823184f4fcef5069d3b77e9fa4b7f6c8105a99c683c241cf76ffb9d73",
+      "coverage": 0.36897,
+      "bounds": [
+        31,
+        227,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "milan",
+      "source": "normalizadas/milan-v1.png",
+      "file": "transparentes/milan-v1.png",
+      "sourceSha256": "224371d418f4d77e7e74e010bdf113c0c177a5f57cb6f3dd91458ce95815436d",
+      "coverage": 0.35139,
+      "bounds": [
+        32,
+        286,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "recife",
+      "source": "normalizadas/recife-v2.png",
+      "file": "transparentes/recife-v1.png",
+      "sourceSha256": "31fe9a8caa214c8ce98f15c33e38b217ba38c26f6d8e3707511839c22cda34f5",
+      "coverage": 0.36914,
+      "bounds": [
+        31,
+        319,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "doha",
+      "source": "normalizadas/doha-v1.png",
+      "file": "transparentes/doha-v1.png",
+      "sourceSha256": "85c49458bfec0c58eeb7778d5c673a95fce84899267a05f03f0d7a2c2e7711d9",
+      "coverage": 0.36299,
+      "bounds": [
+        32,
+        205,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "napoles",
+      "source": "normalizadas/napoles-v1.png",
+      "file": "transparentes/napoles-v1.png",
+      "sourceSha256": "17a302101f6f15d9e70a18e3426c430f9442db7dcfc9c4f42b80565bfc9e8d2b",
+      "coverage": 0.35144,
+      "bounds": [
+        31,
+        400,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "ciudad-de-panama",
+      "source": "normalizadas/ciudad-de-panama-v1.png",
+      "file": "transparentes/ciudad-de-panama-v1.png",
+      "sourceSha256": "3ce28ebb6d13f2cf0cad7bb23e0dae1799a90ba7dee9415d4261d0284dcde765",
+      "coverage": 0.34744,
+      "bounds": [
+        32,
+        275,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "mascate",
+      "source": "normalizadas/mascate-v1.png",
+      "file": "transparentes/mascate-v1.png",
+      "sourceSha256": "ea62c6a4ad757032f0b194e9450895ffd11ab9c4bacff39e42d35f49dad5c3e9",
+      "coverage": 0.37524,
+      "bounds": [
+        31,
+        308,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "pisa",
+      "source": "normalizadas/pisa-v1.png",
+      "file": "transparentes/pisa-v1.png",
+      "sourceSha256": "a034979fdbc25aaeeb15eb3eed0e6416be8c81d269e4aed28989694c7c7977f3",
+      "coverage": 0.36317,
+      "bounds": [
+        32,
+        317,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "antigua-guatemala",
+      "source": "normalizadas/antigua-guatemala-v1.png",
+      "file": "transparentes/antigua-guatemala-v1.png",
+      "sourceSha256": "ac94488837b77e737c8bc7a5a0a02642c8a0499a1be684119f26cf90b8e72a0f",
+      "coverage": 0.3687,
+      "bounds": [
+        32,
+        305,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "riad",
+      "source": "normalizadas/riad-v1.png",
+      "file": "transparentes/riad-v1.png",
+      "sourceSha256": "cc38464a9bcfaa7c708e82219cef4b3d7966cd8f73f89050f172ca7f512afcf7",
+      "coverage": 0.35526,
+      "bounds": [
+        32,
+        215,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "verona",
+      "source": "normalizadas/verona-v1.png",
+      "file": "transparentes/verona-v1.png",
+      "sourceSha256": "0723cde9e7372da3286bb6e5377d400b5e10e88bbb63cf2eca9fd7e79e62794d",
+      "coverage": 0.36155,
+      "bounds": [
+        32,
+        320,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "yeda",
+      "source": "normalizadas/yeda-v1.png",
+      "file": "transparentes/yeda-v1.png",
+      "sourceSha256": "da4d3a1abdad06d974e74c763ea6eb77fc72be9f9865f6c52ca8932b717bd030",
+      "coverage": 0.34678,
+      "bounds": [
+        32,
+        321,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "agra",
+      "source": "normalizadas/agra-v1.png",
+      "file": "transparentes/agra-v1.png",
+      "sourceSha256": "c694f492ae4440f0214be16f7fbb723ce218ce954432e783a920b2c57e219a50",
+      "coverage": 0.35468,
+      "bounds": [
+        32,
+        335,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "montevideo",
+      "source": "normalizadas/montevideo-v2.png",
+      "file": "transparentes/montevideo-v1.png",
+      "sourceSha256": "312a8b9b7057430f999bf52b7be416806079bdce3fde3560993f1ae6fd700ca6",
+      "coverage": 0.38249,
+      "bounds": [
+        32,
+        209,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "san-juan",
+      "source": "normalizadas/san-juan-v2.png",
+      "file": "transparentes/san-juan-v1.png",
+      "sourceSha256": "2817e223202269d3708d8fa75c8fd34a7738a666803bcb27b5a39d9a9f2228a3",
+      "coverage": 0.37796,
+      "bounds": [
+        32,
+        343,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "samarcanda",
+      "source": "normalizadas/samarcanda-v1.png",
+      "file": "transparentes/samarcanda-v1.png",
+      "sourceSha256": "d7fe53296ccf782246ed221db927ca4fbbca896eedb19df4e2bba2e55fca3e38",
+      "coverage": 0.36232,
+      "bounds": [
+        32,
+        333,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "colonia",
+      "source": "normalizadas/colonia-v1.png",
+      "file": "transparentes/colonia-v1.png",
+      "sourceSha256": "097c000f6feb1c2167944831d3f1ae60f1f1369227910150593f9294d0a3eca5",
+      "coverage": 0.3715,
+      "bounds": [
+        32,
+        214,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "bujara",
+      "source": "normalizadas/bujara-v1.png",
+      "file": "transparentes/bujara-v1.png",
+      "sourceSha256": "6f414689a1bd7180e701438fcb156e1f096919279080af0765a1a62ff8ea92c0",
+      "coverage": 0.36879,
+      "bounds": [
+        32,
+        217,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "dresde",
+      "source": "normalizadas/dresde-v1.png",
+      "file": "transparentes/dresde-v1.png",
+      "sourceSha256": "59012c17ba1d36a47157f44d0ec4a9f5ad584df0c8859fe1ff314582bf0e0fb3",
+      "coverage": 0.3622,
+      "bounds": [
+        32,
+        280,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "francfort",
+      "source": "normalizadas/francfort-v1.png",
+      "file": "transparentes/francfort-v1.png",
+      "sourceSha256": "e937eeb760874e3c7de0790125c6a003e88997ce17e363259ad7e467cb4ec8a9",
+      "coverage": 0.37346,
+      "bounds": [
+        32,
+        94,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "heidelberg",
+      "source": "normalizadas/heidelberg-v1.png",
+      "file": "transparentes/heidelberg-v1.png",
+      "sourceSha256": "d7deca7f3ec681ad1424c569397ba44b270ca3af937ae19355980c27d8fe0c49",
+      "coverage": 0.38213,
+      "bounds": [
+        32,
+        287,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "ginebra",
+      "source": "normalizadas/ginebra-v1.png",
+      "file": "transparentes/ginebra-v1.png",
+      "sourceSha256": "53fe8ecaa51019f7d3d139e04cde42302934c3c37023fd0600fcb0bc90db4d61",
+      "coverage": 0.34138,
+      "bounds": [
+        32,
+        364,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "lucerna",
+      "source": "normalizadas/lucerna-v1.png",
+      "file": "transparentes/lucerna-v1.png",
+      "sourceSha256": "e5037bf3246d34c848d7bab04ed139ce58ac64661c66e10f815d6ca247475c26",
+      "coverage": 0.42193,
+      "bounds": [
+        32,
+        191,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "turin",
+      "source": "normalizadas/turin-v1.png",
+      "file": "transparentes/turin-v1.png",
+      "sourceSha256": "9e9cb263a1bb83e45b8006433eeb3d3c09b1f08177299dcb0da81dae01304ab5",
+      "coverage": 0.36714,
+      "bounds": [
+        32,
+        261,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "santo-domingo",
+      "source": "normalizadas/santo-domingo-v2.png",
+      "file": "transparentes/santo-domingo-v1.png",
+      "sourceSha256": "f553a843ebd489b7f1e608eeea687ef3c3e45e9081e1b8a6c39044f482a14fa8",
+      "coverage": 0.35884,
+      "bounds": [
+        31,
+        345,
+        1224,
+        1041
+      ]
+    },
+    {
+      "id": "aman",
+      "source": "normalizadas/aman-v1.png",
+      "file": "transparentes/aman-v1.png",
+      "sourceSha256": "70a5e2bd9414bbfe9fd5a3e41d431cfb484699fee456b88c6aee64bc6ffb4718",
+      "coverage": 0.35865,
+      "bounds": [
+        31,
+        256,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "bolonia",
+      "source": "normalizadas/bolonia-v1.png",
+      "file": "transparentes/bolonia-v1.png",
+      "sourceSha256": "d3a78d03814991079bd07f64454c022f7947319aa9ae65a61f5123215989e947",
+      "coverage": 0.35806,
+      "bounds": [
+        32,
+        277,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "san-jose",
+      "source": "normalizadas/san-jose-v2.png",
+      "file": "transparentes/san-jose-v1.png",
+      "sourceSha256": "2e6d3684f03dc40dabf21f3e2d4c234b390972df026d12999e02c3a81144fd78",
+      "coverage": 0.40109,
+      "bounds": [
+        31,
+        311,
+        1224,
+        1043
+      ]
+    },
+    {
+      "id": "beirut",
+      "source": "normalizadas/beirut-v1.png",
+      "file": "transparentes/beirut-v1.png",
+      "sourceSha256": "3fdff52b637d70f14b5cc14bab7af3e6f942036bcd59bcc6c41a50be671f93f8",
+      "coverage": 0.35385,
+      "bounds": [
+        32,
+        246,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "palermo",
+      "source": "normalizadas/palermo-v1.png",
+      "file": "transparentes/palermo-v1.png",
+      "sourceSha256": "5dcd98c95c9aa6369858daa4e48f3949ef72f889a601cbec416c7c50bb844425",
+      "coverage": 0.35764,
+      "bounds": [
+        31,
+        291,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "kingston",
+      "source": "normalizadas/kingston-v1.png",
+      "file": "transparentes/kingston-v1.png",
+      "sourceSha256": "1a9d41d737ba995597273cd12e4bf41d97cef040bda53f0c127bfddd75ff853c",
+      "coverage": 0.37149,
+      "bounds": [
+        31,
+        319,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "jerusalen",
+      "source": "normalizadas/jerusalen-v1.png",
+      "file": "transparentes/jerusalen-v1.png",
+      "sourceSha256": "b0c1e7ef29da33e8e7e1d170296ae76af35b4d397a238c3f9ad94bb4895d49a8",
+      "coverage": 0.34939,
+      "bounds": [
+        32,
+        317,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "munich",
+      "source": "normalizadas/munich-v1.png",
+      "file": "transparentes/munich-v1.png",
+      "sourceSha256": "836d08a27ce454daa59a578b207d11f75f9c912f61d3b9b34d4af04dcff597fe",
+      "coverage": 0.357,
+      "bounds": [
+        32,
+        318,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "tel-aviv",
+      "source": "normalizadas/tel-aviv-v1.png",
+      "file": "transparentes/tel-aviv-v1.png",
+      "sourceSha256": "6ee845aff2d268c173303739400ed4637e4fd48fbd202ed2da40ea4445f8c794",
+      "coverage": 0.36581,
+      "bounds": [
+        32,
+        247,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "hamburgo",
+      "source": "normalizadas/hamburgo-v1.png",
+      "file": "transparentes/hamburgo-v1.png",
+      "sourceSha256": "789f01af9d807219a41cc314cf78408e19deee9eabbd9271e52fd90d575e0935",
+      "coverage": 0.36201,
+      "bounds": [
+        32,
+        190,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "berna",
+      "source": "normalizadas/berna-v1.png",
+      "file": "transparentes/berna-v1.png",
+      "sourceSha256": "a88344941d3843519efae305bc4dbcedbb8c80d22d7700131046479870bd9205",
+      "coverage": 0.36974,
+      "bounds": [
+        32,
+        211,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "oslo",
+      "source": "normalizadas/oslo-v1.png",
+      "file": "transparentes/oslo-v1.png",
+      "sourceSha256": "7ee075f1d120fec215859695afbebb63204ff70c0a44012628b2596f5b7913c2",
+      "coverage": 0.37784,
+      "bounds": [
+        32,
+        279,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "bergen",
+      "source": "normalizadas/bergen-v1.png",
+      "file": "transparentes/bergen-v1.png",
+      "sourceSha256": "d70983f92f50acc343116844e93093b6962925dfb22e7ba21bcb2df0186d01f2",
+      "coverage": 0.39418,
+      "bounds": [
+        32,
+        239,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "helsinki",
+      "source": "normalizadas/helsinki-v1.png",
+      "file": "transparentes/helsinki-v1.png",
+      "sourceSha256": "ce5c1e3b60052d9d9db049c668689ea1f51068eb93138a19e55c831c4e4b5bd6",
+      "coverage": 0.35708,
+      "bounds": [
+        31,
+        280,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "reikiavik",
+      "source": "normalizadas/reikiavik-v1.png",
+      "file": "transparentes/reikiavik-v1.png",
+      "sourceSha256": "da0b5833641ccddba9be4d3bd4e351d3c1e58754ebf0f2e7d8ce188974dc92cb",
+      "coverage": 0.35037,
+      "bounds": [
+        32,
+        263,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "tallin",
+      "source": "normalizadas/tallin-v1.png",
+      "file": "transparentes/tallin-v1.png",
+      "sourceSha256": "20e883b621b094dfbe575c86b6a4554955957b02bc6e30f828568a09219f63f5",
+      "coverage": 0.37173,
+      "bounds": [
+        32,
+        258,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "riga",
+      "source": "normalizadas/riga-v1.png",
+      "file": "transparentes/riga-v1.png",
+      "sourceSha256": "17183ba4fae682a3f7906f2ed225b2b38209eceb3939e78b4f30bfb07a407523",
+      "coverage": 0.35286,
+      "bounds": [
+        32,
+        93,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "vilna",
+      "source": "normalizadas/vilna-v1.png",
+      "file": "transparentes/vilna-v1.png",
+      "sourceSha256": "95051fc8dd57f07fa956b26387c9beef2de06dcaa935b6eed937b6ee03f9b70a",
+      "coverage": 0.36299,
+      "bounds": [
+        32,
+        279,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "varsovia",
+      "source": "normalizadas/varsovia-v1.png",
+      "file": "transparentes/varsovia-v1.png",
+      "sourceSha256": "38670b774b42750d06af625e6d72409d0a04a79053db0f39785adffed3e3a6a7",
+      "coverage": 0.37973,
+      "bounds": [
+        32,
+        99,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "cracovia",
+      "source": "normalizadas/cracovia-v1.png",
+      "file": "transparentes/cracovia-v1.png",
+      "sourceSha256": "d9bb22b179c92735a91c0a7d152987b9b40172a528d05758741cfe5ea5cf18b9",
+      "coverage": 0.3808,
+      "bounds": [
+        32,
+        260,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "gdansk",
+      "source": "normalizadas/gdansk-v1.png",
+      "file": "transparentes/gdansk-v1.png",
+      "sourceSha256": "382ad80d75d559d05ecf81eb947d3d911c4a537bf86df44518c69af464cd048e",
+      "coverage": 0.37479,
+      "bounds": [
+        32,
+        191,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "bucarest",
+      "source": "normalizadas/bucarest-v1.png",
+      "file": "transparentes/bucarest-v1.png",
+      "sourceSha256": "64c1b8c045b59d666f9a95a4c2acc3a1bc1c2d545f82fa4e846e56183a4c9acc",
+      "coverage": 0.36125,
+      "bounds": [
+        32,
+        347,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "sofia",
+      "source": "normalizadas/sofia-v1.png",
+      "file": "transparentes/sofia-v1.png",
+      "sourceSha256": "edeb1f5986b5657f0446aa1704b050fb561025e754fa02ec8c67bb6cbd5f6538",
+      "coverage": 0.36755,
+      "bounds": [
+        31,
+        241,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "belgrado",
+      "source": "normalizadas/belgrado-v1.png",
+      "file": "transparentes/belgrado-v1.png",
+      "sourceSha256": "ee18e65751e7d76962e2a777d3d8b24960e1829c9b4b4738a3b342ee9a606115",
+      "coverage": 0.35533,
+      "bounds": [
+        31,
+        172,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "sarajevo",
+      "source": "normalizadas/sarajevo-v1.png",
+      "file": "transparentes/sarajevo-v1.png",
+      "sourceSha256": "503923594cf5daf06e363c244a1b539dfec33e6c7d4d0af5bdc237e6eba7e727",
+      "coverage": 0.3581,
+      "bounds": [
+        32,
+        189,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "dubrovnik",
+      "source": "normalizadas/dubrovnik-v1.png",
+      "file": "transparentes/dubrovnik-v1.png",
+      "sourceSha256": "c4f91aa4656ab1ebddee25b808b0e9d5ad59ea2a89261f27d612f0f7d3b182ec",
+      "coverage": 0.36567,
+      "bounds": [
+        32,
+        310,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "split",
+      "source": "normalizadas/split-v1.png",
+      "file": "transparentes/split-v1.png",
+      "sourceSha256": "a7ef11b58191affb81e3242bd8c6d90b315f81061b952355fb8cfd86391b06c0",
+      "coverage": 0.34442,
+      "bounds": [
+        32,
+        244,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "zagreb",
+      "source": "normalizadas/zagreb-v1.png",
+      "file": "transparentes/zagreb-v1.png",
+      "sourceSha256": "e9ad6b3c9303b762a35b29f6118099cad5bd64342e24efc988566309b413090a",
+      "coverage": 0.36591,
+      "bounds": [
+        32,
+        128,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "liubliana",
+      "source": "normalizadas/liubliana-v1.png",
+      "file": "transparentes/liubliana-v1.png",
+      "sourceSha256": "7c3b2623738ef7899701cfd0a407b0085e052702d28660d4c06f8921f058384f",
+      "coverage": 0.41217,
+      "bounds": [
+        32,
+        234,
+        1223,
+        1040
+      ]
+    },
+    {
+      "id": "bratislava",
+      "source": "normalizadas/bratislava-v1.png",
+      "file": "transparentes/bratislava-v1.png",
+      "sourceSha256": "c4779774d13ecea5219dca3a3027a2baf0b0331acdd7722809ec82d200529733",
+      "coverage": 0.38284,
+      "bounds": [
+        32,
+        245,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "salzburgo",
+      "source": "normalizadas/salzburgo-v1.png",
+      "file": "transparentes/salzburgo-v1.png",
+      "sourceSha256": "97ff7fb5568ea8de0f736e5e2ec4ce22d67d6212bf060fcc926694e290902db6",
+      "coverage": 0.38322,
+      "bounds": [
+        31,
+        264,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "luxemburgo",
+      "source": "normalizadas/luxemburgo-v1.png",
+      "file": "transparentes/luxemburgo-v1.png",
+      "sourceSha256": "5d9a350ea782c85bac0b38027d6cfdbf267e72498595d52a7980a141f41860b0",
+      "coverage": 0.37589,
+      "bounds": [
+        32,
+        315,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "monaco",
+      "source": "normalizadas/monaco-v1.png",
+      "file": "transparentes/monaco-v1.png",
+      "sourceSha256": "b723c6b9d89e3c8e02577fecf4a6c6161ebb79df891963538da4c2442ea699c1",
+      "coverage": 0.36568,
+      "bounds": [
+        32,
+        313,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "la-valeta",
+      "source": "normalizadas/la-valeta-v2.png",
+      "file": "transparentes/la-valeta-v1.png",
+      "sourceSha256": "565bc15d1833046b05418ffe2347d8005323fb945bf4a4ef5cf609464027b654",
+      "coverage": 0.37576,
+      "bounds": [
+        32,
+        307,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "kyiv",
+      "source": "normalizadas/kyiv-v1.png",
+      "file": "transparentes/kyiv-v1.png",
+      "sourceSha256": "8997722d2c7a66a981dbdce5ce87b08e91249cd18571204561a7aa545971257d",
+      "coverage": 0.37507,
+      "bounds": [
+        32,
+        251,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "petra",
+      "source": "normalizadas/petra-v1.png",
+      "file": "transparentes/petra-v1.png",
+      "sourceSha256": "cc6e3ec0ba0589031a99849437aee39fc79b42fbf7cf360033728232be01253a",
+      "coverage": 0.45528,
+      "bounds": [
+        31,
+        201,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "chichen-itza",
+      "source": "normalizadas/chichen-itza-v1.png",
+      "file": "transparentes/chichen-itza-v1.png",
+      "sourceSha256": "4dde1162acdd821bd64b1ffa13f68cd7d4b7414535b15096dceae76abf8a93c7",
+      "coverage": 0.4012,
+      "bounds": [
+        31,
+        287,
+        1224,
+        1049
+      ]
+    },
+    {
+      "id": "pompeya",
+      "source": "normalizadas/pompeya-v1.png",
+      "file": "transparentes/pompeya-v1.png",
+      "sourceSha256": "db4f04afa15ceb02271c017984362697a3f31105561b6c5fb295c0ed7727b75a",
+      "coverage": 0.34143,
+      "bounds": [
+        32,
+        395,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "tikal",
+      "source": "normalizadas/tikal-v1.png",
+      "file": "transparentes/tikal-v1.png",
+      "sourceSha256": "04c791180ff6340d4f0b437589a82d643cd75a1a485632311f95a2cfc3ca666d",
+      "coverage": 0.3934,
+      "bounds": [
+        32,
+        210,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "efeso",
+      "source": "normalizadas/efeso-v1.png",
+      "file": "transparentes/efeso-v1.png",
+      "sourceSha256": "d2dffd2124ec00a8d034cfd445a2463a435ec8daa1031ea03d267a8bc03745bb",
+      "coverage": 0.36727,
+      "bounds": [
+        31,
+        380,
+        1224,
+        1050
+      ]
+    },
+    {
+      "id": "persepolis",
+      "source": "normalizadas/persepolis-v1.png",
+      "file": "transparentes/persepolis-v1.png",
+      "sourceSha256": "b354bb2ec0337fccebc61605260ee37920e707269859e07818ff023c93b5e7a5",
+      "coverage": 0.37661,
+      "bounds": [
+        32,
+        210,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "teotihuacan",
+      "source": "normalizadas/teotihuacan-v1.png",
+      "file": "transparentes/teotihuacan-v1.png",
+      "sourceSha256": "3a98bcc351753c7c743660d9b91439512ca3c457ece52733b617a62d69b98d49",
+      "coverage": 0.3388,
+      "bounds": [
+        32,
+        399,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "sintra",
+      "source": "normalizadas/sintra-v1.png",
+      "file": "transparentes/sintra-v1.png",
+      "sourceSha256": "1a68ac206f930f42a23ab64300ed9bd449a5c778c492912f21a5badd30e5f1fe",
+      "coverage": 0.38783,
+      "bounds": [
+        31,
+        235,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "bagan",
+      "source": "normalizadas/bagan-v1.png",
+      "file": "transparentes/bagan-v1.png",
+      "sourceSha256": "55ff6c2bcbf72772948dcfb4ccb15fe641dcb3bc02a5480204f795c1a33042fc",
+      "coverage": 0.37106,
+      "bounds": [
+        31,
+        240,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "san-miguel-de-allende",
+      "source": "normalizadas/san-miguel-de-allende-v1.png",
+      "file": "transparentes/san-miguel-de-allende-v1.png",
+      "sourceSha256": "2ada9e9022bdb61f7295a53a860dffc3aad51e4bf87692985c00ecc896f7c1dd",
+      "coverage": 0.40622,
+      "bounds": [
+        31,
+        135,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "zanzibar",
+      "source": "normalizadas/zanzibar-v1.png",
+      "file": "transparentes/zanzibar-v1.png",
+      "sourceSha256": "b2aea587f39d3caef48ccefb6f3443822481f0c1089e64aa44c29678530695a6",
+      "coverage": 0.34952,
+      "bounds": [
+        32,
+        399,
+        1223,
+        1042
+      ]
+    },
+    {
+      "id": "carcasona",
+      "source": "normalizadas/carcasona-v1.png",
+      "file": "transparentes/carcasona-v1.png",
+      "sourceSha256": "159144156495f92c92f3ace6576195f73c5008c113a329370ca2b56ec6698382",
+      "coverage": 0.36181,
+      "bounds": [
+        32,
+        331,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "luang-prabang",
+      "source": "normalizadas/luang-prabang-v1.png",
+      "file": "transparentes/luang-prabang-v1.png",
+      "sourceSha256": "4385699e17a82928447d41ef28effb6a5b29a5c806afae1d350086135ff5b68d",
+      "coverage": 0.37373,
+      "bounds": [
+        31,
+        287,
+        1223,
+        1041
+      ]
+    },
+    {
+      "id": "jiva",
+      "source": "normalizadas/jiva-v1.png",
+      "file": "transparentes/jiva-v1.png",
+      "sourceSha256": "b541f8543ea8c55cad9e2dd76f8240cde51f58c9217c695c9b2c0cdb0455f57d",
+      "coverage": 0.35132,
+      "bounds": [
+        31,
+        136,
+        1224,
+        1042
+      ]
+    },
+    {
+      "id": "lalibela",
+      "source": "normalizadas/lalibela-v1.png",
+      "file": "transparentes/lalibela-v1.png",
+      "sourceSha256": "18f60e83914679850ef0b952d3a1a13cd5ff84130f69601fffd1848bfef3c776",
+      "coverage": 0.33965,
+      "bounds": [
+        32,
+        398,
+        1224,
+        1042
+      ]
+    }
+  ]
+}

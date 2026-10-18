@@ -244,7 +244,6 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
               <View style={{ flex: 1, gap: 3 }}>
                 <Text style={{ color: C.text, fontSize: 18, fontFamily: Font.black }}>{t('world.allWorld')}</Text>
                 <Text style={{ color: C.textMuted, fontSize: 13, fontFamily: Font.regular }}>{t('cities.count', { count: available })}{best != null ? ` · ${t('round.best', { n: best })}` : ''}</Text>
-                {available > 0 && <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>{t('cities.roundSize', { count: Math.min(10, available) })}</Text>}
               </View>
               <Text style={{ color: C.brandDeep, fontSize: 20 }}>›</Text>
             </LinearGradient>

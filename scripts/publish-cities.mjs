@@ -4,7 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
+import { execFile, execFileSync } from 'node:child_process';
+import { promisify } from 'node:util';
+const runFile = promisify(execFile);
 import { fileURLToPath } from 'node:url';
 import { createClient } from '@supabase/supabase-js';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -62,12 +64,12 @@ if (!url || !key) throw new Error('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KE
 const client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'cg-cities-'));
 try {
-  for (const row of selectedRows) {
-    if (!row._file) continue;
+  async function prepareArtwork(row) {
+    if (!row._file) return;
     const target = path.join(tmp, `${row.id}.webp`);
-    // Same square canvas, no cropping or framing changes. ~100–250 KB per city.
-    execFileSync(process.env.CITY_PYTHON ?? 'python3', ['-c',
-      "from PIL import Image; import sys; im=Image.open(sys.argv[1]); im.thumbnail((1024,1024), Image.Resampling.LANCZOS); im.save(sys.argv[2], 'WEBP', quality=88, method=6)", row._file, target]);
+    // Preserve the full 1254 px source for the zoom viewer, including its alpha.
+    await runFile(process.env.CITY_PYTHON ?? 'python3', ['-c',
+      "from PIL import Image; import sys; im=Image.open(sys.argv[1]).convert('RGBA'); assert im.getextrema()[3] == (0,255), 'Artwork must have real transparency'; im.thumbnail((1536,1536), Image.Resampling.LANCZOS); im.save(sys.argv[2], 'WEBP', quality=88, method=6); assert Image.open(sys.argv[2]).getextrema()[3] == (0,255), 'WebP lost its alpha'", row._file, target]);
     const bytes = fs.readFileSync(target);
     const hash = createHash('sha256').update(bytes).digest('hex').slice(0, 20);
     const object = `${row.id}/${hash}.webp`;
@@ -85,6 +87,13 @@ try {
     row.image_url = data.publicUrl;
     console.log(`Artwork ready: ${row.id} (${Math.round(bytes.length / 1024)} KB)`);
   }
+  // Bound encoding/upload work; publish rows only after every asset is ready.
+  let nextRow = 0;
+  const workers = await Promise.allSettled(Array.from({ length: 4 }, async () => {
+    while (nextRow < selectedRows.length) await prepareArtwork(selectedRows[nextRow++]);
+  }));
+  const failure = workers.find(result => result.status === 'rejected');
+  if (failure) throw failure.reason;
   const payload = selectedRows.map(({ _file, ...row }) => ({ ...row, updated_at: new Date().toISOString() }));
   const { error } = await client.from('city_catalog').upsert(payload, { onConflict: 'id' });
   if (error) throw new Error(`Catalog publication failed: ${error.message}`);

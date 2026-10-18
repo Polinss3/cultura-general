@@ -15,7 +15,7 @@ La altura de los edificios sigue siendo propia de cada ciudad: un Coliseo y una 
 ## Archivos
 
 - `constants/cityDioramaFraming.json`: única calibración para todas las fuentes y el marco común.
-- `components/city-diorama.tsx`: componente Expo preparado para mostrar los recursos con esa calibración. El padre define el ancho de la tarjeta; el alto permanece igual al ancho y no depende de la ciudad. No recalcula el tamaño a partir de la altura del monumento ni usa transiciones entre preguntas. Un fundido del 2 % en los bordes vacíos del PNG integra el fondo sin tocar edificios o base; se usa `react-native-svg`, ya incluido en la app, sin añadir dependencias.
+- `components/city-diorama.tsx`: componente Expo preparado para mostrar los recursos con esa calibración. El padre define el ancho de la tarjeta; el alto permanece igual al ancho y no depende de la ciudad. No recalcula el tamaño a partir de la altura del monumento ni usa transiciones entre preguntas. Las fuentes RGBA se muestran sobre el fondo de la pantalla, sin tarjeta coloreada ni fundidos añadidos; se usa `react-native-svg`, ya incluido en la app, sin añadir dependencias.
 - [Comparador visual](encuadre.html): selección de ciudad, vista original/alineada, guías de centro y base, y todas las ciudades con imagen juntas. No modifica los PNG y no necesita un servidor para abrirse.
 
 Las coordenadas se vinculan a las versiones indicadas en `constants/cityDioramaFraming.json`: si una imagen se regenera, hay que medirla de nuevo. Los nombres de ciudad de la vista de revisión no se mostrarán en la pregunta. El componente recibe una descripción accesible de los hitos, sin desvelar la respuesta.
@@ -39,3 +39,32 @@ Venecia, Ámsterdam, Londres y Berlín añaden cuatro fuentes `normalizadas/*-v1
 ## Segunda ampliación · tanda 3
 
 Dublín, Edimburgo, Moscú y San Petersburgo añaden cuatro fuentes `normalizadas/*-v1.png`, con línea inferior en y=1041 y perfiles propios de bordes laterales. La primera variante de San Petersburgo se descartó porque añadía una plataforma exterior; la seleccionada mantiene cinco hitos sobre una sola base. Las catorce imágenes comparten los anclajes del marco. Láminas: `verificacion/ampliacion-02.png` y `verificacion/ciudades-v5.png`. Las nuevas imágenes siguen pendientes de revisión editorial; su presencia en el visor no implica publicación en el catálogo remoto.
+
+## Transparencia y visor ampliado · 16 de octubre de 2026
+
+Las 250 fuentes vigentes están en `transparentes/*-v1.png`, con alfa real y el
+mismo lienzo de 1254 × 1254 px. `opaqueSource` conserva la ruta del PNG opaco en
+cada perfil. No se han regenerado edificios: los RGB de los píxeles conservados
+son exactamente los de la fuente. El contorno exterior cerrado se obtiene con
+OpenCV a resolución original; solo se suaviza la cobertura de su borde.
+
+Para reproducirlo: instalar Pillow, numpy y opencv-python-headless en un entorno
+Python (`pip install -r scripts/city-cutout-requirements.txt`) y ejecutar
+`python scripts/cutout-city-backgrounds.py --apply`, seguido de
+`node scripts/build-city-framing-preview.mjs`. El script no sobrescribe imágenes
+distintas y solo actualiza el catálogo cuando pasan las comprobaciones de las
+250. `verificacion/transparencia/manifest.json` registra fuentes, hashes y límites;
+las diez láminas muestran cada ciudad sobre claro y oscuro. El comparador usa un
+fondo de damero para hacer visible el alfa y mantiene la comparación con los
+originales opacos.
+
+El publicador conserva la resolución completa y el alfa en WebP, con URLs por
+hash: las imágenes anteriores siguen disponibles. El color hexadecimal del
+perfil permanece como metadato compatible con catálogos anteriores; los
+componentes ya no lo pintan como fondo.
+
+Al tocar una ciudad se abre un visor a pantalla completa con cabecera opaca y
+botón Cerrar. Permite pellizcar (1–4×), doble toque (2,5×), arrastrar con límites,
+botones de acercar/alejar y Ajustar. Usa la misma imagen ya decodificada y pausa
+el avance de respuesta hasta cerrarse. La presentación nativa no tiene el gesto
+de arrastre para cerrar de una hoja, para que no compita con explorar la imagen.
