@@ -14,6 +14,7 @@ import { COUNTRIES } from '@/constants/flags';
 import { YEAR_EVENTS } from '@/constants/years';
 import { getFlagRecords } from '@/lib/flags';
 import { getYearRecords } from '@/lib/years';
+import { readCachedCities } from '@/lib/cities';
 
 type Mode = 'flags' | 'years' | 'cities';
 
@@ -69,6 +70,10 @@ export default function ChallengesScreen() {
       router.setParams({ mode: undefined });
     }, [params.mode, selectMode, router]),
   );
+
+  // El catálogo de Ciudades se lee de disco al abrir Retos, no al pulsar su
+  // tarjeta: así el modo se pinta al instante con lo guardado.
+  useEffect(() => { void readCachedCities(); }, []);
 
   const loadRecords = useCallback(() => {
     getFlagRecords().then(r => setFlagBest(r.all ?? null));

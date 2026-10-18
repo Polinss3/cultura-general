@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, BackHandler, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
+import { ActivityIndicator, BackHandler, InteractionManager, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { useChallengeBottomInset } from '@/hooks/useChallengeBottomInset';
 import type { ImageRef } from 'expo-image';
 import { cityImages, warmCityImages } from '@/lib/cityImages';
@@ -29,6 +29,7 @@ import { CITY_CONTINENTS, CITY_ROUND_SIZE, buildCityRound, cityPool, cityRecordK
 import type { AnswerState } from '@/types';
 import { useTheme } from '@/constants/colors';
 import { Font, Radius, Space, warmGradient } from '@/constants/theme';
+import { RecordChip } from '@/components/RecordChip';
 
 const ICONS = { all: '🏙️', europa: '🏰', america: '🗽', africa: '🕌', asia: '🏯', oceania: '🌉' };
 const DIFFICULTIES: CityDifficulty[] = ['all', 1, 2, 3];
@@ -71,11 +72,23 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
   const retryImage = useRef<() => void>(() => {});
   const { catalog, refreshing, error, retry } = useCities(phase === 'picker');
   const playable = useMemo(() => cityPool(catalog ?? [], 'all', difficulty), [catalog, difficulty]);
+  // Rondas listas para empezar sin esperar: una al azar de todo el mundo y otra
+  // de cada continente, con sus primeras imágenes ya descargándose. Se preparan
+  // cuando la pestaña ya está pintada, no en el render que cambia de modo, y se
+  // rehacen tras cada partida para que la siguiente vuelva a ser distinta.
   const [roundSeed, setRoundSeed] = useState(0);
-  const preparedRound = useMemo(() => buildCityRound(catalog ?? [], 'all', difficulty), [catalog, difficulty, roundSeed]);
+  const [prepared, setPrepared] = useState<Partial<Record<CityScope, CityQuestion[]>>>({});
   useEffect(() => {
-    if (phase !== 'playing') warmCityImages(preparedRound, 0, 3);
-  }, [phase, preparedRound]);
+    if (phase === 'playing' || !catalog?.length) return;
+    const task = InteractionManager.runAfterInteractions(() => {
+      const next: Partial<Record<CityScope, CityQuestion[]>> = { all: buildCityRound(catalog, 'all', difficulty) };
+      for (const cont of CITY_CONTINENTS) next[cont] = buildCityRound(catalog, cont, difficulty);
+      setPrepared(next);
+      warmCityImages(next.all!, 0, 2);
+      for (const cont of CITY_CONTINENTS) warmCityImages(next[cont]!, 0, 1);
+    });
+    return () => task.cancel();
+  }, [phase, catalog, difficulty, roundSeed]);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingAnswer = useRef<(() => void) | null>(null);
   const answerDeadline = useRef(0);
@@ -117,7 +130,7 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
 
   const start = async (nextScope: CityScope, retryRound?: CityQuestion[]) => {
     if (preparingRef.current) return;
-    const questions = retryRound ?? (nextScope === 'all' ? preparedRound : buildCityRound(catalog ?? [], nextScope, difficulty));
+    const questions = retryRound ?? prepared[nextScope] ?? buildCityRound(catalog ?? [], nextScope, difficulty);
     if (!questions.length) return;
     clearTimer(); const run = ++generation.current;
     preparingRef.current = true; locked.current = true; finished.current = false;
@@ -129,7 +142,7 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
       if (run !== generation.current) return;
       setScope(nextScope); setRound(questions); setImage(first[0]); setIndex(0); setSelected(null);
       setCorrectCount(0); setNewRecord(false); locked.current = false; setPhase('playing');
-      if (nextScope === 'all') setRoundSeed(n => n + 1);
+      if (!retryRound) setRoundSeed(n => n + 1);
     } catch {
       if (run === generation.current) setImageError(true);
     } finally {
@@ -259,10 +272,12 @@ export function CitiesGame({ header, onRoundFinished, onPickerChange }: Props) {
               return <Pressable key={cont} disabled={!count || preparing} accessibilityRole="button" accessibilityState={{ disabled: !count || preparing }} onPress={() => start(cont)}
                 style={{ width: '48.5%', opacity: count ? 1 : 0.5 }}>
                 <View style={{ backgroundColor: C.surface, borderWidth: 1, borderColor: C.border, borderRadius: Radius.card, padding: 14, gap: 7, minHeight: 118 }}>
-                  <Text style={{ fontSize: 24 }}>{ICONS[cont]}</Text>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', gap: 6 }}>
+                    <Text style={{ fontSize: 24 }}>{ICONS[cont]}</Text>
+                    {best != null && <RecordChip n={best} />}
+                  </View>
                   <Text style={{ color: C.text, fontSize: 15, fontFamily: Font.extra }}>{scopeLabel(cont)}</Text>
                   <Text style={{ color: C.textMuted, fontSize: 12, fontFamily: Font.regular }}>{count ? t('cities.count', { count }) : t('cities.comingSoon')}</Text>
-                  {best != null && <Text style={{ color: C.brandDeep, fontSize: 12, fontFamily: Font.bold }}>{t('round.best', { n: best })}</Text>}
                 </View>
               </Pressable>;
             })}

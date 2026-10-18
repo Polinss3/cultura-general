@@ -80,10 +80,38 @@ export function cityDistractors(answer: City, catalog: City[], random = Math.ran
   }
   return picked;
 }
+/**
+ * ¿Tiene tres distractores válidos? Lo mismo que pedir `cityDistractors` y
+ * mirar si salen tres, pero sin barajar ni ordenar el catálogo: un recorrido
+ * que para al tercero. Con 250 ciudades, ordenar por cada una costaba cientos
+ * de milisegundos en el móvil al abrir el modo.
+ */
+function hasThreeDistractors(answer: City, catalog: City[]): boolean {
+  const es = new Set([nameKey(answer.name.es)]), en = new Set([nameKey(answer.name.en)]);
+  let found = 0;
+  for (const c of catalog) {
+    if (c.id === answer.id || citySimilarity(answer, c) < 10) continue;
+    const ces = nameKey(c.name.es), cen = nameKey(c.name.en);
+    if (es.has(ces) || en.has(cen)) continue;
+    es.add(ces); en.add(cen);
+    if (++found === 3) return true;
+  }
+  return false;
+}
+// El catálogo se sustituye entero al refrescarlo, así que la identidad del
+// array sirve de clave.
+const playableCache = new WeakMap<City[], City[]>();
+function playableCities(catalog: City[]): City[] {
+  let playable = playableCache.get(catalog);
+  if (!playable) {
+    playable = catalog.filter(c => c.image_url && c.framing && hasThreeDistractors(c, catalog));
+    playableCache.set(catalog, playable);
+  }
+  return playable;
+}
 export function cityPool(catalog: City[], scope: CityScope, difficulty: CityDifficulty): City[] {
-  return catalog.filter(c => c.image_url && c.framing &&
-    (scope === 'all' || c.continent === scope) && (difficulty === 'all' || c.difficulty === difficulty) &&
-    cityDistractors(c, catalog, () => 0.5).length === 3);
+  return playableCities(catalog).filter(c =>
+    (scope === 'all' || c.continent === scope) && (difficulty === 'all' || c.difficulty === difficulty));
 }
 export function buildCityRound(catalog: City[], scope: CityScope, difficulty: CityDifficulty,
   size = CITY_ROUND_SIZE, random = Math.random): CityQuestion[] {
